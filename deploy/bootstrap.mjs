@@ -10,7 +10,7 @@ import { execSync } from "node:child_process";
 // the tree in that order (earlier fixes, then the latest change), so a change can ship as a small upload
 // without rebuilding the whole bundle.
 function unpack(name, what) {
-  const parts = readdirSync("bundle").filter(f => new RegExp(`^${name}\\.tar\\.br\\.part\\d+$`).test(f)).sort();
+  const parts = readdirSync("bundle").filter(f => f.startsWith(`${name}.tar.br.part`)).sort();
   if (!parts.length) return;
   const tar = brotliDecompressSync(Buffer.concat(parts.map(f => readFileSync(`bundle/${f}`))));
   writeFileSync(`${name}.tar`, tar);
