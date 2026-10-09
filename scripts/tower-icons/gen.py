@@ -219,7 +219,7 @@ def svg_for(height, shapes):
     W, Hh = 2 * (hw + PAD), height + 2 * PAD
 
     def d(pts):
-        return "M" + "L".join(f"{x + hw + PAD:.1f},{Hh - PAD - y:.1f}" for x, y in pts) + "Z"
+        return "M" + "L".join(f"{x + hw + PAD:.0f},{Hh - PAD - y:.0f}" for x, y in pts) + "Z"
     halo = "".join(f'<path d="{d(p)}"/>' for t, p in shapes if t == "body")
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W:.1f} {Hh:.1f}" width="{W * PX_PER_M:.2f}" height="{Hh * PX_PER_M:.2f}">',
            f'<g fill="{TONES["halo"]}" stroke="{TONES["halo"]}" stroke-width="{2 * HALO_PX / PX_PER_M:.1f}" stroke-linejoin="round" opacity="0.92">{halo}</g>']
