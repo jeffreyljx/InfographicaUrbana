@@ -7,6 +7,7 @@ import { loadIndex, loadDetails, resolveRow, norm, detailFor } from "@/lib/clien
 import { createMap, addTowerLayers, rowsToGeoJSON, setTowerData, setSelected, setBasemap, setBoundary, type Basemap } from "./towerMap";
 import { boundaryFor } from "@/lib/boundary";
 import { setSkyline } from "./skylineLayer";
+import { addTowerIcons } from "./towerIcons";
 import Panel from "./Panel";
 import Chooser from "./Chooser";
 import Filters, { type FilterState, DEFAULT_FILTERS, applyFilters } from "./Filters";
@@ -162,6 +163,7 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
         onSelect: id => select(id, false),
         onChoose: (ids, at) => setChooser({ ids, at }),
       });
+      addTowerIcons(map, id => select(id, false));
       layersAdded.current = true;
       if (initialTower) { setSelected(map, initialTower.id); map.jumpTo({ center: [initialTower.lon, initialTower.lat], zoom: 15.4, padding: panelPadding() }); }
       if (pendingFit.current) { const b = pendingFit.current; map.fitBounds([[b[0], b[1]], [b[2], b[3]]], { padding: 60, duration: 0, maxZoom: 14 }); pendingFit.current = null; }

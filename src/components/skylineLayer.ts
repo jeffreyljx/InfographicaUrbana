@@ -106,7 +106,7 @@ function addLayers(map: MLMap, fc: FeatureCollection) {
   registerOwnLayer(LINE);
 
   map.on("click", FILL, (e: MapLayerMouseEvent) => {
-    const towerLayers = ["clusters", "pins"].filter(id => map.getLayer(id));
+    const towerLayers = ["clusters", "pins", "tower-icons"].filter(id => map.getLayer(id));
     if (map.queryRenderedFeatures(e.point, { layers: towerLayers }).length) return;   // the pin's own click wins
     const p = e.features?.[0]?.properties as unknown as SkylineProps | undefined;
     if (!p) return;
