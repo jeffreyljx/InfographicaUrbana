@@ -298,6 +298,11 @@ export function setBoundary(map: MLMap, data: FeatureCollection | null) {
   if (src) src.setData(data ?? EMPTY);
 }
 
+/** Layers added by other modules (the skyline extent) that the basemap re-tint and the satellite switch must leave alone. */
+export function registerOwnLayer(id: string) {
+  OWN_LAYERS.add(id);
+}
+
 export function setTowerData(map: MLMap, data: FeatureCollection) {
   const src = map.getSource("towers") as GeoJSONSource | undefined;
   if (src) src.setData(data);

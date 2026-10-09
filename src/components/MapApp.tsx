@@ -6,6 +6,7 @@ import { towerSlug, type Tower, type TowerIndex, type TowerRow, type DetailsFile
 import { loadIndex, loadDetails, resolveRow, norm, detailFor } from "@/lib/client";
 import { createMap, addTowerLayers, rowsToGeoJSON, setTowerData, setSelected, setBasemap, setBoundary, type Basemap } from "./towerMap";
 import { boundaryFor } from "@/lib/boundary";
+import { setSkyline } from "./skylineLayer";
 import Panel from "./Panel";
 import Chooser from "./Chooser";
 import Filters, { type FilterState, DEFAULT_FILTERS, applyFilters } from "./Filters";
@@ -50,6 +51,8 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [mapReady, setMapReady] = useState(false);
   const [basemap, setBasemapState] = useState<Basemap>("map");
+  const [skyline, setSkylineOn] = useState(false);
+  const [zoomedOut, setZoomedOut] = useState(true);
   const pendingFit = useRef<[number, number, number, number] | null>(null);
 
   // ---- data ---------------------------------------------------------------
@@ -129,6 +132,26 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
     try { localStorage.setItem("scrapermap.basemap", basemap); } catch { /* storage unavailable */ }
   }, [mapReady, basemap]);
 
+  // ---- skyline extent: the urban core of each city with more than 50 towers (remembered per browser; ?skyline=1 turns it on) ----
+  useEffect(() => {
+    const q = new URLSearchParams(location.search).get("skyline");
+    if (q === "1" || q === "0") { setSkylineOn(q === "1"); return; }
+    try { if (localStorage.getItem("scrapermap.skyline") === "1") setSkylineOn(true); } catch { /* storage unavailable */ }
+  }, []);
+  const toggleSkyline = useCallback(() => {
+    const on = !skyline;
+    setSkylineOn(on);
+    try { localStorage.setItem("scrapermap.skyline", on ? "1" : "0"); } catch { /* storage unavailable */ }
+  }, [skyline]);
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapReady) return;
+    const check = () => setZoomedOut(map.getZoom() < 7);
+    check();
+    map.on("zoomend", check);
+    return () => { map.off("zoomend", check); };
+  }, [mapReady]);
+
   const layersAdded = useRef(false);
   useEffect(() => {
     const map = mapRef.current;
@@ -149,6 +172,13 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
       setTowerData(map, data);
     }
   }, [mapReady, idx, filteredRows, select, initialTower]);
+
+  // skyline layers go in under the tower layers, so they wait for those
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapReady || !layersAdded.current) return;
+    setSkyline(map, skyline, basemap);
+  }, [mapReady, idx, skyline, basemap]);
 
   // outline of the opened city / district (red dashed line); cleared when no place is open
   useEffect(() => {
@@ -195,11 +225,21 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
           </svg>
           <span className="bm-label">{basemap === "satellite" ? "Map" : "Satellite"}</span>
         </button>
+        <button className={"btn skyline" + (skyline ? " on" : "")} onClick={toggleSkyline} aria-pressed={skyline}
+          title={skyline ? "Hide the skyline extents" : "Display skyline extent: the urban core of each city with more than 50 towers"}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" aria-hidden="true">
+            <path d="M2 21h20M4 21V12h3V7h3v14m0-9h3V3h3v18m0-11h2V8h3v13" />
+          </svg>
+          <span className="sk-label sk-long">Display skyline extent</span><span className="sk-label sk-short">Skyline extent</span>
+        </button>
       </div>
+      {skyline && zoomedOut && (
+        <div className="map-hint">Skyline extents are drawn for the 38 cities with more than 50 towers. Zoom in on one to see its core.</div>
+      )}
       {filtersOpen && idx && (
         <Filters idx={idx} state={filters} onChange={setFilters} onClose={() => setFiltersOpen(false)} shown={filteredRows.length} onFlyTo={flyToPlace} />
       )}
-      <Legend />
+      <Legend skyline={skyline} />
       {chooser && chooserTowers.length > 0 && (
         <Chooser towers={chooserTowers} at={chooser.at} onPick={id => select(id, false)} onClose={() => setChooser(null)} />
       )}

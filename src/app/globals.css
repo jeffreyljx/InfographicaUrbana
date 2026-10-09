@@ -60,8 +60,9 @@ body .maplibregl-map { font-family: var(--font); } /* beats maplibre-gl.css, whi
 .nav a.on { color: var(--fg); box-shadow: inset 0 -2px 0 var(--accent); padding-bottom: 4px; }
 .nav a:not(.brand) { padding-bottom: 4px; }
 
-.topbar { position: absolute; top: 60px; left: 18px; display: flex; gap: 8px; z-index: 15; width: min(520px, calc(100vw - 36px)); }
-@media (min-width: 1100px) { .topbar { width: 600px; } }  /* room for the full search placeholder in the serif face */
+.topbar { position: absolute; top: 60px; left: 18px; display: flex; gap: 8px; z-index: 15; width: min(640px, calc(100vw - 36px)); }
+@media (min-width: 1100px) { .topbar { width: 660px; } }
+@media (min-width: 1300px) { .topbar { width: 810px; } }  /* room for the full search placeholder in the serif face */
 .search { position: relative; flex: 1; }
 .search input { width: 100%; height: 42px; border-radius: 10px; border: 1px solid var(--line); background: var(--glass); color: var(--fg); padding: 0 14px; font-size: 14px; outline: none; backdrop-filter: blur(8px); }
 .search input:focus { border-color: var(--accent-2); }
@@ -76,7 +77,10 @@ body .maplibregl-map { font-family: var(--font); } /* beats maplibre-gl.css, whi
 .btn.on { border-color: var(--accent-2); }
 .btn.primary { background: var(--accent); color: var(--on-accent); border-color: transparent; font-weight: 600; }
 .btn.primary:hover { filter: brightness(1.06); text-decoration: none; }
-.btn.basemap { padding: 0 12px; }
+.btn.basemap, .btn.skyline { padding: 0 12px; }
+.btn.skyline.on { background: rgba(233,168,37,.22); }
+.sk-long { display: none; }
+@media (min-width: 1300px) { .sk-long { display: inline; } .sk-short { display: none; } }  /* "Display skyline extent" where there is room */
 .btn .count { background: var(--bg-3); border-radius: 999px; padding: 2px 8px; font-size: 12px; color: var(--fg-2); }
 
 /* ---- filters ---- */
@@ -103,6 +107,16 @@ body .maplibregl-map { font-family: var(--font); } /* beats maplibre-gl.css, whi
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
 .legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 .legend i.hollow { border: 2px solid var(--fg-2); background: transparent; width: 8px; height: 8px; }
+.legend i.sky { border-radius: 2px; background: rgba(233,168,37,.5); border: 1.5px solid #8A5A00; width: 12px; }
+
+/* ---- skyline extent ---- */
+.map-hint { position: absolute; top: 110px; left: 18px; z-index: 14; max-width: min(520px, calc(100vw - 36px)); background: var(--glass); border: 1px solid var(--line); border-radius: 10px; padding: 7px 12px; font-size: 12.5px; line-height: 1.4; color: var(--fg-2); backdrop-filter: blur(8px); pointer-events: none; }
+.sky-popup .maplibregl-popup-content { background: var(--bg-2); color: var(--fg); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); padding: 12px 30px 12px 14px; font-size: 13px; line-height: 1.45; max-height: 46vh; overflow: auto; }
+.sky-popup .maplibregl-popup-tip { display: none; }
+.sky-popup .maplibregl-popup-close-button { font-size: 20px; width: 28px; height: 28px; color: var(--fg-2); border-radius: 0 10px 0 8px; }
+.sky-popup h3 { margin: 0 0 4px; font-size: 15px; }
+.sky-popup p { margin: 0; }
+.sky-popup .sky-n { color: var(--fg-2); font-size: 12px; margin-bottom: 8px; }
 
 /* ---- chooser ---- */
 .chooser { position: absolute; z-index: 30; background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); overflow: hidden; }
@@ -196,7 +210,8 @@ td.gdp { white-space: nowrap; }
   .nav .brand .brand-name { display: none; }  /* the ▲ still links home; "Map" is in the bar */
   .nav .brand { margin-right: 0; }
   .topbar { left: 12px; width: calc(100vw - 24px); }
-  .btn.basemap .bm-label { display: none; }
+  .btn.basemap .bm-label, .btn.skyline .sk-label { display: none; }
+  .map-hint { left: 12px; max-width: calc(100vw - 24px); }
   .filters { left: 12px; width: calc(100vw - 24px); top: 110px; }
   .panel { top: auto; right: 0; left: 0; bottom: 0; width: 100%; max-height: 62vh; border-radius: 16px 16px 0 0; }
   .legend { display: none; }
