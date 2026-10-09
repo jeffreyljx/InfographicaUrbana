@@ -6,18 +6,25 @@ import { readdirSync, readFileSync, writeFileSync, existsSync, rmSync, cpSync } 
 import { brotliDecompressSync } from "node:zlib";
 import { execSync } from "node:child_process";
 
+// bundle/overlay.tar.br.partNN and bundle/delta.tar.br.partNN, if present, are further brotli tars unpacked over
+// the tree in that order (earlier fixes, then the latest change), so a change can ship as a small upload
+// without rebuilding the whole bundle.
+function unpack(name, what) {
+  const parts = readdirSync("bundle").filter(f => new RegExp(`^${name}\\.tar\\.br\\.part\\d+$`).test(f)).sort();
+  if (!parts.length) return;
+  const tar = brotliDecompressSync(Buffer.concat(parts.map(f => readFileSync(`bundle/${f}`))));
+  writeFileSync(`${name}.tar`, tar);
+  execSync(`tar xf ${name}.tar`, { stdio: "inherit" });
+  rmSync(`${name}.tar`);
+  console.log(`bootstrap: unpacked ${what} (${tar.length} bytes) from ${parts.length} parts`);
+}
 if (existsSync("bundle")) {
-  const parts = readdirSync("bundle").filter(f => /^src\.tar\.br\.part\d+$/.test(f)).sort();
-  if (parts.length) {
-    const tar = brotliDecompressSync(Buffer.concat(parts.map(f => readFileSync(`bundle/${f}`))));
-    writeFileSync("src.tar", tar);
-    execSync("tar xf src.tar", { stdio: "inherit" });
-    rmSync("src.tar");
-    console.log(`bootstrap: unpacked source tree (${tar.length} bytes) from ${parts.length} parts`);
-  }
+  unpack("src", "source tree");
+  unpack("overlay", "earlier fixes");
 }
 if (existsSync("overlay")) {
   cpSync("overlay", ".", { recursive: true, force: true });
   console.log("bootstrap: applied overlay/");
 }
+if (existsSync("bundle")) unpack("delta", "changes since the bundle");
 execSync("node scripts/prebuild.mjs", { stdio: "inherit" });
