@@ -213,17 +213,19 @@ TOWERS = [
 
 # ---------------------------------------------------------------------------------------- output
 
-def svg_for(height, shapes):
+def svg_for(tid, height, shapes):
     xs = [x for _, pts in shapes for x, _ in pts]
     hw = max(-min(xs), max(xs))
     W, Hh = 2 * (hw + PAD), height + 2 * PAD
 
     def d(pts):
         return "M" + "L".join(f"{x + hw + PAD:.0f},{Hh - PAD - y:.0f}" for x, y in pts) + "Z"
-    halo = "".join(f'<path d="{d(p)}"/>' for t, p in shapes if t == "body")
+    body = "".join(d(p) for t, p in shapes if t == "body")
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W:.1f} {Hh:.1f}" width="{W * PX_PER_M:.2f}" height="{Hh * PX_PER_M:.2f}">',
-           f'<g fill="{TONES["halo"]}" stroke="{TONES["halo"]}" stroke-width="{2 * HALO_PX / PX_PER_M:.1f}" stroke-linejoin="round" opacity="0.92">{halo}</g>']
-    out += [f'<path d="{d(p)}" fill="{TONES[t]}"/>' for t, p in shapes]
+           f'<defs><path id="t{tid}" d="{body}"/></defs>',
+           f'<use href="#t{tid}" fill="{TONES["halo"]}" stroke="{TONES["halo"]}" stroke-width="{2 * HALO_PX / PX_PER_M:.0f}" stroke-linejoin="round" opacity="0.92"/>',
+           f'<use href="#t{tid}" fill="{TONES["body"]}"/>']
+    out += [f'<path d="{d(p)}" fill="{TONES[t]}"/>' for t, p in shapes if t != "body"]
     out.append("</svg>\n")
     return "\n".join(out), W, Hh
 
@@ -233,14 +235,13 @@ def main():
     icons = []
     for tid, name, draw in TOWERS:
         height, shapes = draw()
-        svg, W, Hh = svg_for(height, shapes)
+        svg, W, Hh = svg_for(tid, height, shapes)
         with open(os.path.join(OUT, f"{tid}.svg"), "w") as fh:
             fh.write(svg)
         icons.append({"id": tid, "name": name, "height": height,
                       "w": round(W * PX_PER_M, 2), "h": round(Hh * PX_PER_M, 2), "base": round(PAD * PX_PER_M, 2)})
-    with open(os.path.join(OUT, "index.json"), "w") as fh:
-        json.dump({"pxPerMetre": PX_PER_M, "icons": icons}, fh, indent=1)
-        fh.write("\n")
+    with open(os.path.join(OUT, "index.json"), "w") as fh:     # one icon per line
+        fh.write('{"pxPerMetre": %s, "icons": [\n%s\n]}\n' % (PX_PER_M, ",\n".join(json.dumps(i) for i in icons)))
     print(f"{len(icons)} icons -> {os.path.relpath(OUT)}")
 
 
