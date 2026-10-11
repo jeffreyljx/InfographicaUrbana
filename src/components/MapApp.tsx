@@ -202,12 +202,12 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
     }
   }, [mapReady, idx, filteredRows, select, initialTower]);
 
-  // skyline layers go in under the tower layers, so they wait for those
+  // skyline layers go in under the tower layers, so they wait for those; with the time capsule on they follow its year
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapReady || !layersAdded.current) return;
-    setSkyline(map, skyline, basemap);
-  }, [mapReady, idx, skyline, basemap]);
+    setSkyline(map, skyline, basemap, asOf);
+  }, [mapReady, idx, skyline, basemap, asOf]);
 
   // time capsule: ring the towers completed in the chosen year
   useEffect(() => {
@@ -268,7 +268,9 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
         </button>
       </div>
       {skyline && zoomedOut && (
-        <div className="map-hint">Skyline extents are drawn for the 38 cities with more than 50 towers. Zoom in on one to see its core.</div>
+        <div className="map-hint">{asOf === null
+          ? "Skyline extents are drawn for the 38 cities with more than 50 towers. Zoom in on one to see its core."
+          : `Skyline extents in ${asOf}: each city's core, trimmed to the towers built by then. Zoom in on a city to see it.`}</div>
       )}
       {filtersOpen && idx && (
         <Filters idx={idx} state={filters} onChange={setFilters} onClose={() => setFiltersOpen(false)} shown={filteredRows.length} onFlyTo={flyToPlace} capsule={capsuleOn} />

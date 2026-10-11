@@ -1,10 +1,12 @@
 // 1. Reassemble + unpack the dataset (data/data.br.part*) into public/data and src/data.
 // 2. Copy MapLibre's worker files into /public so the map can start its worker from a fixed URL.
 // 3. Copy the site font (Libre Baskerville, from @fontsource) into /public/fonts; globals.css declares the @font-faces.
+// 4. Work out each city's skyline extent year by year for the time capsule (scripts/skyline-years.mjs).
 import { copyFileSync, mkdirSync, readdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
 import { brotliDecompressSync } from "node:zlib";
 import { derivePlaces } from "./derive.mjs";
 import { applyCountryLabels, active, LABELS, MERGE } from "./country-labels.mjs";
+import { buildSkylineYears } from "./skyline-years.mjs";
 
 const parts = existsSync("data") ? readdirSync("data").filter(f => /^data\.br\.part\d+$/.test(f)).sort() : [];
 if (parts.length) {
@@ -40,3 +42,5 @@ const faces = [400, 500, 600, 700].map(w => `${w}-normal`).concat("400-italic");
 for (const sub of ["latin", "latin-ext"]) for (const f of faces) copyFileSync(`${FONT}/files/libre-baskerville-${sub}-${f}.woff2`, `${FONT_OUT}/libre-baskerville-${sub}-${f}.woff2`);
 copyFileSync(`${FONT}/LICENSE`, `${FONT_OUT}/OFL.txt`);
 console.log(`font copied (${faces.length * 2} files)`);
+
+buildSkylineYears();
