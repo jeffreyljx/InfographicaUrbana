@@ -21,7 +21,10 @@ export type Basemap = "map" | "satellite";
 const SAT_ID = "esri-imagery";
 const SAT_TILES = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
 const SAT_ATTR = 'Imagery © <a href="https://www.esri.com/" target="_blank" rel="noopener">Esri</a>, Maxar, Earthstar Geographics';
-const TOWER_LAYERS = new Set(["clusters", "cluster-count", "glow", "pins", "selected", "labels"]);
+const TOWER_LAYERS = new Set(["clusters", "cluster-count", "glow", "pins", "capsule-new-clusters", "capsule-new", "selected", "labels"]);
+/** Time capsule: ring colour for towers completed in the chosen year (reads on the sand map and on imagery). */
+const NEW_COLOR = "#E2560F";
+const NEVER: NonNullable<Parameters<MLMap["setFilter"]>[1]> = ["==", ["get", "id"], -1];
 /** Outline of the city or district opened on the map (red dashed line, drawn under the pins). */
 const BOUNDARY_ID = "boundary";
 const OWN_LAYERS = new Set([...TOWER_LAYERS, "boundary-line"]);
@@ -40,7 +43,7 @@ export function rowsToGeoJSON(rows: TowerRow[]): FeatureCollection {
       type: "Feature",
       id: r[0],
       geometry: { type: "Point", coordinates: [r[3], r[2]] },
-      properties: { id: r[0], n: r[1], h: r[4], b: r[4] >= 400 ? 3 : r[4] >= 300 ? 2 : r[4] >= 200 ? 1 : 0, p: r[11], sp: r[12] },
+      properties: { id: r[0], n: r[1], h: r[4], b: r[4] >= 400 ? 3 : r[4] >= 300 ? 2 : r[4] >= 200 ? 1 : 0, p: r[11], sp: r[12], y: r[8] ?? 0 },
     })),
   };
 }
@@ -168,7 +171,7 @@ export function addTowerLayers(map: MLMap, data: FeatureCollection, cb: MapCallb
     cluster: true,
     clusterRadius: 34,
     clusterMaxZoom: CLUSTER_MAX_ZOOM,
-    clusterProperties: { maxb: ["max", ["get", "b"]] },
+    clusterProperties: { maxb: ["max", ["get", "b"]], maxy: ["max", ["get", "y"]] },
     promoteId: "id",
   });
 
@@ -206,6 +209,21 @@ export function addTowerLayers(map: MLMap, data: FeatureCollection, cb: MapCallb
         ["match", ["get", "b"], 3, BAND_COLORS[3], 2, BAND_COLORS[2], 1, BAND_COLORS[1], BAND_COLORS[0]],
         ["match", ["get", "b"], 3, BAND_STROKE[3], 2, BAND_STROKE[2], 1, BAND_STROKE[1], BAND_STROKE[0]]],
       "circle-opacity": 0.95,
+    },
+  });
+  // time capsule: rings around the towers (and the clusters holding towers) completed in the chosen year; see setCapsuleYear
+  map.addLayer({
+    id: "capsule-new-clusters", type: "circle", source: "towers", filter: NEVER,
+    paint: {
+      "circle-radius": ["step", ["get", "point_count"], 19, 10, 23, 50, 28, 200, 34, 600, 41],
+      "circle-color": "rgba(0,0,0,0)", "circle-stroke-width": 2.5, "circle-stroke-color": NEW_COLOR, "circle-stroke-opacity": 0.95,
+    },
+  });
+  map.addLayer({
+    id: "capsule-new", type: "circle", source: "towers", filter: NEVER,
+    paint: {
+      "circle-radius": ["interpolate", ["linear"], ["zoom"], 8, 9, 15, 14],
+      "circle-color": "rgba(226,86,15,0.16)", "circle-stroke-width": 2.2, "circle-stroke-color": NEW_COLOR,
     },
   });
   map.addLayer({
@@ -286,6 +304,13 @@ export function setBasemap(map: MLMap, mode: Basemap) {
   }
 }
 const origVis = new Map<string, "visible" | "none">();
+
+/** Time capsule: ring the towers completed in `year` (and the clusters that hold one); null clears the rings. */
+export function setCapsuleYear(map: MLMap, year: number | null) {
+  if (!map.getLayer("capsule-new")) return;
+  map.setFilter("capsule-new", year === null ? NEVER : ["all", ["!", ["has", "point_count"]], ["==", ["get", "y"], year]]);
+  map.setFilter("capsule-new-clusters", year === null ? NEVER : ["all", ["has", "point_count"], ["==", ["get", "maxy"], year]]);
+}
 
 export function setSelected(map: MLMap, id: number | null) {
   if (!map.getLayer("selected")) return;

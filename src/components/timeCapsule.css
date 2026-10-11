@@ -1,0 +1,36 @@
+/* Time capsule: the launcher button and the year dock at the foot of the map (see TimeCapsule.tsx). */
+.btn.capsule-open { position: absolute; left: 50%; bottom: 54px; transform: translateX(-50%); z-index: 20; box-shadow: var(--shadow); }
+.btn.capsule-open.with-panel, .capsule.with-panel { left: calc(50% - 210px); }
+.capsule { position: absolute; left: 50%; bottom: 54px; transform: translateX(-50%); z-index: 20; width: min(640px, calc(100vw - 36px)); box-sizing: border-box; background: var(--glass); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 10px 14px 4px; backdrop-filter: blur(8px); }
+.capsule.with-panel { width: min(640px, calc(100vw - 476px)); }
+.cap-head { display: flex; align-items: center; gap: 12px; }
+.cap-play { width: 38px; height: 38px; flex: none; border-radius: 50%; border: 0; background: var(--accent); color: var(--on-accent); display: grid; place-items: center; cursor: pointer; }
+.cap-play:hover { filter: brightness(1.1); }
+.cap-play:focus-visible, .cap-track input:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; }
+.cap-year { flex: none; width: 82px; font-size: 30px; font-weight: 700; line-height: 1; letter-spacing: -.01em; color: var(--fg); }
+.cap-facts { flex: 1; min-width: 0; font-size: 12.5px; line-height: 1.5; color: var(--fg-2); }
+.cap-facts b { color: var(--fg); font-weight: 600; }
+.cap-new { color: #A33A0B; }           /* the new-this-year orange, darkened for text (5.6:1 on the dock) */
+.cap-tallest { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cap-tallest .link { margin: 0; font: inherit; color: var(--accent-2); }
+.capsule .x { position: static; flex: none; align-self: flex-start; width: 28px; height: 28px; font-size: 18px; }
+.cap-track { margin-top: 8px; }
+.cap-bars { display: block; width: calc(100% - 16px); margin: 0 8px; overflow: visible; cursor: pointer; touch-action: none; }
+.cap-bars rect.past { fill: var(--accent); opacity: .72; }
+.cap-bars rect.now { fill: #E2560F; }
+.cap-bars rect.future { fill: var(--line); opacity: .8; }
+.cap-track input[type=range] { display: block; width: 100%; margin: 4px 0 0; accent-color: var(--accent); cursor: pointer; }
+.cap-ticks { position: relative; height: 18px; margin: 0 8px; font-size: 11px; color: var(--fg-3); }
+.cap-ticks span { position: absolute; top: 2px; transform: translateX(-50%); }
+.legend i.new { border: 2px solid #E2560F; background: rgba(226,86,15,.16); width: 8px; height: 8px; }
+.filters .chips.paused .chip { opacity: .55; cursor: default; }
+.filters-note { margin: 6px 0 0; font-size: 12px; line-height: 1.4; color: var(--fg-3); }
+
+@media (max-width: 720px) {
+  .btn.capsule-open, .btn.capsule-open.with-panel { left: 50%; bottom: 12px; }
+  .capsule, .capsule.with-panel { left: 12px; right: 12px; bottom: 12px; width: auto; transform: none; padding: 8px 10px 2px; }
+  .cap-head { gap: 10px; }
+  .cap-year { width: 64px; font-size: 24px; }
+  .cap-facts { font-size: 12px; }
+  .app.capsule-on .maplibregl-ctrl-bottom-left, .app.capsule-on .maplibregl-ctrl-bottom-right { bottom: calc(var(--capsule-h, 140px) + 12px); }
+}

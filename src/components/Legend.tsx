@@ -1,6 +1,6 @@
 import { BAND_COLORS } from "@/lib/colors";
 import { BAND_LABEL } from "@/lib/format";
-export default function Legend({ skyline = false }: { skyline?: boolean }) {
+export default function Legend({ skyline = false, capsuleYear = null }: { skyline?: boolean; capsuleYear?: number | null }) {
   return (
     <div className="legend" aria-hidden>
       {BAND_LABEL.map((l, i) => (
@@ -8,6 +8,7 @@ export default function Legend({ skyline = false }: { skyline?: boolean }) {
       ))}
       <span><i className="hollow" />approximate</span>
       {skyline && <span><i className="sky" />skyline extent</span>}
+      {capsuleYear !== null && <span><i className="new" />completed in {capsuleYear}</span>}
     </div>
   );
 }

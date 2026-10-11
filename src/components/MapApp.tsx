@@ -2,9 +2,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Map as MLMap } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import "./timeCapsule.css";
 import { towerSlug, type Tower, type TowerIndex, type TowerRow, type DetailsFile } from "@/lib/types";
 import { loadIndex, loadDetails, resolveRow, norm, detailFor } from "@/lib/client";
-import { createMap, addTowerLayers, rowsToGeoJSON, setTowerData, setSelected, setBasemap, setBoundary, type Basemap } from "./towerMap";
+import { createMap, addTowerLayers, rowsToGeoJSON, setTowerData, setSelected, setBasemap, setBoundary, setCapsuleYear, type Basemap } from "./towerMap";
 import { boundaryFor } from "@/lib/boundary";
 import { setSkyline } from "./skylineLayer";
 import { addTowerIcons } from "./towerIcons";
@@ -12,6 +13,8 @@ import Panel from "./Panel";
 import Chooser from "./Chooser";
 import Filters, { type FilterState, DEFAULT_FILTERS, applyFilters } from "./Filters";
 import Search from "./Search";
+import TimeCapsule from "./TimeCapsule";
+import { capsuleRange, standingIn, perYear } from "@/lib/timeCapsule";
 import Legend from "./Legend";
 import Nav from "./Nav";
 import placesJson from "@/data/places.json";
@@ -54,6 +57,8 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
   const [basemap, setBasemapState] = useState<Basemap>("map");
   const [skyline, setSkylineOn] = useState(false);
   const [zoomedOut, setZoomedOut] = useState(true);
+  /** Time capsule: null while it is off, otherwise the chosen year (only towers completed by then are shown). */
+  const [asOf, setAsOf] = useState<number | null>(null);
   const pendingFit = useRef<[number, number, number, number] | null>(null);
 
   // ---- data ---------------------------------------------------------------
@@ -87,7 +92,18 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
   }, [detailsReady, selected, resolveId]);
 
   // ---- filtered rows ------------------------------------------------------
-  const filteredRows = useMemo(() => idx ? applyFilters(idx, filters) : [], [idx, filters]);
+  const capsuleOn = asOf !== null;
+  const range = useMemo(() => idx ? capsuleRange(idx) : null, [idx]);
+  // time capsule: completed towers with a year that pass the other filters; the chosen year then cuts them down
+  const capsuleBase = useMemo(() => idx && capsuleOn ? applyFilters(idx, filters, true) : null, [idx, filters, capsuleOn]);
+  const filteredRows = useMemo(() => !idx ? [] : capsuleBase && asOf !== null ? standingIn(capsuleBase, asOf) : applyFilters(idx, filters), [idx, filters, capsuleBase, asOf]);
+  const capsuleCounts = useMemo(() => capsuleBase && range ? perYear(capsuleBase, range.first, range.last) : [], [capsuleBase, range]);
+  const capsuleTallest = useMemo(() => {
+    if (!idx || !capsuleOn) return null;
+    let t: TowerRow | null = null;
+    for (const r of filteredRows) if (!t || r[4] > t[4]) t = r;
+    return t ? { id: t[0], name: t[1], height: t[4], city: idx.cities[t[5]] } : null;
+  }, [idx, capsuleOn, filteredRows]);
 
   // ---- select / URL -------------------------------------------------------
   const select = useCallback((id: number, fly = true) => {
@@ -153,6 +169,17 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
     return () => { map.off("zoomend", check); };
   }, [mapReady]);
 
+  // ---- time capsule: off by default; ?year=1931 opens it at that year ----
+  useEffect(() => {
+    if (!range) return;
+    const q = Number(new URLSearchParams(location.search).get("year"));
+    if (q) setAsOf(Math.min(range.last, Math.max(range.first, Math.round(q))));
+  }, [range]);
+  const toggleCapsule = useCallback(() => {
+    if (range) setAsOf(y => y === null ? range.last : null);
+  }, [range]);
+  const closeCapsule = useCallback(() => setAsOf(null), []);
+
   const layersAdded = useRef(false);
   useEffect(() => {
     const map = mapRef.current;
@@ -182,6 +209,13 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
     setSkyline(map, skyline, basemap);
   }, [mapReady, idx, skyline, basemap]);
 
+  // time capsule: ring the towers completed in the chosen year
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapReady || !layersAdded.current) return;
+    setCapsuleYear(map, asOf);
+  }, [mapReady, idx, asOf]);
+
   // outline of the opened city / district (red dashed line); cleared when no place is open
   useEffect(() => {
     const map = mapRef.current;
@@ -193,12 +227,10 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
     return () => { live = false; };
   }, [mapReady, idx, filters.city, filters.district]);
 
-  // keep selected tower visible even if filtered out: clear selection if it drops out
+  // keep the panel open when the selected tower is filtered out (or not yet built in the time capsule's year);
+  // just leave its ring off, and put it back when the tower is shown again
   useEffect(() => {
-    if (selected && idx && !filteredRows.some(r => r[0] === selected.id)) {
-      // don't auto-close; just leave the ring off
-      if (mapRef.current) setSelected(mapRef.current, null);
-    }
+    if (selected && idx && mapRef.current) setSelected(mapRef.current, filteredRows.some(r => r[0] === selected.id) ? selected.id : null);
   }, [filteredRows, selected, idx]);
 
   const chooserTowers = useMemo(() => chooser ? chooser.ids.map(resolveId).filter((t): t is Tower => !!t).sort((a, b) => b.height - a.height) : [], [chooser, resolveId]);
@@ -210,7 +242,7 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
   }, []);
 
   return (
-    <div className="app">
+    <div className={"app" + (capsuleOn ? " capsule-on" : "")}>
       <Nav active="map" />
       <div ref={mapEl} className="map" aria-label="Map of skyscrapers" />
       <div className="topbar">
@@ -239,9 +271,21 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
         <div className="map-hint">Skyline extents are drawn for the 38 cities with more than 50 towers. Zoom in on one to see its core.</div>
       )}
       {filtersOpen && idx && (
-        <Filters idx={idx} state={filters} onChange={setFilters} onClose={() => setFiltersOpen(false)} shown={filteredRows.length} onFlyTo={flyToPlace} />
+        <Filters idx={idx} state={filters} onChange={setFilters} onClose={() => setFiltersOpen(false)} shown={filteredRows.length} onFlyTo={flyToPlace} capsule={capsuleOn} />
       )}
-      <Legend skyline={skyline} />
+      <Legend skyline={skyline} capsuleYear={asOf} />
+      {idx && range && asOf === null && (
+        <button className={"btn capsule-open" + (selected ? " with-panel" : "")} onClick={toggleCapsule} title={`Time capsule: show only the towers completed by a chosen year, from ${range.first} to today`}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" aria-hidden="true">
+            <path d="M6 3h12M6 21h12M7 3c0 4.5 5 6 5 9s-5 4.5-5 9M17 3c0 4.5-5 6-5 9s5 4.5 5 9M9.5 18.5h5" />
+          </svg>
+          Time capsule
+        </button>
+      )}
+      {asOf !== null && range && (
+        <TimeCapsule first={range.first} last={range.last} year={asOf} onYear={setAsOf} onClose={closeCapsule}
+          perYear={capsuleCounts} shown={filteredRows.length} tallest={capsuleTallest} onPick={onSearchPick} panelOpen={!!selected} />
+      )}
       {chooser && chooserTowers.length > 0 && (
         <Chooser towers={chooserTowers} at={chooser.at} onPick={id => select(id, false)} onClose={() => setChooser(null)} />
       )}

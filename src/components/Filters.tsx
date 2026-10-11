@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import type { TowerIndex, TowerRow } from "@/lib/types";
 import places from "@/data/places.json";
 import type { Places } from "@/lib/types";
+import { COMPLETED } from "@/lib/timeCapsule";
 
 const PLACES = places as unknown as Places;
 
@@ -38,13 +39,15 @@ function fnGroupOf(fn: string): FilterState["fnGroup"] {
   return "mixed";
 }
 
-export function applyFilters(idx: TowerIndex, f: FilterState): TowerRow[] {
+/** With `capsule` (the time capsule is on) the status chips are set aside: only completed towers with a known completion year pass. */
+export function applyFilters(idx: TowerIndex, f: FilterState, capsule = false): TowerRow[] {
+  const done = capsule ? idx.statuses.indexOf(COMPLETED) : -1;
   const ci = f.city ? idx.cities.indexOf(f.city) : -1;
   const di = f.district && ci >= 0 ? idx.districts.findIndex(d => d[0] === ci && d[1] === f.district) : -1;
   const fnGroups = idx.functions.map(fnGroupOf);
   const approxIdx = idx.precisions.indexOf("approximate");
   return idx.rows.filter(r => {
-    if (!f.statuses.has(r[7])) return false;
+    if (capsule ? r[7] !== done || r[8] === null : !f.statuses.has(r[7])) return false;
     if (r[4] < f.minHeight) return false;
     if (f.yearFrom !== null && (r[8] === null || r[8] < f.yearFrom)) return false;
     if (f.yearTo !== null && (r[8] === null || r[8] > f.yearTo)) return false;
@@ -63,9 +66,11 @@ interface Props {
   onClose: () => void;
   shown: number;
   onFlyTo: (bbox: [number, number, number, number]) => void;
+  /** The time capsule is on: it shows completed towers only, so the status chips are paused. */
+  capsule?: boolean;
 }
 
-export default function Filters({ idx, state, onChange, onClose, shown, onFlyTo }: Props) {
+export default function Filters({ idx, state, onChange, onClose, shown, onFlyTo, capsule = false }: Props) {
   const set = (patch: Partial<FilterState>) => onChange({ ...state, ...patch });
   const toggleStatus = (i: number) => {
     const s = new Set(state.statuses); if (s.has(i)) s.delete(i); else s.add(i);
@@ -84,11 +89,12 @@ export default function Filters({ idx, state, onChange, onClose, shown, onFlyTo 
       </div>
 
       <label className="lbl">Status</label>
-      <div className="chips">
+      <div className={"chips" + (capsule ? " paused" : "")}>
         {idx.statuses.map((s, i) => (
-          <button key={s} className={"chip" + (state.statuses.has(i) ? " on" : "")} onClick={() => toggleStatus(i)}>{s}</button>
+          <button key={s} className={"chip" + ((capsule ? s === COMPLETED : state.statuses.has(i)) ? " on" : "")} onClick={() => toggleStatus(i)} disabled={capsule}>{s}</button>
         ))}
       </div>
+      {capsule && <p className="filters-note">The time capsule is on, so only completed towers are shown.</p>}
 
       <label className="lbl">Minimum height <span className="muted">{state.minHeight} m</span></label>
       <input type="range" min={150} max={500} step={10} value={state.minHeight} onChange={e => set({ minHeight: Number(e.target.value) })} />
