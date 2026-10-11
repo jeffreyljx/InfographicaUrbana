@@ -2,6 +2,7 @@
 import type { FeatureCollection } from "geojson";
 import { Popup, type Map as MLMap, type MapLayerMouseEvent, type LayerSpecification } from "maplibre-gl";
 import { registerOwnLayer, type Basemap } from "./towerMap";
+import { areaKm2 } from "@/lib/geoArea";
 
 /**
  * "Display skyline extent": the urban core of each city with more than 50 towers, drawn as a gold
@@ -77,6 +78,8 @@ function addLayers(map: MLMap, fc: FeatureCollection) {
   base.forEach((l, i) => { if (l.type !== "symbol") lastShape = i; });
   const lineBefore = base[lastShape + 1]?.id ?? ownAnchor;
 
+  // measured from the full outline here, since a clicked feature's geometry is clipped to its map tile
+  const areas = new Map(fc.features.map(f => [String(f.properties?.city), areaKm2(f.geometry)]));
   map.addSource(SRC, { type: "geojson", data: fc });
   map.addLayer({
     id: FILL, type: "fill", source: SRC, layout: { visibility: "none" },
@@ -112,14 +115,14 @@ function addLayers(map: MLMap, fc: FeatureCollection) {
     if (!p) return;
     popup?.remove();
     popup = new Popup({ className: "sky-popup", maxWidth: "340px", focusAfterOpen: false })
-      .setLngLat(e.lngLat).setHTML(popupHtml(p)).addTo(map);
+      .setLngLat(e.lngLat).setHTML(popupHtml(p, areas.get(p.city) ?? p.area_km2)).addTo(map);
   });
 }
 
 const esc = (s: string) => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
-function popupHtml(p: SkylineProps): string {
+function popupHtml(p: SkylineProps, km2: number): string {
   const n = (x: number) => Number(x).toLocaleString("en-US");
   return `<h3><span class="place">${esc(p.city)}</span> skyline extent</h3>`
-    + `<p class="sky-n">${n(p.towers_in_core)} of the city's ${n(p.towers_in_city)} towers of 150 m+ (${n(p.completed_in_core)} completed) · ${p.area_km2} km²</p>`
+    + `<p class="sky-n">${n(p.towers_in_core)} of the city's ${n(p.towers_in_city)} towers of 150 m+ (${n(p.completed_in_core)} completed) · ${km2.toFixed(2)} km²</p>`
     + `<p>${esc(p.rationale)}</p>`;
 }

@@ -6,7 +6,7 @@ import Rank from "@/components/Rank";
 import GdpCell, { type GdpLite } from "@/components/GdpCell";
 import { ThresholdSwitch, useThreshold } from "@/components/Threshold";
 
-const KEYS = ["completed", "all", "c200", "c300", "skyline", "gdp", "ppp", "tallest"] as const;
+const KEYS = ["completed", "all", "c200", "c300", "skyline", "core", "gdp", "ppp", "tallest"] as const;
 type Key = typeof KEYS[number];
 
 const EVEREST = 8849;   // m
@@ -19,7 +19,8 @@ function SkylineCell({ m }: { m: number }) {
 
 /** Cities table with a height-threshold switch (rank by completed towers of ≥150 / ≥200 / ≥300 m) and sortable columns. */
 /** `gdp` is keyed by city slug: GDP within city limits (nominal US$ and PPP), null where no figure exists. */
-export default function CitiesTable({ cities, gdp }: { cities: CityAgg[]; gdp: Record<string, GdpLite | null> }) {
+/** `core` is keyed by city slug: the area of the city's skyline extent in km², for the cities that have one. */
+export default function CitiesTable({ cities, gdp, core }: { cities: CityAgg[]; gdp: Record<string, GdpLite | null>; core: Record<string, number> }) {
   const [min, pick] = useThreshold();
 
   const sort = useSort<Key>(KEYS, "completed");
@@ -34,11 +35,11 @@ export default function CitiesTable({ cities, gdp }: { cities: CityAgg[]; gdp: R
     // the unranked pipeline-only cities at the end are ordered by how much they have coming. Also the tie-break for every other sort.
     const rank = (a: Row, b: Row) => b.completed - a.completed || (a.completed === 0 ? b.count - a.count : 0) || a.c.name.localeCompare(b.c.name);
     const value: Record<Key, (r: Row) => number | null> = {
-      completed: r => r.completed, all: r => r.count, c200: r => r.c.completed200, c300: r => r.c.completed300, skyline: r => skylineAt(r.c, min),
+      completed: r => r.completed, all: r => r.count, c200: r => r.c.completed200, c300: r => r.c.completed300, skyline: r => skylineAt(r.c, min), core: r => core[r.c.slug] ?? null,
       gdp: r => gdp[r.c.slug]?.usd ?? null, ppp: r => gdp[r.c.slug]?.ppp ?? null, tallest: r => r.c.tallest_h,
     };
     return sortBy(base, value[key], view.dir, rank);
-  }, [cities, gdp, min, key, view.dir]);
+  }, [cities, gdp, core, min, key, view.dir]);
   const ranked = rows.filter(r => r.completed > 0).length;
   const totalCompleted = rows.reduce((s, r) => s + r.completed, 0);
 
@@ -59,6 +60,7 @@ export default function CitiesTable({ cities, gdp }: { cities: CityAgg[]; gdp: R
           {min < 200 && <SortTh k="c200" label="200 m+" sort={view} num title="Completed buildings of 200 m and taller" />}
           {min < 300 && <SortTh k="c300" label="300 m+" sort={view} num title="Completed buildings of 300 m and taller" />}
           <SortTh k="skyline" label="Aggregate skyline height" sort={view} num className="wrap" title={`The heights of all completed buildings of ${min} m and taller, added up`} most="highest" least="lowest" />
+          <SortTh k="core" label="Skyline size" sort={view} num title="Area of the city's skyline extent, the urban core drawn on the map for the cities with more than 50 towers" most="largest" least="smallest" />
           <SortTh k="gdp" label="GDP" sort={view} num title="GDP within city limits, nominal US$ (latest year; a small tag marks figures older than 2025)" most="largest" least="smallest" />
           <SortTh k="ppp" label="GDP (PPP)" sort={view} num title="GDP within city limits at purchasing-power parity, international $" most="largest" least="smallest" />
           <SortTh k="tallest" label="Tallest" sort={view} title="Tallest completed building" most="tallest" least="shortest" />
@@ -73,12 +75,13 @@ export default function CitiesTable({ cities, gdp }: { cities: CityAgg[]; gdp: R
             {min < 200 && <td className="num">{c.completed200 || "—"}</td>}
             {min < 300 && <td className="num">{c.completed300 || "—"}</td>}
             <SkylineCell m={skylineAt(c, min)} />
+            {c.slug in core ? <td className="num">{core[c.slug].toFixed(2)}{"\u00a0"}km²</td> : <td className="num muted">—</td>}
             <GdpCell g={gdp[c.slug]} kind="usd" />
             <GdpCell g={gdp[c.slug]} kind="ppp" />
             <td>{c.tallest_name} <span className="muted">{c.tallest_h}{"\u00a0"}m</span></td>
           </tr>))}
         </tbody></table></div>
-      <p className="muted" style={{ marginTop: 18 }}>Completed, 200 m+ and 300 m+ count finished buildings; All adds those under construction or topped out. GDP is the economic output within the city's own limits (not its metro area) for 2025 or the latest year published — hover a figure for its year and source. Where nothing is published for the city itself, the figure is for the smallest official area that contains it — a county, a district or the metro area, never anything larger — and is marked †; hovering names the area and the city&apos;s share of its population, so these figures overstate the city itself. A dash means no figure exists at that scale. Nominal GDP is converted to US$ at that year's average exchange rate, GDP (PPP) at the IMF's purchasing-power-parity conversion rate. Aggregate skyline height adds up the heights of the city&apos;s completed buildings at the selected height, as if every tower were stacked end to end; hover a figure for it in kilometres. Tallest is the tallest completed building in the city. Click a column&apos;s ▼ to sort by it, most first; click again for least first. The # column always shows the city&apos;s rank by completed towers.</p>
+      <p className="muted" style={{ marginTop: 18 }}>Completed, 200 m+ and 300 m+ count finished buildings; All adds those under construction or topped out. GDP is the economic output within the city's own limits (not its metro area) for 2025 or the latest year published — hover a figure for its year and source. Where nothing is published for the city itself, the figure is for the smallest official area that contains it — a county, a district or the metro area, never anything larger — and is marked †; hovering names the area and the city&apos;s share of its population, so these figures overstate the city itself. A dash means no figure exists at that scale. Nominal GDP is converted to US$ at that year's average exchange rate, GDP (PPP) at the IMF's purchasing-power-parity conversion rate. Aggregate skyline height adds up the heights of the city&apos;s completed buildings at the selected height, as if every tower were stacked end to end; hover a figure for it in kilometres. Skyline size is the area of the city&apos;s skyline extent, the urban core drawn on the map for the 38 cities with more than 50 towers, measured from its outline on the WGS84 ellipsoid; other cities show a dash. Tallest is the tallest completed building in the city. Click a column&apos;s ▼ to sort by it, most first; click again for least first. The # column always shows the city&apos;s rank by completed towers.</p>
     </>
   );
 }
