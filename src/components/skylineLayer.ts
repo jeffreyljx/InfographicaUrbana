@@ -5,7 +5,7 @@ import { registerOwnLayer, type Basemap } from "./towerMap";
 import { areaKm2 } from "@/lib/geoArea";
 
 /**
- * "Display skyline extent": the urban core of each city with more than 50 towers, drawn as a gold
+ * "Display skyline extent": every pocket of 5+ towers standing close together, drawn as a gold
  * area with a solid outline. `/skyline-extent.geojson` holds one (multi)polygon per city, the areas it
  * covers, a short rationale and its tower counts; it is fetched the first time the extents are shown.
  *

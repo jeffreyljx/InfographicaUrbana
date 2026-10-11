@@ -161,7 +161,7 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
     try { localStorage.setItem("scrapermap.basemap", basemap); } catch { /* storage unavailable */ }
   }, [mapReady, basemap]);
 
-  // ---- skyline extent: the urban core of each city with more than 50 towers (remembered per browser; ?skyline=1 turns it on) ----
+  // ---- skyline extent: every dense pocket of 5+ towers, in any city (remembered per browser; ?skyline=1 turns it on) ----
   useEffect(() => {
     const q = new URLSearchParams(location.search).get("skyline");
     if (q === "1" || q === "0") { setSkylineOn(q === "1"); return; }
@@ -277,7 +277,7 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
           <span className="bm-label">{basemap === "satellite" ? "Map" : "Satellite"}</span>
         </button>
         <button className={"btn skyline" + (skyline ? " on" : "")} onClick={toggleSkyline} aria-pressed={skyline}
-          title={skyline ? "Hide the skyline extents" : "Display skyline extent: the urban core of each city with more than 50 towers"}>
+          title={skyline ? "Hide the skyline extents" : "Display skyline extent: wherever 5 or more towers stand close together"}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" aria-hidden="true">
             <path d="M2 21h20M4 21V12h3V7h3v14m0-9h3V3h3v18m0-11h2V8h3v13" />
           </svg>
@@ -286,7 +286,7 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
       </div>
       {skyline && zoomedOut && (
         <div className="map-hint">{asOf === null
-          ? "Skyline extents are drawn for the 38 cities with more than 50 towers. Zoom in on one to see its core."
+          ? "Skyline extents are drawn wherever 5 or more towers stand close together. Zoom in on a city to see them."
           : `Skyline extents in ${asOf}: each city's core, trimmed to the towers built by then. Zoom in on a city to see it.`}</div>
       )}
       {filtersOpen && idx && (
