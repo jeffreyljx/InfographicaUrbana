@@ -1,6 +1,6 @@
 "use client";
 import type { FeatureCollection, Point } from "geojson";
-import { Map as MLMap, AttributionControl, NavigationControl, setWorkerUrl, type GeoJSONSource, type MapMouseEvent } from "maplibre-gl";
+import { Map as MLMap, AttributionControl, NavigationControl, ScaleControl, setWorkerUrl, type GeoJSONSource, type MapMouseEvent } from "maplibre-gl";
 import type { TowerIndex, TowerRow } from "@/lib/types";
 import { BAND_COLORS, BAND_STROKE, CLUSTER_COLORS } from "@/lib/colors";
 
@@ -77,6 +77,8 @@ export function createMap(container: HTMLDivElement, center: [number, number], z
     compact: true,
     customAttribution: 'Building data © <a href="https://www.skyscrapercenter.com/" target="_blank" rel="noopener">CTBUH</a> · Coordinates and boundaries partly © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
   }), "bottom-right");
+  // Distance scale in m / km, redrawn by MapLibre on every move and zoom; added after the attribution, so it sits just above it.
+  map.addControl(new ScaleControl({ maxWidth: 120, unit: "metric" }), "bottom-right");
   map.addControl(new NavigationControl({ showCompass: false }), "bottom-left");
   (window as unknown as { __map?: MLMap }).__map = map;
   return map;

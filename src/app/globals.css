@@ -46,6 +46,11 @@ body .maplibregl-map { font-family: var(--font); } /* beats maplibre-gl.css, whi
 .app { position: fixed; inset: 0; overflow: hidden; }
 .app > .map, .app > .map.maplibregl-map { position: absolute; inset: 0; width: 100%; height: 100%; }
 .maplibregl-ctrl-attrib { font-size: 11px; }
+/* Distance scale: bottom right, just above the attribution (the tower panel's bottom edge leaves room for both).
+   Drawn in the site's colours on a translucent ground so it reads on both basemaps ("body" beats maplibre-gl.css,
+   which loads later). */
+body .maplibregl-ctrl-bottom-right > .maplibregl-ctrl-scale { margin: 0 10px -4px 0; }
+body .maplibregl-ctrl-scale { background: var(--glass); border-color: var(--fg-2); color: var(--fg); font-size: 11px; line-height: 18px; padding: 0 6px; }
 .maplibregl-ctrl-group { background: var(--bg-2) !important; border: 1px solid var(--line); }
 .maplibregl-ctrl-bottom-left { z-index: 12; }
 .maplibregl-ctrl-group button + button { border-top-color: var(--line) !important; }
@@ -127,7 +132,7 @@ body .maplibregl-map { font-family: var(--font); } /* beats maplibre-gl.css, whi
 .chooser button:hover { background: var(--bg-3); }
 
 /* ---- panel ---- */
-.panel { position: absolute; top: 60px; right: 18px; bottom: 44px; width: min(400px, calc(100vw - 36px)); z-index: 25; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: auto; }
+.panel { position: absolute; top: 60px; right: 18px; bottom: 68px; width: min(400px, calc(100vw - 36px)); z-index: 25; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: auto; }
 .panel .photo { margin: 0; position: relative; aspect-ratio: 4 / 3; background: var(--bg-3); overflow: hidden; }
 .panel .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .panel .photo figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 12px 6px; font-size: 11px; color: #F4EAE4; background: linear-gradient(0deg, rgba(20,12,9,.72), rgba(20,12,9,0)); }
