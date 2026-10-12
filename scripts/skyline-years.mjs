@@ -5,7 +5,9 @@
 // have not changed since the last run.
 //
 // A tower stands in year Y if it is completed and its completion year is Y or earlier (completed towers with no
-// year are left out; the dataset has no demolished towers). Only towers inside a core count. For each city:
+// year are left out). The dataset holds only towers standing today; towers that have since come down (the original
+// World Trade Center and others) come from src/lib/lostTowers.json and stand from their completion year until the
+// year they came down. Only towers inside a core count. For each city:
 //
 //   1. Each tower claims the core within R metres of it from its completion year.
 //   2. The rest of the core (the "gaps": parks, low-rise blocks, waterfront more than R from every tower) is cut
@@ -18,9 +20,11 @@
 //   4. A city has an extent only once MIN_TOWERS of its core's towers stand.
 //
 // So an extent only grows with time, and from the year of its core's latest completed tower onwards it is the
-// drawn core itself. The output has one feature per city and keyframe: `from` is the first year it is shown
-// and `to` the first year it is not (9999 for the last), so the map filters on from <= year < to. The last
-// keyframe has no geometry of its own: the map uses the city's drawn core from skyline-extent.geojson.
+// drawn core itself. The one exception is a lost tower: from the year it came down, the city's extent is worked
+// out again from the towers still standing, as if the lost tower had never been built (see framesWithLosses).
+// The output has one feature per city and keyframe: `from` is the first year it is shown and `to` the first year
+// it is not (9999 for the last), so the map filters on from <= year < to. The last keyframe has no geometry of
+// its own: the map uses the city's drawn core from skyline-extent.geojson.
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import ArrayList from "jsts/java/util/ArrayList.js";
@@ -156,6 +160,7 @@ function partGrowth(part, towers, years) {
 }
 
 // [{year, n, area, tallest}] for one city, one per year from the year MIN_TOWERS of its towers stand
+// (`towers` all stand from their year on: none of them comes down)
 function cityFrames(parts, towers, years) {
   const growth = parts.map(p => partGrowth(p, towers, years));
   const acc = parts.map(() => null), closed = parts.map(() => null);
@@ -175,11 +180,36 @@ function cityFrames(parts, towers, years) {
   return frames;
 }
 
+// cityFrames for a city whose towers include lost ones (`gone` < 9999): the years are cut at each year a tower came
+// down, and each stretch is grown from the towers that still stand in it (or are built later), so an extent can
+// shrink when a tower comes down, and a city whose standing towers drop below MIN_TOWERS loses its extent
+function framesWithLosses(parts, towers) {
+  const yearsOf = ts => [...new Set(ts.map(t => t.year))].sort((a, b) => a - b);
+  const cuts = [...new Set(towers.filter(t => t.gone < 9999).map(t => t.gone))].sort((a, b) => a - b);
+  if (!cuts.length) return cityFrames(parts, towers, yearsOf(towers));
+  const bounds = [-Infinity, ...cuts, Infinity], out = [];
+  for (let k = 0; k + 1 < bounds.length; k++) {
+    const from = bounds[k], until = bounds[k + 1];
+    const ts = towers.filter(t => t.gone > from);
+    const frames = cityFrames(parts, ts, yearsOf(Number.isFinite(from) ? ts.concat({ year: from }) : ts))
+      .filter(fr => fr.year >= from && fr.year < until);
+    if (Number.isFinite(from) && out.length && frames[0]?.year !== from) {   // too few towers left: no extent
+      const stood = ts.filter(t => t.year <= from);
+      out.push({ year: from, n: stood.length, area: gf.createMultiPolygon([]),
+        tallest: stood.length ? stood.reduce((a, b) => b.height > a.height ? b : a) : null });
+    }
+    out.push(...frames);
+  }
+  return out;
+}
+
 export function buildSkylineYears({ cores: coresPath = "public/skyline-extent.geojson",
-  towers: towersPath = "src/data/towers.json", out = "public/skyline-extent-years.geojson" } = {}) {
+  towers: towersPath = "src/data/towers.json", lost: lostPath = "src/lib/lostTowers.json",
+  out = "public/skyline-extent-years.geojson" } = {}) {
   if (!existsSync(coresPath) || !existsSync(towersPath)) return console.log("skyline years: no cores or tower data, skipped");
   const coresRaw = readFileSync(coresPath), towersRaw = readFileSync(towersPath);
-  const inputs = createHash("sha1").update(coresRaw).update(towersRaw).update(readFileSync(new URL(import.meta.url))).digest("hex");
+  const lostRaw = existsSync(lostPath) ? readFileSync(lostPath) : Buffer.from("[]");
+  const inputs = createHash("sha1").update(coresRaw).update(towersRaw).update(lostRaw).update(readFileSync(new URL(import.meta.url))).digest("hex");
   if (existsSync(out)) {
     try { if (JSON.parse(readFileSync(out)).inputs === inputs) return console.log(`skyline years: ${out} is up to date`); } catch {}
   }
@@ -187,6 +217,8 @@ export function buildSkylineYears({ cores: coresPath = "public/skyline-extent.ge
   const cores = JSON.parse(coresRaw), idx = JSON.parse(towersRaw);
   const sch = Object.fromEntries(idx.schema.map((k, i) => [k, i]));
   const completed = idx.statuses.indexOf("Completed");
+  const lostByCity = new Map();
+  for (const t of JSON.parse(lostRaw)) lostByCity.set(t.city, (lostByCity.get(t.city) ?? []).concat(t));
   const byCity = new Map();
   for (const r of idx.rows) {
     const city = idx.cities[r[sch.city]];
@@ -200,23 +232,28 @@ export function buildSkylineYears({ cores: coresPath = "public/skyline-extent.ge
     const c = reader.read(f.geometry).getCentroid();
     const { fwd, inv } = projector(c.getX(), c.getY());
     const core = reader.read({ type: f.geometry.type, coordinates: mapCoords(f.geometry.coordinates, fwd) });
-    const towers = [];   // completed towers with a year inside the core
+    const towers = [];   // completed towers with a year inside the core, and lost towers (gone < 9999) inside it
     for (const r of byCity.get(city) ?? []) {
       if (r[sch.status] !== completed || r[sch.year] == null) continue;
       const [x, y] = fwd([r[sch.lon], r[sch.lat]]);
-      if (core.distance(point(x, y)) <= 1) towers.push({ year: Math.trunc(r[sch.year]), height: r[sch.height_m], name: r[sch.name], x, y });
+      if (core.distance(point(x, y)) <= 1) towers.push({ year: Math.trunc(r[sch.year]), gone: 9999, height: r[sch.height_m], name: r[sch.name], x, y });
+    }
+    for (const t of lostByCity.get(city) ?? []) {
+      const [x, y] = fwd([t.lng, t.lat]);
+      if (core.distance(point(x, y)) <= 1) towers.push({ year: t.completed, gone: t.gone, height: t.height, name: t.name, x, y });
     }
     towers.sort((a, b) => a.year - b.year || a.height - b.height || (a.name < b.name ? -1 : a.name > b.name ? 1 : 0) || a.x - b.x || a.y - b.y);
+    const standing = towers.filter(t => t.gone === 9999);
     const years = [...new Set(towers.map(t => t.year))];
     const parts = polygons(core);
     let frames;
     try {
-      frames = cityFrames(parts, towers, years);
+      frames = framesWithLosses(parts, towers);
     } catch (e) {   // never fail the build over one city: show its drawn core once it has MIN_TOWERS towers
       console.warn(`skyline years: ${city} failed (${e.message ?? e}); showing its drawn core throughout`);
-      const y = towers[MIN_TOWERS - 1]?.year;
-      frames = y == null ? [] : [{ year: y, n: towers.filter(t => t.year <= y).length, area: core,
-        tallest: towers.filter(t => t.year <= y).reduce((a, b) => b.height > a.height ? b : a) }];
+      const y = standing[MIN_TOWERS - 1]?.year;
+      frames = y == null ? [] : [{ year: y, n: standing.filter(t => t.year <= y).length, area: core,
+        tallest: standing.filter(t => t.year <= y).reduce((a, b) => b.height > a.height ? b : a) }];
     }
     frames.forEach((fr, k) => {
       const last = k + 1 === frames.length, t = fr.tallest;
@@ -226,13 +263,13 @@ export function buildSkylineYears({ cores: coresPath = "public/skyline-extent.ge
         geometry = { type: g.type, coordinates: mapCoords(g.coordinates, inv) };
       }
       feats.push({ type: "Feature", properties: {
-        city, from: fr.year, to: last ? 9999 : frames[k + 1].year, n: fr.n, total: towers.length,
-        tallest: `${t.name} (${Math.round(t.height)} m, ${t.year})`,
+        city, from: fr.year, to: last ? 9999 : frames[k + 1].year, n: fr.n, total: standing.length,
+        tallest: t ? `${t.name} (${Math.round(t.height)} m, ${t.year})` : "",
         area_km2: Math.round((last ? core : fr.area).getArea() / 1e4) / 100,
         core_km2: Math.round(core.getArea() / 1e4) / 100,
       }, geometry });
     });
-    report.push([city, towers.length, years[0] ?? "-", frames[0]?.year ?? "-", frames.length,
+    report.push([city, standing.length, years[0] ?? "-", frames[0]?.year ?? "-", frames.length,
       frames.length ? (frames.at(-1).area.getArea() / core.getArea()).toFixed(3) : "0"]);
   }
   const text = JSON.stringify({ type: "FeatureCollection", inputs, features: feats });

@@ -42,9 +42,9 @@ interface YearProps {
   city: string;
   from: number;          // first year shown
   to: number;            // first year not shown (9999: up to today)
-  n: number;             // towers in today's core completed by `from`
+  n: number;             // towers standing in today's core in `from` (lost towers included while they stood)
   total: number;         // completed towers in today's core (with a known year)
-  tallest: string;       // tallest of those `n`, "Name (484 m, 2010)"
+  tallest: string;       // tallest of those `n`, "Name (484 m, 2010)"; "" when none stands
 }
 
 const fetchJson = (url: string) => fetch(url).then(r => (r.ok ? r.json() : null)).catch(() => null) as Promise<FeatureCollection | null>;
@@ -160,7 +160,7 @@ function addLayers(map: MLMap, fc: FeatureCollection) {
   registerOwnLayer(LINE);
 
   map.on("click", FILL, (e: MapLayerMouseEvent) => {
-    const towerLayers = ["clusters", "pins", "tower-icons"].filter(id => map.getLayer(id));
+    const towerLayers = ["clusters", "pins", "tower-icons", "capsule-lost"].filter(id => map.getLayer(id));
     if (map.queryRenderedFeatures(e.point, { layers: towerLayers }).length) return;   // the pin's own click wins
     const props = e.features?.[0]?.properties;
     if (!props) return;
@@ -193,7 +193,7 @@ function yearPopupHtml(p: YearProps, year: number, km2: number | null, coreKm2: 
   const size = km2 === null ? "" : today || coreKm2 === null ? ` · ${km2.toFixed(2)} km²`
     : ` · ${km2.toFixed(2)} of today's ${coreKm2.toFixed(2)} km²`;
   return `<h3><span class="place">${esc(p.city)}</span> skyline extent in ${year}</h3>`
-    + `<p class="sky-n">${n(p.n)} of the ${n(p.total)} completed towers in today's core had been built${size}</p>`
-    + `<p>Tallest then: ${esc(p.tallest)}.</p>`
-    + (today ? "" : `<p class="sky-note">Today's core, trimmed to the area around the towers built by ${year}.</p>`);
+    + `<p class="sky-n">${n(p.n)} ${p.n === 1 ? "tower" : "towers"} of 150 m+ stood in today's core (${n(p.total)} today)${size}</p>`
+    + (p.tallest ? `<p>Tallest then: ${esc(p.tallest)}.</p>` : "")
+    + (today ? "" : `<p class="sky-note">Today's core, trimmed to the area around the towers standing in ${year}.</p>`);
 }

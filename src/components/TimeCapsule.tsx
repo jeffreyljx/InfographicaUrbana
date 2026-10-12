@@ -14,8 +14,10 @@ interface Props {
   onClose: () => void;
   /** Completions per year, first..last, for the towers the other filters let through. */
   perYear: number[];
-  /** Towers completed by `year`. */
+  /** Towers standing in `year`. */
   shown: number;
+  /** Names of the towers that came down in `year`. */
+  lost: string[];
   tallest: { id: number; name: string; height: number; city: string } | null;
   onPick: (id: number) => void;
   /** The tower panel is open on the right: keep clear of it. */
@@ -26,7 +28,7 @@ interface Props {
  * The time capsule's dock: the chosen year, a bar chart of completions per year with a slider under it
  * (the bars up to the chosen year are filled), and Play, which walks forward one year at a time.
  */
-export default function TimeCapsule({ first, last, year, onYear, onClose, perYear, shown, tallest, onPick, panelOpen }: Props) {
+export default function TimeCapsule({ first, last, year, onYear, onClose, perYear, shown, lost, tallest, onPick, panelOpen }: Props) {
   const [playing, setPlaying] = useState(false);
   const span = Math.max(1, last - first);
   const max = Math.max(1, ...perYear);
@@ -75,9 +77,13 @@ export default function TimeCapsule({ first, last, year, onYear, onClose, perYea
             {playing ? <path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor" /> : <path d="M4.5 2.2v11.6L13.6 8z" fill="currentColor" />}
           </svg>
         </button>
-        <div className="cap-year" title="Towers standing today, each shown from the year it was completed">{year}</div>
+        <div className="cap-year" title="Each tower is shown from the year it was completed until the year it came down, if it has">{year}</div>
         <div className="cap-facts">
-          <div><b>{shown.toLocaleString("en-US")}</b> {shown === 1 ? "tower" : "towers"} completed by {year}{added > 0 && <span className="cap-new"> · {added.toLocaleString("en-US")} new</span>}</div>
+          <div>
+            <b>{shown.toLocaleString("en-US")}</b> {shown === 1 ? "tower" : "towers"} standing in {year}
+            {added > 0 && <span className="cap-new"> · {added.toLocaleString("en-US")} new</span>}
+            {lost.length > 0 && <span className="cap-lost" title={lost.join(", ")}> · {lost.length} lost</span>}
+          </div>
           {tallest && (
             <div className="cap-tallest">Tallest: <button className="link" onClick={() => onPick(tallest.id)}>{tallest.name}</button>, {fmtHeight(tallest.height)}, <span className="place">{tallest.city}</span></div>
           )}

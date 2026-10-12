@@ -85,6 +85,8 @@ export interface Tower {
   sharesPoint: number;
   hasPhoto: boolean;
   detail: TowerDetail;
+  /** Set for a tower that no longer stands (shown only in the time capsule); see lib/lostTowers.ts. */
+  lost?: { completed: number; gone: number; how: string; cause: string; source: string; replacedBy: string | null; replacedById: number | null; cityKnown: boolean };
 }
 
 export interface PlaceAgg {

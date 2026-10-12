@@ -21,9 +21,11 @@ export type Basemap = "map" | "satellite";
 const SAT_ID = "esri-imagery";
 const SAT_TILES = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
 const SAT_ATTR = 'Imagery © <a href="https://www.esri.com/" target="_blank" rel="noopener">Esri</a>, Maxar, Earthstar Geographics';
-const TOWER_LAYERS = new Set(["clusters", "cluster-count", "glow", "pins", "capsule-new-clusters", "capsule-new", "selected", "labels"]);
+const TOWER_LAYERS = new Set(["clusters", "cluster-count", "glow", "pins", "capsule-new-clusters", "capsule-new", "capsule-lost", "selected", "labels", "capsule-lost-label"]);
 /** Time capsule: ring colour for towers completed in the chosen year (reads on the sand map and on imagery). */
 const NEW_COLOR = "#E2560F";
+/** Time capsule: the ghost ring left where a tower came down, in the year it did. */
+const GHOST_COLOR = "#5E4E47";
 const NEVER: NonNullable<Parameters<MLMap["setFilter"]>[1]> = ["==", ["get", "id"], -1];
 /** Outline of the city or district opened on the map (red dashed line, drawn under the pins). */
 const BOUNDARY_ID = "boundary";
@@ -36,14 +38,15 @@ export interface MapCallbacks {
   onMoveEnd?: () => void;
 }
 
-export function rowsToGeoJSON(rows: TowerRow[]): FeatureCollection {
+/** `gone` (time capsule): lost towers' ids -> the year they came down, kept as `g` for their labels. */
+export function rowsToGeoJSON(rows: TowerRow[], gone?: Map<number, number>): FeatureCollection {
   return {
     type: "FeatureCollection",
     features: rows.map(r => ({
       type: "Feature",
       id: r[0],
       geometry: { type: "Point", coordinates: [r[3], r[2]] },
-      properties: { id: r[0], n: r[1], h: r[4], b: r[4] >= 400 ? 3 : r[4] >= 300 ? 2 : r[4] >= 200 ? 1 : 0, p: r[11], sp: r[12], y: r[8] ?? 0 },
+      properties: { id: r[0], n: r[1], h: r[4], b: r[4] >= 400 ? 3 : r[4] >= 300 ? 2 : r[4] >= 200 ? 1 : 0, p: r[11], sp: r[12], y: r[8] ?? 0, g: gone?.get(r[0]) ?? 0 },
     })),
   };
 }
@@ -228,6 +231,15 @@ export function addTowerLayers(map: MLMap, data: FeatureCollection, cb: MapCallb
       "circle-color": "rgba(226,86,15,0.16)", "circle-stroke-width": 2.2, "circle-stroke-color": NEW_COLOR,
     },
   });
+  // time capsule: a ghost ring where a tower came down in the chosen year; see setCapsuleLost
+  map.addSource("capsule-lost", { type: "geojson", data: EMPTY });
+  map.addLayer({
+    id: "capsule-lost", type: "circle", source: "capsule-lost",
+    paint: {
+      "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 7, 15, 12],
+      "circle-color": "rgba(94,78,71,0.1)", "circle-stroke-width": 2, "circle-stroke-color": GHOST_COLOR, "circle-stroke-opacity": 0.9,
+    },
+  });
   map.addLayer({
     id: "selected", type: "circle", source: "towers", filter: ["==", ["get", "id"], -1],
     paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 8, 11, 15, 16], "circle-color": "rgba(0,0,0,0)", "circle-stroke-width": 2.5, "circle-stroke-color": "#2B1D17" },
@@ -235,11 +247,21 @@ export function addTowerLayers(map: MLMap, data: FeatureCollection, cb: MapCallb
   map.addLayer({
     id: "labels", type: "symbol", source: "towers", filter: ["!", ["has", "point_count"]], minzoom: 14.2,
     layout: {
-      "text-field": ["get", "n"], "text-font": ["Noto Sans Regular"], "text-size": 11.5,
+      // a tower that has since come down (time capsule) says until when it stood
+      "text-field": ["case", [">", ["get", "g"], 0], ["concat", ["get", "n"], "\n(until ", ["to-string", ["get", "g"]], ")"], ["get", "n"]],
+      "text-font": ["Noto Sans Regular"], "text-size": 11.5,
       "text-offset": [0, 1.15], "text-anchor": "top", "text-optional": true, "text-max-width": 9,
       "symbol-sort-key": ["-", 900, ["get", "h"]],
     },
     paint: { "text-color": "#2B1D17", "text-halo-color": "#FAF4F1", "text-halo-width": 1.4 },
+  });
+  map.addLayer({
+    id: "capsule-lost-label", type: "symbol", source: "capsule-lost", minzoom: 11,
+    layout: {
+      "text-field": ["concat", ["get", "n"], "\n", ["get", "how"], " ", ["to-string", ["get", "g"]]], "text-font": ["Noto Sans Regular"], "text-size": 11.5,
+      "text-offset": [0, 1.2], "text-anchor": "top", "text-optional": true, "text-max-width": 10,
+    },
+    paint: { "text-color": GHOST_COLOR, "text-halo-color": "#FAF4F1", "text-halo-width": 1.4 },
   });
 
   const src = map.getSource("towers") as GeoJSONSource;
@@ -267,7 +289,12 @@ export function addTowerLayers(map: MLMap, data: FeatureCollection, cb: MapCallb
     else if (ids.length === 1) cb.onSelect(ids[0]);
   });
 
-  for (const l of ["clusters", "pins"]) {
+  map.on("click", "capsule-lost", (e: MapMouseEvent) => {
+    const f = map.queryRenderedFeatures(e.point, { layers: ["capsule-lost"] })[0];
+    if (f) cb.onSelect(f.properties!.id as number);
+  });
+
+  for (const l of ["clusters", "pins", "capsule-lost"]) {
     map.on("mouseenter", l, () => { map.getCanvas().style.cursor = "pointer"; });
     map.on("mouseleave", l, () => { map.getCanvas().style.cursor = ""; });
   }
@@ -312,6 +339,15 @@ export function setCapsuleYear(map: MLMap, year: number | null) {
   if (!map.getLayer("capsule-new")) return;
   map.setFilter("capsule-new", year === null ? NEVER : ["all", ["!", ["has", "point_count"]], ["==", ["get", "y"], year]]);
   map.setFilter("capsule-new-clusters", year === null ? NEVER : ["all", ["has", "point_count"], ["==", ["get", "maxy"], year]]);
+}
+
+/** Time capsule: ghost rings for the towers that came down in the chosen year (`rows`, with `how` per id); none clears them. */
+export function setCapsuleLost(map: MLMap, rows: TowerRow[], gone: Map<number, number>, how: (id: number) => string) {
+  const src = map.getSource("capsule-lost") as GeoJSONSource | undefined;
+  if (!src) return;
+  const data = rowsToGeoJSON(rows, gone);
+  for (const f of data.features) f.properties!.how = how(f.properties!.id as number);
+  src.setData(data);
 }
 
 export function setSelected(map: MLMap, id: number | null) {
