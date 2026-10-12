@@ -6,9 +6,9 @@ import { readdirSync, readFileSync, writeFileSync, existsSync, rmSync, cpSync } 
 import { brotliDecompressSync } from "node:zlib";
 import { execSync } from "node:child_process";
 
-// bundle/overlay.tar.br.partNN and bundle/delta.tar.br.partNN, if present, are further brotli tars unpacked over
-// the tree in that order (earlier fixes, then the latest change), so a change can ship as a small upload
-// without rebuilding the whole bundle.
+// bundle/overlay.tar.br.partNN, bundle/delta.tar.br.partNN and bundle/delta2.tar.br.partNN, if present, are further
+// brotli tars unpacked over the tree in that order (earlier fixes, then the latest changes), so a change can ship as a
+// small upload without rebuilding the whole bundle.
 function unpack(name, what) {
   const parts = readdirSync("bundle").filter(f => f.startsWith(`${name}.tar.br.part`)).sort();
   if (!parts.length) return;
@@ -22,6 +22,7 @@ if (existsSync("bundle")) {
   unpack("src", "source tree");
   unpack("overlay", "earlier fixes");
   unpack("delta", "changes since the bundle");
+  unpack("delta2", "changes since the delta");
 }
 // plain overlay/ files go last, so a small change can ship on top of the tars above
 if (existsSync("overlay")) {
