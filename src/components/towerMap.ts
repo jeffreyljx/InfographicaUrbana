@@ -355,6 +355,25 @@ export function setSelected(map: MLMap, id: number | null) {
   map.setFilter("selected", ["==", ["get", "id"], id ?? -1]);
 }
 
+/* ---- hide towers ----
+ * Every tower marker (clusters and their counts, pins, glows, the selected and time-capsule rings, names and the
+ * tower icons) can be hidden at once, leaving the basemap, the skyline extents, the city outline and the scale.
+ * Hidden layers draw nothing and take no clicks, so a click inside a skyline extent opens its note. */
+const HIDEABLE = new Set(TOWER_LAYERS);
+let towersShown = true;
+
+export function setTowersVisible(map: MLMap, shown: boolean) {
+  towersShown = shown;
+  for (const id of HIDEABLE) if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", shown ? "visible" : "none");
+  if (!shown) map.getCanvas().style.cursor = "";   // its mouseleave won't fire once the pin under the pointer is gone
+}
+
+/** Tower layers added by other modules (the tower icons): hidden and shown with the rest, starting as they are now. */
+export function registerTowerLayer(map: MLMap, id: string) {
+  HIDEABLE.add(id);
+  map.setLayoutProperty(id, "visibility", towersShown ? "visible" : "none");
+}
+
 /** Show (or clear, with null) the outline of the opened city or district. */
 export function setBoundary(map: MLMap, data: FeatureCollection | null) {
   const src = map.getSource(BOUNDARY_ID) as GeoJSONSource | undefined;

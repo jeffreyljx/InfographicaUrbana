@@ -5,7 +5,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import "./timeCapsule.css";
 import { towerSlug, type Tower, type TowerIndex, type TowerRow, type DetailsFile } from "@/lib/types";
 import { loadIndex, loadDetails, resolveRow, norm, detailFor } from "@/lib/client";
-import { createMap, addTowerLayers, rowsToGeoJSON, setTowerData, setSelected, setBasemap, setBoundary, setCapsuleYear, setCapsuleLost, type Basemap } from "./towerMap";
+import { createMap, addTowerLayers, rowsToGeoJSON, setTowerData, setSelected, setBasemap, setBoundary, setCapsuleYear, setCapsuleLost, setTowersVisible, type Basemap } from "./towerMap";
 import { boundaryFor } from "@/lib/boundary";
 import { setSkyline } from "./skylineLayer";
 import { addTowerIcons } from "./towerIcons";
@@ -57,6 +57,8 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
   const [mapReady, setMapReady] = useState(false);
   const [basemap, setBasemapState] = useState<Basemap>("map");
   const [skyline, setSkylineOn] = useState(false);
+  /** "Hide towers": every tower marker off, leaving the basemap and the skyline extents (?towers=0 opens the map this way). */
+  const [towersHidden, setTowersHidden] = useState(false);
   const [zoomedOut, setZoomedOut] = useState(true);
   /** Time capsule: null while it is off, otherwise the chosen year (only towers standing then are shown). */
   const [asOf, setAsOf] = useState<number | null>(null);
@@ -172,6 +174,14 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
     setSkylineOn(on);
     try { localStorage.setItem("scrapermap.skyline", on ? "1" : "0"); } catch { /* storage unavailable */ }
   }, [skyline]);
+  // ---- hide towers: per visit, not remembered, so the map never opens empty by surprise ----
+  useEffect(() => {
+    if (new URLSearchParams(location.search).get("towers") === "0") setTowersHidden(true);
+  }, []);
+  const toggleTowers = useCallback(() => {
+    setTowersHidden(h => !h);
+    setChooser(null);
+  }, []);
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapReady) return;
@@ -214,6 +224,12 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
     }
   }, [mapReady, idx, lost, filteredRows, select, initialTower]);
 
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapReady || !layersAdded.current) return;
+    setTowersVisible(map, !towersHidden);
+  }, [mapReady, idx, towersHidden]);
+
   // skyline layers go in under the tower layers, so they wait for those; with the time capsule on they follow its year
   useEffect(() => {
     const map = mapRef.current;
@@ -252,7 +268,8 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
 
   const chooserTowers = useMemo(() => chooser ? chooser.ids.map(resolveId).filter((t): t is Tower => !!t).sort((a, b) => b.height - a.height) : [], [chooser, resolveId]);
 
-  const onSearchPick = useCallback((id: number) => { select(id, true); }, [select]);
+  // picking a tower from search (or the time capsule's tallest) brings the towers back, so the pick can be seen
+  const onSearchPick = useCallback((id: number) => { setTowersHidden(false); select(id, true); }, [select]);
 
   const flyToPlace = useCallback((bbox: [number, number, number, number]) => {
     mapRef.current?.fitBounds([[bbox[0], bbox[1]], [bbox[2], bbox[3]]], { padding: 60, duration: 900, maxZoom: 14 });
@@ -283,6 +300,14 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
           </svg>
           <span className="sk-label sk-long">Display skyline extent</span><span className="sk-label sk-short">Skyline extent</span>
         </button>
+        <button className={"btn towers" + (towersHidden ? " on" : "")} onClick={toggleTowers} aria-pressed={towersHidden}
+          title={towersHidden ? "Show the towers again" : "Hide the towers: just the map and the skyline extents"}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" /><circle cx="12" cy="12" r="3" />
+            {!towersHidden && <path d="M4 4l16 16" />}
+          </svg>
+          <span className="tw-label">{towersHidden ? "Show towers" : "Hide towers"}</span>
+        </button>
       </div>
       {skyline && zoomedOut && (
         <div className="map-hint">{asOf === null
@@ -292,7 +317,7 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
       {filtersOpen && idx && (
         <Filters idx={idx} state={filters} onChange={setFilters} onClose={() => setFiltersOpen(false)} shown={filteredRows.length} onFlyTo={flyToPlace} capsule={capsuleOn} />
       )}
-      <Legend skyline={skyline} capsuleYear={asOf} lostThisYear={capsuleLost.length > 0} />
+      <Legend skyline={skyline} capsuleYear={asOf} lostThisYear={capsuleLost.length > 0} towers={!towersHidden} />
       {idx && range && asOf === null && (
         <button className={"btn capsule-open" + (selected ? " with-panel" : "")} onClick={toggleCapsule} title={`Time capsule: show only the towers standing in a chosen year, from ${range.first} to today`}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" aria-hidden="true">

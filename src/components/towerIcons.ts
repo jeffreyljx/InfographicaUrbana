@@ -1,6 +1,6 @@
 "use client";
 import type { Map as MLMap, MapLayerMouseEvent, ExpressionSpecification } from "maplibre-gl";
-import { registerOwnLayer } from "./towerMap";
+import { registerOwnLayer, registerTowerLayer } from "./towerMap";
 
 /**
  * Tower icons: a small elevation drawing of each of the tallest towers, standing on its pin once the map is
@@ -58,6 +58,7 @@ export async function addTowerIcons(map: MLMap, onSelect: (id: number) => void) 
     },
   });
   registerOwnLayer(LAYER);
+  registerTowerLayer(map, LAYER);   // the icons load after the pins, perhaps while the towers are hidden
 
   map.on("click", LAYER, (e: MapLayerMouseEvent) => {
     const id = e.features?.[0]?.properties?.id;

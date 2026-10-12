@@ -75,7 +75,8 @@ body .maplibregl-ctrl-scale { --halo: rgba(244,236,233,.9); --ink: linear-gradie
 
 .topbar { position: absolute; top: 60px; left: 18px; display: flex; gap: 8px; z-index: 15; width: min(640px, calc(100vw - 36px)); }
 @media (min-width: 1100px) { .topbar { width: 660px; } }
-@media (min-width: 1300px) { .topbar { width: 810px; } }  /* room for the full search placeholder in the serif face */
+@media (min-width: 1300px) { .topbar { width: 850px; } }  /* room for the full search placeholder in the serif face */
+@media (min-width: 1440px) { .topbar { width: 950px; } }  /* … and for "Hide towers" spelled out; still clear of an open tower panel */
 .search { position: relative; flex: 1; }
 .search input { width: 100%; height: 42px; border-radius: 10px; border: 1px solid var(--line); background: var(--glass); color: var(--fg); padding: 0 14px; font-size: 14px; outline: none; backdrop-filter: blur(8px); }
 .search input:focus { border-color: var(--accent-2); }
@@ -90,10 +91,12 @@ body .maplibregl-ctrl-scale { --halo: rgba(244,236,233,.9); --ink: linear-gradie
 .btn.on { border-color: var(--accent-2); }
 .btn.primary { background: var(--accent); color: var(--on-accent); border-color: transparent; font-weight: 600; }
 .btn.primary:hover { filter: brightness(1.06); text-decoration: none; }
-.btn.basemap, .btn.skyline { padding: 0 12px; }
+.btn.basemap, .btn.skyline, .btn.towers { padding: 0 12px; }
 .btn.skyline.on { background: rgba(233,168,37,.22); }
 .sk-long { display: none; }
 @media (min-width: 1300px) { .sk-long { display: inline; } .sk-short { display: none; } }  /* "Display skyline extent" where there is room */
+.tw-label { display: none; }
+@media (min-width: 1440px) { .tw-label { display: inline; } }  /* the eye alone below that, with its tooltip */
 .btn .count { background: var(--bg-3); border-radius: 999px; padding: 2px 8px; font-size: 12px; color: var(--fg-2); }
 
 /* ---- filters ---- */
@@ -225,6 +228,7 @@ td.gdp { white-space: nowrap; }
   .nav .brand { margin-right: 0; }
   .topbar { left: 12px; width: calc(100vw - 24px); }
   .btn.basemap .bm-label, .btn.skyline .sk-label { display: none; }
+  .topbar .btn .count { display: none; }  /* leaves the search box its width beside the three map buttons */
   .map-hint { left: 12px; max-width: calc(100vw - 24px); }
   .filters { left: 12px; width: calc(100vw - 24px); top: 110px; }
   .panel { top: auto; right: 0; left: 0; bottom: 0; width: 100%; max-height: 62vh; border-radius: 16px 16px 0 0; }
