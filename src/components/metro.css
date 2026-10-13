@@ -1,0 +1,67 @@
+/* Metro history page (/metro, MetroApp.tsx): line swatches, the station / line / system panel, and the legend.
+   The year dock reuses the time capsule's styles (timeCapsule.css). */
+.m-sw { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; flex: none; background: var(--lc, var(--fg-3)); box-shadow: 0 0 0 1px rgba(43,29,23,.18); }
+.results .rn { display: flex; align-items: center; }
+.cap-tallest .m-sw { width: 9px; height: 9px; margin-right: 4px; }
+
+/* the panel: a band in the line's colour (or the station's lines', side by side) with the kind of place on it */
+.mpanel .m-head { position: relative; height: 58px; display: flex; align-items: flex-end; padding: 0 16px 10px; }
+.mpanel .m-kind { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #FFF8F3; background: rgba(43,29,23,.55); padding: 3px 9px; border-radius: 999px; }
+.mpanel h1 { margin-bottom: 2px; }
+.m-local { margin: 0 0 6px; font-size: 15px; color: var(--fg-2); }
+.mpanel .where { margin-top: 4px; }
+.m-sys { margin: 0; font-size: inherit; font-weight: 500; }
+.m-note { margin: 0 0 12px; padding: 7px 10px; border-radius: 8px; background: var(--bg-3); font-size: 13px; line-height: 1.4; color: var(--fg-2); }
+.m-h { margin: 20px 0 8px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--fg-3); }
+.m-h .muted { text-transform: none; letter-spacing: 0; font-weight: 400; }
+.m-facts div.wide { grid-column: 1 / -1; }
+.m-facts dd { font-size: 14px; line-height: 1.35; }
+
+/* a line's name as a pill in its colour */
+.m-pill { display: inline-flex; align-items: center; max-width: 100%; border: 1px solid var(--line); border-left: 4px solid var(--lc); background: var(--bg); color: var(--fg); border-radius: 8px; padding: 4px 9px 4px 7px; font-size: 13px; font-weight: 600; cursor: pointer; text-align: left; }
+.m-pill:hover { border-color: var(--fg-3); border-left-color: var(--lc); }
+.m-pill .m-sw { background: var(--lc); }
+
+/* station: each line with its neighbours either side */
+.m-lines { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.m-line-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12.5px; }
+.m-next { display: grid; grid-template-columns: 1fr 14px 1fr; align-items: center; gap: 6px; margin: 6px 0 0 4px; font-size: 13px; }
+.m-next > :first-child { text-align: right; }
+.m-next .link { margin: 0; font-size: 13px; text-align: inherit; }
+.m-next .muted { font-size: 12px; font-style: italic; }
+.m-dot { width: 10px; height: 10px; border-radius: 50%; border: 3px solid; background: #fff; box-sizing: border-box; justify-self: center; }
+
+/* line: how it grew, then its stations along a bar in its colour */
+.m-stages { list-style: none; margin: 0; padding: 0; font-size: 13px; line-height: 1.4; }
+.m-stages li { display: grid; grid-template-columns: 92px 1fr; gap: 8px; padding: 4px 0; border-bottom: 1px solid var(--line); }
+.m-stages li:last-child { border-bottom: 0; }
+.m-date { color: var(--fg-3); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.m-stages li.later, .m-strip li.later, .m-syslines li.later { opacity: .5; }
+.m-strip { --lc: var(--fg-3); list-style: none; margin: 0; padding: 0; position: relative; font-size: 13px; }
+.m-strip li { position: relative; display: flex; align-items: center; gap: 10px; min-height: 26px; padding-left: 4px; }
+.m-strip li::before { content: ""; position: absolute; left: 9px; top: 0; bottom: 0; width: 6px; background: var(--lc); }
+.m-strip li:first-child::before { top: 50%; }
+.m-strip li:last-child::before { bottom: 50%; }
+.m-strip li.later::before { background: repeating-linear-gradient(var(--lc) 0 4px, transparent 4px 7px); }
+.m-bub { position: relative; z-index: 1; flex: none; width: 16px; height: 16px; border-radius: 50%; box-sizing: border-box; background: #fff; border: 3.5px solid var(--lc); }
+.m-bub.inter { border-color: var(--fg); border-width: 3px; box-shadow: 0 0 0 2px #fff inset; }
+.m-strip .link { margin: 0; flex: 1; min-width: 0; text-align: left; font-size: 13px; color: var(--fg); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.m-strip .link:hover { color: var(--accent-2); text-decoration: underline; }
+.m-yr { flex: none; font-size: 11.5px; color: var(--fg-3); font-variant-numeric: tabular-nums; }
+
+/* system: its lines */
+.m-syslines { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.m-syslines li { display: flex; align-items: center; gap: 10px; font-size: 12.5px; }
+.m-syslines .m-pill { flex: 0 1 auto; min-width: 0; }
+.m-syslines .muted { flex: none; margin-left: auto; font-variant-numeric: tabular-nums; }
+
+/* legend: a station bubble, an interchange, and this year's new line */
+.metro-legend i.m-st { width: 8px; height: 8px; background: #fff; border: 2.5px solid #7F2F16; }
+.metro-legend i.m-st.inter { width: 9px; height: 9px; border: 2.5px solid #2B1D17; }
+.metro-legend i.m-new { width: 16px; height: 5px; border-radius: 3px; }
+.metro-app .legend { bottom: 18px; }
+
+@media (max-width: 720px) {
+  .mpanel .m-head { height: 46px; border-radius: 16px 16px 0 0; }
+  .m-stages li { grid-template-columns: 80px 1fr; }
+}
