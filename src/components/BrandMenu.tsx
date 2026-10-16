@@ -9,6 +9,7 @@ const PAGES: [NavKey, string, string, string][] = [
   ["cities", "/cities/", "Cities", "Cities ranked by their towers"],
   ["districts", "/districts/", "Districts", "Districts ranked by their towers"],
   ["skylines", "/skylines/", "Skylines", "Every city's skyline at one scale"],
+  ["metro", "/metro/", "Metro", "The world's metro lines, year by year"],
   ["industry", "/industry/", "Industry and Exports", "Which cities trade and make the most"],
   ["method", "/method/", "Method", "How the map was made"],
 ];
