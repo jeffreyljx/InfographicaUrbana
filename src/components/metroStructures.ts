@@ -96,11 +96,11 @@ export function addStructureLayers(map: MLMap, d: MetroData) {
   const below = "metro-stations";
   map.addLayer({
     id: "metro-st-area", type: "fill", source: "metro-structures", minzoom: STRUCT_ZOOM, filter: ["==", ["get", "k"], "area"],
-    paint: { "fill-color": ["get", "c"], "fill-opacity": fadeIn(0.2) },
+    paint: { "fill-color": ["get", "c"], "fill-opacity": fadeIn(0.3) },
   }, below);
   map.addLayer({
     id: "metro-st-area-line", type: "line", source: "metro-structures", minzoom: STRUCT_ZOOM, filter: ["==", ["get", "k"], "area"],
-    paint: { "line-color": ["get", "c"], "line-width": 0.8, "line-opacity": fadeIn(0.5) },
+    paint: { "line-color": ["get", "c"], "line-width": 0.8, "line-opacity": fadeIn(0.6) },
   }, below);
   map.addLayer({
     id: "metro-st-path", type: "line", source: "metro-structures", minzoom: STRUCT_ZOOM + 0.8, filter: ["==", ["get", "k"], "path"],
@@ -110,7 +110,7 @@ export function addStructureLayers(map: MLMap, d: MetroData) {
   }, below);
   map.addLayer({
     id: "metro-st-box", type: "fill", source: "metro-structures", minzoom: STRUCT_ZOOM, filter: ["==", ["get", "k"], "box"],
-    paint: { "fill-color": ["get", "c"], "fill-opacity": ["interpolate", ["linear"], ["zoom"], STRUCT_ZOOM, 0, STRUCT_ZOOM + 0.6, ["case", ["==", ["get", "a"], 1], 0.42, 0.62]] },
+    paint: { "fill-color": ["get", "c"], "fill-opacity": ["interpolate", ["linear"], ["zoom"], STRUCT_ZOOM, 0, STRUCT_ZOOM + 0.6, ["case", ["==", ["get", "a"], 1], 0.36, 0.55]] },
   }, below);
   map.addLayer({
     id: "metro-st-box-line", type: "line", source: "metro-structures", minzoom: STRUCT_ZOOM, filter: ["all", ["==", ["get", "k"], "box"], ["==", ["get", "a"], 0]],
@@ -125,7 +125,7 @@ export function addStructureLayers(map: MLMap, d: MetroData) {
     "icon-color": INK, "icon-halo-color": "#FFFFFF", "icon-halo-width": 1.2, "text-color": "#FFFFFF",
     "icon-opacity": ["interpolate", ["linear"], ["zoom"], 14.6, 0, 15.1, 1] as ExpressionSpecification,
   };
-  const exitSize: ExpressionSpecification = ["interpolate", ["linear"], ["zoom"], 14.6, 0.35, 16, 0.62, 18, 0.95];
+  const exitSize: ExpressionSpecification = ["interpolate", ["linear"], ["zoom"], 14.6, 0.4, 16, 0.75, 18, 1.1];
   map.addLayer({
     id: "metro-st-exit-dot", type: "symbol", source: "metro-structures", minzoom: STRUCT_ZOOM + 0.6, filter: ["all", ["==", ["get", "k"], "exit"], ["==", ["get", "r"], ""]],
     layout: { "icon-image": "m-exit", "icon-size": exitSize, "icon-allow-overlap": true, "icon-ignore-placement": true },
@@ -136,9 +136,9 @@ export function addStructureLayers(map: MLMap, d: MetroData) {
     id: "metro-st-exit", type: "symbol", source: "metro-structures", minzoom: STRUCT_ZOOM + 0.6, filter: ["all", ["==", ["get", "k"], "exit"], ["!=", ["get", "r"], ""]],
     layout: {
       "icon-image": "m-exit", "icon-size": exitSize, "icon-allow-overlap": true, "icon-ignore-placement": true,
-      "text-field": ["step", ["zoom"], "", 15.6, ["get", "r"]], "text-font": ["Noto Sans Bold"],
-      "text-size": ["interpolate", ["linear"], ["zoom"], 15.6, 8, 18, 11.5], "text-allow-overlap": true, "text-ignore-placement": true,
-      "icon-text-fit": ["step", ["zoom"], "none", 15.6, "both"], "icon-text-fit-padding": [2, 3.5, 2, 3.5],
+      "text-field": ["step", ["zoom"], "", 15.4, ["get", "r"]], "text-font": ["Noto Sans Bold"],
+      "text-size": ["interpolate", ["linear"], ["zoom"], 15.4, 9.5, 17, 12, 19, 14], "text-allow-overlap": true, "text-ignore-placement": true,
+      "icon-text-fit": ["step", ["zoom"], "none", 15.4, "both"], "icon-text-fit-padding": [3, 4.5, 3, 4.5],
     },
     paint: exitPaint,
   });
