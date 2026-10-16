@@ -225,7 +225,7 @@ print(len(in_other_sa), 'ways and relations in other stop areas', flush=True)
 # ---------- exits ----------
 EXIT_RE = [
     re.compile(r'(?:exit|ausgang|sortie|salida|uscita|saída|wyjście|výstup|kijárat|выход)\s*([A-Za-z]?\d{0,2}[A-Za-z]?)\b', re.I),
-    re.compile(r'([A-Za-z]?\d{1,2}[A-Za-z]?|[A-Za-z])\s*(?:号)?\s*(?:出入口|出口|入口|口|番出口|番出入口|번\s*출구|號出口|号出入口)'),
+    re.compile(r'([A-Za-z]?\d{1,2}[A-Za-z]?|[A-Za-z])\s*(?:号|號)?\s*(?:出入口|出口|入口|口|番出口|番出入口|번\s*출구)'),
     re.compile(r'(?:出口|出入口)\s*([A-Za-z]?\d{0,2}[A-Za-z]?)'),
 ]
 def exit_label(t):
@@ -257,6 +257,27 @@ for o in nodes.values():
     cand = near_stations((o['lon'], o['lat']), lim)
     if not cand: continue
     exits[cand[0][1]].append((o['lon'], o['lat'], exit_label(t), t.get('name', ''), o['id']))
+
+# exits mapped as entrance=* on a building or passage rather than as a railway entrance (ents.*.jsonl, from
+# osm/ents.py): kept only when the node itself says it is a metro exit, is at street level, and is not already there
+EXIT_WORDS = re.compile(r'(出入口|出口|地铁|地鐵|捷運|捷运|駅|출구|metro|subway|u-bahn|underground|mrt|lrt|métro|метро|exit\s*[a-z0-9]{1,3}\b)', re.I)
+def metro_exit(t):
+    if t.get('entrance') in ('no', 'garage', 'service', 'emergency', 'home', 'shop', 'private'): return False
+    if t.get('access') in ('private', 'no') or t.get('disused') == 'yes' or neg(t.get('level', '')) or neg(t.get('layer', '')): return False
+    if any(k in t for k in ('amenity', 'shop', 'tourism', 'office', 'healthcare', 'emergency', 'parking', 'building', 'addr:housenumber', 'craft', 'leisure', 'construction')): return False
+    if any(t.get(k) == 'yes' for k in ('entrance_marker:subway', 'subway', 'light_rail', 'monorail')): return True
+    return bool(EXIT_WORDS.search(' '.join(t.get(k, '') for k in ('name', 'name:en', 'name:zh', 'description'))))
+n_extra = 0
+for f in sorted(glob.glob(f'{OSM}/ents.*.jsonl')):
+    for l in open(f, encoding='utf8'):
+        o = json.loads(l); t = o['tags']
+        if o['id'] in nodes or o['id'] in taken or not metro_exit(t): continue
+        cand = near_stations((o['lon'], o['lat']), 0.2)
+        if not cand: continue
+        i = cand[0][1]
+        if any(km((o['lon'], o['lat']), (e[0], e[1])) < 0.015 for e in exits[i]): continue
+        exits[i].append((o['lon'], o['lat'], exit_label(t), t.get('name', ''), o['id'])); taken.add(o['id']); n_extra += 1
+print(n_extra, 'exits mapped as entrance=*', flush=True)
 
 # ---------- per station: boxes, areas, passages ----------
 # every line's track, cut into short pieces for a spatial index (lon/lat)

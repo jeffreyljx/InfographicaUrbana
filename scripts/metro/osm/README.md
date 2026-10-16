@@ -15,6 +15,8 @@ into `<folder>/data/`. They need pyosmium and numpy. The section offsets in them
    footways, steps and corridors, entrances, and the member ways from step 3.
 5. `need.py DIR` lists the nodes those ways need; `nodes.py DIR PART NP` keeps their coordinates (nxy.*.npy) and
    every entrance node with its tags (nodes.*.jsonl).
+6. `ents.py DIR PART NP` keeps every entrance=* node near a page station (ents.*.jsonl); the builder takes the
+   ones that say they are a metro exit (entrance_marker:subway, or a name such as "A口" or "Exit 2").
 
 Then, from the site's root:
 
