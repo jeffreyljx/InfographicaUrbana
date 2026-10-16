@@ -17,7 +17,7 @@
 #          (areas and paths take the colour of the nearest line's box, as Baidu Maps draws them)
 #   exit   its entrances (railway=subway_entrance, railway=train_station_entrance, public_transport=entrance, and the
 #          entrance members of its stop area), labelled with the exit's letter or number where OpenStreetMap has one
-import csv, glob, json, math, re, sys, collections
+import csv, glob, json, math, os, re, sys, collections
 import numpy as np
 from shapely.geometry import LineString, MultiLineString, Point, Polygon, MultiPolygon, box as sbox
 from shapely.ops import unary_union, polygonize, nearest_points
@@ -28,12 +28,16 @@ DB, METRO, INDEX, OSM, OUT, COVER = sys.argv[1:7]
 EXIT_KM = 0.35        # an exit belongs to the nearest station within this distance (stop area members always count)
 TRAIN_EXIT_KM = 0.15  # railway=train_station_entrance is often a mainline station's: only near ones count
 PLATFORM_KM = 0.35    # platforms are looked for this far from a station
-TRACK_M = 28          # a platform must lie this close to the line's track ...
+TRACK_M = 14          # a platform must lie this close to the line's track ...
 ANGLE = 30            # ... and run within this many degrees of it
-BOX_W = 22            # approximate box: two tracks and an island platform
-CAR_M = 20            # approximate box: this much per car, plus 20 m
-MAX_BOX_M = 420       # a platform box longer than this is a mapping slip: the approximate box is used instead
+BOX_W = 24            # approximate box: two tracks and an island platform, with the walls
+CAR_M = 21            # approximate box: this much per car, plus 60 m for an underground station's plant rooms
+                      # and stairs (20 m for one above ground)
+MAX_BOX_M = 340       # a platform box longer than this is a mapping slip: the approximate box is used instead
 AREA_MAX_M2 = 120_000 # station areas larger than this are whole rail yards or terminals, not a metro concourse
+NEAR_AREA_M2 = 40_000 # a hall not in the station's stop area counts only up to this size
+BOX_HALF_W = 20       # a box from platforms reaches at most this far either side of its track
+PLATFORM_ALONG_M = 170  # and only platforms within this distance along the track from the station count
 
 def num(x):
     m = re.match(r'\s*(\d+)', x or '')
@@ -128,24 +132,31 @@ def neg(v):
 
 RAILPLAT = {'train', 'subway', 'light_rail', 'monorail'}
 def platform_kind(t):
+    # a mainline platform (train=yes, and no metro mode) is not a metro station's, however near its track it lies:
+    # St Pancras' platforms sit right over the Piccadilly line
+    if t.get('train') == 'yes' and not any(t.get(k) == 'yes' for k in ('subway', 'light_rail', 'monorail')): return False
     if t.get('railway') == 'platform': return True
     if t.get('public_transport') == 'platform':
         if any(t.get(k) == 'yes' for k in RAILPLAT) or t.get('railway'): return True
         return False
     return False
 
+def below_ground(t):
+    return neg(t.get('layer')) or neg(t.get('level')) or t.get('location') == 'underground' or t.get('tunnel') in ('yes', 'building_passage')
+
 def station_area_kind(t):
-    return t.get('public_transport') == 'station' or t.get('railway') in ('station', 'halt') or t.get('building') == 'train_station'
+    """a metro station's own hall: underground, or tagged as a subway station (a mainline terminus's train shed is not)"""
+    if not (t.get('public_transport') == 'station' or t.get('railway') in ('station', 'halt') or t.get('building') == 'train_station'): return False
+    return below_ground(t) or t.get('station') in ('subway', 'light_rail') or t.get('subway') == 'yes'
 
 def passage_kind(t):
     hw = t.get('highway')
-    if hw == 'corridor' or t.get('indoor') == 'corridor': return True
-    if hw in ('footway', 'steps', 'path', 'pedestrian', 'elevator'):
-        return t.get('tunnel') in ('yes', 'building_passage') or t.get('location') == 'underground' or neg(t.get('layer')) or neg(t.get('level')) or t.get('indoor') == 'yes'
+    if hw in ('corridor', 'footway', 'steps', 'path', 'pedestrian', 'elevator') or t.get('indoor') == 'corridor':
+        return below_ground(t)
     return False
 
 def indoor_area_kind(t):
-    return t.get('indoor') in ('area', 'room', 'corridor') and (neg(t.get('level')) or t.get('indoor') == 'corridor')
+    return t.get('indoor') in ('area', 'room', 'corridor') and below_ground(t)
 
 # features as lon/lat shapely geometries with their kind and tags
 feats = []   # (kind, geom, tags, osm id)
@@ -199,6 +210,18 @@ for i in range(NST):
                 if 'entrance' in role or 'entrance' in nt or nt.get('railway') in ('subway_entrance', 'train_station_entrance') or nt.get('public_transport') == 'entrance':
                     entrance_members[i].add(ref)
 
+# platforms some other stop area claims (a mainline or RER station's, say) are not ours, however near our track
+in_other_sa = set()
+for l in open(f'{OSM}/rels.jsonl', encoding='utf8'):
+    if '"stop_area"' not in l: continue
+    r = json.loads(l)
+    if r['tags'].get('public_transport') != 'stop_area': continue
+    for t, ref, role in r['members']:
+        if t in ('w', 'r'):
+            key = t + str(ref)
+            if key not in member_station: in_other_sa.add(key)
+print(len(in_other_sa), 'ways and relations in other stop areas', flush=True)
+
 # ---------- exits ----------
 EXIT_RE = [
     re.compile(r'(?:exit|ausgang|sortie|salida|uscita|saída|wyjście|výstup|kijárat|выход)\s*([A-Za-z]?\d{0,2}[A-Za-z]?)\b', re.I),
@@ -217,10 +240,14 @@ def exit_label(t):
 
 exits = collections.defaultdict(list)       # station -> [(lon, lat, label, name, osm id)]
 taken = set()
+# an exit two stations' stop areas share (Houhai's lines 2 and 11 are two stations 300 m apart) goes to the nearer
+claims = collections.defaultdict(list)
 for i, ids in entrance_members.items():
-    for n in ids:
-        o = nodes[n]; taken.add(n)
-        exits[i].append((o['lon'], o['lat'], exit_label(o['tags']), o['tags'].get('name', ''), n))
+    for n in ids: claims[n].append(i)
+for n, cl in claims.items():
+    o = nodes[n]; taken.add(n)
+    i = min(cl, key=lambda j: min(km((o['lon'], o['lat']), (q[1], q[2])) for q in index[j]))
+    exits[i].append((o['lon'], o['lat'], exit_label(o['tags']), o['tags'].get('name', ''), n))
 for o in nodes.values():
     if o['id'] in taken: continue
     t = o['tags']; r = t.get('railway')
@@ -292,6 +319,14 @@ def tangent_deg(track, pt):
     if a.distance(b) < 1: return None
     return math.degrees(math.atan2(b.y - a.y, b.x - a.x)) % 180, nearest_points(g, pt)[0], best[0]
 
+def box_len(lid):
+    """length of an approximate station box: the line's train, plus stairs and plant rooms"""
+    l = lines_csv.get(lid, {})
+    cars = num(l.get('cars_per_train', '')) or 6
+    try: under = float(l.get('tunnel_share_osm') or 0) >= 0.5
+    except ValueError: under = False
+    return min(max(cars * CAR_M + (60 if under else 20), 80), 300)
+
 def angdiff(a, b):
     d = abs(a - b) % 180
     return min(d, 180 - d)
@@ -322,6 +357,7 @@ for k in plat_ids:
     c = g.centroid; p = (c.x, c.y)
     cand = near_stations(p, PLATFORM_KM)
     owner = member_station.get(oid)
+    if owner is None and oid in in_other_sa: continue
     if owner is not None and all(i != owner for _, i in cand): cand.append((0, owner))
     if not cand: continue
     loc = Local(*p); gx = Polygon(loc.geom(g.exterior.coords)) if g.geom_type == 'Polygon' else \
@@ -343,16 +379,79 @@ for k in plat_ids:
             if best is None or score < best[0]: best = (score, i, li)
     if best: plat_to[(best[1], best[2])].append(k)
 
+# one line's platforms at a station are tagged alike: where some are tagged subway / light_rail, untagged ones beside
+# them are another railway's (Châtelet's RER platforms lie under line 14's), and they share one level
+METRO_TAG = ('subway', 'light_rail', 'monorail')
+for key, ks in list(plat_to.items()):
+    tagged = [k for k in ks if any(feats[k][2].get(x) == 'yes' for x in METRO_TAG)]
+    if tagged and len(tagged) < len(ks): ks = tagged
+    lv = collections.Counter((feats[k][2].get('level') or feats[k][2].get('layer') or '') for k in ks)
+    if len(lv) > 1:
+        top = lv.most_common(1)[0][0]
+        ks = [k for k in ks if (feats[k][2].get('level') or feats[k][2].get('layer') or '') == top]
+    plat_to[key] = ks
+
+if os.environ.get('DEBUG_STATION'):
+    for (i, li), ks in plat_to.items():
+        if i == int(os.environ['DEBUG_STATION']):
+            for k in ks: print('platform', L[li][0], feats[k][3], {x: v for x, v in feats[k][2].items() if x in ('name', 'ref', 'layer', 'level', 'railway', 'public_transport', 'subway', 'train', 'local_ref')})
 stations_by_sys = collections.defaultdict(list)
 for i in range(NST): stations_by_sys[st_sys[i]].append(i)
+import shapely
+def to_ll_poly(loc, poly):
+    polys = poly.geoms if hasattr(poly, 'geoms') else [poly]
+    return unary_union([shapely.make_valid(Polygon([loc.ll(c) for c in p.exterior.coords], [[loc.ll(c) for c in h.coords] for h in p.interiors]))
+                        for p in polys if p.geom_type == 'Polygon'])
+def from_ll(loc, g):
+    """lon/lat geometry to loc's metres"""
+    return shapely.transform(g, lambda a: np.column_stack(((a[:, 0] - loc.lo) * loc.kx, (a[:, 1] - loc.la) * loc.ky)))
+
+def cut(a, b):
+    for grid in (None, 0.01, 0.1):
+        try: return a.intersection(b) if grid is None else shapely.intersection(a, b, grid_size=grid)
+        except shapely.errors.GEOSException: pass
+    return None
+
+def split_by_boxes(area, labelled):
+    """Cut an area (metres) among the boxes in `labelled` [(label, box polygon)]: each piece goes to the box it is
+    nearest, so one hall shared by two lines is drawn half in each line's colour, as Baidu Maps does."""
+    if len(labelled) == 1: return {labelled[0][0]: area}
+    seeds, labs, have = [], [], set()
+    for lab, b in labelled:
+        ring = b.exterior
+        n = max(4, int(ring.length / 8))
+        for k in range(n):
+            q = ring.interpolate(k / n, normalized=True)
+            key = (round(q.x, 1), round(q.y, 1))
+            if key in have: continue
+            have.add(key); seeds.append(Point(key)); labs.append(lab)
+    cells = shapely.voronoi_polygons(shapely.MultiPoint(seeds), extend_to=area.envelope.buffer(200), ordered=True)
+    by = collections.defaultdict(list)
+    for cell, lab in zip(cells.geoms, labs): by[lab].append(cell)
+    out = {}
+    for lab, cs in by.items():
+        # cut cell by cell (each cell is convex, so the cuts are robust), then join the bits
+        bits = [x for x in (cut(area, c) for c in cs) if x is not None and not x.is_empty and x.area > 0.01]
+        if not bits: continue
+        try: piece = shapely.union_all(bits)
+        except shapely.errors.GEOSException: piece = shapely.union_all([x.buffer(0.05) for x in bits])
+        if piece.area > 4: out[lab] = piece
+    return out
+
 cover = []
 total = collections.Counter()
+ONLY = set(os.environ.get('ONLY', '').split(',')) - {''}   # ONLY=cn-shenzhen-metro,... rebuilds just those systems
 for si, sysrow in enumerate(S):
+    if ONLY and sysrow[0] not in ONLY: continue
     out = {'v': 1, 'boxes': [], 'areas': [], 'paths': [], 'exits': []}
+    sys_boxes = {}                                   # (station, line) -> lon/lat box polygon
+    area_claims = collections.defaultdict(set)       # OpenStreetMap id -> stations it belongs to
+    path_claims = collections.defaultdict(set)
+    stat = {}
     for i in stations_by_sys[si]:
         loc = Local(float(lon[i]), float(lat[i]))
         rows = index[i]
-        boxes_xy = []; box_line = []
+        boxes_xy = []; box_cols = []
         n_mapped = n_approx = 0
         for li, _y in st['lines'][i]:
             lid = L[li][0]
@@ -370,79 +469,116 @@ for si, sysrow in enumerate(S):
                         unary_union([Polygon(loc.geom(x.exterior.coords)) for x in g.geoms if x.geom_type == 'Polygon'])
                     geoms.append(gx)
                 pu = unary_union(geoms)
-                parts = [pu]
-                if tr is not None:
-                    near = tr.intersection(pu.buffer(TRACK_M))
-                    if not near.is_empty: parts.append(near.buffer(2.5))
-                mrr = unary_union(parts).minimum_rotated_rectangle.buffer(3, join_style=2)
-                c = list(mrr.exterior.coords)
-                L1 = math.hypot(c[1][0] - c[0][0], c[1][1] - c[0][1]); L2 = math.hypot(c[2][0] - c[1][0], c[2][1] - c[1][1])
-                if max(L1, L2) <= MAX_BOX_M and mrr.area > 200:
-                    got = (mrr, 0)
+                tg = tangent_deg(tr, Point(cx, cy)) if tr is not None else None
+                if tg and tg[2] <= 250:
+                    # a rectangle along the track: as long as the platforms beside it, at most BOX_HALF_W either side
+                    o = tg[1]
+                    rot = affinity.rotate(affinity.translate(pu, -o.x, -o.y), -tg[0], origin=(0, 0))
+                    rot = rot.intersection(sbox(-PLATFORM_ALONG_M, -BOX_HALF_W, PLATFORM_ALONG_M, BOX_HALF_W))
+                    if not rot.is_empty:
+                        x0, y0, x1, y1 = rot.bounds
+                        y0 = min(y0, -8) - 3; y1 = max(y1, 8) + 3; x0 -= 3; x1 += 3
+                        if 30 <= x1 - x0 <= MAX_BOX_M:
+                            bx = affinity.translate(affinity.rotate(sbox(x0, y0, x1, y1), tg[0], origin=(0, 0)), o.x, o.y)
+                            got = (bx, 0)
+                elif tr is None:
+                    mrr = pu.minimum_rotated_rectangle.buffer(3, join_style=2)
+                    c = list(mrr.exterior.coords)
+                    L1 = math.hypot(c[1][0] - c[0][0], c[1][1] - c[0][1]); L2 = math.hypot(c[2][0] - c[1][0], c[2][1] - c[1][1])
+                    if max(L1, L2) <= MAX_BOX_M and min(L1, L2) <= 2 * BOX_HALF_W and mrr.area > 200:
+                        got = (mrr, 0)
             if got is None and tr is not None:
                 tg = tangent_deg(tr, Point(cx, cy))
                 if tg and tg[2] <= 250:
-                    cars = num(lines_csv.get(lid, {}).get('cars_per_train', '')) or 6
-                    length = min(max(cars * CAR_M + 20, 70), 260)
-                    np_ = tg[1]
-                    got = (rect(np_.x, np_.y, tg[0], length, BOX_W), 1)
+                    got = (rect(tg[1].x, tg[1].y, tg[0], box_len(lid), BOX_W), 1)
             if got is None:
                 # no track near: lay the box between the station's neighbours on the line
                 deg = route_deg(i, li, loc)
                 if deg is not None:
-                    cars = num(lines_csv.get(lid, {}).get('cars_per_train', '')) or 6
-                    got = (rect(cx, cy, deg, min(max(cars * CAR_M + 20, 70), 260), BOX_W), 1)
+                    got = (rect(cx, cy, deg, box_len(lid), BOX_W), 1)
             if got is None: continue
-            boxes_xy.append(got[0]); box_line.append(li)
+            # lines that share a platform and a colour (New York's 1, 2 and 3) get one box
+            col = (L[li][5] or '').lower()
+            if any(col and c2 == col and got[0].intersection(b2).area > 0.6 * min(got[0].area, b2.area) for c2, b2 in box_cols): continue
+            box_cols.append((col, got[0]))
+            boxes_xy.append(got[0])
             if got[1]: n_approx += 1
             else: n_mapped += 1
+            sys_boxes[(i, li)] = to_ll_poly(loc, got[0])
             for ring in ring_ll(loc, got[0], 0.3):
                 out['boxes'].append([i, li, got[1], [[round(x * 1e6), round(y * 1e6)] for x, y in ring]])
-        # concourses and halls
+        # concourses and halls that belong to it: its stop area's, or ones touching its boxes
         allbox = unary_union(boxes_xy) if boxes_xy else Point(0, 0).buffer(20)
         reach = allbox.buffer(60)
-        areas = []
         for k in tree.query(Point(loc.ll((0, 0))).buffer(0.004)):
             kind, g, t, oid = feats[k]
-            if kind not in ('station', 'indoor'): continue
-            if g.geom_type not in ('Polygon', 'MultiPolygon'): continue
-            gx = unary_union([Polygon(loc.geom(x.exterior.coords), [loc.geom(h.coords) for h in x.interiors])
-                              for x in (g.geoms if g.geom_type == 'MultiPolygon' else [g])]).buffer(0)
+            if kind not in ('station', 'indoor') or g.geom_type not in ('Polygon', 'MultiPolygon'): continue
+            gx = shapely.make_valid(from_ll(loc, g)).buffer(0)
             if gx.is_empty or gx.area > AREA_MAX_M2: continue
             mine = member_station.get(oid) == i
-            if not mine and not gx.intersects(reach): continue
+            if not mine and (gx.area > NEAR_AREA_M2 or not gx.intersects(reach)): continue
             if not mine and kind == 'station' and not (gx.distance(Point(0, 0)) < 80 or gx.intersects(allbox)): continue
-            areas.append(gx)
-        def nearest_line(g):
-            """the line whose box is nearest g, so halls and passages take that line's colour"""
-            if not boxes_xy: return st['lines'][i][0][0]
-            return box_line[min(range(len(boxes_xy)), key=lambda k: boxes_xy[k].distance(g))]
-        if areas:
-            au = unary_union(areas)
-            for ring in ring_ll(loc, au, 0.6):
-                out['areas'].append([i, nearest_line(Polygon(loc.geom(ring))), [[round(x * 1e6), round(y * 1e6)] for x, y in ring]])
+            area_claims[k].add(i)
         # exits
-        ex = exits.get(i, [])
         seen = set()
-        for x, y, lab, name, oid in ex:
+        for x, y, lab, name, oid in exits.get(i, []):
             key = (round(x, 5), round(y, 5))
             if key in seen: continue
             seen.add(key)
             out['exits'].append([i, round(x * 1e6), round(y * 1e6), lab, name])
-        # underground passages that lead to the station
-        targets = [allbox.buffer(40)] + [Point(loc.xy((x, y))).buffer(25) for x, y, *_ in ex]
-        tu = unary_union(targets + ([unary_union(areas).buffer(25)] if areas else []))
+        # underground passages that lead to it (to a box, a hall or an exit)
+        targets = [allbox.buffer(30)] + [Point(loc.xy((x, y))).buffer(20) for x, y, *_ in exits.get(i, [])]
+        targets += [from_ll(loc, feats[k][1]).buffer(15) for k, cl in area_claims.items() if i in cl]
+        tu = unary_union(targets)
         for k in tree.query(Point(loc.ll((0, 0))).buffer(0.003)):
             kind, g, t, oid = feats[k]
             if kind != 'passage' or g.geom_type != 'LineString': continue
-            gx = LineString(loc.geom(g.coords))
-            if gx.distance(Point(0, 0)) > 300 or not gx.intersects(tu): continue
-            for c in line_ll(loc, gx.intersection(Point(0, 0).buffer(320)), 0.6):
-                out['paths'].append([i, nearest_line(LineString(loc.geom(c))), [[round(x * 1e6), round(y * 1e6)] for x, y in c]])
+            gx = from_ll(loc, g)
+            if gx.distance(Point(0, 0)) > 250 or not gx.intersects(tu): continue
+            path_claims[k].add(i)
+        stat[i] = [n_mapped, n_approx, len(seen)]
+
+    # halls: each OpenStreetMap area once, cut among the boxes of the stations it belongs to (and any other box it
+    # covers), each piece in its line's colour; overlapping halls of one line are merged
+    pieces = collections.defaultdict(list)
+    box_tree_keys = list(sys_boxes)
+    box_tree = STRtree([sys_boxes[k] for k in box_tree_keys]) if box_tree_keys else None
+    for k, cl in area_claims.items():
+        g = feats[k][1]; c = g.centroid; loc = Local(c.x, c.y)
+        gx = shapely.make_valid(from_ll(loc, g)).buffer(0)
+        labs = {key for key in box_tree_keys if key[0] in cl}
+        if box_tree is not None:
+            for j in box_tree.query(g.buffer(0.0003)): labs.add(box_tree_keys[j])
+        labelled = [(lab, from_ll(loc, sys_boxes[lab])) for lab in sorted(labs)]
+        if not labelled:
+            i0 = min(cl); labelled = [((i0, st['lines'][i0][0][0]), Point(loc.xy((lon[i0], lat[i0]))).buffer(20))]
+        for lab, piece in split_by_boxes(gx, labelled).items():
+            pieces[lab].append(to_ll_poly(loc, piece))
+    n_areas = collections.Counter()
+    for (i, li), ps in pieces.items():
+        loc = Local(float(lon[i]), float(lat[i]))
+        u = from_ll(loc, unary_union([shapely.make_valid(p) for p in ps])).buffer(0)
+        for ring in ring_ll(loc, u, 0.6):
+            out['areas'].append([i, li, [[round(x * 1e6), round(y * 1e6)] for x, y in ring]]); n_areas[i] += 1
+    # passages: each once, with the station and line whose box (else exit) is nearest
+    for k, cl in path_claims.items():
+        g = feats[k][1]
+        best = None
+        for i in cl:
+            for li, _y in st['lines'][i]:
+                b = sys_boxes.get((i, li))
+                d = b.distance(g) if b is not None else km((lon[i], lat[i]), (g.centroid.x, g.centroid.y)) / 111
+                if best is None or d < best[0]: best = (d, i, li)
+        _, i, li = best
+        loc = Local(float(lon[i]), float(lat[i]))
+        for c in line_ll(loc, from_ll(loc, g).intersection(Point(0, 0).buffer(320)), 0.6):
+            out['paths'].append([i, li, [[round(x * 1e6), round(y * 1e6)] for x, y in c]])
+    for i in stations_by_sys[si]:
         nm = st['en'][i] or st['name'][i]
+        n_mapped, n_approx, n_exits = stat[i]
         cover.append({'system_id': sysrow[0], 'city': sysrow[2], 'station': nm, 'lines': len(st['lines'][i]),
-                      'boxes_mapped': n_mapped, 'boxes_approx': n_approx, 'exits': len(seen),
-                      'exits_labelled': sum(1 for e in out['exits'] if e[0] == i and e[3]), 'areas': len(areas)})
+                      'boxes_mapped': n_mapped, 'boxes_approx': n_approx, 'exits': n_exits,
+                      'exits_labelled': sum(1 for e in out['exits'] if e[0] == i and e[3]), 'areas': n_areas[i]})
     for k in ('boxes', 'areas', 'paths', 'exits'): total[k] += len(out[k])
     json.dump(out, open(f'{OUT}/{sysrow[0]}.json', 'w', encoding='utf8'), ensure_ascii=False, separators=(',', ':'))
 with open(COVER, 'w', newline='', encoding='utf8') as f:
