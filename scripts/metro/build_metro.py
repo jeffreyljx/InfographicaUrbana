@@ -1,6 +1,6 @@
 # Pack the world metro database (the project's metro/db folder) into the one JSON file the /metro page reads.
 #
-#   python3 scripts/metro/build_metro.py /path/to/metro/db public/metro/metro.json
+#   python3 scripts/metro/build_metro.py /path/to/metro/db public/metro/metro.json [station-index.json]
 #
 # Needs numpy and shapely. The layout of the output is described at the top of src/lib/metro.ts.
 # Only lines that pass the metro definition are kept. Each line's track (OpenStreetMap, simplified to about 15 m)
@@ -303,8 +303,9 @@ for s in stations:
     e = ST.get(cid)
     if e is None:
         e = ST[cid] = {'name': s['name'], 'en': s['name_en'] if s['name_en'] != s['name'] else '',
-                       'pts': [], 'lines': [], 'wd': s['wikidata'], 'key': (lidx[lid], int(s['seq'] or 0))}
+                       'pts': [], 'rows': [], 'lines': [], 'wd': s['wikidata'], 'key': (lidx[lid], int(s['seq'] or 0))}
     e['pts'].append(_xy(s))
+    e['rows'].append([lidx[lid], *_xy(s), s['osm_station']])
     e['wd'] = e['wd'] or s['wikidata']
     have = next((x for x in e['lines'] if x[0] == lidx[lid]), None)
     if have is None:
@@ -357,6 +358,10 @@ data = {'v': 1, 'built': datetime.date.today().isoformat(), 'systems': S, 'lines
         'stations': stations_out, 'stages': [STG.get(i, []) for i in range(len(L))]}
 txt = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
 open(OUT, 'w', encoding='utf8').write(txt)
+# optional: which database rows (line, lon, lat, OpenStreetMap stop area) each packed station came from, for
+# scripts/metro/build_structures.py, which maps station outlines and exits
+if len(sys.argv) > 3:
+    json.dump([ST[k]['rows'] for k in order], open(sys.argv[3], 'w', encoding='utf8'), separators=(',', ':'))
 print(len(S), 'systems', len(L), 'lines', len(order), 'stations', stats['pieces'], 'pieces',
       stats['station_year_fallback'], 'station years from fallback', len(txt.encode()), 'bytes;',
       stats['vertices_undated'], 'of', stats['vertices'], 'track vertices undated')

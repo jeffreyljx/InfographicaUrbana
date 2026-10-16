@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { loadStructures, stationStructure } from "./metroStructures";
 import { neighbours, fmtKm, fmtInt, stationLabel, type MetroData, type MetroLine, type MetroStation, type MetroSystem, NEVER_YEAR } from "@/lib/metro";
 
 export type MetroPick = { kind: "station"; i: number } | { kind: "line"; i: number } | { kind: "system"; i: number };
@@ -49,6 +50,13 @@ function StationView({ d, st, year, onPick, share }: { d: MetroData; st: MetroSt
   const openNow = st.firstYear <= year && st.closeYear > year;
   const inter = st.interYear !== NEVER_YEAR;
   const wiki = st.wd ? `https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/${st.wd}` : null;
+  const [struct, setStruct] = useState<ReturnType<typeof stationStructure>>(null);
+  useEffect(() => {
+    let live = true;
+    setStruct(null);
+    loadStructures(d, st.sys).then(f => { if (live) setStruct(stationStructure(f, st.i)); });
+    return () => { live = false; };
+  }, [d, st.sys, st.i]);
   return (
     <>
       <div className="m-head station" style={{ background: `linear-gradient(90deg, ${lines.map(({ l }, k) => `${l.colour} ${k * 100 / lines.length}% ${(k + 1) * 100 / lines.length}%`).join(", ")})` }}>
@@ -66,7 +74,11 @@ function StationView({ d, st, year, onPick, share }: { d: MetroData; st: MetroSt
           <div><dt>Lines</dt><dd>{lines.length}</dd></div>
           {inter && <div><dt>Interchange since</dt><dd>{st.interYear}</dd></div>}
           {st.closeYear !== NEVER_YEAR && <div><dt>Closed</dt><dd>{st.closeYear}</dd></div>}
+          {struct && struct.exits.length > 0 && <div><dt>Exits</dt><dd>{struct.exits.length}</dd></div>}
         </dl>
+        {struct && struct.labelled.length > 0 && (
+          <p className="m-exits">{[...new Set(struct.labelled)].map(x => <span key={x} className="m-exit" style={{ background: lines[0].l.colour }}>{x}</span>)}</p>
+        )}
         <h3 className="m-h">Lines at this station</h3>
         <ul className="m-lines">
           {lines.map(({ l, y }) => (
@@ -93,6 +105,13 @@ function StationView({ d, st, year, onPick, share }: { d: MetroData; st: MetroSt
         <details className="loc">
           <summary>Where these facts come from</summary>
           <p>Position and name from OpenStreetMap (8 Oct 2026). The year each line reached the station comes from the opening stages Wikipedia lists for that line; where a stage could not be matched to the mapped stations, the station takes the year of the nearest dated stretch of its line.</p>
+          {struct && (struct.mapped + struct.approx > 0 || struct.exits.length > 0) && (
+            <p>Zoomed in, the map shows the station&apos;s structure and exits from OpenStreetMap (15 Oct 2026).{" "}
+              {struct.mapped > 0 && struct.approx === 0 ? "Each line's box is drawn around its mapped platforms and track."
+                : struct.mapped > 0 ? "Boxes with a solid edge are drawn around mapped platforms; a dashed edge marks a box laid along the track at the length of the line's trains, where no platform is mapped."
+                : "No platforms are mapped here, so each line's box (dashed edge) is laid along its track at the length of its trains."}
+              {struct.exits.length > 0 ? ` ${struct.exits.length} exit${struct.exits.length > 1 ? "s are" : " is"} mapped.` : " No exits are mapped yet."}</p>
+          )}
           <p className="muted">{st.lat.toFixed(5)}, {st.lon.toFixed(5)}{st.wd ? <> · <a href={`https://www.wikidata.org/wiki/${st.wd}`} target="_blank" rel="noopener">Wikidata {st.wd}</a></> : null}</p>
         </details>
       </div>

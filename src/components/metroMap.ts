@@ -3,11 +3,12 @@ import type { Feature, FeatureCollection, LineString, Point } from "geojson";
 import { Map as MLMap, AttributionControl, NavigationControl, ScaleControl, setWorkerUrl, type GeoJSONSource, type MapMouseEvent, type ExpressionSpecification } from "maplibre-gl";
 import { STYLE_URL, warmBasemap, registerOwnLayer } from "./towerMap";
 import { NEVER_YEAR, type MetroData } from "@/lib/metro";
+import { addStructureLayers, setStructureYear, STRUCT_CLICK } from "./metroStructures";
 
 /* The /metro map: the same warm basemap (and satellite switch) as the tower map, with every metro line drawn stretch by
  * stretch from the year it opened, station bubbles in their line's colour (an interchange is drawn larger, in ink),
  * and, zoomed out, one dot per system sized by its length in the chosen year. The year is applied with filters, so
- * moving it never rebuilds the data. */
+ * moving it never rebuilds the data. Zoomed in, each station shows its structure and exits (metroStructures.ts). */
 
 const LAND = "#E6D6CF";
 const BLANK_STYLE = {
@@ -162,14 +163,17 @@ export function addMetroLayers(map: MLMap, d: MetroData, kmBySys: number[], year
     },
     paint: { "text-color": INK, "text-halo-color": HALO, "text-halo-width": 1.3 },
   });
+  addStructureLayers(map, d);
   setMetroYear(map, year, null);
 
-  // clicks: a station beats a line, which beats a system dot
+  // clicks: a station (its bubble, an exit or its box) beats a line, which beats a system dot
   map.on("click", (e: MapMouseEvent) => {
     const pad = 6;
     const box: [[number, number], [number, number]] = [[e.point.x - pad, e.point.y - pad], [e.point.x + pad, e.point.y + pad]];
     const st = map.queryRenderedFeatures(box, { layers: ["metro-stations"] })[0];
     if (st) { cb.onStation(st.properties!.i as number); return; }
+    const sx = map.queryRenderedFeatures(box, { layers: STRUCT_CLICK.filter(l => map.getLayer(l)) })[0];
+    if (sx) { cb.onStation(sx.properties!.i as number); return; }
     const ln = map.queryRenderedFeatures(box, { layers: ["metro-sel-line", "metro-lines"] })[0];
     if (ln) { cb.onLine(ln.properties!.l as number); return; }
     const sy = map.queryRenderedFeatures(box, { layers: ["metro-systems"] })[0];
@@ -195,6 +199,7 @@ export function setMetroYear(map: MLMap, year: number, line: number | null) {
   map.setFilter("metro-station-labels", open);
   // a station two open lines meet at is drawn as an interchange: larger, with an ink ring
   map.setPaintProperty("metro-stations", "circle-stroke-color", ["case", ["<=", ["get", "y2"], year], INK, ["get", "c"]]);
+  setStructureYear(map, year);
   map.setPaintProperty("metro-stations", "circle-radius", ["interpolate", ["linear"], ["zoom"],
     9.5, ["case", ["<=", ["get", "y2"], year], 2.6, 1.8], 12, ["case", ["<=", ["get", "y2"], year], 4.6, 3.4], 15, ["case", ["<=", ["get", "y2"], year], 8, 6]]);
 }

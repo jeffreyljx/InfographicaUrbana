@@ -7,6 +7,7 @@ import "./metro.css";
 import { loadMetro, kmOpenBySystem, stationKey, stationByKey, type MetroData } from "@/lib/metro";
 import { setBasemap, type Basemap } from "./towerMap";
 import { createMetroMap, addMetroLayers, setMetroYear, setSystemDots, setSelectedStation, SYSTEM_ZOOM, NEW_COLOR } from "./metroMap";
+import { STRUCT_ZOOM } from "./metroStructures";
 import MetroYears from "./MetroYears";
 import MetroPanel, { type MetroPick } from "./MetroPanel";
 import MetroSearch from "./MetroSearch";
@@ -33,6 +34,7 @@ export default function MetroApp() {
   const [pick, setPick] = useState<MetroPick | null>(null);
   const [basemap, setBasemapState] = useState<Basemap>("map");
   const [zoomedOut, setZoomedOut] = useState(true);
+  const [closeIn, setCloseIn] = useState(false);
   const layersAdded = useRef(false);
 
   // ---- data, and the first year / pick from the URL (?year=1900, ?station=<system>~<name>, ?line=<id>, ?system=<id>) ----
@@ -55,7 +57,7 @@ export default function MetroApp() {
     const map = createMetroMap(mapEl.current, WORLD.center, WORLD.zoom);
     mapRef.current = map;
     map.on("load", () => setMapReady(true));
-    const check = () => setZoomedOut(map.getZoom() < SYSTEM_ZOOM);
+    const check = () => { setZoomedOut(map.getZoom() < SYSTEM_ZOOM); setCloseIn(map.getZoom() >= STRUCT_ZOOM); };
     map.on("zoomend", check);
     return () => { map.remove(); mapRef.current = null; };
   }, []);
@@ -191,6 +193,8 @@ export default function MetroApp() {
       <div className="legend metro-legend" aria-hidden>
         <span><i className="m-st" />station</span>
         <span><i className="m-st inter" />interchange</span>
+        {closeIn && <span><i className="m-box" />station box, dashed if approximate</span>}
+        {closeIn && <span><i className="m-exit">A</i>exit</span>}
         {year !== null && <span><i className="m-new" style={{ background: NEW_COLOR }} />opened in {year}</span>}
       </div>
       {data && year !== null && (
