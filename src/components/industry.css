@@ -1,0 +1,78 @@
+/* Industry and Exports page (src/app/industry/page.tsx): bar charts drawn on the server, the full tables in
+   collapsible sections, and the method notes. Bars use the site's warm palette; place names keep the site's blue. */
+.c-ex { --c: #0B5E57; }     /* exports: deep teal */
+.c-im { --c: #C07A2C; }     /* imports: ochre */
+.c-tot { --c: #7A5C4F; }    /* a total with no split published */
+.c-port { --c: #5A3F34; }
+.c-ea { --c: #A80F2F; }     /* Asia: crimson */
+.c-na { --c: #1C3F7A; }     /* North America: dark blue */
+.c-eu { --c: #94450A; }     /* Europe and Turkey: burnt ochre */
+
+.ind-kpis { margin-top: 22px; }
+.ind-kpis .kpi span { text-transform: none; letter-spacing: 0; font-size: 12.5px; }
+.ind-toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 4px; }
+.ind-toc a { font-size: 13px; padding: 5px 12px; border-radius: 999px; background: var(--bg-2); border: 1px solid var(--line); color: var(--fg-2); }
+.ind-toc a:hover { color: var(--fg); border-color: var(--fg-3); text-decoration: none; }
+.ind-sec { scroll-margin-top: 64px; margin-top: 12px; }
+.ind-sec h2 { margin-top: 40px; }
+.ind-sec h3 { font-size: 16px; margin: 22px 0 6px; }
+.page .ind-note { font-size: 13.5px; color: var(--fg-3); max-width: 46em; margin: 6px 0; }
+.page .ind-src { font-size: 12px; color: var(--fg-3); margin: 4px 0 0; }
+.ind-two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 430px), 1fr)); gap: 8px 48px; align-items: start; }
+.ind-two .ibars { max-width: none; }
+.ind-list { padding-left: 1.1em; margin: 6px 0; line-height: 1.55; color: var(--fg-2); }
+.ind-list li { margin-bottom: 6px; }
+
+/* legend */
+.ib-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12.5px; color: var(--fg-2); margin: 10px 0 2px; }
+.ib-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: var(--c); margin-right: 6px; vertical-align: -1px; }
+.ib-legend i.hollow { background: transparent; box-shadow: inset 0 0 0 1.5px var(--c); }
+
+/* bars: one grid for the whole chart, each row a subgrid, so labels, bars and values line up */
+.ibars { margin: 12px 0 8px; max-width: 940px; }
+/* third column: room for the value printed past the longest bar */
+.ibars ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: fit-content(15em) minmax(0, 1fr) 4.6em; column-gap: 10px; }
+.ibars li { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: center; padding: 3px 6px; border-radius: 6px; cursor: default; }
+.ibars li:not(.ib-axis):hover { background: var(--bg-2); }
+.ib-lab { text-align: right; font-size: 13.5px; line-height: 1.2; }
+.ib-lab .place { font-weight: 500; }
+.ib-lab small { display: block; font-size: 11px; color: var(--fg-3); margin-top: 1px; }
+.ib-track { position: relative; display: flex; align-items: center; height: 18px; box-shadow: inset -1px 0 0 rgba(90,67,58,.2);
+  background: linear-gradient(to right, rgba(90,67,58,.2) 1px, transparent 1px) 0 0 / calc(100% / var(--n)) 100% repeat-x; }
+.ib-track i { display: block; height: 14px; background: var(--c); flex: none; }
+.ib-track i:first-child { border-radius: 2px 0 0 2px; }
+.ib-track i:last-of-type { border-radius: 0 2px 2px 0; }
+.ib-track i:only-of-type { border-radius: 2px; }
+.ib-track i + i { box-shadow: inset 1px 0 0 var(--bg); }
+.ibars li:hover .ib-track i + i { box-shadow: inset 1px 0 0 var(--bg-2); }
+.ib-track i.hollow { background: transparent; box-shadow: inset 0 0 0 1.5px var(--c); }
+.ib-track.off::after { content: ""; position: absolute; right: 14px; top: 0; bottom: 0; width: 5px; background: var(--bg); transform: skewX(-22deg); }
+.ibars li:hover .ib-track.off::after { background: var(--bg-2); }
+.ib-val { flex: none; margin-left: 6px; font-size: 13px; white-space: nowrap; color: var(--fg); font-variant-numeric: lining-nums tabular-nums; }
+.ib-axis { padding-top: 2px !important; }
+.ib-ticks { position: relative; height: 16px; font-size: 11px; color: var(--fg-3); }
+.ib-ticks span { position: absolute; top: 0; transform: translateX(-50%); white-space: nowrap; }
+.ib-ticks span:first-child { transform: none; }
+
+/* the full tables, folded away under each chart */
+.ind-more { margin: 14px 0 0; }
+.ind-more summary { cursor: pointer; font-size: 14px; color: var(--accent-2); padding: 6px 0; width: max-content; max-width: 100%; }
+.ind-more summary:hover { text-decoration: underline; }
+.ind-more[open] summary { margin-bottom: 6px; }
+.itable { font-size: 13px; }
+.itable td.how { min-width: 12em; color: var(--fg-3); }
+.itable td.note { min-width: 16em; color: var(--fg-2); }
+.itable td.src { min-width: 9em; font-size: 12px; }
+.itable td b { font-weight: 600; }
+.itable .ub { font-size: 11px; color: var(--fg-3); }
+.itable .pill { margin-right: 2px; }
+.itable.fx { max-width: 420px; }
+.itable.fx td, .itable.fx th { padding: 5px 8px; }
+
+@media (max-width: 560px) {
+  .ibars ol { grid-template-columns: fit-content(8em) minmax(0, 1fr) 4.4em; column-gap: 8px; }
+  .ibars li { padding: 3px 2px; }
+  .ib-lab { font-size: 12.5px; }
+  .ib-val { font-size: 12px; }
+  .ib-ticks span:nth-child(even) { display: none; }   /* every other tick, so the labels don't collide */
+}

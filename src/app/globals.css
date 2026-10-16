@@ -72,6 +72,23 @@ body .maplibregl-ctrl-scale { --halo: rgba(244,236,233,.9); --ink: linear-gradie
 .nav.solid { position: sticky; background: var(--bg); border-bottom: 1px solid var(--line); pointer-events: auto; }
 .nav a.on { color: var(--fg); box-shadow: inset 0 -2px 0 var(--accent); padding-bottom: 4px; }
 .nav a:not(.brand) { padding-bottom: 4px; }
+/* The ScraperMap name and the menu of the site's pages under it (BrandMenu.tsx): it opens on hover, on a first tap, or
+   from the small arrow, and runs from the bottom of the bar so the pointer can move into it without it closing. */
+.nav .brandmenu { position: relative; align-self: stretch; display: flex; align-items: center; gap: 1px; margin-right: 6px; pointer-events: auto; }
+.nav .brandmenu .brand { margin-right: 0; }
+.brand-caret { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 26px; padding: 0; border: 0; border-radius: 6px; background: none; color: var(--fg-3); cursor: pointer; }
+.brand-caret svg { fill: currentColor; transition: transform .15s ease; }
+.brand-caret:hover, .brandmenu.open .brand-caret { color: var(--fg); }
+.brandmenu.open .brand-caret svg { transform: rotate(180deg); }
+.brand-caret:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 1px; }
+.brand-drop { position: absolute; top: 100%; left: -10px; z-index: 30; width: 300px; padding: 6px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+  visibility: hidden; opacity: 0; transform: translateY(-4px); transition: opacity .12s ease, transform .12s ease, visibility 0s .12s; }
+.brandmenu.open .brand-drop { visibility: visible; opacity: 1; transform: none; transition: opacity .12s ease, transform .12s ease; }
+.brand-drop ul { list-style: none; margin: 0; padding: 0; }
+.nav .brand-drop a { display: flex; flex-direction: column; gap: 2px; padding: 7px 10px; border-radius: 8px; color: var(--fg); font-size: 14px; font-weight: 500; white-space: normal; }
+.nav .brand-drop a small { font-size: 12px; font-weight: 400; color: var(--fg-3); }
+.nav .brand-drop a:hover, .nav .brand-drop a:focus-visible { background: var(--bg-3); text-decoration: none; outline: none; }
+.nav .brand-drop a[aria-current="page"] { box-shadow: inset 3px 0 0 var(--accent); }
 
 .topbar { position: absolute; top: 60px; left: 18px; display: flex; gap: 8px; z-index: 15; width: min(640px, calc(100vw - 36px)); }
 @media (min-width: 1100px) { .topbar { width: 660px; } }
@@ -238,4 +255,5 @@ td.gdp { white-space: nowrap; }
 @media (max-width: 420px) {
   .nav { gap: 9px; padding: 0 10px; overflow-x: auto; scrollbar-width: none; }
   .nav a { font-size: 12.5px; white-space: nowrap; flex: none; }
+  .brand-drop { position: fixed; top: 52px; left: 8px; right: 8px; width: auto; }  /* the bar scrolls sideways, so the menu hangs from the screen */
 }
