@@ -14,6 +14,9 @@
  *              years its stretches opened (a stretch takes the year of the nearest dated station-to-station segment)
  *   stations: columns name, en, lon, lat (1e-5 degrees, delta-coded), lines ([[line, year it reached the station]]), wd
  *   stages:   per line, [event, date, from, to, km]
+ *   bundles:  [polyline (1e-5), [line, year, line, year, …]]: the track as drawn, one entry per piece of corridor with
+ *              every line on it (where lines share track, or run right beside each other) and the year each line's
+ *              stretch there opened, in stripe order (scripts/metro/build_bundles.py). Absent in older files.
  */
 
 export interface MetroSystem {
@@ -48,8 +51,12 @@ export interface MetroStation {
   closeYear: number;
 }
 export interface MetroTrack { line: number; coords: [number, number][]; runs: { year: number; from: number; to: number; km: number }[] }
+/** A piece of corridor and the lines on it, each with the year its stretch here opened, in stripe order. */
+export interface MetroBundle { coords: [number, number][]; members: [number, number][] }
 export interface MetroData {
   built: string; systems: MetroSystem[]; lines: MetroLine[]; stations: MetroStation[]; tracks: MetroTrack[];
+  /** the track as drawn, shared track as one piece (empty when metro.json predates bundles: draw `tracks` then) */
+  bundles: MetroBundle[];
   first: number; last: number;
   /** km of line opened (closed lines subtracted) per year, first..last, all systems; and per system */
   kmPerYear: number[]; kmPerYearBySys: number[][];
@@ -91,6 +98,7 @@ function lineColour(raw: string, id: string): string {
     return SPARE[h % SPARE.length];
   }
   if (/^[0-9a-f]{6}$/i.test(c)) c = "#" + c;
+  if (/^#[0-9a-f]{6}$/i.test(c)) c = c.toUpperCase();  // one spelling per colour: lines of one colour share a stripe
   const m = /^#([0-9a-f]{6})$/i.exec(c);
   if (m) {
     const n = parseInt(m[1], 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255;
@@ -112,6 +120,7 @@ type Raw = {
   geom: [number, string, number[]][];
   stations: { name: string[]; en: string[]; lon: number[]; lat: number[]; lines: [number, number | null][][]; wd: string[] };
   stages: [string, string, string, string, number | null][][];
+  bundles?: [string, number[]][];
 };
 
 function decode(raw: Raw): MetroData {
@@ -208,7 +217,12 @@ function decode(raw: Raw): MetroData {
       first: fy >= 0 ? first + fy : yearOf(firstOpened) ?? NEVER_YEAR, lon: (bb[0] + bb[2]) / 2, lat: (bb[1] + bb[3]) / 2, bbox: bb, placed: b !== null,
     };
   });
-  return { built: raw.built, systems, lines, stations, tracks, first, last, kmPerYear, kmPerYearBySys };
+  const bundles: MetroBundle[] = (raw.bundles ?? []).map(([poly, m]) => {
+    const members: [number, number][] = [];
+    for (let k = 0; k < m.length; k += 2) members.push([m[k], m[k + 1]]);
+    return { coords: decodePolyline(poly), members };
+  });
+  return { built: raw.built, systems, lines, stations, tracks, bundles, first, last, kmPerYear, kmPerYearBySys };
 }
 
 let promise: Promise<MetroData> | null = null;
