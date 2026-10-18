@@ -110,6 +110,7 @@ function StationView({ d, st, year, onPick, share }: { d: MetroData; st: MetroSt
               {struct.mapped > 0 && struct.approx === 0 ? "Each line's box is drawn around its mapped platforms and track."
                 : struct.mapped > 0 ? "Boxes with a solid edge are drawn around mapped platforms; a dashed edge marks an estimated box, laid along the track at the length of the line's trains and stretched to reach that line's exits, where no platform is mapped."
                 : "No platforms are mapped here, so each line's box (dashed edge) is estimated: laid along its track at the length of its trains, and stretched to reach that line's exits."}
+              {struct.estAreas > 0 ? " The lighter, dash-edged hall is an estimate: OpenStreetMap maps no hall here, so one is drawn along the track as wide as the exits on each side." : ""}
               {struct.estPaths > 0 ? " Dashed passages join exits that no mapped passage reaches to the station in a straight line." : ""}
               {struct.exits.length > 0 ? ` ${struct.exits.length} exit${struct.exits.length > 1 ? "s are" : " is"} mapped.` : " No exits are mapped yet."}</p>
           )}

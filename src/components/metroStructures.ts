@@ -9,9 +9,10 @@ import type { MetroData } from "@/lib/metro";
  * one file per system by scripts/metro/build_structures.py, and are fetched only for the systems in view.
  *
  * public/metro/structures/<system id>.json, coordinates in 1e-6 degrees:
- *   boxes: [station, line, approximate (0/1), ring]   areas: [station, line, ring]
+ *   boxes: [station, line, approximate (0/1), ring]   areas: [station, line, ring, estimated?]
  *   paths: [station, line, line string, estimated?]    exits: [station, x, y, label, name]
- * A path marked estimated (1) joins an exit that no mapped passage reaches to its station, in a straight line.
+ * A path marked estimated (1) joins an exit that no mapped passage reaches to its station, in a straight line; an
+ * area marked estimated is a concourse guessed around the exits where OpenStreetMap maps no hall (drawn dashed, lighter).
  * Halls and passages take the colour of the nearest line's box, as Baidu Maps draws them; exits are ink badges with
  * their letter, so they read against every line colour. */
 
@@ -23,7 +24,7 @@ type Pt = [number, number];
 export interface StructureFile {
   v: number;
   boxes: [number, number, number, Pt[]][];
-  areas: [number, number, Pt[]][];
+  areas: ([number, number, Pt[]] | [number, number, Pt[], number])[];
   paths: ([number, number, Pt[]] | [number, number, Pt[], number])[];
   exits: [number, number, number, string, string][];
 }
@@ -54,9 +55,9 @@ function features(d: MetroData): FeatureCollection {
       const y = st.lines.find(([x]) => x === l)?.[1] ?? st.firstYear;
       out.push({ type: "Feature", geometry: { type: "Polygon", coordinates: [ring.map(pt)] }, properties: { k: "box", i, l, a, c: ln.colour, y, x: ln.closeYear } });
     }
-    for (const [i, l, ring] of f.areas) {
+    for (const [i, l, ring, a] of f.areas) {
       const st = d.stations[i];
-      out.push({ type: "Feature", geometry: { type: "Polygon", coordinates: [ring.map(pt)] }, properties: { k: "area", i, c: d.lines[l].colour, y: st.firstYear, x: st.closeYear } });
+      out.push({ type: "Feature", geometry: { type: "Polygon", coordinates: [ring.map(pt)] }, properties: { k: "area", i, a: a ? 1 : 0, c: d.lines[l].colour, y: st.firstYear, x: st.closeYear } });
     }
     for (const [i, l, line, a] of f.paths) {
       const st = d.stations[i];
@@ -73,7 +74,7 @@ function features(d: MetroData): FeatureCollection {
   return { type: "FeatureCollection", features: out };
 }
 
-const LAYERS = ["metro-st-area", "metro-st-area-line", "metro-st-path", "metro-st-path-approx", "metro-st-box", "metro-st-box-line", "metro-st-box-approx", "metro-st-exit-dot", "metro-st-exit"];
+const LAYERS = ["metro-st-area", "metro-st-area-line", "metro-st-area-approx", "metro-st-path", "metro-st-path-approx", "metro-st-box", "metro-st-box-line", "metro-st-box-approx", "metro-st-exit-dot", "metro-st-exit"];
 /** a rounded square, drawn as a signed-distance image so its colour can be set per layer */
 function badge(): { width: number; height: number; data: Uint8Array } {
   const n = 24, r = 6, data = new Uint8Array(n * n * 4);
@@ -97,11 +98,16 @@ export function addStructureLayers(map: MLMap, d: MetroData) {
   const below = "metro-stations";
   map.addLayer({
     id: "metro-st-area", type: "fill", source: "metro-structures", minzoom: STRUCT_ZOOM, filter: ["==", ["get", "k"], "area"],
-    paint: { "fill-color": ["get", "c"], "fill-opacity": fadeIn(0.3) },
+    // an estimated concourse (guessed around the exits) is lighter than a mapped hall
+    paint: { "fill-color": ["get", "c"], "fill-opacity": ["interpolate", ["linear"], ["zoom"], STRUCT_ZOOM, 0, STRUCT_ZOOM + 0.6, ["case", ["==", ["get", "a"], 1], 0.14, 0.3]] },
   }, below);
   map.addLayer({
-    id: "metro-st-area-line", type: "line", source: "metro-structures", minzoom: STRUCT_ZOOM, filter: ["==", ["get", "k"], "area"],
+    id: "metro-st-area-line", type: "line", source: "metro-structures", minzoom: STRUCT_ZOOM, filter: ["all", ["==", ["get", "k"], "area"], ["!=", ["get", "a"], 1]],
     paint: { "line-color": ["get", "c"], "line-width": 0.8, "line-opacity": fadeIn(0.6) },
+  }, below);
+  map.addLayer({
+    id: "metro-st-area-approx", type: "line", source: "metro-structures", minzoom: STRUCT_ZOOM, filter: ["all", ["==", ["get", "k"], "area"], ["==", ["get", "a"], 1]],
+    paint: { "line-color": ["get", "c"], "line-width": ["interpolate", ["linear"], ["zoom"], 14, 0.7, 18, 1.4], "line-opacity": fadeIn(0.8), "line-dasharray": [2, 1.5] },
   }, below);
   map.addLayer({
     id: "metro-st-path", type: "line", source: "metro-structures", minzoom: STRUCT_ZOOM + 0.8, filter: ["all", ["==", ["get", "k"], "path"], ["==", ["get", "a"], 0]],
@@ -194,7 +200,8 @@ export function setStructureYear(map: MLMap, year: number) {
   const open: ExpressionSpecification = ["all", ["<=", ["get", "y"], year], [">", ["get", "x"], year]];
   const kind = (k: string): ExpressionSpecification => ["==", ["get", "k"], k];
   map.setFilter("metro-st-area", ["all", kind("area"), open]);
-  map.setFilter("metro-st-area-line", ["all", kind("area"), open]);
+  map.setFilter("metro-st-area-line", ["all", kind("area"), ["!=", ["get", "a"], 1], open]);
+  map.setFilter("metro-st-area-approx", ["all", kind("area"), ["==", ["get", "a"], 1], open]);
   map.setFilter("metro-st-path", ["all", kind("path"), ["==", ["get", "a"], 0], open]);
   map.setFilter("metro-st-path-approx", ["all", kind("path"), ["==", ["get", "a"], 1], open]);
   map.setFilter("metro-st-box", ["all", kind("box"), open]);
@@ -210,5 +217,6 @@ export function stationStructure(f: StructureFile | null, i: number) {
   const exits = f.exits.filter(e => e[0] === i).map(e => e[3]);
   const boxes = f.boxes.filter(b => b[0] === i);
   const estPaths = f.paths.filter(p => p[0] === i && p[3] === 1).length;
-  return { exits, labelled: exits.filter(Boolean).sort((a, b) => a.localeCompare(b, "en", { numeric: true })), mapped: boxes.filter(b => b[2] === 0).length, approx: boxes.filter(b => b[2] === 1).length, estPaths };
+  const estAreas = f.areas.filter(a => a[0] === i && a[3] === 1).length;
+  return { exits, labelled: exits.filter(Boolean).sort((a, b) => a.localeCompare(b, "en", { numeric: true })), mapped: boxes.filter(b => b[2] === 0).length, approx: boxes.filter(b => b[2] === 1).length, estPaths, estAreas };
 }
