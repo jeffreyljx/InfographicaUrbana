@@ -108,8 +108,9 @@ function StationView({ d, st, year, onPick, share }: { d: MetroData; st: MetroSt
           {struct && (struct.mapped + struct.approx > 0 || struct.exits.length > 0) && (
             <p>Zoomed in, the map shows the station&apos;s structure and exits from OpenStreetMap (15 Oct 2026).{" "}
               {struct.mapped > 0 && struct.approx === 0 ? "Each line's box is drawn around its mapped platforms and track."
-                : struct.mapped > 0 ? "Boxes with a solid edge are drawn around mapped platforms; a dashed edge marks a box laid along the track at the length of the line's trains, where no platform is mapped."
-                : "No platforms are mapped here, so each line's box (dashed edge) is laid along its track at the length of its trains."}
+                : struct.mapped > 0 ? "Boxes with a solid edge are drawn around mapped platforms; a dashed edge marks an estimated box, laid along the track at the length of the line's trains and stretched to reach that line's exits, where no platform is mapped."
+                : "No platforms are mapped here, so each line's box (dashed edge) is estimated: laid along its track at the length of its trains, and stretched to reach that line's exits."}
+              {struct.estPaths > 0 ? " Dashed passages join exits that no mapped passage reaches to the station in a straight line." : ""}
               {struct.exits.length > 0 ? ` ${struct.exits.length} exit${struct.exits.length > 1 ? "s are" : " is"} mapped.` : " No exits are mapped yet."}</p>
           )}
           <p className="muted">{st.lat.toFixed(5)}, {st.lon.toFixed(5)}{st.wd ? <> · <a href={`https://www.wikidata.org/wiki/${st.wd}`} target="_blank" rel="noopener">Wikidata {st.wd}</a></> : null}</p>

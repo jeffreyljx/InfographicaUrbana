@@ -10,7 +10,8 @@ import type { MetroData } from "@/lib/metro";
  *
  * public/metro/structures/<system id>.json, coordinates in 1e-6 degrees:
  *   boxes: [station, line, approximate (0/1), ring]   areas: [station, line, ring]
- *   paths: [station, line, line string]                exits: [station, x, y, label, name]
+ *   paths: [station, line, line string, estimated?]    exits: [station, x, y, label, name]
+ * A path marked estimated (1) joins an exit that no mapped passage reaches to its station, in a straight line.
  * Halls and passages take the colour of the nearest line's box, as Baidu Maps draws them; exits are ink badges with
  * their letter, so they read against every line colour. */
 
@@ -23,7 +24,7 @@ export interface StructureFile {
   v: number;
   boxes: [number, number, number, Pt[]][];
   areas: [number, number, Pt[]][];
-  paths: [number, number, Pt[]][];
+  paths: ([number, number, Pt[]] | [number, number, Pt[], number])[];
   exits: [number, number, number, string, string][];
 }
 
@@ -57,9 +58,9 @@ function features(d: MetroData): FeatureCollection {
       const st = d.stations[i];
       out.push({ type: "Feature", geometry: { type: "Polygon", coordinates: [ring.map(pt)] }, properties: { k: "area", i, c: d.lines[l].colour, y: st.firstYear, x: st.closeYear } });
     }
-    for (const [i, l, line] of f.paths) {
+    for (const [i, l, line, a] of f.paths) {
       const st = d.stations[i];
-      out.push({ type: "Feature", geometry: { type: "LineString", coordinates: line.map(pt) }, properties: { k: "path", i, c: d.lines[l].colour, y: st.firstYear, x: st.closeYear } });
+      out.push({ type: "Feature", geometry: { type: "LineString", coordinates: line.map(pt) }, properties: { k: "path", i, a: a ? 1 : 0, c: d.lines[l].colour, y: st.firstYear, x: st.closeYear } });
     }
     for (const [i, x, y, r, n] of f.exits) {
       const st = d.stations[i];
@@ -72,7 +73,7 @@ function features(d: MetroData): FeatureCollection {
   return { type: "FeatureCollection", features: out };
 }
 
-const LAYERS = ["metro-st-area", "metro-st-area-line", "metro-st-path", "metro-st-box", "metro-st-box-line", "metro-st-box-approx", "metro-st-exit-dot", "metro-st-exit"];
+const LAYERS = ["metro-st-area", "metro-st-area-line", "metro-st-path", "metro-st-path-approx", "metro-st-box", "metro-st-box-line", "metro-st-box-approx", "metro-st-exit-dot", "metro-st-exit"];
 /** a rounded square, drawn as a signed-distance image so its colour can be set per layer */
 function badge(): { width: number; height: number; data: Uint8Array } {
   const n = 24, r = 6, data = new Uint8Array(n * n * 4);
@@ -103,10 +104,16 @@ export function addStructureLayers(map: MLMap, d: MetroData) {
     paint: { "line-color": ["get", "c"], "line-width": 0.8, "line-opacity": fadeIn(0.6) },
   }, below);
   map.addLayer({
-    id: "metro-st-path", type: "line", source: "metro-structures", minzoom: STRUCT_ZOOM + 0.8, filter: ["==", ["get", "k"], "path"],
+    id: "metro-st-path", type: "line", source: "metro-structures", minzoom: STRUCT_ZOOM + 0.8, filter: ["all", ["==", ["get", "k"], "path"], ["==", ["get", "a"], 0]],
     layout: { "line-cap": "round", "line-join": "round" },
     // about 6 m wide on the ground at every zoom
     paint: { "line-color": ["get", "c"], "line-width": ["interpolate", ["exponential", 2], ["zoom"], 14.8, 2, 19, 36], "line-opacity": 0.45 },
+  }, below);
+  // an estimated passage (an exit joined to its station in a straight line): thinner and dashed, like an approximate box
+  map.addLayer({
+    id: "metro-st-path-approx", type: "line", source: "metro-structures", minzoom: STRUCT_ZOOM + 0.8, filter: ["all", ["==", ["get", "k"], "path"], ["==", ["get", "a"], 1]],
+    layout: { "line-join": "round" },
+    paint: { "line-color": ["get", "c"], "line-width": ["interpolate", ["exponential", 2], ["zoom"], 14.8, 1, 19, 14], "line-opacity": 0.55, "line-dasharray": [1.2, 0.8] },
   }, below);
   map.addLayer({
     id: "metro-st-box", type: "fill", source: "metro-structures", minzoom: STRUCT_ZOOM, filter: ["==", ["get", "k"], "box"],
@@ -188,7 +195,8 @@ export function setStructureYear(map: MLMap, year: number) {
   const kind = (k: string): ExpressionSpecification => ["==", ["get", "k"], k];
   map.setFilter("metro-st-area", ["all", kind("area"), open]);
   map.setFilter("metro-st-area-line", ["all", kind("area"), open]);
-  map.setFilter("metro-st-path", ["all", kind("path"), open]);
+  map.setFilter("metro-st-path", ["all", kind("path"), ["==", ["get", "a"], 0], open]);
+  map.setFilter("metro-st-path-approx", ["all", kind("path"), ["==", ["get", "a"], 1], open]);
   map.setFilter("metro-st-box", ["all", kind("box"), open]);
   map.setFilter("metro-st-box-line", ["all", kind("box"), ["==", ["get", "a"], 0], open]);
   map.setFilter("metro-st-box-approx", ["all", kind("box"), ["==", ["get", "a"], 1], open]);
@@ -201,5 +209,6 @@ export function stationStructure(f: StructureFile | null, i: number) {
   if (!f) return null;
   const exits = f.exits.filter(e => e[0] === i).map(e => e[3]);
   const boxes = f.boxes.filter(b => b[0] === i);
-  return { exits, labelled: exits.filter(Boolean).sort((a, b) => a.localeCompare(b, "en", { numeric: true })), mapped: boxes.filter(b => b[2] === 0).length, approx: boxes.filter(b => b[2] === 1).length };
+  const estPaths = f.paths.filter(p => p[0] === i && p[3] === 1).length;
+  return { exits, labelled: exits.filter(Boolean).sort((a, b) => a.localeCompare(b, "en", { numeric: true })), mapped: boxes.filter(b => b[2] === 0).length, approx: boxes.filter(b => b[2] === 1).length, estPaths };
 }
