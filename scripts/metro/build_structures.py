@@ -21,7 +21,7 @@
 #          (areas and paths take the colour of the nearest line's box, as Baidu Maps draws them)
 #   exit   its entrances (railway=subway_entrance, railway=train_station_entrance, public_transport=entrance, and the
 #          entrance members of its stop area), labelled with the exit's letter or number where OpenStreetMap has one
-import csv, glob, json, math, os, re, sys, collections
+import csv, glob, json, math, os, re, sys, collections, unicodedata
 import numpy as np
 from shapely.geometry import LineString, MultiLineString, Point, Polygon, MultiPolygon, box as sbox
 from shapely.ops import unary_union, polygonize, nearest_points, linemerge
@@ -70,9 +70,12 @@ def num(x):
     return best
 
 _NAME_DROP = re.compile(r'(地铁站|地鐵站|捷運站|捷运站|轨道交通|站|駅|역|\bstation\b|\bmetro\b|\bsubway\b|\bunderground\b|\bu-bahn\b|'
-                        r'\bs-bahn\b|\bmrt\b|\blrt\b|\bstazione\b|\bestación\b|\bestacion\b|\bgare\b|\bbahnhof\b|\(.*?\)|（.*?）)', re.I)
+                        r'\bs-bahn\b|\bmrt\b|\blrt\b|\bstazione\b|\bestación\b|\bestacion\b|\bestação\b|\bestacao\b|\bestació\b|\bgare\b|\bbahnhof\b|'
+                        r'สถานี|محطة|станция|\bl[íi]nea\s*\d+\b|\bl\d{1,2}\b|\(.*?\)|（.*?）)', re.I)   # 'Pantitlán L1', 'Bellas Artes (Línea 2)'
 def norm_name(v):
-    v = _NAME_DROP.sub('', (v or '').lower()).strip()
+    v = unicodedata.normalize('NFKD', v or '')
+    v = ''.join(ch for ch in v if not unicodedata.combining(ch))   # 'Félix U. Gómez' matches 'Felix U. Gomez'
+    v = _NAME_DROP.sub('', v.lower()).strip()
     v = re.sub(r'^(?:di|de|del|della|des|du|do|da|of)\s+', '', v)   # stazione di X, gare de X
     return re.sub(r"[\s\-–—·・.,'’\"/]+", '', v)
 def same_name(t, names):
@@ -192,7 +195,8 @@ def rel_polygon(r):
 
 NOT_HALL = {'parking', 'garage', 'garages', 'retail', 'commercial', 'residential', 'apartments', 'hotel', 'office'}
 def neg(v):
-    return bool(v) and bool(re.match(r'^\s*-', v.split(';')[0]))
+    """every listed level below ground: a building spanning '-2;-1;0;1' (Gare Montparnasse) is not an underground hall"""
+    return bool(v) and all(re.match(r'^\s*-', x) for x in v.split(';'))
 def neg_any(v):
     """any listed level below ground: stairs from the street to a concourse are level 0;-1"""
     return bool(v) and any(x.strip().startswith('-') for x in v.split(';'))
@@ -258,7 +262,9 @@ def own_bld_kind(t):
     """a building of the station's own stop area with no station tag (Nanjing's 汉中门, building=yes, layer -1)"""
     if t.get('train') == 'yes' and not metro_mode(t): return False
     if busy(t) or t.get('building') in NOT_HALL or 'shop' in t: return False
-    return 'building' in t or t.get('location') == 'underground'
+    if 'building' in t or t.get('location') == 'underground': return True
+    # a concourse outline with no level at all, listed by the station's own stop area (Mexico City's Bellas Artes)
+    return t.get('indoor') in ('area', 'room', 'corridor') and not any(k in t for k in ('level', 'layer', 'tunnel'))
 
 UNDERPASS_RE = re.compile(r'زیرگذر|地下通道|地下街|underpass|unterführung|passage souterrain|sottopass', re.I)
 def ring_kinds(c, t=None):
@@ -308,6 +314,12 @@ def closed_exit(t):
     if t.get('railway') in ('construction', 'proposed') or t.get('building') == 'construction' or t.get('disused') == 'yes' or t.get('access') == 'no': return True
     if t.get('entrance') in ('emergency', 'service', 'no') or t.get('emergency') == 'yes' or t.get('exit') == 'emergency': return True   # Milano Centrale's emergency exits
     if (t.get('opening_date') or '') > '2026-10-15': return True
+    if not (t.get('ref') or t.get('local_ref') or t.get('name')):
+        # an unnamed gate deep inside the station (Saint-Lazare's gates into RER E at level -5) is a transfer, not an exit
+        lv = t.get('level') or t.get('layer') or ''
+        try:
+            if lv and max(float(x) for x in re.split(r'[;,]', lv)) <= -2: return True
+        except ValueError: pass
     return bool(CLOSED_RE.search(' '.join(t.get(k, '') for k in ('name', 'description', 'note'))))
 
 # ---------- stop areas: which OpenStreetMap objects belong to which station ----------
@@ -477,7 +489,7 @@ EXIT_RE = [
 REF_OK = re.compile(r'^[東西南北东]?[A-Za-z]{0,2}\d{0,2}[A-Za-z]?(?:（[東西南北东]）|\([NSEW]\))?$')
 BARE_LABEL = re.compile(r'^(?:[A-Z]{1,2}\d{0,2}[a-z]?|\d{1,2}[A-Za-z]?)$')
 RAILWAY_RE = re.compile(r'railway station|train station|railroad|火车站|高铁|客运站|鐵路|铁路', re.I)
-LIFT_RE = re.compile(r'电梯|電梯|elevator|lift|ascenseur', re.I)
+LIFT_RE = re.compile(r'电梯|電梯|elevator|lift|ascenseur|엘리베이터|에스컬레이터|エレベーター|エスカレーター', re.I)
 def _lab(m):
     """the code a label pattern caught, or '' when it caught a word instead ('Sortie de nuit' → de, 'Exit to Mall' → to)"""
     g = m.group(1) if m else ''
@@ -492,8 +504,8 @@ def exit_label(t, snames=()):
     """the exit's letter or number: its ref, else one in its name (出口A, Exit 3, Gate No. 4, 汉中门#2, さっぽろ駅 20, a bare F)"""
     for key in ('ref', 'local_ref'):
         ref = (t.get(key) or '').strip()
-        if not ref: continue
-        ref2 = re.sub(r'(番出入口|番出口|出入口|出口|口)$', '', ref)   # 'A3出口' is exit A3; a bare 出口 is no label
+        if not ref or LIFT_RE.search(ref): continue   # ref=엘리베이터 is the lift, not a code (Samgakji)
+        ref2 = re.sub(r'^(出入口|出口|入口)|(番出入口|番出口|出入口|出口|口)$', '', ref)   # 'A3出口' and '出入口6' are exits A3 and 6; a bare 出口 is no label
         if not ref2: continue
         if re.search(r'[A-Za-z0-9]', ref2): ref = ref2
         if len(ref) <= 4 and ' ' not in ref: return ref
@@ -536,7 +548,8 @@ for i, ids in entrance_members.items():
     for n in ids: claims[n].append(i)
 for n, cl in claims.items():
     o = nodes[n]; taken.add(n)
-    d, i = min((min(km((o['lon'], o['lat']), (q[1], q[2])) for q in index[j]), j) for j in cl)
+    own_cl = [j for j in cl if (j, n) in own_ent]   # a station whose own stop area lists the exit beats a nearer one
+    d, i = min((min(km((o['lon'], o['lat']), (q[1], q[2])) for q in index[j]), j) for j in (own_cl or cl))
     if d > 0.6: continue   # a stop area member far from every point of the station (Shijiazhuang's, 415-620 m east)
     if (i, n) not in own_ent and d > 0.2: continue   # from a group's other stop area (Porta Venezia's Passante doors, 381 m): only near ones
     exits[i].append((o['lon'], o['lat'], exit_label(o['tags'], (st['name'][i], st['en'][i])), o['tags'].get('name', ''), n))
@@ -736,6 +749,7 @@ def plat_local(g):
 # platforms: each to the (station, line) whose track it runs along
 plat_ids = [k for k, f in enumerate(feats) if f[0] == 'platform']
 plat_to = collections.defaultdict(list)       # (station, line) -> [feature index]
+plat_shared = collections.defaultdict(list)   # (station, line) -> platforms of another line on the same track
 unassigned = []
 for k in plat_ids:
     kind, g, t, oid = feats[k]
@@ -749,7 +763,7 @@ for k in plat_ids:
     if not pl: continue
     loc, gx = pl
     ad = axis_deg(gx)
-    best = None
+    best = None; cands = []
     for d, i in cand:
         for li, _ in st['lines'][i]:
             if tram_only(t) and li not in TRAM_LINE: continue
@@ -760,11 +774,22 @@ for k in plat_ids:
             tg = tangent_deg(tr, gx.centroid)
             da = angdiff(tg[0], ad) if tg else 0
             if da > ANGLE and gx.length > 30: continue
-            # near ties go to the line the platform runs along, not the first in the station's list
-            score = dist + 20 * d + 0.3 * da - (15 if owner == i else 0)
-            if best is None or score < best[0]: best = (score, i, li)
-    if best: plat_to[(best[1], best[2])].append(k)
+            # near ties go to the line the platform runs along, not the first in the station's list; the stop-area
+            # bonus only for the station's own stop area, not a group's (PATH's 14 St platforms are not the M's)
+            score = dist + 20 * d + 0.3 * da - (15 if member_own.get(oid) == i else 0)
+            cands.append((score, i, li, dist))
+            if best is None or score < best[0]: best = (score, i, li, dist)
+    if best:
+        plat_to[(best[1], best[2])].append(k)
+        # other lines of the same station on the same track (Oslo's trunk, the Metropolitan and the Circle) share the
+        # platform, but only where they have no platforms of their own (see below)
+        for sc_, i2, li2, d2 in cands:
+            if i2 == best[1] and li2 != best[2] and d2 <= best[3] + 5: plat_shared[(i2, li2)].append(k)
     elif owner is not None and member_own.get(oid) == owner: unassigned.append((k, owner, loc, gx, ad))
+n_shared = 0
+for key, ks in plat_shared.items():
+    if key not in plat_to: plat_to[key] = list(ks); n_shared += 1
+print(n_shared, 'lines share another line\'s platforms', flush=True)
 # a platform of the station's own stop area that lies further from the track than TRACK_M (split tracks, side
 # platforms wide apart: Chengdu's Taipingyuan line 5) still goes to the line it runs parallel to
 n_own = 0
@@ -859,6 +884,7 @@ def stop_centre(i, li, tr, loc, cx, cy):
     trains stop (Chengdu's Nijiaqiao line 8 stops 177 m from it)."""
     if tr is None: return None
     pts = []; up = False
+    tre = extend_track(tr, MAX_HALF_M)   # a stop just past the end of the line's geometry still counts (Macau's Union Hospital)
     for r in index[i]:
         if r[0] != li or not r[3].startswith('sa'): continue
         rel = rels.get(int(r[3][2:]))
@@ -871,7 +897,7 @@ def stop_centre(i, li, tr, loc, cx, cy):
             p = node_xy(ref)
             if p is None: continue
             q = loc.xy(p)
-            if math.hypot(q[0] - cx, q[1] - cy) > STOP_SHIFT_M or tr.distance(Point(q)) > 15: continue
+            if math.hypot(q[0] - cx, q[1] - cy) > STOP_SHIFT_M or tre.distance(Point(q)) > 15: continue
             pts.append(q); up = up or pos(nt.get('level')) or pos(nt.get('layer'))
     if not pts: return None
     return sum(p[0] for p in pts) / len(pts), sum(p[1] for p in pts) / len(pts), up
@@ -1033,7 +1059,12 @@ for si, sysrow in enumerate(S):
             if got is None: continue
             # lines that share a platform and a colour (New York's 1, 2 and 3) get one box
             col = (L[li][5] or '').lower()
-            if any(col and c2 == col and got[0].intersection(b2).area > 0.6 * min(got[0].area, b2.area) for c2, b2 in box_cols): continue
+            dup = next((j for j, (c2, b2) in enumerate(box_cols) if col and c2 == col and got[0].intersection(b2).area > 0.6 * min(got[0].area, b2.area)), None)
+            if dup is not None:
+                # a mapped box replaces an earlier approximate one of the same colour (Columbus Circle's C under the A's guess)
+                if got[1] or not box_approx[dup]: continue
+                box_cols[dup] = (col, got[0]); boxes_xy[dup] = got[0]; box_approx[dup] = 0
+                continue
             box_cols.append((col, got[0]))
             boxes_xy.append(got[0]); box_line.append(li); box_approx.append(got[1])
         # lines of different colours that share one track or platform (Rio's 1 and 2, the Metropolitan and the Circle)
@@ -1048,7 +1079,7 @@ for si, sysrow in enumerate(S):
                 elif gb: gb.add(a)
                 else: groups.append({a, b})
         for g in groups:
-            mem = sorted(g, key=lambda k: -boxes_xy[k].area)
+            mem = sorted(g, key=lambda k: (box_approx[k], -boxes_xy[k].area))   # the frame from a mapped box, not a guess
             mrr = boxes_xy[mem[0]].minimum_rotated_rectangle
             if mrr.geom_type != 'Polygon': continue
             q = list(mrr.exterior.coords); e1 = math.dist(q[0], q[1]); e2 = math.dist(q[1], q[2])
@@ -1083,6 +1114,12 @@ for si, sysrow in enumerate(S):
             if gx.is_empty: continue
             mine = member_station.get(oid) == i; own_ = member_own.get(oid) == i
             if DEBUG_ST == i: print('hall?', kind, oid, 'own', member_own.get(oid), 'mine', member_station.get(oid), round(gx.area), 'rail_own' if i in rail_own else '', {x: t.get(x) for x in ('building', 'train', 'name')}, flush=True)
+            # a railway's hall or platforms (Gare Montparnasse, Metro-North's platforms under Grand Central) are not the metro's
+            if t.get('train') == 'yes' and not metro_mode(t) and not (own_ and i not in rail_own): continue
+            # a stop area group's railway station (Gare Saint-Lazare, SNCF's) is not the metro's hall either
+            if kind == 'station' and mine and not own_ and (RAIL_OP_RE.search(' '.join(t.get(x, '') for x in ('operator', 'network'))) or gx.area > NEAR_AREA_M2): continue
+            # a shop, a room or a car-park level beside the boxes (Saint-Lazare's Sephora, 'Parking -3') is not a hall
+            if kind == 'indoor' and not own_ and ('shop' in t or 'parking' in t or t.get('indoor') == 'room' or t.get('amenity') in ('parking', 'bicycle_parking', 'cafe', 'restaurant', 'fast_food', 'bank', 'pharmacy', 'toilets')): continue
             # a station hall named after the station (Gangxia North's 岗厦北站, mapped underground but in no stop area)
             named = kind != 'indoor' and same_name(t, names_i) and t.get('train') != 'yes' and not weak_station(t)
             # another operator's building (Sants Estació's mainline hall, in RENFE's stop area) is not ours, whatever its name
@@ -1218,7 +1255,7 @@ for si, sysrow in enumerate(S):
         parts = sorted(body.geoms, key=lambda p: -p.area) if body.geom_type == 'MultiPolygon' else []
         linked, rest = parts[:1], parts[1:]
         while rest:
-            d, p, q = min((p.distance(q), p, q) for p in rest for q in linked)
+            d, p, q = min(((p.distance(q), p, q) for p in rest for q in linked), key=lambda t: t[0])   # ties must not compare polygons
             if d > LINK_MAX_M: break
             a_, b_ = nearest_points(p, q)
             mid_ = Point((a_.x + b_.x) / 2, (a_.y + b_.y) / 2)
