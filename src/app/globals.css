@@ -109,8 +109,11 @@ body .maplibregl-ctrl-scale { --halo: rgba(244,236,233,.9); --ink: linear-gradie
 .btn.on { border-color: var(--accent-2); }
 .btn.primary { background: var(--accent); color: var(--on-accent); border-color: transparent; font-weight: 600; }
 .btn.primary:hover { filter: brightness(1.06); text-decoration: none; }
-.btn.basemap, .btn.skyline, .btn.towers { padding: 0 12px; }
+.btn.basemap, .btn.skyline, .btn.towers, .btn.footprint { padding: 0 12px; }
 .btn.skyline.on { background: rgba(233,168,37,.22); }
+.btn.footprint.on { background: rgba(142,107,179,.22); }
+.fp-label { display: none; }
+@media (min-width: 1600px) { .fp-label { display: inline; } .topbar { width: 1070px; } }  /* "Metro footprint" spelled out; the blob alone below that, with its tooltip */
 .sk-long { display: none; }
 @media (min-width: 1300px) { .sk-long { display: inline; } .sk-short { display: none; } }  /* "Display skyline extent" where there is room */
 .tw-label { display: none; }
@@ -130,6 +133,7 @@ body .maplibregl-ctrl-scale { --halo: rgba(244,236,233,.9); --ink: linear-gradie
 .filters input[type=number], .filters select { width: 100%; height: 36px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); padding: 0 10px; font-size: 14px; }
 .filters .row { display: flex; gap: 8px; }
 .check { display: flex; gap: 8px; align-items: flex-start; margin-top: 14px; font-size: 13px; line-height: 1.35; }
+.mobile-only { display: none; }  /* a stand-in for a top-bar control that the narrow bar has no room for */
 .check input { margin-top: 3px; accent-color: var(--accent-2); }
 .link { background: none; border: 0; color: var(--accent-2); cursor: pointer; padding: 0; margin-top: 14px; font-size: 13px; }
 .x { position: absolute; top: 8px; right: 8px; width: 32px; height: 32px; border-radius: 8px; border: 0; background: rgba(43,29,23,.45); color: #FFF8F3; font-size: 20px; line-height: 1; cursor: pointer; z-index: 2; }
@@ -142,6 +146,7 @@ body .maplibregl-ctrl-scale { --halo: rgba(244,236,233,.9); --ink: linear-gradie
 .legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 .legend i.hollow { border: 2px solid var(--fg-2); background: transparent; width: 8px; height: 8px; }
 .legend i.sky { border-radius: 2px; background: rgba(233,168,37,.5); border: 1.5px solid #8A5A00; width: 12px; }
+.legend i.fp { border-radius: 2px; background: rgba(142,107,179,.4); border: 1.5px solid #5E3F86; width: 12px; }
 
 /* ---- skyline extent ---- */
 .map-hint { position: absolute; top: 110px; left: 18px; z-index: 14; max-width: min(520px, calc(100vw - 36px)); background: var(--glass); border: 1px solid var(--line); border-radius: 10px; padding: 7px 12px; font-size: 12.5px; line-height: 1.4; color: var(--fg-2); backdrop-filter: blur(8px); pointer-events: none; }
@@ -247,6 +252,8 @@ td.gdp { white-space: nowrap; }
   .nav .brand { margin-right: 0; }
   .topbar { left: 12px; width: calc(100vw - 24px); }
   .btn.basemap .bm-label, .btn.skyline .sk-label { display: none; }
+  .btn.footprint { display: none; }  /* its checkbox is in the Filters panel instead */
+  .mobile-only { display: flex; }
   .topbar .btn .count { display: none; }  /* leaves the search box its width beside the three map buttons */
   .map-hint { left: 12px; max-width: calc(100vw - 24px); }
   .filters { left: 12px; width: calc(100vw - 24px); top: 110px; }

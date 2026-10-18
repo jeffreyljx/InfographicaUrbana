@@ -8,6 +8,7 @@ import { loadIndex, loadDetails, resolveRow, norm, detailFor } from "@/lib/clien
 import { createMap, addTowerLayers, rowsToGeoJSON, setTowerData, setSelected, setBasemap, setBoundary, setCapsuleYear, setCapsuleLost, setTowersVisible, type Basemap } from "./towerMap";
 import { boundaryFor } from "@/lib/boundary";
 import { setSkyline } from "./skylineLayer";
+import { setFootprint } from "./footprintLayer";
 import { addTowerIcons } from "./towerIcons";
 import Panel from "./Panel";
 import Chooser from "./Chooser";
@@ -57,9 +58,13 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
   const [mapReady, setMapReady] = useState(false);
   const [basemap, setBasemapState] = useState<Basemap>("map");
   const [skyline, setSkylineOn] = useState(false);
+  /** "Display metro footprint": the built-up land around every city (remembered per browser; ?footprint=1 turns it on). */
+  const [footprint, setFootprintOn] = useState(false);
   /** "Hide towers": every tower marker off, leaving the basemap and the skyline extents (?towers=0 opens the map this way). */
   const [towersHidden, setTowersHidden] = useState(false);
   const [zoomedOut, setZoomedOut] = useState(true);
+  /** Below zoom 5 the footprints are small blobs: a hint says to zoom in. */
+  const [zoomedFar, setZoomedFar] = useState(true);
   /** Time capsule: null while it is off, otherwise the chosen year (only towers standing then are shown). */
   const [asOf, setAsOf] = useState<number | null>(null);
   const asOfRef = useRef(asOf);
@@ -174,6 +179,17 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
     setSkylineOn(on);
     try { localStorage.setItem("scrapermap.skyline", on ? "1" : "0"); } catch { /* storage unavailable */ }
   }, [skyline]);
+  // ---- metro footprint: the built-up land around every city, from ESA WorldCover (remembered per browser; ?footprint=1 turns it on) ----
+  useEffect(() => {
+    const q = new URLSearchParams(location.search).get("footprint");
+    if (q === "1" || q === "0") { setFootprintOn(q === "1"); return; }
+    try { if (localStorage.getItem("scrapermap.footprint") === "1") setFootprintOn(true); } catch { /* storage unavailable */ }
+  }, []);
+  const toggleFootprint = useCallback(() => {
+    const on = !footprint;
+    setFootprintOn(on);
+    try { localStorage.setItem("scrapermap.footprint", on ? "1" : "0"); } catch { /* storage unavailable */ }
+  }, [footprint]);
   // ---- hide towers: per visit, not remembered, so the map never opens empty by surprise ----
   useEffect(() => {
     if (new URLSearchParams(location.search).get("towers") === "0") setTowersHidden(true);
@@ -185,7 +201,7 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapReady) return;
-    const check = () => setZoomedOut(map.getZoom() < 7);
+    const check = () => { setZoomedOut(map.getZoom() < 7); setZoomedFar(map.getZoom() < 5); };
     check();
     map.on("zoomend", check);
     return () => { map.off("zoomend", check); };
@@ -236,6 +252,12 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
     if (!map || !mapReady || !layersAdded.current) return;
     setSkyline(map, skyline, basemap, asOf);
   }, [mapReady, idx, skyline, basemap, asOf]);
+  // the metro footprints go in under the skyline extents (and under the tower layers, so they wait for those too)
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapReady || !layersAdded.current) return;
+    setFootprint(map, footprint, basemap);
+  }, [mapReady, idx, footprint, basemap]);
 
   // time capsule: ring the towers completed in the chosen year, and leave a ghost ring where one came down
   useEffect(() => {
@@ -300,6 +322,13 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
           </svg>
           <span className="sk-label sk-long">Display skyline extent</span><span className="sk-label sk-short">Skyline extent</span>
         </button>
+        <button className={"btn footprint" + (footprint ? " on" : "")} onClick={toggleFootprint} aria-pressed={footprint}
+          title={footprint ? "Hide the metro footprints" : "Display metro footprint: the built-up land around each city"}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" aria-hidden="true">
+            <path d="M4.5 15.5c-1.6-3.2.2-6.4 3.3-7.1 1.6-.4 2.2-2.4 4-3 3.5-1.2 7.5 1.4 7.7 5 .1 2.2-1.6 3.2-1.9 5.2-.3 2.5-2.6 4.4-5.3 3.9-2-.4-3.1.5-5 .1-1.5-.3-2.2-2.6-2.8-4.1Z" />
+          </svg>
+          <span className="fp-label">Metro footprint</span>
+        </button>
         <button className={"btn towers" + (towersHidden ? " on" : "")} onClick={toggleTowers} aria-pressed={towersHidden}
           title={towersHidden ? "Show the towers again" : "Hide the towers: just the map and the skyline extents"}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -314,10 +343,13 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
           ? "Skyline extents are drawn wherever 5 or more towers stand close together. Zoom in on a city to see them."
           : `Skyline extents in ${asOf}: each city's core, trimmed to the towers built by then. Zoom in on a city to see it.`}</div>
       )}
-      {filtersOpen && idx && (
-        <Filters idx={idx} state={filters} onChange={setFilters} onClose={() => setFiltersOpen(false)} shown={filteredRows.length} onFlyTo={flyToPlace} capsule={capsuleOn} />
+      {footprint && zoomedFar && !(skyline && zoomedOut) && (
+        <div className="map-hint">Metro footprints show the built-up land around every city on the map. Zoom in on a city to see its shape.</div>
       )}
-      <Legend skyline={skyline} capsuleYear={asOf} lostThisYear={capsuleLost.length > 0} towers={!towersHidden} />
+      {filtersOpen && idx && (
+        <Filters idx={idx} state={filters} onChange={setFilters} onClose={() => setFiltersOpen(false)} shown={filteredRows.length} onFlyTo={flyToPlace} capsule={capsuleOn} footprint={footprint} onFootprint={toggleFootprint} />
+      )}
+      <Legend skyline={skyline} footprint={footprint} capsuleYear={asOf} lostThisYear={capsuleLost.length > 0} towers={!towersHidden} />
       {idx && range && asOf === null && (
         <button className={"btn capsule-open" + (selected ? " with-panel" : "")} onClick={toggleCapsule} title={`Time capsule: show only the towers standing in a chosen year, from ${range.first} to today`}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" aria-hidden="true">

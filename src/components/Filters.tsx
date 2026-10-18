@@ -68,9 +68,12 @@ interface Props {
   onFlyTo: (bbox: [number, number, number, number]) => void;
   /** The time capsule is on: it shows completed towers only, so the status chips are paused. */
   capsule?: boolean;
+  /** The metro footprints are shown. On narrow screens the top bar has no room for their button, so this panel carries a checkbox. */
+  footprint?: boolean;
+  onFootprint?: () => void;
 }
 
-export default function Filters({ idx, state, onChange, onClose, shown, onFlyTo, capsule = false }: Props) {
+export default function Filters({ idx, state, onChange, onClose, shown, onFlyTo, capsule = false, footprint = false, onFootprint }: Props) {
   const set = (patch: Partial<FilterState>) => onChange({ ...state, ...patch });
   const toggleStatus = (i: number) => {
     const s = new Set(state.statuses); if (s.has(i)) s.delete(i); else s.add(i);
@@ -131,6 +134,12 @@ export default function Filters({ idx, state, onChange, onClose, shown, onFlyTo,
         <input type="checkbox" checked={state.showApproximate} onChange={e => set({ showApproximate: e.target.checked })} />
         Show approximately-located towers <span className="muted">(78, street level only)</span>
       </label>
+      {onFootprint && (
+        <label className="check mobile-only">
+          <input type="checkbox" checked={footprint} onChange={onFootprint} />
+          Metro footprint <span className="muted">(the built-up land around each city)</span>
+        </label>
+      )}
 
       <button className="link" onClick={() => onChange({ ...DEFAULT_FILTERS })}>Reset</button>
     </aside>
