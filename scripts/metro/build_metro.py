@@ -7,7 +7,7 @@
 # is cut into pieces by opening year: every track vertex takes the date of the nearest station-to-station
 # segment of that line (metro_segments.csv), so the map can draw a line growing section by section.
 # Track nearer an undated segment, or far from every segment, takes the line's own opening year.
-import csv, json, math, sys, collections, datetime
+import csv, json, math, os, sys, collections, datetime
 import numpy as np
 from shapely.geometry import LineString, MultiLineString
 from shapely.ops import linemerge, nearest_points
@@ -356,6 +356,10 @@ for t in stages:
 geom = [[i, g, r] for i, l in enumerate(L) for g, r in l.pop()]
 data = {'v': 1, 'built': datetime.date.today().isoformat(), 'systems': S, 'lines': L, 'geom': geom,
         'stations': stations_out, 'stages': [STG.get(i, []) for i in range(len(L))]}
+# shared track drawn once: the lines on each piece of corridor (scripts/metro/build_bundles.py)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_bundles import add_bundles
+add_bundles(data)
 txt = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
 open(OUT, 'w', encoding='utf8').write(txt)
 # optional: which database rows (line, lon, lat, OpenStreetMap stop area) each packed station came from, for
