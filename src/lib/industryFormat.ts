@@ -1,4 +1,4 @@
-/** Number formats for the Industry and Exports page, kept apart from its data so the client tables load no JSON. */
+/** Number formats for IndustryMap, kept apart from its data so the client tables and the map load no JSON. */
 
 /** US$ billions as $672bn, $4.5bn or $1.40tn. */
 export function money(v: number | null): string {

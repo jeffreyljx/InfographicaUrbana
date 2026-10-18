@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { SortTh, sortBy, type SortDir, type SortState } from "@/components/SortTh";
 import { money, moneyK, site } from "@/lib/industryFormat";
 
-/** The Industry and Exports page's full tables, with every row's sources. Numeric columns sort most-first, then
+/** The full tables on IndustryMap's two pages of figures, with every row's sources. Numeric columns sort most-first, then
  *  least-first, like the site's other tables; the sort stays on the page (there are several tables, so not in the URL). */
 
 export interface TradeTableRow { place: string; slug: string | null; country: string; year: string; ex: number | null; im: number | null; total: number | null; how: string; caveat: string; note: string; source: string[] }
@@ -92,6 +92,64 @@ export function MfgTable({ rows }: { rows: MfgTableRow[] }) {
           <td className="num">{r.jobs == null ? "–" : r.jobs.toLocaleString("en-US")}</td>
           <td className="num">{r.perJob == null ? "–" : moneyK(r.perJob)}</td>
           <td className="how">{r.measure}. {r.unit}</td><td className="note">{r.note}</td><td className="src"><Sources urls={r.source} /></td>
+        </tr>
+      ))}</tbody>
+    </table></div>
+  );
+}
+
+/* ---- by country: the sums of the places above ---- */
+
+export interface CountryTradeTableRow { country: string; mapHref: string; n: number; parts: string; years: string; ex: number | null; im: number | null; total: number | null; note: string }
+export interface CountryMfgTableRow { country: string; mapHref: string; n: number; parts: string; years: string; va: number; upper: number; jobs: number | null; perJob: number | null; jobPlaces: number; note: string }
+
+const Country = ({ r }: { r: { country: string; mapHref: string } }) =>
+  <a className="place" href={r.mapHref} title={`${r.country} on the IndustryMap map`}>{r.country}</a>;
+
+export function CountryTradeTable({ rows }: { rows: CountryTradeTableRow[] }) {
+  const sort = useLocalSort<"total" | "ex" | "im">("total");
+  const rank = useMemo(() => rankOf(rows, r => r.total ?? r.ex), [rows]);
+  const shown = useMemo(() => sortBy(rows, r => sort.key === "total" ? r.total ?? r.ex : r[sort.key], sort.dir, (a, b) => (rank.get(a) ?? 0) - (rank.get(b) ?? 0)), [rows, sort.key, sort.dir, rank]);
+  return (
+    <div className="tablewrap"><table className="itable">
+      <thead><tr>
+        <th className="num">#</th><th>Country</th><th className="num">Places</th><th className="num">Years</th>
+        <SortTh k="ex" label="Exports $bn" sort={sort} num />
+        <SortTh k="im" label="Imports $bn" sort={sort} num />
+        <SortTh k="total" label="Total $bn" sort={sort} num />
+        <th>Places added up</th><th>Note</th>
+      </tr></thead>
+      <tbody>{shown.map(r => (
+        <tr key={r.country}>
+          <td className="num muted">{rank.get(r)}</td><td><Country r={r} /></td><td className="num">{r.n}</td><td className="num">{r.years}</td>
+          <td className="num">{n1(r.ex)}</td><td className="num">{n1(r.im)}</td><td className="num"><b>{n1(r.total)}</b></td>
+          <td className="note">{r.parts}</td><td className="note">{r.note}</td>
+        </tr>
+      ))}</tbody>
+    </table></div>
+  );
+}
+
+export function CountryMfgTable({ rows }: { rows: CountryMfgTableRow[] }) {
+  const sort = useLocalSort<"va" | "jobs" | "perJob">("va");
+  const rank = useMemo(() => rankOf(rows, r => r.va), [rows]);
+  const shown = useMemo(() => sortBy(rows, r => r[sort.key], sort.dir, (a, b) => (rank.get(a) ?? 0) - (rank.get(b) ?? 0)), [rows, sort.key, sort.dir, rank]);
+  return (
+    <div className="tablewrap"><table className="itable">
+      <thead><tr>
+        <th className="num">#</th><th>Country</th><th className="num">Places</th><th className="num">Years</th>
+        <SortTh k="va" label="Value added" sort={sort} num title="Manufacturing value added, US$: the sum of the places listed" />
+        <SortTh k="jobs" label="Jobs" sort={sort} num title="Manufacturing jobs, in the places that publish them" />
+        <SortTh k="perJob" label="Per job" sort={sort} num title="Value added per manufacturing job, US$, in the places that publish jobs" />
+        <th>Places added up</th><th>Note</th>
+      </tr></thead>
+      <tbody>{shown.map(r => (
+        <tr key={r.country}>
+          <td className="num muted">{rank.get(r)}</td><td><Country r={r} /></td><td className="num">{r.n}</td><td className="num">{r.years}</td>
+          <td className="num"><b>{money(r.va)}</b>{r.upper > 0 && <span className="ub" title="Part of the sum is upper bounds: secondary-industry value added, which includes construction"><br />{money(r.upper)} upper bounds</span>}</td>
+          <td className="num">{r.jobs == null ? "–" : r.jobs.toLocaleString("en-US")}{r.jobs != null && r.jobPlaces < r.n && <span className="ub"><br />{r.jobPlaces} of {r.n} places</span>}</td>
+          <td className="num">{r.perJob == null ? "–" : moneyK(r.perJob)}</td>
+          <td className="note">{r.parts}</td><td className="note">{r.note}</td>
         </tr>
       ))}</tbody>
     </table></div>

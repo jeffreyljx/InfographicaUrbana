@@ -1,4 +1,4 @@
-/** Horizontal bar chart for the Industry and Exports page, drawn on the server: one row per place, a bar made of one or
+/** Horizontal bar chart for IndustryMap's pages of figures, drawn on the server: one row per place, a bar made of one or
  *  more segments with its value just past its end, a round scale with gridlines, and the full figures in each row's tooltip.
  *  A bar longer than the scale (Cork's output per worker) is cut with a break mark. */
 
@@ -6,7 +6,7 @@ export interface Bar {
   label: string;
   href?: string | null;
   tag?: string;                       // small line under the label: a caveat, or a year other than the chart's
-  segs: { v: number; cls: string }[];
+  segs: { v: number; cls: string; hollow?: boolean }[];   // a hollow segment: an upper bound within the bar
   value: string;
   title: string;                      // tooltip
   hollow?: boolean;                   // an upper bound, drawn as an outline
@@ -32,7 +32,7 @@ export default function IndustryBars({ rows, top, step, tick, label }: {
                 {r.segs.map((s, k) => {
                   const v = Math.max(0, Math.min(s.v, top - used));
                   used += v;
-                  return <i key={k} className={s.cls + (r.hollow ? " hollow" : "")} style={{ width: `${(v / top) * 100}%` }} />;
+                  return <i key={k} className={s.cls + (r.hollow || s.hollow ? " hollow" : "")} style={{ width: `${(v / top) * 100}%` }} />;
                 })}
                 <span className="ib-val">{r.value}</span>
               </span>

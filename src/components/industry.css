@@ -1,5 +1,5 @@
-/* Industry and Exports page (src/app/industry/page.tsx): bar charts drawn on the server, the full tables in
-   collapsible sections, and the method notes. Bars use the site's warm palette; place names keep the site's blue. */
+/* IndustryMap's pages of figures (src/app/industry/trade/ and output/): bar charts drawn on the server, the full tables in
+   collapsible sections, and the method notes; then the map's controls, legend and panel. Bars use the site's warm palette; place names keep the site's blue. */
 .c-ex { --c: #0B5E57; }     /* exports: deep teal */
 .c-im { --c: #C07A2C; }     /* imports: ochre */
 .c-tot { --c: #7A5C4F; }    /* a total with no split published */
@@ -75,4 +75,67 @@
   .ib-lab { font-size: 12.5px; }
   .ib-val { font-size: 12px; }
   .ib-ticks span:nth-child(even) { display: none; }   /* every other tick, so the labels don't collide */
+}
+
+/* ---- the IndustryMap map (src/app/industry/page.tsx, IndustryApp.tsx) ---- */
+.ind-top { position: absolute; top: 60px; left: 18px; z-index: 15; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; max-width: calc(100vw - 36px); pointer-events: none; }
+.ind-controls { display: flex; flex-wrap: wrap; gap: 8px; pointer-events: auto; }
+.seg { display: inline-flex; height: 42px; padding: 3px; gap: 2px; border-radius: 10px; border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(8px); }
+.seg button { border: 0; border-radius: 7px; background: transparent; color: var(--fg-2); padding: 0 12px; font-size: 14px; font-weight: 500; cursor: pointer; white-space: nowrap; }
+.seg button:hover { color: var(--fg); background: var(--bg-3); }
+.seg button.on { background: var(--accent-2); color: var(--on-accent); font-weight: 600; }
+.seg button:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 1px; }
+.ind-app .map-hint.ind-hint { position: static; max-width: min(560px, calc(100vw - 36px)); }
+
+/* legend: reference circles for the current zoom */
+.ind-legend { position: absolute; left: 60px; bottom: 18px; z-index: 10; background: rgba(244,236,233,.9); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px 9px; font-size: 12px; color: var(--fg-2); backdrop-filter: blur(6px); pointer-events: none; }
+.ind-legend svg { display: block; margin: 6px 0 2px; overflow: visible; }
+.ind-legend svg text { font-family: var(--font); }
+.il-title { font-weight: 600; color: var(--fg); font-size: 12.5px; }
+.il-key { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
+.il-key i { width: 11px; height: 11px; border-radius: 50%; border: 2px solid; flex: none; box-sizing: border-box; }
+.il-key i.hollow { background: transparent; }
+.il-key i.pale { opacity: .45; border-width: 1.5px; }
+
+/* the panel: a band in the figure's colour with the kind of place on it */
+.ind-panel .x { background: rgba(43,29,23,.4); }
+.ind-head { height: 54px; display: flex; align-items: flex-end; padding: 0 16px 10px; }
+.ind-kind { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #FFF8F3; background: rgba(43,29,23,.45); padding: 3px 9px; border-radius: 999px; }
+.ind-panel h1 { margin-bottom: 4px; }
+.ind-facts div.wide { grid-column: 1 / -1; }
+.ind-facts dd { font-size: 15px; line-height: 1.35; font-variant-numeric: lining-nums tabular-nums; }
+.ind-facts dd small { font-size: 11.5px; }
+.ind-pnote { margin: 12px 0 0; padding: 7px 10px; border-radius: 8px; background: var(--bg-3); font-size: 13px; line-height: 1.4; color: var(--fg-2); }
+.ind-pnote .pill { background: var(--bg-2); }
+.ind-how, .ind-psrc { margin: 12px 0 0; font-size: 13px; line-height: 1.45; color: var(--fg-2); }
+.ind-psrc { font-size: 12px; color: var(--fg-3); }
+.ind-h { margin: 20px 0 6px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--fg-3); }
+.ind-also { display: flex; align-items: center; gap: 6px; width: 100%; margin: 14px 0 0; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--fg-2); font-size: 13.5px; cursor: pointer; text-align: left; }
+.ind-also b { color: var(--fg); }
+.ind-also span { margin-left: auto; font-size: 16px; }
+.ind-also:hover { border-color: var(--fg-3); color: var(--fg); }
+.ind-panel .actions { flex-wrap: wrap; }
+.ind-panel .actions .btn { flex: 1 1 auto; font-size: 13.5px; }
+.ind-parts { list-style: none; margin: 0; padding: 0; font-size: 13px; }
+.ind-parts li { display: flex; align-items: baseline; gap: 10px; padding: 5px 0; border-bottom: 1px solid var(--line); }
+.ind-parts li:last-child { border-bottom: 0; }
+.ind-parts .link { margin: 0; text-align: left; font-size: 13px; color: var(--place); font-weight: 500; }
+.ind-parts .link:hover { text-decoration: underline; }
+.ip-v { margin-left: auto; white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; color: var(--fg); }
+.ip-v small { color: var(--fg-3); font-size: 11px; }
+
+/* hover label */
+.ind-tip .maplibregl-popup-content { background: var(--bg-2); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); padding: 6px 10px; font-size: 12.5px; line-height: 1.35; pointer-events: none; }
+.ind-tip .maplibregl-popup-tip { display: none; }
+.ind-tip { pointer-events: none; }
+
+@media (max-width: 720px) {
+  .ind-top { left: 12px; max-width: calc(100vw - 24px); }
+  .ind-controls { gap: 6px; }
+  .seg { height: 38px; }
+  .seg button { padding: 0 9px; font-size: 13px; }
+  .ind-app .btn.basemap { height: 38px; }
+  .ind-app .map-hint.ind-hint { font-size: 12px; }
+  .ind-legend { left: 52px; bottom: 12px; padding: 6px 10px; }
+  .ind-legend.under-panel { display: none; }
 }
