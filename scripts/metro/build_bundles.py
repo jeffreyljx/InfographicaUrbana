@@ -11,13 +11,14 @@
 # corridor, heading the same way, for at least MIN_RUN metres, rides that corridor; the rest of the line becomes new
 # corridor. Where a line leaves or joins a corridor its own track is eased onto the corridor over BLEND metres, so a
 # branch converges smoothly instead of jumping across. Each corridor is then cut wherever the set of lines on it, or
-# the year one of them opened there, changes.
+# the year one of them opened there, changes, and the pieces are drawn in directions that run on from one to the next,
+# so each line's stripe stays on the same side of a bundle.
 #
 # Output, metro.json "bundles": [[polyline (1e-5), [line, year, line, year, ...]], ...]: one entry per piece of
 # corridor, with every line on it and the year that line's stretch there opened. The lines are in stripe order: lines
 # of one colour together (they are drawn as one stripe), colours in a fixed order for the city, so a bundle keeps its
 # stripes in the same order from piece to piece.
-import json, math, sys, collections
+import json, math, sys, collections, heapq
 import numpy as np
 import shapely
 from shapely import STRtree
@@ -34,6 +35,9 @@ BLEND = 160.0     # metres over which a line leaving or joining a corridor is ea
 SIMPLIFY = 3.0    # metres
 MAX_MEMBERS = 8   # lines in one bundle that the map can draw (the most anywhere is well below this)
 MIN_PIECE = 6     # points (about 70 m): a shorter piece whose lines differ from both its neighbours takes theirs
+STUB = 60.0       # metres: a shorter piece lying along other pieces with the same lines is dropped
+STUB_NEAR = 10.0  #   (within this many metres of them)
+JOIN = 3.0        # metres: piece ends this close meet
 
 
 def decode(s):
@@ -92,10 +96,45 @@ def tangents(P):
     return T / n[:, None]
 
 
-def smooth_fall(t):
-    # 1 at the junction, 0 at BLEND away, with no kink at either end
-    t = np.clip(t, 0, 1)
-    return (1 - t) ** 2 * (1 + 2 * t)
+def hermite(p0, t0, p1, t1):
+    """Points every STEP metres on the cubic from p0, heading t0, to p1, heading t1 (unit vectors): a curve with no
+    kink at either end."""
+    c = float(np.hypot(*(p1 - p0)))
+    k = max(2, int(math.ceil(c / STEP)))
+    u = np.linspace(0, 1, k + 1)[:, None]
+    return ((2 * u ** 3 - 3 * u ** 2 + 1) * p0 + (u ** 3 - 2 * u ** 2 + u) * c * t0
+            + (-2 * u ** 3 + 3 * u ** 2) * p1 + (u ** 3 - u ** 2) * c * t1)
+
+
+def ease(Q, Y, e0, e1):
+    """A line's own track Q (with years Y) that comes off a corridor at e0 and/or goes onto one at e1, each (point,
+    heading of the line there): the track within BLEND of each junction is shifted, by an amount that fades smoothly to
+    nothing, so that it starts at the junction heading along the corridor. The track keeps its own curves, and a branch
+    converges onto the corridor instead of turning a corner there."""
+    s = np.concatenate([[0.0], np.cumsum(np.hypot(*np.diff(Q, axis=0).T))])
+    L = s[-1]
+    if e0 is not None and e1 is not None and L <= 4 * STEP:
+        H = hermite(e0[0], e0[1], e1[0], e1[1])
+        return H, np.full(len(H), Y[len(Y) // 2])
+    Q = Q.copy()
+    for e, along in ((e0, s), (e1, L - s)):
+        if e is None:
+            continue
+        R = min(BLEND, L if (e0 is None or e1 is None) else L / 2)
+        if R <= 0:
+            continue
+        k = 0 if e is e0 else len(Q) - 1
+        j = int(np.argmin(np.abs(along - min(2 * STEP, R))))
+        own = (Q[j] - Q[k]) * (1 if e is e0 else -1)
+        n = float(np.hypot(*own))
+        own = own / n if n else e[1]
+        # the shift at the junction, and how fast it changes there, so the shifted track heads along the corridor
+        D0 = e[0] - Q[k]
+        dD = (e[1] - own) * (1 if e is e0 else -1)
+        u = np.clip(along / R, 0, 1)[:, None]
+        w0, w1 = 2 * u ** 3 - 3 * u ** 2 + 1, (u ** 3 - 2 * u ** 2 + u) * R
+        Q = Q + np.where(u < 1, w0 * D0 + w1 * dD, 0)
+    return Q, Y
 
 
 def runs_of(c, idx):
@@ -219,15 +258,20 @@ class City:
                     idx[a:b] = np.round(i0 + (i1 - i0) * np.arange(1, b - a + 1) / (b - a + 1))
         rs = runs_of(c, idx)
         m = np.stack([c, idx], 1)
+
+        def junction(k):
+            # where point k of the line rides its corridor, and the line's heading along the corridor there
+            cc, ci = int(m[k, 0]), int(m[k, 1])
+            Tc = self.corr[cc]['T'][ci]
+            return self.corr[cc]['P'][ci], Tc if np.dot(T[k], Tc) >= 0 else -Tc
+
         for j, (a, b, v) in enumerate(rs):
             # a line that passes straight from one corridor onto another: join the two where they don't meet
             if v >= 0 and j > 0 and rs[j - 1][2] >= 0:
-                J1, J2 = self.corr[int(m[a - 1, 0])]['P'][int(m[a - 1, 1])], self.corr[v]['P'][int(m[a, 1])]
-                gap = float(np.hypot(*(J2 - J1)))
-                if gap > 1.5 * STEP:
-                    k = int(math.ceil(gap / STEP))
-                    Q = J1 + (J2 - J1) * (np.arange(k + 1) / k)[:, None]
-                    self.corr.append({'P': Q, 'T': tangents(Q), 'use': [(line, 0, k, np.full(k + 1, int(yrs[a])))]})
+                (J1, t1), (J2, t2) = junction(a - 1), junction(a)
+                if float(np.hypot(*(J2 - J1))) > 1.5 * STEP:
+                    Q = hermite(J1, t1, J2, t2)
+                    self.corr.append({'P': Q, 'T': tangents(Q), 'use': [(line, 0, len(Q) - 1, np.full(len(Q), int(yrs[a])))]})
             if v >= 0:
                 c = self.corr[v]
                 idx = m[a:b, 1].astype(int)
@@ -244,34 +288,72 @@ class City:
                 cy[:] = sy[pick]
                 c['use'].append((line, lo, hi, cy))
             else:
-                Q = P[a:b].copy()
-                Y = yrs[a:b].copy()
                 # ease onto the corridor at either end where the line comes off or goes onto one
-                for end in (0, 1):
-                    nb = rs[j - 1] if end == 0 and j > 0 else rs[j + 1] if end == 1 and j + 1 < len(rs) else None
-                    if nb is None or nb[2] < 0:
-                        continue
-                    k_nb = nb[1] - 1 if end == 0 else nb[0]
-                    cc, ci = int(m[k_nb, 0]), int(m[k_nb, 1])
-                    J = self.corr[cc]['P'][ci]
-                    if end == 0:
-                        Q = np.vstack([J, Q]); Y = np.concatenate([[Y[0]], Y])
-                        s = np.concatenate([[0.0], np.cumsum(np.hypot(*np.diff(Q, axis=0).T))])
-                        delta = J - P[a]
-                    else:
-                        Q = np.vstack([Q, J]); Y = np.concatenate([Y, [Y[-1]]])
-                        s = np.concatenate([[0.0], np.cumsum(np.hypot(*np.diff(Q[::-1], axis=0).T))])[::-1]
-                        delta = J - P[b - 1]
-                    w = smooth_fall(s / BLEND)
-                    if end == 0:
-                        w[0] = 0  # the junction point itself is already on the corridor
-                    else:
-                        w[-1] = 0
-                    Q = Q + w[:, None] * delta[None, :]
+                e0 = junction(a - 1) if j > 0 and rs[j - 1][2] >= 0 else None
+                e1 = junction(b) if j + 1 < len(rs) and rs[j + 1][2] >= 0 else None
+                Q, Y = ease(P[a:b].copy(), yrs[a:b].copy(), e0, e1)
                 if len(Q) < 2:
                     continue
                 self.corr.append({'P': Q, 'T': tangents(Q), 'use': [(line, 0, len(Q) - 1, Y.astype(int))]})
         self.rebuild()
+
+
+def drop_stubs(pieces):
+    """Drop a short piece (under STUB metres) that lies, for every line on it, along other pieces carrying that line:
+    a link of a few metres where a line passes from one corridor to the next would otherwise poke out of the bundle."""
+    geoms = [shapely.linestrings(Q) for Q, _ in pieces]
+    lines_of = [{l for l, _ in key} for _, key in pieces]
+    tree = STRtree(geoms)
+    drop = set()
+    for i, g in enumerate(geoms):
+        L = float(shapely.length(g))
+        if L >= STUB:
+            continue
+        D = shapely.line_interpolate_point(g, np.linspace(0, L, max(2, int(L // 5) + 1)))
+        qi, ti = tree.query(D, predicate='dwithin', distance=STUB_NEAR)
+        keep = (ti != i) & np.array([t not in drop for t in ti], dtype=bool)
+        if all(len(set(qi[keep & np.array([l in lines_of[t] for t in ti], dtype=bool)])) == len(D) for l in lines_of[i]):
+            drop.add(i)
+    return [p for i, p in enumerate(pieces) if i not in drop]
+
+
+def orient(pieces, colour):
+    """Which pieces to draw reversed, so a bundle keeps each line's stripe on the same side from one piece to the next.
+    Pieces that meet end to end and share lines are drawn end to start; each network of them takes the direction of its
+    longest piece along that piece's main axis, and joins sharing the most colours are settled first."""
+    n = len(pieces)
+    lines_of = [{l for l, _ in key} for _, key in pieces]
+    E = np.array([Q[e] for Q, _ in pieces for e in (0, -1)])
+    tree = STRtree(shapely.points(E))
+    a_, b_ = tree.query(shapely.points(E), predicate='dwithin', distance=JOIN)
+    edges = collections.defaultdict(list)
+    for a, b in zip(a_, b_):
+        i, j = a // 2, b // 2
+        if i == j:
+            continue
+        common = lines_of[i] & lines_of[j]
+        if common:
+            edges[i].append((len({colour[l] or f'#{l}' for l in common}), a % 2, j, b % 2))
+    length = [float(np.hypot(*np.diff(Q, axis=0).T).sum()) for Q, _ in pieces]
+    flip = [None] * n
+    for seed in sorted(range(n), key=lambda i: -length[i]):
+        if flip[seed] is not None:
+            continue
+        d = pieces[seed][0][-1] - pieces[seed][0][0]
+        flip[seed] = bool((d[0] < 0) if abs(d[0]) >= abs(d[1]) else (d[1] < 0))
+        heap = [(-w, -length[j], seed, ei, j, ej) for w, ei, j, ej in edges[seed]]
+        heapq.heapify(heap)
+        while heap:
+            _, _, i, ei, j, ej = heapq.heappop(heap)
+            if flip[j] is not None:
+                continue
+            # the drawn end of piece i at the join, and the drawn end piece j must have there (the other one)
+            want = 1 - (ei ^ flip[i])
+            flip[j] = bool(ej != want)
+            for w, ej2, k, ek in edges[j]:
+                if flip[k] is None:
+                    heapq.heappush(heap, (-w, -length[k], j, ej2, k, ek))
+    return flip
 
 
 def add_bundles(data):
@@ -311,11 +393,9 @@ def add_bundles(data):
         crank = {}
         for line in sorted({u[0] for c in C.corr for u in c['use']}):
             crank.setdefault(colour[line] or f'#{line}', len(crank))
+        city_pieces = []
         for c in C.corr:
             P = c['P']
-            # point the whole corridor along its main direction, so neighbouring corridors agree on which side is which
-            d = P[-1] - P[0]
-            flip = (d[0] < 0) if abs(d[0]) >= abs(d[1]) else (d[1] < 0)
             # a line that rides to within a couple of points of a corridor's end rides to its end (the next corridor
             # starts there)
             last = len(P) - 1
@@ -362,21 +442,23 @@ def add_bundles(data):
                     merged[-1][1] = b
                 else:
                     merged.append([a, b, key])
-            for a, b, key in merged:
-                Q = P[a:b + 1]
-                g = shapely.simplify(shapely.linestrings(Q), SIMPLIFY)
-                cs = [(x / kx, y / ky) for x, y in shapely.get_coordinates(g)]
-                if flip:
-                    cs = cs[::-1]
-                mem = sorted(key, key=lambda ly: (crank[colour[ly[0]] or f'#{ly[0]}'], ly[0]))
-                if len(mem) > MAX_MEMBERS:
-                    stats['bundles_over_max'] += 1
-                    mem = sorted(sorted(mem, key=lambda ly: (ly[1], ly[0]))[:MAX_MEMBERS],
-                                 key=lambda ly: (crank[colour[ly[0]] or f'#{ly[0]}'], ly[0]))
-                stats['pieces'] += 1
-                stats[f'members_{min(len(mem), 5)}'] += 1
-                stats['shared_m'] += (len(mem) > 1) * (b - a) * STEP
-                bundles.append([enc(cs), [v for ly in mem for v in ly]])
+            city_pieces += [(P[a:b + 1], key) for a, b, key in merged]
+        city_pieces = drop_stubs(city_pieces)
+        flips = orient(city_pieces, colour)
+        for (Q, key), flip in zip(city_pieces, flips):
+            g = shapely.simplify(shapely.linestrings(Q), SIMPLIFY)
+            cs = [(x / kx, y / ky) for x, y in shapely.get_coordinates(g)]
+            if flip:
+                cs = cs[::-1]
+            mem = sorted(key, key=lambda ly: (crank[colour[ly[0]] or f'#{ly[0]}'], ly[0]))
+            if len(mem) > MAX_MEMBERS:
+                stats['bundles_over_max'] += 1
+                mem = sorted(sorted(mem, key=lambda ly: (ly[1], ly[0]))[:MAX_MEMBERS],
+                             key=lambda ly: (crank[colour[ly[0]] or f'#{ly[0]}'], ly[0]))
+            stats['pieces'] += 1
+            stats[f'members_{min(len(mem), 5)}'] += 1
+            stats['shared_m'] += (len(mem) > 1) * (len(Q) - 1) * STEP
+            bundles.append([enc(cs), [v for ly in mem for v in ly]])
     data['bundles'] = bundles
     return stats
 
