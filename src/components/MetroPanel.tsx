@@ -77,7 +77,7 @@ function StationView({ d, st, year, onPick, share }: { d: MetroData; st: MetroSt
           {struct && struct.exits.length > 0 && <div><dt>Exits</dt><dd>{struct.exits.length}</dd></div>}
         </dl>
         {struct && struct.labelled.length > 0 && (
-          <p className="m-exits">{[...new Set(struct.labelled)].map(x => <span key={x} className="m-exit" style={{ background: lines[0].l.colour }}>{x}</span>)}</p>
+          <p className="m-exits">{[...new Set(struct.labelled)].map(x => <span key={x} className="m-exit">{x}</span>)}</p>
         )}
         <h3 className="m-h">Lines at this station</h3>
         <ul className="m-lines">

@@ -13,8 +13,8 @@ import type { MetroData } from "@/lib/metro";
  *   paths: [station, line, line string, estimated?]    exits: [station, x, y, label, name]
  * A path marked estimated (1) joins an exit that no mapped passage reaches to its station, in a straight line; an
  * area marked estimated is a concourse guessed around the exits where OpenStreetMap maps no hall (drawn dashed, lighter).
- * Halls and passages take the colour of the nearest line's box, as Baidu Maps draws them; exits are ink badges with
- * their letter, so they read against every line colour. */
+ * Halls and passages take the colour of the nearest line's box, as Baidu Maps draws them; exits are blue rounded squares
+ * with their label in white (plain where the exit has no label), haloed in white so they read against every line colour. */
 
 /** structures show from this zoom (and are fetched just before it) */
 export const STRUCT_ZOOM = 14;
@@ -75,17 +75,26 @@ function features(d: MetroData): FeatureCollection {
 }
 
 const LAYERS = ["metro-st-area", "metro-st-area-line", "metro-st-area-approx", "metro-st-path", "metro-st-path-approx", "metro-st-box", "metro-st-box-line", "metro-st-box-approx", "metro-st-exit-dot", "metro-st-exit"];
-/** a rounded square, drawn as a signed-distance image so its colour can be set per layer */
+/** exits are blue, smooth-cornered squares: plain where OpenStreetMap gives the exit no label, with the label in white */
+const EXIT_BLUE = "#1F63D0";
+/** a rounded square, drawn as a signed-distance image so its colour can be set per layer; its middle stretches, so a
+ * square fitted around a two- or three-character label (A1, 东1北) keeps round corners instead of being squashed */
+const BADGE_N = 48, BADGE_R = 11, BADGE_IN = 5;      // size and corner radius in image pixels (2 per screen pixel), inset for the halo
 function badge(): { width: number; height: number; data: Uint8Array } {
-  const n = 24, r = 6, data = new Uint8Array(n * n * 4);
+  const n = BADGE_N, r = BADGE_R, h = n / 2 - BADGE_IN - r, data = new Uint8Array(n * n * 4);
   for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) {
-    const dx = Math.max(Math.abs(x + 0.5 - n / 2) - (n / 2 - r - 2), 0), dy = Math.max(Math.abs(y + 0.5 - n / 2) - (n / 2 - r - 2), 0);
+    const dx = Math.max(Math.abs(x + 0.5 - n / 2) - h, 0), dy = Math.max(Math.abs(y + 0.5 - n / 2) - h, 0);
     const dist = Math.hypot(dx, dy) - r;            // < 0 inside
-    const a = Math.max(0, Math.min(255, Math.round(192 - dist * 32)));
+    const a = Math.max(0, Math.min(255, Math.round(192 - dist * 16)));
     data.set([0, 0, 0, a], (y * n + x) * 4);
   }
   return { width: n, height: n, data };
 }
+const BADGE_OPTS = (() => {
+  // only the straight middle stretches; the label fits just inside the drawn edge
+  const lo = BADGE_IN + BADGE_R, hi = BADGE_N - BADGE_IN - BADGE_R, c0 = BADGE_IN + 2, c1 = BADGE_N - BADGE_IN - 2;
+  return { sdf: true, pixelRatio: 2, stretchX: [[lo, hi]] as [number, number][], stretchY: [[lo, hi]] as [number, number][], content: [c0, c0, c1, c1] as [number, number, number, number] };
+})();
 for (const id of LAYERS) registerOwnLayer(id);
 /** layers a click on opens the station they belong to */
 export const STRUCT_CLICK = ["metro-st-exit", "metro-st-exit-dot", "metro-st-box"];
@@ -133,9 +142,9 @@ export function addStructureLayers(map: MLMap, d: MetroData) {
     id: "metro-st-box-approx", type: "line", source: "metro-structures", minzoom: STRUCT_ZOOM, filter: ["all", ["==", ["get", "k"], "box"], ["==", ["get", "a"], 1]],
     paint: { "line-color": ["get", "c"], "line-width": ["interpolate", ["linear"], ["zoom"], 14, 0.8, 18, 1.6], "line-opacity": fadeIn(0.9), "line-dasharray": [2, 1.5] },
   }, below);
-  if (!map.hasImage("m-exit")) map.addImage("m-exit", badge(), { sdf: true });
+  if (!map.hasImage("m-exit")) map.addImage("m-exit", badge(), BADGE_OPTS);
   const exitPaint = {
-    "icon-color": INK, "icon-halo-color": "#FFFFFF", "icon-halo-width": 1.2, "text-color": "#FFFFFF",
+    "icon-color": EXIT_BLUE, "icon-halo-color": "#FFFFFF", "icon-halo-width": 1.2, "text-color": "#FFFFFF",
     "icon-opacity": ["interpolate", ["linear"], ["zoom"], 14.6, 0, 15.1, 1] as ExpressionSpecification,
   };
   const exitSize: ExpressionSpecification = ["interpolate", ["linear"], ["zoom"], 14.6, 0.4, 16, 0.75, 18, 1.1];
@@ -151,7 +160,7 @@ export function addStructureLayers(map: MLMap, d: MetroData) {
       "icon-image": "m-exit", "icon-size": exitSize, "icon-allow-overlap": true, "icon-ignore-placement": true,
       "text-field": ["step", ["zoom"], "", 15.4, ["get", "r"]], "text-font": ["Noto Sans Bold"],
       "text-size": ["interpolate", ["linear"], ["zoom"], 15.4, 9.5, 17, 12, 19, 14], "text-allow-overlap": true, "text-ignore-placement": true,
-      "icon-text-fit": ["step", ["zoom"], "none", 15.4, "both"], "icon-text-fit-padding": [3, 4.5, 3, 4.5],
+      "icon-text-fit": ["step", ["zoom"], "none", 15.4, "both"], "icon-text-fit-padding": [2, 3.5, 2, 3.5],
     },
     paint: exitPaint,
   });

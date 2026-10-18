@@ -799,12 +799,13 @@ print(len(bus_plat_ok), 'bus=yes platforms of own stop areas taken as the train\
 # ---------- exits ----------
 EXIT_RE = [
     # no letter before the word: 'Deportes' holds no porte
-    re.compile(r'(?<![A-Za-z])(?:exit|ausgang|eingang|sortie|salida|uscita|saída|saida|wyjście|výstup|kijárat|выход|вход|porte|acceso|acesso|accès|entrada|ieșire|çıkış|uitgang|gate|puerta)\s*(?:no\.?|number|nr\.?|n°|#)?\s*([A-Za-z]?\d{0,2}[A-Za-z]?)\b', re.I),
-    # 东1（北）口 is exit 东1北: the 东1 exit's north stair, kept apart from its south one
-    re.compile(r'([東西南北东]?[A-Za-z]?\d{1,2}[A-Za-z]?(?:[（(][東西南北东]{1,2}[)）])?|[A-Za-z])\s*(?:号|號)?\s*(?:出入口|出口|入口|口|番出口|番出入り?口|번\s*출구)'),
+    re.compile(r'(?<![A-Za-z])(?:exit|entrance|ausgang|eingang|sortie|salida|uscita|saída|saida|wyjście|výstup|kijárat|выход|вход|porte|acceso|acesso|accès|entrada|ieșire|çıkış|uitgang|gate|puerta|pintu)\s*(?:no\.?|number|nr\.?|n°|#)?\s*([A-Za-z]?\d{0,2}[A-Za-z]?)\b', re.I),
+    # 东1（北）口 is exit 东1北: the 东1 exit's north stair, kept apart from its south one; 2番口 is 2 (Yokohama's 中田駅２番口),
+    # A區出入口 is A (Taipei's malls), 3번 출입구 is 3
+    re.compile(r'([東西南北东]?[A-Za-z]?\d{1,2}[A-Za-z]?(?:[（(][東西南北东]{1,2}[)）])?|[A-Za-z])\s*(?:号|號|番|区|區)?\s*(?:出入口|出口|入口|口|番出口|番出入り?口|번\s*출입구|번\s*출구)'),
     re.compile(r'(?:出口|出入口)\s*([A-Za-z]?\d{0,2}[A-Za-z]?)'),
 ]
-REF_OK = re.compile(r'^[東西南北东]?[A-Za-z]{0,2}\d{0,2}[A-Za-z]?(?:（[東西南北东]{1,2}）|\([NSEW]{1,2}\))?$')
+REF_OK = re.compile(r'^[東西南北东]?[A-Za-z]{0,2}\d{0,2}[A-Za-z]?(?:[（(][東西南北东]{1,2}[)）]|\([NSEW]{1,2}\))?$')
 QUAL_RE = re.compile(r'[（(]([東西南北东]{1,2})[)）]')   # a bracketed compass qualifier: kept without its brackets ('东1（北）' → 东1北)
 BARE_LABEL = re.compile(r'^(?:[A-Z]{1,2}\d{0,2}[a-z]?|\d{1,2}[A-Za-z]?)$')
 RAILWAY_RE = re.compile(r'railway station|train station|railroad|火车站|高铁|客运站|鐵路|铁路', re.I)
@@ -814,6 +815,7 @@ def _lab(m):
     or a lowercase letter that is one ('Acceso a la estación' → a, 'Entrada e Saída' → e)"""
     g = m.group(1) if m else ''
     if not g or (g.isalpha() and len(g) > 1 and not g.isupper()) or (len(g) == 1 and g.islower()): return ''
+    if re.fullmatch(r'0\d', g): g = g[1:]   # Riyadh's 'Entrance 04' is its exit 4, as its refs number them
     return QUAL_RE.sub(r'\1', g)
 COMPASS = {'northwest': 'NW', 'north-west': 'NW', 'north west': 'NW', 'northeast': 'NE', 'north-east': 'NE', 'north east': 'NE',
            'southwest': 'SW', 'south-west': 'SW', 'south west': 'SW', 'southeast': 'SE', 'south-east': 'SE', 'south east': 'SE',
@@ -838,11 +840,12 @@ def line_sign(lab, lrefs, bare=False):
     if u in ('U', 'S'): return any(r.startswith(u) for r in lrefs)
     if re.match(r'^L\d{1,2}$', u): return u in lrefs or u[1:] in lrefs
     return bare and u in lrefs
+NFKC = lambda v: unicodedata.normalize('NFKC', v or '')   # Ａ３ is A3, ２番 is 2番, the ideographic space a space
 def ref_label(t, lrefs=()):
     """the exit's code from its ref or local_ref: 'A3出口' and '出入口6' are exits A3 and 6, '东1（北）' is 东1北 (the 东1 exit's
     north stair, kept apart from the south one); a bare 出口, a lift's ref or a line's sign is no label"""
     for key in ('ref', 'local_ref'):
-        ref = (t.get(key) or '').strip()
+        ref = NFKC(t.get(key)).strip()
         if not ref or LIFT_RE.search(ref): continue   # ref=엘리베이터 is the lift, not a code (Samgakji)
         ref2 = re.sub(r'^(出入口|出口|入口)|(番出入口|番出口|出入口|出口|口)$', '', ref)
         if not ref2: continue
@@ -855,21 +858,24 @@ def ref_label(t, lrefs=()):
 def name_label(t, snames=(), lrefs=()):
     """the exit's code from its names: 出口A, Exit 3, Gate No. 4, 汉中门#2, さっぽろ駅 20, 'Porta Susa A', a bare F, or its
     compass point (Tehran's, Mashhad's, 东北出口, Santiago's Salida Norte)"""
-    for key in ('name', 'name:en', 'name:zh', 'name:ja', 'name:ko', 'description'):
-        v = t.get(key) or ''
+    for key in ('name', 'name:en', 'name:zh', 'name:ja', 'name:ko', 'name:zh-Hans', 'name:zh-Hant', 'name:ms', 'description',
+                'description:en', 'description:ja', 'description:ko', 'description:zh'):
+        v = NFKC(t.get(key))
         for rx in EXIT_RE:
             m = rx.search(v); lab = _lab(m)
             if lab and len(lab) == 1 and lab.isalpha() and re.match(r'\.\s*[A-Za-z]', v[m.end():]): continue   # 'Entrada E. Castellanos': an initial
             if lab and not line_sign(lab, lrefs): return lab
     low = {(sn or '').lower() for sn in snames} - {''}
-    for key in ('name', 'name:zh', 'name:en'):
-        v = (t.get(key) or '').strip()
+    for key in ('name', 'name:zh', 'name:en', 'name:ms'):
+        v = NFKC(t.get(key)).strip()
         if not v: continue
         if BARE_LABEL.match(v) and v.lower() not in low and not line_sign(v, lrefs): return v   # name=F, with no ref (not QT8's own name)
         m = re.search(r'#\s*([A-Za-z]?\d{1,2}[A-Za-z]?)\s*$', v)
         if m: return m.group(1)
         m = re.match(r'^\s*([A-Z]{1,2}\d{0,2}[a-z]?)\s*[:：]', v)   # 'H: BTM Layout 2nd stage' (Bengaluru)
         if m: return m.group(1)
+        m = re.match(r'^([A-Z]{1,2}\d{0,2}[a-z]?|\d{1,2}[A-Za-z]?)\s*\(([^)]{1,12})\)$', v)
+        if m and not re.search(r'错误|錯誤|error|wrong|closed|关闭|關閉|封闭|封閉|停用', m.group(2), re.I) and v.lower() not in low and not line_sign(m.group(1), lrefs, bare=True): return m.group(1)
         m = re.search(r'[（(]([A-Z]{0,2}-?\d{1,2}[a-z]?)[)）]\s*$', v)   # 'サンロード(S7)', 'メルサ(3)' (Nagoya); not '(L9)' or '(7)' naming the line (Mexico City)
         if m and not line_sign(m.group(1), lrefs, bare=True): return m.group(1)
         if LIFT_RE.search(v): continue
@@ -879,17 +885,24 @@ def name_label(t, snames=(), lrefs=()):
             if BARE_LABEL.match(before): continue   # a sign before the name ('U Pankow', 'S Zoologischer Garten') is no code
             rest = _NAME_DROP.sub('', re.sub(re.escape(sn), '', v, count=1, flags=re.I)).strip(' \t-–—:：#・·')
             if BARE_LABEL.match(rest) and not re.match(r'^[A-Z]{2}', rest) and not line_sign(rest, lrefs): return rest   # 'Porta Susa A', not 'Porta Nuova FS' or 'Villa Fiorita MM2'
+            if re.match(r'^[東西南北东]\d{1,2}$', rest): return rest   # 八乙女駅北2
     # an exit named only by its compass point, with the station's own name and the word for exit taken out
-    for key in ('name', 'name:en', 'name:fa', 'name:zh', 'name:es', 'name:pt'):
-        v = (t.get(key) or '').lower()
+    for key in ('name', 'name:en', 'name:fa', 'name:zh', 'name:ja', 'name:es', 'name:pt'):
+        v = NFKC(t.get(key)).lower()
         if not v: continue
         for sn in low: v = v.replace(sn, ' ')
+        v = re.sub(r'(地铁站|地鐵站|捷運站|捷运站|駅|站|역)', ' ', v)   # 花隈駅西口 is the west exit
         v = re.sub(r'\b(exit|entrance|gate|acceso|accés|acces|salida|sortida|entrada|acesso|saída|saida|puerta|lado|boca|ورودی|خروجی|درب|در)\b|出入口|出口|入口|口$', '', v).strip(' \t-–—:：·/()')
         if v in COMPASS: return COMPASS[v]
     return ''
+def commons_label(t, lrefs=()):
+    """the code in the exit's Wikimedia Commons category ('Category:Entrance 2 (Hoshigaoka Station, Aichi)'), used only when
+    neither ref nor name gives one, and kept out of the station's ref-and-name convention below"""
+    m = re.search(r'\b(?:entrance|exit)\s+([A-Za-z]{0,2}\d{1,2}[A-Za-z]?)\b', NFKC(t.get('wikimedia_commons')), re.I)
+    return m.group(1) if m and not line_sign(m.group(1), lrefs) else ''
 def exit_label(t, snames=(), lrefs=()):
-    """the exit's letter or number: its ref, else one in its name"""
-    return ref_label(t, lrefs) or name_label(t, snames, lrefs)
+    """the exit's letter or number: its ref, else one in its name, else one in its Commons category"""
+    return ref_label(t, lrefs) or name_label(t, snames, lrefs) or commons_label(t, lrefs)
 
 exits = collections.defaultdict(list)       # station -> [(lon, lat, label, name, osm id)]
 ex_labs = {}                                # (station, node) -> (label from the ref, label from the name), for the station's convention below
@@ -900,7 +913,7 @@ def st_lrefs(i):
 def add_exit(i, x, y, t, nid):
     rl = ref_label(t, st_lrefs(i)); nl = name_label(t, (st['name'][i], st['en'][i]), st_lrefs(i))
     ex_labs[(i, nid)] = (rl, nl)
-    exits[i].append((x, y, rl or nl, t.get('name', ''), nid))
+    exits[i].append((x, y, rl or nl or commons_label(t, st_lrefs(i)), t.get('name', ''), nid))
 # station nodes (not bus stations), for an unlabelled far exit that is nearer to another station than to the one it
 # would go to (Centro Direzionale's podium doors)
 sta_cells = collections.defaultdict(list)
