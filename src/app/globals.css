@@ -72,8 +72,9 @@ body .maplibregl-ctrl-scale { --halo: rgba(244,236,233,.9); --ink: linear-gradie
 .nav.solid { position: sticky; background: var(--bg); border-bottom: 1px solid var(--line); pointer-events: auto; }
 .nav a.on { color: var(--fg); box-shadow: inset 0 -2px 0 var(--accent); padding-bottom: 4px; }
 .nav a:not(.brand) { padding-bottom: 4px; }
-/* The ScraperMap name and the menu of the site's pages under it (BrandMenu.tsx): it opens on hover, on a first tap, or
-   from the small arrow, and runs from the bottom of the bar so the pointer can move into it without it closing. */
+/* The current mode's name and the menu of the three modes under it (BrandMenu.tsx, src/lib/modes.ts): it opens on hover,
+   on a first tap, or from the small arrow, and runs from the bottom of the bar so the pointer can move into it without
+   it closing. TransitMap and IndustryMap have no other links in the bar (.nav.solo). */
 .nav .brandmenu { position: relative; align-self: stretch; display: flex; align-items: center; gap: 1px; margin-right: 6px; pointer-events: auto; }
 .nav .brandmenu .brand { margin-right: 0; }
 .brand-caret { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 26px; padding: 0; border: 0; border-radius: 6px; background: none; color: var(--fg-3); cursor: pointer; }
@@ -88,7 +89,7 @@ body .maplibregl-ctrl-scale { --halo: rgba(244,236,233,.9); --ink: linear-gradie
 .nav .brand-drop a { display: flex; flex-direction: column; gap: 2px; padding: 7px 10px; border-radius: 8px; color: var(--fg); font-size: 14px; font-weight: 500; white-space: normal; }
 .nav .brand-drop a small { font-size: 12px; font-weight: 400; color: var(--fg-3); }
 .nav .brand-drop a:hover, .nav .brand-drop a:focus-visible { background: var(--bg-3); text-decoration: none; outline: none; }
-.nav .brand-drop a[aria-current="page"] { box-shadow: inset 3px 0 0 var(--accent); }
+.nav .brand-drop a[aria-current] { box-shadow: inset 3px 0 0 var(--accent); }
 
 .topbar { position: absolute; top: 60px; left: 18px; display: flex; gap: 8px; z-index: 15; width: min(640px, calc(100vw - 36px)); }
 @media (min-width: 1100px) { .topbar { width: 660px; } }
@@ -242,6 +243,7 @@ td.gdp { white-space: nowrap; }
   .nav { gap: 12px; padding: 0 12px; }
   .nav a { font-size: 13px; }
   .nav .brand .brand-name { display: none; }  /* the ▲ still links home; "Map" is in the bar */
+  .nav.solo .brand .brand-name { display: inline; }  /* TransitMap and IndustryMap: the bar has room for the mode's name */
   .nav .brand { margin-right: 0; }
   .topbar { left: 12px; width: calc(100vw - 24px); }
   .btn.basemap .bm-label, .btn.skyline .sk-label { display: none; }

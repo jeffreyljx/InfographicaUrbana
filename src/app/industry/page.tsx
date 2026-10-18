@@ -9,7 +9,7 @@ import {
 import "@/components/industry.css";
 
 export const metadata: Metadata = {
-  title: "Industry and Exports",
+  title: { absolute: "IndustryMap · Industry and Exports" },   // its own mode, so not "· ScraperMap"
   description: "Which cities trade the most goods and which make the most: exports and imports by city, the busiest gateways and container ports, and manufacturing value added and output per factory worker, with every figure's source.",
 };
 
