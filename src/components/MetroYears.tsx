@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { fmtKm } from "@/lib/metro";
+import CapsuleMin, { useCapsuleMin } from "./CapsuleMin";
 
 /** Play speed: a year with more new line stays up longer. */
 const delayFor = (km: number) => km <= 0 ? 70 : km < 50 ? 150 : km < 200 ? 220 : 300;
@@ -29,9 +30,11 @@ interface Props {
 /**
  * The metro map's year dock, like the tower map's time capsule: the chosen year, a bar chart of the km of metro opened
  * each year with a slider under it (bars up to the chosen year filled), and Play, which walks forward a year at a time.
+ * The bar button at its top right collapses it to a short bar (Play, the year and the km), remembered in this browser.
  */
 export default function MetroYears({ first, last, year, onYear, perYear, kmOpen, systemsOpen, newest, onPickLine, scope, playFrom, panelOpen }: Props) {
   const [playing, setPlaying] = useState(false);
+  const [min, setMin] = useCapsuleMin("scrapermap.metro-dock");
   const span = Math.max(1, last - first);
   const max = Math.max(1, ...perYear);
   const added = perYear[year - first] ?? 0;
@@ -70,7 +73,7 @@ export default function MetroYears({ first, last, year, onYear, perYear, kmOpen,
   const where = scope ?? (systemsOpen === 1 ? "1 city" : `${systemsOpen.toLocaleString("en-US")} cities`);
 
   return (
-    <section ref={dock} className={"capsule metro-dock" + (panelOpen ? " with-panel" : "")} aria-label="Metro networks by year">
+    <section ref={dock} className={"capsule metro-dock" + (panelOpen ? " with-panel" : "") + (min ? " min" : "")} aria-label="Metro networks by year">
       <div className="cap-head">
         <button className="cap-play" onClick={play} aria-label={playing ? "Pause" : year >= last ? "Play from " + (playFrom ?? first) : "Play"} title={playing ? "Pause" : "Play through the years"}>
           <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
@@ -80,12 +83,13 @@ export default function MetroYears({ first, last, year, onYear, perYear, kmOpen,
         <div className="cap-year" title="The metro lines open in this year, each stretch drawn from the year it opened">{year}</div>
         <div className="cap-facts">
           <div><b>{fmtKm(kmOpen)} km</b> of metro {kmOpen > 0 ? <>in {scope ? <span className="place">{where}</span> : where}</> : null} by {year}{added > 0.05 && <span className="cap-new"> · {fmtKm(added)} km new</span>}</div>
-          {newest && (
+          {newest && !min && (
             <div className="cap-tallest">Opened: <button className="link" onClick={() => onPickLine(newest.line)}><i className="m-sw" style={{ background: newest.colour }} />{newest.name}</button>, <span className="place">{newest.city}</span></div>
           )}
         </div>
+        <CapsuleMin min={min} onToggle={() => setMin(!min)} what="year dock" />
       </div>
-      <div className="cap-track">
+      {!min && <div className="cap-track">
         <svg ref={chart} className="cap-bars" viewBox={`0 0 ${span} ${BAR_H}`} preserveAspectRatio="none" height={BAR_H}
           onPointerDown={e => { e.currentTarget.setPointerCapture(e.pointerId); fromPointer(e); }}
           onPointerMove={e => { if (e.buttons === 1) fromPointer(e); }} aria-hidden="true">
@@ -99,7 +103,7 @@ export default function MetroYears({ first, last, year, onYear, perYear, kmOpen,
         <div className="cap-ticks" aria-hidden="true">
           {ticks.map(t => <span key={t} style={{ left: pct(t) }}>{t}</span>)}
         </div>
-      </div>
+      </div>}
     </section>
   );
 }

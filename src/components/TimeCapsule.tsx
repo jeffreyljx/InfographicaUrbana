@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { fmtHeight } from "@/lib/format";
+import CapsuleMin, { useCapsuleMin } from "./CapsuleMin";
 
 /** Play speed: how long a year stays up before the next one, longer when more towers were completed in it. */
 const delayFor = (added: number) => added === 0 ? 70 : added < 100 ? 160 : 240;
@@ -26,10 +27,12 @@ interface Props {
 
 /**
  * The time capsule's dock: the chosen year, a bar chart of completions per year with a slider under it
- * (the bars up to the chosen year are filled), and Play, which walks forward one year at a time.
+ * (the bars up to the chosen year are filled), and Play, which walks forward one year at a time. The bar button at its
+ * top right collapses it to a short bar (Play, the year and the count), which stays collapsed until opened again.
  */
 export default function TimeCapsule({ first, last, year, onYear, onClose, perYear, shown, lost, tallest, onPick, panelOpen }: Props) {
   const [playing, setPlaying] = useState(false);
+  const [min, setMin] = useCapsuleMin();
   const span = Math.max(1, last - first);
   const max = Math.max(1, ...perYear);
   const added = perYear[year - first] ?? 0;
@@ -70,7 +73,7 @@ export default function TimeCapsule({ first, last, year, onYear, onClose, perYea
   const pct = (y: number) => `${((y - first) / span) * 100}%`;
 
   return (
-    <section ref={dock} className={"capsule" + (panelOpen ? " with-panel" : "")} aria-label="Time capsule">
+    <section ref={dock} className={"capsule" + (panelOpen ? " with-panel" : "") + (min ? " min" : "")} aria-label="Time capsule">
       <div className="cap-head">
         <button className="cap-play" onClick={play} aria-label={playing ? "Pause" : year >= last ? "Play from " + first : "Play"} title={playing ? "Pause" : "Play through the years"}>
           <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
@@ -84,13 +87,14 @@ export default function TimeCapsule({ first, last, year, onYear, onClose, perYea
             {added > 0 && <span className="cap-new"> · {added.toLocaleString("en-US")} new</span>}
             {lost.length > 0 && <span className="cap-lost" title={lost.join(", ")}> · {lost.length} lost</span>}
           </div>
-          {tallest && (
+          {tallest && !min && (
             <div className="cap-tallest">Tallest: <button className="link" onClick={() => onPick(tallest.id)}>{tallest.name}</button>, {fmtHeight(tallest.height)}, <span className="place">{tallest.city}</span></div>
           )}
         </div>
+        <CapsuleMin min={min} onToggle={() => setMin(!min)} what="time capsule" />
         <button className="x" onClick={onClose} aria-label="Close the time capsule">×</button>
       </div>
-      <div className="cap-track">
+      {!min && <div className="cap-track">
         <svg ref={chart} className="cap-bars" viewBox={`0 0 ${span} ${BAR_H}`} preserveAspectRatio="none" height={BAR_H}
           onPointerDown={e => { e.currentTarget.setPointerCapture(e.pointerId); fromPointer(e); }}
           onPointerMove={e => { if (e.buttons === 1) fromPointer(e); }} aria-hidden="true">
@@ -104,7 +108,7 @@ export default function TimeCapsule({ first, last, year, onYear, onClose, perYea
         <div className="cap-ticks" aria-hidden="true">
           {ticks.map(t => <span key={t} style={{ left: pct(t) }}>{t}</span>)}
         </div>
-      </div>
+      </div>}
     </section>
   );
 }

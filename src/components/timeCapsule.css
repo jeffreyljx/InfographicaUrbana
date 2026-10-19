@@ -15,6 +15,16 @@
 .cap-tallest { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cap-tallest .link { margin: 0; font: inherit; color: var(--accent-2); }
 .capsule .x { position: static; flex: none; align-self: flex-start; width: 28px; height: 28px; font-size: 18px; }
+.capsule .cap-min { display: grid; place-items: center; padding: 0; }
+.capsule .cap-min + .x { margin-left: -6px; }
+/* collapsed: a short bar with Play, the year and one line of facts, and no slider for a map drag to catch */
+.capsule.min, .capsule.min.with-panel { width: auto; max-width: min(560px, calc(100vw - 36px)); padding: 6px 8px; }
+.capsule.min .cap-head { gap: 10px; }
+.capsule.min .cap-play { width: 30px; height: 30px; }
+.capsule.min .cap-play svg { width: 13px; height: 13px; }
+.capsule.min .cap-year { width: auto; font-size: 20px; }
+.capsule.min .cap-facts > div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.capsule.min .x { align-self: center; }
 .cap-track { margin-top: 8px; }
 .cap-bars { display: block; width: calc(100% - 16px); margin: 0 8px; overflow: visible; cursor: pointer; touch-action: none; }
 .cap-bars rect.past { fill: var(--accent); opacity: .72; }
@@ -35,5 +45,6 @@
   .cap-head { gap: 10px; }
   .cap-year { width: 64px; font-size: 24px; }
   .cap-facts { font-size: 12px; }
+  .capsule.min, .capsule.min.with-panel { max-width: none; padding: 6px 8px; }
   .app.capsule-on .maplibregl-ctrl-bottom-left, .app.capsule-on .maplibregl-ctrl-bottom-right { bottom: calc(var(--capsule-h, 140px) + 12px); }
 }
