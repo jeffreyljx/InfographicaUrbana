@@ -1,4 +1,8 @@
-# ScraperMap
+# InfographicaUrbana
+
+The world's cities in maps and figures, in three modes: **ScraperMap** (the tower map below, the site's name until 31 Oct 2026), **TransitMap** (`/metro/`, the world's metro lines year by year) and **IndustryMap** (`/industry/`, the cities that trade and make the most). The modes are listed in `src/lib/modes.ts`, with the site's name and address. The logo is drawn in `src/components/Logo.tsx`; `node scripts/brand/make-icons.mjs` redraws the favicon, app icons and link-preview image from it.
+
+## ScraperMap
 
 Every skyscraper of 150 m or taller in 348 cities — 8,076 towers — pinned to its exact location, assigned to its district, and ranked. Built on the *Skyscrapers by District* dataset.
 
