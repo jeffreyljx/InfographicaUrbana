@@ -7,7 +7,7 @@ import { TRADE, EXPORTS_ONLY, ALL_EXPORTS, JAPAN_PORTS, CONTAINER_PORTS, COUNTRY
 import "@/components/industry.css";
 
 export const metadata: Metadata = {
-  title: { absolute: "IndustryMap · Exports and imports" },   // its own mode, so not "· ScraperMap"
+  title: "IndustryMap · Exports and imports",   // its own mode, named before the page
   description: "Which cities and countries trade the most goods: exports and imports by city and added up by country, the busiest customs gateways and container ports, with every figure's source.",
 };
 

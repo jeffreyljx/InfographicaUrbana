@@ -7,7 +7,7 @@ import { MFG, COUNTRY_MFG, REGION_NAME, region, money, moneyK, citySlug, niceSca
 import "@/components/industry.css";
 
 export const metadata: Metadata = {
-  title: { absolute: "IndustryMap · Industrial output" },   // its own mode, so not "· ScraperMap"
+  title: "IndustryMap · Industrial output",   // its own mode, named before the page
   description: "Which cities and countries make the most: manufacturing value added by city and added up by country, and output per factory worker, with every figure's source.",
 };
 

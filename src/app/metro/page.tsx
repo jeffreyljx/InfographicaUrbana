@@ -12,7 +12,7 @@ const META = (() => {
 })();
 
 export const metadata: Metadata = {
-  title: { absolute: "TransitMap · Metro history" },   // its own mode, so not "· ScraperMap"
+  title: "TransitMap · Metro history",   // its own mode, so "TransitMap · Metro history · InfographicaUrbana"
   description: META
     ? `How the world's metro systems grew: ${META.systems} systems, ${META.lines} lines and ${META.stations.toLocaleString("en-US")} stations on one map, each stretch of line drawn from the year it opened, with a page for every station and line.`
     : "How the world's metro systems grew, each stretch of line drawn from the year it opened.",

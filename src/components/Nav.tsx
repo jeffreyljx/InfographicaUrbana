@@ -18,7 +18,8 @@ const INDUSTRY_LINKS: [NavKey, string, string][] = [
   ["industry-output", "/industry/output/", "Industrial output"],
 ];
 
-/** Top bar: the current mode's name, whose menu switches between ScraperMap, TransitMap and IndustryMap (src/lib/modes.ts),
+/** Top bar: the site's mark and name (InfographicaUrbana), then the current mode's name, whose menu switches between
+ *  ScraperMap, TransitMap and IndustryMap (src/lib/modes.ts),
  *  then the mode's own pages: in ScraperMap the map, the three rankings (by country, city and urban district), the
  *  skylines side by side and the method page; in IndustryMap its map and its two pages of figures. TransitMap has none. */
 export default function Nav({ solid = false, active }: { solid?: boolean; active?: NavKey }) {
