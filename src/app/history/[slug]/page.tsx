@@ -135,7 +135,7 @@ function AreaChart({ f }: { f: StateFile }) {
   const a = f.area;
   const y0 = a[0][0], y1 = Math.max(a[a.length - 1][0], y0 + 1);
   const max = Math.max(1, ...a.map(p => p[1]));
-  const W = 900, H = 200, L = 64, R = 12, T = 12, B = 24;
+  const W = 900, H = 200, L = 92, R = 12, T = 12, B = 24;
   const x = (y: number) => L + ((y - y0) / (y1 - y0)) * (W - L - R);
   const yv = (c: number) => T + (1 - c / max) * (H - T - B);
   let d = `M${x(y0)} ${yv(0)}`;
