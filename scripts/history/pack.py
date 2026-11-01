@@ -111,6 +111,30 @@ def first_sentence(text, limit=320):
     return s
 
 
+# the compilers' workings, which a reader of the map should not see: "(infobox 1642-1663)", "(121 cells)",
+# "(Cliopatria's British Raj row ends in 1947)", "; page silent"
+WORKINGS = re.compile(r"\bcells?\b|Cliopatria|\brows?\b|page silent|\bpage's\b|\bthe page\b|^page undated|infobox|\bshapes?\b|keyframe|\bsnap"
+                      r"|\banchors?\b|\bthe map's\b|dossier|gazetteer|reviewer|polygon|my reading|\boutline\b|as drawn|the window|/ledger/", re.I)
+# a parenthesis that names the pages or files behind a caption is workings too: "(Lucanians page; ...)", "(eu-19)"
+PAREN_WORKINGS = re.compile(WORKINGS.pattern + r"|\bpages?\b|\bledger\b|\b[a-z]{2}-\d{2}\b", re.I)
+
+
+def public_text(text):
+    """A caption as the map shows it: parentheses that hold the compilers' workings dropped, and the result returned
+    with a flag for whether workings are still left in it (those are kept on the state's page, not in the dock)."""
+    t = text
+    for _ in range(3):
+        t2 = re.sub(r"\s*\([^()]*\)", lambda m: "" if PAREN_WORKINGS.search(m.group(0)) else m.group(0), t)
+        if t2 == t:
+            break
+        t = t2
+    t = re.sub(r";\s*page silent\.?$", ".", t, flags=re.I)
+    t = re.sub(r"\s+([.,;:])", r"\1", t).strip()
+    if t and t[-1] not in ".!?…'\"":
+        t += "."
+    return t, bool(WORKINGS.search(t))
+
+
 def pretty_name(s):
     """A party named without a dossier: keep names, title-case slug-like strings."""
     if re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)+", s):
@@ -420,8 +444,11 @@ def main():
                 if FIRST <= y <= LAST:
                     changed[y - FIRST] += int(diffmask.sum())
             for cap in yv.get("captions", []):
-                text = first_sentence(cap.get("text", ""))
-                if not text:
+                # keyframe notes describe how a shape was drawn, not an event: the dock leaves them out
+                if cap.get("type") == "keyframe":
+                    continue
+                text, workings = public_text(first_sentence(cap.get("text", "")))
+                if not text or workings:
                     continue
                 c_ = {"y": int(cap.get("year", y)), "s": party(cap.get("slug")), "t": cap.get("type", ""), "x": text}
                 if cap.get("month"):
@@ -519,7 +546,7 @@ def main():
         rows = []
         for e in d.get("ledger") or []:
             note = e.get("note") or ""
-            r = {"y": e.get("year"), "t": e.get("type", ""), "x": first_sentence(note) or (e.get("region") or {}).get("text", "")}
+            r = {"y": e.get("year"), "t": e.get("type", ""), "x": public_text(first_sentence(note) or (e.get("region") or {}).get("text", "") or "")[0]}
             if e.get("month"):
                 r["m"] = e["month"]
             cp = e.get("counterpart")
