@@ -16,7 +16,7 @@ interface Cand {
 }
 interface Placed { el: HTMLDivElement; key: string }
 
-const OBSTACLES = [".h-dock", ".topbar", ".h-legend", ".panel", ".h-about"];
+const OBSTACLES = [".h-dock", ".topbar", ".h-legend", ".panel", ".h-about", ".maplibregl-ctrl-scale", ".maplibregl-ctrl-attrib", ".maplibregl-ctrl-bottom-left .maplibregl-ctrl-group"];
 /** a cell's share of the Web Mercator square at the equator (252.9 km² over the equator's length squared) */
 const CELL_M2 = 252.9 / (40075.017 * 40075.017);
 

@@ -1,6 +1,6 @@
 # InfographicaUrbana
 
-The world's cities in maps and figures, in three modes: **ScraperMap** (the tower map below, the site's name until 31 Oct 2026), **TransitMap** (`/metro/`, the world's metro lines year by year) and **IndustryMap** (`/industry/`, the cities that trade and make the most). The modes are listed in `src/lib/modes.ts`, with the site's name and address. The logo is drawn in `src/components/Logo.tsx`; `node scripts/brand/make-icons.mjs` redraws the favicon, app icons and link-preview image from it.
+The world's cities in maps and figures, in four modes: **ScraperMap** (the tower map below, the site's name until 31 Oct 2026), **TransitMap** (`/metro/`, the world's metro lines year by year), **IndustryMap** (`/industry/`, the cities that trade and make the most) and **CartaHistoria** (`/history/`, every state's borders year by year since 6000 BCE). The modes are listed in `src/lib/modes.ts`, with the site's name and address. The logo is drawn in `src/components/Logo.tsx`; `node scripts/brand/make-icons.mjs` redraws the favicon, app icons and link-preview image from it.
 
 ## ScraperMap
 
@@ -41,6 +41,16 @@ npx serve out
 3. `npm run pack-data` — rebuilds the JSON and repacks `data/`.
 4. Commit and deploy.
 
+## CartaHistoria data
+
+The borders live on an H3 resolution-5 grid of the world's land (524,441 cells). `scripts/history/pack.py` reads the research folder (grid, dossiers, colours, the 119 compiled windows, or their drafts where no final exists) and writes `public/history/`: `geo.bin` (cell centres), `w/<window>.bin` (ownership at the window's start plus each year's changes), `states.json`, `state/<slug>.json` (area by year, ledger, sources) and `index.json`. It replays every window from its start anchor and reports any that does not end on its end anchor (`seams` in `index.json`); `--check` replays and reports without writing.
+
+```
+python3 -I scripts/history/pack.py /mnt/project-files/history    # then npm run build, and commit public/history
+```
+
+States with no colour in `colours.json` get one from a hash of their name and are marked `fb` (shown as "provisional colour").
+
 ## Deploy
 
 Vercel: import the repo, framework "Next.js", no settings needed. Set `NEXT_PUBLIC_SITE_URL` to the public URL for correct canonical/OG links.
@@ -48,4 +58,4 @@ Anywhere else: `npm run build` and publish `out/`.
 
 ## Credits and licences
 
-Building data © CTBUH / The Skyscraper Center, used with citation; each tower links to its CTBUH page and no CTBUH images are used. Coordinates partly derived from OpenStreetMap contributors (ODbL). Basemap by OpenFreeMap © OpenMapTiles, data from OpenStreetMap. Photographs from Wikimedia Commons, each credited in place.
+CartaHistoria's borders start from Cliopatria (Seshat Global History Databank, CC BY 4.0), corrected and dated from Wikipedia. Building data © CTBUH / The Skyscraper Center, used with citation; each tower links to its CTBUH page and no CTBUH images are used. Coordinates partly derived from OpenStreetMap contributors (ODbL). Basemap by OpenFreeMap © OpenMapTiles, data from OpenStreetMap. Photographs from Wikimedia Commons, each credited in place.

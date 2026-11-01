@@ -6,6 +6,8 @@ import { fmtYear, posToYear, yearToPos, YEAR_TICKS, FIRST_YEAR, LAST_YEAR, fmtAr
 const BAR_H = 40;
 const BINS = 320;
 const SPEEDS = [1, 3, 10];
+/** the first tick sits flush left; minor ticks are fainter; on a phone only 6000 BCE, 0, 1500, 1800 and 2000 are labelled */
+const tickClass = (t: number) => [t === FIRST_YEAR && "first", (t === 1600 || t === 1700 || t === 1900) && "minor", ![FIRST_YEAR, 0, 1500, 1800, 2000].includes(t) && "wide"].filter(Boolean).join(" ") || undefined;
 
 interface Props {
   year: number;
@@ -147,7 +149,7 @@ export default function HistoryYears({ year, onYear, changed, captions, statesAl
         <input type="range" min={0} max={10000} step={1} value={Math.round(yearToPos(year) * 10000)} onChange={e => pick(posToYear(Number(e.target.value) / 10000))}
           onKeyDown={keys} aria-label="Year" aria-valuetext={fmtYear(year)} />
         <div className="cap-ticks" aria-hidden="true">
-          {YEAR_TICKS.map(t => <span key={t} style={{ left: `${yearToPos(t) * 100}%` }} className={t === FIRST_YEAR ? "first" : t === 1600 || t === 1700 || t === 1900 ? "minor" : undefined}>{t < 0 ? `${-t} BCE` : t}</span>)}
+          {YEAR_TICKS.map(t => <span key={t} style={{ left: `${yearToPos(t) * 100}%` }} className={tickClass(t)}>{t < 0 ? `${-t} BCE` : t}</span>)}
         </div>
       </div>}
     </section>
