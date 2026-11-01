@@ -127,8 +127,17 @@ export class HistoryLabels {
       }
       const cw = caps ? (k.kind === "realm" ? 0.95 : 0.78) : 0.56;
       const longest = lines === 2 ? Math.max(...wrap(k.text).map(s => s.length)) : n;
-      const bw = fs * cw * longest + 6, bh = fs * 1.25 * lines + 2;
-      const box: [number, number, number, number] = [sx - bw / 2, sy - bh / 2, sx + bw / 2, sy + bh / 2];
+      const boxAt = (f: number): [number, number, number, number] => {
+        const bw = f * cw * longest + 6, bh = f * 1.25 * lines + 2;
+        return [sx - bw / 2, sy - bh / 2, sx + bw / 2, sy + bh / 2];
+      };
+      // where a bigger name is in the way, try the name a size or two smaller before leaving it out
+      const floor = k.kind === "realm" ? 11 : caps ? 12 : 9.5;
+      let box = boxAt(fs);
+      for (const f of [fs * 0.82, fs * 0.68]) {
+        if (!hit(box) || f < floor) break;
+        fs = f; box = boxAt(fs);
+      }
       // a name the screen's edge would cut is left out (the state is mostly off screen)
       if (box[0] < 2 || box[2] > w - 2 || box[1] < 56 || box[3] > h - 2) continue;
       if (hit(box)) continue;
