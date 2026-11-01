@@ -77,7 +77,7 @@ const vec3 NEW = vec3(0.886, 0.337, 0.059);
 uvec4 cellState(uint id) { return texelFetch(u_state, ivec2(int(id & 1023u), int(id >> 10u)), 0); }
 uvec4 at(ivec2 p) { uint id = texelFetch(u_ids, p, 0).r; return id == NONE ? WATER : cellState(id); }
 vec4 pal(uint i, int k) { int n = int(i); return texelFetch(u_pal, ivec2(n & 255, (n >> 8) + k * u_palRows), 0); }
-uint realm(uvec4 s) { return (s.g & 7u) == 2u ? s.b : s.r; }
+uint realm(uvec4 s) { uint k = s.g & 7u; return (k == 1u || k == 2u) && s.b != 0u ? s.b : s.r; }   // a vassal or member sits in its suzerain's realm
 
 float toLin(float c) { return c <= 0.04045 ? c / 12.92 : pow((c + 0.055) / 1.055, 2.4); }
 float toGam(float c) { return c <= 0.0031308 ? 12.92 * c : 1.055 * pow(c, 1.0 / 2.4) - 0.055; }
@@ -128,6 +128,9 @@ void main() {
     int type = int(full.a * 255.0 + 0.5);
     if (st == 1u) {
       fill = pal(oth != 0u ? oth : owner, 2).rgb;
+    } else if (st == 2u) {       // a member: half the vassal tint, the OKLab midpoint of the suzerain's colour and its tint
+      uint lord = oth != 0u ? oth : owner;
+      fill = srgb(mix(oklab(pal(lord, 0).rgb), oklab(pal(lord, 2).rgb), 0.5));
     } else if (st == 3u) {
       fill = pal(owner, 1).rgb;
       pc = pal(oth, 0).rgb; pa = hatch(css, 1.0, 7.0, 2.5);

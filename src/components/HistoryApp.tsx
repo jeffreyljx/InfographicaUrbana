@@ -299,6 +299,7 @@ export default function HistoryApp() {
       {!pick && <div className="legend h-legend" aria-hidden>
         <span><i className="hl-state" />state</span>
         <span><i className="hl-vassal" />vassal (suzerain&apos;s tint)</span>
+        <span><i className="hl-member" />member state (half tint)</span>
         <span><i className="hl-occupied" />occupied</span>
         <span><i className="hl-contested" />contested</span>
         <span><i className="hl-culture" />culture</span>
