@@ -117,7 +117,7 @@ export class HistoryLabels {
         if (fs < 11) continue;
       } else {
         fs = Math.min(26, span / (0.56 * n), 1.5 * rPx + 4);
-        if (fs >= 14) { caps = true; fs = Math.min(fs, span / (0.78 * n)); fs = Math.max(fs, 13.5); }
+        if (fs >= 14) { caps = true; fs = Math.min(fs, span / (0.84 * n)); fs = Math.max(fs, 13.5); }
         if (fs < 9.5 && k.text.includes(" ")) {
           const longest = Math.max(...wrap(k.text).map(s => s.length));
           const f2 = Math.min(13, span / (0.56 * longest), rPx * 0.9 + 3);
@@ -125,10 +125,10 @@ export class HistoryLabels {
         }
         if (fs < 9.5) { if (k.id !== this.sel) continue; fs = 11; }
       }
-      const cw = caps ? (k.kind === "realm" ? 0.95 : 0.78) : 0.56;
+      const cw = caps ? (k.kind === "realm" ? 0.95 : 0.84) : 0.56;
       const longest = lines === 2 ? Math.max(...wrap(k.text).map(s => s.length)) : n;
       const boxAt = (f: number): [number, number, number, number] => {
-        const bw = f * cw * longest + 6, bh = f * 1.25 * lines + 2;
+        const bw = f * cw * longest + 10, bh = f * 1.25 * lines + 2;
         return [sx - bw / 2, sy - bh / 2, sx + bw / 2, sy + bh / 2];
       };
       // where a bigger name is in the way, try the name a size or two smaller before leaving it out
