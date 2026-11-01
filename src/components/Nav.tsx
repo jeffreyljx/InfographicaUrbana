@@ -1,7 +1,7 @@
 import BrandMenu from "./BrandMenu";
 import { modeOf } from "@/lib/modes";
 
-export type NavKey = "map" | "countries" | "cities" | "districts" | "skylines" | "metro" | "industry" | "industry-trade" | "industry-output" | "method";
+export type NavKey = "map" | "countries" | "cities" | "districts" | "skylines" | "metro" | "industry" | "industry-trade" | "industry-output" | "history" | "history-state" | "method";
 /** ScraperMap's own pages, in the bar only while ScraperMap is the mode. */
 const LINKS: [NavKey, string, string][] = [
   ["map", "/", "Map"],
@@ -19,9 +19,10 @@ const INDUSTRY_LINKS: [NavKey, string, string][] = [
 ];
 
 /** Top bar: the site's mark and name (InfographicaUrbana), then the current mode's name, whose menu switches between
- *  ScraperMap, TransitMap and IndustryMap (src/lib/modes.ts),
+ *  ScraperMap, TransitMap, IndustryMap and CartaHistoria (src/lib/modes.ts),
  *  then the mode's own pages: in ScraperMap the map, the three rankings (by country, city and urban district), the
- *  skylines side by side and the method page; in IndustryMap its map and its two pages of figures. TransitMap has none. */
+ *  skylines side by side and the method page; in IndustryMap its map and its two pages of figures. TransitMap and
+ *  CartaHistoria have none (a state's page links back to the map). */
 export default function Nav({ solid = false, active }: { solid?: boolean; active?: NavKey }) {
   const mode = modeOf(active);
   const links = mode.key === "scraper" ? LINKS : mode.key === "industry" ? INDUSTRY_LINKS : [];
