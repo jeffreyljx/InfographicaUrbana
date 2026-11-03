@@ -1,0 +1,163 @@
+{
+ "window": "p1840-p1849",
+ "note": "Window agent p1840-p1849 (brief v2, run of 2 Nov 2026). Entries: Ottoman 1840 keyframe (Syria and the Hejaz returned 27 Nov 1840), Qing 1848 keyframe (Zhetysu stays Qing until 1854), Russian occupation of Moldavia drawn on the right land, Kutai (Muara Kaman place does not resolve), West Texas 1846-47 contested.",
+ "events": [
+  {
+   "slug": "russian-empire",
+   "year": 1848,
+   "month": 4,
+   "type": "occupation_end",
+   "counterpart": "ottoman-empire",
+   "region": {
+    "country": "Moldova",
+    "text": "Bessarabia, the land of the Republic of Moldova, which was Russian land throughout 1848"
+   },
+   "note": "April 1848: Bessarabia, where Russia's troops stood, stays plain Russian land while Russia occupies Moldavia. Technically, this cancels the occupation that russian-empire/ledger/80 drew on the wrong land. Its region 'Moldavia' also covers the Russian Bessarabia (132 cells of the Republic of Moldova); because Russia held them and the Ottoman Empire held none of the region, the compiler recorded them as Russian land occupied by the Ottoman Empire (roles reversed), open from 1848. The page says only that 'Russia had occupied Moldavia in April' and names Bessarabia only as the place where Russian troops waited ('Russia ordered its troops in Bessarabia to prepare for an intervention over the Prut River'). This closes that false relation; events/1 draws the real occupation of Moldavia.",
+   "source": "https://en.wikipedia.org/wiki/Wallachian_Revolution_of_1848",
+   "confidence": 3
+  },
+  {
+   "slug": "russian-empire",
+   "year": 1848,
+   "month": 4,
+   "type": "occupation_start",
+   "counterpart": "principality-of-moldavia",
+   "region": {
+    "minus": [
+     {
+      "region": "Moldavia"
+     },
+     {
+      "country": "Moldova"
+     }
+    ],
+    "text": "the Principality of Moldavia west of the Prut (the gazetteer's Moldavia without the Republic of Moldova's land, which was Russian Bessarabia)"
+   },
+   "note": "April 1848: Russia occupies Moldavia. 'This occurred after Russia had occupied Moldavia in April, a result of the unsuccessful revolt in that country.' Same event as russian-empire/ledger/80, with the occupied state (the Principality of Moldavia, an Ottoman vassal) as counterpart and the principality's own land as region, so that the occupation falls on Moldavia and not on Russian Bessarabia.",
+   "source": "https://en.wikipedia.org/wiki/Wallachian_Revolution_of_1848",
+   "confidence": 3
+  },
+  {
+   "slug": "russian-empire",
+   "year": 1851,
+   "type": "occupation_end",
+   "counterpart": "principality-of-moldavia",
+   "region": {
+    "minus": [
+     {
+      "region": "Moldavia"
+     },
+     {
+      "country": "Moldova"
+     }
+    ],
+    "text": "the Principality of Moldavia west of the Prut (the gazetteer's Moldavia without the Republic of Moldova's land, which was Russian Bessarabia)"
+   },
+   "note": "1851: the Russian occupation of Moldavia ends. 'The Ottoman-Russian occupation prolonged itself until 1851' (the page gives this end in its account of Wallachia and is silent on Moldavia, so the Moldavian end is carried over by analogy, as russian-empire/ledger/82 does; no month is given, so the event takes April, the month of russian-empire/ledger/83) [review p1840-p1849: the earlier note said the page dated the end for both principalities; it does not, and month 4 rested on a page not opened]. Closes the relation opened by events/1, which the dossier's own end (ledger/82, counterpart ottoman-empire) does not reach. Dated outside the window p1840-p1849 (see the report).",
+   "source": "https://en.wikipedia.org/wiki/Wallachian_Revolution_of_1848",
+   "confidence": 1
+  },
+  {
+   "slug": "kutai-kingdom",
+   "year": 1844,
+   "type": "loss",
+   "counterpart": "dutch-east-indies",
+   "region": {
+    "union": [
+     {
+      "cliopatria": "Sultanate of Kutai Kartanegara",
+      "year": 1844
+     },
+     {
+      "lon": 116.72,
+      "lat": -0.2,
+      "km": 30
+     }
+    ],
+    "text": "Kutai: Cliopatria's outline plus the 30 km disc round Muara Kaman (116.72 E, 0.2 S, the capital point of the kutai-martadipura dossier)"
+   },
+   "note": "1844: the Dutch take direct control of Kutai. 'In 1844, following the repulse of James Erskine Murray's expedition and attempt to settle, the Dutch defeated the sultan Aji Muhammad Salehudin, forced him into exile, and took direct control of Kutai.' Same event as kutai-kingdom/ledger/5, which is skipped because the place 'Muara Kaman' (Indonesia) is not in the gazetteer; here the disc is given by the capital's coordinates.",
+   "source": "https://en.wikipedia.org/wiki/Kutai",
+   "confidence": 3
+  }
+ ],
+ "keyframe_overrides": [
+  {
+   "slug": "ottoman-empire",
+   "shape_id": "ottoman-empire_1840",
+   "verdict": "adjust",
+   "correction": {
+    "minus": [
+     {
+      "cliopatria": "Ottoman Empire",
+      "year": 1842
+     },
+     {
+      "union": [
+       {
+        "lon": 43.0,
+        "lat": 41.64,
+        "km": 50
+       },
+       {
+        "lon": 43.49,
+        "lat": 41.4,
+        "km": 50
+       }
+      ]
+     }
+    ],
+    "text": "the Ottoman Empire of 27 November 1840 with Syria, the Holy Land, Adana and the Hejaz handed back by Muhammad Ali: Cliopatria's 1842 shape without Akhaltsikhe and Akhalkalaki"
+   },
+   "source": "https://en.wikipedia.org/wiki/Oriental_Crisis_of_1840",
+   "why": "Cliopatria draws the Ottoman Empire without Syria and the Hejaz in 1840-1841 and restores them in 1842, so for 1840 and 1841 the compiled map leaves the Levant (about 770 cells) without an owner and the Hejaz (about 900 cells) in Muhammad Ali's tint (the 1840 snap removes 917 cells, the 1842 snap adds 2,416). The page: Muhammad Ali 'finally accepted the terms of the Convention on 27 November 1840', giving up Crete and the Hijaz, and he 'withdrew from Syria, the Hijaz, the Holy Land, Adana and Crete'; the page dates the withdrawal not at all, so the end of 1840 is the earliest honest map and the 1842 shape is the land returned."
+  },
+  {
+   "slug": "qing-dynasty",
+   "shape_id": "qing-dynasty_1848",
+   "verdict": "adjust",
+   "correction": {
+    "cliopatria": "Qing dynasty",
+    "year": 1847,
+    "text": "the Qing empire of 1842-1847 kept for 1848-1852: the north-western steppe edge (Zhetysu, the Zaysan and Tarbagatai lands) still Qing"
+   },
+   "source": "https://en.wikipedia.org/wiki/Zhetysu",
+   "why": "Cliopatria's 1848 shape cuts 714 cells on the north-western steppe edge (Almaty 475, East Kazakhstan 237), which the Qing dossier marks 'unverified'. Zhetysu page: the region 'formed part of the Qing dynasty and was under the direct rule of the general of Ili' and 'Most of Jetisu was annexed by the Russian Empire from Qing China in 1854'; Treaty of Tarbagatai page: Russia gained about 910,000 km2 'at the expense of Chinese Xinjiang' in 1864 and Lake Balkhash then went 'from lying on the border to being entirely surrounded by Russia'. The shape runs to 1852, so 1850-1852 are drawn the same way; Qing is the smaller state and keeps the cells against Russia's 1848 and 1849 keyframes."
+  },
+  {
+   "slug": "kutai-kingdom",
+   "shape_id": "sultanate-of-kutai-kartanegara_1842",
+   "verdict": "adjust",
+   "correction": {
+    "union": [
+     {
+      "cliopatria": "Sultanate of Kutai Kartanegara",
+      "year": 1842
+     },
+     {
+      "lon": 116.72,
+      "lat": -0.2,
+      "km": 30
+     }
+    ],
+    "text": "Cliopatria's Sultanate of Kutai Kartanegara shape for 1842 with the 30 km disc round Muara Kaman (116.72 E, 0.2 S, the capital point of the kutai-martadipura dossier)"
+   },
+   "source": "https://en.wikipedia.org/wiki/Kutai",
+   "why": "The dossier's correction names the place 'Muara Kaman' (Indonesia), which the gazetteer lacks, so the keyframe resolves to nothing and Kutai owns no land in 1842-1844. The same disc is given here by coordinates; the Kutai page names Muara Kaman ('Its capital is believed to be the current Muara Kaman district') and has the sultanate hold its land until 1844."
+  }
+ ],
+ "rulings": [
+  {
+   "years": [
+    1846,
+    1847
+   ],
+   "a": "federated-republic-of-mexico",
+   "b": "united-states-of-america",
+   "winner": "federated-republic-of-mexico",
+   "status": "contested",
+   "source": "https://en.wikipedia.org/wiki/Texas_annexation",
+   "why": "The 822 cells of West Texas and the Panhandle (lat 29-36.5, lon -106 to -99) are claimed in 1846 both by the US keyframe (Texas annexed 29 December 1845) and by Mexico, and the size rule hands them to Mexico as plain Mexican land. The page: 'Texas claimed the Rio Grande as its border... while Mexico maintained that it was the Nueces River and did not recognize Texan independence', and only after the US victory 'Mexico ceded its claims to Texas and the Rio Grande border was accepted by both nations' (1848), so both claimed the land from 1846 to 1848 and neither is shown to have held it: drawn contested until the end of 1847; the ledger's own loss of 1848 (mexico/ledger/26) then gives it to the United States."
+  }
+ ]
+}

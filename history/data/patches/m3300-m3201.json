@@ -1,0 +1,64 @@
+{
+ "window": "m3300-m3201",
+ "note": "Quiet window. One fix: the Maadi keyframe drew the gazetteer region 'Lower Egypt', which includes the whole of Matruh (524 cells of Western Desert) and Giza (126), about 800 cells for a culture of the Delta. Review: keyframe_overrides/0 keeps the Giza Nile valley (el-Gerza) and cuts Port Said, so the shape is one piece of 140 cells.",
+ "keyframe_overrides": [
+  {
+   "slug": "maadi-culture",
+   "shape_id": "maadi-culture_-3800",
+   "verdict": "adjust",
+   "correction": {
+    "union": [
+     {
+      "minus": [
+       {
+        "region": "Lower Egypt"
+       },
+       {
+        "union": [
+         {
+          "admin1": "Matruh",
+          "country": "Egypt"
+         },
+         {
+          "admin1": "Al Jizah",
+          "country": "Egypt"
+         },
+         {
+          "admin1": "Al Iskandariyah",
+          "country": "Egypt"
+         },
+         {
+          "admin1": "Al Isma`iliyah",
+          "country": "Egypt"
+         },
+         {
+          "admin1": "Bur Sa`id",
+          "country": "Egypt"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "intersect": [
+       {
+        "admin1": "Al Jizah",
+        "country": "Egypt"
+       },
+       {
+        "river": "Nile",
+        "km": 20
+       }
+      ]
+     },
+     {
+      "region": "Fayyum"
+     }
+    ],
+    "text": "the Nile Delta governorates (Buhayrah, Kafr ash Shaykh, Gharbiyah, Minufiyah, Qalyubiyah, Daqahliyah, Dumyat, Sharqiyah) with Cairo, the Nile valley reach of Giza (within 20 km of the river) and the Faiyum: Maadi near Cairo, Buto, Tell el-Farkha, Tell el-Rub'a, Tell Ibrahim Awad, Minshat Abu Omar, el-Gerza (west bank, 29 deg 27 min N 31 deg 12 min E, east of the Faiyum) and Haraga (at the entrance of the Faiyum, near El Lahun); without the desert governorates of Matruh, the Giza oases, Alexandria, Ismailia and the two Port Said cells that the region 'Lower Egypt' also holds"
+   },
+   "source": "https://en.wikipedia.org/wiki/Maadi_culture",
+   "why": "The page names Maadi near Cairo, Buto, Tell Ibrahim Awad, Tell el-Rub'a, Tell el-Farkha, Minshat Abu Omar, el-Gerza and Haraga, and says 'The cultures of Lower Egypt were replaced by Upper Egypt and Naqada culture by the end of Naqada II circa 3200 BCE'; it never mentions the Western Desert. The keyframe keeps the dossier's Lower Egypt plus Faiyum but cuts the desert governorates Matruh, Giza, Alexandria and Ismailia, which the region 'Lower Egypt' (787 cells, 24.8E to 32.8E) adds. Reviewer (m3300-m3201 review): the first version also cut the Giza Nile valley, which left the Faiyum as a separate blob and dropped el-Gerza ('located along the west bank of the Nile' and 'situated only several miles due east of the oasis of Faiyum', https://en.wikipedia.org/wiki/Gerzeh, now the Naqada II page; 29 deg 27 min N 31 deg 12 min E in the older Gerzeh article, a cell of Giza governorate, not of the Faiyum), one of the page's 'major sites'; and cutting Ismailia left the two Port Said cells as isolated specks. The Giza valley reach (13 cells) is restored and Port Said cut: 140 cells, one piece."
+  }
+ ]
+}

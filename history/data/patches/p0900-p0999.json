@@ -1,0 +1,109 @@
+{
+ "window": "p0900-p0999",
+ "note": "Window agent corrections for 900-999 (phase D). Each entry cites the page it rests on.",
+ "events": [
+  {
+   "slug": "samanid-empire",
+   "year": 900,
+   "month": 12,
+   "type": "vassal_end",
+   "counterpart": "abbasid-caliphate",
+   "region": {
+    "union": [
+     {
+      "region": "Khorasan"
+     },
+     {
+      "region": "Tabaristan"
+     },
+     {
+      "place": "Ray",
+      "km": 100
+     },
+     {
+      "place": "Isfahan",
+      "km": 100
+     }
+    ],
+    "text": "Khorasan, Tabaristan, Ray and Isfahan: the land the caliph invested Ismail with in 900 (the region of abbasid-caliphate/ledger/48)"
+   },
+   "note": "900: the caliph invests Ismail, not the reverse. 'Ismail was thereafter recognized as the ruler of all of Khorasan and Transoxiana by the caliph. Furthermore, he also received the investiture over Tabaristan, Ray and Isfahan.' The compiler read abbasid-caliphate/ledger/48 (vassal_start samanid-empire) with the roles reversed (the Samanid's Cliopatria shape is the larger) and drew the Abbasid caliphate as the Samanid's vassal from 900 to 999: Egypt and Syria 905-911, the Abbasid cells in Khorasan, and Baghdad, in the Samanid tint. This event, applied after the year's others, closes that reversed relation (the Samanid's own tie to the caliph, opened in 819 and closed in 999, stays). Check: after the patch the Abbasid cells in Egypt and Syria in 906-912 are direct, and the 970 keyframe (Baghdad only) can release the stale Abbasid land that the reversed tint had protected from it. [Reviewer: region set to the union of abbasid-caliphate/ledger/48 so the spec matches its text (vassal_end uses the region only to check it is not landless); quote made verbatim. Month 12 is a placement device, not from the page: it makes the event follow ledger/48; the 900 record shows no net change.]",
+   "source": "https://en.wikipedia.org/wiki/Samanid_Empire",
+   "confidence": 3
+  }
+ ],
+ "keyframe_overrides": [
+  {
+   "slug": "fatimid-caliphate",
+   "shape_id": "fatimid-caliphate_970",
+   "verdict": "adjust",
+   "from": 972,
+   "to": 979,
+   "correction": {
+    "minus": [
+     {
+      "union": [
+       {
+        "minus": [
+         {
+          "minus": [
+           {
+            "minus": [
+             {
+              "cliopatria": "Fatimid Caliphate",
+              "year": 970
+             },
+             {
+              "union": [
+               {
+                "region": "Ifriqiya"
+               },
+               {
+                "cliopatria": "Zirid dynasty",
+                "year": 1056
+               }
+              ],
+              "text": "Ifriqiya: a Zirid viceroyalty from 972 ('appointed viceroy of Ifriqiya') and an independent Zirid state after 1048"
+             }
+            ]
+           },
+           {
+            "region": "Hejaz",
+            "text": "the Hejaz, Fatimid by name from 969 (a vassal tint, not direct land)"
+           }
+          ]
+         },
+         {
+          "region": "Levant",
+          "text": "Syria and Palestine"
+         }
+        ]
+       },
+       {
+        "place": "Tripoli",
+        "km": 40,
+        "country": "Lebanon",
+        "text": "Tripoli, the one city left in 975"
+       },
+       {
+        "place": "Ramla",
+        "km": 60,
+        "text": "Ramla, 'retaken by the Fatimids in May 972'"
+       }
+      ],
+      "text": "Cliopatria's 970 shape without Ifriqiya (Zirid), the Hejaz (client) and the Levant, plus Tripoli and Ramla (retaken May 972), for 972-977; Palestine returns in 978"
+     },
+     {
+      "admin1": "Al-Anbar",
+      "country": "Iraq",
+      "text": "the Iraqi desert west of Baghdad, which Cliopatria's Fatimid shape overdraws"
+     }
+    ],
+    "text": "Cliopatria's 970 shape without Ifriqiya (Zirid), the Hejaz (client) and the Levant, plus Tripoli and Ramla (retaken May 972), for 972-977; Palestine returns in 978; without Al-Anbar (Iraq)"
+   },
+   "source": "https://en.wikipedia.org/wiki/Fatimid_Caliphate",
+   "why": "Years, and Ramla added to the shape. The dossier's correction removes Ifriqiya as a Zirid viceroyalty, which the pages date to autumn 972: the Fatimid Caliphate page says al-Mu'izz 'departed from al-Mansuriyya in fall 972' having installed Buluggin ibn Ziri as viceroy, and the Fatimid conquest of Egypt page gives 5 August 972 (departure from Mansuriya) and 2 October 972 (Buluggin appointed). Cliopatria's 970-979 shape started the keyframe in 970, so the snap cut Ifriqiya (about 580 cells) at 970 and it was nobody's land for 970 and 971, a year before the Zirid dossier begins. With the keyframe valid 972-979, the 960 shape and the 969 ledger keep Ifriqiya direct through 971 and the 972 vassal_start hands it to the Zirids. Side effect, as the dossier's own text says: the Levant stays out of the shape from 972; for 970-971 it follows the ledger (Damascus and Palestine gained in 970, contested by the Qarmatians from August 971). [Reviewer: with the snap in 972 (snaps follow the year's ledger) the Levant cut also released Ramla, which the 972/5 ledger gain ('Ramla, the capital of Palestine, was retaken by the Fatimids in May 972', Fatimid Caliphate page) could not hold, leaving Ramla nobody's 972-977; Ramla (60 km, 26 cells) is added to the shape, as the dossier's note intends ('Ramla (972) ... return by ledger events'). Damascus, lost after August 971, stays out.]"
+  }
+ ],
+ "rulings": []
+}

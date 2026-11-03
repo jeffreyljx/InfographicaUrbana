@@ -1,0 +1,120 @@
+{
+ "window": "m1100-m1001",
+ "note": "Window agent m1100-m1001, 2 Nov 2026. Four keyframe overrides and one event. Assyria: its -1100 keyframe overlapped its -1055 one (the compiler takes the union of every keyframe covering a year), so the heartland never took effect. Wu: the gazetteer read 'Suzhou' as Suzhou in Anhui. Twenty-first Dynasty: its keyframe added the Western Desert to Tanis. Wey: its keyframe cut the Yin domain that the page says was integrated into Wey, leaving 77 unowned cells inside the Zhou lands. The event drops two stray Cilician cells of Assyria.",
+ "keyframe_overrides": [
+  {
+   "slug": "assyria",
+   "shape_id": "assyria_-1100",
+   "verdict": "adjust",
+   "from": -1100,
+   "to": -1056,
+   "correction": {
+    "cliopatria": "Assyria",
+    "year": -1100,
+    "text": "Cliopatria's -1100 shape of the Middle Assyrian Empire, valid only -1100..-1056; from -1055 the heartland keyframe (assyria_-1055) applies alone"
+   },
+   "source": "https://en.wikipedia.org/wiki/Middle_Assyrian_Empire",
+   "why": "The dossier note says the shape is valid only to -1056, but the keyframe ran to -1001 (shapes.csv), so from -1055 the compiler took the union of it and assyria_-1055 and Assyria stayed at 1,806 cells. The page: after Ashur-bel-kala's death (1056) came 'a second and more catastrophic period of decline' (infobox 1055-935 BC), 'which saw the loss of most of the empire's territories outside of its heartlands'; 'The Assyrian heartland continued to remain intact'; 'By 1000 BC, Assyria was at the low point of its power'."
+  },
+  {
+   "slug": "wu",
+   "shape_id": "wu_-1100",
+   "verdict": "adjust",
+   "from": -1100,
+   "to": -751,
+   "correction": {
+    "union": [
+     {
+      "place": "Wuxi",
+      "km": 60
+     },
+     {
+      "lon": 120.62,
+      "lat": 31.3,
+      "km": 60,
+      "text": "Suzhou in Jiangsu (Gusu), 120.62 E 31.30 N"
+     }
+    ],
+    "text": "the early Wu round Wuxi and Suzhou in Jiangsu province, in the Yangtze delta"
+   },
+   "source": "https://en.wikipedia.org/wiki/Wu_(state)",
+   "why": "The gazetteer reads the bare name 'Suzhou' as Suzhou in Anhui (117.0 E 33.6 N), so early Wu was drawn as two blobs 350 km apart, one in northern Anhui. The page: 'Capital: Wu (modern-day Wuxi and Suzhou, Jiangsu province)'; 'first capital at Meili (...) believed to be today's Meicun in Wuxi' and 'later moved to Gusu (probably in modern Suzhou)'; 'Wu was located at the mouth of the Yangtze River east of the State of Chu and south of the State of Qi'."
+  },
+  {
+   "slug": "twenty-first-dynasty-of-egypt",
+   "shape_id": "twenty-first-dynasty-of-egypt_-1077",
+   "verdict": "adjust",
+   "from": -1077,
+   "to": -1001,
+   "correction": {
+    "minus": [
+     {
+      "region": "Lower Egypt"
+     },
+     {
+      "admin1": "Matruh",
+      "country": "Egypt"
+     }
+    ],
+    "text": "Lower Egypt, the Delta around Tanis, the land the pharaohs 'controlled'; Middle and Upper Egypt are the High Priests' land and reach the map through the ledger's vassal relation"
+   },
+   "source": "https://en.wikipedia.org/wiki/Twenty-first_Dynasty_of_Egypt",
+   "why": "The keyframe was the Delta united with Cliopatria's whole Twenty-second Dynasty outline, so the 486 cells of the New Valley and the Red Sea hills, which the High Priests' own land does not include, were drawn as direct Tanis land. The page: the pharaohs 'ruled from Tanis, but were mostly active only in Lower Egypt, which they controlled'; Smendes 'Only controlled Lower Egypt during his reign'; 'the High Priests of Amun at Thebes effectively ruled Middle and Upper Egypt in all but name'. The page does not mention the oases or the Eastern Desert."
+  },
+  {
+   "slug": "wey",
+   "shape_id": "wey_-1040",
+   "verdict": "adjust",
+   "from": -1040,
+   "to": -751,
+   "correction": {
+    "union": [
+     {
+      "cliopatria": "Wey",
+      "year": -750
+     },
+     {
+      "place": "Anyang",
+      "km": 80,
+      "text": "Yin, the former Shang royal domain, with the same 80 km stand-in disc as wu-geng_-1042"
+     }
+    ],
+    "text": "Cliopatria's 750 shape carried back to the fief centred on Zhaoge, with the Shang royal domain at Yin, which the page says was integrated into Wey"
+   },
+   "source": "https://en.wikipedia.org/wiki/Rebellion_of_the_Three_Guards",
+   "why": "The keyframe held only Cliopatria's 750 shape (about 38 cells), so at the snap of -1040 the Yin cells (Wu Geng's 80 km disc round Anyang, 77 of them outside that shape) were released to nobody and stayed unowned inside the Zhou lands to -1001. The page: 'The Shang royal domain at Yin was dismantled and integrated into Wey'; Wey 'was given to Kangshu Feng, a loyalist uncle of King Cheng'. The page gives no boundary, so the dossier's own stand-in disc for Yin is used."
+  }
+ ],
+ "events": [
+  {
+   "slug": "assyria",
+   "year": -1055,
+   "type": "loss",
+   "counterpart": "nobody",
+   "region": {
+    "minus": [
+     {
+      "union": [
+       {
+        "admin1": "Adana",
+        "country": "Turkey"
+       },
+       {
+        "admin1": "Mersin",
+        "country": "Turkey"
+       }
+      ]
+     },
+     {
+      "cliopatria": "Assyria",
+      "year": -1100
+     }
+    ],
+    "text": "the Cilician cells (Adana, Mersin) outside Cliopatria's -1100 shape, which the -1055 loss of everything outside the heartland does not reach"
+   },
+   "note": "1055 BC: the loss of 'most of the empire's territories outside of its heartlands' (Middle Assyrian Empire page). Two stray cells on the Cilician coast (Adana, Mersin) lie outside the Cliopatria -1100 shape that ledger/23 subtracts, so they stayed Assyrian, 400 km from the heartland, to -912.",
+   "source": "https://en.wikipedia.org/wiki/Middle_Assyrian_Empire",
+   "confidence": 2
+  }
+ ]
+}

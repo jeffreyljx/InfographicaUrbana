@@ -1,0 +1,656 @@
+{
+ "window": "m0100-m0001",
+ "note": "m0100-m0001 window agent, 2 Nov 2026. Fixes: Kanva land beyond Central India dropped when the dynasty ends (events/0); Rome's reversed Greek-cities vassalage closed (events/1); Gallia Narbonensis restored from the start of the window (events/2) and kept through the Roman keyframes -91, -87, -77, -66, -63; Asia kept Roman to 88 and Pontic until 85 (-91, -87); Gaul no longer Roman from 63 (-63); Germania an occupation from 12 BC, not plain Roman land from 14 BC (roman-empire -14). [Review 2 Nov 2026: the Province union in the five Roman keyframe overrides now leaves out Massalia's colonies at Nice and Agde; events/1's note brought up to date (a no-op guard since m0300-m0201 closes the 272 relation).]",
+ "events": [
+  {
+   "slug": "kanva-dynasty",
+   "year": -28,
+   "type": "loss",
+   "counterpart": "nobody",
+   "region": {
+    "minus": [
+     {
+      "minus": [
+       {
+        "cliopatria": "Kanva Dynasty",
+        "year": -30,
+        "text": "the whole Kanva realm, Pataliputra to Vidisha"
+       },
+       {
+        "union": [
+         {
+          "cliopatria": "Kalinga",
+          "year": -188
+         },
+         {
+          "admin1": "Odisha",
+          "country": "India"
+         },
+         {
+          "admin1": "Chhattisgarh",
+          "country": "India",
+          "text": "South (Dakshina) Kosala"
+         }
+        ],
+        "text": "Kalinga, Odisha and South Kosala (Chhattisgarh), the Mahameghavahana realm"
+       }
+      ],
+      "text": "the whole Kanva realm, Pataliputra to Vidisha; without Kalinga, Odisha and Chhattisgarh"
+     },
+     {
+      "minus": [
+       {
+        "minus": [
+         {
+          "cliopatria": "Satavahana Dynasty",
+          "year": -27
+         },
+         {
+          "cliopatria": "Satavahana Dynasty",
+          "year": -31
+         }
+        ]
+       },
+       {
+        "admin1": "Chhattisgarh",
+        "country": "India"
+       }
+      ],
+      "text": "Kanva land in Central India (Vidisha and the cells added in 27 BCE), without Chhattisgarh"
+     }
+    ],
+    "text": "the Kanva realm of the Ganges plain (Pataliputra to Panchala and Vatsa), without the Central Indian land (Vidisha) that the Satavahanas took"
+   },
+   "note": "28 BCE: the Satavahanas end the Kanva dynasty, but only in Central India. 'According to the Puranas, their dynasty was brought to an end by the Satavahanas in 28 BCE'; 'The defeat of the Kanva dynasty by the Satavahana dynasty was a localised event in Central India'; 'After the defeat at the hands of Satavahanas and the fall of the Kanva dynasty, the Magadha empire came to an end'; 'Magadha later came under the hegemony of the Mitra dynasty of Kaushambi from the 1st century BCE'. The page names no Satavahana rule over the Ganges plain, yet the Kanva dissolve hands all of the realm's remaining land to the Satavahanas (succession), and the -27 keyframe then strips 3,000 cells of it again: this loss to nobody drops the Ganges-plain land when the dynasty ends, so only the Central Indian land that the Satavahana gain names passes on.",
+   "source": "https://en.wikipedia.org/wiki/Kanva_dynasty",
+   "confidence": 2
+  },
+  {
+   "slug": "roman-republic",
+   "year": -100,
+   "type": "vassal_end",
+   "counterpart": "greek-city-states",
+   "region": {
+    "union": [
+     {
+      "place": "Taranto",
+      "km": 60
+     },
+     {
+      "place": "Reggio di Calabria",
+      "km": 40
+     },
+     {
+      "place": "Napoli",
+      "km": 30
+     }
+    ],
+    "text": "Magna Graecia"
+   },
+   "note": "Rome, not the Italiot Greek cities, was the stronger party from 272 BC: 'The remaining resistance to Rome among the Italiot Greeks collapsed, with the remaining cities quickly seeking terms' and 'Its victory over the peninsular Greeks also cemented Rome's hegemony over Italy'. A guard: it closes the 272 Rome-Greek cities vassal relation if it is still open, which the compiler had read with the roles reversed (Rome the Greek cities' vassal, Rome's land in their tint). [Review 2 Nov 2026: m0300-m0201 events/0 and events/1 now close that relation in 272 itself, so in the trial this entry closes nothing; harmless.]",
+   "source": "https://en.wikipedia.org/wiki/Pyrrhic_War",
+   "confidence": 2
+  },
+  {
+   "slug": "roman-republic",
+   "year": -100,
+   "type": "gain",
+   "counterpart": "nobody",
+   "region": {
+    "minus": [
+     {
+      "union": [
+       {
+        "region": "Provence"
+       },
+       {
+        "admin1": "Gard",
+        "country": "France"
+       },
+       {
+        "admin1": "Hérault",
+        "country": "France"
+       },
+       {
+        "admin1": "Aude",
+        "country": "France"
+       },
+       {
+        "admin1": "Pyrénées-Orientales",
+        "country": "France"
+       },
+       {
+        "admin1": "Drôme",
+        "country": "France"
+       },
+       {
+        "admin1": "Isère",
+        "country": "France"
+       },
+       {
+        "admin1": "Ardèche",
+        "country": "France"
+       },
+       {
+        "admin1": "Vaucluse",
+        "country": "France"
+       }
+      ]
+     },
+     {
+      "place": "Marseille",
+      "km": 25
+     }
+    ],
+    "text": "Gallia Transalpina, the province of 121 BC from the Pyrenees and Cévennes to the Alps and the Gulf of Lion, less Massilia's own territory"
+   },
+   "note": "Gallia Transalpina is Roman from 121 BC ('The area became a Roman province in 121 BC'; Narbo Martius 'founded on the coast in 118 BC'), but at 1 January 100 BC Rome holds only a coastal strip of it: the 121 BC gain (/ledger/122) was released by an earlier keyframe snap to a Cliopatria shape that draws only the coast. Restored here, and carried through the 91, 87, 77, 66 and 63 keyframes by their overrides. If the m0200-m0101 patch already restores it this changes nothing.",
+   "source": "https://en.wikipedia.org/wiki/Gallia_Narbonensis",
+   "confidence": 3
+  },
+  {
+   "slug": "roman-republic",
+   "year": -58,
+   "type": "contest_end",
+   "counterpart": "Gallic tribes (Helvetii, Suebi, Belgae, Veneti, Arverni)",
+   "region": {
+    "region": "Gaul",
+    "text": "Gaul, the zone the dossier opened this year"
+   },
+   "note": "Closes the Gallic Wars zone that /ledger/174 opened over the whole of 'Gaul' (the region name takes in the Province, which Rome held since 121 BC and which no tribe contested), and /ledger/179 closes the replacement in 50 BC. 'The wars began with conflict over the migration of the Helvetii in 58 BC'.",
+   "source": "https://en.wikipedia.org/wiki/Gallic_Wars",
+   "confidence": 2
+  },
+  {
+   "slug": "roman-republic",
+   "year": -58,
+   "type": "contest_start",
+   "counterpart": "Gallic tribes (Helvetii, Suebi, Belgae, Veneti, Arverni)",
+   "region": {
+    "minus": [
+     {
+      "region": "Gaul",
+      "text": "Gaul"
+     },
+     {
+      "union": [
+       {
+        "region": "Provence"
+       },
+       {
+        "admin1": "Gard",
+        "country": "France"
+       },
+       {
+        "admin1": "Hérault",
+        "country": "France"
+       },
+       {
+        "admin1": "Aude",
+        "country": "France"
+       },
+       {
+        "admin1": "Pyrénées-Orientales",
+        "country": "France"
+       },
+       {
+        "admin1": "Drôme",
+        "country": "France"
+       },
+       {
+        "admin1": "Isère",
+        "country": "France"
+       },
+       {
+        "admin1": "Ardèche",
+        "country": "France"
+       },
+       {
+        "admin1": "Vaucluse",
+        "country": "France"
+       }
+      ]
+     }
+    ],
+    "text": "Gaul beyond the Province: Transalpine Gaul without the province of 121 BC"
+   },
+   "note": "Reopens the Gallic Wars zone over Gaul beyond the Province only: the Helvetii migration and Bibracte, then Ariovistus (58), the Belgae (57), the Veneti and the north-west (56) and the 'mop-up operations' of 51 and 50 BC ('In 51 and 50 BC, there was limited resistance, and Caesar's troops mainly engaged in mop-up operations'). The Province was Roman land at peace.",
+   "source": "https://en.wikipedia.org/wiki/Gallic_Wars",
+   "confidence": 2
+  }
+ ],
+ "keyframe_overrides": [
+  {
+   "slug": "roman-republic",
+   "shape_id": "roman-republic_-91",
+   "verdict": "adjust",
+   "correction": {
+    "union": [
+     {
+      "minus": [
+       {
+        "cliopatria": "Roman Republic",
+        "year": -91
+       },
+       {
+        "cliopatria": "Italian City-States",
+        "year": -91
+       }
+      ],
+      "text": "Cliopatria's 91 shape without the land the Italian confederation held from late 91; Asia stays Roman until early 88, when the ledger (/ledger/140) takes it"
+     },
+     {
+      "minus": [
+       {
+        "union": [
+         {
+          "region": "Provence"
+         },
+         {
+          "admin1": "Gard",
+          "country": "France"
+         },
+         {
+          "admin1": "Hérault",
+          "country": "France"
+         },
+         {
+          "admin1": "Aude",
+          "country": "France"
+         },
+         {
+          "admin1": "Pyrénées-Orientales",
+          "country": "France"
+         },
+         {
+          "admin1": "Drôme",
+          "country": "France"
+         },
+         {
+          "admin1": "Isère",
+          "country": "France"
+         },
+         {
+          "admin1": "Ardèche",
+          "country": "France"
+         },
+         {
+          "admin1": "Vaucluse",
+          "country": "France"
+         }
+        ]
+       },
+       {
+        "union": [
+         {
+          "place": "Marseille",
+          "km": 25
+         },
+         {
+          "place": "Nice",
+          "km": 8
+         },
+         {
+          "place": "Agde",
+          "km": 8
+         }
+        ],
+        "text": "Massalia's own territory and its colonies Nikaia (Nice) and Agathe (Agde)"
+       }
+      ],
+      "text": "Gallia Transalpina, the province of 121 BC from the Pyrenees and Cévennes to the Alps and the Gulf of Lion, less Massilia's own territory and its colonies at Nikaia (Nice) and Agathe (Agde)"
+     }
+    ],
+    "text": "Cliopatria's 91 shape without the land the Italian confederation held from late 91, with Gallia Transalpina; Asia stays Roman until early 88, when the ledger (/ledger/140) takes it"
+   },
+   "source": "https://en.wikipedia.org/wiki/First_Mithridatic_War",
+   "why": "The dossier's correction also cut Mysia, Troad, Lydia, Ionia and Caria from 91, but Asia fell only in 88: 'This swift conquest of Asia through Phrygia took place in early 88' (First Mithridatic War page), and the ledger already removes it in 88. The cut stayed hidden only because the reversed Greek-cities tint kept Rome's cells out of the snap; with that closed, the keyframe would strip Asia three years early. Gallia Narbonensis: 'The area became a Roman province in 121 BC', bordered by 'the Pyrenees Mountains on the west, the Cévennes to the north, the Alps on the east, and the Gulf of Lion on the south'; Cliopatria's Roman shapes draw only a coastal strip of it, so the land the ledger gave Rome in 121 (/ledger/122) is released at the first snap. [Review 2 Nov 2026: Massalia's colonies Nikaia (Nice) and Agathe (Agde) cut from the Province: with them in the union the 87 snap gave both Massaliot cells to Rome by R2 (Rome succeeds Massalia), 38 years early. Massalia page: the city founded 'colonies of its own on the sea coast of Gallia Narbonensis', among them 'Agathe' and 'Nikaia'; Gallia Narbonensis page: only 'After the war ended in Caesar's favour, Massilia lost all of its independence' (49 BC).]"
+  },
+  {
+   "slug": "roman-republic",
+   "shape_id": "roman-republic_-87",
+   "verdict": "adjust",
+   "source": "https://en.wikipedia.org/wiki/First_Mithridatic_War",
+   "why": "The dossier's correction added Mysia, Troad, Lydia, Ionia and Caria to the 87 shape 'from 85', but a keyframe acts from its first year, so Rome held Asia in 87 and 86 while Mithridates did: 'The treaty of Dardanos was in effect a return to the status quo of 89' (late summer or early autumn 85), and Sulla in 86 still demanded that Mithridates 'surrender all his conquests'. The ledger already returns Asia and Phrygia in 85 (/ledger/146), so Cliopatria's 87 shape as drawn is right. Gallia Narbonensis: 'The area became a Roman province in 121 BC', bordered by 'the Pyrenees Mountains on the west, the Cévennes to the north, the Alps on the east, and the Gulf of Lion on the south'; Cliopatria's Roman shapes draw only a coastal strip of it, so the land the ledger gave Rome in 121 (/ledger/122) is released at the first snap. [Review 2 Nov 2026: Massalia's colonies Nikaia (Nice) and Agathe (Agde) cut from the Province: with them in the union the 87 snap gave both Massaliot cells to Rome by R2 (Rome succeeds Massalia), 38 years early. Massalia page: the city founded 'colonies of its own on the sea coast of Gallia Narbonensis', among them 'Agathe' and 'Nikaia'; Gallia Narbonensis page: only 'After the war ended in Caesar's favour, Massilia lost all of its independence' (49 BC).]",
+   "correction": {
+    "union": [
+     {
+      "cliopatria": "Roman Republic",
+      "year": -87
+     },
+     {
+      "minus": [
+       {
+        "union": [
+         {
+          "region": "Provence"
+         },
+         {
+          "admin1": "Gard",
+          "country": "France"
+         },
+         {
+          "admin1": "Hérault",
+          "country": "France"
+         },
+         {
+          "admin1": "Aude",
+          "country": "France"
+         },
+         {
+          "admin1": "Pyrénées-Orientales",
+          "country": "France"
+         },
+         {
+          "admin1": "Drôme",
+          "country": "France"
+         },
+         {
+          "admin1": "Isère",
+          "country": "France"
+         },
+         {
+          "admin1": "Ardèche",
+          "country": "France"
+         },
+         {
+          "admin1": "Vaucluse",
+          "country": "France"
+         }
+        ]
+       },
+       {
+        "union": [
+         {
+          "place": "Marseille",
+          "km": 25
+         },
+         {
+          "place": "Nice",
+          "km": 8
+         },
+         {
+          "place": "Agde",
+          "km": 8
+         }
+        ],
+        "text": "Massalia's own territory and its colonies Nikaia (Nice) and Agathe (Agde)"
+       }
+      ],
+      "text": "Gallia Transalpina, the province of 121 BC from the Pyrenees and Cévennes to the Alps and the Gulf of Lion, less Massilia's own territory and its colonies at Nikaia (Nice) and Agathe (Agde)"
+     }
+    ],
+    "text": "Cliopatria's 87 shape (Asia is Pontic until 85, and the ledger returns it then) plus Gallia Transalpina"
+   }
+  },
+  {
+   "slug": "roman-republic",
+   "shape_id": "roman-republic_-63",
+   "verdict": "adjust",
+   "source": "https://en.wikipedia.org/wiki/Gallic_Wars",
+   "why": "The dossier's correction added eastern Gaul, Belgium, Brittany and Aquitaine to the 63 shape (valid 63 to 51), so Rome held them from 63 although 'The wars began with conflict over the migration of the Helvetii in 58 BC', the Belgae followed in 57 and the Veneti in 56 ('In 56 BC, Caesar defeated the Veneti in a naval battle and took most of northwest Gaul'). The ledger already adds them step by step in 58, 57, 56 and 52 (/ledger/175-178), so Cliopatria's 63 shape (north limit 46.2 N) as drawn is right. Gallia Narbonensis: 'The area became a Roman province in 121 BC', bordered by 'the Pyrenees Mountains on the west, the Cévennes to the north, the Alps on the east, and the Gulf of Lion on the south'; Cliopatria's Roman shapes draw only a coastal strip of it, so the land the ledger gave Rome in 121 (/ledger/122) is released at the first snap. [Review 2 Nov 2026: Massalia's colonies Nikaia (Nice) and Agathe (Agde) cut from the Province: with them in the union the 87 snap gave both Massaliot cells to Rome by R2 (Rome succeeds Massalia), 38 years early. Massalia page: the city founded 'colonies of its own on the sea coast of Gallia Narbonensis', among them 'Agathe' and 'Nikaia'; Gallia Narbonensis page: only 'After the war ended in Caesar's favour, Massilia lost all of its independence' (49 BC).]",
+   "correction": {
+    "union": [
+     {
+      "cliopatria": "Roman Republic",
+      "year": -63
+     },
+     {
+      "minus": [
+       {
+        "union": [
+         {
+          "region": "Provence"
+         },
+         {
+          "admin1": "Gard",
+          "country": "France"
+         },
+         {
+          "admin1": "Hérault",
+          "country": "France"
+         },
+         {
+          "admin1": "Aude",
+          "country": "France"
+         },
+         {
+          "admin1": "Pyrénées-Orientales",
+          "country": "France"
+         },
+         {
+          "admin1": "Drôme",
+          "country": "France"
+         },
+         {
+          "admin1": "Isère",
+          "country": "France"
+         },
+         {
+          "admin1": "Ardèche",
+          "country": "France"
+         },
+         {
+          "admin1": "Vaucluse",
+          "country": "France"
+         }
+        ]
+       },
+       {
+        "union": [
+         {
+          "place": "Marseille",
+          "km": 25
+         },
+         {
+          "place": "Nice",
+          "km": 8
+         },
+         {
+          "place": "Agde",
+          "km": 8
+         }
+        ],
+        "text": "Massalia's own territory and its colonies Nikaia (Nice) and Agathe (Agde)"
+       }
+      ],
+      "text": "Gallia Transalpina, the province of 121 BC from the Pyrenees and Cévennes to the Alps and the Gulf of Lion, less Massilia's own territory and its colonies at Nikaia (Nice) and Agathe (Agde)"
+     }
+    ],
+    "text": "Cliopatria's 63 shape (north limit 46.2 N) plus Gallia Transalpina; Gaul beyond the Province comes in step by step in 58, 57, 56 and 52 (ledger)"
+   }
+  },
+  {
+   "slug": "roman-empire",
+   "shape_id": "roman-empire_-14",
+   "verdict": "adjust",
+   "correction": {
+    "cliopatria": "Roman Empire",
+    "year": -14,
+    "text": "Cliopatria's 14 BC shape; Germania east of the Rhine is the occupation the ledger opens in 12 BC (/ledger/20), not part of the shape"
+   },
+   "source": "https://en.wikipedia.org/wiki/Germanic_Wars",
+   "why": "The dossier's correction added the Rhine-Elbe Germania to the shape from 14 BC, so it was drawn as plain Roman land from 14 and the occupation of 12 BC (counterpart nobody, which only marks unowned cells) never showed. The page has '12-9 BC, Invasions of Drusus up the Elbe' and the forts on the Weser in 8-7 BC, and calls the land 'Magna Germania' without a province; the ledger's own note says 'Held as occupied land, not a province'."
+  },
+  {
+   "slug": "roman-republic",
+   "shape_id": "roman-republic_-77",
+   "verdict": "adjust",
+   "correction": {
+    "union": [
+     {
+      "minus": [
+       {
+        "cliopatria": "Roman Republic",
+        "year": -77
+       },
+       {
+        "union": [
+         {
+          "region": "Bithynia"
+         },
+         {
+          "region": "Crete"
+         },
+         {
+          "region": "Pontus"
+         }
+        ]
+       }
+      ],
+      "text": "the shape without Bithynia before 74 ('In 74 BC, Nicomedes IV of Bithynia willed his kingdom to Rome'), without Crete before 67 and without Pontus, which Lucullus occupied 72-67 and Pompey made a province in 65; Cyrenaica direct from 74 (Lentulus Marcellinus 'sent in 74 BC to annex Cyrenaica as a Roman province'); Asia as drawn"
+     },
+     {
+      "minus": [
+       {
+        "union": [
+         {
+          "region": "Provence"
+         },
+         {
+          "admin1": "Gard",
+          "country": "France"
+         },
+         {
+          "admin1": "Hérault",
+          "country": "France"
+         },
+         {
+          "admin1": "Aude",
+          "country": "France"
+         },
+         {
+          "admin1": "Pyrénées-Orientales",
+          "country": "France"
+         },
+         {
+          "admin1": "Drôme",
+          "country": "France"
+         },
+         {
+          "admin1": "Isère",
+          "country": "France"
+         },
+         {
+          "admin1": "Ardèche",
+          "country": "France"
+         },
+         {
+          "admin1": "Vaucluse",
+          "country": "France"
+         }
+        ]
+       },
+       {
+        "union": [
+         {
+          "place": "Marseille",
+          "km": 25
+         },
+         {
+          "place": "Nice",
+          "km": 8
+         },
+         {
+          "place": "Agde",
+          "km": 8
+         }
+        ],
+        "text": "Massalia's own territory and its colonies Nikaia (Nice) and Agathe (Agde)"
+       }
+      ],
+      "text": "Gallia Transalpina, the province of 121 BC from the Pyrenees and Cévennes to the Alps and the Gulf of Lion, less Massilia's own territory and its colonies at Nikaia (Nice) and Agathe (Agde)"
+     }
+    ],
+    "text": "the shape without Bithynia before 74 ('In 74 BC, Nicomedes IV of Bithynia willed his kingdom to Rome'), without Crete before 67 and without Pontus, which Lucullus occupied 72-67 and Pompey made a province in 65; Cyrenaica direct from 74 (Lentulus Marcellinus 'sent in 74 BC to annex Cyrenaica as a Roman province'); Asia as drawn; plus Gallia Transalpina"
+   },
+   "source": "https://en.wikipedia.org/wiki/Gallia_Narbonensis",
+   "why": "The dossier's correction as it stands, plus Gallia Transalpina, which the ledger gave Rome in 121 BC (/ledger/122) and the snap would otherwise release. Gallia Narbonensis: 'The area became a Roman province in 121 BC', bordered by 'the Pyrenees Mountains on the west, the Cévennes to the north, the Alps on the east, and the Gulf of Lion on the south'; Cliopatria's Roman shapes draw only a coastal strip of it, so the land the ledger gave Rome in 121 (/ledger/122) is released at the first snap. [Review 2 Nov 2026: Massalia's colonies Nikaia (Nice) and Agathe (Agde) cut from the Province: with them in the union the 87 snap gave both Massaliot cells to Rome by R2 (Rome succeeds Massalia), 38 years early. Massalia page: the city founded 'colonies of its own on the sea coast of Gallia Narbonensis', among them 'Agathe' and 'Nikaia'; Gallia Narbonensis page: only 'After the war ended in Caesar's favour, Massilia lost all of its independence' (49 BC).]"
+  },
+  {
+   "slug": "roman-republic",
+   "shape_id": "roman-republic_-66",
+   "verdict": "adjust",
+   "correction": {
+    "union": [
+     {
+      "minus": [
+       {
+        "cliopatria": "Roman Republic",
+        "year": -66
+       },
+       {
+        "region": "Armenian Highlands"
+       }
+      ],
+      "text": "the shape without Armenia: after Pompey's victory at the Lycus (late 66) 'Tigranes then sued for peace, and Armenia became an allied client state of Rome', vassal tint, not territory; Pontus (province 65) and Syria (annexed 64) as drawn"
+     },
+     {
+      "minus": [
+       {
+        "union": [
+         {
+          "region": "Provence"
+         },
+         {
+          "admin1": "Gard",
+          "country": "France"
+         },
+         {
+          "admin1": "Hérault",
+          "country": "France"
+         },
+         {
+          "admin1": "Aude",
+          "country": "France"
+         },
+         {
+          "admin1": "Pyrénées-Orientales",
+          "country": "France"
+         },
+         {
+          "admin1": "Drôme",
+          "country": "France"
+         },
+         {
+          "admin1": "Isère",
+          "country": "France"
+         },
+         {
+          "admin1": "Ardèche",
+          "country": "France"
+         },
+         {
+          "admin1": "Vaucluse",
+          "country": "France"
+         }
+        ]
+       },
+       {
+        "union": [
+         {
+          "place": "Marseille",
+          "km": 25
+         },
+         {
+          "place": "Nice",
+          "km": 8
+         },
+         {
+          "place": "Agde",
+          "km": 8
+         }
+        ],
+        "text": "Massalia's own territory and its colonies Nikaia (Nice) and Agathe (Agde)"
+       }
+      ],
+      "text": "Gallia Transalpina, the province of 121 BC from the Pyrenees and Cévennes to the Alps and the Gulf of Lion, less Massilia's own territory and its colonies at Nikaia (Nice) and Agathe (Agde)"
+     }
+    ],
+    "text": "the shape without Armenia: after Pompey's victory at the Lycus (late 66) 'Tigranes then sued for peace, and Armenia became an allied client state of Rome', vassal tint, not territory; Pontus (province 65) and Syria (annexed 64) as drawn; plus Gallia Transalpina"
+   },
+   "source": "https://en.wikipedia.org/wiki/Gallia_Narbonensis",
+   "why": "The dossier's correction as it stands, plus Gallia Transalpina, which the ledger gave Rome in 121 BC (/ledger/122) and the snap would otherwise release. Gallia Narbonensis: 'The area became a Roman province in 121 BC', bordered by 'the Pyrenees Mountains on the west, the Cévennes to the north, the Alps on the east, and the Gulf of Lion on the south'; Cliopatria's Roman shapes draw only a coastal strip of it, so the land the ledger gave Rome in 121 (/ledger/122) is released at the first snap. [Review 2 Nov 2026: Massalia's colonies Nikaia (Nice) and Agathe (Agde) cut from the Province: with them in the union the 87 snap gave both Massaliot cells to Rome by R2 (Rome succeeds Massalia), 38 years early. Massalia page: the city founded 'colonies of its own on the sea coast of Gallia Narbonensis', among them 'Agathe' and 'Nikaia'; Gallia Narbonensis page: only 'After the war ended in Caesar's favour, Massilia lost all of its independence' (49 BC).]"
+  }
+ ]
+}

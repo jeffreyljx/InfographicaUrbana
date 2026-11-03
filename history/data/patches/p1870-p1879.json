@@ -1,0 +1,200 @@
+{
+  "window": "p1870-p1879",
+  "note": "Window agent p1870-p1879, 2 Nov 2026. events/0: Qing take Dzungaria Nov 1876; events/1-3: Bosnia and Herzegovina drawn as Ottoman land occupied by Austria-Hungary from 1878 (the eyalet's year-end dissolve otherwise hands it over as direct Austrian land; events/1 returns it first, events/2 clears the 10 cells Austria-Hungary held, events/3 draws the occupation). keyframe_overrides/0: Qing Hexi corridor from Oct 1873; /1: Ottoman al-Hasa from 1871; /2: Carlist State without the French Basque Country; /3: Paraguay without the Hayes department until the 1878 award; /4: Ashanti keeps Brong/Eastern/Adanse until Fomena (Feb 1874). Reviewer (2 Nov 2026): events/0 limited to north of 42 N (no Pamir/Kunlun rims); keyframe_overrides/2 cuts France's 1873 shape, not the country; events/4 added: Adanse leaves Ashanti at Fomena (Feb 1874), which keyframe_overrides/4 relies on. Orchestrator 3 Nov 2026: dropped events [1, 2, 3] (fx-47: bosnia-eyalet dossier now carries the 1878 occupation; these would open it twice).",
+  "events": [
+    {
+      "slug": "qing-dynasty",
+      "year": 1876,
+      "month": 11,
+      "type": "gain",
+      "counterpart": "nobody",
+      "region": {
+        "intersect": [
+          {
+            "minus": [
+              {
+                "region": "Dzungaria"
+              },
+              {
+                "region": "Turfan-Hami"
+              }
+            ]
+          },
+          {
+            "cliopatria": "Qing Dynasty",
+            "year": 1877
+          },
+          {
+            "polygon": [
+              [
+                79,
+                42
+              ],
+              [
+                97,
+                42
+              ],
+              [
+                97,
+                50
+              ],
+              [
+                79,
+                50
+              ]
+            ],
+            "text": "north of 42 N and east of 79 E: Dzungaria proper, without the Pamir and Kunlun rims of the Tarim that the gazetteer's Dzungaria (Xinjiang minus the Tarim polygon) also holds"
+          }
+        ],
+        "text": "Dzungaria (Urumqi, Manas and the north of Xinjiang) as Cliopatria's 1877 Qing shape draws it, without the Turfan-Hami block that fell in 1877 and without the Pamir and Kunlun rims south of the Tarim (Yettishar's side until December 1877)"
+      },
+      "note": "August 1876: the Qing 'appeared at Urumchi' and 'the place soon surrendered'; on 2 September they besieged Manas and 'On 6 November it surrendered'. The compile's gain from dungan-revolt took only the 22 cells that rebel dossier holds; the rest of Dzungaria stayed nobody's land until the 1877 keyframe. Turfan and Dabancheng stay out (spring-summer 1877). Reviewer: the gazetteer's Dzungaria also covers 47 Pamir and Kunlun cells south and west of the Tarim; the polygon keeps the gain north of 42 N.",
+      "source": "https://en.wikipedia.org/wiki/Qing_reconquest_of_Xinjiang",
+      "confidence": 3
+    },
+    {
+      "slug": "ashanti-empire",
+      "year": 1874,
+      "month": 2,
+      "type": "loss",
+      "counterpart": "nobody",
+      "region": {
+        "place": "Obuasi",
+        "country": "Ghana",
+        "km": 25,
+        "text": "Adanse, south of Kumasi, whose claims were renounced at Fomena"
+      },
+      "note": "Treaty of Fomena, signed on 13 February 1874: the Ashanti 'renounce their claims on Assin, Akim, Adanse and Denkyira'. Ledger/16 names Adanse, but its loss to british-gold-coast moves only the cells of that colony's own gain (british-gold-coast/ledger/7), so once keyframe_overrides/4 keeps Adanse in the 1873 shape it stayed Ashanti after 1874; this event removes it in February 1874 (reviewer's addition).",
+      "source": "https://en.wikipedia.org/wiki/Treaty_of_Fomena",
+      "confidence": 2
+    }
+  ],
+  "keyframe_overrides": [
+    {
+      "slug": "qing-dynasty",
+      "shape_id": "qing-dynasty_1873",
+      "verdict": "adjust",
+      "correction": {
+        "union": [
+          {
+            "cliopatria": "Qing Dynasty",
+            "year": 1873
+          },
+          {
+            "region": "Hexi Corridor"
+          }
+        ],
+        "text": "Cliopatria's 1873 shape plus the Hexi Corridor from Lanzhou to Dunhuang, cleared when Suzhou (Jiuquan) fell on 24 October 1873"
+      },
+      "source": "https://en.wikipedia.org/wiki/Dungan_Revolt_(1862%E2%80%931877)",
+      "why": "'Zuo Zongtang laid siege to Suzhou in September 1873 ... The city fell on October 24'; the corridor 'from Lanzhou to Dunhuang' was cleared of Hui. Cliopatria's 1873 shape lacks about 500 Gansu cells (Jiuquan, Jiayuguan, Dunhuang), which stayed nobody's land until the 1877 snap although the Qing held them from October 1873."
+    },
+    {
+      "slug": "ottoman-empire",
+      "shape_id": "ottoman-empire_1871",
+      "verdict": "adjust",
+      "correction": {
+        "union": [
+          {
+            "minus": [
+              {
+                "cliopatria": "Ottoman Empire",
+                "year": 1871
+              },
+              {
+                "union": [
+                  {
+                    "lon": 43.0,
+                    "lat": 41.64,
+                    "km": 50
+                  },
+                  {
+                    "lon": 43.49,
+                    "lat": 41.4,
+                    "km": 50
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "intersect": [
+              {
+                "region": "Al-Ahsa"
+              },
+              {
+                "cliopatria": "Ottoman Empire",
+                "year": 1873
+              }
+            ]
+          }
+        ],
+        "text": "Cliopatria's 1871 shape without Akhaltsikhe and Akhalkalaki, plus al-Hasa (the part Cliopatria's 1873 shape draws), held by an Ottoman garrison from 1871"
+      },
+      "source": "https://en.wikipedia.org/wiki/Unification_of_Saudi_Arabia",
+      "why": "Ibn Saud 'conquered al-Hasa from an Ottoman garrison which had controlled the area from 1871' (the Nejd ledger/14 hands it over in 1871). Cliopatria's Ottoman shape adds al-Hasa only in 1873, so the 1871 snap dropped about 1,300 cells to nobody for 1871-1872."
+    },
+    {
+      "slug": "carlist-state",
+      "shape_id": "carlist-state_1873",
+      "verdict": "adjust",
+      "correction": {
+        "union": [
+          {
+            "minus": [
+              {
+                "region": "Basque Country"
+              },
+              {
+                "cliopatria": "French Third Republic",
+                "year": 1873,
+                "text": "the French Basque cells, as the French Third Republic held them in 1873"
+              }
+            ]
+          },
+          {
+            "admin1": "Navarra",
+            "country": "Spain"
+          }
+        ],
+        "text": "the Spanish Basque provinces and Navarre; the Basque Country region without its French part"
+      },
+      "source": "https://en.wikipedia.org/wiki/Third_Carlist_War",
+      "why": "'Carlists still held the Basque Provinces and most of Navarre outside of their capitals'; France appears only as a refuge. The gazetteer's Basque Country region includes Pyrenees-Atlantiques (29 cells), which beat the French Third Republic in the size rule in 1873. Reviewer: minus France's 1873 Cliopatria shape (29 cells) rather than the country, whose outline also takes 2 border cells Spain held in 1872, which then fell to nobody for 1873-1874."
+    },
+    {
+      "slug": "paraguay",
+      "shape_id": "paraguay_1877",
+      "verdict": "adjust",
+      "correction": {
+        "cliopatria": "Paraguay",
+        "year": 1877,
+        "text": "Paraguay east of the river as Cliopatria draws it in 1877; the Chaco of the Hayes award is added by the ledger (ledger/16) in 1878"
+      },
+      "source": "https://en.wikipedia.org/wiki/Presidente_Hayes_Department",
+      "why": "Hayes 'ultimately awarded the territory to Paraguay in 1878' (a dispute between Argentina and Paraguay). The keyframe added the Presidente Hayes department from 1877, a year early, and took it from Bolivia; the ledger already has the 1878 gain."
+    },
+    {
+      "slug": "ashanti-empire",
+      "shape_id": "ashanti-empire_1873",
+      "verdict": "adjust",
+      "correction": {
+        "minus": [
+          {
+            "cliopatria": "Ashanti Empire",
+            "year": 1873
+          },
+          {
+            "admin1": "Central",
+            "country": "Ghana",
+            "text": "the coast and Assin country south of the Pra, renounced at Fomena (1874)"
+          }
+        ],
+        "text": "the 1873 shape without the coast south of the Pra; Eastern, Adanse and Brong go in 1874 by the Fomena ledger events"
+      },
+      "source": "https://en.wikipedia.org/wiki/Treaty_of_Fomena",
+      "why": "The treaty was 'signed on February 13' 1874: Ashanti 'renounce their claims on Assin, Akim, Adanse and Denkyira' and Brong became independent. The dossier's keyframe cut those lands already at the start of 1873; the ledger (ledger/16-17) removes them in February 1874."
+    }
+  ],
+  "rulings": []
+}

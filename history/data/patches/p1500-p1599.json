@@ -1,0 +1,307 @@
+{
+  "window": "p1500-p1599",
+  "note": "Window agent p1500-p1599, 1 Nov 2026. events/0: Denmark-Norway was drawn as a vassal of the Duchy of Holstein (inverted vassal_start of Holstein ledger/3, closed in 1526; the effect runs past 1599); events/3: Kerman to the Safavids in summer 1503 (the Aq Qoyunlu 1502 shape now ends in 1502); events/1: Samtskhe land moved from Imereti to the Ottomans after Sokhoista; events/2: whole Abdallab shape as Funj vassal. keyframe_overrides/0-7 give shapes the years their own dossier notes state (Cliopatria rows overlapped the dossier's later keyframes and the compile unions overlapping keyframes). Corrections reach past 1599 only through events/0 (relation closed) and keyframe_overrides/2 (Merv held by Bukhara on 1 January 1600, Safavid gain in 1600 then applies). Orchestrator 3 Nov 2026: dropped events [1] (fx-46: samtskhe-saatabago now regains the land first, so it was a no-op).",
+  "events": [
+    {
+      "slug": "duchy-of-holstein",
+      "year": 1526,
+      "type": "vassal_end",
+      "counterpart": "denmark-norway",
+      "region": {
+        "region": "Holstein",
+        "text": "Holstein under the Danish crown (Denmark-Norway)"
+      },
+      "note": "Closes the relation the dossier's ledger/3 opens in the wrong direction, in 1526 when Denmark-Norway is born. The page gives Holstein no overlordship of Denmark or Norway: infobox 'State of the Holy Roman Empire (1474-1806)' and 'Personal union with the Kingdom of Denmark (1474-1544; 1773-1864)'. Because Denmark-Norway is not alive in June 1523 the compile read ledger/3 as Holstein the suzerain and Denmark-Norway (2,934 cells, 1526-1599) the vassal, drawing the whole realm in Holstein's pale vassal tint. Holstein's own 34 cells go to Denmark-Norway's shape in 1526, as in the published draft and in Cliopatria's Denmark.",
+      "source": "https://en.wikipedia.org/wiki/Duchy_of_Holstein",
+      "confidence": 3
+    },
+    {
+      "slug": "funj-sultanate",
+      "year": 1504,
+      "type": "vassal_start",
+      "counterpart": "abdallab",
+      "region": {
+        "union": [
+          {
+            "admin1": "River Nile",
+            "country": "Sudan"
+          },
+          {
+            "admin1": "Khartoum",
+            "country": "Sudan"
+          }
+        ],
+        "text": "the Nile north of the confluence of the Blue and White Niles, with the Butana approximated by River Nile and Khartoum (as the Funj dossier does)"
+      },
+      "note": "1504: 'they were defeated by the Funj Sultanate in 1504 and thereafter ruled over the Butana as vassals' and were 'viceroys of the north and the most important of these vassals'. The dossier's ledger/2 region is Cliopatria's Funj 1507 outline cut to River Nile and Khartoum (275 cells), so only 79 of the Abdallab's cells took the vassal tint; the rest of its shape (River Nile and Khartoum states, 530 cells) was drawn as an independent state beside Funj. This event gives the vassal relation the Abdallab's whole shape.",
+      "source": "https://en.wikipedia.org/wiki/Abdallab",
+      "confidence": 3
+    },
+    {
+      "slug": "safavid-dynasty",
+      "year": 1503,
+      "month": 7,
+      "type": "gain",
+      "counterpart": "aq-qoyunlu",
+      "region": {
+        "minus": [
+          {
+            "cliopatria": "Aq Qoyunlu",
+            "year": 1502
+          },
+          {
+            "union": [
+              {
+                "country": "Iraq"
+              },
+              {
+                "country": "Turkey"
+              },
+              {
+                "country": "Syria"
+              },
+              {
+                "country": "Kuwait"
+              },
+              {
+                "admin1": "Gilan",
+                "country": "Iran"
+              },
+              {
+                "admin1": "Mazandaran",
+                "country": "Iran"
+              },
+              {
+                "admin1": "Semnan",
+                "country": "Iran"
+              },
+              {
+                "admin1": "Sistan and Baluchestan",
+                "country": "Iran"
+              }
+            ]
+          }
+        ],
+        "text": "the Aq Qoyunlu's Iranian land in the corrected 1502 shape (Iraq-Ajami, Fars, Kerman and the rest of Iran), as aq-qoyunlu ledger/15 gives it to the Safavids in 1503"
+      },
+      "note": "Summer 1503: Ismail takes the Aq Qoyunlu's Iranian land. Aq Qoyunlu page: 'He conquered Iraq-Ajami, Fars and Kerman in the summer of 1503'; infobox 'Collapse of the Aq Qoyunlu rule in Iran: Summer 1503'. The Aq Qoyunlu dossier's ledger/15 gives this land (the Iranian part of the corrected 1502 shape) to the Safavids in 1503, but the compile applies that loss only as the Safavid ledger/2 gain (Hamadan, Esfahan, Fars), so with the 1502 shape ended in 1502 (keyframe_overrides/4) the rest (Kerman, 663 cells, and about 1,417 cells of Tehran, Qom, Qazvin, Markazi, Zanjan, Kermanshah, Kurdistan, Khuzestan and the Gulf coast) would fall to nobody until the Safavid 1507 keyframe. [Reviewer, 1 Nov 2026: region widened from Kerman alone to the region of aq-qoyunlu ledger/15; the event takes only cells the Aq Qoyunlu hold, before the Aq Qoyunlu 1503 keyframe snap.]",
+      "source": "https://en.wikipedia.org/wiki/Aq_Qoyunlu",
+      "confidence": 2
+    }
+  ],
+  "keyframe_overrides": [
+    {
+      "slug": "songhai-empire",
+      "shape_id": "songhai-empire_1564",
+      "verdict": "adjust",
+      "correction": {
+        "union": [
+          {
+            "cliopatria": "Songhai Empire",
+            "year": 1564
+          },
+          {
+            "union": [
+              {
+                "admin1": "Tillabéri",
+                "country": "Niger"
+              },
+              {
+                "place": "Gaya",
+                "country": "Niger",
+                "km": 100
+              }
+            ],
+            "text": "Dendi, the easternmost province on the Niger under the Dendi-fari, with its fleet at Ayorou; Cliopatria's Songhai shapes stop at 1.7 E and omit it"
+          },
+          {
+            "region": "Air",
+            "text": "Aïr, the north-eastern limit of the empire 'from Air in the Northeast to Futa Djallon'"
+          },
+          {
+            "lon": -4.97,
+            "lat": 23.6,
+            "km": 80,
+            "text": "the salt mines of Taghaza 'brought within the empire's boundaries'"
+          }
+        ],
+        "text": "The Cliopatria 1564 shape plus Dendi, Aïr and Taghaza, for 1564-1590"
+      },
+      "source": "https://en.wikipedia.org/wiki/Battle_of_Tondibi",
+      "why": "The dossier's own note says this shape 'holds 1564-1590', but Cliopatria's row runs to 1594, so it overlaps the 1591 Dendi keyframe and keeps the old empire (Agadez, Kayes, Hodh ech Chargui; about 4,100 cells) Songhai until the 1595 keyframe cuts it. Tondibi: 'On 13 March 1591 the armies met'; 'The looting of the three cities marked the end of the Songhai Empire as an effective force'; 'the Songhai themselves moved east to the only surviving province of Dendi'.",
+      "from": 1564,
+      "to": 1590
+    },
+    {
+      "slug": "khanate-of-bukhara",
+      "shape_id": "khanate-of-bukhara_1588",
+      "verdict": "adjust",
+      "correction": {
+        "union": [
+          {
+            "cliopatria": "Khanate of Bukhara",
+            "year": 1588
+          },
+          {
+            "region": "Chach"
+          },
+          {
+            "union": [
+              {
+                "region": "Iranian Khorasan"
+              },
+              {
+                "admin1": "Hirat",
+                "country": "Afghanistan"
+              }
+            ],
+            "text": "Khorasan: the Iranian province with Mashhad, and Herat"
+          }
+        ],
+        "text": "the 1588 land with Tashkent and Khorasan (1588: He seized Khorasan), 1588-1597; Merv added in 1593"
+      },
+      "source": "https://en.wikipedia.org/wiki/Abdullah_Khan_II",
+      "why": "The dossier's note gives this shape (with Khorasan, Merv added 1593) as 1588-1597, but Cliopatria's row ends in 1594, so from 1595 the Transoxiana-only 1595 shape cut Herat and Khorasan (about 1,740 cells) to nobody three years early. Abdullah Khan II page: 'In 1588 he seized Khorasan'; 'In 1593-94 Khorezm was finally conquered'; 'Abdullah Khan died in 1598'. The Safavid ledger returns Mashhad and Herat only in 1598.",
+      "from": 1588,
+      "to": 1597
+    },
+    {
+      "slug": "khanate-of-bukhara",
+      "shape_id": "khanate-of-bukhara_1595",
+      "verdict": "adjust",
+      "correction": {
+        "union": [
+          {
+            "cliopatria": "Khanate of Bukhara",
+            "year": 1595
+          },
+          {
+            "region": "Margiana",
+            "text": "the Merv oasis"
+          }
+        ],
+        "text": "the shape as drawn, for 1598-1599 only (the Kazakhs hold Samarkand and Fergana after Abdullah Khan II's death), plus the Merv oasis, which Bukhara held from 1593 until the Safavid governor of 1600"
+      },
+      "source": "https://en.wikipedia.org/wiki/Merv",
+      "why": "The dossier's note says the shape applies 'for 1598-1599 only' but it was compiled from Cliopatria's 1595 row (1595-1599), which cut Herat and Khorasan to nobody three years early. Abdullah Khan II page: 'In 1588 he seized Khorasan'; 'Abdullah Khan died in 1598'. The Merv oasis (294 cells, ledger/14, 1593) is added to the shape because Cliopatria's 1595 outline lacks it and the keyframe would otherwise drop it to nobody in 1598, two years before the Safavids take it. Merv page: 'in 1593, Merv was conquered by Abdullah Khan II of Bukhara'; 'A Safavid governor, Biktash Khan Ustajlu, was appointed to the governorship in 1600'.",
+      "from": 1598,
+      "to": 1599
+    },
+    {
+      "slug": "mughal-empire",
+      "shape_id": "mughal-empire_1540",
+      "verdict": "adjust",
+      "correction": {
+        "minus": [
+          {
+            "cliopatria": "Mughal Empire",
+            "year": 1540
+          },
+          {
+            "place": "Bikaner",
+            "km": 140
+          }
+        ],
+        "text": "unchanged, valid 1540 only: the Punjab, held until the Mughals fled Lahore in July 1540; Sher Shah's from then on; fx-10: without Bikaner (before its 1570 submission)"
+      },
+      "source": "https://en.wikipedia.org/wiki/Humayun",
+      "why": "The dossier's note says 'valid 1540 only' and its next keyframe (1541-1544) is the landless exile, but Cliopatria's Mughal row runs 1540-1546, so about 1,050 cells of the Punjab stayed Mughal through 1541-1546. Humayun page: 'at the battle of Kannauj on 17 May 1540. Humayun was soundly defeated'; the exile lasted until 'On 3 September 1545' Kandahar and 'By 18 November 1545, Humayun entered Kabul'.",
+      "from": 1540,
+      "to": 1540
+    },
+    {
+      "slug": "aq-qoyunlu",
+      "shape_id": "aq-qoyunlu_1502",
+      "verdict": "adjust",
+      "correction": {
+        "minus": [
+          {
+            "cliopatria": "Aq Qoyunlu",
+            "year": 1502
+          },
+          {
+            "union": [
+              {
+                "admin1": "Gilan",
+                "country": "Iran"
+              },
+              {
+                "admin1": "Mazandaran",
+                "country": "Iran"
+              },
+              {
+                "admin1": "Semnan",
+                "country": "Iran"
+              },
+              {
+                "admin1": "Sistan and Baluchestan",
+                "country": "Iran"
+              }
+            ]
+          }
+        ],
+        "text": "the 1502 shape without Gilan, Mazandaran, Semnan and Sistan and Baluchestan, for 1502 only; replaced from 1503 by aq-qoyunlu_1503"
+      },
+      "source": "https://en.wikipedia.org/wiki/Aq_Qoyunlu",
+      "why": "The dossier's note says this shape holds 'for 1502 only; replaced from 1503 by aq-qoyunlu_1503' (Mesopotamia and Diyar Bakr without Iran), but Cliopatria's row runs to 1506, so the old Iranian shape (about 2,070 cells more than the 1503 keyframe) stays Aq Qoyunlu until 1507. Aq Qoyunlu page: 'He conquered Iraq-Ajami, Fars and Kerman in the summer of 1503'; infobox 'Collapse of the Aq Qoyunlu rule in Iran: Summer 1503'; 'Diyarbakir in 1507-1508 and Mesopotamia in the autumn of 1508'.",
+      "to": 1502
+    },
+    {
+      "slug": "house-of-jagiellon",
+      "shape_id": "house-of-jagiellon_1502",
+      "verdict": "adjust",
+      "correction": {
+        "cliopatria": "House of Jagiellon",
+        "year": 1502,
+        "text": "unchanged shape, right for 1502 only: the six-year truce of 25 March 1503 takes Chernigov, Novgorod-Seversk, Starodub and the upper Oka (keyframe _1503)"
+      },
+      "source": "https://en.wikipedia.org/wiki/Muscovite%E2%80%93Lithuanian_Wars",
+      "why": "The dossier's note says this shape is 'right for 1502 only' and that the truce of 25 March 1503 takes Chernigov, Novgorod-Seversk, Starodub and the upper Oka (keyframe _1503), but Cliopatria's row runs to 1506, so the union keeps about 1,090 cells of the lost land Lithuanian for 1503-1506. Page: 'a six-year truce was concluded on the Feast of the Annunciation (March 25) in 1503'; 'The Grand Duchy of Lithuania lost approximately 210,000 square kilometres, or a third of its territory: Chernigov, Novgorod-Seversk, Starodub, and lands around the upper Oka River'.",
+      "to": 1502
+    },
+    {
+      "slug": "adal-sultanate",
+      "shape_id": "adal-sultanate_1540",
+      "verdict": "adjust",
+      "correction": {
+        "cliopatria": "Adal Sultanate",
+        "year": 1540,
+        "text": "unchanged for 1540-1543; from 1544 the Harar core (new keyframe adal-sultanate_1544)"
+      },
+      "source": "https://en.wikipedia.org/wiki/Ethiopian%E2%80%93Adal_War",
+      "why": "The dossier's note says this shape is 'unchanged for 1540-1543; from 1544 the Harar core (new keyframe adal-sultanate_1544)', but Cliopatria's row runs to 1546, so about 1,680 cells of the highlands stay Adal until the 1547 keyframe, three years after the war. Page: 'the wounded Imam was beheaded on 21 February 1543'; 'forced an Adalite retreat from Ethiopia'; 'in October 1544, a year and a half after Ahmad's death, Gelawdewos defeated and killed Abbas' and recovered Bali, Fatagar and Dawaro; infobox 'Status quo ante bellum'.",
+      "to": 1543
+    },
+    {
+      "slug": "sur-empire",
+      "shape_id": "sur-empire_1572",
+      "verdict": "adjust",
+      "correction": {
+        "cliopatria": "Sur Empire",
+        "year": 1572,
+        "text": "the shape unchanged, for 1572-1573 only (Bengal, Bihar and Orissa under Daud Khan Karrani); later years are the new keyframes"
+      },
+      "source": "https://en.wikipedia.org/wiki/Mughal_conquest_of_Bengal",
+      "why": "The dossier's note says the shape is right 'for 1572-1573 only' and that sur-empire_1574 replaces it from 1574 and sur-empire_1577 from 1577 (Orissa alone), but Cliopatria's row runs to 1578, so the whole 1572 shape (about 1,340 cells; 1,220 more than the 1577 keyframe) stays Sur through 1578. Page: 'Akbar himself arrived at the siege [of Patna] ... on 3 August 1574'; 'He entered the capital Tanda on 25 September 1574'; 'Decisive battle with Daud took place at Raj Mahal on 10 July 1576'.",
+      "to": 1573
+    }
+  ],
+  "rulings": [
+    {
+      "years": [
+        1547,
+        1599
+      ],
+      "a": "ming-dynasty",
+      "b": "tumed",
+      "winner": "ming-dynasty",
+      "region": {
+        "admin1": "Shanxi",
+        "country": "China",
+        "text": "Shanxi, which lies south of the Tumed pastures"
+      },
+      "source": "https://en.wikipedia.org/wiki/Altan_Khan_of_the_Tumed",
+      "why": "Seam sm-04: the same ruling as p1600-p1609 rulings/0, for the years before it. The Tumed dossier draws a 200 km disc round Hohhot that reaches 101-102 cells into Ming Shanxi; the size rule gave them to the smaller Tumed at the conflicts of 1547, 1552, 1582, 1588 and 1595, so the 1599 anchor held 105 Tumed cells in Shanxi. The page puts the Tumed pastures 'north of the border with Shanxi, in present-day Inner Mongolia', and in 1571 Altan 'made peace with the Ming China', so Shanxi stays Ming. The disc's 23 Inner Mongolia and 9 Shaanxi cells are left as drawn (the page does not mention Shaanxi)."
+    }
+  ]
+}

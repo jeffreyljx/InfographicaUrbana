@@ -1,0 +1,632 @@
+{
+ "window": "p0000-p0099",
+ "note": "p0000-p0099 window agent, 2 Nov 2026. Fixes: Khotan and Kashgar held by the protectorate from 74 (events/0); Chengjia holds all of Yi Province from 24 instead of leaving the Sichuan basin to the Gengshi Han and then unowned in 25 (events/1); Agricola's Scotland drawn 84-86 (keyframe_overrides/0); the western Hexi Corridor kept in Han's 91 keyframe (keyframe_overrides/1); Moesia Inferior Roman from 6 and the Illyrian interior Roman again from 9 (keyframe_overrides/2-6, one per Roman keyframe 6, 9, 14, 23, 43, because each keyframe snap would otherwise drop the land again). Reviewer (2 Nov 2026): keyframe_overrides/7-11 subtract Chongqing from Han keyframes 25, 27, 29, 30 and 34 so that events/1 holds past 24.",
+ "events": [
+  {
+   "slug": "protectorate-of-the-western-regions",
+   "year": 74,
+   "type": "gain",
+   "counterpart": "xiongnu",
+   "region": {
+    "union": [
+     {
+      "place": "Hotan",
+      "km": 150
+     },
+     {
+      "place": "Kashgar",
+      "km": 150
+     }
+    ],
+    "text": "the kingdoms of Khotan and Kashgar, which 'came under Chinese rule by 74 CE'"
+   },
+   "note": "74 CE: 'The kingdoms of Khotan and Kashgar came under Chinese rule by 74 CE.' (Ban Chao page). The dossier's own gains of these two (ledger/6, ledger/7) name counterparts with no dossier, so the cells stayed in the Xiongnu's Tarim contest zone; this moves the two oasis circles to the protectorate (a Han client) in 74, the contest zone round them stays open to 89.",
+   "source": "https://en.wikipedia.org/wiki/Ban_Chao",
+   "confidence": 2
+  },
+  {
+   "slug": "chengjia",
+   "year": 24,
+   "type": "gain",
+   "counterpart": "han-dynasty",
+   "region": {
+    "union": [
+     {
+      "admin1": "Sichuan",
+      "country": "China"
+     },
+     {
+      "admin1": "Chongqing",
+      "country": "China"
+     }
+    ],
+    "text": "the entirety of the former Yi Province: 'modern Sichuan' (and Chongqing)"
+   },
+   "note": "24 CE: 'Gongsun secured control of Yi Province and in 24 proclaimed himself king of Shu'; in 25 he took the title of emperor of the Cheng dynasty (Gongsun Shu page). The dossier's found (ledger/0) took only the 888 unowned cells because the Gengshi Han held the other 1,123 (the compiler gives them to Han as Chengjia's successor), and Han's 25 keyframe then dropped them, leaving the Sichuan basin unowned in 25; this gives the whole of Yi Province to Chengjia from 24. [Reviewer, 2 Nov 2026: alone, this event gave Chongqing (317 Han cells) to Chengjia in 24 only; Han's keyframes 25, 27, 29, 30 and 34 claim Chongqing and R2 returned it to Han in 25. keyframe_overrides/7-11 take Chongqing out of those keyframes, so the whole basin stays Chengjia's to 36.]",
+   "source": "https://en.wikipedia.org/wiki/Gongsun_Shu",
+   "confidence": 2
+  }
+ ],
+ "keyframe_overrides": [
+  {
+   "slug": "roman-empire",
+   "shape_id": "roman-empire_84",
+   "verdict": "adjust",
+   "correction": {
+    "cliopatria": "Roman Empire",
+    "year": 84,
+    "text": "Cliopatria's 84 shape, with Scotland as far as the Moray Firth (Mons Graupius); the ledger (ledger/62) takes Scotland out in 87"
+   },
+   "source": "https://en.wikipedia.org/wiki/Roman_Britain",
+   "why": "The dossier's correction applies the 91 shape (Cheviot limit) from 84, so Agricola's Scotland never appears, although its own text says '84-86 as given': 'In mid-84 AD, Agricola faced the armies of the Caledonians, led by Calgacus, at the Battle of Mons Graupius' and 'By 87 the decision was taken to abandon most of the land north of the Cheviot Hills'. The 84 shape holds Scotland; ledger/62 drops it in 87."
+  },
+  {
+   "slug": "han-dynasty",
+   "shape_id": "han-dynasty_91",
+   "verdict": "adjust",
+   "correction": {
+    "union": [
+     {
+      "union": [
+       {
+        "minus": [
+         {
+          "cliopatria": "Han Dynasty",
+          "year": 91
+         },
+         {
+          "union": [
+           {
+            "region": "Fergana"
+           },
+           {
+            "country": "Kyrgyzstan"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "place": "Hami",
+        "km": 100
+       }
+      ]
+     },
+     {
+      "region": "Hexi Corridor"
+     }
+    ],
+    "text": "the 91 shape without Fergana and Kyrgyzstan; the Tarim, Turfan-Hami and Dzungaria cells are client land; holds 91-105; plus Hami (100 km disc); plus the whole Hexi Corridor (the Four Commanderies of Hexi, Han since 121 BCE)"
+   },
+   "source": "https://en.wikipedia.org/wiki/Hexi_Corridor",
+   "why": "The 91 shape lacks 225 cells of the western Hexi Corridor (Dunhuang side, 93-98 E) that Han held before 91 and the 43-74 keyframes keep: 'Han dynasty general Huo Qubing expelled the Xiongnu from the Hexi Corridor at the Battle of Hexi (121 BCE)', the Four Commanderies of Hexi (Wuwei, Zhangye, Jiuquan, Dunhuang) were established within it, and Dou Rong's Hexi 'submitted to the reinstated Eastern Han dynasty in 29 CE'. No page has Han losing it in 91; the dossier's own 91 keyframe note counts Hexi as inside the shape."
+  },
+  {
+   "slug": "roman-empire",
+   "shape_id": "roman-empire_6",
+   "verdict": "adjust",
+   "correction": {
+    "union": [
+     {
+      "union": [
+       {
+        "cliopatria": "Roman Empire",
+        "year": 5
+       },
+       {
+        "cliopatria": "Roman Empire",
+        "year": 6,
+        "text": "the 6 shape with the Illyrian interior kept: contested, not lost, in 6-9; Germania east of the Rhine hatched as occupation"
+       }
+      ]
+     },
+     {
+      "intersect": [
+       {
+        "cliopatria": "Thracian Kingdom",
+        "year": -27
+       },
+       {
+        "region": "Moesia"
+       }
+      ]
+     }
+    ],
+    "text": "the union of the 5 and 6 shapes: the Illyrian interior stays Roman but contested for 6-9 ('Uprising in Illyricum'); the cells east of the Rhine are occupied land, not province; plus the Danube bank between the Haemus and the river (Moesia Inferior, northern Bulgaria), a Roman province from AD 6"
+   },
+   "source": "https://en.wikipedia.org/wiki/Moesia",
+   "why": "The dossier's correction keeps Cliopatria's Roman shape, which omits the Danube bank until 51, while the Thracian ledger (/ledger/6) takes the same land out of the client kingdom at 6: 'in AD 6, mention is made of its governor, Caecina Severus' and 'Northern Bulgaria, Northern Dobruja ... (Moesia Inferior)' (Moesia page). Without it the strip is unowned from 6 to 50; this keyframe now includes it, with the dossier's own correction otherwise unchanged."
+  },
+  {
+   "slug": "roman-empire",
+   "shape_id": "roman-empire_9",
+   "verdict": "adjust",
+   "correction": {
+    "union": [
+     {
+      "cliopatria": "Roman Empire",
+      "year": 9
+     },
+     {
+      "intersect": [
+       {
+        "cliopatria": "Thracian Kingdom",
+        "year": -27
+       },
+       {
+        "region": "Moesia"
+       }
+      ]
+     },
+     {
+      "minus": [
+       {
+        "cliopatria": "Roman Empire",
+        "year": 5
+       },
+       {
+        "cliopatria": "Roman Empire",
+        "year": 6
+       }
+      ]
+     }
+    ],
+    "text": "the Rhine and Danube frontier after Teutoburg; plus the Danube bank between the Haemus and the river (Moesia Inferior, northern Bulgaria), a Roman province from AD 6; plus the Illyrian interior (Bosnia, Montenegro, Croatia, Serbia) that rose in 6-9 and was Roman again once the revolt ended"
+   },
+   "source": "https://en.wikipedia.org/wiki/Great_Illyrian_Revolt",
+   "why": "Two gaps in Cliopatria's 9 shape (the dossier's 'ok'). (1) The Illyrian interior: the dossier's own ledger/25 ends the revolt in 9 and says 'Cliopatria's 9 shape has the interior back', but the shape lacks 101 Bosnian cells, so they sit unowned 9-13 until the 14 shape: 'The four-year war lasted from AD 6 to AD 9', 'In AD 9, the war was restricted to Dalmatia', 'Bato was captured and Pinnes surrendered. This campaign ended the war' (Great Illyrian Revolt page). (2) Moesia, as in the 6 keyframe: 'in AD 6, mention is made of its governor, Caecina Severus' (Moesia page)."
+  },
+  {
+   "slug": "roman-empire",
+   "shape_id": "roman-empire_14",
+   "verdict": "adjust",
+   "correction": {
+    "union": [
+     {
+      "cliopatria": "Roman Empire",
+      "year": 14
+     },
+     {
+      "intersect": [
+       {
+        "cliopatria": "Thracian Kingdom",
+        "year": -27
+       },
+       {
+        "region": "Moesia"
+       }
+      ]
+     }
+    ],
+    "text": "Roman Empire at the death of Augustus; plus the Danube bank between the Haemus and the river (Moesia Inferior, northern Bulgaria), a Roman province from AD 6"
+   },
+   "source": "https://en.wikipedia.org/wiki/Moesia",
+   "why": "The dossier's correction keeps Cliopatria's Roman shape, which omits the Danube bank until 51, while the Thracian ledger (/ledger/6) takes the same land out of the client kingdom at 6: 'in AD 6, mention is made of its governor, Caecina Severus' and 'Northern Bulgaria, Northern Dobruja ... (Moesia Inferior)' (Moesia page). Without it the strip is unowned from 6 to 50; this keyframe now includes it, with the dossier's own correction otherwise unchanged."
+  },
+  {
+   "slug": "roman-empire",
+   "shape_id": "roman-empire_23",
+   "verdict": "adjust",
+   "correction": {
+    "union": [
+     {
+      "cliopatria": "Roman Empire",
+      "year": 23
+     },
+     {
+      "intersect": [
+       {
+        "cliopatria": "Thracian Kingdom",
+        "year": -27
+       },
+       {
+        "region": "Moesia"
+       }
+      ]
+     }
+    ],
+    "text": "Roman Empire with Cappadocia as a province; plus the Danube bank between the Haemus and the river (Moesia Inferior, northern Bulgaria), a Roman province from AD 6"
+   },
+   "source": "https://en.wikipedia.org/wiki/Moesia",
+   "why": "The dossier's correction keeps Cliopatria's Roman shape, which omits the Danube bank until 51, while the Thracian ledger (/ledger/6) takes the same land out of the client kingdom at 6: 'in AD 6, mention is made of its governor, Caecina Severus' and 'Northern Bulgaria, Northern Dobruja ... (Moesia Inferior)' (Moesia page). Without it the strip is unowned from 6 to 50; this keyframe now includes it, with the dossier's own correction otherwise unchanged."
+  },
+  {
+   "slug": "roman-empire",
+   "shape_id": "roman-empire_43",
+   "verdict": "adjust",
+   "correction": {
+    "union": [
+     {
+      "union": [
+       {
+        "cliopatria": "Roman Empire",
+        "year": 43
+       },
+       {
+        "polygon": [
+         [
+          -3.6,
+          50.0
+         ],
+         [
+          -3.6,
+          50.8
+         ],
+         [
+          -2.5,
+          51.4
+         ],
+         [
+          -1.9,
+          51.75
+         ],
+         [
+          -1.15,
+          52.6
+         ],
+         [
+          -0.55,
+          53.3
+         ],
+         [
+          0.4,
+          53.5
+         ],
+         [
+          2.0,
+          53.0
+         ],
+         [
+          2.0,
+          50.0
+         ]
+        ],
+        "text": "the lands southeast of the Fosse Way held by 47 (Roman Britain page), from 43"
+       }
+      ]
+     },
+     {
+      "intersect": [
+       {
+        "cliopatria": "Thracian Kingdom",
+        "year": -27
+       },
+       {
+        "region": "Moesia"
+       }
+      ]
+     }
+    ],
+    "text": "Cliopatria's 43 shape plus Britain southeast of the Fosse Way from 43: 'By 47 AD, the Romans held the lands southeast of the Fosse Way'; plus the Danube bank between the Haemus and the river (Moesia Inferior, northern Bulgaria), a Roman province from AD 6"
+   },
+   "source": "https://en.wikipedia.org/wiki/Moesia",
+   "why": "The dossier's correction keeps Cliopatria's Roman shape, which omits the Danube bank until 51, while the Thracian ledger (/ledger/6) takes the same land out of the client kingdom at 6: 'in AD 6, mention is made of its governor, Caecina Severus' and 'Northern Bulgaria, Northern Dobruja ... (Moesia Inferior)' (Moesia page). Without it the strip is unowned from 6 to 50; this keyframe now includes it, with the dossier's own correction otherwise unchanged."
+  },
+  {
+   "slug": "han-dynasty",
+   "shape_id": "han-dynasty_25",
+   "verdict": "adjust",
+   "correction": {
+    "minus": [
+     {
+      "minus": [
+       {
+        "minus": [
+         {
+          "cliopatria": "Han Dynasty",
+          "year": 30
+         },
+         {
+          "union": [
+           {
+            "region": "Guanzhong"
+           },
+           {
+            "admin1": "Shandong",
+            "country": "China"
+           },
+           {
+            "union": [
+             {
+              "place": "Shangqiu",
+              "km": 100
+             },
+             {
+              "place": "Xuzhou",
+              "km": 100
+             }
+            ]
+           },
+           {
+            "admin1": "Beijing",
+            "country": "China"
+           },
+           {
+            "place": "Tianshui",
+            "km": 150
+           },
+           {
+            "admin1": "Sichuan",
+            "country": "China"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "union": [
+         {
+          "region": "Ordos"
+         },
+         {
+          "region": "Hetao"
+         }
+        ]
+       }
+      ],
+      "text": "the 30 shape minus Guanzhong (Chimei), Shandong (Zhang Bu), eastern Henan and northern Jiangsu (Liu Yong), Beijing (Peng Chong), Tianshui (Wei Ao) and Sichuan (Gongsun Shu); holds 25-26; without Lu Fang's Inner Mongolia (Ordos and Hetao)"
+     },
+     {
+      "admin1": "Chongqing",
+      "country": "China",
+      "text": "Chongqing, the eastern Sichuan Basin (Ba), Gongsun Shu's to 36"
+     }
+    ],
+    "text": "the 30 shape minus Guanzhong (Chimei), Shandong (Zhang Bu), eastern Henan and northern Jiangsu (Liu Yong), Beijing (Peng Chong), Tianshui (Wei Ao) and Sichuan (Gongsun Shu); holds 25-26; without Lu Fang's Inner Mongolia (Ordos and Hetao); also without Chongqing (Gongsun Shu's Chengjia held the whole Sichuan Basin)"
+   },
+   "source": "https://en.wikipedia.org/wiki/Gongsun_Shu",
+   "why": "Reviewer of p0000-p0099 (2 Nov 2026), completing events/1. The dossier's correction subtracts only admin1 Sichuan for Gongsun Shu, so the keyframe claims Chongqing (341 cells), which events/1 gives to Chengjia in 24, and R2 (Han succeeds Chengjia) hands it back to Han in 25: a one-year flicker. The Gongsun Shu page: Chengjia was 'a state that controlled China's Sichuan Basin from 25 to 36 AD', 'Gongsun secured control of Yi Province and in 24 proclaimed himself king of Shu', and 'In 33 Gongsun Shu sent generals Tian Rong and Yan Cen down the Three Gorges'. The correction is the dossier's own, minus Chongqing; years unchanged (25-26)."
+  },
+  {
+   "slug": "han-dynasty",
+   "shape_id": "han-dynasty_27",
+   "verdict": "adjust",
+   "correction": {
+    "minus": [
+     {
+      "minus": [
+       {
+        "minus": [
+         {
+          "cliopatria": "Han Dynasty",
+          "year": 30
+         },
+         {
+          "union": [
+           {
+            "admin1": "Shandong",
+            "country": "China"
+           },
+           {
+            "union": [
+             {
+              "place": "Shangqiu",
+              "km": 100
+             },
+             {
+              "place": "Xuzhou",
+              "km": 100
+             }
+            ]
+           },
+           {
+            "admin1": "Beijing",
+            "country": "China"
+           },
+           {
+            "place": "Tianshui",
+            "km": 150
+           },
+           {
+            "admin1": "Sichuan",
+            "country": "China"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "union": [
+         {
+          "region": "Ordos"
+         },
+         {
+          "region": "Hetao"
+         }
+        ]
+       }
+      ],
+      "text": "the 30 shape minus Shandong, eastern Henan and northern Jiangsu, Beijing, Tianshui and Sichuan; holds 27-28; without Lu Fang's Inner Mongolia (Ordos and Hetao)"
+     },
+     {
+      "admin1": "Chongqing",
+      "country": "China",
+      "text": "Chongqing, the eastern Sichuan Basin (Ba), Gongsun Shu's to 36"
+     }
+    ],
+    "text": "the 30 shape minus Shandong, eastern Henan and northern Jiangsu, Beijing, Tianshui and Sichuan; holds 27-28; without Lu Fang's Inner Mongolia (Ordos and Hetao); also without Chongqing (Gongsun Shu's Chengjia held the whole Sichuan Basin)"
+   },
+   "source": "https://en.wikipedia.org/wiki/Gongsun_Shu",
+   "why": "Reviewer of p0000-p0099 (2 Nov 2026), completing events/1. The dossier's correction subtracts only admin1 Sichuan for Gongsun Shu, so the keyframe claims Chongqing (341 cells), which events/1 gives to Chengjia in 24, and R2 (Han succeeds Chengjia) hands it back to Han in 25: a one-year flicker. The Gongsun Shu page: Chengjia was 'a state that controlled China's Sichuan Basin from 25 to 36 AD', 'Gongsun secured control of Yi Province and in 24 proclaimed himself king of Shu', and 'In 33 Gongsun Shu sent generals Tian Rong and Yan Cen down the Three Gorges'. The correction is the dossier's own, minus Chongqing; years unchanged (27-28)."
+  },
+  {
+   "slug": "han-dynasty",
+   "shape_id": "han-dynasty_29",
+   "verdict": "adjust",
+   "correction": {
+    "minus": [
+     {
+      "minus": [
+       {
+        "minus": [
+         {
+          "cliopatria": "Han Dynasty",
+          "year": 30
+         },
+         {
+          "union": [
+           {
+            "place": "Tianshui",
+            "km": 150
+           },
+           {
+            "admin1": "Sichuan",
+            "country": "China"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "union": [
+         {
+          "region": "Ordos"
+         },
+         {
+          "region": "Hetao"
+         }
+        ]
+       }
+      ],
+      "text": "the 30 shape minus Tianshui (Wei Ao) and Sichuan (Gongsun Shu); holds 29 only; without Lu Fang's Inner Mongolia (Ordos and Hetao)"
+     },
+     {
+      "admin1": "Chongqing",
+      "country": "China",
+      "text": "Chongqing, the eastern Sichuan Basin (Ba), Gongsun Shu's to 36"
+     }
+    ],
+    "text": "the 30 shape minus Tianshui (Wei Ao) and Sichuan (Gongsun Shu); holds 29 only; without Lu Fang's Inner Mongolia (Ordos and Hetao); also without Chongqing (Gongsun Shu's Chengjia held the whole Sichuan Basin)"
+   },
+   "source": "https://en.wikipedia.org/wiki/Gongsun_Shu",
+   "why": "Reviewer of p0000-p0099 (2 Nov 2026), completing events/1. The dossier's correction subtracts only admin1 Sichuan for Gongsun Shu, so the keyframe claims Chongqing (341 cells), which events/1 gives to Chengjia in 24, and R2 (Han succeeds Chengjia) hands it back to Han in 25: a one-year flicker. The Gongsun Shu page: Chengjia was 'a state that controlled China's Sichuan Basin from 25 to 36 AD', 'Gongsun secured control of Yi Province and in 24 proclaimed himself king of Shu', and 'In 33 Gongsun Shu sent generals Tian Rong and Yan Cen down the Three Gorges'. The correction is the dossier's own, minus Chongqing; years unchanged (29)."
+  },
+  {
+   "slug": "han-dynasty",
+   "shape_id": "han-dynasty_30",
+   "verdict": "adjust",
+   "correction": {
+    "minus": [
+     {
+      "minus": [
+       {
+        "union": [
+         {
+          "minus": [
+           {
+            "cliopatria": "Han Dynasty",
+            "year": 30
+           },
+           {
+            "union": [
+             {
+              "place": "Tianshui",
+              "km": 150
+             },
+             {
+              "admin1": "Sichuan",
+              "country": "China"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "intersect": [
+           {
+            "cliopatria": "Han Dynasty",
+            "year": 43
+           },
+           {
+            "country": "North Korea"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "union": [
+         {
+          "region": "Ordos"
+         },
+         {
+          "region": "Hetao"
+         }
+        ]
+       }
+      ],
+      "text": "the 30 shape minus Tianshui and Sichuan, plus Lelang; holds 30-33; without Lu Fang's Inner Mongolia (Ordos and Hetao)"
+     },
+     {
+      "admin1": "Chongqing",
+      "country": "China",
+      "text": "Chongqing, the eastern Sichuan Basin (Ba), Gongsun Shu's to 36"
+     }
+    ],
+    "text": "the 30 shape minus Tianshui and Sichuan, plus Lelang; holds 30-33; without Lu Fang's Inner Mongolia (Ordos and Hetao); also without Chongqing (Gongsun Shu's Chengjia held the whole Sichuan Basin)"
+   },
+   "source": "https://en.wikipedia.org/wiki/Gongsun_Shu",
+   "why": "Reviewer of p0000-p0099 (2 Nov 2026), completing events/1. The dossier's correction subtracts only admin1 Sichuan for Gongsun Shu, so the keyframe claims Chongqing (341 cells), which events/1 gives to Chengjia in 24, and R2 (Han succeeds Chengjia) hands it back to Han in 25: a one-year flicker. The Gongsun Shu page: Chengjia was 'a state that controlled China's Sichuan Basin from 25 to 36 AD', 'Gongsun secured control of Yi Province and in 24 proclaimed himself king of Shu', and 'In 33 Gongsun Shu sent generals Tian Rong and Yan Cen down the Three Gorges'. The correction is the dossier's own, minus Chongqing; years unchanged (30-33)."
+  },
+  {
+   "slug": "han-dynasty",
+   "shape_id": "han-dynasty_34",
+   "verdict": "adjust",
+   "correction": {
+    "minus": [
+     {
+      "minus": [
+       {
+        "union": [
+         {
+          "minus": [
+           {
+            "cliopatria": "Han Dynasty",
+            "year": 30
+           },
+           {
+            "admin1": "Sichuan",
+            "country": "China"
+           }
+          ]
+         },
+         {
+          "intersect": [
+           {
+            "cliopatria": "Han Dynasty",
+            "year": 43
+           },
+           {
+            "country": "North Korea"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "union": [
+         {
+          "region": "Ordos"
+         },
+         {
+          "region": "Hetao"
+         }
+        ]
+       }
+      ],
+      "text": "the 30 shape minus Sichuan, plus Lelang; holds 34-35; without Lu Fang's Inner Mongolia (Ordos and Hetao)"
+     },
+     {
+      "admin1": "Chongqing",
+      "country": "China",
+      "text": "Chongqing, the eastern Sichuan Basin (Ba), Gongsun Shu's to 36"
+     }
+    ],
+    "text": "the 30 shape minus Sichuan, plus Lelang; holds 34-35; without Lu Fang's Inner Mongolia (Ordos and Hetao); also without Chongqing (Gongsun Shu's Chengjia held the whole Sichuan Basin)"
+   },
+   "source": "https://en.wikipedia.org/wiki/Gongsun_Shu",
+   "why": "Reviewer of p0000-p0099 (2 Nov 2026), completing events/1. The dossier's correction subtracts only admin1 Sichuan for Gongsun Shu, so the keyframe claims Chongqing (341 cells), which events/1 gives to Chengjia in 24, and R2 (Han succeeds Chengjia) hands it back to Han in 25: a one-year flicker. The Gongsun Shu page: Chengjia was 'a state that controlled China's Sichuan Basin from 25 to 36 AD', 'Gongsun secured control of Yi Province and in 24 proclaimed himself king of Shu', and 'In 33 Gongsun Shu sent generals Tian Rong and Yan Cen down the Three Gorges'. The correction is the dossier's own, minus Chongqing; years unchanged (34-35)."
+  }
+ ],
+ "rulings": []
+}

@@ -1,0 +1,72 @@
+{
+ "window": "m2000-m1901",
+ "note": "Two keyframe overrides. (0) larsa: the dossier's sumerian-city-states_-2000 keyframe has no from/to, so the compiler unions it with larsa_-2000 and larsa_-1932 from -2000 and Larsa wrongly holds Ur and Lagash province 2000..1924 (84 cells instead of ~31; Isin loses 77 and 58 cells to it by R2 in 1983 and 1932). The dossier's own note says the shape holds from 1923. (1) elam: the elam_-2000 keyframe drops 44 cells of southern Khuzestan that the ledger gives to Elam.",
+ "keyframe_overrides": [
+  {
+   "slug": "larsa",
+   "shape_id": "sumerian-city-states_-2000",
+   "verdict": "adjust",
+   "from": -1923,
+   "to": -1801,
+   "correction": {
+    "intersect": [
+     {
+      "cliopatria": "Sumerian City-States",
+      "year": -2000
+     },
+     {
+      "union": [
+       {
+        "place": "Larsa",
+        "km": 50
+       },
+       {
+        "place": "Ur",
+        "km": 70
+       },
+       {
+        "place": "Lagash",
+        "km": 60
+       }
+      ]
+     }
+    ],
+    "text": "Larsa's share of Sumer from Gungunum's capture of Ur in 1923: Larsa, Ur and Lagash province; before 1923 the dossier's own keyframes larsa_-2000 (Larsa alone) and larsa_-1932 (with Lagash) apply, since Ishbi-Erra's successors held Ur and Lagash and appointed Larsa's governors"
+   },
+   "source": "https://en.wikipedia.org/wiki/Larsa",
+   "why": "Larsa page: 'Subsequent rulers of Isin appointed governors to rule over Larsa; one such governor was an Amorite named Gungunum. He eventually broke with Isin and established an independent dynasty in Larsa', and 'To legitimize his rule and deliver a blow to Isin, Gungunum captured the city of Ur' (ledger larsa/4: 1923). So Larsa holds Ur and Lagash only from 1923; the shape was alive from -2000 and was unioned with larsa_-2000 (the city alone) and larsa_-1932, giving Larsa Ur and Lagash from 2000. Same correction, years narrowed to 1923..1801 as the dossier note states. The year: the Gungunum page (https://en.wikipedia.org/wiki/Gungunum), 'The exact year of Gungunum's capture of Ur cannot be determined with certainty', 'it took place in either his seventh or his 10th year, i.e. 1926 or 1923 BC', and Ur 'had been part of Isin's domains since shortly after its fall to Elamite invaders'; the ledger's 1923 is kept."
+  },
+  {
+   "slug": "elam",
+   "shape_id": "elam_-2000",
+   "verdict": "adjust",
+   "from": -2000,
+   "to": -1801,
+   "correction": {
+    "union": [
+     {
+      "minus": [
+       {
+        "cliopatria": "Elam",
+        "year": -2000
+       },
+       {
+        "country": "Iraq"
+       }
+      ]
+     },
+     {
+      "cliopatria": "Elam",
+      "year": -2100
+     },
+     {
+      "region": "Khuzestan"
+     }
+    ],
+    "text": "Susa and Anshan under the Shimashki and early Sukkalmah kings, without Mesopotamia (the dossier's correction, unchanged), plus the whole of Khuzestan: Cliopatria's -2000 shape leaves out the southern Khuzestan plain (about 44 cells) although the ledger gives Khuzestan to Elam from 2015 BCE and the Elam page has Elam 'stretching from the lowlands of Ilam and Khuzestan'"
+   },
+   "source": "https://en.wikipedia.org/wiki/Elam",
+   "why": "Elam page: 'centered in the far west and southwest of Iran, stretching from the lowlands of Ilam and Khuzestan' and, for the Sukkalmah period (c. 1970-1770 BC), 'During this time, Susa was under Elamite control'. The ledger (elam/13) gives Khuzestan back to Elam in 2015 BCE, but the keyframe snap at -2000 removed 44 cells of southern Khuzestan (Abadan to Mahshahr plain and edge cells), leaving them unowned to 1901. Whole Khuzestan united into the keyframe; the rest of the dossier's correction is unchanged."
+  }
+ ]
+}
