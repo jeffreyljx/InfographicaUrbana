@@ -1,0 +1,487 @@
+From 9797611e9907f63e0649f5ee0bec7cf31634499a Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Mon, 12 Oct 2026 05:40:00 +0000
+Subject: [PATCH] Skylines page: every city's skylines in place, all cities at
+ one scale
+
+One unframed box per city, its skyline extents drawn where they stand
+(north up, the map taken away), with the city's towers as dots, and every
+city at one shared scale: at Fit the city that spreads widest fills the
+column, and 2x/4x/8x zoom in (wide cities scroll inside their own box).
+Each box carries a sticker with the city, its skylines' names, towers of
+150 m+ inside, total area and tallest tower; sort by area, towers, tallest
+or city. Skylines are found at build time from public/skyline-extent.geojson
+with the density rule of build_density.py. Top bar gains a Skylines link.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01QEw7jWCRyhcdfinpRjVmuQ
+---
+ src/app/globals.css                |   5 +
+ src/app/skylines/page.tsx          |  79 +++++++++++
+ src/components/Nav.tsx             |   5 +-
+ src/components/SkylineControls.tsx |  56 ++++++++
+ src/components/skylines.css        |  45 ++++++
+ src/lib/skylines.ts                | 216 +++++++++++++++++++++++++++++
+ 6 files changed, 404 insertions(+), 2 deletions(-)
+ create mode 100644 src/app/skylines/page.tsx
+ create mode 100644 src/components/SkylineControls.tsx
+ create mode 100644 src/components/skylines.css
+ create mode 100644 src/lib/skylines.ts
+
+diff --git a/src/app/globals.css b/src/app/globals.css
+index 68036d8..ae4ecc1 100644
+--- a/src/app/globals.css
++++ b/src/app/globals.css
+@@ -222,3 +222,8 @@ td.gdp { white-space: nowrap; }
+   .panel { top: auto; right: 0; left: 0; bottom: 0; width: 100%; max-height: 62vh; border-radius: 16px 16px 0 0; }
+   .legend { display: none; }
+ }
++/* narrow phones: the six top-bar links still fit on one line, and the bar scrolls sideways rather than the page if not */
++@media (max-width: 420px) {
++  .nav { gap: 9px; padding: 0 10px; overflow-x: auto; scrollbar-width: none; }
++  .nav a { font-size: 12.5px; white-space: nowrap; flex: none; }
++}
+diff --git a/src/app/skylines/page.tsx b/src/app/skylines/page.tsx
+new file mode 100644
+index 0000000..ff5a2d1
+--- /dev/null
++++ b/src/app/skylines/page.tsx
+@@ -0,0 +1,79 @@
++import type { Metadata } from "next";
++import Shell from "@/components/Shell";
++import SkylineControls, { type SkylineSortKey } from "@/components/SkylineControls";
++import { getCitySkylines, type CitySkylines } from "@/lib/skylines";
++import "@/components/skylines.css";
++
++const CITIES = getCitySkylines();
++const SKYLINES = CITIES.reduce((n, c) => n + c.skylines.length, 0);
++export const metadata: Metadata = {
++  title: "Skylines",
++  description: `The skylines of ${CITIES.length} cities, each drawn where it stands in its city and all at one scale, to compare their shapes and sizes, each tagged with its towers of 150 m+ and its tallest building.`,
++};
++
++const fmt = (n: number) => n.toLocaleString("en-US");
++const km2 = (v: number) => v.toFixed(v < 10 ? 2 : 1);
++const UNFINISHED: Record<string, string> = { "Under construction": "under construction", "Architecturally topped out": "topped out", "Structurally topped out": "topped out" };
++
++/** Position of each city under every sort (CSS `order`), so the switch reorders the drawings without re-rendering them. */
++function orders(list: CitySkylines[]): Record<SkylineSortKey, number>[] {
++  const by = (cmp: (a: CitySkylines, b: CitySkylines) => number) => {
++    const sorted = list.map((_, i) => i).sort((i, j) => cmp(list[i], list[j]) || i - j);
++    const pos = new Array<number>(list.length);
++    sorted.forEach((i, k) => { pos[i] = k; });
++    return pos;
++  };
++  const area = list.map((_, i) => i);   // the list is largest first already
++  const towers = by((a, b) => b.towers - a.towers);
++  const tallest = by((a, b) => (b.tallest?.status === "Completed" ? b.tallest.height : -1) - (a.tallest?.status === "Completed" ? a.tallest.height : -1));
++  const city = by((a, b) => a.city.localeCompare(b.city, "en"));
++  return list.map((_, i) => ({ area: area[i], towers: towers[i], tallest: tallest[i], city: city[i] }));
++}
++
++export default function SkylinesPage() {
++  const maxW = Math.max(...CITIES.map(c => c.wKm));
++  const pos = orders(CITIES);
++  return (
++    <Shell active="skylines">
++      <h1>Skylines</h1>
++      <p className="lead">Every city&apos;s skylines, each drawn where it stands in the city, as on the map with the map taken away, and every city at the same scale: {fmt(SKYLINES)} skylines in {CITIES.length} cities, largest first. A skyline is a pocket of five or more towers of 150 m+ standing close together, or several pockets that almost touch, joined: the same outlines the map draws with Display skyline extent.</p>
++      <div className="skygrid-wrap" id="skygrid" data-sort="area" style={{ "--maxw": maxW, "--zoom": 1 } as React.CSSProperties}>
++        <div className="skybar">
++          <SkylineControls />
++          <div className="skyscale" aria-live="polite">
++            <i /><span id="skyscale-label">10 km</span>
++          </div>
++        </div>
++        <div className="skygrid">
++          {CITIES.map((c, i) => {
++            const t = c.tallest;
++            const names = c.skylines.flatMap(s => s.names);
++            const label = c.skylines.length > 1 ? `${c.skylines.length} skylines: ${names.join(" · ")}` : names.join(" · ");
++            return (
++              <figure key={c.city} className="skyfig" style={{ "--w": c.wKm, "--h": c.hKm, "--o-area": pos[i].area, "--o-towers": pos[i].towers, "--o-tallest": pos[i].tallest, "--o-city": pos[i].city } as React.CSSProperties}>
++                <div className="sky-frame">
++                  <a className="sky-shape" href={`/?city=${encodeURIComponent(c.city)}&skyline=1`} aria-label={`Open ${c.city} on the map with its skyline extents`}>
++                    <svg viewBox={`0 0 ${Math.round(c.wKm * 100)} ${Math.round(c.hKm * 100)}`} role="img" aria-label={`${c.city}: ${c.skylines.length === 1 ? "one skyline" : `${c.skylines.length} skylines`}, ${km2(c.km2)} km²`}>
++                      {c.others && <path className="t2" d={c.others} />}
++                      {c.skylines.map((s, k) => (
++                        <path key={k} className="o" d={s.d}><title>{`${s.names.join(" · ")}: ${fmt(s.towers)} towers, ${km2(s.km2)} km²`}</title></path>
++                      ))}
++                      {c.dots && <path className="t" d={c.dots} />}
++                    </svg>
++                  </a>
++                </div>
++                <figcaption className="skytag">
++                  {c.citySlug ? <a className="place" href={`/city/${c.citySlug}/`}>{c.city}</a> : <span className="place">{c.city}</span>}
++                  <span className="tag-name" title={names.join(" · ")}>{label}</span>
++                  <span className="tag-n" title={`${fmt(c.completed)} of them completed`}>{fmt(c.towers)} towers · {km2(c.km2)}&nbsp;km²</span>
++                  {t && <span className="tag-top">Tallest: <a href={`/tower/${t.slug}/`}>{t.name}</a>, {Math.round(t.height)}&nbsp;m{t.status !== "Completed" && ` (${UNFINISHED[t.status] ?? t.status.toLowerCase()})`}</span>}
++                </figcaption>
++              </figure>
++            );
++          })}
++        </div>
++      </div>
++      <p className="muted" style={{ marginTop: 36 }}>The outlines are the skyline extents drawn on the map: every group of five or more towers of 150 m+ (completed, topped out or under construction) in which each tower stands within 800 m of others, outlined 300 m out from its towers, run down to the waterfront it faces and cut back from rivers and the sea. Pockets that almost touch are joined into one skyline, named after all of them: towers up to 1.9 km apart, across rivers up to 600 m wide. Each city is drawn north up, with its skylines in their real places relative to each other and at the same scale as every other city. Dark dots are towers inside the outlines; faint dots are the city&apos;s other towers of 150 m+ in the same frame. At Fit, the city that spreads widest fills the column; zoom in to see the smaller cities larger, still all at one scale. Towers counts every tower of 150 m+ inside a city&apos;s outlines, whatever its status, as the map&apos;s extent notes do; hover the count for how many are completed, and a shape for its skyline&apos;s name. Tallest is the tallest completed tower inside, or the tallest unfinished one where none is complete yet. Areas are measured on the WGS84 ellipsoid and match the Cities table&apos;s Skyline size. Click a city to open it on the map with the skyline extents shown.</p>
++    </Shell>
++  );
++}
+diff --git a/src/components/Nav.tsx b/src/components/Nav.tsx
+index aa334c7..9d2a8ec 100644
+--- a/src/components/Nav.tsx
++++ b/src/components/Nav.tsx
+@@ -1,13 +1,14 @@
+-export type NavKey = "map" | "countries" | "cities" | "districts" | "method";
++export type NavKey = "map" | "countries" | "cities" | "districts" | "skylines" | "method";
+ const LINKS: [NavKey, string, string][] = [
+   ["map", "/", "Map"],
+   ["countries", "/countries/", "Countries"],
+   ["cities", "/cities/", "Cities"],
+   ["districts", "/districts/", "Districts"],
++  ["skylines", "/skylines/", "Skylines"],
+   ["method", "/method/", "Method"],
+ ];
+ 
+-/** Top bar: the map, the three rankings (by country, city and urban district), and the method page. */
++/** Top bar: the map, the three rankings (by country, city and urban district), the skylines side by side, and the method page. */
+ export default function Nav({ solid = false, active }: { solid?: boolean; active?: NavKey }) {
+   return (
+     <nav className={"nav" + (solid ? " solid" : "")}>
+diff --git a/src/components/SkylineControls.tsx b/src/components/SkylineControls.tsx
+new file mode 100644
+index 0000000..62843ae
+--- /dev/null
++++ b/src/components/SkylineControls.tsx
+@@ -0,0 +1,56 @@
++"use client";
++import { useEffect, useState } from "react";
++
++export type SkylineSortKey = "area" | "towers" | "tallest" | "city";
++const SORTS: [SkylineSortKey, string][] = [["area", "Area"], ["towers", "Towers"], ["tallest", "Tallest"], ["city", "City"]];
++/** zoom factor over Fit (the widest city fills the column), and the scale bar's length in km at that zoom */
++const ZOOMS: [number, string, number][] = [[1, "Fit", 10], [2, "2×", 5], [4, "4×", 2], [8, "8×", 1]];
++
++/** Sort and zoom switches for the skylines page. Each drawing carries its position under every sort as a CSS variable and
++ *  its size in km, so these only flip data-sort and --zoom on the wrapper; the choices are mirrored into ?sort= and ?zoom=
++ *  (the defaults leave the URL clean). */
++export default function SkylineControls() {
++  const [sort, setSort] = useState<SkylineSortKey>("area");
++  const [zoom, setZoom] = useState(1);
++  useEffect(() => {
++    const q = new URLSearchParams(location.search);
++    const s = q.get("sort") as SkylineSortKey | null, z = Number(q.get("zoom"));
++    if (s && SORTS.some(([k]) => k === s)) setSort(s);
++    if (ZOOMS.some(([k]) => k === z)) setZoom(z);
++  }, []);
++  useEffect(() => {
++    const wrap = document.getElementById("skygrid");
++    const bar = ZOOMS.find(([k]) => k === zoom)![2];
++    if (wrap) {
++      wrap.dataset.sort = sort;
++      wrap.style.setProperty("--zoom", String(zoom));
++      wrap.style.setProperty("--bar", String(bar));
++    }
++    const label = document.getElementById("skyscale-label");
++    if (label) label.textContent = `${bar} km`;
++    const url = new URL(location.href);
++    if (sort === "area") url.searchParams.delete("sort"); else url.searchParams.set("sort", sort);
++    if (zoom === 1) url.searchParams.delete("zoom"); else url.searchParams.set("zoom", String(zoom));
++    history.replaceState(null, "", url);
++  }, [sort, zoom]);
++  return (
++    <div className="skyctl">
++      <div className="threshold skysort" role="group" aria-label="Sort cities by">
++        <span className="lbl" style={{ margin: 0 }}>Sort by</span>
++        <div className="chips">
++          {SORTS.map(([k, label]) => (
++            <button key={k} type="button" className={"chip" + (k === sort ? " on" : "")} aria-pressed={k === sort} onClick={() => setSort(k)}>{label}</button>
++          ))}
++        </div>
++      </div>
++      <div className="threshold skysort" role="group" aria-label="Zoom">
++        <span className="lbl" style={{ margin: 0 }}>Zoom</span>
++        <div className="chips">
++          {ZOOMS.map(([k, label]) => (
++            <button key={k} type="button" className={"chip" + (k === zoom ? " on" : "")} aria-pressed={k === zoom} onClick={() => setZoom(k)}>{label}</button>
++          ))}
++        </div>
++      </div>
++    </div>
++  );
++}
+diff --git a/src/components/skylines.css b/src/components/skylines.css
+new file mode 100644
+index 0000000..f50b442
+--- /dev/null
++++ b/src/components/skylines.css
+@@ -0,0 +1,45 @@
++/* Skylines page (src/app/skylines/page.tsx): each city's skyline extents in place, every city at one scale. --km is the
++   scale in px per km: at Fit the city that spreads widest (--maxw km) fills the column, and --zoom multiplies that. Each
++   drawing is sized from its own width and height in km (--w, --h), so all of them share the scale at every screen width;
++   a drawing wider than the column scrolls sideways inside its own frame. */
++.skygrid-wrap { --km: calc(100cqw / var(--maxw) * var(--zoom, 1)); }
++.skygrid, .skybar { container-type: inline-size; }
++.skygrid { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 56px 44px; margin-top: 24px; }
++.skybar { position: sticky; top: 52px; z-index: 5; background: var(--bg); display: flex; align-items: center; justify-content: space-between; gap: 10px 18px; flex-wrap: wrap; padding: 10px 0; margin-top: 8px; border-bottom: 1px solid var(--line); }
++.skyctl { display: flex; flex-wrap: wrap; gap: 8px 22px; }
++.skysort.threshold { margin: 0; gap: 8px; }
++.skysort .chip { padding: 5px 12px; font-size: 13px; }
++.skyscale { display: flex; align-items: flex-end; gap: 8px; font-size: 12px; color: var(--fg-2); flex: 1 0 auto; justify-content: flex-end; }
++.skyscale i { display: block; width: calc(var(--km) * var(--bar, 10)); height: 7px; border: 1.5px solid var(--fg); border-top: 0; }
++#skygrid[data-sort="area"] .skyfig { order: var(--o-area); }
++#skygrid[data-sort="towers"] .skyfig { order: var(--o-towers); }
++#skygrid[data-sort="tallest"] .skyfig { order: var(--o-tallest); }
++#skygrid[data-sort="city"] .skyfig { order: var(--o-city); }
++
++/* one box per city, unframed: the drawing is the city's map with the map taken away */
++.skyfig { margin: 0; display: flex; flex-direction: column; align-items: center; width: max(156px, calc(var(--km) * var(--w))); max-width: 100%; }
++.sky-frame { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: 3px 0; border-radius: 6px; transition: background-color .15s; }
++.skyfig:hover .sky-frame { background: rgba(244,236,233,.7); }   /* the box shows itself only under the pointer */
++.sky-shape { display: block; width: max-content; margin: 0 auto; }
++.skyfig svg { display: block; width: calc(var(--km) * var(--w)); height: calc(var(--km) * var(--h)); overflow: visible; }
++.skyfig path.o { fill: #E9A825; fill-opacity: .55; fill-rule: evenodd; stroke: #8A5A00; stroke-width: 1.2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
++.skyfig path.t { fill: none; stroke: #5B3B12; stroke-opacity: .6; stroke-width: 2.6; stroke-linecap: round; vector-effect: non-scaling-stroke; }
++.skyfig path.t2 { fill: none; stroke: #5B3B12; stroke-opacity: .28; stroke-width: 2; stroke-linecap: round; vector-effect: non-scaling-stroke; }
++.sky-shape:hover path.o { fill-opacity: .7; }
++.sky-shape path.o:hover { fill-opacity: .85; }
++
++/* the sticker: one size for all, so every row's stickers line up and its drawings stand on one line */
++.skytag { position: relative; margin-top: 10px; width: 156px; height: 114px; padding: 6px 9px 0; background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; box-shadow: 0 1px 0 rgba(74,45,33,.08); font-size: 11.5px; line-height: 1.4; color: var(--fg-2); overflow: hidden; }
++.skytag::before { content: ""; position: absolute; top: -5px; left: 50%; width: 8px; height: 8px; margin-left: -4px; background: var(--bg-2); border-left: 1px solid var(--line); border-top: 1px solid var(--line); transform: rotate(45deg); }
++.skytag .place { display: block; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
++.tag-name { display: block; font-size: 10.5px; color: var(--fg-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
++.tag-n { display: block; margin-top: 2px; color: var(--fg); }
++.tag-top { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
++.tag-top a { color: inherit; }
++
++/* phones: two stickers to a row, as wide as the row allows */
++@media (max-width: 720px) {
++  .skygrid { gap: 40px 14px; }
++  .skyfig { width: max(calc(50% - 7px), calc(var(--km) * var(--w))); }
++  .skytag { width: 100%; max-width: 220px; }
++}
+diff --git a/src/lib/skylines.ts b/src/lib/skylines.ts
+new file mode 100644
+index 0000000..156f07b
+--- /dev/null
++++ b/src/lib/skylines.ts
+@@ -0,0 +1,216 @@
++import "server-only";
++import { readFileSync } from "node:fs";
++import { join } from "node:path";
++import type { FeatureCollection, MultiPolygon, Position } from "geojson";
++import { getIndex, getPlaces } from "./data";
++import { areaKm2 } from "./geoArea";
++import { towerSlug } from "./types";
++
++/**
++ * The skylines page: every city's skyline extents on the map (public/skyline-extent.geojson, one MultiPolygon per city),
++ * drawn as a map of the city with the map taken away, and measured at build time, so a revised extents file shows up on
++ * the next build.
++ *
++ * A city's extents are split into its skylines with the density rule they are drawn with (skyline-extent/tools/
++ * build_density.py in the project's shared folder: DBSCAN over every tower of 150 m+, 800 m, 4 samples; groups of 5+
++ * towers). The file keeps only each city's outline and its pockets' names, so the pockets are found again here with the
++ * same rule: outline pieces that share a pocket's towers are one skyline (a pocket cut in two by a river stays one), and
++ * pockets whose outlines ran together are one skyline too, named after all of them. Towers are counted the way the map's
++ * extent popups count them: every tower of the city inside the outline, any status.
++ */
++const EPS = 800, MIN_SAMPLES = 4, MIN_TOWERS = 5;   // as in build_density.py
++const EARTH = 6371000;
++const RAD = Math.PI / 180;
++const UNIT = 10;   // drawing unit, metres
++
++export interface Skyline {
++  /** names of the pockets inside, largest first, as the map's popups give them */
++  names: string[];
++  towers: number;
++  km2: number;
++  /** SVG path of the outline, in the city drawing's units */
++  d: string;
++}
++
++export interface CitySkylines {
++  city: string;
++  citySlug: string | null;
++  /** largest first */
++  skylines: Skyline[];
++  towers: number;
++  completed: number;
++  km2: number;
++  tallest: { name: string; height: number; slug: string; status: string } | null;
++  /** width and height of the drawing in km, north up */
++  wKm: number;
++  hKm: number;
++  /** SVG paths of the towers inside the outlines, and of the city's other towers that fall within the drawing, in
++   *  UNIT-metre units from its top-left corner */
++  dots: string;
++  others: string;
++}
++
++interface Pt { lat: number; lon: number }
++
++function haversine(a: Pt, b: Pt): number {
++  const s = Math.sin((b.lat - a.lat) * RAD / 2) ** 2 + Math.cos(a.lat * RAD) * Math.cos(b.lat * RAD) * Math.sin((b.lon - a.lon) * RAD / 2) ** 2;
++  return 2 * Math.asin(Math.sqrt(s)) * EARTH;
++}
++
++/** DBSCAN labels (-1: noise) as scikit-learn assigns them: points in list order, each cluster grown in full before the next starts. */
++function dbscan(pts: Pt[]): number[] {
++  const CELL = 0.008;   // degrees; 1 cell of latitude is ~890 m, so neighbours are within one cell row
++  const grid = new Map<string, number[]>();
++  const cellOf = (p: Pt) => [Math.floor(p.lat / CELL), Math.floor(p.lon / CELL)];
++  pts.forEach((p, n) => {
++    const k = cellOf(p).join();
++    const list = grid.get(k);
++    if (list) list.push(n); else grid.set(k, [n]);
++  });
++  const nbrs = pts.map(p => {
++    const [i0, j0] = cellOf(p);
++    const dj = Math.ceil(1 / Math.max(Math.cos(Math.min(89, Math.abs(p.lat) + 1) * RAD), 0.02));
++    const out: number[] = [];
++    for (let i = i0 - 1; i <= i0 + 1; i++) for (let j = j0 - dj; j <= j0 + dj; j++)
++      for (const n of grid.get(`${i},${j}`) ?? []) if (haversine(p, pts[n]) <= EPS) out.push(n);
++    return out;
++  });
++  const label = new Array<number>(pts.length).fill(-1);
++  let next = 0;
++  for (let i = 0; i < pts.length; i++) {
++    if (label[i] !== -1 || nbrs[i].length < MIN_SAMPLES) continue;
++    const stack = [i];
++    label[i] = next;
++    while (stack.length) {
++      const v = stack.pop()!;
++      if (nbrs[v].length < MIN_SAMPLES) continue;   // a border point joins but does not extend the cluster
++      for (const u of nbrs[v]) if (label[u] === -1) { label[u] = next; stack.push(u); }
++    }
++    next++;
++  }
++  return label;
++}
++
++function inRing(x: number, y: number, ring: Position[]): boolean {
++  let inside = false;
++  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
++    const [xi, yi] = ring[i], [xj, yj] = ring[j];
++    if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside;
++  }
++  return inside;
++}
++const inPolygon = (x: number, y: number, [outer, ...holes]: Position[][]) => inRing(x, y, outer) && !holes.some(h => inRing(x, y, h));
++
++/** A city's drawing: local metres (equirectangular around its middle), north up, framing every outline it has. */
++function frame(polys: Position[][][]) {
++  let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
++  for (const p of polys) for (const [x, y] of p[0]) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
++  const kx = 111_320 * Math.cos(((y0 + y1) / 2) * RAD) / UNIT, ky = 110_574 / UNIT;
++  const X = (lon: number) => Math.round((lon - x0) * kx), Y = (lat: number) => Math.round((y1 - lat) * ky);
++  const r2 = (v: number) => Math.round(v * 100) / 100;
++  // relative moves keep the paths short; a minus sign separates numbers by itself
++  const pair = (dx: number, dy: number) => `${dx}${dy < 0 ? "" : " "}${dy}`;
++  return {
++    wKm: r2((x1 - x0) * kx * UNIT / 1000), hKm: r2((y1 - y0) * ky * UNIT / 1000),
++    inside: (p: Pt) => p.lon >= x0 && p.lon <= x1 && p.lat >= y0 && p.lat <= y1,
++    outline(parts: Position[][][]): string {
++      let d = "";
++      for (const p of parts) for (const ring of p) {
++        let px = X(ring[0][0]), py = Y(ring[0][1]);
++        d += `M${px} ${py}l`;
++        const steps: string[] = [];
++        for (const [lon, lat] of ring.slice(1)) {
++          const x = X(lon), y = Y(lat);
++          if (x === px && y === py) continue;
++          steps.push(pair(x - px, y - py));
++          px = x; py = y;
++        }
++        d += steps.join(" ").replace(/ -/g, "-") + "z";
++      }
++      return d;
++    },
++    dots(pts: Pt[]): string {
++      let s = "", px = 0, py = 0;
++      for (const t of pts) {
++        const x = X(t.lon), y = Y(t.lat);
++        s += `m${pair(x - px, y - py)}h0`;
++        px = x; py = y;
++      }
++      return s ? "M0 0" + s : "";
++    },
++  };
++}
++
++let cached: CitySkylines[] | null = null;
++
++/** Every city with skyline extents, largest total area first. */
++export function getCitySkylines(): CitySkylines[] {
++  if (cached) return cached;
++  const fc = JSON.parse(readFileSync(join(process.cwd(), "public/skyline-extent.geojson"), "utf8")) as FeatureCollection<MultiPolygon>;
++  const idx = getIndex();
++  const COMPLETED = idx.statuses.indexOf("Completed");
++  const slugs = new Map(getPlaces().cities.map(c => [c.name, c.slug]));
++  const towers = idx.rows.map(r => ({ id: r[0], name: r[1], lat: r[2], lon: r[3], height: r[4], city: idx.cities[r[5]], status: r[7] }));
++  const label = dbscan(towers);
++  const size = new Map<number, number>();
++  for (const l of label) if (l >= 0) size.set(l, (size.get(l) ?? 0) + 1);
++  const isPocket = (l: number) => l >= 0 && size.get(l)! >= MIN_TOWERS;
++
++  const out: CitySkylines[] = [];
++  for (const f of fc.features) {
++    const city = String(f.properties?.city);
++    const areas: string[] = f.properties?.areas ?? [];
++    const mine = towers.flatMap((t, n) => (t.city === city ? [n] : []));
++    // the city's pockets, largest first and ties in label order: the order build_density.py lists their names in
++    const count = new Map<number, number>();
++    for (const n of mine) if (isPocket(label[n])) count.set(label[n], (count.get(label[n]) ?? 0) + 1);
++    const order = [...count.keys()].sort((a, b) => count.get(b)! - count.get(a)! || a - b);
++    const named = order.length === areas.length;
++    if (!named) console.warn(`skylines: ${city} has ${order.length} pockets but ${areas.length} names; naming by district instead`);
++    const rank = new Map(order.map((l, i) => [l, i]));
++
++    const polys = f.geometry.coordinates;
++    const inside = polys.map(p => mine.filter(n => inPolygon(towers[n].lon, towers[n].lat, p)));
++    // outline pieces holding towers of one pocket belong to one skyline
++    const parent = polys.map((_, i) => i);
++    const find = (i: number): number => (parent[i] === i ? i : (parent[i] = find(parent[i])));
++    const first = new Map<number, number>();
++    inside.forEach((ns, i) => {
++      for (const n of ns) {
++        const l = label[n];
++        if (!isPocket(l)) continue;
++        if (first.has(l)) parent[find(i)] = find(first.get(l)!); else first.set(l, i);
++      }
++    });
++    const groups = new Map<number, number[]>();
++    polys.forEach((_, i) => { const g = groups.get(find(i)); if (g) g.push(i); else groups.set(find(i), [i]); });
++
++    const fr = frame(polys);
++    const skylines: Skyline[] = [...groups.values()].map(parts => {
++      const ns = parts.flatMap(i => inside[i]);
++      const pockets = [...new Set(ns.map(n => label[n]).filter(l => rank.has(l)))].sort((a, b) => rank.get(a)! - rank.get(b)!);
++      const coordinates = parts.map(i => polys[i]);
++      return {
++        names: named ? pockets.map(l => areas[rank.get(l)!]) : [mostCommonDistrict(ns)],
++        towers: ns.length, km2: areaKm2({ type: "MultiPolygon", coordinates }), d: fr.outline(coordinates),
++      };
++    }).sort((a, b) => b.km2 - a.km2);
++    const ins = new Set(inside.flat());
++    const ts = [...ins].map(n => towers[n]);
++    const done = ts.filter(t => t.status === COMPLETED);
++    const top = [...(done.length ? done : ts)].sort((a, b) => b.height - a.height)[0];
++    out.push({
++      city, citySlug: slugs.get(city) ?? null, skylines,
++      towers: ts.length, completed: done.length, km2: areaKm2(f.geometry),
++      tallest: top ? { name: top.name, height: top.height, slug: towerSlug(top.name, top.id), status: idx.statuses[top.status] } : null,
++      wKm: fr.wKm, hKm: fr.hKm,
++      dots: fr.dots(ts), others: fr.dots(mine.filter(n => !ins.has(n)).map(n => towers[n]).filter(fr.inside)),
++    });
++  }
++  function mostCommonDistrict(ns: number[]): string {
++    const c = new Map<string, number>();
++    for (const n of ns) { const d = idx.districts[idx.rows[n][6]][1]; c.set(d, (c.get(d) ?? 0) + 1); }
++    return [...c].sort((a, b) => b[1] - a[1])[0]?.[0] ?? "";
++  }
++  return (cached = out.sort((a, b) => b.km2 - a.km2));
++}
+-- 
+2.43.0
+

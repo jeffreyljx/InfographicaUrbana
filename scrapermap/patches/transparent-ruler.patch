@@ -1,0 +1,53 @@
+From 41deb15612fb5d7befe2e5592ed2a424095a5a32 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Mon, 12 Oct 2026 05:42:01 +0000
+Subject: [PATCH] Map: transparent distance scale, only its bottom line and end
+ ticks drawn
+
+The scale's translucent box and its full-height sides covered a strip of
+the map. Now there is no ground: just the bottom line, whose length is the
+distance, with a short tick up at each end (a flat bracket), in the site's
+dark brown with a light casing, and a label with a light halo, so both stay
+readable on the warm basemap and on satellite imagery. Clicks and drags
+pass through it to the map.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Dc6AVorNUFxs2PasM7foP2
+---
+Applies with git am on top of the live stack ending in map-scale.patch, lost-towers.patch and
+skyline-density.patch (it touches only the scale's two rules in globals.css, so it also applies
+straight on map-scale.patch). skylines-page.patch and hide-towers.patch apply cleanly after it.
+Revised 12 Oct 2026 16:50 UTC: short ticks up at both ends, on Jeffrey's request.
+
+ src/app/globals.css | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/src/app/globals.css b/src/app/globals.css
+index 68036d8..c556bd4 100644
+--- a/src/app/globals.css
++++ b/src/app/globals.css
+@@ -47,10 +47,18 @@ body .maplibregl-map { font-family: var(--font); } /* beats maplibre-gl.css, whi
+ .app > .map, .app > .map.maplibregl-map { position: absolute; inset: 0; width: 100%; height: 100%; }
+ .maplibregl-ctrl-attrib { font-size: 11px; }
+ /* Distance scale: bottom right, just above the attribution (the tower panel's bottom edge leaves room for both).
+-   Drawn in the site's colours on a translucent ground so it reads on both basemaps ("body" beats maplibre-gl.css,
++   No ground, so it hides as little of the map as it can: only the bottom line, whose length is the distance, with a
++   short tick up at each end (a flat bracket), drawn in the site's dark brown with a light casing (like a road), and a
++   label with a light halo, so both read on the warm basemap and on satellite imagery. Layers, top first: the two
++   ticks and the line, then their casing. Clicks and drags go through to the map ("body" beats maplibre-gl.css,
+    which loads later). */
+-body .maplibregl-ctrl-bottom-right > .maplibregl-ctrl-scale { margin: 0 10px -4px 0; }
+-body .maplibregl-ctrl-scale { background: var(--glass); border-color: var(--fg-2); color: var(--fg); font-size: 11px; line-height: 18px; padding: 0 6px; }
++body .maplibregl-ctrl-bottom-right > .maplibregl-ctrl-scale { margin: 0 10px -2px 0; }
++body .maplibregl-ctrl-scale { --halo: rgba(244,236,233,.9); --ink: linear-gradient(var(--fg), var(--fg)); --cased: linear-gradient(var(--halo), var(--halo));
++  border: 0; color: var(--fg); font-size: 11px; line-height: 14px; padding: 0 5px 4px; pointer-events: none;
++  background: var(--ink) left 1px bottom 1px / 2px 7px, var(--ink) right 1px bottom 1px / 2px 7px, var(--ink) left 1px bottom 1px / calc(100% - 2px) 2px,
++    var(--cased) left bottom / 4px 9px, var(--cased) right bottom / 4px 9px, var(--cased) left bottom / 100% 4px;
++  background-repeat: no-repeat;
++  text-shadow: 1px 0 1px var(--halo), -1px 0 1px var(--halo), 0 1px 1px var(--halo), 0 -1px 1px var(--halo), 0 0 3px var(--halo); }
+ .maplibregl-ctrl-group { background: var(--bg-2) !important; border: 1px solid var(--line); }
+ .maplibregl-ctrl-bottom-left { z-index: 12; }
+ .maplibregl-ctrl-group button + button { border-top-color: var(--line) !important; }
+-- 
+2.43.0
+

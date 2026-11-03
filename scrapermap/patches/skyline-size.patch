@@ -1,0 +1,254 @@
+From 2aafd136e7b22c10b0d5d0c02dc5dac35f3b5c32 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sun, 11 Oct 2026 07:12:57 +0000
+Subject: [PATCH 1/2] Cities table: Skyline size column, the area of each
+ city's skyline extent
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Measured from the skyline-extent outlines on the WGS84 ellipsoid (authalic-sphere
+spherical excess, which matches Karney's geodesic polygon area to under 10 m² here).
+The skyline popup now shows the same measured area.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01SzHLihdfzaJUPJ2HoM9jcu
+---
+ src/app/cities/page.tsx        |  5 ++++-
+ src/components/CitiesTable.tsx | 13 ++++++-----
+ src/components/skylineLayer.ts |  9 +++++---
+ src/lib/geoArea.ts             | 40 ++++++++++++++++++++++++++++++++++
+ src/lib/skyline.ts             | 11 ++++++++++
+ 5 files changed, 69 insertions(+), 9 deletions(-)
+ create mode 100644 src/lib/geoArea.ts
+ create mode 100644 src/lib/skyline.ts
+
+diff --git a/src/app/cities/page.tsx b/src/app/cities/page.tsx
+index 9ab57c3..70557c1 100644
+--- a/src/app/cities/page.tsx
++++ b/src/app/cities/page.tsx
+@@ -3,15 +3,18 @@ import Shell from "@/components/Shell";
+ import CitiesTable from "@/components/CitiesTable";
+ import { getPlaces } from "@/lib/data";
+ import { gdpOfCity } from "@/lib/gdp";
++import { skylineSizes } from "@/lib/skyline";
+ export const metadata: Metadata = { title: "Cities", description: `${getPlaces().totals.cities} cities ranked by completed skyscrapers — switch the height threshold between 150 m, 200 m and 300 m.` };
+ 
+ export default function CitiesPage() {
+   const { cities, totals } = getPlaces();
++  const size = skylineSizes();
+   return (
+     <Shell active="cities">
+       <h1>Cities</h1>
+       <p className="lead">{totals.cities} cities, {totals.districts} districts, {totals.towers.toLocaleString()} towers. Ranked by completed buildings at the height you choose; the default is 150 m, the usual definition of a skyscraper.</p>
+-      <CitiesTable cities={cities} gdp={Object.fromEntries(cities.map(c => [c.slug, gdpOfCity(c.name)]))} />
++      <CitiesTable cities={cities} gdp={Object.fromEntries(cities.map(c => [c.slug, gdpOfCity(c.name)]))}
++        core={Object.fromEntries(cities.filter(c => c.name in size).map(c => [c.slug, size[c.name]]))} />
+     </Shell>
+   );
+ }
+diff --git a/src/components/CitiesTable.tsx b/src/components/CitiesTable.tsx
+index 4412b15..91e25ff 100644
+--- a/src/components/CitiesTable.tsx
++++ b/src/components/CitiesTable.tsx
+@@ -6,7 +6,7 @@ import Rank from "@/components/Rank";
+ import GdpCell, { type GdpLite } from "@/components/GdpCell";
+ import { ThresholdSwitch, useThreshold } from "@/components/Threshold";
+ 
+-const KEYS = ["completed", "all", "c200", "c300", "skyline", "gdp", "ppp", "tallest"] as const;
++const KEYS = ["completed", "all", "c200", "c300", "skyline", "core", "gdp", "ppp", "tallest"] as const;
+ type Key = typeof KEYS[number];
+ 
+ const EVEREST = 8849;   // m
+@@ -19,7 +19,8 @@ function SkylineCell({ m }: { m: number }) {
+ 
+ /** Cities table with a height-threshold switch (rank by completed towers of ≥150 / ≥200 / ≥300 m) and sortable columns. */
+ /** `gdp` is keyed by city slug: GDP within city limits (nominal US$ and PPP), null where no figure exists. */
+-export default function CitiesTable({ cities, gdp }: { cities: CityAgg[]; gdp: Record<string, GdpLite | null> }) {
++/** `core` is keyed by city slug: the area of the city's skyline extent in km², for the cities that have one. */
++export default function CitiesTable({ cities, gdp, core }: { cities: CityAgg[]; gdp: Record<string, GdpLite | null>; core: Record<string, number> }) {
+   const [min, pick] = useThreshold();
+ 
+   const sort = useSort<Key>(KEYS, "completed");
+@@ -34,11 +35,11 @@ export default function CitiesTable({ cities, gdp }: { cities: CityAgg[]; gdp: R
+     // the unranked pipeline-only cities at the end are ordered by how much they have coming. Also the tie-break for every other sort.
+     const rank = (a: Row, b: Row) => b.completed - a.completed || (a.completed === 0 ? b.count - a.count : 0) || a.c.name.localeCompare(b.c.name);
+     const value: Record<Key, (r: Row) => number | null> = {
+-      completed: r => r.completed, all: r => r.count, c200: r => r.c.completed200, c300: r => r.c.completed300, skyline: r => skylineAt(r.c, min),
++      completed: r => r.completed, all: r => r.count, c200: r => r.c.completed200, c300: r => r.c.completed300, skyline: r => skylineAt(r.c, min), core: r => core[r.c.slug] ?? null,
+       gdp: r => gdp[r.c.slug]?.usd ?? null, ppp: r => gdp[r.c.slug]?.ppp ?? null, tallest: r => r.c.tallest_h,
+     };
+     return sortBy(base, value[key], view.dir, rank);
+-  }, [cities, gdp, min, key, view.dir]);
++  }, [cities, gdp, core, min, key, view.dir]);
+   const ranked = rows.filter(r => r.completed > 0).length;
+   const totalCompleted = rows.reduce((s, r) => s + r.completed, 0);
+ 
+@@ -59,6 +60,7 @@ export default function CitiesTable({ cities, gdp }: { cities: CityAgg[]; gdp: R
+           {min < 200 && <SortTh k="c200" label="200 m+" sort={view} num title="Completed buildings of 200 m and taller" />}
+           {min < 300 && <SortTh k="c300" label="300 m+" sort={view} num title="Completed buildings of 300 m and taller" />}
+           <SortTh k="skyline" label="Aggregate skyline height" sort={view} num className="wrap" title={`The heights of all completed buildings of ${min} m and taller, added up`} most="highest" least="lowest" />
++          <SortTh k="core" label="Skyline size" sort={view} num title="Area of the city's skyline extent, the urban core drawn on the map for the cities with more than 50 towers" most="largest" least="smallest" />
+           <SortTh k="gdp" label="GDP" sort={view} num title="GDP within city limits, nominal US$ (latest year; a small tag marks figures older than 2025)" most="largest" least="smallest" />
+           <SortTh k="ppp" label="GDP (PPP)" sort={view} num title="GDP within city limits at purchasing-power parity, international $" most="largest" least="smallest" />
+           <SortTh k="tallest" label="Tallest" sort={view} title="Tallest completed building" most="tallest" least="shortest" />
+@@ -73,12 +75,13 @@ export default function CitiesTable({ cities, gdp }: { cities: CityAgg[]; gdp: R
+             {min < 200 && <td className="num">{c.completed200 || "—"}</td>}
+             {min < 300 && <td className="num">{c.completed300 || "—"}</td>}
+             <SkylineCell m={skylineAt(c, min)} />
++            {c.slug in core ? <td className="num">{core[c.slug].toFixed(2)}{"\u00a0"}km²</td> : <td className="num muted">—</td>}
+             <GdpCell g={gdp[c.slug]} kind="usd" />
+             <GdpCell g={gdp[c.slug]} kind="ppp" />
+             <td>{c.tallest_name} <span className="muted">{c.tallest_h}{"\u00a0"}m</span></td>
+           </tr>))}
+         </tbody></table></div>
+-      <p className="muted" style={{ marginTop: 18 }}>Completed, 200 m+ and 300 m+ count finished buildings; All adds those under construction or topped out. GDP is the economic output within the city's own limits (not its metro area) for 2025 or the latest year published — hover a figure for its year and source. Where nothing is published for the city itself, the figure is for the smallest official area that contains it — a county, a district or the metro area, never anything larger — and is marked †; hovering names the area and the city&apos;s share of its population, so these figures overstate the city itself. A dash means no figure exists at that scale. Nominal GDP is converted to US$ at that year's average exchange rate, GDP (PPP) at the IMF's purchasing-power-parity conversion rate. Aggregate skyline height adds up the heights of the city&apos;s completed buildings at the selected height, as if every tower were stacked end to end; hover a figure for it in kilometres. Tallest is the tallest completed building in the city. Click a column&apos;s ▼ to sort by it, most first; click again for least first. The # column always shows the city&apos;s rank by completed towers.</p>
++      <p className="muted" style={{ marginTop: 18 }}>Completed, 200 m+ and 300 m+ count finished buildings; All adds those under construction or topped out. GDP is the economic output within the city's own limits (not its metro area) for 2025 or the latest year published — hover a figure for its year and source. Where nothing is published for the city itself, the figure is for the smallest official area that contains it — a county, a district or the metro area, never anything larger — and is marked †; hovering names the area and the city&apos;s share of its population, so these figures overstate the city itself. A dash means no figure exists at that scale. Nominal GDP is converted to US$ at that year's average exchange rate, GDP (PPP) at the IMF's purchasing-power-parity conversion rate. Aggregate skyline height adds up the heights of the city&apos;s completed buildings at the selected height, as if every tower were stacked end to end; hover a figure for it in kilometres. Skyline size is the area of the city&apos;s skyline extent, the urban core drawn on the map for the 38 cities with more than 50 towers, measured from its outline on the WGS84 ellipsoid; other cities show a dash. Tallest is the tallest completed building in the city. Click a column&apos;s ▼ to sort by it, most first; click again for least first. The # column always shows the city&apos;s rank by completed towers.</p>
+     </>
+   );
+ }
+diff --git a/src/components/skylineLayer.ts b/src/components/skylineLayer.ts
+index 287e0a4..5fbbde8 100644
+--- a/src/components/skylineLayer.ts
++++ b/src/components/skylineLayer.ts
+@@ -2,6 +2,7 @@
+ import type { FeatureCollection } from "geojson";
+ import { Popup, type Map as MLMap, type MapLayerMouseEvent, type LayerSpecification } from "maplibre-gl";
+ import { registerOwnLayer, type Basemap } from "./towerMap";
++import { areaKm2 } from "@/lib/geoArea";
+ 
+ /**
+  * "Display skyline extent": the urban core of each city with more than 50 towers, drawn as a gold
+@@ -77,6 +78,8 @@ function addLayers(map: MLMap, fc: FeatureCollection) {
+   base.forEach((l, i) => { if (l.type !== "symbol") lastShape = i; });
+   const lineBefore = base[lastShape + 1]?.id ?? ownAnchor;
+ 
++  // measured from the full outline here, since a clicked feature's geometry is clipped to its map tile
++  const areas = new Map(fc.features.map(f => [String(f.properties?.city), areaKm2(f.geometry)]));
+   map.addSource(SRC, { type: "geojson", data: fc });
+   map.addLayer({
+     id: FILL, type: "fill", source: SRC, layout: { visibility: "none" },
+@@ -112,14 +115,14 @@ function addLayers(map: MLMap, fc: FeatureCollection) {
+     if (!p) return;
+     popup?.remove();
+     popup = new Popup({ className: "sky-popup", maxWidth: "340px", focusAfterOpen: false })
+-      .setLngLat(e.lngLat).setHTML(popupHtml(p)).addTo(map);
++      .setLngLat(e.lngLat).setHTML(popupHtml(p, areas.get(p.city) ?? p.area_km2)).addTo(map);
+   });
+ }
+ 
+ const esc = (s: string) => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
+-function popupHtml(p: SkylineProps): string {
++function popupHtml(p: SkylineProps, km2: number): string {
+   const n = (x: number) => Number(x).toLocaleString("en-US");
+   return `<h3><span class="place">${esc(p.city)}</span> skyline extent</h3>`
+-    + `<p class="sky-n">${n(p.towers_in_core)} of the city's ${n(p.towers_in_city)} towers of 150 m+ (${n(p.completed_in_core)} completed) · ${p.area_km2} km²</p>`
++    + `<p class="sky-n">${n(p.towers_in_core)} of the city's ${n(p.towers_in_city)} towers of 150 m+ (${n(p.completed_in_core)} completed) · ${km2.toFixed(2)} km²</p>`
+     + `<p>${esc(p.rationale)}</p>`;
+ }
+diff --git a/src/lib/geoArea.ts b/src/lib/geoArea.ts
+new file mode 100644
+index 0000000..3c2c3b8
+--- /dev/null
++++ b/src/lib/geoArea.ts
+@@ -0,0 +1,40 @@
++import type { Geometry } from "geojson";
++
++/**
++ * Area of a GeoJSON polygon or multipolygon on the WGS84 ellipsoid, in km². Latitudes are mapped to authalic
++ * latitudes, which carry the ellipsoid's area onto a sphere of equal surface (the authalic sphere) without
++ * distortion, and each polygon's area there is its spherical excess, summed edge by edge. Holes are subtracted.
++ * For outlines like the skyline extents (edges of a few km at most) this agrees with Karney's geodesic polygon
++ * area on the ellipsoid to well under 0.001 km².
++ */
++const A = 6378137, F = 1 / 298.257223563, E2 = F * (2 - F), E = Math.sqrt(E2);
++const q = (s: number) => (1 - E2) * (s / (1 - E2 * s * s) - Math.log((1 - E * s) / (1 + E * s)) / (2 * E));
++const QP = q(1);
++const R2 = (A * A * QP) / 2;   // square of the authalic radius, m²
++const RAD = Math.PI / 180;
++
++/** tan(β/2) of the authalic latitude β at a geodetic latitude in degrees */
++function tanHalfAuthalic(lat: number): number {
++  const s = Math.max(-1, Math.min(1, q(Math.sin(lat * RAD)) / QP));
++  return Math.tan(Math.asin(s) / 2);
++}
++
++/** Unsigned area of one ring, m² */
++function ringArea(ring: number[][]): number {
++  let excess = 0;
++  for (let i = 0; i < ring.length; i++) {
++    const [lon1, lat1] = ring[i], [lon2, lat2] = ring[(i + 1) % ring.length];
++    let dl = (lon2 - lon1) * RAD;
++    if (dl > Math.PI) dl -= 2 * Math.PI; else if (dl < -Math.PI) dl += 2 * Math.PI;
++    const t1 = tanHalfAuthalic(lat1), t2 = tanHalfAuthalic(lat2);
++    excess += 2 * Math.atan2(Math.tan(dl / 2) * (t1 + t2), 1 + t1 * t2);
++  }
++  return Math.abs(excess) * R2;
++}
++
++export function areaKm2(geometry: Geometry): number {
++  const polys = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.type === "MultiPolygon" ? geometry.coordinates : [];
++  let m2 = 0;
++  for (const [outer, ...holes] of polys) m2 += ringArea(outer) - holes.reduce((s, h) => s + ringArea(h), 0);
++  return m2 / 1e6;
++}
+diff --git a/src/lib/skyline.ts b/src/lib/skyline.ts
+new file mode 100644
+index 0000000..f586e38
+--- /dev/null
++++ b/src/lib/skyline.ts
+@@ -0,0 +1,11 @@
++import "server-only";
++import { readFileSync } from "node:fs";
++import { join } from "node:path";
++import type { FeatureCollection } from "geojson";
++import { areaKm2 } from "./geoArea";
++
++/** Skyline size: the area of each city's skyline extent (public/skyline-extent.geojson, the cores drawn on the map), km² by city name. */
++export function skylineSizes(): Record<string, number> {
++  const fc = JSON.parse(readFileSync(join(process.cwd(), "public/skyline-extent.geojson"), "utf8")) as FeatureCollection;
++  return Object.fromEntries(fc.features.map(f => [String(f.properties?.city), areaKm2(f.geometry)]));
++}
+-- 
+2.43.0
+
+
+From 64c96284cf40292be4a4db959997f91583ccdb2e Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sun, 11 Oct 2026 07:19:16 +0000
+Subject: [PATCH 2/2] Cities table: describe Skyline size without a fixed city
+ count
+
+The skyline extents are being extended to more cities, so the footnote counts them.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01SzHLihdfzaJUPJ2HoM9jcu
+---
+ src/components/CitiesTable.tsx | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/components/CitiesTable.tsx b/src/components/CitiesTable.tsx
+index 91e25ff..2b85b65 100644
+--- a/src/components/CitiesTable.tsx
++++ b/src/components/CitiesTable.tsx
+@@ -60,7 +60,7 @@ export default function CitiesTable({ cities, gdp, core }: { cities: CityAgg[];
+           {min < 200 && <SortTh k="c200" label="200 m+" sort={view} num title="Completed buildings of 200 m and taller" />}
+           {min < 300 && <SortTh k="c300" label="300 m+" sort={view} num title="Completed buildings of 300 m and taller" />}
+           <SortTh k="skyline" label="Aggregate skyline height" sort={view} num className="wrap" title={`The heights of all completed buildings of ${min} m and taller, added up`} most="highest" least="lowest" />
+-          <SortTh k="core" label="Skyline size" sort={view} num title="Area of the city's skyline extent, the urban core drawn on the map for the cities with more than 50 towers" most="largest" least="smallest" />
++          <SortTh k="core" label="Skyline size" sort={view} num title="Area of the city's skyline extent, the urban core outlined on the map" most="largest" least="smallest" />
+           <SortTh k="gdp" label="GDP" sort={view} num title="GDP within city limits, nominal US$ (latest year; a small tag marks figures older than 2025)" most="largest" least="smallest" />
+           <SortTh k="ppp" label="GDP (PPP)" sort={view} num title="GDP within city limits at purchasing-power parity, international $" most="largest" least="smallest" />
+           <SortTh k="tallest" label="Tallest" sort={view} title="Tallest completed building" most="tallest" least="shortest" />
+@@ -81,7 +81,7 @@ export default function CitiesTable({ cities, gdp, core }: { cities: CityAgg[];
+             <td>{c.tallest_name} <span className="muted">{c.tallest_h}{"\u00a0"}m</span></td>
+           </tr>))}
+         </tbody></table></div>
+-      <p className="muted" style={{ marginTop: 18 }}>Completed, 200 m+ and 300 m+ count finished buildings; All adds those under construction or topped out. GDP is the economic output within the city's own limits (not its metro area) for 2025 or the latest year published — hover a figure for its year and source. Where nothing is published for the city itself, the figure is for the smallest official area that contains it — a county, a district or the metro area, never anything larger — and is marked †; hovering names the area and the city&apos;s share of its population, so these figures overstate the city itself. A dash means no figure exists at that scale. Nominal GDP is converted to US$ at that year's average exchange rate, GDP (PPP) at the IMF's purchasing-power-parity conversion rate. Aggregate skyline height adds up the heights of the city&apos;s completed buildings at the selected height, as if every tower were stacked end to end; hover a figure for it in kilometres. Skyline size is the area of the city&apos;s skyline extent, the urban core drawn on the map for the 38 cities with more than 50 towers, measured from its outline on the WGS84 ellipsoid; other cities show a dash. Tallest is the tallest completed building in the city. Click a column&apos;s ▼ to sort by it, most first; click again for least first. The # column always shows the city&apos;s rank by completed towers.</p>
++      <p className="muted" style={{ marginTop: 18 }}>Completed, 200 m+ and 300 m+ count finished buildings; All adds those under construction or topped out. GDP is the economic output within the city's own limits (not its metro area) for 2025 or the latest year published — hover a figure for its year and source. Where nothing is published for the city itself, the figure is for the smallest official area that contains it — a county, a district or the metro area, never anything larger — and is marked †; hovering names the area and the city&apos;s share of its population, so these figures overstate the city itself. A dash means no figure exists at that scale. Nominal GDP is converted to US$ at that year's average exchange rate, GDP (PPP) at the IMF's purchasing-power-parity conversion rate. Aggregate skyline height adds up the heights of the city&apos;s completed buildings at the selected height, as if every tower were stacked end to end; hover a figure for it in kilometres. Skyline size is the area of the city&apos;s skyline extent, the urban core outlined on the map when Display skyline extent is on, measured from that outline on the WGS84 ellipsoid; it is given for the {Object.keys(core).length} cities that have one, and the others show a dash. Tallest is the tallest completed building in the city. Click a column&apos;s ▼ to sort by it, most first; click again for least first. The # column always shows the city&apos;s rank by completed towers.</p>
+     </>
+   );
+ }
+-- 
+2.43.0
+

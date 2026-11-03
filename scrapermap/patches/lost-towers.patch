@@ -1,0 +1,806 @@
+From 919244e86cbe3c000f79cc3c10907dd4ddb9a0a0 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Mon, 12 Oct 2026 02:59:58 +0000
+Subject: [PATCH] Time capsule: towers that have come down stand until the year
+ they did
+
+The time capsule now also shows 14 towers of 150 m+ that were completed and
+later demolished or destroyed (the original World Trade Center and 7 WTC,
+the Singer Building, 270 Park Avenue, AXA Tower and others), each from its
+completion year until the year it came down. They live in
+src/lib/lostTowers.json with a source link each, and only appear while the
+time capsule is on; today's map is unchanged.
+
+- The dock counts the towers standing in the chosen year and says how many
+  came down that year; a ghost ring marks where they stood, and their label
+  says until when a lost tower stood.
+- Clicking a lost tower opens its panel: when and how it came down, what
+  replaced it, CTBUH and Wikipedia links. Its link opens the time capsule on
+  a year it stood (/?year=1995&id=...).
+- scripts/skyline-years.mjs counts lost towers while they stand and, from the
+  year one came down, grows the city's extent again from the towers still
+  standing, so the skyline extents follow the same rule.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_015bnz9afFBBGLBukuAQtLqe
+---
+ scripts/skyline-years.mjs      | 67 +++++++++++++++++++++------
+ src/components/Legend.tsx      |  7 ++-
+ src/components/MapApp.tsx      | 55 ++++++++++++++--------
+ src/components/Panel.tsx       | 20 ++++++--
+ src/components/TimeCapsule.tsx | 14 ++++--
+ src/components/skylineLayer.ts | 12 ++---
+ src/components/timeCapsule.css |  3 ++
+ src/components/towerMap.ts     | 46 +++++++++++++++++--
+ src/lib/lostTowers.json        | 16 +++++++
+ src/lib/lostTowers.ts          | 83 ++++++++++++++++++++++++++++++++++
+ src/lib/timeCapsule.ts         | 23 +++++++---
+ src/lib/types.ts               |  2 +
+ 12 files changed, 286 insertions(+), 62 deletions(-)
+ create mode 100644 src/lib/lostTowers.json
+ create mode 100644 src/lib/lostTowers.ts
+
+diff --git a/scripts/skyline-years.mjs b/scripts/skyline-years.mjs
+index c3be24f..bc825d0 100644
+--- a/scripts/skyline-years.mjs
++++ b/scripts/skyline-years.mjs
+@@ -5,7 +5,9 @@
+ // have not changed since the last run.
+ //
+ // A tower stands in year Y if it is completed and its completion year is Y or earlier (completed towers with no
+-// year are left out; the dataset has no demolished towers). Only towers inside a core count. For each city:
++// year are left out). The dataset holds only towers standing today; towers that have since come down (the original
++// World Trade Center and others) come from src/lib/lostTowers.json and stand from their completion year until the
++// year they came down. Only towers inside a core count. For each city:
+ //
+ //   1. Each tower claims the core within R metres of it from its completion year.
+ //   2. The rest of the core (the "gaps": parks, low-rise blocks, waterfront more than R from every tower) is cut
+@@ -18,9 +20,11 @@
+ //   4. A city has an extent only once MIN_TOWERS of its core's towers stand.
+ //
+ // So an extent only grows with time, and from the year of its core's latest completed tower onwards it is the
+-// drawn core itself. The output has one feature per city and keyframe: `from` is the first year it is shown
+-// and `to` the first year it is not (9999 for the last), so the map filters on from <= year < to. The last
+-// keyframe has no geometry of its own: the map uses the city's drawn core from skyline-extent.geojson.
++// drawn core itself. The one exception is a lost tower: from the year it came down, the city's extent is worked
++// out again from the towers still standing, as if the lost tower had never been built (see framesWithLosses).
++// The output has one feature per city and keyframe: `from` is the first year it is shown and `to` the first year
++// it is not (9999 for the last), so the map filters on from <= year < to. The last keyframe has no geometry of
++// its own: the map uses the city's drawn core from skyline-extent.geojson.
+ import { createHash } from "node:crypto";
+ import { existsSync, readFileSync, writeFileSync } from "node:fs";
+ import ArrayList from "jsts/java/util/ArrayList.js";
+@@ -156,6 +160,7 @@ function partGrowth(part, towers, years) {
+ }
+ 
+ // [{year, n, area, tallest}] for one city, one per year from the year MIN_TOWERS of its towers stand
++// (`towers` all stand from their year on: none of them comes down)
+ function cityFrames(parts, towers, years) {
+   const growth = parts.map(p => partGrowth(p, towers, years));
+   const acc = parts.map(() => null), closed = parts.map(() => null);
+@@ -175,11 +180,36 @@ function cityFrames(parts, towers, years) {
+   return frames;
+ }
+ 
++// cityFrames for a city whose towers include lost ones (`gone` < 9999): the years are cut at each year a tower came
++// down, and each stretch is grown from the towers that still stand in it (or are built later), so an extent can
++// shrink when a tower comes down, and a city whose standing towers drop below MIN_TOWERS loses its extent
++function framesWithLosses(parts, towers) {
++  const yearsOf = ts => [...new Set(ts.map(t => t.year))].sort((a, b) => a - b);
++  const cuts = [...new Set(towers.filter(t => t.gone < 9999).map(t => t.gone))].sort((a, b) => a - b);
++  if (!cuts.length) return cityFrames(parts, towers, yearsOf(towers));
++  const bounds = [-Infinity, ...cuts, Infinity], out = [];
++  for (let k = 0; k + 1 < bounds.length; k++) {
++    const from = bounds[k], until = bounds[k + 1];
++    const ts = towers.filter(t => t.gone > from);
++    const frames = cityFrames(parts, ts, yearsOf(Number.isFinite(from) ? ts.concat({ year: from }) : ts))
++      .filter(fr => fr.year >= from && fr.year < until);
++    if (Number.isFinite(from) && out.length && frames[0]?.year !== from) {   // too few towers left: no extent
++      const stood = ts.filter(t => t.year <= from);
++      out.push({ year: from, n: stood.length, area: gf.createMultiPolygon([]),
++        tallest: stood.length ? stood.reduce((a, b) => b.height > a.height ? b : a) : null });
++    }
++    out.push(...frames);
++  }
++  return out;
++}
++
+ export function buildSkylineYears({ cores: coresPath = "public/skyline-extent.geojson",
+-  towers: towersPath = "src/data/towers.json", out = "public/skyline-extent-years.geojson" } = {}) {
++  towers: towersPath = "src/data/towers.json", lost: lostPath = "src/lib/lostTowers.json",
++  out = "public/skyline-extent-years.geojson" } = {}) {
+   if (!existsSync(coresPath) || !existsSync(towersPath)) return console.log("skyline years: no cores or tower data, skipped");
+   const coresRaw = readFileSync(coresPath), towersRaw = readFileSync(towersPath);
+-  const inputs = createHash("sha1").update(coresRaw).update(towersRaw).update(readFileSync(new URL(import.meta.url))).digest("hex");
++  const lostRaw = existsSync(lostPath) ? readFileSync(lostPath) : Buffer.from("[]");
++  const inputs = createHash("sha1").update(coresRaw).update(towersRaw).update(lostRaw).update(readFileSync(new URL(import.meta.url))).digest("hex");
+   if (existsSync(out)) {
+     try { if (JSON.parse(readFileSync(out)).inputs === inputs) return console.log(`skyline years: ${out} is up to date`); } catch {}
+   }
+@@ -187,6 +217,8 @@ export function buildSkylineYears({ cores: coresPath = "public/skyline-extent.ge
+   const cores = JSON.parse(coresRaw), idx = JSON.parse(towersRaw);
+   const sch = Object.fromEntries(idx.schema.map((k, i) => [k, i]));
+   const completed = idx.statuses.indexOf("Completed");
++  const lostByCity = new Map();
++  for (const t of JSON.parse(lostRaw)) lostByCity.set(t.city, (lostByCity.get(t.city) ?? []).concat(t));
+   const byCity = new Map();
+   for (const r of idx.rows) {
+     const city = idx.cities[r[sch.city]];
+@@ -200,23 +232,28 @@ export function buildSkylineYears({ cores: coresPath = "public/skyline-extent.ge
+     const c = reader.read(f.geometry).getCentroid();
+     const { fwd, inv } = projector(c.getX(), c.getY());
+     const core = reader.read({ type: f.geometry.type, coordinates: mapCoords(f.geometry.coordinates, fwd) });
+-    const towers = [];   // completed towers with a year inside the core
++    const towers = [];   // completed towers with a year inside the core, and lost towers (gone < 9999) inside it
+     for (const r of byCity.get(city) ?? []) {
+       if (r[sch.status] !== completed || r[sch.year] == null) continue;
+       const [x, y] = fwd([r[sch.lon], r[sch.lat]]);
+-      if (core.distance(point(x, y)) <= 1) towers.push({ year: Math.trunc(r[sch.year]), height: r[sch.height_m], name: r[sch.name], x, y });
++      if (core.distance(point(x, y)) <= 1) towers.push({ year: Math.trunc(r[sch.year]), gone: 9999, height: r[sch.height_m], name: r[sch.name], x, y });
++    }
++    for (const t of lostByCity.get(city) ?? []) {
++      const [x, y] = fwd([t.lng, t.lat]);
++      if (core.distance(point(x, y)) <= 1) towers.push({ year: t.completed, gone: t.gone, height: t.height, name: t.name, x, y });
+     }
+     towers.sort((a, b) => a.year - b.year || a.height - b.height || (a.name < b.name ? -1 : a.name > b.name ? 1 : 0) || a.x - b.x || a.y - b.y);
++    const standing = towers.filter(t => t.gone === 9999);
+     const years = [...new Set(towers.map(t => t.year))];
+     const parts = polygons(core);
+     let frames;
+     try {
+-      frames = cityFrames(parts, towers, years);
++      frames = framesWithLosses(parts, towers);
+     } catch (e) {   // never fail the build over one city: show its drawn core once it has MIN_TOWERS towers
+       console.warn(`skyline years: ${city} failed (${e.message ?? e}); showing its drawn core throughout`);
+-      const y = towers[MIN_TOWERS - 1]?.year;
+-      frames = y == null ? [] : [{ year: y, n: towers.filter(t => t.year <= y).length, area: core,
+-        tallest: towers.filter(t => t.year <= y).reduce((a, b) => b.height > a.height ? b : a) }];
++      const y = standing[MIN_TOWERS - 1]?.year;
++      frames = y == null ? [] : [{ year: y, n: standing.filter(t => t.year <= y).length, area: core,
++        tallest: standing.filter(t => t.year <= y).reduce((a, b) => b.height > a.height ? b : a) }];
+     }
+     frames.forEach((fr, k) => {
+       const last = k + 1 === frames.length, t = fr.tallest;
+@@ -226,13 +263,13 @@ export function buildSkylineYears({ cores: coresPath = "public/skyline-extent.ge
+         geometry = { type: g.type, coordinates: mapCoords(g.coordinates, inv) };
+       }
+       feats.push({ type: "Feature", properties: {
+-        city, from: fr.year, to: last ? 9999 : frames[k + 1].year, n: fr.n, total: towers.length,
+-        tallest: `${t.name} (${Math.round(t.height)} m, ${t.year})`,
++        city, from: fr.year, to: last ? 9999 : frames[k + 1].year, n: fr.n, total: standing.length,
++        tallest: t ? `${t.name} (${Math.round(t.height)} m, ${t.year})` : "",
+         area_km2: Math.round((last ? core : fr.area).getArea() / 1e4) / 100,
+         core_km2: Math.round(core.getArea() / 1e4) / 100,
+       }, geometry });
+     });
+-    report.push([city, towers.length, years[0] ?? "-", frames[0]?.year ?? "-", frames.length,
++    report.push([city, standing.length, years[0] ?? "-", frames[0]?.year ?? "-", frames.length,
+       frames.length ? (frames.at(-1).area.getArea() / core.getArea()).toFixed(3) : "0"]);
+   }
+   const text = JSON.stringify({ type: "FeatureCollection", inputs, features: feats });
+diff --git a/src/components/Legend.tsx b/src/components/Legend.tsx
+index 0361c49..cd10784 100644
+--- a/src/components/Legend.tsx
++++ b/src/components/Legend.tsx
+@@ -1,6 +1,10 @@
+ import { BAND_COLORS } from "@/lib/colors";
+ import { BAND_LABEL } from "@/lib/format";
+-export default function Legend({ skyline = false, capsuleYear = null }: { skyline?: boolean; capsuleYear?: number | null }) {
++export default function Legend({ skyline = false, capsuleYear = null, lostThisYear = false }: {
++  skyline?: boolean; capsuleYear?: number | null;
++  /** Time capsule: a tower came down in the chosen year (a ghost ring marks where it stood). */
++  lostThisYear?: boolean;
++}) {
+   return (
+     <div className="legend" aria-hidden>
+       {BAND_LABEL.map((l, i) => (
+@@ -9,6 +13,7 @@ export default function Legend({ skyline = false, capsuleYear = null }: { skylin
+       <span><i className="hollow" />approximate</span>
+       {skyline && <span><i className="sky" />skyline extent</span>}
+       {capsuleYear !== null && <span><i className="new" />completed in {capsuleYear}</span>}
++      {capsuleYear !== null && lostThisYear && <span><i className="ghost" />came down in {capsuleYear}</span>}
+     </div>
+   );
+ }
+diff --git a/src/components/MapApp.tsx b/src/components/MapApp.tsx
+index 012e315..d0f3c8c 100644
+--- a/src/components/MapApp.tsx
++++ b/src/components/MapApp.tsx
+@@ -5,7 +5,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
+ import "./timeCapsule.css";
+ import { towerSlug, type Tower, type TowerIndex, type TowerRow, type DetailsFile } from "@/lib/types";
+ import { loadIndex, loadDetails, resolveRow, norm, detailFor } from "@/lib/client";
+-import { createMap, addTowerLayers, rowsToGeoJSON, setTowerData, setSelected, setBasemap, setBoundary, setCapsuleYear, type Basemap } from "./towerMap";
++import { createMap, addTowerLayers, rowsToGeoJSON, setTowerData, setSelected, setBasemap, setBoundary, setCapsuleYear, setCapsuleLost, type Basemap } from "./towerMap";
+ import { boundaryFor } from "@/lib/boundary";
+ import { setSkyline } from "./skylineLayer";
+ import { addTowerIcons } from "./towerIcons";
+@@ -14,7 +14,8 @@ import Chooser from "./Chooser";
+ import Filters, { type FilterState, DEFAULT_FILTERS, applyFilters } from "./Filters";
+ import Search from "./Search";
+ import TimeCapsule from "./TimeCapsule";
+-import { capsuleRange, standingIn, perYear } from "@/lib/timeCapsule";
++import { capsuleRange, standingIn, lostIn, perYear } from "@/lib/timeCapsule";
++import { lostRows, resolveLost } from "@/lib/lostTowers";
+ import Legend from "./Legend";
+ import Nav from "./Nav";
+ import placesJson from "@/data/places.json";
+@@ -57,8 +58,12 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+   const [basemap, setBasemapState] = useState<Basemap>("map");
+   const [skyline, setSkylineOn] = useState(false);
+   const [zoomedOut, setZoomedOut] = useState(true);
+-  /** Time capsule: null while it is off, otherwise the chosen year (only towers completed by then are shown). */
++  /** Time capsule: null while it is off, otherwise the chosen year (only towers standing then are shown). */
+   const [asOf, setAsOf] = useState<number | null>(null);
++  const asOfRef = useRef(asOf);
++  asOfRef.current = asOf;
++  /** Towers that have since come down, shown only in the time capsule. */
++  const lost = useMemo(() => idx ? lostRows(idx) : null, [idx]);
+   const pendingFit = useRef<[number, number, number, number] | null>(null);
+ 
+   // ---- data ---------------------------------------------------------------
+@@ -79,31 +84,37 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+ 
+   const resolveId = useCallback((id: number): Tower | null => {
+     if (!idx) return null;
++    const gone = lost?.byId.get(id);
++    if (gone) return resolveLost(idx, lost!.rows.find(r => r[0] === id)!, gone);
+     const row = rowsById.get(id);
+     if (!row) return null;
+     return resolveRow(idx, row, detailFor(detailsRef.current, id, row[1]));
+-  }, [idx, rowsById]);
++  }, [idx, rowsById, lost]);
+ 
+   // Once details arrive, upgrade the selected tower (unless it came pre-resolved).
+   useEffect(() => {
+-    if (detailsReady && selected && !selected.detail?.slug) {
++    if (detailsReady && selected && !selected.lost && !selected.detail?.slug) {
+       const t = resolveId(selected.id); if (t) setSelectedTower(t);
+     }
+   }, [detailsReady, selected, resolveId]);
+ 
+   // ---- filtered rows ------------------------------------------------------
+   const capsuleOn = asOf !== null;
+-  const range = useMemo(() => idx ? capsuleRange(idx) : null, [idx]);
+-  // time capsule: completed towers with a year that pass the other filters; the chosen year then cuts them down
+-  const capsuleBase = useMemo(() => idx && capsuleOn ? applyFilters(idx, filters, true) : null, [idx, filters, capsuleOn]);
+-  const filteredRows = useMemo(() => !idx ? [] : capsuleBase && asOf !== null ? standingIn(capsuleBase, asOf) : applyFilters(idx, filters), [idx, filters, capsuleBase, asOf]);
++  const range = useMemo(() => idx && lost ? capsuleRange(idx, lost.rows) : null, [idx, lost]);
++  // time capsule: completed towers with a year that pass the other filters, and the lost towers that pass them;
++  // the chosen year then cuts them down to the ones standing
++  const capsuleBase = useMemo(() => idx && lost && capsuleOn
++    ? applyFilters(idx, filters, true).concat(applyFilters({ ...idx, rows: lost.rows }, filters, true)) : null, [idx, lost, filters, capsuleOn]);
++  const filteredRows = useMemo(() => !idx ? [] : capsuleBase && asOf !== null ? standingIn(capsuleBase, asOf, lost?.gone) : applyFilters(idx, filters), [idx, lost, filters, capsuleBase, asOf]);
++  /** Lost towers that came down in the chosen year: a ghost ring marks where they stood. */
++  const capsuleLost = useMemo(() => capsuleBase && lost && asOf !== null ? lostIn(capsuleBase, asOf, lost.gone) : [], [capsuleBase, lost, asOf]);
+   const capsuleCounts = useMemo(() => capsuleBase && range ? perYear(capsuleBase, range.first, range.last) : [], [capsuleBase, range]);
+   const capsuleTallest = useMemo(() => {
+     if (!idx || !capsuleOn) return null;
+     let t: TowerRow | null = null;
+     for (const r of filteredRows) if (!t || r[4] > t[4]) t = r;
+-    return t ? { id: t[0], name: t[1], height: t[4], city: idx.cities[t[5]] } : null;
+-  }, [idx, capsuleOn, filteredRows]);
++    return t ? { id: t[0], name: t[1], height: t[4], city: t[5] >= 0 ? idx.cities[t[5]] : lost?.byId.get(t[0])?.city ?? "" } : null;
++  }, [idx, lost, capsuleOn, filteredRows]);
+ 
+   // ---- select / URL -------------------------------------------------------
+   const select = useCallback((id: number, fly = true) => {
+@@ -116,8 +127,9 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+       setSelected(map, id);
+       map.flyTo({ center: [t.lon, t.lat], zoom: fly ? Math.max(map.getZoom(), 15.2) : map.getZoom(), padding: panelPadding(), duration: fly ? 900 : 450, essential: true });
+     }
+-    const slug = towerSlug(t.name, id);
+-    if (slug) history.replaceState(null, "", `/tower/${slug}/`);
++    // a lost tower has no page of its own: link to the time capsule in a year it stood (or the year it came down)
++    if (t.lost) history.replaceState(null, "", `/?year=${Math.min(t.lost.gone, Math.max(t.lost.completed, asOfRef.current ?? t.lost.gone - 1))}&id=${id}`);
++    else history.replaceState(null, "", `/tower/${towerSlug(t.name, id)}/`);
+   }, [resolveId]);
+ 
+   const close = useCallback(() => {
+@@ -184,7 +196,7 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+   useEffect(() => {
+     const map = mapRef.current;
+     if (!map || !mapReady || !idx) return;
+-    const data = rowsToGeoJSON(filteredRows);
++    const data = rowsToGeoJSON(filteredRows, lost?.gone);
+     if (!layersAdded.current) {
+       addTowerLayers(map, data, {
+         onSelect: id => select(id, false),
+@@ -200,7 +212,7 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+     } else {
+       setTowerData(map, data);
+     }
+-  }, [mapReady, idx, filteredRows, select, initialTower]);
++  }, [mapReady, idx, lost, filteredRows, select, initialTower]);
+ 
+   // skyline layers go in under the tower layers, so they wait for those; with the time capsule on they follow its year
+   useEffect(() => {
+@@ -209,12 +221,17 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+     setSkyline(map, skyline, basemap, asOf);
+   }, [mapReady, idx, skyline, basemap, asOf]);
+ 
+-  // time capsule: ring the towers completed in the chosen year
++  // time capsule: ring the towers completed in the chosen year, and leave a ghost ring where one came down
+   useEffect(() => {
+     const map = mapRef.current;
+     if (!map || !mapReady || !layersAdded.current) return;
+     setCapsuleYear(map, asOf);
+   }, [mapReady, idx, asOf]);
++  useEffect(() => {
++    const map = mapRef.current;
++    if (!map || !mapReady || !layersAdded.current || !lost) return;
++    setCapsuleLost(map, capsuleLost, lost.gone, id => lost.byId.get(id)?.how ?? "");
++  }, [mapReady, idx, lost, capsuleLost]);
+ 
+   // outline of the opened city / district (red dashed line); cleared when no place is open
+   useEffect(() => {
+@@ -275,9 +292,9 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+       {filtersOpen && idx && (
+         <Filters idx={idx} state={filters} onChange={setFilters} onClose={() => setFiltersOpen(false)} shown={filteredRows.length} onFlyTo={flyToPlace} capsule={capsuleOn} />
+       )}
+-      <Legend skyline={skyline} capsuleYear={asOf} />
++      <Legend skyline={skyline} capsuleYear={asOf} lostThisYear={capsuleLost.length > 0} />
+       {idx && range && asOf === null && (
+-        <button className={"btn capsule-open" + (selected ? " with-panel" : "")} onClick={toggleCapsule} title={`Time capsule: show only the towers completed by a chosen year, from ${range.first} to today`}>
++        <button className={"btn capsule-open" + (selected ? " with-panel" : "")} onClick={toggleCapsule} title={`Time capsule: show only the towers standing in a chosen year, from ${range.first} to today`}>
+           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" aria-hidden="true">
+             <path d="M6 3h12M6 21h12M7 3c0 4.5 5 6 5 9s-5 4.5-5 9M17 3c0 4.5-5 6-5 9s5 4.5 5 9M9.5 18.5h5" />
+           </svg>
+@@ -286,7 +303,7 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+       )}
+       {asOf !== null && range && (
+         <TimeCapsule first={range.first} last={range.last} year={asOf} onYear={setAsOf} onClose={closeCapsule}
+-          perYear={capsuleCounts} shown={filteredRows.length} tallest={capsuleTallest} onPick={onSearchPick} panelOpen={!!selected} />
++          perYear={capsuleCounts} shown={filteredRows.length} lost={capsuleLost.map(r => r[1])} tallest={capsuleTallest} onPick={onSearchPick} panelOpen={!!selected} />
+       )}
+       {chooser && chooserTowers.length > 0 && (
+         <Chooser towers={chooserTowers} at={chooser.at} onPick={id => select(id, false)} onClose={() => setChooser(null)} />
+diff --git a/src/components/Panel.tsx b/src/components/Panel.tsx
+index ef52c3d..81b7d7b 100644
+--- a/src/components/Panel.tsx
++++ b/src/components/Panel.tsx
+@@ -3,7 +3,7 @@ import { useState } from "react";
+ import type { Tower } from "@/lib/types";
+ import { fmtHeight, fmtFeet, PRECISION_LABEL, STATUS_SHORT, heightBand } from "@/lib/format";
+ import { BAND_COLORS } from "@/lib/colors";
+-import { slugify } from "@/lib/types";
++import { slugify, towerSlug } from "@/lib/types";
+ 
+ export default function Panel({ tower: t, onClose }: { tower: Tower; onClose: () => void }) {
+   const d = t.detail;
+@@ -14,6 +14,8 @@ export default function Panel({ tower: t, onClose }: { tower: Tower; onClose: ()
+     try { await navigator.clipboard.writeText(url); setCopied(true); setTimeout(() => setCopied(false), 1500); } catch { /* ignore */ }
+   };
+   const citySlug = slugify(t.city), distSlug = slugify(t.district);
++  const lost = t.lost, how = lost ? lost.how[0].toUpperCase() + lost.how.slice(1) : "";
++  const knownCity = !lost || lost.cityKnown;
+   return (
+     <aside className="panel" aria-label={t.name}>
+       <button className="x" onClick={onClose} aria-label="Close">×</button>
+@@ -35,17 +37,24 @@ export default function Panel({ tower: t, onClose }: { tower: Tower; onClose: ()
+       )}
+       <div className="body">
+         <h1>{t.name}</h1>
++        {lost && <p className="lost-note">{how} in {lost.gone}. {lost.cause}</p>}
+         <p className="where">
+-          <a className="place" href={`/city/${citySlug}/${distSlug}/`}>{t.district}</a> · <a className="place" href={`/city/${citySlug}/`}>{t.city}</a>{d?.country ? <>, <span className="place">{d.country}</span></> : null}
++          {knownCity && t.district ? <><a className="place" href={`/city/${citySlug}/${distSlug}/`}>{t.district}</a> · </> : null}
++          {knownCity ? <a className="place" href={`/city/${citySlug}/`}>{t.city}</a> : <span className="place">{t.city}</span>}
++          {d?.country ? <>, <span className="place">{d.country}</span></> : null}
+         </p>
+ 
+         <dl className="facts">
+           <div><dt>Height</dt><dd>{fmtHeight(t.height)} <span className="muted">{fmtFeet(t.height)}</span>{d && d.height_confirmed === false ? <span className="muted"> · unconfirmed</span> : null}</dd></div>
+           <div><dt>Floors</dt><dd>{t.floors || "—"}</dd></div>
+-          <div><dt>Status</dt><dd>{STATUS_SHORT[t.status] ?? t.status}{t.year ? <span className="muted"> · {t.year}</span> : null}</dd></div>
++          {lost
++            ? <div><dt>Status</dt><dd>{how} <span className="muted" style={{ whiteSpace: "nowrap" }}>· stood {lost.completed}–{lost.gone}</span></dd></div>
++            : <div><dt>Status</dt><dd>{STATUS_SHORT[t.status] ?? t.status}{t.year ? <span className="muted"> · {t.year}</span> : null}</dd></div>}
+           <div><dt>Use</dt><dd>{t.fn || "—"}</dd></div>
+           {d?.material && <div><dt>Structure</dt><dd>{d.material}</dd></div>}
+           {d?.address && <div><dt>Address</dt><dd>{d.address}</dd></div>}
++          {lost?.replacedBy && <div><dt>Replaced by</dt><dd>{lost.replacedById
++            ? <a href={`/tower/${towerSlug(lost.replacedBy, lost.replacedById)}/`}>{lost.replacedBy}</a> : lost.replacedBy}</dd></div>}
+         </dl>
+ 
+         {d?.rank_global ? (
+@@ -58,12 +67,13 @@ export default function Panel({ tower: t, onClose }: { tower: Tower; onClose: ()
+ 
+         <div className="actions">
+           {d?.ctbuh_url && <a className="btn primary" href={d.ctbuh_url} target="_blank" rel="noopener">View on CTBUH ↗</a>}
++          {lost && <a className={"btn" + (d?.ctbuh_url ? "" : " primary")} href={lost.source} target="_blank" rel="noopener">{/wikipedia\.org/.test(lost.source) ? "Wikipedia" : "Source"} ↗</a>}
+           <button className="btn" onClick={share}>{copied ? "Link copied" : "Share"}</button>
+         </div>
+ 
+         <details className="loc">
+           <summary>How this pin was placed</summary>
+-          <p>{PRECISION_LABEL[t.precision] ?? t.precision}{d?.coord_note ? <> — {d.coord_note}</> : null}</p>
++          <p>{lost ? "Where the tower stood, from its source" : PRECISION_LABEL[t.precision] ?? t.precision}{d?.coord_note ? <> — {d.coord_note}</> : null}</p>
+           {t.sharesPoint > 0 && <p className="muted">The source gives one point for this whole complex; {t.sharesPoint} other tower{t.sharesPoint > 1 ? "s" : ""} share it.</p>}
+           <p className="muted">
+             {t.lat.toFixed(5)}, {t.lon.toFixed(5)} ·{" "}
+@@ -71,7 +81,7 @@ export default function Panel({ tower: t, onClose }: { tower: Tower; onClose: ()
+             {d?.osm_way ? <> · <a href={`https://www.openstreetmap.org/way/${d.osm_way}`} target="_blank" rel="noopener">footprint</a></> : null}
+           </p>
+         </details>
+-        <p className="credit">Building data © CTBUH / The Skyscraper Center.</p>
++        <p className="credit">{lost ? "This tower is no longer standing, so it is not in the CTBUH list the map is built on; its facts come from the source linked above." : "Building data © CTBUH / The Skyscraper Center."}</p>
+       </div>
+     </aside>
+   );
+diff --git a/src/components/TimeCapsule.tsx b/src/components/TimeCapsule.tsx
+index b202c18..b91d580 100644
+--- a/src/components/TimeCapsule.tsx
++++ b/src/components/TimeCapsule.tsx
+@@ -14,8 +14,10 @@ interface Props {
+   onClose: () => void;
+   /** Completions per year, first..last, for the towers the other filters let through. */
+   perYear: number[];
+-  /** Towers completed by `year`. */
++  /** Towers standing in `year`. */
+   shown: number;
++  /** Names of the towers that came down in `year`. */
++  lost: string[];
+   tallest: { id: number; name: string; height: number; city: string } | null;
+   onPick: (id: number) => void;
+   /** The tower panel is open on the right: keep clear of it. */
+@@ -26,7 +28,7 @@ interface Props {
+  * The time capsule's dock: the chosen year, a bar chart of completions per year with a slider under it
+  * (the bars up to the chosen year are filled), and Play, which walks forward one year at a time.
+  */
+-export default function TimeCapsule({ first, last, year, onYear, onClose, perYear, shown, tallest, onPick, panelOpen }: Props) {
++export default function TimeCapsule({ first, last, year, onYear, onClose, perYear, shown, lost, tallest, onPick, panelOpen }: Props) {
+   const [playing, setPlaying] = useState(false);
+   const span = Math.max(1, last - first);
+   const max = Math.max(1, ...perYear);
+@@ -75,9 +77,13 @@ export default function TimeCapsule({ first, last, year, onYear, onClose, perYea
+             {playing ? <path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor" /> : <path d="M4.5 2.2v11.6L13.6 8z" fill="currentColor" />}
+           </svg>
+         </button>
+-        <div className="cap-year" title="Towers standing today, each shown from the year it was completed">{year}</div>
++        <div className="cap-year" title="Each tower is shown from the year it was completed until the year it came down, if it has">{year}</div>
+         <div className="cap-facts">
+-          <div><b>{shown.toLocaleString("en-US")}</b> {shown === 1 ? "tower" : "towers"} completed by {year}{added > 0 && <span className="cap-new"> · {added.toLocaleString("en-US")} new</span>}</div>
++          <div>
++            <b>{shown.toLocaleString("en-US")}</b> {shown === 1 ? "tower" : "towers"} standing in {year}
++            {added > 0 && <span className="cap-new"> · {added.toLocaleString("en-US")} new</span>}
++            {lost.length > 0 && <span className="cap-lost" title={lost.join(", ")}> · {lost.length} lost</span>}
++          </div>
+           {tallest && (
+             <div className="cap-tallest">Tallest: <button className="link" onClick={() => onPick(tallest.id)}>{tallest.name}</button>, {fmtHeight(tallest.height)}, <span className="place">{tallest.city}</span></div>
+           )}
+diff --git a/src/components/skylineLayer.ts b/src/components/skylineLayer.ts
+index 5ef8e71..f0003f5 100644
+--- a/src/components/skylineLayer.ts
++++ b/src/components/skylineLayer.ts
+@@ -42,9 +42,9 @@ interface YearProps {
+   city: string;
+   from: number;          // first year shown
+   to: number;            // first year not shown (9999: up to today)
+-  n: number;             // towers in today's core completed by `from`
++  n: number;             // towers standing in today's core in `from` (lost towers included while they stood)
+   total: number;         // completed towers in today's core (with a known year)
+-  tallest: string;       // tallest of those `n`, "Name (484 m, 2010)"
++  tallest: string;       // tallest of those `n`, "Name (484 m, 2010)"; "" when none stands
+ }
+ 
+ const fetchJson = (url: string) => fetch(url).then(r => (r.ok ? r.json() : null)).catch(() => null) as Promise<FeatureCollection | null>;
+@@ -160,7 +160,7 @@ function addLayers(map: MLMap, fc: FeatureCollection) {
+   registerOwnLayer(LINE);
+ 
+   map.on("click", FILL, (e: MapLayerMouseEvent) => {
+-    const towerLayers = ["clusters", "pins", "tower-icons"].filter(id => map.getLayer(id));
++    const towerLayers = ["clusters", "pins", "tower-icons", "capsule-lost"].filter(id => map.getLayer(id));
+     if (map.queryRenderedFeatures(e.point, { layers: towerLayers }).length) return;   // the pin's own click wins
+     const props = e.features?.[0]?.properties;
+     if (!props) return;
+@@ -193,7 +193,7 @@ function yearPopupHtml(p: YearProps, year: number, km2: number | null, coreKm2:
+   const size = km2 === null ? "" : today || coreKm2 === null ? ` · ${km2.toFixed(2)} km²`
+     : ` · ${km2.toFixed(2)} of today's ${coreKm2.toFixed(2)} km²`;
+   return `<h3><span class="place">${esc(p.city)}</span> skyline extent in ${year}</h3>`
+-    + `<p class="sky-n">${n(p.n)} of the ${n(p.total)} completed towers in today's core had been built${size}</p>`
+-    + `<p>Tallest then: ${esc(p.tallest)}.</p>`
+-    + (today ? "" : `<p class="sky-note">Today's core, trimmed to the area around the towers built by ${year}.</p>`);
++    + `<p class="sky-n">${n(p.n)} ${p.n === 1 ? "tower" : "towers"} of 150 m+ stood in today's core (${n(p.total)} today)${size}</p>`
++    + (p.tallest ? `<p>Tallest then: ${esc(p.tallest)}.</p>` : "")
++    + (today ? "" : `<p class="sky-note">Today's core, trimmed to the area around the towers standing in ${year}.</p>`);
+ }
+diff --git a/src/components/timeCapsule.css b/src/components/timeCapsule.css
+index 59c9dd8..02869bd 100644
+--- a/src/components/timeCapsule.css
++++ b/src/components/timeCapsule.css
+@@ -11,6 +11,7 @@
+ .cap-facts { flex: 1; min-width: 0; font-size: 12.5px; line-height: 1.5; color: var(--fg-2); }
+ .cap-facts b { color: var(--fg); font-weight: 600; }
+ .cap-new { color: #A33A0B; }           /* the new-this-year orange, darkened for text (5.6:1 on the dock) */
++.cap-lost { color: #5E4E47; cursor: help; }   /* the ghost ring's colour */
+ .cap-tallest { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+ .cap-tallest .link { margin: 0; font: inherit; color: var(--accent-2); }
+ .capsule .x { position: static; flex: none; align-self: flex-start; width: 28px; height: 28px; font-size: 18px; }
+@@ -23,6 +24,8 @@
+ .cap-ticks { position: relative; height: 18px; margin: 0 8px; font-size: 11px; color: var(--fg-3); }
+ .cap-ticks span { position: absolute; top: 2px; transform: translateX(-50%); }
+ .legend i.new { border: 2px solid #E2560F; background: rgba(226,86,15,.16); width: 8px; height: 8px; }
++.legend i.ghost { border: 2px solid #5E4E47; background: rgba(94,78,71,.1); width: 8px; height: 8px; }
++.panel .lost-note { margin: -2px 0 6px; font-size: 13.5px; font-style: italic; color: #5E4E47; }
+ .filters .chips.paused .chip { opacity: .55; cursor: default; }
+ .filters-note { margin: 6px 0 0; font-size: 12px; line-height: 1.4; color: var(--fg-3); }
+ 
+diff --git a/src/components/towerMap.ts b/src/components/towerMap.ts
+index 469b37b..7e95016 100644
+--- a/src/components/towerMap.ts
++++ b/src/components/towerMap.ts
+@@ -21,9 +21,11 @@ export type Basemap = "map" | "satellite";
+ const SAT_ID = "esri-imagery";
+ const SAT_TILES = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
+ const SAT_ATTR = 'Imagery © <a href="https://www.esri.com/" target="_blank" rel="noopener">Esri</a>, Maxar, Earthstar Geographics';
+-const TOWER_LAYERS = new Set(["clusters", "cluster-count", "glow", "pins", "capsule-new-clusters", "capsule-new", "selected", "labels"]);
++const TOWER_LAYERS = new Set(["clusters", "cluster-count", "glow", "pins", "capsule-new-clusters", "capsule-new", "capsule-lost", "selected", "labels", "capsule-lost-label"]);
+ /** Time capsule: ring colour for towers completed in the chosen year (reads on the sand map and on imagery). */
+ const NEW_COLOR = "#E2560F";
++/** Time capsule: the ghost ring left where a tower came down, in the year it did. */
++const GHOST_COLOR = "#5E4E47";
+ const NEVER: NonNullable<Parameters<MLMap["setFilter"]>[1]> = ["==", ["get", "id"], -1];
+ /** Outline of the city or district opened on the map (red dashed line, drawn under the pins). */
+ const BOUNDARY_ID = "boundary";
+@@ -36,14 +38,15 @@ export interface MapCallbacks {
+   onMoveEnd?: () => void;
+ }
+ 
+-export function rowsToGeoJSON(rows: TowerRow[]): FeatureCollection {
++/** `gone` (time capsule): lost towers' ids -> the year they came down, kept as `g` for their labels. */
++export function rowsToGeoJSON(rows: TowerRow[], gone?: Map<number, number>): FeatureCollection {
+   return {
+     type: "FeatureCollection",
+     features: rows.map(r => ({
+       type: "Feature",
+       id: r[0],
+       geometry: { type: "Point", coordinates: [r[3], r[2]] },
+-      properties: { id: r[0], n: r[1], h: r[4], b: r[4] >= 400 ? 3 : r[4] >= 300 ? 2 : r[4] >= 200 ? 1 : 0, p: r[11], sp: r[12], y: r[8] ?? 0 },
++      properties: { id: r[0], n: r[1], h: r[4], b: r[4] >= 400 ? 3 : r[4] >= 300 ? 2 : r[4] >= 200 ? 1 : 0, p: r[11], sp: r[12], y: r[8] ?? 0, g: gone?.get(r[0]) ?? 0 },
+     })),
+   };
+ }
+@@ -228,6 +231,15 @@ export function addTowerLayers(map: MLMap, data: FeatureCollection, cb: MapCallb
+       "circle-color": "rgba(226,86,15,0.16)", "circle-stroke-width": 2.2, "circle-stroke-color": NEW_COLOR,
+     },
+   });
++  // time capsule: a ghost ring where a tower came down in the chosen year; see setCapsuleLost
++  map.addSource("capsule-lost", { type: "geojson", data: EMPTY });
++  map.addLayer({
++    id: "capsule-lost", type: "circle", source: "capsule-lost",
++    paint: {
++      "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 7, 15, 12],
++      "circle-color": "rgba(94,78,71,0.1)", "circle-stroke-width": 2, "circle-stroke-color": GHOST_COLOR, "circle-stroke-opacity": 0.9,
++    },
++  });
+   map.addLayer({
+     id: "selected", type: "circle", source: "towers", filter: ["==", ["get", "id"], -1],
+     paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 8, 11, 15, 16], "circle-color": "rgba(0,0,0,0)", "circle-stroke-width": 2.5, "circle-stroke-color": "#2B1D17" },
+@@ -235,12 +247,22 @@ export function addTowerLayers(map: MLMap, data: FeatureCollection, cb: MapCallb
+   map.addLayer({
+     id: "labels", type: "symbol", source: "towers", filter: ["!", ["has", "point_count"]], minzoom: 14.2,
+     layout: {
+-      "text-field": ["get", "n"], "text-font": ["Noto Sans Regular"], "text-size": 11.5,
++      // a tower that has since come down (time capsule) says until when it stood
++      "text-field": ["case", [">", ["get", "g"], 0], ["concat", ["get", "n"], "\n(until ", ["to-string", ["get", "g"]], ")"], ["get", "n"]],
++      "text-font": ["Noto Sans Regular"], "text-size": 11.5,
+       "text-offset": [0, 1.15], "text-anchor": "top", "text-optional": true, "text-max-width": 9,
+       "symbol-sort-key": ["-", 900, ["get", "h"]],
+     },
+     paint: { "text-color": "#2B1D17", "text-halo-color": "#FAF4F1", "text-halo-width": 1.4 },
+   });
++  map.addLayer({
++    id: "capsule-lost-label", type: "symbol", source: "capsule-lost", minzoom: 11,
++    layout: {
++      "text-field": ["concat", ["get", "n"], "\n", ["get", "how"], " ", ["to-string", ["get", "g"]]], "text-font": ["Noto Sans Regular"], "text-size": 11.5,
++      "text-offset": [0, 1.2], "text-anchor": "top", "text-optional": true, "text-max-width": 10,
++    },
++    paint: { "text-color": GHOST_COLOR, "text-halo-color": "#FAF4F1", "text-halo-width": 1.4 },
++  });
+ 
+   const src = map.getSource("towers") as GeoJSONSource;
+ 
+@@ -267,7 +289,12 @@ export function addTowerLayers(map: MLMap, data: FeatureCollection, cb: MapCallb
+     else if (ids.length === 1) cb.onSelect(ids[0]);
+   });
+ 
+-  for (const l of ["clusters", "pins"]) {
++  map.on("click", "capsule-lost", (e: MapMouseEvent) => {
++    const f = map.queryRenderedFeatures(e.point, { layers: ["capsule-lost"] })[0];
++    if (f) cb.onSelect(f.properties!.id as number);
++  });
++
++  for (const l of ["clusters", "pins", "capsule-lost"]) {
+     map.on("mouseenter", l, () => { map.getCanvas().style.cursor = "pointer"; });
+     map.on("mouseleave", l, () => { map.getCanvas().style.cursor = ""; });
+   }
+@@ -314,6 +341,15 @@ export function setCapsuleYear(map: MLMap, year: number | null) {
+   map.setFilter("capsule-new-clusters", year === null ? NEVER : ["all", ["has", "point_count"], ["==", ["get", "maxy"], year]]);
+ }
+ 
++/** Time capsule: ghost rings for the towers that came down in the chosen year (`rows`, with `how` per id); none clears them. */
++export function setCapsuleLost(map: MLMap, rows: TowerRow[], gone: Map<number, number>, how: (id: number) => string) {
++  const src = map.getSource("capsule-lost") as GeoJSONSource | undefined;
++  if (!src) return;
++  const data = rowsToGeoJSON(rows, gone);
++  for (const f of data.features) f.properties!.how = how(f.properties!.id as number);
++  src.setData(data);
++}
++
+ export function setSelected(map: MLMap, id: number | null) {
+   if (!map.getLayer("selected")) return;
+   map.setFilter("selected", ["==", ["get", "id"], id ?? -1]);
+diff --git a/src/lib/lostTowers.json b/src/lib/lostTowers.json
+new file mode 100644
+index 0000000..983238c
+--- /dev/null
++++ b/src/lib/lostTowers.json
+@@ -0,0 +1,16 @@
++[
++  {"name": "World Trade Center North Tower (1 WTC)", "city": "New York City", "country": "United States", "lat": 40.712083, "lng": -74.013139, "coordSource": "Wikipedia coordinates for the tower (1 World Trade Center (1970-2001))", "height": 417.0, "floors": 110, "completed": 1972, "gone": 2001, "how": "destroyed", "cause": "Hit by American Airlines Flight 11 in the September 11 attacks.", "use": "Office", "ctbuhUrl": "https://www.skyscrapercenter.com/building/one-world-trade-center/200", "sourceUrl": "https://en.wikipedia.org/wiki/1_World_Trade_Center_(1970%E2%80%932001)", "replacedBy": "One World Trade Center", "replacedById": 98},
++  {"name": "World Trade Center South Tower (2 WTC)", "city": "New York City", "country": "United States", "lat": 40.710944, "lng": -74.013056, "coordSource": "Wikipedia coordinates for the tower (2 World Trade Center (1971-2001))", "height": 415.1, "floors": 110, "completed": 1973, "gone": 2001, "how": "destroyed", "cause": "Hit by United Airlines Flight 175 in the September 11 attacks.", "use": "Office", "ctbuhUrl": "https://www.skyscrapercenter.com/building/two-world-trade-center/202", "sourceUrl": "https://en.wikipedia.org/wiki/2_World_Trade_Center_(1971%E2%80%932001)", "replacedBy": null, "replacedById": null},
++  {"name": "AXA Tower", "city": "Singapore", "country": "Singapore", "lat": 1.275723, "lng": 103.847267, "coordSource": "Singapore OneMap address point for 8 Shenton Way (now The Skywaters)", "height": 234.7, "floors": 52, "completed": 1986, "gone": 2022, "how": "demolished", "cause": "Made way for the Skywaters Residences at 8 Shenton Way.", "use": "Office", "ctbuhUrl": "https://www.skyscrapercenter.com/building/axa-tower/1056", "sourceUrl": "https://en.wikipedia.org/wiki/AXA_Tower", "replacedBy": "8 Shenton Way Redevelopment", "replacedById": 44843},
++  {"name": "Union Carbide Building (270 Park Avenue)", "city": "New York City", "country": "United States", "lat": 40.75586, "lng": -73.97566, "coordSource": "Derived: Wikipedia says the 52-storey slab stood on the Park Avenue side of the block, set back ~33-50 ft from the Park Avenue lot line", "height": 215.5, "floors": 52, "completed": 1960, "gone": 2019, "how": "demolished", "cause": "Made way for the new JPMorganChase headquarters at 270 Park Avenue.", "use": "Office", "ctbuhUrl": "https://www.skyscrapercenter.com/building/jpmorgan-chase-tower/1341", "sourceUrl": "https://en.wikipedia.org/wiki/270_Park_Avenue_(1960%E2%80%932021)", "replacedBy": "JPMorganChase Tower", "replacedById": 34450},
++  {"name": "Singer Building", "city": "New York City", "country": "United States", "lat": 40.70957, "lng": -74.01075, "coordSource": "Derived: the tower stood at the north-west corner of Broadway and Liberty Street, set back 30 ft from Broadway (Wikipedia)", "height": 186.6, "floors": 41, "completed": 1908, "gone": 1967, "how": "demolished", "cause": "Made way for One Liberty Plaza.", "use": "Office", "ctbuhUrl": "https://www.skyscrapercenter.com/building/singer-building/2080", "sourceUrl": "https://en.wikipedia.org/wiki/Singer_Building", "replacedBy": "One Liberty Plaza", "replacedById": 1161},
++  {"name": "7 World Trade Center (1987)", "city": "New York City", "country": "United States", "lat": 40.71352, "lng": -74.01232, "coordSource": "Derived: the 1987 building ran ~100 m west from West Broadway between Barclay and Vesey streets (Wikipedia)", "height": 173.7, "floors": 47, "completed": 1987, "gone": 2001, "how": "destroyed", "cause": "Collapsed on September 11 after fires started by debris from the North Tower.", "use": "Office", "ctbuhUrl": "https://www.skyscrapercenter.com/building/seven-world-trade-center/2588", "sourceUrl": "https://en.wikipedia.org/wiki/7_World_Trade_Center_(1987%E2%80%932001)", "replacedBy": "7 World Trade Center", "replacedById": 1117},
++  {"name": "CPF Building", "city": "Singapore", "country": "Singapore", "lat": 1.277144, "lng": 103.848056, "coordSource": "Singapore OneMap address point for 79 Robinson Road (CapitaSky, built on the same plot)", "height": 171.0, "floors": 45, "completed": 1976, "gone": 2017, "how": "demolished", "cause": "Made way for 79 Robinson Road (now CapitaSky).", "use": "Office", "ctbuhUrl": "https://www.skyscrapercenter.com/building/cpf-building/2683", "sourceUrl": "https://en.wikipedia.org/wiki/CPF_Building", "replacedBy": "79 Robinson Road", "replacedById": 32203},
++  {"name": "Fuji Xerox Towers", "city": "Singapore", "country": "Singapore", "lat": 1.273188, "lng": 103.843693, "coordSource": "Singapore OneMap address point for 80 Anson Road (Newport Plaza, under construction on the same plot)", "height": 164.9, "floors": 40, "completed": 1987, "gone": 2021, "how": "demolished", "cause": "Made way for Newport Plaza and Newport Residences.", "use": "Office", "ctbuhUrl": "https://www.skyscrapercenter.com/building/fuji-xerox-towers/3062", "sourceUrl": "https://en.wikipedia.org/wiki/Fuji_Xerox_Towers", "replacedBy": null, "replacedById": null},
++  {"name": "Morrison Hotel", "city": "Chicago", "country": "United States", "lat": 41.8818, "lng": -87.6305, "coordSource": "Estimated from the hotel's address (15-29 S. Clark St, east side of Clark just south of Madison)", "height": 160.3, "floors": 45, "completed": 1925, "gone": 1965, "how": "demolished", "cause": "Made way for the First National Bank Building (now Chase Tower).", "use": "Hotel", "ctbuhUrl": "https://www.skyscrapercenter.com/building/morrison-hotel/3286", "sourceUrl": "https://en.wikipedia.org/wiki/Morrison_Hotel_(Chicago)", "replacedBy": "Chase Tower", "replacedById": 779},
++  {"name": "World Trade Center Building", "city": "Tokyo", "country": "Japan", "lat": 35.656311, "lng": 139.756705, "coordSource": "Wikipedia (EN and JA) coordinates for the building", "height": 158.0, "floors": 40, "completed": 1970, "gone": 2021, "how": "demolished", "cause": "Made way for the Hamamatsucho 2-chome redevelopment and its new World Trade Center towers.", "use": "Office", "ctbuhUrl": "https://www.skyscrapercenter.com/building/sekaiboeki-center-building/3475", "sourceUrl": "https://en.wikipedia.org/wiki/World_Trade_Center_(Tokyo)", "replacedBy": null, "replacedById": null},
++  {"name": "Deutsche Bank Building", "city": "New York City", "country": "United States", "lat": 40.70972, "lng": -74.01333, "coordSource": "Wikipedia coordinates", "height": 157.6, "floors": 39, "completed": 1974, "gone": 2007, "how": "dismantled", "cause": "Damaged and contaminated in the September 11 attacks, it stood empty until it was taken down floor by floor.", "use": "Office", "ctbuhUrl": "https://www.skyscrapercenter.com/building/deutsche-bank/3510", "sourceUrl": "https://en.wikipedia.org/wiki/Deutsche_Bank_Building", "replacedBy": null, "replacedById": null},
++  {"name": "UIC Building", "city": "Singapore", "country": "Singapore", "lat": 1.277919, "lng": 103.849581, "coordSource": "Wikipedia coordinates for the old building", "height": 152.0, "floors": 40, "completed": 1974, "gone": 2012, "how": "demolished", "cause": "Made way for V on Shenton.", "use": "Office", "ctbuhUrl": "https://www.skyscrapercenter.com/building/uic-building/3842", "sourceUrl": "https://en.wikipedia.org/wiki/UIC_Building", "replacedBy": "V on Shenton Residential Tower", "replacedById": 14515},
++  {"name": "One Meridian Plaza", "city": "Philadelphia", "country": "United States", "lat": 39.95153, "lng": -75.165009, "coordSource": "CTBUH coordinate of The Residences at the Ritz-Carlton (dataset id 3454), which was built on the One Meridian Plaza site at 15th St & South Penn Square", "height": 150.0, "floors": 38, "completed": 1972, "gone": 1998, "how": "dismantled", "cause": "Gutted by a fire in 1991 that killed three firefighters, it stood empty until it was taken down.", "use": "Office", "ctbuhUrl": "https://www.skyscrapercenter.com/building/one-meridian-plaza/4012", "sourceUrl": "https://en.wikipedia.org/wiki/One_Meridian_Plaza", "replacedBy": "The Residences at the Ritz-Carlton", "replacedById": 3454},
++  {"name": "Menara Tun Razak", "city": "Kuala Lumpur", "country": "Malaysia", "lat": 3.15285, "lng": 101.69504, "coordSource": "Average of two web points for the site on Jalan Raja Laut (penang-traveltips and SkyscraperPage), not checked against imagery", "height": 150.0, "floors": 37, "completed": 1981, "gone": 2014, "how": "demolished", "cause": "Taken down in Tradewinds Corp's redevelopment of the site, though some reports say it was refurbished instead.", "use": "Office", "ctbuhUrl": "https://www.skyscrapercenter.com/building/menara-tun-razak/32204", "sourceUrl": "https://en.wikipedia.org/wiki/Tun_Razak_Tower", "replacedBy": null, "replacedById": null}
++]
+diff --git a/src/lib/lostTowers.ts b/src/lib/lostTowers.ts
+new file mode 100644
+index 0000000..1e072ab
+--- /dev/null
++++ b/src/lib/lostTowers.ts
+@@ -0,0 +1,83 @@
++import type { Tower, TowerDetail, TowerIndex, TowerRow } from "./types";
++import { COMPLETED } from "./timeCapsule";
++import data from "./lostTowers.json";
++
++/**
++ * Towers of 150 m+ that were completed and have since been demolished or destroyed (the original World Trade
++ * Center and others). They are not in the CTBUH dataset of standing towers, so they appear only in the time
++ * capsule, from their completion year until the year they came down. Sources: lostTowers.json (each entry
++ * carries its own source link); scripts/skyline-years.mjs reads the same file.
++ */
++export interface LostTower {
++  name: string;
++  city: string;
++  country: string;
++  lat: number;
++  lng: number;
++  /** Where the coordinate comes from. */
++  coordSource?: string;
++  height: number;
++  floors: number | null;
++  completed: number;
++  /** The first year it no longer stood (for a demolition over several years, the year it began). */
++  gone: number;
++  how: "destroyed" | "demolished" | "dismantled";
++  /** One or two sentences on how it came down, shown after "Demolished in 2019." */
++  cause: string;
++  use: string;
++  ctbuhUrl: string | null;
++  sourceUrl: string;
++  /** The tower in the dataset that replaced it on the site, if any, and its id. */
++  replacedBy: string | null;
++  replacedById: number | null;
++}
++export const LOST_TOWERS = data as LostTower[];
++/** Their map ids: well clear of the dataset's ids (CTBUH ids, under 100,000). */
++export const LOST_ID0 = 9_000_000;
++
++export interface Lost {
++  rows: TowerRow[];
++  byId: Map<number, LostTower>;
++  /** Map id -> the year it came down. */
++  gone: Map<number, number>;
++}
++
++/**
++ * The lost towers as index rows, so the filters, the map and the counts treat them like any other completed
++ * tower. A tower takes its district from the nearest dataset tower in the same city; a city the dataset does
++ * not hold gets index -1 (shown, but never matched by a city filter).
++ */
++export function lostRows(idx: TowerIndex): Lost {
++  const done = idx.statuses.indexOf(COMPLETED);
++  const building = Math.max(0, idx.precisions.indexOf("building"));
++  const rows: TowerRow[] = [], byId = new Map<number, LostTower>(), gone = new Map<number, number>();
++  LOST_TOWERS.forEach((t, i) => {
++    const id = LOST_ID0 + i + 1, city = idx.cities.indexOf(t.city);
++    let district = -1, best = Infinity;
++    if (city >= 0) for (const r of idx.rows) {
++      if (r[5] !== city) continue;
++      const d = (r[2] - t.lat) ** 2 + ((r[3] - t.lng) * Math.cos(t.lat * Math.PI / 180)) ** 2;
++      if (d < best) { best = d; district = r[6]; }
++    }
++    const fn = idx.functions.indexOf(t.use);
++    rows.push([id, t.name, t.lat, t.lng, t.height, city, district, done, t.completed, t.floors ?? 0,
++      fn >= 0 ? fn : Math.max(0, idx.functions.indexOf("Office")), building, 0, 0]);
++    byId.set(id, t); gone.set(id, t.gone);
++  });
++  return { rows, byId, gone };
++}
++
++/** A lost tower resolved for the tower panel; `cityKnown` says whether the site has a page for its city. */
++export function resolveLost(idx: TowerIndex, row: TowerRow, t: LostTower): Tower {
++  const detail = {
++    slug: "", country: t.country, sub_area: null, material: null, address: null, ctbuh_url: t.ctbuhUrl ?? "",
++    rank_city: 0, rank_district: 0, rank_global: 0, height_confirmed: true, precision: "", coord_source: null,
++    coord_note: t.coordSource ?? null, osm_way: null, photo: null,
++  } satisfies TowerDetail;
++  return {
++    id: row[0], name: t.name, lat: t.lat, lon: t.lng, height: t.height,
++    city: t.city, district: row[6] >= 0 ? idx.districts[row[6]][1] : "", status: COMPLETED, year: t.completed,
++    floors: t.floors ?? 0, fn: t.use, precision: "building", sharesPoint: 0, hasPhoto: false, detail,
++    lost: { completed: t.completed, gone: t.gone, how: t.how, cause: t.cause, source: t.sourceUrl, replacedBy: t.replacedBy, replacedById: t.replacedById, cityKnown: row[5] >= 0 },
++  };
++}
+diff --git a/src/lib/timeCapsule.ts b/src/lib/timeCapsule.ts
+index 6f2d5a8..b9bc66d 100644
+--- a/src/lib/timeCapsule.ts
++++ b/src/lib/timeCapsule.ts
+@@ -2,15 +2,16 @@ import type { TowerIndex, TowerRow } from "./types";
+ 
+ /**
+  * Time capsule: the map as it stood in a chosen year. Only completed towers with a known completion year
+- * take part (the dataset holds towers standing today, so none disappear going forward); a tower shows from
+- * its completion year on. The year range runs from the earliest completion year in the data to this year.
++ * take part; a tower shows from its completion year on. The dataset holds towers standing today, so the only
++ * towers that disappear going forward are the lost ones (lib/lostTowers.ts), each gone from the year it came
++ * down. The year range runs from the earliest completion year in the data to this year.
+  */
+ export const COMPLETED = "Completed";
+ 
+-export function capsuleRange(idx: TowerIndex): { first: number; last: number } {
++export function capsuleRange(idx: TowerIndex, extra: TowerRow[] = []): { first: number; last: number } {
+   const done = idx.statuses.indexOf(COMPLETED);
+   let first = Infinity, last = -Infinity;
+-  for (const r of idx.rows) {
++  for (const r of idx.rows.concat(extra)) {
+     if (r[7] !== done || r[8] === null) continue;
+     if (r[8] < first) first = r[8];
+     if (r[8] > last) last = r[8];
+@@ -19,9 +20,17 @@ export function capsuleRange(idx: TowerIndex): { first: number; last: number } {
+   return { first: Number.isFinite(first) ? first : now, last: Math.max(now, Number.isFinite(last) ? last : now) };
+ }
+ 
+-/** Rows standing in `year`: `rows` must already be completed towers with a year (see the time capsule's base rows). */
+-export function standingIn(rows: TowerRow[], year: number): TowerRow[] {
+-  return rows.filter(r => r[8]! <= year);
++/**
++ * Rows standing in `year`: `rows` must already be completed towers with a year (see the time capsule's base rows);
++ * `gone` maps a lost tower's id to the year it came down.
++ */
++export function standingIn(rows: TowerRow[], year: number, gone?: Map<number, number>): TowerRow[] {
++  return rows.filter(r => r[8]! <= year && !((gone?.get(r[0]) ?? Infinity) <= year));
++}
++
++/** Rows that came down in `year` (lost towers only). */
++export function lostIn(rows: TowerRow[], year: number, gone: Map<number, number>): TowerRow[] {
++  return rows.filter(r => gone.get(r[0]) === year);
+ }
+ 
+ /** Completions per year, first..last inclusive. */
+diff --git a/src/lib/types.ts b/src/lib/types.ts
+index 8eee4ad..111227c 100644
+--- a/src/lib/types.ts
++++ b/src/lib/types.ts
+@@ -85,6 +85,8 @@ export interface Tower {
+   sharesPoint: number;
+   hasPhoto: boolean;
+   detail: TowerDetail;
++  /** Set for a tower that no longer stands (shown only in the time capsule); see lib/lostTowers.ts. */
++  lost?: { completed: number; gone: number; how: string; cause: string; source: string; replacedBy: string | null; replacedById: number | null; cityKnown: boolean };
+ }
+ 
+ export interface PlaceAgg {
+-- 
+2.43.0
+

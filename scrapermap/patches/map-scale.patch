@@ -1,0 +1,70 @@
+From dad2676df77a529707f6fa61f87fbe5b9fc4dbd1 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sun, 11 Oct 2026 07:23:08 +0000
+Subject: [PATCH] Map: distance scale (m / km) in the bottom-right corner
+
+MapLibre's ScaleControl, metric, up to 120 px wide, redrawn on every move
+and zoom. It sits just above the attribution, in the site's colours on a
+translucent ground so it reads on both basemaps. The tower panel's bottom
+edge moves up from 44 px to 68 px so the scale stays visible while a tower
+is open.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DgWWwgjv2K6tfBrnGCoMdE
+---
+Applies with git am on top of skyline-size.patch (or straight on tower-icons.patch: it touches neither
+of skyline-size's files), and cleanly on top of time-capsule.patch and skyline-years.patch with git am -3.
+
+ src/app/globals.css        | 7 ++++++-
+ src/components/towerMap.ts | 4 +++-
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/src/app/globals.css b/src/app/globals.css
+index 99884c4..7e3a5c0 100644
+--- a/src/app/globals.css
++++ b/src/app/globals.css
+@@ -46,6 +46,11 @@ body .maplibregl-map { font-family: var(--font); } /* beats maplibre-gl.css, whi
+ .app { position: fixed; inset: 0; overflow: hidden; }
+ .app > .map, .app > .map.maplibregl-map { position: absolute; inset: 0; width: 100%; height: 100%; }
+ .maplibregl-ctrl-attrib { font-size: 11px; }
++/* Distance scale: bottom right, just above the attribution (the tower panel's bottom edge leaves room for both).
++   Drawn in the site's colours on a translucent ground so it reads on both basemaps ("body" beats maplibre-gl.css,
++   which loads later). */
++body .maplibregl-ctrl-bottom-right > .maplibregl-ctrl-scale { margin: 0 10px -4px 0; }
++body .maplibregl-ctrl-scale { background: var(--glass); border-color: var(--fg-2); color: var(--fg); font-size: 11px; line-height: 18px; padding: 0 6px; }
+ .maplibregl-ctrl-group { background: var(--bg-2) !important; border: 1px solid var(--line); }
+ .maplibregl-ctrl-bottom-left { z-index: 12; }
+ .maplibregl-ctrl-group button + button { border-top-color: var(--line) !important; }
+@@ -126,7 +131,7 @@ body .maplibregl-map { font-family: var(--font); } /* beats maplibre-gl.css, whi
+ .chooser button:hover { background: var(--bg-3); }
+ 
+ /* ---- panel ---- */
+-.panel { position: absolute; top: 60px; right: 18px; bottom: 44px; width: min(400px, calc(100vw - 36px)); z-index: 25; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: auto; }
++.panel { position: absolute; top: 60px; right: 18px; bottom: 68px; width: min(400px, calc(100vw - 36px)); z-index: 25; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: auto; }
+ .panel .photo { margin: 0; position: relative; aspect-ratio: 4 / 3; background: var(--bg-3); overflow: hidden; }
+ .panel .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+ .panel .photo figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 12px 6px; font-size: 11px; color: #F4EAE4; background: linear-gradient(0deg, rgba(20,12,9,.72), rgba(20,12,9,0)); }
+diff --git a/src/components/towerMap.ts b/src/components/towerMap.ts
+index 16248dc..958fcaf 100644
+--- a/src/components/towerMap.ts
++++ b/src/components/towerMap.ts
+@@ -1,6 +1,6 @@
+ "use client";
+ import type { FeatureCollection, Point } from "geojson";
+-import { Map as MLMap, AttributionControl, NavigationControl, setWorkerUrl, type GeoJSONSource, type MapMouseEvent } from "maplibre-gl";
++import { Map as MLMap, AttributionControl, NavigationControl, ScaleControl, setWorkerUrl, type GeoJSONSource, type MapMouseEvent } from "maplibre-gl";
+ import type { TowerIndex, TowerRow } from "@/lib/types";
+ import { BAND_COLORS, BAND_STROKE, CLUSTER_COLORS } from "@/lib/colors";
+ 
+@@ -74,6 +74,8 @@ export function createMap(container: HTMLDivElement, center: [number, number], z
+     compact: true,
+     customAttribution: 'Building data © <a href="https://www.skyscrapercenter.com/" target="_blank" rel="noopener">CTBUH</a> · Coordinates and boundaries partly © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+   }), "bottom-right");
++  // Distance scale in m / km, redrawn by MapLibre on every move and zoom; added after the attribution, so it sits just above it.
++  map.addControl(new ScaleControl({ maxWidth: 120, unit: "metric" }), "bottom-right");
+   map.addControl(new NavigationControl({ showCompass: false }), "bottom-left");
+   (window as unknown as { __map?: MLMap }).__map = map;
+   return map;
+-- 
+2.43.0
+

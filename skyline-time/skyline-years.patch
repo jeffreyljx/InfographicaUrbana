@@ -1,0 +1,604 @@
+From 61c827f26d9a6b8a070e9022f9807dbe01a2fd65 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sun, 11 Oct 2026 07:31:15 +0000
+Subject: [PATCH] Time capsule: skyline extents shrink back to the towers built
+ by the chosen year
+
+With the time capsule on, the skyline extent layer shows public/skyline-extent-years.geojson instead of
+today's drawn cores: each core trimmed to the area within 400 m of the towers completed by that year,
+plus the gaps between them once the towers around a gap have been built, closed by 300 m and clipped to
+the core, so an extent only grows with time and never reaches past today's line. A city's extent
+appears once 5 towers in its core stand; from the year of its core's latest tower on it is the drawn
+core itself. Clicking an extent says how many of the core's towers stood that year and the tallest.
+
+The file is made at build time by scripts/skyline-years.mjs (run from prebuild, using jsts for the
+geometry), from public/skyline-extent.geojson and towers.json, so a revised cores file or new tower
+data is picked up on the next build; it is skipped when neither has changed since the last run.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01QDjXn6Q1MUabpWy2otPCrg
+---
+ .gitignore                     |   1 +
+ deploy/package.json            |   1 +
+ package-lock.json              |  21 +++
+ package.json                   |   1 +
+ scripts/prebuild.mjs           |   4 +
+ scripts/skyline-years.mjs      | 248 +++++++++++++++++++++++++++++++++
+ src/app/globals.css            |   1 +
+ src/components/MapApp.tsx      |  10 +-
+ src/components/skylineLayer.ts |  99 +++++++++++--
+ 9 files changed, 368 insertions(+), 18 deletions(-)
+ create mode 100644 scripts/skyline-years.mjs
+
+diff --git a/.gitignore b/.gitignore
+index 5c6d25d..8800ab1 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -12,3 +12,4 @@ shots/
+ data_master.csv
+ data_unplaced.csv
+ public/fonts/
++public/skyline-extent-years.geojson
+diff --git a/deploy/package.json b/deploy/package.json
+index 6bd0da2..14dd68b 100644
+--- a/deploy/package.json
++++ b/deploy/package.json
+@@ -23,6 +23,7 @@
+     "@types/node": "26.6.2",
+     "@types/react": "19.3.0",
+     "@types/react-dom": "19.3.0",
++    "jsts": "2.12.1",
+     "typescript": "7.0.2"
+   },
+   "engines": {
+diff --git a/package-lock.json b/package-lock.json
+index 15b5fcc..f44df88 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -22,6 +22,7 @@
+         "@types/node": "26.6.2",
+         "@types/react": "19.3.0",
+         "@types/react-dom": "19.3.0",
++        "jsts": "2.12.1",
+         "typescript": "7.0.2"
+       },
+       "engines": {
+@@ -1223,6 +1224,13 @@
+       "integrity": "sha512-vnS4AVwp1KHAF13i1vp1/2D5evWy3k5u/iW/B81QVsUZtV8cv2tU0b2VNFlqvh4kYwrFMDdjPCfAmfyJW9y14Q==",
+       "license": "ISC"
+     },
++    "node_modules/fastpriorityqueue": {
++      "version": "0.7.5",
++      "resolved": "https://registry.npmjs.org/fastpriorityqueue/-/fastpriorityqueue-0.7.5.tgz",
++      "integrity": "sha512-3Pa0n9gwy8yIbEsT3m2j/E9DXgWvvjfiZjjqcJ+AdNKTAlVMIuFYrYG5Y3RHEM8O6cwv9hOpOWY/NaMfywoQVA==",
++      "dev": true,
++      "license": "Apache-2.0"
++    },
+     "node_modules/gl-matrix": {
+       "version": "3.4.4",
+       "resolved": "https://registry.npmjs.org/gl-matrix/-/gl-matrix-3.4.4.tgz",
+@@ -1235,6 +1243,19 @@
+       "integrity": "sha512-3CNZ2DnrpByG9Nqj6Xo8vqbjT4F6N+tb4Gb28ESAZjYZ5yqvmc56J+/kuIwkaAMOyblTQhUW7PxMkUb8Q36N3Q==",
+       "license": "MIT"
+     },
++    "node_modules/jsts": {
++      "version": "2.12.1",
++      "resolved": "https://registry.npmjs.org/jsts/-/jsts-2.12.1.tgz",
++      "integrity": "sha512-aaiCZeGfeU5o9TbrYF1KF0VvhGGLtG3w7vNynmaTjC8XRmS2v15lq+2Bxa8lMtprsFFJiIpAayJZguLruiHd0w==",
++      "dev": true,
++      "license": "(EDL-1.0 OR EPL-1.0)",
++      "dependencies": {
++        "fastpriorityqueue": "^0.7.5"
++      },
++      "engines": {
++        "node": ">= 18"
++      }
++    },
+     "node_modules/kdbush": {
+       "version": "4.1.0",
+       "resolved": "https://registry.npmjs.org/kdbush/-/kdbush-4.1.0.tgz",
+diff --git a/package.json b/package.json
+index 669bedf..208bf86 100644
+--- a/package.json
++++ b/package.json
+@@ -25,6 +25,7 @@
+     "@types/node": "26.6.2",
+     "@types/react": "19.3.0",
+     "@types/react-dom": "19.3.0",
++    "jsts": "2.12.1",
+     "typescript": "7.0.2"
+   },
+   "engines": {
+diff --git a/scripts/prebuild.mjs b/scripts/prebuild.mjs
+index e863db9..ed5b229 100644
+--- a/scripts/prebuild.mjs
++++ b/scripts/prebuild.mjs
+@@ -1,10 +1,12 @@
+ // 1. Reassemble + unpack the dataset (data/data.br.part*) into public/data and src/data.
+ // 2. Copy MapLibre's worker files into /public so the map can start its worker from a fixed URL.
+ // 3. Copy the site font (Libre Baskerville, from @fontsource) into /public/fonts; globals.css declares the @font-faces.
++// 4. Work out each city's skyline extent year by year for the time capsule (scripts/skyline-years.mjs).
+ import { copyFileSync, mkdirSync, readdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
+ import { brotliDecompressSync } from "node:zlib";
+ import { derivePlaces } from "./derive.mjs";
+ import { applyCountryLabels, active, LABELS, MERGE } from "./country-labels.mjs";
++import { buildSkylineYears } from "./skyline-years.mjs";
+ 
+ const parts = existsSync("data") ? readdirSync("data").filter(f => /^data\.br\.part\d+$/.test(f)).sort() : [];
+ if (parts.length) {
+@@ -40,3 +42,5 @@ const faces = [400, 500, 600, 700].map(w => `${w}-normal`).concat("400-italic");
+ for (const sub of ["latin", "latin-ext"]) for (const f of faces) copyFileSync(`${FONT}/files/libre-baskerville-${sub}-${f}.woff2`, `${FONT_OUT}/libre-baskerville-${sub}-${f}.woff2`);
+ copyFileSync(`${FONT}/LICENSE`, `${FONT_OUT}/OFL.txt`);
+ console.log(`font copied (${faces.length * 2} files)`);
++
++buildSkylineYears();
+diff --git a/scripts/skyline-years.mjs b/scripts/skyline-years.mjs
+new file mode 100644
+index 0000000..c3be24f
+--- /dev/null
++++ b/scripts/skyline-years.mjs
+@@ -0,0 +1,248 @@
++// Skyline extents through time, for the time capsule slider: every city's drawn urban core
++// (public/skyline-extent.geojson), trimmed for each year to the area around the towers that stood by then.
++// Run by scripts/prebuild.mjs after the dataset is unpacked, so a revised cores file or new tower data is picked up
++// on the next build; it writes public/skyline-extent-years.geojson (git-ignored) and skips the work when its inputs
++// have not changed since the last run.
++//
++// A tower stands in year Y if it is completed and its completion year is Y or earlier (completed towers with no
++// year are left out; the dataset has no demolished towers). Only towers inside a core count. For each city:
++//
++//   1. Each tower claims the core within R metres of it from its completion year.
++//   2. The rest of the core (the "gaps": parks, low-rise blocks, waterfront more than R from every tower) is cut
++//      into G-metre squares. A square joins once its K nearest towers stand, and any other tower within NEAR
++//      metres of the nearest one's distance, and only where it touches the extent already drawn, so gaps fill
++//      in from the edges of the built-up area rather than appearing as islands. A polygon of a core with no
++//      tower of its own (a runway, a pier) takes the core's towers for this and needs no neighbour to start.
++//   3. The result is closed by C metres (grown, then shrunk) so towers close together read as one district,
++//      and clipped to the core, so an extent never reaches past today's line.
++//   4. A city has an extent only once MIN_TOWERS of its core's towers stand.
++//
++// So an extent only grows with time, and from the year of its core's latest completed tower onwards it is the
++// drawn core itself. The output has one feature per city and keyframe: `from` is the first year it is shown
++// and `to` the first year it is not (9999 for the last), so the map filters on from <= year < to. The last
++// keyframe has no geometry of its own: the map uses the city's drawn core from skyline-extent.geojson.
++import { createHash } from "node:crypto";
++import { existsSync, readFileSync, writeFileSync } from "node:fs";
++import ArrayList from "jsts/java/util/ArrayList.js";
++import Coordinate from "jsts/org/locationtech/jts/geom/Coordinate.js";
++import Envelope from "jsts/org/locationtech/jts/geom/Envelope.js";
++import GeometryFactory from "jsts/org/locationtech/jts/geom/GeometryFactory.js";
++import STRtree from "jsts/org/locationtech/jts/index/strtree/STRtree.js";
++import RectangleIntersects from "jsts/org/locationtech/jts/operation/predicate/RectangleIntersects.js";
++import { GeoJSONReader, GeoJSONWriter } from "jsts/org/locationtech/jts/io.js";
++import BufferOp from "jsts/org/locationtech/jts/operation/buffer/BufferOp.js";
++import SnapIfNeededOverlayOp from "jsts/org/locationtech/jts/operation/overlay/snap/SnapIfNeededOverlayOp.js";
++import UnaryUnionOp from "jsts/org/locationtech/jts/operation/union/UnaryUnionOp.js";
++import TopologyPreservingSimplifier from "jsts/org/locationtech/jts/simplify/TopologyPreservingSimplifier.js";
++import "jsts/org/locationtech/jts/monkey.js";
++
++const R = 400;          // metres of core each tower claims around itself
++const G = 150;          // gap square size, metres
++const K = 4;            // a gap square waits for its K nearest towers
++const NEAR = 300;       // ... and for every tower within (distance to its nearest tower + NEAR)
++const C = 300;          // closing distance, metres
++const MIN_TOWERS = 5;   // towers standing in the core before the city's extent appears
++const SIMPLIFY = 10;    // metres
++const QUAD_SEGS = 6;    // segments per quarter circle in buffers
++
++// jsts 2.12.1's ArrayList iterator removes the element after the one last returned, which breaks OverlayOp's
++// collapsed-edge step whenever an overlay needs snapping; remove the right one, as java.util.Iterator does
++Object.getPrototypeOf(new ArrayList().iterator()).remove = function () { this.arrayList.array.splice(--this.position, 1); };
++
++const gf = new GeometryFactory();
++const reader = new GeoJSONReader(gf), writer = new GeoJSONWriter();
++const point = (x, y) => gf.createPoint(new Coordinate(x, y));
++const buffer = (g, d) => BufferOp.bufferOp(g, d, QUAD_SEGS);
++const intersection = (a, b) => SnapIfNeededOverlayOp.intersection(a, b);
++const difference = (a, b) => SnapIfNeededOverlayOp.difference(a, b);
++const polygons = g => {
++  const type = g.getGeometryType();
++  if (type === "Polygon") return g.isEmpty() ? [] : [g];
++  if (type !== "MultiPolygon" && type !== "GeometryCollection") return [];
++  const out = [];
++  for (let i = 0; i < g.getNumGeometries(); i++) out.push(...polygons(g.getGeometryN(i)));
++  return out;
++};
++// union of a list of geometries, as Polygon / MultiPolygon only
++const union = gs => {
++  const list = new ArrayList();
++  for (const g of gs) for (const p of polygons(g)) list.add(p);
++  if (list.isEmpty()) return gf.createMultiPolygon([]);
++  return gf.createMultiPolygon(polygons(UnaryUnionOp.union(list)));
++};
++const mapCoords = (c, fn) => typeof c[0] === "number" ? fn(c) : c.map(x => mapCoords(x, fn));
++
++// local equirectangular metres around (lon0, lat0); plenty at city scale
++function projector(lon0, lat0) {
++  const kx = 111_320 * Math.cos(lat0 * Math.PI / 180), ky = 110_574;
++  return {
++    fwd: ([x, y]) => [(x - lon0) * kx, (y - lat0) * ky],
++    inv: ([x, y]) => [Math.round((x / kx + lon0) * 1e5) / 1e5, Math.round((y / ky + lat0) * 1e5) / 1e5],   // ~1 m
++  };
++}
++
++// Map of year -> areas added that year, for one polygon of a core; `towers` are the core's
++function partGrowth(part, towers, years) {
++  const own = towers.filter(t => part.distance(point(t.x, t.y)) <= 1);
++  const pts = new Map();   // towers sharing a point: the first to stand counts
++  for (const t of own.length ? own : towers) {
++    const x = Math.round(t.x * 10) / 10, y = Math.round(t.y * 10) / 10, k = `${x},${y}`;
++    const p = pts.get(k);
++    if (p) p.year = Math.min(p.year, t.year); else pts.set(k, { x, y, year: t.year });
++  }
++  const keys = [...pts.values()];
++  const added = new Map();
++  const add = (y, gs) => added.set(y, (added.get(y) ?? []).concat(gs));
++  if (!keys.length) return added;
++  const discs = own.length ? keys.map(k => buffer(point(k.x, k.y), R)) : [];
++  discs.forEach((d, i) => add(keys[i].year, [intersection(d, part)]));
++
++  // gap squares, each with the year it may join and the first year a disc it touches stands. Which towers a
++  // square waits for is judged against all of the core's towers, so a polygon with only a few old towers of its
++  // own (an old downtown) does not fill in long before the rest of the core
++  const gap = discs.length ? difference(part, union(discs)) : part;
++  const sq = [], ready = [], touch = [];
++  if (!gap.isEmpty()) {
++    const env = gap.getEnvelopeInternal();
++    const nx = Math.ceil((env.getMaxX() - env.getMinX()) / G), ny = Math.ceil((env.getMaxY() - env.getMinY()) / G);
++    for (let i = 0; i < nx; i++) for (let j = 0; j < ny; j++) {
++      const gx = env.getMinX() + i * G, gy = env.getMinY() + j * G;
++      const box = gf.toGeometry(new Envelope(gx, gx + G, gy, gy + G));
++      if (!RectangleIntersects.intersects(box, gap)) continue;
++      for (const piece of polygons(intersection(gap, box))) {
++        if (piece.getArea() < 1) continue;
++        const c = piece.getCentroid(), cx = c.getX(), cy = c.getY();
++        const dist = towers.map(t => Math.hypot(t.x - cx, t.y - cy));
++        const sorted = [...dist].sort((a, b) => a - b);
++        const reach = Math.max(sorted[Math.min(K, sorted.length) - 1], sorted[0] + NEAR);
++        let r = -Infinity;
++        dist.forEach((d, n) => { if (d <= reach && towers[n].year > r) r = towers[n].year; });
++        sq.push(piece); ready.push(r);
++        if (own.length) {
++          const pe = piece.getEnvelopeInternal();
++          let first = 9999;
++          for (const k of keys) {
++            if (k.year >= first || k.x < pe.getMinX() - R - 1 || k.x > pe.getMaxX() + R + 1
++              || k.y < pe.getMinY() - R - 1 || k.y > pe.getMaxY() + R + 1) continue;
++            if (piece.distance(point(k.x, k.y)) <= R + 0.5) first = k.year;
++          }
++          touch.push(first);
++        } else touch.push(r);
++      }
++    }
++  }
++  const tree = new STRtree();
++  sq.forEach((s, i) => tree.insert(s.getEnvelopeInternal(), i));
++  const nbrs = sq.map(s => {
++    const b = BufferOp.bufferOp(s, 0.5);
++    return tree.query(b.getEnvelopeInternal()).toArray().filter(j => b.intersects(sq[j]));
++  });
++
++  const reached = sq.map(() => false);
++  for (const y of years) {
++    const queue = [];
++    sq.forEach((_, i) => {
++      if (!reached[i] && ready[i] <= y && (touch[i] <= y || nbrs[i].some(j => reached[j]))) queue.push(i);
++    });
++    for (const i of queue) reached[i] = true;
++    const fresh = [...queue];
++    while (queue.length) {
++      const i = queue.pop();
++      for (const j of nbrs[i]) if (!reached[j] && ready[j] <= y) { reached[j] = true; queue.push(j); fresh.push(j); }
++    }
++    if (fresh.length) add(y, fresh.map(i => sq[i]));
++  }
++  return added;
++}
++
++// [{year, n, area, tallest}] for one city, one per year from the year MIN_TOWERS of its towers stand
++function cityFrames(parts, towers, years) {
++  const growth = parts.map(p => partGrowth(p, towers, years));
++  const acc = parts.map(() => null), closed = parts.map(() => null);
++  const frames = [];
++  for (const y of years) {
++    growth.forEach((g, i) => {
++      if (!g.has(y)) return;
++      acc[i] = union((acc[i] ? [acc[i]] : []).concat(g.get(y)));
++      closed[i] = null;
++    });
++    const stood = towers.filter(t => t.year <= y);
++    if (stood.length < MIN_TOWERS) continue;
++    acc.forEach((a, i) => { if (a && !closed[i]) closed[i] = intersection(buffer(buffer(a, C), -C), parts[i]); });
++    const tallest = stood.reduce((a, b) => b.height > a.height ? b : a);
++    frames.push({ year: y, n: stood.length, area: union(closed.filter(Boolean)), tallest });
++  }
++  return frames;
++}
++
++export function buildSkylineYears({ cores: coresPath = "public/skyline-extent.geojson",
++  towers: towersPath = "src/data/towers.json", out = "public/skyline-extent-years.geojson" } = {}) {
++  if (!existsSync(coresPath) || !existsSync(towersPath)) return console.log("skyline years: no cores or tower data, skipped");
++  const coresRaw = readFileSync(coresPath), towersRaw = readFileSync(towersPath);
++  const inputs = createHash("sha1").update(coresRaw).update(towersRaw).update(readFileSync(new URL(import.meta.url))).digest("hex");
++  if (existsSync(out)) {
++    try { if (JSON.parse(readFileSync(out)).inputs === inputs) return console.log(`skyline years: ${out} is up to date`); } catch {}
++  }
++  const t0 = Date.now();
++  const cores = JSON.parse(coresRaw), idx = JSON.parse(towersRaw);
++  const sch = Object.fromEntries(idx.schema.map((k, i) => [k, i]));
++  const completed = idx.statuses.indexOf("Completed");
++  const byCity = new Map();
++  for (const r of idx.rows) {
++    const city = idx.cities[r[sch.city]];
++    if (!byCity.has(city)) byCity.set(city, []);
++    byCity.get(city).push(r);
++  }
++
++  const feats = [], report = [];
++  for (const f of cores.features) {
++    const city = f.properties.city;
++    const c = reader.read(f.geometry).getCentroid();
++    const { fwd, inv } = projector(c.getX(), c.getY());
++    const core = reader.read({ type: f.geometry.type, coordinates: mapCoords(f.geometry.coordinates, fwd) });
++    const towers = [];   // completed towers with a year inside the core
++    for (const r of byCity.get(city) ?? []) {
++      if (r[sch.status] !== completed || r[sch.year] == null) continue;
++      const [x, y] = fwd([r[sch.lon], r[sch.lat]]);
++      if (core.distance(point(x, y)) <= 1) towers.push({ year: Math.trunc(r[sch.year]), height: r[sch.height_m], name: r[sch.name], x, y });
++    }
++    towers.sort((a, b) => a.year - b.year || a.height - b.height || (a.name < b.name ? -1 : a.name > b.name ? 1 : 0) || a.x - b.x || a.y - b.y);
++    const years = [...new Set(towers.map(t => t.year))];
++    const parts = polygons(core);
++    let frames;
++    try {
++      frames = cityFrames(parts, towers, years);
++    } catch (e) {   // never fail the build over one city: show its drawn core once it has MIN_TOWERS towers
++      console.warn(`skyline years: ${city} failed (${e.message ?? e}); showing its drawn core throughout`);
++      const y = towers[MIN_TOWERS - 1]?.year;
++      frames = y == null ? [] : [{ year: y, n: towers.filter(t => t.year <= y).length, area: core,
++        tallest: towers.filter(t => t.year <= y).reduce((a, b) => b.height > a.height ? b : a) }];
++    }
++    frames.forEach((fr, k) => {
++      const last = k + 1 === frames.length, t = fr.tallest;
++      let geometry = null;   // last keyframe: the drawn core itself, filled in by the map
++      if (!last) {
++        const g = writer.write(TopologyPreservingSimplifier.simplify(fr.area, SIMPLIFY));
++        geometry = { type: g.type, coordinates: mapCoords(g.coordinates, inv) };
++      }
++      feats.push({ type: "Feature", properties: {
++        city, from: fr.year, to: last ? 9999 : frames[k + 1].year, n: fr.n, total: towers.length,
++        tallest: `${t.name} (${Math.round(t.height)} m, ${t.year})`,
++        area_km2: Math.round((last ? core : fr.area).getArea() / 1e4) / 100,
++        core_km2: Math.round(core.getArea() / 1e4) / 100,
++      }, geometry });
++    });
++    report.push([city, towers.length, years[0] ?? "-", frames[0]?.year ?? "-", frames.length,
++      frames.length ? (frames.at(-1).area.getArea() / core.getArea()).toFixed(3) : "0"]);
++  }
++  const text = JSON.stringify({ type: "FeatureCollection", inputs, features: feats });
++  writeFileSync(out, text);
++  console.log(`skyline years: ${out}, ${feats.length} keyframes for ${cores.features.length} cities, ${(text.length / 1e6).toFixed(2)} MB, ${((Date.now() - t0) / 1000).toFixed(0)} s`);
++  if (process.env.SKYLINE_YEARS_REPORT) {
++    console.log("  city            towers  first  shown from  keyframes  computed/drawn core at the end");
++    for (const [a, b, c, d, e, g] of report)
++      console.log(`  ${String(a).padEnd(15)} ${String(b).padStart(6)}  ${String(c).padStart(5)}  ${String(d).padStart(10)}  ${String(e).padStart(9)}  ${g}`);
++  }
++}
++
++if (import.meta.url === `file://${process.argv[1]}`) buildSkylineYears();
+diff --git a/src/app/globals.css b/src/app/globals.css
+index 99884c4..4b1b9da 100644
+--- a/src/app/globals.css
++++ b/src/app/globals.css
+@@ -117,6 +117,7 @@ body .maplibregl-map { font-family: var(--font); } /* beats maplibre-gl.css, whi
+ .sky-popup h3 { margin: 0 0 4px; font-size: 15px; }
+ .sky-popup p { margin: 0; }
+ .sky-popup .sky-n { color: var(--fg-2); font-size: 12px; margin-bottom: 8px; }
++.sky-popup .sky-note { color: var(--fg-2); font-size: 12px; margin-top: 6px; }
+ 
+ /* ---- chooser ---- */
+ .chooser { position: absolute; z-index: 30; background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); overflow: hidden; }
+diff --git a/src/components/MapApp.tsx b/src/components/MapApp.tsx
+index 95a7e24..012e315 100644
+--- a/src/components/MapApp.tsx
++++ b/src/components/MapApp.tsx
+@@ -202,12 +202,12 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+     }
+   }, [mapReady, idx, filteredRows, select, initialTower]);
+ 
+-  // skyline layers go in under the tower layers, so they wait for those
++  // skyline layers go in under the tower layers, so they wait for those; with the time capsule on they follow its year
+   useEffect(() => {
+     const map = mapRef.current;
+     if (!map || !mapReady || !layersAdded.current) return;
+-    setSkyline(map, skyline, basemap);
+-  }, [mapReady, idx, skyline, basemap]);
++    setSkyline(map, skyline, basemap, asOf);
++  }, [mapReady, idx, skyline, basemap, asOf]);
+ 
+   // time capsule: ring the towers completed in the chosen year
+   useEffect(() => {
+@@ -268,7 +268,9 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+         </button>
+       </div>
+       {skyline && zoomedOut && (
+-        <div className="map-hint">Skyline extents are drawn for the 38 cities with more than 50 towers. Zoom in on one to see its core.</div>
++        <div className="map-hint">{asOf === null
++          ? "Skyline extents are drawn for the 38 cities with more than 50 towers. Zoom in on one to see its core."
++          : `Skyline extents in ${asOf}: each city's core, trimmed to the towers built by then. Zoom in on a city to see it.`}</div>
+       )}
+       {filtersOpen && idx && (
+         <Filters idx={idx} state={filters} onChange={setFilters} onClose={() => setFiltersOpen(false)} shown={filteredRows.length} onFlyTo={flyToPlace} capsule={capsuleOn} />
+diff --git a/src/components/skylineLayer.ts b/src/components/skylineLayer.ts
+index 5fbbde8..5ef8e71 100644
+--- a/src/components/skylineLayer.ts
++++ b/src/components/skylineLayer.ts
+@@ -1,6 +1,6 @@
+ "use client";
+ import type { FeatureCollection } from "geojson";
+-import { Popup, type Map as MLMap, type MapLayerMouseEvent, type LayerSpecification } from "maplibre-gl";
++import { Popup, type Map as MLMap, type MapLayerMouseEvent, type LayerSpecification, type GeoJSONSource, type FilterSpecification } from "maplibre-gl";
+ import { registerOwnLayer, type Basemap } from "./towerMap";
+ import { areaKm2 } from "@/lib/geoArea";
+ 
+@@ -13,6 +13,12 @@ import { areaKm2 } from "@/lib/geoArea";
+  * A copy of the basemap's water fill is drawn over it, so rivers and harbours inside a core keep their
+  * colour (hidden in satellite mode, where the basemap's own fills are hidden too). The outline sits above
+  * the roads and under the place labels. Clicking inside a core (but not on a pin) opens a short note.
++ *
++ * With the time capsule on, the same layers show `/skyline-extent-years.geojson` instead (made by
++ * scripts/skyline-years/build.py, fetched the first time a year is set): each core trimmed to the area
++ * around the towers completed by the selected year, one feature per city and keyframe, shown while
++ * from <= year < to. From the year of a core's latest tower on it is the drawn core itself (that keyframe
++ * comes without geometry and takes the core's).
+  */
+ const SRC = "skyline";
+ const FILL = "skyline-fill";
+@@ -20,6 +26,7 @@ const LINE = "skyline-line";
+ const FILL_COLOR = "#E9A825";
+ const LINE_COLOR = { map: "#8A5A00", satellite: "#FFD166" } as const;
+ const DATA_URL = "/skyline-extent.geojson";
++const YEARS_URL = "/skyline-extent-years.geojson";
+ 
+ interface SkylineProps {
+   city: string;
+@@ -30,23 +37,54 @@ interface SkylineProps {
+   area_km2: number;
+ }
+ 
++/** One keyframe of a city's extent in the time capsule (see scripts/skyline-years/build.py). */
++interface YearProps {
++  city: string;
++  from: number;          // first year shown
++  to: number;            // first year not shown (9999: up to today)
++  n: number;             // towers in today's core completed by `from`
++  total: number;         // completed towers in today's core (with a known year)
++  tallest: string;       // tallest of those `n`, "Name (484 m, 2010)"
++}
++
++const fetchJson = (url: string) => fetch(url).then(r => (r.ok ? r.json() : null)).catch(() => null) as Promise<FeatureCollection | null>;
+ let dataPromise: Promise<FeatureCollection | null> | null = null;
+ function load(): Promise<FeatureCollection | null> {
+-  dataPromise ??= fetch(DATA_URL).then(r => (r.ok ? r.json() : null)).catch(() => null);
++  dataPromise ??= fetchJson(DATA_URL);
+   return dataPromise;
+ }
++let yearsPromise: Promise<FeatureCollection | null> | null = null;
++let cores: FeatureCollection | null = null;
++let years: FeatureCollection | null = null;
+ 
+ /** The last state asked for; applied once the data has arrived if the layers are not there yet. */
+-let want: { on: boolean; basemap: Basemap } = { on: false, basemap: "map" };
++let want: { on: boolean; basemap: Basemap; year: number | null } = { on: false, basemap: "map", year: null };
++let shown: "cores" | "years" = "cores";
+ let waterIds: string[] = [];
+ let popup: Popup | null = null;
+ 
+-/** Show or hide the skyline extents. The first call that shows them fetches the data and adds the layers. */
+-export function setSkyline(map: MLMap, on: boolean, basemap: Basemap) {
+-  want = { on, basemap };
+-  if (map.getSource(SRC)) { apply(map); return; }
+-  if (!on) return;
+-  load().then(fc => {
++/**
++ * Show or hide the skyline extents. The first call that shows them fetches the data and adds the layers.
++ * `year` is the time capsule's year: each city's extent as it was then (null: today's drawn cores).
++ */
++export function setSkyline(map: MLMap, on: boolean, basemap: Basemap, year: number | null = null) {
++  if (year !== want.year) popup?.remove();
++  want = { on, basemap, year };
++  sync(map);
++}
++
++function sync(map: MLMap) {
++  const needYears = want.on && want.year !== null && !years;
++  if (map.getSource(SRC) && !needYears) { apply(map); return; }
++  if (!want.on) return;
++  // a city's last keyframe has no geometry of its own: it is the drawn core, taken from the cores file
++  if (needYears) yearsPromise ??= Promise.all([fetchJson(YEARS_URL), load()]).then(([fc, base]) => {
++    if (!fc || !base) return null;
++    const core = new Map(base.features.map(f => [f.properties?.city, f.geometry]));
++    fc.features = fc.features.filter(f => (f.geometry ??= core.get(f.properties?.city)!));
++    return (years = fc);
++  });
++  Promise.all([load(), needYears ? yearsPromise : null]).then(([fc]) => {
+     if (!fc) return;
+     try {
+       if (!map.getSource(SRC)) addLayers(map, fc);
+@@ -56,12 +94,24 @@ export function setSkyline(map: MLMap, on: boolean, basemap: Basemap) {
+ }
+ 
+ function apply(map: MLMap) {
+-  const vis = want.on ? "visible" : "none";
++  const byYear = want.year !== null;
++  // until the year file has arrived (or if it failed to), show nothing rather than today's cores for a past year
++  const vis = want.on && (!byYear || years) ? "visible" : "none";
+   map.setLayoutProperty(FILL, "visibility", vis);
+   map.setLayoutProperty(LINE, "visibility", vis);
+-  for (const id of waterIds) map.setLayoutProperty(id, "visibility", want.on && want.basemap === "map" ? "visible" : "none");
++  for (const id of waterIds) map.setLayoutProperty(id, "visibility", vis === "visible" && want.basemap === "map" ? "visible" : "none");
+   map.setPaintProperty(LINE, "line-color", LINE_COLOR[want.basemap]);
+   if (!want.on) popup?.remove();
++  if (vis === "none") return;
++  const mode = byYear ? "years" : "cores";
++  if (mode !== shown) {
++    (map.getSource(SRC) as GeoJSONSource).setData((mode === "years" ? years : cores)!);
++    shown = mode;
++  }
++  const filter: FilterSpecification | null = byYear
++    ? ["all", ["<=", ["get", "from"], want.year!], [">", ["get", "to"], want.year!]] : null;
++  map.setFilter(FILL, filter);
++  map.setFilter(LINE, filter);
+ }
+ 
+ function addLayers(map: MLMap, fc: FeatureCollection) {
+@@ -80,6 +130,7 @@ function addLayers(map: MLMap, fc: FeatureCollection) {
+ 
+   // measured from the full outline here, since a clicked feature's geometry is clipped to its map tile
+   const areas = new Map(fc.features.map(f => [String(f.properties?.city), areaKm2(f.geometry)]));
++  cores = fc;
+   map.addSource(SRC, { type: "geojson", data: fc });
+   map.addLayer({
+     id: FILL, type: "fill", source: SRC, layout: { visibility: "none" },
+@@ -111,11 +162,20 @@ function addLayers(map: MLMap, fc: FeatureCollection) {
+   map.on("click", FILL, (e: MapLayerMouseEvent) => {
+     const towerLayers = ["clusters", "pins", "tower-icons"].filter(id => map.getLayer(id));
+     if (map.queryRenderedFeatures(e.point, { layers: towerLayers }).length) return;   // the pin's own click wins
+-    const p = e.features?.[0]?.properties as unknown as SkylineProps | undefined;
+-    if (!p) return;
++    const props = e.features?.[0]?.properties;
++    if (!props) return;
++    let html: string;
++    if (shown === "years" && want.year !== null) {
++      const p = props as unknown as YearProps;
++      const full = years?.features.find(f => f.properties?.city === p.city && f.properties?.from === p.from);
++      html = yearPopupHtml(p, want.year, full ? areaKm2(full.geometry) : null, areas.get(p.city) ?? null);
++    } else {
++      const p = props as unknown as SkylineProps;
++      html = popupHtml(p, areas.get(p.city) ?? p.area_km2);
++    }
+     popup?.remove();
+     popup = new Popup({ className: "sky-popup", maxWidth: "340px", focusAfterOpen: false })
+-      .setLngLat(e.lngLat).setHTML(popupHtml(p, areas.get(p.city) ?? p.area_km2)).addTo(map);
++      .setLngLat(e.lngLat).setHTML(html).addTo(map);
+   });
+ }
+ 
+@@ -126,3 +186,14 @@ function popupHtml(p: SkylineProps, km2: number): string {
+     + `<p class="sky-n">${n(p.towers_in_core)} of the city's ${n(p.towers_in_city)} towers of 150 m+ (${n(p.completed_in_core)} completed) · ${km2.toFixed(2)} km²</p>`
+     + `<p>${esc(p.rationale)}</p>`;
+ }
++
++function yearPopupHtml(p: YearProps, year: number, km2: number | null, coreKm2: number | null): string {
++  const n = (x: number) => Number(x).toLocaleString("en-US");
++  const today = p.to === 9999;
++  const size = km2 === null ? "" : today || coreKm2 === null ? ` · ${km2.toFixed(2)} km²`
++    : ` · ${km2.toFixed(2)} of today's ${coreKm2.toFixed(2)} km²`;
++  return `<h3><span class="place">${esc(p.city)}</span> skyline extent in ${year}</h3>`
++    + `<p class="sky-n">${n(p.n)} of the ${n(p.total)} completed towers in today's core had been built${size}</p>`
++    + `<p>Tallest then: ${esc(p.tallest)}.</p>`
++    + (today ? "" : `<p class="sky-note">Today's core, trimmed to the area around the towers built by ${year}.</p>`);
++}
+-- 
+2.43.0
+

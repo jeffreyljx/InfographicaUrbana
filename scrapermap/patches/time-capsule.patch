@@ -1,0 +1,505 @@
+From 50e7ffe307cc7afdaf85275b559fa9e79503a096 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sun, 11 Oct 2026 07:21:36 +0000
+Subject: [PATCH] Time capsule: show only the towers completed by a chosen
+ year, with a year slider and Play
+
+A Time capsule button at the foot of the map opens a dock with the chosen year, a bar chart of
+completions per year with a slider under it, and Play, which walks forward a year at a time. While it
+is on, only completed towers with a completion year up to the chosen year are shown (the other filters
+still apply; the status chips are paused), and rings mark the towers and clusters completed in that
+year. The range runs from the earliest completion year in the data (1889) to this year, and the dock
+opens at this year; ?year=1931 opens it at 1931. MapApp's asOf (null when off) is the hook for layers
+that change with the year.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_015bnz9afFBBGLBukuAQtLqe
+---
+ src/components/Filters.tsx     |  16 +++--
+ src/components/Legend.tsx      |   3 +-
+ src/components/MapApp.tsx      |  64 ++++++++++++++++----
+ src/components/TimeCapsule.tsx | 104 +++++++++++++++++++++++++++++++++
+ src/components/timeCapsule.css |  36 ++++++++++++
+ src/components/towerMap.ts     |  31 +++++++++-
+ src/lib/timeCapsule.ts         |  32 ++++++++++
+ 7 files changed, 267 insertions(+), 19 deletions(-)
+ create mode 100644 src/components/TimeCapsule.tsx
+ create mode 100644 src/components/timeCapsule.css
+ create mode 100644 src/lib/timeCapsule.ts
+
+diff --git a/src/components/Filters.tsx b/src/components/Filters.tsx
+index 64c211d..787d967 100644
+--- a/src/components/Filters.tsx
++++ b/src/components/Filters.tsx
+@@ -3,6 +3,7 @@ import { useMemo } from "react";
+ import type { TowerIndex, TowerRow } from "@/lib/types";
+ import places from "@/data/places.json";
+ import type { Places } from "@/lib/types";
++import { COMPLETED } from "@/lib/timeCapsule";
+ 
+ const PLACES = places as unknown as Places;
+ 
+@@ -38,13 +39,15 @@ function fnGroupOf(fn: string): FilterState["fnGroup"] {
+   return "mixed";
+ }
+ 
+-export function applyFilters(idx: TowerIndex, f: FilterState): TowerRow[] {
++/** With `capsule` (the time capsule is on) the status chips are set aside: only completed towers with a known completion year pass. */
++export function applyFilters(idx: TowerIndex, f: FilterState, capsule = false): TowerRow[] {
++  const done = capsule ? idx.statuses.indexOf(COMPLETED) : -1;
+   const ci = f.city ? idx.cities.indexOf(f.city) : -1;
+   const di = f.district && ci >= 0 ? idx.districts.findIndex(d => d[0] === ci && d[1] === f.district) : -1;
+   const fnGroups = idx.functions.map(fnGroupOf);
+   const approxIdx = idx.precisions.indexOf("approximate");
+   return idx.rows.filter(r => {
+-    if (!f.statuses.has(r[7])) return false;
++    if (capsule ? r[7] !== done || r[8] === null : !f.statuses.has(r[7])) return false;
+     if (r[4] < f.minHeight) return false;
+     if (f.yearFrom !== null && (r[8] === null || r[8] < f.yearFrom)) return false;
+     if (f.yearTo !== null && (r[8] === null || r[8] > f.yearTo)) return false;
+@@ -63,9 +66,11 @@ interface Props {
+   onClose: () => void;
+   shown: number;
+   onFlyTo: (bbox: [number, number, number, number]) => void;
++  /** The time capsule is on: it shows completed towers only, so the status chips are paused. */
++  capsule?: boolean;
+ }
+ 
+-export default function Filters({ idx, state, onChange, onClose, shown, onFlyTo }: Props) {
++export default function Filters({ idx, state, onChange, onClose, shown, onFlyTo, capsule = false }: Props) {
+   const set = (patch: Partial<FilterState>) => onChange({ ...state, ...patch });
+   const toggleStatus = (i: number) => {
+     const s = new Set(state.statuses); if (s.has(i)) s.delete(i); else s.add(i);
+@@ -84,11 +89,12 @@ export default function Filters({ idx, state, onChange, onClose, shown, onFlyTo
+       </div>
+ 
+       <label className="lbl">Status</label>
+-      <div className="chips">
++      <div className={"chips" + (capsule ? " paused" : "")}>
+         {idx.statuses.map((s, i) => (
+-          <button key={s} className={"chip" + (state.statuses.has(i) ? " on" : "")} onClick={() => toggleStatus(i)}>{s}</button>
++          <button key={s} className={"chip" + ((capsule ? s === COMPLETED : state.statuses.has(i)) ? " on" : "")} onClick={() => toggleStatus(i)} disabled={capsule}>{s}</button>
+         ))}
+       </div>
++      {capsule && <p className="filters-note">The time capsule is on, so only completed towers are shown.</p>}
+ 
+       <label className="lbl">Minimum height <span className="muted">{state.minHeight} m</span></label>
+       <input type="range" min={150} max={500} step={10} value={state.minHeight} onChange={e => set({ minHeight: Number(e.target.value) })} />
+diff --git a/src/components/Legend.tsx b/src/components/Legend.tsx
+index 85aefe5..0361c49 100644
+--- a/src/components/Legend.tsx
++++ b/src/components/Legend.tsx
+@@ -1,6 +1,6 @@
+ import { BAND_COLORS } from "@/lib/colors";
+ import { BAND_LABEL } from "@/lib/format";
+-export default function Legend({ skyline = false }: { skyline?: boolean }) {
++export default function Legend({ skyline = false, capsuleYear = null }: { skyline?: boolean; capsuleYear?: number | null }) {
+   return (
+     <div className="legend" aria-hidden>
+       {BAND_LABEL.map((l, i) => (
+@@ -8,6 +8,7 @@ export default function Legend({ skyline = false }: { skyline?: boolean }) {
+       ))}
+       <span><i className="hollow" />approximate</span>
+       {skyline && <span><i className="sky" />skyline extent</span>}
++      {capsuleYear !== null && <span><i className="new" />completed in {capsuleYear}</span>}
+     </div>
+   );
+ }
+diff --git a/src/components/MapApp.tsx b/src/components/MapApp.tsx
+index fd5d533..95a7e24 100644
+--- a/src/components/MapApp.tsx
++++ b/src/components/MapApp.tsx
+@@ -2,9 +2,10 @@
+ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+ import type { Map as MLMap } from "maplibre-gl";
+ import "maplibre-gl/dist/maplibre-gl.css";
++import "./timeCapsule.css";
+ import { towerSlug, type Tower, type TowerIndex, type TowerRow, type DetailsFile } from "@/lib/types";
+ import { loadIndex, loadDetails, resolveRow, norm, detailFor } from "@/lib/client";
+-import { createMap, addTowerLayers, rowsToGeoJSON, setTowerData, setSelected, setBasemap, setBoundary, type Basemap } from "./towerMap";
++import { createMap, addTowerLayers, rowsToGeoJSON, setTowerData, setSelected, setBasemap, setBoundary, setCapsuleYear, type Basemap } from "./towerMap";
+ import { boundaryFor } from "@/lib/boundary";
+ import { setSkyline } from "./skylineLayer";
+ import { addTowerIcons } from "./towerIcons";
+@@ -12,6 +13,8 @@ import Panel from "./Panel";
+ import Chooser from "./Chooser";
+ import Filters, { type FilterState, DEFAULT_FILTERS, applyFilters } from "./Filters";
+ import Search from "./Search";
++import TimeCapsule from "./TimeCapsule";
++import { capsuleRange, standingIn, perYear } from "@/lib/timeCapsule";
+ import Legend from "./Legend";
+ import Nav from "./Nav";
+ import placesJson from "@/data/places.json";
+@@ -54,6 +57,8 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+   const [basemap, setBasemapState] = useState<Basemap>("map");
+   const [skyline, setSkylineOn] = useState(false);
+   const [zoomedOut, setZoomedOut] = useState(true);
++  /** Time capsule: null while it is off, otherwise the chosen year (only towers completed by then are shown). */
++  const [asOf, setAsOf] = useState<number | null>(null);
+   const pendingFit = useRef<[number, number, number, number] | null>(null);
+ 
+   // ---- data ---------------------------------------------------------------
+@@ -87,7 +92,18 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+   }, [detailsReady, selected, resolveId]);
+ 
+   // ---- filtered rows ------------------------------------------------------
+-  const filteredRows = useMemo(() => idx ? applyFilters(idx, filters) : [], [idx, filters]);
++  const capsuleOn = asOf !== null;
++  const range = useMemo(() => idx ? capsuleRange(idx) : null, [idx]);
++  // time capsule: completed towers with a year that pass the other filters; the chosen year then cuts them down
++  const capsuleBase = useMemo(() => idx && capsuleOn ? applyFilters(idx, filters, true) : null, [idx, filters, capsuleOn]);
++  const filteredRows = useMemo(() => !idx ? [] : capsuleBase && asOf !== null ? standingIn(capsuleBase, asOf) : applyFilters(idx, filters), [idx, filters, capsuleBase, asOf]);
++  const capsuleCounts = useMemo(() => capsuleBase && range ? perYear(capsuleBase, range.first, range.last) : [], [capsuleBase, range]);
++  const capsuleTallest = useMemo(() => {
++    if (!idx || !capsuleOn) return null;
++    let t: TowerRow | null = null;
++    for (const r of filteredRows) if (!t || r[4] > t[4]) t = r;
++    return t ? { id: t[0], name: t[1], height: t[4], city: idx.cities[t[5]] } : null;
++  }, [idx, capsuleOn, filteredRows]);
+ 
+   // ---- select / URL -------------------------------------------------------
+   const select = useCallback((id: number, fly = true) => {
+@@ -153,6 +169,17 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+     return () => { map.off("zoomend", check); };
+   }, [mapReady]);
+ 
++  // ---- time capsule: off by default; ?year=1931 opens it at that year ----
++  useEffect(() => {
++    if (!range) return;
++    const q = Number(new URLSearchParams(location.search).get("year"));
++    if (q) setAsOf(Math.min(range.last, Math.max(range.first, Math.round(q))));
++  }, [range]);
++  const toggleCapsule = useCallback(() => {
++    if (range) setAsOf(y => y === null ? range.last : null);
++  }, [range]);
++  const closeCapsule = useCallback(() => setAsOf(null), []);
++
+   const layersAdded = useRef(false);
+   useEffect(() => {
+     const map = mapRef.current;
+@@ -182,6 +209,13 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+     setSkyline(map, skyline, basemap);
+   }, [mapReady, idx, skyline, basemap]);
+ 
++  // time capsule: ring the towers completed in the chosen year
++  useEffect(() => {
++    const map = mapRef.current;
++    if (!map || !mapReady || !layersAdded.current) return;
++    setCapsuleYear(map, asOf);
++  }, [mapReady, idx, asOf]);
++
+   // outline of the opened city / district (red dashed line); cleared when no place is open
+   useEffect(() => {
+     const map = mapRef.current;
+@@ -193,12 +227,10 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+     return () => { live = false; };
+   }, [mapReady, idx, filters.city, filters.district]);
+ 
+-  // keep selected tower visible even if filtered out: clear selection if it drops out
++  // keep the panel open when the selected tower is filtered out (or not yet built in the time capsule's year);
++  // just leave its ring off, and put it back when the tower is shown again
+   useEffect(() => {
+-    if (selected && idx && !filteredRows.some(r => r[0] === selected.id)) {
+-      // don't auto-close; just leave the ring off
+-      if (mapRef.current) setSelected(mapRef.current, null);
+-    }
++    if (selected && idx && mapRef.current) setSelected(mapRef.current, filteredRows.some(r => r[0] === selected.id) ? selected.id : null);
+   }, [filteredRows, selected, idx]);
+ 
+   const chooserTowers = useMemo(() => chooser ? chooser.ids.map(resolveId).filter((t): t is Tower => !!t).sort((a, b) => b.height - a.height) : [], [chooser, resolveId]);
+@@ -210,7 +242,7 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+   }, []);
+ 
+   return (
+-    <div className="app">
++    <div className={"app" + (capsuleOn ? " capsule-on" : "")}>
+       <Nav active="map" />
+       <div ref={mapEl} className="map" aria-label="Map of skyscrapers" />
+       <div className="topbar">
+@@ -239,9 +271,21 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
+         <div className="map-hint">Skyline extents are drawn for the 38 cities with more than 50 towers. Zoom in on one to see its core.</div>
+       )}
+       {filtersOpen && idx && (
+-        <Filters idx={idx} state={filters} onChange={setFilters} onClose={() => setFiltersOpen(false)} shown={filteredRows.length} onFlyTo={flyToPlace} />
++        <Filters idx={idx} state={filters} onChange={setFilters} onClose={() => setFiltersOpen(false)} shown={filteredRows.length} onFlyTo={flyToPlace} capsule={capsuleOn} />
++      )}
++      <Legend skyline={skyline} capsuleYear={asOf} />
++      {idx && range && asOf === null && (
++        <button className={"btn capsule-open" + (selected ? " with-panel" : "")} onClick={toggleCapsule} title={`Time capsule: show only the towers completed by a chosen year, from ${range.first} to today`}>
++          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" aria-hidden="true">
++            <path d="M6 3h12M6 21h12M7 3c0 4.5 5 6 5 9s-5 4.5-5 9M17 3c0 4.5-5 6-5 9s5 4.5 5 9M9.5 18.5h5" />
++          </svg>
++          Time capsule
++        </button>
++      )}
++      {asOf !== null && range && (
++        <TimeCapsule first={range.first} last={range.last} year={asOf} onYear={setAsOf} onClose={closeCapsule}
++          perYear={capsuleCounts} shown={filteredRows.length} tallest={capsuleTallest} onPick={onSearchPick} panelOpen={!!selected} />
+       )}
+-      <Legend skyline={skyline} />
+       {chooser && chooserTowers.length > 0 && (
+         <Chooser towers={chooserTowers} at={chooser.at} onPick={id => select(id, false)} onClose={() => setChooser(null)} />
+       )}
+diff --git a/src/components/TimeCapsule.tsx b/src/components/TimeCapsule.tsx
+new file mode 100644
+index 0000000..b202c18
+--- /dev/null
++++ b/src/components/TimeCapsule.tsx
+@@ -0,0 +1,104 @@
++"use client";
++import { useEffect, useRef, useState, type PointerEvent } from "react";
++import { fmtHeight } from "@/lib/format";
++
++/** Play speed: how long a year stays up before the next one, longer when more towers were completed in it. */
++const delayFor = (added: number) => added === 0 ? 70 : added < 100 ? 160 : 240;
++const BAR_H = 40;
++
++interface Props {
++  first: number;
++  last: number;
++  year: number;
++  onYear: (y: number) => void;
++  onClose: () => void;
++  /** Completions per year, first..last, for the towers the other filters let through. */
++  perYear: number[];
++  /** Towers completed by `year`. */
++  shown: number;
++  tallest: { id: number; name: string; height: number; city: string } | null;
++  onPick: (id: number) => void;
++  /** The tower panel is open on the right: keep clear of it. */
++  panelOpen: boolean;
++}
++
++/**
++ * The time capsule's dock: the chosen year, a bar chart of completions per year with a slider under it
++ * (the bars up to the chosen year are filled), and Play, which walks forward one year at a time.
++ */
++export default function TimeCapsule({ first, last, year, onYear, onClose, perYear, shown, tallest, onPick, panelOpen }: Props) {
++  const [playing, setPlaying] = useState(false);
++  const span = Math.max(1, last - first);
++  const max = Math.max(1, ...perYear);
++  const added = perYear[year - first] ?? 0;
++
++  useEffect(() => {
++    if (!playing) return;
++    if (year >= last) { setPlaying(false); return; }
++    const t = setTimeout(() => onYear(year + 1), delayFor(perYear[year - first] ?? 0));
++    return () => clearTimeout(t);
++  }, [playing, year, last, first, perYear, onYear]);
++
++  const play = () => {
++    if (playing) { setPlaying(false); return; }
++    if (year >= last) onYear(first);
++    setPlaying(true);
++  };
++  const pick = (y: number) => { setPlaying(false); onYear(Math.min(last, Math.max(first, y))); };
++
++  // the dock's height, as --capsule-h on the map app, so the map's corner controls can sit above it on a phone
++  const dock = useRef<HTMLElement>(null);
++  useEffect(() => {
++    const el = dock.current, app = el?.parentElement;
++    if (!el || !app || typeof ResizeObserver === "undefined") return;
++    const ro = new ResizeObserver(() => app.style.setProperty("--capsule-h", `${el.offsetHeight}px`));
++    ro.observe(el);
++    return () => { ro.disconnect(); app.style.removeProperty("--capsule-h"); };
++  }, []);
++
++  // the chart: bar i is centred where the slider's thumb stands for year first + i; click or drag on it to choose a year
++  const chart = useRef<SVGSVGElement>(null);
++  const fromPointer = (e: PointerEvent<SVGSVGElement>) => {
++    const r = chart.current!.getBoundingClientRect();
++    pick(first + Math.round(((e.clientX - r.left) / r.width) * span));
++  };
++
++  const ticks: number[] = [];
++  for (let y = Math.ceil(first / 20) * 20; y <= last; y += 20) ticks.push(y);
++  const pct = (y: number) => `${((y - first) / span) * 100}%`;
++
++  return (
++    <section ref={dock} className={"capsule" + (panelOpen ? " with-panel" : "")} aria-label="Time capsule">
++      <div className="cap-head">
++        <button className="cap-play" onClick={play} aria-label={playing ? "Pause" : year >= last ? "Play from " + first : "Play"} title={playing ? "Pause" : "Play through the years"}>
++          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
++            {playing ? <path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor" /> : <path d="M4.5 2.2v11.6L13.6 8z" fill="currentColor" />}
++          </svg>
++        </button>
++        <div className="cap-year" title="Towers standing today, each shown from the year it was completed">{year}</div>
++        <div className="cap-facts">
++          <div><b>{shown.toLocaleString("en-US")}</b> {shown === 1 ? "tower" : "towers"} completed by {year}{added > 0 && <span className="cap-new"> · {added.toLocaleString("en-US")} new</span>}</div>
++          {tallest && (
++            <div className="cap-tallest">Tallest: <button className="link" onClick={() => onPick(tallest.id)}>{tallest.name}</button>, {fmtHeight(tallest.height)}, <span className="place">{tallest.city}</span></div>
++          )}
++        </div>
++        <button className="x" onClick={onClose} aria-label="Close the time capsule">×</button>
++      </div>
++      <div className="cap-track">
++        <svg ref={chart} className="cap-bars" viewBox={`0 0 ${span} ${BAR_H}`} preserveAspectRatio="none" height={BAR_H}
++          onPointerDown={e => { e.currentTarget.setPointerCapture(e.pointerId); fromPointer(e); }}
++          onPointerMove={e => { if (e.buttons === 1) fromPointer(e); }} aria-hidden="true">
++          {perYear.map((c, i) => c > 0 && (
++            <rect key={i} x={i - 0.38} width={0.76} y={BAR_H - Math.max(1.5, (c / max) * BAR_H)} height={Math.max(1.5, (c / max) * BAR_H)}
++              className={first + i === year ? "now" : first + i < year ? "past" : "future"} />
++          ))}
++        </svg>
++        <input type="range" min={first} max={last} step={1} value={year} onChange={e => pick(Number(e.target.value))}
++          aria-label="Year" aria-valuetext={`${year}: ${shown.toLocaleString("en-US")} towers`} />
++        <div className="cap-ticks" aria-hidden="true">
++          {ticks.map(t => <span key={t} style={{ left: pct(t) }}>{t}</span>)}
++        </div>
++      </div>
++    </section>
++  );
++}
+diff --git a/src/components/timeCapsule.css b/src/components/timeCapsule.css
+new file mode 100644
+index 0000000..59c9dd8
+--- /dev/null
++++ b/src/components/timeCapsule.css
+@@ -0,0 +1,36 @@
++/* Time capsule: the launcher button and the year dock at the foot of the map (see TimeCapsule.tsx). */
++.btn.capsule-open { position: absolute; left: 50%; bottom: 54px; transform: translateX(-50%); z-index: 20; box-shadow: var(--shadow); }
++.btn.capsule-open.with-panel, .capsule.with-panel { left: calc(50% - 210px); }
++.capsule { position: absolute; left: 50%; bottom: 54px; transform: translateX(-50%); z-index: 20; width: min(640px, calc(100vw - 36px)); box-sizing: border-box; background: var(--glass); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 10px 14px 4px; backdrop-filter: blur(8px); }
++.capsule.with-panel { width: min(640px, calc(100vw - 476px)); }
++.cap-head { display: flex; align-items: center; gap: 12px; }
++.cap-play { width: 38px; height: 38px; flex: none; border-radius: 50%; border: 0; background: var(--accent); color: var(--on-accent); display: grid; place-items: center; cursor: pointer; }
++.cap-play:hover { filter: brightness(1.1); }
++.cap-play:focus-visible, .cap-track input:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; }
++.cap-year { flex: none; width: 82px; font-size: 30px; font-weight: 700; line-height: 1; letter-spacing: -.01em; color: var(--fg); }
++.cap-facts { flex: 1; min-width: 0; font-size: 12.5px; line-height: 1.5; color: var(--fg-2); }
++.cap-facts b { color: var(--fg); font-weight: 600; }
++.cap-new { color: #A33A0B; }           /* the new-this-year orange, darkened for text (5.6:1 on the dock) */
++.cap-tallest { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
++.cap-tallest .link { margin: 0; font: inherit; color: var(--accent-2); }
++.capsule .x { position: static; flex: none; align-self: flex-start; width: 28px; height: 28px; font-size: 18px; }
++.cap-track { margin-top: 8px; }
++.cap-bars { display: block; width: calc(100% - 16px); margin: 0 8px; overflow: visible; cursor: pointer; touch-action: none; }
++.cap-bars rect.past { fill: var(--accent); opacity: .72; }
++.cap-bars rect.now { fill: #E2560F; }
++.cap-bars rect.future { fill: var(--line); opacity: .8; }
++.cap-track input[type=range] { display: block; width: 100%; margin: 4px 0 0; accent-color: var(--accent); cursor: pointer; }
++.cap-ticks { position: relative; height: 18px; margin: 0 8px; font-size: 11px; color: var(--fg-3); }
++.cap-ticks span { position: absolute; top: 2px; transform: translateX(-50%); }
++.legend i.new { border: 2px solid #E2560F; background: rgba(226,86,15,.16); width: 8px; height: 8px; }
++.filters .chips.paused .chip { opacity: .55; cursor: default; }
++.filters-note { margin: 6px 0 0; font-size: 12px; line-height: 1.4; color: var(--fg-3); }
++
++@media (max-width: 720px) {
++  .btn.capsule-open, .btn.capsule-open.with-panel { left: 50%; bottom: 12px; }
++  .capsule, .capsule.with-panel { left: 12px; right: 12px; bottom: 12px; width: auto; transform: none; padding: 8px 10px 2px; }
++  .cap-head { gap: 10px; }
++  .cap-year { width: 64px; font-size: 24px; }
++  .cap-facts { font-size: 12px; }
++  .app.capsule-on .maplibregl-ctrl-bottom-left, .app.capsule-on .maplibregl-ctrl-bottom-right { bottom: calc(var(--capsule-h, 140px) + 12px); }
++}
+diff --git a/src/components/towerMap.ts b/src/components/towerMap.ts
+index 16248dc..5153c83 100644
+--- a/src/components/towerMap.ts
++++ b/src/components/towerMap.ts
+@@ -21,7 +21,10 @@ export type Basemap = "map" | "satellite";
+ const SAT_ID = "esri-imagery";
+ const SAT_TILES = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
+ const SAT_ATTR = 'Imagery © <a href="https://www.esri.com/" target="_blank" rel="noopener">Esri</a>, Maxar, Earthstar Geographics';
+-const TOWER_LAYERS = new Set(["clusters", "cluster-count", "glow", "pins", "selected", "labels"]);
++const TOWER_LAYERS = new Set(["clusters", "cluster-count", "glow", "pins", "capsule-new-clusters", "capsule-new", "selected", "labels"]);
++/** Time capsule: ring colour for towers completed in the chosen year (reads on the sand map and on imagery). */
++const NEW_COLOR = "#E2560F";
++const NEVER: NonNullable<Parameters<MLMap["setFilter"]>[1]> = ["==", ["get", "id"], -1];
+ /** Outline of the city or district opened on the map (red dashed line, drawn under the pins). */
+ const BOUNDARY_ID = "boundary";
+ const OWN_LAYERS = new Set([...TOWER_LAYERS, "boundary-line"]);
+@@ -40,7 +43,7 @@ export function rowsToGeoJSON(rows: TowerRow[]): FeatureCollection {
+       type: "Feature",
+       id: r[0],
+       geometry: { type: "Point", coordinates: [r[3], r[2]] },
+-      properties: { id: r[0], n: r[1], h: r[4], b: r[4] >= 400 ? 3 : r[4] >= 300 ? 2 : r[4] >= 200 ? 1 : 0, p: r[11], sp: r[12] },
++      properties: { id: r[0], n: r[1], h: r[4], b: r[4] >= 400 ? 3 : r[4] >= 300 ? 2 : r[4] >= 200 ? 1 : 0, p: r[11], sp: r[12], y: r[8] ?? 0 },
+     })),
+   };
+ }
+@@ -168,7 +171,7 @@ export function addTowerLayers(map: MLMap, data: FeatureCollection, cb: MapCallb
+     cluster: true,
+     clusterRadius: 34,
+     clusterMaxZoom: CLUSTER_MAX_ZOOM,
+-    clusterProperties: { maxb: ["max", ["get", "b"]] },
++    clusterProperties: { maxb: ["max", ["get", "b"]], maxy: ["max", ["get", "y"]] },
+     promoteId: "id",
+   });
+ 
+@@ -208,6 +211,21 @@ export function addTowerLayers(map: MLMap, data: FeatureCollection, cb: MapCallb
+       "circle-opacity": 0.95,
+     },
+   });
++  // time capsule: rings around the towers (and the clusters holding towers) completed in the chosen year; see setCapsuleYear
++  map.addLayer({
++    id: "capsule-new-clusters", type: "circle", source: "towers", filter: NEVER,
++    paint: {
++      "circle-radius": ["step", ["get", "point_count"], 19, 10, 23, 50, 28, 200, 34, 600, 41],
++      "circle-color": "rgba(0,0,0,0)", "circle-stroke-width": 2.5, "circle-stroke-color": NEW_COLOR, "circle-stroke-opacity": 0.95,
++    },
++  });
++  map.addLayer({
++    id: "capsule-new", type: "circle", source: "towers", filter: NEVER,
++    paint: {
++      "circle-radius": ["interpolate", ["linear"], ["zoom"], 8, 9, 15, 14],
++      "circle-color": "rgba(226,86,15,0.16)", "circle-stroke-width": 2.2, "circle-stroke-color": NEW_COLOR,
++    },
++  });
+   map.addLayer({
+     id: "selected", type: "circle", source: "towers", filter: ["==", ["get", "id"], -1],
+     paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 8, 11, 15, 16], "circle-color": "rgba(0,0,0,0)", "circle-stroke-width": 2.5, "circle-stroke-color": "#2B1D17" },
+@@ -287,6 +305,13 @@ export function setBasemap(map: MLMap, mode: Basemap) {
+ }
+ const origVis = new Map<string, "visible" | "none">();
+ 
++/** Time capsule: ring the towers completed in `year` (and the clusters that hold one); null clears the rings. */
++export function setCapsuleYear(map: MLMap, year: number | null) {
++  if (!map.getLayer("capsule-new")) return;
++  map.setFilter("capsule-new", year === null ? NEVER : ["all", ["!", ["has", "point_count"]], ["==", ["get", "y"], year]]);
++  map.setFilter("capsule-new-clusters", year === null ? NEVER : ["all", ["has", "point_count"], ["==", ["get", "maxy"], year]]);
++}
++
+ export function setSelected(map: MLMap, id: number | null) {
+   if (!map.getLayer("selected")) return;
+   map.setFilter("selected", ["==", ["get", "id"], id ?? -1]);
+diff --git a/src/lib/timeCapsule.ts b/src/lib/timeCapsule.ts
+new file mode 100644
+index 0000000..6f2d5a8
+--- /dev/null
++++ b/src/lib/timeCapsule.ts
+@@ -0,0 +1,32 @@
++import type { TowerIndex, TowerRow } from "./types";
++
++/**
++ * Time capsule: the map as it stood in a chosen year. Only completed towers with a known completion year
++ * take part (the dataset holds towers standing today, so none disappear going forward); a tower shows from
++ * its completion year on. The year range runs from the earliest completion year in the data to this year.
++ */
++export const COMPLETED = "Completed";
++
++export function capsuleRange(idx: TowerIndex): { first: number; last: number } {
++  const done = idx.statuses.indexOf(COMPLETED);
++  let first = Infinity, last = -Infinity;
++  for (const r of idx.rows) {
++    if (r[7] !== done || r[8] === null) continue;
++    if (r[8] < first) first = r[8];
++    if (r[8] > last) last = r[8];
++  }
++  const now = new Date().getFullYear();
++  return { first: Number.isFinite(first) ? first : now, last: Math.max(now, Number.isFinite(last) ? last : now) };
++}
++
++/** Rows standing in `year`: `rows` must already be completed towers with a year (see the time capsule's base rows). */
++export function standingIn(rows: TowerRow[], year: number): TowerRow[] {
++  return rows.filter(r => r[8]! <= year);
++}
++
++/** Completions per year, first..last inclusive. */
++export function perYear(rows: TowerRow[], first: number, last: number): number[] {
++  const n = new Array<number>(last - first + 1).fill(0);
++  for (const r of rows) { const y = r[8]!; if (y >= first && y <= last) n[y - first]++; }
++  return n;
++}
+-- 
+2.43.0
+

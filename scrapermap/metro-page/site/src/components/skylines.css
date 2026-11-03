@@ -1,0 +1,45 @@
+/* Skylines page (src/app/skylines/page.tsx): each city's skyline extents in place, every city at one scale. --km is the
+   scale in px per km: at Fit the city that spreads widest (--maxw km) fills the column, and --zoom multiplies that. Each
+   drawing is sized from its own width and height in km (--w, --h), so all of them share the scale at every screen width;
+   a drawing wider than the column scrolls sideways inside its own frame. */
+.skygrid-wrap { --km: calc(100cqw / var(--maxw) * var(--zoom, 1)); }
+.skygrid, .skybar { container-type: inline-size; }
+.skygrid { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 56px 44px; margin-top: 24px; }
+.skybar { position: sticky; top: 52px; z-index: 5; background: var(--bg); display: flex; align-items: center; justify-content: space-between; gap: 10px 18px; flex-wrap: wrap; padding: 10px 0; margin-top: 8px; border-bottom: 1px solid var(--line); }
+.skyctl { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.skysort.threshold { margin: 0; gap: 8px; }
+.skysort .chip { padding: 5px 12px; font-size: 13px; }
+.skyscale { display: flex; align-items: flex-end; gap: 8px; font-size: 12px; color: var(--fg-2); flex: 1 0 auto; justify-content: flex-end; }
+.skyscale i { display: block; width: calc(var(--km) * var(--bar, 10)); height: 7px; border: 1.5px solid var(--fg); border-top: 0; }
+#skygrid[data-sort="area"] .skyfig { order: var(--o-area); }
+#skygrid[data-sort="towers"] .skyfig { order: var(--o-towers); }
+#skygrid[data-sort="tallest"] .skyfig { order: var(--o-tallest); }
+#skygrid[data-sort="city"] .skyfig { order: var(--o-city); }
+
+/* one box per city, unframed: the drawing is the city's map with the map taken away */
+.skyfig { margin: 0; display: flex; flex-direction: column; align-items: center; width: max(156px, calc(var(--km) * var(--w))); max-width: 100%; }
+.sky-frame { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: 3px 0; border-radius: 6px; transition: background-color .15s; }
+.skyfig:hover .sky-frame { background: rgba(244,236,233,.7); }   /* the box shows itself only under the pointer */
+.sky-shape { display: block; width: max-content; margin: 0 auto; }
+.skyfig svg { display: block; width: calc(var(--km) * var(--w)); height: calc(var(--km) * var(--h)); overflow: visible; }
+.skyfig path.o { fill: #E9A825; fill-opacity: .55; fill-rule: evenodd; stroke: #8A5A00; stroke-width: 1.2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.skyfig path.t { fill: none; stroke: #5B3B12; stroke-opacity: .6; stroke-width: 2.6; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.skyfig path.t2 { fill: none; stroke: #5B3B12; stroke-opacity: .28; stroke-width: 2; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.sky-shape:hover path.o { fill-opacity: .7; }
+.sky-shape path.o:hover { fill-opacity: .85; }
+
+/* the sticker: one size for all, so every row's stickers line up and its drawings stand on one line */
+.skytag { position: relative; margin-top: 10px; width: 156px; height: 114px; padding: 6px 9px 0; background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; box-shadow: 0 1px 0 rgba(74,45,33,.08); font-size: 11.5px; line-height: 1.4; color: var(--fg-2); overflow: hidden; }
+.skytag::before { content: ""; position: absolute; top: -5px; left: 50%; width: 8px; height: 8px; margin-left: -4px; background: var(--bg-2); border-left: 1px solid var(--line); border-top: 1px solid var(--line); transform: rotate(45deg); }
+.skytag .place { display: block; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tag-name { display: block; font-size: 10.5px; color: var(--fg-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tag-n { display: block; margin-top: 2px; color: var(--fg); }
+.tag-top { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.tag-top a { color: inherit; }
+
+/* phones: two stickers to a row, as wide as the row allows */
+@media (max-width: 720px) {
+  .skygrid { gap: 40px 14px; }
+  .skyfig { width: max(calc(50% - 7px), calc(var(--km) * var(--w))); }
+  .skytag { width: 100%; max-width: 220px; }
+}
