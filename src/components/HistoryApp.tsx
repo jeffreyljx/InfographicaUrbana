@@ -7,7 +7,7 @@ import "./metro.css";
 import "./history.css";
 import {
   loadIndex, loadStates, loadGeo, loadChunk, windowFor, Timeline, areas as areasOf, capitalIn,
-  FIRST_YEAR, LAST_YEAR, STATUS_NAME, ST_DIRECT, type HistIndex, type HistStates, type Chunk,
+  FIRST_YEAR, LAST_YEAR, STATUS_NAME, ST_CONSTITUENT, ST_DIRECT, type HistIndex, type HistStates, type Chunk,
 } from "@/lib/history";
 import { CellGrid, xToLng, yToLat, lngToX, latToY } from "@/lib/historyGrid";
 import { HistoryLayer } from "./historyLayer";
@@ -196,9 +196,10 @@ export default function HistoryApp() {
     const { owner, status, other } = base.tl;
     const byStatus = [0, 0, 0, 0, 0];
     const party = new Map<number, number>();
-    let cells = 0;
+    let cells = 0, members = 0;
     for (let i = 0; i < owner.length; i++) {
-      if (owner[i] !== pick) continue;
+      // a realm of member states holds its members' land too (the area chart counts it the same way)
+      if (owner[i] !== pick) { if (status[i] === ST_CONSTITUENT && other[i] === pick) members++; continue; }
       cells++; byStatus[status[i]]++;
       if (status[i] !== ST_DIRECT && other[i]) party.set(other[i] * 8 + status[i], (party.get(other[i] * 8 + status[i]) ?? 0) + 1);
     }
@@ -206,7 +207,7 @@ export default function HistoryApp() {
     if (byStatus[1] > cells / 2) st = 1; else if (byStatus[2] > cells / 2) st = 2; else if (byStatus[3]) st = 3; else if (byStatus[4]) st = 4;
     let best = 0, bn = 0;
     for (const [k, v] of party) if (k % 8 === st && v > bn) { bn = v; best = Math.floor(k / 8); }
-    return { cells, status: STATUS_NAME[st], party: st ? best : 0 };
+    return { cells: cells + members, status: STATUS_NAME[st], party: st ? best : 0 };
   }, [base, shown, pick]);
 
   // ---- hover and click on the map ----

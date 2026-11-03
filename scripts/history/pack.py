@@ -377,8 +377,12 @@ def main():
                     other[idx] = party(cl[0]) if cl else 0
         return owner, status, other
 
-    def record_area(year, owner):
+    def record_area(year, owner, status, other):
+        # a realm of member states (constituents: the German Empire, the USSR, the Holy Roman Empire) holds its members' land too
         cnt = np.bincount(owner, minlength=P + 1)
+        mem = (status == 2) & (other > 0)
+        if mem.any():
+            cnt = cnt + np.bincount(other[mem], minlength=P + 1)
         diff = np.nonzero(cnt != last_area)[0]
         for p_ in diff:
             if p_ == 0:
@@ -397,7 +401,7 @@ def main():
         owner, status, other = state_from_anchor(a0)
         start = (owner.copy(), status.copy(), other.copy())
         if wi == 0:
-            record_area(wfrom - 1, owner)
+            record_area(wfrom - 1, owner, status, other)
         g_year, g_owner, g_status, g_other, g_runs, r_start, r_len = [], [], [], [], [], [], []
         captions = []
         years = sorted(int(y) for y in w.get("years", {}))
@@ -456,7 +460,7 @@ def main():
                 if cap.get("source"):
                     c_["u"] = cap["source"]
                 captions.append(c_)
-            record_area(y, owner)
+            record_area(y, owner, status, other)
         # seam check: the window must end at its end anchor
         a1 = anchor(w["end_anchor"])
         e_owner, e_status, e_other = state_from_anchor(a1)
