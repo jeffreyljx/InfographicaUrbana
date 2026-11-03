@@ -1,0 +1,32 @@
+# Review, batch eu-09-b (2026-10-25, adversarial reviewer)
+
+Dossier: duchy-of-styria (1180-1918; 5 Cliopatria shapes, page budget 5 pages, spent). Verdict: **thin**. No fix applied by the reviewer; the dossier file is unchanged.
+
+## Mechanical
+- `validate_dossier.py --resolve`: 0 errors; 2 warnings (counterpart slugs march-of-styria, county-of-celje: no dossier yet, both listed in the author's counterparts_needing_dossiers). Ledger sorted; found at 1180 = start, dissolve at 1918 (month 10) = end; capital Graz 15.41E 47.08N inside Steiermark; family `austria` exists in colours.json; certainty 1180-1918 soft.
+- Cliopatria shapes re-checked with the gazetteer: 1260 shape 67 cells, 0 in Steiermark (Tirol 41, Bozen 21, Kaernten 3); 1272/1422 one Udine cell; 1450/1497 seven cells in Udine/Gorizia/Bovec/Brda/Kanal/Kobarid. The five `wrong` verdicts stand.
+- Author's corrections resolve to 67 cells (about 16,950 km2) for 1180-1455 and 86 cells (about 21,760 km2) for 1456-1918.
+
+## Spot checks (all confirmed)
+- /ledger/1 1192, /ledger/2 1254, /ledger/6 1456, /ledger/12 31 Oct 1918: Duchy of Styria page (infobox 'To Babenberg Austria: 1192', 'To Arpad Hungary: 1254', 'Austria-Hungary dissolved: 31 October 1918'; prose on the 1456 Celje estates in Lower Styria). Also read there: 1379, 1457, 1564, 1619, 1804, 1867 as the notes say.
+- /ledger/3 July 1260 and /ledger/4 November 1276: Ottokar II of Bohemia page ('Ottokar defeated the Hungarians in July 1260 at the Battle of Kressenbrunn'; 'in November 1276 to sign a new treaty by which he gave up all claims to Austria' and the neighbouring duchies). Confidence 2 on 1276 is honest (Styria is inferred from 'neighboring duchies'; the Duchy infobox says 1276/78).
+- Counts of Celje page: Ulrich II killed 8 November 1456, male line extinct, estates to the Habsburgs; 'In 1458 the county is annexed to Austria'. Matches /ledger/6.
+- Area: the Duchy of Styria infobox has no area. Cliopatria's only Styria-sized shape (1260, 16,888 km2) lies in Tyrol; the later shapes (277 and 2,004 km2) are acknowledged as wrong. No unacknowledged factor of two.
+
+## Why thin, not pass
+1. **The pre-1456 outline is contested by pages the author did not reach.** The March of Styria page: Margrave Ottokar III (1129-1164) 'extended his influence down the Mur river into the Mark an der Sann territory' (Lower Styria) and acquired 'large territories along the Savinja river down to the Windic March'; and in 1042/43 'further territory east of the Mur up to Pitten and the Leitha river was conquered'. The Duchy page itself speaks of 'acquisition and re-acquisition' of the Celje estates and puts the duchy in 'northern Slovenia'. Against this, the Lower Styria page says 'the Lower Styrian lands were ruled by several immediate (reichsfrei) dynasties like the Counts of Celje' whose 'large possessions were not incorporated by the Habsburg dukes until the 15th century', and the Counts of Celje page has them rule 'the County of Cilli as immediate counts (Reichsgrafen) from 1341'. A gap-filler should settle it: either Lower Styria (at least the Sann/Savinja lands) is in the 1180 outline, the County of Cilli is lost to county-of-celje in 1341 and regained in 1456; or the outline stays Steiermark-only with both pages cited in the keyframe note. Pitten (to the Leitha) is not in any outline and no event moves it.
+2. **The 1456 region is drawn on the wrong part of Lower Styria.** {"place": "Maribor", "km": 45} resolves to 25 cells centred on the Drava plain (Podravska), 18 of them outside Steiermark, including one Prekmurje cell and one Croatian (Krapina-Zagorje) cell; of the 7 cells of the Savinja municipalities (Celje, Zalec, Velenje, Lasko, Vojnik, Store, ...), where the counts sat ('on the Sann (Savinja) river in Lower Styria'), 4 fall outside it, and the Celje admin1 adds 1. When 'Lower Styria' enters the gazetteer, use {"region": "Lower Styria"}; until then a union of the Savinjska and Podravska municipalities (plus the Styrian part of Pomurska west of the Mur) draws it better. Same region in /keyframe_review/5 and /6 corrections, /ledger/12 and the yugoslavia successor land.
+3. **1254 is a partition, entered as a rename.** The Ottokar II page has a papal mediation by which Ottokar 'would yield large parts of Styria to Bela' (undated); the part that did not go to Hungary (Traungau, Pitten?) is not drawn.
+4. **1479-1491 Hungarian war in Styria.** wars[1] has empty zones although the author's note quotes the Matthias Corvinus page: in 1479 'the fortresses of the Archbishopric in Carinthia, Carniola and Styria' and in 1481 'the town of Mautern in Styria'. Ground changed hands; zones (and an occupation pair if a page dates it) are missing. Cliopatria puts all of Styria under Hungary 1487-1491; the author's pages do not support that, and no event is written.
+5. **1456-1918 is one keyframe.** No event between 1457 and 1918 except renames; the 1918-1919 partition (southern third of Lower Styria with Maribor to the State/Kingdom of SCS) is undated.
+6. **Rulers** have a gap 1246-1254 and stop at 1637.
+
+## Cross-dossier
+No neighbour dossier but duchy-of-bavaria exists; it has no Styria event and none is needed (the seed neighbour link comes from the misplaced 1260 Tyrol shape). Counterparts not written yet: march-of-styria, county-of-celje (listed by the author); kingdom-of-bohemia and kingdom-of-hungary (eu-15), house-of-habsburg and habsburg-monarchy (eu-09), patriarchate-of-aquileia (eu-13), republic-of-austria and yugoslavia (successors). Routing: Cliopatria draws Styria's land inside Kingdom of Bohemia 1260-1278, House of Habsburg 1279-1486 and 1492-1515, Kingdom of Hungary 1487-1491 and Habsburg Monarchy from about 1520; those dossiers must not draw it as their own direct land while this dossier draws it (union tint or partition: an orchestrator decision the author flagged). If the Hungary dossier enters a 1487-1491 occupation of Styria, this dossier needs the mirror. The Aquileia dossier should claim the Friulian cells Cliopatria labels Styria 1272-1501. Between the 1918 dissolve and the 1919 successors sit German Austria and the State of Slovenes, Croats and Serbs, which have no rows.
+
+## Pages opened by the reviewer
+- https://en.wikipedia.org/wiki/Duchy_of_Styria
+- https://en.wikipedia.org/wiki/Ottokar_II_of_Bohemia
+- https://en.wikipedia.org/wiki/Counts_of_Celje
+- https://en.wikipedia.org/wiki/March_of_Styria
+- https://en.wikipedia.org/wiki/Lower_Styria

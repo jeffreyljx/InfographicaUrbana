@@ -1,0 +1,34 @@
+# Notes for batch eu-11-j (England, Scotland, Wales, Ireland, part j)
+
+Written 2026-10-25 by the Phase B research agent. Six dossiers, all validate with 0 errors and 0 warnings (also with --resolve). Pages are thin on territory; every unsettled point below is a gap the pages are silent on, not a fault in a source.
+
+## Decisions that need the orchestrator (cross-group)
+
+1. **Commonwealth of England starts in 1649, not 1645.** Cliopatria draws Parliament's England and Wales (138,621 km2) under this row from 1645; the Commonwealth was proclaimed on 19 May 1649 and ended in May 1660 (not 1661). The dossier dates the state 1649-1660 and reviews the 1645 shape as `adjust` (years/owner). England and Wales for 1645-1648 need an owner: either start this dossier in 1645, or the kingdom-of-england dossier (eu-11, another part) must carry Parliament's England for 1642-1649 (its Cliopatria shapes for 1645-1652 are only the royalist remnant).
+2. **Kingdom of Scotland runs to 1707, not 1608, and is one kingdom with Kingdom of Alba.** The Kingdom of Scotland page gives one kingdom 843-1707 (Acts of Union in force 1 May 1707). Cliopatria's Alba row is 900-1293, Scotland 1294-1608, and it folds Scotland into its Kingdom of England row from 1609 (341,650 km2 in 1609-1639, 1662-1690, 1691-1705, 1706-1708). The dossier ends 1707 with a new keyframe 1609-1706. If the England dossier also draws Scotland, it is doubled: the England dossier should subtract Scotland there. Rule 2: kingdom-of-alba and kingdom-of-scotland should share one colour.
+3. **Desmond runs to 1583, not 1458, and three Cliopatria shapes are wrong.** The 1333-1351 "Earldom of Desmond" shape is the Earldom of Ulster's Antrim-Down polygon (seven identical cells): `wrong`. The 1422-1458 shape lies in Tipperary-Kilkenny-Laois: `wrong`. The 1385 and 1395 shapes add Wexford, Tipperary, Kilkenny, Laois, Kildare: `adjust`. All corrections are the page's four counties (Limerick, Cork, Kerry, Waterford).
+4. **Earldom of Ulster 1263-1333**, wider than Cliopatria's 1326-1332 and about three times the shape's area (the page: most of Antrim and Down). Overlaps the Lordship of Ireland / Kingdom of England shapes drawn by others.
+5. **Isle of Man 1346-1399**: Cliopatria 1344-1401; the pages give 1346 (last English take) and 1399 (feudal lordship of the English Crown). 1400-1401 fall between this row and the England shapes (which include the island from 1402).
+6. **Irish cells in the Scottish shapes** 1552-1608 (5, 12, 14, 14 cells in County Down and Antrim): no page gives Scotland any Irish land; removed by `adjust`.
+
+## Per state
+
+- **kingdom-of-scotland** (6 pages): Cliopatria shapes 1294, 1314 contain the Isle of Man (English 1290-1313, Scottish 1313-14 and 1317-33, contested to 1346); 1305-1313 is blank in Cliopatria (England's 311,457 km2 shape covers Scotland then) and is a new occupied-Scotland keyframe. Not settled: what Bruce held 1306-1313 (page silent); Berwick between 1318 and 1482 (the 1333 loss and 1461 recovery are on no page opened); which half of the Debatable Lands each side got in 1552; the start of the Lords of the Isles' vassalage (only the 1493 forfeiture is dated); rulers (no list opened). The page's First War article has no Bruce Irish campaign, Perth 1313 or Berwick 1318 (the Kingdom page has 1318). The page for the Anglo-Scottish War (1650-1652) does not exist; the Third English Civil War page was used.
+- **earldom-of-ulster** (2 pages): not settled: end of the Bruce invasion (page gives only the 1315 siege of Carrickfergus); what the land became after the 1333 collapse (Magennis took some; coastal enclaves stayed English; title to the Crown 1461); the Lough Foyle reach (undated). Cliopatria's Desmond 1333-1351 shape is this land.
+- **earldom-of-desmond** (5 pages, one a disambiguation page): not settled: why Cliopatria's shapes change in 1352, 1385, 1395, 1422 (no page dates a gain or loss); the 1345 forfeiture (page: lost his lands, released 1348, pardoned 1349; extent and year not given); the seat (Tralee is the researcher's reading); the 7th Earl's 1468 death and the 1459-1568 period (pages give only lifespans); where the Earldom of Ormond lay (the Ormond page opened is a disambiguation page). Pages disagree: the Earl died 2 November 1583 (Desmond Rebellions) or 11 November 1583 (Earl of Desmond); month 11 used.
+- **isle-of-man** (2 pages): not settled: the 14th-century lords (the Lord of Mann page lists none before 1504), the date and cause of Cliopatria's 1344 start, the capital (Castle Rushen is the researcher's reading), who held it in 1399 (Crown or Percy). The island is the modern Crown dependency (Q9676); later history belongs to a later dossier.
+- **irish-catholic-confederation** (3 pages, one shared with the Commonwealth): all three shapes `adjust`: the 1642 shape lacks Wexford; the 1645 and 1648 shapes lack Kilkenny (the capital), Waterford, Limerick, Wexford. Not settled: the extent year by year (Cork enclave under Inchiquin from July 1644 and the May 1648 truce; Dungan's Hill and Knocknanuss, undated); the Second Ormond Peace (on neither page). Pages disagree: Confederate Ireland infobox ends it in 1652 (used); Irish Confederate Wars says the association dissolved in 1648 and gives May or October 1642 for the founding (24 October 1642 used).
+- **commonwealth-of-england** (5 core pages plus two shared): Jamaica (Western Design), the Anglo-Spanish War, the Channel Islands, Isle of Man and Scilly are on no page opened (the Protectorate page has no dates for them); Drogheda and Wexford (1649) are undated on the Cromwellian page; the 1648 baseline's Munster cells are unverified. Dunkirk (1658) is a continental enclave outside every Cliopatria shape.
+
+## Pages that failed or were useless
+
+- https://en.wikipedia.org/wiki/Anglo-Scottish_War_(1650%E2%80%931652): url_not_found; replaced by Third_English_Civil_War.
+- https://en.wikipedia.org/wiki/Earl_of_Ormond: a disambiguation page (the Butler article would be Earl of Ormond (Ireland)); listed in the Desmond sources with that note.
+
+## Counterparts needing dossiers (not mine)
+
+kingdom-of-england (Parliament's England 1642-1649; Restoration 1660; matching losses of the Isle of Man 1313/1317 and Berwick 1318, and gains of Berwick 1482); kingdom-of-alba (continuity with Scotland); a Lordship / Kingdom of Ireland (eu-11-x; Ormonde's royalist Ireland 1649); the Lordship of the Isles (ended 1493 per page); Thomond (O'Brien) and the MacCarthy Mor Kingdom of Desmond (founded 1118, western half "until 1596" per the Earl of Desmond page); Magennis and O'Neill lordships in Ulster after 1333; the Connacht Burkes; kingdom-of-france (Dunkirk 1658); Spain.
+
+## Region names the gazetteer lacks (used as lon/lat radii)
+
+Dunkirk (place), Dunamark / Bantry (place), the Debatable Lands (region; used 55.05N 2.95W, 12 km), and, for later work, Thomond and Desmond (regions), Youghal, Kinsale, Askeaton, Nenagh (places).

@@ -1,0 +1,22 @@
+# Review of eu-16-e (2026-10-25)
+
+Dossiers: principality-of-galicia-volhynia (fix), pskov-republic (pass), principality-of-turov-and-pinsk (thin). All three validate with 0 errors and 0 warnings (--resolve), both before and after the reviewer's edit. The machine copy is history/notes/phase-b/reviews/eu-16-e.json.
+
+## principality-of-galicia-volhynia: fix (one edit made by the reviewer, one non-blocking item left for the author)
+- Spot checks, all confirmed on the page with the year: 1349 Galicia to Poland, 1344 Peremyshl treaty, 1302 Lublin lost, 1292 Lublin influence, 1253 coronation at Dorohochyn (Opizo), 1238 Galicia reunited, 1272 capital to Lviv, 1260 Boroldai, 1200/1203/1204 Kiev and Pereyaslavl (Kingdom page); June 1340 Lviv (Wars page); September 1211, 1230/1232, 17 August 1245, the Kholm move, 1246 at Sarai (Daniel page).
+- Area: the Kingdom page infobox has no area (checked). Nothing to compare.
+- APPLIED, /identity/rulers: the strip jumped from Roman (to 1205) to Daniel (from 1238). Inserted Daniel 1205-1206, Alexander of Belz 1206-1215 and Daniel 1215-1238 (Prince of Volhynia), from the Daniel page infobox ('Prince of Volhynia: 1205-1206, 1215-1238', predecessor and successor Alexander of Belz) and its sentence on 1215.
+- NOT APPLIED (non-blocking, shape correction), /keyframe_review/2-7: the corrections remove only the Eastern Galicia region (the Lviv, Ivano-Frankivsk and Ternopil oblasts). The Polish side of the Przemysl land (18 cells, about 4,400 km2) therefore stays with Daniel 1206-1240, disappears in the 1241 keyframe with no ledger loss and comes back with the 1245 gain. Fix: correct keyframes 2-7 as minus the union of Eastern Galicia and Przemysl 60 km. (Sandomierz ledger/14 also takes Przemysl in 1214.)
+- Thin, for a gap-filler: 1260 loss of about 211 cells to the Mongols (c=1, the largest single move, Cliopatria only); 1276 Black Ruthenia (c=1, undated on the page); 1326 Berestia (c=1); 1301 Transcarpathia (c=1); 1205 end of the hold on Kiev and Pereyaslavl (c=1); no vassal_start for Turov-Pinsk (the Turov page says Turov depended on Galicia-Volhynia in the early 13th century, no year); Daniel's 1233-1234 hold of Galicia (Daniel infobox) is not in the ledger.
+- Cross-dossier: the mongol-empire dossier has no 1260 gain to match ledger/18 and draws G-V as a vassal from December 1240. Duchy-of-sandomierz loses the Lublin edge in 1294 (c=1) to 'galicia-volhynia', but the Kingdom page has 1292, so Sandomierz should move its loss to 1292 and use the merged slug. Golden-horde's vassal events for 1294-1349 use 'galicia-volhynia'. That slug has no dossier, so they should name principality-of-galicia-volhynia (and the Daniel page dates the submission at Sarai to 1246). All the other counterparts (Kiev, Pereyaslavl, Halych, Hungary, Chernigov, Lithuania, Poland) are not written yet.
+
+## pskov-republic: pass
+- Confirmed: 1348 Treaty of Bolotovo (independence; Yanin's 1329), 13 January 1510 bell removed and 24 January Vasily in Pskov (Vasily III page), 4 March 1299 siege and the Velikaya battle (Daumantas page), 1406-1408 border war and 1501 Siritsa with the summer-1503 six-year truce (Pskov Republic page).
+- Area: no infobox area. The page says 'roughly equivalent to modern-day Pskov Oblast', which is 2.5 times the 22,601 km2 shape. Keyframe 0 acknowledges this and keeps the shape; accepted.
+- Shapes move by two fringe cells only, and that move is explained. Thin: found 1285 (c=1), 1422 loss (c=1), and the war ended by the 1417 Livonian peace that the page names is not in wars[].
+- Vassalage under Lithuania (1341-1349) and under Moscow (1399/1449-1510) is owed by the suzerains' dossiers, which are not written yet.
+
+## principality-of-turov-and-pinsk: thin (by design: 2 of 2 pages, 3 shapes)
+- Confirmed on the Turov page: the 1162 independence sentence, 'joined the Grand Duchy' in the early 14th century, Dmitry Yuryevich from 1292, Turau's army at the Kalka in 1223, dependence on Galicia-Volhynia in the early 13th century. No infobox area.
+- Both ledger events are c=1 and the page contradicts the start (1162 against Cliopatria's 1188). A gap-filler should settle the start and the end (1293) with a second page (Turaw, Narimantas, Principality of Pinsk).
+- Only its own Cliopatria Name is claimed, and it hands over to principality-of-turov and principality-of-pinsk (eu-16-f) in 1294. This is explained in the notes and accepted. eu-16-f should decide whether its rows continue this state (a rename or split) or not.

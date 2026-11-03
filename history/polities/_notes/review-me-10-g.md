@@ -1,0 +1,178 @@
+# Review of batch me-10-g (Phase B, 2026-10-25)
+
+Reviewer: adversarial review of seven dossiers. Validator: all seven valid before and after the reviewer's edits (0 errors, 0 warnings, regions resolve). Spot checks were made through WebFetch on the pages the authors cite; the reviewer applied small verified fixes in place (marked applied) and left larger ones to the author.
+
+| slug | verdict |
+| --- | --- |
+| imamate-of-oman | fail |
+| qatar | pass |
+| kingdom-of-hejaz | fix |
+| asir | fail |
+| north-yemen | fix |
+| yemeni-royalists | fix |
+| arab-kingdom-of-syria | thin |
+
+## imamate-of-oman: fail
+
+Area: infobox 0 km2, Cliopatria 103928 km2, ratio 0.0, acknowledged True. no area on the Imamate page; author says so
+
+Findings:
+- `/ledger/4` (NOT applied: author to do): The Imamate is dissolved at the Treaty of Seeb (25 September 1920), but its own source page keeps it alive to 1959 and the sultanate-of-oman dossier treats it as a live vassal and enemy to 1959. Evidence: Imamate_of_Oman: infobox 'End of the Jebel Akhdar War: 1959'; 'The treaty resulted in a de facto split between Oman and Muscat'; 'In 1954, a new imam, Ghalib Alhinai, defended the Imamate from the attacks of the Sultanate'. Treaty_of_Seeb: 'granted autonomy to the imamate in the interior'. The note of /ledger/4 itself says the Imamate 'continued as an autonomous interior until the Jebel Akhdar War ended in 1959'. sultanate-of-oman /ledger/19 (1920-9 vassal_start), /ledger/21-22 (1954 vassal_end, contest_start), /ledger/25-26 (1959 contest_end, gain) all name imamate-of-oman, which has no mirror events because it ends in 1920. Fix: Extend the life to 1959 from the pages already opened: replace the 1920-9 dissolve with vassal_start (counterpart sultanate-of-oman, region the Cliopatria 1919 polygon, confidence 2); add 1954 vassal_end and contest_start (Jebel Akhdar War; the Treaty of Seeb page dates its start 25 October 1954), a 1955 loss of Nizwa if the Treaty of Seeb page supports it, and 1959 contest_end plus dissolve (counterpart sultanate-of-oman, mirror of its 1959 gain); a new keyframe imamate-of-oman_1920 (from 1920 to 1959, the 1919 polygon, verdict adjust); the Jebel Akhdar War in wars with its zone; certainty to 1959; successor land dated 1959; Ghalib al-Hinai 1954-1959 in rulers if wanted. (Alternative only if the orchestrator prefers: sultanate-of-oman drops every imamate-of-oman event after 1920, but that contradicts the Imamate page.)
+
+Thin (for a gap-filler):
+- `/identity/rulers`: no ruler list; the Treaty of Seeb page has Imam Salim ibn Rashid al-Kharusi to his murder in July 1924 and Muhammad al-Khalili elected 1924 (try https://en.wikipedia.org/wiki/Salim_ibn_Rashid_al-Kharusi)
+
+Spot checks:
+- `/ledger/1` https://en.wikipedia.org/wiki/Imamate_of_Oman: confirmed (1913 rebellion; extent 'north to Ibri and south to the Alsharqiyah region and the Sharqiya Sands')
+- `/ledger/3` https://en.wikipedia.org/wiki/Treaty_of_Seeb: confirmed (signed 25 September 1920 at Sib)
+- `/ledger/4` https://en.wikipedia.org/wiki/Treaty_of_Seeb: date confirmed; the page gives autonomy, not dissolution (see fix)
+- `/identity/capitals/0` https://en.wikipedia.org/wiki/Treaty_of_Seeb: confirmed ('The capital of the Imamate was established in the town of Nizwa')
+
+## qatar: pass
+
+Tried: dates of all three events, the area, the shared Wikidata Q846. Separate dossiers from qatar-dynasty (ends January 1872) are justified by the Ottoman period 1872-1913 (a new state on the same land), though the author's reason (colour registry) is weaker; no change needed. The Ottoman-side mirrors are missing (see cross_checks).
+
+Area: infobox 11581 km2, Cliopatria 12778 km2, ratio 1.1, acknowledged True. 
+
+Spot checks:
+- `/ledger/0` https://en.wikipedia.org/wiki/History_of_Qatar: confirmed ('The Ottomans officially renounced sovereignty over Qatar in 1913')
+- `/ledger/1` https://en.wikipedia.org/wiki/Qatar: confirmed (1915: Abdullah bin Jassim 'persuaded the remainder to abandon the fort'; British found it 'deserted')
+- `/ledger/2` https://en.wikipedia.org/wiki/Qatar: confirmed ('Qatar became a British protectorate on 3 November 1916')
+- `/identity/capitals/0` https://en.wikipedia.org/wiki/History_of_Qatar: confirmed (garrison at the fort of Al Bida')
+
+## kingdom-of-hejaz: fix
+
+Area: infobox 0 km2, Cliopatria 434096 km2, ratio 0.0, acknowledged True. Kingdom_of_Hejaz infobox has no area (population 850,000 in 1920); author says so and compares the 1917 correction (301 k) with the gazetteer Hejaz (356 k)
+
+Findings:
+- `/ledger/15` (APPLIED by reviewer): The 1924 loss of Ta'if had no month and sat before the 1924-8 contest_start, so it would apply before the war began. Evidence: Saudi_conquest_of_Hejaz: 'On 29 August 1924, Ibn Saud began his military campaign'; Ta'if 'surrendered without a major struggle' before 'Mecca fell without struggle on 13 October 1924'. Fix: month 9 added and the event moved after the 1924-8 contest_start (now /ledger/14); note says why.
+
+Thin (for a gap-filler):
+- `/keyframe_review/1`: the interior Hejaz (Tabuk, Al-Ula, Khaybar, the Hejaz railway with its Ottoman garrisons) enters between the 1916 belt of circles (about 60-70 k km2) and the 1917 shape (301 k km2) with only the Wejh and Aqaba circle gains in the ledger; a region-level 1917 gain or a railway-zone contest is needed (try https://en.wikipedia.org/wiki/Hejaz_railway)
+- `/keyframe_review/5`: the 1922 trim of northern Tabuk (58 cells) has no event (try https://en.wikipedia.org/wiki/Hadda_Agreement)
+- `/ledger/10`: al-Khurma and Turaba 1919 (confidence 2, Turaba pages failed); the Hejaz-Nejd frontier 1919-1924 (try https://en.wikipedia.org/wiki/Al-Khurma_dispute)
+
+Spot checks:
+- `/ledger/4` https://en.wikipedia.org/wiki/Arab_Revolt: confirmed ('Abdullah took Ta'if on 22 September 1916')
+- `/ledger/5` https://en.wikipedia.org/wiki/Arab_Revolt: confirmed ('By the end of September 1916 ... Rabigh, Yanbu, al Qunfudhah')
+- `/ledger/7` https://en.wikipedia.org/wiki/Arab_Revolt: confirmed ('On 6 July, after an overland attack, Aqaba fell')
+- `/ledger/13` https://en.wikipedia.org/wiki/Arab_Revolt: confirmed (Medina surrendered 'on 9 January 1919')
+- `/ledger/16` https://en.wikipedia.org/wiki/Saudi_conquest_of_Hejaz: confirmed (Mecca fell 13 October 1924)
+- `/ledger/21` https://en.wikipedia.org/wiki/Saudi_conquest_of_Hejaz: confirmed ('Medina surrendered on 9 December 1925'; 5 December alternative noted)
+
+## asir: fail
+
+Area: infobox 76693 km2, Cliopatria 95604 km2, ratio 1.25, acknowledged True. 76,693 km2 is the modern Saudi province (Asir_Province lead), not the emirate; the emirate page gives only an 80 by 40 mile strip, which the K0 note compares (ratio 1.7)
+
+Findings:
+- `/keyframe_review/1/correction` (NOT applied: author to do): Between the author's new keyframe asir_1907 (1907-1916, the Tihamah strip, about 14 k km2 by its own note) and asir_1917 (Cliopatria's full shape with the Abha highlands, 95.6 k km2) the area grows about 6.7 times with no ledger event; the highlands enter in 1917 although the pages put them in the emirate only after the First World War. Evidence: Asir_Province: 'The territories of the emirate reached from Abha in the north to Hodeidah in the south' sits after the end-of-war paragraph; the K1 note itself says the shape 'holds only for 1917-1918' and doubts it; ottoman-empire /ledger/230 has a 1919 loss of `Asir to asir (confidence 1) that has no mirror here. Fix: Correct asir_1917 to union[intersect[Cliopatria Asir 1917, Tihama], Farasan radius] (the Tihamah plus Farasan for 1917-1918) and add a 1919 gain of minus[Cliopatria Asir 1917, Tihama] from ottoman-empire (confidence 2, source Asir_Province), so that asir_1919 (which already holds the highlands) is explained and the Ottoman 1919 loss is mirrored.
+- `/ledger` (NOT applied: author to do): No vassal_start for the Saudi suzerainty of 1926, which the author read and cites in notes. Evidence: Saudi%E2%80%93Yemeni_war_(1934): 'In 1926, the Emir of Asir assented to Saudi suzerainty, and in 1930 it was incorporated into the Nejd and Hejaz Kingdom.' Fix: Add vassal_start 1926 (counterpart kingdom-of-hejaz-and-nejd, region the 1924-1930 remnant, confidence 3, source the war page, added to sources) and vassal_end 1930-11 before the dissolve.
+- `/ledger/1` (NOT applied: author to do): The 1909 gain of Al Luhayyah and Az Zaydiyah has no later loss, yet neither town is in any keyframe before 1919 and Al Luhayyah is gained again in 1919. Evidence: Idrisid_Emirate_of_Asir: 'Idrisid troops subsequently took over Az Zaydiyah and Al Luhayyah' (1909); 'In 1919, the British, who were in occupation of Al Luhayyah' handed it over; nothing in between. Fix: Add a matching loss (confidence 1, 1910 or the year of the British occupation, counterpart ottoman-empire or kingdom-of-great-britain) or include the towns in asir_1907 from 1909; say which in the note.
+
+Thin (for a gap-filler):
+- `/ledger/7`: Hodeidah's passing to Yahya 'after 1923' kept at 1924, confidence 1 (try https://en.wikipedia.org/wiki/Hodeidah)
+- `/keyframe_review/6`: extent of the Idrisid remnant 1924-1930 (try https://en.wikipedia.org/wiki/Hasan_al-Idrisi)
+
+Spot checks:
+- `/ledger/1` https://en.wikipedia.org/wiki/Idrisid_Emirate_of_Asir: confirmed (autumn 1909, Az Zaydiyah and Al Luhayyah)
+- `/ledger/2` https://en.wikipedia.org/wiki/Idrisid_Emirate_of_Asir: confirmed ('In 1915, the Idrisids had captured the ... Farasan Islands ... from the Ottomans')
+- `/ledger/3` https://en.wikipedia.org/wiki/Idrisid_Emirate_of_Asir: confirmed (1919, the British handed Al Luhayyah over)
+- `/ledger/5` https://en.wikipedia.org/wiki/Asir_Province: confirmed ('The Saudis took control of the regional capital Abha in 1920')
+- `/ledger/9` https://en.wikipedia.org/wiki/Idrisid_Emirate_of_Asir: confirmed ('On 20 November 1930, the territory was incorporated as a protectorate of the Kingdom of Hejaz and Nejd'); the lead's 'until its annexation ... in 1934' is noted by the author
+
+## north-yemen: fix
+
+Area: infobox 136000 km2, Cliopatria 151087 km2, ratio 1.11, acknowledged True. infobox gives no year; 1919-1931 shapes 181.4 k (ratio 1.33), acknowledged in keyframe notes
+
+Findings:
+- `/ledger/15` (APPLIED by reviewer): The royalist retaking of Marib was dated 16 July 1964; the page's narrative puts it in 1965. Evidence: North_Yemen_Civil_War: 'In early June, they moved into Sirwah ... On June 14, they entered Qaflan and, on July 16, they occupied Marib' follows 'Between December 1964 and February 1965' and the royalist ambush at Wadi Humaidat on 15 April. Fix: year 1965 (note, /ledger/13 note and /wars/3 note updated)
+- `/ledger/5-9, /wars/2/belligerents` (APPLIED by reviewer): The 1933-1934 war events named kingdom-of-hejaz-and-nejd, but the Kingdom of Saudi Arabia existed from September 1932 and its dossier (kingdom-of-saudi-arabia, found 1932-9) holds the mirror events with north-yemen as counterpart. Evidence: Saudi%E2%80%93Yemeni_war_(1934) infobox: 'Jizan, Asir, and Najran become provinces of Saudi Arabia; Saudi Arabia leaves and returns control of Hajjah and Hodeidah'; kingdom-of-saudi-arabia /ledger/1-5. Fix: counterpart and belligerent set to kingdom-of-saudi-arabia; the 1932 confidence-1 loss and the 1931 skirmish keep kingdom-of-hejaz-and-nejd; notes updated
+- `/ledger/6, /ledger/9` (APPLIED by reviewer): The Saudi hold on the Tihamah in 1934 was recorded as a contest from April; the page and the Saudi dossier give an occupation from May to 7 July. Evidence: Saudi%E2%80%93Yemeni_war_(1934): Luhayya taken 1 May, Hodeida 4 May, Saudi forces 'occupying Hodeida', 'The last Saudi troops left Yemen on 7 July'; kingdom-of-saudi-arabia /ledger/2 occupation_start 1934-5, /ledger/5 occupation_end 1934-7. Fix: /ledger/6 occupation_start 1934-5, /ledger/9 occupation_end 1934-7
+
+Thin (for a gap-filler):
+- `/keyframe_review/1`: the southern Tihamah (Zabid, Bayt al-Faqih, Mokha, Midi) enters between north-yemen_1918 (Tihamah excluded) and north-yemen_1919 with no ledger event; who held it 1919-1925 (try https://en.wikipedia.org/wiki/Yahya_Muhammad_Hamid_ed-Din)
+- `/ledger/3`: Hodeidah and Al Luhayyah regained 'after 1923', kept at 1924, confidence 1 (try https://en.wikipedia.org/wiki/Hodeidah)
+- `/ledger/4`: Najran and the frontier strip lost in 1932, confidence-1 bridge to Cliopatria; the Saudi dossier has no 1932 gain (try https://en.wikipedia.org/wiki/Najran)
+- `/ledger/8/region`: the 1934 loss names Jizan and Asir, which north-yemen never held after 1932 (source wording kept; mirrored by the Saudi gain); harmless but the drawn loss should be Najran only (try https://en.wikipedia.org/wiki/Treaty_of_Taif)
+
+Spot checks:
+- `/ledger/0` https://en.wikipedia.org/wiki/Mutawakkilite_Kingdom_of_Yemen: confirmed (30 October 1918; last Ottoman force surrendered 23 January 1919)
+- `/ledger/6` https://en.wikipedia.org/wiki/Saudi%E2%80%93Yemeni_war_(1934): confirmed captures (Luhayya 1 May, Hodeida 4 May 1934); type and month corrected
+- `/ledger/8` https://en.wikipedia.org/wiki/Mutawakkilite_Kingdom_of_Yemen: confirmed (Taif Treaty 14 June 1934; 'He had to leave Najran, Asir and Jizan')
+- `/ledger/14` https://en.wikipedia.org/wiki/North_Yemen_Civil_War: confirmed ('On February 25, the forces occupied Marib')
+- `/ledger/15` https://en.wikipedia.org/wiki/North_Yemen_Civil_War: mis-dated (1964 for 1965; confidence 2) - fixed
+- `/ledger/17` https://en.wikipedia.org/wiki/North_Yemen_Civil_War: confirmed ('by February 1968, the royalists lifted the siege')
+
+## yemeni-royalists: fix
+
+Area: infobox 0 km2, Cliopatria 0 km2, ratio 0.0, acknowledged True. no article and no Cliopatria row; shapes are governorate readings at confidence 2
+
+Findings:
+- `/ledger/2, /keyframe_review/1/to, /keyframe_review/2` (APPLIED by reviewer): The royalist retaking of Marib was dated 16 July 1964; the page's narrative puts it in 1965. Evidence: North_Yemen_Civil_War: the Sirwah-Qaflan-Marib sentence follows 'Between December 1964 and February 1965' and the 15 April Wadi Humaidat ambush. Fix: /ledger/2 year 1965; keyframe yemeni-royalists_1963 runs to 1964; yemeni-royalists_1964 renamed yemeni-royalists_1965 with from 1965; notes updated
+
+Thin (for a gap-filler):
+- `/keyframe_review/1`: the Hajjah mountains enter in 1963 with no ledger event (page: royalists held the mountains round Hajjah, undated) (try https://en.wikipedia.org/wiki/Muhammad_al-Badr)
+- `/keyframe_review/2/correction`: Sa'dah and the Saudi-border mountains (al-Badr's headquarters) are left out; no capital (try https://en.wikipedia.org/wiki/Muhammad_al-Badr)
+
+Spot checks:
+- `/ledger/1` https://en.wikipedia.org/wiki/North_Yemen_Civil_War: confirmed (Marib 25 February, Harib 7 March 1963)
+- `/ledger/2` https://en.wikipedia.org/wiki/North_Yemen_Civil_War: mis-dated (1964 for 1965; confidence 2) - fixed
+- `/ledger/4` https://en.wikipedia.org/wiki/North_Yemen_Civil_War: confirmed (siege lifted by February 1968)
+- `/ledger/5` https://en.wikipedia.org/wiki/North_Yemen_Civil_War: confirmed (war ended 1 December 1970; Saudi recognition 1970)
+
+## arab-kingdom-of-syria: thin
+
+Area: infobox 0 km2, Cliopatria 0 km2, ratio 0.0, acknowledged True. no infobox area, no Cliopatria row; author calls the shape a reading
+
+Thin (for a gap-filler):
+- `/keyframe_review/0/correction`: the page says 'Faisal's government controlled a limited area', but the reading draws all inland Syria (the Jazira: Al Hasakah, Ar Raqqah, Dayr az Zawr included) plus northern Transjordan, about 200 k km2; the administered OETA East zone is needed (try https://en.wikipedia.org/wiki/Occupied_Enemy_Territory_Administration)
+- `/ledger/4/region`: the dissolve region includes Transjordan with counterpart french-mandate-for-syria-and-lebanon, while successors give Transjordan to kingdom-of-jordan as 'no man's land'; split off a 1920-7 loss of Transjordan to nobody (try https://en.wikipedia.org/wiki/Emirate_of_Transjordan)
+
+Spot checks:
+- `/ledger/0` https://en.wikipedia.org/wiki/Arab_Kingdom_of_Syria: confirmed ('announced on 5 October 1918')
+- `/ledger/1` https://en.wikipedia.org/wiki/Arab_Kingdom_of_Syria: confirmed ('proclaimed a kingdom on 8 March 1920')
+- `/ledger/2` https://en.wikipedia.org/wiki/Arab_Kingdom_of_Syria: confirmed (infobox 'Battle of Maysalun: 24 July 1920')
+- `/ledger/4` https://en.wikipedia.org/wiki/Arab_Kingdom_of_Syria: confirmed (fall of Damascus 25 July 1920; page also has 24 July once)
+
+## Cross-dossier matrix
+
+- imamate-of-oman 1913 gain (cp sultanate-of-oman) -> sultanate-of-oman 1913 loss: **matched**. 
+- imamate-of-oman 1920 dissolve (cp sultanate-of-oman) -> sultanate-of-oman 1920 vassal_start: **mismatch**. sultanate-of-oman makes the Imamate its vassal in 1920 and fights it 1954-1959 (/ledger/19,21,22,25,26); imamate-of-oman ends in 1920. Fix in imamate-of-oman (extend to 1959).
+- sultanate-of-oman 1959 gain (cp imamate-of-oman) -> none: **missing**. no imamate-of-oman event after 1920
+- qatar 1913 found (cp ottoman-empire) -> ottoman-empire 1913 loss: **mismatch**. ottoman-empire /ledger/210 gives Al-Hasa and Qatif to emirate-of-nejd and has no Qatar loss; route to the Ottoman author (History_of_Qatar: Ottomans 'officially renounced sovereignty over Qatar in 1913')
+- qatar 1915 gain (cp ottoman-empire) -> none: **missing**. ottoman-empire has no 1915 loss of the Doha garrison
+- qatar 1916 dissolve (cp qatar-protectorate) -> none: **exception**. qatar-protectorate is a me-10 part not yet written; it must cover the peninsula 1916-1971 (Cliopatria's row is Omani geometry)
+- kingdom-of-hejaz 1916 gain (cp ottoman-empire) -> ottoman-empire 1916 loss: **matched**. Ottoman /ledger/222 loses the whole Hejaz and Transjordan in 1916-6 in one event
+- kingdom-of-hejaz 1917 gain (cp ottoman-empire) -> ottoman-empire 1916 loss: **mismatch**. Wejh (1917-1), Aqaba (1917-7), Ma'an (1918) and Medina (1919-1) are all inside the Ottoman 1916 lump; the Ottoman dossier should keep Medina to January 1919, Aqaba to July 1917 and Ma'an to September 1918
+- kingdom-of-hejaz 1919 gain (cp ottoman-empire) -> none: **mismatch**. Medina 9 January 1919: no Ottoman loss (see above)
+- kingdom-of-hejaz 1919 loss (cp emirate-of-nejd) -> none: **exception**. emirate-of-nejd: me-10 part not yet written
+- kingdom-of-hejaz 1924 loss (cp emirate-of-nejd) -> none: **exception**. Ta'if, Mecca; emirate-of-nejd not yet written
+- kingdom-of-hejaz 1925 loss (cp kingdom-of-jordan) -> none: **exception**. kingdom-of-jordan not yet written (author lists it)
+- kingdom-of-hejaz 1925 loss (cp emirate-of-nejd) -> none: **exception**. Medina, Yanbu, dissolve; emirate-of-nejd not yet written
+- asir 1909 gain (cp ottoman-empire) -> none: **missing**. no Ottoman loss of Al Luhayyah/Az Zaydiyah
+- asir 1915 gain (cp ottoman-empire) -> none: **missing**. no Ottoman loss of the Farasan Islands
+- ottoman-empire 1919 loss (cp asir) -> none: **missing**. Ottoman /ledger/230 (confidence 1) has no asir gain; fix in asir (1919 highland gain)
+- asir 1919 gain (cp kingdom-of-great-britain) -> none: **exception**. eu-11 not yet written (Al Luhayyah; also Hodeidah 1921)
+- asir 1920 loss (cp emirate-of-nejd) -> none: **exception**. not yet written
+- asir 1924 loss (cp north-yemen) -> north-yemen 1924 gain: **matched**. both confidence 1
+- asir 1926 vassal_start (cp kingdom-of-hejaz-and-nejd) -> none: **missing**. on the Saudi-Yemeni war (1934) page; absent from asir; Saudi side not yet written
+- asir 1930 dissolve (cp kingdom-of-hejaz-and-nejd) -> none: **exception**. not yet written
+- north-yemen 1918 found (cp ottoman-empire) -> ottoman-empire 1918 loss: **matched**. Ottoman region is country=Yemen, which also covers Aden and Hadramawt; route to the Ottoman author
+- north-yemen 1932 loss (cp kingdom-of-hejaz-and-nejd) -> none: **exception**. confidence-1 bridge; kingdom-of-hejaz-and-nejd not yet written; kingdom-of-saudi-arabia (from 1932-9) has no 1932 gain
+- north-yemen 1934 occupation_start (cp kingdom-of-saudi-arabia) -> kingdom-of-saudi-arabia 1934 occupation_start: **matched**. after reviewer fix (was contest_start 1934-4 with kingdom-of-hejaz-and-nejd)
+- north-yemen 1934 loss (cp kingdom-of-saudi-arabia) -> kingdom-of-saudi-arabia 1934 gain: **matched**. after reviewer counterpart fix
+- north-yemen 1934 occupation_end (cp kingdom-of-saudi-arabia) -> kingdom-of-saudi-arabia 1934 occupation_end: **matched**. after reviewer fix
+- north-yemen 1963 gain (cp yemeni-royalists) -> yemeni-royalists 1963 loss: **matched**. 
+- north-yemen 1965 loss (cp yemeni-royalists) -> yemeni-royalists 1965 gain: **matched**. both redated from 1964 by the reviewer
+- north-yemen 1990 merge (cp people-s-democratic-republic-of-yemen) -> none: **exception**. me-10 part not yet written
+- yemeni-royalists 1962 found (cp north-yemen) -> north-yemen 1962 contest_start: **exception**. rebel rule: the government dossier carries the fighting zone as a contest
+- arab-kingdom-of-syria 1918 found (cp ottoman-empire) -> ottoman-empire 1918 loss: **mismatch**. Ottoman /ledger/228 gives Syria and Lebanon to british-colonial-empire (OETA); acceptable if the British dossier draws OETA East as an occupation handed to Faisal, otherwise route
+- arab-kingdom-of-syria 1920 dissolve (cp french-mandate-for-syria-and-lebanon) -> none: **exception**. me-10 part not yet written
+
+## Other
+
+- kingdom-of-saudi-arabia.json appeared during the review (written in parallel by another me-10 part) and was used for the 1933-1934 cross-checks.
+- Reviewer edits applied and re-validated (0 errors, 0 warnings): north-yemen (/ledger/15 year, /ledger/5-9 counterparts, /ledger/6 and /ledger/9 types and month, /wars/2 belligerent, notes), yemeni-royalists (/ledger/2 year, keyframes 1 and 2, notes), kingdom-of-hejaz (Ta'if month and order).
+- Ottoman-side mismatches (Qatar 1913/1915, Hejaz 1917-1919, Asir 1909/1915, Yemen region) belong to the ottoman-empire author.
+- WebFetch returns summaries; quotations above are as the extract printed them.
+- Gazetteer names needed: Rabigh, Al Khurmah, Al Luhayyah, Az Zaydiyah, Sabya, Farasan Islands.

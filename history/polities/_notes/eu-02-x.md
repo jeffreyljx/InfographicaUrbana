@@ -1,0 +1,80 @@
+# Notes, group eu-02-x (Hellenistic world, additions batch)
+
+Run history. First run of this batch (2026-10-19). No report existed. Eleven dossiers written, all validate with `--resolve` and zero errors; none of the eleven has a Cliopatria row, so every keyframe is new (verdict `adjust`). WebFetch returns a model summary of the page; quotation marks in the notes enclose only strings the tool returned as quotations, everything else is paraphrase. Every event, keyframe and war cites a page opened in this run. Pages budget: 2-5 per state; boeotian-league used six (the sixth, Achaean War, backs the 146 disagreement).
+
+## Written (pages opened per state)
+- boeotian-league, -315..-171 (Boeotian League, Thebes (Greece), Demetrius I of Macedon, Megara, Third Macedonian War, Achaean War)
+- acarnanian-league, -314..-31 (Acarnanian League, Acarnania, Epirus (ancient state))
+- tylis, -278..-212 (Tylis, Comontorius, Cavarus, Gallic invasion of the Balkans, Seuthopolis)
+- scordisci, -279..-8 (Scordisci, opened twice)
+- macedonian-republics, -168..-148 (Third Macedonian War, Macedonia (Roman province), Battle of Pydna)
+- league-of-the-islanders, -314..-167 (League of the Islanders, Delos)
+- thessalian-league-roman-era, -196..-146 (Thessalian League, Second Macedonian War, Roman-Seleucid war, Achaean War, Third Macedonian War)
+- macedon-281-277, -281..-277 (Ptolemy Ceraunus, Antipater Etesias, Sosthenes of Macedon, Gallic invasion of the Balkans)
+- league-of-free-laconians, -195..297 (League of Free Laconians, War against Nabis)
+- dalmatae, -181..-33 (Dalmatae, Delminium)
+- league-of-corinth, -337..-322, type umbrella, no keyframes (League of Corinth; Demetrius I page cited in notes)
+
+## Not written, and why
+- sparta: Sparta under Cleomenes III and Nabis is already in peloponnesian-league.json (eu-01-c, 'Sparta (Peloponnesian League)', -800..-192, events 229-192). A second dossier would double the land.
+- elis: the Elis page is the regional unit's article and has no Hellenistic history (no Social War, Triphylia, 191); would need Social War (220-217 BC), Achaean League and Roman-Seleucid war pages. Start year would be a bridge.
+- athamania: the page opened is mythic and gives only 'subjugation by Pyrrhus of Epirus in 281-272 BC' and by the Macedonians in 191; no kings' dates.
+- cretan-league: the page has only the 3rd-century foundation (no year), 67 BC conquest and survival to the 4th century AD; History of Crete gives 220 (Lyttian War), 205-200 (Philip V's hegemony, Cretan War) and 69 BC (Metellus); Metellus Creticus gives no dates. Crete is a patchwork of poleis; a unitary shape would mislead.
+- chersonesos-taurica: the page is thin on the Hellenistic polis (c. 110 BC call for Mithridates VI and Diophantus, then the Bosporan Kingdom; growth into north-west Crimea 'up to the middle of the 4th century BC'), no Scythian war, no start year.
+- hellenistic Athens: covered by greek-city-states' ledger 46-75 (322, 307, 301, 294, 287, 261, 229, 88, 86); https://en.wikipedia.org/wiki/Hellenistic_Athens does not exist (not found).
+- alexander-of-corinth (c. 253-245), andriscus' Macedon (150-148): under the ten-year threshold; they appear as counterpart strings.
+
+## Findings about Cliopatria rows (gazetteer checks, 2026-10-19)
+- Greek City-States has no shape for 271-226 (eu-01 and greek-colonies bridge it); boeotian-league and acarnanian-league start before and run through that gap.
+- Dalmatia: Cliopatria's Roman Republic shape covers 41 of the region's 48 cells from 150 BC to 40 BC; the Dalmatae (independent to 33) therefore overlap it. roman-republic's ledger 79 keeps the Dalmatian coast north of Lissus outside until Octavian, but no keyframe of that dossier subtracts Dalmatia.
+- Boeotia is drawn as Macedonian Empire/Greek City-States (310), Antigonid Dynasty (290), Antigonid Macedonia (230), mixed (200), Greek City-States (175): the league's land is already drawn by others every year.
+- Acarnania: Macedonian Empire (310), Aetolian League (230, 200), Greek City-States (310, 200, 150), Roman Republic (100).
+- Thessaly: about 40 of 49 cells in Greek City-States 195-150. Cyclades: only 2 cells touched by any row. Laconian coast: Greek City-States (190, 150), Roman Republic (100, 50), Roman Empire.
+- Serbia: only 1-2 cells of Antigonid Macedonia (270, 200) and 1 of the Roman Republic before the Roman Empire shape of about 10 BC (228 cells). Tylis's disc is touched by no row (278-215).
+
+## Disagreements between pages (recorded in the dossiers)
+Boeotian League dissolved 171 (league page, Third Macedonian War page 'broke up the league') or after 146 (Thebes page; Achaean War page 'All leagues ... were dissolved'; Thebes 'allied to the Achaeans'); Megara's return 203 or 193 (Megara page). Acarnania partitioned ca. 270 (League page, Acheloos border) or c. 250 (Acarnania page); reconstitution 230 (League page) or c. 233 (Epirus page); Leucas went to Epirus (League page) or became the capital (Acarnania page). Tylis founded 278 (Comontorius), after 277 (Tylis page) or 279 (caption); ended 212 or 213 (caption). Macedonian settlement placed in 168 on the Third Macedonian War page (167 elsewhere); province autumn 148 (body) or 146 (lead and infobox). League of the Islanders founded 314/3 (page), 306 ('often cited') or by Ptolemy II (Meadows). Delmatae secede 181 (Dalmatae page) or 180 (Gentius page, cited by illyrian-kingdom). Scordisci settled 279/278.
+
+## Mirrors needed in dossiers other groups own
+- antigonid-dynasty: 291 gain from Boeotian League has no 287 loss (this dossier's 287 gain); its 236-196 Boeotian vassal pair, 301 loss and 304 gain rest on pages not opened here and overlap this dossier's Boeotia 236-196; 196 loss names the Thessalian League by name (now thessalian-league-roman-era, Thessaly only, not the Magnesians, Perrhaebians and Phthiotic Achaeans); 191 gain / c. 185 loss of Thessalian towns (occupation pair here); 277 gain names 'Sosthenes (Macedon, 279-277)' (macedon-281-277); Cyclades 314 patron, 287 loss, 201 conquest (league-of-the-islanders).
+- kingdom-of-lysimachus: 281 loss names 'Ptolemy Keraunos (Macedon and Thrace, 281-279)' = macedon-281-277.
+- aetolian-league: c. 250 gain 'Acarnanian League' = acarnanian-league (south of Acarnania); no client tint over Boeotia c. 245-244; a Boeotian alliance in 245.
+- kingdom-of-epirus: c. 250 gain of north Acarnania with Leucas and 230 loss; Epirus 167 vs the Molossians (eu-02-b).
+- achaean-league: 223 loss of Megara names 'Boeotian League' (now boeotian-league); its return 192 against 203/193 on the Megara page; protection of the Free Laconians 195-146.
+- peloponnesian-league: 195 loss names 'League of Free Laconians' (league-of-free-laconians); same Gytheio and Monemvasia discs.
+- roman-republic: 72, 75-76 name 'Macedonian merides (four client republics)' (macedonian-republics, 168 here, 167 there); 168 gain of Leucas; Dalmatian coast.
+- illyrian-kingdom: 180 loss to Dalmatae (181 here).
+- odrysian-kingdom: successor tylis now exists.
+- rhodes: 200 hegemon and 167 end of the Second League of the Islanders; ptolemaic-kingdom: 287 hegemony over the Islanders.
+- thessalian-league (eu-01-x, ends 353): the same institution as thessalian-league-roman-era; merge or give one colour.
+- macedonian-empire: 322 vassalage of the Greeks mirrors league-of-corinth's dissolution; the 331 Spartan appeal.
+- greek-city-states (eu-01), greek-colonies (eu-02-b), antigonid-dynasty and roman-republic draw lands that these new dossiers also draw (Boeotia, Acarnania, Thessaly 196-146, the Laconian coast, Dalmatia 150-33); the renderer or reviewer must decide which owner wins, or those rows should subtract them.
+
+## Gazetteer names needed
+Acarnania (region; Ionian coast between the Ambracian Gulf and the Achelous with Leucas; unknown in acarnanian-league, 11 warnings), Gytheio (place, 36.76 N 22.57 E; unknown in league-of-free-laconians, 14 warnings, and in peloponnesian-league), Megara (place, about 38.0 N 23.35 E), Haliartus (about 38.37 N 23.09 E), Lysimachia (Thracian Chersonese, about 40.43 N 26.76 E), Tomislavgrad/Delminium (about 43.7 N 17.2 E), Tulovo/Tylis (about 42.6 N 25.5 E), Leucas/Lefkada, Stratos, Amphipolis, Delos, Tenos (capitals only; discs or coordinates stand in).
+
+## Dossier-specific cautions
+- tylis: no page gives any extent; an 80 km disc round Tulovo. scordisci: Serbia plus a Drina band for the 2nd-century maximum, an approximation; the page calls the society 'heterarchical'. dalmatae: the Dalmatia region is a stand-in. league-of-the-islanders: the Cyclades region; the 260 'loss' to greek-city-states is a confidence-1 placeholder so the islands are not grey. acarnanian-league: no land 249-231 by design. league-of-free-laconians: runs to 297 AD although this batch's era ends 30 BC; 146-22 BC has no shape. league-of-corinth: type umbrella, the revivals of 304-301 and 224 are in notes, not events. macedon-281-277: territory is the researcher's reading of Lysimachus's European half; no months are given for the 279 succession.
+- Months: none recorded where the pages give none (Gallic invasion 'January or February 279' left to the note).
+- Quotation audit (final pass): every quoted span in the eleven dossiers was checked against the text the page fetches returned inside quotation marks; spans that were only the fetch tool's paraphrase were unquoted or reworded. War spans now follow the pages: Cretan War 201 only (League of the Islanders page), Roman-Seleucid War 191 only in acarnanian-league and 191-190 in thessalian-league-roman-era, Lamian War 322 only (League of Corinth page); the Social War entry in acarnanian-league was dropped (the League page names the war but gives no outcome for the Acarnanians). Hegemon strip for Alexander in league-of-corinth runs to the dissolution (322) because the page gives no end for his hegemony.
+
+## Fix run (2026-10-19, after the adversarial review; boeotian-league and league-of-the-islanders only)
+Both dossiers re-validate with `--resolve`, 0 errors, 0 warnings. Pages opened again or for the first time in this run: Demetrius II Aetolicus, Demetrius I of Macedon, Second Macedonian War (twice), Cassander, Philopoemen, Achaean League, Antigonid dynasty, League of the Islanders, Chremonidean War, Battle of Andros, Cretan War (205-200 BC). Quoted spans are the ones the fetches returned inside quotation marks. Supersedes the 'Mirrors needed' lines above for antigonid-dynasty/aetolian-league where it says otherwise.
+
+### boeotian-league (ledger 11 -> 18 events, sources 6 -> 11)
+- Applied (finding 1): vassal_start -236 antigonid-dynasty, conf 3 (Demetrius II page: 'In 236 BC, he invaded Boeotia, making the Boeotians submit immediately'), mirrors antigonid-dynasty /ledger/30; vassal_end of that relation dated -197, not -196 (see disagreement).
+- Applied (finding 2): the Aetolian vassal_end moved from -244 (conf 1) to -236, conf 2, source Demetrius II page ('wresting Boeotia from their alliance').
+- Applied (finding 3), first option: the found note and keyframe 0 say that macedonian-empire keeps Cassander's hold on Boeotia 315-304 (Cassander page: restoring Thebes gave 'a power base for Cassander in Boeotia'); the league's 315-304 status is a client pair with macedonian-empire (-315 / -304, conf 2), then vassal_start -304 / vassal_end -301 with antigonid-dynasty (Demetrius I page: 304 'reinstated the Corinthian League'; Ipsus 301; conf 2 and 1), mirroring antigonid-dynasty /ledger/2 and /10 and macedonian-empire /ledger/65. The second option (the league, not Cassander, holds Boeotia) is not supported by any page.
+- Disagreement with the reviewer (the 196 date): the Second Macedonian War page does not list the Boeotians among the free communities of the Isthmian proclamation of May 196 (Corinthians, Phocians, Locrians, Euboeans, Magnesians, Thessalians, Perrhaebians, Phthiote Achaeans); it has Flamininus and Attalus go to Thebes 'to bring the Boeotian League into the coalition' at the start of spring, before Cynoscephalae (so spring 197; the year is the page's chronology, conf 2), with Roman troops smuggled in; 'Over the winter of 197/196 BC ... conflict had broken out in Boeotia' (Brachylles killed, about 500 Roman soldiers murdered, Athens and the Achaeans negotiate). The infobox lists the Boeotian League on Macedon's side. So the vassal_end is -197. antigonid-dynasty /ledger/60 (-196, note 'with the proclamation') should move to -197 and be re-sourced; its Boeotian pair then closes within one year of this one.
+- Thin items: /ledger/6 end of the Aetolian membership resolved (236). /ledger/8 Megara's return stays 193 (conf 2): the Philopoemen page does not mention Megara at all and the Achaean League page has only the 223 desertion ('deserted the Achaean League and joined the Boeotian Confederacy'), nothing on a return; only the Megara page gives 203 or 193.
+- The Boeotian League page's 'enrolled for a short time in the Aetolian League (about 245 BC)' sits ill with a membership that runs to 236 on the Demetrius II page; both recorded, the end year is the Demetrius II page's.
+
+### league-of-the-islanders (ledger 10 -> 12 events, sources 2 -> 6, Cretan War entry widened)
+- Applied (finding 1), first option: found and the 314 vassal_start now name macedonian-empire (Antigonus's realm until its /ledger/63 split of 306); new vassal_end macedonian-empire / vassal_start antigonid-dynasty at -306, conf 2 (Antigonid dynasty page: 'Established: 306 BC'; the League page gives no 306 hand-over, only that an inscription is 'typically dated to 306 BC' and that the League continued after Ipsus).
+- Applied (finding 2), partly: the 260 loss keeps greek-city-states (conf 1) because the League page itself gives the free-poleis reading ('by and large the individual Cycladic islands appear to have remained free and autonomous', Reger) next to a Macedonian-hegemony suggestion and Rhodian alliances with some islands; the 200 gain from antigonid-dynasty is now conf 2, supported by the Cretan War page (Rhodes 'regained control over the Cyclades'). The chain is free islands (260) -> antigonid-dynasty (201, Philip V 'subdued the Cyclades') -> this League (200). I cannot add the middle link in dossiers I do not own: greek-city-states needs a 260 gain and a 201 loss of the Cyclades (eu-01), antigonid-dynasty a 201 gain and a 200 loss (eu-02-a); Andros, Paros and Kythnos stayed Macedonian-garrisoned after 200 (League page, paraphrase), a small excess in keyframe 1.
+- Thin items: /ledger/4 (end of Ptolemaic hegemony) stays conf 1, now documented: last nesiarch c. 260, Ptolemaic fleet beaten off Cos 'probably in 261 BC' (alternatives 258, 255; Chremonidean War page), 'the Ptolemaic position collapsed completely after Andros' (League page; Andros 246 per the disambiguation page, which gives no result), so the real end lies between 261 and 246. /ledger/5 and /ledger/6: see above; the Battle of Andros page gives no consequence.
+- The Cretan War entry now runs 205-200 (Cretan War page infobox) with Rhodes added as belligerent.
+- Dossier-convention warning: the schema defines the counterpart of vassal_* as the vassal, but this batch's dossiers (and the two reviewed ones in particular, as the reviewer prescribed) record the relation from the vassal's side with the OVERLORD as counterpart; the renderer should read vassal_* in boeotian-league and league-of-the-islanders as 'this state is the client of counterpart'.
+
+### Mirrors outstanding in dossiers other groups own (new from this run)
+- macedonian-empire (eu-02-a): no client tint for Boeotia 315-304 (held direct; /ledger/65 304 loss stands). aetolian-league: client tint over Boeotia 245-236. antigonid-dynasty: /ledger/60 to 197; 287 loss of Boeotia still missing; 201 gain and 200 loss of the Cyclades. achaean-league: gain of Megara from Boeotian League at 193 (Megara page, 203 alternative). greek-city-states (eu-01): 260 gain and 201 loss of the Cyclades. ptolemaic-kingdom: no dossier on the mount yet (287 hegemony over the Islanders, c. 260 end).

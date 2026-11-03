@@ -1,0 +1,54 @@
+# eu-14-x: Scandinavia and the Baltic, additions batch
+
+Status 2026-10-25: 22 dossiers written (all validate with `--resolve`, 0 errors; 21 with 0 warnings, bremen-verden 1 warning: its Torstenson War span 1643-1645 precedes the state's 1648 start). 186 ledger events, 71 source citations (WebFetch pages opened this run). No page failed except `Finns_Proper` and `Riga_War_(1297-1330)` (url_not_found).
+
+## What was written
+
+Baltic peoples before the orders (type state, start at the first page-dated event, never a founding): old-prussians 997-1283, curonians 854-1266, semigallians 1106-1290, livonians 1184-1208 (the Livs), ancient-estonia 1208-1227.
+Finland's peoples: tavastians 1042-1249, karelians 1143-1323.
+Livonian church states (no Cliopatria row; the Livonian Conference row 1422-1561 covers all of them): bishopric-of-dorpat 1224-1558, bishopric-of-osel-wiek 1228-1560, bishopric-of-courland 1234-1560, archbishopric-of-riga 1186-1561, riga (free imperial city) 1561-1581.
+Swedish and Danish crown lands (type colony, tints of Sweden or Denmark, overlapping Cliopatria's Swedish Empire and Denmark-Norway shapes): duchy-of-livonia 1561-1629 (state, Polish-Lithuanian), swedish-livonia 1621-1710, swedish-estonia 1561-1710, swedish-ingria 1583-1708 (gap 1595-1616), kexholm-county 1617-1721, swedish-pomerania 1630-1815, bremen-verden 1648-1719, danish-estonia 1219-1346.
+Hanseatic and German coast: free-imperial-city-of-lubeck 1226-1806, county-of-holstein 1111-1474.
+
+## Rules followed
+
+- Tribal peoples have no founding page: the start is the first page-dated event and says so; capitals are empty where no page names one.
+- Where a page gives an area but no boundary (Archbishopric of Riga 18,000 km2; Courland 4,500 km2) the shape is an equal-area disc or a county set, certainty `soft`, event confidence 1 for the land.
+- Coordinates not in the gazetteer (Mölln, Bergedorf, Priozersk) are the researcher's and flagged in the region text.
+
+## Conflicts and hand-offs for the orchestrator
+
+- Cliopatria's Livonian Conference polygon (1422-1561, owned by eu-14-f) covers the Order and the bishoprics. With bishopric-of-dorpat, bishopric-of-osel-wiek, bishopric-of-courland and archbishopric-of-riga the Order's own share should exclude them. The Conference dossier files the 1558 loss of Dorpat, the 26 September 1559 sale of Ösel-Wiek and the 1561 end under the Confederation; the bishopric dossiers file the same events under themselves (Dorpat 1558-5 to tsardom-of-russia; Ösel-Wiek vassal 1559-9 and loss 1560-4 to denmark-norway; Courland 1560-5; Riga 1561). One of the two sides should carry each, not both.
+- Ösel-Wiek: the Livonian War page has the treaty of 26 September 1559 (right to nominate the bishop, 'amounted to the sale') and possession in April 1560; the Ösel-Wiek page has 1560 and 15 April 1560. Courland's page gives 1559, 20 May 1560 (timeline), 20 April 1562 (infobox) and 20 April 1585 (sold by Denmark to Poland-Lithuania).
+- Riga becomes a free imperial city in 1561 (Riga page, 'for twenty years') or 'the following year' (Livonian Confederation page); the dossier uses 1561-1581.
+- The Curonians page says all Courland was partitioned in 1266 between the Livonian Order and the Archbishop of Riga; the Bishopric of Courland page says Courland was divided in 1253 between the bishopric and the Order. The curonians dossier files 1266 under the Order and the Brothers' 1230 under the Brothers.
+- Christburg 1249 vs 1253 (old-prussians vs the Teutonic Order dossier); Ingria 1590 vs 1595 (swedish-ingria vs swedish-empire); the Pomeranian occupier is named duchy-of-pomerania in swedish-pomerania where the other dossier says swedish-empire; denmark-norway files its Ösel and Bremen-Verden events under swedish-empire where bremen-verden names the Danish crown.
+- The semigallians dossier keeps Semigallia free to 1254, against the Livonian Brothers dossier (Cliopatria draws the Order there from 1210).
+- free-imperial-city-of-lubeck (1226-1806) continues as Cliopatria's Free City of Lübeck (1806-1870, eu-20-a); the same state, so one colour. county-of-holstein ends 1474 with the title becoming a duchy; the Duchy of Holstein 1474-1848 has no dossier (Cliopatria's row is 1848-1852, eu-20).
+- archbishopric-of-riga files its 1561 loss to duchy-of-livonia (Terra Mariana page: the southern territories became the Duchy of Livonia); the duchy-of-livonia dossier's gains should include it.
+
+## Not written (with reasons)
+
+- Hanseatic League: an association with no territory ('never formally founded'); not drawn. Hamburg, Bremen (free imperial cities), Danzig, Reval as Hanseatic towns: no dossier (Lübeck and Riga written).
+- Finns Proper and the Swedish conquest of Finland: the First Swedish Crusade page says historians doubt it took place and gives no land; the Finns Proper page failed (url_not_found).
+- kingdom-of-livonia (Magnus, 1570-1578): under ten years and the page names no territory.
+- duchy-of-holstein-gottorp (1544-1773), prince-bishopric-of-warmia, victual-brothers (1394-1398), yotvingians: page silent on land or under ten years; not reached for Warmia.
+- Norse Greenland's end: owned by the norse-greenland row's own dossier (eu-14-c).
+- Danish Wiek and Ösel (1560-1645) and Pilten under Magnus and Denmark (1560-1585): no dossier.
+
+## Gazetteer names wanted
+
+Places: Piltene (Pilten), Lihula, Vana-Pärnu (Perona), Priozersk (Kexholm, Käkisalmi), Mölln, Bergedorf, Ruhnu (Runö), Lieksa, Suojärvi, Kwidzyn, Suwałki, Wismar, Rügen, Usedom, Wolin, Greifswald, Wolgast, Gartz, Shlisselburg (Nöteborg, Oreshek), Kingisepp, Ivangorod, Valmiera, Lehe, Bederkesa, Ikšķile (town). Regions and features: Dithmarschen, Karelian Isthmus, Ladoga Karelia, the Eider.
+
+## Fix pass 2026-10-31 (after review-eu-14-x; verdicts fail: old-prussians, karelians, archbishopric-of-riga)
+
+Changed (all three validate with `--resolve`, 0 errors, 0 warnings):
+
+- old-prussians: added the 1260-9 gain from teutonic-order (Great_Prussian_Uprising: 'The major revolt began on 20 September 1260'; the Prussians took most castles, the Knights 'left only with strongholds in Balga, Elbing, Culm, Thorn, and Königsberg', which the page places in 1262-1263). The region is the exact keyframe difference (110 cells, Sambia, Natangia, Bartia, Warmia, Pogesania; Galindia stays with the Order), not the whole keyframe as the reviewer suggested, because Nadruvia, Skalvia and Sudovia were never lost before 1283. The same region now sits on the 1260 contest start, the 1277 contest end and the 1277 loss; the 1238/1253 contest and loss rows carry the exact 1253 drop (87 cells, plus Samland 23 in 1255; before, the Warmia circle covered 29 cells too few). Nadruvia is named in keyframe 1260-1276 (the Masuria subtraction had clipped 4 of its cells). Gain 1260 = loss 1277 = 110 cells (the 1253 and 1255 losses, 133 cells, less the 23 cells of Galindia that stay with the Order).
+  Not changed, disagreement: the page has Sambia 'abandoned the fight' after a decisive battle in 1265, but gives no border, and the Order held Balga and Königsberg throughout; Samland stays in the rising's shape to 1276 (noted on the 1277 loss). The 1249 vs 1253 date of the Christburg gain stays 1253 (Prussian_Crusade: fighting 'continued intermittently until 1253'; the 7 February 1249 Christburg treaty granted converts autonomy and is not a conquest date); eu-14-f should either date its Warmia/Natangia/Bartia gain 1253 or accept that the two dossiers differ by four years.
+  Hand-off to eu-14-f (teutonic-order, not touched): its 1236 (Pomesania), 1253 or 1249, 1255 (Samland), 1277 (the central tribes' lands) and 1283 (Nadruvia, Skalvia) gains name 'nobody'; the counterpart should be old-prussians. The 1283 Sudovia loss here goes to 'nobody' (the Yotvingians page has no conquest date).
+- karelians: redrew the 1143-1322 shape from 255,176 km2 to 37,697 km2: the Karelian Isthmus and Ladoga Karelia circles plus South Karelia (Karelians page: 'Karelian inhabitation was highest along the western shore of Lake Ladoga and the Karelian Isthmus'; South Karelia permanent but with fewer finds; North Karelia 'only one archeological discovery' of the eighth century; Russian Karelians 'established control over White Karelia' by the late 14th century, after this state). North Karelia and the Republic of Karelia are dropped, not kept as a later band, since the state ends in 1323. Added a 1293 loss of the western Isthmus to kingdom-of-sweden (Karelians page: 'in 1293 at Vyborg'; region = the 90 km Vyborg circle of the kingdom-of-sweden 1293 gain, cut to the Isthmus circle, 63 cells) and a second keyframe from 1293. The 1323 split is West (South Karelia and the rest of the Isthmus, to Sweden) and East (Ladoga Karelia, to Novgorod); the Isthmus circle also holds Käkisalmi, which stayed Novgorodian, so the split is the dossier's soft reading.
+  Hand-off to eu-14-e (kingdom-of-sweden, not touched): its 1293 gain and its 1323 gain name novgorod-republic; this dossier files the losses under karelians (and the Treaty of Nöteborg page has the 1323 pogosts ceded by Novgorod). One side should name the other; the western Isthmus cannot be lost by both the Karelians and Novgorod unless the dossiers agree who held it. Counterpart name only, no new dossier.
+- archbishopric-of-riga: added the 1201 gain of the Riga circle from livonians (Livonians page: 'Building started in 1201'; Albert 'forced the Livonian leaders at the mouth of the Daugava River to give him land'; the page gives no year for the grant) with a keyframe from 1201, so the capital (1202) lies in the shape. Moved the 1207 stand-in disc north-east of the Daugava (70 km round 25.1E 57.25N, the reviewer's centre) and subtracted Semigallia from every shape: overlap with semigallians is 0 cells (was 32); total drawn 17,710 km2 against the infobox 18,000. The 1201 circle differs from the livonians 35 km circle by 2 cells (Semigallia).
+  Disagreement: the 1207 gain counterpart is 'nobody', not livonians or livonian-brothers-of-the-sword. The livonians dossier files its 1206 and 1208 losses to the Brothers and no 1207 loss, the Brothers dossier has no 1207 loss to the archbishop, and the pages opened name no donor (the Livonians page has no 1206-1208 division). The reviewer's example districts (Kokenhusen, Lemsal, Ronneburg) are not on the pages opened, so the disc is a placement, not a boundary.
+  Still open: the disc covers the Turaida and Idumeja circles of the livonians dossier (one year, 1207, of double drawing with the last Livonian cells) and the Order's Cliopatria-derived shapes in livonian-brothers-of-the-sword (eu-14-e), which should subtract archbishopric-of-riga from 1207. Riga War (1297-1330): both https://en.wikipedia.org/wiki/Riga_War and https://en.wikipedia.org/wiki/Riga_War_(1297%E2%80%931330) returned url_not_found; the archbishop's districts and the war stay undrawn.

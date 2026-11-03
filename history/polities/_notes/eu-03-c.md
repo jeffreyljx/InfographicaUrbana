@@ -1,0 +1,25 @@
+# Notes for batch eu-03-c (Roman Republic, part c)
+
+Owned: mamertines, italian-city-states, thracian-kingdom. All three dossiers were written by an earlier run of this batch (files dated 2026-10-18 07:06-07:07), before the notes file and the report were produced. This run found them present, validated each with `python3 -I history/tools/validate_dossier.py <file> --json` and `--resolve` (0 errors, 0 warnings, all valid), checked the cross-references in the roman-republic dossier, and kept the dossiers unchanged, as brief section 10 prescribes. Pages re-opened this run as a spot check: https://en.wikipedia.org/wiki/Mamertines (288 BC seizure of Messina, Longanus battle with no date, 265 BC Carthaginian fleet in the harbour, "lost to the historical record") and https://en.wikipedia.org/wiki/Sapaean_kingdom (capital Bizye, Actium and indirect rule, Bessi revolts 13 and 11 BC, 44/45 AD revolt, annexation 46 AD). Both agree with the quotes in the ledgers. The other pages cited in the dossiers were not re-opened this run.
+
+No page failed to load. The page budgets (1-2, 1-2, up to 5 pages) were exceeded by the earlier run for the first two states (5 pages each); this is thick, not thin.
+
+## mamertines (-288..-257)
+- Cliopatria's two shapes (-271..-257, both 933.8 km2) are identical land; the dossier adds one keyframe back to 288 (page: "claimed Messina for themselves in 288 BC"). All three keyframes carry verdict adjust (years, not land).
+- No year on the page for the Longanus battle (Hiero II "around 270 BC" is the page's nearest date); contest_start 270 is confidence 2. The end year 257 is Cliopatria's; no page gives it (confidence 1, dissolve event). Messana lived on as a Roman-allied city.
+- Counterparts: syracuse (file exists, other group), carthage (exists), greek-city-states (exists; Messana was Greek before 288), roman-republic (mirrors vassal_start 264 and vassal_end 257 for mamertines: confirmed in its ledger).
+
+## italian-city-states (-91..-87, type rebel)
+- Cliopatria's row "Italian City-States" is mislabelled: the Wikipedia article "Italian city-states" is about the medieval communes, and the row is the Italian allies' confederation of the Social War. identity.wikipedia is therefore "Social War (91-87 BC)", type rebel (rule 5), name "Italia (Social War confederation)". The Wikidata id Q4115680 in the seed is the medieval article's and is kept only because wikidata.org is unreachable; the colour/identity agent should replace it with the Social War or Italia id.
+- End moved from 88 to 87 (war 91-87 BC; Samnites and Lucanians "nominally pacified in 87 BC"). Two new keyframes (89 southern theatre, 88-87 Samnium-Lucania). Capitals Corfinium -> Bovianum (90) -> Aesernia (89); coordinates are in identity.capitals.
+- roman-republic mirrors the events (loss 91, contest_start 91, gain 89, 88, 87, contest_end 87): confirmed in its ledger.
+- Region names used (Apulia, Basilicata, Campania) resolve; Samnium and Lucania are carried as unions of Italian admin1 provinces (Isernia, Campobasso, Benevento, Avellino and others) and a few coordinate radii.
+
+## thracian-kingdom (-87..46)
+- No article "Thracian kingdom" (a disambiguation page). The row is the late Odrysian-Astaean kingdom of Bizye and, from 31 BC, the Sapaean client kingdom, kept as one state with a dynastic rename in 31 BC (month 9). identity.wikipedia is "Sapaean kingdom"; the seed's Wikidata Q104815700 is unverified.
+- End moved from 50 to 46 (Claudius, both pages). Start -87 is Cliopatria's (confidence 1): no page founds the state, and the Odrysian page doubts continuity after Seuthes III. The capital Bizye is carried back to 87 at confidence 1 (no page names a capital before the Sapaean seat in 31).
+- All five Cliopatria shapes include Wallachia north of the Danube; it is removed throughout (minus Muntenia and Oltenia). Moesia is removed from AD 6 (new keyframe, Macedonia page: "became a province by AD 6", confidence 1 for the exact border).
+- Rulers list follows the Sapaean page with its overlaps (Rhescuporis I 48-41 vs Cotys II 42-15; Rhoemetalces II start 19 is a placeholder). The page also lists Cotys III (12-18, east) and Rhescuporis II (12-19, west) as the divided kingdom (one entry in the dossier), and Antonia Tryphaena and Pythodoris II as co-rulers (not listed in the dossier).
+- Suzerain side: roman-republic carries vassal_start thracian-kingdom at -31 (month 9). The roman-empire dossier (batch eu-04, not yet on the mount on 2026-10-19) should carry the later vassal_end at 46 and the annexation as a gain from thracian-kingdom. Whoever writes it should also check that roman-republic does not leave a vassal_start without a matching end.
+- Counterparts without dossiers (kept as text strings): the Bessi (13-11 BC), the AD 21 Odrysian and Coelaletan rebels, the AD 44-46 rebels. They are not states that held land for a year; no dossier needed.
+- Gazetteer names needed: Bizye (place, Vize, Kirklareli, Turkey; a circle is used), Rhodope and Haemus (historical regions; admin1 unions are used), Seuthopolis (place, mentioned in notes only, not used in a region), Philippopolis resolves as an alias of Plovdiv.

@@ -1,0 +1,17 @@
+# Notes, group me-09-i (Turks, Crusaders, Mamluks, part i)
+
+One state: tahirid-sultanate (Cliopatria 'Tahirid Sultanate' 1459-1515, 2 shapes). Run on 2026-10-25. Dossier validates (0 errors; 1 warning: counterpart 'kathiri-sultanate' has no dossier yet).
+
+## tahirid-sultanate
+
+Pages opened (3; budget 1-2): https://en.wikipedia.org/wiki/Tahirid_Sultanate (the state; used for every event), https://en.wikipedia.org/wiki/Tahirid_dynasty (WRONG article: the Persian Tahirids of Khorasan 821-873, which is what Cliopatria's Wikipedia field points to; polities.csv 'wikipedia' for this row should read 'Tahirid Sultanate'), https://en.wikipedia.org/wiki/Amir_Husain_Al-Kurdi (silent on Yemen; no event rests on it). https://en.wikipedia.org/wiki/Mamluk_conquest_of_Yemen does not exist.
+
+- Cliopatria's two shapes are identical to each other and to the Rasulid Dynasty rows (377,949.8 km2; 1,633 cells; takes in Sa'dah, al-Jawf, Ma'rib, Shabwah, the Hadramawt interior, al-Mahrah and about 200 Saudi cells). The page supports only the Tihama and the southern highlands, Aden/Lahij, Shihr (1457 to the end of the 15th century) and Sana'a (1504 on); the Zaydi imams 'were mostly able to resist Tahirid rule'. All seven keyframes are adjust, about 115,000-124,000 km2 by cell count. The Rasulid dossier (me-09-d) kept the same outline as fitting its own page; a reviewer should decide whether to follow it.
+- Dates: Cliopatria 1459-1515; the page 1454 (infobox 'Established') to 1517 ('Disestablished'). The page gives 1515 for the second Mamluk fleet and no year for the sultan's death on 15 May. mamluk-sultanate's gain of Yemen is dated 1516 (confidence 1, bridged from Cliopatria); this dossier has the realm fall in 1517 (month 5, confidence 2) with a contest from 1515 (confidence 1). The mamluk-sultanate gain region is Cliopatria's Tahirid 1515 shape (1,633 cells), far larger than the corrected realm: it should reference the keyframe tahirid-sultanate_1516 instead.
+- Aden: 'held out under the Tahirid governor Amir Murjan' in 1517 and the page's reign table runs on to Amir bin Da'ud, executed 3 August 1538. This dossier ends 1517 (the page's own end) and draws no Aden remnant for 1517-1538; the reviewer may extend it (Aden, 25 km, successor ottoman-empire in 1538; the page says 'Mamluk governance in Yemen was eliminated and Turkish rule commenced' after 1538).
+- The 1443 Lahij gain precedes the state and is not a ledger event; the Rasulid dossier's 1443 loss therefore has no mirror here (Lahij is in the 1454 founding region).
+- Sana'a 1461: 'The latter was able to enter San'a temporarily in 1461' does not say whether 'the latter' is the imam or the Tahirid; the contest 1461-1466 is closed at the last dated fight (confidence 1). Shihr lost 'at the end of the fifteenth century' (1499 bridged, confidence 1).
+- Not described on the page: dates for Zabid, Ta'izz, al-Janad, Ibb, Dhamar coming under the Tahirids; Hadramawt beyond Shihr; Kamaran; Dhofar. Dhamar and Abyan in the core are the researcher's reading of 'southern highlands'.
+- Counterparts needing dossiers: the Zaydi imams of the 15th-16th centuries (slug imamate-of-yemen is used as in the Rasulid dossier, but Cliopatria's row covers 1814-1872 only); the Kathiri (kathiri-sultanate).
+- Gazetteer lacks Juban, al-Miqranah (summer residences, about 80 km south of Rada'a), Rada'a, Dhu Marmar; none is used in a region spec.
+- Sources not opened: Seshat ye_tahirid_dyn, the Rasulid, Kathiri and Siege of Aden (1513) pages (budget).

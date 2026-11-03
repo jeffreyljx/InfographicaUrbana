@@ -1,0 +1,66 @@
+# Review of gap batch g-sa-c (South India, Sri Lanka, 1948 princely unions)
+
+Reviewer: adversarial reviewer, 2026-11-01. Dossiers: telugu-chodas-of-nellore, venad, travancore-cochin, matsya-union, madhya-bharat, principality-of-raigama. Neighbours read (ledger lines and keyframes that touch these states): kakatiya-dynasty, kayastha-principality-of-ambadeva, pandya-empire, chola-empire, chera-perumal-kingdom, pandya-dynasty, nayaks-of-madurai, travancore, kingdom-of-cochin, alwar-state, bharatpur-state, gwalior-state, indore-state, kingdom-of-kotte, kingdom-of-sitawaka. Not yet written (exception "owned by a group that has not run yet" / listed by the author): desinganadu, dholpur-state, karauli-state, united-state-of-rajasthan, madras-state, kerala, madhya-pradesh.
+
+Mechanical: all six validate with `--resolve` (0 errors). Warnings are only unknown slugs that the author lists under counterparts_needing_dossiers. Areas below are the gazetteer grid areas of the keyframe corrections (252.9 km2 per cell).
+
+Verdicts: telugu-chodas-of-nellore FAIL; venad FAIL (one small fix applied by the reviewer); travancore-cochin PASS; matsya-union PASS; madhya-bharat PASS; principality-of-raigama PASS.
+
+## telugu-chodas-of-nellore: FAIL
+
+Spot checks (all confirmed): /ledger/0 (Telugu_Cholas page, a 'List of Telugu chodas': 'ruled south Andhra from 1100 to 1350 A.D.'); /ledger/2 (Jatavarman_Sundara_Pandyan: 'killed ... Vijaya Gandagopala of Nellore Chodas and captured Kanchipuram in 1258'); /ledger/3 (Ganapati_Deva: 'The Pandyas captured Nellore, and killed Manuma-siddhi II in the Battle of Muttukuru in 1263 CE'); /ledger/6 (Ambadeva: 'In 1290 CE, Rudrama's successor Prataparudra defeated Manuma-Gandagopala'). Also /ledger/1 (c. 1257 invasion) confirmed on the Jatavarman page. No fabrication.
+
+Blocking findings (back to the author):
+1. /keyframe_review/0 (1100-1257, 41,981 km2) lies entirely inside the chola-empire Cliopatria shapes, which that dossier marks `ok` (overlap 41,981 km2 in 1100, 38,947 in 1160, 31,107 in 1200-1249), and the dossier has no relation to the Chola. The Ganapati_Deva page calls them 'the Nellore Choda chiefs, who were Chola vassals' and has Tikka 'acknowledging [Kulottunga III's] suzerainty'. Not flagged in the notes. Fix: add vassal_start 1100 (counterpart chola-empire, Ganapati_Deva / Nellore_Chodas page) and a vassal_end when the Kakatiya overlordship begins (1208) or the Chola north shrinks (chola-empire ledger 34, c. 1177); chola-empire gets the mirror pair (route to its owner).
+2. Missing vassal mirrors with existing neighbours that name this slug: kakatiya-dynasty ledger 5 (1208 vassal_start) and ledger 11 (1263 vassal_end); kayastha-principality-of-ambadeva ledger 2 (1281 vassal_start) and ledger 3 (1290 vassal_end). The author's notes say they were left to the overlord; rule 3 requires the pair in this ledger. Fix: add vassal_start 1208 / vassal_end 1263 with counterpart kakatiya-dynasty (Ganapati_Deva: 'installed Tikka on the throne as Tikka-bhupala'; 'In 1248, Ganapati's Nellore Choda vassal Tikka died'), and vassal_start 1281 / vassal_end 1290 with counterpart kayastha-principality-of-ambadeva (Ambadeva page: 'Amba-deva appointed Manuma Ganda-gopala on the throne of Nellore'; 'sometime before 1282'; 1290 defeat).
+3. /ledger/5 (1281 gain, counterpart pandya-empire, c1): the author's note says pandya-empire has no event for Nellore's return, but pandya-empire ledger 15 already gives Nellore to kakatiya-dynasty by 1271 (Naga-deva, Kakatiya vassal at Nellore 1271-1275, kakatiya-dynasty ledgers 13 and 16). The counterpart contradicts both neighbours. Fix: counterpart kakatiya-dynasty (or nobody, said so), and route a matching c. 1281 Nellore loss to kakatiya-dynasty. Note that the Ambadeva page also says Manuma was a rival of Vijaya Ganda-gopala, 'who had earlier driven him out of Nellore', and that Vijaya died in 1279: a Choda held Nellore at some point between 1263 and 1279, so the 1263-1281 'no land' span should be stated in the notes as the Pandya/Kakatiya reading.
+
+Non-blocking: /identity/capitals/0 spans 1100-1290 but the state holds no land 1263-1280 (split the capital span or note it). Pandya-empire ledger 11 (Nellore gain 1258) vs this ledger 4 (loss 1263) is a 5-year mismatch the author flagged; leave the dossier's 1263 (the only dated capture) and route a note to pandya-empire.
+
+Thin: /ledger/5 is confidence 1 (who held Nellore 1271-1281); try https://en.wikipedia.org/wiki/Rudrama_Devi. /keyframe_review/0: Tikka's extension 'as far south as the river Kaveri' (1223-1248) and the four districts are undrawn beyond circles; try https://en.wikipedia.org/wiki/Nellore_Chodas (read again for the district list).
+
+Area: no infobox area on the pages; nothing to compare.
+
+## venad: FAIL (one fix applied)
+
+Spot checks (all confirmed): /ledger/0 (Pandya_dynasty: 'It is proposed that the start of the Kollam Era ... in 825 CE marked the liberation of Venadu from Pandya control'); /ledger/3 (Venad: Maravarman Kulasekhara 'captured Kollam' c. 1275); /ledger/4 (Pandya_dynasty: 'By 1312 the Pandya control over south Kerala was also lost'); /ledger/5 (Ravi_Varma_Kulasekhara: 'He performed his coronation at the Pandya capital Madurai (1312)'); /ledger/8 (Marthanda_Varma: 'Raja Rama Varma died in 1729'). The Venadu page has no infobox area.
+
+Applied by the reviewer: /ledger/7/region (1317 split to desinganadu) was a 60 km circle round Kollam, which reaches 8.36 N and so gave Thiruvananthapuram to the Kollam branch, while /keyframe_review/3 (1317-1728) keeps that land for Venad ('a small chiefdom extending from Edava in the north to Aralvaimozhi', Marthanda Varma page, read). The region is now the Kollam circle minus the venad_1317 keyframe shape (4,805 km2, south edge 8.71 N); note annotated; re-validated OK.
+
+Blocking findings (back to the author):
+1. /keyframe_review/0 and /ledger/0 (825-1004, 18,462 km2, bbox 76.36-77.34 E, 8.34-10.70 N): 11,886 km2 of the shape lies north of 9.3 N, far beyond the Venadu page's extent ('from Kollam in the north to Tirunelveli in the south'), and 8,346 km2 overlaps chera-perumal-kingdom_844 (844-1000), the whole shape overlapping chera-perumal-kingdom_1001 (1001-1124), with no relation between the two dossiers. The Venadu page: 'originally a chiefly territory within the medieval Chera state'. The author flagged the overlap and asked for a decision. Decision: keep the 825 found (Pandya_dynasty page) but draw only the Kollam country (for example the Kerala part of a 60 km circle round Kollam, south of about 9.3 N), add vassal_start 844 with counterpart chera-perumal-kingdom and a vassal_end at the 1005 loss, and ask the pandya-dynasty owner to narrow its 825 loss region to match (route).
+2. Missing mirror: nayaks-of-madurai ledger 3 (1635 vassal_start, counterpart 'Travancore (Venad)', confidence 2). Add vassal_start 1635 with counterpart nayaks-of-madurai (end carried by travancore after 1729), or record why not; nayaks-of-madurai should use the slug venad (route).
+
+Non-blocking: /identity/capitals/0 (Kollam 825-1317) spans 1005-1123, when the dossier holds no land. /ledger/1 (1005 loss, Kollam 100 km, 13,151 km2) leaves about 5,300 km2 of keyframe 0 unaccounted at 1005; once keyframe 0 is narrowed this disappears. Cross-dossier (route, not this dossier's fault): pandya-empire ledger 5 (1220 gain of the 'Kerala coast' from unnamed rulers) draws 6,575-6,828 km2 of venad_1124 as Pandya from 1220, against this ledger's page-dated 1275 loss; pandya-empire has no 1275 gain and no occupation pair for Ravivarman's 1312-1316 raid; chola-empire's Cliopatria shapes (ok) still cover Kollam and Nagercoil to 1176 although chera-perumal-kingdom recovered Kollam in 1102 and venad gains it in 1124.
+
+Thin: /ledger/6 (1316 occupation_end, c1) and /ledger/7 (1317 split, c1, 'early 14th century'). Pages to try: https://en.wikipedia.org/wiki/Desinganadu (resolves to Venadu; try https://en.wikipedia.org/wiki/Kollam#History) and https://en.wikipedia.org/wiki/Ravi_Varma_Kulasekhara (withdrawal 'to Venatu' after Tiruvadikundram, 1316).
+
+## travancore-cochin: PASS
+
+Spot checks (confirmed on https://en.wikipedia.org/wiki/Travancore%E2%80%93Cochin): /ledger/0 ('formed through the merger of two former kingdoms, Travancore and Cochin on 1 July 1949'), /ledger/1 and /ledger/2 (same sentence), /ledger/3 ('The five Tamil-majority Taluks of Vilavancode, Kalkulam, Thovalai, Agastheeswaram, and Sengottai were transferred ... to Madras State in 1956'), /ledger/4 ('On 1 November 1956 Travancore–Cochin was joined with Malabar District of Madras State to form the new state of Kerala'), capital Trivandrum. Mirrors: travancore ledger 8 and kingdom-of-cochin ledger 2 (1 July 1949) match. Area: no figure on the page; the drawn 22,761 km2 is the union of the two neighbours' last shapes and is plausible. Remark (not a fault): /ledger/3 removes a 15 km Sengottai circle that /keyframe_review/0 does not draw (the note says so).
+
+## matsya-union: PASS
+
+Spot checks (confirmed): /ledger/0 (Matsya_Union: 'formed on 18 March 1948 by the merger of four erstwhile princely states'), /ledger/1 (Alwar_State: 'Alwar State was merged on 18 March 1948 with three other princely states'; 'covered an area of 3,217 square miles'), /ledger/3 (Dholpur_State: 'merged in short-lived Matsya Union'; accession 7 April 1949; 1901 area 3,038 km2), /ledger/5 (Matsya_Union: 'On 15 May 1949, the Matsya Union was merged with Greater Rajasthan'). The Matsya Union page names no capital and no area (confirmed); the capital is honestly marked UNVERIFIED. Mirrors: alwar-state ledger 1 and bharatpur-state ledger 9 match; Dholpur, Karauli and Greater Rajasthan have no dossiers (listed). Area: drawn 24,278 km2 against about 19,700 km2 for the four states' page figures (Alwar 8,332, Dholpur 3,038, Karauli 3,216, Bharatpur about 5,100); the excess is bharatpur-state's 60 km circle (10,622 km2 on the grid), that dossier's region.
+
+## madhya-bharat: PASS
+
+Spot checks (confirmed): /ledger/0 (Madhya_Bharat: 'created on 28 May 1948 from twenty-five princely states'), /ledger/3 (Central_India_Agency: the western portion with the Malwa and Bhopawar agencies and the Gwalior and Indore residencies became Madhya Bharat), /ledger/4 ('On 1 November 1956, Madhya Bharat, together with the states of Vindhya Pradesh and Bhopal State, was merged into Madhya Pradesh'), capital 'Gwalior was made the capital', Rajpramukh 28 May 1948 to 31 October 1956. Area: page text 46,478 sq mi (120,380 km2); drawn 148,705 km2, ratio 1.24, acknowledged in the keyframe note; the infobox 194,000 km2 (1881) is the agency's, as the author says. Mirrors: gwalior-state ledger 23 and indore-state ledger 9 (June 1948) match within the year.
+
+Thin: the author's report says 23 of 25 members are named on no page opened, but the Central India Agency page (which the author opened) names Ratlam, Jaora, Sailana, Sitamau and Jhabua (Malwa Agency) and Dhar, Alirajpur and Barwani (Bhopawar Agency). A gap-filler can split /ledger/3 into named gains and shrink the 1.24 excess.
+
+## principality-of-raigama: PASS
+
+Spot checks (confirmed): /ledger/0 (Mayadunne_of_Sitawaka: 'Raigama Bandara got established in Raigama with his control roughly over present day Kalutara District & Southern Province except the coastline (which was under Kotte Kingdom)'; division in 1521), /ledger/1 (Kingdom_of_Kotte: 1521 Vijayaba Kollaya; 'three smaller realms: Kotte, Sitawaka, and the Principality of Raigama'), /ledger/3 (Kingdom_of_Sitawaka: annexed 'following the death of Raigam Bandara (Pararajasinha) in 1538'), /ledger/5 (Mayadunne page: 'in 1538, Mayadunne annexed the Kingdom of Raigama to Sitawaka'). Mirrors: kingdom-of-kotte ledger 3 and kingdom-of-sitawaka ledger 1 match (Kalutara). The Southern Province interior is gained from nobody (kingdom-of-kotte draws only Colombo, Gampaha and Kalutara) and lost to kingdom-of-sitawaka, which does not draw it (route: extend kingdom-of-sitawaka ledger 1). No article, no area.
+
+Thin: /ledger/2 (c1, the Southern Province interior). Remark: sources 4 and 5 (/Kingdom_of_Raigama, /Raigama) resolved to the Kingdom of Gampola page and carry no event; harmless but could be dropped.
+
+## Cross-dossier routing
+
+- pandya-empire: ledger 11 (Nellore 1258) vs telugu-chodas 1263; no 1275 Kollam gain (has a 1220 Kerala-coast gain from unnamed rulers that overlaps venad_1124 by about 6,600 km2); no occupation pair for Venad's 1312-1316 raid.
+- kakatiya-dynasty: needs a c. 1281 Nellore loss to telugu-chodas-of-nellore (it holds Nellore from 1271 through Naga-deva, and gains it back from the Chodas in 1290).
+- chola-empire: needs a vassal pair for the Telugu Chodas (1100 onwards) and does not lose Kollam/Nagercoil before 1177 in its ok shapes.
+- chera-perumal-kingdom: vassal pair for Venad 844-1005 once venad adds it.
+- pandya-dynasty: ledger 2 counterpart should be the slug venad, and its 825 loss region should match venad's narrowed keyframe.
+- nayaks-of-madurai: ledgers 3 and 12 should use slug venad (1635-1729) and travancore (1729-1736).
+- kingdom-of-sitawaka: ledger 1 should also gain the Southern Province interior from principality-of-raigama in 1538.

@@ -1,0 +1,26 @@
+# am-08-k notes (Caribbean and Guianas, 1966-2024), written 2026-10-19
+
+Six dossiers written, all validate with 0 errors and 0 warnings (also with --resolve): guyana, saint-kitts, saint-vincent, commonwealth-of-the-bahamas, grenada, republic-of-suriname. 12 distinct Wikipedia pages opened, none failed. Every shape of every state is a modern-country outline that never changes, so the dossiers are short: start, end, a few events.
+
+## Conventions used
+
+- Start year: independence for Guyana (26 May 1966), the Bahamas (10 Jul 1973) and Suriname (25 Nov 1975); the associated-state date for Saint Kitts and Nevis (27 Feb 1967), Grenada (3 Mar 1967) and Saint Vincent (27 Oct 1969), as Cliopatria and the sibling antigua-and-barbuda do. Associated state = `vassal_start`/`vassal_end` with british-colonial-empire (confidence 2: West Indies Associated States page says the UK 'retained responsibility for external affairs and defence'; the mapping to a vassal tint is a reading). Independence is a `rename` caption plus the `vassal_end`.
+- Family `americas` for all six (as jamaica, barbados, trinidad).
+
+## Per state
+
+- guyana: shape 1967..2023 = modern Guyana (830 cells vs 825 for Natural Earth). Added 1966 keyframe (independence a year before Cliopatria's row). Opened 4 pages (budget 1-2): Guyana, Guayana Esequiba, Ankoko Island, New River Triangle, because the two territorial events (Venezuelan occupation of Ankoko Oct 1966; Guyanese-Surinamese contest over the New River Triangle Dec 1967-1969) each needed a dated page and a coordinate. The Ankoko `occupation_end` at 2024 only closes the pair (confidence 1); the island is still Venezuelan-administered. The 159,500 km2 Essequibo claim is not held by Venezuela, so it is not a contest zone. Rupununi uprising (Jan 1969): page says nothing about rebel-held ground, so no rebel dossier.
+- saint-kitts: Cliopatria's 'Saint Kitts' 1967..2024 is a 501 km2 polygon on Saint Croix (64.9 W, 17.7 N). Both shapes marked wrong; correction = country Saint Kitts and Nevis (261 km2). The Wikipedia field 'Saint Kitts' / Wikidata Q204989 are the island's; the state article is 'Saint Kitts and Nevis' (used for the facts). Anguilla: in the associated state from 27 Feb 1967, ejects the St Kitts police 30 May 1967 (Anguilla page; same page's infobox says 12 Jul 1967; West Indies Associated States page says 1969), British troops 18 Mar 1969, formal separation 16 Dec 1980 (Anguilla infobox) or 29 Oct 1980 (WIAS footnote). Two `loss` events (1967 to 'Anguilla', 1980 to british-colonial-empire). The British Colonial Empire shape holds no cell of St Kitts or Anguilla in 1966.
+- saint-vincent: shape is the main island (box 13.08-13.40 N); the Grenadines are named by the page; verdict adjust to the whole country (identical at the 253 km2 grid). BCE shape contains Saint Vincent until 1968, matching the 1969 start. Union Island rebellion Dec 1979 listed as a war with no territorial result.
+- commonwealth-of-the-bahamas: one page. Verdict adjust (union with the country): the polygon resolves to 49 cells vs 58 for Natural Earth's Bahamas. The BCE shape 1969-1995 still contains the Bahamas (44 cells), so eu-11 must release it in 1973. Internal autonomy from 7 Jan 1964 not modelled.
+- grenada: Cliopatria row starts 1976; dossier starts 3 Mar 1967 with a 1967-1975 keyframe. Polygon is the main island only (Carriacou, Petite Martinique outside its box). BCE shape still contains Grenada through 1995; eu-11 must release it in 1974. 1979 coup and PRG = `rename` (regime change, same state). US invasion 25 Oct 1983 = `occupation_start` (US), `occupation_end` Dec 1983 at confidence 1 (the invasion page gives no withdrawal date and contradicts itself: combat 'finished in December' vs Reagan's 3 Nov 'successfully completed').
+- republic-of-suriname: shape 541 cells = modern Suriname, no cell shared with Guyana's shape (the New River Triangle stays Guyanese). Cliopatria carries Dutch Suriname in its 'Netherlands Antilles' 1877-2023 shape (541 cells, 149,155 km2): am-06 must hand that land to Suriname in 1975; this dossier names netherlands-antilles as the predecessor. 1975 keyframe added. 1986 Maroon war listed with an unknown end (page silent). The French Guiana border is 'disputed along the Marowijne River' (Suriname page): no change recorded. The 1967-69 Tigri Area clashes are in the guyana dossier. Native name 'Republiek Suriname' is not on the page.
+
+## Needs a dossier from another group
+
+- Anguilla (secession 1967, British 1969, formal separation 1980): suggested slug anguilla. Used as counterpart 'Anguilla' in saint-kitts.
+- netherlands-antilles (am-06), british-colonial-empire (eu-11), venezuela (am-08), united-states-of-america exist; see the BCE and Netherlands Antilles corrections above.
+
+## Gazetteer names wanted
+
+Ankoko Island (place, 6.717 N 61.133 W), New River Triangle / Tigri Area (region, 2.5 N 57.25 W), Guayana Esequiba (region, Guyana west of the Essequibo, 159,500 km2 on the Guayana Esequiba page). Admin-1 'East Berbice-Corentyne' resolves near Georgetown (-58.26, 6.29..6.76), not to the New River Triangle, so the gazetteer's Guyanese admin-1 labels look shifted. Radii around the pages' coordinates were used instead.

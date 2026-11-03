@@ -1,0 +1,43 @@
+# me-03-x notes (additions batch: Egypt to the New Kingdom, states Cliopatria lacks)
+
+Written 2026-10-19. 11 new dossiers, all validate (0 errors, 0 warnings, also with --resolve). 18 distinct Wikipedia pages opened, every one on the first try; no page failed. WebFetch returns a summary with only short quoted phrases, so quotation marks in notes enclose only phrases the fetch showed in quotes; everything else is paraphrase.
+
+Written: twenty-fifth-dynasty-of-egypt (-754..-656), twenty-fourth-dynasty-of-egypt (-732..-712), twenty-seventh-dynasty-of-egypt (-525..-404), revolt-of-inaros-ii (rebel, -460..-454), twenty-eighth-dynasty-of-egypt (-404..-398), twenty-ninth-dynasty-of-egypt (-398..-380), thirty-first-dynasty-of-egypt (-343..-332), khababash (rebel, -338..-335), fourteenth-dynasty-of-egypt (-1700..-1650), abydos-dynasty (-1650..-1600), high-priests-of-amun-at-thebes (-1080..-943).
+
+## Not written, and why
+
+- First Intermediate Period, Herakleopolis and Thebes: no new dossier. me-03-a's lower-egypt (rename to the Ninth/Tenth Dynasty at Heracleopolis Magna at c. 2160, Thebes contest 2069-2061, loss to Mentuhotep II c. 2033) and upper-egypt (Theban Eleventh Dynasty found c. 2134, dissolve 2055) already carry both rivals under Cliopatria's Names "Lower Egypt" and "Upper Egypt". Writing separate Herakleopolis/Thebes dossiers would duplicate them.
+- Libyan Meshwesh, Dodecarchy of 672-664, Petubastis III (522/521-520, no land named), Psamtik IV (480): no page opened names land held; recorded as wars or ruler notes only.
+- Egyptian Levantine and Nubian provinces of the New Kingdom, Canaanite and Syrian city-states: me-04 and the New Kingdom dossier.
+
+## Modelling choices a reviewer should know
+
+1. Persian periods (twenty-seventh, thirty-first): the group scope asks for them as occupations. They are drawn as Egypt (family egypt) under Persian pharaohs, with occupation_start/occupation_end whose counterpart is achaemenid-empire (owner-side records). The pages call them satrapies and possessions of Persia. me-05's Achaemenid dossier should carry the reverse events and should not also draw Egypt as ordinary territory in 525-404 and 343-332. me-03-c's twenty-sixth (loss 525) and thirtieth (loss 343) dossiers name achaemenid-empire, not these dynasties, as counterpart; the found events here name the 26th and 30th.
+2. Twenty-fifth Dynasty: draws only the Egyptian realm; Nubia stays with kingdom-of-kush (af-01), whose ledger already records the same Egyptian gains and losses (counterparts twenty-second-dynasty-of-egypt, 'Twenty-fourth Dynasty of Egypt (Sais)', neo-assyrian-empire). Two dossiers over Egypt in the same years must not both be drawn solid. af-01 could change its counterpart string to the slug twenty-fourth-dynasty-of-egypt.
+3. Dates the pages dispute (each note names the choice): 25th start 754 (infobox) / 747 / 744; Piye's campaign c. 732 (Third Intermediate Period page) / about 728 (Victory Stele page) / about 725 (Piye page), 728 used to match me-03-b; Shebitku's conquest of the Delta around 712 (25th and Piye pages) against Bakenranef's deposition 720 (24th page), 712 used in both dossiers, so the 24th ends 712; Thebes sacked 664 (Third IP) or 663 (Assyrian page); 27th ends 404 (infobox) or 405/404 (text); 14th starts 1700 (Second Intermediate Period page, matches me-03-a's loss) / 1725 (infobox) / 1805 (Ryholt); Abydos Dynasty 1650-1600 (own page) or 1640-1620 (Second Intermediate Period page).
+4. Khababash: the 31st page table gives him Upper Egypt only; his own page argues he held all or almost all of Egypt. Upper Egypt drawn; the wider reading is recorded in khababash notes.
+5. Twenty-eighth Dynasty is six years (below the ten-year bar) and the Inaros and Khababash rebel states are short; written because me-03-c and me-03-a name them as predecessors/counterparts, or because rebel states holding land are in scope.
+6. The 27th dossier line that Egypt, Cyprus and Phoenicia formed 'the sixth satrapy' came back from the fetch of the 27th page; Herodotus' sixth satrapy is Egypt with Libya and Cyrene. Recheck.
+7. No dossier here had a Cliopatria shape: all keyframes are new, verdict adjust. No page gave an infobox area, so no area comparison was possible; each keyframe says so.
+
+## Gazetteer
+
+No unknown region name is used (--resolve is clean). Names that would improve the maps: Mareia/Marea (Lake Mareotis, west of Alexandria; an Alexandria radius stands in), Mendes (Tell el-Ruba) and Xois (Sakha), Herakleopolis Magna (Ihnasya el-Medina) and Hermopolis Magna (El Ashmunein). Capitals carry hand coordinates; Mendes' is the researcher's.
+
+## Cross-references other agents could update
+
+- me-03-b twenty-first-dynasty-of-egypt: counterpart high-priests-of-amun-at-thebes now has a dossier (start 1080, three years before the 21st).
+- me-03-a middle-kingdom-of-egypt / me-03-b hyksos, seventeenth: fourteenth-dynasty-of-egypt and abydos-dynasty now exist.
+- me-03-c thirtieth: twenty-ninth-dynasty-of-egypt and thirty-first-dynasty-of-egypt now exist; the 30th's Cliopatria shape of -383 overlaps the 29th (to -380).
+
+## Fix pass 2026-10-19 (author, after the reviewer's verdicts)
+
+Only high-priests-of-amun-at-thebes was failed; the seven reviewer fixes in place (twenty-fifth, twenty-seventh, revolt-of-inaros-ii, twenty-ninth, thirty-first, fourteenth, abydos-dynasty) and the three passes are untouched. Pages reopened: High Priest of Amun, Third Intermediate Period of Egypt, El-Hibeh (new, accessed 2026-10-19). Validates: 0 errors, 0 warnings, also with --resolve.
+
+### high-priests-of-amun-at-thebes
+
+- Blocking finding (missing vassal mirror of the Twenty-first Dynasty): applied. Added vassal_start -1077 and vassal_end -943, counterpart twenty-first-dynasty-of-egypt, region = the keyframe's Middle and Upper Egypt, confidence 2, source the High Priest of Amun page (reopened: "Though not officially pharaohs, the High Priests of Amun at Thebes were the de facto rulers of Upper Egypt"; "They are however not regarded as a ruling dynasty with pharaonic prerogatives"). The pair matches me-03-b's (-1077 start, -943 end, counterpart high-priests-of-amun-at-thebes), so the validator pairing holds on both sides. 1080-1077 stays independent (Ramesses XI still reigns in the north).
+- Non-blocking finding (-943 dissolve counterpart twenty-second-dynasty-of-egypt): already applied by the reviewer; kept.
+- Disagreement, mild: I applied the reviewer's first option (vassal), but the vassal reading is the weakest in the batch. The reopened High Priest page names no tie to the Tanis kings (no oath, tribute, dating by Tanis regnal years), does not mention 1077, and shows Herihor claiming to be pharaoh and Psusennes III or Pinedjem II as "the last High Priest of Amun to consider himself as a pharaoh-like figure"; the Third Intermediate Period page says the division "was less significant than it seems, since both the priests and pharaohs came from the same family" (tagged citation needed). If the map draws the priests independent, me-03-b must drop its pair at the same time; neither dossier should carry one half only. The event note says this.
+- Thin finding (northern limit): partly settled. The Third Intermediate Period page names no limit (Herakleopolis appears only later, as a city-state under Peftjaubast). The El-Hibeh page (https://en.wikipedia.org/wiki/El-Hibeh) says Tayu-djayet "was a frontier town, marking the division of the country between the High Priests of Amun" and the Tanis kings, "from the late 20th Dynasty to the 22nd Dynasty" (dynasty range only), with bricks "stamped with the names of the High Priests Pinedjem I and Menkheperre"; coordinates 28.787 N 30.921 E. So the line probably ran near 28.8 N, about 35 km south of Herakleopolis (c. 29.1 N) and south of the Fayyum. I did NOT cut the keyframe there: the page gives no line and no years, the Third Intermediate Period page says Middle and Upper Egypt, and a latitude cut would assert more than either page. The keyframe and certainty notes record the possible overreach (Fayyum and the northern third of Beni Suef governorate); certainty stays soft. If a later pass wants the cut, the gazetteer needs El Hiba/Teudjoi (and Herakleopolis Magna) first.
+- Reviewer's cross-dossier row 119 (not mine): new-kingdom-of-egypt (me-03-b) keeps Upper Egypt to -1077 and carries no loss to this dossier at -1080, so Thebes is drawn by both for 1080-1077. This dossier's found event (-1080, counterpart new-kingdom-of-egypt) is the mirror; me-03-b should add the loss, or this dossier's start should be moved to 1077 if the NK is to keep the south. No new dossier is needed (new-kingdom-of-egypt exists).
