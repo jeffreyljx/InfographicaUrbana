@@ -1,0 +1,2363 @@
+{
+ "batch_id": "eu-03-b",
+ "verdicts": [
+  {
+   "slug": "roman-republic",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/69/counterpart, /ledger/70/counterpart, /wars/5/belligerents, /wars/7/belligerents, /wars/11/belligerents",
+     "what": "Counterpart slug 'antigonid-macedonia' will never have a dossier: antigonid-dynasty.json lists both 'Antigonid Dynasty' and 'Antigonid Macedonia' in cliopatria_names.",
+     "why": "history/polities/antigonid-dynasty.json identity.cliopatria_names; its life -306..-168 covers the 171-168 contest.",
+     "fix": "Replaced with 'antigonid-dynasty' (5 slug tokens, plus the notes text).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/72/counterpart, /ledger/75/counterpart, /ledger/76/counterpart",
+     "what": "Free-text counterpart 'Macedonian merides (four client republics)' now has a dossier, macedonian-republics.",
+     "why": "macedonian-republics.json: vassal_start to roman-republic -168, vassal_end -148, dissolve -148 (mirrors RR -167 vassal_start and -148 gain and vassal_end).",
+     "fix": "Replaced with 'macedonian-republics'.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/80/confidence",
+     "what": "Confidence 3 on a region the page does not give for 146 BC.",
+     "why": "https://en.wikipedia.org/wiki/Africa_(Roman_province): the 'present-day Tunisia, the northeast of Algeria, and the coast of western Libya' sentence is undated, and 'The remaining territory was left in the domain of the Berber Numidian king Massinissa.'",
+     "fix": "Lowered to 2 with a reviewer line in the note.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/149",
+     "what": "The note quoted a sentence that is not on the cited page, and the page does not date the Roman recovery of Syria.",
+     "why": "https://en.wikipedia.org/wiki/Roman%E2%80%93Parthian_Wars has no 'held Syria for roughly two years' and no Gindarus. It says: 'After suffering a further defeat near the Syrian Gates, the Parthians withdrew from Syria' (undated) and 'They returned in 38 BC, but were decisively defeated by Ventidius and Pacorus was killed.' The year 38 is defensible, but the withdrawal may be 39.",
+     "fix": "Replaced the note with the page's sentences and lowered confidence 3 to 2.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/143/note",
+     "what": "The note says Antony reaffirmed Cleopatra's Cyprus 'in 40'.",
+     "why": "https://en.wikipedia.org/wiki/Roman_Cyprus: 'Antony reaffirmed that Cleopatra was ruler of Cyprus at the Donations of Alexandria.' That was 34, not 40.",
+     "fix": "Changed to 'at the Donations of Alexandria (34)'.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/114/note",
+     "what": "The quoted sentence was a paraphrase, not the page text.",
+     "why": "https://en.wikipedia.org/wiki/Bithynia_and_Pontus: 'In 74 BC, during the Third Mithridatic War, King Nicomedes IV of Bithynia died ... bequeathed his kingdom to Rome'; 'The Senate immediately voted to annex the kingdom as a province directly governed by the Republic.'",
+     "fix": "Replaced with the page's words. The event itself is confirmed.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/80/region",
+     "what": "BLOCKING. The 146 BC gain uses the gazetteer region 'Africa Proconsularis'. That region is Tunisia plus Tripolitania plus Algeria's Constantine, Annaba, Skikda and Guelma provinces, so it gives Rome Cirta and Tripolitania in 146.",
+     "why": "Africa page: the rest 'was left in the domain of ... Massinissa'. kingdom-of-numidia holds Lepcis and Tripolitania from 158 (its /ledger/2) and eastern Numidia until 46; RR's own /ledger/144 gains eastern Numidia only in 46. Region is gazetteer regions.jsonl 'Africa Proconsularis'.",
+     "fix": "Replace the region with Carthage's last territory east of the fossa regia (Thabraca to Thaenae): northern and central-eastern Tunisia, as admin1 units or Cliopatria's Carthage -149 shape. Text: 'the Carthaginian territory annexed as the province of Africa, capital Utica'.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/50/correction and /ledger after 156",
+     "what": "BLOCKING. The last correction runs the -36 shape 'to January 27 BC' without Cyprus and Cilicia Aspera. The ledger has no event for 31-27 beyond Thrace. The /ledger/156 note says 'Egypt (30) is the Empire's', yet the dossier itself ends in 27.",
+     "why": "https://en.wikipedia.org/wiki/Roman_Cyprus: after Actium Octavian 'gained control of Egypt and Cyprus', 'Cyprus returns to Roman rule' (31 BC). Egypt was annexed in August 30, inside this dossier's life. Cliopatria's ptolemaic-kingdom_-30 shape runs to -28 and roman-empire_-27 is the first shape with Egypt.",
+     "fix": "Pick one. (a) Add a new keyframe roman-republic_-31 (from -31 to -27) whose correction is the -36 shape plus Cyprus and Cilicia Aspera from 31/30 and Egypt from August 30, with matching ledger events (-31 or -30 gain ptolemaic-kingdom for Cyprus and Cilicia Aspera; -30 gain ptolemaic-kingdom for Egypt). (b) End the Roman land at -31 and hand over to roman-empire, saying so in successors.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (new, -33)",
+     "what": "BLOCKING (missing event). The 33 BC Mauretanian bequest has no RR event.",
+     "why": "https://en.wikipedia.org/wiki/Mauretania: 'Upon his own death in 33 BC, Bocchus II bequeathed his entire kingdom to Octavian', 'placed Mauretania under temporary Roman administration for eight years'. mauretania.json /ledger/9 has vassal_start roman-republic -33 at confidence 3.",
+     "fix": "Add vassal_start mauretania -33 (region: Cliopatria Mauretania shape, text from the page; source Mauretania page). It lasts to the end in -27.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (new, -76 and -33)",
+     "what": "BLOCKING (missing events). The Dalmatian coast and Illyricum are listed as 'page silent', but a page exists and a counterpart dossier carries both events.",
+     "why": "dalmatae.json /ledger/5 (-76 loss of Salona to RR, C3) and /ledger/8 (-33 dissolve to RR, C3, 'Dalmatia, now Roman Illyricum'), both from https://en.wikipedia.org/wiki/Dalmatae: the Roman-Dalmatae wars 'lasted until 33 BC when Octavian' installed Roman hegemony.",
+     "fix": "Add gain dalmatae -76 (Salona) and gain dalmatae -33 (Dalmatia), sourced to the Dalmatae page, and check the Cliopatria -36 shape for that coast in the keyframe note.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (new, -48 and -47)",
+     "what": "BLOCKING (missing events). Pharnaces II took Roman Pontus in 48 and lost it at Zela in 47; RR has no event.",
+     "why": "cimmerian-bosporus.json /ledger/13 (-48 gain of Colchis, Lesser Armenia and Pontus from RR, C2) and /ledger/14 (-47 loss to RR, C3), from https://en.wikipedia.org/wiki/Pharnaces_II_of_Pontus.",
+     "fix": "Add occupation_start (or loss) -48 and occupation_end (or gain) -47 against cimmerian-bosporus for Pontus (the Pontic half of Bithynia et Pontus), and add the war (Caesar's war with Pharnaces, Zela 47) to wars[].",
+     "applied": false
+    },
+    {
+     "where": "/ledger (new, 212-146 BC, Greece) and /wars",
+     "what": "BLOCKING (missing events and wars). Rome's Greek and Illyrian protectorates between the Illyrian Wars and 146 have no events, and wars[] has no First Macedonian War (214-205), Second Macedonian War (200-197) or Roman-Seleucid/Aetolian War (192-188).",
+     "why": "aetolian-league.json /ledger/25: vassal_start roman-republic -189, C3 ('Aetolia was reduced to a Roman client state', Roman-Seleucid war page), plus /ledger/24 Ambracia 189. thessalian-league-roman-era.json: vassal_start -196, dissolve -146. antigonid-dynasty.json: -212 gain of the Atintani, Parthini and Dimale, and -205 loss at the Peace of Phoenice (C3). achaean-league.json: occupation of Acrocorinth 197-194. acarnanian-league.json: -168 Leucas (C3).",
+     "fix": "Add the three wars with zones. Add vassal_start aetolian-league -189 and vassal_start thessalian-league-roman-era -196 (vassal_end/gain 146). Add the 212 loss and 205 recovery of the Illyrian protectorate (vassal_end/vassal_start of the free-text Illyrian towns), the 197-194 garrisons, and Leucas 168, each with its page, or explain any you reject.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (new, Umbria) and /ledger/97",
+     "what": "BLOCKING (missing event). Umbria never enters the ledger, yet /ledger/97 enfranchises it in 90 as allied land, and the notes list umbri as a counterpart.",
+     "why": "umbri.json: -299 loss of Nequinum/Narnia to RR (C3) and -260 loss and dissolve to RR (C2, Umbri page: conquest of Umbria 'completed ... by approximately 260 BC'). Cliopatria's -301 and -291 shapes include Umbria with no RR event explaining it.",
+     "fix": "Add gain umbri -299 (Narnia) and vassal_start umbri (c. 266-260, allied Umbria, tint) against the umbri dossier. /ledger/97 then reads as its vassal_end.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/51",
+     "what": "The loss of all Cisalpine Gaul in November 218 names only boii. The insubres dossier records a 218 gain of Lombardy from RR at confidence 3, which RR does not mirror.",
+     "why": "insubres.json /ledger/4: -218 (11) gain roman-republic, C3. boii.json has contest_start, not gain, in 218.",
+     "fix": "Split it: loss boii (Emilia) and loss insubres (Lombardy), November 218. Ask the boii author to add the matching gain.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/21, /ledger/23 (and /ledger/19, 20, 25)",
+     "what": "The 277 and 272 gains name the free-text 'Kingdom of Epirus (Pyrrhus)'. The land belonged to Croton, Locri and Tarentum, which now have dossiers that dissolve to RR. kingdom-of-epirus has no RR events at all.",
+     "why": "croton.json /ledger/9 (-277 dissolve to RR, C3); taras.json /ledger/1 (-272 dissolve to RR, C3); kingdom-of-epirus.json has vassal_start taras -280.",
+     "fix": "Set /ledger/21's counterpart to croton (Locri as a second event if wanted) and /ledger/23's to taras, and use slug kingdom-of-epirus for the contest and the 280 loss. Ask the kingdom-of-epirus author for mirrors.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/142/counterpart",
+     "what": "Massilia's annexation (49) names greek-city-states, but massalia.json now exists and dissolves to RR. greek-city-states also books a 49 loss, so the land is counted twice.",
+     "why": "massalia.json /ledger/5 (-49 dissolve to RR, C3); greek-city-states.json /ledger/78 (-49 loss, C3).",
+     "fix": "Set the counterpart to massalia and ask greek-city-states to drop its 49 loss.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/112",
+     "what": "Sertorius' state is founded in Lusitania (Roman since 139) in 80, but RR has only a contest_start in 80; its first loss is in 77.",
+     "why": "sertorian-hispania.json /ledger/0: found -80 from roman-republic, C3.",
+     "fix": "Add loss sertorian-hispania -80 (Lusitania), or change the counterpart's found to nobody and say why.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/38-41, /ledger/53, /ledger/80",
+     "what": "Carthage mismatches: carthage.json has -252 loss of Selinous, Heraclea Minoa and Thermae (C3), -213 gain of Agrigentum from RR (C2), -201 vassal_start to RR (C2) and -149 loss of Utica (C3). RR mirrors none of them.",
+     "why": "carthage.json ledger 26, 41, 52, 55.",
+     "fix": "Add gain carthage -252, loss carthage -213 (Agrigentum; regained in RR's -210 gain) and gain carthage -149 (Utica). Then either add vassal_start carthage -201 (vassal_end at the 146 gain) or ask af-02 to drop Carthage's 201 vassal_start.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/33",
+     "what": "syracuse.json records a 263 loss to RR of 'the interior and north coast beyond Tauromenium' (C2). RR has only the vassal_start for Hiero's kingdom and no gain of that land.",
+     "why": "syracuse.json /ledger/16.",
+     "fix": "Add gain syracuse -263 for the land outside Hiero's kingdom, or ask the syracuse author to change it to vassal_start.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/81",
+     "what": "Greece in 146: RR's only gain names achaean-league. greek-city-states.json loses Thessaly, central Greece, Euboea and Epirus to RR in 146 (C3), and thessalian-league-roman-era dissolves to RR in 146.",
+     "why": "greek-city-states.json /ledger/70; thessalian-league-roman-era.json /ledger/5.",
+     "fix": "Say which of this land joined Macedonia in 148 and which in 146. Add gain events against the right counterparts, or ask those authors to align.",
+     "applied": false
+    },
+    {
+     "where": "/wars",
+     "what": "The late-Republic civil wars after 45 are missing: the Liberators' civil war (43-42; Brutus and Cassius held Macedonia, Asia and Syria) and Sextus Pompeius' Sicilian revolt (42-36; the Pact of Misenum in 39 left him Sicily, Sardinia, Corsica and the Peloponnese). The Cimbrian War (113-101) and Second Mithridatic War (83-81) are also absent.",
+     "why": "By the dossier's own standard (Sertorius modelled as a rebel holding Roman land 80-72), Sextus' six-year hold on the islands is a contest. Check 10: every war in the sources appears, with empty zones only where said so.",
+     "fix": "Add the wars. Add contest_start/contest_end for Sicily, Sardinia and Corsica 42(40)-36 against a Sextus Pompeius counterpart (page: https://en.wikipedia.org/wiki/Sicilian_revolt). Give the Cimbrian and Second Mithridatic wars empty zones and a note.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/2/correction",
+     "what": "Cliopatria's -480 shape has a bbox east edge of 12.4517 E, west of Rome itself (capital at 12.48 E, 41.89 N), so the shape does not contain the capital.",
+     "why": "shapes.csv roman-republic_-480 bbox 11.972,41.7816,12.4517,42.1712; identity.capitals[0] lon 12.48.",
+     "fix": "Add a union with {\"place\":\"Roma\",\"km\":10} to the correction and a line in the note.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/13, 16, 22, 27, 30, 64, 94, 95, 98, 103",
+     "what": "Modelling conflict with the Italic dossiers. RR keeps the Samnites (290-91), Lucanians (272-91), Etruscans (264-90), Picentes (299-268) and Insubres (197-89) as allies (vassal tint). Those dossiers instead dissolve at conquest (samnites 290, lucanians 272, etruscans 264, insubres 197) and have no vassal pairs.",
+     "why": "Cross-check matrix; each counterpart's dissolve event.",
+     "fix": "Not a fault of RR's reading, which is defensible (socii). The eu-03 authors should agree one model: either the counterpart dossiers run to 91/89 as vassals, or RR turns these vassal_starts into gains.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/28",
+     "what is missing": "Messapii, Sallentini and Brundisium c. 266: no page dates it (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Messapians"
+    },
+    {
+     "where": "/ledger/35",
+     "what is missing": "End of the Mamertine alliance in 257 is Cliopatria's year (confidence 1); when did Messana pass into Roman Sicily?",
+     "page to try": "https://en.wikipedia.org/wiki/Messina"
+    },
+    {
+     "where": "/ledger/42",
+     "what is missing": "Veneti amicitia 238 (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Cenomani"
+    },
+    {
+     "where": "/ledger/90",
+     "what is missing": "The part of Cilicia made a province in 103/102 (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Marcus_Antonius_Orator"
+    },
+    {
+     "where": "/ledger/133",
+     "what is missing": "Galatia as a client in 63 (confidence 1); I confirmed the Bithynia and Pontus page says nothing about Galatia or Deiotarus in 63",
+     "page to try": "https://en.wikipedia.org/wiki/Deiotarus"
+    },
+    {
+     "where": "/ledger (none)",
+     "what is missing": "Balearic conquest of 123 BC: no event at all, though Cliopatria's -126/-110 shapes probably include the islands",
+     "page to try": "https://en.wikipedia.org/wiki/Quintus_Caecilius_Metellus_Balearicus"
+    },
+    {
+     "where": "/ledger (none)",
+     "what is missing": "Ligurian wars 238-155 (Liguria and the Apuan Alps): no event",
+     "page to try": "https://en.wikipedia.org/wiki/Ligures"
+    },
+    {
+     "where": "/ledger (none)",
+     "what is missing": "Pompey's eastern settlement 64-62: Commagene, Osroene, the Nabataeans, Ituraea and Deiotarus as clients",
+     "page to try": "https://en.wikipedia.org/wiki/Pompey"
+    },
+    {
+     "where": "/ledger/34-39",
+     "what is missing": "Dates of the Sicilian towns between 261 and 241 beyond Agrigentum, Panormus and Lilybaeum",
+     "page to try": "https://en.wikipedia.org/wiki/Sicilia_(Roman_province)"
+    },
+    {
+     "where": "/ledger/149",
+     "what is missing": "Year Syria was recovered from the Parthians (39 at the Amanus Pass, or 38 at Gindarus)",
+     "page to try": "https://en.wikipedia.org/wiki/Publius_Ventidius_Bassus"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/80",
+     "page": "https://en.wikipedia.org/wiki/Africa_(Roman_province)",
+     "result": "confirmed: province 146, capital Utica. Region overstated (extent sentence undated; the rest left to Massinissa); confidence lowered to 2, region fix pending"
+    },
+    {
+     "where": "/ledger/88",
+     "page": "https://en.wikipedia.org/wiki/Gallia_Narbonensis",
+     "result": "confirmed: 'The area became a Roman province in 121 BC'; Bituitus at the Isère in the 125-121 war; Narbo 118; bounds as quoted"
+    },
+    {
+     "where": "/ledger/114",
+     "page": "https://en.wikipedia.org/wiki/Bithynia_and_Pontus",
+     "result": "confirmed: 74 BC bequest and annexation; the quote was a paraphrase, now corrected"
+    },
+    {
+     "where": "/ledger/129",
+     "page": "https://en.wikipedia.org/wiki/Roman_Syria",
+     "result": "confirmed: 'Syria was annexed to the Roman Republic in 64 BC'; Antiochus XIII executed, Philip II deposed, Scaurus governor"
+    },
+    {
+     "where": "/ledger/134 and /ledger/143",
+     "page": "https://en.wikipedia.org/wiki/Roman_Cyprus",
+     "result": "confirmed: lex Clodia 58, Cato, added to Cilicia, Ptolemy's suicide; Caesar returned Cyprus to the Ptolemies (47). The 'reaffirmed in 40' detail was wrong (Donations of Alexandria) and is fixed. The page also has Cyprus Roman again from 31, which the dossier omits (see the keyframe 50 finding)"
+    },
+    {
+     "where": "/ledger/147 and /ledger/149",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Parthian_Wars",
+     "result": "147 confirmed (40 BC, 'swiftly overran Syria', the coast except Tyre). 149: 38 BC is on the page as Pacorus' defeat, but the Roman recovery is undated and the quoted 'held Syria for roughly two years' is not on the page; note replaced and confidence lowered to 2"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1950000,
+    "infobox_year": -50,
+    "cliopatria_km2": 2216249.4,
+    "ratio": 1.14,
+    "acknowledged": false,
+    "note": "Infobox 'Area: 326 BC: 10,000 km2; 50 BC: 1,950,000 km2'. Cliopatria -326 is 10,064.6 km2 (ratio 1.01) and -50 is 2,216,249 km2 (ratio 1.14). No factor of two, so no acknowledgement is needed. The dossier quotes no infobox area."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -435,
+    "type": "gain",
+    "counterpart": "Fidenae (Latin town allied to Veii)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text minor counterpart, no dossier intended"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -396,
+    "type": "gain",
+    "counterpart": "etruscans"
+   },
+   "mirror": {
+    "slug": "etruscans",
+    "year": -396,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -377,
+    "type": "gain",
+    "counterpart": "volsci"
+   },
+   "mirror": {
+    "slug": "volsci",
+    "year": -377,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -338,
+    "type": "gain",
+    "counterpart": "latin-league"
+   },
+   "mirror": {
+    "slug": "latin-league",
+    "year": -338,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -334,
+    "type": "gain",
+    "counterpart": "Ausones of Cales"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text minor counterpart, no dossier intended"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -328,
+    "type": "gain",
+    "counterpart": "samnites"
+   },
+   "mirror": {
+    "slug": "samnites",
+    "year": -328,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -314,
+    "type": "gain",
+    "counterpart": "samnites"
+   },
+   "mirror": {
+    "slug": "samnites",
+    "year": -314,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -304,
+    "type": "gain",
+    "counterpart": "samnites"
+   },
+   "mirror": {
+    "slug": "samnites",
+    "year": -304,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -304,
+    "type": "gain",
+    "counterpart": "aequi"
+   },
+   "mirror": {
+    "slug": "aequi",
+    "year": -304,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -304,
+    "type": "vassal_start",
+    "counterpart": "Marsi, Marrucini, Paeligni, Frentani and Vestini (Italian allies)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (additions batch eu-03-x)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -299,
+    "type": "vassal_start",
+    "counterpart": "picentes"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "picentes dossier has no vassal_start in 299 (its first Roman event is the 269 contest_start); add it there or drop the RR vassal_start"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -290,
+    "type": "gain",
+    "counterpart": "sabines"
+   },
+   "mirror": {
+    "slug": "sabines",
+    "year": -290,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -290,
+    "type": "vassal_start",
+    "counterpart": "samnites"
+   },
+   "mirror": {
+    "slug": "samnites",
+    "year": -291,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "modelling conflict: samnites dossier dissolves in 290 (and has a 291 Venusia loss), RR keeps Samnium as allied (vassal) 290-91; one side must change"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -283,
+    "type": "gain",
+    "counterpart": "senones"
+   },
+   "mirror": {
+    "slug": "senones",
+    "year": -283,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -280,
+    "type": "loss",
+    "counterpart": "Kingdom of Epirus (Pyrrhus)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text minor counterpart, no dossier intended"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -277,
+    "type": "gain",
+    "counterpart": "Kingdom of Epirus (Pyrrhus)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text minor counterpart, no dossier intended"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -272,
+    "type": "vassal_start",
+    "counterpart": "lucanians"
+   },
+   "mirror": {
+    "slug": "lucanians",
+    "year": -272,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "modelling conflict: lucanians dossier records loss + dissolve in 272, RR records vassal_start 272 (vassal_end 91)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -272,
+    "type": "gain",
+    "counterpart": "Kingdom of Epirus (Pyrrhus)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text minor counterpart, no dossier intended"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -272,
+    "type": "vassal_start",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -272,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -268,
+    "type": "gain",
+    "counterpart": "picentes"
+   },
+   "mirror": {
+    "slug": "picentes",
+    "year": -268,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -268,
+    "type": "vassal_end",
+    "counterpart": "picentes"
+   },
+   "mirror": {
+    "slug": "picentes",
+    "year": -269,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "picentes dossier has loss + dissolve 268 (matched by RR gain 268) but no vassal_start/vassal_end; RR's vassal pair 299-268 has no mirror"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -266,
+    "type": "gain",
+    "counterpart": "Messapii and Sallentini"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (additions batch eu-03-x)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -264,
+    "type": "gain",
+    "counterpart": "etruscans"
+   },
+   "mirror": {
+    "slug": "etruscans",
+    "year": -264,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -264,
+    "type": "vassal_start",
+    "counterpart": "etruscans"
+   },
+   "mirror": {
+    "slug": "etruscans",
+    "year": -265,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "modelling conflict: etruscans dossier dissolves in 264 ('allies of Rome from 264 (tint)' in its text) without a vassal_start; RR vassal_start 264, vassal_end 90"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -264,
+    "type": "vassal_start",
+    "counterpart": "mamertines"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "mamertines dossier has no vassal_start; it only dissolves to RR in 257 (C1)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -263,
+    "type": "vassal_start",
+    "counterpart": "syracuse"
+   },
+   "mirror": {
+    "slug": "syracuse",
+    "year": -263,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "syracuse dossier records a 263 loss to RR of 'the interior and north coast beyond Tauromenium' and no vassal_start; RR records only the vassal_start for Hiero's retained kingdom and no gain of the land beyond"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -261,
+    "type": "gain",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -261,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -257,
+    "type": "vassal_end",
+    "counterpart": "mamertines"
+   },
+   "mirror": {
+    "slug": "mamertines",
+    "year": -257,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "mamertines dossier dissolves to RR in 257 (C1); RR has vassal_end and no gain of Messana; both C1"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -256,
+    "type": "occupation_start",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -256,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -255,
+    "type": "occupation_end",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -255,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -254,
+    "type": "gain",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -254,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -241,
+    "type": "gain",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -241,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -238,
+    "type": "gain",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -237,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -238,
+    "type": "vassal_start",
+    "counterpart": "adriatic-veneti"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "adriatic-veneti dossier has no vassal_start in 238 (its Roman events are the 181 Aquileia loss and the 89 dissolve); RR event C1"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -228,
+    "type": "vassal_start",
+    "counterpart": "Greek cities of the Illyrian coast (Epidamnos, Apollonia, Corcyra, Issa)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text minor counterpart, no dossier intended"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -225,
+    "type": "vassal_start",
+    "counterpart": "boii"
+   },
+   "mirror": {
+    "slug": "boii",
+    "year": -225,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "boii dossier has contest_start 225, not vassal_start"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -222,
+    "type": "gain",
+    "counterpart": "insubres"
+   },
+   "mirror": {
+    "slug": "insubres",
+    "year": -222,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -219,
+    "type": "vassal_start",
+    "counterpart": "Illyrian towns under Roman protection (Pharos, Dimale)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text minor counterpart, no dossier intended"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -218,
+    "type": "gain",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -218,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "carthage dossier has contest_start 218 and a C1 gain from nobody of Catalonia in 218, no loss to RR of the Emporion-Ebro coast"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -218,
+    "type": "loss",
+    "counterpart": "boii"
+   },
+   "mirror": {
+    "slug": "boii",
+    "year": -218,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "RR names only boii for the whole of Cisalpine Gaul; the insubres dossier records a 218 Nov gain of Lombardy from RR (C3) that has no RR mirror, and boii records contest_start, not gain"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -218,
+    "type": "vassal_end",
+    "counterpart": "boii"
+   },
+   "mirror": {
+    "slug": "boii",
+    "year": -218,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "boii dossier has no vassal pair"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -216,
+    "type": "loss",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -215,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "carthage dossier records gain of Agrigentum from RR in 213, nothing for Capua/Samnium 216"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -215,
+    "type": "vassal_end",
+    "counterpart": "syracuse"
+   },
+   "mirror": {
+    "slug": "syracuse",
+    "year": -214,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "syracuse dossier has a 215 rename and 214 contest_start; no vassal_end"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -212,
+    "type": "gain",
+    "counterpart": "syracuse"
+   },
+   "mirror": {
+    "slug": "syracuse",
+    "year": -212,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -211,
+    "type": "gain",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -210,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -210,
+    "type": "gain",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -210,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -209,
+    "type": "gain",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -210,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -209,
+    "type": "gain",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -210,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -206,
+    "type": "gain",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -206,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -203,
+    "type": "gain",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -204,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "carthage dossier has no 203 loss of southern Italy (it ends the Italian theatre with contest_end 203)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -201,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-numidia"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-numidia dossier (found 202) has no vassal_start to RR; RR vassal 201-46"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -197,
+    "type": "vassal_start",
+    "counterpart": "insubres"
+   },
+   "mirror": {
+    "slug": "insubres",
+    "year": -197,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "modelling conflict: insubres dossier dissolves in 197, RR vassal_start 197 (vassal_end 89)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -195,
+    "type": "gain",
+    "counterpart": "celtiberians"
+   },
+   "mirror": {
+    "slug": "celtiberians",
+    "year": -195,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -191,
+    "type": "gain",
+    "counterpart": "boii"
+   },
+   "mirror": {
+    "slug": "boii",
+    "year": -191,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -168,
+    "type": "vassal_start",
+    "counterpart": "Illyria (the three cantons of Gentius' kingdom)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text minor counterpart, no dossier intended"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -167,
+    "type": "vassal_start",
+    "counterpart": "macedonian-republics"
+   },
+   "mirror": {
+    "slug": "macedonian-republics",
+    "year": -168,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -167,
+    "type": "gain",
+    "counterpart": "molossians"
+   },
+   "mirror": {
+    "slug": "molossians",
+    "year": -168,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -148,
+    "type": "gain",
+    "counterpart": "macedonian-republics"
+   },
+   "mirror": {
+    "slug": "macedonian-republics",
+    "year": -148,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -148,
+    "type": "vassal_end",
+    "counterpart": "macedonian-republics"
+   },
+   "mirror": {
+    "slug": "macedonian-republics",
+    "year": -148,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -148,
+    "type": "vassal_end",
+    "counterpart": "Greek cities of the Illyrian coast (Epidamnos, Apollonia, Corcyra, Issa)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text minor counterpart, no dossier intended"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -148,
+    "type": "vassal_end",
+    "counterpart": "Illyrian towns under Roman protection (Pharos, Dimale)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text minor counterpart, no dossier intended"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -148,
+    "type": "vassal_end",
+    "counterpart": "Illyria (the three cantons of Gentius' kingdom)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text minor counterpart, no dossier intended"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -146,
+    "type": "gain",
+    "counterpart": "carthage"
+   },
+   "mirror": {
+    "slug": "carthage",
+    "year": -146,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "carthage dossier: loss of Utica 149 (C3, no RR mirror), vassal_end + dissolve 146; RR gain 146 matches the dissolve. Also carthage's vassal_start 201 has no RR mirror"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -146,
+    "type": "gain",
+    "counterpart": "achaean-league"
+   },
+   "mirror": {
+    "slug": "achaean-league",
+    "year": -146,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -139,
+    "type": "gain",
+    "counterpart": "lusitanians"
+   },
+   "mirror": {
+    "slug": "lusitanians",
+    "year": -139,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -133,
+    "type": "gain",
+    "counterpart": "celtiberians"
+   },
+   "mirror": {
+    "slug": "celtiberians",
+    "year": -133,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -129,
+    "type": "gain",
+    "counterpart": "kingdom-of-pergamon"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -121,
+    "type": "gain",
+    "counterpart": "Arverni and Allobroges"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (additions batch eu-03-x)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -116,
+    "type": "gain",
+    "counterpart": "kingdom-of-pontus"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -103,
+    "type": "gain",
+    "counterpart": "Cilician pirates"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (additions batch eu-03-x)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -96,
+    "type": "vassal_start",
+    "counterpart": "cyrenaica"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group af-02 or me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -91,
+    "type": "loss",
+    "counterpart": "italian-city-states"
+   },
+   "mirror": {
+    "slug": "italian-city-states",
+    "year": -91,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "italian-city-states found 91 Nov (RR loss 91) - accepted as the mirror (found takes the land)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -91,
+    "type": "vassal_end",
+    "counterpart": "Marsi, Marrucini, Paeligni, Frentani and Vestini (Italian allies)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (additions batch eu-03-x)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -91,
+    "type": "vassal_end",
+    "counterpart": "samnites"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "samnites dossier ended in 290; no vassal pair there"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -91,
+    "type": "vassal_end",
+    "counterpart": "lucanians"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "lucanians dossier ended in 272; no vassal pair there"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -90,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Lex Julia: allied land becomes Roman; counterpart nobody. Umbria is in this region although no RR event ever made it allied or Roman (see fixes)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -90,
+    "type": "vassal_end",
+    "counterpart": "etruscans"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "etruscans dossier ended in 264; no vassal pair there"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -90,
+    "type": "vassal_end",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -90,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -90,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-cappadocia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -89,
+    "type": "gain",
+    "counterpart": "italian-city-states"
+   },
+   "mirror": {
+    "slug": "italian-city-states",
+    "year": -90,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -89,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Lex Pompeia, Transpadane Gaul; adriatic-veneti dossier dissolves to RR in 89 (could be its counterpart)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -89,
+    "type": "vassal_end",
+    "counterpart": "insubres"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "insubres dossier ended in 197; no vassal pair there"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -89,
+    "type": "vassal_end",
+    "counterpart": "adriatic-veneti"
+   },
+   "mirror": {
+    "slug": "adriatic-veneti",
+    "year": -89,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "adriatic-veneti dossier dissolves to RR in 89 (matches the RR 89 gain from nobody of Transpadane Gaul in substance); no vassal pair there"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -88,
+    "type": "loss",
+    "counterpart": "kingdom-of-pontus"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -88,
+    "type": "gain",
+    "counterpart": "italian-city-states"
+   },
+   "mirror": {
+    "slug": "italian-city-states",
+    "year": -89,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -87,
+    "type": "gain",
+    "counterpart": "italian-city-states"
+   },
+   "mirror": {
+    "slug": "italian-city-states",
+    "year": -88,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -85,
+    "type": "gain",
+    "counterpart": "kingdom-of-pontus"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -77,
+    "type": "loss",
+    "counterpart": "sertorian-hispania"
+   },
+   "mirror": {
+    "slug": "sertorian-hispania",
+    "year": -77,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -74,
+    "type": "gain",
+    "counterpart": "kingdom-of-bithynia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -74,
+    "type": "gain",
+    "counterpart": "cyrenaica"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group af-02 or me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -74,
+    "type": "vassal_end",
+    "counterpart": "cyrenaica"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group af-02 or me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -74,
+    "type": "gain",
+    "counterpart": "Isaurians and Cilician pirates"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (additions batch eu-03-x)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -72,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-pontus"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -72,
+    "type": "gain",
+    "counterpart": "sertorian-hispania"
+   },
+   "mirror": {
+    "slug": "sertorian-hispania",
+    "year": -72,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -67,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-pontus"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -67,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -67,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -67,
+    "type": "gain",
+    "counterpart": "Cilician pirates"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (additions batch eu-03-x)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -66,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-19, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -65,
+    "type": "gain",
+    "counterpart": "kingdom-of-pontus"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -64,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -64,
+    "type": "gain",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-19, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -63,
+    "type": "vassal_start",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -63,
+    "type": "vassal_start",
+    "counterpart": "galatia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -58,
+    "type": "gain",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -58,
+    "type": "gain",
+    "counterpart": "Gallic tribes (Helvetii, Suebi, Belgae, Veneti, Arverni)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (additions batch eu-03-x)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -57,
+    "type": "gain",
+    "counterpart": "Gallic tribes (Helvetii, Suebi, Belgae, Veneti, Arverni)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (additions batch eu-03-x)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -56,
+    "type": "gain",
+    "counterpart": "Gallic tribes (Helvetii, Suebi, Belgae, Veneti, Arverni)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (additions batch eu-03-x)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -52,
+    "type": "gain",
+    "counterpart": "Gallic tribes (Helvetii, Suebi, Belgae, Veneti, Arverni)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (additions batch eu-03-x)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -49,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -49,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -47,
+    "type": "loss",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -46,
+    "type": "gain",
+    "counterpart": "kingdom-of-numidia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-numidia",
+    "year": -46,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -46,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-numidia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-numidia",
+    "year": -46,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-numidia has loss + dissolve 46 (matched by RR gain) but no vassal pair"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -40,
+    "type": "loss",
+    "counterpart": "parthian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-06, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -40,
+    "type": "vassal_end",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -38,
+    "type": "gain",
+    "counterpart": "parthian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-06, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -37,
+    "type": "vassal_start",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -36,
+    "type": "loss",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -36,
+    "type": "loss",
+    "counterpart": "galatia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group me-05, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -34,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-19, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -32,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-19, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -32,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-19, not written yet (2026-10-19)"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -31,
+    "type": "vassal_start",
+    "counterpart": "thracian-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "thracian-kingdom dossier has only a dynastic rename in 31, no vassal_start to RR"
+  },
+  {
+   "event": {
+    "slug": "mauretania",
+    "year": -33,
+    "type": "vassal_start",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Mauretania page: 'Upon his own death in 33 BC, Bocchus II bequeathed his entire kingdom to Octavian'; RR has no vassal_start mauretania (C3 on the counterpart side)"
+  },
+  {
+   "event": {
+    "slug": "dalmatae",
+    "year": -76,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Salona passes to Rome (C3, Dalmatae page); no RR gain"
+  },
+  {
+   "event": {
+    "slug": "dalmatae",
+    "year": -33,
+    "type": "dissolve",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Octavian ends Dalmatian independence, Roman Illyricum (C3); RR lists the Dalmatian coast only as a gap"
+  },
+  {
+   "event": {
+    "slug": "cimmerian-bosporus",
+    "year": -48,
+    "type": "gain",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Pharnaces II seizes Colchis, Lesser Armenia and Pontus from Rome in 48; RR has no loss"
+  },
+  {
+   "event": {
+    "slug": "cimmerian-bosporus",
+    "year": -47,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Zela (47, C3): Rome recovers Pontus; RR has no gain"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -189,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Ambracia taken by Fulvius Nobilior 189 (C3); RR has no gain"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -189,
+    "type": "vassal_start",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "'Aetolia was reduced to a Roman client state' (Roman-Seleucid war page, C3); RR has no vassal_start"
+  },
+  {
+   "event": {
+    "slug": "thessalian-league-roman-era",
+    "year": -196,
+    "type": "vassal_start",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Thessaly under Roman protection from 196 (C2); RR has no vassal_start"
+  },
+  {
+   "event": {
+    "slug": "thessalian-league-roman-era",
+    "year": -146,
+    "type": "dissolve",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Thessaly into the province of Macedonia; RR has no gain"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -197,
+    "type": "occupation_start",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Roman garrison in Acrocorinth 197-194 (C2); RR has none"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -212,
+    "type": "gain",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Philip V takes the Atintani, Parthini and Dimale from Roman protection (C2); RR has no loss or vassal_end"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -205,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Peace of Phoenice (C3): Parthini, Dimallum etc. to Rome; RR has no gain or vassal_start"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -196,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Demetrias, Chalcis and Corinth garrisoned by Rome to 194 (C2); RR has no occupation"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -168,
+    "type": "dissolve",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "RR has contest_end 168 (now counterpart antigonid-dynasty) and vassal_start macedonian-republics 167; no RR event takes the Antigonid land in 168 except via the merides"
+  },
+  {
+   "event": {
+    "slug": "acarnanian-league",
+    "year": -168,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Leucas to Rome 168 (C3); RR has no gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-epirus",
+    "year": -167,
+    "type": "dissolve",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "RR's 167 gain names molossians; the Epirote state dissolving to RR in 167 (C3) has no RR mirror"
+  },
+  {
+   "event": {
+    "slug": "croton",
+    "year": -277,
+    "type": "dissolve",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "RR's 277 gain of Croton and Locri names the free-text 'Kingdom of Epirus (Pyrrhus)'; croton.json dissolves to RR (C3)"
+  },
+  {
+   "event": {
+    "slug": "taras",
+    "year": -272,
+    "type": "dissolve",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "RR's 272 gain of Tarentum names 'Kingdom of Epirus (Pyrrhus)'; taras.json dissolves to RR (C3); kingdom-of-epirus has no RR events at all"
+  },
+  {
+   "event": {
+    "slug": "umbri",
+    "year": -299,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Nequinum/Narnia to Rome 299 (C3); RR has no Umbrian event"
+  },
+  {
+   "event": {
+    "slug": "umbri",
+    "year": -260,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "conquest of Umbria completed c. 260 (C2); RR has no Umbrian event"
+  },
+  {
+   "event": {
+    "slug": "volsci",
+    "year": -304,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "the Volscian country (Antium, Pomptine plain, Privernum, Liris) lost by 304 (C2); RR has only the 377 gain"
+  },
+  {
+   "event": {
+    "slug": "samnites",
+    "year": -338,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Campanian plain of Capua, Pompeii, Cumae (C2); RR's 338 gain names latin-league"
+  },
+  {
+   "event": {
+    "slug": "samnites",
+    "year": -291,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Venusia 291 (C2); RR's 290 events are vassal_start + contest_end"
+  },
+  {
+   "event": {
+    "slug": "etruscans",
+    "year": -383,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Sutrium and Nepet (C2); RR has no gain"
+  },
+  {
+   "event": {
+    "slug": "etruscans",
+    "year": -300,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Pyrgi (C2); RR has no gain"
+  },
+  {
+   "event": {
+    "slug": "etruscans",
+    "year": -273,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Caere and its coast (C2); RR has no gain"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -146,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "mainland Greece outside the Peloponnese (Thessaly, central Greece, Euboea, Epirus) to RR (C3); RR's only 146 Greek gain names achaean-league"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -63,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Greek cities of the Anatolian coast (C1); RR none"
+  },
+  {
+   "event": {
+    "slug": "massalia",
+    "year": -49,
+    "type": "dissolve",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "RR's 49 Sept gain of Massilia names greek-city-states (which also records a 49 loss); massalia.json now exists and dissolves to RR (C3): one of the two counterpart dossiers double-counts"
+  },
+  {
+   "event": {
+    "slug": "sertorian-hispania",
+    "year": -80,
+    "type": "found",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Sertorius' state founded in Lusitania (Roman since 139) in 80; RR has only contest_start 80 and the first loss in 77"
+  },
+  {
+   "event": {
+    "slug": "syracuse",
+    "year": -263,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "see RR /ledger/33"
+  },
+  {
+   "event": {
+    "slug": "carthage",
+    "year": -252,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Selinous, Heraclea Minoa and Thermae 252 (C3); RR has gains 254 and 241 only"
+  },
+  {
+   "event": {
+    "slug": "carthage",
+    "year": -213,
+    "type": "gain",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Agrigentum retaken by Carthage 213 (C2); RR has no loss"
+  },
+  {
+   "event": {
+    "slug": "carthage",
+    "year": -201,
+    "type": "vassal_start",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Carthage's territory under the 201 treaty (C2); RR has no vassal_start carthage"
+  },
+  {
+   "event": {
+    "slug": "carthage",
+    "year": -149,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Utica (C3); RR includes Utica only in the 146 gain"
+  },
+  {
+   "event": {
+    "slug": "illyrian-kingdom",
+    "year": -229,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Corcyra to Rome 229 (C3); RR models the Greek coast as a 228 vassal_start of free-text 'Greek cities of the Illyrian coast'"
+  },
+  {
+   "event": {
+    "slug": "illyrian-kingdom",
+    "year": -168,
+    "type": "dissolve",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "illyrian-kingdom loses its last lands and dissolves to RR (C3); RR has vassal_start of free-text 'Illyria (the three cantons of Gentius' kingdom)'"
+  },
+  {
+   "event": {
+    "slug": "rhodes",
+    "year": -39,
+    "type": "dissolve",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "C1 on the counterpart side; RR none; low priority"
+  },
+  {
+   "event": {
+    "slug": "roman-kingdom",
+    "year": -509,
+    "type": "dissolve",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "matched",
+   "note": "RR found 509 with predecessor roman-kingdom"
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Sextus Pompeius' Sicilian state (Sicily, Sardinia, Corsica)",
+   "suggested_slug": "sextus-pompeius",
+   "years": [
+    -42,
+    -36
+   ]
+  },
+  {
+   "name": "Arverni",
+   "suggested_slug": "arverni",
+   "years": [
+    -121,
+    -52
+   ]
+  },
+  {
+   "name": "Allobroges",
+   "suggested_slug": "allobroges",
+   "years": [
+    -121,
+    -121
+   ]
+  },
+  {
+   "name": "Helvetii",
+   "suggested_slug": "helvetii",
+   "years": [
+    -58,
+    -58
+   ]
+  },
+  {
+   "name": "Belgae",
+   "suggested_slug": "belgae",
+   "years": [
+    -57,
+    -57
+   ]
+  },
+  {
+   "name": "Messapii (with the Sallentini)",
+   "suggested_slug": "messapii",
+   "years": [
+    -266,
+    -266
+   ]
+  },
+  {
+   "name": "Marsi, Marrucini, Paeligni, Frentani and Vestini",
+   "suggested_slug": "marsi",
+   "years": [
+    -304,
+    -91
+   ]
+  },
+  {
+   "name": "Aristonicus' revolt (Eumenes III)",
+   "suggested_slug": "revolt-of-aristonicus",
+   "years": [
+    -133,
+    -129
+   ]
+  },
+  {
+   "name": "Cilician pirates",
+   "suggested_slug": "cilician-pirates",
+   "years": [
+    -103,
+    -67
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-03-b.md",
+ "problems": [
+  "No page failed to load. WebFetch summaries paraphrase, so a quote the summarizer could not find (the Parthian 'roughly two years') may in principle sit in an unread part of the page; two targeted re-reads found it absent.",
+  "Many cross-check mismatches come from counterpart dossiers written after roman-republic (2026-10-18 07:19): kingdom-of-epirus, croton, taras, massalia, macedonian-republics, dalmatae, umbri, thessalian-league-roman-era, cimmerian-bosporus, aetolian-league. The eu-03-b author kept the dossier unchanged and did not integrate them.",
+  "Counterparts whose groups have not run yet (no dossier on 2026-10-19): kingdom-of-pontus, kingdom-of-armenia, cyrenaica, judea, ptolemaic-kingdom, galatia, parthian-empire, kingdom-of-pergamon, kingdom-of-cappadocia, kingdom-of-bithynia, seleucid-empire, roman-empire; Context polities kingdom-of-commagene, kingdom-of-osroene, nabataeans and kingdom-of-armenia also have no dossier yet. Their events are recorded as exceptions.",
+  "Reviewer edits to history/polities/roman-republic.json (validated after each, 0 errors, 4 vassal_start-without-end warnings unchanged): counterpart slugs antigonid-macedonia -> antigonid-dynasty and the merides -> macedonian-republics; /ledger/80 and /ledger/149 confidence 3 -> 2; note text of /ledger/114, /ledger/143 and /ledger/149 corrected to the pages' words."
+ ]
+}

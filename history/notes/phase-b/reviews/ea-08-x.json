@@ -1,0 +1,1953 @@
+{
+ "batch_id": "ea-08-x",
+ "verdicts": [
+  {
+   "slug": "manchukuo",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "[blocking] No vassal events: Manchukuo would be drawn as an independent state for 1932-1945, while empire-of-japan /ledger/42 (vassal_start manchukuo 1932-3), /ledger/43 (vassal_start manchukuo 1933-3, Rehe), /ledger/84 and /ledger/85 (vassal_end manchukuo 1945-8) record it as Japan's client.",
+     "why": "Reviewer brief check 3: a vassal_start of X is a vassal_start in X's ledger with this state as counterpart. The author's notes say 'the Japan dossier already records Manchukuo as a vassal_start 1932' and stop there.",
+     "fix": "Add vassal_start counterpart empire-of-japan 1932-3 (the found region), vassal_start empire-of-japan 1933-3 (Chengde 160 km, Rehe), and vassal_end empire-of-japan 1945-8 for each (same region strings), citing the Manchukuo page (puppet state of Japan; Established 1 March 1932; Rehe annexed 4 March 1933; Dissolution 20 August 1945).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/8",
+     "what": "[non-blocking] The dissolve gives Rehe (Chengde 160 km) to union-of-soviet-socialist-republics, but republic-of-china /ledger/66 gains Rehe from manchukuo in 1945-8.",
+     "why": "Cross-check of republic-of-china.json.",
+     "fix": "Either split the dissolve region (Rehe to republic-of-china) or say in the note why the Soviet occupation covered Rehe.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Date and extent of the Xing'an lands (Hulunbuir, Hinggan, Jirem) joining Manchukuo; confidence 1. The Suiyuan campaign page says 'the three eastern Mongolian leagues ... were occupied and annexed' into Manchukuo (undated).",
+     "page to try": "https://en.wikipedia.org/wiki/Japanese_invasion_of_Manchuria"
+    },
+    {
+     "where": "/wars",
+     "what is missing": "The Battles of Khalkhin Gol (1939), a Manchukuo-Mongolian border war (no land changed), are named in the certainty note but not listed as a war.",
+     "page to try": "https://en.wikipedia.org/wiki/Battles_of_Khalkhin_Gol"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Manchukuo",
+     "result": "confirmed: 'formally established on 1 March in Xinjing'; infobox Established 1 March 1932"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Rehe",
+     "result": "confirmed: infobox 'Rehe Province got annexed on the 4 March 1933'; Chengde taken 4 March"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Manchukuo",
+     "result": "confirmed: 'proclaimed a monarchy on 1 March 1934 ... era name of Kangde'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Soviet_invasion_of_Manchuria",
+     "result": "confirmed: infobox 8 August - 2 September 1945; 'reaching Mukden, Changchun and Qiqihar by 20 August'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 984195,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 1.57,
+    "acknowledged": true,
+    "note": "No Cliopatria row; the infobox area has no year. The author's 1933-1945 shape resolves to about 1,541,678 km2 (1932: 1,436,725), ratio 1.57 to the infobox, acknowledged in both keyframe notes."
+   }
+  },
+  {
+   "slug": "mengjiang",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "[blocking] No vassal events: Mengjiang would be drawn as an independent state, while empire-of-japan /ledger/45 (vassal_start mengjiang 1936-5) and /ledger/87 (vassal_end 1945-8), and reorganized-national-government-of-china /ledger/2 (vassal_start mengjiang 1940-3) and /ledger/6 (vassal_end 1945-8) record it as a client.",
+     "why": "Reviewer brief check 3. The author's notes say the 1940 incorporation 'is a vassal_start in that dossier ... rather than here, because this dossier records land': the convention is that both sides record it (compare kumul-khanate, which records vassal_start qing-dynasty and republic-of-china).",
+     "fix": "Add vassal_start empire-of-japan 1936-5 / vassal_end empire-of-japan 1945-8, and vassal_start reorganized-national-government-of-china 1940-3 / vassal_end 1945-8 (Mengjiang infobox: 'Incorporated into the Reorganized National Government as an autonomous region: 24 March 1940'), with the regions those dossiers use.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6/confidence",
+     "what": "Confidence 3 on the North Shanxi gain whose region (Datong 80 km) the page does not name.",
+     "why": "Mengjiang page: the 1 September 1939 merger sentence names South Chahar and North Shanxi only; the page does not mention Datong anywhere (checked 2026-10-25). The note itself calls Datong 'the researcher's reading'.",
+     "fix": "confidence 2",
+     "applied": true
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what": "[non-blocking] Zhangbei 1936-1938 is not what the page says: the sentence 'The capital was established at Zhangbei (Changpei)', near Kalgan, with control 'around Hohhot', follows the 1 September 1939 merger sentence; the page names no capital for 1936-1939.",
+     "why": "Mengjiang page, paragraph on the 1939 merger and the 1941 rename.",
+     "fix": "Give the 1936-1939 seat only if a page names it (the Mongol United Autonomous Government sat at Guisui/Hohhot from October 1937 in most accounts); otherwise mark the strip a reading and move Zhangbei after 1939 or drop it in favour of the infobox's Kalgan.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Which part of Suiyuan (Hohhot, Baotou) fell and when in 1937; confidence 2 rings stand in.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Taiyuan"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "The 4 August 1941 rename to Mongolian Autonomous State (on the Mengjiang page) is not in the ledger (non-territorial).",
+     "page to try": "https://en.wikipedia.org/wiki/Mengjiang"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Mengjiang",
+     "result": "confirmed: 'Formed on May 12, 1936, the Mongol Military Government'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Suiyuan_campaign",
+     "result": "confirmed: 'Japanese regular and allied Inner Mongol forces finally captured eastern Suiyuan province' in Operation Chahar and the Battle of Taiyuan"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Mengjiang",
+     "result": "confirmed: 'renamed in October 1937 as the Mongol United Autonomous Government'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Mengjiang",
+     "result": "confirmed: 1 September 1939 merger of South Chahar and North Shanxi"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Mengjiang",
+     "result": "confirmed date; Datong not on page (confidence lowered to 2)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Soviet_invasion_of_Manchuria",
+     "result": "confirmed: the Soviet-Mongolian Cavalry-Mechanized Group 'quickly took Dolon Nur and Kalgan' (August 1945)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No infobox area on the Mengjiang page; no Cliopatria row. Author's 1939-1945 shape about 397,812 km2."
+   }
+  },
+  {
+   "slug": "kingdom-of-tungning",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/5",
+     "what is missing": "Who took Keelung when the Dutch left in 1668 (confidence 1), and the Dutch Formosa page's 'the Dutch retook the northern fortress at Keelung in 1664' (Zheng held it 1662-1664?).",
+     "page to try": "https://en.wikipedia.org/wiki/Keelung"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "The found region includes Xiamen, Kinmen and Penghu, which were Zheng bases before 1661 and never Dutch; counterpart dutch-formosa fits only the Tainan part. Name southern-ming (ea-07, not written yet) for the bases in the note or predecessors.",
+     "page to try": "https://en.wikipedia.org/wiki/Southern_Ming"
+    },
+    {
+     "where": "/keyframe_review/4",
+     "what is missing": "Chaozhou is drawn from 1674 though gained in 1675 (ledger 7), and the 1677 shape keeps all of Zhangzhou 50 km though only Haicheng was retaken; small, inside one span.",
+     "page to try": "https://en.wikipedia.org/wiki/Revolt_of_the_Three_Feudatories"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Siege_of_Fort_Zeelandia",
+     "result": "confirmed: arrived 2 April, Fort Provintia surrendered 4 April, siege from 7 April 1661"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Siege_of_Fort_Zeelandia",
+     "result": "confirmed: infobox March 30, 1661 - February 1, 1662; terms 'finalized on February 1'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Tungning",
+     "result": "confirmed: capture of Xiamen and Kinmen in November 1663; evacuated spring 1664"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Tungning",
+     "result": "confirmed: 1674 recaptured Xiamen; 'captured Quanzhou and Zhangzhou in 1674'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Tungning",
+     "result": "confirmed: 'Quanzhou was lost to the Qing on 12 March 1677'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Tungning",
+     "result": "confirmed: 'then Zhangzhou and Haicheng on 5 April'"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Tungning",
+     "result": "confirmed: 'The Qing captured Penghu on 18 July'"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Tungning",
+     "result": "confirmed: infobox 'Surrender to the Qing: 5 September 1683'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No infobox area on the Tungning page; no Cliopatria row (Cliopatria's Southern Ming row carries Taiwan 1662-1682, noted by the author)."
+   }
+  },
+  {
+   "slug": "dutch-formosa",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/8",
+     "what is missing": "Who took Keelung in 1668 (confidence 1); the page's own 'retook the northern fortress at Keelung in 1664' implies a 1662-1664 Zheng hold, flagged by the author.",
+     "page to try": "https://en.wikipedia.org/wiki/Keelung"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "Tamsui is drawn as Dutch from 1642; the Fort Santo Domingo page says the Spanish fort at Tamsui was ordered dismantled from about 1637 and razed by 1642, which neither cited page says.",
+     "page to try": "https://en.wikipedia.org/wiki/Fort_Santo_Domingo"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Dutch_Formosa",
+     "result": "confirmed: Established 1624; 'sue for peace on 3 August'; withdrawal from the Pescadores to Formosa"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Dutch_Formosa",
+     "result": "confirmed: 'Following the pacification campaigns of 1635-1636, more and more villages came to the Dutch to swear allegiance'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Dutch_Formosa",
+     "result": "confirmed: the Dutch returned in 1642 and drove the Spanish 'from the island'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Siege_of_Fort_Zeelandia",
+     "result": "confirmed: arrival 2 April, Provintia 4 April, Zeelandia besieged 7 April 1661"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Siege_of_Fort_Zeelandia",
+     "result": "confirmed: terms finalized on 1 February 1662 (the Dutch Formosa page gives 12 January; flagged by the author)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No infobox area on the Dutch Formosa page; no Cliopatria row."
+   }
+  },
+  {
+   "slug": "spanish-formosa",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "The Spanish withdrawal from Tamsui (fort ordered dismantled from about 1637 and razed by 1642, per the Fort Santo Domingo page); the dossier keeps Tamsui Spanish to August 1642 (keyframe 1, ledger 4).",
+     "page to try": "https://en.wikipedia.org/wiki/Fort_Santo_Domingo"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Spanish_Formosa",
+     "result": "confirmed: 'The Spanish set up a colony in the north of the island in 1626'; arrival at Keelung"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Spanish_Formosa",
+     "result": "confirmed: 'In 1629 the Spanish erected a second base, centred on Fort Santo Domingo, in Tamsui'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Spanish_Formosa",
+     "result": "confirmed: August 1642, 'After six days of battle, the small force surrendered the fort'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Spanish_Formosa",
+     "result": "confirmed: infobox 'Surrender of San Salvador: 1642'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No infobox area on the Spanish Formosa page; no Cliopatria row."
+   }
+  },
+  {
+   "slug": "east-hebei-autonomous-council",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "[blocking] No vassal events: the council would be drawn as an independent state, while empire-of-japan /ledger/44 (vassal_start east-hebei-autonomous-council 1935-11) and /ledger/48 (vassal_end 1938-2) record it as Japan's client.",
+     "why": "Reviewer brief check 3; the page calls it the Japanese-backed / collaborationist council of the Tanggu Truce zone.",
+     "fix": "Add vassal_start empire-of-japan 1935-11 and vassal_end empire-of-japan 1938-2 over the council's region.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "[non-blocking] The six-point ring's southern edge (116.5 E 39.0 N to 118.0 E 38.9 N) puts Tianjin city (117.2 E, 39.13 N) inside the council.",
+     "why": "The Tanggu Truce page says only 'a demilitarized zone extending 100 km south of the Great Wall from Beijing to Tianjin'; Tianjin itself stayed under the Chinese Hebei-Chahar authorities in 1935-1937.",
+     "fix": "Pull the ring's south-western edge north of Tianjin (for example 116.6 E 39.6 N to 117.6 E 39.4 N) or say in the note that Tianjin is included by the ring's coarseness.",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/East_Hebei_Autonomous_Council",
+     "result": "confirmed: 15 November autonomy, 'on 25 November, he proclaimed them to be independent', capital Tongzhou, 22 counties"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/East_Hebei_Autonomous_Council",
+     "result": "confirmed: 'absorbed into the collaborationist Provisional Government of China in February 1938'"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Tanggu_Truce",
+     "result": "confirmed: signed 31 May 1933; zone 'extending 100 km south of the Great Wall from Beijing to Tianjin'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No infobox area on the page; no Cliopatria row. Author's ring about 59,684 km2."
+   }
+  },
+  {
+   "slug": "fengtian-clique",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "[blocking] No vassal events for 1928-1931: kuomintang /ledger/22 (vassal_start 'Fengtian clique (Zhang Xueliang)' 1928-12) and /ledger/28 (vassal_end 1929-12), and republic-of-china /ledger/30 (vassal_start 1930) and /ledger/41 (vassal_end 1931-9) record Manchuria as a Nationalist client; this dossier draws it as independent and its notes cite the 29 December 1928 allegiance.",
+     "why": "Reviewer brief check 3; Northern Expedition page: 'Zhang Xueliang officially declared his allegiance to the nationalist government in Nanjing on 29 December 1928'.",
+     "fix": "Add vassal_start kuomintang 1928-12 (Manchuria) / vassal_end kuomintang 1929-12 and vassal_start republic-of-china 1930 (or 1929-12) / vassal_end republic-of-china 1931-9, with the Northern Expedition page as source. (The ROC and KMT dossiers should switch their counterpart string to fengtian-clique: routed in cross_checks.)",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6/region",
+     "what": "Beijing was in the November 1924 gain and the 1925 shape although the region's own text says 'Hebei with Tianjin, shared with Feng Yuxiang's Guominjun' and the dossier gains Beijing again in June 1926 (ledger 10) without losing it in between.",
+     "why": "Feng Yuxiang page: 'seized the capital in the Beijing Coup on 23 October 1924' and in January 1926 'lost control of Beijing'; Zhang Zuolin page: 'In June 1926, Zhang managed to capture Beijing'. guominjun /keyframe_review/0-1 hold Beijing 1924-1925.",
+     "fix": "Beijing removed from /ledger/6/region and from /keyframe_review/2/correction (inner union), notes appended.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/9/counterpart",
+     "what": "Counterpart 'Sun Chuanfang (Five Provinces Alliance)' while zhili-clique, in the same batch, holds Sun Chuanfang's provinces to 1927.",
+     "why": "Zhili clique page: 'Zhili clique general Sun Chuanfang's forces defeated two Anhui clique generals in Fujian'; Northern Expedition page: 'The coalition of Sun Chuanfang was in control of the Fujian, Zhejiang, Jiangsu, Anhui, and Jiangxi provinces' (1926).",
+     "fix": "counterpart zhili-clique (applied); the matching zhili-clique gain is listed under that dossier.",
+     "applied": true
+    },
+    {
+     "where": "/wars",
+     "what": "[non-blocking] The Anti-Fengtian War (1925-1926: the Guominjun, Guo Songling and Sun Chuanfang against Fengtian), in which Jiangsu, Anhui and Shanghai were lost and Beijing won, is not listed (guominjun /wars/1 lists it); the Northern Expedition war names 'Sun Chuanfang' and 'Wu Peifu' as strings instead of zhili-clique.",
+     "why": "guominjun.json /wars/1; Zhili clique page.",
+     "fix": "Add the war with zones Jiangsu/Anhui/Shanghai and Beijing-Tianjin; use zhili-clique as the belligerent slug.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/9",
+     "what is missing": "Date of the loss of Jiangsu and Anhui to Sun Chuanfang (Zhili): confidence 1 at 1926, but the 1925 shape already ends with 1925 and the campaign was October-November 1925.",
+     "page to try": "https://en.wikipedia.org/wiki/Anti-Fengtian_War"
+    },
+    {
+     "where": "/keyframe_review/6",
+     "what is missing": "The 1931 shape drops Beijing and the Shanhai Pass corridor gained in September 1930 (ledger 14) with no ledger event; the Northeast Army held Beiping until 1933. Add a loss (counterpart republic-of-china) at the date a page gives, or keep the corridor to the end.",
+     "page to try": "https://en.wikipedia.org/wiki/Zhang_Xueliang"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "Rehe: zhili-clique /ledger/11 loses Rehe in November 1924 but no dossier gains it (Fengtian's governors held Rehe from 1924 until the Japanese took it in 1933).",
+     "page to try": "https://en.wikipedia.org/wiki/Rehe_Province"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Fengtian_clique",
+     "result": "confirmed: 'When Yuan Shikai died in 1916, Zhang seized the opportunity to expel the military governor of Manchuria, Duan Zhigui'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Zhang_Zuolin",
+     "result": "confirmed: 'By 1918 Zhang's control of Manchuria was complete'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Zhang_Zuolin",
+     "result": "confirmed: 'By August 1925, the Fengtian Army controlled four large provinces within the Great Wall' (Zhili, Shandong, Jiangsu, Anhui)"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Zhang_Zuolin",
+     "result": "confirmed: 'In June 1926, Zhang managed to capture Beijing' (holder not named)"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Northern_Expedition",
+     "result": "confirmed: NRA troops entered Jinan on 30 April 1928"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Northern_Expedition",
+     "result": "confirmed: 'On 6 June, the NRA Third Collective Army marched into Beijing'; Tianjin surrendered 11 June"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Central_Plains_War",
+     "result": "confirmed: 18 September 1930, Northeast Army through Shanhai Pass, captured Peking two days later"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The Fengtian clique page has no area; no Cliopatria row. Author's shapes: Manchuria about 1,026,774 km2; 1925 peak about 1.8 M km2."
+   }
+  },
+  {
+   "slug": "zhili-clique",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/3/correction",
+     "what": "[blocking] Anhui province appears in the 1925-1926 shape with no gain event; anhui-clique /ledger/5 loses Anhui (with Shaanxi, Gansu, Hunan) to zhili-clique in 1924 and this ledger has no mirror.",
+     "why": "Walk of keyframes 2 to 3 against the ledger; anhui-clique.json /ledger/5.",
+     "fix": "Add a gain of Anhui (counterpart anhui-clique, the year a page gives; the Anhui clique page says all its provinces 'were eventually annexed by the Zhili clique by the summer of 1924').",
+     "applied": false
+    },
+    {
+     "where": "/ledger",
+     "what": "[blocking] Jiangsu and Anhui are held through 1925-1926, but fengtian-clique /ledger/8 gains both from zhili-clique by August 1925 and /ledger/9 loses them back to zhili-clique (both on pages): the two dossiers draw the same provinces in 1925.",
+     "why": "Zhang Zuolin page: 'By August 1925, the Fengtian Army controlled four large provinces within the Great Wall' (Zhili, Shandong, Jiangsu, Anhui); Second Zhili-Fengtian War page: 'a joint Anhui-Fengtian expedition briefly retook Jiangsu and Shanghai in January'.",
+     "fix": "Add a 1925 loss of Jiangsu and Anhui to fengtian-clique and a late-1925 gain back from fengtian-clique (Sun Chuanfang's offensive), and add the Anti-Fengtian War to wars.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/11",
+     "what": "[blocking] The November 1924 loss gives all of the north to fengtian-clique, but guominjun /ledger/0 founds itself on Beijing taken from zhili-clique (23 October 1924) and /ledger/1 gains Chahar and Suiyuan from zhili-clique; the note itself says Chahar and Suiyuan went to the Guominjun. Rehe goes to no one.",
+     "why": "Feng Yuxiang page: 'seized the capital in the Beijing Coup on 23 October 1924'; Second Zhili-Fengtian War page: 'a Zhili loss of all of its northern provinces to Zhang Zuolin and Feng Yuxiang's'.",
+     "fix": "Split /ledger/11: a 1924-10 loss of Beijing (and Chahar and Suiyuan, if kept) to guominjun, and a 1924-11 loss of Hebei, Tianjin and Rehe to fengtian-clique.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/4",
+     "what": "[blocking] Henan leaves the 1927 shape with no ledger event; the notes say its loss 'is not dated on the pages', but the Northern Expedition page this dossier cites dates it.",
+     "why": "Northern Expedition page: 'Feng Yuxiang and his Guominjun moved first, leaving their base in Shaanxi to march on Luoyang, in Henan'; 'On 28 May, ... the Guominjun took Luoyang'.",
+     "fix": "Add a 1927-5 loss of Henan to guominjun (republic-of-china /ledger/21 and kuomintang /ledger/17 have the same move).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Dates for Henan, Jiangsu, Jiangxi and Hubei (confidence 1 at 1922): the page says only 'consolidated its control over Henan' after 1922 and 'At its height, it also controlled Jiangsu, Jiangxi, and Hubei'.",
+     "page to try": "https://en.wikipedia.org/wiki/Cao_Kun"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "How Wu Peifu came to hold Hunan (confidence 1, counterpart nobody); the region is the whole of Hunan although the text says northern Hunan.",
+     "page to try": "https://en.wikipedia.org/wiki/Wu_Peifu"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Zhili_clique",
+     "result": "confirmed: after 1922 'it took control of Rehe (Jehol), Chahar, and Suiyuan and consolidated its control over Henan'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Zhili_clique",
+     "result": "confirmed: 'In March 1924, Zhili clique general Sun Chuanfang's forces defeated two Anhui clique generals in Fujian'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Zhili_clique",
+     "result": "confirmed: 'The war ended on 12 October 1924 with an Anhui defeat and the Zhili clique gained control of Zhejiang and Shanghai'"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Northern_Expedition",
+     "result": "confirmed: Yuezhou 22 August 1926, Hunan under complete KMT control"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Northern_Expedition",
+     "result": "confirmed: Wuchang surrendered 10 October 1926"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Northern_Expedition",
+     "result": "confirmed: 'By 23 February 1927, Zhejiang was under complete KMT control'"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Northern_Expedition",
+     "result": "confirmed: 'on 22 March 1927, Bai's forces marched into Shanghai victorious'"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Northern_Expedition",
+     "result": "confirmed: Sun's counter-offensive of 31 August 1927 crushed (Longtan)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The Zhili clique page has no area; no Cliopatria row. Author's 1924 peak about 1,843,894 km2."
+   }
+  },
+  {
+   "slug": "anhui-clique",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/1/region",
+     "what": "The Mongolia occupation used the region 'Mongolian Plateau' (about 3.03 M km2, which takes in Inner Mongolia) for the 'Outer Mongolia' its own text names.",
+     "why": "Anhui clique page: Xu Shuzheng 'Led expedition that reconquered Mongolia'; republic-of-china /ledger/10 uses the gazetteer region 'Outer Mongolia' (about 1.64 M km2) for the same 1919 move.",
+     "fix": "region 'Outer Mongolia' in /ledger/1 and /ledger/4; the notes' gazetteer sentence updated.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/5",
+     "what": "[non-blocking, confidence 1] Shaanxi, Gansu and Hunan are lost in 1924 in the ledger but leave the shape in 1921 (keyframe 1), and the page's own governor table ends their Anhui governors in 1920 (Hunan, Gansu) and 1921 (Shaanxi).",
+     "why": "Anhui clique page: Zhang Jingyao 'Governor of Hunan' in the clique '1917-1920'; Chen Shufan 'Governor of Shaanxi: 1916-1921'; Zhang Guangjian 'Governor of Gansu: 1914-1920'.",
+     "fix": "Split /ledger/5: losses of Hunan and Gansu in 1920 and Shaanxi in 1921 (counterparts as a page gives them; zhili-clique has no such gains), and Anhui province in 1924.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Dates of Xu Shuzheng's occupation of Outer Mongolia (confidence 1; republic-of-china /ledger/10 dates the abolition of autonomy to 17 November 1919) and its end (the Chinese garrisons went in February-March 1921 per great-mongol-state /ledger/4-6).",
+     "page to try": "https://en.wikipedia.org/wiki/Xu_Shuzheng"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "End of the occupation (confidence 1, 1920-7) against the 1921 fall of Urga.",
+     "page to try": "https://en.wikipedia.org/wiki/Occupation_of_Mongolia"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "When each of Shaanxi, Gansu, Hunan and Anhui left the clique (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Anhui_clique"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Anhui_clique",
+     "result": "page gives no year for the expedition; confidence 1 is honest"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Anhui_clique",
+     "result": "mis-dated for Shaanxi, Gansu and Hunan against the page's governor table (confidence 1)"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Zhili_clique",
+     "result": "confirmed: March 1924, Sun Chuanfang's forces defeated two Anhui clique generals in Fujian"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Zhili_clique",
+     "result": "confirmed: 12 October 1924 Anhui defeat; Zhejiang and Shanghai to Zhili"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Anhui_clique",
+     "result": "confirmed: 'Zheng Shiqi ruled until 1925 when he transferred it to Fengtian's Zhang Zongchang'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The Anhui clique page has no area; no Cliopatria row. Author's 1916 shape about 1,562,416 km2."
+   }
+  },
+  {
+   "slug": "guominjun",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2/correction",
+     "what": "[blocking] The 1926-1930 shape (Shaanxi, Chahar, Suiyuan) leaves out Gansu and Henan, which the Central Plains War page this dossier cites gives as Feng's provinces, and the notes say wrongly that 'Gansu, Ningxia and Henan are not on the pages'.",
+     "why": "Central Plains War page: 'Feng controlled the provinces of Gansu, Shaanxi and Henan.' Northern Expedition page: 'the Guominjun took Luoyang' (28 May 1927). republic-of-china /ledger/21 and kuomintang /ledger/17 put the Guominjun in Shaanxi and Henan from 1927-5.",
+     "fix": "Add a 1927-5 gain of Henan (counterpart zhili-clique, Wu Peifu's Henan), a gain of Gansu at the date a page gives, and split the keyframe at 1927; re-examine Chahar and Suiyuan after the 1926 Nankou retreat.",
+     "applied": false
+    },
+    {
+     "where": "/ledger",
+     "what": "[blocking] No vassal events: kuomintang /ledger/17 (vassal_start 'Guominjun (Feng Yuxiang)' 1927-5) and /ledger/26 (vassal_end 1929-12), and republic-of-china /ledger/28 (vassal_start 1930) and /ledger/34 (vassal_end 1930-5) record the Guominjun as a Nationalist client.",
+     "why": "Reviewer brief check 3; Guominjun page: incorporated into the National Revolutionary Army 'as the Second Collective Army in 1928'; Feng Yuxiang page: 'In October 1928, Feng Yuxiang was appointed as Vice President of the Executive Yuan'.",
+     "fix": "Add vassal_start kuomintang 1927-5 / vassal_end kuomintang 1929-12 and vassal_start republic-of-china 1930 / vassal_end republic-of-china 1930-5, over the provinces held.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6/counterpart",
+     "what": "The November 1930 dissolve named kuomintang, whose dossier ends in December 1929 (merged into republic-of-china).",
+     "why": "kuomintang /ledger/29 dissolve 1929-12; Central Plains War infobox belligerent 'National Government of the Republic of China'.",
+     "fix": "counterpart republic-of-china, and the successors slug likewise (applied).",
+     "applied": true
+    },
+    {
+     "where": "/wars",
+     "what": "[non-blocking] The Northern Expedition (the Guominjun took Luoyang and Henan in May 1927) is not listed.",
+     "why": "Northern Expedition page.",
+     "fix": "Add it with the Henan zone.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "When the Guominjun took Shaanxi, Chahar and Suiyuan (confidence 1, one undated sentence on the Guominjun page).",
+     "page to try": "https://en.wikipedia.org/wiki/Anti-Fengtian_War"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "The Nankou retreat of August 1926 and the Wuyuan oath of September 1926; what happened to Chahar and Suiyuan after 1926.",
+     "page to try": "https://en.wikipedia.org/wiki/Anti-Fengtian_War"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Feng_Yuxiang",
+     "result": "confirmed: 'seized the capital in the Beijing Coup on 23 October 1924'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Feng_Yuxiang",
+     "result": "confirmed: January 1926, 'He lost control of Beijing and retreated to Zhangjiakou'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Guominjun",
+     "result": "confirmed: incorporated 'as the Second Collective Army in 1928'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Central_Plains_War",
+     "result": "confirmed: 'On 4 November both Yan Xishan and Feng Yuxiang announced their resignations'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The Guominjun page has no area; no Cliopatria row (Cliopatria's 1930 'Anti-Kuomintang Coalition' row, 556,635 km2, ea-08, overlaps the Guominjun and Shanxi lands in 1930 and is not mentioned)."
+   }
+  },
+  {
+   "slug": "shanxi-clique",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "[blocking] No vassal events: kuomintang /ledger/21 (vassal_start 'Shanxi clique (Yan Xishan)' 1928-6, Shanxi, Beijing, Tianjin, Hebei) and /ledger/27 (vassal_end 1929-12), and republic-of-china /ledger/29 (vassal_start 1930) and /ledger/35 (vassal_end 1930-5) record the clique as a Nationalist client; this dossier draws Shanxi as independent for all 38 years.",
+     "why": "Reviewer brief check 3; Shanxi clique page: 'Yan joined the NRA instead, and drove Fengtian armies from Beijing'.",
+     "fix": "Add vassal_start kuomintang 1928-6 / vassal_end kuomintang 1929-12 and vassal_start republic-of-china 1930 / vassal_end republic-of-china 1930-5; consider a vassal_start republic-of-china for 1932-1949 if a page dates Yan's return as Pacification Commissioner.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what": "[non-blocking] The 1931 shape drops Hebei and Tianjin with no ledger event (ledger 2 loses only Beijing and the Shanhai Pass corridor).",
+     "why": "Walk of keyframes 1 to 2; the notes say what Yan held after September 1930 is not on the pages.",
+     "fix": "Add a 1930-9/11 loss of the rest of Hebei and Tianjin (counterpart fengtian-clique or republic-of-china) or say in the keyframe note that it is unexplained.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/3",
+     "what": "[non-blocking] The 1937 Japanese conquest is typed loss/gain (ledger 3 and 4) while empire-of-japan /ledger/49 and /ledger/92 type it occupation_start/occupation_end (counterpart republic-of-china, 1938-3 and 1945-9).",
+     "why": "empire-of-japan.json.",
+     "fix": "Type ledger 3 occupation_start and ledger 4 occupation_end, counterpart empire-of-japan (same strings).",
+     "applied": false
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what": "[non-blocking] Taiyuan (112.55 E, 37.87 N) is the capital 1938-1944 but lies outside the 1938-1944 shape (110.2-112.6 E, 34.6-36.6 N).",
+     "why": "Yan Xishan page: 'the Japanese invasion pushed Yan's administration into the southwest corner of Shanxi'.",
+     "fix": "End Taiyuan in 1937 and add the south-western seat for 1938-1945 (town from a page), resuming Taiyuan from 1945.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/4",
+     "what is missing": "The 1945-1949 shape is all of Shanxi, but the Communists held much of the province from 1945 (Shangdang 1945, Linfen and Jinzhong 1948); only the fall in 1949 is dated (confidence 1 recovery at ledger 4).",
+     "page to try": "https://en.wikipedia.org/wiki/Taiyuan_campaign"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "Date and extent of the 1928 Hebei gain (confidence 2) and whether Suiyuan and Chahar went to Yan in 1928.",
+     "page to try": "https://en.wikipedia.org/wiki/Yan_Xishan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Yan_Xishan",
+     "result": "confirmed: 'He effectively controlled the province of Shanxi from the 1911 Xinhai Revolution'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Shanxi_clique",
+     "result": "confirmed (undated): 'the Kuomintang allowed the Shanxi clique to expand all the way to the sea at Hebei and Shandong'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Central_Plains_War",
+     "result": "confirmed: Northeast Army through Shanhai Pass, captured Peking (September 1930)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Taiyuan",
+     "result": "confirmed: 1 September - 9 November 1937; 'By the night of November 9, Taiyuan had been captured'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Shanxi_clique",
+     "result": "confirmed: 'which fell to the Communists in 1949'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The Shanxi clique page has no area; no Cliopatria row. Shanxi province about 201,814 km2 on the grid."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "manchukuo",
+    "year": 1932,
+    "type": "found",
+    "counterpart": "republic-of-china"
+   },
+   "mirror": {
+    "slug": "republic-of-china",
+    "year": 1932,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "ROC /ledger/42 (1932-3, Manchuria)."
+  },
+  {
+   "event": {
+    "slug": "manchukuo",
+    "year": 1932,
+    "type": "gain",
+    "counterpart": "republic-of-china"
+   },
+   "mirror": {
+    "slug": "republic-of-china",
+    "year": 1932,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Xing'an lands (confidence 1); ROC /ledger/42 covers Manchuria only."
+  },
+  {
+   "event": {
+    "slug": "manchukuo",
+    "year": 1933,
+    "type": "gain",
+    "counterpart": "republic-of-china"
+   },
+   "mirror": {
+    "slug": "republic-of-china",
+    "year": 1933,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Rehe; ROC /ledger/45 (1933-3)."
+  },
+  {
+   "event": {
+    "slug": "manchukuo",
+    "year": 1945,
+    "type": "dissolve",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "No dossier; owner eu-17 has not run. ROC /ledger/66 gains Rehe from manchukuo 1945-8 (land mismatch, minor)."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1932,
+    "type": "vassal_start",
+    "counterpart": "manchukuo"
+   },
+   "mirror": {
+    "slug": "manchukuo",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "Japan /ledger/42-43 and vassal_end /ledger/84-85: no vassal events in manchukuo (blocking there)."
+  },
+  {
+   "event": {
+    "slug": "mengjiang",
+    "year": 1936,
+    "type": "found",
+    "counterpart": "republic-of-china"
+   },
+   "mirror": {
+    "slug": "republic-of-china",
+    "year": 1936,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "ROC /ledger/49 (1936-5)."
+  },
+  {
+   "event": {
+    "slug": "mengjiang",
+    "year": 1937,
+    "type": "gain",
+    "counterpart": "republic-of-china"
+   },
+   "mirror": {
+    "slug": "republic-of-china",
+    "year": 1936,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "ROC /ledger/49 lumps Japan's 1936-1938 Inner Mongolian growth into 1936."
+  },
+  {
+   "event": {
+    "slug": "mengjiang",
+    "year": 1939,
+    "type": "gain",
+    "counterpart": "Southern Chahar Autonomous Government"
+   },
+   "mirror": {
+    "slug": "Southern Chahar Autonomous Government",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "No dossier (below the bar; listed under counterparts_needing_dossiers)."
+  },
+  {
+   "event": {
+    "slug": "mengjiang",
+    "year": 1939,
+    "type": "gain",
+    "counterpart": "North Shanxi Autonomous Government"
+   },
+   "mirror": {
+    "slug": "North Shanxi Autonomous Government",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "No dossier (below the bar; listed)."
+  },
+  {
+   "event": {
+    "slug": "mengjiang",
+    "year": 1945,
+    "type": "dissolve",
+    "counterpart": "republic-of-china"
+   },
+   "mirror": {
+    "slug": "republic-of-china",
+    "year": 1945,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "ROC /ledger/67 (1945-8)."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1936,
+    "type": "vassal_start",
+    "counterpart": "mengjiang"
+   },
+   "mirror": {
+    "slug": "mengjiang",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "Japan /ledger/45 and /ledger/87: no vassal events in mengjiang."
+  },
+  {
+   "event": {
+    "slug": "reorganized-national-government-of-china",
+    "year": 1940,
+    "type": "vassal_start",
+    "counterpart": "mengjiang"
+   },
+   "mirror": {
+    "slug": "mengjiang",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "RNG /ledger/2 and /ledger/6: no vassal events in mengjiang."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tungning",
+    "year": 1661,
+    "type": "found",
+    "counterpart": "dutch-formosa"
+   },
+   "mirror": {
+    "slug": "dutch-formosa",
+    "year": 1661,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Dutch /ledger/5 contest and /ledger/7 loss 1662; Xiamen, Kinmen and Penghu in the found region were never Dutch (southern-ming, ea-07, not written)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tungning",
+    "year": 1662,
+    "type": "gain",
+    "counterpart": "dutch-formosa"
+   },
+   "mirror": {
+    "slug": "dutch-formosa",
+    "year": 1662,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Dutch /ledger/7 (1662-2)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tungning",
+    "year": 1663,
+    "type": "loss",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "qing-dynasty",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "Qing records no 1663 gain of Xiamen and Kinmen: route to the qing-dynasty owner (ea-08)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tungning",
+    "year": 1668,
+    "type": "gain",
+    "counterpart": "dutch-formosa"
+   },
+   "mirror": {
+    "slug": "dutch-formosa",
+    "year": 1668,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Keelung; both confidence 1."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tungning",
+    "year": 1674,
+    "type": "gain",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "qing-dynasty",
+    "year": 1674,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Qing /ledger/17 loses Fujian in 1674 to southern-ming (Geng Jingzhong), not to kingdom-of-tungning: Qing owner should add Zheng's Xiamen, Quanzhou and Zhangzhou with this counterpart."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tungning",
+    "year": 1675,
+    "type": "gain",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "qing-dynasty",
+    "year": 1676,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Chaozhou; Qing /ledger/19 loses Guangdong in 1676 to southern-ming (Shang Zhixin)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tungning",
+    "year": 1677,
+    "type": "loss",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "qing-dynasty",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "Quanzhou (12 March) and Zhangzhou (5 April 1677) and the August 1677 Haicheng gain have no Qing mirror."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tungning",
+    "year": 1680,
+    "type": "loss",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "qing-dynasty",
+    "year": 1680,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Qing /ledger/22 regains Fujian and Guangdong in 1680 from southern-ming."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tungning",
+    "year": 1683,
+    "type": "loss",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "qing-dynasty",
+    "year": 1683,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Penghu; Qing /ledger/24 (1683-10, Taiwan and Penghu)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tungning",
+    "year": 1683,
+    "type": "dissolve",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "qing-dynasty",
+    "year": 1683,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Qing /ledger/24."
+  },
+  {
+   "event": {
+    "slug": "dutch-formosa",
+    "year": 1624,
+    "type": "found",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "Stateless Sinkan lands."
+  },
+  {
+   "event": {
+    "slug": "dutch-formosa",
+    "year": 1636,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "Village pacification."
+  },
+  {
+   "event": {
+    "slug": "dutch-formosa",
+    "year": 1642,
+    "type": "gain",
+    "counterpart": "spanish-formosa"
+   },
+   "mirror": {
+    "slug": "spanish-formosa",
+    "year": 1642,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Spanish /ledger/4 (1642-8)."
+  },
+  {
+   "event": {
+    "slug": "dutch-formosa",
+    "year": 1662,
+    "type": "loss",
+    "counterpart": "kingdom-of-tungning"
+   },
+   "mirror": {
+    "slug": "kingdom-of-tungning",
+    "year": 1662,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Tungning /ledger/3."
+  },
+  {
+   "event": {
+    "slug": "dutch-formosa",
+    "year": 1668,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-tungning"
+   },
+   "mirror": {
+    "slug": "kingdom-of-tungning",
+    "year": 1668,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Tungning /ledger/5 (confidence 1)."
+  },
+  {
+   "event": {
+    "slug": "spanish-formosa",
+    "year": 1626,
+    "type": "found",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "Basay land."
+  },
+  {
+   "event": {
+    "slug": "spanish-formosa",
+    "year": 1629,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "Tamsui."
+  },
+  {
+   "event": {
+    "slug": "spanish-formosa",
+    "year": 1642,
+    "type": "dissolve",
+    "counterpart": "dutch-formosa"
+   },
+   "mirror": {
+    "slug": "dutch-formosa",
+    "year": 1642,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Dutch /ledger/4."
+  },
+  {
+   "event": {
+    "slug": "east-hebei-autonomous-council",
+    "year": 1935,
+    "type": "found",
+    "counterpart": "republic-of-china"
+   },
+   "mirror": {
+    "slug": "republic-of-china",
+    "year": 1935,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "ROC /ledger/48 (1935-11)."
+  },
+  {
+   "event": {
+    "slug": "east-hebei-autonomous-council",
+    "year": 1938,
+    "type": "dissolve",
+    "counterpart": "provisional-government-of-the-republic-of-china"
+   },
+   "mirror": {
+    "slug": "provisional-government-of-the-republic-of-china",
+    "year": 1938,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "PG /ledger/1 (1938-2)."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1935,
+    "type": "vassal_start",
+    "counterpart": "east-hebei-autonomous-council"
+   },
+   "mirror": {
+    "slug": "east-hebei-autonomous-council",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "Japan /ledger/44 and /ledger/48: no vassal events in east-hebei-autonomous-council."
+  },
+  {
+   "event": {
+    "slug": "fengtian-clique",
+    "year": 1916,
+    "type": "found",
+    "counterpart": "republic-of-china"
+   },
+   "mirror": {
+    "slug": "republic-of-china",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "ROC records no Fengtian event before 1930 (warlord cliques drawn over the Beiyang ROC); low priority for ea-08-c."
+  },
+  {
+   "event": {
+    "slug": "fengtian-clique",
+    "year": 1918,
+    "type": "gain",
+    "counterpart": "republic-of-china"
+   },
+   "mirror": {
+    "slug": "republic-of-china",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "As above."
+  },
+  {
+   "event": {
+    "slug": "fengtian-clique",
+    "year": 1924,
+    "type": "gain",
+    "counterpart": "zhili-clique"
+   },
+   "mirror": {
+    "slug": "zhili-clique",
+    "year": 1924,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Zhili /ledger/11 (1924-11) gives Fengtian Beijing, Rehe, Chahar and Suiyuan as well; Fengtian now gains Hebei and Tianjin only (reviewer fix): Zhili must split its loss."
+  },
+  {
+   "event": {
+    "slug": "fengtian-clique",
+    "year": 1925,
+    "type": "gain",
+    "counterpart": "anhui-clique"
+   },
+   "mirror": {
+    "slug": "anhui-clique",
+    "year": 1925,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Shandong; Anhui /ledger/8."
+  },
+  {
+   "event": {
+    "slug": "fengtian-clique",
+    "year": 1925,
+    "type": "gain",
+    "counterpart": "zhili-clique"
+   },
+   "mirror": {
+    "slug": "zhili-clique",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "Jiangsu and Anhui by August 1925: no 1925 loss in zhili-clique (blocking there)."
+  },
+  {
+   "event": {
+    "slug": "fengtian-clique",
+    "year": 1926,
+    "type": "loss",
+    "counterpart": "zhili-clique"
+   },
+   "mirror": {
+    "slug": "zhili-clique",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "Counterpart corrected by the reviewer from 'Sun Chuanfang (Five Provinces Alliance)'; zhili-clique needs the late-1925 gain back."
+  },
+  {
+   "event": {
+    "slug": "fengtian-clique",
+    "year": 1926,
+    "type": "gain",
+    "counterpart": "guominjun"
+   },
+   "mirror": {
+    "slug": "guominjun",
+    "year": 1926,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Beijing; Guominjun /ledger/4 (1926-1) vs Fengtian 1926-6."
+  },
+  {
+   "event": {
+    "slug": "fengtian-clique",
+    "year": 1928,
+    "type": "loss",
+    "counterpart": "kuomintang"
+   },
+   "mirror": {
+    "slug": "kuomintang",
+    "year": 1928,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "KMT /ledger/20 (Jinan, 1928-4) names republic-of-china as counterpart: route to ea-08-c."
+  },
+  {
+   "event": {
+    "slug": "fengtian-clique",
+    "year": 1928,
+    "type": "loss",
+    "counterpart": "shanxi-clique"
+   },
+   "mirror": {
+    "slug": "shanxi-clique",
+    "year": 1928,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Shanxi /ledger/1 (1928-6)."
+  },
+  {
+   "event": {
+    "slug": "fengtian-clique",
+    "year": 1930,
+    "type": "gain",
+    "counterpart": "shanxi-clique"
+   },
+   "mirror": {
+    "slug": "shanxi-clique",
+    "year": 1930,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Shanxi /ledger/2 (1930-9)."
+  },
+  {
+   "event": {
+    "slug": "fengtian-clique",
+    "year": 1932,
+    "type": "dissolve",
+    "counterpart": "manchukuo"
+   },
+   "mirror": {
+    "slug": "manchukuo",
+    "year": 1932,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Manchukuo /ledger/0 names republic-of-china as the found counterpart; minor."
+  },
+  {
+   "event": {
+    "slug": "kuomintang",
+    "year": 1928,
+    "type": "vassal_start",
+    "counterpart": "Fengtian clique (Zhang Xueliang)"
+   },
+   "mirror": {
+    "slug": "fengtian-clique",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "KMT /ledger/22, /ledger/28 and ROC /ledger/30, /ledger/41 use a name string; fengtian-clique has no vassal events (blocking there); ea-08-c should switch to the slug."
+  },
+  {
+   "event": {
+    "slug": "zhili-clique",
+    "year": 1920,
+    "type": "found",
+    "counterpart": "anhui-clique"
+   },
+   "mirror": {
+    "slug": "anhui-clique",
+    "year": 1920,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": "Anhui /ledger/3 contest over Beijing-Tianjin; Anhui never drew Hebei."
+  },
+  {
+   "event": {
+    "slug": "zhili-clique",
+    "year": 1922,
+    "type": "gain",
+    "counterpart": "republic-of-china"
+   },
+   "mirror": {
+    "slug": "republic-of-china",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "Henan, Jiangsu, Jiangxi, Hubei and Rehe, Chahar, Suiyuan: no ROC event (Beiyang exception)."
+  },
+  {
+   "event": {
+    "slug": "zhili-clique",
+    "year": 1924,
+    "type": "gain",
+    "counterpart": "anhui-clique"
+   },
+   "mirror": {
+    "slug": "anhui-clique",
+    "year": 1924,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Fujian (Anhui /ledger/6) and Zhejiang-Shanghai (Anhui /ledger/7)."
+  },
+  {
+   "event": {
+    "slug": "anhui-clique",
+    "year": 1924,
+    "type": "loss",
+    "counterpart": "zhili-clique"
+   },
+   "mirror": {
+    "slug": "zhili-clique",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "Anhui /ledger/5: Anhui province (and Shaanxi, Gansu, Hunan) has no Zhili gain although Anhui is in Zhili's 1925 shape."
+  },
+  {
+   "event": {
+    "slug": "zhili-clique",
+    "year": 1924,
+    "type": "loss",
+    "counterpart": "fengtian-clique"
+   },
+   "mirror": {
+    "slug": "fengtian-clique",
+    "year": 1924,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Land disagrees: Beijing (guominjun /ledger/0, 1924-10), Chahar and Suiyuan (guominjun /ledger/1) and Rehe (no taker)."
+  },
+  {
+   "event": {
+    "slug": "zhili-clique",
+    "year": 1925,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "Hunan, confidence 1."
+  },
+  {
+   "event": {
+    "slug": "zhili-clique",
+    "year": 1926,
+    "type": "loss",
+    "counterpart": "kuomintang"
+   },
+   "mirror": {
+    "slug": "kuomintang",
+    "year": 1926,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Hunan, Hubei, Jiangxi, Fujian (1926-8 to 1926-12): KMT /ledger/7, 9, 10, 12 name republic-of-china: route to ea-08-c."
+  },
+  {
+   "event": {
+    "slug": "zhili-clique",
+    "year": 1927,
+    "type": "loss",
+    "counterpart": "kuomintang"
+   },
+   "mirror": {
+    "slug": "kuomintang",
+    "year": 1927,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Zhejiang, Shanghai: KMT /ledger/13-14 name republic-of-china."
+  },
+  {
+   "event": {
+    "slug": "zhili-clique",
+    "year": 1927,
+    "type": "dissolve",
+    "counterpart": "kuomintang"
+   },
+   "mirror": {
+    "slug": "kuomintang",
+    "year": 1927,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Jiangsu and Anhui: KMT /ledger/15 has Nanjing (1927-3) from republic-of-china only."
+  },
+  {
+   "event": {
+    "slug": "guominjun",
+    "year": 1924,
+    "type": "found",
+    "counterpart": "zhili-clique"
+   },
+   "mirror": {
+    "slug": "zhili-clique",
+    "year": 1924,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Zhili /ledger/11 gives Beijing to fengtian-clique."
+  },
+  {
+   "event": {
+    "slug": "guominjun",
+    "year": 1925,
+    "type": "gain",
+    "counterpart": "zhili-clique"
+   },
+   "mirror": {
+    "slug": "zhili-clique",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "Shaanxi, Chahar, Suiyuan: Zhili never held Shaanxi and gives Chahar and Suiyuan to Fengtian."
+  },
+  {
+   "event": {
+    "slug": "guominjun",
+    "year": 1926,
+    "type": "loss",
+    "counterpart": "fengtian-clique"
+   },
+   "mirror": {
+    "slug": "fengtian-clique",
+    "year": 1926,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Fengtian /ledger/10."
+  },
+  {
+   "event": {
+    "slug": "guominjun",
+    "year": 1930,
+    "type": "dissolve",
+    "counterpart": "republic-of-china"
+   },
+   "mirror": {
+    "slug": "republic-of-china",
+    "year": 1930,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "Counterpart corrected by the reviewer from kuomintang; ROC has /ledger/34 vassal_end 'Guominjun (Feng Yuxiang)' 1930-5 and /ledger/39 contest_end anti-kuomintang-coalition, no gain from guominjun."
+  },
+  {
+   "event": {
+    "slug": "republic-of-china",
+    "year": 1927,
+    "type": "loss",
+    "counterpart": "kuomintang"
+   },
+   "mirror": {
+    "slug": "guominjun",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "ROC /ledger/21 and KMT /ledger/17 (1927-5) put the Guominjun in Henan; no Henan gain in guominjun (blocking there)."
+  },
+  {
+   "event": {
+    "slug": "kuomintang",
+    "year": 1927,
+    "type": "vassal_start",
+    "counterpart": "Guominjun (Feng Yuxiang)"
+   },
+   "mirror": {
+    "slug": "guominjun",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "KMT /ledger/17, /ledger/26, ROC /ledger/28, /ledger/34: no vassal events in guominjun."
+  },
+  {
+   "event": {
+    "slug": "anhui-clique",
+    "year": 1916,
+    "type": "found",
+    "counterpart": "republic-of-china"
+   },
+   "mirror": {
+    "slug": "republic-of-china",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "Beiyang exception, as for fengtian."
+  },
+  {
+   "event": {
+    "slug": "anhui-clique",
+    "year": 1919,
+    "type": "occupation_start",
+    "counterpart": "great-mongol-state"
+   },
+   "mirror": {
+    "slug": "great-mongol-state",
+    "year": 1919,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Great Mongol State /ledger/3 loses Outer Mongolia in 1919-11 to republic-of-china (ROC /ledger/10 gain); type and counterpart differ."
+  },
+  {
+   "event": {
+    "slug": "anhui-clique",
+    "year": 1920,
+    "type": "occupation_end",
+    "counterpart": "great-mongol-state"
+   },
+   "mirror": {
+    "slug": "great-mongol-state",
+    "year": 1921,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Great Mongol State regains Outer Mongolia from republic-of-china in 1921-2/3 (/ledger/4-6)."
+  },
+  {
+   "event": {
+    "slug": "anhui-clique",
+    "year": 1925,
+    "type": "loss",
+    "counterpart": "fengtian-clique"
+   },
+   "mirror": {
+    "slug": "fengtian-clique",
+    "year": 1925,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Fengtian /ledger/7."
+  },
+  {
+   "event": {
+    "slug": "anhui-clique",
+    "year": 1925,
+    "type": "dissolve",
+    "counterpart": "fengtian-clique"
+   },
+   "mirror": {
+    "slug": "fengtian-clique",
+    "year": 1925,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Fengtian /ledger/7."
+  },
+  {
+   "event": {
+    "slug": "shanxi-clique",
+    "year": 1911,
+    "type": "found",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "qing-dynasty",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "Qing records no 1911 Shanxi loss (it ends by passing China to the ROC); low priority."
+  },
+  {
+   "event": {
+    "slug": "shanxi-clique",
+    "year": 1928,
+    "type": "gain",
+    "counterpart": "fengtian-clique"
+   },
+   "mirror": {
+    "slug": "fengtian-clique",
+    "year": 1928,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Fengtian /ledger/13."
+  },
+  {
+   "event": {
+    "slug": "shanxi-clique",
+    "year": 1930,
+    "type": "loss",
+    "counterpart": "fengtian-clique"
+   },
+   "mirror": {
+    "slug": "fengtian-clique",
+    "year": 1930,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Fengtian /ledger/14."
+  },
+  {
+   "event": {
+    "slug": "shanxi-clique",
+    "year": 1937,
+    "type": "loss",
+    "counterpart": "empire-of-japan"
+   },
+   "mirror": {
+    "slug": "empire-of-japan",
+    "year": 1938,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "Japan /ledger/49 (1938-3, Shandong and Shanxi) is an occupation with counterpart republic-of-china."
+  },
+  {
+   "event": {
+    "slug": "shanxi-clique",
+    "year": 1945,
+    "type": "gain",
+    "counterpart": "empire-of-japan"
+   },
+   "mirror": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "Japan /ledger/92 (1945-9) occupation_end with republic-of-china."
+  },
+  {
+   "event": {
+    "slug": "shanxi-clique",
+    "year": 1949,
+    "type": "dissolve",
+    "counterpart": "communist-party-of-china"
+   },
+   "mirror": {
+    "slug": "communist-party-of-china",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "Cliopatria row owned by an ea-08 part that has not been written yet."
+  },
+  {
+   "event": {
+    "slug": "kuomintang",
+    "year": 1928,
+    "type": "vassal_start",
+    "counterpart": "Shanxi clique (Yan Xishan)"
+   },
+   "mirror": {
+    "slug": "shanxi-clique",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "KMT /ledger/21, /ledger/27, ROC /ledger/29, /ledger/35: no vassal events in shanxi-clique."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Dolon Nur",
+   "kind": "place",
+   "used_in": "mengjiang"
+  },
+  {
+   "name": "Dolon Nur",
+   "kind": "place",
+   "used_in": "manchukuo"
+  },
+  {
+   "name": "Rehe (Jehol)",
+   "kind": "region",
+   "used_in": "manchukuo"
+  },
+  {
+   "name": "Chahar",
+   "kind": "region",
+   "used_in": "mengjiang"
+  },
+  {
+   "name": "Suiyuan",
+   "kind": "region",
+   "used_in": "mengjiang"
+  },
+  {
+   "name": "Tamsui",
+   "kind": "place",
+   "used_in": "dutch-formosa"
+  },
+  {
+   "name": "Tamsui",
+   "kind": "place",
+   "used_in": "spanish-formosa"
+  },
+  {
+   "name": "Tongzhou",
+   "kind": "place",
+   "used_in": "east-hebei-autonomous-council"
+  },
+  {
+   "name": "Shanhaiguan",
+   "kind": "place",
+   "used_in": "fengtian-clique"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Provisional Government of the Republic of China (1937-1940)",
+   "suggested_slug": "provisional-government-of-the-republic-of-china",
+   "years": [
+    1937,
+    1940
+   ],
+   "note": "now written (history/polities/provisional-government-of-the-republic-of-china.json); matched."
+  },
+  {
+   "name": "Southern Chahar Autonomous Government",
+   "suggested_slug": "southern-chahar-autonomous-government",
+   "years": [
+    1937,
+    1939
+   ]
+  },
+  {
+   "name": "North Shanxi Autonomous Government",
+   "suggested_slug": "north-shanxi-autonomous-government",
+   "years": [
+    1937,
+    1939
+   ]
+  },
+  {
+   "name": "Sun Chuanfang's Five Provinces Alliance",
+   "suggested_slug": "five-provinces-alliance",
+   "years": [
+    1925,
+    1927
+   ],
+   "note": "not needed if zhili-clique keeps Sun Chuanfang's provinces (as it does); fengtian-clique /ledger/9 now names zhili-clique."
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ea-08-x.md",
+ "problems": [
+  "Reviewer-applied fixes (re-validated, 0 errors): anhui-clique /ledger/1 and /ledger/4 region; mengjiang /ledger/6 confidence; fengtian-clique /ledger/6, /keyframe_review/2 (Beijing) and /ledger/9 counterpart; guominjun /ledger/6 counterpart and successor slug.",
+  "Seven of eleven dossiers fail; four of the seven (manchukuo, mengjiang, east-hebei-autonomous-council, shanxi-clique) fail only on missing vassal events mirroring empire-of-japan, reorganized-national-government-of-china, kuomintang and republic-of-china; fengtian-clique fails on the same after the reviewer's fixes.",
+  "Routing for ea-08-c (republic-of-china, kuomintang): replace the counterpart strings 'Fengtian clique (Zhang Xueliang)', 'Guominjun (Feng Yuxiang)' and 'Shanxi clique (Yan Xishan)' with the slugs, and name zhili-clique / fengtian-clique where the Northern Expedition took land from them.",
+  "Routing for the qing-dynasty owner (ea-08): the Zheng campaigns of 1663-1680 in Fujian and Chaozhou are recorded against southern-ming or not at all.",
+  "Cliopatria row anti-kuomintang-coalition (1930-1931, 556,635 km2, ea-08) overlaps guominjun and shanxi-clique in 1930 and is not mentioned in either.",
+  "Mengjiang page: the capital sentence (Zhangbei) follows the 1939 merger; the dossier's 1936-1938 Zhangbei is not supported."
+ ]
+}

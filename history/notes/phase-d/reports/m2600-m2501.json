@@ -1,0 +1,89 @@
+{
+ "window": "m2600-m2501",
+ "images": [
+  {
+   "year": -2600,
+   "bbox": "world",
+   "seen": "Cliopatria compare: only 3 Cliopatria shapes (Egypt, Sumer, Indus dots); compiled map adds the culture dossiers (Hoabinhian, Jomon, Jeulmun, Longshan with Dawenkou's 1024 cells, Qujialing, Liangzhu, Majiayao, Anau, Old Copper, Oshara, Cochise, Tichitt, Chinchorro) in plausible places; Yamnaya has just ended and leaves its land to nobody; no stray cells, no holes."
+  },
+  {
+   "year": -2500,
+   "bbox": "world",
+   "seen": "Drawn from the m2500 anchor plus the next window's draft, so it shows the next window's first year; same picture as -2600 plus Mari, Lagash, Kerma labels; nothing wrong in my window's state."
+  },
+  {
+   "year": -2501,
+   "bbox": "28,22,58,38",
+   "seen": "Near East against Cliopatria: Egypt matches Cliopatria's Early Dynastic shape; Sumer drawn smaller than Cliopatria's shape because Kish (north), Elam (east) and Lagash (19 cells) are cut out of it; First Dynasty of Ur had no cells at all (fixed by patch); two small Kish enclaves (1 and 5 cells) sit inside Sumer near 46.5E 32.1-32.5N, left."
+  },
+  {
+   "year": -2501,
+   "bbox": "44,29.5,49,33.5",
+   "seen": "After the patch (stage): First Dynasty of Ur is drawn as 17 cells around Ur next to Lagash's 19 cells, inside the collective's plain; only the 2 overlap cells stay with the collective; no snaps."
+  }
+ ],
+ "issues": [
+  {
+   "what": "first-dynasty-of-ur owned 0 cells from -2600 to -2501 although its keyframe first-dynasty-of-ur_-2600 draws the city of Ur (place Ur 40 km, 19 cells): the compiler's R2 treats sumerian-city-states (born -3400, listed as Ur's successor for the -2340 annexation) as a successor winning from its own start year, so the older collective takes back Ur's cells in the found event and in the keyframe (handoff conflict, 19 cells twice). A ruling cannot overturn R2.",
+   "years": [
+    -2600,
+    -2501
+   ],
+   "slugs": [
+    "first-dynasty-of-ur",
+    "sumerian-city-states"
+   ],
+   "decision": "patched",
+   "patch": "events/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/First_Dynasty_of_Ur"
+   ]
+  },
+  {
+   "what": "Two small Kish enclaves (1 and 5 cells) inside the Sumerian city-states near 46.5E, 32.1-32.5N, left over from Kish's 'Akkad' region against the collective's 2700 and 2500 shapes; both predate the window and the pages give no border, so left.",
+   "years": [
+    -2600,
+    -2501
+   ],
+   "slugs": [
+    "kish",
+    "sumerian-city-states"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Packet flags: 0 size-rule conflicts, 0 snaps, 0 skipped or unresolved events, 0 relations opened or closed; the three years with changes (-2600 Yamnaya end, Dawenkou to Longshan, Tichitt start; -2550 Mari's first city abandoned; -2520 Lagash founded) all match the dossiers' ledger notes and the picture.",
+   "years": [
+    -2600,
+    -2501
+   ],
+   "slugs": [
+    "yamnaya-culture",
+    "longshan-culture",
+    "dawenkou-culture",
+    "tichitt-tradition",
+    "mari",
+    "lagash"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/m2600-m2501.json",
+ "patch_entries": {
+  "events": 1,
+  "keyframe_overrides": 0,
+  "rulings": 0
+ },
+ "patch_check": "all applied",
+ "colour_clashes": [],
+ "dossier_requests": [],
+ "pages_opened": 1,
+ "problems": [
+  "compiler: tools/compile_dossiers.py decide() R2 (line ~909, ab = (b, a) in self.succ and y >= self.start[b]) lets a successor win from its own start year even when it is the older state: sumerian-city-states (-3400) is listed as successor of first-dynasty-of-ur (-2600..-2340) and so beats Ur's city for its whole life; rulings cannot override R2. Worked around with events/0 (a gain from sumerian-city-states of Ur's 40 km circle minus Lagash's 40 km circle, 17 cells). The same pattern probably recurs wherever a dossier lists a longer-lived collective as its successor; the dossier's own intent (successor takes the land at the dissolve year) would be met by applying R2 only from the predecessor's end year, or when the successor starts after the predecessor.",
+  "first-dynasty-of-ur's 40 km circle (19 cells) overlaps lagash's 40 km circle by 2 cells; the patch region cuts them so that Lagash's -2520 founding keeps its 19 cells (Ur gets 17). The Ur radius is the dossier's own choice (its keyframe note says so), not a sourced figure."
+ ]
+}

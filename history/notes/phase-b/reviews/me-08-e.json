@@ -1,0 +1,1163 @@
+{
+ "batch_id": "me-08-e",
+ "verdicts": [
+  {
+   "slug": "ghaznavid-empire",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/33/region",
+     "what": "The 1162 loss names only Ghazni and Zabulistan (about 36,000 km2), but the dossier's own keyframes drop from the 1152 shape minus Iran (about 929,000 km2, valid to 1161) to the 1162 keyframe (the 1177 shape minus Multan, about 100,000 km2): about 760,000 km2 (Kabul, Bamyan, Kandahar and Bust, Helmand, Nimruz, Farah, Baluchistan, Sindh) leave with no event.",
+     "why": "Gazetteer resolve: minus[1152 shape, Iran] = 3,673 cells; union[Ghazni, Zabulistan] = 143 cells; 1177 shape minus Multan = 394 cells. Ghaznavids page: 'Ghazni and Zabulistan were lost to a group of Oghuz Turks' (no year); Khusrau Malik page: Ghazni seized 1161/2 and Lahore became his new capital. No ledger event between 1152 and 1162 removes the rest of Afghanistan or Baluchistan.",
+     "fix": "Either widen /ledger/33 to the whole lost land, e.g. {\"minus\":[{\"minus\":[{\"cliopatria\":\"Ghaznavid Empire\",\"year\":1152},{\"country\":\"Iran\"}]},{\"cliopatria\":\"Ghaznavid Empire\",\"year\":1177}],\"text\":\"Ghazni, Zabulistan and the Afghan lands; the Ghaznavids kept Lahore and the Punjab\"}, or (better) add separate losses: Bust/Zamindawar and Ghazna to the Ghurids in the 1150-1151 campaign (Ghurid page; Ghazni sacked 'for seven days'), the rest with the 1161/2 Ghuzz seizure, confidence 1-2 where the pages give no year.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/14",
+     "what": "Multan is gained in October 1010 and never lost, yet the new keyframe 1162 (and the 1177 correction) cut Multan; there is no loss event for about 45,000 km2.",
+     "why": "Ghurid dynasty page as quoted in keyframe 15: Muhammad of Ghor 'captured Multan from the Carmathians' in 1175, so the Qarmatians had retaken it from the Ghaznavids at some undated time; the ghurid-dynasty dossier records 1175 gain counterpart 'Qarmatians of Multan'.",
+     "fix": "Add a loss of Multan ({\"place\":\"Multan\",\"km\":150}) with counterpart 'Qarmatians of Multan' (the string the ghurid dossier uses), confidence 1, at the latest year the 1152 and 1162 keyframes allow (before 1162), and say in the note that the pages give no year; list the gap in notes.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/5/correction",
+     "what": "Keyframe 5 says the 1028 shape 'stands for 1030-1033' and keeps Ray (72%), while /ledger/21 loses Ray to the Kakuyids in 1030; keyframe 7 keeps Ray to 1039 and /ledger/27 loses it again in 1037 with no regain in between.",
+     "why": "Mas'ud I page (as quoted in /ledger/21 and /ledger/27): the Kakuyid Muhammad 'in 1030 wrested Ray from the Ghaznavids' and 'In 1037/8 ... once again occupied Ray'; 'once again' implies a Ghaznavid recovery (governor of Jibal 1033, invasion of western Iran 1035), which the ledger lacks.",
+     "fix": "Add a gain of Ray from the Kakuyids between the two losses (1033 or 1035, confidence 1-2, Mas'ud I page) and make keyframe 5 a correction that drops Rey 100 km for the years before that regain (a new keyframe 1030-1032 = minus[1028 shape, Rey 100 km]), so ledger and keyframes agree.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/33/counterpart",
+     "what": "Counterpart 'oghuz-turks' names a dossier that ends in 1055; the 1161/2 Ghuzz band at Ghazni is not that state.",
+     "why": "oghuz-turks dossier identity end 1055; ghurid-dynasty /ledger/2 (1173) names 'Ghuzz Turks'; Khusrau Malik page: 'a group of Oghuz Turks seized the Ghaznavid capital of Ghazni'.",
+     "fix": "Changed to 'Ghuzz Turks' in /ledger/33 and in /wars/14/belligerents (reviewer edit, validated).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/16/counterpart",
+     "what": "The 1011 and 1060 gains in Ghor (/ledger/16, /ledger/30) and the 1148-1152 contest (/ledger/31, /ledger/32) name ghurid-dynasty, whose dossier starts in 1152; no mirror can exist.",
+     "why": "ghurid-dynasty identity start 1152; its ledger has events with ghaznavid-empire only in 1179 and 1186. The notes call the 1011/1060 counterpart 'the pre-Ghurid chiefs of Ghur'.",
+     "fix": "Use a free-text counterpart such as 'Ghur chiefs (Shansabanids)' for 1011 and 1060, or ask sa-04 to start ghurid-dynasty earlier (Sayf al-Din Suri 1148, Ala al-Din Husayn 1150-1151) so the 1148-1152 contest has a mirror.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/2/correction",
+     "what": "The 1000-1014 correction removes only Khwarazm but keeps Sistan, all of Ghor and part of Multan from 1000, while the ledger gains them in 1002, 1011 and 1010; the 1011 Ghor gain (/ledger/16) is itself 'read from the Cliopatria shape', which is circular.",
+     "why": "Author's own keyframe 2 note: 'Sistan (1002), all of Ghor (the page's expedition is 1011) and part of Multan (1006-1010) are in the shape years before the page's dates'.",
+     "fix": "Either cut Ghor and Multan from the 1000 correction (and Sistan for 1000-1001 via a new keyframe) or say in the correction text that the shape is tolerated for those years and lower /ledger/16 to confidence 1.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/7",
+     "what is missing": "Year of the Samanid cession of Khorasan (999 at confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Samanid_Empire"
+    },
+    {
+     "where": "/ledger/29",
+     "what is missing": "Seljuk captures of Herat, Sistan, Pushang and Ghur after Dandanaqan are undated and have no loss events; Balkh and Tukharistan (lost by the 1059 peace) have none either.",
+     "page to try": "https://en.wikipedia.org/wiki/Mawdud_of_Ghazni"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "Rulers 1040-1059 (Muhammad, Mawdud, Mas'ud II, Ali, Abd al-Rashid, Toghrul, Farrukhzad) and 1115-1117 (Shirzad, Arslan-Shah) are missing, so the list is not contiguous.",
+     "page to try": "https://en.wikipedia.org/wiki/Arslan-Shah_of_Ghazni"
+    },
+    {
+     "where": "/ledger/30",
+     "what is missing": "Outcome of the 1060 Ghur expedition (gain at confidence 2 on a page that gives no outcome).",
+     "page to try": "https://en.wikipedia.org/wiki/Ibrahim_of_Ghazni"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Mahmud_of_Ghazni",
+     "result": "confirmed: 'defeated the rebels on 3 July 1017, and captured Gurganj'"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Mahmud_of_Ghazni",
+     "result": "confirmed: Mas'ud 'first captured Hamadan and then advanced to Isfahan, which was seized in January 1030'"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Mahmud_of_Ghazni",
+     "result": "confirmed: 'On 26 May 1029, Mahmud entered Ray without resistance'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Mahmud_of_Ghazni",
+     "result": "confirmed: 28 November 1001 and 'Gandhara and Peshawar annexed' (the battle table says 27 November)"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Mahmud_of_Ghazni",
+     "result": "confirmed: 'In 1002, Mahmud invaded Sistan and dethroned Khalaf ibn Ahmad'"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Mahmud_of_Ghazni",
+     "result": "confirmed: 'In October 1010 ... successfully subdued Multan'"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Mahmud_of_Ghazni",
+     "result": "confirmed: 'Sindh paid tribute from 1026 until his death in 1030 AD'"
+    },
+    {
+     "where": "/ledger/29",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Dandanaqan",
+     "result": "confirmed: 23 May 1040, 'Khorasan annexed by the Seljuks'; Ghaznavids page: 'lost all the Ghaznavid lands in Persia and Central Asia'"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Ghaznavids",
+     "result": "confirmed: 'conquered the city from the local Lawik rulers in 962'"
+    },
+    {
+     "where": "/ledger/33",
+     "page": "https://en.wikipedia.org/wiki/Khusrau_Malik",
+     "result": "confirmed: 'In 1161/2, a group of Oghuz Turks seized the Ghaznavid capital of Ghazni'"
+    },
+    {
+     "where": "/ledger/36",
+     "page": "https://en.wikipedia.org/wiki/Khusrau_Malik",
+     "result": "confirmed: 'In 1179/80 he seized Peshawar'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 2994471.7,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Neither the Ghaznavids page nor the Mahmud page gives an area; keyframe notes say so."
+   }
+  },
+  {
+   "slug": "sulayhid-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/8",
+     "what": "The 1082 event is a contest_start ('marches on Zabid ... recaptured Asma'), but the cited page says the Sulayhids took Zabid in 1082; the Sulayhid reconquest of Zabid and the Tihama (about 22,500 km2) is missing and keyframe 3 (1067-1098, highlands only) is wrong for those years.",
+     "why": "Ali al-Sulayhi page: 'In 1082, al-Mukkaram led a Sulayhid force against Zabid, quickly capturing the city and Asma, forcing al-Ahwal to flee' to the Dahlak islands, and Ibn Shihab was restored as governor; Zabid page: 'her son stormed Zabid and freed her'. Najahid page: 'In 1087, Said al-Ahwal returned to Zabid but was killed that same year by Ahmed al-Mukkaram'; 'Jayyash returned to Zabid disguised as an Indian' (undated; Jayyash 1080-1089 in the succession list).",
+     "fix": "Make /ledger/8 a gain from najahid-dynasty (same region, confidence 3, Ali page); replace the contest pair with a loss of Zabid to the Najahids at their return (1087 or Jayyash's undated return by 1089, confidence 1-2) or a contest 1087-1089; add a new keyframe 1082-<loss year> = keyframe 3 plus {\"union\":[{\"admin1\":\"Al Hudaydah\",\"country\":\"Yemen\"},{\"place\":\"Zabid\",\"km\":80}]} and split keyframe 3's span; update /wars/2/outcome. Mirror the same in najahid-dynasty.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/1/correction",
+     "what": "The 1056 shape (Cliopatria 1056-1065) is marked wrong and corrected to the 1062 peak shape without saying its years, so for 1056-1061 it overlaps the new keyframe sulayhid-dynasty_1047 (Haraz core).",
+     "why": "Schema: a correction that changes the years 'says so in text'; the note says 1047-1061 is the Haraz core.",
+     "fix": "Add to the correction text: 'years 1062-1065 only; 1056-1061 is keyframe sulayhid-dynasty_1047'.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/3",
+     "what is missing": "Between the 1062-1066 peak (about 245,000 km2) and the 1067-1098 highlands (about 30,000 km2) only the Tihama (about 22,500 km2) is lost in the ledger; Sa'dah, Hajjah, Amran, al-Jawf, Ma'rib, al-Bayda, Shabwah, Abyan, Taiz and Aden-Lahij leave with no event (author marks the keyframe low confidence).",
+     "page to try": "https://en.wikipedia.org/wiki/Arwa_al-Sulayhi"
+    },
+    {
+     "where": "/ledger/13",
+     "what is missing": "Who took Sana'a after 1098, and when (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Hamdanid_sultans_of_Yemen"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "End of the Sulayhid tutelage of Mecca (1067, confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Sharif_of_Mecca"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Sulayhid_dynasty",
+     "result": "confirmed: 'The Ma'nids of Aden were defeated in 1062 and forced to pay tribute'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Sulayhid_dynasty",
+     "result": "confirmed: 'Ali also controlled San'a since 1063'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Sulayhid_dynasty",
+     "result": "confirmed: Zurayids 'came to power in 1083, at first as Sulayhid tributaries'"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Sulayhid_dynasty",
+     "result": "confirmed: 'With her death in 1138 ... the Sulayhid era came to an end'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Ali_al-Sulayhi",
+     "result": "confirmed: Zabid and the Tihamah 'later in 1062'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Ali_al-Sulayhi",
+     "result": "confirmed: Hejaz late 1063, Mecca 'by 1064', client king"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Ali_al-Sulayhi",
+     "result": "not on page as claimed: the page says al-Mukarram captured Zabid in 1082 and al-Ahwal fled; the event is typed as a contest"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 75389.7,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; keyframe 1 compares the shape with Yemen's area."
+   }
+  },
+  {
+   "slug": "najahid-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/3",
+     "what": "1082 is a contest_start, but the cited page says the Sulayhids captured Zabid in 1082 and the Najahid prince fled to Dahlak; the Najahid loss of Zabid and the Tihama is missing, and /ledger/4 (contest_end 1087) hides the return.",
+     "why": "Ali al-Sulayhi page: 'In 1082, al-Mukkaram led a Sulayhid force against Zabid, quickly capturing the city and Asma, forcing al-Ahwal to flee' (to Dahlak); Najahid page: 'In 1087, Said al-Ahwal returned to Zabid but was killed that same year'; 'Jayyash returned to Zabid disguised as an Indian' (undated).",
+     "fix": "Make /ledger/3 a loss to sulayhid-dynasty in 1082 (confidence 3, Ali page) and /ledger/4 a gain from sulayhid-dynasty at the return (1087, or by 1089 under Jayyash, confidence 1-2); state in the correction text of the 1072 and 1085 keyframes that the Najahids are landless from 1082 to the return. Keep it in step with sulayhid-dynasty.",
+     "applied": false
+    },
+    {
+     "where": "/identity/rulers",
+     "what": "Sa'id al-Ahwal, listed on the page 1062-1080, was missing, leaving 1060-1080 without a ruler, and the Jayyash note wrongly said no ruler is listed for those years.",
+     "why": "Najahid page succession list: 'Sa'id al-Ahwal 1062-1080', 'Abu't-Tami Jayyash 1080-1089'; Najah 1022-1060 in the infobox.",
+     "fix": "Added {name: Sa'id al-Ahwal, from 1060, to 1080, source Najahid page} and corrected the Jayyash note (reviewer edit, validated).",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/1/correction",
+     "what": "The 1066 shape (1066-1071) is corrected to the Tihama for all its years, but the ledger has the Najahids landless until the 1067 gain.",
+     "why": "/ledger/2 gain 1067; capitals note: Sulayhids held Zabid 1062-1067.",
+     "fix": "Say 'years 1067-1071' in the correction text.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Year of the Najahid return to Zabid between 1062 and 1067 (no page dates it).",
+     "page to try": "https://en.wikipedia.org/wiki/Sa%27id_al-Ahwal"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Extent of the emirate beyond Zabid and the Tihama (all six Cliopatria shapes are marked wrong; the page gives no borders).",
+     "page to try": "https://en.wikipedia.org/wiki/Tihamah"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Najahid_dynasty",
+     "result": "confirmed: established 1022; 'The last Ziyadid king died in 1018'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Ali_al-Sulayhi",
+     "result": "confirmed: Zabid and the Tihamah taken 'later in 1062'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Zabid",
+     "result": "confirmed: 'In 1067 ... Sa'id Ibn Najah, the prince of Zabid' attacked Ali"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Zabid",
+     "result": "confirmed: 'the Mahdids took over Zabid in 1158'; Najahid page: last sovereign killed by Ali ibn Mahdi in 1158"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Ali_al-Sulayhi",
+     "result": "not on page as claimed: the page has Zabid captured in 1082, not only besieged"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 215442.1,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; all six Cliopatria shapes are marked wrong (all-Yemen union) and corrected to the Tihama (about 22,500 km2), explained in the keyframe notes."
+   }
+  },
+  {
+   "slug": "uyunid-emirate",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/2",
+     "what": "The split (1137), merge (1191) and split (1209) events (/ledger/2-4) name 'Uyunid principality of al-Hasa', which the dossier's own notes say 'is not a state', and every keyframe keeps al-Hasa (Hofuf 100 km, about 31,000 of the about 66,000 km2 corrected shape) through 1137-1190 and 1209-1252: ledger and keyframes contradict.",
+     "why": "Schema: 'split: part of the state becomes a new state named in counterpart'. Uyunid page: 'his state was divided into two' (531 AH; the parts were al-Hasa and Qatif), 'Mohammed bin Abi al-Hussain united Qatif and Al-Hasa' (587-605 AH), 'The state was divided again after his assassination in 605 H'. Keyframes 0-3 all union Hofuf 100 km.",
+     "fix": "Either (a) delete /ledger/2-4 and describe the two divisions and the reunion in notes (and in certainty if wanted), keeping one Uyunid state as Cliopatria does, or (b) keep the splits, remove Hofuf 100 km from the keyframes for 1137-1190 and 1209-1252 with new keyframes, and list the al-Hasa branch under counterparts_needing_dossiers. (a) fits the page and the author's notes.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "The page says 'the state extended to Kuwait' under al-Fadhl and 'the Uyunids' territory stretched from Najd to the Syrian desert' under Muhammad b. Ahmad (undated); no event or keyframe carries either.",
+     "page to try": "https://en.wikipedia.org/wiki/Eastern_Arabia"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Borders of the two halves after 1137 and 1209 (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Al-Ahsa_Oasis"
+    },
+    {
+     "where": "/wars/1",
+     "what is missing": "What the 1235 Salghurid invasion took (Bahrain islands?).",
+     "page to try": "https://en.wikipedia.org/wiki/Salghurids"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No rulers given; the page lists the emirs.",
+     "page to try": "https://en.wikipedia.org/wiki/Uyunid_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Uyunid_dynasty",
+     "result": "confirmed: 'In 1077-1078 ... Abdullah bin Ali Al Uyuni defeated the Qarmatians in Bahrain'; infobox founded 1076"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Uyunid_dynasty",
+     "result": "confirmed: 'Then in 513 AH, the capital went back to Qatif'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Uyunid_dynasty",
+     "result": "confirmed: 'In 531 AH ... his state was divided into two'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Uyunid_dynasty",
+     "result": "confirmed: 'In the years 587 - 605 AH, Mohammed bin Abi al-Hussain united Qatif and Al-Hasa'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Uyunid_dynasty",
+     "result": "confirmed: 'It then fell to the Usfurids of Banu Uqayl in 651 AH (1253 CE)'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 73691.6,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area."
+   }
+  },
+  {
+   "slug": "zurayid-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1/correction",
+     "what": "Keyframe 0 (1083-1138) is the Cliopatria speck (about 2,800 km2, Aden and the Lahij oasis), but keyframes 1 and 2 (1139-1174) use the whole Aden and Lahij governorates plus Ibb (about 21,000 km2); the only event between is the Ibb gain (about 6,000 km2), so about 12,000 km2 of Lahij governorate arrive unexplained. /ledger/0 (found) also uses the whole governorates, contradicting keyframe 0.",
+     "why": "Gazetteer resolve: 1085 shape = 11 cells; union[`Adan, Lahij] = 59 cells; Ibb = 24 cells. Zurayids page: the coastal line held Lahij until 1150 ('Ali will later be killed in the battle of Za'za' in Lahij in 1150, displacing them out of Lahij').",
+     "fix": "Use one Lahij throughout: either keyframes 1 and 2 = {\"union\":[{\"cliopatria\":\"Zurayid dynasty\",\"year\":1085},{\"admin1\":\"Ibb\",\"country\":\"Yemen\"}]} and /ledger/0 region = the 1085 shape, or keyframe 0 = the Aden and Lahij governorates (as /ledger/0) with a note.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1/year",
+     "what": "The highland towns are gained in 1139 'page silent on the year', but the page dates the purchase 'a decade later' than the 1138 war.",
+     "why": "Zurayids page: 'The two lines met in open warfare in 1138' ... 'A decade later the ruler Muhammad bin Saba bought a number of important Sulayhid fortresses and towns' and married the last Sulayhid queen; 'Among them were Dhu Jibla, al-Takar, Ibb and Habb.'",
+     "fix": "Move the gain to c. 1148 (confidence 1, quote 'a decade later'), the 1139 keyframe's from-year with it, and use counterpart 'nobody' or the Sulayhid remnant in the note (the Sulayhid dossier ends 1138).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "The 1150 merge names 'Zurayid coastal line (al-Mas'ud)', a branch already drawn inside this dossier's keyframes; merge means absorbing another state.",
+     "why": "Schema: 'merge: this state absorbs or is absorbed into counterpart'; keyframe 0 already holds Aden and Lahij for both lines.",
+     "fix": "Delete the merge and describe the civil war's end in notes, or keep it only if the coastal line becomes a separate dossier.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "'After the defeat of Al-Msaod branch, The Zurayid sphere of power stretched from Taiz to Dhofar' (Zurayids page): no event or keyframe; also the Ayyubid conquest of the highlands (Turan-Shah, 1173-1174).",
+     "page to try": "https://en.wikipedia.org/wiki/Turan-Shah"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "Exact year of the highland purchase (see fix).",
+     "page to try": "https://en.wikipedia.org/wiki/Muhammad_ibn_Saba"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Zurayids",
+     "result": "confirmed: 'The brothers were placed in power in 1083'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Zurayids",
+     "result": "confirmed: Za'za' in Lahij in 1150"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Zurayids",
+     "result": "confirmed: 'When the Ayyubids conquered Aden on 22 June 1174 the rule of the Zurayids ended'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Zurayids",
+     "result": "mis-dated: the page says 'a decade later' (c. 1148), confidence 1"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 3310.4,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 962,
+    "type": "found",
+    "counterpart": "lawik-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 978,
+    "type": "gain",
+    "counterpart": "Rukkhaj and Bust (local rulers)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text local rulers"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 986,
+    "type": "contest_start",
+    "counterpart": "hindu-shahis"
+   },
+   "mirror": {
+    "slug": "hindu-shahis",
+    "year": 986,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 988,
+    "type": "gain",
+    "counterpart": "hindu-shahis"
+   },
+   "mirror": {
+    "slug": "hindu-shahis",
+    "year": 991,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Laghman to Peshawar: 988 (Sabuktigin page) vs 991 in hindu-shahis; both sides flagged in notes"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 998,
+    "type": "gain",
+    "counterpart": "samanid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "samanid-empire not written yet (owning group has not run)"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 999,
+    "type": "gain",
+    "counterpart": "samanid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "samanid-empire not written yet"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1001,
+    "type": "gain",
+    "counterpart": "hindu-shahis"
+   },
+   "mirror": {
+    "slug": "hindu-shahis",
+    "year": 1001,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Gandhara/Peshawar"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1002,
+    "type": "gain",
+    "counterpart": "saffarid-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "saffarid-dynasty not written yet; its Cliopatria row ends 899, the dossier must run to 1002/3 for this mirror"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1006,
+    "type": "contest_start",
+    "counterpart": "emirate-of-multan"
+   },
+   "mirror": {
+    "slug": "emirate-of-multan",
+    "year": 1006,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1008,
+    "type": "gain",
+    "counterpart": "hindu-shahis"
+   },
+   "mirror": {
+    "slug": "hindu-shahis",
+    "year": 1014,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Punjab: Ghaznavid gain 1008 (and again 1021) vs hindu-shahis contest 1008-1009 and loss 1014, dissolve 1026"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1010,
+    "type": "gain",
+    "counterpart": "emirate-of-multan"
+   },
+   "mirror": {
+    "slug": "emirate-of-multan",
+    "year": 1010,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1011,
+    "type": "gain",
+    "counterpart": "ghurid-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "ghurid-dynasty starts 1152; counterpart outside its life (also 1060 gain and 1148-1152 contest)"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1017,
+    "type": "gain",
+    "counterpart": "ma-munid-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1021,
+    "type": "gain",
+    "counterpart": "hindu-shahis"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no hindu-shahis loss in 1020-1022 (it has 1014 loss, 1026 dissolve)"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1026,
+    "type": "vassal_start",
+    "counterpart": "sind-habbari-dynasty"
+   },
+   "mirror": {
+    "slug": "sind-habbari-dynasty",
+    "year": 1026,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "Mahmud page: Sindh tributary 1026-1030; sind-habbari dissolves 1026 (successor soomra-dynasty); vassal_start is overlord-side by schema"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1029,
+    "type": "gain",
+    "counterpart": "buyid-dynasty"
+   },
+   "mirror": {
+    "slug": "buyid-dynasty",
+    "year": 1029,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "month differs (26 May vs March/April), flagged by author"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1030,
+    "type": "loss",
+    "counterpart": "kakuyids"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kakuyids dossier has no event with ghaznavid-empire (Ray 1030)"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1030,
+    "type": "gain",
+    "counterpart": "kakuyids"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kakuyids dossier lacks the loss of Hamadan and Isfahan (January 1030)"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1034,
+    "type": "loss",
+    "counterpart": "Harun of Khwarazm (breakaway governor)"
+   },
+   "mirror": {
+    "slug": "oghuz-turks",
+    "year": 1041,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "oghuz-turks gains Khwarezm from ghaznavid-empire in 1041; Mas'ud I page has Harun independent in 1034, so the oghuz counterpart should be the Altuntashid rulers"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1034,
+    "type": "loss",
+    "counterpart": "seljuk-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "seljuk-dynasty (me-09) not written yet"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1037,
+    "type": "loss",
+    "counterpart": "kakuyids"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Kakuyid regain of Ray in 1037/8 in kakuyids"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1040,
+    "type": "loss",
+    "counterpart": "great-seljuk-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "great-seljuk-empire (me-09) not written yet"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1060,
+    "type": "gain",
+    "counterpart": "ghurid-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "ghurid-dynasty starts 1152"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1162,
+    "type": "loss",
+    "counterpart": "Ghuzz Turks"
+   },
+   "mirror": {
+    "slug": "ghurid-dynasty",
+    "year": 1173,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "counterpart corrected from oghuz-turks (ends 1055) to the free-text Ghuzz Turks used by ghurid-dynasty"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1179,
+    "type": "loss",
+    "counterpart": "ghurid-dynasty"
+   },
+   "mirror": {
+    "slug": "ghurid-dynasty",
+    "year": 1179,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Peshawar"
+  },
+  {
+   "event": {
+    "slug": "ghaznavid-empire",
+    "year": 1186,
+    "type": "dissolve",
+    "counterpart": "ghurid-dynasty"
+   },
+   "mirror": {
+    "slug": "ghurid-dynasty",
+    "year": 1186,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Lahore"
+  },
+  {
+   "event": {
+    "slug": "lohara-dynasty",
+    "year": 1015,
+    "type": "contest_start",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "lohara records contests with the Ghaznavids in 1015 and 1021; ghaznavid-empire has the 1015 war with empty zones and no 1021 war"
+  },
+  {
+   "event": {
+    "slug": "sulayhid-dynasty",
+    "year": 1047,
+    "type": "found",
+    "counterpart": "rassids"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "rassids listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "sulayhid-dynasty",
+    "year": 1062,
+    "type": "gain",
+    "counterpart": "najahid-dynasty"
+   },
+   "mirror": {
+    "slug": "najahid-dynasty",
+    "year": 1062,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "sulayhid-dynasty",
+    "year": 1062,
+    "type": "vassal_start",
+    "counterpart": "Ma'nids of Aden"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "manids-of-aden listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "sulayhid-dynasty",
+    "year": 1063,
+    "type": "gain",
+    "counterpart": "rassids"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier, listed"
+  },
+  {
+   "event": {
+    "slug": "sulayhid-dynasty",
+    "year": 1064,
+    "type": "vassal_start",
+    "counterpart": "sharifate-of-mecca"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "planned in me-08-x, not written"
+  },
+  {
+   "event": {
+    "slug": "sulayhid-dynasty",
+    "year": 1067,
+    "type": "loss",
+    "counterpart": "najahid-dynasty"
+   },
+   "mirror": {
+    "slug": "najahid-dynasty",
+    "year": 1067,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "sulayhid-dynasty",
+    "year": 1082,
+    "type": "contest_start",
+    "counterpart": "najahid-dynasty"
+   },
+   "mirror": {
+    "slug": "najahid-dynasty",
+    "year": 1082,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "both sides agree but both misread the Ali page: 1082 is a Sulayhid gain / Najahid loss of Zabid"
+  },
+  {
+   "event": {
+    "slug": "sulayhid-dynasty",
+    "year": 1083,
+    "type": "vassal_start",
+    "counterpart": "zurayid-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "overlord-side by schema; zurayid-dynasty carries no mirror, as the schema intends"
+  },
+  {
+   "event": {
+    "slug": "sulayhid-dynasty",
+    "year": 1098,
+    "type": "loss",
+    "counterpart": "hamdanids-of-sanaa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "sulayhid-dynasty",
+    "year": 1138,
+    "type": "dissolve",
+    "counterpart": "zurayid-dynasty"
+   },
+   "mirror": {
+    "slug": "zurayid-dynasty",
+    "year": 1139,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "within one year; the Zurayid page puts the purchase c. 1148"
+  },
+  {
+   "event": {
+    "slug": "fatimid-caliphate",
+    "year": 1048,
+    "type": "vassal_start",
+    "counterpart": "sulayhid-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "overlord-side; Sulayhid Sana'a 1063 vs Fatimid tie 1048 noted by author"
+  },
+  {
+   "event": {
+    "slug": "najahid-dynasty",
+    "year": 1022,
+    "type": "found",
+    "counterpart": "ziyadid-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ziyadid-dynasty not written yet; Cliopatria row 866-1138 overlaps the Najahids"
+  },
+  {
+   "event": {
+    "slug": "najahid-dynasty",
+    "year": 1158,
+    "type": "dissolve",
+    "counterpart": "mahdids"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Zabid Mahdids listed in counterparts_needing_dossiers; Cliopatria mahdids row is Omani"
+  },
+  {
+   "event": {
+    "slug": "uyunid-emirate",
+    "year": 1077,
+    "type": "found",
+    "counterpart": "qarmatians"
+   },
+   "mirror": {
+    "slug": "qarmatians",
+    "year": 1077,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "qarmatians contest 1067-1077 and dissolve 1077 with counterpart uyunid-emirate"
+  },
+  {
+   "event": {
+    "slug": "uyunid-emirate",
+    "year": 1137,
+    "type": "split",
+    "counterpart": "Uyunid principality of al-Hasa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not a state (see fix); same for 1191 merge and 1209 split"
+  },
+  {
+   "event": {
+    "slug": "uyunid-emirate",
+    "year": 1253,
+    "type": "dissolve",
+    "counterpart": "usfurids"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "zurayid-dynasty",
+    "year": 1083,
+    "type": "found",
+    "counterpart": "sulayhid-dynasty"
+   },
+   "mirror": {
+    "slug": "sulayhid-dynasty",
+    "year": 1083,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "Aden from the Ma'nids under Sulayhid tutelage"
+  },
+  {
+   "event": {
+    "slug": "zurayid-dynasty",
+    "year": 1150,
+    "type": "merge",
+    "counterpart": "Zurayid coastal line (al-Mas'ud)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "branch of the same state (see fix)"
+  },
+  {
+   "event": {
+    "slug": "zurayid-dynasty",
+    "year": 1174,
+    "type": "dissolve",
+    "counterpart": "ayyubid-sultanate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ayyubid-sultanate not written yet (Cliopatria row from 1177)"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Nagarkot (Kangra)",
+   "kind": "place",
+   "used_in": "ghaznavid-empire"
+  },
+  {
+   "name": "Dihistan",
+   "kind": "region",
+   "used_in": "ghaznavid-empire"
+  },
+  {
+   "name": "Nasa (Nisa)",
+   "kind": "place",
+   "used_in": "ghaznavid-empire"
+  },
+  {
+   "name": "Farawa",
+   "kind": "place",
+   "used_in": "ghaznavid-empire"
+  },
+  {
+   "name": "Qusdar (Khuzdar)",
+   "kind": "place",
+   "used_in": "ghaznavid-empire"
+  },
+  {
+   "name": "Rukkhaj",
+   "kind": "region",
+   "used_in": "ghaznavid-empire"
+  },
+  {
+   "name": "Kurram",
+   "kind": "place",
+   "used_in": "ghaznavid-empire"
+  },
+  {
+   "name": "Jabal Haraz / Manakhah",
+   "kind": "region",
+   "used_in": "sulayhid-dynasty"
+  },
+  {
+   "name": "Jibla",
+   "kind": "place",
+   "used_in": "sulayhid-dynasty"
+  },
+  {
+   "name": "Dhu Jibla / at-Ta'kar",
+   "kind": "place",
+   "used_in": "zurayid-dynasty"
+  },
+  {
+   "name": "Dahlak",
+   "kind": "place",
+   "used_in": "najahid-dynasty"
+  },
+  {
+   "name": "Awal",
+   "kind": "place",
+   "used_in": "uyunid-emirate"
+  },
+  {
+   "name": "al-Hasa / al-Ahsa",
+   "kind": "region",
+   "used_in": "uyunid-emirate"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Lawik dynasty of Ghazna",
+   "suggested_slug": "lawik-dynasty",
+   "years": [
+    900,
+    962
+   ]
+  },
+  {
+   "name": "Ma'munids of Khwarazm",
+   "suggested_slug": "ma-munid-dynasty",
+   "years": [
+    995,
+    1017
+   ]
+  },
+  {
+   "name": "Rassid imamate of Yemen",
+   "suggested_slug": "rassids",
+   "years": [
+    897,
+    1063
+   ]
+  },
+  {
+   "name": "Hamdanids of Sana'a",
+   "suggested_slug": "hamdanids-of-sanaa",
+   "years": [
+    1098,
+    1174
+   ]
+  },
+  {
+   "name": "Mahdids of Zabid",
+   "suggested_slug": "mahdids-of-zabid",
+   "years": [
+    1158,
+    1174
+   ]
+  },
+  {
+   "name": "Sharifate of Mecca",
+   "suggested_slug": "sharifate-of-mecca",
+   "years": [
+    1063,
+    1067
+   ]
+  },
+  {
+   "name": "Ma'nids of Aden",
+   "suggested_slug": "manids-of-aden",
+   "years": [
+    1062,
+    1083
+   ]
+  },
+  {
+   "name": "Usfurids",
+   "suggested_slug": "usfurids",
+   "years": [
+    1253,
+    1392
+   ]
+  },
+  {
+   "name": "Altuntashid governors of Khwarazm (Harun, Ismail Khandan)",
+   "suggested_slug": "altuntashids",
+   "years": [
+    1017,
+    1041
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-me-08-e.md",
+ "problems": [
+  "No page failed to load. No infobox in the batch gives an area, so every area_check is without a ratio.",
+  "The reviewer brief's mirror rule for vassal_start (a vassal_start in the vassal's ledger) contradicts the schema ('counterpart is the vassal itself in both events'); vassal events recorded only by the overlord are counted as exceptions here.",
+  "Reviewer edits applied and validated: ghaznavid-empire /ledger/33 and /wars/14 counterpart oghuz-turks -> 'Ghuzz Turks'; najahid-dynasty /identity/rulers Sa'id al-Ahwal added and the Jayyash note corrected.",
+  "Cross-batch routing: kakuyids (Ray 1030/1037, Jibal 1030 missing), hindu-shahis (988 vs 991, Punjab 1008/1014/1021), sind-habbari-dynasty (tribute 1026-1030 vs dissolve 1026), oghuz-turks (Khwarezm 1041 counterpart should be the Altuntashids, not ghaznavid-empire), ghurid-dynasty sa-04 (start 1152 leaves 1011/1060/1148-1152 Ghur events without a mirror), lohara-dynasty (1015/1021 contests)."
+ ]
+}

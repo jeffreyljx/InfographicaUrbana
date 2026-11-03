@@ -1,0 +1,347 @@
+{
+ "batch_id": "eu-09-l",
+ "verdicts": [
+  {
+   "slug": "electorate-of-hanover",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/successors/0/land/text",
+     "what": "Successor text gave Cliopatria's Kingdom of Hanover as '38,487 km2 in 1803'.",
+     "why": "shapes.csv: kingdom-of-hanover_1803 = 32,047.6 km2 (1803-1804); 38,487.5 km2 is kingdom-of-hanover_1842 (1842-1863).",
+     "fix": "Now reads '32,048 km2 in 1803-1804, 38,487 km2 at its largest in 1842-1863'; re-validated, 0 errors.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/13",
+     "what is missing": "The 1802 dissolve (confidence 1) is Cliopatria's row boundary. The page has the electorate alive in 1803 (it received Osnabrück on 25 February 1803), and its infobox gives 'Merged into Kingdom of Westphalia: 1807' and 'Re-established as Kingdom of Hanover: 1814'. The orchestrator decides: one dossier for both Cliopatria rows, or keep the boundary and give kingdom-of-hanover the electorate's colour.",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Hanover"
+    },
+    {
+     "where": "/wars/1",
+     "what is missing": "The Seven Years' War ends in 1759 in the dossier. The 1760-1762 campaigns in southern Hanover (Göttingen, Münden), any French occupation then, and the treaty year (1763) are not on the pages opened.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Vellinghausen"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "Land Hadeln (gained 1731) is already inside the 1721 Cliopatria shape, the new 1719 keyframe and the Bremen-Verden region of /ledger/3-5 (grid: the Otterndorf cell, 53.81 N 8.90 E, is in the 1721 shape and not in 1709/1713). Once the gazetteer has Land Hadeln, keyframe 1719 and the 1721 shape (for 1721-1730) should be adjusted minus Land Hadeln. About 1 cell.",
+     "page to try": "https://en.wikipedia.org/wiki/Land_of_Hadeln"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "The 1757-1758 French occupation covers the whole 1744 shape. The Klosterzeven page calls it a 'partial occupation', and the Hanoverian army stayed at Stade. The unoccupied districts are unnamed; confidence 2 is honest.",
+     "page to try": "https://en.wikipedia.org/wiki/Convention_of_Klosterzeven"
+    },
+    {
+     "where": "/keyframe_review/10",
+     "what is missing": "The terms of the Hanoverian prince-bishops of Osnabrück (alternating from 1662), for a possible lighter tint before the real union of 1803 (author's gap).",
+     "page to try": "https://en.wikipedia.org/wiki/Prince-Bishopric_of_Osnabr%C3%BCck"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Electorate_of_Hanover",
+     "result": "confirmed: 'In 1705, Elector George I Louis inherited the Principality of Lüneburg with the Duchy of Saxe-Lauenburg'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Electorate_of_Hanover",
+     "result": "confirmed: 'Hanover acquired Bremen-Verden in 1719.'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Electorate_of_Hanover",
+     "result": "confirmed: 'In 1731, Hanover also gained Hadeln.'"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Electorate_of_Hanover",
+     "result": "confirmed: 'invasion of 24,000 Prussian soldiers'; 'In April they arrived at ... Stade, and stayed there until October' (also /ledger/12)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Electorate_of_Hanover",
+     "result": "confirmed (same sentence as /ledger/1)"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Electorate_of_Hanover",
+     "result": "confirmed: 'In the summer of 1757, the French invaded Hanover'; expelled 'the following year' (/ledger/10)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Electorate_of_Hanover",
+     "result": "confirmed: 'In 1715, he purchased the duchies of Bremen-Verden from King Frederick IV of Denmark'"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Electorate_of_Hanover",
+     "result": "confirmed: infobox 'Elevation to Electorate: 1692'; predecessors Calenberg and Lüneburg"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 29856,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the Electorate of Hanover page (nor on Kingdom of Hanover). The author's Bremen-Verden check (6,685 km2 on the page against Cliopatria's +6,039 km2, ratio 0.90) stands. The 1757 shape (47,680 km2) exceeds Cliopatria's post-1815 Kingdom of Hanover (38,487 km2), which supports the 'wrong' verdicts on the 1757 and 1762 shapes."
+   }
+  },
+  {
+   "slug": "principality-of-liechtenstein",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (insert between /ledger/0 and /ledger/1); /wars",
+     "what": "Missing event: the French occupation of all of Liechtenstein from 6 March to May 1799 (War of the Second Coalition) is on a page the author used and is not in the ledger or the wars.",
+     "why": "History of Liechtenstein: 'France invaded the country on 6 March 1799 and plundered several towns'; Austrian and Vorarlberg militias 'defeated 18,000 French troops stationed in Liechtenstein' and liberated the country by 14 May.",
+     "fix": "Add occupation_start {year 1799, month 3, counterpart 'french-directory', region {'country':'Liechtenstein','text':'France invaded the country on 6 March 1799'}, confidence 3, source History_of_Liechtenstein} and occupation_end {year 1799, month 5, counterpart 'french-directory', same region, confidence 3}. Add war 'War of the Second Coalition' 1799-1799 (belligerents principality-of-liechtenstein, french-directory, habsburg-monarchy; zone the country; outcome: French expelled by 14 May, no change of territory).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/rulers",
+     "what is missing": "Princes with reign years 1719-2024 (no ruler strip); the date Vaduz became the seat; the day of the 1949 Ellhorn cession (the page: Balzers refused in November 1948, the Landtag approved the following month).",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_monarchs_of_Liechtenstein"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Liechtenstein",
+     "result": "confirmed: infobox 'Union between Vaduz and Schellenberg: 23 January 1719'; 'Charles VI, Holy Roman Emperor, decreed that Vaduz and Schellenberg were united'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/History_of_Liechtenstein",
+     "result": "confirmed: 'In 1949, Liechtenstein ceded the Ellhorn mountain to Switzerland as a result of Swiss demands'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 160.5,
+    "infobox_year": 2024,
+    "cliopatria_km2": 136.9,
+    "ratio": 0.85,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "electorate-of-hanover",
+    "year": 1705,
+    "type": "gain",
+    "counterpart": "principality-of-luneburg"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier yet; listed in the author's counterparts_needing_dossiers (inheritance, not a war)."
+  },
+  {
+   "event": {
+    "slug": "electorate-of-hanover",
+    "year": 1705,
+    "type": "gain",
+    "counterpart": "duchy-of-saxe-lauenburg"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier yet; listed in counterparts_needing_dossiers (eu-09-d asks for it too)."
+  },
+  {
+   "event": {
+    "slug": "electorate-of-hanover",
+    "year": 1715,
+    "type": "occupation_start",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "swedish-empire belongs to eu-14, which has not run yet. Its dossier should record Bremen-Verden occupied by electorate-of-hanover 1715-1719 (after the Danish occupation 1712-1715) and the loss in 1719."
+  },
+  {
+   "event": {
+    "slug": "electorate-of-hanover",
+    "year": 1719,
+    "type": "occupation_end",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-14 has not run yet."
+  },
+  {
+   "event": {
+    "slug": "electorate-of-hanover",
+    "year": 1719,
+    "type": "gain",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-14 has not run yet; the Treaty of Stockholm loss of Bremen-Verden belongs in swedish-empire."
+  },
+  {
+   "event": {
+    "slug": "electorate-of-hanover",
+    "year": 1731,
+    "type": "gain",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "holy-roman-empire-minor-states (eu-09) is not written yet; Land Hadeln."
+  },
+  {
+   "event": {
+    "slug": "electorate-of-hanover",
+    "year": 1757,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1757,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "kingdom-of-france /ledger/165, counterpart electorate-of-hanover (France confidence 3, Hanover 2). France has no contest event for the July 1757 Hastenbeck campaign; contest events are outside the matrix."
+  },
+  {
+   "event": {
+    "slug": "electorate-of-hanover",
+    "year": 1758,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1758,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "kingdom-of-france /ledger/166."
+  },
+  {
+   "event": {
+    "slug": "electorate-of-hanover",
+    "year": 1801,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-prussia (eu-09) is not written yet; Prussian occupation April-October 1801."
+  },
+  {
+   "event": {
+    "slug": "electorate-of-hanover",
+    "year": 1801,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-prussia not written yet."
+  },
+  {
+   "event": {
+    "slug": "principality-of-liechtenstein",
+    "year": 1949,
+    "type": "loss",
+    "counterpart": "swiss-confederation"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "swiss-confederation.json exists (1291-2024) and has no ledger event after 1900. It needs a 1949 gain of the Ellhorn with counterpart principality-of-liechtenstein (History of Liechtenstein). Route to the swiss-confederation owner (eu-09)."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Principality of Calenberg",
+   "kind": "region",
+   "used_in": "electorate-of-hanover"
+  },
+  {
+   "name": "Principality of Grubenhagen",
+   "kind": "region",
+   "used_in": "electorate-of-hanover"
+  },
+  {
+   "name": "County of Diepholz",
+   "kind": "region",
+   "used_in": "electorate-of-hanover"
+  },
+  {
+   "name": "County of Hoya",
+   "kind": "region",
+   "used_in": "electorate-of-hanover"
+  },
+  {
+   "name": "Principality of Lüneburg",
+   "kind": "region",
+   "used_in": "electorate-of-hanover"
+  },
+  {
+   "name": "Duchy of Saxe-Lauenburg",
+   "kind": "region",
+   "used_in": "electorate-of-hanover"
+  },
+  {
+   "name": "Land Hadeln",
+   "kind": "region",
+   "used_in": "electorate-of-hanover"
+  },
+  {
+   "name": "Ellhorn",
+   "kind": "region",
+   "used_in": "principality-of-liechtenstein"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Principality of Calenberg",
+   "suggested_slug": "principality-of-calenberg",
+   "years": [
+    1692,
+    1692
+   ]
+  },
+  {
+   "name": "Principality of Lüneburg",
+   "suggested_slug": "principality-of-luneburg",
+   "years": [
+    1692,
+    1705
+   ]
+  },
+  {
+   "name": "Duchy of Saxe-Lauenburg",
+   "suggested_slug": "duchy-of-saxe-lauenburg",
+   "years": [
+    1705,
+    1802
+   ]
+  },
+  {
+   "name": "Prince-Bishopric of Osnabrück",
+   "suggested_slug": "prince-bishopric-of-osnabruck",
+   "years": [
+    1662,
+    1803
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-09-l.md",
+ "problems": [
+  "The Electorate of Hanover and Kingdom of Hanover pages have no infobox area, so the Hanover area check rests on the Bremen-Verden areas and the Cliopatria shapes.",
+  "The Göttingen and Battle of Minden pages say nothing about 1760-1762, so the Seven Years' War after 1759 was left to the gap-filler.",
+  "Ruling for the orchestrator: electorate-of-hanover (1692-1802) and Cliopatria's kingdom-of-hanover row (1803-1865) are one Hanoverian state across a row boundary (different Wikidata ids). It needs a one-dossier or one-colour decision."
+ ]
+}

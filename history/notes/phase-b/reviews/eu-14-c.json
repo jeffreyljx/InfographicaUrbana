@@ -1,0 +1,525 @@
+{
+ "batch_id": "eu-14-c",
+ "verdicts": [
+  {
+   "slug": "old-kingdom-of-norway",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/22 (also /keyframe_review/23, /keyframe_review/24, /keyframe_review/25/correction)",
+     "what": "Keyframes old-kingdom-of-norway_1333, _1344 and _1363 (verdict ok) and _1395 (adjust, correction 'unchanged') leave out the Norse Greenland cells that the 1272-1326 shapes carry. No ledger event explains the drop, and the dossier's own ledger has Greenland gained in 1272 (/ledger/22) and never lost. /ledger/30 says Greenland goes into the Kalmar Union with Norway in 1397, and the 1333 note itself says 'dropping Greenland in 1333 looks wrong'. As written, the map shows Greenland outside Norway for 1333-1397 while the ledger keeps it Norwegian.",
+     "why": "Kalmar Union page (opened by the reviewer): Norway '(then including Iceland, Greenland, the Faroe Islands, and the Northern Isles of Orkney and Shetland)'. Kingdom of Norway (872-1397) page: 'Iceland, Faroe Islands and Greenland remained under Norwegian administration until 1814.' Both pages are in the dossier's sources. shapes.csv: the 1326 shape has bbox west edge -52.25, the 1333 shape -24.42.",
+     "fix": "Set verdict adjust on old-kingdom-of-norway_1333, _1344 and _1363 and rewrite the _1395 correction, each as {\"union\":[{\"cliopatria\":\"Old Kingdom of Norway\",\"year\":<shape year>},{\"intersect\":[{\"cliopatria\":\"Old Kingdom of Norway\",\"year\":1326},{\"country\":\"Greenland\"}]}],\"text\":\"the Cliopatria shape with the Norse settlements in Greenland, which stayed under Norway (Kingdom page; Kalmar Union page)\"}. In the 1363 note, say that Cliopatria's Norse Greenland row overlaps 1363-1384, so norse-greenland (eu-14) is drawn either as a Norwegian dependency or not at all for those years. Otherwise, write a sourced loss event if a page shows Greenland leaving Norway in 1333.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger (capital_move) and notes item 10",
+     "what": "The ledger has capital_move events for Borg 1016, Bergen 1067, Konungahella 1123, Bergen 1217 and Oslo 1314, but none for the three returns to Nidaros (998, 1029, 1151 in identity.capitals). The notes say those Nidaros spans are 'inferred from gaps in the infobox's dated spans', but the infobox dates them explicitly.",
+     "why": "Kingdom of Norway (872-1397) infobox: 'Niðaróss (Trondheim) (997–1016, 1028–1067, 1150–1217)'.",
+     "fix": "Add capital_move events in 998, 1029 and 1151 at confidence 3, sourced to the Kingdom page with the infobox quote, and correct notes item 10 and the dossier notes to say the infobox gives these spans.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/22 (also /keyframe_review/23-25)",
+     "what is missing": "About 30,000 km2 of Swedish land enters the shape in 1333 with no event: Värmland (Karlstad is inside), Västergötland including Skara, the Swedish heartland, and half of Dalarna. The Magnus IV page names only Norway, Iceland and Tønsberg as Magnus's Norwegian lands. This is probably a Cliopatria artefact (perhaps Duke Eric's former duchy). It needs a page or an adjust correction that removes everything except Bohuslän, Idre and Särna.",
+     "page to try": "https://en.wikipedia.org/wiki/Eric_Magnusson,_Duke_of_S%C3%B6dermanland"
+    },
+    {
+     "where": "/keyframe_review/20",
+     "what is missing": "1314: Jämtland grows (to about 296 cells) and 16 Västerbotten cells are added with no event (unverified: page budget).",
+     "page to try": "https://en.wikipedia.org/wiki/H%C3%A4rjedalen"
+    },
+    {
+     "where": "/ledger/16",
+     "what is missing": "1188 Jämtland gain at confidence 1 (Cliopatria's year). The usual date is King Sverre's campaign around 1178.",
+     "page to try": "https://en.wikipedia.org/wiki/J%C3%A4mtland"
+    },
+    {
+     "where": "/ledger/22",
+     "what is missing": "1272 Greenland gain at confidence 1 (Cliopatria's year). The submission is usually dated 1261.",
+     "page to try": "https://en.wikipedia.org/wiki/Norse_Greenland"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "1040 Faroes gain at confidence 1 (Cliopatria's year). No page dates the Faroes' entry.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_the_Faroe_Islands"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "870 Hålogaland gain at confidence 1. The Harald page quotes Egil's Saga with no year.",
+     "page to try": "https://en.wikipedia.org/wiki/H%C3%A5logaland"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "995 Viken return at confidence 1 (the reading). No page says Viken returned to the crown.",
+     "page to try": "https://en.wikipedia.org/wiki/Olaf_Tryggvason"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "1015 Viken return at confidence 1. The Battle of Nesjar (1016) against Earl Sweyn is the likely dated event.",
+     "page to try": "https://en.wikipedia.org/wiki/Olaf_II_of_Norway"
+    },
+    {
+     "where": "/identity/capitals/5",
+     "what is missing": "Konungahella (Kungälv, 11.97 E 57.87 N, capital 1123-1150) falls just outside the Cliopatria 1066 shape, within two H3 cells: the shape stops short of the Göta älv, the kingdom's southern border. Low priority; settle it with the Bohuslän page.",
+     "page to try": "https://en.wikipedia.org/wiki/Bohusl%C3%A4n"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Earldom_of_Orkney",
+     "result": "confirmed: 'is said to have annexed the Northern Isles in 875'; 'some scholars believe it to be apocryphal'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Earldom_of_Orkney",
+     "result": "confirmed: 'In the ninth and tenth centuries it covered ... Caithness and Sutherland on the mainland' (undated, confidence 2 is right)"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Icelandic_Commonwealth",
+     "result": "confirmed: 'By 1264, all Icelandic chieftains had sworn allegiance to the King of Norway.'"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Perth",
+     "result": "confirmed: 'The Treaty of Perth, signed 2 July 1266'; 4,000 marks and 100 marks annuity"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Perth",
+     "result": "confirmed: 'Norway recognised Scottish sovereignty over the disputed territories' (the Hebrides and Mann); Scotland 'confirmed Norwegian sovereignty over Shetland and Orkney'"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Perth",
+     "result": "confirmed: 'Norwegian control had been formalised in 1098, when Edgar of Scotland signed the islands over to Magnus III of Norway.'"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Perth",
+     "result": "confirmed: 'three years after the Battle of Largs in 1263'"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/History_of_Norway",
+     "result": "confirmed: 'Norway again united under a Norwegian king, Magnus Olavson the Good, in 1035.'"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/History_of_Norway",
+     "result": "confirmed: 'had Olaf banished from Norway in 1028'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/List_of_Norwegian_monarchs",
+     "result": "confirmed: 'Haakon thereafter ruled Norway (except Viken), at first nominally under Harald.'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/List_of_Norwegian_monarchs",
+     "result": "confirmed: Sweyn Forkbeard '1000–1013 (de jure)', the Lade earls '1000–1015 (de facto)', 'the Danes controlled the petty kingdoms of Viken as vassals'"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Harald_Fairhair",
+     "result": "confirmed: 'In 866, Harald made the first of a series of conquests over the many petty kingdoms'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Harald_Fairhair",
+     "result": "confirmed: 'In 872, after a great victory at Hafrsfjord near Stavanger against Kjotve the Rich'"
+    },
+    {
+     "where": "/ledger/23",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Norway_(872%E2%80%931397)",
+     "result": "confirmed: 'Vardøhus Fortress was erected by Norway in 1306 further east than today's land border'"
+    },
+    {
+     "where": "/ledger/9, /ledger/13, /ledger/15, /ledger/17, /ledger/24",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Norway_(872%E2%80%931397)",
+     "result": "confirmed: infobox Borg (1016–1028), Bergen (1067–1123, 1217–1314), Konungahella (1123 – c. 1150), Ósló (1314–1397)"
+    },
+    {
+     "where": "/ledger/27",
+     "page": "https://en.wikipedia.org/wiki/Kalmar_Union",
+     "result": "confirmed: 'when Haakon VI died in 1380, Olaf also inherited the crown of Norway'; the list page gives '11 September 1380'"
+    },
+    {
+     "where": "/ledger/28",
+     "page": "https://en.wikipedia.org/wiki/Kalmar_Union",
+     "result": "confirmed: 'Margaret became regent of Denmark and Norway when Olaf died in 1387'; the list page gives Olav IV to '23 August 1387'"
+    },
+    {
+     "where": "/ledger/29",
+     "page": "https://en.wikipedia.org/wiki/Kalmar_Union",
+     "result": "confirmed: 'After Margaret defeated Albert in 1389, her heir Eric was proclaimed King of Norway' (the list page gives 8 September 1389)"
+    },
+    {
+     "where": "/ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Kalmar_Union",
+     "result": "confirmed: 'His coronation was held in Kalmar on 17 June 1397'; Norway '(then including Iceland, Greenland, the Faroe Islands, and the Northern Isles of Orkney and Shetland)'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 519922,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Kingdom of Norway (872-1397) infobox has no area (reviewer read it). The Norway article's infobox describes the modern state. The author says that no comparison was possible."
+   }
+  },
+  {
+   "slug": "icelandic-commonwealth",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Icelandic_Commonwealth",
+     "result": "confirmed: 'The first Alþingi assembly convened around the year 930 at Þingvellir'; 'Iceland was an uninhabited island until around 874.'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Icelandic_Commonwealth",
+     "result": "confirmed: 'led the Icelandic chieftains to accept Norway's Haakon IV as king by the signing of the Gamli sáttmáli'; 'By 1264, all Icelandic chieftains had sworn allegiance to the King of Norway.'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Old_Covenant_(Iceland)",
+     "result": "confirmed: 'The agreement was made in 1262–1264 between the major chieftains of Iceland and ... Haakon IV of Norway, and his son and successor, Magnus'; 'receive a code of laws, guaranteed peace and reliable transportation and shipping'; Jónsbók 1281"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/Icelandic_Commonwealth",
+     "result": "confirmed: 'The King's role in Icelandic affairs started in 1220, and had become strong by 1240'"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "page": "https://en.wikipedia.org/wiki/Icelandic_Commonwealth",
+     "result": "confirmed: 'The end of the Icelandic Commonwealth is typically dated to the Old Covenant (1262–1264)'; infobox 'Norwegian kingship: 1262', no area"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 112115,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Infobox has no area (reviewer read it). The Cliopatria 112,115 km2 for the whole island is plausible for Iceland, well under a factor of two. The author says no comparison was possible."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 870,
+    "type": "gain",
+    "counterpart": "scandinavian-minor-kingdoms"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier yet. It is in the author's counterparts_needing_dossiers, and another eu-14 part owns it."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 872,
+    "type": "gain",
+    "counterpart": "scandinavian-minor-kingdoms"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier yet. eu-14 owns it."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 875,
+    "type": "gain",
+    "counterpart": "viking-settlements"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Two events (Northern Isles; Caithness and Sutherland). viking-settlements is not written yet; eu-14 owns it."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 970,
+    "type": "loss",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Viken to the Danish overlordship. kingdom-of-denmark is not written yet (eu-14)."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 995,
+    "type": "gain",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Confidence 1. Not written yet (eu-14)."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1000,
+    "type": "loss",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "After Svolder. Not written yet (eu-14)."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1015,
+    "type": "gain",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Confidence 1. Not written yet (eu-14)."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1028,
+    "type": "occupation_start",
+    "counterpart": "north-sea-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Not written yet (eu-14). The occupation ends in 1035 (/ledger/11)."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1040,
+    "type": "gain",
+    "counterpart": "viking-settlements"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Faroes, confidence 1. Not written yet (eu-14)."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1098,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-the-isles"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "The kingdom-of-the-isles dossier (eu-11, written) has no vassal_start with old-kingdom-of-norway as counterpart. Its notes say the Norway dossier should record vassal_start (about 1098) and vassal_end (1266), so the two sides agree on the years, but the Isles ledger lacks its mirror events. Route to eu-11: add vassal_start 1098 and vassal_end 1266 with counterpart old-kingdom-of-norway."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1188,
+    "type": "gain",
+    "counterpart": "jaemtland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Confidence 1. jaemtland is not written yet (eu-14)."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1263,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-alba"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-alba (eu-11) is not written yet. The contest ends 1266-07 (/ledger/20)."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1264,
+    "type": "gain",
+    "counterpart": "icelandic-commonwealth"
+   },
+   "mirror": {
+    "slug": "icelandic-commonwealth",
+    "year": 1264,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Same year and the same island. The Commonwealth also dissolves in 1264, and old-kingdom-of-norway_1264 (1264-1271) carries Iceland in place of Cliopatria's 1272."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1266,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-the-isles"
+   },
+   "mirror": {
+    "slug": "kingdom-of-the-isles",
+    "year": 1266,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "The Isles record a 1266 loss to kingdom-of-alba and a dissolve, but no vassal_end towards Norway. The years agree; the event type is missing on the Isles side (eu-11)."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1272,
+    "type": "gain",
+    "counterpart": "norse-greenland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Confidence 1. norse-greenland is not written yet (eu-14)."
+  },
+  {
+   "event": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1306,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody: Finnmark east to Vardøhus."
+  },
+  {
+   "event": {
+    "slug": "icelandic-commonwealth",
+    "year": 1264,
+    "type": "loss",
+    "counterpart": "old-kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1264,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Mirror of /ledger/19 in old-kingdom-of-norway."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Bohuslän",
+   "kind": "region",
+   "used_in": "old-kingdom-of-norway"
+  },
+  {
+   "name": "Västergötland",
+   "kind": "region",
+   "used_in": "old-kingdom-of-norway"
+  },
+  {
+   "name": "Dalsland",
+   "kind": "region",
+   "used_in": "old-kingdom-of-norway"
+  },
+  {
+   "name": "Kola Peninsula",
+   "kind": "region",
+   "used_in": "old-kingdom-of-norway"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Scandinavian minor kingdoms",
+   "suggested_slug": "scandinavian-minor-kingdoms",
+   "years": [
+    500,
+    1002
+   ]
+  },
+  {
+   "name": "Viking settlements",
+   "suggested_slug": "viking-settlements",
+   "years": [
+    793,
+    1332
+   ]
+  },
+  {
+   "name": "Kingdom of Denmark",
+   "suggested_slug": "kingdom-of-denmark",
+   "years": [
+    936,
+    1406
+   ]
+  },
+  {
+   "name": "North Sea Empire",
+   "suggested_slug": "north-sea-empire",
+   "years": [
+    1018,
+    1039
+   ]
+  },
+  {
+   "name": "Jaemtland",
+   "suggested_slug": "jaemtland",
+   "years": [
+    947,
+    1187
+   ]
+  },
+  {
+   "name": "Norse Greenland",
+   "suggested_slug": "norse-greenland",
+   "years": [
+    1072,
+    1384
+   ]
+  },
+  {
+   "name": "Norway-Denmark",
+   "suggested_slug": "norway-denmark",
+   "years": [
+    1046,
+    1055
+   ]
+  },
+  {
+   "name": "Kalmar Union",
+   "suggested_slug": "kalmar-union",
+   "years": [
+    1397,
+    1525
+   ]
+  },
+  {
+   "name": "Kingdom of Alba",
+   "suggested_slug": "kingdom-of-alba",
+   "years": [
+    900,
+    1293
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-14-c.md",
+ "problems": [
+  "No page failed to load for the reviewer. About 30 events, keyframes and war entries were checked on nine pages and all were confirmed. No fabricated or mis-dated event was found in either dossier.",
+  "old-kingdom-of-norway fails on one blocking finding: the 1333-1397 keyframes drop Greenland, against the dossier's own ledger and two pages. Apart from that it held up, and the rest is gap-filler work (thin list).",
+  "kingdom-of-the-isles (eu-11, already written) lacks the vassal_start 1098 and vassal_end 1266 mirrors towards old-kingdom-of-norway; route to eu-11.",
+  "The kalmar-union dossier (eu-14) must start in 1397, or Norway is empty 1398-1401 (Cliopatria's Kalmar Union row starts 1402). norway-denmark must settle 1046-1055 against the new Norway keyframe.",
+  "The reviewer made no edits to either dossier."
+ ]
+}

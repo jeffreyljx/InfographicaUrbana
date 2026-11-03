@@ -1,0 +1,28 @@
+{
+ "window": "sm-06",
+ "checks": [
+  {
+   "entry": "p1910-p1919.json: events/4",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Lado_Enclave",
+   "what": "anglo-egyptian-sudan gains the Lado land inside modern South Sudan from british-africa, 1 January 1914, confidence 2. The page supports the date and the split: 'on 1 January 1914 when Sudan formally exchanged part of the enclave for a stretch of the Upper Nile', 'with the plan to grant Uganda a southern part of the enclave', 'The area of the Lado Enclave integrated into Uganda was renamed West Nile'; the infobox puts the enclave in today's South Sudan and Uganda. So the northern half stayed with the Sudan. The page never names the exact line, so confidence 2 is right. Region {intersect: Lado Enclave, S. Sudan} resolves to 109 cells (about 27,566 km2) out of the region's 119 (30,095 km2). That is the part that stayed, and nothing beyond the enclave. Month 1 matches ledger/6 (loss of the whole 'Lado Enclave' to uganda-protectorate, 1914/1), and a patch event runs after the dossier's own events of the same month. Trial with and without the entry (same dossiers, run deterministic: a repeat trial matched cell for cell): without it, all 109 cells are british-africa in 1914 and 1915; with it, they are Sudan from 1910 through 1919. The p1920 anchor is the same either way. Side effect of the compiler's snap threshold: british-africa's 1914 snap no longer fires, so 3 West Nile cells stay nobody's in 1914 (british-africa from 1915), plus a few border cells elsewhere (see problems). Error fixed: the note's first sentence, which the compile shows as the 1914 map caption, read 'The Sudan's ledger row of 1 January 1914 (ledger/6, ...) is written over the whole Lado Enclave region, so the draft handed all 109 northern Lado cells to british-africa from 1914.' That is internal compile prose, not history.",
+   "fix": "Prepended a dated caption sentence to the note, quoting the page: \"1 January 1914: in the exchange with Uganda only 'a southern part of the enclave' goes to Uganda (it 'was renamed West Nile'); the northern half of the Lado Enclave stays in the Sudan.\" The old explanation follows unchanged. No other field changed. --check-patch re-run: ok.",
+   "applied": true
+  },
+  {
+   "entry": "p1910-p1919.json: events/5",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Sultanate_of_Darfur",
+   "what": "anglo-egyptian-sudan gains Darfur from british-africa in 1917 (no month), confidence 3. The page says 'the British conquered Darfur in 1916 and Dinar was killed in battle' and that the kingdom 'was incorporated into the Anglo-Egyptian Condominium in 1917'. Region 'Darfur' resolves to the five Darfur states, 1,848 cells (about 467,359 km2). That is the same Darfur the dossier's own 1916 rows use, and no more. Trial: without the entry, 1,811 Darfur cells stay british-africa from 1917 to 1919 and in the p1920 anchor. With it, all 1,848 cells are Sudan from 1917, and the p1920 anchor differs only in those 1,811 cells (british-africa to anglo-egyptian-sudan). Nothing else changes in 1917-1919 because of this entry. No other patch file conflicts with it; p1930-p1939 events/0 becomes a no-op. Error fixed: the note's first sentence, the 1917 caption, read \"'The kingdom was incorporated into the Anglo-Egyptian Condominium in 1917' (Sultanate of Darfur page).\" It had no date in the caption style and named the page inside the caption.",
+   "fix": "Replaced that first sentence with \"1917: Darfur, conquered in 1916, is incorporated into the Anglo-Egyptian Sudan ('The kingdom was incorporated into the Anglo-Egyptian Condominium in 1917', Sultanate of Darfur page).\" The rest of the note and every other field are unchanged. --check-patch re-run: ok.",
+   "applied": true
+  }
+ ],
+ "patch_check": "p1910-p1919: 9 entries, 9 ok, 0 rejected (before and after the two note fixes); p1920-p1929 not changed by sm-06 (mtime 2 Nov 04:00)",
+ "problems": [
+  "Side effects of events/4, all from british-africa's 1914 keyframe snap dropping under the 20-cell threshold; each cell changes owner only in the years given. 1914: 3 West Nile cells (3.6-3.7N 30.5-30.8E, outside South Sudan) nobody's instead of british-africa; 6 cells nobody's instead of british-africa (5 on the Ethiopian border near 5.2N 35.8E, 8.7N 34.1E, 9.0N 34.2E, 11.4N 35.0E, 3.6N 39.6E, and 1 at 28.8S 28.8E); 5 Caprivi cells (17.5S 23.5-24.8E) german-africa instead of british-africa. 1915: 7 cells just south of the 22nd parallel on the Nile (21.8-21.9N 33.4-33.9E) british-africa instead of khedivate-of-egypt; 4 Sinai border cells (29.6-31.1N 34.3-34.9E) ottoman-empire instead of british-africa. 1916-1919: 2 of those Sinai cells ottoman-empire. No fix needed.",
+  "The gazetteer's 'Lado Enclave' (5-point polygon, 119 cells, 30,095 km2, bbox 30.51-31.80E 3.56-5.46N) stops near 3.6N. It leaves out most of West Nile down to Mahagi on Lake Albert, which the page names as the 1894 boundary, so the dossier's 1912 cession to Uganda moves only about 10 cells. This is a gazetteer limit, not an sm-06 entry. A gazetteer or dossier owner could widen the region.",
+  "The note sentence 'Review sm-06, 3 Nov 2026: ...' was appended to the top-level note of p1910-p1919.json to record the two caption fixes. No entry was added, reordered or deleted.",
+  "Trial stages deleted. /tmp/claude-0/work/sm06rev/stage1910 (85 MB, written 00:40, before this run) was not created by this run and is left in place."
+ ]
+}

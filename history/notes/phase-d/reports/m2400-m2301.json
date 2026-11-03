@@ -1,0 +1,114 @@
+{
+ "window": "m2400-m2301",
+ "images": [
+  {
+   "year": -2400,
+   "bbox": "30,24,60,40",
+   "seen": "With Cliopatria beside it: Ebla (six western governorates), Mari (middle Euphrates), Kish in two blobs (Diyala and Karbala), Sumerian city-states on the plain, Elam on Khuzestan and Ilam, Ur hatched as Sumer-occupied. Cliopatria draws only one Sumerian shape for the whole of it. The compiled map is richer and plausible; the Kish city disk belonged to Sumer (fixed below)."
+  },
+  {
+   "year": -2301,
+   "bbox": "33,28,55,38",
+   "seen": "With Cliopatria beside it: Akkadian Empire holds only Akkad and Kish (193 cells), with Sumer still independent to the south and Ebla and Mari still standing. This matches the dossiers (Sargon takes Sumer at -2300, Ebla -2300, Mari -2290, all in the next window). The 2-3 isolated Elam cells in Ilam are minor."
+  },
+  {
+   "year": -2350,
+   "bbox": "34,32,46,38",
+   "seen": "Ebla and Mari highlighted: Mari's vassal tint covers only a 60 km disk round the city of Ebla (37 cells) inside Ebla's full shape; Kish and Sumer occupation hatch sits on 15 Sumer-owned cells at Kish city (the roles looked reversed because the city disk was held by Sumer)."
+  },
+  {
+   "year": -2380,
+   "bbox": "40,29,50,37",
+   "seen": "Rendered from my stage after the patch: Kish's southern blob now includes the city of Kish (15 cells moved from Sumer); the 19-cell Kish disk is later occupied by Sumer (-2350) and annexed (-2340) as the ledgers say."
+  }
+ ],
+ "issues": [
+  {
+   "what": "The city of Kish (Babil Governorate, 40 km disk, 19 cells) was drawn as Sumerian city-states land from -2750 on: Kish's 96 cells lay in Diyala and Karbala, while the dossier's own -2350 and -2340 events (kish/ledger/4, sumerian-city-states/ledger/9) act on the 40 km Kish disk. In the compile this made the -2350 occupation appear as 'occupation of sumerian-city-states's land by kish' (15 cells), the reverse of Enshakushanna's seizure of Kish. Kish III's Kug-Bau (r. c. 2400) is 'said to have gained independence' from Lagash and Uruk.",
+   "years": [
+    -2400,
+    -2341
+   ],
+   "slugs": [
+    "kish",
+    "sumerian-city-states"
+   ],
+   "decision": "patched",
+   "patch": "events/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kish_(Sumer)"
+   ]
+  },
+  {
+   "what": "Kish's remaining land is mostly Diyala (73 of 96 cells) and the label sits about 150 km from the city; Babil (22 of 26), Wasit (68 of 70) and Baghdad stay Sumerian. The page gives no territorial extent for Kish ('reached its maximum extent of 230 hectares' is the city's size); the dossier's 'Akkad' region is a soft stand-in and the compiler gave the overlap to the collective, Kish's successor (R2, which a ruling cannot overturn).",
+   "years": [
+    -2400,
+    -2341
+   ],
+   "slugs": [
+    "kish"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kish_(Sumer)"
+   ]
+  },
+  {
+   "what": "Mari's vassal_start of Ebla (-2360..-2341) tints only a 60 km disk round Ebla (37 cells) while the other 284 cells of Ebla's shape stay Ebla's own colour. The page says Ebla 'paid tribute to Mari under Igrish-Halam' without extent.",
+   "years": [
+    -2360,
+    -2341
+   ],
+   "slugs": [
+    "mari",
+    "ebla"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Akkadian Empire is only the 193-cell Akkad region up to -2301; Sumer, Ebla and Mari fall to it at -2300 and -2290 per the dossiers (dates 'around 2300 BC, perhaps in 2292'). The year -2300 belongs to the next window.",
+   "years": [
+    -2334,
+    -2301
+   ],
+   "slugs": [
+    "akkadian-empire",
+    "sumerian-city-states"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Two or three isolated Elam cells north-east of its main body (Ilam province from elam_-2700). Negligible.",
+   "years": [
+    -2400,
+    -2301
+   ],
+   "slugs": [
+    "elam"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/m2400-m2301.json",
+ "patch_entries": {
+  "events": 1,
+  "keyframe_overrides": 0,
+  "rulings": 0
+ },
+ "patch_check": "all applied (--check-patch: 1 ok, 0 rejected; trial: events/0 applied, 15 cells Sumer to Kish at -2400, conflicts 0 -> 0, snaps 0 -> 0, start and end anchors identical with and without the patch, so the seams are untouched)",
+ "colour_clashes": [],
+ "dossier_requests": [],
+ "pages_opened": 1,
+ "problems": [
+  "Effect of another window's patch, not mine: with all 82 patch files in the trial, sumerian-city-states holds 232 cells at the -2400 anchor instead of 640, and 379 cells of desert in Al-Muthanna (193), Najaf (113), Basra (54) and Al-Qadisiyah (19) become unowned and stay so to -2300 (the m2300 anchor also changes by 379 cells). The change comes from m2500-m2401's first-dynasty-of-ur_-2500 and lagash_-2450 keyframe overrides, which draw the hegemonies on the alluvial plain only; the collective loses the rest. The plain looks right, but the unowned desert will show a big drop for Sumer at -2500 that the next compile will make visible; the orchestrator may want to confirm that is intended.",
+  "The same Kish-city defect exists in -2750..-2401 (Kish's keyframe -2750 loses its overlap to Sumer by R2); my event only reaches -2400. My window takes no ruling on earlier years; the m2600-m2501 and m2500-m2401 agents may want the same gain event at -2750.",
+  "The m2500-m2401 patch also changes the -2400 anchor for Lagash (3 to 22 cells) and Umma (1 to 11), so the packet's figures for those states in this window will differ after the next compile; no action needed from this window."
+ ]
+}

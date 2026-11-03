@@ -1,0 +1,132 @@
+{
+ "window": "m0400-m0301",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Qin_(state)",
+   "what": "Page: 'In 316 BC, Qin completed the conquests of the southern states of Ba and Shu, in modern Sichuan.' Published draft: 808 Sichuan/Chongqing cells of the qin_-315 shape stay unowned in 316 and arrive with the 315 snap; the event moves them to 316. But the region took 5 cells within 80 km of Hanzhong that keyframe qin_-315 leaves out until the 312 gain from Chu, so they flickered Qin 316, nobody 315-313, Qin 312.",
+   "fix": "Region wrapped as {'minus':[<intersect as before>, {'place':'Hanzhong','km':80}]}; now 808 cells; trial: Qin 1,394 of 1,400 basin cells in 316, the 5 Hanzhong cells stay unowned to 312 as in the dossier. Note amended.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Cyrenaica",
+   "what": "ptolemaic-kingdom_-322 (-322..-319). Page: 'Cyrenaica includes all of the eastern part of Libya between the 16th and 25th meridians east, including the Kufra District' (modern) and 'In the south, the Pentapolis faded into the Saharan tribal areas'. {'region':'Cyrenaica'} resolves to 2,496 cells (631,000 km2); {'cliopatria':'Cyrenaica','year':-331} to 103 cells (lon 18.9-23.0, lat 30.1-32.9), the shape the cyrenaica dossier itself uses. Trial: Ptolemy holds the 103 Pentapolis cells instead of 2,495 Libyan cells; the carthage/ptolemaic conflict (5 cell-years) is gone; the 313 and 305-301 contests now hatch only the 103 cells."
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Cyrenaica",
+   "what": "ptolemaic-kingdom_-318 (-318..-316): same narrowing of Cyrenaica; Cyprus and Laomedon's Syria as in the dossier."
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Cyrenaica",
+   "what": "ptolemaic-kingdom_-315 (-315..-307): same narrowing of Cyrenaica; Egypt and Cyprus as in the dossier."
+  },
+  {
+   "entry": "keyframe_overrides/3",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Cyrenaica",
+   "what": "ptolemaic-kingdom_-306 (306 only): same narrowing; Magas page: 'Shortly after Ptolemy declared himself king (c.305 BC), the Cyrenaeans rebelled', so the Pentapolis is still Ptolemaic in 306."
+  },
+  {
+   "entry": "keyframe_overrides/4",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Magas_of_Cyrene",
+   "what": "ptolemaic-kingdom_-300 (-300..-296, wholly in m0300-m0201): Magas page: 'Around 300 BC, Ptolemy dispatched Magas, then about 20 years old, to reconquer Cyrene.' Same narrowing; needed so the 2,496-cell region does not return at -300. Reported under problems as cross-boundary."
+  },
+  {
+   "entry": "keyframe_overrides/5",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Magas_of_Cyrene",
+   "what": "ptolemaic-kingdom_-295 (-295..-292, wholly in m0300-m0201): 'Magas subsequently served as the province's governor'; Cyprus from the dossier. Same narrowing. Cross-boundary, reported."
+  },
+  {
+   "entry": "keyframe_overrides/6",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Sarmatians",
+   "what": "scythia_-404 extended to -314. Page: the Scythians, 'the then dominant power in the Black Sea Steppe', 'were militarily defeated by ... Philip II of Macedon and Lysimachus in 339 and 313 BCE respectively', after which 'the Sarmatians began crossing the Don river and invaded Scythia'; but also 'By the 5th century BC the Sarmatians held control of the land between the Urals and the Don River'. The 1,560-cell difference (scythia_-404 minus scythia_-350) is not all 'east of the Don': 905 cells lie on the right (west) bank (Ukraine 333, Kursk 121, Belgorod 117, western Voronezh, northern Rostov), which the page supports as Scythian to 313; 655 lie on the left bank (Volgograd 299, Voronezh 123, Rostov, Tambov 55, Saratov 51, a strip south of the Don mouth), which the page gives to the Sarmatians, so keeping them Scythian 350-314 contradicted the cited page (Scythia drawn to the Volga in 340).",
+   "fix": "Added events/1: scythia loss to nobody in -400 of {'intersect':[scythia_-404 minus scythia_-350, polygon whose west edge follows the Don (45 of the gazetteer's 112 Don cells inside)]}, 655 cells, source Sarmatians page. Trial: left bank unowned from -400 until the Sarmatian found/gain of 313 (373 cells), right bank Scythian and contested 339-313 as the override intends; render of -330 shows Scythia to the Don, no stray patch. Why texts of /6 and /7 amended.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/7",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Sarmatians",
+   "what": "scythia_-350 from -313 to -226 (snap to the smaller Cliopatria shape in 313 instead of 350). Right for the right-bank cells (see /6); for the left-bank cells it relied on the same unsupported premise.",
+   "fix": "Kept, narrowed in effect by the new events/1 (see keyframe_overrides/6); why amended.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/8",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Alexander_the_Great",
+   "what": "macedonian-empire_-331 + {'region':'Mesopotamia'} (2,225 cells). Page: 'Leaving Egypt in 331 BC, Alexander marched eastward into Achaemenid Assyria', 'defeated Darius again at the Battle of Gaugamela', 'Alexander captured Babylon', then Susa. Matches the dossier's own ledger 30 (Oct 331). Trial: Mesopotamia region fully Macedonian 331-324 (published: 1,160 cells unowned 331-327); armenia/macedon conflict grows 69 to 214 cell-years, Armenia wins (right)."
+  },
+  {
+   "entry": "keyframe_overrides/9",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Partition_of_Triparadisus",
+   "what": "macedonian-empire_-323 + Sogdia (813), Bactria (838), Mesopotamia minus Perdiccas (1,835). Page table: Partition of Babylon 323 and Triparadisus 321 both list Bactria, Sogdiana and Mesopotamia as satrapies of the empire. Trial: Sogdia+Bactria (1,651 cells) Macedonian without a gap 329-310 (published: 783 unowned 323-310); Mesopotamia no unowned cells 323-313. But the why said the 323 Diodorus satraps were the 'same men' as at Triparadisus (the page gives Bactria and Sogdiana 'Philip', Mesopotamia 'Arcesilaus' for 323) and quoted 'it was deemed no easy matter to dispossess those...', which the page says of Taxiles on the Hydaspes.",
+   "fix": "Why corrected (323 and 321 satraps given as on the page; Taxiles quote dropped). Region unchanged.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/10",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Partition_of_Triparadisus",
+   "what": "macedonian-empire_-321 (-321..-319): same additions; Egypt 'with Libya, and all the vast waste beyond it' assigned to Ptolemy, so Egypt/Libya cut. Same why errors as /9.",
+   "fix": "Why corrected as in /9.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/11",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Partition_of_Triparadisus",
+   "what": "macedonian-empire_-318 (318-316): same additions and same why errors; in addition it subtracted Cliopatria's Seleucid 318 row (also from Mesopotamia) on the claim 'Babylonia stays out where another state holds it', but seleucid-empire starts only in 312, so 464 Babylonian cells around Babylon were unowned in 318-316 (a hole the published draft also had). The page makes Babylonia Seleucus's satrapy of the kings from 321 (table: Babylonia 'Seleucus'); the Macedonian ledger 50 keeps it in the empire 321-312.",
+   "fix": "Seleucid 318 row removed from the subtraction, Mesopotamia added whole and {'cliopatria':'Seleucid Empire','year':-318} added to the union; text and why rewritten. Trial: Babylonia region + Seleucid 318 row (829 cells) unowned 0 in 318-316 (was 464); the -318 snap now removes 70 cells instead of 534.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/12",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Partition_of_Triparadisus",
+   "what": "macedonian-empire_-315 (-315..-308): Sogdia, Bactria, Mesopotamia added; Antigonus held the Asian satrapies, upper satrapies leave with the Seleucid gain of 309. Trial: no unowned Mesopotamian or Bactrian-Sogdian cells 315-308. Same why errors as /9.",
+   "fix": "Why corrected as in /9.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/13",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Seleucid_Empire",
+   "what": "seleucid-empire_-301 = Cliopatria Seleucid 291 + Sogdia + Bactria (-301..-292). Page: Seleucus 'was easily able to establish control and conquer the Upper Satrapies' (310); ceded to Chandragupta 'territory west of the Indus, including the Hindu Kush', Gedrosia and Arachosia; Bactria and Sogdiana 'simultaneously asserted their independence' under Diodotus only near the end of Antiochus II's reign (c. 245). Trial: Sogdia+Bactria 1,586 Seleucid + 65 Maurya in -301 (published: 790 unowned); maurya/seleucid conflict 19 to 84 cell-years, Maurya wins the Hindu Kush cells (right). Runs into m0300-m0201; seleucid-empire_-291 (ok) will cut the same land at -291."
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Alexander_the_Great",
+   "what": "Macedon v. Nanda, 326-323, Haryana+Rajasthan, Nanda wins. Page: 'Alexander's army mutinied at the Hyphasis River (Beas), refusing to march farther east.' 'This river thus marks the easternmost extent of Alexander's conquests.' The region resolves to 1,519 cells but the ruling acts only on the 166 Punjab-region cells both claim (lon 74.5-77.5); trial: 345 cell-years settled, those 166 cells stay Nanda in 326-323 (published: Macedonian via the -326 snap)."
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Sarmatians",
+   "what": "New entry added by this review (see keyframe_overrides/6): scythia loss to nobody in -400, 655 left-bank Don cells; 'By the 5th century BC the Sarmatians held control of the land between the Urals and the Don River'. --check-patch ok; trial applied.",
+   "applied": true
+  }
+ ],
+ "patch_check": "After review edits: --check-patch 17 entries, 17 ok, 0 rejected; --trial: all 17 applied (3 with out-of-window notes), ruling settled 345 cell-years in 3 years; conflicts 148 pairs/19,421 cell-years -> 147/19,626; end anchor m0300 3,182 cells change owner vs published draft.",
+ "problems": [
+  "Cross-boundary: keyframe_overrides/4 (-300..-296) and /5 (-295..-292) lie wholly in m0300-m0201 and /13 runs -301..-292; applied with notes. m0300-m0201's patch has no entries on these keyframes, so no clash; but seleucid-empire_-291 (ok) will strip Sogdia and about 230 Bactrian cells again at -291 unless m0300-m0201 overrides it like /13.",
+  "Review edits to data/patches/m0400-m0301.json: events/0 region (Hanzhong cut) and note; keyframe_overrides/9-12 why (satrap attribution, Taxiles quote); keyframe_overrides/11 correction (Babylonia kept 318-316); keyframe_overrides/6-7 why; new events/1 (scythia left bank of the Don lost from -400). 17 entries, all ok and applied.",
+  "Not fixed, Ptolemaic Libya: the patched keyframes give Egypt (Cliopatria 30 BC shape, to 25 E) plus the Pentapolis (west of 23.0 E), so the Libyan coast at Tobruk (Marmarica, about 240 cells; Cliopatria's Ptolemaic 291 shape has 241 Libyan cells beyond the Pentapolis) is unowned 331-292 between two Ptolemaic blocks. The Triparadisus page gives Ptolemy 'Egypt with Libya, and all the vast waste beyond it' (321). Optional: add {'intersect':[{'cliopatria':'Ptolemaic Kingdom','year':-291},{'country':'Libya'}]} (340 cells) to keyframe_overrides/0-5.",
+  "Region 'Cyrenaica' (2,496 cells, modern definition incl. Kufra) is still used by ptolemaic-kingdom ledger 2, 7-8, 16-17, 22-23 and macedonian-empire ledger 45, 48, 51 and keyframes -321/-318/-315 subtractions; harmless now (trial contests cover only the 103 held cells), but the window agent's gazetteer dossier_request stands.",
+  "Scythia/Sarmatians dossiers: the Sarmatians page puts the land between the Urals and the Don under the Sarmatians from the 5th century BC, but sarmatians starts in -313, so the left bank is unowned 400-314 after this patch; scythia_-404 (window m0500-m0401) still gives Scythia that left bank in -404..-401; scythia ledger 12-14 and sarmatians ledger 1 call the whole 1,560-cell difference 'the steppe east of the Don' though 905 cells lie west of it; and the 339-313 contest is drawn against a state that begins in 313. Dossier request: start the Sarmatians (or a Sauromatian dossier) in the 5th century BC on the left bank and relabel those ledger regions.",
+  "Pre-existing holes left as they were: the Iraqi western desert (Mesopotamia region outside Cliopatria's Seleucid 291 outline, 766 cells, Al-Anbar 357) goes to nobody at -301 (Antigonid -301 snap; keyframe_overrides/13 does not add Mesopotamia as the Macedonian entries do); macedonian-empire_-307 (one year) snaps 410 Mesopotamian cells away in -307; seleucid-empire_-312 sends 365 Babylonia-region cells to nobody in -312.",
+  "Caption: the 313 Ptolemaic-Cyrenaica contest carries the war name 'Magas' war against Ptolemy II' (that war is of the 270s); a dossier caption fix, not a patch matter."
+ ]
+}

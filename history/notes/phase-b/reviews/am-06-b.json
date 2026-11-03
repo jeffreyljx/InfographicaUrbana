@@ -1,0 +1,812 @@
+{
+ "batch_id": "am-06-b",
+ "verdicts": [
+  {
+   "slug": "spanish-empire",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/11/counterpart",
+     "what": "Counterpart was the free-text name 'Muisca Confederation' although the dossier history/polities/muisca-confederation.json now exists (its successors name spanish-empire and its 1538-08 loss mirrors this gain).",
+     "why": "history/polities/muisca-confederation.json identity.slug = 'muisca-confederation'; its /ledger/5 is a 1538-08 loss to spanish-empire.",
+     "fix": "counterpart 'muisca-confederation' (applied by the reviewer; re-validated: 0 errors, 1 warning Sidi Ifni). Drop Muisca from counterparts_needing_dossiers.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/84/correction (spanish-empire_1873), /keyframe_review/75/correction (spanish-empire_1877), /ledger/96/region, /identity/successors",
+     "what": "The 1873 and 1877 corrections are seven countries (Philippines, Cuba, Puerto Rico, Guam, Northern Marianas, Micronesia, Palau) and silently drop Fernando Po/Annobon and Ifni, which this dossier gains in /ledger/46 (1778) and /ledger/85 (1860) and which its own 1861 and 1865 keyframes keep; no loss event and no successor carries them.",
+     "why": "keyframe 1861 note: '+4 Morocco cells (Sidi Ifni ...)'; 1865 correction = Cliopatria 1861 minus the Dominican Republic (keeps the 8 Equatorial Guinea and 4 Ifni cells); 1873 correction has no Morocco or Equatorial Guinea; /ledger/96 note: 'Spanish Africa lasted to 1976 and belongs to kingdom-of-spain'. Spanish Empire page (opened): Fernando Po 'ceded to Spain by the Portuguese in exchange for territory in South America'; 'ceded Sidi Ifni to Spain as a part of the Treaty of Tangiers'.",
+     "fix": "Add {\"intersect\":[{\"cliopatria\":\"Spanish Empire\",\"year\":1861},{\"union\":[{\"country\":\"Equatorial Guinea\"},{\"country\":\"Morocco\"}]}]} to the union of both corrections (text: 'Fernando Po, Annobon and Ifni'), and add a successor kingdom-of-spain with that land (or a dated hand-over event) so the African posts pass on at the end instead of vanishing in 1873.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/96 (dissolve)",
+     "what": "The dissolve gives the Carolines, Palau and the Northern Marianas to united-states-of-america at confidence 3, contradicting its own note and identity.successors, which give them to german-empire on 12 February 1899; its region also repeats Cuba, Puerto Rico, Guam and the Philippines already lost in /ledger/94-95.",
+     "why": "/ledger/96 note: \"'Sale of the remaining islands to Germany: 12 February 1899' (East Indies page)\"; /identity/successors/2 = german-empire, 'sold on 12 February 1899'; keyframe 1873 note: Spain holds the Carolines '(1686-1899)' and Palau '(1574-1899)'.",
+     "fix": "Either end the dossier on 1899-02 (end.year 1899, month 2) with a 1899-02 loss to german-empire of {Micronesia, Palau, Northern Mariana Islands} (Spanish East Indies page) and the dissolve at 1899, or keep 1898-12 and make the dissolve's region and counterpart describe only what passes to whom (the Pacific islands are then Spanish beyond the end and must be said so in notes). Do not leave the US as the counterpart for the German sale.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/5 (spanish-empire_1540), /ledger/7-/ledger/10",
+     "what": "The conquest of the Inca lands is not mirrored: the 1540 keyframe adds 9,348 cells (about 2.5 M km2: Peru, Bolivia, northern Chile, NW Argentina, Ecuador) that the ledger explains only by city radii (Cuzco 250 km, Quito 150 km, Lima 120 km), while inca-empire's ledger records the loss to spanish-empire of 'the empire outside the Neo-Inca state' in 1537, a vassal_start 1567 / vassal_end 1571 and the 1572-06 loss and dissolve of the Neo-Inca State, none of which has a mirror here.",
+     "why": "history/polities/inca-empire.json /ledger/23 (1537 loss, region minus Inca 1534 / Inca 1540), /ledger/26-27 (vassal 1567-1571), /ledger/28-29 (1572-06 loss, dissolve, c3). Spanish /wars/1 runs 1532-1572 but the ledger stops at 1535 for the Inca.",
+     "fix": "Add a 1537 gain from inca-empire with region {\"minus\":[{\"cliopatria\":\"Inca Empire\",\"year\":1534},{\"cliopatria\":\"Inca Empire\",\"year\":1540}]}; vassal_start 1567 and vassal_end 1571 of inca-empire (Neo-Inca State, region {\"cliopatria\":\"Inca Empire\",\"year\":1564}); a 1572-06 gain from inca-empire of the same region; cite a page (Spanish conquest of the Inca Empire or Neo-Inca State) and mark the 1540 keyframe adjust if the Bolivian/Argentine reach stays claim.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/9",
+     "what": "Michoacan is gained in 1534 at confidence 1 (Cliopatria's year) although the michoacan dossier dates the Spanish takeover to 14 February 1530 at confidence 3 from a page: a four-year mismatch.",
+     "why": "history/polities/michoacan.json /ledger/13-14: 1530-02 loss and dissolve to spanish-empire, source https://en.wikipedia.org/wiki/Michoac%C3%A1n ('killed Tanganxoan II in 1530'). Spanish colonization of the Americas (opened by the reviewer) names 'the conquest of the Purepecha of Michoacan' with no date, so the current source does not support any year.",
+     "fix": "Move the event to 1530, month 2, source https://en.wikipedia.org/wiki/Michoac%C3%A1n (add to sources after opening it), confidence 2 or 3 as the page supports; mark keyframe spanish-empire_1529 adjust (add the Michoacan row's 1529 shape from 1530).",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1680-1777), /keyframe_review/44 note, /keyframe_review/45 note",
+     "what": "Colonia del Sacramento and the southern Brazil frontier change hands repeatedly with no ledger event here: the 1762 keyframe note has Colonia 'in (Uruguay +32)' and the 1763 note has it leave, and portuguese-empire records the 1706 loss and 1713 gain of Colonia, the 1762 loss and 1763 gain, and two 1777-10 gains from spanish-empire (Santa Catarina; Rio Grande do Sul outside the missions).",
+     "why": "portuguese-empire.json /ledger/46, 47, 60, 61, 65, 66 (counterpart spanish-empire). First Treaty of San Ildefonso (opened): Spain 'returned Santa Catarina island' and 'acknowledged Portuguese control of Southern Brazil'.",
+     "fix": "Add gain 1705/1706 and loss 1713/1715 (Utrecht) of {place Colonia del Sacramento, 25 km}; gain 1762 (Cevallos) and loss 1763 (Paris) of Colonia; gain 1763 and loss 1776 of Rio Grande (Vila do Rio Grande) and gain 1777-02 / loss 1777-10 of Santa Catarina island, each with a page (Colonia del Sacramento; First Treaty of San Ildefonso).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/20, /ledger/24, /keyframe_review/11 note, notes",
+     "what": "The Iberian Union is a vassal_start/vassal_end of portuguese-empire here but a loss (1581) and gain (1640-12) to spanish-empire in the portuguese-empire dossier; the author's notes say the two dossiers match, which is true of the dates only.",
+     "why": "portuguese-empire.json /ledger/25 (1581 loss to spanish-empire) and /ledger/26 (1640-12 gain from spanish-empire); this dossier's 1582 keyframe note itself says 'portuguese-empire's ledger records the same lands as a loss'. Iberian Union page (opened): 'Spain left the administration of Portugal and its empire largely to the Portuguese themselves'.",
+     "fix": "Orchestrator to choose one representation for both dossiers (the page supports the personal-union tint, i.e. vassal events on both sides); correct the sentence in the notes.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/46/region",
+     "what": "The region is {place Malabo, 60 km}, which covers Bioko only, while the text says 'Fernando Po (Bioko) and Annobon'; the mirror in portuguese-empire has both islands and month 3 (Treaty of El Pardo, March 1778).",
+     "why": "portuguese-empire.json /ledger/68: 1778-03 loss, union of admin1 Annobon and Bioko Norte/Sur; Spanish Empire page (opened) places the cession in the Treaty of El Pardo.",
+     "fix": "Region union [{place Malabo, 60 km}, {admin1 'Annobón', country Equatorial Guinea}] and month 3 once a page gives the month.",
+     "applied": false
+    },
+    {
+     "where": "/certainty/2, /keyframe_review/84/correction",
+     "what": "1826-1898 is 'sharp' and the 1873 correction is the whole Philippines although the author's note says the pages do not say how far Spanish control reached inland, and the Sulu sultanate (Cliopatria row to 1879) was outside Spanish rule until the 1876 capture of Jolo and the 1878 protectorate.",
+     "why": "/certainty/2 note: 'the pages opened do not describe how far Spanish control reached inland in the Philippines'; polities.csv sultanate-of-sulu 1459..1879 overlaps the 1873 correction 1873-1879.",
+     "fix": "Level 'soft' for the Philippine interior (or split the band), and either remove the Sulu Archipelago from the 1873 correction until 1878 with a vassal_start of sultanate-of-sulu, or say in the note that it overlaps the Sulu row.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/42 (spanish-empire_1752)",
+     "what is missing": "+8,864 cells (2.2 M km2: western Amazon, Beni, Santa Cruz, Bolivar, Meta, the northern Chaco) with no event; author: 'probably a change of Cliopatria's source map'. It runs opposite to portuguese-empire's 1750-01 gain from spanish-empire of the Brazilian interior (Treaty of Madrid).",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Madrid_(13_January_1750)"
+    },
+    {
+     "where": "/keyframe_review/50 (spanish-empire_1778)",
+     "what is missing": "Amazon block of 4,591 cells (1.2 M km2) unverified; portuguese-empire records a 1778 gain of the western Amazon from spanish-empire (c1), so the two dossiers draw the same land on opposite sides.",
+     "page to try": "https://en.wikipedia.org/wiki/First_Treaty_of_San_Ildefonso"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "Michoacan, confidence 1 (see fix: 1530).",
+     "page to try": "https://en.wikipedia.org/wiki/Michoac%C3%A1n"
+    },
+    {
+     "where": "/ledger/13",
+     "what is missing": "Yucatan 1547 confidence 1; later-mayan-city-states dates the end of the conquest to 1546 at confidence 3.",
+     "page to try": "https://en.wikipedia.org/wiki/Spanish_conquest_of_Yucat%C3%A1n"
+    },
+    {
+     "where": "/ledger/37, /ledger/40",
+     "what is missing": "British occupation of Havana 1762-1763, confidence 1, no month.",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Havana"
+    },
+    {
+     "where": "/ledger/52",
+     "what is missing": "Trinidad 1797, confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Invasion_of_Trinidad_(1797)"
+    },
+    {
+     "where": "/ledger/65, /ledger/66",
+     "what is missing": "Venezuela 1812 and 1814, confidence 1 (First and Second Republic fall).",
+     "page to try": "https://en.wikipedia.org/wiki/Venezuelan_War_of_Independence"
+    },
+    {
+     "where": "/keyframe_review/0 note; ledger 1516-1792",
+     "what is missing": "North African presidios in the shapes (Algeria 12, Libya 2 cells: Oran, Tripoli) with no events (Tripoli to the Knights 1530, Oran lost 1708, regained 1732, given up 1792).",
+     "page to try": "https://en.wikipedia.org/wiki/Plazas_de_soberan%C3%ADa"
+    },
+    {
+     "where": "/wars, /ledger 1859-1898",
+     "what is missing": "Wars and events of the late empire: the Philippine Revolution 1896-1898 (contest on Luzon, declaration 12 June 1898), the Hispano-Moroccan War 1859-1860 behind /ledger/85, the Chincha Islands War 1864-1866 (occupation of the Chincha Islands), Jolo 1876 and the Sulu protectorate 1878.",
+     "page to try": "https://en.wikipedia.org/wiki/Philippine_Revolution"
+    },
+    {
+     "where": "/keyframe_review/9, 24, 25, 28",
+     "what is missing": "Blocks of cells in shapes 1572 (Caracas coast), 1659 (Arauca/Casanare, Chihuahua), 1670 (Caribbean Nicaragua/Honduras) and 1687 (Sonora, Chihuahua) unverified: page budget.",
+     "page to try": "https://en.wikipedia.org/wiki/Spanish_missions_in_Mexico"
+    },
+    {
+     "where": "/keyframe_review/53-/keyframe_review/69",
+     "what is missing": "Northern frontier of New Spain and the western Adams-Onis line (author's gap).",
+     "page to try": "https://en.wikipedia.org/wiki/Adams%E2%80%93On%C3%ADs_Treaty"
+    },
+    {
+     "where": "/ledger (1529, 1606-1663)",
+     "what is missing": "Moluccas: the 1529 Treaty of Zaragoza (portuguese-empire records a gain from spanish-empire) and Spanish Ternate/Tidore 1606-1663.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Zaragoza"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/77",
+     "page": "https://en.wikipedia.org/wiki/New_Spain",
+     "result": "confirmed: 'Declaration of Independence: 28 September 1821'; 'At its conclusion in 1821, the viceroyalty was dissolved and the Mexican Empire was established'"
+    },
+    {
+     "where": "/ledger/28",
+     "page": "https://en.wikipedia.org/wiki/New_Spain",
+     "result": "confirmed: 'Pueblo Revolt in 1680, expelling the Spanish, who retreated to Paso del Norte'; 'the return of the Spanish in 1692'"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Iberian_Union",
+     "result": "confirmed: 'recognized as king by the Cortes of Tomar in 1581'; separate administration quoted correctly"
+    },
+    {
+     "where": "/ledger/39",
+     "page": "https://en.wikipedia.org/wiki/Louisiana_(New_Spain)",
+     "result": "confirmed: infobox 'Transfer by France: 23 November 1762'"
+    },
+    {
+     "where": "/ledger/55",
+     "page": "https://en.wikipedia.org/wiki/Louisiana_(New_Spain)",
+     "result": "confirmed: transfer 'at the Cabildo in New Orleans on 30 November 1803' (infobox also has 'Returned to France: 21 March 1801'; de facto date used, acceptable)"
+    },
+    {
+     "where": "/ledger/80",
+     "page": "https://en.wikipedia.org/wiki/Spanish_American_wars_of_independence",
+     "result": "confirmed: Ayacucho 9 December 1824"
+    },
+    {
+     "where": "/ledger/71, /ledger/82",
+     "page": "https://en.wikipedia.org/wiki/Spanish_American_wars_of_independence",
+     "result": "confirmed: 'By 10 February, San Martin had control of northern and central Chile'; Olaneta 'died in Tumusla on 2 April 1825'"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Spanish_colonization_of_the_Americas",
+     "result": "confirmed: 'conquest of Chiloe Archipelago in 1567' (region Ancud 100 km is approximate)"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Spanish_colonization_of_the_Americas",
+     "result": "confirmed: New Mexico 'starting in 1598'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Spanish_colonization_of_the_Americas",
+     "result": "not on page (no date for Michoacan; honest at confidence 1, but see fix)"
+    },
+    {
+     "where": "/ledger/45, /ledger/53",
+     "page": "https://en.wikipedia.org/wiki/First_Treaty_of_San_Ildefonso",
+     "result": "confirmed: 1 October 1777 cessions; 'Portugal regained the Misiones Orientales in the Treaty of Badajoz (1801)'"
+    },
+    {
+     "where": "/ledger/46, /ledger/85",
+     "page": "https://en.wikipedia.org/wiki/Spanish_Empire",
+     "result": "confirmed: Fernando Po ceded 'in exchange for territory in South America' (El Pardo); 'ceded Sidi Ifni to Spain as a part of the Treaty of Tangiers'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 13700000,
+    "infobox_year": 1780,
+    "cliopatria_km2": 11010000,
+    "ratio": 0.8,
+    "acknowledged": true,
+    "note": "Shape spanish-empire_1780 = 11.01 M km2; acknowledged in the 1778 keyframe note. New Spain page 7,657,000 km2 (1790) confirmed; the sub-unit ratio 0.32 is acknowledged in the 1788 keyframe note and the author's notes."
+   },
+   "summary": "No fabricated or mis-dated event found: 15 events checked on 6 pages plus the infobox area, all confirmed. Returned to the author for missing and inconsistent land events. Blocking: (1) the 1873/1877 corrections drop Fernando Po, Annobon and Ifni with no event; (2) the 1898 dissolve gives the Pacific islands to the US against the dossier's own note; (3) the Inca conquest after 1535 has no mirror for inca-empire's 1537, 1567-1571 and 1572 events. Also to fix: Michoacan dated 1530 by its dossier, Colonia and southern Brazil events, Annobon, Philippine certainty. One fix applied by the reviewer (Muisca slug)."
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1521,
+    "type": "gain",
+    "counterpart": "aztec-triple-alliance"
+   },
+   "mirror": {
+    "slug": "aztec-triple-alliance",
+    "year": 1521,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/2 1521-08 vs aztec-triple-alliance /ledger/34-35 1521-08 loss and dissolve."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1524,
+    "type": "gain",
+    "counterpart": "later-mayan-city-states"
+   },
+   "mirror": {
+    "slug": "later-mayan-city-states",
+    "year": 1525,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/3 Guatemala vs later-mayan-city-states /ledger/4 (1525)."
+  },
+  {
+   "event": {
+    "slug": "later-mayan-city-states",
+    "year": 1529,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "later-mayan-city-states /ledger/6 (c1, small) has no mirror in spanish-empire."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1547,
+    "type": "gain",
+    "counterpart": "later-mayan-city-states"
+   },
+   "mirror": {
+    "slug": "later-mayan-city-states",
+    "year": 1546,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/13 (c1) vs later-mayan-city-states /ledger/10-11 (1546, c3); spanish-empire could adopt 1546."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1534,
+    "type": "gain",
+    "counterpart": "inca-empire"
+   },
+   "mirror": {
+    "slug": "inca-empire",
+    "year": 1534,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/8 Cuzco and Quito vs inca-empire /ledger/20 (Quito 1534); Cajamarca loss 1533-07 (/ledger/18) falls within a year."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1535,
+    "type": "gain",
+    "counterpart": "inca-empire"
+   },
+   "mirror": {
+    "slug": "inca-empire",
+    "year": 1535,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/10 Lima vs inca-empire /ledger/21 (1535-01)."
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1537,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "inca-empire /ledger/23: the empire outside the Neo-Inca State; no gain in spanish-empire (its 1540 keyframe adds the land without an event)."
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1567,
+    "type": "vassal_start",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "inca-empire /ledger/26-27 vassal 1567-1571 (Neo-Inca State); no vassal events in spanish-empire."
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1572,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "inca-empire /ledger/28-29 1572-06 loss and dissolve (Vilcabamba, c3); no gain in spanish-empire."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1534,
+    "type": "gain",
+    "counterpart": "michoacan"
+   },
+   "mirror": {
+    "slug": "michoacan",
+    "year": 1530,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "/ledger/9 1534 (c1, Cliopatria year) vs michoacan /ledger/13-14 1530-02 (c3, Michoacan page): four years apart."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1538,
+    "type": "gain",
+    "counterpart": "muisca-confederation"
+   },
+   "mirror": {
+    "slug": "muisca-confederation",
+    "year": 1538,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/11 (counterpart corrected to the slug by the reviewer) vs muisca-confederation /ledger/5 1538-08; its 1539 losses of Tunja and Sogamoso are near the Bogota 150 km radius."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1697,
+    "type": "gain",
+    "counterpart": "itza-mayans"
+   },
+   "mirror": {
+    "slug": "itza-mayans",
+    "year": 1697,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "/ledger/31 vs itza-mayans /ledger/4 1697-03 (spanish-empire lacks the month)."
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1529,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "portuguese-empire /ledger/13 Moluccas (Zaragoza); spanish-empire has no Moluccas event (claim land outside its shapes; at most a claim loss)."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1581,
+    "type": "vassal_start",
+    "counterpart": "portuguese-empire"
+   },
+   "mirror": {
+    "slug": "portuguese-empire",
+    "year": 1581,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "/ledger/20 vassal_start vs portuguese-empire /ledger/25 loss to spanish-empire: same year, different type."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1640,
+    "type": "vassal_end",
+    "counterpart": "portuguese-empire"
+   },
+   "mirror": {
+    "slug": "portuguese-empire",
+    "year": 1640,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "/ledger/24 1640-12 vassal_end vs portuguese-empire /ledger/26 1640-12 gain from spanish-empire."
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1706,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "portuguese-empire /ledger/46 Colonia lost to Spain (c1) and /ledger/47 regained 1713 (c1); no events in spanish-empire."
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1750,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "portuguese-empire /ledger/54 1750-01 gain of the Brazilian interior from spanish-empire (Madrid); spanish-empire has no 1750 loss and its 1752 shape grows by 2.2 M km2 instead."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1756,
+    "type": "loss",
+    "counterpart": "portuguese-empire"
+   },
+   "mirror": {
+    "slug": "portuguese-empire",
+    "year": 1756,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "/ledger/35 loss of the seven missions to Portugal vs portuguese-empire /ledger/58 occupation_start with counterpart jesuit-reducciones: counterpart and type disagree."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1761,
+    "type": "gain",
+    "counterpart": "portuguese-empire"
+   },
+   "mirror": {
+    "slug": "portuguese-empire",
+    "year": 1759,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "/ledger/36 (El Pardo 1761) vs portuguese-empire /ledger/59 occupation_end 1759 (counterpart jesuit-reducciones): two years and the counterpart disagree."
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1762,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "portuguese-empire /ledger/60 Colonia 1762 and /ledger/61 regained 1763; spanish-empire's 1762 and 1763 keyframe notes show Colonia in and out but the ledger has no event."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1777,
+    "type": "gain",
+    "counterpart": "portuguese-empire"
+   },
+   "mirror": {
+    "slug": "portuguese-empire",
+    "year": 1777,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/45 1777-10 vs portuguese-empire /ledger/64 1777-10."
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1777,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "portuguese-empire /ledger/65 (Santa Catarina) and /ledger/66 (Rio Grande do Sul outside the missions), 1777-10; no loss in spanish-empire, which also lacks the 1763 and 1777-02 captures."
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1778,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "portuguese-empire /ledger/67 western Amazon from spanish-empire (c1) while spanish-empire's 1778 keyframe adds a 1.2 M km2 Amazon block: same land, opposite directions."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1778,
+    "type": "gain",
+    "counterpart": "portuguese-empire"
+   },
+   "mirror": {
+    "slug": "portuguese-empire",
+    "year": 1778,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/46 Fernando Po vs portuguese-empire /ledger/68 1778-03 (spanish-empire's region lacks Annobon)."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1801,
+    "type": "loss",
+    "counterpart": "portuguese-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "/ledger/53 Misiones Orientales to Portugal (Badajoz 1801, confirmed on the San Ildefonso page); portuguese-empire has no 1801 gain from spanish-empire."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1516,
+    "type": "found",
+    "counterpart": "crown-of-castile"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "crown-of-castile not written yet (predecessor; land described)."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1565,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Fort Caroline/St Augustine; kingdom-of-france not written yet."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1571,
+    "type": "gain",
+    "counterpart": "namayan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "namayan not written yet."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1599,
+    "type": "loss",
+    "counterpart": "Mapuche (Araucanía)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (also /ledger/14, /ledger/17)."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1642,
+    "type": "loss",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-09, not written yet."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1655,
+    "type": "loss",
+    "counterpart": "english-colonial-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "am-07, not written yet (also /ledger/32, 1704)."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1680,
+    "type": "loss",
+    "counterpart": "Pueblo peoples (Pueblo Revolt)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (also /ledger/29, 1692)."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1697,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "western Hispaniola (Ryswick); kingdom-of-france not written yet."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1762,
+    "type": "occupation_start",
+    "counterpart": "british-colonial-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Havana and Manila; eu-11 not written yet (also /ledger/41 1763, /ledger/48 1781, /ledger/50 1783, /ledger/52 1797)."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1762,
+    "type": "gain",
+    "counterpart": "new-france"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Louisiana; am-07 not written yet."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1767,
+    "type": "gain",
+    "counterpart": "jesuit-reducciones"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "am-06 other part, not written yet."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1795,
+    "type": "loss",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "am-07 not written yet (also /ledger/75 1821, /ledger/94-96 1898)."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1801,
+    "type": "loss",
+    "counterpart": "haiti"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "am-08 not written yet."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1803,
+    "type": "loss",
+    "counterpart": "french-louisiana"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "am-06 other part, not written yet."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1809,
+    "type": "gain",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not written yet."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1810,
+    "type": "loss",
+    "counterpart": "new-granada"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "independence states owned by am-08, none written yet: new-granada, republic-of-chile, rio-de-la-plata, republic-of-venezuela, paraguay, gran-colombia, republic-of-peru, first-mexican-empire, federated-republic-of-mexico, bolivia (/ledger/59-84)."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1821,
+    "type": "loss",
+    "counterpart": "Central America (Act of Independence)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1860,
+    "type": "gain",
+    "counterpart": "morocco"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "af-02, not written yet."
+  },
+  {
+   "event": {
+    "slug": "spanish-empire",
+    "year": 1861,
+    "type": "gain",
+    "counterpart": "dominican-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not written yet (also /ledger/89, 1865)."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Sidi Ifni",
+   "kind": "place",
+   "used_in": "spanish-empire"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Republic of Cuba in Arms",
+   "suggested_slug": "republic-of-cuba-in-arms",
+   "years": [
+    1868,
+    1878
+   ]
+  },
+  {
+   "name": "Mapuche (Araucanía)",
+   "suggested_slug": "mapuche",
+   "years": [
+    1550,
+    1599
+   ]
+  },
+  {
+   "name": "Pueblo peoples (Pueblo Revolt)",
+   "suggested_slug": "pueblo-revolt",
+   "years": [
+    1680,
+    1692
+   ]
+  },
+  {
+   "name": "Chichimeca peoples",
+   "suggested_slug": "chichimeca",
+   "years": [
+    1550,
+    1591
+   ]
+  },
+  {
+   "name": "Central America (Act of Independence)",
+   "suggested_slug": "united-provinces-of-central-america",
+   "years": [
+    1821,
+    1824
+   ]
+  },
+  {
+   "name": "First Philippine Republic (counterpart of the missing Philippine Revolution contest)",
+   "suggested_slug": "first-philippine-republic",
+   "years": [
+    1898,
+    1901
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-am-06-b.md",
+ "problems": [
+  "Spanish_American_wars_of_independence: WebFetch read 100,000 of 101,726 characters (the events checked were in the part read).",
+  "The reviewer brief says reviewers do not edit dossiers; the orchestrator's adjustment allows small verified fixes: one applied (/ledger/11 counterpart slug), dossier re-validated (0 errors, 1 warning: Sidi Ifni).",
+  "portuguese-empire (am-06-a) needs the mirror of /ledger/53 (1801 Misiones) and the Iberian Union type decided with this dossier; route the Colonia, Amazon 1750/1778 and Misiones 1756-1761 mismatches to both authors."
+ ]
+}

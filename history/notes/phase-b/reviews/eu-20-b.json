@@ -1,0 +1,820 @@
+{
+ "batch_id": "eu-20-b",
+ "verdicts": [
+  {
+   "slug": "republic-of-san-marino",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/identity",
+     "what": "Second dossier for one state: same Wikidata Q238, same life 301..2026 as history/polities/san-marino.json.",
+     "why": "san-marino.json: identity 301/9..2026, 11 ledger events, keyframes san-marino_301 and san-marino_1463 drawn as {country: San Marino}; both files will compile and be coloured as two states. The author flagged it.",
+     "fix": "Orchestrator: add 'Republic of San Marino' to san-marino.json cliopatria_names, move this file's two keyframe_review entries (republic-of-san-marino_1797 and _1799, verdict adjust, correction {country: San Marino}) into it, and delete republic-of-san-marino.json.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0/note",
+     "what": "The note says the Cliopatria rectangle and the real San Marino fall in the same grid cell; they do not.",
+     "why": "gazetteer resolve: Cliopatria 'Republic of San Marino' 1797 = 1 cell at 12.53 E 43.79 N; country San Marino = 1 cell at 12.41 E 43.91 N; intersection 0 cells. The capital (12.4578, 43.9424) lies outside the shape bbox 12.55-12.63 E, 43.73-43.80 N.",
+     "fix": "When the reviews move to san-marino.json, say the Cliopatria shape sits about 17 km south-east of Monte Titano and the correction moves it; keep the correction {country: San Marino}.",
+     "applied": false
+    },
+    {
+     "where": "/ledger",
+     "what": "As a full-life dossier the ledger lacks the 1463 enlargement and the 1739-1740 papal occupation that its own pages give.",
+     "why": "History of San Marino: 'Pope Pius II gave San Marino some castles and the towns of Fiorentino, Montegiardino and Serravalle', 'Later that year, the town of Faetano joined'; San Marino: Alberoni occupied it on 17 October 1739, independence restored 5 February 1740. san-marino.json already has them (L2, L5, L6).",
+     "fix": "Resolved by the merge above; do not add them here.",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/History_of_San_Marino",
+     "result": "confirmed (legend of 301 AD, no month)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 61.19,
+    "infobox_year": 2026,
+    "cliopatria_km2": 47.0,
+    "ratio": 0.77,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "helvetic-republic",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "The client relation with France is missing, so french-directory L15 (vassal_start 1798/4) and french-consulate L1 (vassal_start 1799/11) and L11 (vassal_end 1803/2) have no mirror here.",
+     "why": "Helvetic Republic infobox: 'Status: Client state of France'; the 19 August 1798 treaty of alliance with France.",
+     "fix": "Add vassal_start 1798/4 cp french-directory, vassal_end 1799/11 cp french-directory, vassal_start 1799/11 cp french-consulate, vassal_end 1803/2 cp french-consulate (source Helvetic Republic page, confidence 2).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0/correction (and /1, /2, /3)",
+     "what": "The Prince-Bishopric of Basel is removed as admin1 Jura only; the Bernese Jura (Moutier, Courtelary, La Neuveville), Biel/Bienne and Laufen, also part of the old bishopric, stay in the Helvetic shape.",
+     "why": "Helvetic Republic page: the republic excluded 'the cantons of Geneva and Neuchatel and the old Prince-Bishopric of Basel'; the treaty of 19 August 1798 'reaffirmed the French annexation of the Prince-Bishopric of Basel'. The gazetteer has no Bernese Jura region (resolve of 'Jura bernois' fails).",
+     "fix": "Non-blocking: add the southern bishopric (a polygon, or place disks for Moutier, Saint-Imier, La Neuveville, Biel, Laufen) to the minus here and to the union in french-consulate K0-K3, or say in the note that only the northern part is removed.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (1802)",
+     "what is missing": "Fricktal joined in 1802 (Helvetic Republic page names it, undated) and Konstanz; neither is an event (Fricktal about 300 km2).",
+     "page to try": "https://en.wikipedia.org/wiki/Fricktal"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Helvetic_Republic",
+     "result": "confirmed (12 April 1798; 5 March 1798 collapse)"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Three_Leagues",
+     "result": "confirmed (infobox 'Annexed to the Helvetic Republic: 21 April 1799')"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Canton_of_Valais",
+     "result": "confirmed (1798, no month)"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Canton_of_Valais",
+     "result": "confirmed ('incorporated into the Helvetic Republic until 1802 when it became the separate Rhodanic Republic')"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Helvetic_Republic",
+     "result": "confirmed (19 February 1803)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 39677.6,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the infobox; author compared with modern Switzerland (ratio 0.96)."
+   }
+  },
+  {
+   "slug": "revolutionary-roman-republic",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/1, /ledger/2, /ledger/3, /wars/0, /wars/1, /identity/successors/0",
+     "what": "Counterpart kingdom-of-naples-napoleonic for events of 1798-1799, but that dossier's life is 1806/3..1815/5.",
+     "why": "kingdom-of-naples-napoleonic.json identity 1806/3..1815/5; kingdom-of-naples-bourbon.json (1735..1814) carries the Bourbon kingdom's 1799 events (Parthenopean Republic L3, L4). Roman Republic page: 'The Kingdom of Naples invaded the Roman Republic in November 1798'.",
+     "fix": "Slug replaced by kingdom-of-naples-bourbon in all six places; re-validated (0 errors, 0 warnings).",
+     "applied": true
+    },
+    {
+     "where": "/ledger",
+     "what": "The client relation with France is missing, so french-directory L14 (vassal_start 1798/2) and L23 (vassal_end 1799/8) have no mirror.",
+     "why": "Roman Republic (1798-1799) infobox: 'Status: Sister republic of Revolutionary France'.",
+     "fix": "Add vassal_start 1798/2 cp french-directory and vassal_end 1799/9 (or 1799/8 as the Directory has it) cp french-directory, source the Roman Republic page.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/3",
+     "what": "The September 1799 handover has no mirror: kingdom-of-naples-bourbon has no 1799 gain or occupation of Roman land, and papal-states L36 gains the land in June 1800 from revolutionary-roman-republic, nine months after this state ended.",
+     "why": "Roman Republic page: infobox 'Neapolitan occupation: 30 September 1799'; 'the Papal States were restored under the rule of Pope Pius VII in June 1800'.",
+     "fix": "Route: kingdom-of-naples-bourbon to add occupation_start 1799/9 and occupation_end 1800/6 (Rome, Lazio); papal-states L36 counterpart to kingdom-of-naples-bourbon. Here, consider typing L3 as the Neapolitan occupation that ends the state rather than a cession.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "The Tiberina and Anconine Republics are incorporated with no date or provinces; the 1799 shape is unverified in detail (Austrian siege of Ancona in 1799 not recorded).",
+     "page to try": "https://en.wikipedia.org/wiki/Anconine_Republic"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Roman_Republic_(1798%E2%80%931799)",
+     "result": "confirmed (occupied Rome 11 February, proclaimed 15 February 1798)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Roman_Republic_(1798%E2%80%931799)",
+     "result": "confirmed (November 1798)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Roman_Republic_(1798%E2%80%931799)",
+     "result": "confirmed; the page says 're-entering Rome on 14 December' without a year (1798 from context), the note quotes it with the year"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Roman_Republic_(1798%E2%80%931799)",
+     "result": "confirmed (30 September 1799)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 30083.9,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; author says so."
+   }
+  },
+  {
+   "slug": "cispadane-republic",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "Modena and Reggio are held until the merger, but the Cisalpine page moves them to Transpadania on 19 May 1797; cisalpine-republic L2 records that gain from duchy-of-modena-and-reggio, so two dossiers gain Modena from the duke and neither records the transfer between them.",
+     "why": "Cisalpine Republic page: 'On 19 May 1797, Napoleon transferred the territories of the former Duchy of Modena to Transpadania'; 'The rest of Cispadania was merged into the Cisalpine Republic on 27 July'. The Cispadane page gives only 'On 29 June 1797, the Cispadane Republic united with the Transpadane Republic'.",
+     "fix": "Add loss 1797/5 cp transpadane-republic (Modena, Reggio Emilia), source Cisalpine Republic page, confidence 2; say in L3's note that the pages disagree on the union (29 June here, 27 July for 'the rest of Cispadania'). Route: cisalpine-republic L2 counterpart to cispadane-republic.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "Romagna: papal-states L34 says Tolentino ceded 'Romagna, Ferrara and Bologna' and 'incorporated [them] into the newly created Cispadane Republic'; this dossier never holds Romagna, and cisalpine-republic L0 takes Romagna straight from the Pope (confidence 1).",
+     "why": "Cispadane page names only 'the provinces of Modena, Bologna, Ferrara and Reggio Emilia' and lists 'Treaty of Tolentino: 19 February 1797' in the infobox; Romagna is not mentioned.",
+     "fix": "Open the Treaty of Tolentino page; either add a 1797/2 Romagna gain cp papal-states here (and Ravenna, Forli-Cesena, Rimini to keyframe 1796) or ask eu-13 to give papal-states L34's Romagna to cisalpine-republic.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "The Duchy of Massa and Carrara is an infobox predecessor (Alpi Apuane department in the Cisalpine of July 1797) with no event and no land in the keyframe.",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Massa_and_Carrara"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Cispadane_Republic",
+     "result": "confirmed (16 October 1796; Modena, Bologna, Ferrara, Reggio Emilia)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Cispadane_Republic",
+     "result": "confirmed as a bridge (infobox 'Papal Legations' predecessor; no date on the page)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Cispadane_Republic",
+     "result": "confirmed (29 June 1797); the Cisalpine page differs (19 May 1797 for Modena, 27 July for the rest)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 7095.1,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; four provinces about 11,300 km2; the Cliopatria row is marked wrong (1800-1802)."
+   }
+  },
+  {
+   "slug": "french-consulate",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/10/region",
+     "what": "At confidence 3 the Piedmont gain drew all eight Piedmont provinces, including Novara and Verbano-Cusio-Ossola, which the page gives to the Italian Republic.",
+     "why": "Subalpine Republic page: 'The French Republic annexed the departements of Doire, Marengo, Po, Sesia, Stura, and Tanaro'; 'The Italian Republic received Novara, which became the department of Agogna'. admin1 Piedmont resolves to 114 cells including Novara and VCO; Cliopatria's 1803 French shape holds 1 Novara cell and 0 VCO cells.",
+     "fix": "Region now {minus: [Piedmont + Aoste, Novara + Verbano-Cusio-Ossola]} with the page's words; re-validated (0 errors).",
+     "applied": true
+    },
+    {
+     "where": "/ledger",
+     "what": "Malta is missing: kingdom-of-great-britain L16 gains it from french-consulate on 4 September 1800 (french-directory L13 took it in 1798), but this ledger has no loss and no keyframe holds a Malta cell.",
+     "why": "kingdom-of-great-britain L16: the French garrison under Vaubois 'finally surrendered on 4 September 1800'; gazetteer: Cliopatria 'French Consulate' 1800 shape intersect country Malta = 0 cells.",
+     "fix": "Add loss 1800/9 cp kingdom-of-great-britain (country Malta), source the Siege of Malta (1798-1800) page, and add Malta (Valletta) to keyframe 1799 and the 1800 correction for 1799-1800, or say why it is left out.",
+     "applied": false
+    },
+    {
+     "where": "/ledger",
+     "what": "Piedmont 1800-1802 does not agree with kingdom-of-sardinia: Sardinia L21 has occupation_start 1800/6 cp french-consulate, L22 occupation_end and L23 loss 1802/9 cp french-consulate; this ledger has nothing in June 1800 and gains Piedmont from subalpine-republic.",
+     "why": "Subalpine Republic page: 'The Piedmontese Republic was re-established on 20 June 1800'; 'ceased to exist on 11 September 1802'.",
+     "fix": "Add the 1800/6 relation (vassal_start cp subalpine-republic, or occupation_start cp kingdom-of-sardinia) and its 1802/9 end; agree the 1802 counterpart with eu-13 (kingdom-of-sardinia).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0..3/correction",
+     "what": "The Prince-Bishopric of Basel is removed as admin1 Jura only; the Bernese Jura (Moutier, Courtelary, La Neuveville), Biel/Bienne and Laufen, also part of the old bishopric, stay in the Helvetic shape.",
+     "why": "Helvetic Republic page: the republic excluded 'the cantons of Geneva and Neuchatel and the old Prince-Bishopric of Basel'; the treaty of 19 August 1798 'reaffirmed the French annexation of the Prince-Bishopric of Basel'. The gazetteer has no Bernese Jura region (resolve of 'Jura bernois' fails).",
+     "fix": "Non-blocking: the Jura union adds only the canton of Jura; add the Bernese Jura, Biel/Bienne and Laufen (French from 1797-98) as well, matching the Helvetic Republic fix.",
+     "applied": false
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what": "Paris cites the French Consulate page, which (author's note) does not name a capital.",
+     "why": "French Consulate page infobox has no capital field in the fetched content.",
+     "fix": "Non-blocking: cite a page that names Paris as the seat, or keep the note as is.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/9",
+     "what is missing": "Parma and Piacenza at confidence 1 (1802 bridge from the duke's death; formal annexation 1808).",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Parma"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "Client relations not recorded (author: page budget): restored Cisalpine Republic (June 1800), Italian Republic (26 January 1802), Ligurian and Batavian Republics (french-directory L1, L8 started them), Kingdom of Etruria.",
+     "page to try": "https://en.wikipedia.org/wiki/Sister_republic"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Overseas cells (Senegal 7, Mauritius 5, Cote d'Ivoire 4) and the Rhine-bank cells unverified (page budget).",
+     "page to try": "https://en.wikipedia.org/wiki/First_French_colonial_empire"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/French_campaign_in_Egypt_and_Syria",
+     "result": "confirmed (8 March 1801)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/French_campaign_in_Egypt_and_Syria",
+     "result": "confirmed (27 June 1801, Belliard)"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/French_campaign_in_Egypt_and_Syria",
+     "result": "confirmed (2 September; timeline 31 August, noted by the author)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Elba",
+     "result": "confirmed (Luneville 1801 to Etruria, 'transferred to France in 1802 by the Peace of Amiens', no month)"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Subalpine_Republic",
+     "result": "confirmed (11 September 1802); region over-claimed Novara, fixed"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/French_Consulate",
+     "result": "confirmed (18 May 1804)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 671881.9,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; shape components explained in K1 note."
+   }
+  },
+  {
+   "slug": "septinsular-republic",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "The protectorate is missing: no vassal_start/vassal_end with ottoman-empire (suzerain) or russian-empire (protector), and neither of those dossiers has it either.",
+     "why": "Septinsular Republic infobox: 'Protectorate of the Russian and the Ottoman Empires'; 'Formally under Ottoman suzerainty; under the de facto protection of the Russian Empire'; tribute of 75,000 piastres.",
+     "fix": "Add vassal_start 1800/4 and vassal_end 1807/8 cp ottoman-empire (and cp russian-empire, or say why one), source the Septinsular Republic page; route the mirrors to me-10 and the russian-empire owner.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/0/counterpart",
+     "what": "The found event takes the islands from french-directory, which ended on 9 November 1799 and records no loss of them (its L11 gains them in October 1797, nothing after).",
+     "why": "Septinsular Republic page: the Russo-Ottoman fleet 'drove the French out of the other islands in autumn 1798' and captured Corfu on 4 March 1799; the Republic was established 2 April 1800 by the Russo-Ottoman Treaty of Constantinople.",
+     "fix": "Counterpart ottoman-empire (or russian-empire), the powers that held the islands in 1799-1800; route a 1798/1799 loss of the Ionian Islands to french-directory and the occupation pair to ottoman-empire/russian-empire.",
+     "applied": false
+    },
+    {
+     "where": "/wars/0",
+     "what": "War span 1798..1799 lies outside the state's life 1800..1807 (validator warning).",
+     "why": "Validator: '/wars/0 span 1798..1799 lies outside the state's life 1800..1807'.",
+     "fix": "Non-blocking: move the Russo-Ottoman capture to the notes (it belongs to french-directory, ottoman-empire, russian-empire).",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Septinsular_Republic",
+     "result": "confirmed (2 April [O.S. 21 March] 1800)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Septinsular_Republic",
+     "result": "confirmed (ceded to France 20 August 1807; annexation declared 1 September)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 3001.2,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; mainland exclaves 'stayed under Ottoman control', so leaving them out is right."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "helvetic-republic",
+    "year": 1798,
+    "type": "found",
+    "counterpart": "swiss-confederation"
+   },
+   "mirror": {
+    "slug": "swiss-confederation",
+    "year": 1798,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "swiss L37 1798/3."
+  },
+  {
+   "event": {
+    "slug": "helvetic-republic",
+    "year": 1798,
+    "type": "gain",
+    "counterpart": "sieben-zenden"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Needs dossier; listed by the author (eu-20-x)."
+  },
+  {
+   "event": {
+    "slug": "helvetic-republic",
+    "year": 1799,
+    "type": "gain",
+    "counterpart": "three-leagues"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Needs dossier; listed by the author (eu-20-x)."
+  },
+  {
+   "event": {
+    "slug": "helvetic-republic",
+    "year": 1802,
+    "type": "loss",
+    "counterpart": "rhodanic-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Needs dossier; listed by the author (eu-20-x)."
+  },
+  {
+   "event": {
+    "slug": "helvetic-republic",
+    "year": 1803,
+    "type": "loss",
+    "counterpart": "swiss-confederation"
+   },
+   "mirror": {
+    "slug": "swiss-confederation",
+    "year": 1803,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "swiss L43 1803/2."
+  },
+  {
+   "event": {
+    "slug": "french-directory",
+    "year": 1798,
+    "type": "vassal_start",
+    "counterpart": "helvetic-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "french-directory L15 1798/4; no vassal_start in helvetic-republic."
+  },
+  {
+   "event": {
+    "slug": "french-consulate",
+    "year": 1799,
+    "type": "vassal_start",
+    "counterpart": "helvetic-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Consulate L1 1799/11 and L11 vassal_end 1803/2; helvetic-republic has neither."
+  },
+  {
+   "event": {
+    "slug": "revolutionary-roman-republic",
+    "year": 1798,
+    "type": "found",
+    "counterpart": "papal-states"
+   },
+   "mirror": {
+    "slug": "papal-states",
+    "year": 1798,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "papal-states L35 1798/2."
+  },
+  {
+   "event": {
+    "slug": "french-directory",
+    "year": 1798,
+    "type": "vassal_start",
+    "counterpart": "revolutionary-roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "french-directory L14 1798/2 and L23 vassal_end 1799/8; RRR has neither."
+  },
+  {
+   "event": {
+    "slug": "revolutionary-roman-republic",
+    "year": 1799,
+    "type": "loss",
+    "counterpart": "kingdom-of-naples-bourbon"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Counterpart corrected from kingdom-of-naples-napoleonic (life 1806-1815); kingdom-of-naples-bourbon has no 1799 gain/occupation of Roman land."
+  },
+  {
+   "event": {
+    "slug": "papal-states",
+    "year": 1800,
+    "type": "gain",
+    "counterpart": "revolutionary-roman-republic"
+   },
+   "mirror": {
+    "slug": "revolutionary-roman-republic",
+    "year": 1799,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "papal-states L36 gains in June 1800 from RRR, which ended 1799/9 handing the land to Naples; papal-states should take it from kingdom-of-naples-bourbon (eu-13)."
+  },
+  {
+   "event": {
+    "slug": "cispadane-republic",
+    "year": 1796,
+    "type": "gain",
+    "counterpart": "duchy-of-modena-and-reggio"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; row 1815..1859 owned by an eu-20 part not yet run; that dossier must start before 1796 (Este duchy). Conflicts with cisalpine-republic L2 (gain of Modena from the same duke 1797/5)."
+  },
+  {
+   "event": {
+    "slug": "cisalpine-republic",
+    "year": 1797,
+    "type": "gain",
+    "counterpart": "duchy-of-modena-and-reggio"
+   },
+   "mirror": {
+    "slug": "cispadane-republic",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "cisalpine L2 1797/5 takes Modena from the duke; Cispadane already held it from 1796/10 and has no 1797/5 loss. Cisalpine page: 19 May 1797 transfer to Transpadania."
+  },
+  {
+   "event": {
+    "slug": "cispadane-republic",
+    "year": 1796,
+    "type": "gain",
+    "counterpart": "papal-states"
+   },
+   "mirror": {
+    "slug": "papal-states",
+    "year": 1797,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Within a year (1796/10 vs 1797/2), but papal-states L34 also gives Romagna to the Cispadane, which this dossier lacks; cisalpine L0 takes Romagna directly."
+  },
+  {
+   "event": {
+    "slug": "cispadane-republic",
+    "year": 1797,
+    "type": "merge",
+    "counterpart": "cisalpine-republic"
+   },
+   "mirror": {
+    "slug": "cisalpine-republic",
+    "year": 1797,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": "Cispadane 29 June (its page) vs cisalpine L3 27 July (its page); same year."
+  },
+  {
+   "event": {
+    "slug": "french-consulate",
+    "year": 1799,
+    "type": "found",
+    "counterpart": "french-directory"
+   },
+   "mirror": {
+    "slug": "french-directory",
+    "year": 1799,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "french-directory L25 1799/11."
+  },
+  {
+   "event": {
+    "slug": "french-consulate",
+    "year": 1801,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1803,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Consulate L5 1801/6 and L6 1801/9 (page-dated); ottoman-empire L156 dates Egypt's return to 1803 at confidence 1 from Cliopatria's year: me-10 should move it to 1801."
+  },
+  {
+   "event": {
+    "slug": "french-consulate",
+    "year": 1802,
+    "type": "gain",
+    "counterpart": "kingdom-of-etruria"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Elba (Elba page: to France 1802); kingdom-of-etruria (3 events) has no Elba loss."
+  },
+  {
+   "event": {
+    "slug": "french-consulate",
+    "year": 1802,
+    "type": "gain",
+    "counterpart": "duchy-of-parma-and-piacenza"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; row 1815..1859 owned by an eu-20 part not yet run; it must cover the Bourbon duchy to 1802 or another slug is needed."
+  },
+  {
+   "event": {
+    "slug": "french-consulate",
+    "year": 1802,
+    "type": "gain",
+    "counterpart": "subalpine-republic"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sardinia",
+    "year": 1802,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "subalpine-republic needs a dossier (listed); kingdom-of-sardinia L23 1802/9 records the loss to french-consulate directly and L21/L22 an occupation by french-consulate 1800/6-1802/9 that the Consulate lacks."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-great-britain",
+    "year": 1800,
+    "type": "gain",
+    "counterpart": "french-consulate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Malta, 4 September 1800 (GB L16); no loss in the Consulate."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-naples-bourbon",
+    "year": 1801,
+    "type": "loss",
+    "counterpart": "french-consulate"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Naples L6 cedes the Presidi to France 28 March 1801; state-of-the-presidi L3 passes them to kingdom-of-etruria 19 September 1801; the Consulate has neither. The Naples owner should point L6 at the route state-of-the-presidi uses."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-bavaria",
+    "year": 1801,
+    "type": "loss",
+    "counterpart": "french-consulate"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Bavaria L34 (Luneville: Palatinate, Zweibrucken, Julich) names the Consulate, but the land was annexed by french-directory L10 in 1797 and is already in the Consulate's 1800 shape; eu-09 should give the loss to french-directory or type it as the formal end of an occupation."
+  },
+  {
+   "event": {
+    "slug": "french-consulate",
+    "year": 1804,
+    "type": "dissolve",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": {
+    "slug": "first-french-empire",
+    "year": 1804,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "FFE L0 1804/5."
+  },
+  {
+   "event": {
+    "slug": "septinsular-republic",
+    "year": 1800,
+    "type": "found",
+    "counterpart": "french-directory"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "french-directory ended 1799/11 and has no loss of the Ionian Islands; holders in 1799-1800 were the Russo-Ottoman fleet."
+  },
+  {
+   "event": {
+    "slug": "septinsular-republic",
+    "year": 1800,
+    "type": "vassal_start",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Protectorate on the page; neither septinsular-republic nor ottoman-empire/russian-empire records it."
+  },
+  {
+   "event": {
+    "slug": "septinsular-republic",
+    "year": 1807,
+    "type": "loss",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": {
+    "slug": "first-french-empire",
+    "year": 1807,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "FFE L17 1807/9 (annexation 1 September; cession 20 August)."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Elba",
+   "kind": "region",
+   "used_in": "french-consulate"
+  },
+  {
+   "name": "Bernese Jura (Jura bernois)",
+   "kind": "region",
+   "used_in": "helvetic-republic"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Three Leagues (Graubunden)",
+   "suggested_slug": "three-leagues",
+   "years": [
+    1798,
+    1799
+   ]
+  },
+  {
+   "name": "Republic of the Seven Tithings (Upper Valais)",
+   "suggested_slug": "sieben-zenden",
+   "years": [
+    1798,
+    1798
+   ]
+  },
+  {
+   "name": "Rhodanic Republic (Valais Republic)",
+   "suggested_slug": "rhodanic-republic",
+   "years": [
+    1802,
+    1810
+   ]
+  },
+  {
+   "name": "Subalpine (Piedmontese) Republic",
+   "suggested_slug": "subalpine-republic",
+   "years": [
+    1798,
+    1802
+   ]
+  },
+  {
+   "name": "Transpadane Republic",
+   "suggested_slug": "transpadane-republic",
+   "years": [
+    1796,
+    1797
+   ]
+  },
+  {
+   "name": "Duchy of Massa and Carrara",
+   "suggested_slug": "duchy-of-massa-and-carrara",
+   "years": [
+    1796,
+    1797
+   ]
+  },
+  {
+   "name": "Anconine and Tiberina Republics",
+   "suggested_slug": "anconine-republic",
+   "years": [
+    1797,
+    1798
+   ]
+  },
+  {
+   "name": "Ionian Islands under French rule and British conquests",
+   "suggested_slug": "ionian-islands-french-rule",
+   "years": [
+    1807,
+    1815
+   ]
+  },
+  {
+   "name": "Duchy of Modena and Reggio before 1796 (Este duchy; existing row starts 1815)",
+   "suggested_slug": "duchy-of-modena-and-reggio",
+   "years": [
+    1796,
+    1797
+   ]
+  },
+  {
+   "name": "Duchy of Parma and Piacenza under the Bourbons (existing row starts 1815)",
+   "suggested_slug": "duchy-of-parma-and-piacenza",
+   "years": [
+    1801,
+    1802
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-20-b.md",
+ "problems": [
+  "republic-of-san-marino duplicates san-marino.json (outside this batch): the merge must be done by the orchestrator or the san-marino owner.",
+  "Reviewer edits applied and re-validated: revolutionary-roman-republic (kingdom-of-naples-napoleonic -> kingdom-of-naples-bourbon, 6 places); french-consulate /ledger/10/region (minus Novara and Verbano-Cusio-Ossola).",
+  "Routed to other owners: ottoman-empire L156 (Egypt 1803 -> 1801, me-10); papal-states L34 Romagna and L36 counterpart (eu-13); kingdom-of-naples-bourbon L6 vs state-of-the-presidi L3 and a missing 1799-1800 Roman occupation; kingdom-of-sardinia L21-L23 vs the Consulate (eu-13); duchy-of-bavaria L34 (eu-09); kingdom-of-etruria has no 1802 Elba loss; cisalpine-republic L2 counterpart; french-directory has no 1798-99 loss of the Ionian Islands.",
+  "revolutionary-roman-republic keeps Wikidata Q175881, which polities.csv also gives roman-republic; not checkable (wikidata.org unreachable).",
+  "Every page opened loaded; none failed."
+ ]
+}

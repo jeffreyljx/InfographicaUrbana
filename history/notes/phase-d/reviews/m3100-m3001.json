@@ -1,0 +1,19 @@
+{
+ "window": "m3100-m3001",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "what": "As submitted: a gain for early-dynastic-period-of-egypt at -3100 from naqada-culture over the Upper Egypt Nile band (40 km, north of 24 N), the Faiyum and the Giza Nile reach. The region resolves to 267 cells (about 67,500 km2). 124 of them actually move (about 31,400 km2). They are the desert flanks round the Early Dynastic state's Cliopatria strip: Abydos, Naqada, Hierakonpolis, Aswan, the Memphis area and the Faiyum town all lie inside the strip already. The Early Dynastic page supports the parties and the unification ('immediately follows the unification of Upper and Lower Egypt in c. 3150 BC'; Narmer 'merged both the Kingdom of Upper and Lower Egypt under his single rule'). But the gain broke the next year. The dossier's reviewed keyframe early-dynastic-period-of-egypt_-3000 ('ok', the Cliopatria strip, -3000..-2701) takes the 124 cells back to nobody. A trial of m3000-m2901 with the patch showed keyframe snaps 0 -> 1 (early-dynastic-period-of-egypt_-3000 at -3000: removed 124). So the state widened at -3100 and shrank at -3000 with no event, and the window agent's own trial, which stopped at -3001, could not show it.",
+   "page": "https://en.wikipedia.org/wiki/Naqada_culture ; https://en.wikipedia.org/wiki/Early_Dynastic_Period_(Egypt)",
+   "fix": "Replaced events/0 in place. It is now naqada-culture, -3100, loss, counterpart nobody, with the same region spec and a new text. The source is the Naqada culture page ('A 2013 study places the end circa 3,100 BC'; 'c. 4000-3000 BC'; 'Followed by: First Dynasty of Egypt'), and the note quotes the Early Dynastic page. The valley stays with the unified state and the flanks are nobody's, as they are from -3000 on. check-patch: 1 ok. Trial m3100-m3001: events/0 applied, 124 cells move from Naqada to nobody at -3100, conflicts 0 -> 0, snaps 0 -> 0. Trial m3000-m2901 with the corrected file: snaps 0 -> 0, end anchor m2900 unchanged. The -3100 render shows the Early Dynastic state from the Delta to Aswan with no Naqada stripes.",
+   "applied": true
+  }
+ ],
+ "patch_check": "check-patch m3100-m3001: 1 entries, 1 ok, 0 rejected (events/0 naqada-culture ok, after the review's fix). Trial m3100-m3001: applied; conflicts 0 -> 0; snaps 0 -> 0; m3000 anchor 749 cells change owner (625 from the m3200-m3101 Naqada override, 124 from events/0). Trial m3000-m2901: snaps 0 -> 0; m2900 anchor unchanged.",
+ "problems": [
+  "The stripes are still there from -3150 to -3101, in m3200-m3101, which has already been reviewed. The Early Dynastic page dates the unification c. 3150 BC. The same loss dated -3150 would clear those years too, moving 124 cells in m3200-m3101's draft. That is the orchestrator's call; this file keeps to its own window.",
+  "Naqada keeps 93 cells from -3100 to -3001. 92 are the Nile strip of Lower Nubia (22.0-24.2 N) and one is a speck west of the Delta (30.28 N, 29.66 E). The Naqada page only says its trade networks reached Lower Nubia, which it links to the A-Group. The Early Dynastic page has Egyptian settlement in Lower Nubia only 'after the Nubian A-Group culture came to an end'. The Naqada page also ends the culture 'circa 3,100 BC' (2013 study), but the dossier runs to -3000. Both are dossier-level issues and are left as they are. The A-Group keyframe a-group-culture_-3500, a Sahara rectangle south of 22 N, is the window agent's open problem too.",
+  "The /tmp/claude-0 volume is full (about 67 MB free), so the first trial failed. The trials were run with stage and TMPDIR under /dev/shm/review-m3100-m3001 instead, and that folder was deleted afterwards."
+ ]
+}

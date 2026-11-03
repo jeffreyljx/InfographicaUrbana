@@ -1,0 +1,738 @@
+{
+ "batch_id": "eu-07-e",
+ "verdicts": [
+  {
+   "slug": "west-franks",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/14/correction (and /15, /16, /17, /18, /19, /20, /21)",
+     "applied": false,
+     "severity": "blocking",
+     "what": "The 896-989 corrections subtract the whole Cliopatria Aquitaine 895 shape, which is all of southern France (Toulouse, Septimania/Narbonne, Gascony/Bordeaux, Auvergne), not only the duchy the page calls 'largely outside the control' of the kings; the base shape stops at 45.5-45.65 N and no dossier owns the removed land.",
+     "why": "Resolved: the 896-910 correction is 750 cells (189,675 km2, bbox south edge 45.53 N) against Cliopatria's 375,679 km2; 926-989 is 663/661 cells (about 167,000 km2) against 354,590 / 354,017 km2 (ratio 0.47). Toulouse (13 cells within 30 km), Narbonne (8) and Bordeaux (11) are in the subtracted Aquitaine 895 shape and in no corrected keyframe. The batch notes (_notes/eu-07-e.md) say Toulouse, Septimania, Gascony and the Spanish March 'are inside the base shape': false for 888-989. The vassal counterpart 'aquitaine' is a Cliopatria row that ends in 895 (and its dossier, eu-07, has not run), while the report asks for 'duchy-of-aquitaine' 896-989; neither will draw 896-989 unless routed. The West Francia page sentence ('Although Aquitaine did not become a separate kingdom, it was largely outside the control of the West Frankish kings') names Aquitaine only. The vassal region also overlaps County of Rosellon 896 (16 cells) and County of Berga 898 (3 cells).",
+     "fix": "Either (a, recommended, the author's own fallback) revert the eight 896-980 corrections to the Cliopatria shapes (keep the 936 union with Upper Burgundy 936) and keep or drop the 889/989 vassal pair as tint only, or (b) subtract only the duchy proper (Poitou, Limousin, Auvergne, Berry by admin1/region names) and keep Toulouse, Septimania/Gothia and Gascony in the base shape; in either case make the vassal counterpart the slug that will own the land 896-989 (duchy-of-aquitaine or an extended aquitaine) and correct the notes sentence."
+    },
+    {
+     "where": "/wars",
+     "applied": false,
+     "severity": "non-blocking",
+     "what": "Lothair's 978 invasion of Lotharingia (capture of Aachen), Otto II's counter-invasion to Paris and the 980 renunciation are on two opened pages but not in wars.",
+     "why": "Lotharingia page: 'In 978, king Lothair of West Francia invaded the region and captured Aachen, but Otto II, Holy Roman Emperor, counterattacked and reached the walls of Paris.' 'In 980, Lothair renounced his rights to Lotharingia.' West Francia page: 'in 978 Lothair attacked the old imperial capital Aachen.'",
+     "fix": "Add a war 978-980, belligerents west-franks and holy-roman-empire, zones [] with outcome 'no border moved: Aachen raided, 980 renunciation', source Lotharingia."
+    },
+    {
+     "where": "/keyframe_review/2/correction (and /3, /4, /5, /6, /7, /8)",
+     "applied": false,
+     "severity": "non-blocking",
+     "what": "The Italy minus-union leaves one San Marino cell (12.41 E) inside West Francia in 860-881.",
+     "why": "Resolved the 860 correction by country: France 1,623, Spain 104, Belgium 33, Switzerland 4, Andorra 2, San Marino 1; bbox east edge 12.41 E.",
+     "fix": "Add {\"country\": \"San Marino\"} to the union of Italy, Slovenia and Croatia in the seven corrections 860-880."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "870 Breton cells (c1): the grants to Salomon at Entrammes (863, Anjou west of the Mayenne) and Compiegne (867, Cotentin and Avranchin) are the likely events; Charles the Bald page silent",
+     "page to try": "https://en.wikipedia.org/wiki/Salomon_of_Brittany"
+    },
+    {
+     "where": "/ledger/29",
+     "what is missing": "926 Norman cells (c1): the 924 grant of the Bessin and Maine and the 933 grant of the Cotentin and Avranchin (Cliopatria's Normandy grows again in 936, with no West Frankish event); Saint-Clair page says only 'over subsequent decades'",
+     "page to try": "https://en.wikipedia.org/wiki/William_I_Longsword"
+    },
+    {
+     "where": "/ledger/4, /ledger/12",
+     "what is missing": "Urgell 870 and 878 (c1): Wilfred the Hairy's counties",
+     "page to try": "https://en.wikipedia.org/wiki/Wilfred_the_Hairy"
+    },
+    {
+     "where": "/ledger/7, /ledger/8",
+     "what is missing": "Pallars and Ribagorza 875 (c1)",
+     "page to try": "https://en.wikipedia.org/wiki/County_of_Pallars"
+    },
+    {
+     "where": "/ledger/32",
+     "what is missing": "vassal_end 989 (c1); Aquitaine's relation to the Capetians",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Aquitaine"
+    },
+    {
+     "where": "/keyframe_review/2, /keyframe_review/11",
+     "what is missing": "52 French/Alpine cells (860) and 67 Frisian cells (886) unexplained; Lothair's capture of Verdun (984-985) is on neither opened page",
+     "page to try": "https://en.wikipedia.org/wiki/Lothair_of_France"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Meerssen",
+     "result": "confirmed",
+     "detail": "'In 869, Lothair II died'; 'Charles had himself crowned in Metz the same year'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Meerssen",
+     "result": "confirmed",
+     "detail": "8 August 870; Lyon, Vienne, Besancon; Meuse-Ourthe-Moselle-Saone-Rhone line"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Charles_the_Bald",
+     "result": "confirmed",
+     "detail": "Battle of Andernach on 8 October 876"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Boso_of_Provence",
+     "result": "confirmed",
+     "detail": "'He became governor and count of Provence in 877'; king not named, c2 honest"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Ribemont",
+     "result": "confirmed",
+     "detail": "February 880; western half of Lotharingia to the East Frankish king"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Odo_of_France",
+     "result": "confirmed",
+     "detail": "'Ranulf (or Ramnulf) of Aquitaine submitted by 889'"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Saint-Clair-sur-Epte",
+     "result": "confirmed",
+     "detail": "'likely in the autumn of 911'; 'broadly Rouen and the area of present-day Upper Normandy' = Seine-Maritime + Eure"
+    },
+    {
+     "where": "/ledger/23",
+     "page": "https://en.wikipedia.org/wiki/Charles_the_Simple",
+     "result": "confirmed",
+     "detail": "'crowned King of Lotharingia in early November 911'"
+    },
+    {
+     "where": "/ledger/26, /ledger/28",
+     "page": "https://en.wikipedia.org/wiki/Lotharingia",
+     "result": "confirmed",
+     "detail": "923 invasion 'including Alsace'; 'In 925, Lotharingians under Gilbert elected Henry the Fowler'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Charles_the_Bald",
+     "result": "confirmed",
+     "detail": "Jengland 851; Treaty of Angers terms not on page, c2 honest"
+    },
+    {
+     "where": "/ledger/29",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Saint-Clair-sur-Epte",
+     "result": "confirmed",
+     "detail": "page silent on years ('over subsequent decades'), c1 honest"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 354017,
+    "corrected_km2": 167167,
+    "ratio": null,
+    "corrected_to_cliopatria": 0.47,
+    "acknowledged": true,
+    "note": "West Francia infobox gives no area (checked). The dossier's own correction halves Cliopatria for 896-989; acknowledged as the Aquitaine vassal choice but on a mistaken belief about what is removed (fix 1)."
+   }
+  },
+  {
+   "slug": "lower-burgundy",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction, /keyframe_review/1/correction, /ledger/0/region, /identity/predecessors/0/land",
+     "applied": false,
+     "severity": "blocking",
+     "what": "Charles of Provence's realm (855-862) is drawn without Lyon and Vienne: 'Lower Burgundy 860 minus Lower Burgundy 866' also subtracts the Lyonnais and Viennois, which Cliopatria's 866 polygon (Lothair II's kingdom after 863) contains.",
+     "why": "Resolved: the correction is 211 cells (53,362 km2) holding 0 of the 37 Lyonnais cells and 4 of the 48 cells within 60 km of Vienne (111 of 121 Provence cells); the keyframe note says it is 'Provence, Lyon, Vienne'. Charles of Provence page: on his death 'Lothair received the bishoprics of Lyon, Vienne and Grenoble' and 'Louis received Arles, Aix and Embrun', so Lyon and Vienne were in Charles's realm. The 863 loss (/ledger/1) therefore removes land the keyframes never held, and Lyon/Vienne belong to no dossier in 855-862.",
+     "fix": "Make the 855-862 shape {\"union\": [{\"minus\": [LB 860, LB 866]}, {\"region\": \"Lyonnais\"}, {\"place\": \"Vienne\", \"km\": 60, \"country\": \"France\"}]} (intersected with LB 860 if needed), with text, in both keyframes, the found region and the predecessor land."
+    },
+    {
+     "where": "/ledger/14 and /keyframe_review/12",
+     "applied": false,
+     "severity": "blocking",
+     "what": "The 931 loss of the Viennois and Lyonnais has no keyframe: kingdom-of-lower-burgundy_926 (corrected to LB 925) keeps them to 935, so 57 cells are claimed by both lower-burgundy and upper-burgundy's new keyframe upper-burgundy_931 (931-932).",
+     "why": "Resolved: upper-burgundy_931 correction intersect kingdom-of-lower-burgundy_926 correction = 57 cells. Hugh of Italy page: Hugh 'bribed off [Rudolph] with the gift of the Viennois and Lyonnais, which Rudolph successfully occupied' (931).",
+     "fix": "Add a new keyframe lower-burgundy_931 (from 931, to 933, verdict adjust) = {\"minus\": [{\"cliopatria\": \"Lower Burgundy\", \"year\": 925}, {\"union\": [{\"region\": \"Lyonnais\"}, {\"place\": \"Vienne\", \"km\": 60, \"country\": \"France\"}]}]} with text, and say in its note that the dossier ends in 933 although kingdom-of-lower-burgundy_926 runs to 935."
+    },
+    {
+     "where": "/ledger/4",
+     "applied": false,
+     "severity": "non-blocking",
+     "what": "The 880 loss of Saone-et-Loire (Macon) is land no keyframe gives Boso: Lower Burgundy 880 (the 879 gain region) holds 2 of the 35 Saone-et-Loire cells, and West Francia keeps 33 of them through 879-880.",
+     "why": "Resolved intersections; Boso page: the brothers 'took Macon and northern parts of his realm' after the Amiens division of March 880.",
+     "fix": "Either add Saone-et-Loire to the 879 gain (and to West Francia's 879 loss) with a new 879-880 keyframe, or shrink the 880 pair to the 2 cells and say so."
+    },
+    {
+     "where": "/identity",
+     "applied": false,
+     "severity": "non-blocking",
+     "what": "Two kingdoms 16 years apart are one dossier: Charles of Provence's (855-863) and Boso's (879-933); rulers and capitals leave 863-878 empty.",
+     "why": "Lower Burgundy page: infobox 'Established: 879'; it presents Boso's kingdom as newly carved out, not a restoration of Charles's.",
+     "fix": "Orchestrator decision: keep with the gap (as now, flagged in notes) or split 855-863 into its own dossier (Kingdom of Provence 855-863) and start lower-burgundy in 879."
+    },
+    {
+     "where": "/keyframe_review/4, /keyframe_review/5",
+     "applied": false,
+     "severity": "non-blocking",
+     "what": "Lower Burgundy 882-886 keeps the county of Vienne although the pages say Richard the Justiciar took the city in September 882.",
+     "why": "Boso page: Richard took the city in September 882; 'Boso never regained much of his realm and was restricted to the county of Vienne' (undated). Charles the Fat page: Richard 'finally did [take the city] in September'.",
+     "fix": "Say in the 882 note that the county is kept on the strength of the undated 'restricted to the county of Vienne' and that the city fell; no shape change required."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "capital before 905 and the date of Hugh's move to Arles",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Arles"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Charles_of_Provence",
+     "result": "confirmed",
+     "detail": "25 January 863; Lyon, Vienne, Grenoble to Lothair"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Charles_of_Provence",
+     "result": "confirmed",
+     "detail": "Arles, Aix and Embrun to Louis"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Boso_of_Provence",
+     "result": "confirmed",
+     "detail": "15 October 879, Synod of Mantaille"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Louis_the_Blind",
+     "result": "confirmed",
+     "detail": "May 887, 'received confirmation of family estates'"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Louis_the_Blind",
+     "result": "confirmed",
+     "detail": "21 July 905 blinding"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Hugh_of_Italy",
+     "result": "confirmed",
+     "detail": "931, 'gift of the Viennois and Lyonnais'"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Hugh_of_Italy",
+     "result": "confirmed",
+     "detail": "933 treaty: Rudolph 'abandoned his claims to Italy in return for being handed Provence'; Lower Burgundy page: 'In 932-933, Hugh made peace with Rudolph ... by giving him the Lower Burgundy'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 71379,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Lower Burgundy infobox gives no area (checked)."
+   }
+  },
+  {
+   "slug": "upper-burgundy",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/3",
+     "applied": false,
+     "severity": "non-blocking",
+     "what": "The 911 c1 gain 'from west-franks' of a 40 km disc round Besancon is land the dossier already holds, and West Francia carries no matching loss.",
+     "why": "Resolved: the disc is 19 cells, 18 of them already in Upper Burgundy 887 (the 888 shape); Cliopatria's 911 change is 2 cells (5.72 E 46.96 N and 8.08 E 47.71 N), neither in any West Francia keyframe. Upper Burgundy page puts 'the Burgundian comital estates around Besancon and Dole' in the kingdom from its foundation and has no 911 entry.",
+     "fix": "Drop the event (a 2-cell change within one realm needs none), or make its region {\"minus\": [{\"cliopatria\": \"Upper Burgundy\", \"year\": 911}, {\"cliopatria\": \"Upper Burgundy\", \"year\": 900}]} with counterpart 'nobody'."
+    },
+    {
+     "where": "/keyframe_review/6 vs /keyframe_review/7, /keyframe_review/8",
+     "applied": false,
+     "severity": "non-blocking",
+     "what": "The new keyframes 931-932 and 933-935 sit inside upper-burgundy_926's span (926-935); the dossier relies on new keyframes overriding a Cliopatria one.",
+     "why": "Cliopatria keyframes carry no from/to in the schema, so the override is implicit.",
+     "fix": "Say in the upper-burgundy_926 note that it applies 926-930 and is superseded by the two new keyframes; orchestrator to confirm the compiler rule."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "no page names a capital (Saint-Maurice is a placeholder)",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Arles"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "Basel 916-926: the Upper Burgundy page dates Rudolph's defeat at Winterthur to 919; whether Basel stayed occupied to 926 is not on any opened page; the exchange is '926 or 935'",
+     "page to try": "https://en.wikipedia.org/wiki/Burchard_II,_Duke_of_Swabia"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "911 Besancon edge (c1), see fix",
+     "page to try": "https://en.wikipedia.org/wiki/County_of_Burgundy"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "dissolve 935 (c1) is a Cliopatria boundary; the kingdom continues under Rudolph II (d. 937) and Conrad",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Arles"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Upper_Burgundy",
+     "result": "confirmed",
+     "detail": "888, Abbey of St. Maurice; no month"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Upper_Burgundy",
+     "result": "confirmed",
+     "detail": "'in 916 occupied the city of Basel'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Rudolf_II_of_Burgundy",
+     "result": "confirmed",
+     "detail": "King of Italy 922-926; 'in 926 the Italian nobility turned against him'; Fiorenzuola 17 July 923"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Rudolf_II_of_Burgundy",
+     "result": "confirmed",
+     "detail": "'In 926 or 935' Holy Lance for the Swabian Basel estates; c2 honest"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Rudolf_II_of_Burgundy",
+     "result": "confirmed",
+     "detail": "'In 933, Rudolph II acquired the Kingdom of Lower Burgundy'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Upper_Burgundy",
+     "result": "not on page",
+     "detail": "no 911 entry; labelled c1 bridge by the author"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 45842,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Upper Burgundy infobox gives no area (checked); 933-935 union (485 cells) matches Kingdom of Arles 936 (117,221 km2)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 851,
+    "type": "loss",
+    "counterpart": "kingdom-of-brittany"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-07)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 870,
+    "type": "loss",
+    "counterpart": "kingdom-of-brittany"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-07); c1",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 870,
+    "type": "loss",
+    "counterpart": "county-of-urgell"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-12); c1",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 870,
+    "type": "gain",
+    "counterpart": "kingdom-of-lotharingia"
+   },
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (eu-07-x)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 875,
+    "type": "loss",
+    "counterpart": "county-of-pallars"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-12); c1",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 875,
+    "type": "loss",
+    "counterpart": "county-of-ribagorza"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-12); c1",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 877,
+    "type": "gain",
+    "counterpart": "kingdom-of-italy"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-13); mirror should be a 877 loss of Provence; lower-burgundy has Provence pass to kingdom-of-italy in 863",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 878,
+    "type": "loss",
+    "counterpart": "county-of-urgell"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-12); c1",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 879,
+    "type": "loss",
+    "counterpart": "lower-burgundy"
+   },
+   "status": "matched",
+   "note": "October 879 both sides",
+   "mirror": {
+    "slug": "lower-burgundy",
+    "year": 879,
+    "type": "gain"
+   }
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 880,
+    "type": "loss",
+    "counterpart": "east-franks"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-07)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 880,
+    "type": "gain",
+    "counterpart": "lower-burgundy"
+   },
+   "status": "matched",
+   "note": "March 880 both sides, but neither side's keyframes move this land (Lower Burgundy 880 holds 2 of 35 Saone-et-Loire cells)",
+   "mirror": {
+    "slug": "lower-burgundy",
+    "year": 880,
+    "type": "loss"
+   }
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 882,
+    "type": "gain",
+    "counterpart": "lower-burgundy"
+   },
+   "status": "matched",
+   "note": "September 882 both sides",
+   "mirror": {
+    "slug": "lower-burgundy",
+    "year": 882,
+    "type": "loss"
+   }
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 887,
+    "type": "loss",
+    "counterpart": "lower-burgundy"
+   },
+   "status": "matched",
+   "note": "May 887 both sides",
+   "mirror": {
+    "slug": "lower-burgundy",
+    "year": 887,
+    "type": "gain"
+   }
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 888,
+    "type": "loss",
+    "counterpart": "aquitaine"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-07)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 889,
+    "type": "vassal_start",
+    "counterpart": "aquitaine"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-07); the aquitaine row ends 895 while the pair runs to 989 and the report asks for duchy-of-aquitaine 896-989: route to one slug",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 911,
+    "type": "loss",
+    "counterpart": "duchy-of-normandy"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-10); Cliopatria's Normandy row starts 922",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 911,
+    "type": "gain",
+    "counterpart": "kingdom-of-germany"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-08)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 925,
+    "type": "loss",
+    "counterpart": "kingdom-of-germany"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-08)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 926,
+    "type": "loss",
+    "counterpart": "duchy-of-normandy"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-10); c1",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "west-franks",
+    "year": 989,
+    "type": "vassal_end",
+    "counterpart": "aquitaine"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet; c1",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "lower-burgundy",
+    "year": 863,
+    "type": "loss",
+    "counterpart": "kingdom-of-lotharingia"
+   },
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (eu-07-x)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "lower-burgundy",
+    "year": 863,
+    "type": "loss",
+    "counterpart": "kingdom-of-italy"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written; its group has not run yet (eu-13)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "lower-burgundy",
+    "year": 931,
+    "type": "loss",
+    "counterpart": "upper-burgundy"
+   },
+   "status": "matched",
+   "note": "same region both sides; lower-burgundy lacks the keyframe (57-cell overlap 931-932)",
+   "mirror": {
+    "slug": "upper-burgundy",
+    "year": 931,
+    "type": "gain"
+   }
+  },
+  {
+   "event": {
+    "slug": "lower-burgundy",
+    "year": 933,
+    "type": "loss",
+    "counterpart": "upper-burgundy"
+   },
+   "status": "matched",
+   "note": "Lower Burgundy 925 shape both sides",
+   "mirror": {
+    "slug": "upper-burgundy",
+    "year": 933,
+    "type": "gain"
+   }
+  },
+  {
+   "event": {
+    "slug": "upper-burgundy",
+    "year": 911,
+    "type": "gain",
+    "counterpart": "west-franks"
+   },
+   "status": "missing",
+   "note": "west-franks has no 911 loss to upper-burgundy; the region is land upper-burgundy already holds (see fix)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "upper-burgundy",
+    "year": 916,
+    "type": "occupation_start",
+    "counterpart": "Duchy of Swabia"
+   },
+   "status": "exception",
+   "note": "no polity row or dossier; named, flagged by the author (eu-08)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "upper-burgundy",
+    "year": 926,
+    "type": "occupation_end",
+    "counterpart": "Duchy of Swabia"
+   },
+   "status": "exception",
+   "note": "no polity row or dossier (eu-08)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "upper-burgundy",
+    "year": 926,
+    "type": "gain",
+    "counterpart": "Duchy of Swabia"
+   },
+   "status": "exception",
+   "note": "no polity row or dossier (eu-08); listed in counterparts_needing_dossiers",
+   "mirror": null
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Kingdom of Lotharingia (Lothair II)",
+   "suggested_slug": "kingdom-of-lotharingia",
+   "years": [
+    855,
+    869
+   ],
+   "note": "holds Lyon and Vienne 863-869; author's list"
+  },
+  {
+   "name": "Duchy of Aquitaine 896-989 (or the aquitaine dossier extended to 989)",
+   "suggested_slug": "duchy-of-aquitaine",
+   "years": [
+    896,
+    989
+   ],
+   "note": "only if the orchestrator keeps the West Francia vassal modelling; the ledger counterpart must use the same slug"
+  },
+  {
+   "name": "Duchy of Burgundy before 1003",
+   "suggested_slug": "duchy-of-burgundy",
+   "years": [
+    880,
+    1002
+   ],
+   "note": "author's list; West Francia keeps the land as direct, so optional"
+  },
+  {
+   "name": "Duchy of Swabia",
+   "suggested_slug": "duchy-of-swabia",
+   "years": [
+    917,
+    1268
+   ],
+   "note": "counterpart of Upper Burgundy's Basel events"
+  },
+  {
+   "name": "Kingdom of Italy 845-886, 900-910, 922-935",
+   "suggested_slug": "kingdom-of-italy",
+   "years": [
+    845,
+    935
+   ],
+   "note": "Cliopatria has no Italian shape in these years; eu-13 must cover"
+  },
+  {
+   "name": "East Francia 882-886",
+   "suggested_slug": "east-franks",
+   "years": [
+    882,
+    886
+   ],
+   "note": "Cliopatria draws it inside West Franks; eu-07 east-franks part must cover"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-07-e.md",
+ "problems": [
+  "No neighbour dossier exists yet: none of the 37 Context polities of the author's brief section 6 (nor kingdom-of-lotharingia, duchy-of-aquitaine, duchy-of-burgundy, duchy-of-swabia) is in history/polities/; every counterpart outside this batch is an exception 'group has not run yet'.",
+  "Compiler rule needed: new keyframes inside a Cliopatria shape's span (upper-burgundy_931 and _933 inside upper-burgundy_926) must override it, and Cliopatria keyframes running past a dossier's end (kingdom-of-lower-burgundy_926 to 935, end 933) must be clipped to the life.",
+  "Cliopatria's West Franks shapes 860-935 have a bbox reaching -23.5 E 66.3 N (an Iceland fragment) but it resolves to no grid cells, so no correction is needed.",
+  "All pages loaded; WebFetch returns a model's excerpt, so quotes above are those excerpts. No dossier was edited by the reviewer."
+ ]
+}

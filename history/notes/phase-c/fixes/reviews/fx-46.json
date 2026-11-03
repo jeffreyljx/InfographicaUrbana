@@ -1,0 +1,118 @@
+{
+ "batch_id": "fx-46",
+ "checks": [
+  {
+   "item": "R015",
+   "verdict": "pass",
+   "what": "Kept, 'patch controls it' holds: patch-overrides.csv lists m1100-m1001,wu_-1100, and that override is Wuxi 60 km plus the 120.62/31.30 disc. The page gives 'Capital: Wu (modern-day Wuxi and Suzhou, Jiangsu province)'.",
+   "page": "https://en.wikipedia.org/wiki/Wu_(state)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R017",
+   "verdict": "pass",
+   "what": "wu ledger/0 (found -1100) is now Wuxi 60 km (resolves to Wuxi, China, 120.30/31.58, 56 cells) plus the 120.62/31.30 60 km disc. The page has 'first capital at Meili (in modern Wuxi)', 'later moved to Gusu (probably in modern Suzhou)', Jiangsu in the infobox. wu_-750 is controlled by m0700-m0601 (override checked: same disc), so leaving it is right. Validates OK.",
+   "page": "https://en.wikipedia.org/wiki/Wu_(state)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R061",
+   "verdict": "pass",
+   "what": "yarubid ledger/1 (1633) is now Ras al Khaymah, UAE, 30 km (7 cells at 55.94/25.79). Ya'rubid page: 'His forces threw the Portuguese out of Julfar (now Ras al-Khaimah) in 1633'. Julfar page: 'a predecessor settlement to Ras Al Khaimah'. The keyframe _1626 respelling is harmless, because p1620-p1629 controls it. Validates OK.",
+   "page": "https://en.wikipedia.org/wiki/Ya%27rubid_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R094",
+   "verdict": "pass",
+   "what": "yarubid ledger/9 (1742 loss to afsharid-iran): the Julfar element is now Ras al Khaymah, UAE, so the event resolves. Page: 'A Persian expedition arrived at Julfar around October 1742', and they could not take Sohar or Muscat ('In 1743 Saif was tricked into letting the Persians take the last forts in Muscat'). A loss of Julfar in 1742 is consistent with that. The caveat about the Batinah part is in the note.",
+   "page": "https://en.wikipedia.org/wiki/Ya%27rubid_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R004",
+   "verdict": "fixed",
+   "what": "Fixer's change holds: ledger/2 is Acilisene alone (48 cells, Erzincan plain), and keyframes _-188 and _-110 are the union of the Cliopatria shape and Acilisene. Page: 'Zariadres conquered Acilisene to the north, the otherwise unknown Akisene to the west'; map caption 'Territories conquered during the reign of Zariadres (c. 190-163 BC)'; no year. The 25 cells that overlap Armenia go to Sophene by R2 (both list each other; the later-born one wins), not by the size rule as the notes say; the result is the same. Side effect fixed: 32 of the Acilisene cells lay outside the successor land (the Cliopatria Sophene -110 shape), so at the -95 dissolve they would have gone to nobody. Some 7-8 of them are also outside Armenia's -95 and -91 keyframes. Page: 'Sophene was conquered by the King of Greater Armenia, Tigranes II the Great'.",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Sophene",
+   "fix": "kingdom-of-sophene: identity.successors[0] (kingdom-of-armenia).land and ledger/3 (dissolve -95) region changed to union[Cliopatria Sophene -110, region Acilisene], so Acilisene passes to Armenia with the kingdom. Validated OK with --resolve.",
+   "applied": true
+  },
+  {
+   "item": "R020",
+   "verdict": "pass",
+   "what": "new-kingdom-of-egypt_-1300 (-1300..-1241) is now adjust with union[-1500 shape, Canaan], the same spec as _-1352 and _-1273, so the 61 Syrian and Lebanese cells are no longer drawn. The -1275..-1274 Syrian keyframe and the ledger 14-17 Kadesh events are untouched. Kadesh page: 'Egypt's sphere of influence in Asia was now restricted to Canaan'; 'Egyptian influence over Amurru and Qadesh seems to have been lost forever'; treaty '(1258 BC)'. The handoff for m1200-m1101 is stale (see problems). Validates with 0 errors and the 6 old warnings.",
+   "page": "https://en.wikipedia.org/wiki/Battle_of_Kadesh",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R038",
+   "verdict": "pass",
+   "what": "Kept as 'hierarchy.csv supplies it': row 572 is 'karkota-dynasty,kashmir,625,855,same_state,3', which already draws the two as one state.",
+   "page": "https://en.wikipedia.org/wiki/Karkota_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R056",
+   "verdict": "fixed",
+   "what": "The dates are supported. Samtskhe page: Murjakheti, 'Georgians had annexed Principality of Samtskhe' (1535); 'decisively defeated, in 1545, at Sokhoista'; 'Samtskhe became vassal of the Ottoman Empire'; Kaikhosro II 1545-1573 in the table. Childir Eyalet page: 'In 1578, when the new province was established ...'; 'The Ottomans took the Ahiska region from the Principality of Meskheti, a vassal state of Safavid dynasty'; Jaqeli hereditary 'From 1625 onwards'. So 1578 rather than 1625/1628 is a sound reading. Harm found: the fixer listed ottoman-empire under identity.successors. With R2_BORN_AFTER off, a listed successor wins every conflict from its own start year (1299). The Ottoman keyframes of 1507-1572 contain 167-169 of Samtskhe's cells; conflicts.csv shows Samtskhe winning all 1,026 of those cell-years by size before this change. With the successor listed, the Ottomans would take the principality at their 1507/1516 snaps and again during 1545-1578.",
+   "page": "https://en.wikipedia.org/wiki/Childir_Eyalet",
+   "fix": "samtskhe-saatabago: ottoman-empire removed from identity.successors (principality-of-guria kept). The reason is in the ledger/4 dissolve note, which keeps counterpart ottoman-empire. Cells left at the end of 1578 fall to nobody, and the Ottoman 1579 keyframe ('ok', 171 overlapping cells) takes them in 1579. Validated OK with --resolve. Still required: drop p1500-p1599 events/1 (see problems).",
+   "applied": true
+  },
+  {
+   "item": "R083",
+   "verdict": "pass",
+   "what": "Kept (note only) is right. tibet ledger/18 is the owner-side occupation_start, and the compiler reverses the roles only because dzungar-khanate ledger/15 books Central Tibet as a plain gain from the Khoshut. p1710-p1719 events/0-2 (tibet: occupation_end, gain from dzungar-khanate, occupation_start, 1717/12, Central Tibet) bridge it. The Dzungar handoff is the real fix.",
+   "page": "https://en.wikipedia.org/wiki/Dzungar_conquest_of_Tibet",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R104",
+   "verdict": "pass",
+   "what": "ledger/5 (1783/11 occupation_start, british-colonial-empire, Belize) and its 1821 occupation_end are deleted. Page: the 1783 treaty 'gave the British rights to cut logwood between the Hondo and Belize rivers'; the 1786 Convention 'affirmed Spanish sovereignty' but 'Spain never attempted to reclaim the area after 1798'; the page does not say which captaincy held the claim. The Guatemala dossier held no Belize cells, so the pair hatched British land in Guatemala's colour. british-honduras (found 1783/11, gain 1786, 1859) still draws the settlement. No patch or note refers to the shifted ledger indices. Validates OK.",
+   "page": "https://en.wikipedia.org/wiki/British_Honduras",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R122",
+   "verdict": "pass",
+   "what": "Bavaria now ends 1918/11: dissolve into weimar-republic (born 1918/11), successors german-empire replaced by weimar-republic. Page: 'became a federated state of the new empire', 'retain its own diplomatic body and its own army'; Anif declaration 12 November 1918; 'the former Kingdom of Bavaria became the People's State of Bavaria'. The map does not change yet: german-empire ledger/1 (1871/1 gain from kingdom-of-bavaria) still takes the land, so Bavaria is alive with no cells for 1871-1918. The German Empire handoff, which also drops the predecessor entries so that R2 stops beating R3, and the hierarchy rows complete it. Validates OK.",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Bavaria",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R139",
+   "verdict": "fixed",
+   "what": "The end move to 1945/5 is supported. Page: 'On 9 April 1940, Germany invaded Denmark'; the occupation 'lasted until the Allied victory on 5 May 1945'; 'the government remained functioning de jure until the end of the war'; the King 'remained in the country'. Removing nazi-germany from the successors and the 1940-1945 adjust keyframe (1936 shape) are right. Error: the claim that 'the hatch comes from nazi-germany ledger 13/79' is false. Those events name counterpart 'denmark', which is born only in 1945/5 and holds no cells. occupation_start then hatches only nobody's cells, and while this kingdom holds Denmark there are none, so Denmark would be drawn 1940-1945 unoccupied. The p1940-p1949 patch events/9 (counterpart nobody) hatch nothing for the same reason.",
+   "page": "https://en.wikipedia.org/wiki/Occupation_of_Denmark",
+   "fix": "kingdom-of-denmark-1814-1940: added ledger/12 occupation_start 1940/4 and ledger/13 occupation_end 1945/5, counterpart nazi-germany, region country Denmark (199 cells, without the British-held Faroes), source Occupation of Denmark. This is the owner's record with the roles reversed: the compiler sees the owner holding the cells and makes Germany the occupier. The dissolve and keyframe _1940 notes are updated. Validated OK with --resolve (0 errors, 22 old warnings).",
+   "applied": true
+  },
+  {
+   "item": "R152",
+   "verdict": "pass",
+   "what": "Kept is sound. The pages give a 160 km strip with no width or coordinates, so a smaller region would be a guess. p1980-p1989 events/0 (mali-federation loss to burkina-faso 1986/12, Oudalan minus Mali's own 1985 shape) already returns the province. Only a note was added to ledger/6. Validates OK.",
+   "page": "https://en.wikipedia.org/wiki/Agacher_Strip_War",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "R056: the handoff 'drop data/patches/p1500-p1599.json events/1' is required, not a cleanup. Within a year, month-less events run in slug order, so kingdom-of-imereti's patch event (1545 loss to ottoman-empire of the Samtskhe 1502 shape) runs before samtskhe-saatabago ledger/3 (1545 gain from kingdom-of-imereti). The gain then finds Imereti empty and takes only nobody's land. The event mask also stops the samtskhe_1545 keyframe snap from taking the cells, so until events/1 is dropped Samtskhe stays landless 1545-1578 and the Ottomans hold the land from 1545.",
+  "R056: the reviewer removed ottoman-empire from samtskhe-saatabago identity.successors. Under R2 it would have won every Ottoman/Samtskhe keyframe conflict from 1299 on (1,026 cell-years in 1507-1534 that Samtskhe now wins, plus 1547-1572). The fixer's notes (polities/_notes/fix-fx-46.md) and report still say 'successors ottoman-empire + guria'.",
+  "R020: the handoff for data/patches/m1200-m1101.json keyframe_overrides (new-kingdom-of-egypt_-1240) is stale. That override is already union[-1500 shape, Canaan] for -1240..-1201 (seam round sm-01, applied by the orchestrator on 3 Nov 2026, citing the Kadesh page). Nothing to do.",
+  "R139: the handoff to drop p1940-p1949 events/9-10 is still harmless (they now hatch nothing), but its reason ('nazi-germany ledger 13/79 hatch it') is wrong. The reviewer added the occupation pair to kingdom-of-denmark-1814-1940 instead. Optional handoff for the nazi-germany owner: set the counterpart of ledger 13 (1940/4) to kingdom-of-denmark-1814-1940, and of ledger 79 (1945/5) too or leave it; as it stands they open an empty relation with 'denmark'.",
+  "R004: Acilisene is now drawn as Sophene's for -188..-95 at confidence 1, as an undated conquest of Zariadres (c. 190-163). The reviewer made the -95 dissolve and the Armenia successor land include Acilisene. Armenia's own -91 keyframe still leaves out about 8 western Acilisene cells.",
+  "R122: kingdom-of-bavaria is alive with no cells from 1871/1 to 1918/11 until the german-empire handoff (drop the 1871 gains and the predecessor entries of the surviving member states) and the hierarchy rows are applied. The compiled map does not change in the meantime.",
+  "Validation (python3 -I -B history/tools/validate_dossier.py <file> --resolve): all 10 changed dossiers OK with 0 errors. Old warnings only: new-kingdom-of-egypt 6, tibet 3, kingdom-of-denmark-1814-1940 22."
+ ]
+}

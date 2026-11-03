@@ -1,0 +1,818 @@
+{
+ "batch_id": "sa-05-f",
+ "verdicts": [
+  {
+   "slug": "nepal",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2",
+     "what": "nepal_1788 is marked ok for 1788-1790, but Cliopatria's 1788 shape already holds Jumla (admin1 Karnali, 82 cells) and Doti (Seti 50 + Mahakali 24 cells), about 39,500 km2, which the ledger gains only in 1789 (/ledger/11) and 1790 (/ledger/12).",
+     "why": "Unification of Nepal table: '1789 | Jumla is annexed', '1790 | Doti, Kumaun ...'. The gazetteer puts 0 of these cells in the 1775 shape and 82/50/24 in the 1788 shape. The note on /keyframe_review/3 says 'Doti and Jumla ... are already inside the 1788 shape', and the notes field claims the far west is 'added by the ledger'.",
+     "fix": "Verdict adjust; correction {\"minus\": [{\"cliopatria\": \"Nepal\", \"year\": 1788}, {\"union\": [{\"admin1\": \"Karnali\", \"country\": \"Nepal\"}, {\"admin1\": \"Seti\", \"country\": \"Nepal\"}, {\"admin1\": \"Mahakali\", \"country\": \"Nepal\"}, {\"admin1\": \"Sikkim\", \"country\": \"India\"}]}], \"text\": \"Cliopatria's 1788 shape without Jumla (annexed 1789), Doti (1790) and occupied Sikkim\"}.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/3, /keyframe_review/4/correction, /keyframe_review/13",
+     "what": "Sikkim (24 of its 27 cells, about 6,000 km2) is direct territory in the 1788, 1791, 1792 and 1814 shapes but is left out in 1775-1787 and 1794-1813, while the ledger hatches it as an occupation for the whole of 1776-1816. It leaves the direct shape at 1794 and re-enters at 1814 with no ledger event.",
+     "why": "/ledger/7 note: 'Hatched, not annexed: Cliopatria draws Sikkim inside Nepal only in 1788-1793 and in 1814'. /keyframe_review/4 correction text: 'the 1791 Nepal shape (Nepal with Kumaon, Sikkim and the Teesta strip)'. /keyframe_review/5 text: 'Sikkim is occupied, not annexed'. Kingdom of Sikkim infobox: 'Nepalese domination (1776-1792)', 'Nepalo-Bhutanese presence (1792-1816)'.",
+     "fix": "Remove {\"admin1\": \"Sikkim\", \"country\": \"India\"} from the 1788 (see the finding above), 1791 (verdict adjust), 1792 (inside its correction) and 1814 (verdict adjust) shapes, so that Sikkim is the hatched occupation throughout. Alternatively, add dated gain and loss events with a page for any years Sikkim was annexed.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/wars/0/from",
+     "what": "The 'Unification of Nepal' war started in 1744, before the dossier's life (start 1768-09).",
+     "why": "Brief check 2: wars inside the life. The war's own note gives the 1744-1767 campaigns to gorkha-kingdom. Unification of Nepal page: 'On 25 September 1768, he officially announced the creation of the Kingdom of Nepal'.",
+     "fix": "from 1768; a sentence added to the note. Re-validated, 0 errors.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/14/correction",
+     "what": "nepal_1815 removes the western Terai from 1815, and Cliopatria's 1815 shape lacks the Mechi-Teesta strip, yet both losses are dated March 1816 (/ledger/24, /ledger/25). The correction's own text says 'in 1815 the British held the west but the Terai was still Nepal's'.",
+     "why": "Treaty of Sugauli ratified 4 March 1816 (Anglo-Nepalese War page).",
+     "fix": "Keep the western Terai and add {\"intersect\": [{\"admin1\": \"West Bengal\", \"country\": \"India\"}, {\"cliopatria\": \"Nepal\", \"year\": 1814}]} in the 1815 shape, letting the 1816 losses remove them; or say why not. Not blocking (under a year).",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "nepal_1768 takes in the whole Bagmati zone, Bhaktapur included, from September 1768, while /ledger/4 gains Bhaktapur on 14 April 1769.",
+     "why": "Unification page: 'the Battle of Bhaktapur on 14 April 1769 A.D.'",
+     "fix": "Optional: leave a Bhaktapur radius out of the 1768 shape. Not blocking: small area, seven months.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/28/note",
+     "what": "The note gives the 1860 return as 'a reward for help in the 1857 rebellion'; the cited Nepal page says 'as a friendly gesture'.",
+     "why": "Nepal page: 'In 1860 some parts of the western Terai region were gifted to Nepal by the British as a friendly gesture.'",
+     "fix": "Quote the page's wording, or cite a page that gives the 1857 reason. Not blocking.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1 to /keyframe_review/2",
+     "what is missing": "About 65,000 km2 enters between 1775 and 1788 with no dated event: Dhawalagiri 8,100, Rapti 10,400, Lumbini 9,100, the Terai now in Uttar Pradesh 8,850 km2, plus a Tibetan fringe. These are the Chaubisi and Palpa annexations (author flagged).",
+     "page to try": "https://en.wikipedia.org/wiki/Chaubisi_Rajya"
+    },
+    {
+     "where": "/ledger/17",
+     "what is missing": "Names and year of the hill states between Garhwal and the Sutlej (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Bushahr_State"
+    },
+    {
+     "where": "/ledger/18",
+     "what is missing": "Start year of the Gorkha siege of Kangra (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Sansar_Chand"
+    },
+    {
+     "where": "/ledger (1855-1856)",
+     "what is missing": "Nepal-Tibet war of 1855-56: an occupation of Kuti and Kerung, returned by the Treaty of Thapathali.",
+     "page to try": "https://en.wikipedia.org/wiki/Nepalese%E2%80%93Tibetan_War"
+    },
+    {
+     "where": "/ledger/24",
+     "what is missing": "Which Terai lands came back in December 1816 (the Anglo-Nepalese War page: 'some of them were returned to the kingdom later in 1816').",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Sugauli"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0, /ledger/1, /ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Unification_of_Nepal",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Unification_of_Nepal",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5, /ledger/6, /ledger/8, /ledger/11, /ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Unification_of_Nepal",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Sikkim",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Kumaon_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Anglo-Nepalese_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/21, /ledger/22, /ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Anglo-Nepalese_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/27, /ledger/28, /ledger/29",
+     "page": "https://en.wikipedia.org/wiki/Nepal",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 147181,
+    "infobox_year": 2024,
+    "cliopatria_km2": 148575,
+    "ratio": 1.01,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "sikh-empire",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/identity/rulers/1 to /identity/rulers/6",
+     "what": "Six of the seven rulers cite no page.",
+     "why": "Sikh Empire page, table of Maharajas: Kharak Singh '27 June 1839' to '8 October 1839', Nau Nihal Singh to '6 November 1840', Chand Kaur (regent) to '18 January 1841', Sher Singh to '15 September 1843', Duleep Singh and Jind Kaur (regent; nominal) '15 September 1843' to '29 March 1849', exactly as in the notes.",
+     "fix": "source https://en.wikipedia.org/wiki/Sikh_Empire added to each. Re-validated, 0 errors.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (1807) and /keyframe_review/3, /keyframe_review/4",
+     "what is missing": "Jhang annexed in 1807 (Ranjit Singh page, already a source: 'In the same year he also annexed the Sial-ruled Jhang'). Jhang enters Cliopatria only in 1820 (18 of the 31 cells of a 50 km radius round Jhang; none in 1807 or 1811). Add a 1807 gain and add Jhang to the 1807 and 1811 corrections.",
+     "page to try": "https://en.wikipedia.org/wiki/Ranjit_Singh"
+    },
+    {
+     "where": "/ledger (1846-12 to 1849-03)",
+     "what is missing": "The Treaty of Bhyroval protectorate. The First Anglo-Sikh War page (a source) has Jind Kaur 'replaced by a British resident in Lahore', which 'effectively gave the East India Company control of the government'. Add vassal_start 1846 month 12 with counterpart british-empire over the whole Lahore state, and vassal_end 1849 month 3.",
+     "page to try": "https://en.wikipedia.org/wiki/First_Anglo-Sikh_War"
+    },
+    {
+     "where": "/keyframe_review/4 to /keyframe_review/5",
+     "what is missing": "About 92,000 km2 enters between 1811 and 1820 with no dated event beyond Attock (25 km), the Kashmir Valley region and the Kangra radius: about 47,000 km2 in Pakistani Punjab (Pothohar and Rawalpindi, Jhelum, Gujrat, Khushab), 24,000 km2 of Kashmir outside the Valley region (Poonch, Rajouri, Bhimber, Muzaffarabad) and 16,000 km2 of Himachal hill states.",
+     "page to try": "https://en.wikipedia.org/wiki/Hari_Singh_Nalwa"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "The 1800 core of 50,300 km2 (confidence 1, page silent): the misls Ranjit Singh held in 1800-1802.",
+     "page to try": "https://en.wikipedia.org/wiki/Sukerchakia_Misl"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "Sikh entry into Kangra in 1809 (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Kangra_Fort"
+    },
+    {
+     "where": "/ledger/13",
+     "what is missing": "The 1830 Hazara and Pothohar step (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Hari_Singh_Nalwa"
+    },
+    {
+     "where": "/keyframe_review/12",
+     "what is missing": "The 1842 northern step near Gilgit (unverified: page budget).",
+     "page to try": "https://en.wikipedia.org/wiki/Gilgit"
+    },
+    {
+     "where": "/keyframe_review/10",
+     "what is missing": "Dates of Kohat, Bannu and the Derajat before 1836.",
+     "page to try": "https://en.wikipedia.org/wiki/Bannu"
+    },
+    {
+     "where": "/ledger (1847)",
+     "what is missing": "The 1847 Lahore-Jammu exchange: 'the talukas of Kathua and Suchetgarh, along with part of Minawar' went to Gulab Singh for Hazara (Treaty of Amritsar (1846) page). A small loss to kashmir-and-jammu.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Amritsar_(1846)"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "The 1806-1808 cis-Sutlej campaigns (Faridkot, Ambala), which the 1809 loss gives back; no gain is recorded.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Amritsar_(1809)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Sikh_Empire",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4, /ledger/8, /ledger/9, /ledger/12, /ledger/15, /ledger/18, /ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Sikh_Empire",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7, /ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Ranjit_Singh",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Dera_Ghazi_Khan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/21, /ledger/22, /ledger/23, /ledger/24",
+     "page": "https://en.wikipedia.org/wiki/First_Anglo-Sikh_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/27",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Amritsar_(1846)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/identity/rulers",
+     "page": "https://en.wikipedia.org/wiki/Sikh_Empire",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 520000,
+    "infobox_year": 1839,
+    "cliopatria_km2": 349342,
+    "ratio": 0.67,
+    "acknowledged": true,
+    "note": "corrected direct land about 265,000 km2 (ratio 0.51), acknowledged in /keyframe_review/10 as the infobox counting claims"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1768,
+    "type": "gain",
+    "counterpart": "kathmandu"
+   },
+   "mirror": {
+    "slug": "kathmandu",
+    "year": 1768,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "The year matches (kathmandu 1768-09 contest_end and dissolve), but kathmandu names gorkha-kingdom as its counterpart and successor. This follows from the gorkha-kingdom/nepal split at 25 September 1768; settle it with the gorkha-kingdom author (sa-05)."
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1768,
+    "type": "gain",
+    "counterpart": "Lalitpur (Patan)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed (Malla kingdoms)"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1769,
+    "type": "gain",
+    "counterpart": "Bhaktapur"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed (Malla kingdoms)"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1771,
+    "type": "gain",
+    "counterpart": "Kaski and the Sapta Gandaki principalities"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no dossier and not in the author's counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1774,
+    "type": "gain",
+    "counterpart": "Chainpur and Vijaypur (Kirant chiefdoms)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "named in the notes, not in the report's counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1776,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-sikkim"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed; ends 1816-03 (/ledger/26)"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1786,
+    "type": "gain",
+    "counterpart": "Bheri hill principalities"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no dossier, not listed"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1788,
+    "type": "occupation_start",
+    "counterpart": "tibet"
+   },
+   "mirror": {
+    "slug": "tibet",
+    "year": 1788,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "end 1789 matched too"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1789,
+    "type": "gain",
+    "counterpart": "Jumla"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed (Doti and Jumla)"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1790,
+    "type": "gain",
+    "counterpart": "Doti"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1791,
+    "type": "gain",
+    "counterpart": "kumaon-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed (sa-05-x)"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1791,
+    "type": "occupation_start",
+    "counterpart": "tibet"
+   },
+   "mirror": {
+    "slug": "tibet",
+    "year": 1791,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "end 1792-10 matched too"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1804,
+    "type": "gain",
+    "counterpart": "garhwal-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed (sa-05-x)"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1806,
+    "type": "gain",
+    "counterpart": "hill chiefdoms east of the Sutlej"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "not listed; confidence 1"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1815,
+    "type": "loss",
+    "counterpart": "british-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "two losses 1815-04 and 1815-05; british-empire (sa-06) has not run"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1816,
+    "type": "loss",
+    "counterpart": "british-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "western Terai and the Mechi-Teesta strip; sa-06 has not run"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1860,
+    "type": "gain",
+    "counterpart": "british-raj"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "sa-06 has not run"
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1799,
+    "type": "found",
+    "counterpart": "sikh-confederacy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "sikh-confederacy (another sa-05 part) not written yet; also 1800 and 1802 gains from it"
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1800,
+    "type": "gain",
+    "counterpart": "Jammu (the ruler of the Jammu region)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed (kingdom-of-jammu)"
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1807,
+    "type": "gain",
+    "counterpart": "Kasur (Muslim-ruled principality)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed with the nawabs"
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1809,
+    "type": "gain",
+    "counterpart": "kangra-state"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed"
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1809,
+    "type": "loss",
+    "counterpart": "british-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "sa-06 has not run"
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1813,
+    "type": "gain",
+    "counterpart": "durrani-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "durrani-empire (ia-03) has no 1813 loss of Attock"
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1818,
+    "type": "gain",
+    "counterpart": "Multan (Nawab Muzaffar Khan)"
+   },
+   "mirror": {
+    "slug": "durrani-empire",
+    "year": 1818,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Same year and land, but the counterparts are named differently: durrani-empire records the loss to sikh-empire, while sikh-empire names the nawab. Harmonise, for example by setting the Sikh counterpart to durrani-empire (the page: 'which ended Afghan influence in Punjab')."
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1819,
+    "type": "gain",
+    "counterpart": "durrani-empire"
+   },
+   "mirror": {
+    "slug": "durrani-empire",
+    "year": 1819,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Kashmir; durrani gives month 7"
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1819,
+    "type": "gain",
+    "counterpart": "Dera Ghazi Khan (Mirani nawabs under Kabul)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed; durrani-empire records neither this nor Mankera 1821"
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1823,
+    "type": "vassal_start",
+    "counterpart": "Peshawar (Afghan governors)"
+   },
+   "mirror": {
+    "slug": "durrani-empire",
+    "year": 1823,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "The types differ: durrani-empire has a 1823-03 loss to sikh-empire, while the Sikh ledger has a tributary relation ('Peshawar became tributary in 1823'). The durrani-empire side should become a vassal relation or be dropped."
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1834,
+    "type": "gain",
+    "counterpart": "Peshawar (Afghan governors)"
+   },
+   "mirror": {
+    "slug": "emirate-of-afghanistan",
+    "year": 1834,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "The emirate records a contest with sikh-empire over Peshawar, 1834 to 1837-04 (Jamrud); the Sikh ledger has the annexation but no contest."
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1834,
+    "type": "vassal_start",
+    "counterpart": "Ladakh (Namgyal kingdom, Dogra conquest)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed (sa-06); Baltistan 1840 likewise"
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1836,
+    "type": "gain",
+    "counterpart": "Sadozai nawabs of Dera Ismail Khan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed"
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1841,
+    "type": "occupation_start",
+    "counterpart": "tibet"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "the tibet dossier (ea-06) has no 1841 Dogra occupation of Ngari"
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1846,
+    "type": "loss",
+    "counterpart": "british-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "two losses 1846-03; sa-06 has not run"
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1847,
+    "type": "gain",
+    "counterpart": "kashmir-and-jammu"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "sa-06 has not run"
+  },
+  {
+   "event": {
+    "slug": "sikh-empire",
+    "year": 1849,
+    "type": "dissolve",
+    "counterpart": "british-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "sa-06 has not run; durrani-empire lists sikh-empire as a successor, but sikh-empire does not list durrani-empire as a predecessor"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Ngari",
+   "kind": "region",
+   "used_in": "sikh-empire"
+  },
+  {
+   "name": "Hazara",
+   "kind": "region",
+   "used_in": "sikh-empire"
+  },
+  {
+   "name": "Attock",
+   "kind": "place",
+   "used_in": "sikh-empire"
+  },
+  {
+   "name": "Faridkot",
+   "kind": "place",
+   "used_in": "sikh-empire"
+  },
+  {
+   "name": "Pothohar",
+   "kind": "region",
+   "used_in": "sikh-empire"
+  },
+  {
+   "name": "Jalandhar Doab",
+   "kind": "region",
+   "used_in": "sikh-empire"
+  },
+  {
+   "name": "Sind Sagar Doab",
+   "kind": "region",
+   "used_in": "sikh-empire"
+  },
+  {
+   "name": "Poonch",
+   "kind": "region",
+   "used_in": "sikh-empire"
+  },
+  {
+   "name": "Terai (western Terai, Naya Muluk)",
+   "kind": "region",
+   "used_in": "nepal"
+  },
+  {
+   "name": "Kumaon",
+   "kind": "region",
+   "used_in": "nepal"
+  },
+  {
+   "name": "Garhwal",
+   "kind": "region",
+   "used_in": "nepal"
+  },
+  {
+   "name": "Kangra",
+   "kind": "region",
+   "used_in": "nepal"
+  },
+  {
+   "name": "Kirat (Limbuwan)",
+   "kind": "region",
+   "used_in": "nepal"
+  },
+  {
+   "name": "Bhaktapur",
+   "kind": "place",
+   "used_in": "nepal"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Kaski and the Chaubisi principalities",
+   "suggested_slug": "chaubisi-rajya",
+   "years": [
+    1500,
+    1786
+   ]
+  },
+  {
+   "name": "Kirant chiefdoms (Chainpur, Vijaypur, Limbuwan)",
+   "suggested_slug": "limbuwan",
+   "years": [
+    1600,
+    1774
+   ]
+  },
+  {
+   "name": "Baise principalities of the Bheri and Karnali",
+   "suggested_slug": "baise-rajya",
+   "years": [
+    1500,
+    1789
+   ]
+  },
+  {
+   "name": "Hill states between Garhwal and the Sutlej (Sirmur, Hindur, Bashahr, Bilaspur)",
+   "suggested_slug": "sirmur-state",
+   "years": [
+    1600,
+    1815
+   ]
+  },
+  {
+   "name": "Sial nawabs of Jhang",
+   "suggested_slug": "jhang-state",
+   "years": [
+    1700,
+    1807
+   ]
+  },
+  {
+   "name": "Kingdom of Sikkim",
+   "suggested_slug": "kingdom-of-sikkim",
+   "years": [
+    1642,
+    1975
+   ]
+  },
+  {
+   "name": "Kumaon Kingdom",
+   "suggested_slug": "kumaon-kingdom",
+   "years": [
+    1563,
+    1791
+   ]
+  },
+  {
+   "name": "Garhwal Kingdom",
+   "suggested_slug": "garhwal-kingdom",
+   "years": [
+    1517,
+    1815
+   ]
+  },
+  {
+   "name": "Kangra State",
+   "suggested_slug": "kangra-state",
+   "years": [
+    1806,
+    1846
+   ]
+  },
+  {
+   "name": "Raja of Jammu (Dogras)",
+   "suggested_slug": "kingdom-of-jammu",
+   "years": [
+    1800,
+    1846
+   ]
+  },
+  {
+   "name": "Sukerchakia Misl",
+   "suggested_slug": "sukerchakia-misl",
+   "years": [
+    1763,
+    1799
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-sa-05-f.md",
+ "problems": [
+  "The orchestrator's rule (any unapplied blocking finding fails the dossier) makes nepal a fail on two keyframe consistency findings (/keyframe_review/2 and the Sikkim status across /keyframe_review/2, 3, 4 and 13). Its sourcing is sound: every spot-checked event was on its page with its year.",
+  "Fixes applied by the reviewer and re-validated (0 errors): nepal /wars/0/from 1744 changed to 1768; sikh-empire /identity/rulers/1 to 6 given the source https://en.wikipedia.org/wiki/Sikh_Empire.",
+  "Neighbour dossiers not yet written (groups not run): qing-dynasty, british-empire, british-raj, republic-of-india, people-s-republic-of-china, people-s-republic-of-bangladesh, talpur-dynasty, islamic-republic-of-pakistan, nawab-of-awadh, gorkha-kingdom, sikh-confederacy, british-colonial-empire, kashmir-and-jammu.",
+  "Routing: durrani-empire (ia-03) lacks the 1813 Attock loss, records Peshawar 1823 as a loss rather than a tributary relation, and names a different counterpart for Multan 1818; tibet (ea-06) lacks the 1841 Dogra occupation of Ngari; kathmandu names gorkha-kingdom, not nepal, for the 1768 conquest.",
+  "WebFetch returns a model summary of each page, so quotes are as summarised. No page failed to load."
+ ]
+}

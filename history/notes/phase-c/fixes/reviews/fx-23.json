@@ -1,0 +1,118 @@
+{
+ "batch_id": "fx-23",
+ "checks": [
+  {
+   "item": "F016",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Hephthalites",
+   "what": "Supported: Hephthalites page 'they never went beyond the Hindu-Kush, which was occupied by the Alchon Huns'; Alchon Huns page: 'now regarded as a separate entity', Kabulistan c. 380-385, Gandhara and the Punjab 460-470. After the fix white-huns and alchon-huns share 0 cells in every year 451-555, but in 450 the overlap stayed at 182 cells (all of Kabulistan and Bamyan): the 'wrong' entry white-huns_410 has no from/to, so its shapes.csv years (410-450) reached 450 and the compiler drew its correction (the Kidarites 410 shape, 3,249 cells) beside the 450 keyframe.",
+   "fix": "white-huns keyframe_review[0] (white-huns_410): from 410, to 449 (its text: 'no White Huns shape for 410-449'). White Huns 450 is now the 583-cell Kunduz core, 0 cells shared with alchon-huns. Validated ok.",
+   "applied": true
+  },
+  {
+   "item": "F020",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Uyghur_Khaganate",
+   "what": "Supported: page has Kulun Beg killed in 745, Kutlug's realm 'Shiwei ... Altai Mountains ... Gobi Desert', Turfan only after Talas (751), the Kyrgyz in 758; nothing puts Dzungaria, Tuva or the Tarim under the Uyghurs before 751. Keyframe 745-749 equals the 745 gain (10,705 cells), so 744 and 745 no longer snap. Side effect the fixer reported: the 750 'ok' keyframe now adds 1,549 cells at 750 with no event (Xinjiang 744, Tuva 462, East Kazakhstan 200, Almaty 143); see problems.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F037",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Rouran_Khaganate",
+   "what": "Supported: page 'covered all of modern-day Mongolia and Inner Mongolia, as well as parts of Manchuria', infobox '405: 2,800,000 km2', 460 Turpan/Gaochang the first dated western step. The 402 found equals the 402 keyframe (11,694 cells) and the 460 gain equals the 460 keyframe. But the 402-475 extent holds 1,224 cells of north-eastern Inner Mongolia (Hulunbuir, Greater Khingan, 39 Dornod) that no Cliopatria Rouran shape draws, so the 476 keyframe would have dropped them with no event (a new 1,225-cell snap).",
+   "fix": "rouran-khaganate keyframes 476, 480, 487, 534, 546: base Cliopatria shape united with that north-eastern corner ((Mongolia + Inner Mongolia) minus the Cliopatria 476 shape, inside a lon 115-127 / lat 44-54 box; resolves to exactly the 1,224 cells), per the page's 'all of ... Inner Mongolia'. Keyframe-to-keyframe change at 476 is now +2/-1. Validated ok.",
+   "applied": true
+  },
+  {
+   "item": "F050",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Rouran_Khaganate",
+   "what": "Supported (Rouran 'considered vassals (chen) by Tuoba Wei'; Wei drove them from the Ordos). Rouran/Wei overlap is 2-6 cells in 402-533. In 534 (Northern Wei's last year) it was still 363 cells: rouran-khaganate_534 had no from/to, so its shapes.csv years (534-545) overlapped the 487 keyframe (487-540) and the union put the Wei frontier land, Zhetysu (128) and Dzungaria (1,741) back in 534, although its own text says 'valid 541-545' and Dzungaria returns only with the 541 ledger gain.",
+   "fix": "rouran-khaganate_534: from 541, to 545; keyframes 534 and 546 also subtract the Northern Wei land (the 487 keyframe's Wei union) and Semirechye, so 541 adds only the Dzungaria of the 541 gain. Wei overlap now 5 cells in 534, 0 after. Validated ok.",
+   "applied": true
+  },
+  {
+   "item": "F160",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Yueban",
+   "what": "Supported: Yueban page 'conquered Zhetysu, where they established the principality', 'In 448 the Emperor Taiwu of Northern Wei received an envoy from the Yueban to negotiate a war with the Rouran', principality ended in the 480s; nothing gives the Rouran Zhetysu. Rouran/Yueban overlap is 0 in 402-490. Separately, rouran-khaganate_480 had no from/to (its note says 480-486): shapes.csv 480-533 overlapped the 487 keyframe and kept Dzungaria (1,741 cells) Rouran in 487-533 against the ledger's 487 loss to the Fufuluo.",
+   "fix": "rouran-khaganate_480: from 480, to 486. Dzungaria now leaves in 487 and returns in 541, matching ledger 4 and 5. Validated ok.",
+   "applied": true
+  },
+  {
+   "item": "F041",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Alexander_the_Great",
+   "what": "Supported in part: page has India invaded in 326 BC, the Hyphasis as the easternmost point, the return 'along the Gedrosian Desert and Makran', Craterus to Carmania, Susa in 324 BC; no year for the march, so the -325 gain is a confidence-1 bridge. Error: the -326 keyframe also cut Carmania (Kerman, 720 cells) and the Achaemenid part of Sistan-Baluchestan and Baluchistan (260 cells). This state already held them as the achaemenid-empire successor land of 330 (its 331 shape; Kerman was not among the -326 snap's added places). So they would have dropped out for -326 and come back with the -325 gain.",
+   "fix": "macedonian-empire_-326 correction: the subtracted return-march set is now minus the Cliopatria Achaemenid Empire -331 shape, so only 1,767 cells are cut (Baluchistan 1,247, Sistan-Baluchestan 520), matching the old snap's added Baluchistan 1,301 / Sistan-Baluchestan 519. Validated ok. The -326 snap is NOT gone; see the next check.",
+   "applied": true
+  },
+  {
+   "item": "F041 (remaining -326 snap)",
+   "verdict": "fail",
+   "page": "https://en.wikipedia.org/wiki/Alexander_the_Great",
+   "what": "The -326 keyframe still adds about 2,500-3,600 cells with no event: Hilmand 210, Hirat 203, Kandahar 197, Farah 179, Nimroz 157, K.P. 141, Chardzhou 132, Ghor 129, Ahal 117, Uruzgan 98 and the rest of Afghanistan. Cause: achaemenid-empire ledger 44 (-330 split to bessus-artaxerxes-v) takes the Achaemenid 331 shape inside Afghanistan, Pakistan, Uzbekistan, Tajikistan, Kyrgyzstan and Turkmenistan (4,707 cells; 1,201 of them are also in this dossier's -330 gain of Aria, Drangiana and Arachosia). bessus-artaxerxes-v's -329 dissolve passes only Bactria and Sogdia to this state, so the rest is nobody's until the -326 keyframe snaps it in. The fixer's 'fixed' is overstated.",
+   "fix": "Either add to macedonian-empire a -329 gain (counterpart bessus-artaxerxes-v, confidence 2, Alexander the Great page: Bessus betrayed to Ptolemy and executed in 329). Region: the -326 keyframe intersected with the achaemenid-empire ledger 44 split region, minus Bactria and Sogdia (Aria, Drangiana, Arachosia, Margiana, Paropamisadae). Or widen bessus-artaxerxes-v identity.successors[0].land to its whole land (handoff, not owned here).",
+   "applied": false
+  },
+  {
+   "item": "F069",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Antigonus_I_Monophthalmus",
+   "what": "Supported: 'He assumed the title of basileus (king) in 306 BC'; Babylonian War 311-309, Seleucus 'secured control over the eastern provinces'; Antigonus's realm 'Greece, Asia Minor, Syria, Phoenicia and northern Mesopotamia'. Keyframes now run -307 (with Asia) and -306 (Balkans), matching the -306 split to antigonid-dynasty; the widened -309 loss removes the eastern remainder. The removed side of the -307 snap falls from 4,722 to about 400-500 cells, mostly Anatolian cells of the -315 shape that are outside the -307 shape (Turkey 340: Konya, Mersin, Adana, Sanliurfa) plus Greece 59. This residual is small and was not changed.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F045",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Japanese_War",
+   "what": "Supported: South Sakhalin Operation 11-25 August 1945, Kuril landing 18 August-1 September 1945, 'Soviet annexation of South Sakhalin and the Kuril Islands'; the Soviets 'stayed out of China proper'; Korea north of the 38th parallel only. The 1945 keyframe now holds Sakhalin and Kurils (342 cells; the compiler checks keyframes after the year's events), and the 1946 keyframe drops Hebei and South Korea. But the 1947 keyframe (the Cliopatria 1947 shape) still held Hebei 349 and South Korea 28, so they would snap in at 1947 and out at 1948. The Manchurian part is the manchukuo handoff.",
+   "fix": "union-of-soviet-socialist-republics_1947: Hebei and South Korea added to the subtracted union (as in 1946). Hebei is 0 in the 1945-1948 keyframes. Validated ok.",
+   "applied": true
+  },
+  {
+   "item": "F047",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Sheng_Shicai",
+   "what": "Handoff checked against the dossiers: republic-of-china ledger 50 (1937 loss of Xinjiang to the USSR) and 60 (1943-10 gain back) exist as described, and the USSR 1940 keyframe leaves Xinjiang out. Correct that the fix belongs in republic-of-china. Page not re-opened (no change made).",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F090",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Gupta_Empire",
+   "what": "Supported: Gupta page 'loss of control over much of western India after 467-469', the northwest 'overrun by the Huns by 500'; Alchon page 'Between 460 and 470 CE, the Alchons took over Gandhara and the Punjab'. 470 in both dossiers is a fair meeting point, and the mirror events are consistent. But gupta-empire_451 (no from/to; its text says 'holds 451-461 only') ran 451-475 by shapes.csv. It still holds the Punjab and was drawn with the new 470 keyframe, so the Punjab stayed Gupta in 470-475 (1,104 cells shared with alchon-huns). Also gupta-empire_546 still drew 100 Punjab cells (Haryana edge) after 534 had dropped them: a new 100-cell snap at 546.",
+   "fix": "gupta-empire_451: from 451, to 461 (451 minus 462 is 0 cells, so 462-469 is unchanged). gupta-empire_546 also subtracts the Punjab. Gupta/Alchon overlap now 45 cells in 460-469 (Gandhara edge), 7 in 470-489, 0 after. Validated ok.",
+   "applied": true
+  },
+  {
+   "item": "F190",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Samudragupta",
+   "what": "Supported: 'Samudragupta captured (and later released)' the Dakshinapatha kings (Pishtapura, Vengi, Kottura, Devarashtra, Kanchi ...); 'The southern kings were not under his direct suzerainty: they only paid him tribute'; direct control 'from the Ravi'. The Gupta Empire page has no Gupta administration in Andhra. Andhra Pradesh and Telangana cells are 0 in all 22 Gupta keyframes, and overlap with ananda-gotrika-dynasty is at most 1 cell.",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "macedonian-empire: the -326 keyframe snap remains at about 2,500-3,600 added cells (Afghanistan, Margiana, K.P.). Cause: achaemenid-empire ledger 44 splits the Achaemenid east to bessus-artaxerxes-v, whose -329 dissolve passes only Bactria and Sogdia on. See check 'F041 (remaining -326 snap)' for the fix; this needs a new F-item or a handoff to achaemenid-empire / bessus-artaxerxes-v.",
+  "uyghur-khaganate: the 750 'ok' keyframe adds 1,549 cells at 750 with no ledger event (Xinjiang 744, Tuva 462, East Kazakhstan 200, Almaty 143). The page dates Turfan after 751 and the Kyrgyz in 758, and nothing dates Dzungaria. Needs either a 750 adjust (same subtraction as 745, with Tuva out until 758) plus a dated or bridged gain of Dzungaria, or acceptance of the snap.",
+  "white-huns: the 490-533 keyframes and the 490 gain (counterpart nobody, confidence 1) still draw about 1,400 cells south of the Hindu Kush outside the Alchon country: Pakistani Baluchistan 1,233, Himachal Pradesh 66, K.P., Jammu and Kashmir. The Hephthalites page ('never went beyond the Hindu-Kush') does not support them. The 560 loss to turk-shahis (Kabulistan) is now nearly empty because the 555 keyframe no longer holds Kabulistan.",
+  "General compiler behaviour found here: a keyframe_review entry without from/to takes its shapes.csv years, and a 'wrong' verdict with a correction is still drawn as that correction. Prose like 'holds 451-461 only' is not parsed, so overlapping keyframes are unioned. Four such cases were fixed in this batch (white-huns_410, gupta-empire_451, rouran-khaganate_480, rouran-khaganate_534); other dossiers may have more.",
+  "manchukuo handoff (F045) and republic-of-china handoff (F047) still pending: about 5,400 Manchurian and Inner Mongolian cells snap off the USSR in 1946, and Xinjiang is nobody's in 1940-1943.",
+  "macedonian-empire -307: about 400-500 removed cells remain (Anatolian cells of the -315 shape outside the -307 shape, Greece 59); small residual snap."
+ ],
+ "validation": {
+  "alchon-huns": "ok",
+  "gupta-empire": "ok",
+  "macedonian-empire": "ok",
+  "rouran-khaganate": "ok (2 pre-existing warnings: fufuluo counterpart)",
+  "union-of-soviet-socialist-republics": "ok",
+  "uyghur-khaganate": "ok (3 pre-existing warnings: ruler spans after 840)",
+  "white-huns": "ok"
+ }
+}

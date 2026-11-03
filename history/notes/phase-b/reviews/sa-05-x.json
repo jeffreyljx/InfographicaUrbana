@@ -1,0 +1,2012 @@
+{
+ "batch_id": "sa-05-x",
+ "verdicts": [
+  {
+   "slug": "gwalior-state",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2/correction, /keyframe_review/3/correction, /ledger/4/region, /ledger/9/region",
+     "what": "The Doab is drawn as the gazetteer's whole {\"region\": \"Doab\"} (135,554 km2, east to 81.82 E at Allahabad), which takes in the lower Doab (Kora, Allahabad, the Etawah-Kanpur side) that nawab-of-awadh holds from 1775 to its 1801 cession to the British; KF2/KF3 (1788-1802) and the 1803 loss therefore lie on Awadh's land with no event between the two dossiers.",
+     "why": "gwalior KF3 resolves to 769 cells; 174 of them (about 44,000 km2) fall inside Cliopatria's 'Nawab of Awadh' 1790 shape and about 253 (64,000 km2) inside the nawab-of-awadh dossier's 1788-1800 keyframes; nawab-of-awadh /ledger/8 (1775 gain of 'the Doab districts of Kora, Allahabad and Fatehpur-Kanpur-Etawah side') and /ledger/10 (1801 loss to british-empire). The Second Anglo-Maratha War page says only that Scindia ceded the 'Ganges-Jamuna Doab' (his share). L4 is confidence 1.",
+     "fix": "Restrict the Doab in KF2, KF3, L4 and L9 to Scindia's upper Doab, e.g. {\"minus\": [{\"region\": \"Doab\"}, {\"cliopatria\": \"Nawab of Awadh\", \"year\": 1790}], \"text\": \"the upper Ganges-Jamuna Doab (Aligarh, Meerut, Saharanpur side)\"}, and restate the KF2/KF3 areas in their notes.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/3, /keyframe_review/7..9/correction",
+     "what": "The circles overlap three sibling dossiers of this batch with no event: KF3 (1790-1802) covers about 7,300 km2 of bharatpur-state (the Agra 70 km circle over the Bharatpur 60 km circle, while Bharatpur was independent and resisted the 1805 siege); KF7-KF9 cover about 7,300 km2 of indore-state's KF1 (Ujjain 55 km, Mandsaur and Shajapur circles over Indore 52 km and Mehidpur); KF9 covers about 4,300 km2 of bhopal-state (the Bhilsa circle).",
+     "why": "Cell intersections computed with tools/gazetteer.py: gwalior KF3 x bharatpur KF2 = 29 cells; gwalior KF9 x indore KF1 = 29 cells; gwalior KF9 x bhopal KF0 = 17 cells.",
+     "fix": "Subtract the neighbours in the Gwalior corrections and events, e.g. {\"minus\": [<Agra circle>, {\"place\": \"Bharatpur\", \"km\": 60}]}, and minus indore-state's Indore/Mehidpur circles and bhopal-state's polygon from the Malwa circles.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "Date of Scindia's acquisition of Delhi-Agra, the upper Doab and the Haryana towns (confidence 1, bridged to 1788).",
+     "page to try": "https://en.wikipedia.org/wiki/Daulat_Rao_Scindia"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "The Rajput lands taken in 1790 (Ajmer) are confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Merta"
+    },
+    {
+     "where": "/ledger/15",
+     "what is missing": "Isagarh, Bhilsa, Narwar and Sheopur zilas dated 1818 by reading (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Gwalior"
+    },
+    {
+     "where": "/ledger/18",
+     "what is missing": "The 1844 Chanderi cession is undated on the page (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Gwalior_campaign"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Gohad_State",
+     "result": "confirmed: 'Maharani committed Jauhar on 27 February 1783 and the Marathas occupied the fort'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Mahadji_Shinde",
+     "result": "confirmed: 'on 2 October 1788, Mahadji Scindia ... captured Delhi'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Second_Anglo-Maratha_War",
+     "result": "confirmed: 30 December 1803, Hisar, Panipat, Rohtak, Rewari, Gurgaon, the Doab, Delhi-Agra, parts of Bundelkhand, Broach and Gujarat districts (Gwalior State page agrees)"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Gwalior_State",
+     "result": "confirmed: 'In 1805 ... Gohad and Gwalior were restored', Chambal the northern boundary"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Gwalior_State",
+     "result": "confirmed: 'In 1811, Daulat Rao annexed the neighboring kingdom of Chanderi.'"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Gwalior_State",
+     "result": "confirmed: 1858 grants 'including the portion of Chanderi District west of the Betwa River'"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Jhansi_State",
+     "result": "confirmed: 'In 1861, the city and a dependent territory were ceded to Gwalior State'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 68291,
+    "infobox_year": 1947,
+    "cliopatria_km2": 70600,
+    "ratio": 1.03,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "indore-state",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1/from",
+     "what": "The shape grows from about 8,300 km2 (KF0) to about 27,000 km2 at 1767 with no gain in the ledger: the only 1767 event is the capital move to Maheshwar.",
+     "why": "KF0 = 33 cells, KF1 = 106 cells; ledger /ledger/1 is capital_move. The KF1 note calls the shape a floor of the 1931 districts.",
+     "fix": "Add a bridging gain at 1767 (confidence 1, the Khargone/Maheshwar, Mehidpur and Rampura-Bhanpura circles, counterpart maratha-empire or the Malwa chiefs) or start the floor at 1732 and say so in both keyframe notes.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/4, /ledger/7",
+     "what": "L4 (Tonk, Rampura, Bundi, 1805) and L7 (1818) remove land the keyframes never drew, so neither changes the map.",
+     "why": "KF1 holds only the 1931 districts; the L7 note itself says it removes nothing.",
+     "fix": "Say so in the KF1 note, or draw the pre-1818 Holkar holdings so the losses bite (see thin).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "The Holkar dominion 1732-1818 (Malwa, Nimar, Tonk, Rampura) and the terms of the Treaty of Mandsaur.",
+     "page to try": "https://en.wikipedia.org/wiki/Malhar_Rao_Holkar"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "1818 loss is confidence 1 with no region.",
+     "page to try": "https://en.wikipedia.org/wiki/Third_Anglo-Maratha_War"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Indore_State",
+     "result": "confirmed: 'On 29 July 1732, Bajirao Peshwa-I granted Holkar State by granting 28 and a half parganas'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Indore_State",
+     "result": "confirmed: capital to Maheshwar in 1767"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Second_Anglo-Maratha_War",
+     "result": "confirmed: Treaty of Rajghat 24 December 1805, Tonk, Rampura and Bundi"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Indore_State",
+     "result": "confirmed: 'moved from Maheshwar to Indore on 3 November 1818'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 25646,
+    "infobox_year": 1931,
+    "cliopatria_km2": 26800,
+    "ratio": 1.04,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "baroda-state",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1/correction, /ledger/2",
+     "what": "KF1 draws Okhamandal from 1802 though L2 gains it in 1808, and the page's 1808 sentence is about bonds from the Okhamandal chiefs renouncing piracy, not an acquisition.",
+     "why": "Baroda State page: British and Barodan forces 'approached Kathiawad in 1808, and eventually obtained bonds from the chiefs of Okha-mandal'.",
+     "fix": "Drop Okhamandal from KF1 (draw it from L2's year) and say in the L2 note that the page has no acquisition date (keep confidence 1).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Dates of the Kadi, Navsari and Amreli prants (bridged to 1802, confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Gaekwad_dynasty"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Okhamandal acquisition date (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Okhamandal"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Baroda_State",
+     "result": "confirmed: 'the Baroda State was founded in 1721, when ... Pilaji Gaekwad conquered Songadh from the Mughals'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Baroda_State",
+     "result": "confirmed: 'in 1813, the Barodan government acquired the parganah of Kodinar'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Baroda_State",
+     "result": "confirmed: 'Pethapur on 1 February 1940'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Baroda_State",
+     "result": "confirmed: 'Finally on 1 May 1949'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 3239,
+    "infobox_year": 1911,
+    "cliopatria_km2": 22000,
+    "ratio": 6.79,
+    "acknowledged": true,
+    "note": "body-text figure (no infobox area); the author flags it as implausible and sizes to the districts"
+   }
+  },
+  {
+   "slug": "kingdom-of-nagpur",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/4/correction, /keyframe_review/5/correction, /ledger/12/region",
+     "what": "L8 removes 'southern Berar' (Akola 60 km and Amravati 50 km circles) in 1803 and KF4-KF5 hold no Berar, yet L12 removes the same two circles again in 1818, so the 1818 cession of 'the remaining portion of Berar' has no land in the keyframes.",
+     "why": "Kingdom of Nagpur page: 'the remaining portion of Berar and the territories in the Narmada valley were ceded to the British' (1818); hyderabad-state /ledger/7 describes the 1803-04 cession as the territories 'south of Gawilgarh and Narnala and east of the Wardha'.",
+     "fix": "Keep the Gawilgarh-Narnala (Melghat, Ellichpur) tract in KF4 and KF5 and make it L12's Berar part instead of the Akola/Amravati circles.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/8/source",
+     "what": "The cited Treaty of Deogaon page names only 'the province of Cuttack' (with Balasore); southern Berar is not on it.",
+     "why": "Treaty of Deogaon page: Raghoji II 'gave up the province of Cuttack'; the Kingdom of Nagpur page mentions 'the 1803 cession of southern Berar'.",
+     "fix": "Split L8 into Cuttack (Treaty_of_Deogaon, confidence 3) and southern Berar (Kingdom_of_Nagpur, confidence 2), or cite both in the note.",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Maratha_invasions_of_Bengal",
+     "result": "confirmed: war April 1742-March 1751, treaty May or June 1751 ceding Orissa, Subarnarekha boundary"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Nagpur",
+     "result": "confirmed: 'In 1785 Mandla and the upper Narmada valley were added ... by treaty with the Peshwa'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Nagpur",
+     "result": "confirmed: 'Sambalpur was not relinquished until 1806'"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Nagpur",
+     "result": "confirmed (year and lands; see fix 1 for the region)"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Nagpur",
+     "result": "confirmed: died without a male heir in 1853, annexed under the doctrine of lapse"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Deogaon",
+     "result": "partly: 17 December 1803 and Cuttack confirmed; Berar not on this page"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 217560,
+    "infobox_year": 0,
+    "cliopatria_km2": 180000,
+    "ratio": 0.83,
+    "acknowledged": true,
+    "note": "infobox gives no year; KF3 (1785-1803) about 180,000 km2"
+   }
+  },
+  {
+   "slug": "rohilkhand-state",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/5/region, /ledger/6, /ledger/8/region",
+     "what": "L5 (23 April 1774) removes the whole of Rohilkhand including Rampur; L6 (7 October) then splits Rampur off land the state no longer holds, and L8 dissolves the same whole region a second time, leaving the state empty from April to October.",
+     "why": "Rohilla War page: defeat at Miranpur Katra on 23 April 1774, 'Rohilkhand fell to Awadh'; 'on 7 October 1774 Faizullah signed an amicable treaty of Lal Dang' creating Rampur State. nawab-of-awadh's mirror gain (/ledger/5) is dated October 1774.",
+     "fix": "Either give L5 and L8 the region {\"minus\": [<Rohilkhand union>, <Rampur circle>]} so Rampur passes only by the split, or keep L5 as the contest and move the land loss to October (L8 only).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "KF0 draws the full 90 km Rohilkhand (about 25,000 km2) from 1721 while L0's region is a 50 km circle at Aonla; the growth 1721-1748 is undated (the Rohilkhand infobox also has 'State established: 1690').",
+     "page to try": "https://en.wikipedia.org/wiki/Hafiz_Rahmat_Khan_Barech"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kumaon_Kingdom",
+     "result": "confirmed: 'In 1742 Ali Mohammed Khan of Rohilkhand invaded Kumaon and annexed Kashipur, Rudrapur, and two other Kumaoni parganas.'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Rohilkhand",
+     "result": "confirmed: 1773 'the Marathas were forced to retreat'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Rohilla_War",
+     "result": "confirmed: 23 April 1774, Miranpur Katra"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Rohilla_War",
+     "result": "confirmed: 7 October 1774, treaty of Lal Dang, Rampur State"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 26500,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "no area on the page; KF1 about 26,500 km2"
+   }
+  },
+  {
+   "slug": "bharatpur-state",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Extent of Suraj Mal's conquests dated to 1761 by reading (confidence 1); the page lists the districts without a year.",
+     "page to try": "https://en.wikipedia.org/wiki/Jawahar_Singh_(Bharatpur)"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "Loss of the Jat districts after 1774 undated (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Mirza_Najaf_Khan"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "The 60 km circle is about 10,600-11,300 km2; no page figure was found (the princely state was about half that); a gap-filler should find an area and resize.",
+     "page to try": "https://en.wikipedia.org/wiki/Matsya_Union"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Bharatpur_State",
+     "result": "confirmed: infobox 'Established: 18 November 1722'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Suraj_Mal",
+     "result": "confirmed: 'Suraj Mal captured Agra Fort on 12 June 1761'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Bharatpur_State",
+     "result": "confirmed: 'On 18 February 1774, the Mughal Commander Mirza Najaf Khan re-captured Agra'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Bharatpur_State",
+     "result": "confirmed: 'On 18 January 1826 its fortress was stormed and captured'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 10600,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "no area on the page (author says so)"
+   }
+  },
+  {
+   "slug": "jaipur-state",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/3/region, /ledger/4/region",
+     "what": "L3 (to alwar-state) and L4 (to bharatpur-state) remove the identical region (the 90 km circle intersected with the 'eastern Dhundhar' 45 km circle), so the same cells are lost twice to two owners; L4 (confidence 1) has no mirror gain in bharatpur-state, written in the same batch.",
+     "why": "Both regions are {\"intersect\": [{\"place\": \"Jaipur\", \"km\": 90}, {\"lon\": 76.75, \"lat\": 27.3, \"km\": 45}]}; bharatpur-state's ledger has no 1774-1776 gain from jaipur-state.",
+     "fix": "Split the band (the north-east part to alwar-state, the east part to bharatpur-state) and add the matching confidence-1 gain to bharatpur-state, or drop L4 and say in L3's note that the Jat share is unplaced.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/2/correction",
+     "what": "KF2 overlaps alwar-state's shape by about 1,260 km2 (1775-1948).",
+     "why": "jaipur KF2 x alwar KF0 = 5 cells.",
+     "fix": "Subtract alwar-state's region from KF2.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "KF0 draws the 60 km Dhundhar circle from 1028 while L0's region is a 30 km circle at Dausa; Amber's capture and the Mughal-era growth (Shekhawati, Bundi, Rampura) are undated.",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Amber"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "The Jat annexation from Jaipur is confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Jawahar_Singh_(Bharatpur)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Jaipur_State",
+     "result": "confirmed: 'they migrated to Rajputana in 1028 AD', Dausa"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Jaipur_State",
+     "result": "confirmed: 'by October 1708, Amber had also been taken over and Jai Singh restored'; Sambhar captured and jointly ruled"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Jaipur_State",
+     "result": "partly: the page has 'the Jats of Bharatpur and the Kachwaha chief of Alwar declared themselves independent from Jaipur'; the note's quoted words 'each annexed part of Jaipur's eastern territory' were not returned"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Jaipur_State",
+     "result": "confirmed: accession signed 7 April 1949"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 23800,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "no area on the page (author says so)"
+   }
+  },
+  {
+   "slug": "kalhora-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1/correction, /ledger/1/region, /ledger/3/region, /ledger/4/region",
+     "what": "'The northern half of Kutch district' is drawn as {\"region\": \"Kutch\"} cut by the box 23.4-25 N, 68-72 E, which takes the northern Kutch mainland (Banni, Khavda) that cutch-state holds throughout 1549-1948: the two dossiers overlap by about 9,100 km2 (43 percent of Cutch) for 1736-1783 with no gain, loss or occupation in either.",
+     "why": "kalhora KF1 x cutch-state KF1 = 36 cells. Kalhora dynasty page: 'The northern half of Kutch district was also under the Kalhora Dynasty' (undated); Cutch State page: Kalhora attacks 'once in 1763-64' and 'in 1765', the battle near Jara, no cession.",
+     "fix": "Limit the Kutch part to land outside cutch-state's polygon (the Great Rann), e.g. {\"minus\": [<current Kutch part>, <cutch-state KF1 correction>]}, or drop it and say why; if a page shows Kalhora rule on the mainland, add the loss/gain pair to both dossiers.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "The spread over all of Sindh is dated to 1736 by reading (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Noor_Muhammad_Kalhoro"
+    },
+    {
+     "where": "/wars",
+     "what is missing": "Nader Shah's invasion ('The Kalhora dynasty succumbed to the invasion of Nader Shah', undated) is not in wars or ledger.",
+     "page to try": "https://en.wikipedia.org/wiki/Nader_Shah%27s_invasion_of_the_Mughal_Empire"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kalhora_dynasty",
+     "result": "confirmed: Established 1701, 'made subahdar of upper Sindh by royal decree'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kalhora_dynasty",
+     "result": "confirmed as quoted (independence 1736); extent undated, confidence 1 is right"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kalhora_dynasty",
+     "result": "confirmed: Khudabad 1701-1768, then Hyderabad (infobox has Khudabad from 1710)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Kalhora_dynasty",
+     "result": "confirmed: 'Abdul Nabi Kalhoro was the last Kalhora ruler, being overthrown in 1783'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 179000,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "no area on the page; Sind admin1 about 141,000 km2 plus about 38,000 km2 of Kutch"
+   }
+  },
+  {
+   "slug": "travancore",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1/region, /ledger/3/region, /ledger/4/region, /ledger/5/region",
+     "what": "Each gain's region is the whole cumulative band (Kerala south of 9.05, 9.3, 9.8 or 10.2 N plus Kanyakumari), which already holds Venad and the earlier gains, while its text names only the chiefdom annexed.",
+     "why": "L1 region = Kerala south of 9.05 N + Kanyakumari with text 'Kollam (Quilon) and Kottarakkara'; same pattern in L3-L5.",
+     "fix": "Make each region the delta: {\"minus\": [<this band>, <previous band>]} with the same text.",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Marthanda_Varma",
+     "result": "confirmed: 'In 1731, the port of Kollam(Quilon)'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Marthanda_Varma",
+     "result": "confirmed: 1741, Kottarakkara annexed after the Dutch defeat"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Marthanda_Varma",
+     "result": "confirmed: by 1746 'Travancore now extended from Kanyakumari to Kayamkulam'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Marthanda_Varma",
+     "result": "confirmed: 'Ambalapuzha, Kottayam and Changanassery were also annexed to Travancore by 1753'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Marthanda_Varma",
+     "result": "confirmed: Karappuram and Alangad ceded in 1753; Mavelikkara 15 August 1753"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Travancore",
+     "result": "confirmed: 'On 1 July 1949 the kingdom of Travancore was merged with the kingdom of Cochin'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 19844,
+    "infobox_year": 1941,
+    "cliopatria_km2": 18970,
+    "ratio": 0.96,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kolhapur-state",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger",
+     "what is missing": "No territorial event 1710-1949 (the page names no cession; the 1812 treaty and 1844 aftermath are undated).",
+     "page to try": "https://en.wikipedia.org/wiki/Shivaji_II"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding 1710 against maratha-empire's split of 1707 (/ledger/11); the page has both 'came into being in 1707' and 'By 1710 ... an established fact'.",
+     "page to try": "https://en.wikipedia.org/wiki/Tarabai"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kolhapur_State",
+     "result": "confirmed: 'By 1710, two separate principalities had become an established fact' (also 1707)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kolhapur_State",
+     "result": "confirmed: 'merged into Bombay State on 1 March 1949'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 8332,
+    "infobox_year": 1901,
+    "cliopatria_km2": 8350,
+    "ratio": 1.0,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "janjira-state",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/5",
+     "what is missing": "Gain of Murud and Shrivardhan from maratha-empire in 1745 is a confidence-1 reading with no mirror in maratha-empire.",
+     "page to try": "https://en.wikipedia.org/wiki/Siddi"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Janjira_State",
+     "result": "confirmed: infobox 'Established: 1489'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Janjira_State",
+     "result": "confirmed: Bajirao's campaign against the Siddis of Janjira in 1733"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Murud-Janjira",
+     "result": "confirmed: 'Peace was brokered in September 1736, but the Siddis were confined to only Janjira, Gowalkot, and Anjanvel'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Murud-Janjira",
+     "result": "confirmed: 'captured by Tulaji Angre in 1745'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 839,
+    "infobox_year": 1931,
+    "cliopatria_km2": 1000,
+    "ratio": 1.19,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kingdom-of-cochin",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The capital Cochin (Kochi) of 1405-1949 lies outside KF0 (1100-1502), which holds only the Perumpadappu and Mahodayapuram circles.",
+     "why": "identity.capitals: Cochin from 1405 at 76.27 E 9.96 N; KF0 = 25 km circles at 75.95/10.77 and 76.2/10.22. Kingdom of Cochin page: 'In 1405, Perumpadapu Swaroopam changed their capital from Mahodayapuram to Cochin' (also 1341).",
+     "fix": "Split KF0 at 1405 and add Kochi to the later part (or start KF1 in 1405).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "The 1503 step (Kochi, Thrissur, Chittur appear) has no ledger event; the Zamorin's oath of vassalage and the Mysore conquest (infobox 1766-1799) are not in the ledger.",
+     "page to try": "https://en.wikipedia.org/wiki/Zamorin_of_Calicut"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding at 1100 is confidence 1 (page: 'originated in the early part of the 12th century').",
+     "page to try": "https://en.wikipedia.org/wiki/Perumpadappu_Swaroopam"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Cochin",
+     "result": "confirmed as a rounding: 'Established: 12th century CE' (confidence 1 right)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Marthanda_Varma",
+     "result": "confirmed: Karappuram and Alangad ceded to Travancore in 1753"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Cochin",
+     "result": "confirmed: 'Disestablished: 1 July 1949'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 4300,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "no area on the page"
+   }
+  },
+  {
+   "slug": "bikaner-state",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger",
+     "what is missing": "The 1542 annexation of the whole kingdom by Maldeo of Marwar and its recovery are missing; kingdom-of-marwar /ledger/9 has the 1542 gain from Bikaner (Maldeo Rathore page: 'Rao Maldeo took advantage of this situation to annex the entire kingdom of Bikaner').",
+     "page to try": "https://en.wikipedia.org/wiki/Maldeo_Rathore"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "Bhatner (1805) and other changes; the Bikaner page has none.",
+     "page to try": "https://en.wikipedia.org/wiki/Rao_Kalyan_Mal"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "The state is dissolved at the accession of 7 August 1947 although it lasted until the Rajasthan merger (not on the page).",
+     "page to try": "https://en.wikipedia.org/wiki/Rajasthan#Integration"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Bikaner_State",
+     "result": "confirmed: 'The state of Bikaner was founded in 1465.'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Bikaner_State",
+     "result": "confirmed: 'The accession to the Indian Union was signed by the Maharaja on 7 August 1947.'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 61355,
+    "infobox_year": 0,
+    "cliopatria_km2": 58700,
+    "ratio": 0.96,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "garhwal-kingdom",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/2/note",
+     "what": "The quoted words 'Rohilla invasion, 1757: Najib-ud-daula captured Dehradun.' are not on the page.",
+     "why": "Garhwal Kingdom page: Najib-ud-daula 'invaded in 1757 along with his Rohilla Army and captured Dehradun' (marked citation needed).",
+     "fix": "Note rewritten with the page's words (applied by the reviewer; validator 0 errors).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/3/note",
+     "what": "The quoted words 'Garhwali forces retook the Dun region in 1770.' are not on the page.",
+     "why": "Garhwal Kingdom page: in 1770 the Garhwali forces defeated the Rohillas and 'retrieved possession of the Dun region'.",
+     "fix": "Note rewritten with the page's words (applied by the reviewer; validator 0 errors).",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Garhwal_Kingdom",
+     "result": "confirmed: 'founded in 823 AD'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Garhwal_Kingdom",
+     "result": "confirmed: 'In 1358, the 37th ruler, Ajay Pal, brought all the minor principalities'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Garhwal_Kingdom",
+     "result": "confirmed (wording fixed)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Garhwal_Kingdom",
+     "result": "confirmed (wording fixed)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Pradyumna_Shah",
+     "result": "confirmed: 'reigned over Garhwal from 1785 to 14 May 1804', Battle of Khurbura"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Garhwal_Kingdom",
+     "result": "confirmed: 'acceded to the Union of India in August 1949 CE' (citation needed)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 10826,
+    "infobox_year": 1901,
+    "cliopatria_km2": 12000,
+    "ratio": 1.11,
+    "acknowledged": true,
+    "note": "body text 4,180 sq mi"
+   }
+  },
+  {
+   "slug": "alwar-state",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger",
+     "what is missing": "No territorial event 1775-1948 (lands granted after the 1803 alliance; Rajgarh and Swarup Singh's estates undated); no capital table beyond Alwar.",
+     "page to try": "https://en.wikipedia.org/wiki/Bakhtawar_Singh"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Alwar_State",
+     "result": "confirmed: 'He established the State of Alwar in 1775.'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Alwar_State",
+     "result": "confirmed: 'merged on 18 March 1948 with three other princely states'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 8332,
+    "infobox_year": 0,
+    "cliopatria_km2": 8600,
+    "ratio": 1.03,
+    "acknowledged": true,
+    "note": "text '3,217 square miles', no year"
+   }
+  },
+  {
+   "slug": "bhopal-state",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "One 1707-1949 keyframe is the 1901 extent (17,876 km2) while L0 is a 30 km circle; 'He also annexed several other territories in Malwa' is undated.",
+     "page to try": "https://en.wikipedia.org/wiki/Dost_Mohammad_Khan"
+    },
+    {
+     "where": "/wars/1",
+     "what is missing": "The Nizam's March 1724 invasion 'forcing Khan to cede much of his territory' has no loss (counterpart hyderabad-state).",
+     "page to try": "https://en.wikipedia.org/wiki/Asaf_Jah_I"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Bhopal_State",
+     "result": "confirmed: 'The state was founded in 1707'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Bhopal_State",
+     "result": "confirmed: 'In 1709, he took on the lease of the Berasia estate.'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Bhopal_State",
+     "result": "confirmed: Islamnagar 1728-1742"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Bhopal_State",
+     "result": "confirmed: 'taken over by the Union Government of India on 1 June 1949'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 17876,
+    "infobox_year": 1901,
+    "cliopatria_km2": 17200,
+    "ratio": 0.96,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "satara-state",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Satara_State",
+     "result": "confirmed: created after the fall of the Maratha Confederacy in 1818, Pratap Singh installed by the British"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Satara_State",
+     "result": "confirmed: the page has both 1849 (introduction, infobox) and 1848 (body); confidence 2 and the note say so"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 7924,
+    "infobox_year": 1848,
+    "cliopatria_km2": 8850,
+    "ratio": 1.12,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "cutch-state",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Cutch_State",
+     "result": "confirmed: 'founded around 1147 by Lakho Jadani'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Cutch_State",
+     "result": "confirmed: 'integrated Cutch into one large dominion in 1549'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Cutch_State",
+     "result": "confirmed: Anjar 'came under British occupation on 25 December 1815'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Cutch_State",
+     "result": "confirmed: 'till 25 December 1822, when it was territory reverted to Cutch'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Cutch_State",
+     "result": "confirmed: infobox 'Merged into India as Kutch State: 1 June 1948' (4 May 1948 in the text, noted)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 19725,
+    "infobox_year": 1901,
+    "cliopatria_km2": 21000,
+    "ratio": 1.06,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "jaisalmer-state",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger",
+     "what is missing": "The page says the Mughals 'controlled the fort until 1762' (the capital) with no start; no occupation pair is in the ledger.",
+     "page to try": "https://en.wikipedia.org/wiki/Jaisalmer_Fort"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Pokhran, taken by Marwar in 1650 (kingdom-of-marwar /ledger/19), stays inside the 115 km circle; no loss in this ledger.",
+     "page to try": "https://en.wikipedia.org/wiki/Marwar_Kingdom"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Jaisalmer_State",
+     "result": "confirmed: Rawal Jaisal moved the capital to Jaisalmer in 1156"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Jaisalmer_State",
+     "result": "confirmed at confidence 2: infobox 1156-1947, 1949 merger, 'Greater Rajasthan in 1950'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 41600,
+    "infobox_year": 1931,
+    "cliopatria_km2": 41200,
+    "ratio": 0.99,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kumaon-kingdom",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding about 700 is confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Katyuri_dynasty"
+    },
+    {
+     "where": "/ledger/3, /ledger/5",
+     "what is missing": "Terai gains of 1638 and 1673 are confidence-1 readings (the Baz Bahadur Chand page has only the October 1665 capture and the October 1673 pardon).",
+     "page to try": "https://en.wikipedia.org/wiki/Chand_dynasty"
+    },
+    {
+     "where": "/keyframe_review/1..5",
+     "what is missing": "Doti is drawn 1450-1791 from 'unified the region, including Doti, in the 15th century', but nepal /ledger/13 annexes Doti from a separate Doti in 1790; when Doti left Kumaon is not on the pages.",
+     "page to try": "https://en.wikipedia.org/wiki/Doti_Kingdom"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kumaon_Kingdom",
+     "result": "confirmed: 'unified the region, including Doti, in the 15th century'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Baz_Bahadur_Chand",
+     "result": "confirmed: 'captured Terai and the emperor's rule was established there (October. 1665)'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Baz_Bahadur_Chand",
+     "result": "confirmed as described: only the October 1673 pardon (bridging, confidence 1)"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Kumaon_Kingdom",
+     "result": "confirmed: 1742, Kashipur, Rudrapur and two other parganas"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Kumaon_Kingdom",
+     "result": "confirmed: 'in 1791 the Kingdom of Nepal invaded Kumaon'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 28000,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "no area on the page"
+   }
+  },
+  {
+   "slug": "rewa-state",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/2, /ledger/3",
+     "what is missing": "Sohagpur and Amarkantak: 'seized by the Marathas in the beginning of the century' and restored after 1857, both confidence 1; the page does not name the Maratha power (probably Nagpur, which would make kingdom-of-nagpur the counterpart).",
+     "page to try": "https://en.wikipedia.org/wiki/Shahdol_district"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "KF0 is the 1901 outline from 1140 while L0 is a 40 km circle at Bandhavgarh.",
+     "page to try": "https://en.wikipedia.org/wiki/Bandhavgarh_Fort"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Rewa_State",
+     "result": "confirmed: Bandhavgarh, Vyaghra Dev, 1140 CE"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Rewa_State",
+     "result": "confirmed: 'In 1617, Maharaja Vikramaditya Singh Baghel moved his capital to Rewa'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Rewa_State",
+     "result": "confirmed as described (undated on the page, confidence 1)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Rewa_State",
+     "result": "confirmed as described (restored after the 1857 uprisings)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 33670,
+    "infobox_year": 1901,
+    "cliopatria_km2": 33900,
+    "ratio": 1.01,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "jhansi-state",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1",
+     "what": "A contest_start in 1853 with no fighting: four years of British administration are drawn as a war zone, and the contest does not match the war 'Siege of Jhansi' (1857-1858).",
+     "why": "Jhansi State page: 1853, 'the British authorities took over the state under the terms of the Doctrine of Lapse'; 'In March 1854, Lakshmibai was given a pension ... and ordered to leave the palace and the fort'; 'From August 1857 to January 1858 Jhansi under the Rani's rule was at peace'; Siege of Jhansi: 24 March-5 April 1858.",
+     "fix": "Replace L1 with occupation_start (counterpart british-empire) in 1853 or 1854-3 and occupation_end in 1857, then contest_start 1858-3 (24 March) before the existing contest_end and dissolve; or end the state in 1853 and say so.",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Jhansi_State",
+     "result": "confirmed: 'Founded: 1728'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Jhansi_State",
+     "result": "year confirmed, event type not supported (see fix)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Siege_of_Jhansi",
+     "result": "confirmed: 'on 5 April the defenders abandoned the fort'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Siege_of_Jhansi",
+     "result": "confirmed: siege 24 March-5 April 1858"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 4059,
+    "infobox_year": 1804,
+    "cliopatria_km2": 4300,
+    "ratio": 1.06,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kota-state",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/2/note",
+     "what": "The quoted sentence ('The British decided in 1897 to break up the state. Most of it went back to Kota, and Shahabad and Chaumahla became a new state in 1899, with an area of 810 sq mi') is not the page's wording.",
+     "why": "Jhalawar State page: 'the British resolved in 1897 to break up the state, restoring the greater part to Kota, but forming the two districts of Shahabad and the Chaumahla into a new state of area 810 square miles (2,100 km2), which came into existence in 1899'.",
+     "fix": "Quote replaced with the page's sentence (applied by the reviewer; validator 0 errors).",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/2/correction, /ledger/2/region",
+     "what": "The page names the 1899 Jhalawar as 'the two districts of Shahabad and the Chaumahla', yet KF2 subtracts a 26 km circle around Jhalawar town, so Kota keeps Shahabad and the Chaumahla after 1899; the note says 'the parganas are not named', which the quoted sentence contradicts.",
+     "why": "Jhalawar State page as quoted; Shahabad lies in the north-east of the old Jhalawar tract, the Chaumahla in the south (Gangdhar).",
+     "fix": "Build the 1899 cut from the two named districts (coordinates with text until the gazetteer has them), together with the capital if a page places it there, in KF2 and L2; the same in jhalawar-state.",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kota_State",
+     "result": "confirmed: 'In 1631, Rao Raja Ratan Singh of Bundi partitioned the province of Kota'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Jhalawar_State",
+     "result": "confirmed: 'it was resolved in the year 1838 ... to dismember the state'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Jhalawar_State",
+     "result": "confirmed: 1897 decision, new state 1899"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kota_State",
+     "result": "confirmed: 'On 18 April 1948, the Maharao merged his state'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 14828,
+    "infobox_year": 1931,
+    "cliopatria_km2": 14900,
+    "ratio": 1.0,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "bundi-state",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Bundi_State",
+     "result": "confirmed: 'Rao Deva, who took over Bundi in 1241'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kota_State",
+     "result": "confirmed: 1631 partition of Kota from Bundi"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Bundi_State",
+     "result": "confirmed: accession signed 7 April 1949"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 5750,
+    "infobox_year": 0,
+    "cliopatria_km2": 6070,
+    "ratio": 1.06,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "jhalawar-state",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1/note",
+     "what": "The quoted sentence is not the page's wording (same as kota-state /ledger/2).",
+     "why": "Jhalawar State page: 'the British resolved in 1897 to break up the state, restoring the greater part to Kota, but forming the two districts of Shahabad and the Chaumahla into a new state of area 810 square miles (2,100 km2), which came into existence in 1899'.",
+     "fix": "Quote replaced with the page's sentence (applied by the reviewer; validator 0 errors).",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/1/correction, /ledger/1/region, /ledger/2/region",
+     "what": "KF1 (1899-1949) is a 26 km circle at Jhalawar town, while the page forms the new state from 'the two districts of Shahabad and the Chaumahla'; the note's 'the parganas are not named' is wrong.",
+     "why": "Jhalawar State page as quoted (810 sq mi; infobox 2,106 km2 in 1901).",
+     "fix": "Draw the 1899 state from Shahabad and the Chaumahla (plus the capital if a page places it there), sized to 2,106 km2, in KF1, L1 and L2.",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Jhalawar_State",
+     "result": "confirmed: 1838; rulers table from 8 April 1838"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Jhalawar_State",
+     "result": "confirmed: 1897 decision, new state 1899"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Jhalawar_State",
+     "result": "confirmed at confidence 2: infobox 'Indian independence: 1949'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2106,
+    "infobox_year": 1901,
+    "cliopatria_km2": 2000,
+    "ratio": 0.95,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "rohilkhand-state",
+    "year": 1742,
+    "type": "gain",
+    "counterpart": "kumaon-kingdom"
+   },
+   "mirror": {
+    "slug": "kumaon-kingdom",
+    "year": 1742,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "same batch; same two circles"
+  },
+  {
+   "event": {
+    "slug": "rohilkhand-state",
+    "year": 1774,
+    "type": "loss",
+    "counterpart": "nawab-of-awadh"
+   },
+   "mirror": {
+    "slug": "nawab-of-awadh",
+    "year": 1774,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "April here, October in Awadh; see rohilkhand fix on the April-October order"
+  },
+  {
+   "event": {
+    "slug": "rohilkhand-state",
+    "year": 1774,
+    "type": "dissolve",
+    "counterpart": "nawab-of-awadh"
+   },
+   "mirror": {
+    "slug": "nawab-of-awadh",
+    "year": 1774,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "dissolve repeats the April loss"
+  },
+  {
+   "event": {
+    "slug": "rohilkhand-state",
+    "year": 1721,
+    "type": "found",
+    "counterpart": "mughal-empire"
+   },
+   "mirror": {
+    "slug": "mughal-empire",
+    "year": 1720,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Mughal counterpart string 'Rohilla Afghans (Rohilkhand)'"
+  },
+  {
+   "event": {
+    "slug": "rohilkhand-state",
+    "year": 1774,
+    "type": "split",
+    "counterpart": "rampur-state"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "rampur-state listed by the author under counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "garhwal-kingdom",
+    "year": 1804,
+    "type": "loss",
+    "counterpart": "nepal"
+   },
+   "mirror": {
+    "slug": "nepal",
+    "year": 1804,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kumaon-kingdom",
+    "year": 1791,
+    "type": "dissolve",
+    "counterpart": "nepal"
+   },
+   "mirror": {
+    "slug": "nepal",
+    "year": 1791,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kumaon-kingdom",
+    "year": 1790,
+    "type": "keyframe (Doti held 1450-1791)",
+    "counterpart": "nepal"
+   },
+   "mirror": {
+    "slug": "nepal",
+    "year": 1790,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "nepal /ledger/13 takes Doti from a separate 'Doti' in 1790 while kumaon-kingdom draws Doti until 1791; one of the two needs a page on when Doti left Kumaon"
+  },
+  {
+   "event": {
+    "slug": "kumaon-kingdom",
+    "year": 1665,
+    "type": "loss",
+    "counterpart": "mughal-empire"
+   },
+   "mirror": {
+    "slug": "mughal-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "no 1665 Terai gain in mughal-empire (sa-05 sibling)"
+  },
+  {
+   "event": {
+    "slug": "kumaon-kingdom",
+    "year": 1638,
+    "type": "gain",
+    "counterpart": "mughal-empire"
+   },
+   "mirror": {
+    "slug": "mughal-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "confidence 1 reading; no Mughal event"
+  },
+  {
+   "event": {
+    "slug": "kumaon-kingdom",
+    "year": 1673,
+    "type": "gain",
+    "counterpart": "mughal-empire"
+   },
+   "mirror": {
+    "slug": "mughal-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "confidence 1 reading; no Mughal event"
+  },
+  {
+   "event": {
+    "slug": "travancore",
+    "year": 1753,
+    "type": "gain",
+    "counterpart": "kingdom-of-cochin"
+   },
+   "mirror": {
+    "slug": "kingdom-of-cochin",
+    "year": 1753,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "same batch"
+  },
+  {
+   "event": {
+    "slug": "alwar-state",
+    "year": 1775,
+    "type": "found",
+    "counterpart": "jaipur-state"
+   },
+   "mirror": {
+    "slug": "jaipur-state",
+    "year": 1775,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "same batch"
+  },
+  {
+   "event": {
+    "slug": "kota-state",
+    "year": 1631,
+    "type": "found",
+    "counterpart": "bundi-state"
+   },
+   "mirror": {
+    "slug": "bundi-state",
+    "year": 1631,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "same batch"
+  },
+  {
+   "event": {
+    "slug": "kota-state",
+    "year": 1838,
+    "type": "loss",
+    "counterpart": "jhalawar-state"
+   },
+   "mirror": {
+    "slug": "jhalawar-state",
+    "year": 1838,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "same batch"
+  },
+  {
+   "event": {
+    "slug": "kota-state",
+    "year": 1899,
+    "type": "gain",
+    "counterpart": "jhalawar-state"
+   },
+   "mirror": {
+    "slug": "jhalawar-state",
+    "year": 1899,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "same batch; both regions need the Shahabad/Chaumahla fix"
+  },
+  {
+   "event": {
+    "slug": "janjira-state",
+    "year": 1736,
+    "type": "loss",
+    "counterpart": "maratha-empire"
+   },
+   "mirror": {
+    "slug": "maratha-empire",
+    "year": 1736,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "janjira-state",
+    "year": 1745,
+    "type": "gain",
+    "counterpart": "maratha-empire"
+   },
+   "mirror": {
+    "slug": "maratha-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "confidence 1; maratha-empire has no 1745 loss"
+  },
+  {
+   "event": {
+    "slug": "janjira-state",
+    "year": 1745,
+    "type": "loss",
+    "counterpart": "Tulaji Angre (Maratha navy)"
+   },
+   "mirror": {
+    "slug": "maratha-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "the Angre navy is the Maratha Empire's; maratha-empire has no 1745 gain of Gowalkot and Anjanvel"
+  },
+  {
+   "event": {
+    "slug": "bharatpur-state",
+    "year": 1761,
+    "type": "gain",
+    "counterpart": "mughal-empire"
+   },
+   "mirror": {
+    "slug": "mughal-empire",
+    "year": 1761,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Mughal counterpart string 'Jats' (Agra)"
+  },
+  {
+   "event": {
+    "slug": "bharatpur-state",
+    "year": 1774,
+    "type": "loss",
+    "counterpart": "mughal-empire"
+   },
+   "mirror": {
+    "slug": "mughal-empire",
+    "year": 1774,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Mughal counterpart string 'Jats' (confidence 1)"
+  },
+  {
+   "event": {
+    "slug": "jaipur-state",
+    "year": 1775,
+    "type": "loss",
+    "counterpart": "bharatpur-state"
+   },
+   "mirror": {
+    "slug": "bharatpur-state",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "same batch: bharatpur-state has no gain from jaipur-state"
+  },
+  {
+   "event": {
+    "slug": "jaipur-state",
+    "year": 1708,
+    "type": "gain",
+    "counterpart": "mughal-empire"
+   },
+   "mirror": {
+    "slug": "mughal-empire",
+    "year": 1707,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "mughal-empire's 1707/1710 losses name kingdom-of-marwar (Marwar region), none names jaipur-state or Sambhar"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-nagpur",
+    "year": 1751,
+    "type": "gain",
+    "counterpart": "nawabs-of-bengal"
+   },
+   "mirror": {
+    "slug": "nawabs-of-bengal",
+    "year": 1752,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "nawabs-of-bengal /ledger/5 gives Orissa to maratha-empire (which also gains it, /ledger/28); confederacy-member overlap the author flagged"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-nagpur",
+    "year": 1803,
+    "type": "loss",
+    "counterpart": "british-empire"
+   },
+   "mirror": {
+    "slug": "hyderabad-state",
+    "year": 1804,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "british-empire not written (sa-06); hyderabad-state /ledger/7 gains Berar 'south of Gawilgarh and Narnala' from british-empire in 1804, consistent; see nagpur fix 1 on the 1818 remainder"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-nagpur",
+    "year": 1785,
+    "type": "gain",
+    "counterpart": "maratha-empire"
+   },
+   "mirror": {
+    "slug": "maratha-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "maratha-empire has no 1785 loss of Mandla (page: 'by treaty with the Peshwa')"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-nagpur",
+    "year": 1739,
+    "type": "found",
+    "counterpart": "gond-kingdom-of-deogarh"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed under counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "gwalior-state",
+    "year": 1788,
+    "type": "gain",
+    "counterpart": "mughal-empire"
+   },
+   "mirror": {
+    "slug": "nawab-of-awadh",
+    "year": 1775,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "the Doab gained here (confidence 1) includes Awadh's lower Doab held 1775-1801 (nawab-of-awadh /ledger/8, /ledger/10): about 44,000-64,000 km2 drawn twice; mughal-empire has no 1788 loss either"
+  },
+  {
+   "event": {
+    "slug": "gwalior-state",
+    "year": 1790,
+    "type": "keyframe overlap",
+    "counterpart": "bharatpur-state"
+   },
+   "mirror": {
+    "slug": "bharatpur-state",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "gwalior KF3 covers about 7,300 km2 of bharatpur-state 1790-1802 with no event"
+  },
+  {
+   "event": {
+    "slug": "gwalior-state",
+    "year": 1858,
+    "type": "keyframe overlap",
+    "counterpart": "indore-state"
+   },
+   "mirror": {
+    "slug": "indore-state",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "gwalior KF7-KF9 and indore KF1 share about 7,300 km2 (circles)"
+  },
+  {
+   "event": {
+    "slug": "gwalior-state",
+    "year": 1858,
+    "type": "keyframe overlap",
+    "counterpart": "bhopal-state"
+   },
+   "mirror": {
+    "slug": "bhopal-state",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "gwalior KF9 and bhopal KF0 share about 4,300 km2 (Bhilsa circle)"
+  },
+  {
+   "event": {
+    "slug": "gwalior-state",
+    "year": 1818,
+    "type": "gain",
+    "counterpart": "maratha-empire"
+   },
+   "mirror": {
+    "slug": "maratha-empire",
+    "year": 1817,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "confidence 1; maratha-empire's 1817-1818 losses all go to british-empire"
+  },
+  {
+   "event": {
+    "slug": "gwalior-state",
+    "year": 1783,
+    "type": "gain",
+    "counterpart": "gohad-state"
+   },
+   "mirror": {
+    "slug": "maratha-empire",
+    "year": 1783,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "gohad-state listed under counterparts_needing_dossiers; maratha-empire /ledger/39 also gains Gwalior from Gohad in 1783 (confederacy overlap)"
+  },
+  {
+   "event": {
+    "slug": "gwalior-state",
+    "year": 1784,
+    "type": "vassal_start",
+    "counterpart": "mughal-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "suzerain-side record (the vassal is the counterpart); nothing required in mughal-empire"
+  },
+  {
+   "event": {
+    "slug": "gwalior-state",
+    "year": 1803,
+    "type": "loss",
+    "counterpart": "british-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "british-empire (sa-06) not written; same for gwalior 1805, 1818, 1844, 1858, indore 1805, 1818, nagpur 1806, 1818, 1853, garhwal 1815, cutch 1815/1822 occupation, rewa 1858, satara 1848, jhansi 1858"
+  },
+  {
+   "event": {
+    "slug": "gwalior-state",
+    "year": 1861,
+    "type": "gain",
+    "counterpart": "british-raj"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "british-raj not written (group not run); also 1885 exchange"
+  },
+  {
+   "event": {
+    "slug": "kolhapur-state",
+    "year": 1710,
+    "type": "found",
+    "counterpart": "maratha-empire"
+   },
+   "mirror": {
+    "slug": "maratha-empire",
+    "year": 1707,
+    "type": "split"
+   },
+   "status": "mismatch",
+   "note": "three years apart; the Kolhapur page has both 1707 and 'By 1710'"
+  },
+  {
+   "event": {
+    "slug": "satara-state",
+    "year": 1818,
+    "type": "found",
+    "counterpart": "maratha-empire"
+   },
+   "mirror": {
+    "slug": "maratha-empire",
+    "year": 1818,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "maratha-empire's 1818 land goes to british-empire; Satara was carved out by the British; acceptable if british-empire later records the grant"
+  },
+  {
+   "event": {
+    "slug": "jhansi-state",
+    "year": 1728,
+    "type": "found",
+    "counterpart": "maratha-empire"
+   },
+   "mirror": {
+    "slug": "maratha-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "no Jhansi event in maratha-empire (inside its shape)"
+  },
+  {
+   "event": {
+    "slug": "rewa-state",
+    "year": 1800,
+    "type": "loss",
+    "counterpart": "maratha-empire"
+   },
+   "mirror": {
+    "slug": "maratha-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "confidence 1; the seizer was probably Nagpur (kingdom-of-nagpur has no Sohagpur gain either)"
+  },
+  {
+   "event": {
+    "slug": "baroda-state",
+    "year": 1802,
+    "type": "gain",
+    "counterpart": "maratha-empire"
+   },
+   "mirror": {
+    "slug": "maratha-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "confidence 1 bridging"
+  },
+  {
+   "event": {
+    "slug": "bhopal-state",
+    "year": 1709,
+    "type": "gain",
+    "counterpart": "mughal-empire"
+   },
+   "mirror": {
+    "slug": "mughal-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "small (Berasia lease)"
+  },
+  {
+   "event": {
+    "slug": "kalhora-dynasty",
+    "year": 1736,
+    "type": "gain",
+    "counterpart": "mughal-empire"
+   },
+   "mirror": {
+    "slug": "mughal-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "mughal-empire's Sindh loss is 1752 to durrani-empire"
+  },
+  {
+   "event": {
+    "slug": "kalhora-dynasty",
+    "year": 1736,
+    "type": "keyframe overlap",
+    "counterpart": "cutch-state"
+   },
+   "mirror": {
+    "slug": "cutch-state",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "about 9,100 km2 of the Kutch mainland drawn in both 1736-1783; see kalhora fix"
+  },
+  {
+   "event": {
+    "slug": "kalhora-dynasty",
+    "year": 1783,
+    "type": "loss",
+    "counterpart": "talpur-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "talpur-dynasty is a sa-05 sibling's Cliopatria row (1820-1894) not yet written; its dossier must start in 1783"
+  },
+  {
+   "event": {
+    "slug": "kalhora-dynasty",
+    "year": 1749,
+    "type": "(vassal of durrani-empire)",
+    "counterpart": "durrani-empire"
+   },
+   "mirror": {
+    "slug": "durrani-empire",
+    "year": 1749,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "suzerain record exists (1749-1783); author's note says 1748-1750"
+  },
+  {
+   "event": {
+    "slug": "bikaner-state",
+    "year": 1542,
+    "type": "(missing loss)",
+    "counterpart": "kingdom-of-marwar"
+   },
+   "mirror": {
+    "slug": "kingdom-of-marwar",
+    "year": 1542,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "marwar /ledger/9 annexes Bikaner in 1542 (counterpart string 'bikaner'); bikaner-state has no event; marwar's 1564 loss to the Mughals still includes Bikaner"
+  },
+  {
+   "event": {
+    "slug": "jaisalmer-state",
+    "year": 1650,
+    "type": "(missing loss)",
+    "counterpart": "kingdom-of-marwar"
+   },
+   "mirror": {
+    "slug": "kingdom-of-marwar",
+    "year": 1650,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "marwar /ledger/19 takes Pokhran from 'jaisalmer'; Jaisalmer's circle still holds it"
+  },
+  {
+   "event": {
+    "slug": "gwalior-state",
+    "year": 1731,
+    "type": "found",
+    "counterpart": "mughal-empire"
+   },
+   "mirror": {
+    "slug": "mughal-empire",
+    "year": 1738,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Malwa goes from mughal-empire to maratha-empire in 1738; the Maratha members (gwalior 1731, indore 1732, baroda 1721, bhopal 1707, bharatpur 1722, kalhora 1701) found on Mughal land with no Mughal loss; the confederacy/tint question is the orchestrator's"
+  },
+  {
+   "event": {
+    "slug": "garhwal-kingdom",
+    "year": 1757,
+    "type": "loss",
+    "counterpart": "Najib-ud-daula (Rohilla)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text counterpart; Najib-ud-daula's Saharanpur/Najibabad holding has no dossier"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Upper Doab",
+   "kind": "region",
+   "used_in": "gwalior-state"
+  },
+  {
+   "name": "Gawilgarh",
+   "kind": "place",
+   "used_in": "kingdom-of-nagpur"
+  },
+  {
+   "name": "Narnala",
+   "kind": "place",
+   "used_in": "kingdom-of-nagpur"
+  },
+  {
+   "name": "Ellichpur",
+   "kind": "place",
+   "used_in": "kingdom-of-nagpur"
+  },
+  {
+   "name": "Shahabad (Baran, Rajasthan)",
+   "kind": "place",
+   "used_in": "jhalawar-state"
+  },
+  {
+   "name": "Chaumahla",
+   "kind": "region",
+   "used_in": "jhalawar-state"
+  },
+  {
+   "name": "Great Rann of Kutch",
+   "kind": "region",
+   "used_in": "kalhora-dynasty"
+  },
+  {
+   "name": "Jhalrapatan",
+   "kind": "place",
+   "used_in": "jhalawar-state"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Doti Kingdom",
+   "suggested_slug": "doti-kingdom",
+   "years": [
+    1400,
+    1790
+   ]
+  },
+  {
+   "name": "Chanderi State",
+   "suggested_slug": "chanderi-state",
+   "years": [
+    1500,
+    1811
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-sa-05-x.md",
+ "problems": [
+  "No page failed to load for the reviewer.",
+  "hyderabad-state /ledger/7 changed counterpart (maratha-empire to british-empire) between two reads during this review: another agent is editing it.",
+  "Reviewer edits applied in place and re-validated (0 errors): garhwal-kingdom /ledger/2 and /ledger/3 notes, kota-state /ledger/2 note, jhalawar-state /ledger/1 note (quotes replaced with the page's words). The files were re-serialised with json indent 1 (the authors' format).",
+  "Verdict 'fix' here covers both reviewer-applied fixes (applied true) and non-blocking author fixes (applied false); 'fail' (gwalior-state, kalhora-dynasty) marks wrong shape corrections that draw a written neighbour's land twice.",
+  "Structural, already flagged by the author: the Maratha confederacy members lie inside maratha-empire's shape until 1818 and found on Mughal land with no Mughal loss; the orchestrator must decide sub-units versus tints.",
+  "The new-state page budget (2-5 pages) explains most thin verdicts: alwar, kolhapur, satara, bikaner, jaisalmer, bundi and jhalawar have only found and dissolve plus the page's own changes."
+ ]
+}

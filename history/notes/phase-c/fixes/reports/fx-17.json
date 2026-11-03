@@ -1,0 +1,106 @@
+{
+ "batch_id": "fx-17",
+ "findings": [
+  {
+   "item": "F093",
+   "verdict": "kept",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Principality_of_L%C3%BCneburg"
+   ],
+   "why": "The principality's land (about 51 cells) lies wholly inside Cliopatria's Holy Roman Empire Minor States shape, the Empire's catch-all outline; the size rule gives it to the principality, which is right: the page calls it 'a territorial division of the Duchy of Brunswick-Lueneburg within the Holy Roman Empire, immediately subordinate to the emperor' (1269 to 1705, about 11,000 km2 in 1409). Nothing in either dossier is false. data/hierarchy.csv lacks a principality-of-luneburg row (see handoffs), so the compiler reports a nested conflict instead of applying R3."
+  },
+  {
+   "item": "F161",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "holy-roman-empire-minor-states",
+    "electorate-of-trier"
+   ],
+   "changes": [
+    "holy-roman-empire-minor-states: ledger (was index 34): removed the 1431 loss of 25 cells to electorate-of-trier (122 events now 121)",
+    "holy-roman-empire-minor-states: keyframe_review: new holy-roman-empire-minor-states_1431b, adjust, 1431-1647, intersect of the Empire's 1429 Cliopatria shape and Cliopatria's Electorate of Trier shape of 1431 (the 25 Hunsrueck-Nahe cells), unioned by the compiler with the Cliopatria shapes of those years",
+    "holy-roman-empire-minor-states: sources: added the Electorate of Trier page; notes: REPAIR paragraph",
+    "electorate-of-trier: notes only: bracketed line that the HRE event is removed and the cells are kept by the HRE 1431b keyframe (no shape or event change)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Electorate_of_Trier"
+   ],
+   "why": "The 25 cells the HRE ledger gave to Cliopatria's Trier row in 1431 have no cell in common with the 33-cell Moselle corridor the Trier dossier substitutes for all ten Cliopatria Trier shapes (the misplaced block in Bavaria and the Hunsrueck-Nahe country). The Electorate of Trier page puts the electorate 'along the river Moselle between Trier, near the French border, and Koblenz on the Rhine' and records no gain in 1431 or the 15th century, so the event had no page behind it and, once the Trier corrections compile, left the 25 cells (Rhineland-Palatinate 21, Baden-Wurttemberg 2, Saarland 1, Bas-Rhin 1) with no owner from 1431 to 1647. They now stay in the Empire's shape; 1619-1647 rests on the dossier's own treatment of occupied land, not a new page."
+  },
+  {
+   "item": "F162",
+   "verdict": "kept",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kingdom_of_Arles"
+   ],
+   "why": "The Cote-d'Or / Saone-et-Loire strip is already excluded: every 'wrong' Arles keyframe 1034-1375 is replaced by the 1033 extent less the pieces that left. A ghost shell would need all shell keyframes emptied and an undated 1260 loss event; the page dates nothing there ('Imperial kingdom of the Holy Roman Empire', 'one of the empire's three constituent realms', territories with 'considerable autonomy', imperial rule 'mainly nominal' since the 14th century). The shell is wholly covered by the Empire's shape or smaller states in every keyframe year 1260-1375, and R3 tints the few cells Arles takes from the Empire (102 cell-years, 4 years) as constituent of the Empire, i.e. in the Empire's colour. hierarchy.csv supplies it."
+  },
+  {
+   "item": "F163",
+   "verdict": "handoff",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Duchy_of_Bar",
+    "https://en.wikipedia.org/wiki/Henry_III,_Count_of_Bar"
+   ],
+   "why": "Confirmed on the pages: after the 1301 Treaty of Bruges Henry III was 'forced to recognise all of his county west of the river Meuse as a fief of France' (Duchy of Bar) and 'paid homage to Philip for part of his lands', 'then called the Barrois mouvant' (Henry III page); 'From 1480, it was united to the imperial Duchy of Lorraine'. duchy-of-bar already has the 1297 contest_start and 1301 contest_end and its notes ask for the France event; the missing vassal_start is in kingdom-of-france, which is not mine. The pages do not say when French overlordship ended, so the vassal_end at 1480 follows the Bar dossier's own merge."
+  },
+  {
+   "item": "F164",
+   "verdict": "handoff",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [
+    "https://en.wikipedia.org/wiki/County_of_Artois"
+   ],
+   "why": "The 32 Artois cells never overlap the Empire's shape (0 cells 1326-1375), so R3 never arbitrates them; only the constituent tint reaches them, because it covers all of the Free County's direct cells from the 1329 Artois gain. Page: 'Upon her death in 1329, Artois passed to her daughter ... Countess Joan II'; infobox 'Fiefdom of France'; the Empire link appears only from 1493. Both remedies (end county-of-artois at the 1329 transfer so the Free County keyframe of 1329 takes over; or split Artois out of the Free County) need county-of-artois, which is not mine, and dropping Artois from the Free County alone would leave 32 cells unowned from 1333, so free-county-of-burgundy was left unchanged."
+  }
+ ],
+ "dossiers_changed": [
+  "holy-roman-empire-minor-states",
+  "electorate-of-trier"
+ ],
+ "validation": {
+  "holy-roman-empire-minor-states": "ok",
+  "electorate-of-trier": "ok (2 warnings that were already there: counterparts prum-abbey and nassau-weilburg have no dossier)"
+ },
+ "handoffs": [
+  {
+   "dossier": "kingdom-of-france",
+   "where": "ledger, after the 1284 Navarre vassal_start / the 1305 gain (year order, around index 31)",
+   "what": "Add two events. (1) {year 1301, type vassal_start, region {admin1 Meuse, country France, text 'the county west of the Meuse, the Barrois mouvant'}, counterpart duchy-of-bar, source https://en.wikipedia.org/wiki/Duchy_of_Bar, confidence 3, note: '1301: the Treaty of Bruges makes Bar's county west of the Meuse a French fief. \"Henry was forced to recognise all of his county west of the river Meuse as a fief of France\" (Duchy of Bar); \"Henry gave up some fortresses and paid homage to Philip for part of his lands\", \"then called the Barrois mouvant\" (Henry III, Count of Bar). The Barrois non-mouvant stayed in the Empire.'} (2) {year 1480, type vassal_end, same region and counterpart, source the Duchy of Bar page, confidence 1, note: 'Ends with the Bar dossier: \"From 1480, it was united to the imperial Duchy of Lorraine\". The pages do not say when French overlordship of the Barrois mouvant ended.'} Add https://en.wikipedia.org/wiki/Henry_III,_Count_of_Bar to sources.",
+   "why": "hierarchy-fixes F163: the Bar dossier notes ask for the French vassal_start in 1301 and France's ledger lacks it.",
+   "source": "https://en.wikipedia.org/wiki/Duchy_of_Bar"
+  },
+  {
+   "dossier": "county-of-artois",
+   "where": "identity.end, ledger (rename 1329 and dissolve 1332), keyframe county-of-artois_1326",
+   "what": "End the drawn state at the 1329 transfer so the Free County takes Artois over: move the dissolve to 1328 (or end it at the 1329 event) with counterpart free-county-of-burgundy, and say in the 1326 keyframe's correction text that the shape is valid 1326-1328 only (same Cliopatria 1326 shape). The existing successors entry already passes the cells to the Free County, whose keyframe free-county-of-burgundy_1329 and 1329 gain event already draw Artois. If the tint of Artois as an Empire constituent must also go, extend Artois to 1384 instead (successor duchy-of-burgundy) and tell fx owner of free-county-of-burgundy to subtract {cliopatria County of Artois, 1332} from its keyframes 1329, 1333, 1352, 1363, 1375 and drop its 1329 gain event; do not do the second half alone, it leaves 32 cells unowned from 1333.",
+   "why": "hierarchy-fixes F164 and the Free County dossier's own note: Artois is drawn twice in 1329-1332.",
+   "source": "https://en.wikipedia.org/wiki/County_of_Artois"
+  },
+  {
+   "dossier": "data/hierarchy.csv (not a dossier)",
+   "where": "new row",
+   "what": "principality-of-luneburg, holy-roman-empire-minor-states, 1269, 1705, constituent, confidence 3 (evidence: the Principality page's 'a territorial division of the Duchy of Brunswick-Lueneburg within the Holy Roman Empire, immediately subordinate to the emperor'; the alternative parent is duchy-of-brunswick-luneburg, which already has rows 1260-1806).",
+   "why": "F093: without a row the compiler reports a nested conflict (3,360 cell-years) that the size rule settles correctly but R3 would label as a constituent.",
+   "source": "https://en.wikipedia.org/wiki/Principality_of_L%C3%BCneburg"
+  },
+  {
+   "dossier": "data/hierarchy.csv (not a dossier)",
+   "where": "row free-county-of-burgundy -> holy-roman-empire-minor-states 1260..1375",
+   "what": "No edit proposed unless Artois is split out; from 1329 the constituent tint also lands on the 32 Artois cells, which the County of Artois infobox gives as a 'Fiefdom of France'. Rows have no region, so the choice is between accepting the tint on Artois or splitting Artois out (see the county-of-artois handoff).",
+   "why": "F164.",
+   "source": "https://en.wikipedia.org/wiki/County_of_Artois"
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "not_reached": [],
+ "notes_path": "history/polities/_notes/fix-fx-17.md",
+ "problems": []
+}

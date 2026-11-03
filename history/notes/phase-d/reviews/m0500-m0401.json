@@ -1,0 +1,38 @@
+{
+ "window": "m0500-m0401",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "peloponnesian-league occupation_start -413 against delian-league, ring 8-25 km round Athens (5 cells, about 1264 km2; 4 delian-league cells hatched 413-405: Phyle/Parnitha 120301, Mesogeia 120305, Tatoi/Decelea 120308, south coast 120313; the Eleusis/Salamis cell 120314 is athens' and stays unhatched; Piraeus and Acharnae fall in the city cell, left Athenian). Page: 'The Spartans took control of Decelea around 413 BC', 'giving them control of rural Attica', 'about 120 stadia from Athens' (about 22 km; Tatoi lies in the ring), no coordinates. The ring is a narrower reading than 'rural Attica' (Marathon, Laurium, Oropos cells not hatched) but nothing outside Attica is touched. Trial: hatch shows 413-405 and closes at 404, no lasting change.",
+   "page": "https://en.wikipedia.org/wiki/Decelea",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "peloponnesian-league occupation_end -404 month 4, same ring. Page: slaves escaped to Decelea 'from 413 until the close of the Peloponnesian War in 404 BC'; month 4 is the surrender of 25 April 404 already in the delian-league ledger (the Decelea page gives no month). Trial: the 4 cells pass to peloponnesian-league direct through delian-league/ledger/29 the same month; no open occupation in the m0400 anchor.",
+   "page": "https://en.wikipedia.org/wiki/Decelea",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "jin_-404 start moved from -404 to -403, shape (Houma 45 km, 32 cells) and end -370 unchanged. Page: 'So, in 403 BCE, they divided the state's lands among themselves'; 'This same year, King Weilie of Zhou proclaimed Jin, Wei, Han, and Zhao as equals'; wei, zhao and han all start at -403 in their dossiers. Keyframes act only in their start year, so Jin keeps its jin_-450 land through 404: trial gives Jin 750 cells at end of -404 (32 before), the jin -404 snap (removed 729) is gone. Side effects checked: the -403 Jin splits now hand over Cliopatria's shapes, wei_-404 then snaps 342 Hebei cells to nobody (same end state as before), and 5 cells of the Wenyu disc (262344, 262403-262404, 262576-262577, 34.8-34.9 N 112.9-113.2 E) go Jin -> Han via jin/ledger/9 where they were ownerless before; han's found and han_-404 cut Wenyu out as Wei's. That is the only change at the m0400 anchor (5 cells). Not harmful enough to fail; reported under problems.",
+   "page": "https://en.wikipedia.org/wiki/Partition_of_Jin",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch m0500-m0401: 3 entries, 3 ok, 0 rejected. Reviewer's own --trial (-6000..-401): all 3 applied; conflicts 1647 -> 1644 cell-years; snaps 52 -> 52 (jin_-404 at -404 gone, wei_-404 at -403 removed 342 appears); end anchor m0400: 5 cells change owner (Wenyu, ownerless -> han), 0 status changes. No edit to the patch file.",
+ "problems": [
+  "Jin has no land from -403 to its end (-369), before and after this patch: wei/ledger/0 (found, counterpart jin) includes the Anyi 100 km disc, which covers the whole Houma 45 km rump, and takes all 32 rump cells at -403 (trial: 21 jin -> wei, 11 none -> wei). So the override's 'Jin keeps Jiang and Quwo afterwards' is not what the map draws. A ruling cannot fix it (a same-year event and R2 settle first). Fix in the dossiers: subtract {\"place\": \"Houma\", \"km\": 45} from wei/ledger/0's region and from the wei keyframes alive until Jin ends (wei_-404, wei_-381, and on to -370), or end Jin at the year a page gives (Partition of Jin: 'In 386 BCE ... deposed Duke Jing of Jin and divided the last remaining Jin territory ... which marked the end of the Jin state'). The window agent's report does not mention this.",
+  "Side effect of keyframe_overrides/0: jin/ledger/9 (split to han, region = Cliopatria Han -404) now passes 5 Wenyu cells (262344, 262403-262404, 262576-262577) to han for -403..-376, although han's found and keyframes cut Wenyu out as the wei dossier's. They were ownerless before; han_-375 will drop them as a 5-cell snap in m0400-m0301. A clean fix is a jin dossier edit making the three split regions equal to the successors' found regions.",
+  "The jin_-404 shape (Houma 45 km = 32 cells, about 8,100 km2) is the dossier's reading of 'only Jiang County and Quwo County'; the page gives no extent and the gazetteer has neither Quwo nor Jiang County, so it was left unchanged. It lies wholly inside wei's Anyi 100 km disc, which is the cause of the first problem.",
+  "keyframe_overrides/0 lasts to -370, into m0400-m0301; that window's patch has no jin, wei, han or zhao override, so there is no clash now.",
+  "Decelea: the dossiers' own four Decelea events stay skipped but their captions still print, so -413 carries three captions and -404 two for the same occupation. If 'Decelea' is ever added to the gazetteer, those events would apply on top of the patch's; withdraw one or the other then.",
+  "Reviewer opened 2 pages: Partition_of_Jin, Decelea."
+ ]
+}

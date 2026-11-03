@@ -1,0 +1,201 @@
+{
+ "window": "sm-05",
+ "images": [
+  {
+   "year": 1665,
+   "bbox": "-11,51,-5,56",
+   "seen": "before (published draft): the island of Ireland is grey ownerless land; after (trial stage): all 344 cells are the Kingdom of Ireland in the vassal tint of England",
+   "file": "/tmp/claude-0/work/seam-sm-05/img/ire-1665-before.png",
+   "file_after": "/tmp/claude-0/work/seam-sm-05/img/ire-1665-after.png"
+  },
+  {
+   "year": 1665,
+   "bbox": "4,54,26,72",
+   "seen": "before and after (trial stage): Denmark-Norway red west of the watershed, Sweden blue east of it, the line unchanged apart from the few cells the ruling and the swedish-empire_1662 override settle; fine as drawn",
+   "file": "/tmp/claude-0/work/seam-sm-05/img/dk-1665-before.png",
+   "file_after": "/tmp/claude-0/work/seam-sm-05/img/dk-1665-after.png"
+  },
+  {
+   "year": 1681,
+   "bbox": "-112,30,-100,40",
+   "seen": "before (published draft) and after (stage1680 trial, unchanged here): New Mexico north of the El Paso strip is ownerless at the end of 1681, which is how the Pueblo Revolt leaves it; fine as drawn",
+   "file": "/tmp/claude-0/work/seam-sm-05/img/nm-1681-before.png",
+   "file_after": "/tmp/claude-0/work/seam-sm-05/img/nm-1681-after.png"
+  },
+  {
+   "year": 1792,
+   "bbox": "-98,42,-86,50",
+   "seen": "before: Minnesota east of the Mississippi is not United States land (Spanish Empire / ownerless); after (trial stage): United States east of the river, western Wisconsin whole",
+   "file": "/tmp/claude-0/work/seam-sm-05/img/mn-1792-before.png",
+   "file_after": "/tmp/claude-0/work/seam-sm-05/img/mn-1792-after.png"
+  },
+  {
+   "year": 1795,
+   "bbox": "-97,43,-74,53",
+   "seen": "before: Upper Canada reaches 50.3 N over north-western Ontario; after (trial stage): the 266-cell band north of 49 N is Rupert's Land, Upper Canada keeps its southern Ontario shape",
+   "file": "/tmp/claude-0/work/seam-sm-05/img/uc-1795-before.png",
+   "file_after": "/tmp/claude-0/work/seam-sm-05/img/uc-1795-after.png"
+  },
+  {
+   "year": 1805,
+   "bbox": "-99,43,-86,50.5",
+   "seen": "before: Upper Canada pink covers the Red River valley and the north of Minnesota; a Wisconsin/Kentucky-sized ownerless hole inside the United States; after (trial stage): Rupert's Land holds the Red River valley north of 47 N, no hole; the Dakota/west-Minnesota block stays ownerless as in the draft",
+   "file": "/tmp/claude-0/work/seam-sm-05/img/mn-1805-before.png",
+   "file_after": "/tmp/claude-0/work/seam-sm-05/img/mn-1805-after.png"
+  },
+  {
+   "year": 1797,
+   "bbox": "-76,-22,-60,-8",
+   "seen": "Puno (southern Peru, lon -71.5 to -68.7) is already on the Viceroyalty of Peru side of the border in 1797 (Peru-Rio de la Plata line near 69 W); fine as drawn",
+   "file": "/tmp/claude-0/work/seam-sm-05/img/puno-1797.png",
+   "file_before": "/tmp/claude-0/work/seam-sm-05/img/puno-1795.png"
+  },
+  {
+   "year": 1802,
+   "bbox": "-60,-34,-48,-24",
+   "seen": "Misiones Orientales are Brazilian after the 1801 treaties; fine as drawn",
+   "file": "/tmp/claude-0/work/seam-sm-05/img/misiones-1802.png"
+  }
+ ],
+ "issues": [
+  {
+   "what": "Ireland ownerless: Cromwellian Commonwealth ends and the Kingdom of Ireland (colony of the Kingdom of England, 1660-1706) did not take the island, so all 344 cells of Ireland (Republic plus Northern Ireland) sat as nobody's land 1662-1690 (and the 1691 gain of p1690-p1699 events/0 had nothing to take from)",
+   "years": "1660-1691",
+   "slugs": [
+    "commonwealth-of-england",
+    "kingdom-of-ireland",
+    "kingdom-of-england"
+   ],
+   "decision": "patched: May 1660 loss of the Commonwealth to the Kingdom of Ireland (the compiler's split hands the state's own cells to the Commonwealth and the year-end dissolve would strand them), then June 1660 gains from the Kingdom of England and from nobody's land, region the island plus the Galway, Dundalk and Clew Bay coastal cells that England's own corrections subtract; Ireland then shows as one vassal tint through 1689 and contested in 1689 as the dossiers already say. Windows p1670-p1679 and p1680-p1689 need nothing, p1690-p1699 events/0 is now a no-op",
+   "patch": "data/patches/p1660-p1669.json events/3, events/4, events/5",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kingdom_of_Ireland"
+   ]
+  },
+  {
+   "what": "Denmark-Norway / Sweden: speckle of the Denmark-Norway shape sits inside present Sweden (Jamtland, Harjedalen, Idre, Dalarna and others, about 50 cells by 1670) and the size rule keeps it against Sweden; p1650-p1659 rulings/0 settles 1653-1659 only and p1670-p1679 events/0 hands the cells over only from January 1670, so the 1660s were open",
+   "years": "1660-1669",
+   "slugs": [
+    "denmark-norway",
+    "swedish-empire"
+   ],
+   "decision": "patched: ruling for Sweden on country Sweden for 1660-1669 (continuing p1650-p1659 rulings/0), a 1 January 1660 gain of Sweden's land from Denmark-Norway (a gain moves only Danish-Norwegian held cells), and a swedish-empire_1662 keyframe override that restores the 3 cells Sweden's 1662 snap set to nobody (Denmark-Norway's 1662 shape inside Sweden, Swedish Gold Coast cells kept out); trial settled 5 cell-years in 2 years and the border cells are Swedish through 1669. Copenhagen 1660 returns only Trondelag and Bornholm to Denmark-Norway, so nothing else changes",
+   "patch": "data/patches/p1660-p1669.json rulings/1, events/6, keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Treaty_of_Br%C3%B6msebro_(1645)",
+    "https://en.wikipedia.org/wiki/Denmark%E2%80%93Norway"
+   ]
+  },
+  {
+   "what": "Spanish keyframe gap 1680-1682 and New Mexico (spanish-empire_1677 cut to 1677-1679, no keyframe 1680-1682)",
+   "years": "1680-1682",
+   "slugs": [
+    "spanish-empire"
+   ],
+   "decision": "fine as drawn: the state is carried through the gap, the ledger already removes New Mexico in the Pueblo Revolt (1680), the El Paso strip and New Spain stay Spanish, and nothing flickers at 1683. No entry written; I opened no page for this and decided from the dossier ledger and the renders only",
+   "patch": "none",
+   "pages": []
+  },
+  {
+   "what": "Quebec umbrella ruling to 1791 (p1780-p1789 rulings/0 covers 1780-1789 only)",
+   "years": "1790-1791",
+   "slugs": [
+    "province-of-quebec",
+    "british-colonial-empire",
+    "upper-canada",
+    "lower-canada"
+   ],
+   "decision": "fine as drawn: there is no umbrella/Quebec conflict in 1790 or 1791 (Quebec is replaced by Upper and Lower Canada in December 1791), so the ruling has nothing to settle; no entry",
+   "patch": "none",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Province_of_Quebec_(1763%E2%80%931791)",
+    "https://en.wikipedia.org/wiki/Constitutional_Act_1791"
+   ]
+  },
+  {
+   "what": "Maine (brief item 4 check): how Maine and its disputed north are drawn against the United States and the British colonies",
+   "years": "1783-1809",
+   "slugs": [
+    "united-states-of-america",
+    "british-colonial-empire"
+   ],
+   "decision": "fine as drawn: the US keyframes deliberately leave out the disputed north of Maine and nothing else holds it; no entry",
+   "patch": "none",
+   "pages": []
+  },
+  {
+   "what": "Minnesota east of the Mississippi and the Wisconsin and Kentucky holes: the US shape of 1791 is the 1788 shape without the p1780-p1789 repair, so 394 US cells (Minnesota east bank 289, Wisconsin 43, Georgia 35, Kentucky 26, one more) become ownerless in 1791; the Spanish Empire's 1792 shape then takes the 288 Minnesota cells 1792-1799, French Louisiana takes them in 1800-1803 and the US has them only from 1804; a British Empire stray cell also sits in Minnesota",
+   "years": "1791-1821",
+   "slugs": [
+    "united-states-of-america",
+    "spanish-empire",
+    "french-louisiana",
+    "british-empire"
+   ],
+   "decision": "patched: new keyframe united-states-of-america_1791b (1791-1821) unioned with the alive US keyframes: Minnesota east of the Mississippi, Wisconsin, Kentucky per Article 2 of the Treaty of Paris; southern Georgia deliberately not restored (the page does not place Georgia south of the 31st parallel). It runs to 1821 because the shapes of 1811-1821 still omit Wisconsin and Kentucky (they come back with p1820-p1829 united-states-of-america_1822); ending in 1810 dropped them to nobody in 1811. Ruling for the United States over the British Empire on Minnesota for 1791-1809 settles the stray cell",
+   "patch": "data/patches/p1790-p1799.json keyframe_overrides/1 and rulings/14",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Treaty_of_Paris_(1783)",
+    "https://en.wikipedia.org/wiki/East_India_Company"
+   ]
+  },
+  {
+   "what": "Upper Canada against Rupert's Land: Upper Canada's gazetteer region and keyframes (1791, 1812, 1813, 1815) overlap Rupert's Land over 266 cells of north-western Ontario between 49 N and 50.3 N and R1 gave them to Upper Canada",
+   "years": "1791-1841",
+   "slugs": [
+    "upper-canada",
+    "rupert-s-land"
+   ],
+   "decision": "patched: ruling for Rupert's Land on that band for the whole life of Upper Canada, continuing p1780-p1789 rulings/1 (Quebec against Rupert's Land); the pages are silent on a northern boundary before 1841, so the line stays where it was. A first version stopped at 1799 and the band flipped to Upper Canada in 1812; extended to 1841 and re-trialled to 1829, band stable (Upper Canada 76 / Rupert's Land 400 cells)",
+   "patch": "data/patches/p1790-p1799.json rulings/13",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Province_of_Quebec_(1763%E2%80%931791)",
+    "https://en.wikipedia.org/wiki/Upper_Canada"
+   ]
+  },
+  {
+   "what": "French Louisiana of 1800 (retroceded by Spain, found of 1800) overshoots the Mississippi and takes 133 northern Minnesota cells (Red River valley, Red Lake and Rainy River country) that Rupert's Land holds, by the size rule for 1800; the United States inherits 110 of them in 1804 and its 1805 shape then drops them to nobody for 1805-1809",
+   "years": "1800-1809",
+   "slugs": [
+    "french-louisiana",
+    "rupert-s-land",
+    "united-states-of-america"
+   ],
+   "decision": "patched: ruling for Rupert's Land over French Louisiana on Minnesota north of 47 N minus the Leech Lake pocket (west of the river), for 1800-1804; trial settled 440 cell-years in 3 years and Rupert's Land keeps the 110 Red River cells through 1809 and 1810s until the US gets them in 1819 (Convention of 1818 gives the US the Red River basin south of 49 N); no flicker in 1804/1805",
+   "patch": "data/patches/p1800-p1809.json rulings/2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Louisiana_Purchase"
+   ]
+  },
+  {
+   "what": "Rio de la Plata: Puno passes to Peru in 1796, the Misiones Orientales pass to Portugal/Brazil in 1801",
+   "years": "1796, 1801",
+   "slugs": [
+    "viceroyalty-of-the-rio-de-la-plata",
+    "viceroyalty-of-peru",
+    "colonial-brazil"
+   ],
+   "decision": "fine as drawn: Puno is on the Peruvian side of the border in 1797, the Misiones Orientales are Brazilian after 1801 (the p1800-p1809 entries already in place cover the missions); no entry",
+   "patch": "none",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Viceroyalty_of_the_R%C3%ADo_de_la_Plata"
+   ]
+  }
+ ],
+ "patch_file": "p1660-p1669,p1790-p1799,p1800-p1809",
+ "patch_entries": {
+  "events": 4,
+  "keyframe_overrides": 2,
+  "rulings": 4
+ },
+ "patch_check": "all applied",
+ "colour_clashes": [],
+ "dossier_requests": [],
+ "pages_opened": 10,
+ "problems": [
+  "Not mine, left: in 1805-1818 about 40 cells of western Minnesota (lon -96.8 to -95.1, lat 45.6-49.0) and the large Dakota/Plains block west of the Mississippi are ownerless in the draft and stay so (the US keyframes of 1805-1818 leave the Louisiana Purchase's western plains out); the Red River valley south of 49 N goes to the US only in 1819 in the draft",
+  "Not mine, left: in the p1820-p1829 trial 4 Minnesota cells belong to british-colonial-empire in 1822-1823 (they were british-empire's 4 stray cells in 1810-1819 in the published draft); my ruling covers only the british-empire slug for 1791-1809, so a seam agent for the 1810s-1820s could rule the same cells for the United States",
+  "The Ireland entries sit in p1660-p1669 events/3-5 with a region covering the whole island plus Galway, Dundalk and Clew Bay coastal cells; if the kingdom-of-england dossier is rewritten, the 1660 loss/gain pair should be re-run (check-patch and trial applied all entries)",
+  "Trials run: p1660, p1680, p1790, p1800 (final, with rulings/2 years 1800-1804), p1810 and p1820 (to check the 1810s and 1820s for flicker after the end of my overrides and rulings); check-patch p1660-p1669 10/10, p1790-p1799 21/21, p1800-p1809 11/11 ok. Stage folders deleted"
+ ]
+}

@@ -1,0 +1,871 @@
+{
+ "batch_id": "eu-20-i",
+ "verdicts": [
+  {
+   "slug": "kingdom-of-westphalia",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "The dossier has no vassal_start/vassal_end with first-french-empire, though the page calls Westphalia a client state of France and first-french-empire records both ends of the relation against this slug.",
+     "why": "Kingdom of Westphalia page: infobox status 'Client state of the French Empire'; lead 'a client state of France in present-day Germany that existed from 1807 to 1813'; 'The state was a member of the Confederation of the Rhine.' first-french-empire /ledger/4 vassal_start 1807-11 and /ledger/21 vassal_end 1813-10 both name kingdom-of-westphalia and have no mirror here.",
+     "fix": "Add vassal_start 1807 (month 7, or 11 to match first-french-empire /ledger/4) and vassal_end 1813-10, counterpart first-french-empire, region {cliopatria: Kingdom of Westphalia, year: 1809}, source the Kingdom of Westphalia page, confidence 3 for the status (the start month is the author's choice; say so in the note).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/5",
+     "what": "The 1810 gain covers only Hanover, but /ledger/7 then loses Nord and Niederelbe (Stade, Lüneburg) in December 1810, land the ledger never gained; the 1810 extent (infobox 63,652 km2) is drawn nowhere.",
+     "why": "Page: 'In December 1810, the short-lived coastal and northern départements Nord (\"North\", capital Stade) and Niederelbe (\"Lower Elbe\", capital Lüneburg) were ceded to the French Empire'; department table 'Aller | Hanover | 1810-1813'. kingdom-of-hanover /ledger/3 already says the rest of the Hanoverian realm went to Westphalia and France in 1810.",
+     "fix": "Widen /ledger/5's region to the union of Hanover, Lüneburg and Stade (the Aller, Niederelbe and Nord departments), still counterpart kingdom-of-hanover at confidence 2, so the December 1810 loss returns land that was gained.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/4",
+     "what": "Osnabrück (Weser department 1807-1810, Hanoverian since 1803) is lost in /ledger/6 but never gained; the 1807 gain from Hanover covers only Göttingen and Grubenhagen.",
+     "why": "Page original territories: 'The principalities of Brunswick-Wolfenbüttel, Hildesheim, Halberstadt, Quedlinbourg, Osnabrück, Paderborn and Minden'; table 'Weser | Osnabrück | 1807-1810'.",
+     "fix": "Add Osnabrück (place, about 40 km) to /ledger/4's region (union with Göttingen), counterpart kingdom-of-hanover, confidence 2.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger",
+     "what": "There is no 1807 gain from county-of-stolberg, though that dossier dissolves into Westphalia in 1807 and this page lists the county among the original territories.",
+     "why": "Page: 'The counties of Mansfeld, Stolberg, Ravensberg, Rietberg' among the original lands; county-of-stolberg /ledger/8 dissolve 1807 counterpart kingdom-of-westphalia ('mediatised in 1807 and made part of the Kingdom of Westphalia').",
+     "fix": "Add a 1807 gain, counterpart county-of-stolberg, region {place: Wernigerode, km: 20}, confidence 2, source the Kingdom of Westphalia page.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Westphalia",
+     "result": "confirmed (lead: territories ceded by Prussia at Tilsit 'including the Altmark, the part of the Duchy of Magdeburg west of the Elbe'; list: Halberstadt, Hildesheim, Quedlinbourg, Paderborn, Minden)"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Westphalia",
+     "result": "confirmed (December 1810, Nord capital Stade and Niederelbe capital Lüneburg ceded to the French Empire)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Westphalia",
+     "result": "confirmed (Chernyshyov took Cassel 'on the night of 28 to 29 September'; French retook it on 7 October)"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Westphalia",
+     "result": "confirmed ('Prussian troops occupied Westphalia on 26 October'; 'the status quo of 1806 was restored'; Prussia in 1815)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 63652,
+    "infobox_year": 1810,
+    "cliopatria_km2": 43140,
+    "ratio": 0.68,
+    "acknowledged": true,
+    "note": "1809: 37,883 vs 43,140 (1.14); 1812: 45,427 vs 38,231 (0.84); all within a factor of two and noted in keyframes."
+   }
+  },
+  {
+   "slug": "bessarabia",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/1",
+     "what": "The May 1812 gain of the Budjak from the Ottomans is also recorded by russian-empire, so two dossiers gain the same land in the same month; the Ottoman loss names russian-empire.",
+     "why": "russian-empire /ledger/56 gain 1812-5 cp ottoman-empire ('Russia gained the eastern half of Moldavia ... which it renamed Bessarabia'); ottoman-empire /ledger/165 loss 1812 cp russian-empire. The author's own notes say the land lies inside Cliopatria's Russian Empire shape from 1811.",
+     "fix": "Orchestrator decision: either retire this dossier (the Cliopatria row is the wrong land and Bessarabia was a Russian province, not a separate polity) or keep it as a province drawn over Russian land and drop the duplicated gain from the renderer's land accounting. Nothing for the author to research.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/0/region",
+     "what": "The found event takes the whole region 'Bessarabia' from Moldavia, which already includes the Budjak that /ledger/1 then gains from the Ottomans; predecessors[0] correctly uses Bessarabia minus Budjak.",
+     "why": "identity/predecessors[0].land = minus [Bessarabia, Budjak]; Bessarabia page: Ottoman 'direct rule only in Budjak and Khotyn'.",
+     "fix": "Set /ledger/0's region to {minus: [{region: Bessarabia}, {region: Budjak}]} as in predecessors[0].",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "The 1813 dissolve is Cliopatria's row end, not an event (confidence 1); Bessarabia stays Russian. A date for the 1812 provisional administration (oblast) would let the row end on an event or be retired.",
+     "page to try": "https://en.wikipedia.org/wiki/Bessarabia_Governorate"
+    },
+    {
+     "where": "/identity/predecessors/1",
+     "what is missing": "Khotyn (Ottoman direct rule) after 1812 is on no page opened.",
+     "page to try": "https://en.wikipedia.org/wiki/Khotyn"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Bucharest_(1812)",
+     "result": "confirmed ('signed on 28 May 1812, in Manuc's Inn in Bucharest, and ratified on 5 July 1812'; area 45,630 km2)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Bucharest_(1812)",
+     "result": "confirmed ('the Budjak and the eastern half of the Principality of Moldavia, between Prut and Dniester' ceded by the Ottoman Empire)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Bessarabia",
+     "result": "confirmed as stated: page silent on 1813; oblast 1818, guberniya 1873"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Bessarabia",
+     "result": "confirmed ('Chișinău, the former capital of the Russian Bessarabia Governorate'; no 1812 date, as the note says)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 45630,
+    "infobox_year": 1812,
+    "cliopatria_km2": 42009,
+    "ratio": 0.92,
+    "acknowledged": true,
+    "note": "No infobox area on the Bessarabia page; 45,630 km2 is the Treaty of Bucharest page. The Cliopatria shape is the wrong land (west of the Prut: bbox 25.02-28.24E excludes Chișinău at 28.86E), verdict wrong, correction region Bessarabia."
+   }
+  },
+  {
+   "slug": "duchy-of-brunswick",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/rulers/1 and /identity/rulers/2",
+     "what": "Rulers Charles II and William VIII cited no page.",
+     "why": "Duchy of Brunswick page, rulers list: '1815-1830: Charles II, son of Frederick William. Forced to flee Brunswick in 1830'; '1830-1884: William VIII. Brother of Charles II.'",
+     "fix": "Added source https://en.wikipedia.org/wiki/Duchy_of_Brunswick to both; revalidated (0 errors, 0 warnings).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The new 1813 keyframe already draws the Thedinghausen and Calvörde exclaves, which /ledger/2 gains only in 1814, from kingdom-of-westphalia, a state dissolved in October 1813.",
+     "why": "German page: '1813 wurde Herzog Friedrich Wilhelm restituiert' and the duchy was set up 1814 'in den alten Grenzen des Fürstentums Braunschweig-Wolfenbüttel'; the parts 'um 1814' include Amt Calvörde and Amt Thedinghausen. kingdom-of-westphalia ends 1813-10.",
+     "fix": "Either date /ledger/2 1813-10 with the restoration (the exclaves were old Wolfenbüttel lands) or drop the two circles from keyframe 0; the counterpart may stay kingdom-of-westphalia (within one year of its dissolve).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "Cliopatria's 1814 to 1820 change (+477 km2, edge cells) and 1864 to 1866 change (-174 km2) have no event; the pages opened (budget 5 of 5 used) record no cession, and the German page names only the failed Hildesheim claim. Thin by design; likely redrawing.",
+     "page to try": "https://de.wikipedia.org/wiki/Kommunionharz"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Frederick_William,_Duke_of_Brunswick-Wolfenb%C3%BCttel",
+     "result": "confirmed (second reign '26 October 1813 - 16 June 1815'; returned in December 1813 'after Prussia had ended French domination')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Brunswick",
+     "result": "confirmed ('The Wolfenbüttel principality had from 1807 to 1813 been held as part of the Kingdom of Westphalia.')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Brunswick",
+     "result": "confirmed ('recognized as a sovereign state by the Congress of Vienna in 1815')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Brunswick",
+     "result": "confirmed ('It joined first the North German Confederation and in 1871 the German Empire')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 3672,
+    "infobox_year": 1910,
+    "cliopatria_km2": 4704,
+    "ratio": 1.28,
+    "acknowledged": true,
+    "note": "Same 3,672 km2 in the States of the German Empire table."
+   }
+  },
+  {
+   "slug": "free-city-of-hamburg",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/identity/start",
+     "what": "The dossier starts in 1814, but the page makes Hamburg a sovereign state from 1806 that 're-assumed its pre-1811 status' in 1814, the same state; first-french-empire annexes 'free-city-of-hamburg' in 1811 with no mirror here, and Hamburg 1806-1810 is drawn by no dossier.",
+     "why": "Hamburg page: after the dissolution of the Holy Roman Empire in 1806 Hamburg 'became a sovereign state with the official title of the Free and Hanseatic City of Hamburg'; 'Hamburg re-assumed its pre-1811 status as a city-state in 1814'. first-french-empire /ledger/13 gain 1811 counterpart free-city-of-hamburg. Sibling dossiers free-city-of-lubeck, free-city-of-bremen and duchy-of-oldenburg all start in 1806 and carry the French annexation as loss/gain. The dossier's own notes say 'the 1806-1813 years belong to the First French Empire here', which first-french-empire contradicts for 1806-1810. The war 'Siege of Hamburg' (from 1813) also lies before the current start.",
+     "fix": "Start in 1806 (found 1806, counterpart holy-roman-empire or nobody), add a new keyframe 1806-1813 from the 1814 shape plus Ritzebüttel (adjust), a French occupation from November 1806 if a page supports it (free-city-of-lubeck models one), loss 1811 to first-french-empire (Bergedorf page: annexed to the Bouches de l'Elbe département 1811-1813), and turn the 1814 'found' into a gain from first-french-empire; keep the Ritzebüttel event and certainty spans consistent.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/2/note",
+     "what": "The 1820-1870 shapes (1,436-1,479 km2) are about 3.5 times Hamburg's area before 1937, and the 1814 shape (751 km2) 1.8 times; the notes compare only with the 2016 city (755 km2) and leave the question open.",
+     "why": "States of the German Empire page, table: 'Hamburg | Hamburg | Free City | 414 | ...' (km2; Bremen 256, Lübeck 298, Brunswick 3,672). The 1820 bbox reaches 8.37E, west of Neuwerk (8.50E), so the polygon likely includes the Elbe estuary.",
+     "fix": "Cite the 414 km2 figure (add the page to sources) and resolve: adjust the 1820-1870 keyframes to the city with Bergedorf, Geesthacht and the Ritzebüttel circle, or state why Cliopatria's outline is kept (grid granularity).",
+     "applied": false,
+     "blocking": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Hamburg",
+     "result": "confirmed ('Russian forces under General Bennigsen finally freed the city in 1814'; 're-assumed its pre-1811 status as a city-state in 1814')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Cuxhaven",
+     "result": "confirmed as stated at confidence 2 ('belonged to Hamburg from the 13th century until 1937'; page silent on the French years)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Bergedorf",
+     "result": "confirmed (sale of Lübeck's share for 200,000 Prussian thaler, 'Effective of 1 January 1868')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Hamburg",
+     "result": "confirmed (member of the North German Confederation 1866-1871 and the German Empire 1871-1918)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 414,
+    "infobox_year": 1910,
+    "cliopatria_km2": 1436,
+    "ratio": 3.47,
+    "acknowledged": false,
+    "note": "The Hamburg infobox gives only the modern 755 km2 (2016); 414 km2 is the States of the German Empire table (Empire period, year not stated). 1814 shape 751 km2 = 1.81."
+   }
+  },
+  {
+   "slug": "kingdom-of-norway",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Union_between_Sweden_and_Norway",
+     "result": "confirmed (Storting adopted the amendments 'on 4 November and unanimously elected Charles XIII King of Norway, rather than acknowledging him as such')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Jan_Mayen",
+     "result": "confirmed ('annexed the middle part of the island for Norway in 1922', whole island 1926, de jure 27 February 1930, 377 km2)"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Svalbard",
+     "result": "confirmed (treaty 9 February 1920 'granting full sovereignty to Norway', 'took effect on 14 August 1925'; 62,045 km2)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Erik_the_Red%27s_Land",
+     "result": "confirmed (flag at Myggbukta June 1931; proclamation 10 July 1931, 71°30' to 75°40'N; awarded to Denmark 5 April 1933)"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Norway",
+     "result": "confirmed (infobox 'State re-established: 25 February 1814'; 'Kingdoms of Sweden-Norway (personal union): 4 November 1814'; 'Union dissolved: 7 June 1905')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 385207,
+    "infobox_year": 2024,
+    "cliopatria_km2": 420717,
+    "ratio": 1.09,
+    "acknowledged": true,
+    "note": "Page: 385,207 km2 including Svalbard and Jan Mayen, 323,808 without. Tried and could not break: dates of the union, 1905, Jan Mayen, Svalbard, the East Greenland claim and the occupation; every territorial event mirrored by united-kingdoms-of-sweden-and-norway, greenland and nazi-germany; keyframe corrections (Greenland strip removed, 1941 Jan-Mayen-only shape replaced) match the ledger; capitals and certainty cover 1814-2024."
+   }
+  },
+  {
+   "slug": "sovereign-principality-of-the-united-netherlands",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Sovereign_Principality_of_the_United_Netherlands",
+     "result": "confirmed (Triumvirate 'formally took control over the liberated country on 20 November'; Scheveningen 30 November 1813; Sovereign Prince 2 December)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Sovereign_Principality_of_the_United_Netherlands",
+     "result": "confirmed (Allied military government February 1814; Treaty of Paris 30 May 1814, Meuse left bank; Eight Articles 21 June 1814; 'He became Governor-General of Belgium on 1 August')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Sovereign_Principality_of_the_United_Netherlands",
+     "result": "confirmed ('the reunification was finalised on 16 March 1815 when William Frederick was proclaimed King')"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Sovereign_Principality_of_the_United_Netherlands",
+     "result": "confirmed (infobox capital Amsterdam)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 35750,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page (population 2,233,000 in 1815 only); stated in the keyframe note. The 1814 keyframe stays ok for the Northern Netherlands with the August 1814 Belgian gain carried by the ledger (year-resolution keyframes cannot split 1814; the note says so). The page infobox does date the Anglo-Dutch Treaty (13 August 1814), contrary to the author's gap entry, but gives no content; the colonies belong to other dossiers."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kingdom-of-westphalia",
+    "year": 1807,
+    "type": "gain",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1807,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/1 vs prussia /ledger/38 (1807-7)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-westphalia",
+    "year": 1807,
+    "type": "gain",
+    "counterpart": "electorate-of-hesse"
+   },
+   "mirror": {
+    "slug": "electorate-of-hesse",
+    "year": 1807,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/2 vs hesse /ledger/5 (1807-7)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-westphalia",
+    "year": 1807,
+    "type": "gain",
+    "counterpart": "duchy-of-brunswick-luneburg"
+   },
+   "mirror": {
+    "slug": "duchy-of-brunswick-luneburg",
+    "year": 1807,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "/ledger/3 vs brunswick-luneburg /ledger/12."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-westphalia",
+    "year": 1807,
+    "type": "gain",
+    "counterpart": "kingdom-of-hanover"
+   },
+   "mirror": {
+    "slug": "kingdom-of-hanover",
+    "year": 1807,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/4 vs hanover /ledger/2; Osnabrück missing from the Westphalia region (fix)."
+  },
+  {
+   "event": {
+    "slug": "county-of-stolberg",
+    "year": 1807,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-westphalia"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "county-of-stolberg /ledger/8 dissolves into Westphalia; Westphalia has no gain (fix listed, eu-20-i)."
+  },
+  {
+   "event": {
+    "slug": "first-french-empire",
+    "year": 1807,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-westphalia"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "first-french-empire /ledger/4 (1807-11); Westphalia has no vassal_start (blocking fix, eu-20-i)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-westphalia",
+    "year": 1810,
+    "type": "gain",
+    "counterpart": "kingdom-of-hanover"
+   },
+   "mirror": {
+    "slug": "kingdom-of-hanover",
+    "year": 1810,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/5 vs hanover /ledger/3."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-westphalia",
+    "year": 1810,
+    "type": "loss",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "/ledger/6 (Osnabrück, inferred recipient, confidence 2): first-french-empire records no 1810 gain from Westphalia."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-westphalia",
+    "year": 1810,
+    "type": "loss",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": {
+    "slug": "kingdom-of-hanover",
+    "year": 1810,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "/ledger/7 (Nord, Niederelbe, 1810-12): kingdom-of-hanover /ledger/4 loses the same departments to first-french-empire in 1810-12 itself; first-french-empire records neither (its /ledger/13 1811 North Sea coast gain names free-city-of-hamburg). One of Westphalia/Hanover must hold the land in 1810 (Westphalia per its page); route to eu-20 (first-french-empire, kingdom-of-hanover)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-westphalia",
+    "year": 1813,
+    "type": "contest_start",
+    "counterpart": "russian-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "/ledger/8 (Chernyshyov's raid on Cassel): russian-empire has no event; minor, route to eu-17 or accept."
+  },
+  {
+   "event": {
+    "slug": "first-french-empire",
+    "year": 1813,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-westphalia"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "first-french-empire /ledger/21 (1813-10); Westphalia has no vassal_end (blocking fix, eu-20-i)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-westphalia",
+    "year": 1813,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1815,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Westphalia dissolves 1813-10; kingdom-of-prussia /ledger/44 gains from kingdom-of-westphalia on 1815-6, 20 months after it ceased to exist. Route to eu-09: the 1815 Prussian gains should name the 1813-1815 holders (Hanover, Hesse, Brunswick or nobody)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-westphalia",
+    "year": 1813,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "electorate-of-hesse",
+    "year": 1813,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "hesse /ledger/9 (1813-11), kingdom-of-hanover /ledger/6 (1813-10) and duchy-of-brunswick /ledger/1 (1813-10) take their lands back from the dissolving kingdom."
+  },
+  {
+   "event": {
+    "slug": "bessarabia",
+    "year": 1812,
+    "type": "found",
+    "counterpart": "principality-of-moldavia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "principality-of-moldavia has no dossier yet (eu-18 not run)."
+  },
+  {
+   "event": {
+    "slug": "bessarabia",
+    "year": 1812,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1812,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "ottoman-empire /ledger/165 loses Bessarabia to russian-empire, and russian-empire /ledger/56 gains it in 1812-5: the land is gained twice (orchestrator decision on the bessarabia row)."
+  },
+  {
+   "event": {
+    "slug": "bessarabia",
+    "year": 1813,
+    "type": "dissolve",
+    "counterpart": "russian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Cliopatria row end, confidence 1; russian-empire holds the land throughout."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-brunswick",
+    "year": 1813,
+    "type": "gain",
+    "counterpart": "kingdom-of-westphalia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-westphalia",
+    "year": 1813,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "/ledger/1 vs Westphalia /ledger/10 (1813-10)."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-brunswick",
+    "year": 1814,
+    "type": "gain",
+    "counterpart": "kingdom-of-westphalia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-westphalia",
+    "year": 1813,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "/ledger/2 (exclaves) within a year of Westphalia's dissolve; the 1813 keyframe already draws them (non-blocking fix)."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-brunswick",
+    "year": 1871,
+    "type": "dissolve",
+    "counterpart": "german-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "german-empire belongs to a part of eu-20 not written yet."
+  },
+  {
+   "event": {
+    "slug": "first-french-empire",
+    "year": 1811,
+    "type": "gain",
+    "counterpart": "free-city-of-hamburg"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "first-french-empire /ledger/13; the Hamburg dossier starts in 1814 (blocking fix: start 1806, loss 1811)."
+  },
+  {
+   "event": {
+    "slug": "free-city-of-hamburg",
+    "year": 1814,
+    "type": "found",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": {
+    "slug": "first-french-empire",
+    "year": 1814,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "first-french-empire /ledger/24 (1814-4) and /ledger/27 (1814-5, German states to german-confederation, no dossier yet). After the Hamburg fix this becomes a gain from first-french-empire."
+  },
+  {
+   "event": {
+    "slug": "free-city-of-hamburg",
+    "year": 1814,
+    "type": "gain",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": {
+    "slug": "first-french-empire",
+    "year": 1814,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Ritzebüttel, confidence 2; same mirror as above."
+  },
+  {
+   "event": {
+    "slug": "free-city-of-hamburg",
+    "year": 1868,
+    "type": "gain",
+    "counterpart": "free-city-of-lubeck"
+   },
+   "mirror": {
+    "slug": "free-city-of-lubeck",
+    "year": 1868,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Bergedorf; Lübeck /ledger/5. Bergedorf is drawn by both cities until 1868 (flagged by the author)."
+  },
+  {
+   "event": {
+    "slug": "free-city-of-hamburg",
+    "year": 1871,
+    "type": "dissolve",
+    "counterpart": "german-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "german-empire not written yet."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-norway",
+    "year": 1814,
+    "type": "found",
+    "counterpart": "denmark-norway"
+   },
+   "mirror": {
+    "slug": "denmark-norway",
+    "year": 1814,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "denmark-norway /ledger/38 dissolve 1814-1 matches, but /ledger/37 gives Norway to swedish-empire in 1814-1 and swedish-empire records no gain; Norway's dossier (sourced) holds Norway Feb-Nov 1814. Route to eu-14: /ledger/37's counterpart should be kingdom-of-norway or the land nobody's until February 1814."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-norway",
+    "year": 1814,
+    "type": "contest_start",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "/ledger/1-2 (Swedish invasion 27 July, Convention of Moss 14 August): swedish-empire has no contest events. Route to eu-14."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-norway",
+    "year": 1814,
+    "type": "loss",
+    "counterpart": "united-kingdoms-of-sweden-and-norway"
+   },
+   "mirror": {
+    "slug": "united-kingdoms-of-sweden-and-norway",
+    "year": 1814,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "union /ledger/1 (1814-11)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-norway",
+    "year": 1905,
+    "type": "gain",
+    "counterpart": "united-kingdoms-of-sweden-and-norway"
+   },
+   "mirror": {
+    "slug": "united-kingdoms-of-sweden-and-norway",
+    "year": 1905,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "union /ledger/2 (1905-6)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-norway",
+    "year": 1922,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Jan Mayen; 1925 Svalbard likewise nobody."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-norway",
+    "year": 1931,
+    "type": "contest_start",
+    "counterpart": "greenland"
+   },
+   "mirror": {
+    "slug": "greenland",
+    "year": 1931,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "greenland /ledger/26; contest_end 1933-4 vs greenland /ledger/27 matched."
+  },
+  {
+   "event": {
+    "slug": "greenland",
+    "year": 1933,
+    "type": "gain",
+    "counterpart": "kingdom-of-norway"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "greenland /ledger/28 gains the East Greenland strip from Norway in 1933-4, but Norway's 1932 keyframe correction never draws it as Norwegian (contest only), so there is nothing to lose. Route to the greenland owner: drop the gain (keep the contest)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-norway",
+    "year": 1940,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1940,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "nazi-germany /ledger/14, /20, /21, /80 mirror the contest_start 1940-4, contest_end 1940-6, occupation_start 1940-6 and occupation_end 1945-5."
+  },
+  {
+   "event": {
+    "slug": "sovereign-principality-of-the-united-netherlands",
+    "year": 1813,
+    "type": "found",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": {
+    "slug": "first-french-empire",
+    "year": 1813,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "first-french-empire /ledger/20."
+  },
+  {
+   "event": {
+    "slug": "sovereign-principality-of-the-united-netherlands",
+    "year": 1814,
+    "type": "gain",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Belgium (1814-8) was under Allied military government from February 1814 and first-french-empire ended 1814-4; the author lists the optional allied-military-government-of-belgium dossier."
+  },
+  {
+   "event": {
+    "slug": "sovereign-principality-of-the-united-netherlands",
+    "year": 1815,
+    "type": "dissolve",
+    "counterpart": "netherlands"
+   },
+   "mirror": {
+    "slug": "netherlands",
+    "year": 1815,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "netherlands /ledger/0 found matches, but netherlands /ledger/1 gains the southern Netherlands from nobody in 1815-3 although the principality's dissolve already passes Belgium on. Route to the netherlands owner: drop or re-counterpart that gain."
+  },
+  {
+   "event": {
+    "slug": "british-colonial-empire",
+    "year": 1814,
+    "type": "loss",
+    "counterpart": "sovereign-principality-of-the-united-netherlands"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "british-colonial-empire /ledger/77 returns Suriname and the Dutch Caribbean to the principality, which draws no colonies; dutch-suriname /ledger/8 ends the British occupation in 1816 against british-colonial-empire. Route to the british-colonial-empire owner: counterpart dutch-suriname (and the island colonies' dossiers)."
+  },
+  {
+   "event": {
+    "slug": "british-colonial-empire",
+    "year": 1814,
+    "type": "gain",
+    "counterpart": "sovereign-principality-of-the-united-netherlands"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "british-colonial-empire /ledger/76 (Demerara, Essequibo, Berbice): the principality draws no colonies and there is no Dutch Guiana dossier; route to the british-colonial-empire owner (counterpart nobody or an occupation already running since 1803)."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Lüneburg",
+   "kind": "place",
+   "used_in": "kingdom-of-westphalia"
+  },
+  {
+   "name": "Thedinghausen",
+   "kind": "place",
+   "used_in": "duchy-of-brunswick"
+  },
+  {
+   "name": "Calvörde",
+   "kind": "place",
+   "used_in": "duchy-of-brunswick"
+  },
+  {
+   "name": "Cuxhaven",
+   "kind": "place",
+   "used_in": "free-city-of-hamburg"
+  },
+  {
+   "name": "Bergedorf",
+   "kind": "place",
+   "used_in": "free-city-of-hamburg"
+  },
+  {
+   "name": "Jan Mayen",
+   "kind": "region",
+   "used_in": "kingdom-of-norway"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Allied military government of Belgium (February-August 1814)",
+   "suggested_slug": "allied-military-government-of-belgium",
+   "years": [
+    1814,
+    1814
+   ],
+   "note": "optional, from the author's report"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-20-i.md",
+ "problems": [
+  "No page failed to load. Extra page opened for the area check: https://en.wikipedia.org/wiki/States_of_the_German_Empire (Hamburg 414 km2, Brunswick 3,672 km2).",
+  "Reviewer applied one fix: duchy-of-brunswick.json /identity/rulers/1-2 source URL added; revalidated 0 errors, read back after the write.",
+  "Validator (--resolve) on the batch: 0 errors; 1 warning (Westphalia /ledger/7/region, unknown place Lüneburg).",
+  "Cross-dossier mismatches to route outside eu-20-i: eu-14 (denmark-norway /ledger/37, swedish-empire contest 1814), eu-09 (kingdom-of-prussia /ledger/44 gain from Westphalia in 1815), eu-20 (first-french-empire and kingdom-of-hanover over Nord/Niederelbe 1810), greenland /ledger/28, netherlands /ledger/1, british-colonial-empire /ledger/76-77, russian-empire /ledger/56 vs bessarabia.",
+  "Bessarabia: orchestrator decision needed on whether a Russian province with a wrong Cliopatria shape keeps its own dossier (double gain with russian-empire)."
+ ]
+}

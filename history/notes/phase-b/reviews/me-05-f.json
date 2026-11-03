@@ -1,0 +1,850 @@
+{
+ "batch_id": "me-05-f",
+ "verdicts": [
+  {
+   "slug": "judea",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/11",
+     "what": "judea_-25 has verdict ok, so -25..-20 draws the full Cliopatria shape: 41 Moab/Edom/Negev cells the ledger gives to the Nabataeans at -65 (/ledger/14), 9 Gerasa-district cells lost to the Decapolis at -63 (/ledger/17), and only 8 of 45 Hauran cells although /ledger/23 adds the Hauran in -22.",
+     "why": "Gazetteer: Cliopatria Judea -25 = 109 cells, of which 41 in Moab+Edom+Negev-south-of-Beersheba and 9 in the Gerasa 40 km disc, 8 Hauran cells; the corrections of judea_-63/-49/-40/-36/-27 and judea_-19 all remove the Nabataean cells, so the map flickers back for 6 years. No ledger event regains Moab, Edom, the Negev or Gerasa. Herod the Great page timeline: '22 BCE - Augustus grants Herod the regions of Trachonitis, Batanaea, and Auranitis in the northeast.'",
+     "fix": "Set verdict adjust; correction {\"minus\": [{\"cliopatria\": \"Judea\", \"year\": -25}, {\"union\": [{\"region\": \"Moab\"}, {\"region\": \"Edom\"}, {\"minus\": [{\"region\": \"Negev\"}, {\"place\": \"Beer Sheva\", \"km\": 40}]}, {\"place\": \"Gerasa\", \"km\": 40}]}]} with text limiting it to -25..-23, and add a new keyframe judea_-22 (from -22, to -20) = that shape union {\"region\": \"Hauran\"} (or add the Hauran union to judea_-25 and say in the note that it is valid from -22).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/12/correction",
+     "what": "judea_-19 removes Moab, Edom and the Negev margin but keeps the Gerasa 40 km district (10 cells) that /ledger/17 gives to the Decapolis in -63 and no event returns.",
+     "why": "Gazetteer: corrected judea_-19 holds 10 cells of {place: Gerasa, km: 40}; the 63 BC keyframes (judea_-63 to judea_-27) subtract the same disc; no gain of Gerasa/Pella/Dium after -63 is in the ledger or on the pages cited.",
+     "fix": "Add {\"place\": \"Gerasa\", \"km\": 40} to the minus union of judea_-19 (and of the -25/-22 keyframes above), or add a sourced gain if a page gives Herod the Decapolis district.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (missing vassal events)",
+     "what": "The ledger has no vassal_start/vassal_end events, so the suzerains' client events have no mirror: seleucid-empire /ledger/73 (-134 vassal_start judea) and /ledger/78 (-129 vassal_end), roman-republic /ledger/171 (-63 vassal_start), /ledger/193 (-40 vassal_end), /ledger/199 (-37 vassal_start), roman-empire /ledger/2 (-27 vassal_start) and /ledger/22 (6 vassal_end).",
+     "why": "Reviewer brief check 3: a vassal_start of X is a vassal_start in X's ledger with the suzerain as counterpart; research brief rule 4 draws clients as a lighter tint from these events. The author's notes say these are recorded only as rename events and wars. John Hyrcanus page: Antiochus VII's year-long siege, 'payment of 3,000 talents of silver to Antiochus', tribute stopped after 'Antiochus VII's death in 129 BCE'; Judea page timeline: 'under the Roman Empire after 63 BCE'.",
+     "fix": "Add vassal_start counterpart seleucid-empire at -134 and vassal_end at -129 (region: the Cliopatria Judea -126 shape or the Judea region; source John_Hyrcanus); vassal_start roman-republic -63 (source Siege_of_Jerusalem_(63_BC)), vassal_end roman-republic -40, vassal_start roman-republic -37 (Herod_the_Great), vassal_end roman-republic -27 with vassal_start roman-empire -27, vassal_end roman-empire 6 (Judaea_(Roman_province)). Optionally vassal_start/end parthian-empire -40/-37 for Antigonus (parthian-empire has no dossier yet).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/13/correction",
+     "what": "At the 4 BCE partition 16 cells of Herod's kingdom (12 in the northern Negev around Beersheba, 2 at Gaza, 2 at Amman) leave Judea with no ledger event: they are in the corrected judea_-19 shape but neither in judea_-4 nor in the -4 split regions (Galilee, Gilead, Golan, Hauran).",
+     "why": "Gazetteer: corrected judea_-19 = 105 cells, judea_-4 = 39, split regions cover 60 of judea_-19; the remainder is 16 cells, bbox 34.44-35.85 E, 30.91-32.20 N (Beer Sheva 40 km: 12, Gaza 25 km: 2, Amman admin1: 2). Archelaus held Idumea (Herod the Great page: 'ethnarch of Judea, Samaria, and Idumea'), whose south is the Beersheba country.",
+     "fix": "Add {\"intersect\": [{\"region\": \"Negev\"}, {\"place\": \"Beer Sheva\", \"km\": 40}]} to judea_-4, judea_1 and the dissolve region (/ledger/27) as Idumea's south, or record the Gaza/Negev loss at -4 with its counterpart.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/17/counterpart; /ledger/4/counterpart",
+     "what": "Counterparts 'Decapolis (Hellenistic cities)' and 'Samaria (city and region)' are neither slugs nor listed in counterparts_needing_dossiers, so the -63 loss and the -110 gain have no mirror anywhere.",
+     "why": "Reviewer brief check 3 accepts only nobody, a listed new dossier, or an unrun group. John Hyrcanus page: 'The Samaritans called for help and eventually received 6,000 troops from Antiochus IX Cyzicenus' (a Seleucid ally); the Decapolis cities were left autonomous under the Roman governor of Syria (Siege of Jerusalem (63 BC) page, as the author reads it).",
+     "fix": "Use roman-republic for the -63 Decapolis loss (or merge it into /ledger/16) and nobody or seleucid-empire for Samaria, saying which in the note.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/5",
+     "what": "judea_-66 is kept for -66..-64 with the Nabataean cells, but /ledger/14 loses them at -65.",
+     "why": "Two-year overlap of 41 cells; judea_-63 is the first keyframe that removes them.",
+     "fix": "Either move /ledger/14 to -63 (the year is the researcher's, confidence 1) or limit judea_-66 to -66 and start the cut at -65.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Year of John Hyrcanus's conquest of Idumea (Adora, Maresha); the John Hyrcanus page gives no year (confirmed), -126 is Cliopatria's.",
+     "page to try": "https://en.wikipedia.org/wiki/Idumea"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "When Jannaeus took the Moab/Edom/Negev margin; the Alexander Jannaeus page only has him returning 'the land he had seized in Moab and Galaaditis'. The Nabataeans dossier has Obodas I regaining Moab and Gilead c. 93 (Nabataeans page), which contradicts a -91 gain held to -65.",
+     "page to try": "https://en.wikipedia.org/wiki/Obodas_I"
+    },
+    {
+     "where": "/ledger/14",
+     "what is missing": "Date of the return of the twelve cities: the Jannaeus page says the Nabataeans recovered them 'only through negotiations with his elder son, Hyrcanus II' (confirmed, no year).",
+     "page to try": "https://en.wikipedia.org/wiki/Aretas_III"
+    },
+    {
+     "where": "/ledger/22",
+     "what is missing": "Octavian's grants after Actium (Gaza, Jaffa, the coastal cities) that put the coast back under Herod; the Herod the Great page has none (confirmed).",
+     "page to try": "https://en.wikipedia.org/wiki/Herodian_kingdom"
+    },
+    {
+     "where": "/ledger/7; /ledger/11",
+     "what is missing": "Previous holder of Galilee (104-103) and Golan (83-80): counterpart seleucid-empire is read from Cliopatria; the author's own note says the Seleucid shape held Golan only to -110, and in 83-69 Syria was under Tigranes. Itureans or Armenia may be the counterpart.",
+     "page to try": "https://en.wikipedia.org/wiki/Ituraea"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/John_Hyrcanus",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/John_Hyrcanus",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Alexander_Jannaeus",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11; /ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Alexander_Jannaeus",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Alexander_Jannaeus",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/23",
+     "page": "https://en.wikipedia.org/wiki/Herod_the_Great",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/25; /ledger/26",
+     "page": "https://en.wikipedia.org/wiki/Herod_the_Great",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Judea",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 32758,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Judea page infobox has no area (only coordinates and elevation), as the author says; Herod the Great page gives no area either."
+   }
+  },
+  {
+   "slug": "indo-greeks",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Date and previous holder of Menander's eastern Punjab, Arachosia and Mathura (gain from nobody at -165, confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Menander_I"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "When Arachosia left and to whom: the Indo-Scythians page (read by the reviewer) calls Arachosia 'the Parthian-controlled territory' in Isidore of Charax and gives no Saka date, so the counterpart may be parthian-empire rather than indo-scythians.",
+     "page to try": "https://en.wikipedia.org/wiki/Arachosia"
+    },
+    {
+     "where": "/ledger/7; /ledger/8",
+     "what is missing": "How Heliocles' line and the 951 cells of Balochistan, Khyber, Kashmir and the Rajasthan edge joined in -127 (confidence 1, from the shape).",
+     "page to try": "https://en.wikipedia.org/wiki/Heliocles_I"
+    },
+    {
+     "where": "/ledger/9; /ledger/14",
+     "what is missing": "Yuezhi advance over the Hindu Kush (-110) and the end of Hermaeus in the Paropamisadae (c. 80 on the Indo-Greek Kingdom page, confirmed; c. 70 on the Greco-Bactrian page).",
+     "page to try": "https://en.wikipedia.org/wiki/Hermaeus"
+    },
+    {
+     "where": "/ledger/10",
+     "what is missing": "The Ghazni-Zabul country to the Saka at -110: the Indo-Scythians page never mentions Ghazni (checked).",
+     "page to try": "https://en.wikipedia.org/wiki/Sakastan"
+    },
+    {
+     "where": "/ledger/11; /ledger/12",
+     "what is missing": "Loss of Mathura (page: Indo-Greek control 'between 185 BCE and 85 BCE', so -91 is 6 years early) and of the Sindh/Rajasthan margin.",
+     "page to try": "https://en.wikipedia.org/wiki/Mathura"
+    },
+    {
+     "where": "/ledger/15; /ledger/16",
+     "what is missing": "The margins lost at -78 and Apollodotus II's recovery of Taxila after Maues; reign dates.",
+     "page to try": "https://en.wikipedia.org/wiki/Maues"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Indo-Scythians",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Indo-Scythians",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Indo-Scythians",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Indo-Greek_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Indo-Greek_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Indo-Greek_Kingdom",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1100000,
+    "infobox_year": -150,
+    "cliopatria_km2": 784828,
+    "ratio": 0.71,
+    "acknowledged": true,
+    "note": "No Cliopatria shape is alive in -150 (row starts -126); the dossier's own keyframe indo-greeks_-165 resolves to 2,075 cells, about 573,000 km2 at the local 276 km2 per cell (Cliopatria -126: 784,828 km2 over 2,841 cells), ratio 0.52, and the note says what is left out (Sindh, Gujarat, Rajputana, Kashmir)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "judea",
+    "year": -142,
+    "type": "found",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -143,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "seleucid-empire /ledger/68; one year apart."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -141,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Acra (Jerusalem 5 km); seleucid-empire /ledger/68 note says the Acra fell in 141 but there is no 141 loss event. Small; route to me-05 (seleucid-empire) or accept."
+  },
+  {
+   "event": {
+    "slug": "nabataeans",
+    "year": -144,
+    "type": "loss",
+    "counterpart": "judea"
+   },
+   "mirror": {
+    "slug": "judea",
+    "year": -142,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Nabataeans give Gilead (6 cells) to Judea at -144 (confidence 1, Cliopatria year); judea counts all founding land as ex-Seleucid and starts at -142."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -126,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -126,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "seleucid-empire /ledger/79, both confidence 1."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -110,
+    "type": "gain",
+    "counterpart": "Samaria (city and region)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Not a slug and not listed as a needed dossier; see judea fix /ledger/4."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -110,
+    "type": "gain",
+    "counterpart": "nabataeans"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Medeba: nabataeans has no -110 loss (its losses to judea are -144 and -96). Route to me-05 (nabataeans)."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -103,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Galilee: no seleucid-empire loss at -104/-103; seleucid-empire /ledger/81 has a -91 loss to judea of 10 cells instead. Route to me-05 (seleucid-empire)."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -96,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Gaza, counterpart nobody."
+  },
+  {
+   "event": {
+    "slug": "nabataeans",
+    "year": -96,
+    "type": "loss",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Nabataeans lose northern Moab and Gilead to judea at -96 and regain them at -93 (/ledger/3, /ledger/4); judea has no -96 gain or -93 loss of this land and instead gains Moab/Edom/Negev at -91 and loses them at -65. The two dossiers disagree on who held Moab in 93-65."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -91,
+    "type": "gain",
+    "counterpart": "nabataeans"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "No -91 loss in nabataeans; nabataeans /ledger/4 has the opposite move (regain c. 93)."
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -91,
+    "type": "loss",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "seleucid-empire /ledger/81 (10 cells to judea at -91) has no judea gain at -91 from seleucid-empire; judea's -91 gain is from nabataeans and its Seleucid-counterpart gains are -103 and -80."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -80,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Golan: no seleucid-empire loss at -80; judea's own note says the Seleucid shape held Golan only to -110 (Syria was under Tigranes 83-69). Counterpart doubtful."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -80,
+    "type": "gain",
+    "counterpart": "nabataeans"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Gerasa/Pella/Dium: no nabataeans loss at -80."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -65,
+    "type": "loss",
+    "counterpart": "nabataeans"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "No nabataeans gain at -65 (or -63) of the twelve cities; nabataeans has its regain at -93."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -63,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Coastal plain: roman-republic has -63 vassal_start judea and a -64 gain of Seleucid Syria/Phoenicia, but no gain of Jaffa/Gaza/Caesarea from judea. Route to eu-03."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -63,
+    "type": "loss",
+    "counterpart": "Decapolis (Hellenistic cities)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Not a slug; see judea fix /ledger/17."
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -134,
+    "type": "vassal_start",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "judea has no vassal_start; see judea fix."
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -129,
+    "type": "vassal_end",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "judea has no vassal_end; see judea fix."
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -63,
+    "type": "vassal_start",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "judea records a rename only; see judea fix."
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -40,
+    "type": "vassal_end",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "judea records a rename only."
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -37,
+    "type": "vassal_start",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "judea records a rename only."
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -27,
+    "type": "vassal_start",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "judea has no vassal_start roman-empire."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -25,
+    "type": "gain",
+    "counterpart": "roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Coast back to Herod: no roman-empire loss at -25 (confidence 1 on the judea side). Route to eu-04."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -22,
+    "type": "gain",
+    "counterpart": "roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Trachonitis, Batanaea, Auranitis: no roman-empire loss at -22 (the land was Zenodorus's Iturean tetrarchy, itself a client)."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -4,
+    "type": "split",
+    "counterpart": "tetrarchy-of-galilee-and-peraea"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -4,
+    "type": "split",
+    "counterpart": "tetrarchy-of-philip"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": 6,
+    "type": "dissolve",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": 6,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Matched in year (roman-empire /ledger/22-23), but the land differs: roman-empire takes the whole Cliopatria Judea year-1 shape (Galilee, Gilead, Golan, Hauran, Moab, Edom included); judea gives only Judea, Samaria, Idumea and Caesarea. Route to eu-04 to use the judea_-4 shape."
+  },
+  {
+   "event": {
+    "slug": "judea",
+    "year": -40,
+    "type": "rename",
+    "counterpart": "parthian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Parthian installation of Antigonus 40-37: parthian-empire (me-06) has no dossier yet."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -175,
+    "type": "found",
+    "counterpart": "greco-bactrian-kingdom"
+   },
+   "mirror": {
+    "slug": "greco-bactrian-kingdom",
+    "year": -180,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "greco-bactrian-kingdom gains Kabul, Gandhara, Punjab and Sindh from nobody at -180 and keeps them; no split/loss to indo-greeks at -175, so the same land is double-drawn from -175 (author flagged)."
+  },
+  {
+   "event": {
+    "slug": "greco-bactrian-kingdom",
+    "year": -170,
+    "type": "gain",
+    "counterpart": "indo-greeks"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "greco-bactrian-kingdom /ledger/9 (confidence 1) has a gain from indo-greeks at -170; indo-greeks records only contest_start at -170 and no loss."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -165,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -150,
+    "type": "gain",
+    "counterpart": "greco-bactrian-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Gandhara back from Eucratides' line: no greco-bactrian-kingdom loss at -150. Route to me-05 (greco-bactrian-kingdom)."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -127,
+    "type": "gain",
+    "counterpart": "greco-bactrian-kingdom"
+   },
+   "mirror": {
+    "slug": "greco-bactrian-kingdom",
+    "year": -127,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "greco-bactrian-kingdom /ledger/16 dissolves with counterpart indo-greeks."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -127,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -127,
+    "type": "loss",
+    "counterpart": "indo-scythians"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "indo-scythians has no -127 gain; its -110 maximum is a gain from nobody. The Indo-Scythians page calls Arachosia Parthian-controlled (Isidore)."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -110,
+    "type": "loss",
+    "counterpart": "yuezhi"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "yuezhi (ia-01) has no event with counterpart indo-greeks."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -110,
+    "type": "loss",
+    "counterpart": "indo-scythians"
+   },
+   "mirror": {
+    "slug": "indo-scythians",
+    "year": -110,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "indo-scythians /ledger/2 records the same cells as a gain from nobody (author flagged)."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -91,
+    "type": "loss",
+    "counterpart": "shunga-empire"
+   },
+   "mirror": {
+    "slug": "shunga-empire",
+    "year": -91,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "shunga-empire /ledger/1, both confidence 1."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -91,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody."
+  },
+  {
+   "event": {
+    "slug": "indo-scythians",
+    "year": -88,
+    "type": "gain",
+    "counterpart": "indo-greeks"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "indo-scythians /ledger/4 (confidence 2) takes the Indus valley to 74 E from indo-greeks at -88; indo-greeks has no -88 loss and its -87 keyframe keeps Gandhara and Taxila to -81. The reviewer's read of the Indo-Scythians page found no 'around 88 B.C.' Indus settlement sentence: route to sa-02's reviewer."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -80,
+    "type": "loss",
+    "counterpart": "indo-scythians"
+   },
+   "mirror": {
+    "slug": "indo-scythians",
+    "year": -80,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "indo-scythians /ledger/5, both confidence 3."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -80,
+    "type": "loss",
+    "counterpart": "yuezhi"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Kabul valley: yuezhi has no -80 gain from indo-greeks."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -78,
+    "type": "loss",
+    "counterpart": "indo-scythians"
+   },
+   "mirror": {
+    "slug": "indo-scythians",
+    "year": -77,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "indo-scythians /ledger/6, one year apart; land disagrees in the Punjab (indo-scythians takes about 1,600 Indo-Greek cells incl. the Punjab side, indo-greeks keeps the Punjab)."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -77,
+    "type": "gain",
+    "counterpart": "indo-scythians"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Taxila back to Apollodotus II: no indo-scythians loss at -77."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": -55,
+    "type": "loss",
+    "counterpart": "indo-scythians"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "indo-scythians has no -55 gain; its /ledger/10 is a -50 loss of the eastern Punjab to indo-greeks, which indo-greeks (holding it throughout) does not mirror."
+  },
+  {
+   "event": {
+    "slug": "indo-greeks",
+    "year": 10,
+    "type": "dissolve",
+    "counterpart": "indo-scythians"
+   },
+   "mirror": {
+    "slug": "indo-scythians",
+    "year": 10,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "indo-scythians /ledger/11, both confidence 3."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Peraea",
+   "kind": "region",
+   "used_in": "judea"
+  },
+  {
+   "name": "Decapolis",
+   "kind": "region",
+   "used_in": "judea"
+  },
+  {
+   "name": "Iturea",
+   "kind": "region",
+   "used_in": "judea"
+  },
+  {
+   "name": "Trachonitis",
+   "kind": "region",
+   "used_in": "judea"
+  },
+  {
+   "name": "Batanaea",
+   "kind": "region",
+   "used_in": "judea"
+  },
+  {
+   "name": "Paneas",
+   "kind": "place",
+   "used_in": "judea"
+  },
+  {
+   "name": "Idumea (Hebron hills, Maresha, Adora; distinct from Edom)",
+   "kind": "region",
+   "used_in": "judea"
+  },
+  {
+   "name": "Gezer",
+   "kind": "place",
+   "used_in": "judea"
+  },
+  {
+   "name": "Paropamisadae",
+   "kind": "region",
+   "used_in": "indo-greeks"
+  },
+  {
+   "name": "Sagala",
+   "kind": "place",
+   "used_in": "indo-greeks"
+  },
+  {
+   "name": "Swat valley",
+   "kind": "region",
+   "used_in": "indo-greeks"
+  },
+  {
+   "name": "Pushkalavati",
+   "kind": "place",
+   "used_in": "indo-greeks"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Tetrarchy of Galilee and Peraea (Herod Antipas)",
+   "suggested_slug": "tetrarchy-of-galilee-and-peraea",
+   "years": [
+    -4,
+    39
+   ]
+  },
+  {
+   "name": "Tetrarchy of Philip",
+   "suggested_slug": "tetrarchy-of-philip",
+   "years": [
+    -4,
+    34
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-me-05-f.md",
+ "problems": [
+  "parthian-empire and kingdom-of-armenia have no dossier yet (groups me-06, eu-19 not run): Judea's Antigonus period 40-37 and the Armenian overlap of 77-67 not cross-checked.",
+  "indo-scythians dossier (sa-02) /ledger/4 cites the Indo-Scythians page for a Saka settlement on the Indus 'around 88 B.C.'; the reviewer's WebFetch of that page found no such sentence. Not in this batch; flag for the sa-02 reviewer.",
+  "No dossier edited by the reviewer: every finding on judea needs a shape correction or new events, which the orchestrator reserves for the author."
+ ]
+}

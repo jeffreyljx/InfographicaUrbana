@@ -1,0 +1,474 @@
+{
+ "batch_id": "ea-06-b",
+ "verdicts": [
+  {
+   "slug": "tibet",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0-13/correction",
+     "what": "The correction {\"region\":\"Central Tibet\"} resolves to admin1 Xizang (whole TAR: 4,342 cells, 1,098,092 km2, to 99.03 E), which includes 699 cells (~176,800 km2) of Kham (Chamdo) and 173 cells (~43,800 km2) of Guge, land the dossier's own text excludes before 1642/1684.",
+     "why": "/certainty/0 note 'Kham and Amdo are outside the state until 1642'; /ledger/7 note: the Beri king held Kham in 1640-41 (khoshut-khanate /ledger/3 gains Kham from Beri in 1641); /ledger/14: in 1684 the Tibetan government 'annexed Gu-ge to Tibet'; gazetteer resolve of Central Tibet, Central Tibet ∩ Kham, Central Tibet ∩ (79.8 E, 31.5 N, 150 km).",
+     "fix": "For 1354-1641 use {\"minus\":[{\"region\":\"Central Tibet\"},{\"region\":\"Kham\"},{\"lon\":79.8,\"lat\":31.5,\"km\":150}]} (or a proper U-Tsang spec); carry the Guge exclusion through /keyframe_review/14-19 (1642-1683) so /ledger/14 draws; let the 1642 Kham gain bring Chamdo in.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/7",
+     "what": "The 1642 gain 'Kham from Beri' (largest land move in the ledger) is mostly not Kham and not Beri's: its region (Tibet 1642 minus Central Tibet) is 1,839 cells (465,083 km2), of which 1,278 cells (323,206 km2) lie in the Qinghai region (Amdo/Kokonor); keyframes 14-25 (1642-1723) keep that Khoshut home realm in Tibet, so khoshut-khanate (Qinghai from 1637, Kham from 1641, both to 1717) and tibet paint the same land.",
+     "why": "Khoshut Khanate page quoted in /ledger/8: 'the Khoshut realm encompassed Kokonor and the Qaidam Basin while Tibet was a protectorate'; 'In the winter of 1640-1641, Gushi crushed the king of Beri' (the note itself); khoshut-khanate /ledger/0 (1637 Qinghai) and /ledger/3 (1641 gain Kham from Beri, c3); gazetteer resolve of the region and its intersection with Qinghai (region).",
+     "fix": "Restrict the 1642 gain to Kham (intersect with region Kham), counterpart khoshut-khanate (the 1642 grant of temporal power), and request the mirror in khoshut-khanate; cut Kokonor/Qaidam (the 921 northern cells, 89.9-100.4 E, 32.3-36.9 N) out of keyframes 14-25 and re-check /ledger/19 (if Kokonor was Khoshut, the 1724 Qinghai cut is not Tibet's loss). If the orchestrator adopts the protectorate model instead (Tibet holds the plateau under a Khoshut suzerain), khoshut-khanate must turn its 1641/1642 gains into vassal events. Orchestrator decision needed.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/5",
+     "what": "The 1612 gain of 'West Tibet (Ngari) around Tsaparang' (circle 80.0 E 31.3 N 250 km) draws nothing (its 368 cells in Central Tibet are already in keyframes since 1354), contains the whole /ledger/14 Guge circle that is gained again in 1684 with no loss between, and its Ngari/Tsaparang reading is not the page's.",
+     "why": "Tsangpa page: 'In 1612 and 1613, the Tsangpa ruler subjugated a number of local regimes in West Tibet: the Ngari Gyelpo, Lhopa and Changpa' (no Guge on the page); 'In the following year 1619, the West Tibetan kingdom of Mangyül Gungthang was conquered'; 'Karma Tenkyong was threatened by Ladakh in the west'; /ledger/14 has Guge annexed only in 1684. The year 1612 is the sentence's own (the note's heading caveat can go).",
+     "fix": "Re-region to western Tsang (Lato; author to confirm the Ngari Gyelpo reading), add the 1619 Gungthang conquest from the same page, keep Guge out of the shape until 1684 (see keyframe fix), and if Ladakh held Guge before 1684 book that land accordingly.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/32-37 and /keyframe_review/38-40",
+     "what": "Western Kham 1912-1918 is modelled two ways at once: tibet_1912-1917 (verdict ok) drop the 879 cells of Kham ∩ Tibet 1929 that tibet_1794 held, explained only by occupation events (which do not shrink the owner's shape), and 1918 books both an occupation_end and a gain of the same land from republic-of-china, a gain with no earlier loss in this ledger.",
+     "why": "Gazetteer resolve: Kham ∩ Tibet 1929 = 879 cells, none inside Tibet 1912; ledger 1912: occupation_end qing + occupation_start republic-of-china; 1918: gain + occupation_end, same region. Tibet (1912-1951) page also says 'After the 1911 Revolution however, Chinese forces lost ground control beyond the city of Kangding'.",
+     "fix": "Either (a) occupation: adjust keyframes 38-40 to union {\"intersect\":[{\"region\":\"Kham\"},{\"cliopatria\":\"Tibet\",\"year\":1929}]} and delete /ledger/36; or (b) loss: make /ledger/33 a 1912 loss to republic-of-china and delete /ledger/37.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/12/confidence",
+     "what": "Confidence 2 for the 1681 Tawang gain, but the page dates only the monastery's founding, not Tawang coming under Tibet.",
+     "why": "Tawang district: 'Tawang Monastery was founded by the Merak Lama Lodre Gyatso in 1681 in accordance with the wishes of the 5th Dalai Lama'; 'The Monyul kingdom was later absorbed into the control of neighbouring Bhutan and Tibet' (no year).",
+     "fix": "confidence 1 (done by the reviewer; re-validated, 0 errors).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/35",
+     "what": "The 1914 contest_start over Tawang (to 1947) belongs to no war entry.",
+     "why": "Reviewer brief check 10: every contest_start corresponds to a war's zone; wars[] has no Simla/McMahon entry.",
+     "fix": "Add a wars[] entry (Simla Convention / McMahon Line dispute, 1914-1947, zone the Tawang tract, no fighting) or explain in notes.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6",
+     "what": "Confidence 1 where the Tsangpa page dates the start of the campaign.",
+     "why": "Tsangpa page: 'In 1641, the leader of the Khoshut Mongols of the Kokonor region, Güshi Khan, set out from his home area'.",
+     "fix": "Cite https://en.wikipedia.org/wiki/Tsangpa for /ledger/6, rewrite the note's 'page silent' and raise to confidence 2.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/rulers",
+     "what is missing": "Rulers 1432-1565 (Rinpungpa period) and 1642-1951 (Dalai Lamas and regents); the strip has a 133-year gap and stops in 1642.",
+     "page to try": "https://en.wikipedia.org/wiki/Rinpungpa"
+    },
+    {
+     "where": "/keyframe_review/0-13",
+     "what is missing": "Who held Kham and Amdo 1354-1641 (author's gap; Ming commissions on paper, Beri in 1640-41).",
+     "page to try": "https://en.wikipedia.org/wiki/Kham"
+    },
+    {
+     "where": "/keyframe_review/10-13",
+     "what is missing": "Tsangpa reach 1565-1620: the page lists eastern 'new acquisitions' (Dagpo, Phanyul, Neu) and Gungthang 1619, so Ü was not the Tsangpa's before; the shapes draw all of Xizang from 1565.",
+     "page to try": "https://en.wikipedia.org/wiki/Tsangpa"
+    },
+    {
+     "where": "/keyframe_review/37",
+     "what is missing": "1865: Tibet under Qing rule says the Dri River boundary 'was used until 1865'; the change (Nyarong) is not ledgered.",
+     "page to try": "https://en.wikipedia.org/wiki/Xinlong_County"
+    },
+    {
+     "where": "/ledger/41",
+     "what is missing": "What became of the Tawang claim and the area south of the Sela after 1947 (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/McMahon_Line"
+    },
+    {
+     "where": "/ledger/42",
+     "what is missing": "End of the British/Indian hold south of the Sela Pass after 1947 (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/McMahon_Line"
+    },
+    {
+     "where": "/ledger/38",
+     "what is missing": "The 1930-32 Tibetan advance east of the Yangtze (Dege, Garze) is not drawn; net zero by 1933.",
+     "page to try": "https://en.wikipedia.org/wiki/Sino-Tibetan_War"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Tibet_under_Qing_rule",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Tibet_under_Qing_rule",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Tibet_under_Qing_rule",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/36",
+     "page": "https://en.wikipedia.org/wiki/Tibet_(1912%E2%80%931951)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/31",
+     "page": "https://en.wikipedia.org/wiki/Tibet_(1912%E2%80%931951)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/44",
+     "page": "https://en.wikipedia.org/wiki/Tibet_(1912%E2%80%931951)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/43",
+     "page": "https://en.wikipedia.org/wiki/Annexation_of_Tibet_by_the_People%27s_Republic_of_China",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Phagmodrupa_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Dzungar_conquest_of_Tibet",
+     "result": "confirmed (also /ledger/15, 17, 18)"
+    },
+    {
+     "where": "/ledger/40",
+     "page": "https://en.wikipedia.org/wiki/Tawang_district",
+     "result": "confirmed (also /ledger/35)"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Tawang_district",
+     "result": "year is the monastery's founding, not an annexation; confidence lowered to 1"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Tsangpa",
+     "result": "year confirmed ('In 1612 and 1613'); region (Ngari around Tsaparang) not on page"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1221600,
+    "infobox_year": 1912,
+    "cliopatria_km2": 910375,
+    "ratio": 1.34,
+    "acknowledged": true,
+    "note": "Tibet (1912-1951) infobox gives no year; against tibet_1928 (1,217,316 km2, the shape the corrections use for 1918-1950) the ratio is 1.00. Acknowledged in /keyframe_review/38."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1358,
+    "type": "gain",
+    "counterpart": "yuan-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "yuan-dynasty dossier not written yet (ea-06-a runs in parallel)."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1612,
+    "type": "gain",
+    "counterpart": "Ngari Gyelpo, Lhopa and Changpa (local West Tibetan regimes)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers; region doubtful (fix /ledger/5)."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1642,
+    "type": "gain",
+    "counterpart": "Beri (Donyo Dorje)"
+   },
+   "mirror": {
+    "slug": "khoshut-khanate",
+    "year": 1641,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "khoshut-khanate gains Kham from Beri in 1641 and holds it (and Qinghai from 1637) to 1717; tibet gains Kham+Kokonor (465,083 km2) from Beri in 1642. No Khoshut loss; both paint the land 1642-1717."
+  },
+  {
+   "event": {
+    "slug": "khoshut-khanate",
+    "year": 1642,
+    "type": "gain",
+    "counterpart": "tsangpa-dynasty"
+   },
+   "mirror": {
+    "slug": "tibet",
+    "year": 1642,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "tsangpa-dynasty is tibet; tibet books no loss (Ganden Phodrang rename, Khoshut protectorate). Flagged by the author; orchestrator decision (vassal vs gain)."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1681,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1684,
+    "type": "gain",
+    "counterpart": "kingdom-of-ladakh"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-ladakh has no dossier; listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1717,
+    "type": "occupation_start",
+    "counterpart": "dzungar-khanate"
+   },
+   "mirror": {
+    "slug": "dzungar-khanate",
+    "year": 1717,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Years agree (December 1717); dzungar-khanate books a gain from khoshut-khanate and khoshut-khanate a loss to dzungar-khanate; tibet an occupation of its own land. Flagged by the author."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1720,
+    "type": "occupation_end",
+    "counterpart": "dzungar-khanate"
+   },
+   "mirror": {
+    "slug": "dzungar-khanate",
+    "year": 1720,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "dzungar-khanate loses Central Tibet to qing-dynasty in 1720; tibet has the land return to itself. Type disagrees, year agrees."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1724,
+    "type": "loss",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "qing-dynasty (ea-08) not run yet; owner of the land itself questioned (fix /ledger/7)."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1727,
+    "type": "loss",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "qing-dynasty (ea-08) not run yet."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1788,
+    "type": "occupation_start",
+    "counterpart": "nepal"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nepal (sa-05) not run yet; also 1789 end, 1791-1792 second occupation."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1904,
+    "type": "occupation_start",
+    "counterpart": "british-raj"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "british-raj (sa-06) not run yet; Chumbi 1904-1908."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1905,
+    "type": "occupation_start",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "qing-dynasty (ea-08) not run yet; western Kham 1905-1912 and Lhasa 1910-1912."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1912,
+    "type": "occupation_start",
+    "counterpart": "republic-of-china"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "republic-of-china (ea-08) not run yet; internal inconsistency with the 1918 gain (fix /ledger/32-37)."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1918,
+    "type": "gain",
+    "counterpart": "republic-of-china"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "republic-of-china (ea-08) not run yet; the gain has no earlier loss in tibet's own ledger."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1944,
+    "type": "occupation_start",
+    "counterpart": "british-raj"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "british-raj (sa-06) not run yet; Tawang south of the Sela 1944-1947."
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1950,
+    "type": "occupation_start",
+    "counterpart": "people-s-republic-of-china"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "people-s-republic-of-china (ea-08) not run yet; Chamdo 1950-1951."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Ngari",
+   "kind": "region",
+   "used_in": "tibet"
+  },
+  {
+   "name": "Guge",
+   "kind": "region",
+   "used_in": "tibet"
+  },
+  {
+   "name": "Tawang",
+   "kind": "region",
+   "used_in": "tibet"
+  },
+  {
+   "name": "Chumbi Valley",
+   "kind": "region",
+   "used_in": "tibet"
+  },
+  {
+   "name": "Kuti",
+   "kind": "place",
+   "used_in": "tibet"
+  },
+  {
+   "name": "Kerung",
+   "kind": "place",
+   "used_in": "tibet"
+  },
+  {
+   "name": "Nedong",
+   "kind": "place",
+   "used_in": "tibet"
+  },
+  {
+   "name": "Tsang",
+   "kind": "region",
+   "used_in": "tibet"
+  },
+  {
+   "name": "Batang",
+   "kind": "place",
+   "used_in": "tibet"
+  },
+  {
+   "name": "Litang",
+   "kind": "place",
+   "used_in": "tibet"
+  },
+  {
+   "name": "Ü-Tsang (historical, without Chamdo and Ngari; distinct from Xizang)",
+   "kind": "region",
+   "used_in": "tibet"
+  },
+  {
+   "name": "Mangyul Gungthang",
+   "kind": "region",
+   "used_in": "tibet"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Kingdom of Ladakh (Namgyal dynasty)",
+   "suggested_slug": "kingdom-of-ladakh",
+   "years": [
+    1679,
+    1684
+   ]
+  },
+  {
+   "name": "Beri (Donyo Dorje), kingdom in Kham",
+   "suggested_slug": "beri",
+   "years": [
+    1640,
+    1641
+   ]
+  },
+  {
+   "name": "Sakya regime under the Yuan",
+   "suggested_slug": "sakya-regime",
+   "years": [
+    1354,
+    1358
+   ]
+  },
+  {
+   "name": "Ngari Gyelpo, Lhopa and Changpa (West Tibetan regimes)",
+   "suggested_slug": "guge-kingdom",
+   "years": [
+    1612,
+    1613
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ea-06-b.md",
+ "problems": [
+  "Gazetteer: 'Central Tibet' (alt names U-Tsang, Ü-Tsang, Tibet Autonomous Region, Xizang) resolves to the whole Xizang admin1, Chamdo and Ngari included; tibet, khoshut-khanate and dzungar-khanate all use it for historical U-Tsang and inherit about 220,000 km2 of Chamdo and Ngari. A separate U-Tsang region is needed.",
+  "Khoshut/Dzungar/Tibet status 1642-1720 (protectorate vs conquest) needs an orchestrator decision before either side can be fixed; the Kokonor and Kham overlap (465,083 km2, 1642-1717) is the larger half and the author did not flag it.",
+  "WebFetch caps quotes near 125 characters; several page sentences were read in fragments. No page failed to load. 7 fetches on 6 pages."
+ ]
+}

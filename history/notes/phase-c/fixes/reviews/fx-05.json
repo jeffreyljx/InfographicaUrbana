@@ -1,0 +1,76 @@
+{
+  "batch_id": "fx-05",
+  "checks": [
+    {
+      "item": "F034",
+      "verdict": "pass",
+      "what": "umayyad-caliphate keyframe_review 682 to=683 and 692 to=692. Both match the keyframes' own texts ('682-683, to Yazid I's death in November 683'; '692: ...', with keyframe 693 starting 693). The compiler (compile_dossiers.py keyframes(): to defaults to shapes.csv 682-691 / 692-704; do_keyframe unions every alive keyframe) confirms the span bug. Second Fitna page: Yazid died 'in November' 683, then Ibn al-Zubayr 'was openly proclaimed caliph'. Umayyad-only replay: 684 snap 16,010 added -> 0; 692 removed 11,149 -> 709; 698 no longer re-adds the Kahina's Numidia (779 cells) that the 698 keyframe subtracts; 701 now adds 241 Saharan-edge cells (Kebili, Ghadamis, Ouargla). The residual 692 add (about 3,700 cells of Algerian Sahara drawn by Cliopatria and never ledgered) is left, which the Maghreb page does not settle, so 'partly' is honest.",
+      "page": "https://en.wikipedia.org/wiki/Second_Fitna",
+      "fix": "",
+      "applied": false
+    },
+    {
+      "item": "F039",
+      "verdict": "pass",
+      "what": "New ledger[79] 742 loss of Algeria minus the Ifriqiya region (counterpart nobody, confidence 2), the 743 keyframe minus the same, and 741 to=742 (text '741-742'). Berber Revolt page: Tlemcen 'quickly drove out the Umayyad troops' (after the Battle of the Nobles, late 740); 'The frontline of the Berber revolt now leaped to the middle Maghreb'; 'Emirate of Tlemcen by 742'; 'the central and western Maghreb were permanently lost'. The Umayyad victory at Tubna (21 Sep 742) is inside the gazetteer's Ifriqiya (Batna/Setif/Constantine provinces), so the region choice is sound. 742 is consistent with the 741 keyframe check. Replay: 743 adds 2,128 -> 0. The 750 Egypt narrowing (intersect with the 741 shape) is a consistency change; Fihri page confirms 'Egypt fell to the Abbasids in the middle of 750'. Minor: the fixer quotes the Fihri page as the western Maghreb 'remained out of his reach'; the page reads 'the western Maghreb - Morocco and eastern Algeria - remained out of his reach' (the page's own oddity; does not change the event).",
+      "page": "https://en.wikipedia.org/wiki/Berber_Revolt",
+      "fix": "",
+      "applied": false
+    },
+    {
+      "item": "F063",
+      "verdict": "pass",
+      "what": "Keyframe 710 union now 710 shape + Bukhoro + Afghan Bactria + Morocco minus three Saharan provinces; ledger[40] Morocco minus those provinces; ledger[44] Bactria within Afghanistan. Umayyad conquest of Hispania page: Guadalete 19 July 711, Merida 'mid-summer 712', no Iberian land under Umayyad control in 710; visigothic-kingdom ledger 35-38 losses (712-714, counterpart umayyad-caliphate) hand Hispania over (compiler loss branch gives cells to the live counterpart). India page: Sindh 'during 711-713'. Maghreb page: Musa reached 'the Draa valley and the oasis of Tafilalt on the edge of the Sahara'; the Sus al-Aqsa campaigns have no result. Transoxiana page: 'Come spring, Abd al-Rahman was able to re-establish Muslim control over Tokharistan' and does not say the 710 restoration reached north of the Oxus. Replay: 710 snap 4,329/1,773 -> 3/2. Side effect noted under problems: the 718 check now adds the Sogdia remainder and drops part of Afghan Bactria.",
+      "page": "https://en.wikipedia.org/wiki/Umayyad_conquest_of_Hispania",
+      "fix": "",
+      "applied": false
+    },
+    {
+      "item": "F118",
+      "verdict": "fixed",
+      "what": "Keyframe 741 to=742 (text '741-742') and keyframe 724 without Gujarat/Rajasthan (ledger 68/69 gain them in 725). India page: Junayd '(723-726) ... conquered Gujarat and parts of Rajasthan'; 'all of the gains made by Junayd were lost'; Navsari 739; 'The Arabs lost their conquests in Rajasthan and Gujarat by 743'; infobox 'Umayyad expansion restricted to Sindh'. Leaving the 730/732/741 overlaps to the size rule (the Indian states) fits the page. Error corrected: the new 741 note cited 'events 81 and 83' (the pre-insertion indices); after the 742 event was inserted at 79 the Rajasthan and Gujarat losses are ledger 82 and 84 (81 and 83 are now the Sogdia and Pratihara contest_end events).",
+      "page": "https://en.wikipedia.org/wiki/Umayyad_campaigns_in_India",
+      "fix": "umayyad-caliphate keyframe_review umayyad-caliphate_741 note: '(events 81 and 83,' -> '(events 82 and 84,'; validated with --resolve: 0 errors, 0 warnings",
+      "applied": true
+    },
+    {
+      "item": "F144",
+      "verdict": "pass",
+      "what": "Same 724/741 changes as F118. The 724 conflict (26 Rajasthan cells) and 743 conflict (Gujarat 423) came from the keyframe spans/unions the fixer corrected; the 732/741 Gujarat overlaps stay with the Maitraka by the size rule, which the page supports (gains lost after 726, Navsari 739, lost by 743). maitraka-dynasty and gurjara-pratihara-dynasty unchanged (mtime 2026-10-19).",
+      "page": "https://en.wikipedia.org/wiki/Umayyad_campaigns_in_India",
+      "fix": "",
+      "applied": false
+    },
+    {
+      "item": "F188",
+      "verdict": "pass",
+      "what": "Skip holds: data/hierarchy.csv has principality-of-armenia,umayyad-caliphate,661,743,vassal,3; the finding asks only for vassal events.",
+      "page": "",
+      "fix": "",
+      "applied": false
+    },
+    {
+      "item": "F189",
+      "verdict": "pass",
+      "what": "Skip holds: data/hierarchy.csv has principality-of-iberia,umayyad-caliphate,661,743,vassal,3.",
+      "page": "",
+      "fix": "",
+      "applied": false
+    },
+    {
+      "item": "F258",
+      "verdict": "pass",
+      "what": "Skip holds: data/hierarchy.csv has guhilas-of-mewar,gurjara-pratihara-dynasty,750,950,vassal,2.",
+      "page": "",
+      "fix": "",
+      "applied": false
+    }
+  ],
+  "problems": [
+    "umayyad-caliphate validates ok after review (python3 -I history/tools/validate_dossier.py ... --resolve: 0 errors, 0 warnings; 99 events, 24 sources, 25 keyframes, 520 regions).",
+    "F063 side effect (not a fail): with Sogdia dropped from the 710 check and only Samarkand admin1 gained in 712 (ledger 48), the 718 check now adds the rest of Sogdia (replay: Navoi 368, Kashkadarya 101, Leninabad 84, Jizzakh 72) and drops Afghan Bactria the 718 shape lacks (Badakhshan 81, Baghlan 63, Samangan 43, Takhar 22), so the 718 snap grows by about 600-900 cells. Suggested follow-up: add a gain of Kashkadarya (Kish and Nasaf; Transoxiana page: after the Tokharistan reconquest Qutayba 'marched west over the Iron Gate, taking Kish and Nasaf', undated, sequence after spring 710) and align the 718 keyframe with the Afghan Bactria the ledger holds from 705/710.",
+    "F034 residual: keyframes 692, 693 and 694 still draw Numidia/the Aures, while keyframe 698 subtracts 'the Kahina's Numidia and Aures' and ledger 37 gains Numidia in 701 (Maghreb page: the Kahina defeated 'in a battle around 701'); a follow-up could subtract the Numidia region from those keyframes too. The Algerian Sahara (Ouargla, Bechar, Ghardaia, Adrar...) is drawn by Cliopatria from 692 and never ledgered as gained; it remains the 692 snap.",
+    "The fixer's report and history/polities/_notes/fix-fx-05.md cite 'events 81/83' for the 743 Rajasthan/Gujarat losses (pre-insertion indices; now ledger 82 and 84); corrected in the dossier note only, the report and notes files left as written.",
+    "Replay figures here and in the fixer's notes come from an Umayyad-only replay (no other dossiers, no counterpart losses), not the compiler."
+  ]
+}

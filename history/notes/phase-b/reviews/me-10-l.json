@@ -1,0 +1,1069 @@
+{
+ "batch_id": "me-10-l",
+ "verdicts": [
+  {
+   "slug": "syria",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/13",
+     "what": "Confidence 3 on Raqqa and Deir ez-Zor when the cited page names neither.",
+     "why": "Syria page: 'ISIS was able to seize control of large parts of Eastern Syria'; Raqqa is nowhere in the text and Deir ez-Zor only in a First World War context.",
+     "fix": "confidence 2 (done, with a reviewer sentence in the note).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/15/region",
+     "what": "The loss used the gazetteer's 'Syrian Desert', which also takes Iraq's Al-Anbar and Jordan's Mafraq and Ma'an, so the Islamic State's mirror gain would take land Syria never held.",
+     "why": "regions.jsonl: Syrian Desert = union(Al-Anbar (Iraq), Homs, Dayr Az Zawr, Mafraq, Ma`an (Jordan)); Syria page: 'roughly two-thirds of Syria by May 2015'.",
+     "fix": "region = {intersect: [{region: Syrian Desert}, {country: Syria}]}, text kept (done).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/21/region",
+     "what": "The March 2019 loss to the SDF-led administration is a 40 km circle on Abu Kamal, a town the Syrian army took from the Islamic State in November 2017; the last pocket was Al-Baghuz Fawqani across the river.",
+     "why": "islamic-state ledger/19 (2017-11, loss to syria, Deir ez-Zor campaign page): 'ISIL lost Al-Qa'im and Abu Kamal to the Iraqi and Syrian Army'; Islamic State page: last stronghold 'at Al-Baghuz Fawqani'.",
+     "fix": "region on Al-Baghuz Fawqani on the east bank with a radius of about 10 km (a lon/lat point if the gazetteer lacks it), and add the 2017-11 gain from islamic-state (Abu Kamal and the Euphrates west bank) cited to the Deir ez-Zor campaign page.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/19/region",
+     "what": "'Damascus (region)' is an 80 km circle around Damascus, far larger than Eastern Ghouta, and no earlier loss of Ghouta exists for this gain to undo.",
+     "why": "regions.jsonl: Damascus (region) = {place: Damascus, km: 80}; Syrian civil war timeline: 'Government forces advance in Hama province and Ghouta (January-March 2018)'.",
+     "fix": "region {place: Douma, km: 12, country: Syria} (Douma is in places.jsonl), and add the 2012 loss of Eastern Ghouta to syrian-opposition so the pair closes.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/7/region",
+     "what": "The 1981 occupation_end covers 'Golan minus Quneitra', but /ledger/4 (1974) is a gain, not an occupation_end, so the cells of the Golan polygon inside Natural Earth's Quneitra keep the 1973 occupation hatch with no end.",
+     "why": "/ledger/1 occupation_start region = Golan; /ledger/4 gain Quneitra; /ledger/7 occupation_end = minus(Golan, Quneitra). state-of-israel ledger/29 mirrors the 1974 event as a loss and ledger/30 ends the occupation of the whole Golan.",
+     "fix": "either make /ledger/7's region the whole Golan, or retype /ledger/4 as occupation_end (and ask the state-of-israel author to retype its 1974 loss the same way).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (2016-2017, missing)",
+     "what is missing": "The government's recapture of the desert and the Euphrates from the Islamic State: Palmyra (2016 and March 2017), Deir ez-Zor and Abu Kamal (September-November 2017). Without them /ledger/15 keeps Homs's desert and Deir ez-Zor out of Syria until December 2024; the islamic-state dossier already has the mirror losses (ledger/12 2016, ledger/19 2017-11).",
+     "page to try": "https://en.wikipedia.org/wiki/Deir_ez-Zor_campaign_(2017%E2%80%932019)"
+    },
+    {
+     "where": "/ledger (2012, missing)",
+     "what is missing": "The opposition's 2012 hold on eastern Aleppo and Eastern Ghouta, so that the 2016 Aleppo and 2018 Ghouta gains undo a loss; also the 2018 recapture of Daraa and Quneitra and the March 2020 Idlib line (the author's own gap list).",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Aleppo_(2012%E2%80%932016)"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Confidence-1 found event: a Cliopatria row boundary (1972/1973) with no page date. It is a row boundary, not a gap a page can fill.",
+     "page to try": "https://en.wikipedia.org/wiki/Syria"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Syria",
+     "result": "confirmed for the year; regions not named (confidence lowered to 2)"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Syrian_civil_war",
+     "result": "confirmed ('capturing the regional capitals of Raqqa in 2013 and Idlib in 2015')"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Syrian_civil_war",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Syrian_civil_war",
+     "result": "confirmed ('The 2016 victory of pro-Assad forces in the four-year Battle of Aleppo')"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Syrian_civil_war",
+     "result": "confirmed (timeline: 'Turkish intervention in Afrin (January-March 2018)')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Golan_Heights",
+     "result": "confirmed ('the year after the 1973 Yom Kippur War'; 1975 for the buffer zone)"
+    },
+    {
+     "where": "/ledger/26",
+     "page": "https://en.wikipedia.org/wiki/Golan_Heights",
+     "result": "confirmed (December 2024 buffer zone; Jamlah and Maaraba)"
+    },
+    {
+     "where": "/ledger/24",
+     "page": "https://en.wikipedia.org/wiki/Syria",
+     "result": "confirmed ('captured the capital Damascus on 8 December')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 185180,
+    "infobox_year": 0,
+    "cliopatria_km2": 186752,
+    "ratio": 1.01,
+    "acknowledged": true,
+    "note": "No year on the infobox figure; compared with the 2006-2013 shape. The 2014-2024 shape (118,734 km2, ratio 0.64) is acknowledged in /keyframe_review/6 and corrected to the whole country."
+   }
+  },
+  {
+   "slug": "arab-republic-of-egypt",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1, /keyframe_review/3 (and the corrections of /keyframe_review/0 and /keyframe_review/2)",
+     "what": "The Halaib Triangle (20,580 km2) is inside Egypt's shape for 1971-1999 under verdicts ok, yet /ledger/13 gains it from Sudan in January 2000 and the republic-of-sudan keyframes 1956-1999 add the Triangle to Sudan, so the two dossiers overlap for 29 years and Egypt's 2000 gain changes nothing.",
+     "why": "Halaib Triangle page: the 1902 line left the area to Sudan to administer; Halaib 'was considered part of Sudan's Red Sea State and participated in all Sudanese elections until the last Sudanese election in the late 1980s'; 'joint control of the area remained in effect until 1992'; 'In January 2000, Sudan withdrew its forces'. The dossier's own /keyframe_review/3 note: 'The Halaib Triangle is in the shape although Sudan administered it until the 1990s'. republic-of-sudan keyframes 1956-1997 union the Triangle; its 2000 keyframe removes it.",
+     "fix": "Corrections for 1971-1999 = {minus: [<the current correction or Cliopatria Arab Republic of Egypt 1973>, {intersect: [{country: Egypt}, {lon: 35.7, lat: 22.6, km: 120}], text: 'the Halaib Triangle'}]} (the spec republic-of-sudan uses, which the gazetteer resolves; 'Halaib Triangle' does not resolve yet); verdicts of 1973 and 1983 become adjust; split 1983 with a new keyframe arab-republic-of-egypt_2000 (2000-2023, Cliopatria's shape, Halaib in) so that /ledger/13 has a shape change to explain.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/3, /ledger/7",
+     "what": "Gains from state-of-israel of the canal strip (October 1973) and the canal area (1975) are land already inside Egypt's corrected shape under the Sinai occupation hatch; Israel's dossier has no loss in 1973 or 1975 because it never held the Sinai as its own.",
+     "why": "/keyframe_review/1 and /2 keep the whole Sinai in Egypt 'under the occupation hatch'; /ledger/1 occupation_start Sinai; state-of-israel ledger/20 occupation_start Sinai 1967 and ledger/33 occupation_end 1982 with nothing between. Sinai page: Egypt 'seizing most of the east bank of the Suez Canal'; Israel 'withdrew from immediate proximity with the Suez Canal'; 'The canal was reopened in 1975'.",
+     "fix": "type occupation_end (counterpart state-of-israel) for both, regions and notes unchanged; then /ledger/8's 1982 occupation_end of the rest stays as is.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/6/region",
+     "what": "The 1974 occupation_end is a 25 km band on both banks of the canal, which also ends the hatch on east-bank ground Israel kept until the 1975 pull-back.",
+     "why": "Sinai page: 'Israel exchanged the ten kilometers along the east bank and territory seized in 1973 for a 1974 ceasefire'; the note says the land Israel left is the west-bank ground.",
+     "fix": "region = {minus: [{river: Suez Canal, km: 25}, {region: Sinai}]}, the west-bank pocket only, to mirror /ledger/5.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (2016-2017, missing)",
+     "what is missing": "The transfer of Tiran and Sanafir to Saudi Arabia (agreement 2016, ratified 2017), a land change absent from both this dossier and kingdom-of-saudi-arabia.",
+     "page to try": "https://en.wikipedia.org/wiki/Tiran_Island"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "The stages of the Israeli withdrawal 1979-1982 and the day of the final handover (author's gap).",
+     "page to try": "https://en.wikipedia.org/wiki/Egypt%E2%80%93Israel_peace_treaty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Sinai_Peninsula",
+     "result": "confirmed ('On 6 October 1973, Egypt launched the Yom Kippur War, seizing most of the east bank of the Suez Canal')"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Sinai_Peninsula",
+     "result": "confirmed ('In 1982 ... Israel withdrew from all of the Sinai Peninsula except the contentious territory of Taba')"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Sinai_Peninsula",
+     "result": "confirmed ('returned after a ruling by a commission of arbitration in 1989')"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Halaib_Triangle",
+     "result": "confirmed ('In January 2000, Sudan withdrew its forces from the area')"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Halaib_Triangle",
+     "result": "confirmed ('In 1994, the Egyptian military moved to take control of the area')"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Egypt",
+     "result": "confirmed ('renamed the country the Arab Republic of Egypt in 1971')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1010408,
+    "infobox_year": 0,
+    "cliopatria_km2": 1011241,
+    "ratio": 1.0,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "united-arab-emirates",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/0 (before the fix)",
+     "what": "An occupation_start by pahlavi-dynasty dated 30 November 1971, two days before the state began (identity.start 1971-12), over islands outside the UAE's shape; the neighbours record the same event as the Trucial States' loss and Iran's gain.",
+     "why": "UAE page: 'On 30 November 1971 the islands were taken by force'; 'On 2 December 1971, six of the emirates ... agreed to enter into a union'. trucial-states ledger/4 (1971-11 loss to pahlavi-dynasty); pahlavi-dynasty ledger/15 (1971-11 gain from trucial-states). The Tunbs (26.25N) lie outside the UAE shape's bbox (max 26.07N).",
+     "fix": "Event removed; the notes' ISLANDS sentence now says the predecessor owns the loss and the claim stands in certainty and the war entry (done).",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (1974, missing)",
+     "what is missing": "The 1974 Saudi agreement (Treaty of Jeddah): the page says it was 'signed with Saudi Arabia, formally demarcating the frontiers' but not what land moved; the Khor al-Udeid / Sabkhat Matti strip is the likely move, and the 1973 shape holds 7 cells in Saudi Arabia (1,770 km2). One page of budget was left.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Jeddah_(1974)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/United_Arab_Emirates",
+     "result": "confirmed (2 December 1971, six emirates)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/United_Arab_Emirates",
+     "result": "confirmed (Ras al-Khaimah 10 January 1972 in the text, 10 February 1972 in the infobox; year kept)"
+    },
+    {
+     "where": "/ledger/0 (before the fix)",
+     "page": "https://en.wikipedia.org/wiki/United_Arab_Emirates",
+     "result": "confirmed date (30 November 1971), but before the state's start"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 83600,
+    "infobox_year": 0,
+    "cliopatria_km2": 77581,
+    "ratio": 0.93,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kingdom-of-bahrain",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/3 and /keyframe_review/0-2",
+     "what": "The March 2001 'gain' of the Hawar Islands (less Janan) and Qit'at Jaradah from state-of-qatar has no loss in Qatar's ledger, and Qatar never held them: the cited page dates the award of the islands to Bahrain to 1939, and the Court confirmed it.",
+     "why": "Qatar v. Bahrain page: timeline '1939: British government decides ownership in favour of Bahrain'; Qatar sought to overturn 'the 1939 British decision to award the islands to Bahrain'; 'awarding sovereignty of 16 of the 17 elements of the Hawar Islands to Bahrain'. state-of-qatar has no 2001 loss. /ledger/5 then 'loses' Janan, which the gain region had excluded, so Bahrain loses land it never had.",
+     "fix": "Keyframes 1971, 1973 and 2024: verdict adjust, correction = {union: [{cliopatria: Kingdom of Bahrain, year: 1973}, {region: Hawar Islands}]} from independence (1939 British decision, Qatar v. Bahrain page); delete /ledger/3 (or keep only Qit'at Jaradah, counterpart nobody, confidence 2); keep /ledger/4 and /ledger/5, which then remove Fasht al-Dibal and Janan from Bahrain in 2001 and match Qatar's gains.",
+     "applied": false,
+     "blocking": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Bahrain",
+     "result": "confirmed ('On 15 August 1971'; infobox 14 August 1971)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Qatar_v._Bahrain",
+     "result": "confirmed (April 1986 security force at Fasht al-Dibal)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Qatar_v._Bahrain",
+     "result": "confirmed text (16 of 17 elements to Bahrain) but mis-modelled as a gain from Qatar"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Hawar_Islands",
+     "result": "confirmed ('It was awarded to Qatar'; ICJ citation 16 March 2001)"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Bahrain",
+     "result": "confirmed (State to Kingdom of Bahrain, 14 February 2002)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 786.8,
+    "infobox_year": 0,
+    "cliopatria_km2": 881.5,
+    "ratio": 1.12,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "state-of-qatar",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/certainty",
+     "what is missing": "Optional lead, not a fault: the Saudi-Qatar land border (1965 agreement, 1992 clash at Khafus, 2001 demarcation) and the Khor al-Udeid corridor are not on the Qatar page; the Cliopatria shape does not move, so nothing is unexplained.",
+     "page to try": "https://en.wikipedia.org/wiki/Khor_Al_Adaid"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Qatar",
+     "result": "confirmed (3 September 1971, special treaty arrangements terminated)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Qatar_v._Bahrain",
+     "result": "confirmed (April 1986)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Qatar_v._Bahrain",
+     "result": "confirmed ('awarded Zubarah to Qatar ... as well as Fasht al-Dibal')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Hawar_Islands",
+     "result": "confirmed (Janan 'was awarded to Qatar')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 11581,
+    "infobox_year": 0,
+    "cliopatria_km2": 12778,
+    "ratio": 1.1,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "people-s-democratic-republic-of-yemen",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/wars/2",
+     "what is missing": "Optional lead: where the 1979 war was fought and whether ground changed hands (zones empty, page silent); also the Saudi and Oman frontiers.",
+     "page to try": "https://en.wikipedia.org/wiki/1979_Yemenite_War"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/South_Yemen",
+     "result": "confirmed (30 November 1967)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/South_Yemen",
+     "result": "confirmed (30 November 1970)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/South_Yemen",
+     "result": "confirmed ('until 1972, when North Yemen seized it'; 'North Yemen annexed the Red Sea island of Kamaran from South Yemen')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/South_Yemen",
+     "result": "confirmed (22 May 1990)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 287490,
+    "infobox_year": 0,
+    "cliopatria_km2": 313160,
+    "ratio": 1.09,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "syria",
+    "year": 1973,
+    "type": "occupation_start",
+    "counterpart": "state-of-israel"
+   },
+   "mirror": {
+    "slug": "state-of-israel",
+    "year": 1967,
+    "type": "occupation_start"
+   },
+   "status": "exception",
+   "note": "Restated at the dossier start; arab-socialist-ba-ath-party ledger/1 holds the 1967 start."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 1974,
+    "type": "gain",
+    "counterpart": "state-of-israel"
+   },
+   "mirror": {
+    "slug": "state-of-israel",
+    "year": 1974,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Both sides type the Quneitra return as gain/loss although each keeps the Golan as an occupation; see syria /ledger/7 finding."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 1976,
+    "type": "occupation_start",
+    "counterpart": "lebanon"
+   },
+   "mirror": {
+    "slug": "lebanon",
+    "year": 1976,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "May 1976, Beqaa and North Lebanon."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 1976,
+    "type": "occupation_start",
+    "counterpart": "lebanon"
+   },
+   "mirror": {
+    "slug": "lebanon",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "October 1976 Mount Lebanon occupation has no mirror in lebanon (route to lebanon's author)."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 1981,
+    "type": "occupation_end",
+    "counterpart": "state-of-israel"
+   },
+   "mirror": {
+    "slug": "state-of-israel",
+    "year": 1981,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "Same month; Syria ends 'Golan minus Quneitra', Israel the whole Golan."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 1981,
+    "type": "loss",
+    "counterpart": "state-of-israel"
+   },
+   "mirror": {
+    "slug": "state-of-israel",
+    "year": 1981,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "14 December 1981."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2005,
+    "type": "occupation_end",
+    "counterpart": "lebanon"
+   },
+   "mirror": {
+    "slug": "lebanon",
+    "year": 2005,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "Beqaa and North Lebanon, April 2005."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2005,
+    "type": "occupation_end",
+    "counterpart": "lebanon"
+   },
+   "mirror": {
+    "slug": "lebanon",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Mount Lebanon end has no mirror (lebanon lacks the start too)."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2012,
+    "type": "loss",
+    "counterpart": "autonomous-administration-of-north-and-east-syria"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No dossier; listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2013,
+    "type": "loss",
+    "counterpart": "syrian-opposition"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No dossier; listed."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2014,
+    "type": "loss",
+    "counterpart": "islamic-state"
+   },
+   "mirror": {
+    "slug": "islamic-state",
+    "year": 2014,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "IS takes Deir ez-Zor from Syria; Syria also lists Raqqa, which IS took from the opposition."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2015,
+    "type": "loss",
+    "counterpart": "syrian-opposition"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Idlib; no dossier."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2015,
+    "type": "loss",
+    "counterpart": "islamic-state"
+   },
+   "mirror": {
+    "slug": "islamic-state",
+    "year": 2015,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "May 2015; land differs (IS: Palmyra 150 km, Manbij, Hasakah south)."
+  },
+  {
+   "event": {
+    "slug": "islamic-state",
+    "year": 2016,
+    "type": "loss",
+    "counterpart": "syria"
+   },
+   "mirror": {
+    "slug": "syria",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "IS ledger/12 loses Palmyra/Manbij/Hasakah to Syria; Syria has no 2016 gain from IS (thin item)."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2016,
+    "type": "gain",
+    "counterpart": "syrian-opposition"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Aleppo; no dossier."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2016,
+    "type": "occupation_start",
+    "counterpart": "republic-of-turkey"
+   },
+   "mirror": {
+    "slug": "republic-of-turkey",
+    "year": 2016,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "August 2016."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2017,
+    "type": "loss",
+    "counterpart": "autonomous-administration-of-north-and-east-syria"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Raqqa, rebel-to-rebel transfer; no dossier."
+  },
+  {
+   "event": {
+    "slug": "islamic-state",
+    "year": 2017,
+    "type": "loss",
+    "counterpart": "syria"
+   },
+   "mirror": {
+    "slug": "syria",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "IS ledger/19 loses Deir ez-Zor/Abu Kamal to Syria (Nov 2017); Syria has no gain (thin item)."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2018,
+    "type": "gain",
+    "counterpart": "syrian-opposition"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Ghouta; no dossier."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2018,
+    "type": "occupation_start",
+    "counterpart": "republic-of-turkey"
+   },
+   "mirror": {
+    "slug": "republic-of-turkey",
+    "year": 2018,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "Afrin, January 2018."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2019,
+    "type": "loss",
+    "counterpart": "autonomous-administration-of-north-and-east-syria"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No dossier; region conflicts with IS ledger/19 (Abu Kamal to Syria 2017)."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2019,
+    "type": "occupation_start",
+    "counterpart": "republic-of-turkey"
+   },
+   "mirror": {
+    "slug": "republic-of-turkey",
+    "year": 2019,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "Syria September, Turkey October 2019."
+  },
+  {
+   "event": {
+    "slug": "syria",
+    "year": 2024,
+    "type": "occupation_start",
+    "counterpart": "state-of-israel"
+   },
+   "mirror": {
+    "slug": "state-of-israel",
+    "year": 2024,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "December 2024; Syria UNDOF admin1, Israel Quneitra admin1."
+  },
+  {
+   "event": {
+    "slug": "arab-republic-of-egypt",
+    "year": 1971,
+    "type": "occupation_start",
+    "counterpart": "state-of-israel"
+   },
+   "mirror": {
+    "slug": "state-of-israel",
+    "year": 1967,
+    "type": "occupation_start"
+   },
+   "status": "exception",
+   "note": "Restated at the dossier start; united-arab-republic ledger/7 holds the 1967 start."
+  },
+  {
+   "event": {
+    "slug": "arab-republic-of-egypt",
+    "year": 1973,
+    "type": "gain",
+    "counterpart": "state-of-israel"
+   },
+   "mirror": {
+    "slug": "state-of-israel",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "Israel holds the Sinai as an occupation and has no 1973 loss; Egypt should type this occupation_end."
+  },
+  {
+   "event": {
+    "slug": "arab-republic-of-egypt",
+    "year": 1973,
+    "type": "occupation_start",
+    "counterpart": "state-of-israel"
+   },
+   "mirror": {
+    "slug": "state-of-israel",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "West-bank pocket held by Israel Oct 1973-1974: no occupation_start/end in state-of-israel (route to its author)."
+  },
+  {
+   "event": {
+    "slug": "arab-republic-of-egypt",
+    "year": 1974,
+    "type": "occupation_end",
+    "counterpart": "state-of-israel"
+   },
+   "mirror": {
+    "slug": "state-of-israel",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "See above."
+  },
+  {
+   "event": {
+    "slug": "arab-republic-of-egypt",
+    "year": 1975,
+    "type": "gain",
+    "counterpart": "state-of-israel"
+   },
+   "mirror": {
+    "slug": "state-of-israel",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "As 1973: should be occupation_end."
+  },
+  {
+   "event": {
+    "slug": "arab-republic-of-egypt",
+    "year": 1982,
+    "type": "occupation_end",
+    "counterpart": "state-of-israel"
+   },
+   "mirror": {
+    "slug": "state-of-israel",
+    "year": 1982,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "Same year; Egypt keeps Taba occupied to 1989, Israel ends the whole Sinai in 1982."
+  },
+  {
+   "event": {
+    "slug": "arab-republic-of-egypt",
+    "year": 1982,
+    "type": "occupation_start",
+    "counterpart": "state-of-israel"
+   },
+   "mirror": {
+    "slug": "state-of-israel",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Taba 1982-1989 not in state-of-israel."
+  },
+  {
+   "event": {
+    "slug": "arab-republic-of-egypt",
+    "year": 1989,
+    "type": "occupation_end",
+    "counterpart": "state-of-israel"
+   },
+   "mirror": {
+    "slug": "state-of-israel",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Taba return not in state-of-israel."
+  },
+  {
+   "event": {
+    "slug": "arab-republic-of-egypt",
+    "year": 2000,
+    "type": "gain",
+    "counterpart": "republic-of-sudan"
+   },
+   "mirror": {
+    "slug": "republic-of-sudan",
+    "year": 2000,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "January 2000; but Egypt's keyframes already hold the Triangle before 2000 (blocking finding)."
+  },
+  {
+   "event": {
+    "slug": "united-arab-emirates",
+    "year": 1971,
+    "type": "occupation_start",
+    "counterpart": "pahlavi-dynasty"
+   },
+   "mirror": {
+    "slug": "pahlavi-dynasty",
+    "year": 1971,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "Removed by the reviewer: the event predated the UAE; trucial-states ledger/4 loss and pahlavi-dynasty ledger/15 gain own it."
+  },
+  {
+   "event": {
+    "slug": "united-arab-emirates",
+    "year": 1972,
+    "type": "gain",
+    "counterpart": "Ras al-Khaimah"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No dossier for Ras al-Khaimah (1971-1972); added to counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bahrain",
+    "year": 2001,
+    "type": "gain",
+    "counterpart": "state-of-qatar"
+   },
+   "mirror": {
+    "slug": "state-of-qatar",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "Qatar has no loss of Hawar; Bahrain held the islands from 1939/1971 (blocking finding)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bahrain",
+    "year": 2001,
+    "type": "loss",
+    "counterpart": "state-of-qatar"
+   },
+   "mirror": {
+    "slug": "state-of-qatar",
+    "year": 2001,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Fasht al-Dibal."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bahrain",
+    "year": 2001,
+    "type": "loss",
+    "counterpart": "state-of-qatar"
+   },
+   "mirror": {
+    "slug": "state-of-qatar",
+    "year": 2001,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Janan Island."
+  },
+  {
+   "event": {
+    "slug": "people-s-democratic-republic-of-yemen",
+    "year": 1972,
+    "type": "loss",
+    "counterpart": "north-yemen"
+   },
+   "mirror": {
+    "slug": "north-yemen",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Kamaran seized by North Yemen in 1972 (South Yemen page); north-yemen has no gain (route to its author)."
+  },
+  {
+   "event": {
+    "slug": "people-s-democratic-republic-of-yemen",
+    "year": 1990,
+    "type": "merge",
+    "counterpart": "north-yemen"
+   },
+   "mirror": {
+    "slug": "north-yemen",
+    "year": 1990,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": "22 May 1990; republic-of-yemen ledger/2 merge also present."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Halaib Triangle",
+   "kind": "region",
+   "used_in": "arab-republic-of-egypt"
+  },
+  {
+   "name": "Taba",
+   "kind": "place",
+   "used_in": "arab-republic-of-egypt"
+  },
+  {
+   "name": "Afrin",
+   "kind": "place",
+   "used_in": "syria"
+  },
+  {
+   "name": "Abu Musa",
+   "kind": "place",
+   "used_in": "united-arab-emirates"
+  },
+  {
+   "name": "Greater Tunb",
+   "kind": "place",
+   "used_in": "united-arab-emirates"
+  },
+  {
+   "name": "Lesser Tunb",
+   "kind": "place",
+   "used_in": "united-arab-emirates"
+  },
+  {
+   "name": "Hawar Islands",
+   "kind": "region",
+   "used_in": "kingdom-of-bahrain"
+  },
+  {
+   "name": "Fasht ad Dibal",
+   "kind": "place",
+   "used_in": "kingdom-of-bahrain"
+  },
+  {
+   "name": "Janan Island",
+   "kind": "place",
+   "used_in": "kingdom-of-bahrain"
+  },
+  {
+   "name": "Qit'at Jaradah",
+   "kind": "place",
+   "used_in": "kingdom-of-bahrain"
+  },
+  {
+   "name": "Kamaran",
+   "kind": "place",
+   "used_in": "people-s-democratic-republic-of-yemen"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Syrian opposition (FSA, Interim and Salvation Governments, HTS)",
+   "suggested_slug": "syrian-opposition",
+   "years": [
+    2012,
+    2024
+   ]
+  },
+  {
+   "name": "Autonomous Administration of North and East Syria",
+   "suggested_slug": "autonomous-administration-of-north-and-east-syria",
+   "years": [
+    2012,
+    2024
+   ]
+  },
+  {
+   "name": "Federation of South Arabia",
+   "suggested_slug": "federation-of-south-arabia",
+   "years": [
+    1962,
+    1967
+   ]
+  },
+  {
+   "name": "Protectorate of South Arabia",
+   "suggested_slug": "protectorate-of-south-arabia",
+   "years": [
+    1963,
+    1967
+   ]
+  },
+  {
+   "name": "Ras al-Khaimah (independent sheikhdom between the Trucial States and the UAE)",
+   "suggested_slug": "ras-al-khaimah",
+   "years": [
+    1971,
+    1972
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-me-10-l.md",
+ "problems": [
+  "islamic-state.json appeared on the mount at 10:16, after the author wrote syria.json (10:11); its 2016 and 2017-11 losses to syria have no Syrian mirror (listed as missing).",
+  "kingdom-of-great-britain / united-kingdom has no dossier yet (group eu-11 not run); none of this batch's events names it.",
+  "Mirrors missing on the neighbours' side, to route: lebanon (Syrian occupation of Mount Lebanon 1976-10 to 2005-4), state-of-israel (west-bank pocket 1973-1974, Taba 1982-1989), north-yemen (Kamaran 1972).",
+  "Reviewer edits applied and re-validated (0 errors): syria /ledger/13 confidence, /ledger/15 region; united-arab-emirates old /ledger/0 removed and notes amended.",
+  "Fix items carry an extra field 'blocking' (true = the reason for a fail)."
+ ]
+}

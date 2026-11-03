@@ -1,0 +1,78 @@
+{
+ "window": "p2000-p2009",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "what": "mexico gain Jan 2000 from the United States of region {country Mexico} (6,683 cells; a gain takes only the counterpart's cells, here the 61 US-held cells whose centres lie in Mexico in the start anchor). Page: 'From the Gulf of Mexico, it follows the course of the Rio Grande' to Ciudad Juarez/El Paso; 'the continental border then follows the middle of the Rio Grande'. Trial: stage anchor p2010 has 0 US cells in Mexico (published: 10 US plus 74 nobody's after the 2006 US snap) and Mexico 6,656 of 6,683 cells (the 27 nobody's are as at the 2000 anchor); the US 2006 snap (removed 61) is gone; a new mexico/US conflict of 14 cell-years in 2006 is rightly won by Mexico. Error fixed: the note said all 61 cells lie along the river from Ciudad Juarez to the Gulf; 10 of them (lon -108.3 to -116.1) lie along the land border west of El Paso. The land move is unchanged; only the note was corrected.",
+   "page": "https://en.wikipedia.org/wiki/Mexico%E2%80%93United_States_border",
+   "fix": "note: '(Chihuahua 17, Coahuila 15, Tamaulipas 14, and others: 51 along the river from Ciudad Juarez to the Gulf and 10 along the land border west of El Paso)'; patch-file note updated to match the entry counts (5 events, 2 keyframe overrides, 1 ruling).",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "mexico loss Nov 2009 to the United States of {US intersect river Rio Grande +5 km} (106 cells, about 26,800 km2, in New Mexico, Texas and Colorado). Page: 'On November 24, 2009, the U.S. ceded 6 islands in the Rio Grande to Mexico' and 'Mexico ceded 3 islands and 2 bancos to the U.S.', with no area given. mexico/ledger/9 resolves the islands as the whole river plus 5 km (297 cells; the river spec also matches Brazil's Rio Grande, harmless here because a gain takes only US cells) and takes every US-held cell in it. The US dossier has no 2009 gain from Mexico, so the loss is not absorbed as a paired gain. It is applied after ledger/9 in the same month. Trial: stage p2010 has 1 Mexican cell inside the US (the same as the 2000 anchor; published p2010 has 93). Six river islands are well under one 253 km2 cell, so no net transfer is right. Nothing breaks in other years. The only cost is a confusing 2009 'loss' caption for Mexico, which goes when ledger/9 is fixed (dossier request already filed).",
+   "page": "https://en.wikipedia.org/wiki/Mexico%E2%80%93United_States_border",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/2",
+   "verdict": "fixed",
+   "what": "kurdistan-region gain of the governorates of Arbil, As-Sulaymaniyah and Dihok (146 cells, about 36,900 km2; the page gives 46,862 km2 for today's four governorates incl. Halabja). Page: the constitution 'recognizes the Kurdistan Region as a federal region while preserving its existing authorities established in 1992'; autonomy 'formally recognized by the new Iraqi government in 2005'; no transfer of land. Supported and needed: iraqi-republic ledger/14 (Oct 2005 'gain' of the Region) and the year-end dissolve hand the Region's land to the Republic of Iraq. Error: dated 1 Jan 2006 and taken from republic-of-iraq. Trial of the original: the end of 2005 shows the Region as Iraq direct (144 cells) and 2 cells nobody's (holes inside Iraq) from 2005 to 2009. Fixed: dated Dec 2005 and taken from iraqi-republic, which still holds the cells after ledger/14 and before its dissolve at year end. Trial of the fix: the Region holds all 146 cells as a constituent of the Republic of Iraq at the end of 2005 and every later year-end to p2010, with no holes. A new 1-cell kurdistan-region/republic-of-turkey conflict in the 2006 Turkey snap is won by the Region; the cell lies in Iraq. The p2010-p2019 event dated Jan 2010 stays a no-op.",
+   "page": "https://en.wikipedia.org/wiki/Kurdistan_Region",
+   "fix": "year 2006 -> 2005, month 1 -> 12, counterpart republic-of-iraq -> iraqi-republic, note rewritten to explain the date (after iraqi-republic ledger/14, before the dissolve at year end).",
+   "applied": true
+  },
+  {
+   "entry": "events/3",
+   "verdict": "pass",
+   "what": "republic-of-uganda occupation_start Sep 2002 of {Bunia 180 km intersect Orientale} (199 cells, about 50,300 km2; bbox 28.6-31.1E, 0.7-3.1N, Ituri and at most a sliver of Haut-Uele; 6 of the cells are Uganda's own border cells and are untouched). Page: 'Ugandan troops remained in the DRC in early 2003, despite the Luanda Agreement of the previous year'; the Luanda treaty 'stipulated that Uganda would withdraw its troops from Bunia'; 'The UPDF stormed the regional capital Bunia on 6 March 2003'. Applied after ledger/13, which closes the whole 3,338-cell zone in Sep 2002. Trial: 193 Ituri cells stay occupied by Uganda at the 2000, 2001 and 2002 year-ends. The 65,000 km2 district figure in the region text is not on the page but is harmless.",
+   "page": "https://en.wikipedia.org/wiki/Second_Congo_War",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/4",
+   "verdict": "pass",
+   "what": "republic-of-uganda occupation_end Jun 2003, same region. Page: 'Under international pressure, Uganda withdrew its troops from Ituri on 2 June 2003'; the war 'officially ended on 18 July 2003'. Trial: the 193 cells become DRC direct in 2003 (change events/4, n=193) and stay so.",
+   "page": "https://en.wikipedia.org/wiki/Second_Congo_War",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "russian-federation_2000 (2000-2005) adjust: the dossier's own correction (Russia 2000 plus the Chechen Republic 2000) unchanged, plus region Chukotka (2,485 cells). The Cliopatria 2000 shape ends at lon 180.0, so the union adds exactly the 412 Chukotka cells east of 180. This matches the p1990-p1999 overrides of the 1991-1996 shapes. Page: Chukotka 'is the easternmost federal subject of Russia', 'the only part of Russia lying partially in the Western Hemisphere'. Trial: all 412 cells are Russian at the 2000 and 2005 year-ends (published p2010: 411 nobody's and 1 US), with no new Russia/US conflict.",
+   "page": "https://en.wikipedia.org/wiki/Chukotka_Autonomous_Okrug",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "what": "russian-federation_2006 (2006-2013; dossier verdict ok) adjust: Cliopatria Russian Federation 2006 (the shape with Chechnya, same area as 1996) plus region Chukotka. It adds the same 412 cells east of 180, which are Russian at the 2006 and 2009 year-ends and at p2010. The same page supports it. It reaches into p2010-p2019 (2010-2013), as the window agent reported. The keyframe starts inside this window, and no other window overrides it.",
+   "page": "https://en.wikipedia.org/wiki/Chukotka_Autonomous_Okrug",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "pass",
+   "what": "puntland over somaliland in 2009, region Maakhir (gazetteer polygon, 129 cells: 66 in the Somaliland country polygon (eastern Sanaag, 47.8-49E), 63 in Bari, already Puntland's). Puntland page: 'In January 2009, the short-lived quasi-state of Maakhir was officially incorporated into Puntland'; 'Control of the western Sool, Sanaag and Ayn (SSC) provinces is disputed with Somaliland'. Maakhir page (opened by the reviewer): it was formed 'controlling the disputed area in eastern Sanaag', capital Badhan, proclaimed 1 July 2007, 'ended in 2009'. Trial: the ruling settled 66 cell-years in 2009, and all 129 Maakhir cells are Puntland's at p2010 (published: 66 Somaliland). The polygon is a confidence-1 approximation, but the 66 cells (about 16,700 km2) are the eastern Sanaag the pages name, and the ruling acts only on conflict cells.",
+   "page": "https://en.wikipedia.org/wiki/Puntland",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "patch_check": "--check-patch p2000-p2009 after the reviewer's edits: 8 entries, 8 ok, 0 rejected. Trial of the edited entries (scratch copy, same entries; stage /tmp/claude-0/work/review-p2000-p2009/stage2): all 8 applied, rulings/0 settled 66 cell-years in 2009.",
+ "problems": [
+  "events/2 was changed by the reviewer (now Dec 2005, from iraqi-republic). The window agent's dossier request for iraqi-republic ('Patched in p2000-p2009 events/2 (applies from 1 January 2006)') is now outdated: the patch applies from the end of 2005 and gives the Region all 146 cells. The request itself (drop or retype iraqi-republic ledger/14, subtract the Region from the dissolve) still stands.",
+  "Left by the window agent, not a patch entry: 22 cells of Puntland's Nugaal (19) and Mudug (3) near Garowe stay Somaliland's from Oct 2007 to the end of 2009. somaliland/ledger/3 uses a 120 km disc round Las Anod, and the size rule kept the cells for Somaliland at the 2009 Puntland snap. 'Pages silent' understates it: Somaliland's own dossier claims only the former British protectorate (country Somaliland), and the Puntland page puts only western Sool, Sanaag and Ayn in dispute. Fix in the somaliland dossier: change ledger/3's region to {intersect: [{place Laascaanood, km 120}, {country Somaliland}]}. A patch alternative is a puntland event, Oct 2007, gain from somaliland of {intersect: [{place Laascaanood, km 120}, {union: [{admin1 Nugaal, country Somalia}, {admin1 Mudug, country Somalia}]}]}, applied after somaliland/ledger/3.",
+  "The mexico/ledger/9 dossier request should also say that {river 'Rio Grande'} resolves to the gazetteer river 'Grande' with 297 cells reaching lat -22, lon -44, so it also matches Brazil's Rio Grande. That is harmless in this gain but wrong as a region.",
+  "events/1 leaves a 2009 Mexico 'loss' caption whose text says the US ceded islands to Mexico. It should be withdrawn together with ledger/9's region once the dossier is fixed (p2020-p2029 events/3 is the same kind of fix).",
+  "rulings/0 rests on the gazetteer region Maakhir, a confidence-1 polygon whose note says 'page not opened ... extent from the modern units/map'. The Maakhir page gives only 'eastern Sanaag' and Badhan, with no area. The gazetteer agent may want to firm it up. The somaliland_2023 keyframe (country Somaliland minus the Las Anod disc) will claim these 66 cells again in 2023, so p2020-p2029 needs the same ruling.",
+  "Other windows' patch counts changed between the reviewer's two trials (706 and then 708 applied), so the conflict list also shows pairs from other windows (CAR/Sudan, Chad/Sudan, Turkey/US). None comes from this patch."
+ ]
+}

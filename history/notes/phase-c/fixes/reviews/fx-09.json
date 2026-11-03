@@ -1,0 +1,109 @@
+{
+ "batch_id": "fx-09",
+ "checks": [
+  {
+   "item": "F049",
+   "verdict": "fixed",
+   "what": "Hongwu page confirms 'By September 1371, Sichuan had been conquered' and Feng Sheng's 1372 western Gansu Corridor mission ('Feng's forces were able to successfully complete their mission'), so the 1372 Gansu gain and the 1375 Gansu addition hold. Two errors, though. (1) The 1,021 cells the fixer called 'the Sichuan basin' are Sichuan (region) intersect Kham (the western Sichuan plateau), which Ming Xia never held (the ming-xia dossier excludes Kham). Adding the whole Sichuan (region) to keyframe 1375 made Kham direct Ming land, and the page does not support that: the Ming–Tibet relations page has Kham handled by envoys and titles ('sending envoys out in the winter of 1372–1373', 'Amdo-Kham Regional Military Commission'). (2) The unchanged Cliopatria 1385 keyframe then took the additions back out: the 11:32 keyframe_snaps run shows ming-dynasty_1385 removing 1,010 cells (Sichuan 491, Gansu 452, Ningxia 47), so the snap moved to 1385 instead of being fixed. Reviewer fix: Sichuan (region) becomes Sichuan minus Kham in keyframe_review/2 (1371), keyframe_review/3 (1375) and ledger/13. keyframe_review/4 (1385) goes from ok to adjust, union of Cliopatria Ming 1385, Gansu and Ningxia Hui; the Cliopatria 1375 and 1385 outlines leave a gap at Lanzhou, Wuwei and Linxia (Hezhou, where the Ming had an officer per the Ming–Tibet page), and the 1402 outline fills it. Gazetteer re-simulation: 1371 snap goes from 1,021 to 0; 1375 removed 14, added 1,282 (860 plus 422 Kham cells from Cliopatria's own outline); 1385 removed falls from about 1,039 to 62; 1402 added falls from 2,096 to 1,599. Validated OK.",
+   "page": "https://en.wikipedia.org/wiki/Hongwu_Emperor ; https://en.wikipedia.org/wiki/Ming%E2%80%93Tibet_relations ; https://en.wikipedia.org/wiki/Ming_Xia",
+   "fix": "ming-dynasty: keyframe_review/2 and /3 union item {region: Sichuan (region)} -> {minus: [Sichuan (region), Kham]}; ledger/13 region likewise; keyframe_review/4 (1385) verdict ok -> adjust, correction union [cliopatria Ming Dynasty 1385, admin1 Gansu, admin1 Ningxia Hui]; notes extended",
+   "applied": true
+  },
+  {
+   "item": "F053",
+   "verdict": "fixed",
+   "what": "Dorgon page supports the 1644 narrowing: 'After repressing anti-Qing revolts in Hebei and Shandong in the summer and fall of 1644', Li 'forced to leave Xi'an in February 1645', 'From newly captured Xi'an, in early April 1645', and Milayin 'revolted against Qing rule in Ganzhou' late in 1646. The 11:32 keyframe_snaps run shows qing-dynasty_1644 down from 5,335 to 84 added and 0 removed. Ledger/4 (Hebei, Tianjin, Shandong from ming-dynasty, June 1644) works mechanically: the Ming dissolve takes effect at year end, so the Ming still holds those cells. Error: the new ledger/7 gave the whole of Gansu (1,705 cells) in 1646, but keyframes 1646 and 1647 hold only the 919 Gansu cells of Cliopatria's Qing 1645 shape. That created a new snap at 1646 (keyframe_snaps: 784 removed). Reviewer fix: ledger/7 region narrowed to Gansu intersect Cliopatria Qing 1645 (919 cells; Zhangye/Ganzhou, Lanzhou and Wuwei are inside). Re-simulated 1646 Gansu difference: 0. Still left at 1646 and not new: Shaanxi 130 cells (whole Shaanxi in keyframe 1645 against the Cliopatria-based 1646 and 1647 keyframes; before the fix this was a 1645 removal) and Henan 183 cells that Southern Ming holds. Validated OK.",
+   "page": "https://en.wikipedia.org/wiki/Dorgon",
+   "fix": "qing-dynasty ledger/7 (1646 Gansu gain): region {admin1 Gansu} -> {intersect: [admin1 Gansu, cliopatria Qing Dynasty 1645]}; note extended",
+   "applied": true
+  },
+  {
+   "item": "F075",
+   "verdict": "pass",
+   "what": "'In June, Li conquered Yingchang.' is on the Hongwu page, and keyframe_review/2 now holds the June 1370 Inner Mongolia margin, so the 3,590-cell removal is gone. The fixer's claim that the ledger and keyframe 'now differ by 0 cells' was wrong: the 11:32 run still shows 1,021 added at 1371, the Kham part of Sichuan (region) that Ming Xia never held. The review's Sichuan-minus-Kham correction under F049 brings 1371 to 0.",
+   "page": "https://en.wikipedia.org/wiki/Hongwu_Emperor",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F073",
+   "verdict": "pass",
+   "what": "Dungan Revolt page gives Manas on July 17, the Manas fort on September 16, Wusu on September 29, the Ili Dungans risen 'by the early fall of 1864' and Urumqi on October 3, 1864. The paired-gain skip is real: compile_dossiers.py skips a loss when the counterpart carries a gain in the same year, and dungan-revolt/ledger/9 gains Urumqi in 1864. The split (ledger/64 to a named non-dossier counterpart, ledger/65 Urumqi) addresses the 1,459 Xinjiang cells. Taiping page: 'Nanjing fell in July 1864 to the imperial armies after protracted street-by-street fighting', which supports adding Cliopatria Taiping 1864 to keyframe 1864 to match the pre-existing ledger/63. Caveats: the Dzungaria region also takes Tacheng (the page has it rising around New Year 1865) and Turpan/Altay (page silent), acceptable at confidence 1 since Cliopatria 1864 drops 96 percent of Xinjiang anyway. The page also says Taiping resistance went on in the Jiangxi and Zhejiang highlands. The 11:32 run predates this edit, so its effect is not yet measured.",
+   "page": "https://en.wikipedia.org/wiki/Dungan_Revolt_(1862%E2%80%931877) ; https://en.wikipedia.org/wiki/Taiping_Rebellion",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F130",
+   "verdict": "pass",
+   "what": "Khoshut Khanate page: 'With the taking of Shigatse in 1642, Güshi had brought all of Tibet under the control of the Gelug school', 'In 1653, Güshi's title as king of Ü-Tsang and Kham was formally justified', 'Güshi Khan accepted the nominal suzerainty of the Qing dynasty in 1654'. Subtracting Qinghai, Kham and Central Tibet from Qing keyframes 1645-1653 is supported. The hierarchy part was correctly skipped: data/hierarchy.csv row 250 is khoshut-khanate -> qing-dynasty, vassal, 1654-1717.",
+   "page": "https://en.wikipedia.org/wiki/Khoshut_Khanate",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F288",
+   "verdict": "pass",
+   "what": "Turpan Khanate page: 'founded by Ahmad Alaq in 1487 based in Turpan as the eastern division of Moghulistan', 'ruled the northern part of the Tarim Basin from Turpan in the east'. It names no Mongols, Oirats or Northern Yuan there. Trimming the Turpan, Karashahr, Kuqa and Aksu disks from mongol-khanate 1482-1521 and from the 1481 and 1519 gains is supported. Before 1487 the land was Moghulistan's, not the Mongol Khanate's.",
+   "page": "https://en.wikipedia.org/wiki/Turpan_Khanate",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F294",
+   "verdict": "pass",
+   "what": "Kara Del page: 'Originally vassal of Northern Yuan dynasty till 1455, later of Ming dynasty', 'Hami was conquered by Mansur Khan, the ruler of Moghulistan in 1513', and 'From 1467, the Ming emperors repeatedly reinstalled members of Gunashiri's house'. The 1463 'pro-Mongol faction' coup is internal to Kara Del. Subtracting the Hami circle from mongol-khanate 1455-1521 is supported.",
+   "page": "https://en.wikipedia.org/wiki/Kara_Del",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F224",
+   "verdict": "pass",
+   "what": "Kengtung State page has only 'The state was designated as a tusi of the Ming dynasty in 1405' as a Ming tie; nothing puts Kengtung in Ming hands in 1600-1642. The disk (21.29 N 99.6 E, 100 km) is Kengtung town. Removing it from ledger/57 and keyframes 1600-1642 is sound; hierarchy.csv already carries kengtung -> ming-dynasty 1405-1562.",
+   "page": "https://en.wikipedia.org/wiki/Kengtung_State",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F225",
+   "verdict": "pass",
+   "what": "Kengtung State page: 'In 1760, following conflicting claims of political influence over Kengtung State, there was a war' and the saophas 'historically preferred to pay tribute to the Burmese kings'. Trimming the disk from Qing keyframes 1738-1763 is supported. The page gives no 1894 boundary, so leaving the 12-cell Yunnan edge is reasonable.",
+   "page": "https://en.wikipedia.org/wiki/Kengtung_State",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F226",
+   "verdict": "pass",
+   "what": "Trimming Kengtung from first-toungoo-empire keyframes 1653-1734 and from ledger/78 and /82 matches the 1597 vassal_end. The Kengtung page has a 1730-1737 ruler 'sent from Ava (then was a royal court of Toungoo dynasty)' and general tribute to 'the Burmese kings', which could later support a Toungoo vassal tint for those years. It does not support direct land, so the trim stands.",
+   "page": "https://en.wikipedia.org/wiki/Kengtung_State",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F105",
+   "verdict": "pass",
+   "what": "Kept: the Northern Yuan page is indeed silent on Qinghai, Gansu and Hexi in 1450-1480, so leaving the size rule follows the brief. Caveat: the same page dates Mongol rule in Qinghai later ('the Tümed Mongols ... gradually extended their domain into northeastern Qinghai', Dayan Khan era). That weakens mongol-khanate's 1455 founding claim on Qinghai (1,535 cells) and western Gansu (634 cells), which conflict_places says it takes from ming-dynasty keyframe 1402 and ledger/15. A later fix could subtract Qinghai from mongol-khanate's 1455-1494 shapes.",
+   "page": "https://en.wikipedia.org/wiki/Northern_Yuan",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F032",
+   "verdict": "pass",
+   "what": "Handoff reasoning holds. yuan-dynasty identity.successors[0] has land Cliopatria Ming 1375, and the Yuan dissolves 1368-09 with a year-end transfer. noop_events.csv shows the Ming's 1369 gains (ledger 7, 8, 9: Hebei, Shanxi, Shaanxi) moved 0 cells, consistent with the Yuan successor transfer having already handed them over. Of the two handoff options, dropping the Ming from the Yuan successors (rest to nobody) is cleaner: the Ming ledger then dates every later gain, and gains from a dead or absent counterpart take nobody's land.",
+   "page": "https://en.wikipedia.org/wiki/Hongwu_Emperor",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "ming-dynasty (review edit): the ming-dynasty_1375 snap now has about 1,282 added cells (860 Cliopatria margin plus 422 Kham cells that Cliopatria's 1375 outline draws), against 14 removed; the ming-dynasty_1385 snap still adds about 1,540 Liaoning/Jilin cells three years before the 1387-88 ledger gains (pre-existing, outside this batch).",
+  "qing-dynasty_1646: about 130 Shaanxi cells still leave in 1646 (keyframe 1645 now holds whole Shaanxi, keyframes 1646 and 1647 hold Cliopatria's 835) and return in 1648. This was a 1645 removal before fx-09 and was moved, not created. Adding admin1 Shaanxi to the keyframe_review/2 and /3 unions would close it.",
+  "notes/phase-c/keyframe_snaps.csv and snap_places.csv (11:32) were written mid-fix: they include the fixer's ming and qing-1644/1645 edits but not F073 or the review edits, so a recompile is needed to measure the batch.",
+  "The fixer's claim 'ming 1371: ledger and keyframe now differ by 0 cells' was wrong (1,021 Kham cells still added); fixed by the review edit.",
+  "F105 follow-up: the Northern Yuan page dates the Tümed spread into northeastern Qinghai to the Dayan Khan era, so mongol-khanate's 1455 founding region taking Qinghai and western Gansu from the Ming by the size rule is doubtful.",
+  "Validation: ming-dynasty OK (0 warnings), qing-dynasty OK (0 warnings), mongol-khanate OK (1 old warning: ledger/9 counterpart 'khalkha' has no dossier), first-toungoo-empire OK."
+ ]
+}

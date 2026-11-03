@@ -1,0 +1,1167 @@
+{
+ "batch_id": "eu-01-b",
+ "verdicts": [
+  {
+   "slug": "greek-city-states",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/29/counterpart, /ledger/32/counterpart, /ledger/34/counterpart, /wars/6/belligerents",
+     "what": "Counterpart slug 'antigonid-macedonia' names a row that will never have a dossier: eu-02 wrote one dossier for both Antigonid rows under the earlier slug.",
+     "why": "history/polities/antigonid-dynasty.json identity.cliopatria_names = ['Antigonid Dynasty', 'Antigonid Macedonia'] (research rule: shared Wikidata Q237325, one dossier under the earlier slug).",
+     "fix": "counterpart 'antigonid-dynasty' (all four occurrences).",
+     "applied": true
+    },
+    {
+     "where": "/notes",
+     "what": "No infobox area comparison recorded.",
+     "why": "Polis infobox: 'max area of 60% of poleis: 100 km2', 'max area of 80% of poleis: 200 km2'; footnote 'Athens had 2,500 km2'; no aggregate area and no year.",
+     "fix": "Sentence added to notes saying the infobox gives only per-polis figures, so no ratio is possible.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/1, /ledger/31, /keyframe_review/2..41 (Sicilian cells)",
+     "what": "Sicily is owned twice: the aggregate keeps the Syracusan cells -700..-211 and loses 'Siracusa' to Rome in -212, while syracuse.json (found -733 from nobody) holds the same land and is the counterpart Rome names.",
+     "why": "syracuse.json: -733 found, -405 gain from greek-city-states (eastern Sicily), -386 gain from greek-city-states (Rhegium), -367 loss to greek-city-states (Adriatic colonies), -212 Oct loss/dissolve to roman-republic; roman-republic.json /ledger/55: -212 gain from syracuse. GCS keyframe 39 note: 'Syracuse's kingdom (9 Sicilian cells)' kept in the aggregate. The author flagged the overlap but did not resolve it.",
+     "fix": "Subtract syracuse.json's land from the keyframe corrections for the years it holds it (from -733; Hieron's kingdom -271..-212); add the mirrors: -405 loss (eastern Sicily) to syracuse, -386 loss (Rhegium) to syracuse, -367 gain (the Adriatic colonies) from syracuse; delete /ledger/31 or reduce it to the non-Syracusan cells.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/45..49 and /ledger (missing events -251..-191)",
+     "what": "The Peloponnese is owned twice -191..-146: GCS keyframes subtract only Laconia, while achaean-league.json draws the whole Peloponnese from 191 and gains its members from greek-city-states; GCS has no loss to achaean-league at all.",
+     "why": "achaean-league.json /keyframe_review/10 correction union Peloponnese ('the whole Peloponnese from 191'); its ledger: -251 gain Sicyon from greek-city-states (c3), -243 Corinth, Megara, Troezen, Epidaurus (c2), -235 Megalopolis (c3), -234 Arcadia (c1), -191 Messene and Elis (c1). GCS -164 keyframe note: '71,000 km2 of it in Greece'; roman-republic.json /ledger/81 takes the Peloponnese in -146 from achaean-league while GCS /ledger/35 also loses it.",
+     "fix": "Add losses to achaean-league at -251, -243, -235, -234, -191; subtract the Achaean League's corrected shape from keyframes -251..-145; restrict /ledger/35 to the land the aggregate still held (Thessaly, central Greece outside the leagues, Euboea).",
+     "applied": false
+    },
+    {
+     "where": "/ledger (missing events -357, -356, -354, -348)",
+     "what": "Philip II's conquests of Greek cities are absent: Macedon records three confidence-3 gains from greek-city-states with no mirror, and the Chalcidice is never lost.",
+     "why": "macedonian-empire.json /ledger/3 -357 gain from greek-city-states (Amphipolis, Pydna), /ledger/4 -356 (Crenides/Kavala), /ledger/5 -354 (Methone), all c3; /ledger/7 -348 gain Chalcidian League (Polygyros 50 km). GCS keyframe -350 is 'ok' at 144,364 km2 with no event between -355 and -338 other than /ledger/21.",
+     "fix": "Add losses to macedonian-empire at -357 (Amphipolis, Pydna), -356 (Crenides), -354 (Methone) and -348 (Olynthus and the Chalcidice, or counterpart chalcidian-league if eu-01-x writes it), citing the pages Macedon cites.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/22, /ledger/25, /ledger/26, /ledger/27, /ledger/28, /keyframe_review/22..28",
+     "what": "The League of Corinth and the Diadochi years disagree with macedonian-empire.json in type and, at -307, in direction.",
+     "why": "macedonian-empire.json: -337 vassal_start greek-city-states (Central Greece, Attica, Peloponnese), -323 vassal_end, -322 vassal_start, -307 vassal_end; GCS records -338 loss, -323 gain, -322 loss and -307 LOSS (Thessaly and the Peloponnese), plus a -319 gain Macedon does not mirror. GCS keyframe 22 itself says the members 'should be drawn as Macedonian tint rather than colour', and /ledger/28 cites a page that says Demetrius 'freed the city' (a release, not a loss).",
+     "fix": "Agree one model with eu-02: record vassal_start/vassal_end of macedonian-empire (-338/-337, -323, -322, -307 Attica) and keep the mainland in the keyframes as vassal land, or have eu-02 change its events to gain/loss; rewrite /ledger/28 so it does not contradict its own page, and pair /ledger/27 with a Macedon event.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/30",
+     "what": "The Italiot cities in 272 are a loss here but a vassal_start in roman-republic.json, and Rome's -90 vassal_end of greek-city-states has no mirror.",
+     "why": "Pyrrhic War page: 'the remaining cities quickly seeking terms'; 'the Romans taking allies from Tarentum in the form of Locri, Croton, and Rhegium'. roman-republic.json /ledger/24 -272 vassal_start greek-city-states (Taranto, Reggio, Napoli), /ledger/99 -90 vassal_end greek-city-states.",
+     "fix": "Change /ledger/30 to vassal_start (counterpart roman-republic, region Taranto, Reggio, Napoli) and add the -90 vassal_end plus the loss of those cities at the Social War enfranchisement, matching the Rome dossier.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/15",
+     "what": "Ionia is lost twice (-547 to Persia, -478 to the Delian League) with no regain between, and the -480 keyframe already excludes the Aegean and Ionian cities.",
+     "why": "/ledger/11 -547 loss Ionia (confirmed: 'conquest of all the Ionian cities in 547 BC'); no event for Mycale (479); /keyframe_review/13 text: 'the Aegean and Ionian cities are absent'. delian-league.json /ledger/1 records -478 vassal_start with counterpart 'Delian League allies', not greek-city-states.",
+     "fix": "Either add a -479 gain of Ionia from achaemenid-empire (Mycale) or drop Ionia from /ledger/15; agree with delian-league on vassal_start (counterpart greek-city-states) versus loss for 478 and 404.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/19, /ledger/23, /keyframe_review/19",
+     "what": "Attica leaves the aggregate in the keyframe at -377 but not in the ledger, then is gained back from the Second Athenian League at -338.",
+     "why": "/keyframe_review/19 subtracts the whole Second Athenian League -366 shape; /ledger/19 region is that shape minus Attica; /ledger/23 gains Attica from second-athenian-league in -338.",
+     "fix": "Include Attica in /ledger/19 (Athens leaves with its league), or keep Attica in keyframe 19 and drop /ledger/23.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/1, /ledger (missing -724)",
+     "what": "Messenia leaves the aggregate in 724 by the keyframe's own note, but the correction keeps it to -701 and no event records it.",
+     "why": "/keyframe_review/1 note: 'Messenia stays in the aggregate until the First Messenian War ends in 724'; peloponnesian-league.json /ledger/1: -724 gain Messenia from greek-city-states (c2).",
+     "fix": "Add -724 loss of Messenia to peloponnesian-league and a new keyframe -724..-701 = GCS -750 minus Laconia and Messenia.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/20, /keyframe_review/20",
+     "what": "Messenia is gained in -369 but the -366 keyframe ('ok') draws it, with Arcadia and Thessaly, in the Sacred Band of Thebes row; the -377 to -366 area fall of about 15,000 km2 has no event and no event returns the land at -350.",
+     "why": "/keyframe_review/20 note: 'Messene (369) is inside the Theban shape, as Thebes' ally'; keyframe 19 = 178,577 minus Thebans and SAL shapes, keyframe 20 = 123,887 km2.",
+     "fix": "Either adjust keyframe 20 to keep Messenia and Arcadia in the aggregate with Theban tint (vassal_start of sacred-band-of-thebes) or add losses to sacred-band-of-thebes at -366 and gains at -350.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/24",
+     "what": "Boeotia is gained at -335 from sacred-band-of-thebes while keyframes 22-25 already add it from -337, and the row alive in -350..-338 is 'Thebans'.",
+     "why": "/keyframe_review/22 correction unions Thebans -350 from -337; sacred-band-of-thebes row is -366..-351, thebans -350..-338 (section 6 of the brief).",
+     "fix": "Date the event to match the keyframe (or start the Boeotia union at -335) and name counterpart 'thebans'.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/39, /keyframe_review/53",
+     "what": "Athens is lost to Rome in -86 at confidence 1, but the page says the opposite and Rome's dossier has no matching gain.",
+     "why": "First Mithridatic War page: 'The city was not included in the penalties imposed on the Asian cities'; Sulla let Athens keep Delos. roman-republic.json /ledger/81 excludes Athens from its 146 gain and has only a -86 contest_end with Pontus.",
+     "fix": "Either keep Attica in the aggregate after 1 March 86 (adjust keyframes -87..-42 to union Attica) and delete /ledger/39, or hand Athens to the proposed 'athens' dossier with a dated event.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (missing mirrors, confidence 2-3)",
+     "what": "Further neighbour events name greek-city-states with no mirror here.",
+     "why": "antigonid-dynasty.json -301 loss Attica to GCS (c2), -294 gain Attica from GCS (c3), -287 loss Attica to GCS (c1), -261 vassal_start GCS Attica (c2), -229 vassal_end (c3); peloponnesian-league.json -383 occupation_start of Thebes (c3), -379 occupation_end (c3), -338 loss to GCS (c1), -229 gain Tegea area from GCS (c2); aetolian-league.json -301 Delphi, -280 Lamia (c2), -245 (c1); athenian-coalition.json -323 two gains from GCS (c2); cimmerian-bosporus.json -360 Theodosia (c2); delian-league.json -412 loss of Chios and Mytilene to GCS (c2), -416 Melos (counterpart written as 'Melos (independent polis)'); kingdom-of-lysimachus.json -302 Heraclea Pontica (c2); etruscans.json -540 Corsica (Alalia, c2).",
+     "fix": "Add each mirror event (or agree with the other group that its event is wrong); wars Chremonidean War, Battle of Alalia and the Cleomenean War follow.",
+     "applied": false
+    },
+    {
+     "where": "/wars",
+     "what": "Wars behind ledger events are missing and one zone list is empty without a note; one war is dated from memory.",
+     "why": "/ledger/21 rests on the Social War (357-355 BC) page but no such war; /ledger/12 (300 Champions, 546), /ledger/22 (Chaeronea, 338), the Mycale campaign (479), the Chremonidean War (antigonid-dynasty -261) and Alalia (etruscans -540) are absent; /wars/1 Peloponnesian War has zones [] although Chios/Mytilene changed sides (delian-league -412) and the league dissolved; /wars/0 note: '499-494 are the handbooks' years'.",
+     "fix": "Add the wars with zones; give the Peloponnesian War its Aegean/Ionian zone or a note; take the Ionian Revolt years from the Ionian Revolt page.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "Cyprus leaving the aggregate (-700, c1): the date of the Cypriot kings' submission to Assyria",
+     "page to try": "https://en.wikipedia.org/wiki/Ancient_history_of_Cyprus"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "Naukratis grant (-650, c1); counterpart is a name, not a slug (assyrian-egypt in 650 by Cliopatria)",
+     "page to try": "https://en.wikipedia.org/wiki/Naukratis"
+    },
+    {
+     "where": "/ledger/7, /ledger/13",
+     "what is missing": "Cyrene's foundation year and its submission to Persia (Cambyses, c. 525) instead of -630 and -500",
+     "page to try": "https://en.wikipedia.org/wiki/Cyrene,_Libya"
+    },
+    {
+     "where": "/ledger/27, /ledger/28",
+     "what is missing": "which land Polyperchon's decree (319) and Cassander/Demetrius (307) moved",
+     "page to try": "https://en.wikipedia.org/wiki/Second_War_of_the_Diadochi"
+    },
+    {
+     "where": "/ledger/29, /keyframe_review/30..35",
+     "what is missing": "Thessaly's leaving in -277 and the Diadochi-year shape changes -291..-277",
+     "page to try": "https://en.wikipedia.org/wiki/Antigonus_II_Gonatas"
+    },
+    {
+     "where": "/ledger/33, /keyframe_review/47",
+     "what is missing": "the +60,000 km2 of Anatolian coast in -188: Apamea gave Lycia and Caria to Rhodes and the interior to Pergamon; the Black Sea coast was never Seleucid",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Apamea"
+    },
+    {
+     "where": "/ledger/34, /keyframe_review/49",
+     "what is missing": "the +100,000 km2 after Pydna (-164 shape) outside the Macedonian republics",
+     "page to try": "https://en.wikipedia.org/wiki/Third_Macedonian_War"
+    },
+    {
+     "where": "/ledger/41",
+     "what is missing": "the Anatolian coast removed in -63 (Pompey's settlement)",
+     "page to try": "https://en.wikipedia.org/wiki/Third_Mithridatic_War"
+    },
+    {
+     "where": "/ledger/43, /ledger/44",
+     "what is missing": "Olbia (78) and Thasos (83) end dates",
+     "page to try": "https://en.wikipedia.org/wiki/Pontic_Olbia"
+    },
+    {
+     "where": "/keyframe_review/12",
+     "what is missing": "-500 shape change (-21,000 km2) unexplained",
+     "page to try": "https://en.wikipedia.org/wiki/Greek_colonisation"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Ionia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Pyrrhic_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/35",
+     "page": "https://en.wikipedia.org/wiki/Achaean_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Social_War_(357%E2%80%93355_BC)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Greek_colonisation",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Greek_colonisation",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/37",
+     "page": "https://en.wikipedia.org/wiki/First_Mithridatic_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/38",
+     "page": "https://en.wikipedia.org/wiki/First_Mithridatic_War",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 206488.1,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Polis infobox gives only per-polis areas (60% of poleis at most 100 km2, 80% at most 200 km2; Athens 2,500 km2), no aggregate and no year; Cliopatria shapes run 602 to 206,488 km2. The dossier was silent; the reviewer added a sentence to notes (applied fix)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -800,
+    "type": "found",
+    "counterpart": "greek-dark-ages"
+   },
+   "mirror": {
+    "slug": "greek-dark-ages",
+    "year": -800,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "predecessor/successor agree"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -734,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "syracuse",
+    "year": -733,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "both dossiers claim Syracusan land from 733/734"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -700,
+    "type": "loss",
+    "counterpart": "neo-assyrian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "neo-assyrian-empire not written yet (me-02)"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -650,
+    "type": "gain",
+    "counterpart": "Egypt (Saite kingdom), by grant"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "name not slug; assyrian-egypt / twenty-sixth-dynasty-of-egypt (me-02) not written"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -547,
+    "type": "loss",
+    "counterpart": "achaemenid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "achaemenid-empire not written yet (me-05)"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -546,
+    "type": "loss",
+    "counterpart": "peloponnesian-league"
+   },
+   "mirror": {
+    "slug": "peloponnesian-league",
+    "year": -546,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Thyreatis"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -500,
+    "type": "loss",
+    "counterpart": "achaemenid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-05 not run"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -480,
+    "type": "loss",
+    "counterpart": "cimmerian-bosporus"
+   },
+   "mirror": {
+    "slug": "cimmerian-bosporus",
+    "year": -480,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "CB found -480 with GCS as predecessor"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -478,
+    "type": "loss",
+    "counterpart": "delian-league"
+   },
+   "mirror": {
+    "slug": "delian-league",
+    "year": -478,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "DL: vassal_start with counterpart \"Delian League allies\"; GCS: loss; Ionia already lost in -547"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -404,
+    "type": "gain",
+    "counterpart": "delian-league"
+   },
+   "mirror": {
+    "slug": "delian-league",
+    "year": -404,
+    "type": "vassal_end"
+   },
+   "status": "mismatch",
+   "note": "type differs; DL counterpart \"Delian League allies\""
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -387,
+    "type": "loss",
+    "counterpart": "achaemenid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-05 not run"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -379,
+    "type": "loss",
+    "counterpart": "sacred-band-of-thebes"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "sacred-band-of-thebes not written yet (eu-01 other part)"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -377,
+    "type": "loss",
+    "counterpart": "second-athenian-league"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "second-athenian-league not written yet (eu-01 other part)"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -369,
+    "type": "gain",
+    "counterpart": "peloponnesian-league"
+   },
+   "mirror": {
+    "slug": "peloponnesian-league",
+    "year": -369,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Messenia"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -355,
+    "type": "gain",
+    "counterpart": "second-athenian-league"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "SAL not written"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -338,
+    "type": "loss",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": {
+    "slug": "macedonian-empire",
+    "year": -337,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "loss vs vassal_start"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -338,
+    "type": "gain",
+    "counterpart": "second-athenian-league"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "SAL not written; internally inconsistent with /ledger/19"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -335,
+    "type": "gain",
+    "counterpart": "sacred-band-of-thebes"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "row of those years is thebans; neither written"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -323,
+    "type": "gain",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": {
+    "slug": "macedonian-empire",
+    "year": -323,
+    "type": "vassal_end"
+   },
+   "status": "mismatch",
+   "note": "gain vs vassal_end"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -322,
+    "type": "loss",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": {
+    "slug": "macedonian-empire",
+    "year": -322,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "loss vs vassal_start"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -319,
+    "type": "gain",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "macedonian-empire has no -319 event with GCS"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -307,
+    "type": "loss",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": {
+    "slug": "macedonian-empire",
+    "year": -307,
+    "type": "vassal_end"
+   },
+   "status": "mismatch",
+   "note": "opposite directions"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -277,
+    "type": "loss",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -277,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "AD gains Ancient Macedon from Sosthenes, not Thessaly from GCS"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -272,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -272,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "loss vs vassal_start"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -212,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -212,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "RR gains Syracuse from syracuse, not GCS"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -196,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -196,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "AD gives Thessaly to \"Thessalian League\", Corinth/Chalcis/Demetrias to roman-republic, rest to nobody"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -188,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-05 not run"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -167,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -168,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "AD land passes to roman-republic in -168"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -146,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -146,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "RR gains the Peloponnese etc. from achaean-league, not GCS"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -110,
+    "type": "loss",
+    "counterpart": "kingdom-of-pontus"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-05 not run"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -88,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-pontus"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-05 not run"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -86,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "RR has no -86 gain of Attica; page says Athens was not penalised"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -67,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -67,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Crete"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -63,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "RR -64/-63 gains name seleucid-empire, kingdom-of-armenia, pontus, not GCS"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -49,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -49,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Massalia"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": 78,
+    "type": "loss",
+    "counterpart": "roman-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "roman-empire not written yet (eu-04)"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": 83,
+    "type": "dissolve",
+    "counterpart": "roman-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-04 not run"
+  },
+  {
+   "event": {
+    "slug": "peloponnesian-league",
+    "year": -724,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no GCS loss of Messenia"
+  },
+  {
+   "event": {
+    "slug": "etruscans",
+    "year": -540,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Corsica (Alalia)"
+  },
+  {
+   "event": {
+    "slug": "delian-league",
+    "year": -416,
+    "type": "gain",
+    "counterpart": "Melos (independent polis)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart should be greek-city-states; no GCS loss"
+  },
+  {
+   "event": {
+    "slug": "delian-league",
+    "year": -412,
+    "type": "loss",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Chios, Mytilene; no GCS gain"
+  },
+  {
+   "event": {
+    "slug": "syracuse",
+    "year": -405,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "eastern Sicily"
+  },
+  {
+   "event": {
+    "slug": "syracuse",
+    "year": -386,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Rhegium"
+  },
+  {
+   "event": {
+    "slug": "peloponnesian-league",
+    "year": -383,
+    "type": "occupation_start",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Cadmea of Thebes (c3)"
+  },
+  {
+   "event": {
+    "slug": "syracuse",
+    "year": -367,
+    "type": "loss",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Adriatic colonies"
+  },
+  {
+   "event": {
+    "slug": "cimmerian-bosporus",
+    "year": -360,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Theodosia"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -357,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Amphipolis, Pydna (c3)"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -356,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Crenides (c3)"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -354,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Methone (c3)"
+  },
+  {
+   "event": {
+    "slug": "peloponnesian-league",
+    "year": -338,
+    "type": "loss",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "border districts (c1)"
+  },
+  {
+   "event": {
+    "slug": "athenian-coalition",
+    "year": -323,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "two gains (central Greece; Peloponnesian cities)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lysimachus",
+    "year": -302,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Heraclea Pontica"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -301,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Delphi"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -301,
+    "type": "loss",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Attica"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -294,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Attica (c3)"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -287,
+    "type": "loss",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Attica"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -280,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Lamia"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -261,
+    "type": "vassal_start",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Attica (Chremonidean War)"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -251,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Sicyon (c3)"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -245,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "central Greece (c1)"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -243,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Corinth, Megara, Troezen, Epidaurus"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -235,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Megalopolis (c3)"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -234,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Arcadia (c1)"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -229,
+    "type": "vassal_end",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Attica (c3)"
+  },
+  {
+   "event": {
+    "slug": "peloponnesian-league",
+    "year": -229,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Tegea area"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -191,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Messene and Elis"
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -90,
+    "type": "vassal_end",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Italiot cities"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Laconia",
+   "kind": "region",
+   "used_in": "greek-city-states"
+  },
+  {
+   "name": "Messenia",
+   "kind": "region",
+   "used_in": "greek-city-states"
+  },
+  {
+   "name": "Thyreatis",
+   "kind": "region",
+   "used_in": "greek-city-states"
+  },
+  {
+   "name": "Magna Graecia",
+   "kind": "region",
+   "used_in": "greek-city-states"
+  },
+  {
+   "name": "Chalcidice",
+   "kind": "region",
+   "used_in": "greek-city-states"
+  },
+  {
+   "name": "Gela",
+   "kind": "place",
+   "used_in": "greek-city-states"
+  },
+  {
+   "name": "Agrigento",
+   "kind": "place",
+   "used_in": "greek-city-states"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Massalia",
+   "suggested_slug": "massalia",
+   "years": [
+    -600,
+    -49
+   ]
+  },
+  {
+   "name": "Cyrene (Battiad kingdom)",
+   "suggested_slug": "cyrene",
+   "years": [
+    -631,
+    -331
+   ]
+  },
+  {
+   "name": "Cypriot kingdoms",
+   "suggested_slug": "cypriot-kingdoms",
+   "years": [
+    -800,
+    -294
+   ]
+  },
+  {
+   "name": "Messene",
+   "suggested_slug": "messene",
+   "years": [
+    -369,
+    -146
+   ]
+  },
+  {
+   "name": "Arcadian League",
+   "suggested_slug": "arcadian-league",
+   "years": [
+    -370,
+    -362
+   ]
+  },
+  {
+   "name": "Chalcidian League",
+   "suggested_slug": "chalcidian-league",
+   "years": [
+    -432,
+    -348
+   ]
+  },
+  {
+   "name": "Rhodes before the rhodes row",
+   "suggested_slug": "rhodes",
+   "years": [
+    -408,
+    -189
+   ]
+  },
+  {
+   "name": "Lycian League",
+   "suggested_slug": "lycian-league",
+   "years": [
+    -168,
+    43
+   ]
+  },
+  {
+   "name": "Macedonian republics",
+   "suggested_slug": "macedonian-republics",
+   "years": [
+    -167,
+    -148
+   ]
+  },
+  {
+   "name": "Athens as a free city after Sulla",
+   "suggested_slug": "athens",
+   "years": [
+    -86,
+    83
+   ]
+  },
+  {
+   "name": "Thessalian League (counterpart in antigonid-dynasty and macedonian-empire)",
+   "suggested_slug": "thessalian-league",
+   "years": [
+    -352,
+    -146
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-01-b.md",
+ "problems": [
+  "The dossier is the aggregate of every independent polis; most neighbours written since (syracuse, achaean-league, aetolian-league, antigonid-dynasty, athenian-coalition, macedonian-empire, roman-republic) name greek-city-states as counterpart, and the kept dossier predates them, so it needs a reconciliation pass rather than spot repairs.",
+  "Row overlap greek-colonies (eu-02) vs the -271..-226 bridge keyframe is still for the orchestrator to settle.",
+  "Neighbour dossiers not yet written (counted as exceptions): achaemenid-empire, neo-assyrian-empire, seleucid-empire, kingdom-of-pontus, roman-empire, sacred-band-of-thebes, second-athenian-league, thebans, antigonid-macedonia (folded into antigonid-dynasty).",
+  "Reviewer applied two small fixes to history/polities/greek-city-states.json (slug antigonid-macedonia -> antigonid-dynasty x4; area-check sentence in notes); it re-validates with 0 errors."
+ ]
+}

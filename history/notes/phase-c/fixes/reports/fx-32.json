@@ -1,0 +1,266 @@
+{
+ "batch_id": "fx-32",
+ "findings": [
+  {
+   "item": "F184",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "republic-of-iraq"
+   ],
+   "changes": [
+    "republic-of-iraq: identity.end: 2024 -> 2026 (no dissolve event, so the compiler already kept it alive; capital span, certainty span and the 2024 keyframe note now say 2026)",
+    "republic-of-iraq: keyframe republic-of-iraq_2024 note: outline holds to 2026, Kurdistan Region stays the child"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Iraq"
+   ],
+   "why": "Cliopatria's last row ends 2024 but the state continues; the Iraq page records no border treaty or territorial change after 2023. republic-of-iraq has no 2005 gain of the Region (only the whole-country found event), so nothing absorbs the child; hierarchy.csv supplies the tint."
+  },
+  {
+   "item": "F185",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "spanish-louisiana",
+    "rupert-s-land"
+   ],
+   "changes": [
+    "spanish-louisiana: keyframe spanish-louisiana_1762: correction now minus the Hudson Bay drainage south of 49 N (North Dakota east of the Missouri divide, northwest Minnesota)",
+    "rupert-s-land: keyframe rupert-s-land_1670 and ledger[8] (1818 loss): the whole of North Dakota replaced by the Hudson Bay side only (polygon east of the Missouri divide, confidence 1)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Rupert%27s_Land",
+    "https://en.wikipedia.org/wiki/Louisiana_(New_Spain)"
+   ],
+   "why": "Rupert's Land page: 'The southern border, west of Lake of the Woods to the Rocky Mountains was the drainage divide' until the Convention of 1818; Louisiana page: the province reached 'to Canada's border'. The Louisiana region (whole states) and Rupert's Land both claimed 1,019 cells (ND 706, MN 313); after the fix the two keyframes share 0 cells, and Missouri-drained western North Dakota stays Louisiana. The Red River basin goes to Rupert's Land (page puts it there until 1818), not left ownerless."
+  },
+  {
+   "item": "F194",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "duchy-of-schleswig"
+   ],
+   "changes": [
+    "duchy-of-schleswig: new vassal_end 1397-06 (kingdom-of-denmark) closing the 1058 relation",
+    "duchy-of-schleswig: new vassal_start 1814 and vassal_end 1864 now name kingdom-of-denmark-1814-1940 (the 1864 end closed nothing before, unclosed_ends.csv)",
+    "duchy-of-schleswig: keyframe split 1058-1657 / duchy-of-schleswig_1658 (1658-1719, less the Gottorp part, 16 of 44 cells) / duchy-of-schleswig_1720 (1720-1865)",
+    "duchy-of-schleswig: new loss 1658 and gain 1720 of the Gottorp part against holy-roman-empire-minor-states",
+    "duchy-of-schleswig: sources Holstein-Gottorp and Kalmar Union added"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Duchy_of_Schleswig",
+    "https://en.wikipedia.org/wiki/Holstein-Gottorp",
+    "https://en.wikipedia.org/wiki/Kalmar_Union"
+   ],
+   "why": "Counterpart kingdom-of-denmark ended 1397. 1397-1521 (kalmar-union) and 1526-1809 (denmark-norway) are drawn by hierarchy.csv, so no mirror events were added there. Holstein-Gottorp page: Roskilde 1658 and Copenhagen 1660 recognised 'the sovereignty of its dukes over the Gottorp portions of the duchy of Schleswig'; the duchy infobox says 'partly between 1544 and 1713/20', so the part is taken out of the Danish-vassal duchy 1658-1719. Compiler not run: the month-less 1720 gain should run before denmark-norway ledger[32] (July); if not, expect a 16-cell snap in 1720."
+  },
+  {
+   "item": "F199",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "kingdom-of-kasanje"
+   ],
+   "changes": [
+    "kingdom-of-kasanje: ledger[1] (1657 gain): region river Kwango 120 km intersected with Angola (479 of its 1,042 cells were in the DRC)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kingdom_of_Kasanje"
+   ],
+   "why": "The 418 disputed cells (Bandundu 399, Kinshasa 19) came from this bare river buffer, not from the keyframe (Malanje intersect Kwango 80 km, wholly Angolan) or the Free State shape (no Angolan cell). Kasanje page: 'located on the upper Kwango River in what is now Angola'. congo-free-state unchanged."
+  },
+  {
+   "item": "F200",
+   "verdict": "skipped",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Emirate_of_Bukhara"
+   ],
+   "why": "hierarchy.csv supplies it: row 261 draws Bukhara as a vassal of the Russian Republic for 1917, and russian-empire.json (not mine) already carries the requested vassal_start 1868-07 for emirate-of-bukhara and ends March 1917. The Emirate page gives the 1873 protectorate (to 1920) and nothing on 1917-1918, so no event was added."
+  },
+  {
+   "item": "F201",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "srivijaya",
+    "melayu-kingdom"
+   ],
+   "changes": [
+    "srivijaya: keyframe srivijaya_860 now ends 1027; new keyframe srivijaya_1028 (1028-1138) = Cliopatria 860 shape minus the Melayu outline (157 cells)",
+    "srivijaya: keyframes srivijaya_1139, _1202, _1285 subtract the Melayu outline (1202 and 1285 also Jambi admin-1)",
+    "srivijaya: new loss 1028 of the Melayu outline to melayu-kingdom (mirrors melayu L2); the 1202 loss kept for the rest of the Jambi province",
+    "srivijaya: source Melayu Kingdom page added",
+    "melayu-kingdom: notes and keyframe/ledger[2] note only (1028 kept)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Melayu_Kingdom",
+    "https://en.wikipedia.org/wiki/Srivijaya"
+   ],
+   "why": "Melayu page: 'Independence restored: 1028', the 1028 Sanfoqi mission 'would actually refer to Malayu-Jambi'; Srivijaya page: 'after 1025 the term Sanfoqi referred to the Malayu Dharmasraya kingdom where the mandala was re-centred'. So 1028 for the core; the Srivijaya page's 'early 13th century' independence of Jambi is kept for the rest of the province (1202). The two dossiers now agree and Srivijaya no longer re-claims the core at its 1139/1202/1285 keyframes."
+  },
+  {
+   "item": "F202",
+   "verdict": "skipped",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [],
+   "why": "hierarchy.csv supplies it: row 294 (toyotomi-clan constituent of warring-states-japan, 1588-1600). The finding itself says nothing changes beyond the internal border; both dossiers already end at Sekigahara in 1600."
+  },
+  {
+   "item": "F207",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "duchy-of-lotharingia",
+    "kingdom-of-germany"
+   ],
+   "changes": [
+    "duchy-of-lotharingia: keyframe duchy-of-lotharingia_903, ledger[0] found and ledger[1] dissolve regions: the gazetteer region Lotharingia minus Cliopatria's Kingdom of Germany 922 shape (703 -> 526 cells)",
+    "kingdom-of-germany: notes only (shapes 911-925 do not cover Lotharingia proper)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Lotharingia"
+   ],
+   "why": "kingdom-of-germany's 911-925 shapes are right. The 177 cells they share with 'Lotharingia' come from the gazetteer region (all of Nordrhein-Westfalen and Rheinland-Pfalz): Munster, Paderborn, Bielefeld, Dortmund, Essen and Wuppertal east of the Rhine, and Worms, Speyer, Koblenz. The Lotharingia page puts the duchy in 'parts of modern Germany west of the Rhine'. The overlap with Germany 915/922/925 is now 0. West-franks has the same over-reach (handoff)."
+  },
+  {
+   "item": "F208",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "austrian-empire"
+   ],
+   "changes": [
+    "austrian-empire: the 13 keyframes 1815-1857 (austrian-empire_1815 ... _1857) now subtract Toscana (verdict adjust); the 1814 outline, which also covers Tuscany, is left",
+    "austrian-empire: source Grand Duchy of Tuscany page added"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Austrian_Empire",
+    "https://en.wikipedia.org/wiki/Grand_Duchy_of_Tuscany"
+   ],
+   "why": "Cliopatria's Austrian outline covers 75-77 of the 86 Toscana cells every year 1815-1857. Austrian Empire page: Lombardy-Venetia is the Italian crown land, no Tuscan land; Tuscany page: a separate grand duchy under Habsburg-Lorraine rulers 1814-1859, 'aligned with Austria', Austrian garrison restored in 1849 and 'withdrawn in 1855'. No page calls Tuscany a vassal, so no tint. 7-8 Emilia-Romagna cells in the same outline were not looked at."
+  },
+  {
+   "item": "F213",
+   "verdict": "handoff",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Chandelas_of_Jejakabhukti"
+   ],
+   "why": "rewa-state is read-only. The rewa-state_1140 polygon (the 1901 outline, 134 cells) is drawn for 1140-1799 and Cliopatria's Chandela outlines 1085-1314 cover 80-88 of those cells, so the smaller Rewa wins. Chandela page: Madanavarman 'possibly annexed the northern part of the Baghelkhand region' but the Chandelas 'lost this territory to the Kalachuri king Narasimha'. Nothing changed in chandela-kingdom (the base 1085 shape, not only the 1152/1202 bridges, covers 80 of the cells and the gazetteer has no Baghelkhand region); the handoff proposes a Bandhavgarh core for rewa-state until 1617."
+  },
+  {
+   "item": "F215",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "county-of-la-marche",
+    "duchy-of-aquitaine"
+   ],
+   "changes": [
+    "county-of-la-marche: keyframe, ledger[0] found, last-event dissolve and predecessor land: Creuse plus the northern half of Haute-Vienne (polygon north of 45.9 N) instead of the whole department",
+    "duchy-of-aquitaine: 'Limousin' replaced by 'Limousin less La Marche' in keyframes _1259, _1279 and two later ones and in ledger 11, 12, 14, 15, 16, 18, 20, 21, 22 (13 places; war zones left)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Treaty_of_Paris_(1259)",
+    "https://en.wikipedia.org/wiki/County_of_La_Marche"
+   ],
+   "why": "Treaty of Paris page: 4 December 1259, Louis 'ceded to Henry the bishoprics and cities of Limoges, Cahors, and Périgueux' (no word on La Marche). La Marche page: 'approximately corresponding to the modern département of Creuse and the northern half of Haute Vienne'; the dossier had drawn the whole department, putting Limoges inside the county. The 1259 keyframe had 48 cells in common with La Marche; after the fix they share 0."
+  },
+  {
+   "item": "F216",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "brythons"
+   ],
+   "changes": [
+    "brythons: the 26 keyframes 439-637 now subtract the Gododdin outline (verdict adjust); ledger[20] note records that the 638 Lothian loss moves nothing here; Gododdin page added to sources"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Gododdin"
+   ],
+   "why": "Brythons is Cliopatria's residual of the Britons' land; the 30-cell Gododdin outline lay inside every shape 439-637 and the size rule had to decide. Gododdin page: 'what are now the Lothian and Borders regions of eastern Scotland', 'In 638, Eidyn, modern Edinburgh, was under siege and fell to the Angles'. Type not changed to umbrella (that would erase the land the residual draws after 644). gododdin unchanged."
+  }
+ ],
+ "dossiers_changed": [
+  "republic-of-iraq",
+  "rupert-s-land",
+  "spanish-louisiana",
+  "duchy-of-schleswig",
+  "kingdom-of-kasanje",
+  "srivijaya",
+  "melayu-kingdom",
+  "duchy-of-lotharingia",
+  "kingdom-of-germany",
+  "austrian-empire",
+  "county-of-la-marche",
+  "duchy-of-aquitaine",
+  "brythons"
+ ],
+ "validation": {
+  "republic-of-iraq": "ok",
+  "rupert-s-land": "ok",
+  "spanish-louisiana": "ok",
+  "duchy-of-schleswig": "ok",
+  "kingdom-of-kasanje": "ok",
+  "srivijaya": "ok",
+  "melayu-kingdom": "ok",
+  "duchy-of-lotharingia": "ok",
+  "kingdom-of-germany": "ok",
+  "austrian-empire": "ok",
+  "county-of-la-marche": "ok",
+  "duchy-of-aquitaine": "ok",
+  "brythons": "ok"
+ },
+ "handoffs": [
+  {
+   "dossier": "rewa-state",
+   "where": "keyframe_review rewa-state_1140 (1140-1799)",
+   "what": "Replace the 1901 princely-state polygon (134 cells) for 1140-1616 by a Bandhavgarh core (for example a 60 km disc at 23.72 N 81.03 E), and draw the Rewa outline from 1617, the year its own ledger[1] moves the capital to Rewa; keep rewa-state_1800 and _1858 as they are.",
+   "why": "The polygon sits on Rewa city and 80-88 cells of Cliopatria's Chandela outlines 1085-1314, which the smaller Rewa wins; the Chandela page has the Kalachuris, not the Chandelas, in Baghelkhand after Madanavarman, and the Rewa page calls the 1140 Bandhavgarh foundation 'legendary'.",
+   "source": "https://en.wikipedia.org/wiki/Chandelas_of_Jejakabhukti"
+  },
+  {
+   "dossier": "west-franks",
+   "where": "ledger 24 (911-11 gain from kingdom-of-germany), 27 (923 contest_start), 29 (925 contest_end), 30 (925 loss), region {\"region\": \"Lotharingia\"}",
+   "what": "Use the gazetteer region Lotharingia minus {\"cliopatria\": \"Kingdom of Germany\", \"year\": 922} (as duchy-of-lotharingia now does), or add a left-bank Rhine region to the gazetteer.",
+   "why": "The gazetteer region is all of Nordrhein-Westfalen and Rheinland-Pfalz: 177 cells of East Frankish land (Westphalia east of the Rhine, Worms, Speyer, Koblenz) are booked as Lotharingian. Lotharingia page: the duchy lay in 'parts of modern Germany west of the Rhine'.",
+   "source": "https://en.wikipedia.org/wiki/Lotharingia"
+  },
+  {
+   "dossier": "data/hierarchy.csv",
+   "where": "row kurdistan-region / republic-of-iraq (2005..2024)",
+   "what": "Change the last year from 2024 to 2026: republic-of-iraq now runs to 2026.",
+   "why": "F184 extended republic-of-iraq identity.end to 2026 (Kurdistan Region already runs to 2026).",
+   "source": "https://en.wikipedia.org/wiki/Iraq"
+  },
+  {
+   "dossier": "data/hierarchy.csv",
+   "where": "rows duchy-of-schleswig / kalmar-union (1397..1521) and duchy-of-schleswig / denmark-norway (1526..1809)",
+   "what": "Optionally close the gaps 1522-1525 (kalmar-union ends June 1523, denmark-norway starts 1526) and 1810-1813 (denmark-norway ends January 1814); 1814-1864 is now carried by the duchy's own vassal_start 1814 under kingdom-of-denmark-1814-1940.",
+   "why": "The Schleswig dossier was fixed to carry the Danish fief by events only where a Danish dossier exists in a clean window; the gaps are tint only.",
+   "source": "https://en.wikipedia.org/wiki/Duchy_of_Schleswig"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Baghelkhand",
+   "kind": "region",
+   "used_in": "chandela-kingdom / rewa-state",
+   "hint": "Rewa and Satna country, roughly 24-25 N, 80.5-82.5 E; the Chandela notes already asked for it. Would let the Chandela shapes and the Rewa state be cut along one region."
+  },
+  {
+   "name": "Lotharingia (left bank)",
+   "kind": "region",
+   "used_in": "duchy-of-lotharingia / west-franks",
+   "hint": "The present 'Lotharingia' region is whole Nordrhein-Westfalen and Rheinland-Pfalz and covers 177 East Frankish cells; a region of the left bank of the Rhine (Lorraine, Luxembourg, Belgium, the Netherlands, Aachen-Cologne-Trier) would replace the minus-Cliopatria workaround."
+  }
+ ],
+ "not_reached": [],
+ "notes_path": "history/polities/_notes/fix-fx-32.md",
+ "problems": [
+  "The compiler was not run (not mine): the F194 Gottorp events depend on event order. The month-less 1720 gain in duchy-of-schleswig should be applied before denmark-norway ledger[32] (July 1720); if denmark-norway gains the cells first, the Gottorp part (16 cells) will appear as a snap in 1720.",
+  "The dossier schema allows only two items in a minus; three-way subtractions are nested (srivijaya 1202 and 1285).",
+  "F185, F207, F213: the North Dakota drainage polygon (F185), the Lotharingia subtraction of Cliopatria's 922 shape (F207, which also removes Worms, Speyer and Koblenz) and the Baghelkhand handoff (F213) are the researcher's readings at confidence 1-2; no page gives a boundary.",
+  "F208: the 1814 Austrian outline also covers Tuscany and was left; 7-8 Emilia-Romagna cells in the Austrian outline were not examined.",
+  "F200: the Bukhara finding was skipped because hierarchy.csv supplies the tint and russian-empire already holds the vassal_start (checked in the file, not on a page).",
+  "Pre-existing validator warnings left alone: srivijaya ledger[0] 'kantoli' (no dossier), duchy-of-aquitaine ledger[2] place 'Mirebeau', kingdom-of-germany two vassal_start without vassal_end."
+ ]
+}

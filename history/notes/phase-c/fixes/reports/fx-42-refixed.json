@@ -1,0 +1,57 @@
+{
+ "batch_id": "fx-42",
+ "findings": [
+  {
+   "item": "R133",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "union-of-soviet-socialist-republics"
+   ],
+   "changes": [
+    "union-of-soviet-socialist-republics: identity.predecessors: dropped russian-soviet-federative-socialist-republic, ukrainian-soviet-socialist-republic, byelorussian-soviet-socialist-republic and transcaucasian-socialist-federative-soviet-republic; kept republics-of-the-soviet-union with its note rewritten (why the four are not predecessors, hierarchy.csv rows 302-306, the page quotes)",
+    "union-of-soviet-socialist-republics: ledger/0 (1922-12 found): note extended; region unchanged (outline of the whole federation); the found now meets the four republics' cells as conflicts, which rule R3 gives to the constituents",
+    "union-of-soviet-socialist-republics: notes: paragraph added naming the later events (ledger 20, 22, 26-29, 40, 50 losses and contests; 30, 31, 33, 34 gains from Germany) whose effect changes"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Soviet_Union"
+   ],
+   "why": "The first run skipped R133 as 'hierarchy.csv supplies it'; that was wrong. Only this dossier listed the four republics as predecessors (checked across all polities): compile_dossiers.py birth() lets a found take predecessor cells outright (allowed list), and self.succ makes R2 (succession) decide every later conflict for the Union before R3 (hierarchy) is consulted, so the constituent rows 302-306 never acted (2 Nov 22:32 compile: 681,458 R2 cell-years for the Union against the RSFSR, 1923-1956; p1930 RSFSR 851 cells, Byelorussian SSR 94, Armenian SSR 6, Azerbaijan SSR 5). Page re-read: infobox 'Treaty of Creation: 30 December 1922'; 'all four being the founding republics who signed the Treaty on the Creation of the USSR in December 1922'; 'Constitutionally, the USSR was a federation of constituent Union Republics'; 'With the constitution of 1936, the Transcaucasian SFSR was dissolved'; RSFSR, Ukrainian SSR and Byelorussian SSR are in the list of the 15 union republics 'Between July 1956 and September 1991'. The page does not literally say the founders 'kept their status' (the window's wording), but none of the four ended, so they are constituents, not predecessors; the TSFSR dissolves in 1936 into Armenia, Georgia and Azerbaijan, which have their own hierarchy rows (and, as TSFSR/successor pairs listing each other, R2 gives the later-born TSFSR the 1922-1936 conflicts against them). Later USSR events checked against do_event (gain takes held_by(counterpart); loss, contest and occupation use held_by(Union)): gains from third states are unaffected, and window patches p1930 ev3, p1940 ev14/15/16/19 and p1960 ev3/4 already hand annexed land to the Ukrainian and Byelorussian SSR as 'gain from union-of-soviet-socialist-republics', which still finds the Union-held cells. Losses and contests inside the four republics (ledger 20, 22, 26, 27, 28, 29, 40, 50) now move or tint only land the Union holds directly; the republic dossiers carry the German occupation (Byelorussian SSR ledger 15-16; Ukrainian SSR 38-45; RSFSR 48-58) except the Stalingrad contest and the exact Sevastopol timing; handed off. No 1956 event in the Union ledger needed a change (the 1956 conflicts were the RSFSR/Karelo-Finnish pair). The compiler was not run (not mine), so the effect is predicted from the code and the 2 Nov outputs, not measured; the orchestrator should recompile and read conflicts_settled_by_rule.csv (RSFSR vs Union should turn from R2 to R3) and noop_events.csv for the Union's ledger 20, 22, 26-29, 40, 50."
+  }
+ ],
+ "dossiers_changed": [
+  "union-of-soviet-socialist-republics"
+ ],
+ "validation": {
+  "union-of-soviet-socialist-republics": "ok (0 errors, 0 warnings; 72 events, 24 sources, 26 keyframes, 514 regions)"
+ },
+ "handoffs": [
+  {
+   "dossier": "russian-soviet-federative-socialist-republic",
+   "where": "ledger (new events, 1942-08 and 1943-01)",
+   "what": "Add contest_start (August 1942) and contest_end (January 1943) with counterpart nazi-germany over {\"place\": \"Volgograd\", \"km\": 100}, the Stalingrad contest the Union ledger 28/29 carried.",
+   "why": "After R133 the RSFSR holds the Volgograd cells, and the Union's contest_start/contest_end (ledger 28-29) tint only Union-held cells, so the Stalingrad contest would vanish. Union ledger 28: 'German troops reach the Volga at Stalingrad ... on 23 August' (1942); ledger 29: 'On 31 January 1943, the 90,000 survivors of the 300,000-man 6th Army surrendered'.",
+   "source": "https://en.wikipedia.org/wiki/Eastern_Front_(World_War_II)"
+  },
+  {
+   "dossier": "russian-soviet-federative-socialist-republic",
+   "where": "ledger/50 (1941-10 occupation_start of Crimea and Sevastopol)",
+   "what": "Split off Sevastopol: occupation from July 1942 (not October 1941), as the Union ledger 27 had it; the Union's 1942-07 Crimea loss no longer finds the cells.",
+   "why": "Union ledger 26/27 note: 'Sevastopol held until July 1942'; the RSFSR event covers Crimea and Sevastopol from 1941-10.",
+   "source": "https://en.wikipedia.org/wiki/Eastern_Front_(World_War_II)"
+  },
+  {
+   "dossier": "orchestrator",
+   "where": "compile_dossiers.py held_by() / recompile",
+   "what": "Recompile and check: (1) conflicts_settled_by_rule.csv: RSFSR, Ukrainian SSR, Byelorussian SSR, TSFSR against the Union should now be 'R3 constituent'; (2) noop_events.csv: the Union's ledger 20, 22, 26, 27, 28, 29, 40, 50 are expected no-ops; (3) if the loss of occupied republic land matters, make held_by count a parent's constituents (the reviewer's alternative) instead of adding republic events.",
+   "why": "held_by is strict ownership; the Union no longer owns land its constituents hold, so its losses, contests and the 1945-08 loss to Poland (ledger 50: Bialystok and Przemysl areas, which the Byelorussian SSR keyframe may hold; patches p1950 ev1 and p1960 ev1 already hand Poland the rest) find only directly held cells.",
+   "source": "https://en.wikipedia.org/wiki/Soviet_Union"
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "not_reached": [],
+ "notes_path": "history/polities/_notes/fix-fx-42.md",
+ "problems": [
+  "Compile not run (compile_dossiers.py is not mine): the effect on cell ownership is predicted from the compiler code and the 2 Nov 22:32 outputs.",
+  "The reviewer called this an orchestrator decision; the harness task asked for the repair, so the predecessor drop was applied and the held_by question handed back."
+ ]
+}

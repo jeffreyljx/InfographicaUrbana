@@ -1,0 +1,800 @@
+{
+ "batch_id": "sa-02-e",
+ "verdicts": [
+  {
+   "slug": "kalabhra-dynasty",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0 and new /keyframe_review/1",
+     "applied": true,
+     "what": "The 353 keyframe was verdict ok for 353-591, but /ledger/1 gives 81 of its 520 cells to the Late Pallavas in 575 and late-pallava-empire /keyframe_review/6 draws those cells from 575, so the two dossiers double-drew 81 cells (16% of the state) for 575-591.",
+     "why": "Kalabhra page: 'Simhavishnu consolidated his kingdom from south of the Krishna river and up to the Kaveri river by c. 575 CE.' Gazetteer: Kalabhra 353 shape 520 cells, of which 81 lie in Late Pallava 602 minus 555 (the /ledger/1 region).",
+     "fix": "Applied by the reviewer: /keyframe_review/0 is now adjust (353 shape, 353-574 only) and a new keyframe kalabhra-dynasty_575 (575-591, adjust, correction = Kalabhra 353 minus (Late Pallava 602 minus 555), 439 cells) is inserted; re-validated with 0 errors."
+    },
+    {
+     "where": "/start, /ledger/0, /identity/predecessors",
+     "applied": false,
+     "what": "The state starts in 353 while early-cholas /ledger/2, early-pandyas /ledger/1 and early-cheras /ledger/2 dissolve into kalabhra-dynasty in 305: the Tamil country is drawn by nobody for 48 years.",
+     "why": "Kalabhra page infobox 'Established: 3rd century CE' and 'sometime between the 3rd century and 6th century CE'; the three Sangam dossiers give 305 (Cliopatria) at confidence 1. The author flagged the gap in notes but left it.",
+     "fix": "Non-blocking: either start the dossier in 305 (found at 305, confidence 1, with a 305-352 keyframe = the Kalabhra 353 shape) so it meets its predecessors, or say in /notes which side should move; the page's '3rd century' supports the earlier start better than 353."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "A founding year and an extent: 353 and the whole shape are Cliopatria's (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Achyuta_Vikranta"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "A year for Kadungon's expulsion of the Kalabhras from the Pandya country (592 is Cliopatria's; the Pandya page gives only his reign c. 560-590).",
+     "page to try": "https://en.wikipedia.org/wiki/Kadungon"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "The end year and who took the 592-601 rump (601 is Cliopatria's; the page says only 'ended for certain by the last quarter of 6th century').",
+     "page to try": "https://en.wikipedia.org/wiki/Simhavishnu"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kalabhra_dynasty",
+     "result": "confirmed ('up to the Kaveri river by c. 575 CE')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kalabhra_dynasty",
+     "result": "confirmed ('ended for certain by the last quarter of 6th century'; 'defeated and ended by the Chalukyas, Pandyas, and Pallavas'); year 601 is Cliopatria's at confidence 1, as the note says"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Pandya_dynasty",
+     "result": "confirmed (Kadungon c. 560-590, Karashima 560-590, 'To the south of Kaveri, the Pandyas came to power'); 592 is Cliopatria's at confidence 1"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kalabhra_dynasty",
+     "result": "confirmed ('Established: 3rd century CE', 'defeated the Cholas, Pandyas, and Cheras'); 353 is Cliopatria's at confidence 1"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 137946,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the infobox or text (checked); the author says so in /keyframe_review/0."
+   }
+  },
+  {
+   "slug": "kamarupa-kingdom",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (missing vassal_start / vassal_end with pala-empire)",
+     "applied": false,
+     "what": "Devapala's suzerainty over Kamarupa (c. 810-850) and its end under Narayanapala are on a page the author opened, but are recorded only as a war with empty zones (/wars/4), not as vassal events; the pala-empire dossier (sa-03) will need a mirror here.",
+     "why": "Pala Empire page: 'the invasion of Pragjyotisha (present-day Assam) where the king submitted without giving a fight'; Pragjyotisa or Assam 'accepted the suzerainty of Devapala' (Devapala c. 810-850 Majumdar, 812-850 Sircar); 'Narayanapala lost control of Assam and Orissa' and 'the King Harjara of Assam assumed imperial titles' (Narayanapala 854-908 Majumdar, 860-917 Sircar). Reviewer brief rule 3: a vassal relation is recorded in both ledgers.",
+     "fix": "Add vassal_start (c. 810, counterpart pala-empire, region the 751 shape, confidence 1 or 2, source Pala_Empire) and vassal_end (c. 855-860, Narayanapala's loss of Assam, confidence 1), and keep /wars/4."
+    },
+    {
+     "where": "/ledger/16, /ledger/17",
+     "applied": true,
+     "what": "The 960 gain named tibetan-empire, whose row (623-849) ended 111 years earlier; of the 190 cells, 75 lie in Cliopatria's Tibetans shape of 959 (none in its 960 shape) and 115 in no 959 shape.",
+     "why": "polities.csv: tibetan-empire 623..849, tibetans 850..1259; gazetteer: (Kamarupa 960 minus 959) intersect Tibetans 959 = 75 cells, intersect Tibetans 960 = 0.",
+     "fix": "Applied by the reviewer: /ledger/16 now intersects with Tibetans 959 and names tibetans (75 cells); /ledger/17 now subtracts Tibetans 959 (460 cells, nobody); notes say so; re-validated with 0 errors."
+    },
+    {
+     "where": "/ledger/13/note",
+     "applied": true,
+     "what": "The quote 'was elected as king by the ruling chieftains' after Tyagasimha is on the Kamarupa page, not on the cited Pala dynasty (Kamarupa) page, which says only that the first ruler 'was elected'.",
+     "why": "Pala dynasty (Kamarupa) page has 'Established: 900 CE' but neither Tyagasimha nor the chieftains; the Kamarupa page has 'The last known ruler of this dynasty was Tyagasimha (r. 890-900)' and the election by the chieftains.",
+     "fix": "Applied by the reviewer: the note now attributes the quote to the Kamarupa page; the year and confidence 3 stand."
+    },
+    {
+     "where": "/ledger/9",
+     "applied": false,
+     "what": "The 656 loss names nobody, but 33 of its 163 cells lie in Cliopatria's Tibetan Empire shape of 656 (none in its 655 shape).",
+     "why": "Gazetteer: (Kamarupa 655 minus 656) intersect Tibetan Empire 656 = 33 cells; the note itself says so.",
+     "fix": "Non-blocking: split the event: a loss of those 33 cells to tibetan-empire (confidence 1) and the remaining 130 to nobody, so the ea-04 Tibetan Empire dossier can mirror it."
+    },
+    {
+     "where": "/ledger/0",
+     "applied": false,
+     "what": "The 350 founding names gupta-empire and its 150 km Guwahati core overlaps the Gupta 347 shape by 87 cells, while gupta-empire /ledger/9 releases those cells only in 353: both draw them in 350-352.",
+     "why": "Kamarupa page: 'began as a subordinate but sovereign ally of the Gupta Empire around present-day Guwahati in the 4th century'; infobox 'Established: 350'. Gupta 353 loss is Cliopatria's (confidence 1).",
+     "fix": "Non-blocking here (the page side is right): routed to gupta-empire to move its kamarupa loss to 350 or keep the Guwahati core out of its 347 gain. Optionally record the 'subordinate but sovereign ally' relation as vassal_start gupta-empire 350 with an end."
+    },
+    {
+     "where": "/ledger/6",
+     "applied": false,
+     "what": "The 637 gain names gauda-kingdom, whose Cliopatria row is 602-611.",
+     "why": "polities.csv gauda-kingdom 602..611; Shashanka page (author's) has Shashanka die in 636 and Karnasuvarna pass to Bhaskaravarman.",
+     "fix": "Non-blocking: the sa-03 gauda-kingdom dossier must run to 636/637 for this to match; if it does not, the counterpart is harsha-s-empire or nobody. Noted in cross_checks."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/9-11 (656)",
+     "what is missing": "Why the 656 shape loses Bhutan and the hills and gains north Bengal (confidence 1, Cliopatria only).",
+     "page to try": "https://en.wikipedia.org/wiki/Salasthambha"
+    },
+    {
+     "where": "/ledger/12 (751)",
+     "what is missing": "The loss of north Bengal in 751 (confidence 1); the Mlechchha page has only the break-up after Harshavarman (725-745).",
+     "page to try": "https://en.wikipedia.org/wiki/Yashovarman"
+    },
+    {
+     "where": "/ledger/16-17 (960)",
+     "what is missing": "Any page for the 2.5x jump of 960 (Arunachal, Bhutan, north Bengal, Sikkim); Indra Pala's page has no war.",
+     "page to try": "https://en.wikipedia.org/wiki/Ratna_Pala"
+    },
+    {
+     "where": "/ledger/19-21 (1056)",
+     "what is missing": "The western loss and eastern gain of 1056 (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Dharma_Pala_(Kamarupa)"
+    },
+    {
+     "where": "/ledger/22 (1072)",
+     "what is missing": "The Garo Hills edge passing to the Sena shape (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Vijaya_Sena"
+    },
+    {
+     "where": "/keyframe_review/1, 6-13",
+     "what is missing": "Twelve shapes 'unverified: page budget' (9 of 9 pages used); thin by design within the budget.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Assam"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kamarupa",
+     "result": "confirmed (Pushyavarman 350-374, infobox 'Established: 350', 'around present-day Guwahati in the 4th century')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kamarupa",
+     "result": "confirmed ('Kalyanavarman (422-446) occupied Davaka')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Kamarupa",
+     "result": "confirmed (Bhutivarman 518-542; Nidhanpur, 'Chandrapuri visaya, identified with present-day Sylhet Division')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Kamarupa",
+     "result": "confirmed ('passed into the hands of Salasthambha (r. 655-670)')"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Pala_dynasty_(Kamarupa)",
+     "result": "confirmed for the year (infobox 'Established: 900 CE'); the quoted election sentence is on the Kamarupa page (attribution fixed)"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Kamarupa",
+     "result": "confirmed ('shifted to Durjaya by Ratna Pala (r. 920-960)')"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Kamarupa",
+     "result": "confirmed (Dharma Pala r. 1035-1060, Kamarupanagara, North Guwahati)"
+    },
+    {
+     "where": "/ledger/23",
+     "page": "https://en.wikipedia.org/wiki/Pala_dynasty_(Kamarupa)",
+     "result": "confirmed (Ramapala's invasion undated; Timgyadeva governor 1110-1126; 1100 is the infobox end of the dynasty)"
+    },
+    {
+     "where": "/ledger/24",
+     "page": "https://en.wikipedia.org/wiki/Pala_dynasty_(Kamarupa)",
+     "result": "confirmed (Vaidyadeva 1126-1140, 'declared independence within four years'); Pala Empire page 'practically created a separate kingdom'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 230539,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the infobox (checked); text gives only the traditional bounds, which the page says are not 'backed by any inscriptional record'."
+   }
+  },
+  {
+   "slug": "maitraka-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (missing vassal_start / vassal_end with harsha-s-empire)",
+     "applied": false,
+     "what": "The state's own page says the Maitrakas came under Harsha in the mid-7th century and regained independence after his death, but the ledger has no vassal events; the author routed them to harsha-s-empire only.",
+     "why": "Maitraka dynasty page: 'They came under the rule of Harsa of Vardhana dynasty in the mid-seventh century', retaining local autonomy and regaining independence after Harsha's death; Dhruvasena II 'married the daughter of Harsavardhana' (Dhruvasena II 640-643 on the Vallabhi list). Reviewer brief rule 3: the relation is recorded in both ledgers.",
+     "fix": "Add vassal_start (c. 640, counterpart harsha-s-empire, region the Maitraka core, confidence 1 or 2, source Maitraka_dynasty) and vassal_end (647, Harsha's death, source Harsha page, confidence 2)."
+    },
+    {
+     "where": "/ledger/4",
+     "applied": false,
+     "what": "The 616 gain of Ujjain names nobody, but all 134 cells of the 100 km Ujjain circle lie in Cliopatria's Harsha's Empire shapes of 615, 616 and 640, so keyframe 616-646 and Harsha's row draw the same land.",
+     "why": "Maitraka page: 'Virdi copperplate grant (616 CE) of Kharagraha I proves that his territories included Ujjain' (confirmed). Gazetteer: Ujjain 100 km intersect Harsha's Empire 616 = 134 of 134 cells (133 in 640, 0 in 655).",
+     "fix": "Non-blocking: say in the note that Cliopatria's Harsha shape covers Ujjain 612-646 and that the grant shows Maitraka possession in 616; the sa-03 harsha-s-empire dossier should not draw Ujjain directly while the Maitrakas hold it (routed in cross_checks)."
+    },
+    {
+     "where": "/ledger/2",
+     "applied": false,
+     "what": "The 555 gain names vakataka-kingdom, but the vakataka-kingdom dossier ends in 510 (dissolve to kalachuris-of-mahishmati and others).",
+     "why": "vakataka-kingdom /ledger (last) 510 dissolve, successors kalachuris-of-mahishmati, vishnukundina-dynasty, kadamba-empire, chalukya-dynasty; the 39 cells lie in Cliopatria's Vakataka 554 shape, which that dossier does not use after 510.",
+     "fix": "Non-blocking: name the 554 holder per the dossiers (kalachuris-of-mahishmati, listed by sa-02-d under counterparts_needing_dossiers, or nobody) and keep confidence 1."
+    },
+    {
+     "where": "/ledger/6",
+     "applied": false,
+     "what": "The 724 loss of Ujjain names gurjara-pratihara-dynasty, whose row starts in 732, and rests on an inference: the page dates Nagabhata's defeat of the 'Valacha Mlecchas' to around 725 but not at Ujjain, and says Junayd's raid did not take Ujjain.",
+     "why": "Caliphate campaigns in India page: Nagabhata defeated 'a powerful army of Valacha Mlecchas' 'around 725 CE'; 'many historians believe that Nagabhata repulsed Arab forces at Ujjain' (undated) and there is 'no authentic information about where precisely he encountered them'; 'Ujjain itself was not conquered'. Cliopatria keeps Ujjain in the Maitraka shape to 731 and gives 68 of the 134 cells to Gurjara-Pratihara in 732.",
+     "fix": "Non-blocking (confidence 1, honestly noted): either move the loss to 732 to meet Cliopatria's Gurjara-Pratihara row, or keep 724 and route it so the gurjara-pratihara-dynasty dossier starts by then."
+    },
+    {
+     "where": "/keyframe_review/0",
+     "applied": false,
+     "what": "The note says the full 476 shape holds from 475, but /ledger/0 founds the state on Saurashtra only in 475 and /ledger/1 adds the rest of Gujarat in 476.",
+     "why": "Ledger and keyframe disagree for one year.",
+     "fix": "Non-blocking: say the 476 shape holds 476-533 (Saurashtra alone in 475), or add a 475 keyframe = Saurashtra."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1, /keyframe_review/0",
+     "what is missing": "North Gujarat joined only under Dharasena III (626-640) per the page, yet the 476 shape holds it from 476; no area subtracted.",
+     "page to try": "https://en.wikipedia.org/wiki/Dharasena_III"
+    },
+    {
+     "where": "/keyframe_review/0 (500-515)",
+     "what is missing": "The Alchon hold on Gujarat: alchon-huns /ledger/9 (500 gain) and /ledger/12 (515 loss) cover 609 of the 617 cells of the Maitraka 476 shape but name gupta-empire; a page that settles who held Gujarat 500-515 (Sanjeli inscription).",
+     "page to try": "https://en.wikipedia.org/wiki/Sanjeli_inscription"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "Who held Ujjain between 616 and the Gurjara-Pratiharas, and when it passed (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Nagabhata_I"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "The end of the Nandipuri suzerainty (confidence 1) and an Arab-invasion date for the end of the line.",
+     "page to try": "https://en.wikipedia.org/wiki/Gurjaras_of_Lata"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Maitraka_dynasty",
+     "result": "confirmed (Bhatarka, military governor of Saurashtra, independent 'around 475 CE'; infobox 'Founded: 475')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Maitraka_dynasty",
+     "result": "confirmed (Virdi grant 616, Ujjain)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Caliphate_campaigns_in_India",
+     "result": "confirmed (Junayd 723-726 'conquered Gujarat and parts of Rajasthan')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Caliphate_campaigns_in_India",
+     "result": "quotes confirmed; the c. 725 date belongs to the Valacha victory, not to Ujjain, and the transfer is inferred (confidence 1, the note says so)"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Caliphate_campaigns_in_India",
+     "result": "confirmed (Jayabhata IV, Lord of Nandipuri, 736, suzerain the King of Vallabhi)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Caliphate_campaigns_in_India",
+     "result": "confirmed ('The Arabs lost their conquests in Rajasthan and Gujarat by 743'; Navsari 739)"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Maitraka_dynasty",
+     "result": "confirmed (infobox 'Dissolution: 776'; 'ended by 783 CE')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 303531,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page (checked). Cliopatria's 656-731 shape doubles the core; the author halves it (correction 771 cells, about 195,000 km2) because no page places the Maitrakas in Rajasthan or central Madhya Pradesh; the correction is consistent with the pages read."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kalabhra-dynasty",
+    "year": 575,
+    "type": "loss",
+    "counterpart": "late-pallava-empire"
+   },
+   "mirror": {
+    "slug": "late-pallava-empire",
+    "year": 575,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "late-pallava-empire /ledger/3; keyframes now agree after the reviewer's 575 keyframe."
+  },
+  {
+   "event": {
+    "slug": "kalabhra-dynasty",
+    "year": 592,
+    "type": "loss",
+    "counterpart": "pandya-dynasty"
+   },
+   "mirror": {
+    "slug": "pandya-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "pandya-dynasty is owned by sa-03, not run yet; it should gain the south of the Kalabhra shape at 592."
+  },
+  {
+   "event": {
+    "slug": "kalabhra-dynasty",
+    "year": 601,
+    "type": "dissolve",
+    "counterpart": "pandya-dynasty"
+   },
+   "mirror": {
+    "slug": "pandya-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "sa-03 not run; the 601 rump (152 cells) goes to the Pandyas in this reading."
+  },
+  {
+   "event": {
+    "slug": "kalabhra-dynasty",
+    "year": 353,
+    "type": "found",
+    "counterpart": null
+   },
+   "mirror": {
+    "slug": "early-cholas",
+    "year": 305,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "early-cholas /ledger/2, early-pandyas /ledger/1 and early-cheras /ledger/2 dissolve into kalabhra-dynasty in 305; Kalabhra starts in 353 (48-year gap). Both sides confidence 1."
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 350,
+    "type": "found",
+    "counterpart": "gupta-empire"
+   },
+   "mirror": {
+    "slug": "gupta-empire",
+    "year": 353,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "3 years apart; 87 cells of the Guwahati core lie in the Gupta 347 shape. Route to gupta-empire (sa-02-d): move its loss to 350 (the Kamarupa date is page-sourced, confidence 3)."
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 353,
+    "type": "gain",
+    "counterpart": "gupta-empire"
+   },
+   "mirror": {
+    "slug": "gupta-empire",
+    "year": 353,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "gupta-empire /ledger/9."
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 422,
+    "type": "gain",
+    "counterpart": "davaka"
+   },
+   "mirror": {
+    "slug": "davaka",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "davaka has no dossier; listed in counterparts_needing_dossiers (sa-02-x)."
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 637,
+    "type": "gain",
+    "counterpart": "gauda-kingdom"
+   },
+   "mirror": {
+    "slug": "gauda-kingdom",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "sa-03 not run; Cliopatria's Gauda row is 602-611, so the gauda-kingdom dossier must run to 636/637 (Shashanka's death) for this to match."
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 656,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "tibetan-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "33 of the 163 cells lie in Cliopatria's Tibetan Empire 656 shape; ea-04 (not run) should gain them from kamarupa-kingdom, and this event should name tibetan-empire for them."
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 751,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "nobody; 8 of 70 cells lie in the Pala Empire 751 shape (minor)."
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 960,
+    "type": "gain",
+    "counterpart": "tibetans"
+   },
+   "mirror": {
+    "slug": "tibetans",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "After the reviewer's fix (was tibetan-empire, dead since 849): 75 cells from the Tibetans 959 shape; ea-04 not run, tibetans should record the loss at 960."
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 1056,
+    "type": "loss",
+    "counterpart": "pala-empire"
+   },
+   "mirror": {
+    "slug": "pala-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "sa-03 not run; 95 cells in the Pala Empire 1056 shape."
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 1072,
+    "type": "loss",
+    "counterpart": "sena-dynasty"
+   },
+   "mirror": {
+    "slug": "sena-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "sa-03 not run; 32 cells to the Sena shape."
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 1100,
+    "type": "loss",
+    "counterpart": "pala-empire"
+   },
+   "mirror": {
+    "slug": "pala-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "sa-03 not run; Ramapala's conquest of western Kamarupa (undated on every page)."
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 1126,
+    "type": "gain",
+    "counterpart": "pala-empire"
+   },
+   "mirror": {
+    "slug": "pala-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "sa-03 not run; Vaidyadeva's independence."
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 810,
+    "type": "vassal_start",
+    "counterpart": "pala-empire"
+   },
+   "mirror": {
+    "slug": "pala-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Devapala's suzerainty (Pala Empire page) is in neither ledger: kamarupa-kingdom must add vassal_start/vassal_end (blocking here), pala-empire (sa-03) must add the mirror."
+  },
+  {
+   "event": {
+    "slug": "maitraka-dynasty",
+    "year": 475,
+    "type": "found",
+    "counterpart": "gupta-empire"
+   },
+   "mirror": {
+    "slug": "gupta-empire",
+    "year": 476,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "gupta-empire /ledger/24 (476), within one year."
+  },
+  {
+   "event": {
+    "slug": "maitraka-dynasty",
+    "year": 476,
+    "type": "gain",
+    "counterpart": "gupta-empire"
+   },
+   "mirror": {
+    "slug": "gupta-empire",
+    "year": 476,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "gupta-empire /ledger/24."
+  },
+  {
+   "event": {
+    "slug": "maitraka-dynasty",
+    "year": 555,
+    "type": "gain",
+    "counterpart": "vakataka-kingdom"
+   },
+   "mirror": {
+    "slug": "vakataka-kingdom",
+    "year": 510,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "vakataka-kingdom ends in 510; the 555 counterpart should be the 554 holder (kalachuris-of-mahishmati or nobody)."
+  },
+  {
+   "event": {
+    "slug": "maitraka-dynasty",
+    "year": 616,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "harsha-s-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "All 134 Ujjain cells lie in Cliopatria's Harsha's Empire shapes 612-646; harsha-s-empire (sa-03, not run) must not draw Ujjain directly while the Maitrakas hold it, or this gain names it."
+  },
+  {
+   "event": {
+    "slug": "maitraka-dynasty",
+    "year": 723,
+    "type": "contest_start",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": {
+    "slug": "umayyad-caliphate",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No umayyad-caliphate dossier yet; it should mirror 723-743 in Gujarat."
+  },
+  {
+   "event": {
+    "slug": "maitraka-dynasty",
+    "year": 724,
+    "type": "loss",
+    "counterpart": "gurjara-pratihara-dynasty"
+   },
+   "mirror": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "sa-03 not run; Cliopatria's Gurjara-Pratihara row starts in 732, so either that dossier starts by 724 or this loss moves to 732."
+  },
+  {
+   "event": {
+    "slug": "maitraka-dynasty",
+    "year": 736,
+    "type": "vassal_start",
+    "counterpart": "nandipuri-gurjaras"
+   },
+   "mirror": {
+    "slug": "nandipuri-gurjaras",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No dossier; listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "maitraka-dynasty",
+    "year": 776,
+    "type": "dissolve",
+    "counterpart": "gurjara-pratihara-dynasty"
+   },
+   "mirror": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "sa-03 not run; that dossier should not draw Gujarat before 776."
+  },
+  {
+   "event": {
+    "slug": "maitraka-dynasty",
+    "year": 640,
+    "type": "vassal_start",
+    "counterpart": "harsha-s-empire"
+   },
+   "mirror": {
+    "slug": "harsha-s-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Harsha's overlordship (Maitraka page, mid-7th century) is in neither ledger: maitraka-dynasty must add it (blocking here), harsha-s-empire (sa-03) the mirror."
+  },
+  {
+   "event": {
+    "slug": "alchon-huns",
+    "year": 500,
+    "type": "gain",
+    "counterpart": "gupta-empire"
+   },
+   "mirror": {
+    "slug": "maitraka-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "alchon-huns /ledger/9 and /ledger/12 (500 gain, 515 loss, gupta-empire) cover 609 of the 617 cells of the Maitraka 476 shape, which the Guptas lost to the Maitrakas in 476; route to ia-01: name maitraka-dynasty (or drop Gujarat), and the Maitraka dossier then records the matching loss/occupation."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Sadiya",
+   "kind": "place",
+   "used_in": "kamarupa-kingdom"
+  },
+  {
+   "name": "Karnasuvarna",
+   "kind": "place",
+   "used_in": "kamarupa-kingdom"
+  },
+  {
+   "name": "Nagaon",
+   "kind": "place",
+   "used_in": "kamarupa-kingdom"
+  },
+  {
+   "name": "Karatoya",
+   "kind": "region",
+   "used_in": "kamarupa-kingdom"
+  },
+  {
+   "name": "Vallabhi",
+   "kind": "place",
+   "used_in": "maitraka-dynasty"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Davaka (Kapili valley kingdom)",
+   "suggested_slug": "davaka",
+   "years": [
+    350,
+    446
+   ]
+  },
+  {
+   "name": "Nandipuri Gurjaras (Gurjaras of Lata)",
+   "suggested_slug": "nandipuri-gurjaras",
+   "years": [
+    700,
+    776
+   ]
+  },
+  {
+   "name": "Kalachuris of Mahishmati",
+   "suggested_slug": "kalachuris-of-mahishmati",
+   "years": [
+    510,
+    620
+   ]
+  },
+  {
+   "name": "Kamata kingdom",
+   "suggested_slug": "kamata-kingdom",
+   "years": [
+    1250,
+    1498
+   ]
+  },
+  {
+   "name": "Ahom kingdom",
+   "suggested_slug": "ahom-kingdom",
+   "years": [
+    1228,
+    1826
+   ]
+  },
+  {
+   "name": "Chutia kingdom",
+   "suggested_slug": "chutia-kingdom",
+   "years": [
+    1187,
+    1673
+   ]
+  },
+  {
+   "name": "Kachari kingdom",
+   "suggested_slug": "kachari-kingdom",
+   "years": [
+    1100,
+    1826
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-sa-02-e.md",
+ "problems": [
+  "No page failed for the reviewer; WebFetch returns model-summarised extracts, so quotes were checked as the extracts gave them.",
+  "Neighbour dossiers read (Context list, existing): gupta-empire, vakataka-kingdom, white-huns, western-satraps; also late-pallava-empire, alchon-huns, early-cholas, early-pandyas, early-cheras because they name this batch's states. Not written yet (exception: group not run): pala-empire, tibetans, tibetan-empire, chalukya-dynasty, harsha-s-empire, sena-dynasty, maukhari-dynasty, khadga-dynasty, pandya-dynasty, gauda-kingdom, umayyad-caliphate, gurjara-pratihara-dynasty.",
+  "Reviewer edits applied in place and re-validated (0 errors): kalabhra-dynasty /keyframe_review/0 and new /keyframe_review/1; kamarupa-kingdom /ledger/13 note, /ledger/16 and /ledger/17.",
+  "Kamarupa kept as one state across three dynasties (rename 655, 900): accepted; no page treats them as separate states.",
+  "Blocking for kamarupa-kingdom and maitraka-dynasty is the same pattern: vassal relations on pages the author opened were routed to the overlord's dossier instead of recorded on both sides (reviewer brief rule 3; sa-02-d failed vakataka and yaudheya for the same)."
+ ]
+}

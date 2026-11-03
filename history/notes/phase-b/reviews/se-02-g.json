@@ -1,0 +1,1060 @@
+{
+ "batch_id": "se-02-g",
+ "verdicts": [
+  {
+   "slug": "patani-kingdom",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "The dossier carries none of the Ayutthaya tributary spans that ayutthaya-kingdom records with patani-kingdom as counterpart (vassal_start 1512 c1, vassal_end 1563 c2, vassal_start 1584 c2, vassal_end 1688 c3).",
+     "why": "Patani page: 'Raja Hijau (or Ratu Hijau, the Green Queen) came to the throne in 1584' and acknowledged Siamese authority; 'When Phetracha took control of Ayutthaya in 1688, Patani refused to acknowledge his authority and rebelled' (ayutthaya-kingdom /ledger/29, /31, /35, /56). The author's notes defer the tint to the Ayutthaya dossier, but the mirror rule needs both ledgers.",
+     "fix": "Add vassal_start 1584 and vassal_end 1688, counterpart ayutthaya-kingdom, region {\"region\": \"Pattani\"} with text, source the Patani page (confidence 2 and 3); add 1512/1563 only if the author accepts Ayutthaya's reading of \"subject to Siamese control for some time\".",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "When Kelantan (Jembal) ceased to be Patani's: the 1691 loss is a confidence-1 bridge on Cliopatria's row end; the page only has Patani incursions into Kelantan around the 1750s.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Kelantan"
+    },
+    {
+     "where": "/identity/predecessors/0",
+     "what is missing": "The Langkasuka hand-over (no dossier; no date).",
+     "page to try": "https://en.wikipedia.org/wiki/Langkasuka"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding year: infobox c. 1400, Hikayat Patani 1350-1450, founder dated c. 1488-1511 elsewhere on the page.",
+     "page to try": "https://en.wikipedia.org/wiki/Hikayat_Patani"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Patani_Kingdom",
+     "result": "confirmed",
+     "note": "infobox 'Established: c. 1400'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Patani_Kingdom",
+     "result": "confirmed",
+     "note": "'Raja Hijau died on 28 August 1616 and was succeeded by her sister'; the Kelantan incorporation is undated, so confidence 2 is right"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Patani_Kingdom",
+     "result": "confirmed",
+     "note": "'Raja Kuning was deposed in 1651 by the Raja of Kelantan'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Patani_Kingdom",
+     "result": "confirmed",
+     "note": "'The siege of Patani by Siam occurred in 1786'; infobox 'Conquest by Siam: 1786'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Infobox gives no area (only \"approximately the area of\" Patani, Yala, Narathiwat); Cliopatria 11.9-19.8 k km2 matches that description."
+   }
+  },
+  {
+   "slug": "mataram-sultanate",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/18/region",
+     "what": "The 1676 loss to trunajaya-rebellion named only the coast towns, not Madura, although trunajaya-rebellion /ledger/0 founds the rebel state on Madura in 1676 with mataram-sultanate as counterpart and this ledger regains Madura from the rebels in 1677 (/ledger/20): Madura was drawn as both Mataram and rebel land 1676-1677.",
+     "why": "Trunajaya page: 'In 1671 Trunajaya returned to Madura', 'the master of Madura'; 'In September 1676, a rebel army of 9,000 ... crossed over from Madura to Java.'",
+     "fix": "Region is now {\"union\": [the three Madura circles of /ledger/20, the coast-town union]} with text \"Madura and the northern coastal towns from Surabaya to Cirebon, Jepara excepted\"; reviewer sentence appended to the note.",
+     "applied": true,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/20/confidence",
+     "what": "Confidence 1 with the note \"The page does not say when\", but the Trunajaya page dates the return of Madura to 1677.",
+     "why": "Trunajaya page, after the April 1677 Surabaya campaign: 'VOC forces also took Madura, Trunajaya's native island, and laid his residence there in ruin.'",
+     "fix": "Confidence 2 and the note quotes the sentence (applied together with the same change to trunajaya-rebellion /ledger/3).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/32",
+     "what": "A 1705 loss of \"the regions of Cirebon\" to dutch-republic removes land that lies outside every Mataram outline and after the dossier's own vassal_end of Cirebon (/ledger/27, c. 1680): the event has nothing to subtract.",
+     "why": "Mataram page: 'In 1705 he agreed to cede the regions of Cirebon and eastern part of Madura'; the author's own note says 'Cirebon is outside every Mataram outline and had left Mataram's orbit by c. 1680'.",
+     "fix": "Delete /ledger/32 and mention the Cirebon clause in the note of /ledger/31; or, if Mataram's claim is kept to 1705, move /ledger/27 to 1705 and drop the loss.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/11/counterpart",
+     "what": "The Cirebon vassalage (1625-1680) uses the free string \"Cirebon (sultanates)\" although sultanate-of-cirebon has a dossier (1482-1677) that records no Mataram suzerainty.",
+     "why": "Mataram page: 'Cirebon too was forced to shift allegiance from Mataram to the Dutch'; sultanate-of-cirebon /ledger/3-6 partition the state in 1677.",
+     "fix": "Use counterpart sultanate-of-cirebon for the 1625 vassal_start with its vassal_end at 1677 (the partition; the Trunajaya page has Cirebon declaring independence in 1677-1678), or keep the string and say in the note that it covers the 1677 successor sultanates; the Cirebon group should add the mirror.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "The 1588 Madiun-Kediri strip in Cliopatria's first outline (confidence 1; no page dates it).",
+     "page to try": "https://en.wikipedia.org/wiki/Panembahan_Senopati"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "Start of the Cirebon relation (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Sultanate_of_Cirebon"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "Start of the Priangan (Sumedang, Ukur) relation (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Sumedang_Larang_Kingdom"
+    },
+    {
+     "where": "/ledger/15",
+     "what is missing": "End of Sukadana's vassalage (confidence 1 at Agung's death).",
+     "page to try": "https://en.wikipedia.org/wiki/Tanjungpura_Kingdom"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "Palembang and Jambi vassals named on the Mataram page (\"with vassals in Palembang, Sukadana, and Jambi\") are not recorded; no years.",
+     "page to try": "https://en.wikipedia.org/wiki/Palembang_Sultanate"
+    },
+    {
+     "where": "/ledger/33",
+     "what is missing": "The 1743 cession of the Pasisir: the Mataram page has Pakubuwono II \"ceded sovereignty over the Pasisir to the VOC\" after the 1741 rebellion but no treaty date.",
+     "page to try": "https://en.wikipedia.org/wiki/Java_War_(1741%E2%80%931743)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Sultan_Agung_of_Mataram",
+     "result": "confirmed",
+     "note": "'captured the island of Madura, another ally of Surabaya, in 1624 after a fierce battle'"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Sultan_Agung_of_Mataram",
+     "result": "confirmed",
+     "note": "'finally conquered Surabaya in a siege in 1625'"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Mataram_Sultanate",
+     "result": "confirmed",
+     "note": "'Blambangan surrendered in 1639, but quickly regained their independence in 1659'"
+    },
+    {
+     "where": "/ledger/33",
+     "page": "https://en.wikipedia.org/wiki/Mataram_Sultanate",
+     "result": "confirmed",
+     "note": "'by 1743 Mataram only consists of areas around Surakarta, Yogyakarta, Kedu and Bagelen'"
+    },
+    {
+     "where": "/ledger/4-7",
+     "page": "https://en.wikipedia.org/wiki/Sultan_Agung_of_Mataram",
+     "result": "confirmed",
+     "note": "Wirasaba 1615, Lasem 1616, Pasuruan 1617, Tuban 1619 all on the page"
+    },
+    {
+     "where": "/ledger/0, /ledger/1, /ledger/30-31",
+     "page": "https://en.wikipedia.org/wiki/Mataram_Sultanate",
+     "result": "confirmed",
+     "note": "infobox 'Independence from Pajang Sultanate: 1584'; 'This event in 1586, marked the end of Pajang kingdom'; 'In 1705 he agreed to cede the regions of Cirebon and eastern part of Madura'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 65740.9,
+    "ratio": 0.49,
+    "acknowledged": true,
+    "note": "No infobox area. The page: \"At its greatest extent, Mataram's territory spanned most of mainland Java and Madura\"; the author compares Java with Madura (about 133 k km2) against 65.7 k (ratio 0.49) in /keyframe_review/2 and explains the missing West Java and Blambangan. Central Java, Yogyakarta and East Java with Madura are about 83 k km2, so the outline is plausible."
+   }
+  },
+  {
+   "slug": "trunajaya-rebellion",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/6",
+     "what": "Mis-dated at confidence 2: the note says the page gives 1677-1678 for Puger seizing Plered; the page says 1677.",
+     "why": "Trunajaya page: Pangeran Puger 'had taken the old capital in Plered and had claimed the throne for himself in 1677' (after the rebels withdrew to Kediri in June 1677).",
+     "fix": "Confidence lowered to 1 and the note quotes the page; the year stays 1678 only to keep the event after the June 1677 capture (no month on the page). If a page gives the month, move it to 1677 with that month.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/3/confidence",
+     "what": "Confidence 1 with \"The page does not say when or how\", but the page dates the loss of Madura to the 1677 Surabaya campaign.",
+     "why": "Trunajaya page: 'VOC forces also took Madura, Trunajaya's native island, and laid his residence there in ruin.'",
+     "fix": "Confidence 2 and the note quotes the sentence; a reviewer sentence is appended to /keyframe_review/1/note.",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "When the coast towns other than Surabaya (Tuban, Demak, Pati, Semarang, Tegal) left rebel hands after April 1677.",
+     "page to try": "https://en.wikipedia.org/wiki/Cornelis_Speelman"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Trunajaya_rebellion",
+     "result": "confirmed",
+     "note": "'In September 1676, a rebel army of 9,000 led by the Kraeng of Galesong crossed over from Madura to Java'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Trunajaya_rebellion",
+     "result": "confirmed",
+     "note": "'In April 1677 the fleet sailed to Surabaya, where Trunajaya was based'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Trunajaya_rebellion",
+     "result": "confirmed",
+     "note": "Plered fell in June 1677; the rebels withdrew to Kediri with the treasury"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Trunajaya_rebellion",
+     "result": "confirmed",
+     "note": "'Kediri was taken on 25 November by an assault force led by Captain François Tack'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Trunajaya_rebellion",
+     "result": "mis-dated",
+     "note": "page says 1677, note said 1677-1678 (confidence 2): fixed by the reviewer"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No Cliopatria row and no infobox area; rebel land is circles round named towns."
+   }
+  },
+  {
+   "slug": "sultanate-of-sambas",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "The early realm (1609-1731) was smaller than Cliopatria's late outline (Tanjung Datuk to the Duri River, under the 4th sultan); no step is dated. Thin by design within the 1-2 page budget.",
+     "page to try": "https://en.wikipedia.org/wiki/Sambas_Regency"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Sultanate_of_Sambas",
+     "result": "confirmed",
+     "note": "'At first governed by governors, Sambas became a kingdom in 1609 with the descendant of Sepudak.'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Sultanate_of_Sambas",
+     "result": "confirmed",
+     "note": "ruler list: Muhammad Shafi ud-din I 1675-1685; Raden Sulaiman first sultan"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Sultanate_of_Sambas",
+     "result": "confirmed",
+     "note": "'The Dutch took control in 1819'"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/Sultanate_of_Sambas",
+     "result": "confirmed",
+     "note": "'In 1812 and 1813, the British launched' expeditions"
+    }
+   ],
+   "tried": "Years, the found/dissolve pair, the Brunei link (the page dates only Sultan Tengah's arrival, 1639), capital inside the bbox, the 1820 \"wrong\" verdict (years only); could not break it. The Brunei dossier's 1619 loss to Sambas is a Brunei-side mismatch (cross_checks).",
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Infobox gives no area; Cliopatria 5.8 k km2 for the Sambas and Paloh basins is plausible."
+   }
+  },
+  {
+   "slug": "sultanate-of-mempawah",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/0/confidence",
+     "what": "Confidence 1 with \"The page gives no founding year\", but the page has a founding sentence for c. 1610.",
+     "why": "Mempawah page: 'Two hundred years later, or around 1610, a new government was established' 'that was built on the former ruins of the Sidiniang Kingdom.'",
+     "fix": "Confidence 2 and the note quotes the sentence.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger",
+     "what": "The 1787 Dutch intervention is missing from the ledger and wars: the Dutch landed, beat Panembahan Adiwijaya, who withdrew inland to Karangan, and installed the Pontianak prince Syarif Kasim Alkadrie by agreement; the map shows Mempawah fully independent 1787-1831.",
+     "why": "Mempawah page: 'Not long after the Dutch landed in Mempawah in about 1787' 'there was a battle against the troops of Mempawah led by Panembahan Adiwijaya'; 'Panembahan Adiwijaya finally withdrew to Karangan in Mempawah to arrange a counterattack'; 'The appointment of Syarif Kasim Alkadrie as Panembahan was enshrined in the agreement dated 27 August 1787'; the Pontianak conflict flared again around 1794. The author quotes the agreement only inside the 1831 dissolve note.",
+     "fix": "Add vassal_start 1787 month 8 (counterpart dutch-republic, or pontianak-kadriyah-sultanate if the VOC acted through Pontianak; region the Cliopatria Mempawah 1619 shape; confidence 3) with its vassal_end at 1831; add a war \"Dutch-Pontianak intervention in Mempawah\" 1787-1790 with a contest zone round Karangan (Adiwijaya died in 1790 before his counterattack, per the page); say in notes whether 1787 or 1831 ends independence.",
+     "applied": false,
+     "blocking": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Mempawah's relation to the Matan Sultanate before 1740 (\"concurrent with the Matan Sultanate\") and to Landak.",
+     "page to try": "https://en.wikipedia.org/wiki/Pontianak_Sultanate"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Mempawah_Kingdom",
+     "result": "confirmed",
+     "note": "c. 1610 founding sentence (confidence raised to 2)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Mempawah_Kingdom",
+     "result": "confirmed",
+     "note": "'In 1740, power over Mempawah, which was concurrent with the Matan Sultanate, was handed over to Opu Daeng Menambun'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Mempawah_Kingdom",
+     "result": "confirmed",
+     "note": "'Sultan Muhammad Zainal Abidin moved the center of the government to the banks of the Mempawah River' (c. 1820)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Mempawah_Kingdom",
+     "result": "confirmed",
+     "note": "'In 1831, Mempawah weakened due to Dutch intervention.'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Infobox gives no area (Established 1740, Disestablished 1944); Cliopatria 2.9 k km2 round the Mempawah River is plausible."
+   }
+  },
+  {
+   "slug": "sultanate-of-sukadana",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "No mirror of mataram-sultanate /ledger/8 (vassal_start 1622, counterpart sultanate-of-sukadana) and /ledger/15 (vassal_end 1645); the 1622 Mataram expedition is only a war with no zones here.",
+     "why": "Tanjungpura page: 'Adipati Kendal with his Mataram Expedition, attacked Matan (1622)'; Sultan Agung page: 'capturing Sukadana, Surabaya's ally in southwest Kalimantan, in 1622'; Mataram page: 'with vassals in Palembang, Sukadana, and Jambi'.",
+     "fix": "Add vassal_start 1622 (confidence 2) and vassal_end 1645 (confidence 1, the Mataram dossier's bridge), counterpart mataram-sultanate, region {\"cliopatria\": \"Sultanate of Sukadana\", \"year\": 1619} with text. Non-blocking: the tint is already drawn from the Mataram side.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/end",
+     "what is missing": "The infobox's \"Part of the Dutch East Indies (from 1779)\" is unexplained by any sentence; the 1833 end is a succession dispute, not a cession.",
+     "page to try": "https://en.wikipedia.org/wiki/Ketapang_Regency"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "The page's claim that the territory \"stretched from Tanjung Dato to Tanjung Sambar\" (the whole west coast) against Cliopatria's southern Matan outline: acknowledged in the note, undated.",
+     "page to try": "https://en.wikipedia.org/wiki/Tanjungpura_Kingdom"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Tanjungpura_Kingdom",
+     "result": "confirmed",
+     "note": "infobox capitals 'Sukadana (1590)'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Tanjungpura_Kingdom",
+     "result": "confirmed",
+     "note": "'Giri Mustaka ... (1622-1665)', 'the first king of the Tanjungpura Kingdom with the title Sultan' (a second list gives 1630-1659, noted by the author)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Tanjungpura_Kingdom",
+     "result": "confirmed",
+     "note": "'The centre of government moved again in 1637 to the Indra Laya region'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Tanjungpura_Kingdom",
+     "result": "confirmed",
+     "note": "'Panembahan Anom was dismissed as sultan in 1833'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Infobox gives no area; Cliopatria 11.5 k km2 is the Matan coast; the page's Tanjung Dato to Tanjung Sambar claim is acknowledged in /keyframe_review/1."
+   }
+  },
+  {
+   "slug": "sultanate-of-bima",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/2",
+     "what": "The vassal_end of the Flores dependencies lay in 1920, after the state's end (1621..1905), and after the dissolve in the ledger.",
+     "why": "Bima page: 'In 1920 Bima lost control over Manggarai'; 'In 1905 Bima was turned into a \"fief\" (leen)' (the dossier's end).",
+     "fix": "Moved to 1905 before the dissolve, confidence 2, note quotes the 1920 sentence (was /ledger/3).",
+     "applied": true,
+     "blocking": true
+    },
+    {
+     "where": "/ledger",
+     "what": "The VOC subordination from 8 December 1669 is missing: the dossier draws Bima as fully independent 1669-1905, and no other dossier carries the relation yet.",
+     "why": "Bima page: 'The Bima Sultanate surrendered to the VOC on 8 December 1669' under an agreement signed in Batavia; after this Bima and the other Sumbawan kingdoms were 'subordinated allies of the VOC'. The author quotes it only in the report's problems.",
+     "fix": "Add vassal_start 1669 month 12, counterpart dutch-republic (region the Sumbawa core, confidence 3), with vassal_end 1799/1800 and a new vassal_start of dutch-east-indies from 1800 (or whatever split the Dutch dossiers use) ending at the 1905 dissolve; add the 1669 surrender to the \"VOC subjugation of Bima\" war note.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger",
+     "what": "No mirror of sultanate-of-gowa /ledger/8 (vassal_start 1626) and /ledger/16 (vassal_end 1667), which Gowa files against the free string \"Sumbawa\".",
+     "why": "Bima page: 'Sumbawa was attacked through three expeditions in 1618, 1619, and 1626'; Bima's ruler 'signed a contract of alliance with Makassar'; 'A rebellion against his Makassarese-backed rule took place in 1632-33'.",
+     "fix": "Add vassal_start 1626 (confidence 2) and vassal_end 1667 (confidence 2), counterpart sultanate-of-gowa; the Gowa group should change its counterpart string to sultanate-of-bima.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Start of the Flores/Sumba tribute (the page: \"according to tradition\", peak in the 15th century).",
+     "page to try": "https://en.wikipedia.org/wiki/Manggarai_Regency"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "Cliopatria's 1866 shape drops the Bima plain (bbox 119.21 E against 118.54 E); no page explains it (the author keeps the core, reasonably).",
+     "page to try": "https://en.wikipedia.org/wiki/Bima_Sultanate"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Bima_Sultanate",
+     "result": "confirmed",
+     "note": "'He accepted Islam on 15 Rabiulawal 1030 AH (7 February 1621)'; 'adopted the Muslim name Sultan Abdul Kahir'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Bima_Sultanate",
+     "result": "confirmed",
+     "note": "'In 1905 Bima was turned into a \"fief\" (leen)'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Bima_Sultanate",
+     "result": "confirmed",
+     "note": "the 1920 Manggarai sentence is on the page; the event was outside the life and was moved to 1905"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Bima_Sultanate",
+     "result": "confirmed",
+     "note": "dependencies Manggarai, Ende, Larantuka, Sumba, Sawu, Alor, Solor and Tanah Naro listed; Komodo not named on the page"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Infobox gives no area; Cliopatria 10.4 k km2 (eastern Sumbawa plus Komodo and west Flores) with the Flores part moved to a tint."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "ayutthaya-kingdom",
+    "year": 1512,
+    "type": "vassal_start",
+    "counterpart": "patani-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Patani carries no vassal events (also 1563 vassal_end, 1584 vassal_start, 1688 vassal_end); fix listed on patani-kingdom."
+  },
+  {
+   "event": {
+    "slug": "ayutthaya-kingdom",
+    "year": 1584,
+    "type": "vassal_start",
+    "counterpart": "patani-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "see above; 1688 vassal_end likewise."
+  },
+  {
+   "event": {
+    "slug": "patani-kingdom",
+    "year": 1616,
+    "type": "gain",
+    "counterpart": "Kelantan fiefdoms"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed as kelantan-jembal in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "patani-kingdom",
+    "year": 1691,
+    "type": "loss",
+    "counterpart": "Kelantan fiefdoms"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "same; confidence-1 bridge."
+  },
+  {
+   "event": {
+    "slug": "patani-kingdom",
+    "year": 1400,
+    "type": "found",
+    "counterpart": "langkasuka"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "langkasuka listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1584,
+    "type": "found",
+    "counterpart": "kingdom-of-pajana"
+   },
+   "mirror": {
+    "slug": "kingdom-of-pajana",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Pajang (1568-1586) records no 1584 loss of the Kota Gede core; route to se-02 (Pajang)."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1586,
+    "type": "gain",
+    "counterpart": "kingdom-of-pajana"
+   },
+   "mirror": {
+    "slug": "kingdom-of-pajana",
+    "year": 1586,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Pajang /ledger/3 dissolve with counterpart mataram-sultanate."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1588,
+    "type": "gain",
+    "counterpart": "East Java principalities"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "confidence-1 bridge for the Madiun-Kediri strip; no state named."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1615,
+    "type": "gain",
+    "counterpart": "Wirasaba"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier and not in the author's counterparts_needing_dossiers; added to this report's list (or fold into the Surabaya-league dossier)."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1616,
+    "type": "gain",
+    "counterpart": "Lasem"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier and not in the author's counterparts_needing_dossiers; added to this report's list (or fold into the Surabaya-league dossier)."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1617,
+    "type": "gain",
+    "counterpart": "Pasuruan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier and not in the author's counterparts_needing_dossiers; added to this report's list (or fold into the Surabaya-league dossier)."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1619,
+    "type": "gain",
+    "counterpart": "Tuban"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier and not in the author's counterparts_needing_dossiers; added to this report's list (or fold into the Surabaya-league dossier)."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1622,
+    "type": "vassal_start",
+    "counterpart": "sultanate-of-sukadana"
+   },
+   "mirror": {
+    "slug": "sultanate-of-sukadana",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "in-batch: Sukadana records the 1622 expedition only as a war; fix listed on sultanate-of-sukadana (also the 1645 vassal_end)."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1624,
+    "type": "gain",
+    "counterpart": "Madura (Surabaya's ally)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "madura listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1625,
+    "type": "gain",
+    "counterpart": "Surabaya"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "surabaya listed."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1625,
+    "type": "vassal_start",
+    "counterpart": "Cirebon (sultanates)"
+   },
+   "mirror": {
+    "slug": "sultanate-of-cirebon",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "sultanate-of-cirebon (1482-1677) has a dossier with no Mataram vassalage; Mataram uses a free string; fix listed on mataram-sultanate /ledger/11; route the mirror to se-02 (Cirebon)."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1631,
+    "type": "vassal_start",
+    "counterpart": "Sumedang and Ukur (Priangan)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "sumedang-larang listed; vassal_end 1677/9 likewise."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1639,
+    "type": "vassal_start",
+    "counterpart": "blambangan-kingdom"
+   },
+   "mirror": {
+    "slug": "blambangan-kingdom",
+    "year": 1639,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "Blambangan ends its 1635-1639 contest with Mataram but records no vassal_start/vassal_end (its keyframe note says the Mataram dossier should carry the 1639-1659 tint); route the mirror to se-02 (Blambangan)."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1659,
+    "type": "vassal_end",
+    "counterpart": "blambangan-kingdom"
+   },
+   "mirror": {
+    "slug": "blambangan-kingdom",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "as above; Blambangan's 1665 note (Tawang Alun freed it during the Trunajaya revolt) disagrees with the Mataram page's 1659."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1676,
+    "type": "loss",
+    "counterpart": "trunajaya-rebellion"
+   },
+   "mirror": {
+    "slug": "trunajaya-rebellion",
+    "year": 1676,
+    "type": "found+gain"
+   },
+   "status": "matched",
+   "note": "after the reviewer added Madura to /ledger/18 (rebel found on Madura, gain of the coast)."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1677,
+    "type": "loss",
+    "counterpart": "trunajaya-rebellion"
+   },
+   "mirror": {
+    "slug": "trunajaya-rebellion",
+    "year": 1677,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Kediri."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1677,
+    "type": "gain",
+    "counterpart": "trunajaya-rebellion"
+   },
+   "mirror": {
+    "slug": "trunajaya-rebellion",
+    "year": 1677,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Madura and the rest of the coast; both now confidence 2."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1677,
+    "type": "gain",
+    "counterpart": "trunajaya-rebellion"
+   },
+   "mirror": {
+    "slug": "trunajaya-rebellion",
+    "year": 1677,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Surabaya, April 1677 on both sides."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1677,
+    "type": "loss",
+    "counterpart": "trunajaya-rebellion"
+   },
+   "mirror": {
+    "slug": "trunajaya-rebellion",
+    "year": 1677,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Plered, June 1677 on both sides."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1678,
+    "type": "gain",
+    "counterpart": "trunajaya-rebellion"
+   },
+   "mirror": {
+    "slug": "trunajaya-rebellion",
+    "year": 1678,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Kediri, 25 November 1678 on both sides."
+  },
+  {
+   "event": {
+    "slug": "trunajaya-rebellion",
+    "year": 1678,
+    "type": "loss",
+    "counterpart": "Pangeran Puger"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "puger-regime-plered listed; Mataram regains Plered from Puger in 1680 and 1681 (also exceptions)."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1705,
+    "type": "loss",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "dutch-republic (eu-09) not written yet; three 1705 losses (Semarang, eastern Madura, Cirebon; the Cirebon one should go, see fixes)."
+  },
+  {
+   "event": {
+    "slug": "mataram-sultanate",
+    "year": 1743,
+    "type": "loss",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "dutch-republic not written; Cliopatria's Dutch Republic row covers the coast from 1744."
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-brunei",
+    "year": 1619,
+    "type": "loss",
+    "counterpart": "sultanate-of-sambas"
+   },
+   "mirror": {
+    "slug": "sultanate-of-sambas",
+    "year": 1609,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Brunei loses three cells to Sambas in 1619 (confidence 1, Cliopatria's first Sambas year); Sambas holds that land from its 1609 found with no counterpart, and its page dates no Bruneian rule. Route to se-02 (Brunei): move the loss to 1609 or drop it."
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-gowa",
+    "year": 1626,
+    "type": "vassal_start",
+    "counterpart": "Sumbawa"
+   },
+   "mirror": {
+    "slug": "sultanate-of-bima",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "Gowa uses the free string \"Sumbawa\" (vassal 1626-1667); Bima has no vassal events; fix listed on sultanate-of-bima; Gowa should use slug sultanate-of-bima."
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-bima",
+    "year": 1621,
+    "type": "vassal_start",
+    "counterpart": "Manggarai and West Flores dependencies"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "manggarai listed; vassal_end now 1905."
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-bima",
+    "year": 1669,
+    "type": "vassal_start",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "not in the ledger at all (fix listed); dutch-republic (eu-09) and dutch-east-indies (se-03) not written yet."
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-mempawah",
+    "year": 1787,
+    "type": "vassal_start",
+    "counterpart": "dutch-republic / pontianak-kadriyah-sultanate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "not in the ledger (fix listed); counterparts not written yet (eu-09, se-03)."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Madura",
+   "kind": "region",
+   "used_in": "mataram-sultanate"
+  },
+  {
+   "name": "Priangan",
+   "kind": "region",
+   "used_in": "mataram-sultanate"
+  },
+  {
+   "name": "Kedu",
+   "kind": "region",
+   "used_in": "mataram-sultanate"
+  },
+  {
+   "name": "Bagelen",
+   "kind": "region",
+   "used_in": "mataram-sultanate"
+  },
+  {
+   "name": "Lasem",
+   "kind": "place",
+   "used_in": "mataram-sultanate"
+  },
+  {
+   "name": "Jepara",
+   "kind": "place",
+   "used_in": "mataram-sultanate"
+  },
+  {
+   "name": "Kartasura",
+   "kind": "place",
+   "used_in": "mataram-sultanate"
+  },
+  {
+   "name": "Pleret",
+   "kind": "place",
+   "used_in": "mataram-sultanate"
+  },
+  {
+   "name": "Kotagede",
+   "kind": "place",
+   "used_in": "mataram-sultanate"
+  },
+  {
+   "name": "Gresik",
+   "kind": "place",
+   "used_in": "trunajaya-rebellion"
+  },
+  {
+   "name": "Sambas",
+   "kind": "place",
+   "used_in": "sultanate-of-sambas"
+  },
+  {
+   "name": "Mempawah",
+   "kind": "place",
+   "used_in": "sultanate-of-mempawah"
+  },
+  {
+   "name": "Karangan",
+   "kind": "place",
+   "used_in": "sultanate-of-mempawah"
+  },
+  {
+   "name": "Sukadana",
+   "kind": "place",
+   "used_in": "sultanate-of-sukadana"
+  },
+  {
+   "name": "Ketapang",
+   "kind": "place",
+   "used_in": "sultanate-of-sukadana"
+  },
+  {
+   "name": "Bima",
+   "kind": "place",
+   "used_in": "sultanate-of-bima"
+  },
+  {
+   "name": "Sumbawa",
+   "kind": "region",
+   "used_in": "sultanate-of-bima"
+  },
+  {
+   "name": "Manggarai",
+   "kind": "region",
+   "used_in": "sultanate-of-bima"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Wirasaba (East Java principality)",
+   "suggested_slug": "wirasaba",
+   "years": [
+    null,
+    1615
+   ],
+   "note": "conquered by Mataram 1615 (Sultan Agung page); or fold into the Surabaya league"
+  },
+  {
+   "name": "Lasem",
+   "suggested_slug": "lasem",
+   "years": [
+    null,
+    1616
+   ],
+   "note": "conquered by Mataram 1616"
+  },
+  {
+   "name": "Pasuruan (principality)",
+   "suggested_slug": "pasuruan",
+   "years": [
+    1546,
+    1617
+   ],
+   "note": "taken from Blambangan by Demak 1545-1546 (Blambangan dossier); conquered by Mataram 1617"
+  },
+  {
+   "name": "Tuban",
+   "suggested_slug": "tuban",
+   "years": [
+    null,
+    1619
+   ],
+   "note": "conquered by Mataram 1619"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-se-02-g.md",
+ "problems": [
+  "Verdict key: fix = every blocking finding was applied by the reviewer (applied: true); findings with applied: false and blocking: false are non-blocking (mostly mirror events whose land is already drawn from the other dossier) and are also routed through cross_checks. fail = an unapplied blocking finding (sultanate-of-mempawah: the 1787 Dutch intervention; sultanate-of-bima: the 1669 VOC subordination).",
+  "Reviewer edits, each re-validated with 0 errors and read back: mataram-sultanate /ledger/18 (Madura added to the 1676 loss) and /ledger/20 (confidence 2); trunajaya-rebellion /ledger/3 (confidence 2), /ledger/6 (confidence 1, note), /keyframe_review/1/note; sultanate-of-mempawah /ledger/0 (confidence 2); sultanate-of-bima vassal_end moved from 1920 to 1905 (now /ledger/2; the validator warning is gone).",
+  "Cross-group mirrors to route: kingdom-of-pajana (no 1584 loss), blambangan-kingdom (no vassal events for 1639-1659), sultanate-of-cirebon (no Mataram vassalage), sultanate-of-gowa (counterpart string \"Sumbawa\"), sultanate-of-brunei (1619 loss to Sambas against Sambas's 1609 found), ayutthaya-kingdom (fine; Patani must mirror).",
+  "No infobox in the batch gives an area; area checks rest on the shapes and the pages' descriptions.",
+  "All nine pages opened loaded (Patani Kingdom, Sultan Agung of Mataram, Mataram Sultanate, Trunajaya rebellion, Sultanate of Sambas, Mempawah Kingdom (twice), Tanjungpura Kingdom, Bima Sultanate)."
+ ]
+}

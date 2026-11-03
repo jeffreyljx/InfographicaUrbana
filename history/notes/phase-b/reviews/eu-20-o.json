@@ -1,0 +1,344 @@
+{
+ "batch_id": "eu-20-o",
+ "verdicts": [
+  {
+   "slug": "portuguese-republic",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/9",
+     "what": "Kionga occupation_end undated (year bridged, confidence 1).",
+     "why": "Portuguese Mozambique page: 'on 28 June 1919, the Treaty of Versailles transferred the Kionga Triangle, a 1,000 km2 (390 sq mi) territory south of the Rovuma River from German East Africa to Mozambique'.",
+     "fix": "month 6, source Portuguese_Mozambique (added to sources[]), confidence 2, note quotes the page.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/10",
+     "what": "Kionga gain undated (year bridged, confidence 1).",
+     "why": "Same sentence on the Portuguese Mozambique page; german-africa /ledger/59 and portuguese-mozambique /ledger/21 also give 1919-06.",
+     "fix": "month 6, source Portuguese_Mozambique, confidence 3; Kionga war outcome now says 28 June 1919.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/3",
+     "what": "Humbe occupation_end at confidence 3 on a proxy region with a counterpart the page does not name.",
+     "why": "Campaigns page: 'On 7 July 1915, Portuguese forces reoccupied Humbe' (date confirmed) but it names Humbe, not Cunene, and says Alves Rocadas 'ordered a withdrawal from southern Angola', not that Germans held Humbe.",
+     "fix": "confidence 2.",
+     "applied": true
+    },
+    {
+     "where": "/identity/predecessors",
+     "what": "portuguese-empire missing as predecessor.",
+     "why": "portuguese-empire /ledger/85 (1910 dissolve) and its successors name portuguese-republic with the Portuguese Colonies 1910 shape; shapes.csv portuguese-colonies_1908 (1908-1910, 24,277 km2, 72.9-127.2 E) is the Goa+Timor land the Republic's 1911 shape adds (+23,661 km2 over kingdom-of-portugal_1908).",
+     "fix": "added {slug: portuguese-empire, land: Cliopatria Portuguese Colonies 1910}.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/2",
+     "what": "Advisory, not blocking: German occupation of Humbe/Cunene is an inference.",
+     "why": "Portuguese Angola page: 'The Germans returned in December and captured Naulila, forcing the Portuguese to withdraw from the Humbe region'; it does not say who held Humbe; it calls the Ovambo uprising 'German-backed'.",
+     "fix": "Optionally re-model Dec 1914-Jul 1915 as a contest with the Cuanhama kingdom; else leave at confidence 2. german-africa (af-08) has no mirror either way.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/6",
+     "what": "Advisory for the compiler, not blocking: two overlapping occupation pairs with counterpart 'german-africa' in opposite directions.",
+     "why": "Kionga 1916-04..1919-06 (Portugal occupier) and northern Mozambique 1917-11..1918-08 (Germany occupier, owner's record); FIFO pairing by counterpart would cross them, and Kionga lies inside Cliopatria's Mozambique so geometry cannot give the direction.",
+     "fix": "Compiler pairs by (counterpart, region spec) and reads direction from the note; no dossier change required.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Date and basis of the 1914 gain of Cuando Cubango and east Moxico (+236,000 km2, confidence 1, largest move). Lead on a page already opened: the campaigns page says Joao de Almeida (governor of Huila from 1909) 'also established forts in Cuangar, Dirico and Mucusso by the border with German Southwest Africa', so the Okavango line was garrisoned by 1909; Cliopatria's 1914 step may be a lag and the 1911/1912 keyframes may need adjust.",
+     "page to try": "https://en.wikipedia.org/wiki/Cuando_Cubango_Province"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "East Moxico part of the 1914 step.",
+     "page to try": "https://en.wikipedia.org/wiki/Moxico_Province"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "Provisional government 5 October 1910 - August 1911 (rulers start 1911).",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_presidents_of_Portugal"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Timor, Goa, Macau, Guinea, Sao Tome have no dated events (page budget; thin by design).",
+     "page to try": "https://en.wikipedia.org/wiki/Portuguese_Timor"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Portuguese_campaigns_of_pacification_and_occupation",
+     "result": "confirmed (7 July 1915 Humbe reoccupied); confidence lowered to 2"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Portuguese_campaigns_of_pacification_and_occupation",
+     "result": "confirmed (Kionga occupied 10 April 1916)"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/East_African_campaign_(World_War_I)",
+     "result": "confirmed (23 November; lead November 1917; Ngomano; nine months)"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/First_Portuguese_Republic",
+     "result": "confirmed (28 May 1926 coup; Disestablished 29 May 1926; Succeeded by Ditadura Nacional)"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/First_Portuguese_Republic",
+     "result": "confirmed (Established 5 October 1910)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Portuguese_Angola",
+     "result": "confirmed (Naulila captured in December, Portuguese withdraw from Humbe)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Portuguese_campaigns_of_pacification_and_occupation",
+     "result": "confirmed (Ondjiva 4 September, 1915 by context)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/East_African_campaign_(World_War_I)",
+     "result": "confirmed (August 1918)"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Portuguese_Mozambique",
+     "result": "confirmed and re-dated to 28 June 1919 (was undated)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 2201912.7,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "First Portuguese Republic infobox has no area. Colony pages: Angola 1,246,700 km2, Mozambique 801,590 km2 (undated); Cliopatria total 1,965,040 (1911) and 2,201,913 km2 (1914-1925); author's Angola ratio 0.72 for 1911-13 is in /keyframe_review/1; no factor-of-two gap."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "portuguese-republic",
+    "year": 1910,
+    "type": "found",
+    "counterpart": "kingdom-of-portugal"
+   },
+   "mirror": {
+    "slug": "kingdom-of-portugal",
+    "year": 1910,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "kingdom-of-portugal /ledger/37 1910-10 dissolve -> portuguese-republic."
+  },
+  {
+   "event": {
+    "slug": "portuguese-republic",
+    "year": 1910,
+    "type": "predecessor",
+    "counterpart": "portuguese-empire"
+   },
+   "mirror": {
+    "slug": "portuguese-empire",
+    "year": 1910,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Was missing on the Republic side; predecessor added by reviewer."
+  },
+  {
+   "event": {
+    "slug": "portuguese-republic",
+    "year": 1914,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {},
+   "status": "exception",
+   "note": "Counterpart nobody; confidence 1, see thin."
+  },
+  {
+   "event": {
+    "slug": "portuguese-republic",
+    "year": 1914,
+    "type": "occupation_start",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": null,
+    "type": "occupation_start"
+   },
+   "status": "missing",
+   "note": "Naulila/Humbe Dec 1914 (owner's record): german-africa (af-08) has no Naulila or Humbe event; route to af-08 or drop on the Portuguese side (see advisory /ledger/2)."
+  },
+  {
+   "event": {
+    "slug": "portuguese-republic",
+    "year": 1915,
+    "type": "occupation_end",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": null,
+    "type": "occupation_end"
+   },
+   "status": "missing",
+   "note": "Humbe reoccupied 7 July 1915; no german-africa event."
+  },
+  {
+   "event": {
+    "slug": "portuguese-republic",
+    "year": 1915,
+    "type": "contest_start",
+    "counterpart": "Cuanhama kingdom"
+   },
+   "mirror": {
+    "slug": "portuguese-angola",
+    "year": 1915,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "No dossier for the Cuanhama kingdom (author lists it); portuguese-angola /ledger/24 records the 1915 gain from the Cuanhama."
+  },
+  {
+   "event": {
+    "slug": "portuguese-republic",
+    "year": 1916,
+    "type": "occupation_start",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": 1916,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "german-africa /ledger/37 1916-04 names portuguese-mozambique, not portuguese-republic, as occupier."
+  },
+  {
+   "event": {
+    "slug": "portuguese-republic",
+    "year": 1917,
+    "type": "occupation_start",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": 1917,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "german-africa /ledger/42 1917-11 counterpart portuguese-mozambique; portuguese-mozambique itself has no 1917-18 occupation events."
+  },
+  {
+   "event": {
+    "slug": "portuguese-republic",
+    "year": 1918,
+    "type": "occupation_end",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": 1918,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "german-africa /ledger/44 1918-08 (counterpart portuguese-mozambique)."
+  },
+  {
+   "event": {
+    "slug": "portuguese-republic",
+    "year": 1919,
+    "type": "occupation_end",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": 1919,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "german-africa /ledger/52 1919-06; Republic side re-dated to 1919-06 by reviewer."
+  },
+  {
+   "event": {
+    "slug": "portuguese-republic",
+    "year": 1919,
+    "type": "gain",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": 1919,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "german-africa /ledger/59 1919-06 loss to portuguese-mozambique; portuguese-mozambique /ledger/21 also records the gain (two recipients for one cession: metropole and colony dossiers both own Mozambique)."
+  },
+  {
+   "event": {
+    "slug": "portuguese-republic",
+    "year": 1926,
+    "type": "dissolve",
+    "counterpart": "estado-novo"
+   },
+   "mirror": {},
+   "status": "exception",
+   "note": "estado-novo dossier not written yet (group not run)."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Kionga Triangle",
+   "kind": "region",
+   "used_in": "portuguese-republic"
+  },
+  {
+   "name": "Humbe",
+   "kind": "place",
+   "used_in": "portuguese-republic"
+  },
+  {
+   "name": "Naulila",
+   "kind": "place",
+   "used_in": "portuguese-republic"
+  },
+  {
+   "name": "Namacurra",
+   "kind": "place",
+   "used_in": "portuguese-republic"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Cuanhama kingdom (Oukwanyama) of Mandume",
+   "suggested_slug": "cuanhama-kingdom",
+   "years": [
+    1915,
+    1917
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-20-o.md",
+ "problems": [
+  "First Portuguese Republic infobox has no area; area check done against the Angola and Mozambique colony pages.",
+  "Kionga Triangle page gives no treaty date; the 28 June 1919 date came from the Portuguese Mozambique page.",
+  "Layering: portuguese-angola and portuguese-mozambique (af-08) own the same colonial land as portuguese-republic; german-africa names portuguese-mozambique as counterpart for the Kionga and Lettow-Vorbeck events, and both portuguese-mozambique and portuguese-republic record the 1919 Kionga gain. Orchestrator to decide which dossier is the counterpart of record."
+ ]
+}

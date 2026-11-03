@@ -1,0 +1,465 @@
+{
+ "batch_id": "eu-07-a",
+ "verdicts": [
+  {
+   "slug": "ripuarian-franks",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/18",
+     "what": "Shape ripuarian-franks_469 (469-499) is verdict ok with no correction, but it holds neither Cologne nor Trier, so the realm loses its capital and Trier in 469 with no loss in the ledger, and identity.capitals[0] (Cologne 6.96 E 50.938 N, 462-509) lies outside the shape.",
+     "why": "Grid check (tools/grid.py): the Cologne and Trier cells are outside the Ripuarian shapes of 469, 500 and 509; Cologne is in Cliopatria's Kingdom of the Franks row in 470 and 505. History of Cologne: 'The city finally fell to the Ripuarian Franks in 462 AD.' Battle of Tolbiac (496): the Ripuarian Franks 'whose capital was Cologne'. Keyframe 17 already adds both cities for 462-468.",
+     "fix": "verdict adjust; correction {\"union\": [{\"cliopatria\": \"Ripuarian Franks\", \"year\": 469}, {\"place\": \"Trier\", \"km\": 15}, {\"place\": \"Cologne\", \"km\": 15}], \"text\": \"the Cliopatria 469 shape with Cologne, the Ripuarian capital, and Trier\"}",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/19",
+     "what": "Shape ripuarian-franks_500 (500-509) has the same defect: verdict ok, Cologne and Trier missing.",
+     "why": "Same grid check; Ripuarian Franks page: 'Arriving in person Clovis assembled the citizens of Cologne' (509).",
+     "fix": "verdict adjust; correction as for keyframe 18 with year 500; note that Trier then overlaps the Salian 500 shape (Cliopatria gives Trier to Alamannia to 499 and to the Salian row from 500).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/10/region",
+     "what": "The 509 dissolve region (and identity.successors[0].land) is the Cliopatria Ripuarian 509 shape, which lacks Cologne, the city Clovis took over.",
+     "why": "Ripuarian Franks page: Clovis is installed at Cologne and 'the independent kingdom of the Cologne Franks was voted out of existence ... in 509'.",
+     "fix": "union the 509 shape with {\"place\": \"Cologne\", \"km\": 15} (and Trier if kept) in /ledger/10/region and identity.successors[0].land.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Any page dating or bounding a Ripuarian polity at 238 (Cliopatria's start); the Ripuarian Franks page says the name is not tribal and the Cologne kingdom is first mentioned by Gregory of Tours. Consider starting the state in 462.",
+     "page to try": "https://en.wikipedia.org/wiki/Chamavi"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "Who held the 4,000 km2 middle-Rhine strip added in 260 (roman-empire gives the same cells to the Alemanni)",
+     "page to try": "https://en.wikipedia.org/wiki/Postumus"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Source for the 5,300 km2 northern strip of 367",
+     "page to try": "https://en.wikipedia.org/wiki/Great_Conspiracy"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "Date of the 6,100 km2 Meuse-Rhine gain of 439",
+     "page to try": "https://en.wikipedia.org/wiki/Flavius_Aetius"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "Source for the 8,850 km2 Eifel-Moselle strip of 462",
+     "page to try": "https://en.wikipedia.org/wiki/Aegidius"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "Source for the 4,300 km2 eastern strip of 469 (coincides with the Thuringian states row)",
+     "page to try": "https://en.wikipedia.org/wiki/Thuringii"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/History_of_Cologne",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Ripuarian_Franks",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Trier",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Tolbiac",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 44276,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No infobox or area on the Ripuarian Franks page (confirmed); the author says so in notes."
+   }
+  },
+  {
+   "slug": "salian-franks",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/3/region",
+     "what": "The 496 gain gives the Salians the whole Cliopatria Kingdom of Alamannia shape (about 119,900 km2, Switzerland included) while its own text and the cited page say only the northern half went to the Franks.",
+     "why": "Battle of Tolbiac: 'the northern half of the Alammanian lands went to the Franks while the southern half sought protection under Theoderic'. Grid: 184 of the shape's 475 cells (about 46,500 km2) lie south of 48.3 N, 247 (about 62,500 km2) south of 48.6 N. The author's gap entry calls the page silent on the extent; it is not.",
+     "fix": "{\"minus\": [{\"cliopatria\": \"Kingdom of Alamannia\", \"year\": 499}, {\"union\": [{\"country\": \"Switzerland\"}, <the land south of the Frankish-Alamannic line from the Alamannia page, or a polygon south of about 48.5 N>]}], \"text\": \"the northern half of the Alammanian lands\"}",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/7/correction",
+     "what": "The 496-499 correction (Salian 500 shape) carries the same whole-Alamannia overstatement, and so do keyframes 8, 9 and 10 (500-509) and the 509 dissolve region /ledger/8.",
+     "why": "Cliopatria's Salian 500 shape is the 490 shape plus 474 of the 475 Alamannia cells (author's note; confirmed on the grid: 474 shared cells).",
+     "fix": "Subtract the same southern half in /keyframe_review/7, 8, 9 and 10 corrections, in /ledger/8/region and in identity.successors[0].land; mark keyframe 8 adjust for the land as well as the years; correct the gaps entry.",
+     "applied": false
+    },
+    {
+     "where": "/wars/0/from",
+     "what": "Julian's campaign started in 357, before the state's start (358).",
+     "why": "Salian Franks page: conflict with Julian 'around 358 AD'; the deputation at Tongeren 'in the winter of 357/8 AD'.",
+     "fix": "from 358 (applied; re-validated, 0 errors, 0 warnings)",
+     "applied": true
+    },
+    {
+     "where": "/ledger/7/region",
+     "what": "The 509 gain of the Ripuarian kingdom uses the Cliopatria Ripuarian 509 shape, which lacks Cologne (see ripuarian-franks /keyframe_review/18).",
+     "why": "Ripuarian Franks page: Clovis 'assembled the citizens of Cologne'.",
+     "fix": "union with {\"place\": \"Cologne\", \"km\": 15} (and Trier if the Ripuarian dossier keeps it).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/5/note",
+     "what": "The note quotes 'the realm of the Franks almost doubled in size' but the shape grows from 41,165 to 166,379 km2 (x4.0) without comment.",
+     "why": "Battle of Soissons (486) page sentence as quoted; shapes.csv salian-franks_452 and _490.",
+     "fix": "Say in the note that the Cliopatria Soissons shape is larger than the page's doubling (the page's realm of the Franks may include the other Frankish kings), or trim it.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/6",
+     "what is missing": "Who held the 10,900 km2 of eastern Brittany in the shape from 486, against Armorica's integration in 501-503",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Soissons"
+    },
+    {
+     "where": "/wars/6",
+     "what is missing": "End of Gundobad's annual tribute (no vassal event written)",
+     "page to try": "https://en.wikipedia.org/wiki/Gundobad"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Clovis_I",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Soissons_(486)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Tolbiac",
+     "result": "confirmed (date); region overstated, see fixes"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Ripuarian_Franks",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Salian_Franks",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Clovis_I",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 277830,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No infobox area on the Salian Franks or Clovis I pages (confirmed)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "ripuarian-franks",
+    "year": 260,
+    "type": "gain",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": 260,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "roman-empire /ledger/93 gives the 259-260 cells inside Germany to the Alemanni (Agri Decumates), the same cells; no loss names ripuarian-franks. Ripuarian side is confidence 1 with a page against a Frankish gain."
+  },
+  {
+   "event": {
+    "slug": "ripuarian-franks",
+    "year": 367,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody"
+  },
+  {
+   "event": {
+    "slug": "ripuarian-franks",
+    "year": 439,
+    "type": "gain",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "western-roman-empire's only 439 Frankish loss (/ledger/26) goes to salian-franks (Brabant). Route to eu-04."
+  },
+  {
+   "event": {
+    "slug": "ripuarian-franks",
+    "year": 459,
+    "type": "gain",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "No 459 Trier loss in western-roman-empire (Trier page: 'The Franks seized Trier from Roman administration in 459.'). Route to eu-04."
+  },
+  {
+   "event": {
+    "slug": "ripuarian-franks",
+    "year": 462,
+    "type": "gain",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 462,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Cologne and the Eifel strip: western-roman-empire /ledger/50 sends the German Rhineland to kingdom-of-alamannia and /ledger/51 Belgium, Lorraine and Champagne to kingdom-of-the-franks; none to ripuarian-franks."
+  },
+  {
+   "event": {
+    "slug": "ripuarian-franks",
+    "year": 469,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody"
+  },
+  {
+   "event": {
+    "slug": "ripuarian-franks",
+    "year": 496,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-alamannia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-alamannia is owned by eu-06, not written yet."
+  },
+  {
+   "event": {
+    "slug": "ripuarian-franks",
+    "year": 509,
+    "type": "dissolve",
+    "counterpart": "salian-franks"
+   },
+   "mirror": {
+    "slug": "salian-franks",
+    "year": 509,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Both regions lack Cologne (see fixes)."
+  },
+  {
+   "event": {
+    "slug": "salian-franks",
+    "year": 358,
+    "type": "found",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": 358,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "roman-empire /ledger/112, the Rhine delta and Toxandria."
+  },
+  {
+   "event": {
+    "slug": "salian-franks",
+    "year": 445,
+    "type": "gain",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 445,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "western-roman-empire /ledger/31, Hainaut (Tournai and Cambrai)."
+  },
+  {
+   "event": {
+    "slug": "western-roman-empire",
+    "year": 439,
+    "type": "loss",
+    "counterpart": "salian-franks"
+   },
+   "mirror": {
+    "slug": "salian-franks",
+    "year": 445,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "WRE /ledger/26 (Brabant, confidence 1, Cliopatria's year) has no Salian 439 gain; the Salian dossier keeps the 358 outline to 444 on the 445-450 date of the Salian Franks and Chlodio pages. Route to eu-04 to merge into the 445 loss."
+  },
+  {
+   "event": {
+    "slug": "salian-franks",
+    "year": 486,
+    "type": "gain",
+    "counterpart": "kingdom-of-soissons"
+   },
+   "mirror": {
+    "slug": "kingdom-of-soissons",
+    "year": 486,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Same year; kingdom-of-soissons /ledger/1 names kingdom-of-the-franks as receiver. Phase C to settle the slug (Salian row to 509)."
+  },
+  {
+   "event": {
+    "slug": "salian-franks",
+    "year": 496,
+    "type": "gain",
+    "counterpart": "kingdom-of-alamannia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-06 not written yet; the land should be only the northern half (see fixes)."
+  },
+  {
+   "event": {
+    "slug": "salian-franks",
+    "year": 501,
+    "type": "gain",
+    "counterpart": "brythons"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "brythons is owned by eu-11, not written yet; Cliopatria's Brythons row keeps western Brittany after 501, so the two will overlap."
+  },
+  {
+   "event": {
+    "slug": "salian-franks",
+    "year": 507,
+    "type": "gain",
+    "counterpart": "visigothic-kingdom"
+   },
+   "mirror": {
+    "slug": "visigothic-kingdom",
+    "year": 507,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Same year and land (Aquitaine); visigothic-kingdom /ledger/11 names kingdom-of-the-franks. Its /ledger/13 (508, Auvergne and Berry to kingdom-of-the-franks) has no Salian gain."
+  },
+  {
+   "event": {
+    "slug": "salian-franks",
+    "year": 509,
+    "type": "gain",
+    "counterpart": "ripuarian-franks"
+   },
+   "mirror": {
+    "slug": "ripuarian-franks",
+    "year": 509,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "salian-franks",
+    "year": 509,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-the-franks is another eu-07 part, not written yet."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Toxandria (Texandria)",
+   "kind": "region",
+   "used_in": "salian-franks"
+  },
+  {
+   "name": "Tournai",
+   "kind": "place",
+   "used_in": "salian-franks"
+  },
+  {
+   "name": "Cambrai",
+   "kind": "place",
+   "used_in": "salian-franks"
+  },
+  {
+   "name": "Tongeren",
+   "kind": "place",
+   "used_in": "salian-franks"
+  },
+  {
+   "name": "Zülpich",
+   "kind": "place",
+   "used_in": "ripuarian-franks"
+  },
+  {
+   "name": "Eifel",
+   "kind": "region",
+   "used_in": "ripuarian-franks"
+  },
+  {
+   "name": "Xanten",
+   "kind": "place",
+   "used_in": "ripuarian-franks"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Kingdom of Cambrai (Ragnachar)",
+   "suggested_slug": "kingdom-of-cambrai",
+   "years": [
+    445,
+    509
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-07-a.md",
+ "problems": [
+  "None of the pages opened failed. Both dossiers validated before and after the reviewer's one edit (salian-franks /wars/0/from 357 -> 358).",
+  "Gazetteer names listed are used only in text fields (not as region specs), so --resolve gives no warnings for them.",
+  "Neighbour dossiers present and read: roman-empire, western-roman-empire, gallic-empire, visigothic-kingdom, kingdom-of-soissons, vandals (plus alemanni, which ends 461); kingdom-of-the-franks, kingdom-of-alamannia, brythons, saxons, burgundian-kingdom and the other context rows are not written yet."
+ ]
+}

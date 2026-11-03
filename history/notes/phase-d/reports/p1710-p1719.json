@@ -1,0 +1,393 @@
+{
+ "window": "p1710-p1719",
+ "images": [
+  {
+   "year": 1712,
+   "bbox": "17,53,35,66 (highlight swedish-empire,tsardom-of-russia; with Cliopatria)",
+   "seen": "Compiled map keeps Estonia and Livonia in the Swedish Empire at the end of 1712, as Cliopatria does; the pages have Riga, Tallinn and Vyborg Russian from 1710 (cause: the swedish-empire_1709 shape runs to 1712 in the compile although its note says it holds 1709 only). After the patch (stage trial) Russia holds the Baltic provinces."
+  },
+  {
+   "year": 1718,
+   "bbox": "75,26,108,45 (with Cliopatria)",
+   "seen": "Central Tibet is hatched with the Dzungars as the owner and Tibet as the occupier, the wrong way round (tibet/ledger/18 and dzungar-khanate/ledger/15 disagree on roles); Cliopatria draws it Dzungar. After the patch Tibet owns it and the Dzungars hold it hatched."
+  },
+  {
+   "year": 1718,
+   "bbox": "56,23,72,36 (with Cliopatria)",
+   "seen": "Khanate of Kalat holds the Makran coast and south Baluchistan while the Hotaki hold the north; Cliopatria gives all of it to the Hotaki. Kalat page: Abdullah Khan (1716-1731) 'expanded ... to Persia till the port of Bandar Abbas', so Kalat winning the size rule looks right; the Hotaki 1718 gain is an undated bridging event."
+  },
+  {
+   "year": 1716,
+   "bbox": "-108,24,-74,40 (with Cliopatria)",
+   "seen": "New Spain reaches East Texas with a contested zone against New France; Spanish Empire direct land covers the Florida peninsula with a small Spanish Florida tint; Louisiana and the thirteen colonies look consistent; nothing clearly wrong."
+  },
+  {
+   "year": 1718,
+   "bbox": "12,34,32,48 (with Cliopatria)",
+   "seen": "The Peloponnese (Morea) is nobody's in 1718: Ottoman-Venetian keyframe overlap hands it back to Venice in 1716-1717 and the 1718 shape then releases it. After the patch it is Ottoman from 1715; Habsburg Banat and Serbia, Venetian Ionian islands look right."
+  },
+  {
+   "year": 1714,
+   "bbox": "8,19,34,34 (with Cliopatria)",
+   "seen": "Karamanli (Ottoman vassal tint) covers Tripolitania and the Cyrenaican coast, Awlad Muhammad holds Fezzan, the Matruh desert west of Egypt is nobody's after the Ottoman 1713 shape; dossier-driven and plausible."
+  },
+  {
+   "year": 1713,
+   "bbox": "4,55,26,71 (highlight denmark-norway,swedish-empire)",
+   "seen": "About 10 stray Denmark-Norway cells show inside Sweden as small light-blue holes (the packet's 424 cell-years); the current baseline already settles them through data/patches/p1650-p1659.json rulings/0 (3 cell-years left). Denmark-Norway's pale blue is also close to the sea colour."
+  }
+ ],
+ "issues": [
+  {
+   "what": "Estonia, Livonia and the Vyborg area return to the Swedish Empire in 1711-1712 (330 cell-years of conflict, snaps of 328 cells at swedish-empire_1712 and 327 back at _1713, 326 cells added again at tsardom-of-russia_1713). Cause: the dossier's swedish-empire_1709 keyframe says 'holds 1709 only' but takes the table span 1709-1712 and is unioned into the 1710 and 1712 keyframes.",
+   "years": [
+    1710,
+    1713
+   ],
+   "slugs": [
+    "swedish-empire",
+    "tsardom-of-russia"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Great_Northern_War"
+   ]
+  },
+  {
+   "what": "The Morea is Venetian again in 1716-1717 (60 cells taken back from the Ottomans) and nobody's from 1718 (Ottoman and Venetian conflict 120 cell-years). Cause: republic-of-venice_1709 ('holds 1709-1714, years only') takes the table span 1709-1717.",
+   "years": [
+    1715,
+    1719
+   ],
+   "slugs": [
+    "republic-of-venice",
+    "ottoman-empire"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Venetian_War_(1714%E2%80%931718)"
+   ]
+  },
+  {
+   "what": "Souda and Spinalonga skipped event (republic-of-venice/ledger/149, region 'Souda' does not resolve).",
+   "years": [
+    1715,
+    1715
+   ],
+   "slugs": [
+    "republic-of-venice"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Venetian_War_(1714%E2%80%931718)"
+   ]
+  },
+  {
+   "what": "Kamchatka (1,479 cells) is released to nobody at the 1713 Russian snap (neighbour window's request): the keyframes tsardom-of-russia_1711, _1713 and _1718 use Cliopatria shapes without it, although the ledger gave it to Russia in 1697.",
+   "years": [
+    1713,
+    1719
+   ],
+   "slugs": [
+    "tsardom-of-russia"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/2-4",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Russian_conquest_of_Siberia"
+   ]
+  },
+  {
+   "what": "Dzungar occupation of Central Tibet 1717-1720 is drawn with the Dzungars as owner and Tibet as occupier (4,291 cells). The page has the Dzungars occupying Tibetan land; Tibet owns it and the Dzungars hold it hatched after the patch, and the tibet_1718 snap (497 cells) and the dzungar/tibet conflict of 1718 shrink.",
+   "years": [
+    1717,
+    1719
+   ],
+   "slugs": [
+    "tibet",
+    "dzungar-khanate",
+    "khoshut-khanate"
+   ],
+   "decision": "patched",
+   "patch": "events/0-2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Dzungar_conquest_of_Tibet"
+   ]
+  },
+  {
+   "what": "Mughal Empire keeps 74 Kandahar cells in its 1710, 1713 and 1718 shapes (conflict with the Safavids 152 cell-years, then taken from nobody at the 1718 snap); the Hotaki hold Kandahar from 1709 (neighbour window's request).",
+   "years": [
+    1710,
+    1718
+   ],
+   "slugs": [
+    "mughal-empire",
+    "safavid-dynasty",
+    "hotaki-dynasty"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/5-7",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Hotak_dynasty"
+   ]
+  },
+  {
+   "what": "Kingdom of Tripura keeps Chittagong (26 cells) against the Mughals and the Nawabs of Bengal in 1710-1718 (104 cell-years); the Mughals annexed the port in 1666.",
+   "years": [
+    1710,
+    1718
+   ],
+   "slugs": [
+    "kingdom-of-tripura",
+    "mughal-empire",
+    "nawabs-of-bengal"
+   ],
+   "decision": "patched",
+   "patch": "rulings/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/History_of_Chittagong"
+   ]
+  },
+  {
+   "what": "hotaki-dynasty / khanate-of-kalat: 661 cell-years in 1718 (Baluchistan 392, Sistan and Baluchestan 269), Kalat wins by the size rule; the Hotaki gain of 'Sistan, Balochistan and the Makran coast' in 1718 is Cliopatria's bridging date, and the Hotak page is silent on those lands before 1720.",
+   "years": [
+    1718,
+    1718
+   ],
+   "slugs": [
+    "hotaki-dynasty",
+    "khanate-of-kalat"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Khanate_of_Kalat",
+    "https://en.wikipedia.org/wiki/Hotak_dynasty"
+   ]
+  },
+  {
+   "what": "safavid-dynasty_1713 drops 1,597 cells (Baluchistan 739, Sistan and Baluchestan 587, Kandahar 122) to nobody until Kalat takes the south in 1716 and the Hotaki in 1718; neither the Hotak nor the Kalat page dates Safavid, Kalat or Hotaki rule there in 1713-1715.",
+   "years": [
+    1713,
+    1717
+   ],
+   "slugs": [
+    "safavid-dynasty",
+    "khanate-of-kalat",
+    "hotaki-dynasty"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Khanate_of_Kalat",
+    "https://en.wikipedia.org/wiki/Hotak_dynasty"
+   ]
+  },
+  {
+   "what": "qing-dynasty_1718 snap adds 2,238 cells (Qinghai 1,570, Sichuan 574, Yunnan 88) from nobody after the Khoshut khanate's dissolution in 1717, while the Qing ledger dates the gain of Amdo (Qinghai province) to 1724; no page opened for the Kokonor Khoshuts' status in 1718-1723.",
+   "years": [
+    1717,
+    1723
+   ],
+   "slugs": [
+    "qing-dynasty",
+    "khoshut-khanate"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "dzungar-khanate / tibet: 140 cell-years in 1718 (Qinghai 74, Xinjiang 66), Tibet wins by the size rule; the Dzungar conquest page does not say who held those edges.",
+   "years": [
+    1718,
+    1718
+   ],
+   "slugs": [
+    "dzungar-khanate",
+    "tibet"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Dzungar_conquest_of_Tibet"
+   ]
+  },
+  {
+   "what": "denmark-norway / swedish-empire: 424 cell-years of stray Danish-Norwegian cells in Sweden are already settled in the current baseline by data/patches/p1650-p1659.json rulings/0 (3 cell-years left).",
+   "years": [
+    1710,
+    1718
+   ],
+   "slugs": [
+    "denmark-norway",
+    "swedish-empire"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "mughal-empire_1713 snap releases 123 cells (Haryana 46, Andhra Pradesh 29, Punjab 22, +6) to nobody for 1713-1717 and the 1718 snap takes 134 back; the Sikh and Nizam pages were not opened.",
+   "years": [
+    1713,
+    1718
+   ],
+   "slugs": [
+    "mughal-empire",
+    "sikhs"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "british-colonial-empire_1713 and _1718 snaps add 144 and 262 cells (the Carolinas 233, Ontario 44, Belize 17) next to the thirteen colonies, which have the same colour; spanish-empire_1713 adds 401 (Florida 268) while spanish-florida keeps a small piece; viceroyalty-of-new-spain_1716 adds 872 northern Mexican cells.",
+   "years": [
+    1713,
+    1718
+   ],
+   "slugs": [
+    "british-colonial-empire",
+    "thirteen-colonies",
+    "spanish-empire",
+    "spanish-florida",
+    "viceroyalty-of-new-spain"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Ottoman 1713 shape drops 613 cells (Matruh 267, Cyrenaica 190) to nobody; Karamanli takes the Libyan coast and interior as an Ottoman vassal with a 141-cell snap.",
+   "years": [
+    1711,
+    1714
+   ],
+   "slugs": [
+    "ottoman-empire",
+    "karamanli-dynasty"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/p1710-p1719.json",
+ "patch_entries": {
+  "events": 3,
+  "keyframe_overrides": 8,
+  "rulings": 1
+ },
+ "patch_check": "all applied",
+ "colour_clashes": [
+  {
+   "a": "spanish-empire",
+   "b": "viceroyalty-of-new-spain / viceroyalty-of-peru / viceroyalty-of-new-granada / captaincy-general-of-chile / captaincy-general-of-guatemala / spanish-east-indies / spanish-florida",
+   "years": [
+    1710,
+    1719
+   ],
+   "note": "identical #df911a (distance 0.000); the Spanish viceroyalties cannot be told from the empire or from each other at their borders"
+  },
+  {
+   "a": "british-colonial-empire",
+   "b": "thirteen-colonies / dominion-of-newfoundland / rupert-s-land",
+   "years": [
+    1710,
+    1719
+   ],
+   "note": "identical #dc7d97 (distance 0.000)"
+  },
+  {
+   "a": "habsburg-monarchy",
+   "b": "habsburg-military-frontier / banat-of-temeswar / kingdom-of-serbia-1718-1739",
+   "years": [
+    1710,
+    1719
+   ],
+   "note": "identical #be3d70; the frontier and the 1718 acquisitions merge into the monarchy"
+  },
+  {
+   "a": "habesh-eyalet",
+   "b": "ottoman-empire",
+   "years": [
+    1710,
+    1719
+   ],
+   "note": "identical #70782c"
+  },
+  {
+   "a": "portuguese-empire",
+   "b": "colonial-brazil / state-of-maranhao-and-grao-para",
+   "years": [
+    1710,
+    1719
+   ],
+   "note": "identical #47a962"
+  },
+  {
+   "a": "swedish-empire",
+   "b": "swedish-livonia / swedish-estonia / kexholm-county",
+   "years": [
+    1710,
+    1719
+   ],
+   "note": "identical #3082b5 (Livonia and Estonia end in 1710)"
+  },
+  {
+   "a": "denmark-norway",
+   "b": "sea",
+   "years": [
+    1710,
+    1719
+   ],
+   "note": "Denmark-Norway's pale blue is close to the ocean fill, so its fjord noise and stray holes read as water"
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "swedish-empire",
+   "what": "give keyframe swedish-empire_1709 from 1709 to 1709 (and _1713 from 1713 to 1713) in the dossier",
+   "why": "the notes say 'holds 1709 only' but the compile takes the shapes.csv span; my keyframe_overrides/0 repairs 1710-1712",
+   "source": "https://en.wikipedia.org/wiki/Great_Northern_War"
+  },
+  {
+   "slug": "republic-of-venice",
+   "what": "give keyframe republic-of-venice_1709 from 1709 to 1714",
+   "why": "the note says 'holds 1709-1714'; the shape runs to 1717 in shapes.csv; my keyframe_overrides/1 repairs it",
+   "source": "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Venetian_War_(1714%E2%80%931718)"
+  },
+  {
+   "slug": "tibet",
+   "what": "ledger/18 (occupation_start, counterpart dzungar-khanate) is written as Tibet occupying Dzungar land; record it from the Dzungar side (dzungar-khanate/ledger/15 should be an occupation_start with counterpart tibet) and let Tibet keep the land",
+   "why": "the page has the Dzungars occupying Tibet 1717-1720; my events/0-2 repair it",
+   "source": "https://en.wikipedia.org/wiki/Dzungar_conquest_of_Tibet"
+  },
+  {
+   "slug": "tsardom-of-russia",
+   "what": "add Kamchatka to the keyframes from tsardom-of-russia_1710 on (1711, 1713, 1714, 1718 and later); I repaired 1711, 1713 and 1718 only",
+   "why": "Cliopatria's Russian shapes omit it from 1710 on; the ledger gave it to Russia in 1697",
+   "source": "https://en.wikipedia.org/wiki/Russian_conquest_of_Siberia"
+  },
+  {
+   "slug": "mughal-empire",
+   "what": "subtract Kandahar from keyframes mughal-empire_1700 and _1706 as well (neighbour window's request) and from every shape after 1718 that still holds it",
+   "why": "the Hotak page has Kandahar Hotak from 1709; I repaired 1710, 1713 and 1718 only",
+   "source": "https://en.wikipedia.org/wiki/Hotak_dynasty"
+  }
+ ],
+ "pages_opened": 7,
+ "problems": [
+  "boundary: keyframe_overrides/0 (swedish-empire_1709) and /1 (republic-of-venice_1709) start in 1709, one year before the window; they are applied, and p1700-p1709 must not override the same shape ids (first window in order wins).",
+  "boundary: the end anchor p1720 changes by about 6,000 cells against the published one: Central Tibet is Tibet's land occupied by the Dzungars (tibet/ledger/19 ends it in 1720; dzungar-khanate/ledger/16 'loss to qing-dynasty' of Central Tibet then moves nothing), Kamchatka stays Russian, the Baltic provinces and the Morea stay Russian and Ottoman; p1720-p1729 should be reviewed against the recompiled draft.",
+  "events/0-2 depend on ledger order in the shared month: dossier ids apply in alphabetical order inside December 1717, so the three events are on the tibet dossier after its ledger/18 (a first version with the occupation on dzungar-khanate applied before the gain and did nothing).",
+  "rulings/0 settled 26 cell-years in 1710; a second ruling for kingdom-of-tripura and nawabs-of-bengal (1717-1718) settled nothing once the Mughals held Chittagong, so it is left out.",
+  "the baseline trial (empty patch) already differs from the 1 Nov published draft by other windows' patches and dossier edits (conflicts 10,907 to 10,402 cell-years; tsardom-of-russia_1713 snap now removes 1,480 cells); figures in the packet of 1 Nov are stale.",
+  "I rendered 7 images before patching (6 with Cliopatria) and 3 after, one above the suggested six.",
+  "hierarchy: none corrected."
+ ]
+}

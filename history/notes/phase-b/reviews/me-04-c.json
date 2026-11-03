@@ -1,0 +1,418 @@
+{
+ "batch_id": "me-04-c",
+ "verdicts": [
+  {
+   "slug": "minaeans",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/2/note",
+     "what": "The note said the land between the Jawf and Dedan is 'stateless in the pages', but the Minaeans page says Ma'in took the Red Sea caravan route from Saba.",
+     "why": "Minaeans page (WebFetch 2026-10-19): the sentence with '(from the Hijaz, to Dedan, to the Mediterranean Sea)' says Ma'in took control of the route from Saba. The Sabaean dossier holds no land north of 17.8 N (sabaeans shapes bbox), so counterpart nobody can stay.",
+     "fix": "Note reworded: Ma'in took the route from Saba, but no page or dossier gives Saba land north of the Jawf and Najran, so the counterpart is nobody. Re-validated, valid.",
+     "applied": true
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what": "Baraqish is named as capital from -625, but its page dates the move to about 400 BCE, and its location lies outside the -625 Jawf core.",
+     "why": "Baraqish page: 'it reached its peak of importance in about 400 BCE when it became the capital of the Minaean Kingdom'; coordinates 16.000 N 44.800 E, Al Jawf Governorate. That point's grid cell is not in the -625 core (intersect of minaeans_-383 with admin1 Al Jawf, 25 cells): it falls in Ma'rib's cells, 16 km from the nearest core cell, so Baraqish enters the state only with the -383 gain.",
+     "fix": "Split the capital: Qarnawu (Ma'in) from -625 to -401, then Baraqish (16.0 N, 44.8 E, Baraqish page) from -400 to -50 (or Ma'in and Baraqish together). Make the land agree: either move the Yathill part of the -383 gain to c. -400 (Baraqish page, confidence 2) or start the Baraqish capital at -383.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1",
+     "what": "Land disagrees with the Sabaean dossier, and the region text names a town the -625 core already holds.",
+     "why": "sabaeans /ledger/1 (-675 gain from nashshan) takes all of admin1 Al Jawf (170 cells) and keeps it until the -383 loss to minaeans of 'Al Jawf + Najran'. This dossier holds the Jawf core (25 cells inside Al Jawf) from -625, so the two dossiers overlap for -625..-384. At -383 it gains only the shape outside Al Jawf, whose text still names Nashshan, 'the most important city of the Jawf valley', which is inside the core. Sabaeans page: Karib'il's successors 'only consolidated their power over some of its former city-states (including Nashq and Manhayat), whereas others (like Yathill and the towns of Wadhi Raghwan) were absorbed into Ma'in'.",
+     "fix": "Agree a Jawf line with the sabaeans group. Either narrow the -625 core to the area around Qarnawu (for example a place disk once the gazetteer has Qarnawu) so that the -383 gain takes the rest of the Jawf, matching Saba's loss, or have sabaeans drop the Minaean core from its -675 gain. In both cases drop Nashshan from the -383 text if the core keeps it.",
+     "applied": false
+    },
+    {
+     "where": "/wars",
+     "what": "The Qatabanian conquest of Ma'in is in the sources but in neither dossier's wars or ledger.",
+     "why": "Qataban page: 'Qatabān was able to conquer Maʿīn, and soon embarked on a successful expansionist policy against Sabaʾ', after its independence in the late 5th century BCE. The author flagged it as undated, and the king list has 'Šahr Yagil ... (conquered Maʿīn)'.",
+     "fix": "Add a war (qataban, minaeans) from about -420 to about -350, with the Jawf core as zone, at confidence 1, to both dossiers. Add a vassal or occupation pair only if a page dates it.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Year of the absorption of Yathill, Nashshan and the Raghwan towns (-383 is Cliopatria's year; the pages give 'between the 6th and 4th centuries BC'; the Baraqish page has Yathill become the capital c. 400 BCE)",
+     "page to try": "https://en.wikipedia.org/wiki/Baraqish"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Date and extent of the Minaean control of the caravan road north of the Jawf (-188 is Cliopatria's year; the page gives no date)",
+     "page to try": "https://en.wikipedia.org/wiki/Incense_trade_route"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "Date of the reach to Dedan, and whether it was rule or a trade colony (-170 is Cliopatria's year; History of Yemen puts it in the 3rd century BC)",
+     "page to try": "https://en.wikipedia.org/wiki/Dedan"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "Who took the northern road land at the end (nobody, confidence 1); the Nabataean takeover of Lihyan/Dedan is dated c. 65 BC, 24 BC or 9 BC on the Lihyan page",
+     "page to try": "https://en.wikipedia.org/wiki/Nabataean_Kingdom"
+    },
+    {
+     "where": "/identity/end",
+     "what is missing": "End year: -50 (History of Yemen) against the 1st century CE ('the most popular hypothesis', Minaeans page). Cliopatria's himyarite-kingdom_-36 and _-31 rows carry the Minaean footprint (214,510 and 195,907 km2) while minaeans_-36/-27 carry the Himyarite one: this looks like a label swap for -36..-26 that the himyarite-kingdom group (me-06) should resolve",
+     "page to try": "https://en.wikipedia.org/wiki/Minaeans"
+    },
+    {
+     "where": "/wars",
+     "what is missing": "Date of the Qatabanian conquest of Ma'in (the Qataban king list has Shahr Yagil 'conquered Ma'in'), and whether it was vassalage or annexation",
+     "page to try": "https://en.wikipedia.org/wiki/Qataban"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Minaeans",
+     "result": "confirmed: 'transition from a city-state to kingdom in the last quarter of the 7th century BCE'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Sabaeans",
+     "result": "confirmed (undated, confidence 1 is honest): 'others (like Yathill and the towns of Wadhi Raghwan) were absorbed into Ma'in'; Minaeans page: Nashshan 'absorbed ... between the 6th and 4th centuries BC'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Minaeans",
+     "result": "confirmed, undated: 'Ma'in also took control over the commercial caravan route along the Red Sea' '(from the Hijaz, to Dedan, to the Mediterranean Sea)', taken from Saba (the note's 'stateless' wording is fixed)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/History_of_Yemen",
+     "result": "confirmed: 'Minaean rule stretched as far as Dedan, with their capital at Baraqish'; Lihyan page: 'It hosted a community of Minaeans.' (undated)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/History_of_Yemen",
+     "result": "confirmed: 'The Sabaeans regained their control over Ma'in after the collapse of Qataban in 50 BC.'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Lihyan",
+     "result": "confirmed: Minaeans page 'After the collapse of the Minaeans, the Nabataean Kingdom took over long-distance trade in the region'; Lihyan page c. 65 BC, Caskel 'around 24 BC', Dedan 9 BC"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 214510,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Minaeans infobox (it gives only '8th century BCE'); the dossier says so. Cliopatria max 214,510 km2 (-164..-67), most of it the caravan road, drawn soft."
+   }
+  },
+  {
+   "slug": "qataban",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger (no event at -625)",
+     "what": "No mirror for the Sabaean dossier's -625 loss to qataban, Qataban's share of Awsan.",
+     "why": "sabaeans /ledger/5: -625 loss, counterpart qataban, region Awsan; hadhramaut /ledger/1 takes Awsan at -625. Awsan page: 'Saba, after defeating Awsan, divided the territory between two of its other allies at the time', naming Qataban and Hadhramaut. This dossier leaves it out because the share is not given (note on /wars/0), which is not one of the brief's accepted exceptions.",
+     "fix": "Add a -625 gain (counterpart sabaeans, confidence 1) of Qataban's part of Awsan, for example the Wadi Markha side next to the Wadi Bayhan, agreed with the hadhramaut group so that the two dossiers do not both hold all of Awsan, and give /wars/0 that zone. Alternatively the sabaeans group drops its loss to qataban. Either way the gazetteer needs the region 'Awsan'.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/3",
+     "what": "The -350 gain from sabaeans (73,575 km2, the south-western highlands) has no mirror loss, and the Sabaean dossier never holds that land.",
+     "why": "No sabaeans loss at -351..-349. Grid check: 0 of the 311 cells of himyarite-kingdom_-110 are in sabaeans_-550, and 3 are in sabaeans_-350. Sabaeans page: 'Qataban expanded into the Southern Highlands, formerly under Sabaean rule' (undated). The author flagged the missing loss.",
+     "fix": "Route to the sabaeans group: add the Southern Highlands to Saba (under Karib'il Watar) and a -350 loss to qataban. If they decline, change the counterpart here to nobody and say why in the note.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1",
+     "what": "The type contradicts the note: it says Qataban came under Sabaean 'control, not annexation' and kept its kings, but encodes a loss of the whole kingdom, so Qataban vanishes from the map for -550..-421.",
+     "why": "Qataban page: 'During the 6th century BCE, Qatabān had come under the control of Sabaʾ.' The Sabaeans page says only that Karib'il 'conquered all surrounding neighbours, including the Awsan, Qataban, and Hadhramaut'. The pair matches sabaeans /ledger/7 and /ledger/8 (gain and loss).",
+     "fix": "Optional, and only together with the sabaeans group: turn -550 and -420 into a vassal_start and vassal_end pair (Qataban keeps its land under Saba) and carry the core keyframe across -550..-421; or keep loss and gain and drop 'Qataban keeps its kings' from the note.",
+     "applied": false
+    },
+    {
+     "where": "/wars/3",
+     "what": "Aelius Gallus's expedition lists only roman-empire and sabaeans as belligerents, so it is not a Qataban war.",
+     "why": "The war note itself says Qataban's only role is Pliny's remark about Qatabanian warriors.",
+     "fix": "Remove it from this dossier, or add qataban as a belligerent only if a page puts Qataban in the fighting.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "Year of the expansion to the Bab al-Mandab and the Southern Highlands (-350 is Cliopatria's year; the page says only that it came 'soon' after the conquest of Ma'in, which followed the late-5th-century independence)",
+     "page to try": "https://en.wikipedia.org/wiki/Qataban"
+    },
+    {
+     "where": "/keyframe_review/3",
+     "what is missing": "Qataban's status in -66..153, when Cliopatria covers the core with Himyarite shapes and the Himyar page says 'In the early 2nd century AD, Saba' and Qataban split from the Kingdom of Ḥimyar'. Was there a Himyarite vassalage or occupation before c. 105?",
+     "page to try": "https://en.wikipedia.org/wiki/Himyarite_Kingdom"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "End year (183 is Cliopatria's; the prose says 'annexed them in the late 1st century CE', the infobox 'Late 1st or late 2nd century CE', the Himyar page c. 200 CE) and the Hadramawt/Himyar dividing line",
+     "page to try": "https://en.wikipedia.org/wiki/Hadhramaut"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "Same end-year question (dissolve at confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Qataban"
+    },
+    {
+     "where": "/wars",
+     "what is missing": "Date of the conquest of Ma'in (king list: Shahr Yagil) and of the Awsan share",
+     "page to try": "https://en.wikipedia.org/wiki/Awsan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Qataban",
+     "result": "confirmed: 'Qatabān had developed into a centralised state centred around Timnaʿ by the late 7th or early 6th century BCE'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Qataban",
+     "result": "confirmed: 'During the 6th century BCE, Qatabān had come under the control of Sabaʾ.'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Qataban",
+     "result": "confirmed: 'Qatabān regained its independence in the late 5th century BCE'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Qataban",
+     "result": "confirmed, undated: 'At its maximum extent, Qatabān's territory extended from the Bāb al-Mandab in the southwest' 'to the Ṣayhad desert to the north'; Sabaeans page: 'Qataban expanded into the Southern Highlands, formerly under Sabaean rule.'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Himyarite_Kingdom",
+     "result": "confirmed: 'Until 110 BCE, it was integrated into the Qatabanian kingdom; afterward, it was recognized as an independent kingdom.' Qataban page: 'seceded from it around 110 BCE'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Qataban",
+     "result": "confirmed text, year is Cliopatria's (confidence 1, honest): 'Ḥaḍramawt and Ḥimyar divided its territories among themselves' 'and annexed them in the late 1st century CE'; infobox 'Late 1st or late 2nd century CE'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 11920,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the infobox (it gives Established 'Early 1st millennium BCE' and Disestablished 'Late 1st or late 2nd century CE'). The adjusted -350 keyframe (core plus himyarite-kingdom_-110) resolves to 361 cells, about 91,300 km2, as the author says, 7.7 times Cliopatria's 11,920. The page backs the maximum extent (Bab al-Mandab to the Sayhad); only the year is a bridge."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "minaeans",
+    "year": -383,
+    "type": "gain",
+    "counterpart": "sabaeans"
+   },
+   "mirror": {
+    "slug": "sabaeans",
+    "year": -383,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "The years match but the land does not. Saba loses all of admin1 Al Jawf plus a 100 km disk around Najran; Minaeans gain only minaeans_-383 outside Al Jawf. Saba's -675 gain of all of Al Jawf overlaps the Minaean -625..-384 core (25 cells). Route to both groups: me-04-c and the sabaeans group."
+  },
+  {
+   "event": {
+    "slug": "minaeans",
+    "year": -188,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "minaeans",
+    "year": -170,
+    "type": "gain",
+    "counterpart": "lihyan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Lihyan has no dossier and is listed in the author's counterparts_needing_dossiers. The author doubts the loss on Lihyan's side, since the Lihyan page describes only 'a community of Minaeans' at Dedan."
+  },
+  {
+   "event": {
+    "slug": "minaeans",
+    "year": -50,
+    "type": "loss",
+    "counterpart": "sabaeans"
+   },
+   "mirror": {
+    "slug": "sabaeans",
+    "year": -50,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Saba's region is sabaeans_-31 minus sabaeans_-36 (the Jawf and Najran strip) against the Minaean Jawf core: roughly the same land."
+  },
+  {
+   "event": {
+    "slug": "minaeans",
+    "year": -50,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody (the northern caravan road)"
+  },
+  {
+   "event": {
+    "slug": "qataban",
+    "year": -550,
+    "type": "loss",
+    "counterpart": "sabaeans"
+   },
+   "mirror": {
+    "slug": "sabaeans",
+    "year": -550,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Both use the Qataban -350 shape. A vassal pair might fit the page better (see qataban /ledger/1)."
+  },
+  {
+   "event": {
+    "slug": "qataban",
+    "year": -420,
+    "type": "gain",
+    "counterpart": "sabaeans"
+   },
+   "mirror": {
+    "slug": "sabaeans",
+    "year": -420,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "qataban",
+    "year": -350,
+    "type": "gain",
+    "counterpart": "sabaeans"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "The sabaeans dossier has no loss at -350, and its shapes never cover the south-western highlands (himyarite-kingdom_-110). Route to the sabaeans group (me-04-a/b)."
+  },
+  {
+   "event": {
+    "slug": "qataban",
+    "year": -110,
+    "type": "loss",
+    "counterpart": "himyarite-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "The himyarite-kingdom dossier belongs to me-06, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "qataban",
+    "year": 183,
+    "type": "loss",
+    "counterpart": "hadhramaut"
+   },
+   "mirror": {
+    "slug": "hadhramaut",
+    "year": 184,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Within one year. The Himyarite share is unlocated on both sides."
+  },
+  {
+   "event": {
+    "slug": "sabaeans",
+    "year": -625,
+    "type": "loss",
+    "counterpart": "qataban"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "The Awsan share. Qataban has no -625 gain; the author left it out because the page gives no share. hadhramaut /ledger/1 takes all of Awsan at -625. The qataban author, sabaeans and hadhramaut must agree."
+  },
+  {
+   "event": {
+    "slug": "qataban",
+    "year": -420,
+    "type": "war",
+    "counterpart": "minaeans"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "The Qataban page has Qataban 'conquer Maʿīn' after the late 5th century BCE, undated. Neither dossier carries it."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Timnaʿ",
+   "kind": "place",
+   "used_in": "qataban"
+  },
+  {
+   "name": "Qarnawu (Maʿīn)",
+   "kind": "place",
+   "used_in": "minaeans"
+  },
+  {
+   "name": "Baraqish (Yathill), 16.000 N 44.800 E per its page",
+   "kind": "place",
+   "used_in": "minaeans"
+  },
+  {
+   "name": "Dedan (al-ʿUla)",
+   "kind": "place",
+   "used_in": "minaeans"
+  },
+  {
+   "name": "Awsan",
+   "kind": "region",
+   "used_in": "qataban (needed for the Awsan-share fix; already used and unresolved in sabaeans and hadhramaut)"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Lihyan (Dedan)",
+   "suggested_slug": "lihyan",
+   "years": [
+    -450,
+    -24
+   ]
+  },
+  {
+   "name": "Awsan",
+   "suggested_slug": "awsan",
+   "years": [
+    -800,
+    -601
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-me-04-c.md",
+ "problems": [
+  "WebFetch returns at most 125-character quotes, so some sentences are confirmed by fragment plus paraphrase. No page failed to load.",
+  "The reviewer brief says not to edit dossiers, but the orchestrator's adjustments allow small verified fixes. One was applied: the minaeans /ledger/2 note (no data change); re-validated, valid, one standing warning (lihyan slug).",
+  "Cross-group items for the sabaeans group (me-04-a/b): the -675 Jawf gain overlaps the Minaean core; no -350 loss to qataban; the -625 loss to qataban (Awsan) has no Qataban mirror; the region 'Awsan' is not in the gazetteer.",
+  "For the himyarite-kingdom group (me-06): Cliopatria's -36..-26 rows look label-swapped between Minaeans and Himyarite Kingdom; the Qataban core is kept for -66..153 against Cliopatria's Himyarite coverage."
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "window": "m1300-m1201",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "tarhuntassa vassal_start of hittites, -1280, Karaman + Mersin + 100 km round Konya. Page: 'In the early 13th century BC, Muwatalli II moved the Hittite capital from Hattusa to Tarhuntassa'; 'The city was the capital of the Hittite Empire for a time and later became a regional power in its own right'; later 'Hattusili III ... appointed Muwatalli's son Kurunta as king in Tarhuntassa'. So the land was Hittite from the start, not an independent state 1280-1268. The page gives no year (the -1280 is the dossier's own found bridge, kept unchanged) and no province ('south-central Anatolia', location unknown; proposed Konya, Turkmen-Karahoyuk near Cumra, Sirkeli Hoyuk in Cilicia, Meydancik); the spec is exactly the dossier's found/keyframe region: 187 cells, about 47,300 km2, 31.4-35.0 E, 36.1-38.7 N, the Konya plain to the Mersin coast; no wider. The ledger has no constituent type, so the vassal tint is the closest the format allows for the capital's land. Own trial (15 s): applied; one vassal relation tarhuntassa->hittites since -1280 (event data/patches/m1300-m1201.json: events/0), the dossier's -1267 vassal_start opens no second one, 187 cells at m1200 unchanged; the -1275 render shows Tarhuntassa in the Hittite vassal tint, no holes. Nothing else moves.",
+   "page": "https://en.wikipedia.org/wiki/Tarhuntassa",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "pass",
+   "what": "assyria over babylonia, -1300..-1221, no region. Page: Adad-nirari I (1305-1274 BC MC) beat Nazi-Maruttash's Kassites; 'It took place at the town of Kar Ishtar in the province of Ugarsulu'; the victory brought 'a border realignment with Assyria extending its territory into southern Mesopotamia' 'into Pilasqu, the city of Arman in Ugarsallu and Lullumu' (undated in the reign); the quotes in why match. The conflict is an artefact: Babylonia still held the cells of its carried-over -1400 shape when Assyria's -1300 keyframe (ok) claimed them, the size rule gave them to Babylonia, and Babylonia's own -1300 keyframe (ok) then dropped them to nobody (same at -1240 for Diyala/Kermanshah/Wasit). Checked with the gazetteer: Cliopatria Assyria and Babylonia overlap in 0 cells at -1300 and 0 at -1240, while Assyria -1300 against Babylonia -1400 overlaps 271 cells and Assyria -1240 against Babylonia -1300 82 cells, so the ruling can only settle cells Babylonia's own keyframes give up and cannot take land Babylonia keeps; no other conflict of the pair falls in -1300..-1221 (Babylonia's vassal years -1225..-1216 are untouched). Own trial: applied, settled 332 cell-years in 2 years (-1300, -1240; was babylonia 332, now assyria 332); snaps babylonia_-1300, babylonia_-1240 and assyria_-1220 vanish; assyria_-1300 adds 274 (kept by others 0), assyria_-1240 adds 82. The -1270 render shows the Al-Anbar/Sala ad-Din lobe Assyrian with one stray Babylonian and one nobody cell at its edge. Weak point, not a fault: the page names Pilasqu, Arman in Ugarsallu and Lullumu (east of the Tigris), not the Al-Anbar steppe (159 of the cells); those cells are Assyria's in both dossiers' accepted keyframes and nobody's otherwise.",
+   "page": "https://en.wikipedia.org/wiki/Adad-nirari_I",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch m1300-m1201: 2 entries, 2 ok, 0 rejected (exit 0); own trial: events/0 applied, rulings/0 applied, settled 332 cell-years in 2 years; no change made to the patch file",
+ "problems": [
+  "End anchor m1200 in my trial differs from the published one by 15 owner cells and 154 status cells. This patch accounts for 7 owner cells only, all single edge cells, because the assyria_-1220 snap no longer fires: Assyria +3 / -2 (32.69N 43.28E, 34.9N 38.1E, 34.62N 39.81E gained; 34.84N 39.37E, 34.4N 40.25E lost), Babylonia +2 from nobody (33.17N 47.45E, 30.34N 46.32E). The rest is not this patch: Egypt +6/-1 owner cells, Hittites +1, Egypt's Canaan vassal relation 43 -> 180 cells and the Hittite western vassal relation (hittites/ledger/12) 343 -> 360 cells, from other windows' patches or dossier edits since the 1 Nov 20:39 compile. The orchestrator should run the full compile so m1200-m1101 starts from the new anchor.",
+  "Also from others' changes, not this patch: new snap new-kingdom-of-egypt_-1300 adding 65 cells (kept by others 10), a new 2 cell-year hittites/new-kingdom-of-egypt conflict, and the hittites/mitanni R2 conflict (43 cell-years) gone.",
+  "Tarhuntassa: the -1280 date and the Karaman/Mersin/Konya region are the dossier's own bridge; the page dates only 'early 13th century BC' and says the site is unknown. The real fault is the dossier founding Tarhuntassa as a state at the capital move; a dossier fix (start at Kurunta's appointment) would be cleaner than the vassal tint, but the patch is the smallest correction the format allows."
+ ]
+}

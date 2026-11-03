@@ -1,0 +1,63 @@
+{
+ "window": "p1620-p1629",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "Saadi Sultanate loses the Sahara corridor and Niger bend to nobody, January 1620. The page has 'Sultan Moulay Zidan relinquished direct control over the Sudan territories in 1618', 'After 1612, the Pashas who governed the Sudan region were appointed locally by the Arma' and 'Morocco retained only nominal control of the Pashalik'. The region (1595 shape minus 1612 shape) resolves to 1936 cells. 1608 of them are Saadi, and those are exactly what moves. The pashalik's 327 vassal cells and the 1 Portuguese cell are untouched; only 6 cells lie north of 30 N, so the Moroccan core is safe. In the trial the Saadi hold 1245 cells in 1620, none outside the 1612 shape, and the 1,608-cell snap of 1629 is gone. The dossier's own saadi-sultanate_1612 keyframe ('Morocco ... holding 1618-1628') agrees. Weakness: the event is dated 1620, not the page's 1618, to keep it inside the window (the note says so). The map is right from 1620, but 1618-1619 still carry the corridor.",
+   "page": "https://en.wikipedia.org/wiki/Pashalik_of_Timbuktu",
+   "fix": "None needed here. p1610-p1619 (no patch file yet) should add the same loss dated 1618. Alternatively the orchestrator may redate this event to 1618 if p1610-p1619 does not.",
+   "applied": false
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "The Ming gain from the Tumed the Shanxi and Shaanxi cells of the 200 km Hohhot disc, January 1620. The page has 'the Tumed's pastures were north of the border with Shanxi, in present-day Inner Mongolia'. The region resolves to 114 cells (Shanxi 105, Shaanxi 9). All 114 were Tumed in the published draft and are Ming in the trial for 1620-1629, so Shanxi is now 795 Ming + 3 nobody. Ming/Tumed conflict falls from 402 to 69 cell-years; the rest lies in Inner Mongolia south of Hohhot, where the Tumed rightly win. Minor caveat: the 9 Shaanxi cells (northern Fugu, about 39.1-39.6 N) are not covered by the page and may lie beyond the Ming wall, in Ordos country. The Ming 1622-1629 keyframes claim them anyway. The event is a technical correction, so its 1620 caption is a gain the pages do not date.",
+   "page": "https://en.wikipedia.org/wiki/Altan_Khan_of_the_Tumed",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "fixed",
+   "what": "ottoman-empire_1626 = Cliopatria's 1626 Ottoman shape + Ninawa + Al-Basrah. The effect is right. Basra (71 cells) is absent from the Ottoman shape and is the working addition, supported by the page: the coalition defeated 'the Persians, who retreated from Basra'. On 4 July 1626 the army 'lifted the siege and withdrew to Mosul'. But the why was wrong. It said the Cliopatria Ottoman shape 'leaves out all of Iraq', yet the gazetteer shows it holds all 148 Ninawa cells and 297 Iraqi cells in all. Mosul went grey because the Safavids, holding it since ledger 107 (1625), won the keyframe conflict by the size rule. Their own 1626 shape then dropped it. The Ninawa union is redundant but harmless. I rewrote the why's first sentence to say this, marked as a reviewer correction; the correction spec is unchanged.",
+   "page": "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Safavid_War_(1623%E2%80%931639)",
+   "fix": "why corrected: the Ottoman shape keeps north-western Iraq; the grey Mosul came from the size rule plus the Safavid snap.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "fixed",
+   "what": "safavid-dynasty_1626 = Cliopatria's 1626 Safavid shape minus Al-Basrah, plus all of Kandahar province (197 cells). Basra: supported by the war page ('retreated from Basra'). Kandahar: the Mughal-Safavid war page has 'after a 45-day siege the city fell on 22 June, followed shortly after by Zamindawar', 'Kandahar falls to Safavid Iran', and a Mughal letter 'accepting the loss of Kandahar' in spring 1623. The 74 cells the Safavid shape lacks are not 'Registan, south of the city' as the why said. They are the city of Kandahar itself (its cell lies in Cliopatria's 1626 Mughal shape, not the Safavid one) and the east of the province (65.7-67.5 E). The Mughal keyframe lost those cells to the Safavids by the size rule, and the Safavid snap then made them grey, so the unpatched draft left Kandahar city nobody's in 1626-1629. After the patch Kandahar is 197/197 Safavid in 1626-1629. The Safavids win the 75-cell conflict with mughal-empire_1626 by the size rule: 2,814,713 against 2,814,769 km2, a narrow margin but fixed. I corrected the description in the why.",
+   "page": "https://en.wikipedia.org/wiki/Mughal%E2%80%93Safavid_war_(1622%E2%80%931623)",
+   "fix": "why corrected: the 74 grey cells are Kandahar city and the east of the province, held by Cliopatria's Mughal 1626 shape. They are not Registan.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "what": "yarubid-dynasty_1626: the dossier's own correction, with the unresolvable place 'Julfar' replaced by Ras al Khaymah (30 km, 7 cells). The page has Julfar as 'a predecessor settlement to Ras Al Khaimah', 'Persian and Omani incursions into Julfar in 1633', and a Portuguese fort that fell to 'the first Omani Yaruba imam, Nasir bin Murshid'. The original 'Julfar' still fails to resolve (gazetteer: unknown place). The corrected shape is 324 of 361 cells. In the trial the Ya'rubids hold those 324 cells in 1626-1629; the published draft had the 135-cell Nizwa disc and 226 grey cells. Iberian Union/Ya'rubid conflict falls from 40 to 20 cell-years. Side effect, by the dossier's design: the 60 km Muscat and Sohar circles and the Ras al Khaymah circle become grey, not Portuguese. That includes 13 cells near Muscat that the Nizwa disc made Ya'rubid in 1624-1625. iberian-union holds only 5 cells there. The span runs to 1652, beyond the window; no other window overrides this keyframe.",
+   "page": "https://en.wikipedia.org/wiki/Julfar",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "fixed",
+   "what": "Ottoman over Safavid in 1626. Pages: war page, 4 July 1626 'the Ottoman army lifted the siege and withdrew to Mosul', and the Persians 'retreated from Basra'. Mosul page: Persian rule only 'a brief break in 1623'; before 1638 Mosul was 'an offensive platform for Ottoman campaigns into Iraq'. As written, the region was Ninawa + Al-Basrah and settled 210 of the 358 conflict cells. The other 148 had the same cause: Duhok 22, Erbil 46, Anbar 53, Salah ad-Din 16, Kirkuk 9, Sulaymaniyah 1, all inside the Ottoman 1626 shape and none inside the Safavid one. The size rule gave them to the Safavids, and the Safavid snap then turned them into grey land for 1626-1629: this is the hole the window agent left as 'pages silent'. I widened the region to the Iraq of Cliopatria's 1626 Ottoman shape plus Al-Basrah (368 cells), which matches the p1630-p1639 events/0 reading of the same land. Re-trial: the ruling settles 357 cell-years; Duhok 22/22 and Erbil 47/58 are Ottoman; Kirkuk city and central Iraq stay Safavid. The Safavid 1626 snap now removes 16 cells instead of 385, and the 1626 render shows no grey hole in northern Iraq.",
+   "page": "https://en.wikipedia.org/wiki/Mosul",
+   "fix": "region changed from union(Ninawa, Al-Basrah) to union(intersect(cliopatria Ottoman Empire 1626, country Iraq), Al-Basrah); a reviewer note was added to why.",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch after reviewer edits: 6 entries, 6 ok, 0 rejected. Re-trial: all 6 applied; rulings/0 settles 357 cell-years (was 210); Saadi 1629 snap of 1,608 cells gone; Safavid 1626 snap removes 16 (was 385); Ming/Tumed 402 -> 69; Iberian Union/Ya'rubid 40 -> 20. Stage: /tmp/claude-0/work/review-p1620-p1629/stage.",
+ "problems": [
+  "Basra is still Safavid in 1625 (62 cells, one year). ottoman-empire ledger 107 (1625) gives all Iraq outside Baghdad, Basra included, to the Safavids, yet the war page has the Persians retreat from Basra after the 1624 defeat. Fix: an Ottoman gain of {admin1 Al-Basrah, Iraq} in 1625 from safavid-dynasty in this window's patch, or a dossier fix that cuts Al-Basrah out of ledger 107's region. Also, the Mosul page has Persian rule in Mosul only as 'a brief break in 1623', against ledger 107 and the war page ('captured most of Iraq, including the cities of Kirkuk and Mosul'). The pages conflict, so it was left.",
+  "Saadi corridor: events/0 is dated 1620, so 1618-1619 (window p1610-p1619, which has no patch file) still show about 1,600 cells of Saharan corridor as Saadi. That window needs the same loss dated 1618, per the Pashalik of Timbuktu page.",
+  "p1630-p1639 events/0 (Ottoman gain in 1630 of the Iraq of the 1626 Ottoman shape, from nobody) is now a no-op: with rulings/0 widened, that land is Ottoman from 1626. Harmless, but its note ('grey 1626-1635') no longer holds.",
+  "The patch reaches past the window. keyframe_overrides/0 and /1 cover 1626-1635 and /2 covers 1626-1652. p1630-p1639 overrides only safavid-dynasty_1636, not these, so there is no collision.",
+  "mughal-empire dossier: keyframe mughal-empire_1626's note calls its 74 Kandahar cells 'right' for 1622-1638. Those cells include the city of Kandahar, which fell on 22 June 1622 (its own ledger 67 loses the whole province then). The Safavid hold now rests on a size-rule margin of 56 km2. Dossier request: cut {admin1 Kandahar, Afghanistan} out of the mughal-empire_1626 correction (1626-1637).",
+  "yarubid-dynasty dossier: 'Julfar' does not resolve in ledger 1 (1633 gain from iberian-union, as the window agent reported) and also in ledger 9 (1742 loss to afsharid-iran, region union with {place Julfar, km 30}). Both need {place 'Ras al Khaymah', country 'United Arab Emirates', km 30}. Separately, the 60 km Muscat and Sohar circles leave the Omani coast grey 1626-1649 rather than Portuguese; smaller radii, or iberian-union/kingdom-of-portugal holdings, would fix it.",
+  "ming-dynasty events/1: 9 of its 114 cells are in northern Shaanxi (Fugu, about 39.1-39.6 N), possibly north of the Ming wall in Ordos land. The Altan Khan page speaks only of Shanxi. Minor; left."
+ ]
+}

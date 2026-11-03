@@ -1,0 +1,1129 @@
+{
+ "batch_id": "sa-03-d",
+ "verdicts": [
+  {
+   "slug": "pala-empire",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/14/correction",
+     "what": "The 947 correction (Cliopatria 947 minus Bangladesh) also drops 82,951 km2 outside Bangladesh (51,592 km2 of it in Bihar: north Bihar above 25.6 N and a western strip), and no ledger event loses it; /ledger/12 and /ledger/13 explain only the 106,977 km2 inside Bangladesh.",
+     "why": "Gazetteer: K13 (900 shape) 306,009 km2, K14 116,081 km2, loss 189,928 km2, of which 106,977 in Bangladesh. The note justifies only the Kamboja and Chandra losses; the Pala page says Mahipala I recovered 'northern and eastern Bengal', nothing about Bihar.",
+     "fix": "Make K14 and K15 {\"minus\": [{\"cliopatria\": \"Pala Empire\", \"year\": 900}, {\"country\": \"Bangladesh\"}]} (the core minus the Kamboja and Chandra losses), or add a dated loss of north Bihar with counterpart and page.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/16",
+     "what": "K16 (Cliopatria 980 shape, ok, 72,582 km2 for 978-980) loses a further 43,246 km2 of south-west Bengal (bbox 86.4-90.9 E, 21.7-25.4 N) against K15 with no event, and the 981 keyframe gains 164,385 km2 of which /ledger/14 and /ledger/15 explain only 65,248.",
+     "why": "The author's own reading (Pala page: Mahipala I 'recovered northern and eastern Bengal within three years of ascending the throne in 978 CE') leaves Radha in Pala hands; nothing on the pages opened takes it away in 978-980.",
+     "fix": "Set K16 verdict adjust with the same correction as K14/K15, so the 981 change is exactly /ledger/14 + /ledger/15; recheck K17 against the 1000 shape.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/20",
+     "what": "1000 to 1056 the shape grows 25,796 km2 (11,128 km2 in Bangladesh, the rest north Bengal and Meghalaya edge) with no ledger event; kamarupa-kingdom /ledger/22 records a 1056 loss with counterpart pala-empire for exactly this.",
+     "why": "Gazetteer: K19 236,967 km2, K20 261,752 km2. kamarupa-kingdom /ledger/22: '1056: the west of the Kamarupa shape falls to the Pala shape' (c1).",
+     "fix": "Add {year 1056, type gain, counterpart kamarupa-kingdom, region minus(Pala 1056, Pala 1000), confidence 1, source Pala_Empire, note: Cliopatria's year, mirror of kamarupa-kingdom /ledger/22}, or mark K20 adjust to the 1000 shape and tell the Kamarupa author.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/16",
+     "what": "The 1072 loss to the Kaivarta rebels takes all of Bengal (141,371 km2): 29,842 km2 of West Bengal (Radha) and 76,376 km2 of Bangladesh, most of it east Bengal, not Varendra.",
+     "why": "Ramapala page: 'At the very beginning, Ramapala reigned over a small territory comprising part of Magadha and Radha.' Pala page: the Kaivarta revolt occupied 'the Varendra region'; 'The Varmans occupied eastern Bengal during his reign' (Vigrahapala III, 1043-1070 in the ruler strip).",
+     "fix": "Restrict /ledger/16 to Varendra (intersect Pala 1056 with union(Rajshahi, Rangpur)); make /keyframe_review/21 adjust = union(Pala 1072, West Bengal); add a loss of east Bengal to the Varmans inside Vigrahapala III's reign (c1, source Pala_Empire, counterpart listed under counterparts_needing_dossiers).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/18",
+     "what": "The 1085 gain from the Kaivartas includes West Bengal (Radha), which the Ramapala page says Ramapala held from the start.",
+     "why": "Ramapala page: 'a small territory comprising part of Magadha and Radha'; Pala page: the rebels held 'the Varendra region'.",
+     "fix": "Region = union(Rajshahi, Rangpur) (Varendra) only; Radha stays in the keyframes from 1072.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/22",
+     "what": "1072 to 1085 Cliopatria drops 33,636 km2 (24,531 km2 in Bihar; bbox 83.3-87.1 E, 23.6-27.4 N, north Bihar) and the K22 correction keeps the drop, but no event loses it.",
+     "why": "Pala page: Ramapala 'lost Mithila to a Karnat chief named Nanyadeva' (undated). The author's notes list it as undated and left it out, yet the keyframe drops the land.",
+     "fix": "Add a loss of Mithila (north Bihar) at confidence 1, counterpart 'Karnat dynasty of Mithila' (list it), year 1085 (Cliopatria) or a bridge in Ramapala's reign, source Pala_Empire; or keep north Bihar in the K22 correction until a dated loss.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/19",
+     "what": "The 1159 loss to the Senas covers 110,264 km2, of which only 17,703 km2 lies inside the Pala keyframe it removes land from (K25 correction); the rest is east Bengal (Vanga), which this dossier's own keyframes no longer hold after 1072.",
+     "why": "Sena page: 'their territory had expanded to include Vanga and a part of Varendra by the end of Vijayasena's reign' (r. 1096-1159); it does not say Vanga was taken from the Palas. Pala page: the Varmans held east Bengal and Ramapala only 'forced the Varman king of east Bengal to accept his suzerainty'.",
+     "fix": "Region = the Varendra part only, e.g. intersect(K25 correction, Rajshahi), text 'a part of Varendra'.",
+     "applied": false
+    },
+    {
+     "where": "/ledger",
+     "what": "Ramapala's conquest of western Kamarupa and its loss are missing: kamarupa-kingdom /ledger/26 (1100 loss, counterpart pala-empire, c2) and /ledger/27 (1126 gain from pala-empire, c2) have no mirror here.",
+     "why": "Pala page and Ramapala page: 'He brought Kamarupa and Rar under his control'; Pala page: Vaidyadeva 'practically created a separate kingdom' after Kumarapala's death.",
+     "fix": "Add 1100 gain (or vassal_start) and 1126 loss (or vassal_end) with counterpart kamarupa-kingdom, region as in the Kamarupa dossier, c1, source Pala_Empire; add the land to K22/K23 corrections if drawn as direct.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/10",
+     "what": "vassal_end of Utkala (and /ledger/11 of Kamarupa) dated 840, inside Devapala's reign; the Pala page puts the loss under Narayanapala. kamarupa-kingdom /ledger/15 ends it in 860.",
+     "why": "Pala page: 'Narayanapala lost control of Assam and Orissa'; Narayanapala 873-927 in the dossier's ruler strip (Ganguly), 860-917 Sircar.",
+     "fix": "Move /ledger/10 and /ledger/11 to 860 (Sircar, matching kamarupa-kingdom) or 873 (the strip), quote the sentence, keep confidence 1.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/9",
+     "what": "vassal_start of Kamarupa in 825 against kamarupa-kingdom /ledger/14 in 810: 15 years apart.",
+     "why": "Both are bridges inside Devapala's reign (Pala page: 'Pragjyotisa or Assam accepted the suzerainty of Devapala', reign 810-850 Majumdar, 806-845 Ganguly).",
+     "fix": "Agree a year with the Kamarupa author (810, Devapala's accession by Majumdar, or 825).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/8",
+     "what": "Counterpart 'Utkala (Odisha)' (/ledger/8, /ledger/10) is neither a slug nor in the report's counterparts_needing_dossiers.",
+     "why": "Report counterparts_needing_dossiers lists Ayudha, Kamboja, Kaivarta etc. but not Utkala; notes mention it only in passing.",
+     "fix": "Name the Odisha state (Bhauma-Kara dynasty) and list it under counterparts_needing_dossiers, or use 'nobody'.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "778 Bihar gain (194,227 km2) is Cliopatria's year at confidence 1, counterpart nobody",
+     "page to try": "https://en.wikipedia.org/wiki/Khalimpur_copper_plate"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "Utkala and Kamarupa vassalage years (825-840/860), confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Bhauma-Kara_dynasty"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "Kamboja and Chandra take-over of Varendra and east Bengal at Cliopatria's 947, confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Chandra_dynasty"
+    },
+    {
+     "where": "/ledger/16",
+     "what is missing": "Varendra rebellion start and end (1072, 1085 are bridges, confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Varendra_Rebellion"
+    },
+    {
+     "where": "/ledger/17",
+     "what is missing": "Ramavati founding year and site (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Ramavati"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "Ramapala's suzerainty over the Varman king of east Bengal (Pala page, undated) has no vassal_start",
+     "page to try": "https://en.wikipedia.org/wiki/Varman_dynasty_(Bengal)"
+    },
+    {
+     "where": "/keyframe_review/23",
+     "what is missing": "1111 +14,162 km2, 1147 -14,162 km2, 1152 -13,151 km2 (Cliopatria) with no events; small, but Madanapala's Munger capture and the Gahadavala frontier are undated",
+     "page to try": "https://en.wikipedia.org/wiki/Gahadavala_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Pala_Empire",
+     "result": "confirmed ('Gopala's ascension in 750 CE'; infobox Established 750)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Tripartite_struggle",
+     "result": "confirmed ('He thus returned to the South in 790')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Tripartite_struggle",
+     "result": "confirmed ('invading the kingdom of Kannauj around 791'; Chakrayudha 'as his vassal')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Tripartite_struggle",
+     "result": "confirmed ('In 816, Nagabhata II invaded the Doab, and defeated king Chakrayudha')"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Pala_Empire",
+     "result": "confirmed ('recovered northern and eastern Bengal within three years of ascending the throne in 978 CE'; Gauda 'lost to the Kambojas')"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Ramapala",
+     "result": "confirmed undated as the note says; region contradicts the page (Radha held by Ramapala from the start)"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Sena_dynasty",
+     "result": "confirmed for the year (Vijayasena r. 1096-1159, 'Vanga and a part of Varendra'); the page does not say Vanga was Pala"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1362437,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "infobox gives no area (checked); cliopatria_km2 is the row's maximum"
+   }
+  },
+  {
+   "slug": "rashtrakuta-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/11",
+     "what": "850 to 860 Gujarat leaves the shape (107,988 km2; 105,459 km2 in Gujarat, 99.8 percent inside Cliopatria's Gurjara-Pratihara 860 shape) and no ledger event loses it.",
+     "why": "Gazetteer: K10 897,542 km2, K11 790,060 km2. gurjara-pratihara-dynasty /ledger/20: '860: Bhoja's Gujarat, as Cliopatria draws it', a gain with counterpart rashtrakuta-dynasty. The K11 note only says the vassal tint continues.",
+     "fix": "Add {year 860, type loss, counterpart gurjara-pratihara-dynasty, region minus(Rashtrakuta 850, Rashtrakuta 860), confidence 1, source https://en.wikipedia.org/wiki/Gurjara-Pratihara_dynasty (add to sources)}, and end or explain the Gujarat vassal tint (/ledger/18-/ledger/25) over Pratihara-held land after 860.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/25/note",
+     "what": "Year 888 is on the page, but the cited Dynasty page says the branch ended by being brought under direct Rashtrakuta rule, while the note relies on the Gurjara-Pratihara page (not in sources[]) for an 'extermination'.",
+     "why": "Rashtrakuta dynasty page: 'Rashtrakutas of Gujarat (757-888)'; Krishna II 'ended the independent status of the Gujarat branch and brought it under direct control from Manyakheta'.",
+     "fix": "Quote the Dynasty sentence; say why no 888 gain of Gujarat is drawn (Cliopatria and the Pratihara page give Gujarat to Bhoja from 860); add the Gurjara-Pratihara page to sources if it stays quoted.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/33/counterpart",
+     "what": "The 982 dissolve hands Indra IV's remnant to western-chalukya-empire, but the remnant (Cliopatria 980 shape, 22,508 km2) lies wholly in the Mysore region (Gangavadi) and nowhere in Cliopatria's Western Chalukya 980 shape.",
+     "why": "Tailapa II page: he consolidated 'the western Deccan region between the Narmada and the Tungabhadra rivers'; Indra IV and 'the Ganga chief Marasimha' opposed him. western-ganga-dynasty holds Gangavadi to 998 (/ledger/12, Chola).",
+     "fix": "Counterpart western-ganga-dynasty (or nobody), with the /keyframe_review/19 and /keyframe_review/20 text saying the remnant stood in Ganga country.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "Gangavadi is direct Rashtrakuta land 757-972 here (gain 757, c1; contest 816-821), but western-ganga-dynasty has /ledger/8 780 occupation_start, /ledger/9 819 occupation_end, /ledger/10 819 vassal_start and /ledger/11 982 vassal_end, all with counterpart rashtrakuta-dynasty and no mirror here.",
+     "why": "Krishna I page: 'acquired territory in Gangavadi' (undated, reign 756-774); the Ganga page via the WG dossier: 'by 819, a Ganga resurgence gained them partial control over Gangavadi'; Rashtrakuta page calls the Gangas 'their loyal feudatory'.",
+     "fix": "Agree with the western-ganga-dynasty author: either add 819 loss + vassal_start and 982 vassal_end (and drop the Mysore region from K8-K17 from 819), or keep direct rule and have the WG dossier record a loss; align 757 vs 780.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/5",
+     "what": "Counterpart 'rulers of Kalinga and Kosala' (/ledger/5, /ledger/24) is free text and not listed under counterparts_needing_dossiers.",
+     "why": "Report's counterparts_needing_dossiers omits it; validator does not flag free text.",
+     "fix": "Use 'nobody' or name the states (Bhauma-Kara dynasty of Utkala, Somavamshis of Kosala) and list them.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/13",
+     "what": "contest_end 800 (and /ledger/27 917) disagree with gurjara-pratihara-dynasty /ledger/15 (814) and /ledger/24 (926).",
+     "why": "GP: '814: Govinda III dies and the Rashtrakuta threat ends'; '926: Kannauj is back in Pratihara hands' (Cliopatria). All four are confidence 1-2 bridges.",
+     "fix": "Align each pair within a year with the Pratihara author.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6",
+     "what": "Vengi is drawn as direct land from 772 (/ledger/4, K3-K9) and also as a vassal tint from 784 (/ledger/6) over the same Vijayawada disc until 850.",
+     "why": "Krishna I page names only Vishnuvardhana IV, not Vengi; Dynasty page: Dhruva 'brought the Eastern Chalukyas and Gangas of Talakad under his control'.",
+     "fix": "Choose one: direct (drop /ledger/6 and /ledger/23) or vassal (drop /ledger/4 and /ledger/22, adjust K3-K9).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/17",
+     "what is missing": "936 to 947 the shape loses 18,462 km2 (16,186 km2 in south Gujarat) with no event; small",
+     "page to try": "https://en.wikipedia.org/wiki/Lata_(region)"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "772 Vengi, Kalinga, Kosala gains and 850 losses are Cliopatria's years at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Eastern_Chalukyas"
+    },
+    {
+     "where": "/ledger/17",
+     "what is missing": "806 Gujarat gain at confidence 1 (813 inscription only)",
+     "page to try": "https://en.wikipedia.org/wiki/Govinda_III"
+    },
+    {
+     "where": "/ledger/19",
+     "what is missing": "Manyakheta foundation year (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Manyakheta"
+    },
+    {
+     "where": "/ledger/31",
+     "what is missing": "967 loss of Tondaimandalam at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Parantaka_II"
+    },
+    {
+     "where": "/keyframe_review/19",
+     "what is missing": "location of Indra IV's remnant 973-982 (Cliopatria shape kept, confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Indra_IV"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Rashtrakuta_dynasty",
+     "result": "confirmed year ('Rashtrakutas of Gujarat (757-888)'); note omits 'brought it under direct control from Manyakheta'"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Tripartite_struggle",
+     "result": "confirmed ('He thus returned to the South in 790')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Krishna_I",
+     "result": "confirmed ('defeating the last Badami Chalukya emperor Kirtivarman II in 757', plate of 807)"
+    },
+    {
+     "where": "/ledger/32",
+     "page": "https://en.wikipedia.org/wiki/Tailapa_II",
+     "result": "confirmed ('In 973, Tailapa dethroned Karka and established a new dynasty')"
+    },
+    {
+     "where": "/ledger/28",
+     "page": "https://en.wikipedia.org/wiki/Krishna_III",
+     "result": "confirmed ('Tondaimandalam was secured by 944'; Siddalingamadam plates of 944)"
+    },
+    {
+     "where": "/ledger/33",
+     "page": "https://en.wikipedia.org/wiki/Rashtrakuta_dynasty",
+     "result": "confirmed ('Sallekhana at Shravanabelagola on 20 March 982 CE')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1144236,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "infobox gives no area (checked); cliopatria_km2 is the row's maximum"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 778,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 785,
+    "type": "contest_start",
+    "counterpart": "rashtrakuta-dynasty"
+   },
+   "mirror": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 785,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Doab"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 790,
+    "type": "contest_end",
+    "counterpart": "rashtrakuta-dynasty"
+   },
+   "mirror": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 790,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 791,
+    "type": "vassal_start",
+    "counterpart": "Chakrayudha (Ayudha dynasty of Kannauj)"
+   },
+   "mirror": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 791,
+    "type": "vassal_end"
+   },
+   "status": "exception",
+   "note": "Ayudha listed under counterparts_needing_dossiers; GP dossier names the Ayudhas kannauj-varman-dynasty (a different dynasty): slug to settle"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 800,
+    "type": "contest_start",
+    "counterpart": "rashtrakuta-dynasty"
+   },
+   "mirror": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 800,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Kannauj"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 816,
+    "type": "vassal_end",
+    "counterpart": "Chakrayudha (Ayudha dynasty of Kannauj)"
+   },
+   "mirror": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 816,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "GP gain of Kannauj in 816 agrees on the year"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 825,
+    "type": "vassal_start",
+    "counterpart": "Utkala (Odisha)"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "free-text counterpart not listed for a dossier"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 825,
+    "type": "vassal_start",
+    "counterpart": "kamarupa-kingdom"
+   },
+   "mirror": {
+    "slug": "kamarupa-kingdom",
+    "year": 810,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "15 years apart; both bridges in Devapala reign"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 840,
+    "type": "vassal_end",
+    "counterpart": "kamarupa-kingdom"
+   },
+   "mirror": {
+    "slug": "kamarupa-kingdom",
+    "year": 860,
+    "type": "vassal_end"
+   },
+   "status": "mismatch",
+   "note": "Pala page: Narayanapala lost Assam and Orissa; Pala side should move"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 840,
+    "type": "vassal_end",
+    "counterpart": "Utkala (Odisha)"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "free-text counterpart"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 947,
+    "type": "loss",
+    "counterpart": "kamboja-pala-dynasty"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "listed under counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 947,
+    "type": "loss",
+    "counterpart": "chandra-dynasty"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "chandra-dynasty owned by an sa-03 part with no dossier yet"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 981,
+    "type": "gain",
+    "counterpart": "kamboja-pala-dynasty"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "listed"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 981,
+    "type": "gain",
+    "counterpart": "chandra-dynasty"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "group not run yet"
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 1056,
+    "type": "loss",
+    "counterpart": "pala-empire"
+   },
+   "mirror": {
+    "slug": "pala-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Pala K20 grows 25,796 km2 with no event"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 1072,
+    "type": "loss",
+    "counterpart": "kaivarta-rebels-of-varendra"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "listed; region too broad (see fixes)"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 1085,
+    "type": "gain",
+    "counterpart": "kaivarta-rebels-of-varendra"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "listed"
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 1100,
+    "type": "loss",
+    "counterpart": "pala-empire"
+   },
+   "mirror": {
+    "slug": "pala-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Ramapala brought Kamarupa under his control (Pala page)"
+  },
+  {
+   "event": {
+    "slug": "kamarupa-kingdom",
+    "year": 1126,
+    "type": "gain",
+    "counterpart": "pala-empire"
+   },
+   "mirror": {
+    "slug": "pala-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Vaidyadeva"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 1159,
+    "type": "loss",
+    "counterpart": "sena-dynasty"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "sena-dynasty not written yet; region overreaches (see fixes)"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 1161,
+    "type": "dissolve",
+    "counterpart": "sena-dynasty"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "group not run yet"
+  },
+  {
+   "event": {
+    "slug": "chalukya-dynasty",
+    "year": 750,
+    "type": "loss",
+    "counterpart": "rashtrakuta-dynasty"
+   },
+   "mirror": {
+    "slug": "rashtrakuta-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "before the Rashtrakuta start (753); Chalukya and Rashtrakuta authors to agree whether Dantidurga held Malwa and south Gujarat in 750"
+  },
+  {
+   "event": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 750,
+    "type": "contest_start",
+    "counterpart": "rashtrakuta-dynasty"
+   },
+   "mirror": {
+    "slug": "rashtrakuta-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "GP contest 750-756 predates the Rashtrakuta start 753"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 753,
+    "type": "found",
+    "counterpart": "chalukya-dynasty"
+   },
+   "mirror": {
+    "slug": "chalukya-dynasty",
+    "year": 753,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "c3 on the Chalukya side"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 757,
+    "type": "gain",
+    "counterpart": "chalukya-dynasty"
+   },
+   "mirror": {
+    "slug": "chalukya-dynasty",
+    "year": 757,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 757,
+    "type": "gain",
+    "counterpart": "western-ganga-dynasty"
+   },
+   "mirror": {
+    "slug": "western-ganga-dynasty",
+    "year": 780,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "23 years and type differ; WG also has 819 occupation_end and vassal_start, 982 vassal_end with no mirror"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 757,
+    "type": "gain",
+    "counterpart": "Shilaharas of South Konkan"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "listed"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 772,
+    "type": "gain",
+    "counterpart": "eastern-chalukyas"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "listed"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 772,
+    "type": "gain",
+    "counterpart": "rulers of Kalinga and Kosala"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "free text, not listed"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 784,
+    "type": "vassal_start",
+    "counterpart": "eastern-chalukyas"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "listed"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 785,
+    "type": "vassal_start",
+    "counterpart": "late-pallava-empire"
+   },
+   "mirror": {
+    "slug": "late-pallava-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "no Rashtrakuta event in the Pallava ledger (sa-02)"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 785,
+    "type": "contest_start",
+    "counterpart": "gurjara-pratihara-dynasty"
+   },
+   "mirror": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 786,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 790,
+    "type": "contest_end",
+    "counterpart": "gurjara-pratihara-dynasty"
+   },
+   "mirror": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 790,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 800,
+    "type": "contest_start",
+    "counterpart": "gurjara-pratihara-dynasty"
+   },
+   "mirror": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 800,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 800,
+    "type": "contest_end",
+    "counterpart": "gurjara-pratihara-dynasty"
+   },
+   "mirror": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 814,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "14 years apart"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 805,
+    "type": "vassal_end",
+    "counterpart": "late-pallava-empire"
+   },
+   "mirror": {
+    "slug": "late-pallava-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "sa-02"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 806,
+    "type": "gain",
+    "counterpart": "gurjara-pratihara-dynasty"
+   },
+   "mirror": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 806,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Lata"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 813,
+    "type": "vassal_start",
+    "counterpart": "gujarat-rashtrakutas"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "listed"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 850,
+    "type": "loss",
+    "counterpart": "eastern-chalukyas"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "listed"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 850,
+    "type": "loss",
+    "counterpart": "rulers of Kalinga and Kosala"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "free text"
+  },
+  {
+   "event": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 860,
+    "type": "gain",
+    "counterpart": "rashtrakuta-dynasty"
+   },
+   "mirror": {
+    "slug": "rashtrakuta-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Rashtrakuta K11 drops Gujarat with no loss event"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 888,
+    "type": "vassal_end",
+    "counterpart": "gujarat-rashtrakutas"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "listed"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 916,
+    "type": "contest_start",
+    "counterpart": "gurjara-pratihara-dynasty"
+   },
+   "mirror": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 916,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 917,
+    "type": "contest_end",
+    "counterpart": "gurjara-pratihara-dynasty"
+   },
+   "mirror": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 926,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "9 years apart"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 944,
+    "type": "gain",
+    "counterpart": "chola-empire"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "chola-empire not written yet"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 967,
+    "type": "loss",
+    "counterpart": "chola-empire"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "group not run yet"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 973,
+    "type": "loss",
+    "counterpart": "western-chalukya-empire"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "western-chalukya-empire not written yet"
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 982,
+    "type": "dissolve",
+    "counterpart": "western-chalukya-empire"
+   },
+   "mirror": {
+    "slug": "western-ganga-dynasty",
+    "year": 982,
+    "type": "vassal_end"
+   },
+   "status": "mismatch",
+   "note": "the remnant lies in Gangavadi (WG land to 998), not in the Western Chalukya shape"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Varendra",
+   "kind": "region",
+   "used_in": "pala-empire"
+  },
+  {
+   "name": "Radha",
+   "kind": "region",
+   "used_in": "pala-empire"
+  },
+  {
+   "name": "Mithila",
+   "kind": "region",
+   "used_in": "pala-empire"
+  },
+  {
+   "name": "Vanga (east Bengal; the gazetteer maps 'Vanga' to all of Bengal)",
+   "kind": "region",
+   "used_in": "pala-empire"
+  },
+  {
+   "name": "Pundravardhana",
+   "kind": "region",
+   "used_in": "pala-empire"
+  },
+  {
+   "name": "Dandabhukti",
+   "kind": "region",
+   "used_in": "pala-empire"
+  },
+  {
+   "name": "Munger",
+   "kind": "place",
+   "used_in": "pala-empire"
+  },
+  {
+   "name": "Ramavati",
+   "kind": "place",
+   "used_in": "pala-empire"
+  },
+  {
+   "name": "Gangavadi",
+   "kind": "region",
+   "used_in": "rashtrakuta-dynasty"
+  },
+  {
+   "name": "Vengi",
+   "kind": "region",
+   "used_in": "rashtrakuta-dynasty"
+  },
+  {
+   "name": "Tondaimandalam",
+   "kind": "region",
+   "used_in": "rashtrakuta-dynasty"
+  },
+  {
+   "name": "Manyakheta",
+   "kind": "place",
+   "used_in": "rashtrakuta-dynasty"
+  },
+  {
+   "name": "Achalapura",
+   "kind": "place",
+   "used_in": "rashtrakuta-dynasty"
+  },
+  {
+   "name": "Shravanabelagola",
+   "kind": "place",
+   "used_in": "rashtrakuta-dynasty"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Varman dynasty of east Bengal",
+   "suggested_slug": "varman-dynasty-of-bengal",
+   "years": [
+    1043,
+    1159
+   ],
+   "note": "Pala page: occupied east Bengal under Vigrahapala III; Senas held Vanga by 1159; years are the Pala strip bounds, verify"
+  },
+  {
+   "name": "Karnat dynasty of Mithila",
+   "suggested_slug": "karnat-dynasty",
+   "years": [
+    1097,
+    1324
+   ],
+   "note": "Pala page: Ramapala 'lost Mithila to a Karnat chief named Nanyadeva'; years from memory, verify"
+  },
+  {
+   "name": "Bhauma-Kara dynasty (Utkala)",
+   "suggested_slug": "bhauma-kara-dynasty",
+   "years": [
+    736,
+    940
+   ],
+   "note": "counterpart of Pala Utkala vassalage and Rashtrakuta Kalinga; years from memory, verify"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-sa-03-d.md",
+ "problems": [
+  "No dossier edits applied: every finding is a missing event, a region or keyframe correction, or a counterpart choice, none of the small kinds the reviewer may apply.",
+  "western-ganga-dynasty.json exists although not in the author's Context list; it was used as a counterpart (its 780-982 Rashtrakuta events have no mirror here).",
+  "gurjara-pratihara-dynasty uses kannauj-varman-dynasty as the counterpart for Chakrayudha (an Ayudha), while pala-empire uses 'Chakrayudha (Ayudha dynasty of Kannauj)': the orchestrator should pick one slug for the Ayudhas.",
+  "late-pallava-empire (sa-02) has no event for Dhruva's 785 overlordship of Kanchi; route to sa-02.",
+  "chandela-kingdom, chandra-dynasty, sena-dynasty, gahadavala-dynasty, chola-empire, eastern-ganga-kingdom, chaulukya-dynasty, tibetan-empire, western-chalukya-empire have no dossier yet: counterparts treated as 'group not run yet'.",
+  "Gazetteer resolves region 'Vanga' to all of Bengal, so it cannot stand for east Bengal in the fixes."
+ ]
+}

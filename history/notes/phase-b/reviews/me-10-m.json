@@ -1,0 +1,651 @@
+{
+ "batch_id": "me-10-m",
+ "verdicts": [
+  {
+   "slug": "islamic-republic-of-iran",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/7/region (and /ledger/8/region, /wars/1/zones/0, /wars/2/zones/0)",
+     "what": "BLOCKING. The al-Faw occupation (confidence 3) is drawn as the whole Iraqi bank of the Shatt al-Arab within 30 km, which hatches Basra city, Abu al-Khasib and the river up to Qurna as Iranian-held 1986-1988.",
+     "why": "First Battle of al-Faw: 'The Iranian strike force overran the tip of the peninsula, in 24 hours' and 'Iranian troops succeeded in reaching the Khor Abdullah waterway opposite Kuwait'; Second Battle of al-Faw: Iranian forces 'killed or cleared from the al-Faw Peninsula'. No page has Iran holding Basra or the Shatt's west bank north of the peninsula; the Shatt runs past Basra (30.5 N), the bridgehead was at the tip (about 29.95-30.2 N).",
+     "fix": "Region {\"intersect\": [{\"lon\": 48.47, \"lat\": 29.98, \"km\": 25}, {\"country\": \"Iraq\"}], \"text\": \"the tip of the al-Faw peninsula, from the Shatt al-Arab to the Khor Abdullah opposite Kuwait\"} (or {\"place\": \"Al-Faw\", \"km\": 25} intersected with Iraq, listing Al-Faw for the gazetteer) in both ledger events and both war zones.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6/region (and /ledger/10/region)",
+     "what": "BLOCKING. The Majnoon occupation is a 90 km circle round Basra: it hatches Basra city, Khorramshahr and Abadan (Iranian land, i.e. Iran 'occupying' itself) and northern Kuwait, and its text adds 'the Basra-Baghdad highway beyond it', which Iran did not hold.",
+     "why": "Iran-Iraq War page: 'By 27 February, they had captured the island' (Operation Kheibar); the dossier's own note says the Iraqi counterattack pushed them back from the outskirts of Qurna. Majnoon lies about 31.0-31.1 N, 47.5-47.6 E, some 60 km north of Basra.",
+     "fix": "Region {\"intersect\": [{\"lon\": 47.55, \"lat\": 31.05, \"km\": 25}, {\"country\": \"Iraq\"}], \"text\": \"Majnoon Island in the Hawizeh Marshes\"}; drop the highway from text.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (missing) and /keyframe_review/2/correction",
+     "what": "BLOCKING. No ledger event for Iran's capture and hold of Haj Omran in Iraqi Kurdistan (23 July 1983 to the August 1988 ceasefire), although the 1987 correction says the Iraqi-Kurdistan cells 'are Iranian-held Iraqi land, drawn as occupation by the ledger' and /keyframe_review/1/note itself cites Haj Omran; the dossier notes then say no page covers the Kurdish-front gains of 1983.",
+     "why": "Iran-Iraq War page (in sources): 'With Kurdish support, the Iranians attacked on 23 July 1983, capturing the Iraqi town of Haj Omran and maintaining it against an Iraqi poison gas counteroffensive'. Neighbour iraqi-republic.json /ledger/7 (1983-7 contest_start, Haj Omran) and /ledger/9 (1988-8 contest_end) have no mirror here.",
+     "fix": "Add occupation_start 1983-7, counterpart iraqi-republic, region {\"intersect\": [{\"lon\": 45.05, \"lat\": 36.65, \"km\": 20}, {\"country\": \"Iraq\"}], \"text\": \"the Iraqi town of Haj Omran\"} (or a region covering the 36.0-36.2 N, 45.1-45.4 E cells if a page supports them), source the war page, confidence 3; and occupation_end 1988-8 (confidence 2, ceasefire, 'Status quo ante bellum'). Correct the notes sentence that says no opened page covers the 1983 Kurdish front.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6, /ledger/10 vs iraqi-republic /ledger/8, /ledger/10",
+     "what": "Non-blocking, cross-dossier. Majnoon is an occupation_start/occupation_end here but a contest_start/contest_end in iraqi-republic.json; the schema says the owner records an occupation 'with the roles reversed'.",
+     "why": "dossier.schema.json event types: 'occupation_start / occupation_end: this state occupies region belonging to counterpart ... the owner records the same event with the roles reversed.'",
+     "fix": "Orchestrator: route to me-10-k so iraqi-republic records occupation_start 1984-2 / occupation_end 1988 with counterpart islamic-republic-of-iran for Majnoon (and for al-Faw 1986-2 / 1988-4, which it lacks entirely).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/10",
+     "what is missing": "date Iraq retook Majnoon (confidence 1, set at the ceasefire); the pages opened stop before it",
+     "page to try": "https://en.wikipedia.org/wiki/Operation_Tawakalna_ala_Allah"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "Karbala-5 (January 1987) east of Basra and the 1987 Iraqi-Kurdistan cells (36.0-36.2 N)",
+     "page to try": "https://en.wikipedia.org/wiki/Operation_Karbala-5"
+    },
+    {
+     "where": "/ledger/0, /ledger/5",
+     "what is missing": "towns held by the KDPI/Komala in 1979-1982 (contest confidence 2, no ground named)",
+     "page to try": "https://en.wikipedia.org/wiki/1979_Kurdish_rebellion_in_Iran"
+    },
+    {
+     "where": "/ledger (missing)",
+     "what is missing": "Iraq's 1988 incursions into Iran (Dehloran, Mehran) named in /wars/2 outcome but not in the ledger",
+     "page to try": "https://en.wikipedia.org/wiki/Operation_Forty_Stars"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Iran",
+     "result": "confirmed (referendum 31 March 1979, 99.31%; infobox 'Islamic Republic established: 1 April 1979')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Iran",
+     "result": "confirmed ('On 22 September 1980, the Iraqi army invaded Iran at Khuzestan')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Iran%E2%80%93Iraq_War",
+     "result": "confirmed (drive on Khorramshahr 23 May 1982, city fell in under 48 hours, 19,000 surrendered, 'recaptured all their territory by June 1982')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Iran%E2%80%93Iraq_War",
+     "result": "confirmed ('By 27 February, they had captured the island'); region overdrawn, see fixes"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/First_Battle_of_al-Faw",
+     "result": "confirmed (Dawn 8 on 9 February 1986, tip overrun in 24 hours, town held out until 14 February, Khor Abdullah reached); region overdrawn, see fixes"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Second_Battle_of_al-Faw",
+     "result": "confirmed (17-18 April 1988, Faw town 35 hours in, all Iranian forces killed or cleared within 48 hours)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1648195,
+    "infobox_year": 2024,
+    "cliopatria_km2": 1624652,
+    "ratio": 0.986,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "republic-of-yemen",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/wars/0 (zones empty) and /ledger (missing)",
+     "what is missing": "the 1994 civil war: the southern secession (Democratic Republic of Yemen, May-July 1994) held all of former South Yemen and was reconquered; ground changed hands, so empty zones and no contest are a gap, not a no-change war",
+     "page to try": "https://en.wikipedia.org/wiki/1994_civil_war_in_Yemen"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "Houthi-held extent by year: the contest draws the present-day zone (all former North Yemen except Marib) from September 2014; the 2015 advance to Aden and its reversal, Hodeidah 2018, Marib 2020-2021 are absent",
+     "page to try": "https://en.wikipedia.org/wiki/Houthi_takeover_in_Yemen"
+    },
+    {
+     "where": "/ledger (missing)",
+     "what is missing": "the Eritrean occupation of the Hanish Islands (1995-1998) and the 1998 award to Yemen; state-of-eritrea.json has no event either",
+     "page to try": "https://en.wikipedia.org/wiki/Hanish_Islands_conflict"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Yemen",
+     "result": "confirmed ('the countries were merged on 22 May 1990, with Saleh as president')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Yemeni_civil_war_(2014%E2%80%93present)",
+     "result": "confirmed (infobox '16 September 2014 - present'; Houthis seized Sanaa in September 2014; present snapshot 'all of former North Yemen except for eastern Marib Governorate')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Yemen",
+     "result": "confirmed (Hadi fled to Aden on 21 February 2015; the page puts the 'temporary capital' declaration 'the following month', i.e. March 2015; month 2 = the seat's move, acceptable)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Yemen",
+     "result": "confirmed ('In February 2018, Aden was seized by the UAE-backed separatist Southern Transitional Council')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 455503,
+    "infobox_year": 2024,
+    "cliopatria_km2": 463074,
+    "ratio": 1.017,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "gaza-hamas",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "the zones Israel held in 2023-2024 (Netzarim Corridor, Philadelphi Corridor, Rafah May 2024); only a whole-Strip contest is recorded",
+     "page to try": "https://en.wikipedia.org/wiki/Netzarim_Corridor"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Governance_of_the_Gaza_Strip",
+     "result": "confirmed (Hamas governance 'began 11 June 2007'; Abbas dissolved the unity government 14 June; 'full takeover of the Gaza Strip by Hamas on 15 June 2007')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Governance_of_the_Gaza_Strip",
+     "result": "confirmed ('the Israeli invasion of the Gaza Strip in early November 2023'; 6 January 2024 statement on northern Gaza)"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "page": "https://en.wikipedia.org/wiki/Gaza_Strip",
+     "result": "confirmed (infobox 'Total: 365 km2'; 'By 14 June, Hamas fully controlled the Gaza Strip'; 2005 withdrawal has no day on the page)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 365,
+    "infobox_year": 2024,
+    "cliopatria_km2": 154.8,
+    "ratio": 0.424,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "republic-of-iraq",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/13/note",
+     "what": "The note put in quotation marks a sentence the page does not contain ('Following this, the Iraqi armed forces captured Kirkuk and Sinjar.') and said the page does not say from whom.",
+     "why": "War in Iraq (2013-2017): 'Following the defeat of the Peshmerga and the capture of Kirkuk and Sinjar by the Iraqi armed forces...', which names the Peshmerga and supports the kurdistan-region counterpart.",
+     "fix": "Quote the page's words; counterpart kurdistan-region stands; confidence left at 2 (no separate date for Sinjar).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/14/confidence",
+     "what": "Confidence 3 on a region (all of Al-Anbar governorate) the page does not name; it names only Al-Qa'im and Rawah.",
+     "why": "War in Iraq (2013-2017): 'Iraq captured ISIL's last two strongholds of Al-Qa'im and Rawah on 17 November.' (date confirmed).",
+     "fix": "Confidence 3 -> 2 and a sentence in the note saying the governorate is a reading.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/3/region",
+     "what": "Non-blocking. Kirkuk's 2014 loss to the Kurdistan Region takes the whole At-Ta'mim governorate in the same month as /ledger/5 gives the Hawija pocket (inside At-Ta'mim) to islamic-state, so the two losses overlap.",
+     "why": "Both events 2014-6; Hawija lies in Kirkuk governorate (the author's own gazetteer hint); /ledger/11 then regains Hawija from islamic-state, /ledger/12 the whole governorate from kurdistan-region.",
+     "fix": "Region {\"minus\": [{\"admin1\": \"At-Ta'mim\", \"country\": \"Iraq\"}, {\"place\": \"Hawija\", \"km\": 40}], \"text\": \"...\"} for /ledger/3 and /ledger/12 (both confidence-1/3 events keep their sources).",
+     "applied": false
+    },
+    {
+     "where": "/identity",
+     "what": "Non-blocking, for the orchestrator. One state in two dossiers (iraqi-republic 1958-2005, republic-of-iraq 2005-2024) against the brief's rule 'one dossier under the earlier slug'; both files agree (iraqi-republic /ledger/15 dissolve 2005-10 counterpart republic-of-iraq; this /ledger/0 found 2005-10), and the author flagged it.",
+     "why": "Iraq page: 'Since January 1992, the official name of the state is \"Republic of Iraq\"'; author's report problems[0]; research brief section 6 rule on shared Wikidata ids (Q796).",
+     "fix": "Orchestrator decides: either fold this ledger into iraqi-republic.json (adding 'Republic of Iraq' to its cliopatria_names) or keep the join and give both one colour.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "Kirkuk's passage to Peshmerga control in June 2014 (confidence 1, page silent)",
+     "page to try": "https://en.wikipedia.org/wiki/Northern_Iraq_offensive_(June_2014)"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "ISIL's capture of Hawija in 2014 (confidence 1, placed from its 2017 recapture)",
+     "page to try": "https://en.wikipedia.org/wiki/Northern_Iraq_offensive_(June_2014)"
+    },
+    {
+     "where": "/ledger/13",
+     "what is missing": "Sinjar: fell to ISIL in August 2014 (not June with Nineveh) and was retaken by Kurdish forces in November 2015; neither date is on the pages opened",
+     "page to try": "https://en.wikipedia.org/wiki/November_2015_Sinjar_offensive"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Iraq",
+     "result": "confirmed (infobox 'Current constitution: 15 October 2005'; referendum October 2005 with 78%)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/War_in_Iraq_(2013%E2%80%932017)",
+     "result": "confirmed ('seized at least 70% of Al Anbar Governorate by June 2014')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/War_in_Iraq_(2013%E2%80%932017)",
+     "result": "confirmed ('On December 28, Iraq declared Ramadi liberated')"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/War_in_Iraq_(2013%E2%80%932017)",
+     "result": "confirmed ('Third Battle of Fallujah ending in June 2016')"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/War_in_Iraq_(2013%E2%80%932017)",
+     "result": "confirmed ('On 10 July, Iraqi Army forces captured Mosul')"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/War_in_Iraq_(2013%E2%80%932017)",
+     "result": "confirmed (offensive 'on 15 October against Kurdistan Region to recapture the disputed city of Kirkuk')"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/War_in_Iraq_(2013%E2%80%932017)",
+     "result": "confirmed in substance; quotation corrected"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/War_in_Iraq_(2013%E2%80%932017)",
+     "result": "confirmed (17 November; region not named, confidence lowered)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 438317,
+    "infobox_year": 2024,
+    "cliopatria_km2": 438702,
+    "ratio": 1.001,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "islamic-republic-of-iran",
+    "year": 1979,
+    "type": "found",
+    "counterpart": "pahlavi-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "pahlavi-dynasty (me-10, another part) has no dossier yet"
+  },
+  {
+   "event": {
+    "slug": "islamic-republic-of-iran",
+    "year": 1979,
+    "type": "contest_start",
+    "counterpart": "iranian-kurdish-insurgents"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "islamic-republic-of-iran",
+    "year": 1980,
+    "type": "contest_start",
+    "counterpart": "iraqi-republic"
+   },
+   "mirror": {
+    "slug": "iraqi-republic",
+    "year": 1980,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "iraqi-republic /ledger/4, 22 September 1980 (both Iran events: Khuzestan and Shatt al-Arab)"
+  },
+  {
+   "event": {
+    "slug": "islamic-republic-of-iran",
+    "year": 1982,
+    "type": "contest_end",
+    "counterpart": "iraqi-republic"
+   },
+   "mirror": {
+    "slug": "iraqi-republic",
+    "year": 1982,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": "iraqi-republic /ledger/6, June 1982"
+  },
+  {
+   "event": {
+    "slug": "islamic-republic-of-iran",
+    "year": 1982,
+    "type": "contest_end",
+    "counterpart": "iranian-kurdish-insurgents"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier"
+  },
+  {
+   "event": {
+    "slug": "islamic-republic-of-iran",
+    "year": 1984,
+    "type": "occupation_start",
+    "counterpart": "iraqi-republic"
+   },
+   "mirror": {
+    "slug": "iraqi-republic",
+    "year": 1984,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "Majnoon: occupation here, contest in iraqi-republic /ledger/8; schema wants occupation on both sides (roles reversed)"
+  },
+  {
+   "event": {
+    "slug": "islamic-republic-of-iran",
+    "year": 1986,
+    "type": "occupation_start",
+    "counterpart": "iraqi-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "al-Faw (9-14 February 1986): no event in iraqi-republic.json"
+  },
+  {
+   "event": {
+    "slug": "islamic-republic-of-iran",
+    "year": 1988,
+    "type": "occupation_end",
+    "counterpart": "iraqi-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "al-Faw retaken 17-18 April 1988: no event in iraqi-republic.json"
+  },
+  {
+   "event": {
+    "slug": "islamic-republic-of-iran",
+    "year": 1988,
+    "type": "contest_end",
+    "counterpart": "iraqi-republic"
+   },
+   "mirror": {
+    "slug": "iraqi-republic",
+    "year": 1988,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "Iran closes a Shatt al-Arab contest open 1980-1988; iraqi-republic closed its 1980 contest in June 1982 (/ledger/6) and its 1988-8 contest_ends (/ledger/9, /ledger/10) are Haj Omran and Majnoon"
+  },
+  {
+   "event": {
+    "slug": "islamic-republic-of-iran",
+    "year": 1988,
+    "type": "occupation_end",
+    "counterpart": "iraqi-republic"
+   },
+   "mirror": {
+    "slug": "iraqi-republic",
+    "year": 1988,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "Majnoon end: occupation_end here (confidence 1) vs contest_end iraqi-republic /ledger/10"
+  },
+  {
+   "event": {
+    "slug": "iraqi-republic",
+    "year": 1983,
+    "type": "contest_start",
+    "counterpart": "islamic-republic-of-iran"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Haj Omran 23 July 1983 (iraqi-republic /ledger/7, confidence 3): no mirror in islamic-republic-of-iran; fix listed"
+  },
+  {
+   "event": {
+    "slug": "iraqi-republic",
+    "year": 1988,
+    "type": "contest_end",
+    "counterpart": "islamic-republic-of-iran"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Haj Omran returned at the August 1988 ceasefire (iraqi-republic /ledger/9): no mirror in islamic-republic-of-iran"
+  },
+  {
+   "event": {
+    "slug": "republic-of-yemen",
+    "year": 1990,
+    "type": "merge",
+    "counterpart": "north-yemen"
+   },
+   "mirror": {
+    "slug": "north-yemen",
+    "year": 1990,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "north-yemen /ledger/20 dissolve 1990-5 counterpart republic-of-yemen (and /ledger/19 merge with the PDRY); successor/predecessor agree"
+  },
+  {
+   "event": {
+    "slug": "republic-of-yemen",
+    "year": 1990,
+    "type": "merge",
+    "counterpart": "people-s-democratic-republic-of-yemen"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "PDRY (me-10, another part) has no dossier yet"
+  },
+  {
+   "event": {
+    "slug": "republic-of-yemen",
+    "year": 2014,
+    "type": "contest_start",
+    "counterpart": "houthis"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; in counterparts_needing_dossiers (me-10-x)"
+  },
+  {
+   "event": {
+    "slug": "republic-of-yemen",
+    "year": 2018,
+    "type": "contest_start",
+    "counterpart": "southern-transitional-council"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; in counterparts_needing_dossiers (me-10-x)"
+  },
+  {
+   "event": {
+    "slug": "gaza-hamas",
+    "year": 2007,
+    "type": "found",
+    "counterpart": "palestinian-national-authority"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "gaza-hamas",
+    "year": 2023,
+    "type": "contest_start",
+    "counterpart": "state-of-israel"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "state-of-israel (me-10, another part) has no dossier yet"
+  },
+  {
+   "event": {
+    "slug": "republic-of-iraq",
+    "year": 2005,
+    "type": "found",
+    "counterpart": "iraqi-republic"
+   },
+   "mirror": {
+    "slug": "iraqi-republic",
+    "year": 2005,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "iraqi-republic /ledger/15 dissolve 2005-10 counterpart republic-of-iraq"
+  },
+  {
+   "event": {
+    "slug": "republic-of-iraq",
+    "year": 2014,
+    "type": "loss",
+    "counterpart": "islamic-state"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "three losses 2014 and seven gains 2015-2017 plus the contest pair; islamic-state has no dossier (me-10-x); the mujahideen dossier (ia-03) ends in 1992 and does not cover Cliopatria's 2014-2024 Mujahideen shapes"
+  },
+  {
+   "event": {
+    "slug": "republic-of-iraq",
+    "year": 2014,
+    "type": "loss",
+    "counterpart": "kurdistan-region"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Kirkuk June 2014 (confidence 1); kurdistan-region has no dossier; iraqi-republic uses the same slug (1992 loss, 2005 gain), consistent"
+  },
+  {
+   "event": {
+    "slug": "republic-of-iraq",
+    "year": 2017,
+    "type": "gain",
+    "counterpart": "kurdistan-region"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Kirkuk and Sinjar October 2017; no dossier yet"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Hawija",
+   "kind": "place",
+   "used_in": "republic-of-iraq"
+  },
+  {
+   "name": "Sinjar",
+   "kind": "place",
+   "used_in": "republic-of-iraq"
+  },
+  {
+   "name": "Al-Faw",
+   "kind": "place",
+   "used_in": "islamic-republic-of-iran (proposed fix)"
+  },
+  {
+   "name": "Majnoon Island",
+   "kind": "place",
+   "used_in": "islamic-republic-of-iran (proposed fix)"
+  },
+  {
+   "name": "Haj Omran",
+   "kind": "place",
+   "used_in": "islamic-republic-of-iran (proposed fix)"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Islamic State (ISIL) as holder of Iraqi and Syrian land",
+   "suggested_slug": "islamic-state",
+   "years": [
+    2014,
+    2017
+   ]
+  },
+  {
+   "name": "Kurdistan Region",
+   "suggested_slug": "kurdistan-region",
+   "years": [
+    1992,
+    2024
+   ]
+  },
+  {
+   "name": "Houthis (Ansar Allah)",
+   "suggested_slug": "houthis",
+   "years": [
+    2014,
+    2024
+   ]
+  },
+  {
+   "name": "Southern Transitional Council",
+   "suggested_slug": "southern-transitional-council",
+   "years": [
+    2017,
+    2024
+   ]
+  },
+  {
+   "name": "Palestinian National Authority",
+   "suggested_slug": "palestinian-national-authority",
+   "years": [
+    1994,
+    2024
+   ]
+  },
+  {
+   "name": "Iranian Kurdish insurgents (KDPI, Komala), only if a page shows ground held",
+   "suggested_slug": "iranian-kurdish-insurgents",
+   "years": [
+    1979,
+    1982
+   ]
+  },
+  {
+   "name": "Democratic Republic of Yemen (1994 southern secession), rebel state",
+   "suggested_slug": "democratic-republic-of-yemen",
+   "years": [
+    1994,
+    1994
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-me-10-m.md",
+ "problems": [
+  "Iran-Iraq War page: WebFetch text did not cover Majnoon's 1988 recapture or Karbala-5 for me either (same truncation the author reported).",
+  "republic-of-iraq duplicates the state of iraqi-republic (me-10-k) by design of the author; needs an orchestrator decision (fold or keep the join).",
+  "Neighbour dossiers present and read (ledgers grepped): iraqi-republic, north-yemen, kingdom-of-saudi-arabia, sultanate-of-oman, state-of-kuwait, turkmenistan, afghanistan, mujahideen, islamic-republic-of-pakistan, taliban, republic-of-djibouti, state-of-eritrea, united-states-of-america, ethiopia; not yet written: republic-of-turkey, kuwait, french-fifth-republic, kingdom-of-great-britain, republic-of-armenia, republic-of-azerbaijan, union-of-soviet-socialist-republics, arab-republic-of-egypt, state-of-israel, kingdom-of-jordan, syria (their groups have not run).",
+  "Reviewer applied two small fixes to republic-of-iraq.json (/ledger/13 note quotation, /ledger/14 confidence 3->2); the file re-validates."
+ ]
+}

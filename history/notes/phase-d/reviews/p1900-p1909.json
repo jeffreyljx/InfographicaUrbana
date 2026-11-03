@@ -1,0 +1,76 @@
+{
+ "window": "p1900-p1909",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "congo-free-state gain from anglo-egyptian-sudan, 1900, the Lado Enclave. Page: the 1894 lease 'for the period of his lifetime'; in 1899 'by a tacit understanding, the State was permitted to remain in occupation of the Lado Enclave'; in 1905 'Leopold immediately ordered his troops to occupy the now vacant military posts'; commanders listed to May 1907 (the commander was the only official 'from 1897 to June 1910'); infobox Congo Free State 1894-1908, Belgian Congo 1908-1910; 'On 10 June 1910 ... the district officially became a province of the' Anglo-Egyptian Sudan. Spec: gazetteer region 'Lado Enclave', 119 cells (30,095 km2; 109 in South Sudan, 7 Uganda, 3 DRC), 30.5-31.8 E, 3.56-5.46 N, west of the Nile. The page gives 'about 15,000 square miles (39,000 km2)', running from 'a point situated on the west shore of Lake Albert, immediately to the south of Mahagi', with its 'southern half' ceded to Uganda in 1912 and 'renamed West Nile'. So the spec covers no land outside the enclave but leaves out its southern part (see problems). The gain takes only the Sudan's cells. Trial (my stage, against a trial without this file): 109 cells go from the Sudan to the Free State in 1900; the 85 east-bank Central Equatoria cells stay with the Sudan, which is right; the Belgian Congo inherits 98-101 cells in 1908 by R2.",
+   "page": "https://en.wikipedia.org/wiki/Lado_Enclave",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "sultanate-of-darfur gain from anglo-egyptian-sudan, 1900, the five Darfur states. Page: 're-established again from 1898 to 1916'; 'In 1898 ... sultan Ali Dinar managed to re-establish Darfur's self-rule. Ali Dinar's rule was recognised and tolerated by the British'; 'the British conquered Darfur in 1916'. The page says nothing about the extent around 1900. The spec (1,848 cells, 21.9-27.9 E, 8.7-20.0 N) is the outline that the Sudan dossier's own keyframes leave out ('without Darfur, which was still Ali Dinar's sultanate') and that its 1916 gain takes from Darfur, so it matches the dossiers. Trial: 771 cells go from the Sudan to Darfur in 1900. Without the patch, the Sudan holds them in 1900-1902 and nobody holds them from the 1903 snap. With it, Darfur holds 1,828 of the 1,848 cells to 1909. Wadai keeps 15 cells and French Africa 5 (18 from 1905) on the western edge. Dating it from 1900 rather than 1898 is right for this window.",
+   "page": "https://en.wikipedia.org/wiki/Sultanate_of_Darfur",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/2",
+   "verdict": "fixed",
+   "what": "sultanate-of-darfur gain from khedivate-of-egypt, 1900, same region and page as events/1. Trial: 76 north-Darfur cells (69 at the end of 1905) go from the Khedivate to Darfur. The Khedivate's keyframe from 1899 is 'Egypt alone', so these cells are a leftover. The entry is needed because a gain takes only the counterpart's cells. The note dated the Egyptian loss of Darfur to 1883 from memory, but the page has 'In 1885 they conquered Darfur and destroyed Khartoum, ending Turco-Egyptian rule' and no 1883.",
+   "page": "https://en.wikipedia.org/wiki/Sultanate_of_Darfur",
+   "fix": "In the note, replaced 'its loss in 1883' with 'its loss to the Mahdists ('In 1885 they conquered Darfur and destroyed Khartoum, ending Turco-Egyptian rule')'. This is a note-only change and moves no cells.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "qing-dynasty_1900 (1900-1904): the dossier's correction (the Cliopatria 1905 shape) plus {place Tianjin, km 45}, 37 cells (116.7-117.7 E, 38.8-39.5 N). Page: the Tientsin Provisional Government, established on 30 July 1900, 'existed until 15 August 1902' and then returned control to the Qing; 'had military control over Tianjin, Chinghai, Ningho and some other regions'. Without the patch, the 1900 snap empties 33 cells round Tianjin (22 from 1905). With it, they are Qing in 1900-1909. The 5 British and French concession-artifact cells stay with them (R1), as before. Side effect: with Tianjin inside the shape, the Qing 1900 snap moves only about 11 cells and falls under the 20-cell tolerance, so it no longer fills 5 cells that were unowned on 1 January 1900: Shenzhen (114.0-114.3 E, 22.6 N; 3 cells) and Weihai/Rongcheng (121.9 E 37.4 N, 122.5 E 37.15 N; 2 cells). They stay unowned in 1900-1909 (see problems). The trade is still well positive (about 300 cell-years filled against 50 lost).",
+   "page": "https://en.wikipedia.org/wiki/Provisional_Government_of_Tientsin",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "what": "qing-dynasty_1905 (1905-1910): the dossier's 'ok' shape plus the same Tianjin disc. Same page and the same 15 August 1902 return. Trial: the Qing keep the Tianjin cells through 1909. The Qing also win 7 cells north-east of Tianjin (117.4-117.7 E, 39.3-39.6 N) by size against the Russian Empire's 1905 shape. Without the patch, Russia took those cells from nobody: a 1,750 km2 'Russian concession' artifact that no page opened supports, so this is an improvement. Side effect: Russia's 1905 snap then moves only 15 cells and falls under the tolerance. 16 Arctic-coast cells (Yana delta 137 E 71.5 N, Indigirka delta 146 E 72.2 N, Taymyr coast 110-113 E 73.8-74.4 N) and 2 cells at 80.2 E 42.7 N, all unowned on 1 January 1905, are no longer filled. One south-Sakhalin cell (143.16 E 49.25 N) also stays Russian instead of being released in 1905. This lasts 1905-1909 (see problems).",
+   "page": "https://en.wikipedia.org/wiki/Provisional_Government_of_Tientsin",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "what": "dutch-east-indies_1905 (1905-1907): the dossier's correction kept verbatim, plus admin1 Aceh (184 cells; 55 are already in the 1905 shape, and 180 are in the 1914 Cliopatria shape that the dossier accepts). Page: 'In 1904, the Sultanate of Aceh surrendered, though guerilla resistance would continue'; 'By the end of 1904, most of Aceh was under Dutch control'; indirect rule through the uleebelang; infobox 1873-1904. The dossiers agree: the sultanate-of-aceh dossier ends in 1904, and the DEI ledger has a 1904 gain of Aceh. Trial: without the patch, the 1905 snap empties 129 Aceh cells to the end of the window; with it, the Dutch hold 180 cells in 1905-1907 and all 184 from 1908. Side effects: the 1905 snap now falls under the tolerance. Badung (3 cells round Denpasar) therefore stays Balinese until the DEI ledger's 1906 gain, which matches the dossier's own 'Badung, Dutch from 1906' and is better. 3 cells (Jambi 104.4 E -1.3/-1.9 and one at 120.25 E -4.43) are unowned in 1905-1907 instead of Dutch, until the 1908 snap.",
+   "page": "https://en.wikipedia.org/wiki/Aceh_War",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/3",
+   "verdict": "pass",
+   "what": "dutch-east-indies_1908 (1908-1913): the dossier's correction kept verbatim, plus admin1 Aceh. Same page. Trial: 1908 snap added 125, removed 10 (was 120 and 7). Aceh is Dutch in 1908-1909 and the 4 leftover Aceh cells are filled. The keyframe runs into the next window, but a keyframe acts only in its start year, 1908. The window agent already reported the crossing, and p1910-p1919 does not override this shape.",
+   "page": "https://en.wikipedia.org/wiki/Aceh_War",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "fixed",
+   "what": "congo-free-state over anglo-egyptian-sudan, 1900-1908, in the Lado Enclave. Same page as events/0 (the 'tacit understanding' of 1899, the 1905 reoccupation of the posts, the Sudan only from 10 June 1910). Trial: it settles 109 cell-years in 1903, the Sudan's 1903 snap, so the Free State keeps the enclave. In 1908, the Sudan's 85 cells east of the Nile correctly stay the Sudan's against the Belgian Congo's found by size. The 'why' quoted the Sudan 1903 keyframe as ('without Darfur, with South Sudan'), but the dossier's text for that keyframe is 'the 1899 Sudan plus the Halaib land'. The ruling covers only the Sudan pair, so in 1905-1909 British Africa still takes 11 enclave cells in its north-west by R1 (see problems).",
+   "page": "https://en.wikipedia.org/wiki/Lado_Enclave",
+   "fix": "In the 'why', replaced the misquote with ('the 1899 Sudan plus the Halaib land', the 1899 Sudan being drawn 'without Darfur' and with the South Sudan). Wording only.",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch p1900-p1909 after my two wording fixes: 8 entries, 8 ok, 0 rejected. My own trial into /tmp/claude-0/work/review-p1900-p1909/stage: all 8 applied (rulings/0 settled 109 cell-years in 1903). It was compared cell by cell with a trial without this file (stage0): 1900, +771 Darfur (from the Sudan), +76 Darfur (from Egypt), +109 Free State, +33 Qing at Tianjin, -5 Qing (Shenzhen, Weihai); 1905, +129 Aceh Dutch, +7 Qing (from Russia), -17 Russian Arctic cells, 3 Dutch to nobody, Badung kept by Bali until 1906.",
+ "problems": [
+  "Lado Enclave, southern half (events/0, rulings/0 leave it): the gazetteer region 'Lado Enclave' stops at 3.5 N, but the page has the enclave running to 'a point situated on the west shore of Lake Albert, immediately to the south of Mahagi' and its 'southern half' ceded to Uganda in 1912 and 'renamed West Nile'. In the trial, the West Nile districts west of the Albert Nile (admin1 Arua, Koboko, Yumbe, Maracha, Moyo, Nebbi, Zombo, Uganda; 49 cells) are British Africa's in 1900-1909. So are 7 cells of the region at 3.56-3.70 N and, from British Africa's 1905 snap (R1 over the Free State), 11 cells at 30.5-30.9 E, 4.9-5.5 N. Suggested follow-up for p1900-p1909, source https://en.wikipedia.org/wiki/Lado_Enclave: (a) an event congo-free-state gain from british-africa, 1900, region = union of those seven Uganda admin1; (b) a ruling congo-free-state over british-africa, 1900-1908; (c) a ruling belgian-congo over british-africa, 1908-1909. Both rulings take region = union of {region 'Lado Enclave'} and the seven districts. Rulings rank above R1, so they hold. The gazetteer note for 'Lado Enclave' says 'from Lake Albert' but its polygon does not reach it; the gazetteer owner should extend it, because the Sudan's 1910 gain and its 1912/1914 losses to Uganda use the same region.",
+  "Snap-tolerance side effects of keyframe_overrides/0-2, all from holes that existed before this patch. With Tianjin and Aceh inside the shapes, the Qing 1900, Russian Empire 1905 and Dutch East Indies 1905 snaps move 20 cells or fewer, and the compiler then moves nothing. Left unfilled as a result: (a) 5 cells unowned on 1 January 1900 stay unowned in 1900-1909: Shenzhen (cells 266927, 266928, 266951, 114.0-114.3 E 22.6 N) and Weihai/Rongcheng (206930, 207051). (b) 16 Russian Arctic-coast cells (6498, 6512, 6607-6609, 10862-10865, 10952, 10954, 12778: Yana and Indigirka deltas, Taymyr coast) and 2 cells at 80.2 E 42.7 N (136140, 136142) stay unowned in 1905-1909. (c) South-Sakhalin cell 205483 (143.16 E 49.25 N) stays Russian after 1905. (d) 3 DEI cells (426646, 426659, 436015) are unowned in 1905-1907. The fix belongs to the qing-dynasty and russian-empire dossiers (holes on the 1 January anchors that only a snap was filling) or to a 'gain nobody' event with a page. It is not a reason to withdraw the overrides.",
+  "Biggest defect left in the window (the window agent flagged it but had no pages left to fix it): Ethiopia has 279 unowned cells on 1 January 1900, 653 at the end of 1900 and 599 in 1905-1907, filled only by the 1908 snap. The ethiopian-empire_1900 snap removes 398 cells that the p1890-p1899 patch had given it. The window agent's suggested override (ethiopian-empire_1900 and _1905 as the p1890-p1899 keyframe_overrides/4 correction with the Cliopatria year changed, source https://en.wikipedia.org/wiki/Menelik_II) needs that page reopened and the 1898 correction checked before it is copied.",
+  "The window agent's report calls the 11 Lado cells British Africa takes in 1905 'southern'. They are in the north-west of the region (30.5-30.9 E, 4.9-5.5 N), which may lie outside the true enclave if its western edge was further east; the page gives no line there."
+ ]
+}

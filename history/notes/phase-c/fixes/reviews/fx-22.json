@@ -1,0 +1,93 @@
+{
+ "batch_id": "fx-22",
+ "checks": [
+  {
+   "item": "F001",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Beiyang_government",
+   "what": "kuomintang /ledger/23 (1928-12) is now a rename without a region; republic-of-china /ledger/25 (merge, counterpart kuomintang, region Cliopatria Kuomintang 1928 = 30,518 cells = the kuomintang_1928 keyframe) is the only merge. Page has 'the unification of China under the Nationalist flag on December 29, 1928' and 'The Chiang-led Nationalist government in Nanjing succeeded as the internationally recognized government of China'. compile_dossiers.py merge(): did=republic-of-china holds about 26,900 cells of that region against about 7,000 for the Kuomintang, so held(did) >= held(cp) and the Republic's cells move to the Kuomintang. Two mirrored merges did cancel. The fixer's order is backwards: slugs sort alphabetically, so kuomintang/23 ran first. The conclusion does not change. Validates OK.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F018",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/T%C3%BCrgesh",
+   "what": "turgesh keyframe_review/0 (turgesh_692, verdict wrong, Cliopatria shape kept as correction) now has from 692, to 698. keyframe_years() skips it because 698 < start 699, and do_keyframe no longer unions the 10,651-cell Mongolian Plateau shape into the 699 target. In the last compile the R2 rule had taken those cells from second-turkic-khaganate. Pages: Turgesh 'established a khaganate in 699'; Second Turkic Khaganate 'lasted from 682 to 744', 'centered on Otuken in the upper reaches of the Orkhon River'. Validates OK.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F019",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Second_Turkic_Khaganate",
+   "what": "Same edit as F018: without the plateau there is nothing for the 705 keyframe to remove. 703 extent confirmed on the Turgesh page ('from Chach to Turfan and Beshbaliq'). See problems for the separate Tang-protectorate overlap.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F021",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Treaty_of_Madrid_(13_January_1750)",
+   "what": "Gazetteer check: colonial-brazil_1775 (1775-1776) = Cliopatria Portuguese Empire 1752 inside Brazil = 22,395 cells = the 1752 keyframe + 5,929 Grao-Para cells. The new colonial-brazil_1777 (1777-1800) = 28,147. The 1777 gains (spanish-empire, nobody) cover exactly keyframe_1777 minus keyframe_1775 (5,798 cells, none in the Misiones Orientales); 46 cells go the other way. Page: El Pardo 1761 nullified the treaty and 'The terms of the Treaty of Madrid, with a few exceptions, were re-established in the First Treaty of San Ildefonso in 1777'. A 1777 date at confidence 2 is defensible. The change only partly removes the 1775 snap (10,257 cells); see problems: portuguese-empire holds 4,459 of the Grao-Para cells and 830 cells of the 1777 region.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F025",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Treaty_of_Madrid_(13_January_1750)",
+   "what": "colonial-brazil /ledger/16 (spanish-empire) and the new /ledger/17 (nobody), both 1750-01, have region = Portuguese Empire 1752 inside Brazil minus the 1720 shape and Grao-Para (12,604 cells). keyframe_1700 plus this region equals keyframe_1752 (16,466) to within 1 cell. The old 3-state region had 1,143 cells outside the 1752 shape. Both gains sort before portuguese-empire /ledger/54 (same month, slug order), so they take the land that event took before. Page: uti possidetis ('each party must stay with what it now holds') and Spain 'acceded to the westward expansion of Brazil'. Nit: the Colonial Brazil page has the first Minas Gerais town in 1711, so 1750 is only the latest possible date for that part (confidence 2, said in the note). Residual of at most 312 cells: see problems.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F043",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Adams%E2%80%93On%C3%ADs_Treaty",
+   "what": "New USA /ledger/37 (1821-02 loss to spanish-empire) covers 562 cells: Federated Republic of Mexico 1846 inside CO 373, KS 78, OK 52 and WY 59. All 562 lie in the 1804 Louisiana gain (ledger/24, 9,532 cells), and none are in Texas. They are gone from the 1822, 1836 and 1846 keyframes and are in the 1848 gain and the 1848-1866 keyframes. Bounding boxes match the treaty line: south of the Arkansas and west of 100W, and Wyoming below about 42N and west of about 106.7W. A few Oklahoma cells near 34.3N/-99.2 (Greer County) may lie on the US side. Pages: treaty 'officially made effective on February 22, 1821'; Article 3 runs along the Arkansas 'to its source', then the 42nd parallel. The Mexican-American War infobox lists 'parts of Colorado, Oklahoma, Kansas, and Wyoming' as ceded. The spanish-empire 1821-09 loss to first-mexican-empire carries the cells on to Mexico. 'Partly' is honest: the Texas strip and Gadsden/Rio Grande noise are left. Validates with 0 errors.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F052",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/American_Civil_War",
+   "what": "united-states-of-america_1865 correction = the old one plus the eleven Confederate states. Gazetteer: 30,440 cells, against 30,448 for keyframe_1866. Keyframes run at sort key month 13, after the 1865 April and June gains (/ledger/69-70), so the year-end state holds the whole South. Page: 'on April 9, 1865, Lee surrendered to Grant following the Battle of Appomattox Court House'; 'Texas remained in Confederate hands throughout the war'. The Trans-Mississippi dates in the text come from the existing /ledger/70 note (Conclusion page).",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F059",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/American_Civil_War",
+   "what": "Same edit as F052. The 1865 and 1866 keyframes now differ by 8 cells, so the 5,181-cell give-back in 1866 is gone.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F143",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Adams%E2%80%93On%C3%ADs_Treaty",
+   "what": "Same /ledger/37 as F043. The February 1821 loss puts the 562 cells with spanish-empire before first-mexican-empire's September 1821 founding. spanish-empire /ledger/96 (1821-09 loss to first-mexican-empire, Spanish Empire 1820 inside Mexico and the USA) has no paired gain, so it hands them on. US keyframe_1822 has 0 of the 562 cells.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F257",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Dutch_Brazil",
+   "what": "colonial-brazil now has losses to dutch-brazil in 1634 (150 cells, 106 in keyframe_1630), 1637 (Ceara, 319 in the keyframe) and 1641 (286, 65 in the keyframe), and gains from dutch-brazil in 1645 (382) and 1648-04 (141). Regions match dutch-brazil /ledger/1, 3, 4, 6 and 9. Page confirms 'By 1634, the Dutch controlled the coastline from the Rio Grande do Norte to Pernambuco's Cabo de Santo Agostinho', the capture of Ceara 'within the year' (1637), 'In 1641, the Dutch captured the captaincy of Maranhao', the June 1645 uprising and Guararapes in April 1648. The page does not date the 1645 and 1648 losses, and the notes say the years are Cliopatria's. dutch-brazil names portuguese-empire as counterpart, so no paired_gain suppression applies and the losses move colonial-brazil's cells to the Dutch as intended. Skipping 1635 Porto Calvo (2 cells outside every colonial-brazil keyframe) is right. Nit: these mirrors are confidence 2, while the dutch-brazil originals are 1.",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "F021 residual: portuguese-empire /ledger/54 (1750-01 gain from spanish-empire, region Portuguese Empire 1752 minus 1748) sorts before state-of-maranhao-and-grao-para's 1750 keyframe. It takes 4,463 Grao-Para cells: these are the 4,459 'kept by others' of state-of-maranhao-and-grao-para_1750. So the 1775 merge still moves only about 1,470 cells, and the new colonial-brazil_1775 keyframe (22,395) will take about 4,459 cells from portuguese-empire by R2 (a 1775 snap of about 4,459 instead of 10,257). portuguese-empire's 1775 keyframe also holds 830 of the 5,798 cells of the 1777 gains, which gains from spanish-empire or nobody cannot take: expect about an 830-cell snap in 1777, plus the 46-cell release. The fixer's handoff reason is wrong: Grao-Para shares 0 cells with Goias, Mato Grosso and Rio Grande do Sul, so the old colonial-brazil 1750 gain took none of the State of Maranhao's land. Redirect the handoff to portuguese-empire: drop the Grao-Para region (and colonial-brazil's land) from /ledger/54's region, or give state-of-maranhao-and-grao-para a 1750-01 gain that sorts before it.",
+  "F025 residual: portuguese-empire's 1748 shape (and /ledger/53) holds up to 312 cells of the new 1750 region, which colonial-brazil's gains from spanish-empire and nobody cannot take. A small 1752 snap (at most 312 cells) may remain.",
+  "F001 residual: kuomintang_1929 (Cliopatria 1929, 34,991 cells) is 4,476 cells wider than the 1928 merge region. Those cells are Heilongjiang 1,922, Jilin 765 and Liaoning 578 (fengtian-clique, which the vassal-keeps rule leaves alone) and Inner Mongolia 1,161, and no 1929 event covers Inner Mongolia. A snap of about 1,000 cells may remain in 1929.",
+  "F018/F019 residual (separate finding): in the last compile beiting-protectorate and protectorate-general-to-pacify-the-west (R1 colony of Tang) held the Taraz core and the 703 region, and turgesh /ledger/1 (703 gain) was a no-op. With the plateau removed, the Turgesh may draw almost no land from 699 to 745.",
+  "Validation (python3 -I history/tools/validate_dossier.py --resolve): kuomintang, turgesh and colonial-brazil OK with 0 errors and 0 warnings. united-states-of-america OK with 0 errors and 7 warnings (the fixer reported 2), none from fx-22: the northwestern-confederacy counterpart, the Midway and Wake regions at /ledger/71, 84, 104 and 120 resolving to no cells, and /wars/9/zones/2. dutch-brazil, federated-republic-of-mexico and first-mexican-empire were not modified (mtimes 2026-10-19).",
+  "No compile was run by the reviewer either. The residuals above come from compile_dossiers.py's logic, gazetteer counts, and the last run's conflicts_settled_by_rule.csv and noop_events.csv."
+ ]
+}

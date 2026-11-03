@@ -1,0 +1,2108 @@
+{
+ "batch_id": "me-07",
+ "verdicts": [
+  {
+   "slug": "rashidun-caliphate",
+   "verdict": "fail",
+   "summary": "Sources hold: every spot-checked date is on its page. It fails on keyframe/ledger consistency in Iran, the Caucasus and Libya: the 644-660 corrections keep land the ledger loses (Armenia, Atropatene 646) or gains only later (Fars 648, Rey 651), keep Makran with no gain event, and Cyrenaica/Tripolitania are dated 647 against 642/643 on the Maghreb page. One small fix applied (predecessor land).",
+   "fixes": [
+    {
+     "where": "/identity/predecessors/0/land",
+     "what": "Predecessor land was region Arabia, but the hand-over from Medina in 632 is the Hejaz (found event, keyframe 632 and Medina successor land all say Hejaz).",
+     "why": "Rashidun page: \"The year 12 Hijri dawned on 18 March 633 with the Arabian peninsula united under the caliph in Medina\" - Arabia is united only in 633; islamic-state-of-medina /identity/successors/0/land is region Hejaz.",
+     "fix": "Changed region Arabia -> Hejaz (text kept). Re-validated: 0 errors, 0 warnings.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/35 with /keyframe_review/6, /7, /8, /9",
+     "what": "Armenian Highlands and Atropatene are lost in 646 to kingdom-of-armenia, Armenia is never regained, yet the 647-660 corrections (Cliopatria 647 and 656 shapes, north to 43.1 N) keep the whole Caucasus; Atropatene's rebels are not the Armenian kingdom.",
+     "why": "Persia page: \"The main rebellions were in the Persian provinces of Armenia and Azerbaijan in 646\" and \"The conquest of Iranian Azerbaijan started in 651\". byzantine-empire /ledger/20 has Armenia passing from the Rashidun to Byzantium in 657 (c=2), with no Rashidun mirror. The Cliopatria Kingdom of Armenia row ends in 646.",
+     "fix": "Either (a) re-type 646 as contest_start (rebellion) with counterpart \"Armenian and Azerbaijani rebels\", contest_end 651 for Atropatene, and add a 657 loss of Armenia to byzantine-empire (mirror of byzantine /ledger/20); or (b) keep the 646 loss but subtract Armenian Highlands and Atropatene from the 647-650 correction, subtract Armenia from 651-660 and record its regain if any. Do not name kingdom-of-armenia for Atropatene.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/5, /keyframe_review/6",
+     "what": "The 644-646 and 647-650 corrections keep Fars and Rey inside although the ledger gains Fars only in 648 (/ledger/39) and Rey in 651 (/ledger/43) from the Sasanians; sasanian-empire loses Media (Rey) in 642.",
+     "why": "Persia page: \"In c. 643, Uthman ibn Abi al-As seized Bishapur, which signed a peace treaty\"; \"In 648 ... forced the governor of Estakhr ... to surrender\"; Rey besieged in 651 and surrendered \"after fierce resistance\". sasanian-empire /ledger/114 loses Media in 642.",
+     "fix": "Make the corrections and the ledger agree: subtract Fars (admin1 Fars) until 648, or keep it and re-type /ledger/39 and /ledger/43 as reconquests after the revolts the page names (\"Fars and Sistan in 649\") - contest_start at the revolt, contest_end at the reconquest, counterpart the rebels - instead of gains from sasanian-empire.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/5 ... /keyframe_review/10",
+     "what": "Makran (about a quarter of Pakistan, about 0.2 M km2) is kept in every correction from 644, but no ledger event gains it.",
+     "why": "The K5 note says \"Makran and Pakistan (25%) are left in\"; the Persia page has \"Makran in 650\" among the rebellions and \"a simultaneous attack launched against Kerman and Makran\" in 651, so it was taken before 650 and again in 651.",
+     "fix": "Add a gain of Makran (region Makran) with the year the Persia page supports (before the 650 revolt, c=1-2, or 651 c=2) and a contest for the 650 revolt; or subtract Makran from the 644-650 corrections and gain it in 651.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/37 with /keyframe_review/4, /5",
+     "what": "Cyrenaica and Tripolitania are dated 647 (c=2), but the Rashidun page gives no year for either (647 is Sufetula) and the Maghreb page dates Barqa to 642/643 and Tripoli to about 643; the 641-646 corrections leave Libya out.",
+     "why": "Maghreb page: Barqa taken \"Soon after the fall of Alexandria in 642\"; Tripoli \"after around a month it also fell in around 643\". Rashidun page: \"In the ensuing battle in 647, the Exarchate was defeated\" (Sufetula). byzantine-empire /ledger/13 loses Cyrenaica in 644 (643-644).",
+     "fix": "Split /ledger/37: gain Cyrenaica 643 and Tripolitania 643 (source the Maghreb page, add it to sources[], c=2); add Cyrenaica and Tripolitania to the 641 (from 643) and 644 corrections, or split 641 at 643. Mis-dated at confidence 2.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "(missing, between /ledger/39 and /ledger/40)",
+     "what": "No event for the Byzantine reoccupation of Alexandria in 645-646.",
+     "why": "Muslim conquest of Egypt page: \"Constans sent a large fleet of 300 ships to retake Egypt towards the end of 645\" and Manuel \"easily overpowered small Arab garrison at Alexandria\"; infobox 645-646. byzantine-empire /ledger/14 (gain 645, c=3) and /ledger/15 (loss 646) have no mirror here.",
+     "fix": "Add loss 645 and gain 646 of place Alexandria 60 km, counterpart byzantine-empire, source the Egypt page (or an occupation_start/occupation_end pair).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/48",
+     "what": "The 656 loss of Syria to Mu'awiya names only the Levant, but the 656 keyframe drops Cyprus (\"went with Syria\") and the Umayyad 656 keyframe includes it.",
+     "why": "/keyframe_review/8 note; umayyad-caliphate /keyframe_review/0 note \"Syria (Levant 81%, Cyprus)\".",
+     "fix": "Add region Cyprus (island) to the /ledger/48 region union.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/7",
+     "what is missing": "date of Hira and the first Iraqi towns (634 bridging, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Hira"
+    },
+    {
+     "where": "/ledger/9, /ledger/10",
+     "what is missing": "fate and date of the Ghassanid country (636 bridging, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Jabalah_ibn_al-Aiham"
+    },
+    {
+     "where": "/ledger/23",
+     "what is missing": "date Hormuzan broke the treaty (640, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Hormuzan"
+    },
+    {
+     "where": "/ledger/32",
+     "what is missing": "date of Isfahan (643, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Isfahan"
+    },
+    {
+     "where": "/ledger/38",
+     "what is missing": "date of the withdrawal from Ifriqiya after Sufetula (648, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Sufetula"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/43",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Persia",
+     "result": "confirmed: Rey besieged in 651 and \"surrendered after fierce resistance\""
+    },
+    {
+     "where": "/ledger/41",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Persia",
+     "result": "confirmed: \"In 651 the conquest of Khurasan was assigned to Ahnaf ibn Qais\""
+    },
+    {
+     "where": "/ledger/33",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Persia",
+     "result": "confirmed: \"Suhail marched from Basra in 643\" and Kerman \"was subdued\""
+    },
+    {
+     "where": "/ledger/35",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Persia",
+     "result": "confirmed (year): \"main rebellions were in the Persian provinces of Armenia and Azerbaijan in 646\"; counterpart wrong for Azerbaijan"
+    },
+    {
+     "where": "/ledger/39",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Persia",
+     "result": "confirmed: \"In 648 ... forced the governor of Estakhr, Mahak, to surrender\""
+    },
+    {
+     "where": "/ledger/42",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Persia",
+     "result": "partly confirmed: page dates \"The first real invasion\" of Sistan to 650; the 651 Zaranj tribute was not quoted back"
+    },
+    {
+     "where": "/ledger/37",
+     "page": "https://en.wikipedia.org/wiki/Rashidun_Caliphate",
+     "result": "mis-dated (c=2): no year for Cyrenaica or Tripoli on the Rashidun page; Maghreb page gives 642/643 and around 643"
+    },
+    {
+     "where": "/identity/capitals",
+     "page": "https://en.wikipedia.org/wiki/Rashidun_Caliphate",
+     "result": "confirmed: \"Medina (632-656); Kufa (656-661)\""
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 6400000,
+    "infobox_year": 655,
+    "cliopatria_km2": 7090123,
+    "ratio": 0.9,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "dabuyid-dynasty",
+   "verdict": "pass",
+   "summary": "Could not break it: the four checked events (642 founding, 716 invasion, 759-760 conquest, 760 end) are on their pages with the years given; capitals sit inside the shape; the six Cliopatria shapes are reviewed and the 757-760 extension is sourced. Only gaps a gap-filler could close.",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "year Farrukhan moved the capital to Sari (712 bridging, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Sari,_Iran"
+    },
+    {
+     "where": "/wars/0",
+     "what is missing": "the 716/717 treaty: Farrukhan page says Yazid agreed \"to withdraw in return for tribute\" - a tributary pair with umayyad-caliphate may be warranted; and Abu Muslim's submission c. 750",
+     "page to try": "https://en.wikipedia.org/wiki/Farrukhan_the_Great"
+    },
+    {
+     "where": "/notes",
+     "what is missing": "Tang embassy of 746 recognising Khurshid as a vassal prince (Khurshid page) - a vassal pair for tang-dynasty if ea-04 wants it",
+     "page to try": "https://en.wikipedia.org/wiki/Khurshid_of_Tabaristan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Dabuyid_dynasty",
+     "result": "confirmed: \"from around 642 to the Abbasid conquest in 760\"; table Gil Gavbara 642-660"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Farrukhan_the_Great",
+     "result": "confirmed: \"In 716, the Arab governor of Iraq and Khurasan, Yazid ibn al-Muhallab invaded Tabaristan\""
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Khurshid_of_Tabaristan",
+     "result": "confirmed: \"the Abbasids conquered his country in 759-760\""
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Dabuyid_dynasty",
+     "result": "confirmed: header \"Dabuyid dynasty (642-760)\""
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Dabuyid_dynasty",
+     "result": "confirmed: infobox \"Capital: Fuman (660-760)\"; Sari from the Farrukhan page, undated"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 64825,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the infobox"
+   }
+  },
+  {
+   "slug": "umayyad-caliphate",
+   "verdict": "fail",
+   "summary": "Dates hold on every page opened (685 Egypt, 690 Cyrenaica, 705 Balkh, 721 Sindh, 728 Bukhara, 743 Transoxiana, 743 Gujarat). It fails on the Second Fitna: the 684-691 keyframe (Levant and Egypt) drops Iran, the Jazira, Arminiya, eastern Arabia, Libya and Kairouan with no loss events (the 683 loss names only Hejaz, Iraq, Egypt, Yemen) and the 692 keyframe restores them with gains only for Iraq, Khorasan and the Hejaz; Cyrenaica is lost in 690 and never regained; Gujarat is lost in 743 without ever being gained.",
+   "fixes": [
+    {
+     "where": "/keyframe_review/6 with /ledger/13, /ledger/19, /ledger/20",
+     "what": "The 684-691 correction (Levant + Egypt) removes Khuzestan, Jibal, Isfahan, Rey, Sistan, Azerbaijan, Arminiya, the Jazira, Bahrain, Oman and Nejd, but no ledger event loses them: /ledger/13 (683/11) names only Hejaz, Mesopotamia, Egypt and Yemen; zubayrid /ledger/1 gains Fars and Kerman from the Umayyads in 683 with no mirror here; najdat /ledger/0-1 found and gain Nejd, Bahrain and Oman from the Umayyads in 685 with no mirror here. The 692 keyframe (Cliopatria 692) restores all of them with gains only for Iraq (691), Khorasan (691, c=1), Hejaz (692), Armenia (692) and the Najdat lands (693).",
+     "why": "Abd Allah ibn al-Zubayr page: \"Most of the Islamic provinces offered their allegiance, including Egypt, Kufa, Yemen and the Qaysi tribes of northern Syria\"; Second Fitna page: \"most provinces recognized Ibn al-Zubayr as caliph\"; Mukhtar page: Iraq \"and its dependencies including Arminiya, Adharbayjan, Jibal and parts of the Jazira\". Area: 674 shape 7.0 M km2 against roughly 1.3 M km2 for Levant + Egypt.",
+     "fix": "Widen /ledger/13 to the provinces that recognised Ibn al-Zubayr (add Fars, Kerman, Khuzestan, Jibal/Media, Isfahan, Sistan, Azerbaijan; Arminiya and the eastern Jazira if the author accepts the Mukhtar page), add a 685 loss of Nejd, Bahrain and Oman to najdat-kharijite-emirate, and widen /ledger/20 (691/10 gain from zubayrid) to Iraq with the same dependencies. Coordinate with the Zubayrid dossier (it must hold what this loses).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/6 with /ledger/16, /ledger/18",
+     "what": "The 684-691 correction omits Cyrenaica and Tripolitania, which the ledger keeps Umayyad until the Byzantine landing of 690, and Kairouan, regained from Kusaila in 688.",
+     "why": "Maghreb page: \"a Byzantine fleet landing in Cyrenaica in 690\" and \"Barqa had fallen out of Muslim control\" (so it was Muslim before 690); \"in 688/9 ... Zuhayr ibn Qays to defeat Kusaila and retake Qayrawan\".",
+     "fix": "Add Tripolitania and Cyrenaica to the 684-689 correction (Cyrenaica out from 690) and Kairouan from 688; split the keyframe at 688 and 690 or note the ledger carries them.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/18 with /keyframe_review/7 ... /14",
+     "what": "Cyrenaica is lost to the Byzantines in 690 and never regained in the ledger, yet every keyframe from 692 contains it.",
+     "why": "Maghreb page (confirmed): 690 landing; the Umayyad ledger has no later Cyrenaica event; byzantine-empire has no gain of Cyrenaica either.",
+     "fix": "Add the regain (Hassan ibn al-Nu'man's advance through Barqa in the 690s; find the year on the Maghreb or Hassan ibn al-Nu'man page) or subtract Cyrenaica from the 692 correction until a dated regain.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/68 with /ledger/56",
+     "what": "The 743 loss of Gujarat and Rajasthan removes land the ledger never gained (723 is only a contest_start).",
+     "why": "India page: \"Al-Junayd have conquered all of Gujarat, a large part of Rajasthan, and some parts of Madhya Pradesh\"; \"Junayd ... (723-726) recaptured Sindh, conquered Gujarat and parts of Rajasthan\"; \"The Arabs lost their conquests in Rajasthan and Gujarat by 743\".",
+     "fix": "Add a gain c. 724-725 of Gujarat (and Rajputana as far as the page supports), c=2, counterpart the local kings (maitraka-dynasty / gurjara-pratihara-dynasty or \"Hindu kings\"), or turn /ledger/68 into a contest_end only.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/14",
+     "what": "684/8 records a gain of northern Syria from the Zubayrids, but neither the Umayyad 683 loss nor the Zubayrid ledger has that land changing hands (zubayrid /ledger/2 and /6 are a contest).",
+     "why": "Second Fitna page on Marj Rahit names a clash, not a transfer; zubayrid /ledger/6 is contest_end 684/8.",
+     "fix": "Make /ledger/14 a contest_end with zubayrid-caliphate (it already has the matching contest in the Zubayrid file), or add the land to both 683 events.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/6",
+     "what": "Egypt is drawn Umayyad from 684, while the Zubayrid 683-684 keyframe also holds it and the ledger moves it in 685.",
+     "why": "Abd Allah ibn al-Zubayr page: \"in March 685, Ibn al-Zubayr lost ... Egypt to Marwan\"; Umayyad page: \"In 685, Marwan and Ibn Bahdal expelled the Zubayrid governor of Egypt\".",
+     "fix": "Start Egypt in 685 (split the keyframe 684 / 685-691).",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/30",
+     "what": "705 gains the Armenian Highlands again (already gained from Byzantium in 692, /ledger/21, with no loss between), and names principality-of-iberia as counterpart for Armenia and Albania.",
+     "why": "Umayyad page: \"By 705, Armenia was annexed by the caliphate\".",
+     "fix": "Limit the 705 gain to Caucasian Iberia (and Albania if sourced), or add the intervening loss of Armenia (the 703 revolt) with its source.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/3",
+     "what": "Marked ok, but the 666 shape (west edge 18.8 E) does not contain the Fezzan gained in 666 (/ledger/9, Germa 12.9 E).",
+     "why": "shapes.csv bbox of umayyad-caliphate_666; garamantes /ledger/2 dissolves to the Umayyads in 666.",
+     "fix": "Mark adjust and add the Fezzan (or treat 666 as a tribute raid and re-type the event).",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "(missing mirrors in the Maghreb)",
+     "what": "Neighbour dossiers name the Umayyads in events with no mirror here: kingdom-of-altava 708 dissolve (Oranais), emirate-of-nekor vassal 710-750, kingdom-of-the-aures 698 gain (the Kahina's victory) and 703 end (here 701), exarchate-of-africa 709 Ceuta, barghawata-conference 744 found (here Morocco is lost to nobody in 740).",
+     "why": "rev-check of history/polities/*.json, 2026-10-19.",
+     "fix": "Add a 708 gain of Oranais from kingdom-of-altava, a vassal pair with emirate-of-nekor (710-750), a 698 loss of Numidia and southern Tunisia to kingdom-of-the-aures before /ledger/28, and Ceuta 709 if a page dates it; leave the 701/703 and 740/744 disagreements in notes if pages differ.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/23",
+     "what": "The 693 gain from the Najdat omits Ta'if, which the Najdat dossier holds 689-693.",
+     "why": "najdat /keyframe_review/2 and /ledger/5.",
+     "fix": "Add place Ta'if 60 km to the region union.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/12",
+     "what is missing": "year Kusaila entered Kairouan (683, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Kusaila"
+    },
+    {
+     "where": "/ledger/17",
+     "what is missing": "year of the Cyprus condominium (688, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Cyprus_in_the_Middle_Ages"
+    },
+    {
+     "where": "/ledger/19",
+     "what is missing": "when Khorasan returned to Umayyad control after Ibn Khazim (691, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Abd_Allah_ibn_Khazim_al-Sulami"
+    },
+    {
+     "where": "/ledger/23",
+     "what is missing": "693 is on the Najdat page (\"defeated by the caliphate in 693, at the battle of Mushahhar\"); cite it and raise to c=2",
+     "page to try": "https://en.wikipedia.org/wiki/Najdat"
+    },
+    {
+     "where": "/ledger/71",
+     "what is missing": "date of the Fihrid break-away in Ifriqiya (745, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Abd_al-Rahman_ibn_Habib_al-Fihri"
+    },
+    {
+     "where": "/ledger/73",
+     "what is missing": "dates of Rey and Nahavand in the Abbasid advance (748, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Qahtaba_ibn_Shabib_al-Ta%27i"
+    },
+    {
+     "where": "/ledger/78",
+     "what is missing": "status of al-Andalus 750-756 (c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Yusuf_ibn_Abd_al-Rahman_al-Fihri"
+    },
+    {
+     "where": "/ledger/77",
+     "what is missing": "when Sindh passed to the Abbasids (750, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Umayyad_campaigns_in_India"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Umayyad_Caliphate",
+     "result": "confirmed: \"In 685, Marwan and Ibn Bahdal expelled the Zubayrid governor of Egypt\""
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_the_Maghreb",
+     "result": "confirmed: \"a Byzantine fleet landing in Cyrenaica in 690\"; \"Barqa had fallen out of Muslim control\""
+    },
+    {
+     "where": "/ledger/29",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Transoxiana",
+     "result": "confirmed: \"Qutayba began his tenure by recovering Balkh in spring 705\""
+    },
+    {
+     "where": "/ledger/54",
+     "page": "https://en.wikipedia.org/wiki/Umayyad_campaigns_in_India",
+     "result": "confirmed: timeline row 721 \"Hullishah surrenders\"; text has Junayd appointed in 723"
+    },
+    {
+     "where": "/ledger/57",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Transoxiana",
+     "result": "confirmed: Suluk \"in 728 took Bukhara\""
+    },
+    {
+     "where": "/ledger/66",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Transoxiana",
+     "result": "confirmed: \"Nasr recovered most of Transoxiana by 743\""
+    },
+    {
+     "where": "/ledger/68",
+     "page": "https://en.wikipedia.org/wiki/Umayyad_campaigns_in_India",
+     "result": "confirmed: \"The Arabs lost their conquests in Rajasthan and Gujarat by 743\" (but no gain recorded)"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Umayyad_Caliphate",
+     "result": "confirmed (year): \"defeating the Byzantines at the Battle of Sebastopolis in 692\""
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 15000000,
+    "infobox_year": 720,
+    "cliopatria_km2": 9839115,
+    "ratio": 0.66,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "islamic-state-of-medina",
+   "verdict": "thin",
+   "summary": "Valid and honest; its four checked dates (622 Hijra, Mecca December 629 - January 630, end of the Quraysh war, 8 June 632) are on the pages. Thin by design (no Cliopatria shape, 3 pages): the 630 keyframe jumps from Medina and Mecca to the whole Hejaz with only the Mecca event behind it, and Muhammad's authority beyond the Hejaz by 632 is not traced.",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Khaybar (628) and other Hejaz oases before 630; the 622-629 keyframe is Medina 60 km only",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Khaybar"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Ta'if and Hunayn (630), Thaqif's submission",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Ta%27if"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Tabuk (630) and the northern Hejaz chiefs who submitted",
+     "page to try": "https://en.wikipedia.org/wiki/Expedition_of_Tabuk"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Year of Delegations (631): Yemen, Bahrain, Oman submissions, the extent at 632",
+     "page to try": "https://en.wikipedia.org/wiki/Year_of_Delegations"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Muhammad_in_Medina",
+     "result": "confirmed: \"the Hijrah in 622\""
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Conquest_of_Mecca",
+     "result": "confirmed: infobox \"December 629 - January 630\"; \"10 or 11 January 630\""
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Conquest_of_Mecca",
+     "result": "confirmed: \"formally marked the end of the conflict between his followers and the Quraysh\""
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Muhammad_in_Medina",
+     "result": "confirmed: \"He died on Monday, June 8, 632\""
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area on the page and no Cliopatria row"
+   }
+  },
+  {
+   "slug": "zubayrid-caliphate",
+   "verdict": "fail",
+   "summary": "Dates hold (Egypt March 685, Yemen 688, Ta'if 689, Maskin October 691, Mecca October/November 692). It fails on the mirror for Mukhtar: mukhtarid /ledger/0 takes Media and Azerbaijan from the Zubayrids in 685, but this dossier never holds or loses them, and its keyframes keep Iraq without the dependencies the pages give it (\"most provinces\"), leaving central Iran with nobody 683-691 next to the Umayyad 684-691 keyframe.",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0 ... /5 with /ledger/9, /ledger/10, /ledger/14",
+     "what": "No loss of Media and Azerbaijan to Mukhtar in 685 (mirror of mukhtarid /ledger/0) and no regain in 687; the corrections hold Iraq (Mesopotamia) without the provinces governed from Kufa and Basra, although the Umayyad dossier drops them in 684.",
+     "why": "Abd Allah ibn al-Zubayr page: \"Most of the Islamic provinces offered their allegiance, including Egypt, Kufa, Yemen...\"; Mukhtar page: Mukhtar \"controlled most of Iraq and its dependencies including Arminiya, Adharbayjan, Jibal and parts of the Jazira\" after taking Kufa from the Zubayrid governor.",
+     "fix": "Add Iraq's dependencies (at least Jibal/Media and Azerbaijan; Khuzestan, Isfahan, Sistan if accepted) to the 683-684 correction; add a 685/10 loss of Media and Azerbaijan to mukhtarid-state-of-kufa, a 687/4 gain back (with mukhtarid widening its loss), and widen the 691/10 loss to the Umayyads accordingly. Keep it consistent with umayyad /ledger/13 and /ledger/20.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/17, /ledger/18",
+     "what": "The 692/10 loss and dissolve hand the whole Hejaz to the Umayyads, but the 691-692 correction excludes Ta'if (Najdat since 689).",
+     "why": "/keyframe_review/5 correction minus Ta'if; najdat /keyframe_review/2.",
+     "fix": "Use minus(region Hejaz, place Ta'if 60 km) for /ledger/17, /ledger/18 and /identity/successors/0/land.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0, /ledger/1, /ledger/2",
+     "what is missing": "dates of Yemen, Fars/Kerman and the Qays of northern Syria joining (683, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Abd_Allah_ibn_al-Zubayr"
+    },
+    {
+     "where": "/ledger/5, /ledger/13",
+     "what is missing": "when Abd Allah ibn Khazim recognised Ibn al-Zubayr and how Khorasan ended (684-691, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Abd_Allah_ibn_Khazim_al-Sulami"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Abd_Allah_ibn_al-Zubayr",
+     "result": "confirmed: \"in March 685, Ibn al-Zubayr lost the economically important province of Egypt to Marwan\""
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Second_Fitna",
+     "result": "confirmed: \"captured Yemen and Hadhramawt in 688\""
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Abd_Allah_ibn_al-Zubayr",
+     "result": "confirmed: \"in 689, they occupied Ta'if, Mecca's southern neighbour\""
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Second_Fitna",
+     "result": "confirmed: \"defeated and killed at the Battle of Maskin in October 691\""
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Abd_Allah_ibn_al-Zubayr",
+     "result": "confirmed: infobox death \"October/November 692\"; Second Fitna \"besieged Mecca in March 692\""
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area on the page and no Cliopatria row"
+   }
+  },
+  {
+   "slug": "mukhtarid-state-of-kufa",
+   "verdict": "fail",
+   "summary": "Dates hold (Kufa October 685, Khazir early August 686, Mukhtar killed 3 April 687). It fails because the land it holds is not handed on: the 685-687 keyframe includes Media and Azerbaijan, but the 687 loss, the dissolve and the successor land are Iraq without Basra only, and the 685 gain of Media and Azerbaijan has no mirror in the Zubayrid dossier.",
+   "fixes": [
+    {
+     "where": "/ledger/6, /ledger/8, /identity/successors/0/land",
+     "what": "The 687 loss, dissolve and successor land cover only Iraq without Basra, while /keyframe_review/0 holds Media and Iranian Azerbaijan to 687: that land passes to nobody.",
+     "why": "Research brief, table row 7 (Collapse and partition): \"At the end the land passes to the successors with a caption\". Mukhtar page: Mus'ab besieged the palace \"for four months\"; Mukhtar killed \"On 3 April 687\".",
+     "fix": "Give /ledger/6, /ledger/8 and the successor land the full keyframe region (the union in /keyframe_review/0/correction), with the matching Zubayrid gain; or drop Media and Azerbaijan from the keyframe and /ledger/0 if the dependencies are judged too vague to draw.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/0",
+     "what": "Gain of Media and Azerbaijan from zubayrid-caliphate with no mirror in the Zubayrid ledger.",
+     "why": "zubayrid ledger has no event for Media or Azerbaijan; Mukhtar page: \"Iraq and its dependencies including Arminiya, Adharbayjan, Jibal\" (undated).",
+     "fix": "Resolve together with the Zubayrid finding (Zubayrid adds the loss), or change the counterpart if the author decides the Zubayrids never governed them.",
+     "applied": false,
+     "blocking": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "when Mukhtar's authority reached the Jibal and Azerbaijan (685, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Mukhtar_al-Thaqafi"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Mukhtar_al-Thaqafi",
+     "result": "confirmed: \"Mukhtar captured Kufa in October 685\""
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Mukhtar_al-Thaqafi",
+     "result": "confirmed: \"The armies met at the banks of Khazir River in early August 686\""
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Mukhtar_al-Thaqafi",
+     "result": "confirmed: \"On 3 April 687, Mukhtar came out of the palace ... and was killed fighting\""
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Mukhtar_al-Thaqafi",
+     "result": "confirmed (undated): \"controlled most of Iraq and its dependencies including Arminiya, Adharbayjan, Jibal and parts of the Jazira\""
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area on the page and no Cliopatria row"
+   }
+  },
+  {
+   "slug": "najdat-kharijite-emirate",
+   "verdict": "pass",
+   "summary": "Could not break it: the founding (685), Yemen (688), Ta'if (689), Abu Fudayk's accession (691) and the defeat at Mushahhar (693) are on the pages; page disagreements (682 revolt, 687 Yemen, the holy villages) are in the notes. The missing mirror of its 685 founding is the Umayyad dossier's fault, listed there.",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "date of Bahrain and Oman (685, c=1)",
+     "page to try": "https://en.wikipedia.org/wiki/Najda_ibn_Amir_al-Hanafi"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Second_Fitna",
+     "result": "confirmed: \"Najda had established an independent state in Najd and Yamamah in 685\""
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Second_Fitna",
+     "result": "confirmed: \"captured Yemen and Hadhramawt in 688\" (the Najdat page has 687; disagreement in the author notes)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Second_Fitna",
+     "result": "confirmed: \"occupied Ta'if in 689\""
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Najdat",
+     "result": "confirmed: \"eventually defeated by the caliphate in 693, at the battle of Mushahhar\""
+    },
+    {
+     "where": "/identity/rulers/1",
+     "page": "https://en.wikipedia.org/wiki/Najdat",
+     "result": "confirmed: \"Abu Fudayk, murdered Najda himself in 691 and took his place\""
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area on the page and no Cliopatria row"
+   }
+  },
+  {
+   "slug": "azariqa-kharijite-emirate",
+   "verdict": "pass",
+   "summary": "Could not break it: Fars and Kerman taken from the Zubayrids in 685 and held until 698 are on the Second Fitna page, the end 698-699 on the Azariqa page; the 685/686 disagreement is in the notes. Rulers are empty although the page names leaders with partial dates (gap only).",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/identity/rulers",
+     "what is missing": "leaders with partial dates: Nafi ibn al-Azraq (killed early 685), Ubayd Allah ibn Mahuz (killed May 686 at Sillabra), Zubayr ibn Mahuz, Qatari ibn al-Fuja'a (to 698/699)",
+     "page to try": "https://en.wikipedia.org/wiki/Qatari_ibn_al-Fuja%27a"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Second_Fitna",
+     "result": "confirmed: \"had captured Fars and Kirman from the Zubayrids in 685\""
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Second_Fitna",
+     "result": "confirmed: \"holding parts of Fars and Kirman until being defeated by ... al-Muhallab ibn Abi Sufra in 698\""
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Azariqa",
+     "result": "confirmed: \"were subsequently destroyed in 698-699\""
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area on the page and no Cliopatria row"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 632,
+    "type": "found",
+    "counterpart": "islamic-state-of-medina"
+   },
+   "mirror": {
+    "slug": "islamic-state-of-medina",
+    "year": 632,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Medina dissolve 632/6 with successor rashidun-caliphate, land Hejaz; Rashidun predecessor land corrected Arabia -> Hejaz by the reviewer."
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 633,
+    "type": "gain",
+    "counterpart": "Ridda rebels (apostate tribes)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not a state; no dossier wanted"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 634,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 634,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Damascus 634 on both sides"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 634,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": {
+    "slug": "sasanian-empire",
+    "year": 634,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "both confidence 1 (southern Iraq / Hira); gap-filler should date Hira (633)"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 636,
+    "type": "gain",
+    "counterpart": "ghassanids"
+   },
+   "mirror": {
+    "slug": "ghassanids",
+    "year": 636,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "both confidence 1-2, Yarmuk year bridging on both sides"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 636,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 637,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Levant after the Yarmuk vs Byzantine 637 losses (Jerusalem, Gaza, Syria)"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 637,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": {
+    "slug": "sasanian-empire",
+    "year": 637,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Ctesiphon March 637"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 637,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 637,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Jerusalem April 637; Antioch October 637 (Byzantine /ledger/6, 637/12)"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 638,
+    "type": "vassal_start",
+    "counterpart": "Hormuzan (Ahvaz)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "a local ruler, no dossier"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 638,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": {
+    "slug": "sasanian-empire",
+    "year": 637,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Mesopotamia; Sasanian 637/3 loss covers the 637-638 shape difference"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 639,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 638,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Byzantine Armenia; Byzantine dates 638 (c=2), Rashidun 639 (page 638-639)"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 640,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 638,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Jazira: Rashidun 640 vs Byzantine 638 (Upper Mesopotamia with Armenia) - two years apart, both c=2; Levant page has Raqqa 639-640."
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 640,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 639,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Caesarea and Ascalon vs Byzantine 639 Palestine"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 640,
+    "type": "vassal_end",
+    "counterpart": "Hormuzan (Ahvaz)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "local ruler"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 641,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": {
+    "slug": "sasanian-empire",
+    "year": 641,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Khuzestan"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 642,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 642,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Egypt"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 642,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": {
+    "slug": "sasanian-empire",
+    "year": 642,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Hamadan / Media"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 643,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": {
+    "slug": "sasanian-empire",
+    "year": 643,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Isfahan, both confidence 1"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 643,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Kerman (Carmania) 643: no Sasanian loss of Kerman (sasanian-empire, group me-06)"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 644,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Transcaucasia 644: no Sasanian loss of the South Caucasus (me-06)"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 646,
+    "type": "loss",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-armenia (eu-19) not written yet; but the Atropatene half of this loss is to Azerbaijani rebels, not the Armenian kingdom, and Armenia is never regained in the Rashidun ledger (see byzantine-empire 657 below)"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 647,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 644,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Cyrenaica: Rashidun 647 (c=2, no year on its page) vs Byzantine 644 (643-644); Maghreb page: Barqa soon after 642, Tripoli around 643. Tripolitania half matches Byzantine 647."
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 648,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": {
+    "slug": "sasanian-empire",
+    "year": 648,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Fars / Istakhr"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 649,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 653,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Cyprus: Rashidun 649 (Levant page; Rashidun page 650) vs Byzantine 653 (Arab-Byzantine wars page). Page disagreement acknowledged on both sides; align or keep with notes."
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 651,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": {
+    "slug": "sasanian-empire",
+    "year": 651,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Khorasan"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 651,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": {
+    "slug": "sasanian-empire",
+    "year": 651,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Sistan: the Sasanian 651 loss/dissolve covers Khorasan only; neither side places Sistan"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 651,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": {
+    "slug": "sasanian-empire",
+    "year": 642,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Rey: Sasanian loses Media in 642; Rashidun gains Rey from the Sasanians in 651 (page: siege of 651 after rebellion). Rashidun should make 651 a reconquest, not a Sasanian gain."
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 651,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Atropatene 651: lost by Rashidun in 646 to rebels, retaken 651; not a Sasanian loss in either dossier. Counterpart should be the rebels/nobody."
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 656,
+    "type": "loss",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": {
+    "slug": "umayyad-caliphate",
+    "year": 656,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Syria to Mu'awiya"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 658,
+    "type": "loss",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": {
+    "slug": "umayyad-caliphate",
+    "year": 658,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Egypt"
+  },
+  {
+   "event": {
+    "slug": "rashidun-caliphate",
+    "year": 661,
+    "type": "loss",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": {
+    "slug": "umayyad-caliphate",
+    "year": 661,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "the rest of the caliphate"
+  },
+  {
+   "event": {
+    "slug": "byzantine-empire",
+    "year": 644,
+    "type": "loss",
+    "counterpart": "rashidun-caliphate"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "byzantine-empire /ledger/13 Cyrenaica 644 vs Rashidun 647 (see above)"
+  },
+  {
+   "event": {
+    "slug": "byzantine-empire",
+    "year": 645,
+    "type": "gain",
+    "counterpart": "rashidun-caliphate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "byzantine-empire /ledger/14 Alexandria retaken 645 (c=3) and /ledger/15 lost 646: no mirror in Rashidun; the Muslim conquest of Egypt page (a Rashidun source) has it (infobox 645-646)."
+  },
+  {
+   "event": {
+    "slug": "byzantine-empire",
+    "year": 657,
+    "type": "gain",
+    "counterpart": "rashidun-caliphate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "byzantine-empire /ledger/20 Armenia returns to Byzantium 657: no Rashidun loss of Armenia (Rashidun has Armenia lost to kingdom-of-armenia in 646)."
+  },
+  {
+   "event": {
+    "slug": "dabuyid-dynasty",
+    "year": 642,
+    "type": "found",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "founding by a Sasanian cadet; predecessor sasanian-empire. Sasanian ledger has no loss of Gilan/Tabaristan in 642 (me-06 may add one)."
+  },
+  {
+   "event": {
+    "slug": "dabuyid-dynasty",
+    "year": 760,
+    "type": "loss",
+    "counterpart": "abbasid-caliphate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "abbasid-caliphate is group me-08, not run yet"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 656,
+    "type": "found",
+    "counterpart": "rashidun-caliphate"
+   },
+   "mirror": {
+    "slug": "rashidun-caliphate",
+    "year": 656,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Syria"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 658,
+    "type": "gain",
+    "counterpart": "rashidun-caliphate"
+   },
+   "mirror": {
+    "slug": "rashidun-caliphate",
+    "year": 658,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Egypt"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 661,
+    "type": "gain",
+    "counterpart": "rashidun-caliphate"
+   },
+   "mirror": {
+    "slug": "rashidun-caliphate",
+    "year": 661,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 666,
+    "type": "gain",
+    "counterpart": "garamantes"
+   },
+   "mirror": {
+    "slug": "garamantes",
+    "year": 666,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Fezzan; but the Umayyad 666 keyframe (ok) does not reach Fezzan (bbox west edge 18.8 E)"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 670,
+    "type": "gain",
+    "counterpart": "exarchate-of-africa"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "exarchate-of-africa has no loss of Kairouan/the interior in 669-671 (group af-*)"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 674,
+    "type": "vassal_start",
+    "counterpart": "Bukhara"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Bukhara listed in counterparts_needing_dossiers (central Asia group)"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 683,
+    "type": "loss",
+    "counterpart": "kingdom-of-altava"
+   },
+   "mirror": {
+    "slug": "kingdom-of-altava",
+    "year": 683,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Kairouan, Umayyad c=1"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 683,
+    "type": "loss",
+    "counterpart": "zubayrid-caliphate"
+   },
+   "mirror": {
+    "slug": "zubayrid-caliphate",
+    "year": 683,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Land: Zubayrid gains Hejaz, Iraq, Egypt, Yemen AND Fars and Kerman (zubayrid /ledger/1) in 683; the Umayyad loss lacks Fars and Kerman and any of the rest of Iran, Arminiya, the Jazira and eastern Arabia that the Umayyad 684 keyframe drops."
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 684,
+    "type": "gain",
+    "counterpart": "zubayrid-caliphate"
+   },
+   "mirror": {
+    "slug": "zubayrid-caliphate",
+    "year": 684,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "Northern Syria: Umayyad records a gain from the Zubayrids, but the Zubayrid side (and the Umayyad 683 loss) has only a contest there; make it a contest_end, or add the land to both 683 events."
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 685,
+    "type": "gain",
+    "counterpart": "zubayrid-caliphate"
+   },
+   "mirror": {
+    "slug": "zubayrid-caliphate",
+    "year": 685,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Egypt March 685"
+  },
+  {
+   "event": {
+    "slug": "najdat-kharijite-emirate",
+    "year": 685,
+    "type": "found",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Najdat founded in Najd/Yamama (685) and gains Bahrain and Oman from the Umayyads (najdat /ledger/0-1); the Umayyad ledger has no loss of eastern Arabia (its 684 keyframe drops it silently)."
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 688,
+    "type": "gain",
+    "counterpart": "kingdom-of-altava"
+   },
+   "mirror": {
+    "slug": "kingdom-of-altava",
+    "year": 688,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Kairouan 688/9; but the Umayyad 684-691 keyframe (Levant and Egypt) does not draw it"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 688,
+    "type": "split",
+    "counterpart": "cyprus-condominium"
+   },
+   "mirror": {
+    "slug": "cyprus-condominium",
+    "year": 688,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "both c=1-3; Byzantine notes the condominium too"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 690,
+    "type": "loss",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Cyrenaica 690 (c=3, confirmed on the Maghreb page): byzantine-empire has no gain of Cyrenaica (eu-05); the Umayyad ledger also never regains it although its 692 keyframe holds it"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 691,
+    "type": "gain",
+    "counterpart": "zubayrid-caliphate"
+   },
+   "mirror": {
+    "slug": "zubayrid-caliphate",
+    "year": 691,
+    "type": "vassal_end"
+   },
+   "status": "mismatch",
+   "note": "Khorasan (c=1): the Zubayrids held it only as a vassal pair (Abd Allah ibn Khazim); acceptable as recorded but the gain is from Ibn Khazim, not the Zubayrid state"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 691,
+    "type": "gain",
+    "counterpart": "zubayrid-caliphate"
+   },
+   "mirror": {
+    "slug": "zubayrid-caliphate",
+    "year": 691,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Iraq after Maskin (October 691)"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 692,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 691,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Armenia (Sebastopolis 692)"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 692,
+    "type": "gain",
+    "counterpart": "zubayrid-caliphate"
+   },
+   "mirror": {
+    "slug": "zubayrid-caliphate",
+    "year": 692,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Hejaz October 692; Ta'if was Najdat (689-693) on the Najdat side but inside both Hejaz regions"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 693,
+    "type": "gain",
+    "counterpart": "najdat-kharijite-emirate"
+   },
+   "mirror": {
+    "slug": "najdat-kharijite-emirate",
+    "year": 693,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Najdat lands; Ta'if missing from the Umayyad region"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 698,
+    "type": "gain",
+    "counterpart": "exarchate-of-africa"
+   },
+   "mirror": {
+    "slug": "exarchate-of-africa",
+    "year": 698,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Carthage; byzantine-empire /ledger/29 also loses \"Africa\" to the Umayyads in 698 (umbrella double, fine)"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 698,
+    "type": "gain",
+    "counterpart": "azariqa-kharijite-emirate"
+   },
+   "mirror": {
+    "slug": "azariqa-kharijite-emirate",
+    "year": 698,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Fars and Kerman"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-the-aures",
+    "year": 698,
+    "type": "gain",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Kahina defeats Hassan and takes Numidia and southern Tunisia (aures /ledger/5, c=2): no Umayyad loss"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 701,
+    "type": "gain",
+    "counterpart": "kingdom-of-the-aures"
+   },
+   "mirror": {
+    "slug": "kingdom-of-the-aures",
+    "year": 703,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Kahina's defeat: Umayyad 701 (Maghreb page \"around 701\") vs Aures dissolve 703; two years apart"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 705,
+    "type": "gain",
+    "counterpart": "tokhara-yabghus"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Balkh / Lower Tokharistan spring 705 (c=3, confirmed): tokhara-yabghus has only the 710 loss"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 705,
+    "type": "gain",
+    "counterpart": "principality-of-iberia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "principality-of-iberia (eu-19) not written yet; note the Armenian Highlands are already gained in 692 (double gain)"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 708,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Berber tribes; but kingdom-of-altava /ledger/7 dissolves to the Umayyads in 708 (Oranais) and emirate-of-nekor /ledger/1 is an Umayyad vassal from 710: neither has a mirror in the Umayyad ledger"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-altava",
+    "year": 708,
+    "type": "dissolve",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Oranais to the Umayyads 708: no Umayyad event names Altava (Umayyad 708 gain is Morocco from nobody)"
+  },
+  {
+   "event": {
+    "slug": "emirate-of-nekor",
+    "year": 710,
+    "type": "vassal_start",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Nekor a client of the Umayyads 710-750: no vassal pair in the Umayyad ledger"
+  },
+  {
+   "event": {
+    "slug": "exarchate-of-africa",
+    "year": 709,
+    "type": "dissolve",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Ceuta 709: Umayyad ledger silent (author lists Ceuta as not reached)"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 709,
+    "type": "vassal_end",
+    "counterpart": "Bukhara"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "central Asia group"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 709,
+    "type": "gain",
+    "counterpart": "Bukhara"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "central Asia group"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 710,
+    "type": "gain",
+    "counterpart": "tokhara-yabghus"
+   },
+   "mirror": {
+    "slug": "tokhara-yabghus",
+    "year": 710,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Tokharistan"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 712,
+    "type": "gain",
+    "counterpart": "visigothic-kingdom"
+   },
+   "mirror": {
+    "slug": "visigothic-kingdom",
+    "year": 712,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Merida"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 712,
+    "type": "gain",
+    "counterpart": "Samarkand (Sogdian ikhshid)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "central Asia group"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 712,
+    "type": "gain",
+    "counterpart": "Khwarazm (Khwarazmshah)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "central Asia group"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 713,
+    "type": "gain",
+    "counterpart": "visigothic-kingdom"
+   },
+   "mirror": {
+    "slug": "visigothic-kingdom",
+    "year": 713,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 713,
+    "type": "gain",
+    "counterpart": "Dahir's kingdom of Sindh"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "brahman-dynasty-of-sindh, south Asia group"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 713,
+    "type": "gain",
+    "counterpart": "khazaria"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Derbent recovered 713/14 (c=2): khazaria (ia-01) has no loss of Derbent"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 714,
+    "type": "gain",
+    "counterpart": "visigothic-kingdom"
+   },
+   "mirror": {
+    "slug": "visigothic-kingdom",
+    "year": 714,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 715,
+    "type": "loss",
+    "counterpart": "Hindu kings of Sindh"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "south Asia group"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 720,
+    "type": "gain",
+    "counterpart": "visigothic-kingdom"
+   },
+   "mirror": {
+    "slug": "visigothic-kingdom",
+    "year": 720,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Narbonne"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 721,
+    "type": "gain",
+    "counterpart": "Hindu kings of Sindh"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "south Asia group"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 728,
+    "type": "loss",
+    "counterpart": "turgesh"
+   },
+   "mirror": {
+    "slug": "turgesh",
+    "year": 728,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Bukhara"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 732,
+    "type": "gain",
+    "counterpart": "turgesh"
+   },
+   "mirror": {
+    "slug": "turgesh",
+    "year": 732,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Bukhara and Samarkand"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 740,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Berber revolt; barghawata-conference /ledger/0 is founded from umayyad-caliphate in 744 (Tamesna) - counterpart disagreement"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 743,
+    "type": "gain",
+    "counterpart": "turgesh"
+   },
+   "mirror": {
+    "slug": "turgesh",
+    "year": 743,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "Transoxiana recovered by Nasr (c=3, confirmed) but turgesh records only a contest_end in 743 (the Turgesh khaganate had collapsed after 738)"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 743,
+    "type": "loss",
+    "counterpart": "gurjara-pratihara-dynasty"
+   },
+   "mirror": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 743,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "Gujarat and Rajasthan: the Umayyad loses land it never gained (723 is only a contest_start); gurjara records contest_end only"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 745,
+    "type": "loss",
+    "counterpart": "fihrids"
+   },
+   "mirror": {
+    "slug": "fihrids",
+    "year": 745,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Ifriqiya; Umayyad c=1"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 748,
+    "type": "loss",
+    "counterpart": "abbasid-caliphate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-08 not run"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 749,
+    "type": "loss",
+    "counterpart": "abbasid-caliphate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-08 not run"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 750,
+    "type": "loss",
+    "counterpart": "abbasid-caliphate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-08 not run (Sindh, Levant, Egypt)"
+  },
+  {
+   "event": {
+    "slug": "umayyad-caliphate",
+    "year": 750,
+    "type": "loss",
+    "counterpart": "Fihrid governors of al-Andalus"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "fihrid-al-andalus listed in counterparts_needing_dossiers (eu-12)"
+  },
+  {
+   "event": {
+    "slug": "byzantine-empire",
+    "year": 672,
+    "type": "loss",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Cyzicus 672-678 (byzantine /ledger/23-24): Umayyad silent (author: siege of Constantinople not on the pages opened)"
+  },
+  {
+   "event": {
+    "slug": "byzantine-empire",
+    "year": 718,
+    "type": "loss",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Balearics and Ceuta 718 (byzantine c=1, page silent): no Umayyad event; Ceuta is 709 in the exarchate dossier"
+  },
+  {
+   "event": {
+    "slug": "turk-shahis",
+    "year": 684,
+    "type": "occupation_start",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Kabul valley 684-685 (turk-shahis /ledger/5-6): Umayyad silent, and in 684 Sistan/Khorasan are outside the Umayyad 684-691 keyframe"
+  },
+  {
+   "event": {
+    "slug": "zubayrid-caliphate",
+    "year": 684,
+    "type": "vassal_start",
+    "counterpart": "Abd Allah ibn Khazim"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "khorasan-under-ibn-khazim in counterparts_needing_dossiers (low priority)"
+  },
+  {
+   "event": {
+    "slug": "zubayrid-caliphate",
+    "year": 685,
+    "type": "loss",
+    "counterpart": "azariqa-kharijite-emirate"
+   },
+   "mirror": {
+    "slug": "azariqa-kharijite-emirate",
+    "year": 685,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Fars and Kerman"
+  },
+  {
+   "event": {
+    "slug": "zubayrid-caliphate",
+    "year": 685,
+    "type": "loss",
+    "counterpart": "mukhtarid-state-of-kufa"
+   },
+   "mirror": {
+    "slug": "mukhtarid-state-of-kufa",
+    "year": 685,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Iraq without Basra"
+  },
+  {
+   "event": {
+    "slug": "mukhtarid-state-of-kufa",
+    "year": 685,
+    "type": "gain",
+    "counterpart": "zubayrid-caliphate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Media and Azerbaijan (mukhtarid /ledger/0, c=1): the Zubayrid dossier never holds or loses them; and the Mukhtarid dissolve hands only Iraq-without-Basra on in 687"
+  },
+  {
+   "event": {
+    "slug": "zubayrid-caliphate",
+    "year": 687,
+    "type": "gain",
+    "counterpart": "mukhtarid-state-of-kufa"
+   },
+   "mirror": {
+    "slug": "mukhtarid-state-of-kufa",
+    "year": 687,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Kufa April 687 (land: Iraq only; Media/Azerbaijan unaccounted)"
+  },
+  {
+   "event": {
+    "slug": "zubayrid-caliphate",
+    "year": 688,
+    "type": "loss",
+    "counterpart": "najdat-kharijite-emirate"
+   },
+   "mirror": {
+    "slug": "najdat-kharijite-emirate",
+    "year": 688,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Yemen"
+  },
+  {
+   "event": {
+    "slug": "zubayrid-caliphate",
+    "year": 689,
+    "type": "loss",
+    "counterpart": "najdat-kharijite-emirate"
+   },
+   "mirror": {
+    "slug": "najdat-kharijite-emirate",
+    "year": 689,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Ta'if"
+  },
+  {
+   "event": {
+    "slug": "zubayrid-caliphate",
+    "year": 691,
+    "type": "vassal_end",
+    "counterpart": "Abd Allah ibn Khazim"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "najdat-kharijite-emirate",
+    "year": 693,
+    "type": "loss",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": {
+    "slug": "umayyad-caliphate",
+    "year": 693,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "azariqa-kharijite-emirate",
+    "year": 698,
+    "type": "loss",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": {
+    "slug": "umayyad-caliphate",
+    "year": 698,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "islamic-state-of-medina",
+    "year": 630,
+    "type": "gain",
+    "counterpart": "Quraysh of Mecca"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "a city, no dossier wanted"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Yamama",
+   "kind": "region",
+   "used_in": "najdat-kharijite-emirate"
+  },
+  {
+   "name": "Jibal",
+   "kind": "region",
+   "used_in": "mukhtarid-state-of-kufa"
+  },
+  {
+   "name": "Azerbaijan (historical, Atropatene)",
+   "kind": "region",
+   "used_in": "mukhtarid-state-of-kufa"
+  },
+  {
+   "name": "Siffin",
+   "kind": "place",
+   "used_in": "rashidun-caliphate"
+  },
+  {
+   "name": "Ascalon",
+   "kind": "place",
+   "used_in": "rashidun-caliphate"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Fihrid al-Andalus (governors of al-Andalus to 756)",
+   "suggested_slug": "fihrid-al-andalus",
+   "years": [
+    750,
+    756
+   ]
+  },
+  {
+   "name": "Brahman dynasty of Sindh (Dahir) and the Hindu kings of Sindh",
+   "suggested_slug": "brahman-dynasty-of-sindh",
+   "years": [
+    711,
+    721
+   ]
+  },
+  {
+   "name": "al-Harith ibn Surayj (rebel in Balkh and Marw)",
+   "suggested_slug": "al-harith-ibn-surayj",
+   "years": [
+    734,
+    737
+   ]
+  },
+  {
+   "name": "Bukhara (Sogdian rulers)",
+   "suggested_slug": "bukhara",
+   "years": [
+    674,
+    709
+   ]
+  },
+  {
+   "name": "Samarkand (Sogdian ikhshid)",
+   "suggested_slug": "samarkand",
+   "years": [
+    676,
+    712
+   ]
+  },
+  {
+   "name": "Khwarazm (Khwarazmshah)",
+   "suggested_slug": "khwarazm",
+   "years": [
+    711,
+    712
+   ]
+  },
+  {
+   "name": "Khorasan under Abd Allah ibn Khazim",
+   "suggested_slug": "khorasan-under-ibn-khazim",
+   "years": [
+    684,
+    691
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-me-07.md",
+ "problems": [
+  "No page failed to load. Not opened for this review (budget): Arab-Byzantine wars, Arab-Khazar wars, First Fitna, Umayyad conquest of Hispania, Abbasid Revolution, Muslim conquest of the Levant, Tabaristan, Gil Gavbara, Muhammad.",
+  "Reviewer edit: history/polities/rashidun-caliphate.json /identity/predecessors/0/land region Arabia -> Hejaz; re-validated (0 errors, 0 warnings) and read back.",
+  "The Second Fitna geography is one problem across three dossiers (umayyad /keyframe_review/6 and /ledger/13, zubayrid keyframes, mukhtarid dissolve): the author should fix them together so that Iran outside Fars, Kerman and Khorasan has a holder 683-691.",
+  "Neighbour dossiers with events naming this batch and no mirror (their owners may prefer to change their side): byzantine-empire 644 Cyrenaica, 645-646 Alexandria, 653 Cyprus, 657 Armenia, 672-678 Cyzicus, 690 (no Cyrenaica gain), 718 Balearics; sasanian-empire (no Kerman 643, Transcaucasia 644, Sistan 651 losses; Media lost 642 vs Rey gained 651); exarchate-of-africa 670 Kairouan; khazaria 713 Derbent; tokhara-yabghus 705 Balkh; turgesh 743; kingdom-of-altava 708; kingdom-of-the-aures 698/703; emirate-of-nekor 710-750; turk-shahis 684-685 Kabul; barghawata-conference 744.",
+  "Dossiers whose group has not run (counterpart exceptions): kingdom-of-armenia, principality-of-iberia, kingdom-of-lazica, balasagan (eu-19); abbasid-caliphate (me-08); aquitaine, kingdom-of-the-franks (eu-07); kingdom-of-asturias (eu-12); emirate-of-cordoba (no dossier yet).",
+  "Author notes say the Dabuyid 755 keyframe was adjusted to exclude Gurgan; the dossier keeps the 755 shape unchanged (harmless, notes inaccurate)."
+ ]
+}

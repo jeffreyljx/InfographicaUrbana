@@ -1,0 +1,1400 @@
+{
+ "batch_id": "jk-01-d",
+ "verdicts": [
+  {
+   "slug": "empire-of-japan",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/10/note, /keyframe_review/11-18, /keyframe_review/19-27/correction, /ledger (missing), /wars/3/zones",
+     "applied": false,
+     "blocking": true,
+     "what": "The 1915 shape adds 4 cells at Tsingtao (120.35-120.56 E, 36.13-36.25 N; the Kiautschou leased territory) beside the 3 Micronesian cells, and the ledger has no event for them. The 1915 note says 'Nothing in the shape corresponds to the surrender ... (the page does not say where)', which is untrue for both the shape and the page. The cells stay in every shape to 1929 (and 8 cells from 1938), so the 1924-1931 keyframes and the 1929 outline used as the correction for 1932-1945 keep Tsingtao as direct Japanese land after its return to China in 1922.",
+     "why": "Gazetteer: minus(Empire of Japan 1915, Empire of Japan 1911) = 7 cells, 4 of them at Qingdao. A Qingdao probe gives 4 cells in the 1915, 1917, 1920, 1922, 1924, 1926-1929 and 1932 shapes. Empire of Japan page (the author's own source): 'Japanese and allied British Empire forces soon moved to occupy Tsingtao fortress, the German East Asia Squadron base, German-leased territories in China's Shandong Province as well as the Marianas, Caroline, and Marshall Islands in the Pacific'; 'The German colonial troops surrendered on November 7, 1914, and Japan gained the German holdings.'",
+     "fix": "Add occupation_start german-empire 1914-11 at Tsingtao/Kiautschou ({'place':'Qingdao','km':30}, confidence 3, Empire page) and the end in 1922 with the return to republic-of-china (open the Kiautschou Bay Leased Territory or Shandong Problem page for the year and month). Mark keyframes 1924-1931 adjust with a correction minus Qingdao, and use minus Qingdao in the 1932-1945 corrections; the 1938 reoccupation is part of the China occupation events. Add Tsingtao to the zones of /wars/3 and correct the 1915 note."
+    },
+    {
+     "where": "/ledger (missing, between /ledger/7 and /ledger/8)",
+     "applied": false,
+     "blocking": true,
+     "what": "No mirror for ryukyu-kingdom's vassal_start 1872-10 and vassal_end 1879-3, both with counterpart empire-of-japan (the Ryukyu Domain, 1872-1879).",
+     "why": "ryukyu-kingdom /ledger/17 vassal_start 1872-10 empire-of-japan (c3: infobox 'Domain of the Empire of Japan (1872–1879)', 'Reorganized into Ryukyu Domain: 16 October 1872') and /ledger/18 vassal_end 1879-3. This dossier's 1870 keyframe correction removes Okinawa and leaves the 1872-1879 domain to the ryukyu dossier, so the vassal relation is drawn from neither side.",
+     "fix": "Add vassal_start ryukyu-kingdom 1872-10 and vassal_end ryukyu-kingdom 1879-3, with the region of /ledger/8 (minus Okinawa minus the Amami circle) and the ryukyu-kingdom page as source; give /ledger/8 month 3 to match ryukyu-kingdom /ledger/19."
+    },
+    {
+     "where": "/ledger/73",
+     "applied": false,
+     "blocking": false,
+     "what": "Guam and Wake end together at 1945-9 (confidence 2), but the US retook Guam in 1944: the dossier's own 1944 keyframe note says 'Guam goes', and the Pacific War page puts the 'invasions of the Mariana and Palau Islands' between June 1944 and June 1945.",
+     "why": "Pacific War page: 'invasions of the Mariana and Palau Islands, Iwo Jima, and Okinawa between June 1944 and June 1945'; /keyframe_review/26 note: 'Guam goes'.",
+     "fix": "Split the event: occupation_end united-states-of-america for Guam in 1944-8 (Battle of Guam (1944) page), and Wake alone in 1945-9."
+    },
+    {
+     "where": "/ledger/21",
+     "applied": false,
+     "blocking": false,
+     "what": "The 1920 occupation of northern Sakhalin names the Soviet Union as counterpart, but that state exists only from December 1922 (Cliopatria row 1922..1991).",
+     "why": "The note itself says 'The owner was the Russian Soviet state, then the Soviet Union'; union-of-soviet-socialist-republics starts 1922 in polities.csv.",
+     "fix": "Use far-eastern-republic (already in counterparts_needing_dossiers) or russian-republic, as in /ledger/18, for the 1920 start. Keep the 1925 end against the Soviet Union and say in the note that the owner changed."
+    },
+    {
+     "where": "/ledger/18, /ledger/22",
+     "applied": false,
+     "blocking": false,
+     "what": "The Primorye occupation runs 1918-8 to 1922-10 against russian-republic, whose Cliopatria row is 1917..1919, so the end falls three years after the counterpart's life.",
+     "why": "polities.csv russian-republic 1917..1919; the brief's Context list has provisional-priamurye-government (1922..1923) and the author lists far-eastern-republic (1920-1922).",
+     "fix": "Either end the occupation against the state that held Vladivostok in 1922 (provisional-priamurye-government or far-eastern-republic, as the Siberian intervention page reads), or say in the note that russian-republic stands for every Russian owner and route the mirror to eu-17."
+    },
+    {
+     "where": "/ledger/30, /ledger/32, /ledger/33, /ledger/34",
+     "applied": false,
+     "blocking": false,
+     "what": "The China occupations are drawn as whole provinces (all of Hebei in July 1937, all of Zhejiang in December 1937, all of Shanxi in March 1938, all of Henan in June 1938), although the pages date only the cities. Western Henan fell only in the 1944 Ichi-Go offensive, which /ledger/47 does not cover.",
+     "why": "Second Sino-Japanese War page: 'On 6 June, they captured Kaifeng, the capital of Henan'; 'In 1944, Japan launched Operation Ichi-Go, the invasion of Henan and Changsha'.",
+     "fix": "Intersect each province with the Cliopatria shape of the year after (for example intersect(admin1 Henan, Empire of Japan 1939)), and add the rest of Henan to the 1944 Ichi-Go event with the Ichi-Go page."
+    },
+    {
+     "where": "/keyframe_review/6, /keyframe_review/7, /keyframe_review/8-18",
+     "applied": false,
+     "blocking": false,
+     "what": "The Tianjin cells (1 in 1898, 8 from 1900, 7 in 1929; about 2,000 km2) are kept as Japanese territory, and through the 1929 outline they sit in every correction to 1945. The dossier's own notes say 'concessions are not territory under rule 4 and are not recorded'.",
+     "why": "A probe over 116.5-118 E and 38.5-40 N gives 1 cell in 1898, 8 in 1900-1926 and 7 in 1929. The real Japanese concession at Tianjin covered about 1 km2.",
+     "fix": "Mark the 1898-1931 keyframes adjust with a correction minus the Tianjin cells (polygon 116.5-118 E, 38.5-40 N), and do the same in the 1932-1945 corrections, or explain in the note why they stay."
+    },
+    {
+     "where": "/ledger/2, /ledger/4, /ledger/5",
+     "applied": false,
+     "blocking": false,
+     "what": "The Boshin War opponent is republic-of-ezo from January 1868 for all of northern Honshu and Hokkaido, and the whole remainder is gained in May 1869. By the reviewer's reading (to be confirmed on the Boshin War page), the Republic of Ezo was proclaimed only in the winter of 1868-1869 and held Hokkaido alone; northern Honshu was the Northern Alliance's and fell in 1868.",
+     "why": "The Empire page (as quoted) dates only the end at Hakodate, May 1869; the war page was not opened (page budget). Confidence 1 and 2.",
+     "fix": "Open the Boshin War page. Split the contest and gain into northern Honshu (1868, against the Ouetsu Reppan Domei or the shogunate's loyalists) and Hokkaido (republic-of-ezo, from its proclamation to 1869-5)."
+    },
+    {
+     "where": "/identity/rulers/1, /identity/rulers/2",
+     "applied": true,
+     "what": "Taisho and Showa had no source.",
+     "why": "Empire of Japan infobox: '1868–1912: Meiji • 1912–1926: Taishō • 1926–1947: Shōwa'.",
+     "fix": "source set to https://en.wikipedia.org/wiki/Empire_of_Japan"
+    },
+    {
+     "where": "/identity/rulers/3, /identity/rulers/4",
+     "applied": true,
+     "what": "Akihito and Naruhito had no source.",
+     "why": "Japan page: 'On May 1, 2019, after the historic abdication of Emperor Akihito, his son Naruhito became Emperor, beginning the Reiwa era.'",
+     "fix": "source set to https://en.wikipedia.org/wiki/Japan"
+    },
+    {
+     "where": "/ledger/17, /wars/3/outcome",
+     "applied": true,
+     "what": "The occupation of German Micronesia was dated 1915 (Cliopatria's year), confidence 1, with 'page silent on the landings'; the page names the islands and dates the war to 1914.",
+     "why": "Empire page: 'soon moved to occupy Tsingtao fortress, ... as well as the Marianas, Caroline, and Marshall Islands in the Pacific'; 'The German colonial troops surrendered on November 7, 1914, and Japan gained the German holdings.'",
+     "fix": "year 1914, confidence 2, reviewer note appended; war outcome 'held from 1914'."
+    },
+    {
+     "where": "/ledger/30, /ledger/34, /ledger/35",
+     "applied": true,
+     "what": "Confidence 3 for regions the page does not name: the whole of Hebei (the page names Beiping and Tianjin), the whole of Henan (Kaifeng only) and Anhui (only in a flood context).",
+     "why": "Second Sino-Japanese War page: 'The Japanese captured the city on July 29'; 'The Taku Forts at Tianjin fell on 30 July'; 'On 6 June, they captured Kaifeng, the capital of Henan'; 'the floods in Henan and Anhui destroyed much of the tracks and bridges'.",
+     "fix": "confidence lowered to 2, reviewer notes appended."
+    },
+    {
+     "where": "/ledger/37",
+     "applied": true,
+     "what": "The occupation of northern French Indochina was dated 1941 (Cliopatria's year). The 102 cells are Tonkin (20.5-22.3 N), the zone entered first, and the page gives the occupation as 1940-41.",
+     "why": "Empire page: 'the occupation of French Indochina in the years of 1940–41'; the note's own quote: 'After Japanese advancements into French Indochina in 1940'.",
+     "fix": "year 1940, confidence 2 kept, reviewer note appended."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2, /ledger/4, /ledger/5",
+     "what is missing": "Boshin War fronts by year and the right opponents (Northern Alliance in 1868, Ezo 1869)",
+     "page to try": "https://en.wikipedia.org/wiki/Boshin_War"
+    },
+    {
+     "where": "/ledger/31",
+     "what is missing": "End of East Hebei at confidence 1 (July 1937); the reviewer's reading is that it was merged into the Provisional Government in 1938, to be confirmed on the page",
+     "page to try": "https://en.wikipedia.org/wiki/East_Hebei_Autonomous_Council"
+    },
+    {
+     "where": "/ledger/36",
+     "what is missing": "Guangdong (Canton fell in October 1938) and Hainan (1939) at confidence 1, one year for both",
+     "page to try": "https://en.wikipedia.org/wiki/Canton_Operation"
+    },
+    {
+     "where": "/ledger/44",
+     "what is missing": "Portuguese Timor occupation, confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Timor"
+    },
+    {
+     "where": "/ledger/48",
+     "what is missing": "March 1945 coup in Indochina, confidence 1, no month",
+     "page to try": "https://en.wikipedia.org/wiki/Japanese_coup_d%27%C3%A9tat_in_French_Indochina"
+    },
+    {
+     "where": "/ledger/61",
+     "what is missing": "End of Mengjiang, confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Mengjiang"
+    },
+    {
+     "where": "/keyframe_review/25 (20 Indian cells)",
+     "what is missing": "Andaman and Nicobar occupation 1942-1945 against british-raj: the cells are in the 1943 shape with no ledger event",
+     "page to try": "https://en.wikipedia.org/wiki/Japanese_occupation_of_the_Andaman_and_Nicobar_Islands"
+    },
+    {
+     "where": "/ledger (missing)",
+     "what is missing": "Aleutians (Attu, Kiska, 1942-1943, united-states-of-america), the Gilbert Islands and Nauru (1942-1943/1945)",
+     "page to try": "https://en.wikipedia.org/wiki/Aleutian_Islands_campaign"
+    },
+    {
+     "where": "/ledger/54, /ledger/73",
+     "what is missing": "US recapture of the Marshalls, Marianas and Palau in 1944 (an owner-first occupation of mandate land before the 1945 loss)",
+     "page to try": "https://en.wikipedia.org/wiki/Mariana_and_Palau_Islands_campaign"
+    },
+    {
+     "where": "/ledger (missing)",
+     "what is missing": "Bonin (Ogasawara) annexation, 1876",
+     "page to try": "https://en.wikipedia.org/wiki/Bonin_Islands"
+    },
+    {
+     "where": "/ledger/18",
+     "what is missing": "Siberian intervention beyond Primorye (Amur and Transbaikal, 1918-1920)",
+     "page to try": "https://en.wikipedia.org/wiki/Siberian_intervention"
+    },
+    {
+     "where": "/ledger/63-80",
+     "what is missing": "Pacific War and China occupation ends before September 1945 (Burma by May 1945, the Philippines 1944-1945, Guadalcanal 1943); the Wang Jingwei, Provisional and Reformed client governments",
+     "page to try": "https://en.wikipedia.org/wiki/Wang_Jingwei_regime"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Saint_Petersburg_(1875)",
+     "result": "confirmed",
+     "detail": "'The treaty itself went into effect in 1877'; 'signed on 7 May 1875, and its ratifications exchanged at Tokyo on 22 August 1875'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Saint_Petersburg_(1875)",
+     "result": "confirmed",
+     "detail": "same page, Kurils for Sakhalin, 1877 in force"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Empire_of_Japan",
+     "result": "confirmed",
+     "detail": "'The Korean Empire was then occupied and declared a Japanese protectorate following the Japan–Korea Treaty of 1905.'"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Empire_of_Japan",
+     "result": "mis-dated",
+     "detail": "1915 should be 1914 (the page names the islands and the November 1914 surrender); fixed by the reviewer"
+    },
+    {
+     "where": "/ledger/26, /ledger/27, /ledger/58",
+     "page": "https://en.wikipedia.org/wiki/Manchukuo",
+     "result": "confirmed",
+     "detail": "'Established: 1 March 1932'; 'Rehe annexed: 4 March 1933'; 'Dissolution: 20 August 1945'"
+    },
+    {
+     "where": "/ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Second_Sino-Japanese_War",
+     "result": "confirmed",
+     "detail": "dates confirmed (29 and 30 July 1937); the region (whole Hebei) is wider than the page, so confidence lowered to 2"
+    },
+    {
+     "where": "/ledger/34",
+     "page": "https://en.wikipedia.org/wiki/Second_Sino-Japanese_War",
+     "result": "confirmed",
+     "detail": "'On 6 June, they captured Kaifeng, the capital of Henan'; the whole province is not on the page (confidence lowered to 2)"
+    },
+    {
+     "where": "/ledger/35",
+     "page": "https://en.wikipedia.org/wiki/Second_Sino-Japanese_War",
+     "result": "confirmed",
+     "detail": "'the Nationalists were forced to abandon Wuhan by October'; Anhui is not dated (confidence lowered to 2)"
+    },
+    {
+     "where": "/ledger/37",
+     "page": "https://en.wikipedia.org/wiki/Empire_of_Japan",
+     "result": "mis-dated",
+     "detail": "'the occupation of French Indochina in the years of 1940–41'; the Tonkin cells are the 1940 zone; fixed to 1940"
+    },
+    {
+     "where": "/ledger/38",
+     "page": "https://en.wikipedia.org/wiki/Pacific_War",
+     "result": "confirmed",
+     "detail": "'fell to Japanese forces on 25 December 1941'"
+    },
+    {
+     "where": "/ledger/41",
+     "page": "https://en.wikipedia.org/wiki/Pacific_War",
+     "result": "confirmed",
+     "detail": "'the capture of Rabaul on 23 January 1942'"
+    },
+    {
+     "where": "/ledger/42",
+     "page": "https://en.wikipedia.org/wiki/Pacific_War",
+     "result": "confirmed",
+     "detail": "'In January, Japan invaded British Burma, the Dutch East Indies, New Guinea, and the Solomon Islands.'"
+    },
+    {
+     "where": "/ledger/54",
+     "page": "https://en.wikipedia.org/wiki/Allied_occupation_of_Japan",
+     "result": "confirmed",
+     "detail": "map caption: 'occupied by the United States 1945–1947' (the 1944 battles are not recorded; see thin)"
+    },
+    {
+     "where": "/ledger/82",
+     "page": "https://en.wikipedia.org/wiki/Allied_occupation_of_Japan",
+     "result": "confirmed",
+     "detail": "'until the Treaty of San Francisco took effect on April 28, 1952'"
+    },
+    {
+     "where": "/ledger/83, /ledger/84, /ledger/85",
+     "page": "https://en.wikipedia.org/wiki/Allied_occupation_of_Japan",
+     "result": "confirmed",
+     "detail": "'the Amami Islands (until 1953)'; 'Iwo Jima was returned to Japan in 1968'; 'most of Okinawa was returned in 1972'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1984000,
+    "infobox_year": 1938,
+    "cliopatria_km2": 3103984,
+    "ratio": 1.56,
+    "acknowledged": true,
+    "also": "Infobox 1942: 7,400,000 km2 against the 1942 shape's 4,172,339 (ratio 0.56) and the 1943 shape's 7,043,849 (0.95); acknowledged in /keyframe_review/24. Japan page 377,975 km2 against japan_1973 413,216 (1.09); acknowledged. The author's quoted figures match the infobox."
+   },
+   "summary": "Validates (0 errors, 11 counterpart warnings). 19 events checked on 6 pages: 17 confirmed (3 of them confidence-3 events whose region is wider than the page, lowered to 2), 2 mis-dated at confidence 1-2 (both fixed by the reviewer). No fabricated event was found. Failed for two unapplied blocking findings: the Tsingtao/Kiautschou cells in the 1915-1932 shapes have no event, and the 1915 note denies what the shape and the page show (and the 1929 outline carries the cells into every correction to 1945); and the Ryukyu Domain vassalage (1872-1879) has no mirror for ryukyu-kingdom's ledger. The merge of 'Empire of Japan' and 'Japan' into one dossier is argued from the page and accepted."
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1868,
+    "type": "found",
+    "counterpart": "tokugawa-shogunate",
+    "where": "/ledger/0"
+   },
+   "mirror": {
+    "slug": "tokugawa-shogunate",
+    "year": 1868,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "tokugawa-shogunate /ledger/12 loss 1868-1 to empire-of-japan and /ledger/15 dissolve 1868-1 with successor empire-of-japan."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1869,
+    "type": "gain",
+    "counterpart": "republic-of-ezo",
+    "where": "/ledger/5"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart republic-of-ezo has no dossier yet and is in the author's counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1877,
+    "type": "gain",
+    "counterpart": "russian-empire",
+    "where": "/ledger/7"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-17, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1879,
+    "type": "gain",
+    "counterpart": "ryukyu-kingdom",
+    "where": "/ledger/8"
+   },
+   "mirror": {
+    "slug": "ryukyu-kingdom",
+    "year": 1879,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "ryukyu-kingdom /ledger/19 dissolve 1879-3 to empire-of-japan (and /ledger/18 vassal_end 1879-3); this side has no month."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1895,
+    "type": "gain",
+    "counterpart": "qing-dynasty",
+    "where": "/ledger/9"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1895,
+    "type": "gain",
+    "counterpart": "qing-dynasty",
+    "where": "/ledger/10"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1895,
+    "type": "loss",
+    "counterpart": "qing-dynasty",
+    "where": "/ledger/11"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1905,
+    "type": "vassal_start",
+    "counterpart": "korean-empire",
+    "where": "/ledger/12"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group jk-02, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1905,
+    "type": "gain",
+    "counterpart": "russian-empire",
+    "where": "/ledger/13"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-17, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1905,
+    "type": "gain",
+    "counterpart": "russian-empire",
+    "where": "/ledger/14"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-17, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1910,
+    "type": "vassal_end",
+    "counterpart": "korean-empire",
+    "where": "/ledger/15"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group jk-02, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1910,
+    "type": "gain",
+    "counterpart": "korean-empire",
+    "where": "/ledger/16"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group jk-02, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1914,
+    "type": "occupation_start",
+    "counterpart": "german-empire",
+    "where": "/ledger/17"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-20, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1918,
+    "type": "occupation_start",
+    "counterpart": "russian-republic",
+    "where": "/ledger/18"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-17, which has not run yet. russian-republic's row ends 1919, so the 1922 end falls outside its life; see fixes."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1920,
+    "type": "occupation_end",
+    "counterpart": "german-empire",
+    "where": "/ledger/19"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-20, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1920,
+    "type": "gain",
+    "counterpart": "german-empire",
+    "where": "/ledger/20"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-20, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1920,
+    "type": "occupation_start",
+    "counterpart": "union-of-soviet-socialist-republics",
+    "where": "/ledger/21"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-17, which has not run yet. Also wrong counterpart for 1920: the Soviet Union exists only from December 1922 (Cliopatria row 1922..1991); see fixes."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1922,
+    "type": "occupation_end",
+    "counterpart": "russian-republic",
+    "where": "/ledger/22"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-17, which has not run yet. russian-republic's row ends 1919, so the 1922 end falls outside its life; see fixes."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1925,
+    "type": "occupation_end",
+    "counterpart": "union-of-soviet-socialist-republics",
+    "where": "/ledger/23"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-17, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1931,
+    "type": "occupation_start",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/24"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1932,
+    "type": "occupation_end",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/25"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1932,
+    "type": "vassal_start",
+    "counterpart": "manchukuo",
+    "where": "/ledger/26"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart manchukuo has no dossier yet and is in the author's counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1933,
+    "type": "vassal_start",
+    "counterpart": "manchukuo",
+    "where": "/ledger/27"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart manchukuo has no dossier yet and is in the author's counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1935,
+    "type": "vassal_start",
+    "counterpart": "east-hebei-autonomous-council",
+    "where": "/ledger/28"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart east-hebei-autonomous-council has no dossier yet and is in the author's counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1936,
+    "type": "vassal_start",
+    "counterpart": "mengjiang",
+    "where": "/ledger/29"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart mengjiang has no dossier yet and is in the author's counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1937,
+    "type": "occupation_start",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/30"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1937,
+    "type": "vassal_end",
+    "counterpart": "east-hebei-autonomous-council",
+    "where": "/ledger/31"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart east-hebei-autonomous-council has no dossier yet and is in the author's counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1937,
+    "type": "occupation_start",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/32"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1938,
+    "type": "occupation_start",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/33"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1938,
+    "type": "occupation_start",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/34"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1938,
+    "type": "occupation_start",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/35"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1939,
+    "type": "occupation_start",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/36"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1940,
+    "type": "occupation_start",
+    "counterpart": "french-indochina",
+    "where": "/ledger/37"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group se-03, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "british-colonial-empire",
+    "where": "/ledger/38"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-11, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "united-states-of-america",
+    "where": "/ledger/39"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group am-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1942,
+    "type": "occupation_start",
+    "counterpart": "dutch-east-indies",
+    "where": "/ledger/40"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group se-03, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1942,
+    "type": "occupation_start",
+    "counterpart": "commonwealth-of-australia",
+    "where": "/ledger/41"
+   },
+   "mirror": {
+    "slug": "commonwealth-of-australia",
+    "year": 1942,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "Years agree (Australia 1942-1 / 1945-8 against 1942-1 / 1945-9) but the type does not: Australia records a contest (its /ledger/13-16, with a separate Papua contest 1942-7 to 1943-1), this dossier an occupation of the whole intersect of PNG with the 1943 shape from 1942-1. One rule for both sides is needed; the Papua beachhead (Buna/Gona, July 1942 to January 1943) is not separate here."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1942,
+    "type": "occupation_start",
+    "counterpart": "british-colonial-empire",
+    "where": "/ledger/42"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-11, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1942,
+    "type": "occupation_start",
+    "counterpart": "british-colonial-empire",
+    "where": "/ledger/43"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-11, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1942,
+    "type": "occupation_start",
+    "counterpart": "estado-novo",
+    "where": "/ledger/44"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-21, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1942,
+    "type": "occupation_start",
+    "counterpart": "burma",
+    "where": "/ledger/45"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group se-01 (parts e-f not run), which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1942,
+    "type": "occupation_start",
+    "counterpart": "united-states-of-america",
+    "where": "/ledger/46"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group am-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1944,
+    "type": "occupation_start",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/47"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_start",
+    "counterpart": "french-indochina",
+    "where": "/ledger/48"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group se-03, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "loss",
+    "counterpart": "union-of-soviet-socialist-republics",
+    "where": "/ledger/49"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-17, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "loss",
+    "counterpart": "union-of-soviet-socialist-republics",
+    "where": "/ledger/50"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-17, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "loss",
+    "counterpart": "union-of-soviet-socialist-republics",
+    "where": "/ledger/51"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-17, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "loss",
+    "counterpart": "united-states-of-america",
+    "where": "/ledger/52"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group am-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "loss",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/53"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "loss",
+    "counterpart": "united-states-of-america",
+    "where": "/ledger/54"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group am-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_start",
+    "counterpart": "united-states-of-america",
+    "where": "/ledger/55"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group am-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_start",
+    "counterpart": "united-states-of-america",
+    "where": "/ledger/56"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group am-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_start",
+    "counterpart": "united-states-of-america",
+    "where": "/ledger/57"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group am-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "vassal_end",
+    "counterpart": "manchukuo",
+    "where": "/ledger/58"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart manchukuo has no dossier yet and is in the author's counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "vassal_end",
+    "counterpart": "manchukuo",
+    "where": "/ledger/59"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart manchukuo has no dossier yet and is in the author's counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "loss",
+    "counterpart": "union-of-soviet-socialist-republics",
+    "where": "/ledger/60"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-17, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "vassal_end",
+    "counterpart": "mengjiang",
+    "where": "/ledger/61"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart mengjiang has no dossier yet and is in the author's counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_start",
+    "counterpart": "united-states-of-america",
+    "where": "/ledger/62"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group am-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/63"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/64"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/65"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/66"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/67"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/68"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "republic-of-china",
+    "where": "/ledger/69"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group ea-08, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "french-indochina",
+    "where": "/ledger/70"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group se-03, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "french-indochina",
+    "where": "/ledger/71"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group se-03, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "british-colonial-empire",
+    "where": "/ledger/72"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-11, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "united-states-of-america",
+    "where": "/ledger/73"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group am-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "commonwealth-of-australia",
+    "where": "/ledger/74"
+   },
+   "mirror": {
+    "slug": "commonwealth-of-australia",
+    "year": 1945,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "Years agree (Australia 1942-1 / 1945-8 against 1942-1 / 1945-9) but the type does not: Australia records a contest (its /ledger/13-16, with a separate Papua contest 1942-7 to 1943-1), this dossier an occupation of the whole intersect of PNG with the 1943 shape from 1942-1. One rule for both sides is needed; the Papua beachhead (Buna/Gona, July 1942 to January 1943) is not separate here."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "british-colonial-empire",
+    "where": "/ledger/75"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-11, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "british-colonial-empire",
+    "where": "/ledger/76"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-11, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "estado-novo",
+    "where": "/ledger/77"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group eu-21, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "burma",
+    "where": "/ledger/78"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group se-01 (parts e-f not run), which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "dutch-east-indies",
+    "where": "/ledger/79"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group se-03, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "united-states-of-america",
+    "where": "/ledger/80"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group am-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1952,
+    "type": "occupation_end",
+    "counterpart": "united-states-of-america",
+    "where": "/ledger/82"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group am-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1953,
+    "type": "occupation_end",
+    "counterpart": "united-states-of-america",
+    "where": "/ledger/83"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group am-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1968,
+    "type": "occupation_end",
+    "counterpart": "united-states-of-america",
+    "where": "/ledger/84"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group am-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "empire-of-japan",
+    "year": 1972,
+    "type": "occupation_end",
+    "counterpart": "united-states-of-america",
+    "where": "/ledger/85"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by group am-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "ryukyu-kingdom",
+    "year": 1872,
+    "type": "vassal_start",
+    "counterpart": "empire-of-japan",
+    "where": "ryukyu-kingdom /ledger/17"
+   },
+   "mirror": {
+    "slug": "empire-of-japan",
+    "year": null,
+    "type": "vassal_start"
+   },
+   "status": "missing",
+   "note": "ryukyu-kingdom has vassal_start 1872-10 and vassal_end 1879-3 with counterpart empire-of-japan ('Domain of the Empire of Japan (1872–1879)', 'Reorganized into Ryukyu Domain: 16 October 1872'); empire-of-japan has neither, although its own 1870 keyframe note defers the 1872-1879 domain to the ryukyu dossier."
+  },
+  {
+   "event": {
+    "slug": "tokugawa-shogunate",
+    "year": 1868,
+    "type": "contest_end",
+    "counterpart": "russian-empire",
+    "where": "tokugawa-shogunate /ledger/14"
+   },
+   "mirror": {
+    "slug": "empire-of-japan",
+    "year": 1868,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "the Sakhalin contest passes from the shogunate to empire-of-japan /ledger/1 in 1868-1 (hand-over, not a mirror pair)."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Amami Islands",
+   "kind": "region",
+   "used_in": "empire-of-japan"
+  },
+  {
+   "name": "Ogasawara Islands",
+   "kind": "region",
+   "used_in": "empire-of-japan"
+  },
+  {
+   "name": "Rehe",
+   "kind": "region",
+   "used_in": "empire-of-japan"
+  },
+  {
+   "name": "Kwantung Leased Territory",
+   "kind": "region",
+   "used_in": "empire-of-japan"
+  },
+  {
+   "name": "Mengjiang",
+   "kind": "region",
+   "used_in": "empire-of-japan"
+  },
+  {
+   "name": "Kiautschou Bay Leased Territory",
+   "kind": "region",
+   "used_in": "empire-of-japan"
+  },
+  {
+   "name": "Andaman and Nicobar Islands",
+   "kind": "region",
+   "used_in": "empire-of-japan"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Manchukuo",
+   "suggested_slug": "manchukuo",
+   "years": [
+    1932,
+    1945
+   ]
+  },
+  {
+   "name": "Mengjiang",
+   "suggested_slug": "mengjiang",
+   "years": [
+    1936,
+    1945
+   ]
+  },
+  {
+   "name": "Republic of Ezo",
+   "suggested_slug": "republic-of-ezo",
+   "years": [
+    1868,
+    1869
+   ]
+  },
+  {
+   "name": "East Hebei Autonomous Council",
+   "suggested_slug": "east-hebei-autonomous-council",
+   "years": [
+    1935,
+    1937
+   ]
+  },
+  {
+   "name": "Reorganized National Government of China",
+   "suggested_slug": "reorganized-national-government-of-china",
+   "years": [
+    1940,
+    1945
+   ]
+  },
+  {
+   "name": "Far Eastern Republic",
+   "suggested_slug": "far-eastern-republic",
+   "years": [
+    1920,
+    1922
+   ]
+  },
+  {
+   "name": "Second Philippine Republic",
+   "suggested_slug": "second-philippine-republic",
+   "years": [
+    1943,
+    1945
+   ]
+  },
+  {
+   "name": "State of Burma",
+   "suggested_slug": "state-of-burma",
+   "years": [
+    1943,
+    1945
+   ]
+  },
+  {
+   "name": "Ouetsu Reppan Domei (Northern Alliance)",
+   "suggested_slug": "ouetsu-reppan-domei",
+   "years": [
+    1868,
+    1868
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-jk-01-d.md",
+ "problems": [
+  "Only two neighbour dossiers of the brief's Context list exist (commonwealth-of-australia, tokugawa-shogunate); ryukyu-kingdom was also checked as a direct counterpart. Every other counterpart (eu-17, ea-08, jk-02, eu-20, se-03, eu-11, am-07, eu-21, se-01 e-f) belongs to a group that has not run yet.",
+  "WebFetch answers through a small model's extract; the quotes above are as returned.",
+  "The reviewer applied five small fixes to history/polities/empire-of-japan.json (sources for four rulers, two years, three confidence levels, one war outcome; see applied: true) and re-validated it: 0 errors, the same 11 warnings."
+ ]
+}

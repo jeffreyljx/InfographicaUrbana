@@ -1,0 +1,824 @@
+{
+ "batch_id": "eu-20-f",
+ "verdicts": [
+  {
+   "slug": "grand-duchy-of-berg",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/4",
+     "what": "Dortmund is inside a gain whose counterpart is kingdom-of-prussia, but Dortmund was never Prussian.",
+     "why": "de Großherzogtum Berg: 'die ehemalige Reichsstadt Dortmund' in a list of 'meist ehemals preußische Gebiete'; principality-of-nassau-orange-fulda /ledger/2 holds Dortmund from 1803, and that state dissolves to first-french-empire in October 1806.",
+     "fix": "Remove the Dortmund disc from /ledger/4 and add a separate gain from first-french-empire (or principality-of-nassau-orange-fulda) dated 1808 (1 March 1808 if the Dortmund page confirms), confidence 2.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/7",
+     "what": "The 1810 loss region (45 km disc round Münster) reaches south of the Lippe-Haltern-Telgte-Borgholzhausen line and includes Hamm and Lüdinghausen, which stayed in Berg.",
+     "why": "de page: annexation 'nördlich einer Linie von der Lippe über Haltern, Telgte bis Borgholzhausen'. The gazetteer puts Hamm inside the loss region, but the dossier's own 1811 correction keeps it.",
+     "fix": "Clip the region to the north of the line, e.g. minus {\"lon\": 7.82, \"lat\": 51.68, \"km\": 30} (the Mark disc) or a polygon along the line.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/4",
+     "what": "The year 1807 and the giver Prussia are inferred: the page says only 'bis zum Januar 1808', and Wesel went to France 'dagegen' in January 1808.",
+     "why": "de page; kingdom-of-prussia /ledger/38 books these lands (NRW part of the 1806 Prussian shape) as lost to kingdom-of-westphalia in July 1807.",
+     "fix": "Consider dating /ledger/4 and /ledger/5 to January 1808 with counterpart first-french-empire (Prussia ceded the lands to Napoleon at Tilsit), keeping confidence 2. Otherwise ask eu-09 to change Prussia /ledger/38.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (missing 1810 gain)",
+     "what is missing": "Recklinghausen, gained from duchy-of-arenberg in 1810; duchy-of-arenberg /ledger/8 dissolves into grand-duchy-of-berg with 'the Grand Duchy of Berg annexed Recklinghausen'.",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Arenberg"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "Month and giver of Dortmund (possibly 1 March 1808).",
+     "page to try": "https://en.wikipedia.org/wiki/Dortmund"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "Whether Rheina-Wolbeck and Horstmar came in 1806 (de) or after Tilsit (fr); Gummersbach and Friesenhagen 'later' (fr, undated).",
+     "page to try": "https://fr.wikipedia.org/wiki/Grand-duch%C3%A9_de_Berg"
+    },
+    {
+     "where": "/ledger/4-5",
+     "what is missing": "The exact date of the post-Tilsit transfers (the January 1808 treaty with France exchanging Wesel).",
+     "page to try": "https://en.wikipedia.org/wiki/County_of_Mark"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Grand_Duchy_of_Berg",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://de.wikipedia.org/wiki/Gro%C3%9Fherzogtum_Berg",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://de.wikipedia.org/wiki/Gro%C3%9Fherzogtum_Berg",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://de.wikipedia.org/wiki/Gro%C3%9Fherzogtum_Berg",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 17300,
+    "infobox_year": 1811,
+    "cliopatria_km2": 6427,
+    "ratio": 0.37,
+    "acknowledged": true,
+    "note": "/keyframe_review/4 acknowledges the ratio and marks the shape wrong; the corrected 1811 shape is about 18,500 km2 of cells (ratio 1.07)."
+   }
+  },
+  {
+   "slug": "grand-duchy-of-hesse",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/6",
+     "what": "Between the corrected 1815 keyframe (19 cells, about 4,800 km2) and the 1816 keyframe (the Cliopatria 1820 shape, 44 cells, about 11,100 km2), the ledger explains only 9 cells (Rhenish Hesse, /ledger/7). The other 14 cells in Hessen and 2 in Baden-Württemberg have no event, and no note says so.",
+     "why": "Gazetteer: the 1820 shape has 29 Hessen and 9 Rheinland-Pfalz cells; the 1807 shape has 16 Hessen and 20 NRW cells. The Hesse infobox gives 9,300 km2 (1806) and 8,345 km2 (1815).",
+     "fix": "Either correct 1816-1865 to {\"union\": [<the /keyframe_review/5 correction>, <the /ledger/7 region>]} (about 28 cells, 7,080 km2, ratio 0.85 to 8,345) and mark 1820/1849/1853 adjust; or state in the KF6 and KF7 notes that Cliopatria's pre-1815 and post-1820 cores differ by about 3,500 km2 east of the Rhine and list the core growth as a gap.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/7/counterpart",
+     "what": "The counterpart 'Mont-Tonnerre department' has no dossier and is not in counterparts_needing_dossiers.",
+     "why": "en Grand Duchy of Hesse: 'A treaty among Austria, Prussia, and Hesse dated 30 June 1816'; kingdom-of-bavaria /ledger/14 takes the Palatinate from austrian-empire in 1816 (the same allied administration).",
+     "fix": "Set the counterpart to austrian-empire (and route the mirror to austrian-empire), or list the allied administration under counterparts_needing_dossiers.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (1806)",
+     "what is missing": "The 1806 mediatisations (Standesherrschaften) that grew the right-bank core; the page names none.",
+     "page to try": "https://de.wikipedia.org/wiki/Gro%C3%9Fherzogtum_Hessen"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "The places of the 1810 treaties (other Electoral Hesse lands to Upper Hesse; the August/November 1810 three-way exchange with France and Baden).",
+     "page to try": "https://de.wikipedia.org/wiki/Gro%C3%9Fherzogtum_Hessen"
+    },
+    {
+     "where": "/ledger/10",
+     "what is missing": "The other 1866 enclaves (Rumpenheim and others) and the reconciliation with the page's 82 km2 net loss.",
+     "page to try": "https://de.wikipedia.org/wiki/Gro%C3%9Fherzogtum_Hessen"
+    },
+    {
+     "where": "/keyframe_review/6",
+     "what is missing": "A source for the right-bank growth between 1815 and 1820 (Isenburg-Offenbach? Hanau and Fulda remnants?), or the trim described in the fix.",
+     "page to try": "https://de.wikipedia.org/wiki/Gro%C3%9Fherzogtum_Hessen"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Grand_Duchy_of_Hesse",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Grand_Duchy_of_Hesse",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Grand_Duchy_of_Hesse",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Landgraviate_of_Hesse-Homburg",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Landgraviate_of_Hesse-Homburg",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Grand_Duchy_of_Hesse",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 9300,
+    "infobox_year": 1806,
+    "cliopatria_km2": 20167,
+    "ratio": 2.17,
+    "acknowledged": true,
+    "note": "/keyframe_review/0 is marked adjust to the 1807 shape. Other ratios: 1815 infobox 8,345 against the corrected 1815 shape (about 4,800 km2), 0.58; 1866 infobox 7,682 against 8,786 (1868), 1.14."
+   }
+  },
+  {
+   "slug": "grand-duchy-of-saxe-weimar-eisenach",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/4/region",
+     "what": "The Neustadt gain region (22 km disc) covered 7 cells, 5 of them outside the grand duchy's post-1815 land (Reuss and Saxe-Altenburg).",
+     "why": "en Saxe-Weimar-Eisenach: District Neustadt 628.71 km2 (1895). Gazetteer: the disc is 1,770 km2, and only 2 of its cells lie in the Cliopatria 1868 shape.",
+     "fix": "Intersected with {\"cliopatria\": \"Grand Duchy of Saxe-Weimar-Eisenach\", \"year\": 1868}; now 2 cells (about 506 km2). Validated.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/5/region",
+     "what": "The Eisenacher Oberland region (28 km disc) covered 12 cells, 10 of them outside the grand duchy (Hesse-Kassel, Fulda and Bavarian Rhön).",
+     "why": "en page: the Oberland 'was created from adjacent former parts of Hesse-Kassel' and Fulda lands; the whole Eisenach district was 1,214.03 km2 in 1895, against 3,035 km2 for the disc.",
+     "fix": "Intersected with the Cliopatria 1868 shape; now 2 cells. Validated.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4-6",
+     "what is missing": "The month of the 1815 Vienna transfers (Neustadt, Oberland) and the Fulda share of the Oberland.",
+     "page to try": "https://de.wikipedia.org/wiki/Sachsen-Weimar-Eisenach"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Erfurt",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Saxe-Weimar-Eisenach",
+     "result": "confirmed (page names Saxony as giver; the dossier's Prussia follows the Kingdom of Saxony page's 're-ceded' and is explained)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Saxe-Weimar-Eisenach",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Erfurt",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2052,
+    "infobox_year": 1800,
+    "cliopatria_km2": 2311,
+    "ratio": 1.13,
+    "acknowledged": true,
+    "note": "The 1895 district areas sum to 3,595 km2 (page), against the 1868 shape's 3,610."
+   }
+  },
+  {
+   "slug": "grand-duchy-of-wurzburg",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/0/counterpart and /wars/0/belligerents",
+     "what": "In December 1805 the land was ceded by the Electorate of Bavaria (slug duchy-of-bavaria, which ends December 1805 and gained Würzburg in 1803, its /ledger/35), not by kingdom-of-bavaria, which starts January 1806.",
+     "why": "en Grand Duchy of Würzburg: 'granted to the Electorate of Bavaria'; de: 'dem Kurfürstentum Bayern zugesprochen' and 'trat Bayern im Frieden von Pressburg das Fürstentum Würzburg im Tausch gegen Tirol an den Habsburger Erzherzog' (26 December 1805).",
+     "fix": "Changed kingdom-of-bavaria to duchy-of-bavaria in both places. Validated.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/0-2",
+     "what": "The 1805-1810 corrections (the Regensberg 1806 and 1807 shapes) contain 2 of the 3 Schweinfurt cells before the 1810 gain (/ledger/2), and the KF0 text names Schweinfurt.",
+     "why": "Schweinfurt page: 'passed to the Electorate of Bavaria' 1802-03, 'Assigned to the grand duke of Würzburg in 1810'.",
+     "fix": "Subtract {\"place\": \"Schweinfurt\", \"km\": 6} from the 1805-1810 corrections, or reword KF0 (the KF2 note already calls it a one-city change).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (1806-1810)",
+     "what is missing": "The 1806 Rhine Act additions and the 1810 exchange with Bavaria (Paris treaty); the pages give no area.",
+     "page to try": "https://de.wikipedia.org/wiki/Hochstift_W%C3%BCrzburg"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://de.wikipedia.org/wiki/Gro%C3%9Fherzogtum_W%C3%BCrzburg",
+     "result": "confirmed (counterpart corrected)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Grand_Duchy_of_W%C3%BCrzburg",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Schweinfurt",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Grand_Duchy_of_W%C3%BCrzburg",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 6179,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area. The Cliopatria Würzburg row is swapped with Principality of Regensberg (verified: the Regensberg bbox 9.27-10.44E, 49.18-50.51N contains Würzburg; the Würzburg 1806 centroid 9.0E 49.8N is Aschaffenburg). The area given is the Regensberg 1806 shape."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "grand-duchy-of-berg",
+    "year": 1806,
+    "type": "gain",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1806,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Cleves; Prussia /ledger/33 (Feb 1806), Berg /ledger/1 (March, possession)."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-berg",
+    "year": 1806,
+    "type": "gain",
+    "counterpart": "principality-of-nassau-orange-fulda"
+   },
+   "mirror": {
+    "slug": "principality-of-nassau-orange-fulda",
+    "year": 1806,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Its /ledger/6 books the July 1806 loss of the Nassau lands to duchy-of-nassau only, though its note says they went to Berg and Nassau; it needs a loss to grand-duchy-of-berg (Siegen, Dillenburg, Hadamar)."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-berg",
+    "year": 1806,
+    "type": "gain",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1806,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "HRE minor states /ledger/113."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-berg",
+    "year": 1807,
+    "type": "gain",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1807,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Prussia /ledger/38 books Mark, Münster, Tecklenburg, Lingen, Essen and Werden (NRW part) as lost to kingdom-of-westphalia in July 1807; Berg books them from Prussia (berg /ledger/4 and /ledger/5). Dortmund was never Prussian. Route to eu-09 and the Berg author."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-berg",
+    "year": 1808,
+    "type": "loss",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": {
+    "slug": "first-french-empire",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "Wesel, January 1808: first-french-empire has no Wesel gain."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-berg",
+    "year": 1810,
+    "type": "loss",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": {
+    "slug": "first-french-empire",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "The northern Berg lands (Lippe and Ober-Ems departments), 13 December 1810: first-french-empire has only Arenberg's Meppen and Dülmen in 1810."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-arenberg",
+    "year": 1810,
+    "type": "dissolve",
+    "counterpart": "grand-duchy-of-berg"
+   },
+   "mirror": {
+    "slug": "grand-duchy-of-berg",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "Recklinghausen to Berg in 1810: there is no gain in Berg (listed as a gap)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-prussia",
+    "year": 1815,
+    "type": "gain",
+    "counterpart": "grand-duchy-of-berg"
+   },
+   "mirror": {
+    "slug": "grand-duchy-of-berg",
+    "year": 1813,
+    "type": "dissolve"
+   },
+   "status": "exception",
+   "note": "Berg ends in November 1813; the Generalgouvernement Berg 1813-1815 (in counterparts_needing_dossiers) stands between them."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-hesse",
+    "year": 1806,
+    "type": "gain",
+    "counterpart": "Landgraviate of Hesse-Homburg"
+   },
+   "mirror": {
+    "slug": "landgraviate-of-hesse-homburg",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "No dossier; listed in counterparts_needing_dossiers (its years should start before 1806)."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-hesse",
+    "year": 1809,
+    "type": "gain",
+    "counterpart": "Teutonic Order"
+   },
+   "mirror": {
+    "slug": "teutonic-order",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "Kloppenheim and Schiffenberg, one cell; teutonic-order ends in 1525; no dossier needed."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-hesse",
+    "year": 1810,
+    "type": "gain",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": {
+    "slug": "first-french-empire",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Babenhausen and other Electoral Hesse lands, 1810 treaty: no loss in first-french-empire."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-hesse",
+    "year": 1815,
+    "type": "loss",
+    "counterpart": "Landgraviate of Hesse-Homburg"
+   },
+   "mirror": {
+    "slug": "landgraviate-of-hesse-homburg",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-hesse",
+    "year": 1815,
+    "type": "loss",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1815,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Duchy of Westphalia; Prussia /ledger/50 (June 1815)."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-hesse",
+    "year": 1816,
+    "type": "gain",
+    "counterpart": "Mont-Tonnerre department"
+   },
+   "mirror": {
+    "slug": "austrian-empire",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "The counterpart is not a dossier. The suggested counterpart is austrian-empire (allied administration; Bavaria /ledger/14 uses austrian-empire for the Palatinate), which has no 1816 loss."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1816,
+    "type": "gain",
+    "counterpart": "grand-duchy-of-hesse"
+   },
+   "mirror": {
+    "slug": "grand-duchy-of-hesse",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Bavaria /ledger/15 is confidence 1, 'page silent'. The Munich treaty it cites excludes Worms and Pfeddersheim, which went to Hesse; the Hesse page mentions only unnamed small exchanges with Bavaria. Bavaria's event is probably wrong."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-hesse",
+    "year": 1866,
+    "type": "gain",
+    "counterpart": "Landgraviate of Hesse-Homburg"
+   },
+   "mirror": {
+    "slug": "landgraviate-of-hesse-homburg",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-hesse",
+    "year": 1866,
+    "type": "loss",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1866,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Prussia /ledger/61 names only Hesse-Homburg; Biedenkopf and the Hinterland (in Hesse's region) are missing on the Prussian side."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-hesse",
+    "year": 1866,
+    "type": "gain",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Amt Dorheim (Electoral Hesse enclave) and the other enclaves given to Hesse: no Prussian loss."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-saxe-weimar-eisenach",
+    "year": 1807,
+    "type": "loss",
+    "counterpart": "Principality of Erfurt"
+   },
+   "mirror": {
+    "slug": "principality-of-erfurt",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-saxe-weimar-eisenach",
+    "year": 1815,
+    "type": "gain",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Neustadt circle. kingdom-of-saxony /ledger/3 notes it was 're-ceded by Prussia to Saxe-Weimar-Eisenach', but Prussia books no loss."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-saxe-weimar-eisenach",
+    "year": 1815,
+    "type": "gain",
+    "counterpart": "electorate-of-hesse"
+   },
+   "mirror": {
+    "slug": "electorate-of-hesse",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Eisenacher Oberland (Vacha area): no loss in electorate-of-hesse."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-saxe-weimar-eisenach",
+    "year": 1815,
+    "type": "gain",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Erfurt lands and Blankenhain, September 1815: Prussia books neither the regain of Erfurt nor the cession."
+  },
+  {
+   "event": {
+    "slug": "confederation-of-the-rhine",
+    "year": 1806,
+    "type": "gain",
+    "counterpart": "Saxon duchies (Coburg, Gotha, Hildburghausen, Meiningen, Weimar)"
+   },
+   "mirror": {
+    "slug": "grand-duchy-of-saxe-weimar-eisenach",
+    "year": 1806,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "The CoR books membership as a land gain (15 Dec 1806); Weimar treats it as association. Convention ruling needed."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-wurzburg",
+    "year": 1805,
+    "type": "found",
+    "counterpart": "duchy-of-bavaria"
+   },
+   "mirror": {
+    "slug": "duchy-of-bavaria",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Counterpart corrected by the reviewer from kingdom-of-bavaria. duchy-of-bavaria gains Würzburg in 1803 (/ledger/35) but books no December 1805 loss."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-wurzburg",
+    "year": 1810,
+    "type": "gain",
+    "counterpart": "kingdom-of-bavaria"
+   },
+   "mirror": {
+    "slug": "kingdom-of-bavaria",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Schweinfurt 1810: no loss in kingdom-of-bavaria."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-wurzburg",
+    "year": 1814,
+    "type": "loss",
+    "counterpart": "kingdom-of-bavaria"
+   },
+   "mirror": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1814,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Bavaria /ledger/11 (June 1814)."
+  },
+  {
+   "event": {
+    "slug": "confederation-of-the-rhine",
+    "year": 1806,
+    "type": "gain",
+    "counterpart": "grand-duchy-of-wurzburg"
+   },
+   "mirror": {
+    "slug": "grand-duchy-of-wurzburg",
+    "year": 1806,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "The CoR books membership as a gain on 23 Sep 1806 (table); the Würzburg pages give 30 Sep 1806, and Würzburg books no land change. Convention ruling needed."
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-wurzburg",
+    "year": 1806,
+    "type": "keyframe",
+    "counterpart": "principality-of-regensberg"
+   },
+   "mirror": {
+    "slug": "principality-of-regensberg",
+    "year": 1806,
+    "type": "keyframe"
+   },
+   "status": "matched",
+   "note": "Swapped Cliopatria rows: each dossier points its corrections at the other row. Verified by bbox and centroid."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Wesel",
+   "kind": "place",
+   "used_in": "grand-duchy-of-berg"
+  },
+  {
+   "name": "Siegen",
+   "kind": "place",
+   "used_in": "grand-duchy-of-berg"
+  },
+  {
+   "name": "Dillenburg",
+   "kind": "place",
+   "used_in": "grand-duchy-of-berg"
+  },
+  {
+   "name": "Hadamar",
+   "kind": "place",
+   "used_in": "grand-duchy-of-berg"
+  },
+  {
+   "name": "Hamm",
+   "kind": "place",
+   "used_in": "grand-duchy-of-berg"
+  },
+  {
+   "name": "Lingen",
+   "kind": "place",
+   "used_in": "grand-duchy-of-berg"
+  },
+  {
+   "name": "Tecklenburg",
+   "kind": "place",
+   "used_in": "grand-duchy-of-berg"
+  },
+  {
+   "name": "Bentheim",
+   "kind": "place",
+   "used_in": "grand-duchy-of-berg"
+  },
+  {
+   "name": "Blankenhain",
+   "kind": "place",
+   "used_in": "grand-duchy-of-saxe-weimar-eisenach"
+  },
+  {
+   "name": "Neustadt an der Orla",
+   "kind": "place",
+   "used_in": "grand-duchy-of-saxe-weimar-eisenach"
+  },
+  {
+   "name": "Dermbach",
+   "kind": "place",
+   "used_in": "grand-duchy-of-saxe-weimar-eisenach"
+  },
+  {
+   "name": "Babenhausen",
+   "kind": "place",
+   "used_in": "grand-duchy-of-hesse"
+  },
+  {
+   "name": "Homburg vor der Höhe",
+   "kind": "place",
+   "used_in": "grand-duchy-of-hesse"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Principality of Erfurt",
+   "suggested_slug": "principality-of-erfurt",
+   "years": [
+    1806,
+    1815
+   ]
+  },
+  {
+   "name": "Landgraviate of Hesse-Homburg",
+   "suggested_slug": "landgraviate-of-hesse-homburg",
+   "years": [
+    1622,
+    1866
+   ]
+  },
+  {
+   "name": "Grand Duchy of Frankfurt",
+   "suggested_slug": "grand-duchy-of-frankfurt",
+   "years": [
+    1810,
+    1813
+   ]
+  },
+  {
+   "name": "Principality of Aschaffenburg",
+   "suggested_slug": "principality-of-aschaffenburg",
+   "years": [
+    1803,
+    1810
+   ]
+  },
+  {
+   "name": "Generalgouvernement Berg",
+   "suggested_slug": "generalgouvernement-berg",
+   "years": [
+    1813,
+    1815
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-20-f.md",
+ "problems": [
+  "No page failed to load. Reviewer edits: grand-duchy-of-wurzburg (/ledger/0 and /wars/0 slug) and grand-duchy-of-saxe-weimar-eisenach (/ledger/4 and /ledger/5 regions clipped to the 1868 shape); both re-validated with 0 errors and 0 warnings.",
+  "Convention conflict for the orchestrator: confederation-of-the-rhine books member accessions (Würzburg, the Saxon duchies) as land gains, while the member dossiers treat membership as association. One ruling is needed for the CoR, the German Confederation and the North German Confederation.",
+  "Unmirrored events route to other groups: first-french-empire (Berg Wesel 1808, Berg north 1810, Hesse Babenhausen 1810); kingdom-of-prussia, eu-09 (1807 Westphalian lands booked to kingdom-of-westphalia; Weimar Neustadt and Erfurt lands 1815; Hesse Dorheim 1866); electorate-of-hesse (Oberland 1815); kingdom-of-bavaria (Schweinfurt 1810; its /ledger/15 gain from Hesse is unsupported); duchy-of-bavaria (Würzburg December 1805); principality-of-nassau-orange-fulda (Siegen, Dillenburg, Hadamar to Berg 1806).",
+  "Landgraviate of Hesse-Homburg: the author's counterparts entry gives years 1815-1866, but the 1806 mediatisation needs the pre-1806 landgraviate too; suggested years start in 1622."
+ ]
+}

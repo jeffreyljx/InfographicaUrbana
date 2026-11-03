@@ -1,0 +1,890 @@
+{
+ "batch_id": "eu-15-j",
+ "verdicts": [
+  {
+   "slug": "polish-lithuanian-commonwealth",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/identity/predecessors; /ledger/0/counterpart; /ledger/1/counterpart",
+     "what": "Predecessors and the found/merge counterpart were kingdom-of-poland and grand-duchy-of-lithuania, two dossiers that end in 1449.",
+     "why": "kingdom-of-poland and grand-duchy-of-lithuania both dissolve in 1449 with successor house-of-jagiellon; house-of-jagiellon (1450-1569-07) names polish-lithuanian-commonwealth as successor and has 'merge polish-lithuanian-commonwealth' at 1569-07 (its /ledger/36).",
+     "fix": "Predecessor house-of-jagiellon (land = 1572 shape); /ledger/0 and /ledger/1 counterpart house-of-jagiellon.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/33/note (also /keyframe_review/21/note, /wars/6/outcome)",
+     "what": "The quote 'the Commonwealth lost the Cossack-held territories' is on neither the cited page nor the main article (event at confidence 2).",
+     "why": "Khmelnytsky Uprising page: no such words; it has 'early 1654', infobox '18 January 1654' and 'Emergence of the Cossack Hetmanate'. The main article says only 'a Ukrainian request, under the terms of the Treaty of Pereyaslav, for protection by the Russian Tsar'.",
+     "fix": "Note rewritten to quote the page's words; confidence stays 2.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/27/region/text",
+     "what": "Region text added 'with eastern Volhynia and Podolia up to the Sluch', which is neither on the page nor in the drawn union.",
+     "why": "Khmelnytsky Uprising: 'The treaty provided autonomy to Cossack-held voivodeships of Kyiv, Bratslav and Chernihiv'; the union is Kiev, Vinnytsya, Cherkasy, Chernihiv and Poltava only.",
+     "fix": "Text cut to 'the Cossack-held voivodeships of Kyiv, Bratslav and Chernihiv'.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/0-34 (all corrections 1569-1733)",
+     "what": "BLOCKING: Courland is drawn twice in 1569-1733: inside the Commonwealth shape, and as the duchy-of-courland vassal with its own keyframe.",
+     "why": "The author's note 7: Courland (105-108 of 121 cells) is inside the shapes to 1733. duchy-of-courland (eu-14, reviewed fix) has keyframe duchy-of-courland_1561 (1561-1733) = the Duchy of Courland 1734 shape, and /ledger/2 books it as vassal. eu-15-i ruled the same for house-of-jagiellon ('drawn twice, once direct and once vassal').",
+     "fix": "Subtract {\"cliopatria\": \"Duchy of Courland\", \"year\": 1734} from every correction covering 1569-1733 (wrap the ok keyframes as adjust), as done for Saxony and Tobago; keep the /ledger/2 and /ledger/66 vassal pair.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0-13; /ledger/6; /ledger/17",
+     "what": "BLOCKING, not flagged: Livonia is drawn twice in 1582-1628 and its gain and loss are booked twice, here and in duchy-of-livonia.",
+     "why": "duchy-of-livonia (state, 1561-1629; eu-14-x ruled that 'the Commonwealth's Livonian province holds the land in this project') draws Livonia 1582-1628. It books the 1582 gain from tsardom-of-russia (its /ledger/5), the same as /ledger/6 here. It books the losses to swedish-livonia 1621-1629 (its /ledger/10-14), against /ledger/17 here (1625, to swedish-empire). Its 1629-09 dissolve, successor polish-lithuanian-commonwealth (Latgale), has no mirror here.",
+     "fix": "Subtract the duchy-of-livonia keyframes from the corrections of 1569-1628. Book vassal_start duchy-of-livonia 1569-07 and vassal_end 1629-09 (condominium of Crown and Grand Duchy), and add a 1629-09 gain or merge of Latgale (Inflanty) from duchy-of-livonia. Recast /ledger/6 and /ledger/17 so that the land moves once. Otherwise the orchestrator rules for the Commonwealth and duchy-of-livonia is retyped.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/3; /ledger/40",
+     "what": "The Ducal Prussia vassal pair keeps counterpart duchy-of-prussia until 1657-11, but that dossier ends 1618-08.",
+     "why": "duchy-of-prussia: '1618 merge brandenburg-prussia' and dissolve 1618-08; brandenburg-prussia (1618-1701) has no vassal events. The eu-09-j review asked for the pair to be 'carried on 1618-1657 by brandenburg-prussia'. The author flagged it in the notes.",
+     "fix": "Add vassal_end duchy-of-prussia 1618-08 and vassal_start brandenburg-prussia 1618-08 (region {\"cliopatria\": \"Duchy of Prussia\", \"year\": 1580}), set /ledger/40 counterpart to brandenburg-prussia, and cite https://en.wikipedia.org/wiki/Duchy_of_Prussia.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/44/region",
+     "what": "The 1667 cession re-loses the left bank already lost to zaporozhian-cossacks in /ledger/33 (1654), and books Kyiv in 1667 where tsardom-of-russia books it in 1686.",
+     "why": "/ledger/33: loss of minus(_1652,_1653) to zaporozhian-cossacks 1654-01. /ledger/44: the same minus inside the 1667 loss to tsardom-of-russia. tsardom-of-russia /ledger/70: 1686 'Gain of Kiev and Zaporizhzhia' (Territorial evolution of Russia, c3). The Russo-Polish War page does say '(including Kiev)' for 1667.",
+     "fix": "Note that the 1667 left-bank part is a de jure renunciation, or limit the 1667 region to Smolensk and Kyiv. Settle Kyiv's year (1667 de facto or 1686 de jure) with eu-16.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1637, 1655-1660, 1657)",
+     "what": "Events that royal-prussia and brandenburg-prussia book inside this shape have no mirror here: the 1637 Lauenburg-Bütow gain, the 1657-11 loss of Lauenburg-Bütow and Draheim to brandenburg-prussia, and the Swedish occupation of Royal Prussia 1655-1660.",
+     "why": "royal-prussia /ledger/6 (1637 gain from duchy-of-pomerania, c3, Lauenburg and Bütow Land page), /ledger/12 (1657 loss to brandenburg-prussia, c3) and /ledger/7-17 (Swedish occupations); brandenburg-prussia /ledger/7 (1657 gain from polish-lithuanian-commonwealth, c3). Keyframe 17 keeps the +10 cells of 1640 unexplained.",
+     "fix": "Add a 1637 gain (counterpart duchy-of-pomerania) and a 1657-11 loss to brandenburg-prussia, citing https://en.wikipedia.org/wiki/Lauenburg_and_B%C3%BCtow_Land. Add Royal Prussia to the 1655 Swedish occupation region, or say in notes that royal-prussia carries it.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No reign list; rulers omitted.",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_Polish_monarchs"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "Confidence 1 start of the Ducal Prussia vassalage (homage at Lublin, 19 July 1569, per house-of-jagiellon).",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Prussia"
+    },
+    {
+     "where": "/ledger/42, /ledger/43",
+     "what is missing": "Confidence 1 end (1661) of the Russian occupation of Vitebsk-Polotsk and Minsk-Vilnius-Kaunas-Hrodna.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Kushliki"
+    },
+    {
+     "where": "/ledger/46",
+     "what is missing": "Confidence 1 end of the Latgale (Ludza, Rezekne) occupation in 1667.",
+     "page to try": "https://en.wikipedia.org/wiki/Truce_of_Andrusovo"
+    },
+    {
+     "where": "/ledger/66",
+     "what is missing": "Confidence 1 end of the Courland vassalage (annexation by Russia in 1795; month).",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Courland_and_Semigallia"
+    },
+    {
+     "where": "/wars/3 (Polish–Swedish War 1621–1625)",
+     "what is missing": "There is no event for Riga's capitulation (25 September 1621) or the Truce of Mitawa (1622), though swedish-empire and duchy-of-livonia book them.",
+     "page to try": "https://en.wikipedia.org/wiki/Polish%E2%80%93Swedish_War_(1621%E2%80%931625)"
+    },
+    {
+     "where": "/ledger/13",
+     "what is missing": "The month Smolensk fell (2 June 1611, per tsardom-of-russia) and the 1605-1608 phase. The author's three titles failed; this title loaded for the tsardom-of-russia author.",
+     "page to try": "https://en.wikipedia.org/wiki/Polish%E2%80%93Russian_War_(1609%E2%80%931618)"
+    },
+    {
+     "where": "/ledger (1585, 1644)",
+     "what is missing": "Sevsk 1585 and Trubchevsk 1644, which tsardom-of-russia books as gains from this state (c3), have no mirror loss here.",
+     "page to try": "https://en.wikipedia.org/wiki/Territorial_evolution_of_Russia"
+    },
+    {
+     "where": "/keyframe_review/17",
+     "what is missing": "The +10 cells of 1640 (Lauenburg and Bütow) are unexplained.",
+     "page to try": "https://en.wikipedia.org/wiki/Lauenburg_and_B%C3%BCtow_Land"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Polish–Swedish_War_(1626–1629)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/44",
+     "page": "https://en.wikipedia.org/wiki/Russo-Polish_War_(1654–1667)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/49",
+     "page": "https://en.wikipedia.org/wiki/Polish–Ottoman_War_(1672–1676)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/57",
+     "page": "https://en.wikipedia.org/wiki/Partitions_of_Poland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/27",
+     "page": "https://en.wikipedia.org/wiki/Khmelnytsky_Uprising",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/33",
+     "page": "https://en.wikipedia.org/wiki/Khmelnytsky_Uprising",
+     "result": "not on page (quoted words absent; date supported by infobox '18 January 1654'; c2, note fixed by reviewer)"
+    },
+    {
+     "where": "/ledger/35, /ledger/37, /ledger/38 (same page as /ledger/44)",
+     "page": "https://en.wikipedia.org/wiki/Russo-Polish_War_(1654–1667)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/50 (same page as /ledger/49)",
+     "page": "https://en.wikipedia.org/wiki/Polish–Ottoman_War_(1672–1676)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/62, /ledger/67 (same page as /ledger/57)",
+     "page": "https://en.wikipedia.org/wiki/Partitions_of_Poland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9, /ledger/15, /ledger/40 (area-check page)",
+     "page": "https://en.wikipedia.org/wiki/Polish–Lithuanian_Commonwealth",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 815000,
+    "infobox_year": 1582,
+    "cliopatria_km2": 777106,
+    "ratio": 0.95,
+    "acknowledged": true,
+    "note": "Also 1,000,000 (1618) against _1612 950,896 (0.95) and 733,500 (1700) against _1700 791,370 with Saxony (1.08); the author's figures check."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1569,
+    "type": "found",
+    "counterpart": "house-of-jagiellon"
+   },
+   "mirror": {
+    "slug": "house-of-jagiellon",
+    "year": 1569,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "After the reviewer's fix; house-of-jagiellon names this state as successor."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1569,
+    "type": "merge",
+    "counterpart": "house-of-jagiellon"
+   },
+   "mirror": {
+    "slug": "house-of-jagiellon",
+    "year": 1569,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": "After the reviewer's fix (was grand-duchy-of-lithuania, which ends 1449)."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1569,
+    "type": "vassal_start",
+    "counterpart": "duchy-of-courland"
+   },
+   "mirror": {
+    "slug": "duchy-of-courland",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "duchy-of-courland (eu-14) has no vassal events; house-of-jagiellon ends its own Courland vassalage in 1569 under the slug duchy-of-courland-and-semigallia (wrong slug, eu-15-i)."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1569,
+    "type": "vassal_start",
+    "counterpart": "duchy-of-prussia"
+   },
+   "mirror": {
+    "slug": "duchy-of-prussia",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "duchy-of-prussia (eu-09) has no vassal events; house-of-jagiellon hands over at 1569-07 (vassal_end)."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1579,
+    "type": "gain",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": "tsardom-of-russia",
+    "year": 1579,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Polotsk, 30 August 1579. tsardom-of-russia also books Usvyaty 1580 and Velizh 1582 as losses; here they sit in the 1579 gain region."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1582,
+    "type": "gain",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": "tsardom-of-russia",
+    "year": 1582,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Matched with tsardom-of-russia, but duchy-of-livonia /ledger/5 books the same 1582 Livonia gain from tsardom-of-russia: double gain (blocking finding B)."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1610,
+    "type": "occupation_start",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": "tsardom-of-russia",
+    "year": 1610,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "Moscow."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1611,
+    "type": "gain",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": "tsardom-of-russia",
+    "year": 1611,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Smolensk; tsardom-of-russia gives 2 June 1611 at c3, this dossier no month at c2."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1612,
+    "type": "occupation_end",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": "tsardom-of-russia",
+    "year": 1612,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "November 1612."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1619,
+    "type": "gain",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": "tsardom-of-russia",
+    "year": 1618,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Deulino: signed 11 December 1618, effective 4 January 1619."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1625,
+    "type": "loss",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": {
+    "slug": "swedish-empire",
+    "year": 1622,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "swedish-empire books the cession of northern Livonia at the Truce of Mitawa (1622-11), this dossier in 1625 (its page's sentence). duchy-of-livonia books the losses to swedish-livonia in 1621-1629. Three dossiers disagree."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1629,
+    "type": "occupation_start",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": {
+    "slug": "swedish-empire",
+    "year": 1629,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "The Prussian ports: swedish-empire books a gain, this dossier an occupation; royal-prussia books occupations by kingdom-of-sweden."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1634,
+    "type": "loss",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": "tsardom-of-russia",
+    "year": 1634,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Serpeysk, Polyanovka, June 1634."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1635,
+    "type": "occupation_end",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": {
+    "slug": "swedish-empire",
+    "year": 1635,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Stuhmsdorf: types differ as in 1629; years agree."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1649,
+    "type": "vassal_start",
+    "counterpart": "zaporozhian-cossacks"
+   },
+   "mirror": {
+    "slug": "zaporozhian-cossacks",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "zaporozhian-cossacks (eu-16) has no events with this state in 1648-1654 (the 1648-1651 contests, 1651 vassal changes, 1654 vassal_end and loss)."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1654,
+    "type": "loss",
+    "counterpart": "zaporozhian-cossacks"
+   },
+   "mirror": {
+    "slug": "zaporozhian-cossacks",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Pereiaslav, left bank. The same land is lost again to tsardom-of-russia in 1667 (/ledger/44)."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1654,
+    "type": "occupation_start",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": "tsardom-of-russia",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Polotsk-Vitebsk (July 1654) and Latgale (December 1654): tsardom-of-russia has no matching event."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1654,
+    "type": "occupation_start",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": "tsardom-of-russia",
+    "year": 1654,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Smolensk: tsardom-of-russia books a gain on 23 September 1654 and gains it again in 1667; this dossier books an occupation until the 1667 cession."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1655,
+    "type": "occupation_start",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": "tsardom-of-russia",
+    "year": 1655,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "Minsk, Vilnius, Kaunas, Hrodna."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1655,
+    "type": "occupation_start",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": {
+    "slug": "swedish-empire",
+    "year": 1655,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "The Deluge."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1657,
+    "type": "vassal_end",
+    "counterpart": "duchy-of-prussia"
+   },
+   "mirror": {
+    "slug": "brandenburg-prussia",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "duchy-of-prussia ends 1618-08; brandenburg-prussia holds the duchy in 1657 but has no vassal events (finding C)."
+  },
+  {
+   "event": {
+    "slug": "brandenburg-prussia",
+    "year": 1657,
+    "type": "gain",
+    "counterpart": "polish-lithuanian-commonwealth"
+   },
+   "mirror": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Inbound: brandenburg-prussia /ledger/7 and royal-prussia /ledger/12 book Lauenburg-Bütow and Draheim; no loss here."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1660,
+    "type": "occupation_end",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": {
+    "slug": "swedish-empire",
+    "year": 1660,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "Oliva: April (O.S.) against May (N.S.)."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1661,
+    "type": "occupation_end",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": "tsardom-of-russia",
+    "year": 1662,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "Both at confidence 1, within a year."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1667,
+    "type": "loss",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": "tsardom-of-russia",
+    "year": 1667,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Andrusovo; but tsardom-of-russia /ledger/70 books Kyiv and Zaporizhzhia as gained in 1686, against Kyiv in 1667 here (19 years apart)."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1667,
+    "type": "occupation_end",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": "tsardom-of-russia",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Smolensk and Latgale occupation ends: tsardom-of-russia booked Smolensk as a gain in 1654 and has no Latgale occupation."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1672,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1672,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Buczacz."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1676,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Żurawno: ottoman-empire (me-10) has no 1676 loss."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1699,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1699,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Karlowitz, Podolia."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1706,
+    "type": "loss",
+    "counterpart": "pro-swedish-poland"
+   },
+   "mirror": {
+    "slug": "pro-swedish-poland",
+    "year": 1706,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "pro-swedish-poland ends the contest on 14 September 1706, this dossier in October."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1709,
+    "type": "gain",
+    "counterpart": "pro-swedish-poland"
+   },
+   "mirror": {
+    "slug": "pro-swedish-poland",
+    "year": 1709,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "July 1709."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1772,
+    "type": "loss",
+    "counterpart": "russian-empire"
+   },
+   "mirror": {
+    "slug": "russian-empire",
+    "year": 1772,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "August (decision) against September (ratification)."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1772,
+    "type": "loss",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": {
+    "slug": "habsburg-monarchy",
+    "year": 1772,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1772,
+    "type": "loss",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1772,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Matched with kingdom-of-prussia, but royal-prussia (colony) and prince-bishopric-of-warmia (state) also hand the same land to kingdom-of-prussia in 1772, and royal-prussia books a 1772 'loss to polish-lithuanian-commonwealth' of Danzig and Thorn with no gain here. Overlap for the orchestrator."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1792,
+    "type": "occupation_start",
+    "counterpart": "russian-empire"
+   },
+   "mirror": {
+    "slug": "russian-empire",
+    "year": 1792,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "Types differ: russian-empire books a contest, this dossier an occupation."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1793,
+    "type": "loss",
+    "counterpart": "russian-empire"
+   },
+   "mirror": {
+    "slug": "russian-empire",
+    "year": 1793,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "23 January 1793."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1793,
+    "type": "loss",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1793,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1795,
+    "type": "vassal_end",
+    "counterpart": "duchy-of-courland"
+   },
+   "mirror": {
+    "slug": "duchy-of-courland",
+    "year": 1795,
+    "type": "dissolve"
+   },
+   "status": "exception",
+   "note": "duchy-of-courland dissolves 1795-10 to russian-empire; it has no vassal_end of its own."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1795,
+    "type": "loss",
+    "counterpart": "russian-empire"
+   },
+   "mirror": {
+    "slug": "russian-empire",
+    "year": 1795,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1795,
+    "type": "loss",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": {
+    "slug": "habsburg-monarchy",
+    "year": 1795,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1795,
+    "type": "loss",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1795,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "nalyvaiko-uprising",
+    "year": 1595,
+    "type": "gain",
+    "counterpart": "polish-lithuanian-commonwealth"
+   },
+   "mirror": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1595,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "nalyvaiko-uprising /ledger/2-4 books gains from this state (c2/c1); this dossier books only a contest and marks the Cliopatria shape wrong."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-livonia",
+    "year": 1629,
+    "type": "dissolve",
+    "counterpart": "polish-lithuanian-commonwealth"
+   },
+   "mirror": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "duchy-of-livonia hands Latgale (Inflanty) to this state; there is no gain or merge here (finding B)."
+  },
+  {
+   "event": {
+    "slug": "tsardom-of-russia",
+    "year": 1585,
+    "type": "gain",
+    "counterpart": "polish-lithuanian-commonwealth"
+   },
+   "mirror": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "tsardom-of-russia: Sevsk taken from the Commonwealth (c3); likewise Trubchevsk 1644."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1626,
+    "type": "contest_start",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": {
+    "slug": "swedish-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "The 1626-1629 war: swedish-empire has no contest."
+  },
+  {
+   "event": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": 1700,
+    "type": "other",
+    "counterpart": "electorate-of-saxony"
+   },
+   "mirror": {
+    "slug": "electorate-of-saxony",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "The Saxony gap the author reported is already covered: electorate-of-saxony has keyframes from 1657 and for 1718-1762."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Serpeysk",
+   "kind": "place",
+   "used_in": "polish-lithuanian-commonwealth"
+  },
+  {
+   "name": "Braniewo",
+   "kind": "place",
+   "used_in": "polish-lithuanian-commonwealth"
+  },
+  {
+   "name": "Frombork",
+   "kind": "place",
+   "used_in": "polish-lithuanian-commonwealth"
+  }
+ ],
+ "counterparts_needing_dossiers": [],
+ "notes_path": "history/polities/_notes/review-eu-15-j.md",
+ "problems": [
+  "No page failed to load for the reviewer (7 WebFetch calls).",
+  "Cross-dossier overlaps to settle at orchestrator level: duchy-of-livonia (state) and duchy-of-courland keyframes overlap this dossier's shapes; royal-prussia (colony) and prince-bishopric-of-warmia (state) sit inside it to 1772.",
+  "house-of-jagiellon uses the slug duchy-of-courland-and-semigallia for Courland; the dossier slug is duchy-of-courland (eu-15-i)."
+ ]
+}

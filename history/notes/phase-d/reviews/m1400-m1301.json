@@ -1,0 +1,101 @@
+{
+ "window": "m1400-m1301",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "assyria loss of Hasaka to mitanni at -1363, undoing the Hasaka part of assyria ledger 14 (named region 'Assyria', 452 cells, which contains all 83 Hasaka cells). Mitanni page: Ashur-uballit I '(1365-1330 BC)' 'attacked Shuttarna and annexed Mitanni territory in the middle of the 14th century BC' (no region); after Shattiwaza's installation 'The kingdom had by now been reduced to the Khabur Valley'; the Assyrians 'took Washukanni, Amasakku, Kahat, ...' only under Wasashatta (c. 1285-1265). Also opened the Middle Assyrian Empire page (ledger 14's own source): Ashur-uballit's conquest is 'the fertile region between the Tigris, the foothills of the Taurus Mountains and the Upper Zab', and the Khabur cities are annexed only by Adad-nirari I after Wasashatta's revolt; the page names neither Khabur nor Hanigalbat for Ashur-uballit. Spec: Hasaka 83 cells (39.5-42.3 E, 35.6-37.3 N), 82 of them inside Mitanni-1400; Washukanni (Tell Fekheriye) and Kahat (Tell Barri) lie in it. Trial: assyria/ledger/14 now moves 156 cells (238 before); Hasaka stays Mitanni's 82 cells -1363..-1301. Minor: the note's 'c. 1300' for the Khabur cities is the dossier's bridged year, the page says Wasashatta's reign c. 1285-1265 (no effect on this entry).",
+   "page": "https://en.wikipedia.org/wiki/Mitanni",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "mitanni gain of Hasaka from assyria at -1350, after mitanni ledger 5 (whose region holds 81 Hasaka cells). Same page support as events/0 ('reduced to the Khabur Valley'; Khabur cities taken under Wasashatta). Trial: mitanni/ledger/5 still moves its 99 non-Khabur cells (middle Euphrates, Tigris) to Assyria; Hasaka stays Mitanni's with no change record. Spec as events/0.",
+   "page": "https://en.wikipedia.org/wiki/Mitanni",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/2",
+   "verdict": "pass",
+   "what": "mitanni vassal_start of hittites over Hasaka at -1330. Page: a Hittite army 'installed Shattiwaza, the son of Tushratta, as their vassal king of Mitanni in the late 14th century BC'; 'Shattiwaza reigned c. 1330-1305 BC'; 'The kingdom had by now been reduced to the Khabur Valley'. Mirrors mitanni ledger 8, whose region (Cliopatria Mitanni 1300, 178 cells) meets Hasaka in 1 cell. Trial: merges into the ledger-8 relation; 82 Hasaka cells take the Hittite vassal tint -1330..-1306.",
+   "page": "https://en.wikipedia.org/wiki/Mitanni",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/3",
+   "verdict": "pass",
+   "what": "mitanni vassal_end of hittites over Hasaka at -1305, mirroring ledgers 10 (both dossiers). Page: 'Shattiwaza reigned c. 1330-1305 BC'; 'Adad-nirari claims to have captured King Shattuara and brought him to Ashur, where he took an oath as a vassal'. Trial: hittites/ledger/10 already closes the whole relation (230 cells incl. Hasaka) that year, so this entry is a harmless no-op ('already closed this year by its pair').",
+   "page": "https://en.wikipedia.org/wiki/Mitanni",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/4",
+   "verdict": "pass",
+   "what": "new-kingdom-of-egypt vassal_start canaanite-city-states over Canaan (208 cells: Israel, Palestine, Lebanon, west Jordan, Quneitra, Daraa) at -1352. Amarna letters page: the letters span 'no more than 30 years in the middle of the 14th century BC', are correspondence 'between the Egyptian administration and its representatives in Canaan and Amurru', and the Habiru were 'attacking Egyptian vassal territories throughout Canaan'; Akhenaten c. 1351-1334. Needed: a trial without it shows the -1352 keyframe snap turning 154 Canaan cells direct (ledger 10's close of the syrian-city-states relation releases them). With it, the vassal_start merges into relation 34 (ledger 5, since -1457), which ledger 21 closes at -1136, so no open-ended relation; Canaan has 194 vassal cells at the m1300 anchor (43 before). Takes only Egyptian or ownerless cells.",
+   "page": "https://en.wikipedia.org/wiki/Amarna_letters",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "mitanni_-1350 (-1350..-1346) = the dossier's shape (325 cells) plus Hasaka -> 407 cells. Supported by the Mitanni page (Khabur Valley kept until Wasashatta) and the Middle Assyrian Empire page (Ashur-uballit's lands are east of the Tigris). Keeps the keyframe consistent with events/0-1; no conflict in the trial.",
+   "page": "https://en.wikipedia.org/wiki/Mitanni",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "what": "mitanni_-1345 (-1345..-1328) = Mitanni-1300 plus the Carchemish 40 km circle (185 cells) plus Hasaka -> 267 cells. Page: 'reduced to the Khabur Valley'; Carchemish 'taken after a siege' 'in 1327 BC'. The -1345 Mitanni snap (44 cells, 478 kept by others) is gone in the trial.",
+   "page": "https://en.wikipedia.org/wiki/Mitanni",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "what": "mitanni_-1327 (-1327..-1301) = Mitanni-1300 plus Hasaka. Same page support; ends -1301, inside the window. At -1300 the next window's assyria ledger 15 and mitanni ledgers 11-12 take Hasaka and Washukanni (now an 82-cell move instead of a no-op; reported by the window agent).",
+   "page": "https://en.wikipedia.org/wiki/Mitanni",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/3",
+   "verdict": "pass",
+   "what": "mitanni_-1400 gets 'to': -1351 (the dossier's own note: 'The shape holds -1400..-1351 and is replaced by the three keyframes below'). Page: Ashur-uballit I annexed territory 'in the middle of the 14th century BC'; 'This campaign was fought in 1345 BC'. Trial: assyria/mitanni conflicts 912 cell-years -> none, hittites/mitanni 110 -> 6. Minor: the why quotes 666 cell-years where the trial shows 912 (text only).",
+   "page": "https://en.wikipedia.org/wiki/Mitanni",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/4",
+   "verdict": "pass",
+   "what": "new-kingdom-of-egypt_-1400 gets 'to': -1353 (the dossier's correction text says 'valid -1447..-1353'). NK page: 'Egypt had not held Kadesh since the time of Akhenaten'; 'the Hittites had gradually extended their influence into the Levant'; Amarna capital 'c. 1352-1336 BC'. Trial: the 225-cell Egypt snap at -1352 is gone; ledger 10's release of 60 Syrian cells to nobody now stands; Egypt-Hittite/-Amurru/-Ugarit conflicts shrink. Side effect: 25 Rif Dimashq cells (Damascus) are nobody's -1352..-1301; that follows the dossier's own -1352 keyframe (Egypt, Nubia, Canaan) and ledger 10; neither the NK nor the Amarna letters page (as fetched) names Damascus or Upi.",
+   "page": "https://en.wikipedia.org/wiki/New_Kingdom_of_Egypt",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/5",
+   "verdict": "pass",
+   "what": "hittites_-1345 (-1345..-1301) adds ledger 4's own region (Mitanni-1400 ∩ Hittites-1300, 147 cells) to the dossier's shape (720 cells); 57 cells new (36.4-38.8 E, 36.7-38.1 N: Gaziantep, Kilis, Adiyaman, west of the Euphrates). Page: Suppiluliuma 'subjugated Aleppo, Mukish, Niya, Arahtu, Qatna and Nuhasshi. This campaign was fought in 1345 BC'; 'the western portions of its territory came under direct control of the Hittites'. 7 of the 57 cells are in the Carchemish circle, but the carchemish dossier (60 km, Hittite vassal from -1345) holds them; no new hittites/carchemish conflict in the trial. Hittites-1345 snap: added 32 removed 51 -> added 21 removed 8 (the 8 are the same as before the patch).",
+   "page": "https://en.wikipedia.org/wiki/Mitanni",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "patch_check": "--check-patch m1400-m1301: 11 entries, 11 ok, 0 rejected (events/4 note: counterpart 'canaanite-city-states' has no dossier, as in the dossier's own ledger 5). Reviewer trial reproduces the agent's: all 11 applied; conflicts 1308 -> 241 cell-years, snaps 7 -> 5, end anchor m1300: 185 cells change owner, 151 status.",
+ "problems": [
+  "No changes made to the patch; all 11 entries pass.",
+  "Pages opened by the reviewer: Mitanni (twice), Amarna letters, New Kingdom of Egypt, Middle Assyrian Empire.",
+  "Next window m1300-m1201: the m1300 anchor changes (82 Hasaka cells Mitanni instead of Assyria, 59 Syrian cells Egypt -> nobody, 43 Gaziantep/Adiyaman cells Mitanni -> Hittites, Canaan vassal tint) as the agent reported; the Mitanni page dates the Khabur cities' fall to Wasashatta's reign (c. 1285-1265), later than the dossiers' bridged -1300 for assyria ledger 15 and mitanni ledger 12.",
+  "Next window: new-kingdom-of-egypt_-1300 and _-1240 (verdict 'wrong' with a Cliopatria-shape correction) may still claim Syria north of Canaan from -1300, as the agent reported; not caused by this patch.",
+  "Left as drawn (pages silent): Damascus (25 Rif Dimashq cells) nobody's from -1352; Assyrian speckles from mitanni ledger 5's region in the Syrian steppe and in Mardin north of Hasaka; middle-Euphrates Dayr az-Zawr cells to Assyria at -1350."
+ ]
+}

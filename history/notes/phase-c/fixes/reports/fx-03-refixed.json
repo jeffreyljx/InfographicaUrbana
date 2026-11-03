@@ -1,0 +1,38 @@
+{
+ "batch_id": "fx-03",
+ "findings": [
+  {
+   "item": "F009",
+   "verdict": "partly",
+   "dossiers_changed": [
+    "mongol-empire"
+   ],
+   "changes": [
+    "mongol-empire: ledger/2 (1208 gain from nobody, Jochi): region narrowed from Irkutsk, Krasnoyarsk, Kemerovo, Novosibirsk, Tomsk, Altay, Gorno-Altay (4,870 cells) to the Cliopatria 1220 shape inside Kemerovo, Novosibirsk, Tomsk, Altay, Gorno-Altay and Krasnoyarsk minus the box [88,58]-[106,62] (2,723 cells, all west of 101 E and south of 58 N); text and note rewritten",
+    "mongol-empire: keyframe_review mongol-empire_1208 correction: same spec added as one more union term, bracketed fx-03 note citing the Jochi page (13,008 -> 15,066 cells)",
+    "mongol-empire: keyframe_review mongol-empire_1210 correction: same spec added (13,631 -> 15,689 cells)",
+    "mongol-empire: keyframe_review mongol-empire_1216 correction: same spec added (20,104 -> 22,162 cells)",
+    "mongol-empire: keyframe_review mongol-empire_1218 correction: same spec added (25,639 -> 27,697 cells)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Jochi"
+   ],
+   "why": "Re-opened the Jochi page: 'in 1207-08 he campaigned against and subjugated the Hoi-yin Irgen', 'a collection of tribes on the edge of the Siberian taiga between the Angara and Irtysh rivers'. The page gives the date and the two rivers only. The reviewer's option (2) was applied, because the ledger-index numbers of mongol-empire stay as the review counted them. Irkutsk (east of the Angara) and Krasnoyarsk north of 58 N (on or beyond the lower Angara) are dropped from the event. The keyframes 1208, 1210, 1216 and 1218 now carry the event's cells: checked with the gazetteer, the event's cells outside the keyframe union fall from 3,423 (1208) and 2,925 (1210, 1216, 1218) to 0 at each, and 0 outside _1220 and the later keyframes, so the keyframe check no longer releases them to nobody and no new 1208 snap arises. The 1220 snap loses these oblasts. The extent between the two rivers is a reading (confidence 2); 665 of the 2,723 cells are the Yenisei Kyrgyz land that ledger/1 already takes. The compiler was not run. The earlier parts of F009 (1220 keyframe rewrite, new mongol-empire_1221, ledger/14 narrowed) were passed by the review and are untouched; about 7,400 cells of the 1220 snap before this fix remain, minus about 2,900 now covered (Qyzylorda, South Kazakhstan, Fergana and Tajik cells of Cliopatria's nominal 1220 shape have no dated page)."
+  }
+ ],
+ "dossiers_changed": [
+  "mongol-empire"
+ ],
+ "validation": {
+  "mongol-empire": "ok (0 errors, 14 warnings; 98 events, 30 sources, 21 keyframes, 461 regions resolve)"
+ },
+ "handoffs": [],
+ "gazetteer_names_needed": [],
+ "not_reached": [],
+ "notes_path": "history/polities/_notes/fix-fx-03.md",
+ "problems": [
+  "Ledger indices of mongol-empire (unchanged by this round): fx-03 additions are ledger/2 (1208), /14 (1221 narrowed), /22 (1231), /23 (1233 Eastern Xia), /24 (1233 Outer Manchuria, by the reviewer); old 2-20 are now 3-21 and old 21 and later are now 25 and later. The header line of history/polities/_notes/fix-fx-03.md says 24 and later; a correcting line is appended. The 'mongol-empire.json ledger/N' evidence strings in data/hierarchy.csv (8) and in other dossiers' notes were not checked or edited (not files of this batch).",
+  "Residual from the review, outside the rejected item and not touched: mongol-empire_1227 lacks Xinjiang, which _1220 and _1221 carry, so about 139 Xinjiang cells outside the Chagatai founding region are released at 1227; adding {\"admin1\": \"Xinjiang\", \"country\": \"China\"} to the 1227 correction would close it.",
+  "The compiler (compile_dossiers.py) was not run; cell counts come from the gazetteer on this dossier's own regions, and the keyframe check was read from do_keyframe (a keyframe's starting year releases owned direct cells outside the union of the keyframes alive that year)."
+ ]
+}

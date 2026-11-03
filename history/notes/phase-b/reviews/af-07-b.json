@@ -1,0 +1,840 @@
+{
+ "batch_id": "af-07-b",
+ "verdicts": [
+  {
+   "slug": "natalia-republic",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction and /keyframe_review/1/correction",
+     "applied": false,
+     "what": "The republic's 1839-1843 shape is Cliopatria's 1840 Natal shape unchanged, but that shape already holds most of the territory between the Buffalo and Tugela rivers (Klip River county: Ladysmith, Newcastle), which the page says Mpande gave up to Natal only in 1843.",
+     "why": "Natalia Republic page: 'Mpande gave up to Natal all the territory between the Buffalo and Tugela rivers, which later formed Klip River county' (placed during Cloete's visit, after the Volksraad's acceptance of 8 August 1843); zululand's own 1838 loss note quotes Dingane's cession as 'all the land south of the Tugela River'. Gazetteer: a box north of the Tugela and west of the Buffalo (29.4-30.7E, 27.4-28.75S) holds 34 cells of Cliopatria's Natalia 1840 shape (about 9,000 km2, a quarter of its 37,668 km2), including all 3 Ladysmith cells and the Newcastle tip; only the eastern 10-14 cells (Msinga, Dundee) are in Cliopatria's Zululand. The author's notes say the Buffalo-Tugela country is the 10 Msinga cells Cliopatria draws in Zululand, which is the false premise of both corrections.",
+     "fix": "Correct natalia-republic_1839 and natalia-republic_1840 to {\"minus\": [{\"cliopatria\": \"Natalia Republic\", \"year\": 1840}, {\"region\": \"Klip River County\"}]} (the land north of the Tugela and west of the Buffalo; ask the gazetteer for the region, or intersect with a polygon north of the Tugela until it exists), apply the same region to /ledger/0 (found), /ledger/3 (dissolve) and the predecessor/successor land; and widen colony-of-natal /ledger/0 (the 1843 gain) to the whole Klip River county plus the Msinga circle. If you keep the territory in the republic instead (Pretorius's 1840 proclamation of land north of the Tugela), say so in the keyframe note with the page's words; silence is the fault."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1/note",
+     "what is missing": "Pretorius's proclamation of a large tract from St Lucia Bay (1840, after the defeat of Dingane) is not drawn or dated",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Maqongqe"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Natalia_Republic",
+     "result": "confirmed (infobox: established 12 October 1839)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Natalia_Republic",
+     "result": "confirmed ('On 26 May the Boers captured the harbour ... on 31 May blockaded the British camp')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Natalia_Republic",
+     "result": "confirmed ('on 26 June, Captain Smith was relieved')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Natalia_Republic",
+     "result": "confirmed (infobox: annexed 12 May 1843; colony proclaimed 4 May 1843 on the Colony of Natal page)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 37668,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "the page has no area figure; the notes say so"
+   }
+  },
+  {
+   "slug": "colony-of-natal",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/8/region",
+     "applied": true,
+     "what": "The dissolve region was Cliopatria's raw 1908 shape, without the Vryheid/Utrecht/Wakkerstroom districts the dossier's own keyframe natalia-republic_1908 adds from 1903.",
+     "why": "Keyframe /keyframe_review/8 correction (union with the Vryheid circle and the Utrecht circle); Colony of Natal page: 'The territories were formally transferred to Natal in January 1903'.",
+     "fix": "Region replaced by a copy of the natalia-republic_1908 correction; re-validated (0 errors)."
+    },
+    {
+     "where": "/ledger/0/region",
+     "applied": false,
+     "what": "The 1843 gain from zululand is a 30 km circle at Msinga (10 cells), but the page's cession is 'all the territory between the Buffalo and Tugela rivers, which later formed Klip River county'.",
+     "why": "Natalia Republic page (sentence above); gazetteer: the circle shares no cell with Cliopatria's Natalia 1840 shape, while 34 cells of Klip River county are already inside that shape. Internally consistent only because natalia-republic keeps the territory 1839-1843 (see natalia-republic fix).",
+     "fix": "When natalia-republic is corrected, widen this region to {\"union\": [{\"region\": \"Klip River County\"}, {\"lon\": 30.5, \"lat\": -28.4, \"km\": 30}]}; the keyframes from 1843 are already right. Paired with natalia-republic; not blocking on its own."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (1866)",
+     "what is missing": "Alfred County (Nomansland between the Umzimkulu and the Mtamvuna, annexed to Natal in 1866): Cliopatria's Natal shapes stop near 30.5S, so the colony's south coast below Port Shepstone is absent from every keyframe; the corrected 1903 shape is 262 cells (about 71,000 km2) against the infobox 91,610 km2 (1904)",
+     "page to try": "https://en.wikipedia.org/wiki/Griqualand_East"
+    },
+    {
+     "where": "/wars",
+     "what is missing": "Anglo-Zulu War 1879 (11 January to 4 July per the zululand dossier): the Zulu crossed into Natal at Rorke's Drift (22-23 January 1879); no war entry or contest event in the colony",
+     "page to try": "https://en.wikipedia.org/wiki/Anglo-Zulu_War"
+    },
+    {
+     "where": "/ledger/5 and /ledger/6",
+     "what is missing": "the Boer withdrawal from northern Natal after Ladysmith (the contest ends 28 February 1900 for the whole zone) and the 1901 incursions",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Ladysmith"
+    },
+    {
+     "where": "/notes",
+     "what is missing": "the notes say the page does not say whether Mpande's gift came before or after the annexation; the Natalia page places it during Cloete's visit after 8 August 1843, i.e. to the colony (the gain belongs here, as written)",
+     "page to try": "https://en.wikipedia.org/wiki/Natalia_Republic"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Colony_of_Natal",
+     "result": "confirmed ('proclaimed a British colony on 4 May 1843')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Colony_of_Natal",
+     "result": "confirmed (infobox: Annexed Zululand 1897)"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Colony_of_Natal",
+     "result": "confirmed ('formally transferred to Natal in January 1903')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Colony_of_Natal",
+     "result": "confirmed (war 'broke out on 11 October 1899'; Ladysmith relieved 28 February 1900)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Colony_of_Natal",
+     "result": "confirmed ('On 31 May 1910, the Colony of Natal became Natal Province')"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Natalia_Republic",
+     "result": "confirmed for the year (1843, after the 8 August Volksraad decision); region narrower than the page's (see fixes)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 91610,
+    "infobox_year": 1904,
+    "cliopatria_km2": 62052,
+    "ratio": 0.68,
+    "acknowledged": true,
+    "note": "corrected 1903 shape about 71,000 km2 (262 cells), ratio 0.78"
+   }
+  },
+  {
+   "slug": "free-orange-state",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/3/zones",
+     "applied": true,
+     "what": "The Second Boer War entry had only the Free State itself as a zone, while the dossier's contest events of October 1899 to February 1900 (/ledger/8, /ledger/9) are in northern Natal.",
+     "why": "Brief rule 10: every contest_start must correspond to a war zone; Colony of Natal page: the war 'broke out on 11 October 1899 with the Boer seizure of a Natal train on the Orange Free State border'.",
+     "fix": "Added the /ledger/8 region (Newcastle-Dundee and Ladysmith circles) as a second zone."
+    },
+    {
+     "where": "/ledger/10/region, /ledger/11/region, /ledger/12/region, /wars/3/zones/0",
+     "applied": true,
+     "what": "The occupation, dissolve and war-zone regions used Cliopatria's 1898 shape, which keeps the 3-cell Ladybrand-Ficksburg notch the dossier's own keyframes free-orange-state_1885/_1898 reject.",
+     "why": "/keyframe_review/4 and /5 correct the 1885 and 1898 shapes to the 1871 outline; /keyframe_review/6 (1900-1902) uses the 1871 outline.",
+     "fix": "Year 1898 changed to 1871 in those four regions."
+    },
+    {
+     "where": "/ledger/10/confidence",
+     "applied": true,
+     "what": "Occupation of the whole republic from March 1900 at confidence 3, but the page dates only the occupation of Bloemfontein.",
+     "why": "Orange Free State page: Bloemfontein 'was occupied by the British troops under Lord Roberts from 13 March onward'; the burghers kept the field to 1902.",
+     "fix": "Confidence lowered to 2, with a reviewer note."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (1899-1900)",
+     "what is missing": "the Free State's Cape front: the siege of Kimberley (early November 1899 to 15 February 1900) and the invasion of the Cape Colony 'between October 1899 and January 1900' (Stormberg 10 December 1899) are on the Second Boer War page the author opened; no contest events with british-cape-colony",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Kimberley"
+    },
+    {
+     "where": "/ledger (1858)",
+     "what is missing": "the treaty of 15 October 1858 'defining the new boundary' has no land event; what moved is not stated",
+     "page to try": "https://en.wikipedia.org/wiki/Free_State%E2%80%93Basotho_Wars"
+    },
+    {
+     "where": "/keyframe_review/1 (west edge)",
+     "what is missing": "the Free State's claim to the diamond fields before Griqualand West was proclaimed British (27 October 1871): the pre-1871 western edge is not tested",
+     "page to try": "https://en.wikipedia.org/wiki/Griqualand_West"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Orange_Free_State",
+     "result": "confirmed ('officially became independent as the Orange Free State on 23 February 1854')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Free_State%E2%80%93Basotho_Wars",
+     "result": "confirmed ('declaring war on the Basotho on 19 March 1858')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Orange_Free_State",
+     "result": "confirmed ('On 15 October 1858, a treaty was signed defining the new boundary')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Free_State%E2%80%93Basotho_Wars",
+     "result": "confirmed ('In July 1867, the third war ... began')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Orange_Free_State",
+     "result": "confirmed ('the treaty of Aliwal North (12 February 1869)'; the land 'became known as the Conquered Territory')"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Orange_Free_State",
+     "result": "confirmed for the date (Bloemfontein 13 March 1900); confidence lowered for the region"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 181299,
+    "infobox_year": 1875,
+    "cliopatria_km2": 133104,
+    "ratio": 0.73,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "south-african-republic",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/4 (new)",
+     "applied": true,
+     "what": "The 20 July 1888 gain of the Nieuwe Republiek (/ledger/9, about 23 new cells) fell inside Cliopatria's 1885-1889 shape, which was verdict ok with no correction, so 1888-1889 drew the republic without Vryheid.",
+     "why": "South African Republic page: 'The ZAR incorporated the former Nieuwe Republiek (Republic of Vryheid) on 20 July 1888'; the author's own south-african-republic_1890 correction begins 'the republic from July 1888'.",
+     "fix": "Added keyframe south-african-republic_1888 (1888-1889, adjust, the _1890 correction) and noted on _1885 that it applies to 1885-1887."
+    },
+    {
+     "where": "/wars/2/zones/1",
+     "applied": true,
+     "what": "The occupied-Transvaal war zone used Cliopatria's raw 1898 shape, which includes Swaziland and the mislocated Lubombo polygon that keyframes _1890 to _1898 remove.",
+     "why": "/keyframe_review corrections for 1890, 1895, 1898 and /ledger/14 region (1885 outline plus Vryheid).",
+     "fix": "Zone replaced by the /ledger/14 region (union of the 1885 outline and the Vryheid circle)."
+    },
+    {
+     "where": "/ledger/14/confidence",
+     "applied": true,
+     "what": "Occupation of the whole republic from June 1900 at confidence 3, but the page dates only the capture of Johannesburg and Pretoria.",
+     "why": "Second Boer War page: the British 'captured Johannesburg on 31 May and the capital of the Transvaal, Pretoria, on 5 June'; formal annexation 3 September 1900; fighting to 1902.",
+     "fix": "Confidence lowered to 2, with a reviewer note."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/3",
+     "what is missing": "the 1856-to-1885 loss of 12 cells in the north and west (likely the Keate award line of 1871 or the London Convention boundary of 1884); small (about 1%)",
+     "page to try": "https://en.wikipedia.org/wiki/London_Convention_(1884)"
+    },
+    {
+     "where": "/ledger (1882-1885)",
+     "what is missing": "Stellaland and Goshen on the western border (Goshen proclaimed under Transvaal protection in 1884, both absorbed into British Bechuanaland in 1885)",
+     "page to try": "https://en.wikipedia.org/wiki/Stellaland"
+    },
+    {
+     "where": "/ledger (1891)",
+     "what is missing": "Klein Vrystaat (named in the page's succession box, no date): merged into the republic about 1891",
+     "page to try": "https://en.wikipedia.org/wiki/Klein_Vrystaat"
+    },
+    {
+     "where": "/ledger (1899-1900)",
+     "what is missing": "the Cape front: siege of Mafeking from 13 October 1899 to 18 May 1900 and of Kimberley (Second Boer War page); no contest events with british-cape-colony",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Mafeking"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Zoutpansberg republic's merger date; Lydenburg and Utrecht circles are the researcher's reading",
+     "page to try": "https://en.wikipedia.org/wiki/Lydenburg_Republic"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/South_African_Republic",
+     "result": "confirmed ('came into existence on 17 January 1852')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/South_African_Republic",
+     "result": "confirmed ('In November 1859, the independent Republics of Lijdenburg and Utrecht merged with the ZAR')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/First_Boer_War",
+     "result": "confirmed (annexation proclaimed 12 April 1877)"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/First_Boer_War",
+     "result": "confirmed (Pretoria Convention 3 August 1881, 'under British suzerainty')"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/South_African_Republic",
+     "result": "confirmed ('fully independent on 27 February 1884, when the London Convention was signed')"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/South_African_Republic",
+     "result": "confirmed ('incorporated the former Nieuwe Republiek ... on 20 July 1888')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 191789,
+    "infobox_year": 0,
+    "cliopatria_km2": 293990,
+    "ratio": 1.53,
+    "acknowledged": true,
+    "note": "infobox area undated"
+   }
+  },
+  {
+   "slug": "nieuwe-republiek",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger (1886-10)",
+     "what is missing": "a loss on 22 October 1886: 'under the agreement by which the republic was recognised by Britain ... the Melmouth district be administered by the British' (page); the notes say the recognition 'changes no border', which the page contradicts. Add a loss of the Melmoth district (place Melmoth, about 31.4E 28.6S) to british-colonial-empire or zululand",
+     "page to try": "https://en.wikipedia.org/wiki/Nieuwe_Republiek"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "the 1884-1886 extent: the page says the republic 'initially gained the whole of the Northwest of Zululand' and extended its border 'to the sea from the mouth of the Mhlatuze river to St Lucia Bay'; the 66 km circle is the undated 13,600 km2 figure, so the 1886 and 1887 losses take land no keyframe draws",
+     "page to try": "https://en.wikipedia.org/wiki/Vryheid"
+    },
+    {
+     "where": "/ledger/1/counterpart",
+     "what is missing": "the 1887 coast went to British Zululand, which the zululand dossier continues after its 1887 rename; counterpart zululand (with a gain there) may fit better than british-colonial-empire",
+     "page to try": "https://en.wikipedia.org/wiki/Anglo-Zulu_War"
+    },
+    {
+     "where": "/wars/0",
+     "what is missing": "the Tshaneni war (5 June 1884) predates the republic and does not list it as a belligerent; keep as context in notes or drop",
+     "page to try": "https://en.wikipedia.org/wiki/Nieuwe_Republiek"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Nieuwe_Republiek",
+     "result": "confirmed (formed 5 August 1884, proclaimed 16 August 1884)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Nieuwe_Republiek",
+     "result": "confirmed ('the British annexed a stretch of the coastline of the Nieuwe Republiek and the Zulu Kingdom north of the Thukela river (1887)')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Nieuwe_Republiek",
+     "result": "confirmed ('On 20 July 1888 the New Republic was incorporated with the Transvaal Republic')"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Nieuwe_Republiek",
+     "result": "confirmed (13,600 km2 in the text; capital Vryheid; Cliopatria's shape shares no cell with Vryheid by the gazetteer)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 13600,
+    "infobox_year": 0,
+    "cliopatria_km2": 10205,
+    "ratio": 0.75,
+    "acknowledged": true,
+    "note": "text figure, undated; Cliopatria shape is mislocated (verdict wrong), corrected to a 66 km circle (about 13,700 km2)"
+   }
+  },
+  {
+   "slug": "swaziland",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/identity/start and /ledger/0",
+     "what is missing": "the kingdom before 1885: 'The Swazis established their kingdom in the mid-18th century under the leadership of Ngwane III' (Eswatini page); History of Eswatini: Ngwane III succeeded Dlamini III, who died in 1744; Sobhuza I king 1815; Mswati II 1839-1865, who 'greatly extended the area of the country to twice its current size'; 'Under the Pretoria Convention [1881] the Swazi territory was reduced in size'. Extend this dossier back (start about 1745, found at confidence 2, new keyframes for the larger Mswati II kingdom and the 1881 reduction) rather than writing a separate 'swazi-kingdom' dossier: the author's own one-state argument (same monarchy 1885 and 1969) applies equally before 1885",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Eswatini"
+    },
+    {
+     "where": "/keyframe_review/4",
+     "what is missing": "the 1908-1968 outline is bridged at confidence 1; no page on the protectorate's boundary",
+     "page to try": "https://en.wikipedia.org/wiki/Swaziland_(protectorate)"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "month: the Swazi proclamation was signed in December 1894 (History of Eswatini); SAR administration followed",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Eswatini"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Eswatini",
+     "result": "confirmed ('In 1894, a convention placed Swaziland under the South African Republic as a protectorate')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/History_of_Eswatini",
+     "result": "confirmed (the October 1899 war ended the Transvaal administration)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Eswatini",
+     "result": "confirmed (1903 High Commission Territory; History of Eswatini: 'British protectorate'; confidence 2 is right)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Eswatini",
+     "result": "confirmed (independence 6 September 1968)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 17364,
+    "infobox_year": 2024,
+    "cliopatria_km2": 17129,
+    "ratio": 0.99,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "natalia-republic",
+    "year": 1839,
+    "type": "found",
+    "counterpart": "zululand"
+   },
+   "mirror": {
+    "slug": "zululand",
+    "year": 1838,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "zululand loses the land south of the Tugela in February 1838 (Retief's deed) but the republic is founded on 12 October 1839: 20 months with no holder. One side should move (Blood River was 16 December 1838). Route to af-07-a."
+  },
+  {
+   "event": {
+    "slug": "colony-of-natal",
+    "year": 1843,
+    "type": "gain",
+    "counterpart": "zululand"
+   },
+   "mirror": {
+    "slug": "zululand",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "zululand has no 1843 loss of the Buffalo-Tugela country (Klip River county); the land should be the whole county once natalia-republic is corrected. Route to af-07-a."
+  },
+  {
+   "event": {
+    "slug": "colony-of-natal",
+    "year": 1897,
+    "type": "gain",
+    "counterpart": "zululand"
+   },
+   "mirror": {
+    "slug": "zululand",
+    "year": 1897,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Zululand annexed to Natal 1897."
+  },
+  {
+   "event": {
+    "slug": "colony-of-natal",
+    "year": 1903,
+    "type": "gain",
+    "counterpart": "transvaal-colony"
+   },
+   "mirror": {
+    "slug": "transvaal-colony",
+    "year": 1903,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "no dossier yet; listed in counterparts_needing_dossiers (af-07-x)."
+  },
+  {
+   "event": {
+    "slug": "colony-of-natal",
+    "year": 1899,
+    "type": "contest_start",
+    "counterpart": "south-african-republic"
+   },
+   "mirror": {
+    "slug": "south-african-republic",
+    "year": 1899,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "same zone and months (October 1899 to February 1900); free-orange-state likewise."
+  },
+  {
+   "event": {
+    "slug": "free-orange-state",
+    "year": 1854,
+    "type": "found",
+    "counterpart": "british-cape-colony"
+   },
+   "mirror": {
+    "slug": "british-cape-colony",
+    "year": 1854,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Orange River Sovereignty, February 1854."
+  },
+  {
+   "event": {
+    "slug": "free-orange-state",
+    "year": 1869,
+    "type": "gain",
+    "counterpart": "basutoland"
+   },
+   "mirror": {
+    "slug": "basutoland",
+    "year": 1869,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "no dossier yet; listed (af-07-x)."
+  },
+  {
+   "event": {
+    "slug": "free-orange-state",
+    "year": 1900,
+    "type": "occupation_start",
+    "counterpart": "british-colonial-empire"
+   },
+   "mirror": {
+    "slug": "british-colonial-empire",
+    "year": 1900,
+    "type": "occupation_start"
+   },
+   "status": "exception",
+   "note": "british-colonial-empire.json not written yet (eu groups)."
+  },
+  {
+   "event": {
+    "slug": "south-african-republic",
+    "year": 1859,
+    "type": "gain",
+    "counterpart": "Republic of Lydenburg"
+   },
+   "mirror": {
+    "slug": "republic-of-lydenburg",
+    "year": 1859,
+    "type": "merge"
+   },
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers; same for Republic of Utrecht."
+  },
+  {
+   "event": {
+    "slug": "south-african-republic",
+    "year": 1877,
+    "type": "occupation_start",
+    "counterpart": "british-cape-colony"
+   },
+   "mirror": {
+    "slug": "british-cape-colony",
+    "year": 1877,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "12 April 1877 both sides."
+  },
+  {
+   "event": {
+    "slug": "south-african-republic",
+    "year": 1881,
+    "type": "occupation_end",
+    "counterpart": "british-cape-colony"
+   },
+   "mirror": {
+    "slug": "british-cape-colony",
+    "year": 1881,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "August 1881."
+  },
+  {
+   "event": {
+    "slug": "south-african-republic",
+    "year": 1881,
+    "type": "vassal_start",
+    "counterpart": "british-cape-colony"
+   },
+   "mirror": {
+    "slug": "british-cape-colony",
+    "year": 1881,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "Pretoria Convention, 3 August 1881."
+  },
+  {
+   "event": {
+    "slug": "south-african-republic",
+    "year": 1884,
+    "type": "vassal_end",
+    "counterpart": "british-cape-colony"
+   },
+   "mirror": {
+    "slug": "british-cape-colony",
+    "year": 1884,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": "Cape side has no month (confidence 2); the SAR page gives 27 February 1884."
+  },
+  {
+   "event": {
+    "slug": "south-african-republic",
+    "year": 1880,
+    "type": "contest_start",
+    "counterpart": "british-cape-colony"
+   },
+   "mirror": {
+    "slug": "british-cape-colony",
+    "year": 0,
+    "type": "contest_start"
+   },
+   "status": "missing",
+   "note": "First Boer War contest (December 1880 to March 1881) absent from the Cape ledger; route to af-07-a."
+  },
+  {
+   "event": {
+    "slug": "south-african-republic",
+    "year": 1888,
+    "type": "gain",
+    "counterpart": "nieuwe-republiek"
+   },
+   "mirror": {
+    "slug": "nieuwe-republiek",
+    "year": 1888,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "20 July 1888, Vryheid circle both sides."
+  },
+  {
+   "event": {
+    "slug": "south-african-republic",
+    "year": 1894,
+    "type": "vassal_start",
+    "counterpart": "swaziland"
+   },
+   "mirror": {
+    "slug": "swaziland",
+    "year": 1894,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "ends October 1899 on both sides."
+  },
+  {
+   "event": {
+    "slug": "south-african-republic",
+    "year": 1900,
+    "type": "occupation_start",
+    "counterpart": "british-colonial-empire"
+   },
+   "mirror": {
+    "slug": "british-colonial-empire",
+    "year": 1900,
+    "type": "occupation_start"
+   },
+   "status": "exception",
+   "note": "not written yet."
+  },
+  {
+   "event": {
+    "slug": "south-african-republic",
+    "year": 1899,
+    "type": "contest_start",
+    "counterpart": "british-cape-colony"
+   },
+   "mirror": {
+    "slug": "british-cape-colony",
+    "year": 0,
+    "type": "contest_start"
+   },
+   "status": "missing",
+   "note": "neither side records the Cape front of the Second Boer War (Mafeking 13 October 1899 to 18 May 1900, Kimberley November 1899 to 15 February 1900); free-orange-state likewise. Thin on both sides."
+  },
+  {
+   "event": {
+    "slug": "nieuwe-republiek",
+    "year": 1884,
+    "type": "found",
+    "counterpart": "zululand"
+   },
+   "mirror": {
+    "slug": "zululand",
+    "year": 1884,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "August 1884, Vryheid 66 km circle both sides."
+  },
+  {
+   "event": {
+    "slug": "nieuwe-republiek",
+    "year": 1887,
+    "type": "loss",
+    "counterpart": "british-colonial-empire"
+   },
+   "mirror": {
+    "slug": "zululand",
+    "year": 1887,
+    "type": "rename"
+   },
+   "status": "exception",
+   "note": "british-colonial-empire not written; the coast went to British Zululand, which zululand continues after its 1887 rename, with no gain there. Consider counterpart zululand."
+  },
+  {
+   "event": {
+    "slug": "swaziland",
+    "year": 1903,
+    "type": "vassal_start",
+    "counterpart": "british-colonial-empire"
+   },
+   "mirror": {
+    "slug": "british-colonial-empire",
+    "year": 1903,
+    "type": "vassal_start"
+   },
+   "status": "exception",
+   "note": "not written yet; ends 6 September 1968."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Conquered Territory",
+   "kind": "region",
+   "used_in": "free-orange-state"
+  },
+  {
+   "name": "Klip River County",
+   "kind": "region",
+   "used_in": "natalia-republic"
+  },
+  {
+   "name": "Melmoth",
+   "kind": "place",
+   "used_in": "nieuwe-republiek"
+  },
+  {
+   "name": "Utrecht (South Africa)",
+   "kind": "place",
+   "used_in": "colony-of-natal"
+  },
+  {
+   "name": "Wakkerstroom",
+   "kind": "place",
+   "used_in": "colony-of-natal"
+  },
+  {
+   "name": "Lydenburg",
+   "kind": "place",
+   "used_in": "south-african-republic"
+  },
+  {
+   "name": "Newcastle (South Africa)",
+   "kind": "place",
+   "used_in": "colony-of-natal"
+  },
+  {
+   "name": "Dundee (South Africa)",
+   "kind": "place",
+   "used_in": "colony-of-natal"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Transvaal Colony",
+   "suggested_slug": "transvaal-colony",
+   "years": [
+    1900,
+    1910
+   ]
+  },
+  {
+   "name": "Orange River Colony",
+   "suggested_slug": "orange-river-colony",
+   "years": [
+    1900,
+    1910
+   ]
+  },
+  {
+   "name": "Union of South Africa",
+   "suggested_slug": "union-of-south-africa",
+   "years": [
+    1910,
+    1961
+   ]
+  },
+  {
+   "name": "Basutoland",
+   "suggested_slug": "basutoland",
+   "years": [
+    1822,
+    1966
+   ]
+  },
+  {
+   "name": "Republic of Lydenburg",
+   "suggested_slug": "republic-of-lydenburg",
+   "years": [
+    1859,
+    1859
+   ],
+   "note": "end year only (merged November 1859); start not on the pages opened"
+  },
+  {
+   "name": "Republic of Utrecht",
+   "suggested_slug": "republic-of-utrecht",
+   "years": [
+    1859,
+    1859
+   ],
+   "note": "end year only (merged November 1859); start not on the pages opened"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-af-07-b.md",
+ "problems": [
+  "Reviewer-applied fixes (orchestrator adjustment): south-african-republic (new keyframe _1888, war zone, one confidence), free-orange-state (war zone, three regions, one confidence), colony-of-natal (dissolve region); all three re-validated with 0 errors and read back.",
+  "Do not create the 'swazi-kingdom' dossier the author proposed (af-07-x): the pre-1885 Swazi kingdom is the same state and belongs in swaziland.json (start about 1745).",
+  "All ten pages loaded through WebFetch (summarising relay); no tool failures. Klip River county finding rests on gazetteer cell tests against Cliopatria shapes (scratch /tmp/claude-0/work/review-af-07-b/g.py).",
+  "'page to try' titles other than the ten pages opened are suggestions and were not opened."
+ ]
+}

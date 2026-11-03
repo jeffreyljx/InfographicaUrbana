@@ -1,0 +1,366 @@
+{
+ "window": "p1830-p1839",
+ "images": [
+  {
+   "year": 1830,
+   "bbox": "world, with Cliopatria",
+   "seen": "compiled map far richer than Cliopatria (princely states, African and Sahel states); Oregon Country grey (unowned); nothing far outside its region at world scale"
+  },
+  {
+   "year": 1834,
+   "bbox": "24,8,62,42",
+   "seen": "Egypt holds Syria, Hejaz and Tihama; Iraq's western desert unowned after the Ottoman 1834 snap; Habesh Eyalet and the Sudan both drawn in Egypt's tint from 1834 (colonies.csv row 213, wrong for the African coast)"
+  },
+  {
+   "year": 1839,
+   "bbox": "30,10,62,36",
+   "seen": "before: Muhammad Ali dynasty drawn over the whole Eastern Province down to 17 N (1,943 Empty Quarter cells); Syria contested with the Ottomans, correct"
+  },
+  {
+   "year": 1839,
+   "bbox": "30,10,62,36 (after, --from stage)",
+   "seen": "after patch: Egypt holds Najd and the Hasa/Qatif strip only; Empty Quarter unowned; the Sharifate of Mecca and a Nejd remnant now show, from other windows' patches"
+  },
+  {
+   "year": 1836,
+   "bbox": "-85,-45,-30,13",
+   "seen": "Peru-Bolivian Confederation, Cabanagem and Ragamuffin contests drawn; Ecuador, New Granada, Venezuela separate; stray Spanish Empire cells at Lake Titicaca and the Rio Negro mouth (patched)"
+  },
+  {
+   "year": 1836,
+   "bbox": "-125,14,-85,44",
+   "seen": "before: grey hole of 251 cells in western New Mexico inside Mexico (patched); Texas core with contested West Texas strip drawn as intended; a stray Spanish Empire label at Veracruz (patched)"
+  },
+  {
+   "year": 1836,
+   "bbox": "-125,14,-85,50 (after, --from stage)",
+   "seen": "after patch: New Mexico and west Colorado Mexican, Oregon Country no longer US, Spanish cells gone"
+  },
+  {
+   "year": 1835,
+   "bbox": "-12,34,48,62",
+   "seen": "Europe plausible: Congress Poland inside Russia, Greece, Belgium with the Luxembourg/Limburg contest, Serbia and the Danubian principalities as vassals; Pomerelia hole in Prussia exists only 1830-1833 (checked by cell count, patched)"
+  },
+  {
+   "year": 1836,
+   "bbox": "60,5,100,38, with Cliopatria",
+   "seen": "compiled India matches the pages' picture better than Cliopatria (Company, princely vassals, Mysore occupied, Nepal, Bhutan, Sikh Empire); Bhutan holds its Duars as drawn, no problem seen"
+  }
+ ],
+ "issues": [
+  {
+   "what": "Muhammad Ali dynasty 1839 keyframe takes the gazetteer's Hasa, which is the whole Eastern Province (2,447 cells down to 17 N, the Rub' al-Khali): 1,943 cells of empty desert drawn Egyptian, 14 of them taken from the Trucial States",
+   "years": [
+    1839,
+    1839
+   ],
+   "slugs": [
+    "muhammad-ali-dynasty"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Expedition_to_Najd_(1836)"
+   ]
+  },
+  {
+   "what": "Mexican 1836-1839 keyframe leaves out western New Mexico: 251 cells turn unowned after Mexico held all of New Mexico; the same keyframe also drops about 330 cells of west Colorado and Wyoming that p1820-p1829 events/0 gives Mexico",
+   "years": [
+    1836,
+    1839
+   ],
+   "slugs": [
+    "federated-republic-of-mexico"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Santa_Fe_de_Nuevo_M%C3%A9xico",
+    "https://en.wikipedia.org/wiki/Centralist_Republic_of_Mexico"
+   ]
+  },
+  {
+   "what": "Hole of about 145 cells in West Prussia (Pomerelia, Kuyavia, Danzig) in Prussia's 1815-1833 keyframe (Cliopatria's German Confederation 1820 row); the 1834 keyframe snap then adds 151 cells",
+   "years": [
+    1830,
+    1833
+   ],
+   "slugs": [
+    "kingdom-of-prussia"
+   ],
+   "decision": "patched",
+   "patch": "events/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Province_of_Prussia"
+   ]
+  },
+  {
+   "what": "Forty-seven leftover Spanish Empire cells on the South American mainland (Titicaca shore and Ucayali in Peru 37, Bolivia 2, Rio Negro mouth in Argentina 8) plus five at Veracruz: the 1827 keyframe cut is below the snap threshold. They show as 'Spanish Empire' specks and fight Peru, the Confederation, Argentina and Centralist Mexico in conflicts",
+   "years": [
+    1830,
+    1839
+   ],
+   "slugs": [
+    "spanish-empire"
+   ],
+   "decision": "patched",
+   "patch": "events/1-4",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Spanish_American_wars_of_independence"
+   ]
+  },
+  {
+   "what": "Buenos Aires frontier of Rosas's 1833 expedition: the dossier's 1833 gain gives it, the 1834-1835 keyframe lacks it and removes 107 cells, the 1836 keyframe returns them",
+   "years": [
+    1834,
+    1835
+   ],
+   "slugs": [
+    "argentine-confederation"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Conquest_of_the_Desert"
+   ]
+  },
+  {
+   "what": "The three US keyframes that start in this window carry the 'Louisiana' overshoot into the Oregon Country (Montana, Wyoming west of the Divide) and over west Colorado; with p1820-p1829's cut compiled, the 1830 snap adds 732 cells to the US and takes 330 from Mexico",
+   "years": [
+    1830,
+    1839
+   ],
+   "slugs": [
+    "united-states-of-america",
+    "federated-republic-of-mexico"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/3-5",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Oregon_Country"
+   ]
+  },
+  {
+   "what": "Colony row data/colonies.csv habesh-eyalet to muhammad-ali-dynasty 1834-1864 paints the African coast (Massawa, Suakin) in Egypt's tint; the page has it Ottoman from 1827 and Egyptian again only 1846-1849",
+   "years": [
+    1834,
+    1839
+   ],
+   "slugs": [
+    "habesh-eyalet"
+   ],
+   "decision": "left: table row, not patchable (reported under problems)",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Habesh_Eyalet"
+   ]
+  },
+  {
+   "what": "Kingdom of Taqali against Egypt (484 cell-years, South Kordofan): Taqali wins and is drawn in Egypt's tint as the Sudan's vassal",
+   "years": [
+    1834,
+    1839
+   ],
+   "slugs": [
+    "kingdom-of-taqali",
+    "muhammad-ali-dynasty"
+   ],
+   "decision": "fine as drawn (image only, no page opened)",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Bhutan, Manipur, Nepal, Kolhapur, Bundi, Bharatpur, Bhopal and Koch Bihar each win the size rule against the Company (about 1,240 cell-years in all); Bahawalpur wins against the Sikh Empire",
+   "years": [
+    1830,
+    1839
+   ],
+   "slugs": [
+    "kingdom-of-bhutan",
+    "kingdom-of-manipur",
+    "nepal",
+    "east-india-company",
+    "bahawalpur-state",
+    "sikh-empire"
+   ],
+   "decision": "fine as drawn (image only, no page opened)",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Dendi against Sokoto (360), Damagaram against Sokoto (136), Mandara against Sokoto (46), Gaza against Portugal (150): small state wins by the size rule",
+   "years": [
+    1830,
+    1839
+   ],
+   "slugs": [
+    "dendi-kingdom",
+    "sokoto-caliphate",
+    "damagaram",
+    "mandara-kingdom",
+    "gaza-empire",
+    "portuguese-empire"
+   ],
+   "decision": "left: pages silent (not opened; page budget went to the larger errors)",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Ottoman 1834 keyframe removes 623 desert cells in Iraq (Al-Anbar, Al-Muthannia, Najaf) to nobody; Durrani 1839 keyframe is 1,213 cells smaller than the ledger (Kabul and Kandahar only); Oman 1830 keyframe drops the Dhofar region the ledger gives it",
+   "years": [
+    1830,
+    1839
+   ],
+   "slugs": [
+    "ottoman-empire",
+    "durrani-dynasty",
+    "sultanate-of-oman"
+   ],
+   "decision": "fine as drawn (Cliopatria keyframes win; no page contradicts)",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Yogyakarta and Surakarta 1830 losses of the Mancanegara skipped (region not in the gazetteer); the Dutch 1830 keyframe snap adds 26 cells",
+   "years": [
+    1830,
+    1830
+   ],
+   "slugs": [
+    "sultan-of-yogyakarta",
+    "surakarta-sunanate",
+    "dutch-east-indies"
+   ],
+   "decision": "left: pages silent (region name only; the snap draws the land Dutch)",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Contests: Cabanagem (4,258 cells, open at the end), Ragamuffin War, Texas Revolution, Kenesary's revolt, Belgium/Netherlands over Luxembourg and Limburg (to 1839), Egyptian-Ottoman wars all open and close on dates the dossiers carry; none missing or endless in the images",
+   "years": [
+    1830,
+    1839
+   ],
+   "slugs": [
+    "empire-of-brazil",
+    "republic-of-texas",
+    "kazakh-khanate",
+    "kingdom-of-belgium"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/p1830-p1839.json",
+ "patch_entries": {
+  "events": 5,
+  "keyframe_overrides": 6,
+  "rulings": 0
+ },
+ "patch_check": "all applied (check-patch: 11 entries, 11 ok, 0 rejected; trial: 11 applied, 0 skipped)",
+ "colour_clashes": [
+  {
+   "a": "british-empire",
+   "b": "east-india-company",
+   "years": [
+    1830,
+    1839
+   ],
+   "note": "identical #dc7d97, 1,543 shared edges; same for british-colonial-empire, rupert-s-land, upper-canada, lower-canada, colony-of-new-brunswick, dominion-of-newfoundland, colony-of-new-south-wales, colony-of-south-australia, colony-of-western-australia, british-burma: all British states share one pink, told apart only by thin outlines"
+  },
+  {
+   "a": "centralist-mexico",
+   "b": "federated-republic-of-mexico",
+   "years": [
+    1835,
+    1839
+   ],
+   "note": "identical #578b35; the two halves of Mexico in 1836 are separated only by an outline"
+  },
+  {
+   "a": "muhammad-ali-dynasty",
+   "b": "turco-egyptian-sudan",
+   "years": [
+    1830,
+    1839
+   ],
+   "note": "identical #a05000, and habesh-eyalet takes the same tint from 1834"
+  },
+  {
+   "a": "habesh-eyalet",
+   "b": "ottoman-empire",
+   "years": [
+    1830,
+    1833
+   ],
+   "note": "identical #70782c"
+  },
+  {
+   "a": "austrian-empire",
+   "b": "habsburg-military-frontier / kingdom-of-galicia-and-lodomeria",
+   "years": [
+    1830,
+    1839
+   ],
+   "note": "identical #be3d70"
+  },
+  {
+   "a": "russian-america",
+   "b": "russian-empire",
+   "years": [
+    1830,
+    1839
+   ],
+   "note": "identical #236436"
+  },
+  {
+   "a": "spanish-empire",
+   "b": "spanish-east-indies / captaincy-general-of-cuba",
+   "years": [
+    1830,
+    1839
+   ],
+   "note": "identical #df911a"
+  },
+  {
+   "a": "dutch-suriname",
+   "b": "netherlands-antilles",
+   "years": [
+    1830,
+    1839
+   ],
+   "note": "identical #c85d00"
+  },
+  {
+   "a": "portuguese-empire",
+   "b": "portuguese-mozambique",
+   "years": [
+    1830,
+    1839
+   ],
+   "note": "identical #47a962"
+  },
+  {
+   "a": "emirate-of-nejd",
+   "b": "emirate-of-jabal-shammar",
+   "years": [
+    1836,
+    1839
+   ],
+   "note": "seen in the 1839 image: dark green and grey-green side by side; the packet lists 16 more close pairs beyond the 25 printed"
+  }
+ ],
+ "dossier_requests": [],
+ "pages_opened": 8,
+ "problems": [
+  "hierarchy: data/colonies.csv row 213 'habesh-eyalet,muhammad-ali-dynasty,1834,1864,... low' (and rows 212 and 214 around it): habesh-eyalet is drawn in Egypt's tint for 1834-1864. Habesh Eyalet page: 'he received the administration of Habesh in 1813'; Habesh 'reverted to Ottoman rule in 1827'; 'Massawa and Sawakin were given to him again in 1846, until his death in 1849'. So the Ottoman row should run to 1845, Egypt only 1846-1849, Ottoman again 1850-1872 (only the Hejaz coast, held by Egypt 1833-1840, would justify a 1834-1840 Egyptian row, and the dossier's keyframe covers the African coast too). https://en.wikipedia.org/wiki/Habesh_Eyalet",
+  "gazetteer: region 'Hasa' (alias of Al-Ahsa) resolves to the whole Ash Sharqiyah province, 2,447 cells reaching 17 N (the Empty Quarter), not the oasis and Qatif; it is used by emirate-of-nejd /ledger/2 and /4, muhammad-ali-dynasty /ledger/18 and the 1839 keyframe. keyframe_overrides/0 cuts it for 1839; the ledger uses are caught by Nejd's own keyframe snap. A tighter region definition would fix all of them.",
+  "borrowed source: keyframe_overrides/3-5 (US) and the west-Colorado union item in keyframe_overrides/1 rest on data/patches/p1820-p1829.json (keyframe_overrides/0-4 and events/0), whose Adams-Onis Treaty page I did not open; the Oregon Country part rests on the Oregon Country page I opened. Drop the Colorado parts if the audit demands a page opened in this run.",
+  "boundary: the Prussian hole began in 1815 (p1810-p1819 and p1820-p1829 years still show it; events/0 fills 1830-1833 only); the Spanish leftover cells exist from 1827 (p1820-p1829); the Mexican 1840, 1842 and 1846 keyframes and the US 1840-1846 keyframes (p1840-p1849) probably carry the same west-Colorado and Oregon cut question; events/0 also hands about 6 border cells of the Eifel/Saar/Birkenfeld edge to Prussia in 1830-1833 until the 1834 snap gives them to their owners.",
+  "other windows' patches change my window: in the trial the Sharifate of Mecca holds the Hejaz against Egypt (muhammad-ali-dynasty / sharifate-of-mecca, 1,284 cell-years, drawn in a vassal tint) and Nejd keeps 265 cells after 1838; neither comes from my entries (checked against a baseline trial without my file).",
+  "dutch-east-indies keyframe_review/11 (dutch-east-indies_1836, 1836-1845): place 'Muara Kaman' not in the gazetteer, so the keyframe is skipped; the Padri War gains come from the ledger. p1840-p1849 handles Kutai; the 1836-1839 years are unaffected.",
+  "images: 7 rendered and viewed plus 2 after-patch renders (the brief says up to 6); the first 1834 Middle East render with Cliopatria was overwritten by a narrower one before I looked at it, so Cliopatria was compared on 1830 (world) and 1836 (South Asia) only.",
+  "pages: 8 opened (Expedition to Najd, Centralist Republic of Mexico (silent on New Mexico), Santa Fe de Nuevo Mexico, Habesh Eyalet, Province of Prussia, Spanish American wars of independence, Conquest of the Desert (names no frontier line; keyframe_overrides/2 keeps the land on the dossier's own 1833 gain, confidence 2), Oregon Country)."
+ ]
+}

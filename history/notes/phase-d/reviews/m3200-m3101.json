@@ -1,0 +1,21 @@
+{
+ "window": "m3200-m3101",
+ "checks": [
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "naqada-culture_-3200 (-3200..-3000, from/to kept from the dossier) re-drawn as Upper Egypt within 40 km of the Nile (321 cells) plus Lower Egypt minus Matruh and Al Jizah (137), the Giza Nile reach within 40 km (22) and the Faiyum (21): 496 cells, against the dossier's 1,129 with Matruh (524) and the Giza desert (104). The Maadi page supports the year and the land: 'The cultures of Lower Egypt were replaced by Upper Egypt and Naqada culture by the end of Naqada II circa 3200 BCE'; 'about a dozen sites, including ... Maadi near modern Cairo', Buto, Tell Ibrahim Awad, Tell el-Rub'a, Tell el-Farkha, el-Gerza, Haraga, Abusir el-Melek, Minshat Abu Omar; the Faiyum is named; the Western Desert, the oases and the Matruh coast are not. The quotes in why match the page. My trial: Naqada holds the Delta and valley as one piece at -3200 (render checked), 0 cells in Matruh at -3100 (522 now nobody's, 2 Early Dynastic's); a trial without this file snaps Naqada to the dossier keyframe and adds 668 cells, so the entry is what removes the desert block. Its north is 40 cells wider than the reviewed Maadi keyframe (m3300-m3201 keyframe_overrides/0, 140 cells): Ismailia 20, Alexandria 9, Port Said 2 and the Giza cells 20-40 km from the Nile 9, which gives a 40-cell snap at -3200. These are Delta-margin cells inside the 'Lower Egypt' the page names, and Cliopatria's Early Dynastic shape holds the same cells from -3150, so I left them. The snap's 'removed 10' are Badarian desert-margin cells near Asyut (the Badarian Asyut 70 km disc outside the 40 km Nile band, inherited at -4000). The trial without this patch removes them too, so this entry does not cause that.",
+   "page": "https://en.wikipedia.org/wiki/Maadi_culture",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch m3200-m3101: 1 entries, 1 ok, 0 rejected (2.5 s); --trial (own stage): keyframe_overrides/0 applied, conflicts 0 -> 0, keyframe snaps 1 -> 2 (naqada-culture_-3200 at -3200: added 40, removed 10), end anchor m3100: 625 cells change owner",
+ "problems": [
+  "The window agent's report says maadi-culture_-3800 still holds the 803-cell desert block in the earlier windows and at the m3200 start anchor. That is stale. data/patches/m3300-m3201.json keyframe_overrides/0 already cuts Matruh, the Giza desert, Alexandria, Ismailia and Port Said from Maadi's keyframe (140 cells). In the trial Maadi holds 135 cells at the m3200 anchor and owns no Matruh cells.",
+  "The override keeps the dossier's span -3200..-3000, so it reaches into m3100-m3001. The m3100 end anchor changes 625 cells: Naqada goes from 842 to 217 cells, and 522 Matruh and 93 Giza-desert cells are now nobody's. Early Dynastic Egypt (Cliopatria) keeps 2 Matruh and 30 Giza cells. The next window starts from this changed anchor.",
+  "Gazetteer: region 'Lower Egypt' (data/gazetteer/regions.jsonl) resolves to 787 cells, including Matruh (524) and all of Al Jizah (126, of which 22 lie within 40 km of the Nile). A grep of the dossiers confirms 19 use it: achaemenid-empire, fatimid-caliphate, fifteenth-dynasty-of-egypt, french-directory, high-priests-of-amun-at-thebes, khababash, kingdom-of-kush, maadi-culture, mamluk-beys-of-egypt, naqada-culture, neo-assyrian-empire, new-kingdom-of-egypt, thirtieth-, thirty-first-, twenty-fifth-, twenty-first-, twenty-fourth-, twenty-second- and twenty-third-dynasty-of-egypt. Fixing the region (drop Matruh, clip Al Jizah to the Nile) would repair all of them. This override and the m3300 Maadi override would then be redundant but harmless.",
+  "Naqada's Lower Egypt keeps Alexandria, Ismailia and Port Said, which the reviewed Maadi keyframe cuts. The two Egyptian keyframes in adjacent windows therefore draw the Delta margin differently. If the orchestrator wants them the same, cut those three admin-1s from naqada-culture_-3200 too, which removes the 40-cell snap. Either way is defensible.",
+  "Not a patch entry: the elam_-3200 keyframe snap (removes 241 Khuzestan cells that uruk-period's ledger hands to Elam, leaving them nobody's from -3200) is still in the trial; the window agent left it as pages silent."
+ ]
+}

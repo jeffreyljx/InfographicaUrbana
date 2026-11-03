@@ -1,0 +1,390 @@
+{
+ "batch_id": "sa-06-a",
+ "verdicts": [
+  {
+   "slug": "portuguese-ceylon",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction; /keyframe_review/1/correction; /ledger/0/region; /identity/capitals/0",
+     "what": "For 1505-1564 the dossier draws a 25 km Colombo disc (4 cells, bbox 79.88-80.03E 6.76-7.08N, about 1,012 km2) as Portuguese territory; it takes in the Kotte capitals (Kotte 79.92/6.89, Kelaniya 79.92/6.96 in kingdom-of-kotte's capitals for 1507-1564) and overlaps Kotte's own shape for 60 years, although the cited page gives only an arrival and a trade agreement and the found note itself says 'no land is taken from Kotte'.",
+     "why": "Kingdom_of_Kotte (opened 2026-10-25): 'The Portuguese arrived in Sri Lanka in 1505', 'landing in Galle Harbour', 'secured a trade agreement with the King of Kotte during this first meeting'; the page names no Portuguese fort or holding at Colombo before 'In 1565, the capital of Kotte was abandoned by King Dharmapala' and 'Dharmapala was taken to Colombo under Portuguese protection'. Portuguese_Ceylon names no fort. kingdom-of-kotte's own keyframes give Colombo to the Portuguese ('under Portuguese protection') only from 1564.",
+     "fix": "For 1505-1564 use the smallest footprint that leaves the Kotte capital to Kotte ({'place':'Colombo','km':15,'country':'Sri Lanka'} resolves to 1 cell at 79.88E 7.03N) with text 'trading post, no territory', or open a page that dates the Portuguese fort at Colombo (Colombo history section or the Colombo Fort article) and add its gain and loss events; keep the 25 km disc from 1565, when Dharmapala moved to Colombo under Portuguese protection. Non-blocking.",
+     "applied": false
+    },
+    {
+     "where": "/identity/predecessors/0",
+     "what": "'ceylon' is listed as a predecessor handing over 'the island's Sinhalese kingdoms' (its whole Cliopatria row), which contradicts this dossier's own finding that no land was taken in 1505-1506 and kingdom-of-kotte, which is founded in 1507 from ceylon on the same Kotte country.",
+     "why": "Portuguese_Ceylon infobox: 'Preceded by: Kingdom of Kotte; Kingdom of Jaffna; Kingdom of Sitawaka' (no Ceylon). This dossier's own predecessor note: 'No page opened shows the Portuguese taking the island'. ceylon.json gives portuguese-ceylon 'the Kotte country, which Cliopatria gives to Portuguese Ceylon from 1507' (a Cliopatria artefact); kingdom-of-kotte.json predecessors = ceylon.",
+     "fix": "Drop ceylon from predecessors (kingdom-of-kotte and jaffna-kingdom already carry the land handed over); the ceylon owner should name kingdom-of-kotte, not portuguese-ceylon, as the successor of the Kotte country. Non-blocking.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/11/counterpart",
+     "what": "The 1639 loss of Batticaloa and Trincomalee names dutch-ceylon as taker, but the dutch-ceylon dossier (sa-06-b, written 2026-10-25) starts on 13 March 1640, so nobody receives the two ports in 1639-1640.",
+     "why": "dutch-ceylon.json identity.start 1640; its /ledger/0 is a 1640-03 found from portuguese-ceylon on Galle and Negombo; it has no 1639 event. The author's report still lists Dutch Ceylon under counterparts_needing_dossiers.",
+     "fix": "Cross-dossier: either dutch-ceylon starts in 1639 with a gain of Batticaloa and Trincomalee from portuguese-ceylon (recommended; its owner), or this event's counterpart becomes the VOC holder (dutch-republic, eu-09, not yet run).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/12/region",
+     "what": "The 1640 loss is Galle alone, while dutch-ceylon founds itself in 1640 on Galle and Negombo taken from portuguese-ceylon; this dossier keeps Negombo (inside its Gampaha region) to 1658, so the two states overlap at Negombo for 1640-1658.",
+     "why": "dutch-ceylon.json /identity/predecessors/0: 'In February 1640, the Portuguese fort of Negombo ... was captured by Philip Lucasz'; this dossier's 1600-1658 corrections include the Gampaha district.",
+     "fix": "Reconcile with the dutch-ceylon owner: add Negombo to a 1640 (February) loss citing the Dutch Ceylon page, with any Portuguese recapture that page gives, or dutch-ceylon drops Negombo. Non-blocking.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/13",
+     "what": "contest_start for Colombo is dated by a sea battle (23 March 1654); the research brief starts a contest at the first campaign that takes or holds ground.",
+     "why": "Dutch–Portuguese_War: 'On 23 March 1654, a naval battle took place near Colombo'; Kingdom_of_Kandy: 'the fall of Colombo after a six-month siege' (1656); neither page dates the start of the land siege.",
+     "fix": "Minor: keep at confidence 2 with the note as written, or move to the start of the land siege once a page dates it (Siege of Colombo (1655–1656)). Non-blocking.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/4/correction .. /keyframe_review/8/correction; /ledger/6/region",
+     "what is missing": "The corrected shape is a self-declared minimum (28 cells, about 7,081 km2 measured) against 122 Sri Lankan cells in the Portuguese Colonies row of 1645. Kingdom_of_Kotte says that 'after the downfall of Sitawaka in 1594, these areas were re-annexed to the Kotte kingdom', so the Kotte ceded on 27 May 1597 included the lowlands Sitawaka had annexed (not named on the page); dutch-ceylon's 1658 gain from portuguese-ceylon includes Matara and the Kalutara coast, which this dossier never draws. Name the maritime provinces the Portuguese held 1597-1658.",
+     "page to try": "https://en.wikipedia.org/wiki/Sinhalese–Portuguese_War"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "Confidence-1 bridge: when and from whom the Portuguese took Galle, Batticaloa and Trincomalee. 'nobody' is doubtful: Kingdom_of_Kandy puts Kandy in 'the central and eastern portion of the island', and kingdom-of-sitawaka quotes 'Portuguese holdings in the south' by 1582. The eastern forts are usually dated after 1597; confirm on the pages.",
+     "page to try": "https://en.wikipedia.org/wiki/Fort_Frederick_(Sri_Lanka)"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "Confidence-1 bridge: the year the Portuguese left Kandy after the 1611 capture.",
+     "page to try": "https://en.wikipedia.org/wiki/Senarat_of_Kandy"
+    },
+    {
+     "where": "/keyframe_review/6; /keyframe_review/8",
+     "what is missing": "Randeniwela (2 August 1630) 'resulted in large parts of Portuguese Ceilao being overrun by the Kandyans', and in 1639-1640 'Kandyan forces seized Portuguese territories further inland' (Kingdom_of_Kandy); no loss to kingdom-of-kandy is placed.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Randeniwela"
+    },
+    {
+     "where": "/ledger (missing events)",
+     "what is missing": "On a page already opened but not in the ledger: Kingdom_of_Kandy 'the Portuguese—who briefly occupied Kandy in 1592' (occupation pair with kingdom-of-kandy) and the Campaign of Danture (undated on that page).",
+     "page to try": "https://en.wikipedia.org/wiki/Campaign_of_Danture"
+    },
+    {
+     "where": "/ledger (missing event, 1574)",
+     "what is missing": "kingdom-of-sitawaka has a 1574 loss to portuguese-ceylon (its garrisons at Wattala, Nagalagama and Mapane 'were expelled'); no matching gain here (small; it may belong to the Kotte vassal instead).",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Sitawaka"
+    },
+    {
+     "where": "/ledger/17",
+     "what is missing": "The fall of Mannar and of the lowland forts (Negombo, Kalutara) between 1656 and June 1658 is undated; all of it is closed with the dissolve.",
+     "page to try": "https://en.wikipedia.org/wiki/Dutch_Ceylon"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kotte",
+     "result": "confirmed",
+     "note": "'In 1597, Dharmapala formally ceded the Kotte Kingdom to the Portuguese crown'; region is the author's reading (c2), honest."
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kotte",
+     "result": "confirmed",
+     "note": "infobox 'Disestablishment: 27 May 1597'; Portuguese_Ceylon infobox 'Death of Dharmapala of Kotte: 27 May 1597'."
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Jaffna_kingdom",
+     "result": "confirmed",
+     "note": "'By June 1619, there were two Portuguese expeditions'; Oliveira 'was able to inflict defeat on Cankili II'; 'restricted to the Jaffna peninsula'; the 1620 sentence is noted by the author."
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Jaffna_kingdom",
+     "result": "confirmed",
+     "note": "Bragança 1560 'failed to subdue the kingdom but wrested Mannar Island from it'."
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kandy",
+     "result": "confirmed",
+     "note": "'In 1611, Portuguese forces, acting in the name of the pretender Mayadunne of Uva, captured Kandy'."
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Dutch–Portuguese_War",
+     "result": "confirmed",
+     "note": "'The Dutch conquered Batticaloa in 1639 and Galle in 1640'; Kingdom_of_Kandy 'Batticaloa and Trincomalee fell in 1639, Galle in 1640'."
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Dutch–Portuguese_War",
+     "result": "confirmed",
+     "note": "'the Dutch captured Colombo in 1656'; no month on the page."
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Portuguese_Ceylon",
+     "result": "confirmed",
+     "note": "infobox 'Fall of Jaffna: June 1658'."
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Jaffna_kingdom",
+     "result": "confirmed",
+     "note": "'by 1582 the Jaffna king was paying a tribute of ten elephants or an equivalent in cash'."
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kotte",
+     "result": "confirmed",
+     "note": "1505 arrival and trade agreement confirmed; the Colombo territory is not on the page (see fix 1)."
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 54463,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "Portuguese_Ceylon has no area row (checked 2026-10-25). Cliopatria 1600 shape 54,463 km2 (shapes.csv); gazetteer confirms it holds Kandy (7 of the 25 km disc's cells) and none of Colombo, Galle (1640) or Jaffna (1640), so all eleven shapes are rightly marked wrong. Corrected shape 28 cells, about 7,081 km2 (ratio 0.13), acknowledged as a minimum; see thin."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "portuguese-ceylon",
+    "year": 1560,
+    "type": "gain",
+    "counterpart": "jaffna-kingdom"
+   },
+   "mirror": {
+    "slug": "jaffna-kingdom",
+    "year": 1560,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Mannar Island both sides."
+  },
+  {
+   "event": {
+    "slug": "portuguese-ceylon",
+    "year": 1565,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-kotte"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-kotte (sa-04) has no vassal_start 1565 (it draws Colombo 'under Portuguese protection' only in a keyframe); the author's convention that vassalage is recorded by the suzerain only is not what reviewer rule 3 accepts."
+  },
+  {
+   "event": {
+    "slug": "portuguese-ceylon",
+    "year": 1582,
+    "type": "vassal_start",
+    "counterpart": "jaffna-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "jaffna-kingdom (sa-04) has no vassal_start 1582 (tribute 'by 1582', Jaffna_kingdom)."
+  },
+  {
+   "event": {
+    "slug": "portuguese-ceylon",
+    "year": 1597,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody at confidence 1; doubtful (see thin /ledger/4)."
+  },
+  {
+   "event": {
+    "slug": "portuguese-ceylon",
+    "year": 1597,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-kotte"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kotte",
+    "year": 1597,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "the vassalage ends in the annexation; kotte dissolve 1597-05 to portuguese-ceylon."
+  },
+  {
+   "event": {
+    "slug": "portuguese-ceylon",
+    "year": 1597,
+    "type": "gain",
+    "counterpart": "kingdom-of-kotte"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kotte",
+    "year": 1597,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "same region on both sides, 1597-05."
+  },
+  {
+   "event": {
+    "slug": "portuguese-ceylon",
+    "year": 1611,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-kandy"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kandy",
+    "year": 1611,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "end 1612 matched on both sides (both bridging)."
+  },
+  {
+   "event": {
+    "slug": "portuguese-ceylon",
+    "year": 1619,
+    "type": "gain",
+    "counterpart": "jaffna-kingdom"
+   },
+   "mirror": {
+    "slug": "jaffna-kingdom",
+    "year": 1619,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "vassal_end 1619 also closed by the dissolve."
+  },
+  {
+   "event": {
+    "slug": "portuguese-ceylon",
+    "year": 1639,
+    "type": "loss",
+    "counterpart": "dutch-ceylon"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "dutch-ceylon exists (sa-06-b) but starts 1640-03; no 1639 gain of Batticaloa and Trincomalee. Route to the dutch-ceylon owner (start 1639) or retarget to dutch-republic (eu-09, not run)."
+  },
+  {
+   "event": {
+    "slug": "portuguese-ceylon",
+    "year": 1640,
+    "type": "loss",
+    "counterpart": "dutch-ceylon"
+   },
+   "mirror": {
+    "slug": "dutch-ceylon",
+    "year": 1640,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "year matches (dutch-ceylon 1640-03 found from portuguese-ceylon) but land differs: dutch-ceylon takes Galle and Negombo (February 1640), portuguese-ceylon loses Galle only and keeps Negombo to 1658."
+  },
+  {
+   "event": {
+    "slug": "portuguese-ceylon",
+    "year": 1656,
+    "type": "loss",
+    "counterpart": "dutch-ceylon"
+   },
+   "mirror": {
+    "slug": "dutch-ceylon",
+    "year": 1656,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Colombo; dutch-ceylon draws 35 km against 25 km here."
+  },
+  {
+   "event": {
+    "slug": "portuguese-ceylon",
+    "year": 1658,
+    "type": "loss",
+    "counterpart": "dutch-ceylon"
+   },
+   "mirror": {
+    "slug": "dutch-ceylon",
+    "year": 1658,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "June 1658 Jaffna; dutch-ceylon's single 1658 gain (confidence 1) also takes Mannar, the Kalutara coast and Matara, the last of which portuguese-ceylon never draws."
+  },
+  {
+   "event": {
+    "slug": "portuguese-ceylon",
+    "year": 1658,
+    "type": "dissolve",
+    "counterpart": "dutch-ceylon"
+   },
+   "mirror": {
+    "slug": "dutch-ceylon",
+    "year": 1658,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "successor dutch-ceylon; dutch-ceylon predecessors = portuguese-ceylon."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sitawaka",
+    "year": 1574,
+    "type": "loss",
+    "counterpart": "portuguese-ceylon"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Sitawaka's garrisons at Wattala, Nagalagama and Mapane expelled (8 km disc at Wattala); no gain in portuguese-ceylon. Small: either portuguese-ceylon adds the gain or sitawaka names kingdom-of-kotte."
+  },
+  {
+   "event": {
+    "slug": "ceylon",
+    "year": 1506,
+    "type": "dissolve",
+    "counterpart": "portuguese-ceylon"
+   },
+   "mirror": {
+    "slug": "portuguese-ceylon",
+    "year": 1505,
+    "type": "predecessor"
+   },
+   "status": "mismatch",
+   "note": "both sides list the succession, but it is a Cliopatria artefact: kingdom-of-kotte is founded in 1507 from ceylon on the same Kotte country and the Portuguese took no land (fix /identity/predecessors/0)."
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1656,
+    "type": "loss",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "portuguese-ceylon",
+    "year": 1656,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "double drawing of Ceylon: portuguese-empire (am-06) also loses Colombo 1656 and the last of Ceylon 1658 to dutch-republic, and its Colonies shapes keep Sri Lankan cells in 1564-1581 and 1640-1658; the author flagged it; the compile step must pick one drawer (recommended portuguese-ceylon)."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Mannar Island",
+   "kind": "place",
+   "used_in": "portuguese-ceylon"
+  }
+ ],
+ "counterparts_needing_dossiers": [],
+ "notes_path": "history/polities/_notes/review-sa-06-a.md",
+ "problems": [
+  "No page failed. Pages opened 2026-10-25: Portuguese_Ceylon, Kingdom_of_Kotte, Jaffna_kingdom, Kingdom_of_Kandy, Dutch–Portuguese_War (WebFetch extracts).",
+  "dutch-ceylon.json now exists (sa-06-b, starts 1640-03), so the author's counterparts_needing_dossiers entry for Dutch Ceylon is satisfied, but its start must move to 1639 or the 1639 loss here must be retargeted.",
+  "portuguese-colonies has no dossier by design (merged into portuguese-empire, am-06); not reviewed here; the colour agent should give it portuguese-empire's colour.",
+  "No reviewer edits were made to the dossier; every finding is non-blocking and left to the author or a gap-filler."
+ ]
+}

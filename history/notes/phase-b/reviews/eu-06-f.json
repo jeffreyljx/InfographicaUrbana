@@ -1,0 +1,936 @@
+{
+ "batch_id": "eu-06-f",
+ "verdicts": [
+  {
+   "slug": "bavarians",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/rulers/1..8/source",
+     "what": "Eight of the nine rulers (Tassilo I to Tassilo III) cited no page.",
+     "why": "Agilolfings page lists 'Tassilo I, King of Bavaria 591-610', 'Garibald II ... 610-630', 'Theodo ... 680-716', 'Grimoald ... c. 716-725', 'Hugbert ... 725-737', 'Odilo ... 737-748', Grifo '748', 'Tassilo III ... 748-788': the dossier's dates match.",
+     "fix": "source = https://en.wikipedia.org/wiki/Agilolfings on rulers 1-8 (done by the reviewer).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/identity/predecessors",
+     "what": "predecessors is empty although the whole founding shape came out of the Ostrogothic Kingdom's shape: all 310 cells of bavarians_540 lie in Cliopatria's Ostrogothic Kingdom shape of 539, which drops them in 540. Neither dossier records this 76,734 km2 hand-over (the ostrogothic-kingdom ledger's 540 losses are Gaul to the Franks and Italy to the Eastern Romans).",
+     "why": "Cell test with tools/grid.py: |bavarians 540 & ostrogothic-kingdom 539| = 310 of 310. The found note (/ledger/0) does not mention the Ostrogoths.",
+     "fix": "Add predecessor {slug: ostrogothic-kingdom, land: {intersect: [{cliopatria: Ostrogothic Kingdom, year: 539}, {cliopatria: Bavarians, year: 540}], text: 'Raetia and Noricum, Gothic until the 530s'}} with a page that dates the Gothic loss of Raetia/Noricum (Frankish cession c. 536-537 if a page says so), and tell the ostrogothic-kingdom author (eu-06-e, under rework) to add the 540 loss with counterpart bavarians or kingdom-of-the-franks.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/1",
+     "what": "546 gain from lombards has no mirror: the lombards dossier records its 546 departure from Rugiland as a loss to nobody (lombards /ledger/3), and only 2 of the 5 cells lay in the Lombard shape of 545 (1 Ostrogothic, 2 in no shape).",
+     "why": "lombards /ledger/3: 546 loss nobody; cell test 546 gain = 5 cells, 2 in lombards 545, 1 in ostrogothic-kingdom 545.",
+     "fix": "Set counterpart to nobody (the land the Lombards left), or have the lombards dossier record a 546 loss to bavarians; the event is 1,264 km2 at confidence 1 and may simply be dropped as Cliopatria noise with a keyframe note.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/3",
+     "what": "555 gain of the upper Drava strip from ostrogothic-kingdom has no mirror: the ostrogothic-kingdom ledger's 555 loss is Pavia to the Eastern Romans.",
+     "why": "Cell test: 14 of the 15 gained cells lie in the Ostrogothic shape of 550 and of 554; ostrogothic-kingdom /ledger/25 (555 loss eastern-roman-empire, Pavia).",
+     "fix": "Route to ostrogothic-kingdom (eu-06-e rework): add a 555 loss to bavarians of minus(Bavarians 555, Bavarians 546), confidence 1; or record the Bavarian gain from nobody if the Gothic rump no longer held the Alps.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "found 540 at confidence 1: the pages date the people 'by about 520' and the duchy 551/555; nothing dates how Raetia II and Noricum passed from the Goths to the Bavarians/Franks",
+     "page to try": "https://en.wikipedia.org/wiki/Noricum"
+    },
+    {
+     "where": "/ledger/1, /ledger/3",
+     "what is missing": "546 and 555 edge gains rest on Cliopatria cells only (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Raetia"
+    },
+    {
+     "where": "/ledger/4, /ledger/5",
+     "what is missing": "633 loss to and 661 regain from Samo's union rest on shape intersections (confidence 1); the Samo page does not mention Bavaria",
+     "page to try": "https://en.wikipedia.org/wiki/Samo"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "788 end of the Bavarian overlordship of Carantania is a bridging judgement (Carantania page: 'Tributary to Franks: 745', 'Integration to Franks: 828', no 788)",
+     "page to try": "https://en.wikipedia.org/wiki/Carantania"
+    },
+    {
+     "where": "/ledger (missing)",
+     "what is missing": "Tassilo I's wars with the Alpine Slavs (c. 592-595) and the Battle of Aguntum (c. 610) on the Drava frontier; no event, the Aguntum page failed for the author",
+     "page to try": "https://en.wikipedia.org/wiki/Tassilo_I_of_Bavaria"
+    },
+    {
+     "where": "/ledger (missing)",
+     "what is missing": "the Bavarian-Lombard border in the Adige valley (Bolzano, Trentino) and Charles Martel's 725/728 campaigns, not verified for budget",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Trent"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Bavaria",
+     "result": "confirmed: 'who ruled from 555 onward as a largely independent Merovingian vassal'; infobox 'c. 555-788'; 'origins ... 551/555'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Bavaria",
+     "result": "confirmed: 'At around 743, the Bavarian duke Odilo vassalised the Slavic princes of Carantania'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Bavaria",
+     "result": "confirmed: 'The last tribal stem duchy to be incorporated was Bavaria in 788'; Tassilo 'was deposed in 788'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Carantania",
+     "result": "confirmed as the bridging judgement the note says: 'about 740 Prince Boruth asked the Bavarian duke Odilo for help', 'Tributary to Franks: 745', 'In 828, Carantania finally became a margraviate'; no 788 on the page"
+    },
+    {
+     "where": "/identity/rulers",
+     "page": "https://en.wikipedia.org/wiki/Agilolfings",
+     "result": "confirmed: every duke and date matches; 'Their Bavarian residence was at Regensburg'"
+    },
+    {
+     "where": "/wars/2",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Bavaria",
+     "result": "confirmed: 'Already in 788, the Avars made an incursion into Bavaria'; 'the eastern Bavarian border, towards the Avars, was situated on the river Enns'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 122313.4,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Duchy of Bavaria infobox has no area (checked); the author compares bavarians_540 (76,734 km2) with modern Bavaria's 70,549 km2 (ratio 1.09). The 750-787 maximum (122,313 km2) includes Carantania and is corrected to about 77,300 km2 (verdict adjust)."
+   }
+  },
+  {
+   "slug": "avar-khaganate",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/13/confidence",
+     "what": "656 loss to old-great-bulgaria at confidence 2 although the page gives no year (the note itself says 'the year is Cliopatria's').",
+     "why": "Old Great Bulgaria page: 'In the mid-7th century, Great Bulgaria expanded west to include Avar territory.' No year; the mirror old-great-bulgaria /ledger/1 is confidence 1.",
+     "fix": "confidence 1 (done by the reviewer).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/15/confidence",
+     "what": "661 gain from samo-s-empire at confidence 2 although the page dates no return (the note says 'the year is Cliopatria's').",
+     "why": "Pannonian Avars page: 'With the death of Samo in 658 and Kubrat in 665, some Slavic tribes again came under Avar rule.'",
+     "fix": "confidence 1 (done by the reviewer).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/10/confidence",
+     "what": "627 loss to eastern-roman-empire at confidence 2: the page names neither 627 nor any Roman recovery, and the land (99 of 103 cells) is the Naissus-Serdica interior that the eastern-roman-empire dossier corrects out of its 623-625 shape because 'no page returns them'; the ERE ledger has no 627 gain from the Avars.",
+     "why": "Avar-Byzantine wars page: 'After failing to capture Constantinople, the Avars rapidly began to decline before disintegrating entirely'; cell test: |(Avar 617 - Avar 627) & ERE 627| = 103, of which 99 are in ERE 623 minus ERE 617; eastern-roman-empire /keyframe_review (623) correction.",
+     "fix": "confidence 1 (done by the reviewer). Still open for the author and eu-05: either counterpart nobody (the Sclaveni, as in ERE's 630 loss to nobody) or a matching ERE gain from avar-khaganate in 626/627.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/2/region",
+     "what": "The 568 gain from the Lombards (minus(Avar 569, Avar 567)) contained the Sirmium district, which the dossier's own 569/577 corrections keep Byzantine until 581/582 and the ERE dossier gains from the Gepids in 567.",
+     "why": "Cell test: Sirmium is in Avar 569 and 577 but not in Avar 567; Avar-Byzantine wars page: 'The city fell in c. 581, or possibly 582.'",
+     "fix": "Region now {minus: [minus(Avar 569, Avar 567), {place: Sirmium, km: 30}]} (done by the reviewer).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/wars/7/to",
+     "what": "Charlemagne's Avar War ended at 796; the war page's infobox runs to 803.",
+     "why": "Avar Wars infobox: 'Date: 788 to 803', 'Territorial changes: Pannonia seized by Francia, disintegration of the khaganate'; the dossier's own war note quotes the Avar-Byzantine wars page: 'starting in 790 and ending in 803'.",
+     "fix": "to = 803 (done by the reviewer).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/4",
+     "what": "The Avar side records only a contest for 583 while the eastern-roman-empire dossier records a 583 loss of Singidunum and Viminacium to the Avars (ERE /ledger/64, confidence 3) and a 588 regain (ERE /ledger/65); the Avar note quotes the same sentence.",
+     "why": "Avar-Byzantine wars page: 'The Avars took the cities of Augustae, Singidunum, and Viminacium in 583' and 'In 588, they abandoned the siege of Singidunum after only seven days'.",
+     "fix": "Add 583 gain from eastern-roman-empire (Singidunum and Viminacium, the ERE region: {union: [{place: Belgrade, km: 25}, {lon: 21.2, lat: 44.74, km: 25}]}, confidence 3) and 588 loss to eastern-roman-empire (same region, confidence 2), or agree with eu-05 that the cities were raided, not held, and both drop them.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/8, /ledger/9",
+     "what": "626 Thrace is a contest here but an Avar occupation in the eastern-roman-empire dossier (ERE /ledger/90-91 occupation_start June 626 / occupation_end August 626, counterpart avar-khaganate); the schema has occupier and owner record the same occupation.",
+     "why": "eastern-roman-empire ledger; schema: 'occupation_start ... the owner records the same event with the roles reversed'; the Thracian strip is 71 cells (Avar 626 minus Avar 617).",
+     "fix": "Add occupation_start (June 626) / occupation_end (August 626) with counterpart eastern-roman-empire over minus(Avar 626, Avar 617), or agree with eu-05 on contest for both.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/5",
+     "what": "The Avar contest with the Eastern Romans ends in 602 here; the eastern-roman-empire contest (ERE /ledger/63) runs from 582 to August 626 without a break.",
+     "why": "eastern-roman-empire /ledger/63 and /ledger/92.",
+     "fix": "Reconcile with eu-05: either ERE closes its contest in 602 and opens a new one c. 613-615, or this dossier keeps the contest open to 626.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/17",
+     "what": "avar-khaganate_682 (verdict ok) adds a 28-cell exclave in Macedonia (21.5-22.9E, 41.1-42.2N, about 7,000 km2) with no ledger gain, and the 741 shape drops it with no loss; the notes suspect Kuber's Bulgars.",
+     "why": "Keyframe note 17 and 18; no ledger event in 680-682 or 741 names Macedonia.",
+     "fix": "Either verdict adjust for 682/741 with correction minus the exclave (if Kuber's Bulgars held it), or a 682 gain and 741 loss at confidence 1 naming the counterpart.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/14",
+     "what is missing": "656 loss of the Dniester-Dnieper steppe to nobody (about 413,000 km2, the largest land move in the batch) is a bridging judgement; the Old Great Bulgaria page puts Great Bulgaria 'between the Dniester and lower Volga' from 632, so the Avar hold of this steppe in 568-655 itself is doubtful",
+     "page to try": "https://en.wikipedia.org/wiki/Kutrigurs"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "found 561 at confidence 1 (infobox 'Established: 567'; 'By 562 the Avars controlled the lower Danube basin')",
+     "page to try": "https://en.wikipedia.org/wiki/Bayan_I"
+    },
+    {
+     "where": "/ledger/10, /ledger/13, /ledger/15",
+     "what is missing": "now confidence 1: the 627 collapse in the Balkans, the 656 Bulgar expansion and the 661 Slav return are undated on the pages",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Constantinople_(626)"
+    },
+    {
+     "where": "/ledger/17",
+     "what is missing": "741 gain of Slavonia (93 cells) is Cliopatria-only",
+     "page to try": "https://en.wikipedia.org/wiki/Slavonia"
+    },
+    {
+     "where": "/ledger/21",
+     "what is missing": "800 regain of the Danube-Tisza interfluve from the Franks is Cliopatria-only ('In 799, some Avars revolted')",
+     "page to try": "https://en.wikipedia.org/wiki/Avar_March"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "both capitals are shape centroids, flagged placeholders; the Ring is unplaced; no rulers listed",
+     "page to try": "https://en.wikipedia.org/wiki/Bayan_I"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Avar%E2%80%93Byzantine_wars",
+     "result": "confirmed: 'The city fell in c. 581, or possibly 582.'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Avar%E2%80%93Byzantine_wars",
+     "result": "confirmed: 'the Avar land assaults on August 6 and 7 were repelled'; 'They would never seriously threaten Constantinople again.'"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Avar_Wars",
+     "result": "confirmed: pestilence 'killing about 90% of their horses'; 'Charlemagne was to abandon the campaign in the middle of October' (inside the 791 narrative)"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Avar_Wars",
+     "result": "confirmed: 'Pippin of Italy and Eric of Friuli gathered troops for a new invasion of the Avar Khaganate in 796'; infobox 'Pannonia seized by Francia'"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Old_Great_Bulgaria",
+     "result": "confirmed: 'Between 630 and 635, Khan Kubrat managed to unite the Onogur Bulgars'; 'Kubrat quickly managed to overthrow Avar domination'"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Pannonian_Avars",
+     "result": "confirmed: 'In 804, Bulgaria conquered the southeastern Avar lands in Transylvania and southeastern Pannonia'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Avar%E2%80%93Byzantine_wars",
+     "result": "confirmed: 'The cities of Naissus and Serdica were captured in 615'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Pannonian_Avars",
+     "result": "confirmed: infobox 'Defeated by Samo: 626'"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Old_Great_Bulgaria",
+     "result": "confirmed but undated ('In the mid-7th century'): confidence lowered to 1"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Old_Great_Bulgaria",
+     "result": "confirmed as bridging: 'originally centered between the Dniester and lower Volga'; Kotrag's move undated"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Avar%E2%80%93Byzantine_wars",
+     "result": "confirmed: 'their land was further reduced by the Bulgars around 680'"
+    },
+    {
+     "where": "/wars/7",
+     "page": "https://en.wikipedia.org/wiki/Avar_Wars",
+     "result": "mis-dated end: infobox 'Date: 788 to 803'; fixed to 803"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1022314.8,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Pannonian Avars infobox has no area or capital (checked); the Avar Wars infobox has none either. Author-quoted areas match shapes.csv (655,633 in 561; 1,022,315 in 617; 268,428 in 656; 145,973 in 793)."
+   }
+  },
+  {
+   "slug": "duchy-of-thuringia",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/rulers/1..3/source",
+     "what": "Heden I, Gozbert and Heden II cited no page.",
+     "why": "Duchy of Thuringia page ducal list: '642-687 Heden I', '687-689 Gozbert', '689-719 Heden II'.",
+     "fix": "source = https://en.wikipedia.org/wiki/Duchy_of_Thuringia on rulers 1-3 (done by the reviewer).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/identity/predecessors",
+     "what": "The only predecessor is kingdom-of-thuringia, which ended in 532 and hands its land to kingdom-of-the-franks (its own successors field); the duchy's 567 land (173 of 174 cells) sits in Cliopatria's Frankish shape of 566.",
+     "why": "kingdom-of-thuringia identity.successors = kingdom-of-the-franks ('conquered by the Franks in 531-532'); cell test |duchy 567 & Franks 566| = 173.",
+     "fix": "Add predecessor {slug: kingdom-of-the-franks, land: {intersect: [{cliopatria: Duchy of Thuringia, year: 567}, {cliopatria: Kingdom of the Franks, year: 566}]}}; keep kingdom-of-thuringia only with a note that the land passed through the Franks in 532-566.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "found 567 at confidence 1: the page has Thuringia 'under the supreme rule of Frankish kings' from c. 531 and the duchy 'established ... about 631' (infobox 'before 631'); the 567-630 own-state span is Cliopatria's",
+     "page to try": "https://en.wikipedia.org/wiki/Dagobert_I"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "633 loss of the whole duchy to the Franks (confidence 1) leaves a state without land in 633-640 while its duke Radulf (632-642) governs; a gap-filler should decide whether 567-640 is a Frankish dependency (vassal tint in kingdom-of-the-franks) with the found moved to 641/642",
+     "page to try": "https://en.wikipedia.org/wiki/Thuringii"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "end c. 719 vs the Hedan II page's rule 'from around 700 until his death' in 741; Charles Martel's 717-719 campaign not dated by a page",
+     "page to try": "https://en.wikipedia.org/wiki/Charles_Martel"
+    },
+    {
+     "where": "/ledger (missing)",
+     "what is missing": "Saxon rule over parts of Thuringia towards the end of the 7th century (Thuringi page, undated) is not drawn",
+     "page to try": "https://en.wikipedia.org/wiki/Thuringii"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Thuringia",
+     "result": "confirmed: 'It was established as a duchy about 631, by King Dagobert I' (infobox 'Duchy established: before 631')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Radulf,_King_of_Thuringia",
+     "result": "confirmed: 'About 641' King Sigebert III 'marched against the insurgents'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Radulf,_King_of_Thuringia",
+     "result": "confirmed: 'In 642, he rebelled against Sigebert and defeated his army, taking the title of rex or king of Thuringia.'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Thuringia",
+     "result": "confirmed: 'A conflict with Charles Martel around 717-19 brought an end to autonomy.'; list ends '689-719 Heden II'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Hedan_II",
+     "result": "confirmed: 'In a donation dated 1 May 704 in Würzburg, his capital'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 40556.9,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Duchy of Thuringia infobox has no area (checked). All four shapes are the Kingdom of Thuringia's 40,557 km2 cell template, said in notes."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "bavarians",
+    "year": 540,
+    "type": "found",
+    "counterpart": "ostrogothic-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "All 310 cells of bavarians_540 were in Ostrogothic Kingdom 539; no predecessor here and no 540 loss in ostrogothic-kingdom. Route to eu-06-e rework."
+  },
+  {
+   "event": {
+    "slug": "bavarians",
+    "year": 546,
+    "type": "gain",
+    "counterpart": "lombards"
+   },
+   "mirror": {
+    "slug": "lombards",
+    "year": 546,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "lombards records a 546 loss to nobody (Rugiland); only 2 of the 5 cells were Lombard."
+  },
+  {
+   "event": {
+    "slug": "bavarians",
+    "year": 555,
+    "type": "gain",
+    "counterpart": "ostrogothic-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "ostrogothic-kingdom 555 loss is Pavia to eastern-roman-empire; the 14-cell upper Drava strip has no loss."
+  },
+  {
+   "event": {
+    "slug": "bavarians",
+    "year": 633,
+    "type": "loss",
+    "counterpart": "samo-s-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "samo-s-empire (eu-15) not written yet."
+  },
+  {
+   "event": {
+    "slug": "bavarians",
+    "year": 661,
+    "type": "gain",
+    "counterpart": "samo-s-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "samo-s-empire (eu-15) not written yet."
+  },
+  {
+   "event": {
+    "slug": "bavarians",
+    "year": 743,
+    "type": "vassal_start",
+    "counterpart": "carantania"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "carantania (eu-06, another part) not written yet; it must not end in 749."
+  },
+  {
+   "event": {
+    "slug": "bavarians",
+    "year": 788,
+    "type": "vassal_end",
+    "counterpart": "carantania"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "carantania not written yet."
+  },
+  {
+   "event": {
+    "slug": "bavarians",
+    "year": 788,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-the-franks (eu-07) not written yet; it also owes vassal events for bavarians (555, 743, 748/749, 757)."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 561,
+    "type": "found",
+    "counterpart": "eastern-roman-empire"
+   },
+   "mirror": {
+    "slug": "eastern-roman-empire",
+    "year": 561,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "ERE /ledger/52 loss to avar-khaganate (15 cells) is covered by the found shape; 7 Gepid cells of 560 have no event (negligible)."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 567,
+    "type": "gain",
+    "counterpart": "kingdom-of-the-gepids"
+   },
+   "mirror": {
+    "slug": "kingdom-of-the-gepids",
+    "year": 567,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Gepid /ledger/9 loss and /ledger/11 dissolve to avar-khaganate."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 568,
+    "type": "gain",
+    "counterpart": "lombards"
+   },
+   "mirror": {
+    "slug": "lombards",
+    "year": 568,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "lombards /ledger/9 (2 April 568)."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 582,
+    "type": "gain",
+    "counterpart": "eastern-roman-empire"
+   },
+   "mirror": {
+    "slug": "eastern-roman-empire",
+    "year": 582,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Sirmium, both confidence 3."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 583,
+    "type": "contest_start",
+    "counterpart": "eastern-roman-empire"
+   },
+   "mirror": {
+    "slug": "eastern-roman-empire",
+    "year": 582,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Within a year; ERE zone is Moesia, Thrace and Macedonia, Avar zone Belgrade 80 km."
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 583,
+    "type": "loss",
+    "counterpart": "avar-khaganate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "ERE /ledger/64 loss of Singidunum and Viminacium (c3) and /ledger/65 588 regain have no Avar gain/loss."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 602,
+    "type": "contest_end",
+    "counterpart": "eastern-roman-empire"
+   },
+   "mirror": {
+    "slug": "eastern-roman-empire",
+    "year": 626,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "ERE contest runs 582 to August 626; the Avar one ends 602 and reopens June 626."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 615,
+    "type": "gain",
+    "counterpart": "eastern-roman-empire"
+   },
+   "mirror": {
+    "slug": "eastern-roman-empire",
+    "year": 615,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Naissus and Serdica."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 626,
+    "type": "loss",
+    "counterpart": "samo-s-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "samo-s-empire (eu-15) not written yet; Cliopatria starts Samo in 623."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 626,
+    "type": "contest_start",
+    "counterpart": "eastern-roman-empire"
+   },
+   "mirror": {
+    "slug": "eastern-roman-empire",
+    "year": 626,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "Same month (June 626) and land (Thrace) but the types differ: ERE has an Avar occupation, the Avars a contest."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 626,
+    "type": "contest_end",
+    "counterpart": "eastern-roman-empire"
+   },
+   "mirror": {
+    "slug": "eastern-roman-empire",
+    "year": 626,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "August 626 both; types differ (ERE also closes its contest then)."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 627,
+    "type": "loss",
+    "counterpart": "eastern-roman-empire"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "ERE has no 626/627 gain from the Avars; 99 of the 103 cells are the Naissus-Serdica interior that ERE keeps out of its 623-625 shape and takes back only through its 626/627 Cliopatria shapes."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 627,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody (Croats, Serbs, Sclaveni; no dossiers)."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 633,
+    "type": "loss",
+    "counterpart": "old-great-bulgaria"
+   },
+   "mirror": {
+    "slug": "old-great-bulgaria",
+    "year": 633,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "OGB found event (counterpart western-gokturks) with predecessor avar-khaganate; the counterpart strings differ."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 656,
+    "type": "loss",
+    "counterpart": "old-great-bulgaria"
+   },
+   "mirror": {
+    "slug": "old-great-bulgaria",
+    "year": 656,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Both confidence 1 now."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 656,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody; 413,000 km2, thin."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 661,
+    "type": "gain",
+    "counterpart": "samo-s-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "samo-s-empire not written yet."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 680,
+    "type": "loss",
+    "counterpart": "first-bulgarian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "first-bulgarian-empire (eu-18) not written yet."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 741,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 791,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-the-franks (eu-07) not written yet."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 796,
+    "type": "loss",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-the-franks not written yet."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 800,
+    "type": "gain",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-the-franks not written yet."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 804,
+    "type": "loss",
+    "counterpart": "first-bulgarian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "first-bulgarian-empire not written yet."
+  },
+  {
+   "event": {
+    "slug": "avar-khaganate",
+    "year": 805,
+    "type": "dissolve",
+    "counterpart": "first-bulgarian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "first-bulgarian-empire not written yet."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-thuringia",
+    "year": 567,
+    "type": "found",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "173 of 174 cells were Frankish in 566; kingdom-of-the-franks not written yet; kingdom-of-thuringia hands its land to the Franks in 532, not to this duchy."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-thuringia",
+    "year": 633,
+    "type": "loss",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-the-franks not written yet."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-thuringia",
+    "year": 641,
+    "type": "gain",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-the-franks not written yet."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-thuringia",
+    "year": 641,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-the-franks not written yet."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-thuringia",
+    "year": 719,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-the-franks not written yet; its Cliopatria shape lacks Thuringia in 720-723."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Pannonia",
+   "kind": "region",
+   "used_in": "avar-khaganate"
+  },
+  {
+   "name": "Carpathian Basin",
+   "kind": "region",
+   "used_in": "avar-khaganate"
+  },
+  {
+   "name": "Great Hungarian Plain",
+   "kind": "region",
+   "used_in": "avar-khaganate"
+  },
+  {
+   "name": "Viminacium",
+   "kind": "place",
+   "used_in": "avar-khaganate"
+  },
+  {
+   "name": "Augustae",
+   "kind": "place",
+   "used_in": "avar-khaganate"
+  },
+  {
+   "name": "Ybbs",
+   "kind": "place",
+   "used_in": "avar-khaganate"
+  },
+  {
+   "name": "Freising",
+   "kind": "place",
+   "used_in": "bavarians"
+  },
+  {
+   "name": "Karnburg",
+   "kind": "place",
+   "used_in": "bavarians"
+  },
+  {
+   "name": "Enns (river)",
+   "kind": "region",
+   "used_in": "bavarians"
+  },
+  {
+   "name": "Raba (river)",
+   "kind": "region",
+   "used_in": "avar-khaganate"
+  },
+  {
+   "name": "Saale (river)",
+   "kind": "region",
+   "used_in": "duchy-of-thuringia"
+  },
+  {
+   "name": "Unstrut (river)",
+   "kind": "region",
+   "used_in": "duchy-of-thuringia"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Kutrigurs",
+   "suggested_slug": "kutrigurs"
+  },
+  {
+   "name": "Utigurs",
+   "suggested_slug": "utigurs"
+  },
+  {
+   "name": "Antes",
+   "suggested_slug": "antes"
+  },
+  {
+   "name": "White Croats of Dalmatia",
+   "suggested_slug": "white-croats",
+   "years": [
+    620,
+    639
+   ]
+  },
+  {
+   "name": "Serbs of the Balkans",
+   "suggested_slug": "serbs"
+  },
+  {
+   "name": "Kuber's Bulgars (Macedonia)",
+   "suggested_slug": "kubers-bulgars"
+  },
+  {
+   "name": "Sorbs under Dervan",
+   "suggested_slug": "sorbs"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-06-f.md",
+ "problems": [
+  "No page failed for the reviewer (11 pages opened).",
+  "Neighbour dossiers read: saxons, eastern-roman-empire, lombards, byzantine-empire, old-great-bulgaria, gokturk-khaganate, ostrogothic-kingdom, kingdom-of-alamannia, kingdom-of-the-gepids (plus kingdom-of-thuringia for the predecessor check). Not written yet: kingdom-of-the-franks, kingdom-of-italy, carantania, frisia-kingdom, first-bulgarian-empire, samo-s-empire, hunnic-empire, duchy-of-croatia, burgundian-kingdom, aquitaine.",
+  "Route to eu-06-e (ostrogothic-kingdom rework): the 540 hand-over of Raetia/Noricum (310 cells) to bavarians and the 555 upper Drava strip are unrecorded on the Gothic side.",
+  "Route to eu-05 (eastern-roman-empire): reconcile with avar-khaganate the 583/588 Danube cities, the 602 break in the contest, occupation vs contest in Thrace 626, and the 626/627 return of the Naissus-Serdica interior.",
+  "Reviewer edits applied in place and re-validated (0 errors, 0 warnings with --resolve): avar-khaganate /ledger/2 region, /ledger/10, /ledger/13, /ledger/15 confidence, /wars/7/to; bavarians rulers 1-8 source; duchy-of-thuringia rulers 1-3 source.",
+  "Cell tests used tools/grid.py polity_cells with the cache under /tmp/claude-0/work/grid/."
+ ]
+}

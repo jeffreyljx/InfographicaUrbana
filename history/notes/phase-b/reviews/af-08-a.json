@@ -1,0 +1,562 @@
+{
+ "batch_id": "af-08-a",
+ "verdicts": [
+  {
+   "slug": "portuguese-africa",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1/counterpart",
+     "what": "The 1511 Socotra loss named free text 'Socotra's local rulers (not named on the pages)' although the cited page names the successor.",
+     "why": "Evolution of the Portuguese Empire: 'Socotra: possession (1506-1511). Became part of Mahri'.",
+     "fix": "counterpart mahra-sultanate, note extended to quote 'Became part of Mahri' (no dossier yet).",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/3/correction .. /keyframe_review/9/correction",
+     "what": "Mazagan (El Jadida), Portuguese throughout 1541-1581, lies about 19 km outside Cliopatria's 1547-1579 Atlantic patch, so the corrections drew the period without it.",
+     "why": "Evolution page: 'Mazagan/El Jadida (Morocco) - possession - 1506-1769'; point-in-shape test on the Cliopatria GeoJSON: El Jadida at 0 km from the 1507 and 1534 shapes, 19 km from the 1547, 1564 and 1579 shapes.",
+     "fix": "added {\"place\": \"El Jadida\", \"km\": 20} to the union of each of keyframes 3-9 and a sentence to each correction text; re-validated 0 errors.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "1507 found event is Cliopatria's row change (confidence 1); no page dates a 1507 event.",
+     "page to try": "https://en.wikipedia.org/wiki/Portuguese_Mozambique"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "1534 Inhambane, Zambezi-delta and two Gold Coast cells, confidence 1, page silent.",
+     "page to try": "https://en.wikipedia.org/wiki/Inhambane"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "1564 Cacheu cells, confidence 1; the Cacheu fort is usually dated 1588, so Cliopatria's year may be early.",
+     "page to try": "https://en.wikipedia.org/wiki/Cacheu"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Sao Tome, Fernando Po (Bioko) and Zanzibar-Pemba-Mafia cells undated by any page opened.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Evolution_of_the_Portuguese_Empire",
+     "result": "confirmed",
+     "note": "'Socotra: possession (1506-1511). Became part of Mahri'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Moroccan%E2%80%93Portuguese_conflicts",
+     "result": "confirmed",
+     "note": "'Safi and Azamor in 1541 ... following the offensives of the Saadi Sultan Mohammed ash-Sheikh'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Evolution_of_the_Portuguese_Empire",
+     "result": "confirmed",
+     "note": "Alcacer Ceguer 1458-1550; Arzila 1471-1550; 1577-1589 (conflicts page: Alcacer 1549, noted by the author)"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Portuguese_Empire",
+     "result": "confirmed",
+     "note": "'Luanda was established by Paulo Dias de Novais in 1576'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Evolution_of_the_Portuguese_Empire",
+     "result": "confirmed",
+     "note": "'Arzila/Asilah (Morocco) - colony - 1471-1550; 1577-1589'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Portuguese_Empire",
+     "result": "confirmed",
+     "note": "'At the Cortes of Tomar in 1581, Philip was crowned Philip I of Portugal'; 'Philip promised to keep the empires legally distinct'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 35685,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "https://en.wikipedia.org/wiki/Portuguese_Africa is a placeholder ('an article needs to be written about it'), no infobox; acknowledged in notes."
+   }
+  },
+  {
+   "slug": "french-algeria",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2/correction (also /keyframe_review/3, /4, /5, /6, /7)",
+     "what": "The Cliopatria 1834 shape is kept for 1834-1839 as 'the coastal strip' although it adds an 11,000 km2 block from the Mitidja through Grande Kabylie to Bougie with no ledger event, against the cited pages; the block stays in every later keyframe and keyframe 7 is verdict ok.",
+     "why": "Cliopatria GeoJSON: the Algiers part grows from 1.91-3.00 E (2,806 km2, 1830) to 1.91-5.41 E, 36.22-36.93 N (13,887 km2, 1834) and contains Blida, Boumerdes, Bouira, Tizi Ouzou, Azazga and Akbou, none in the 1830 shape; area 4,234 -> 15,320 km2 (x3.6) with only a rename (/ledger/4) between 1833 and 1837. Conquest page: 'France was only able to capture Blida in 1839'; 'On 22 June 1834, France formally annexed the occupied areas' under 'limited occupation' near the coast. French Algeria page: 'Kabylia remained the only region independent of the French government'.",
+     "fix": "Keyframes 2-3: {\"minus\": [{\"cliopatria\": \"French Algeria\", \"year\": 1834}, {\"union\": [{\"region\": \"Kabylia\"}, {\"admin1\": \"Blida\", \"country\": \"Algeria\"}]}]} united with Bejaia 35 km, Oran 40 km and Mostaganem 25 km; add a 1839 gain of Blida and the Mitidja (counterpart emirate-of-abdelkader, conquest page); keyframes 4-7: subtract the Kabylia highlands (admin1 Tizi Ouzou and Bouira, the Bejaia interior outside Bougie) until a page dates their conquest (1857 on the Kabylia page); keyframe 7 becomes adjust and also subtracts {\"country\": \"Tunisia\"} as its note and /ledger/14 already say. If a page dates French control of the eastern Mitidja in 1834, enter that gain instead.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1",
+     "what": "Bone is dated 1 December 1830, which is the date of Rovigo's appointment, not of the taking of Bone; the pages put Bone's French recovery after Rovigo's arrival at the end of 1831.",
+     "why": "French Algeria: 'On 1 December 1830, King Louis-Philippe named the Duc de Rovigo as head of military staff' and 'De Rovigo took control of Bone' with no date; conquest page: Bourmont withdrew his Bone and Oran troops in 1830, and Rovigo (appointed 'at the end of 1831') 'regained control of Bone and Bougie ... that Clauzel had taken and then lost'.",
+     "fix": "year 1832 with no month, confidence 1 (2 if the Annaba page dates it), source the conquest page; say in /keyframe_review/0 that the Bone cell is unverified for 1830-1831.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1/counterpart, /ledger/2/counterpart, /ledger/3/counterpart",
+     "what": "Gains of December 1830 and 1833 name regency-of-algiers, whose dossier dissolves in July 1830, so no mirror loss can exist.",
+     "why": "regency-of-algiers ledger: L10 1830-7 dissolve, successors french-algeria, emirate-of-abdelkader, beylik-of-constantine; conquest page: Bougie captured in 1833 'from Kabyle and Kouloughli forces'.",
+     "fix": "Bougie: counterpart nobody (Kabyle and Kouloughli forces) with the quote; Bone: beylik-of-constantine or nobody; Oran, Arzew, Mostaganem: nobody, or emirate-of-abdelkader if a page shows the emir held them.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/9/counterpart",
+     "what": "The 1840 gain names beylik-of-constantine, which on the author's own reckoning ended with Constantine's fall in 1837.",
+     "why": "Author's counterparts_needing_dossiers gives Beylik of Constantine years [1830, 1837]; /ledger/7 Constantine stormed 13 October 1837.",
+     "fix": "counterpart nobody with a note, or emirate-of-abdelkader if a page shows its khalifa held the Medjana or Setif in 1839-1840.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The 1830 shape is kept unchanged although its Algiers part reaches 1.91 E and 36.29 N (Miliana, about 90 km inland, taken in 1840) while the page puts French control in 1830 at Algiers and nearby coastal points.",
+     "why": "Cliopatria GeoJSON: Miliana (2.23 E, 36.30 N) inside the 1830 shape and outside the 1834 and 1840 shapes; conquest page: Clauzel's November 1830 column left 500 men at Blida and occupied Medea, then the French lost the battles of Blida and took it only in 1839.",
+     "fix": "intersect the Algiers part with {\"place\": \"Algiers\", \"km\": 40} (or say in the note why the inland cells stand).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/10",
+     "what is missing": "1842 Oran-Tlemcen-Mascara block, confidence 1: no page dates the French occupation of Tlemcen and Mascara.",
+     "page to try": "https://en.wikipedia.org/wiki/Tlemcen"
+    },
+    {
+     "where": "/ledger/14",
+     "what is missing": "1846 jump from 48,573 to 211,876 km2, confidence 1: the Tell, the High Plateaux and the Ziban to 33.6 N undated and undelimited.",
+     "page to try": "https://en.wikipedia.org/wiki/Laghouat"
+    },
+    {
+     "where": "/keyframe_review/7",
+     "what is missing": "the date French rule reached Medea, Miliana, Setif and the east (Medea and Miliana 1840).",
+     "page to try": "https://en.wikipedia.org/wiki/M%C3%A9d%C3%A9a"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/French_Algeria",
+     "result": "confirmed",
+     "note": "'the French captured Constantine under Sylvain Charles Valee the following year, on 13 October 1837'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/French_conquest_of_Algeria",
+     "result": "confirmed",
+     "note": "'in 1833 France captured the city with minimal losses, from Kabyle and Kouloughli forces' (counterpart wrong, see fixes)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/French_conquest_of_Algeria",
+     "result": "confirmed",
+     "note": "Voirol (appointed 1833) 'established French occupation in Oran'; Desmichels 'gained control over Arzew and Mostaganem'; no exact date on the page"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/French_Algeria",
+     "result": "mis-dated",
+     "note": "1 December 1830 is Rovigo's appointment; Bone undated; conquest page has Rovigo appointed at the end of 1831"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/French_conquest_of_Algeria",
+     "result": "confirmed",
+     "note": "'The French expedition to conquer the Saharan lands began in March 1844 at Biskra'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/French_conquest_of_Algeria",
+     "result": "confirmed",
+     "note": "'The policy of limited occupation was formally abandoned in 1840 for one of complete control'; extent not on page (confidence 2 correct)"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "page": "https://en.wikipedia.org/wiki/French_conquest_of_Algeria",
+     "result": "not on page",
+     "note": "contradicted: 'France was only able to capture Blida in 1839'; French Algeria: 'Kabylia remained the only region independent of the French government'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 585814,
+    "infobox_year": 1899,
+    "cliopatria_km2": 211876,
+    "ratio": 0.36,
+    "acknowledged": true,
+    "note": "Infobox: 1899 585,814 km2, 1962 2,381,741 km2; no shape of this row alive in either year (largest 1846 shape); acknowledged in keyframe 7 note."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "portuguese-africa",
+    "year": 1507,
+    "type": "found",
+    "counterpart": "portuguese-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Cliopatria row change; portuguese-empire has no 1507 event and its notes name Portuguese Africa as a component of its umbrella."
+  },
+  {
+   "event": {
+    "slug": "portuguese-africa",
+    "year": 1511,
+    "type": "loss",
+    "counterpart": "mahra-sultanate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed under counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "portuguese-africa",
+    "year": 1534,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-africa",
+    "year": 1541,
+    "type": "loss",
+    "counterpart": "saadi-sultanate"
+   },
+   "mirror": {
+    "slug": "saadi-sultanate",
+    "year": 1541,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "saadi L5 Safi and Azemmour. Saadi L4 also credits Agadir 1541 to portuguese-africa, whose shapes never contain Agadir (portuguese-morocco L9 carries it): saadi should name portuguese-morocco for Agadir."
+  },
+  {
+   "event": {
+    "slug": "portuguese-africa",
+    "year": 1550,
+    "type": "loss",
+    "counterpart": "saadi-sultanate"
+   },
+   "mirror": {
+    "slug": "saadi-sultanate",
+    "year": 1550,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "saadi L7 Ksar es-Seghir and Asilah."
+  },
+  {
+   "event": {
+    "slug": "portuguese-africa",
+    "year": 1564,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-africa",
+    "year": 1576,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody; portuguese-angola enters the same founding."
+  },
+  {
+   "event": {
+    "slug": "portuguese-africa",
+    "year": 1577,
+    "type": "gain",
+    "counterpart": "saadi-sultanate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "saadi-sultanate has no 1577 loss of Asilah (its L16 1589 says the Saadians 'briefly regained' it); route to af-02. portuguese-morocco L12 enters the same 1577 gain (overlap for the integrator)."
+  },
+  {
+   "event": {
+    "slug": "portuguese-africa",
+    "year": 1581,
+    "type": "dissolve",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1581,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "spanish-empire L26 makes the Portuguese holdings (Mozambique, Angola, Ghana, Cabo Verde, Morocco...) a vassal of portuguese-empire, while portuguese-empire L25 enters a loss to spanish-empire and this dossier hands the cells to spanish-empire; the two neighbours disagree with each other (author flagged)."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1830,
+    "type": "found",
+    "counterpart": "regency-of-algiers"
+   },
+   "mirror": {
+    "slug": "regency-of-algiers",
+    "year": 1830,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "regency L9 1830-7."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1830,
+    "type": "gain",
+    "counterpart": "regency-of-algiers"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Bone, December 1830: regency-of-algiers dissolved July 1830; the event is also mis-dated (1832)."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1833,
+    "type": "gain",
+    "counterpart": "regency-of-algiers"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Bougie (from Kabyle and Kouloughli forces per the page) and Oran-Arzew-Mostaganem: counterpart dissolved in 1830."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1836,
+    "type": "contest_start",
+    "counterpart": "emirate-of-abdelkader"
+   },
+   "mirror": {
+    "slug": "emirate-of-abdelkader",
+    "year": 1836,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "years match; the emirate names bourbon-kingdom-of-france, not french-algeria."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1837,
+    "type": "contest_end",
+    "counterpart": "emirate-of-abdelkader"
+   },
+   "mirror": {
+    "slug": "emirate-of-abdelkader",
+    "year": 1837,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "years match; counterpart slug bourbon-kingdom-of-france on the emirate side."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1837,
+    "type": "gain",
+    "counterpart": "beylik-of-constantine"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed by the author."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1839,
+    "type": "contest_start",
+    "counterpart": "emirate-of-abdelkader"
+   },
+   "mirror": {
+    "slug": "emirate-of-abdelkader",
+    "year": 1839,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "year matches; emirate names bourbon-kingdom-of-france."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1840,
+    "type": "gain",
+    "counterpart": "beylik-of-constantine"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "the beylik ends in 1837 on the author's own reckoning."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1842,
+    "type": "gain",
+    "counterpart": "emirate-of-abdelkader"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "emirate-of-abdelkader has no 1842 loss."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1844,
+    "type": "gain",
+    "counterpart": "emirate-of-abdelkader"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Biskra, March 1844: no 1844 loss in the emirate."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1844,
+    "type": "contest_start",
+    "counterpart": "morocco"
+   },
+   "mirror": {
+    "slug": "morocco",
+    "year": 1844,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "morocco L8 1844-6."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1845,
+    "type": "contest_end",
+    "counterpart": "morocco"
+   },
+   "mirror": {
+    "slug": "morocco",
+    "year": 1845,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": "morocco L9 1845-3."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1846,
+    "type": "gain",
+    "counterpart": "emirate-of-abdelkader"
+   },
+   "mirror": {
+    "slug": "emirate-of-abdelkader",
+    "year": 1846,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "emirate L8 1846 (confidence 1 both sides)."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1847,
+    "type": "contest_end",
+    "counterpart": "emirate-of-abdelkader"
+   },
+   "mirror": {
+    "slug": "emirate-of-abdelkader",
+    "year": 1846,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "1846 (emirate, confidence 1, counterpart bourbon-kingdom-of-france) vs 23 December 1847 (Emirate page infobox); the emirate side should move to 1847-12."
+  },
+  {
+   "event": {
+    "slug": "french-algeria",
+    "year": 1847,
+    "type": "dissolve",
+    "counterpart": "french-africa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "french-africa is another af-08 part with no file yet."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Arguin",
+   "kind": "place",
+   "used_in": "portuguese-africa"
+  },
+  {
+   "name": "Asilah",
+   "kind": "place",
+   "used_in": "portuguese-africa"
+  },
+  {
+   "name": "Ksar es-Seghir",
+   "kind": "place",
+   "used_in": "portuguese-africa"
+  },
+  {
+   "name": "Socotra",
+   "kind": "place",
+   "used_in": "portuguese-africa"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Mahra Sultanate",
+   "suggested_slug": "mahra-sultanate",
+   "years": [
+    1511,
+    1511
+   ],
+   "note": "years needed by this batch; Evolution page: Socotra 'Became part of Mahri' after 1511."
+  },
+  {
+   "name": "Beylik of Constantine",
+   "suggested_slug": "beylik-of-constantine",
+   "years": [
+    1830,
+    1837
+   ],
+   "note": "already listed by the author and by regency-of-algiers."
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-af-08-a.md",
+ "problems": [
+  "WebFetch returns model summaries; quotes above are the tool's quotations.",
+  "kingdom-of-spain and crown-of-castile (Context, group eu-12) have no dossier yet; no portuguese-africa event names them.",
+  "portuguese-africa overlaps portuguese-morocco, portuguese-mozambique and portuguese-angola for 1507-1581 (author flagged; integrator decision).",
+  "spanish-empire (vassal_start of portuguese-empire, 1581) and portuguese-empire (loss to spanish-empire, 1581) model the Iberian Union differently; the integrator must choose before portuguese-africa's 1581 handover can be matched."
+ ]
+}

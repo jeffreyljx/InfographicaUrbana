@@ -1,0 +1,2467 @@
+{
+ "batch_id": "sa-03-x",
+ "verdicts": [
+  {
+   "slug": "eastern-chalukyas",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/2/region, /ledger/3/region, /ledger/4/region, /ledger/5/region, /wars/2/zones/0, /wars/3/zones/0, /identity/predecessors/0/land",
+     "what": "The Vengi contest zones and the predecessor land were drawn as {\"region\":\"Andhra\"}, 1,044 cells (about 264,000 km2, all of Andhra Pradesh plus a strip of Telangana), 3.5 times the state's own 300-cell shape, while each text says Vengi.",
+     "why": "Rajaraja I page: 'Satyashraya retaliated by invading the Vengi country in 1006 A.D.'; Kulottunga I page: 'the Vengi kingdom was invaded by the Kalachuri king Yakshakarna'; the dossier's own Vengi spec is Rajahmundry 110 km + Vijayawada 100 km.",
+     "fix": "Replaced by the dossier's Vengi spec {\"union\":[{\"place\":\"Rajahmundry\",\"km\":110},{\"place\":\"Vijayawada\",\"km\":100}]}, texts kept; revalidated.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/0/note",
+     "what": "The 624-847 keyframe draws Vengi as an independent state from 624, while chalukya-dynasty /ledger/8 keeps Vengi in Badami hands until its 641 loss: 184 of 185 cells are drawn by both in 624-641.",
+     "why": "Eastern Chalukyas page: Kubja Vishnuvardhana was made 'the governor of this newly acquired territory in 624 A.D.' and the viceroyalty became independent 'possibly after Pulakeshin died fighting the Pallavas in the Battle of Vatapi' (642).",
+     "fix": "Say in the K0 note that 624-641/642 Vengi is a Badami viceroyalty, and route to chalukya-dynasty: replace its 641 loss with vassal_start 624 / vassal_end 642 counterpart eastern-chalukyas (or keep the loss and move it to 642).",
+     "applied": false
+    },
+    {
+     "where": "/ledger (973-999)",
+     "what": "No event for Jata Choda Bhima's usurpation of Vengi (973-999), when 'the Vengi kingdom was under the rule of Jata Choda Bhima, a member of the Telugu Cholas branch'; the dossier draws the Eastern Chalukyas continuously.",
+     "why": "Rajaraja I page (quoted); Eastern Chalukyas page king list: 'Jata Choda Bhima (973 - 999) (usurp.)'.",
+     "fix": "Add rename 973 (Telugu Choda usurper) and rename 999/1001 (Saktivarman restored under Chola protection), confidence 2, citing the Rajaraja I page; or a note if the state is treated as interrupted.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "End of Satyashraya's hold on Vengi (contest_end 1006 is a confidence-1 bridge).",
+     "page to try": "https://en.wikipedia.org/wiki/Satyashraya"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "End of Yakshakarna's 1073 raid (confidence-1 bridge).",
+     "page to try": "https://en.wikipedia.org/wiki/Yashahkarna"
+    },
+    {
+     "where": "/ledger (1031-1045)",
+     "what is missing": "The Vengi succession war of 1031-1035 (Vijayaditya VII drives out Rajaraja Narendra) that chola-empire /ledger/25-26 records as a contest with eastern-chalukyas.",
+     "page to try": "https://en.wikipedia.org/wiki/Rajaraja_Narendra"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "Capital-move years 847/1017 are placeholders (no capital_move events).",
+     "page to try": "https://en.wikipedia.org/wiki/Vengi"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Eastern_Chalukyas",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Vijayaditya_III",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Rajaraja_I",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6 (confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Kulottunga_I",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7 (infobox 1189, lead c. 1001)",
+     "page": "https://en.wikipedia.org/wiki/Eastern_Chalukyas",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 75900,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the page and no Cliopatria row (new state); nothing to compare."
+   }
+  },
+  {
+   "slug": "hindu-shahis",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/5/correction (and /keyframe_review/3, /keyframe_review/4)",
+     "what": "The 1002-1013 shape leaves out the Salt Range, so the capital Nandana (32.7 N, 72.9 E; identity.capitals, 1002-1014) lies outside it: 0 of the 12 cells within 30 km of Nandana are drawn. The shape is Gandhara-in-Punjab (37 cells, Attock/Rawalpindi), Islamabad and a 150 km Lahore disc, with a gap between them.",
+     "why": "Hindu Shahis infobox: 'Nandana (1002–1014)'; K5 note itself: 'what is left is Gandhara east of the Indus ... and the Lahore country, with the capital at Nandana'.",
+     "fix": "Add the Salt Range and Jhelum country (e.g. {\"lon\":72.9,\"lat\":32.7,\"km\":70} or a Salt Range gazetteer entry) to K3-K5 and to the 1014 loss region (/ledger/10), so the capital is inside the state.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/1/correction, /keyframe_review/2/correction",
+     "what": "The 878-990 shapes are Gandhara + Kabulistan + Laghman only (300 cells); the Punjab, which both pages give to the Shahis before 999, is not drawn and no keyframe note says why.",
+     "why": "Hindu Shahis lead: 'ruled Kabulistan, Gandhara and Punjab between 822 CE and 1026 CE'; Jayapala page: 'He ruled over the area which stretched from Lamghan in the west, to Kashmir in the east and from Sirhind to Multan.'",
+     "fix": "Either add the Punjab east of the Indus (Salt Range, Jhelum, Chenab doab) to K1-K4 with a note on its extent, or state in the notes why it is left out; keep Multan out (it is emirate-of-multan's to 1010).",
+     "applied": false
+    },
+    {
+     "where": "/wars/2/belligerents",
+     "what": "Free-text belligerent 'Multan (Daud)' where the dossier emirate-of-multan exists (same batch).",
+     "why": "Anandapala page: Mahmud went to war and took Multan; emirate-of-multan /ledger/2 is the same 1006 campaign.",
+     "fix": "Set to 'emirate-of-multan'.",
+     "applied": true
+    },
+    {
+     "where": "/wars/4/belligerents",
+     "what": "'lohara-principality' is not a slug of any dossier, and the war's own outcome names 'Sangramaraja of the Lohara dynasty'; lohara-dynasty (Kashmir, 1003-1339) exists.",
+     "why": "Outcome text of the war; history/polities/lohara-dynasty.json identity.",
+     "fix": "Set to 'lohara-dynasty'; drop lohara-principality from counterparts_needing_dossiers.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/6",
+     "what is missing": "Battle of Peshawar day: 27 November (infobox/battle page) vs 27 September (Jayapala page: 'Jayapala met with Mahmud at Peshawar on 27 September 1001'); month 11 kept.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Peshawar_(1001)"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No ruler list with reign years.",
+     "page to try": "https://en.wikipedia.org/wiki/Anandapala"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Hindu_Shahis",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Hindu_Shahis",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3-4",
+     "page": "https://en.wikipedia.org/wiki/Jayapala",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Jayapala",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Jayapala",
+     "result": "confirmed (year; day differs between pages, as the author notes)"
+    },
+    {
+     "where": "/ledger/7, /ledger/11, /ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Hindu_Shahis",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 102200,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the page and no Cliopatria row (new state); nothing to compare."
+   }
+  },
+  {
+   "slug": "kalachuris-of-tripuri",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/7/region, /ledger/8/region",
+     "what": "The 1073 Vengi raid zone was {\"region\":\"Andhra\"} (1,044 cells, about 264,000 km2) for a text that says 'the Vengi Chalukya kingdom'.",
+     "why": "Yashahkarna page: 'Yashahkarna's raid on the Vengi Chalukya kingdom in 1073 CE'.",
+     "fix": "Replaced by the Vengi spec (Rajahmundry 110 km + Vijayawada 100 km), the same as eastern-chalukyas; revalidated.",
+     "applied": true
+    },
+    {
+     "where": "/wars/1/belligerents",
+     "what": "'chalukya-dynasty' (the Badami Chalukyas, 543-757) named in a 1015-1041 war whose own note says the enemy is the page's 'Chalukyas of Kalyani'.",
+     "why": "War note: 'Western Chalukya of Kalyani is the page's \"Chalukyas of Kalyani\"'.",
+     "fix": "Set to 'western-chalukya-empire'.",
+     "applied": true
+    },
+    {
+     "where": "/identity/start, /ledger/0",
+     "what": "The notes say the page gives no founding year, but its infobox lists '675–700: Vamaraja-deva (first)' and the text has Vama-raja 'established himself at Kalanjara in the late 7th century, and finally moved to Tripuri'; the dossier starts in 850 without saying why 675-849 is left out.",
+     "why": "Kalachuris of Tripuri page, infobox and early history section.",
+     "fix": "Either start the state c. 675 at Kalanjara/Tripuri (as a Pratihara subordinate, with the move to Tripuri) or keep 850 and explain in notes and /ledger/0 that the pre-Kokalla line is not drawn as a state.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "K0 (850-1032) still draws Kalinjar and northern Baghelkhand, which chandela-kingdom /ledger/5 takes 'sometime before 954' from the Kalachuris; with chandela-kingdom's shapes 155 of Tripuri's 302 cells are drawn twice in 960-1032 (141-156 cells through 1151).",
+     "why": "chandela-kingdom /ledger/5 quote: 'Sometime before 954, the Chandela dynasty under Yashovarman had captured Kalinjar from the Kalachuris'; the author's notes acknowledge the Kalinjar loss is not in this ledger.",
+     "fix": "Add a loss of Kalinjar to chandela-kingdom by 954 (confidence 2, citing the Chandela page the neighbour cites) and trim K0 from 954; reconcile the Baghelkhand overlap with the chandela-kingdom author (route).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (1056-1074)",
+     "what is missing": "Lata: paramara-dynasty /ledger/6 loses it to the Kalachuris in 1056 and chaulukya-dynasty /ledger/8 takes it from them 'By 1074' (confidence 3); no gain or loss here.",
+     "page to try": "https://en.wikipedia.org/wiki/Karna_(Chaulukya_dynasty)"
+    },
+    {
+     "where": "/ledger (c. 1035)",
+     "what is missing": "Gangeya's gains 'at the expense of the Chandelas' (chandela-kingdom /ledger/7, 1035).",
+     "page to try": "https://en.wikipedia.org/wiki/Vidyadhara_(Chandela_dynasty)"
+    },
+    {
+     "where": "/ledger/3, /ledger/4, /ledger/10, /ledger/11, /ledger/12, /ledger/13, /ledger/8",
+     "what is missing": "Seven confidence-1 bridges (Prayaga 1033, Devavarman 1050, Gahadavala 1085, Ratnapura 1123, Madanavarman 1152, end 1212, Vengi withdrawal).",
+     "page to try": "https://en.wikipedia.org/wiki/Madanavarman"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kalachuris_of_Tripuri",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Gangeyadeva",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Lakshmikarna",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5-6",
+     "page": "https://en.wikipedia.org/wiki/Lakshmikarna",
+     "result": "confirmed ('around 1073' is the author's reading of 'By the end of his reign')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Yashahkarna",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Lakshmikarna",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Yashahkarna",
+     "result": "confirmed (no year on the page; confidence 1 is honest)"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Kalachuris_of_Tripuri",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 95900,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area (the infobox map is 'Territory ... during the reign of Lakshmikarna, circa 1050 CE'); no Cliopatria row."
+   }
+  },
+  {
+   "slug": "licchavi-kingdom",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/0/correction",
+     "what is missing": "The text quotes settlement 'west toward Tistung Deurali, and northwest toward present-day Gorkha', but the 35 km Kathmandu disc (16 cells) does not reach Gorkha (about 75 km); either widen it or say the extension is settlement, not rule.",
+     "page to try": "https://en.wikipedia.org/wiki/Licchavi_(kingdom)"
+    },
+    {
+     "where": "/wars/0",
+     "what is missing": "Tibetan role in Narendradeva's restoration (no page opened says it); the kingdom is a minor state, thin by design within its budget.",
+     "page to try": "https://en.wikipedia.org/wiki/Narendradeva"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Licchavi_(kingdom)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Thakuri_dynasty",
+     "result": "confirmed ('when the Lichhavi rule came to an end')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 4000,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the page and no Cliopatria row (new state); nothing to compare."
+   }
+  },
+  {
+   "slug": "thakuri-dynasty",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/sources",
+     "what is missing": "One page only; the dynasty's existence 'is disputed by some historians'. Minor state, thin by design.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Nepal"
+    },
+    {
+     "where": "/wars",
+     "what is missing": "Nanyadeva's attack on Nuwakot (page: 'Nanyadeva, King of the Karnats of Mithila, attacked Nuwakot'), undated.",
+     "page to try": "https://en.wikipedia.org/wiki/Nanyadeva"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Thakuri_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Thakuri_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Thakuri_dynasty",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 4000,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the page and no Cliopatria row (new state); nothing to compare."
+   }
+  },
+  {
+   "slug": "tomara-dynasty",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/0/counterpart, /keyframe_review/0/note",
+     "what": "The 736 found takes Haryana and Delhi from 'nobody', but kannauj-varman-dynasty's 732 and 768 shapes (Cliopatria 'ok') hold 162 of the 171 cells until 771; neither side has an event.",
+     "why": "Overlap computed on the H3 grid; kannauj-varman-dynasty /ledger/4 (771) drops its periphery to 'unrecorded'.",
+     "fix": "Name the overlap in the K0 note and route: kannauj-varman-dynasty /ledger/4 can name tomara-dynasty for the Haryana part, or the Tomara found counterpart becomes kannauj-varman-dynasty.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (736-c. 950)",
+     "what": "The infobox status 'Vassal state of the Gurjara-Pratihara dynasty (8th–10th century)' is not modelled anywhere; gurjara-pratihara-dynasty has no vassal event for the Tomaras.",
+     "why": "Tomara dynasty infobox; 'As the Pratihara power declined, the Tomaras established a sovereign principality around Delhi by the 10th century.'",
+     "fix": "Route to gurjara-pratihara-dynasty: vassal_start tomara-dynasty (from 736 or when its shape reaches Haryana) and vassal_end c. 950, citing the Tomara page; note it in /ledger/0.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "The 1041 'gain' of Hansi and Thanesar is of land K0 already draws as Tomara; the earlier Ghaznavid capture (Hansi 1037) is not on the pages, so the ledger has a gain without a prior loss.",
+     "page to try": "https://en.wikipedia.org/wiki/Mas%27ud_I_of_Ghazni"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "Chahamana vassalage 1152-1192 belongs in chauhan-dynasty (vassal_start counterpart tomara-dynasty).",
+     "page to try": "https://en.wikipedia.org/wiki/Vigraharaja_IV"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Tomara_dynasty",
+     "result": "confirmed (footnote 736)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Tomara_dynasty",
+     "result": "confirmed (no year on the page; confidence 1 honest)"
+    },
+    {
+     "where": "/ledger/3 (confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Vigraharaja_IV",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Vigraharaja_IV",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 43200,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the page and no Cliopatria row (new state); nothing to compare."
+   }
+  },
+  {
+   "slug": "guhilas-of-mewar",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (later 10th century), /keyframe_review/1",
+     "what": "Missing loss: the author's main page says that after Munja's victory 'the Paramaras gained control of the eastern part of Mewar, including Chittorgarh'; K1 (728-1150) still draws all of Mewar with Chittor, and 99 of its 132 cells are also in paramara-dynasty's 980-1150 shapes.",
+     "why": "Guhila dynasty page (section on Munja; he 'plundered their capital Ahar'); the notes list only 'Munja's sack of Ahar' as undated and miss the loss of eastern Mewar.",
+     "fix": "Add loss c. 975 (bridge, Munja r. c. 972-990; confidence 1-2) of eastern Mewar with Chittorgarh to paramara-dynasty, split K1 at that year, and draw western Mewar (Nagda/Ahar) only until Chittor's return.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "The 1151 loss of Chittor to chaulukya-dynasty is of land the page says was Paramara by then, and chaulukya-dynasty has no event naming the Guhilas.",
+     "why": "Guhila page: 'By 1151, Chittor was under the control of the Chaulukya king Kumarapala.' (no Guhila loss stated).",
+     "fix": "Once the c. 975 loss is in, drop this loss (the 1151 change is Paramara to Chaulukya) or reword it; keep the 1213 bridge regain.",
+     "applied": false
+    },
+    {
+     "where": "/identity/capitals/1",
+     "what": "Chitrakuta (Chittor) is the capital from 1151, the year the ledger gives Chittor to the Chaulukyas (K2 1151-1212 excludes it): the capital lies outside the state for 1151-1212. The page names no move to Chittor ('Towards the end of the 10th century, Ahar became the second capital').",
+     "why": "Capital check on the grid: Chittorgarh at 1151 is OUTSIDE guhilas-of-mewar_1151; Guhila page.",
+     "fix": "Keep Nagda/Ahar to 1212 and start Chittor in 1213 (or later), with the note that the page gives no year.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (728-c. 950)",
+     "what": "The Pratihara feudatory status is unmodelled; gurjara-pratihara-dynasty's 750 and 860 shapes cover all 132 cells of K1.",
+     "why": "Guhila page: 'The Guhila kings initially ruled as feudatories of the Pratiharas during the 8th and the 9th century.'",
+     "fix": "Route to gurjara-pratihara-dynasty: vassal_start/vassal_end guhilas-of-mewar for the 8th-9th centuries; say so in K1's note.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "Date and taker of Chittor's return before 1213 (confidence-1 bridge).",
+     "page to try": "https://en.wikipedia.org/wiki/Chittorgarh"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Guhila_dynasty",
+     "result": "confirmed (infobox 566)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Bappa_Rawal",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Guhila_dynasty",
+     "result": "confirmed (quote), but see fixes"
+    },
+    {
+     "where": "/ledger/4 (confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Siege_of_Chittorgarh_(1303)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Guhila_dynasty",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 33400,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the page and no Cliopatria row (new state); nothing to compare."
+   }
+  },
+  {
+   "slug": "chera-perumal-kingdom",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/notes, /keyframe_review/1/note",
+     "what": "The notes say the Chola overlordship 'is recorded in the chola-empire dossier (vassal_start counterpart chera-perumal-kingdom)'; it is not: chola-empire /ledger/15 gains southern Kerala (Kollam) in 1005 from 'venad' and /ledger/19 gains the whole Chera Perumal kingdom in 1018, and all 158 cells of K1 are in chola-empire's 1000-1124 shapes.",
+     "why": "chola-empire ledger; Chera page: 'The Chera state in Kerala was subjugated during the reign of the Chola emperor Rajaraja I', Kerala 'for a time was held as an appanage by junior members of the Chola dynasty', and Kulottunga I's 1077-1081 campaign restored the Chera country 'to Chola authority' (Rama Varma Kulashekhara page).",
+     "fix": "Reconcile with the chola-empire author: either the Cholas hold Kerala as a vassal (their 1005/1018 gains become vassal_start counterpart chera-perumal-kingdom, with an end) and this dossier says so, or this dossier records the appanage as a loss/occupation with a recovery. Correct the notes sentence either way.",
+     "applied": false
+    },
+    {
+     "where": "/wars/0/zones",
+     "what": "Empty zones for the Chola subjugation of 1001-1014, though the page says the state was subjugated and held as an appanage (ground changed hands).",
+     "why": "Chera Perumals of Makkotai page (quoted above).",
+     "fix": "Give the zone (at least Kollam/Kandalur, the south) or the whole kingdom, per the reconciliation above.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1, /ledger/5, /keyframe_review/1/correction",
+     "what": "Kolathunadu is drawn twice: as a vassal (vassal_start 1001 / vassal_end 1124, Kannur 90 km in Kerala) and as direct land inside K1 (Kerala up to the Chandragiri), while /ledger/2 subtracts it from the 1001 gain.",
+     "why": "K1 correction is the union of Kerala (region) and Nagercoil, which contains the Kannur disc.",
+     "fix": "Either subtract the Kolathunadu spec from K1 or drop the vassal pair and add it to the 1001 gain.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1, /ledger/2",
+     "what is missing": "Dates for the northern and southern extension and Kolathunadu's submission (11th century, bridged to 1001).",
+     "page to try": "https://en.wikipedia.org/wiki/Kolathunadu"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No ruler list.",
+     "page to try": "https://en.wikipedia.org/wiki/Chera_Perumals_of_Makkotai"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Chera_Perumals_of_Makkotai",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Chera_Perumals_of_Makkotai",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Rama_Varma_Kulashekhara",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Rama_Varma_Kulashekhara",
+     "result": "confirmed (page: 'around c. 1102 AD', the note's 'by 1102' is a paraphrase)"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Rama_Varma_Kulashekhara",
+     "result": "confirmed (1126 Cholapuram inscription, Vira Kerala)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 40000,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the page and no Cliopatria row (new state); nothing to compare."
+   }
+  },
+  {
+   "slug": "emirate-of-multan",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Emirate_of_Multan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1 (confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Emirate_of_Multan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2 (confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Emirate_of_Multan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3-5 (confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Emirate_of_Multan",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 42200,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; the page's extent ('located in southern Punjab, bordered the Hindu Shahi kingdom in northern Punjab' and the Habbari emirate to the south) fits the 120 km Multan disc, which touches neither hindu-shahis nor sind-habbari-dynasty on the grid."
+   }
+  },
+  {
+   "slug": "bhauma-kara-dynasty",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/1/correction",
+     "what is missing": "The page says the kingdom 'included a major part of Odisha, as well as the Midnapore district of West Bengal'; Midnapore (about 260 km from Bhubaneswar) is outside the 170 km disc.",
+     "page to try": "https://en.wikipedia.org/wiki/Bhauma-Kara_dynasty"
+    },
+    {
+     "where": "/identity/successors",
+     "what is missing": "The lead says the dynasty 'was supplanted by the Bhanjas and the Somavamshis in the 10th century'; the Bhanjas are not named.",
+     "page to try": "https://en.wikipedia.org/wiki/Bhanja_dynasty"
+    },
+    {
+     "where": "/ledger/1, /ledger/6, /ledger/7",
+     "what is missing": "Three confidence-1 bridges (756 extension, 950 loss and end); one page only. Minor state, thin by design.",
+     "page to try": "https://en.wikipedia.org/wiki/Somavamshi_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Bhauma-Kara_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Bhauma-Kara_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2-5",
+     "page": "https://en.wikipedia.org/wiki/Bhauma-Kara_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Bhauma-Kara_dynasty",
+     "result": "confirmed (infobox last ruler 940-950)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 51600,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the page and no Cliopatria row (new state); nothing to compare."
+   }
+  },
+  {
+   "slug": "somavamshi-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction, /ledger/0",
+     "what": "K0 (882-1020) includes Cuttack 70 km, 69 cells that bhauma-kara-dynasty (same batch) draws to 950; the 882 found names bhauma-kara-dynasty but bhauma-kara has no loss in 882, and its 950 loss to somavamshi-dynasty has no gain here.",
+     "why": "Grid overlap 69/173 cells in 882-950; Somavamshi page: 'it is not known how exactly this happened'; Bhauma-Kara page lists rulers to 940-950.",
+     "fix": "Pick one: draw K0 without the Bhauma-Kara land (Kosala only) and add a gain from bhauma-kara-dynasty in 950 matching its /ledger/6; or move bhauma-kara's loss of the Cuttack area to 882.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/1/correction",
+     "what": "K1 (1021-1113) is all of Odisha (568 cells) including Kalinga (85 cells round Berhampur), drawn from an inscription title; 117 of eastern-ganga-kingdom's 162 cells are drawn by both in 1078-1113. The page's statement of control is only 'Kosala and Utkala'.",
+     "why": "Somavamshi page: 'He re-established the Somavamshi control over Kosala and Utkala'; 'One of his inscriptions describes him as the lord of Kalinga, Kosala, and Utkala.' (Gazetteer note: 'Kalinga' and 'Utkala' both resolve to all of Odisha.)",
+     "fix": "Draw Kosala and Utkala (western and northern/coastal Odisha) without southern Odisha, and say the Kalinga title is not drawn.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1/counterpart",
+     "what": "Counterpart 'nobody' for land the page says 'had been lost to rival chiefs'.",
+     "why": "Somavamshi page (quoted).",
+     "fix": "Set to 'rival chiefs (unnamed on the page)'; revalidated.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (c. 1000-1050)",
+     "what is missing": "Loss of 'some western parts' to the Kalachuris of Ratnapura (kalachuris-of-ratnapura /ledger/0 conquers Dakshina Kosala from the Somavamshis c. 1000).",
+     "page to try": "https://en.wikipedia.org/wiki/Kalachuris_of_Ratnapura"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "eastern-ganga-kingdom /ledger/3 takes Utkala in 1118 ('Somavamshi dynasty', free text) against 'By 1114' here.",
+     "page to try": "https://en.wikipedia.org/wiki/Anantavarman_Chodaganga"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "The 1101 move to Jajpur is a placeholder (no capital_move event).",
+     "page to try": "https://en.wikipedia.org/wiki/Jajpur"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Somavamshi_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Somavamshi_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2 (confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Somavamshi_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Somavamshi_dynasty",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 143600,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the page and no Cliopatria row (new state); nothing to compare."
+   }
+  },
+  {
+   "slug": "karnat-dynasty-of-mithila",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The Muzaffarpur 100 km disc crosses the Ganges: 21 of 142 cells lie south of the river around Patna (Magadha), outside Tirhut/Mithila.",
+     "why": "Grid check (cells below 25.62 N between 84.6 and 86.1 E); the correction text says 'Tirhut or Mithila in Bihar'.",
+     "fix": "Subtract the land south of the Ganges (e.g. minus a Magadha/Patna spec) from K0 and the event regions.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "pala-empire /ledger/21 loses Mithila to the Karnats in 1085 (confidence 1) and its 1097-1150 shapes still hold 66 of these 142 cells; the Karnat side (inscription of 10 July 1097) is the better date: route to pala-empire.",
+     "page to try": "https://en.wikipedia.org/wiki/Ramapala"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Karnat rulers held parts of Mithila into the 15th century (page); not drawn.",
+     "page to try": "https://en.wikipedia.org/wiki/Oiniwar_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0 (confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Karnat_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Karnat_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2 (confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Karnat_dynasty",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 35900,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the page and no Cliopatria row (new state); nothing to compare."
+   }
+  },
+  {
+   "slug": "kalachuris-of-ratnapura",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/identity/end, /ledger/2, /keyframe_review/1",
+     "what": "The state is ended in 1225 (dissolve to 'nobody', confidence 1), but the author's own page says it lasted to 1758, so Chhattisgarh is left empty for 533 years.",
+     "why": "Kalachuris of Ratnapura page: 'The kingdom survived until 1758, when its last ruler Mohan Singh died and the state was annexed by its suzerain'; 'In 1740, the general of the Maratha Nagpur Kingdom, Bhaskar Pant invaded the kingdom'; infobox 'Bimbaji Bhonsle becomes governor of Chhattisgarh: 1758'.",
+     "fix": "Extend the life to 1758: keyframe(s) to 1758 (a bridge with a note that 1225-1740 is undocumented), the 1740 Maratha invasion (contest or vassal_start in the Maratha dossier), dissolve 1758 to maratha-empire (or a Nagpur Bhonsle dossier).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1/region, /keyframe_review/1/correction",
+     "what": "The 1114 gain draws all of Chhattisgarh outside the Bilaspur disc, including Bastar; the page says Jajalla-deva I invaded the Chindaka Naga territory and took its king prisoner, and annexed southern Kosala 'which were under Telugu Choda governorship', not that he annexed the Naga country. 133 cells of K1 are also in kakatiya-dynasty's 1188-1225 shape.",
+     "why": "Kalachuris of Ratnapura page: 'In 1114 CE, Jajalla-deva I invaded the Chindaka Naga territory to the south' ... 'defeated the Chindaka Naga king Somesvara and took him prisoner'.",
+     "fix": "Draw southern Kosala without Bastar (or say in the note why Bastar is included), and split the counterpart: 'Telugu Choda governors' for the gain, the Chindaka Nagas only as a war.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/predecessors",
+     "what is missing": "somavamshi-dynasty has no loss for the c. 1000 conquest of Dakshina Kosala (route to that dossier).",
+     "page to try": "https://en.wikipedia.org/wiki/Somavamshi_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kalachuris_of_Ratnapura",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1 (confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Kalachuris_of_Ratnapura",
+     "result": "confirmed (year and southern Kosala; extent overdrawn)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kalachuris_of_Ratnapura",
+     "result": "not on page: the page has the kingdom survive to 1758"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 130700,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the page and no Cliopatria row (new state); nothing to compare."
+   }
+  },
+  {
+   "slug": "ayudha-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ (whole dossier)",
+     "what": "Duplicate state: kannauj-varman-dynasty (sa-03-c, reviewed thin) already carries the Ayudhas as a rename of the Kingdom of Kannauj in 770 (/ledger/3, confidence 3), the 816 loss and dissolve to gurjara-pratihara-dynasty (/ledger/7-8), and 'Ayudha dynasty' in its alt_names; all 279 cells of ayudha-dynasty_770 lie inside kannauj-varman-dynasty_772, so Kannauj is drawn twice in 770-816.",
+     "why": "Research brief rule 2 (a dynasty that replaces a dynasty on the same land is a rename); Ayudha page: 'The dynasty was established when Vajrayudha deposed the Varmans and started ruling over Kannauj.' gurjara-pratihara-dynasty /ledger/16 and pala-empire /ledger/4 already treat Kannauj 770-816 as one state.",
+     "fix": "Withdraw history/polities/ayudha-dynasty.json and its new_slug; move anything new (the Chakrayudha page as a source, the c. 791 Pala installation) into kannauj-varman-dynasty, and ask the pala-empire author to set /ledger/4 and /ledger/8 counterpart 'Chakrayudha (Ayudha dynasty of Kannauj)' to kannauj-varman-dynasty.",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Ayudha_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Ayudha_dynasty",
+     "result": "confirmed (no year on the page; infobox c. 816)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Ayudha_dynasty",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 70600,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the page and no Cliopatria row (new state); nothing to compare."
+   }
+  },
+  {
+   "slug": "kalachuris-of-kalyani",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1/correction and the 1162-1184 event regions",
+     "what": "The 150 km Bidar disc puts 150 cells (about 38,000 km2) in Telangana and 21 in Andhra Pradesh, beyond the page's 'parts of present-day northern Karnataka and Maharashtra'; 94-150 of those cells are also kakatiya-dynasty's in 1163-1184.",
+     "why": "Kalachuris of Kalyani lead; grid intersection with admin-1 Telangana / Andhra Pradesh; the K1 note calls the radii 'the researcher's reading' but does not mention Telangana.",
+     "fix": "Intersect K1 and the event regions with Karnataka and Maharashtra (or cite a page for the Telangana districts).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/0, /keyframe_review/0",
+     "what": "1156-1161 is drawn as an independent state, but Bijjala 'ruled initially as a vassal of Chalukya' and 'proclaimed independence in 1162'; western-chalukya-empire models 1157-1183 as a Kalachuri occupation of Kalyani (/ledger/28, /ledger/30), not a vassal or a loss.",
+     "why": "Bijjala II page; Kalachuris of Kalyani ruler list; western-chalukya-empire ledger.",
+     "fix": "Route: western-chalukya-empire to carry vassal_start/vassal_end kalachuris-of-kalyani 1156-1162 and a loss in 1162 / gain c. 1183-1184 instead of the occupation pair; this dossier to say in K0's note that 1156-1161 is a Chalukya feudatory.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3, /ledger/4, /ledger/5",
+     "what is missing": "Date and manner of the fall (1184 is the ruler list's last year; the infobox and lead give 1181; western-chalukya-empire has 1183).",
+     "page to try": "https://en.wikipedia.org/wiki/Someshvara_IV"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kalachuris_of_Kalyani",
+     "result": "confirmed (infobox 1156-1181)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Bijjala_II",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kalachuris_of_Kalyani",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Kalachuris_of_Kalyani",
+     "result": "confirmed (ruler list to 1184)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "dossier_max_km2": 152800,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the page and no Cliopatria row (new state); nothing to compare."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "eastern-chalukyas",
+    "year": 624,
+    "type": "found",
+    "counterpart": "chalukya-dynasty"
+   },
+   "mirror": {
+    "slug": "chalukya-dynasty",
+    "year": 641,
+    "type": "loss",
+    "where": "/ledger/8"
+   },
+   "status": "mismatch",
+   "note": "chalukya-dynasty /ledger/8 keeps Vengi to a 641 loss; 184 cells drawn twice 624-641. Page: independence possibly after Pulakeshin II died (642). Route: Badami vassal_start 624/vassal_end 642 counterpart eastern-chalukyas, or move its loss to 642."
+  },
+  {
+   "event": {
+    "slug": "eastern-chalukyas",
+    "year": 848,
+    "type": "gain",
+    "counterpart": "Boya-Kottamas (rebel chiefs on the Pallava northern border)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Boya-Kottama rebel chiefs: no state, no dossier needed."
+  },
+  {
+   "event": {
+    "slug": "eastern-chalukyas",
+    "year": 1006,
+    "type": "contest_start",
+    "counterpart": "western-chalukya-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "western-chalukya-empire has no 1006 Vengi event (route to that dossier: contest_start/contest_end eastern-chalukyas 1006)."
+  },
+  {
+   "event": {
+    "slug": "eastern-chalukyas",
+    "year": 1006,
+    "type": "contest_end",
+    "counterpart": "western-chalukya-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "eastern-chalukyas",
+    "year": 1073,
+    "type": "contest_start",
+    "counterpart": "kalachuris-of-tripuri"
+   },
+   "mirror": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1073,
+    "type": "contest_start",
+    "where": "/ledger/7"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "eastern-chalukyas",
+    "year": 1073,
+    "type": "contest_end",
+    "counterpart": "kalachuris-of-tripuri"
+   },
+   "mirror": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1073,
+    "type": "contest_end",
+    "where": "/ledger/8"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "eastern-chalukyas",
+    "year": 1077,
+    "type": "loss",
+    "counterpart": "chola-empire"
+   },
+   "mirror": {
+    "slug": "chola-empire",
+    "year": 1075,
+    "type": "gain",
+    "where": "/ledger/30"
+   },
+   "status": "mismatch",
+   "note": "chola-empire /ledger/30 gains Vengi in 1075 (and ends its protectorate /ledger/29 in 1075); Kulottunga I page: 'After the death of Vijayaditya in 1077, Kulottunga brought the Vengi province directly under his control'. Route to chola-empire: move to 1077."
+  },
+  {
+   "event": {
+    "slug": "eastern-chalukyas",
+    "year": 1077,
+    "type": "dissolve",
+    "counterpart": "chola-empire"
+   },
+   "mirror": {
+    "slug": "chola-empire",
+    "year": 1075,
+    "type": "gain",
+    "where": "/ledger/30"
+   },
+   "status": "mismatch",
+   "note": "as above (1075 vs 1077)."
+  },
+  {
+   "event": {
+    "slug": "hindu-shahis",
+    "year": 870,
+    "type": "found",
+    "counterpart": "turk-shahis"
+   },
+   "mirror": {
+    "slug": "turk-shahis",
+    "year": 870,
+    "type": "dissolve",
+    "where": "/ledger/12"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "hindu-shahis",
+    "year": 878,
+    "type": "gain",
+    "counterpart": "saffarid-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "saffarid-dynasty has no dossier yet; its group (me-08) has not run"
+  },
+  {
+   "event": {
+    "slug": "hindu-shahis",
+    "year": 986,
+    "type": "contest_start",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ghaznavid-empire has no dossier yet; its group (me-08) has not run"
+  },
+  {
+   "event": {
+    "slug": "hindu-shahis",
+    "year": 991,
+    "type": "contest_end",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ghaznavid-empire has no dossier yet; its group (me-08) has not run"
+  },
+  {
+   "event": {
+    "slug": "hindu-shahis",
+    "year": 991,
+    "type": "loss",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ghaznavid-empire has no dossier yet; its group (me-08) has not run"
+  },
+  {
+   "event": {
+    "slug": "hindu-shahis",
+    "year": 999,
+    "type": "gain",
+    "counterpart": "Lahore (Chandrak, captured near Samutla)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Chandrak of Lahore: local ruler, no dossier."
+  },
+  {
+   "event": {
+    "slug": "hindu-shahis",
+    "year": 1001,
+    "type": "loss",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ghaznavid-empire has no dossier yet; its group (me-08) has not run"
+  },
+  {
+   "event": {
+    "slug": "hindu-shahis",
+    "year": 1008,
+    "type": "contest_start",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ghaznavid-empire has no dossier yet; its group (me-08) has not run"
+  },
+  {
+   "event": {
+    "slug": "hindu-shahis",
+    "year": 1009,
+    "type": "contest_end",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ghaznavid-empire has no dossier yet; its group (me-08) has not run"
+  },
+  {
+   "event": {
+    "slug": "hindu-shahis",
+    "year": 1014,
+    "type": "loss",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ghaznavid-empire has no dossier yet; its group (me-08) has not run"
+  },
+  {
+   "event": {
+    "slug": "hindu-shahis",
+    "year": 1026,
+    "type": "dissolve",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ghaznavid-empire has no dossier yet; its group (me-08) has not run"
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 850,
+    "type": "found",
+    "counterpart": "gurjara-pratihara-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "gurjara-pratihara-dynasty has no vassal event for the Kalachuris (page: 'the Kalachuris were subordinate to the Pratihara emperor Bhoja'); route to that dossier."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1000,
+    "type": "vassal_start",
+    "counterpart": "kalachuris-of-ratnapura"
+   },
+   "mirror": null,
+   "status": "matched",
+   "note": "Overlord-side event; the schema puts vassal events in the overlord's ledger only, so kalachuris-of-ratnapura needs none."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1033,
+    "type": "gain",
+    "counterpart": "pala-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "pala-empire has no 1033 loss of Varanasi to the Kalachuris (route to pala-empire)."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1033,
+    "type": "gain",
+    "counterpart": "unknown (page silent on who held Prayaga)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "free-text counterpart"
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1050,
+    "type": "vassal_start",
+    "counterpart": "chandela-kingdom"
+   },
+   "mirror": null,
+   "status": "matched",
+   "note": "Overlord-side vassal event (Chandela Devavarman). Separately, chandela-kingdom /ledger/5 (954 gain of Kalinjar), /ledger/7 (1035 loss) and /ledger/8 (1070 gain) name kalachuris-of-tripuri with no mirror here: see the reverse rows."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1055,
+    "type": "contest_start",
+    "counterpart": "paramara-dynasty"
+   },
+   "mirror": {
+    "slug": "paramara-dynasty",
+    "year": 1056,
+    "type": "loss",
+    "where": "/ledger/6"
+   },
+   "status": "mismatch",
+   "note": "paramara-dynasty /ledger/6 loses Lata to the Kalachuris in 1056 (a loss, not a contest), and chaulukya-dynasty /ledger/8 takes Lata from them by 1074; this dossier has neither the Lata gain nor the loss."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1073,
+    "type": "contest_end",
+    "counterpart": "paramara-dynasty"
+   },
+   "mirror": {
+    "slug": "paramara-dynasty",
+    "year": 1056,
+    "type": "loss",
+    "where": "/ledger/6"
+   },
+   "status": "mismatch",
+   "note": "see 1055."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1073,
+    "type": "contest_start",
+    "counterpart": "eastern-chalukyas"
+   },
+   "mirror": {
+    "slug": "eastern-chalukyas",
+    "year": 1073,
+    "type": "contest_start",
+    "where": "/ledger/4"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1073,
+    "type": "contest_end",
+    "counterpart": "eastern-chalukyas"
+   },
+   "mirror": {
+    "slug": "eastern-chalukyas",
+    "year": 1073,
+    "type": "contest_end",
+    "where": "/ledger/5"
+   },
+   "status": "matched",
+   "note": "eastern-chalukyas /ledger/5 (both confidence-1 bridges)"
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1075,
+    "type": "vassal_end",
+    "counterpart": "chandela-kingdom"
+   },
+   "mirror": null,
+   "status": "matched",
+   "note": "Overlord-side vassal event; chandela-kingdom /ledger/8 dates Kirttivarman's recovery c. 1070 (Kirttivarman page: before 1075-76)."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1085,
+    "type": "loss",
+    "counterpart": "gahadavala-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "gahadavala-dynasty /ledger/0 (1085 found) and /ledger/1 (1090 gain of Kosala) name 'Kalachuri of Tripuri' as free text; same events, route: set the counterpart to kalachuris-of-tripuri."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1123,
+    "type": "vassal_end",
+    "counterpart": "kalachuris-of-ratnapura"
+   },
+   "mirror": null,
+   "status": "matched",
+   "note": "Overlord-side event (see 1000)."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1152,
+    "type": "loss",
+    "counterpart": "chandela-kingdom"
+   },
+   "mirror": {
+    "slug": "chandela-kingdom",
+    "year": 1152,
+    "type": "gain",
+    "where": "/ledger/10"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-tripuri",
+    "year": 1212,
+    "type": "dissolve",
+    "counterpart": "chandela-kingdom"
+   },
+   "mirror": {
+    "slug": "chandela-kingdom",
+    "year": 954,
+    "type": "gain",
+    "where": "/ledger/5"
+   },
+   "status": "mismatch",
+   "note": "chandela-kingdom /ledger/13 gains northern Baghelkhand from the Kalachuris in 1202 (Cliopatria year, confidence 1); 10 years apart; the page gives no year."
+  },
+  {
+   "event": {
+    "slug": "licchavi-kingdom",
+    "year": 464,
+    "type": "found",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "licchavi-kingdom",
+    "year": 879,
+    "type": "dissolve",
+    "counterpart": "thakuri-dynasty"
+   },
+   "mirror": {
+    "slug": "thakuri-dynasty",
+    "year": 879,
+    "type": "found",
+    "where": "/ledger/0"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "thakuri-dynasty",
+    "year": 879,
+    "type": "found",
+    "counterpart": "licchavi-kingdom"
+   },
+   "mirror": {
+    "slug": "licchavi-kingdom",
+    "year": 879,
+    "type": "dissolve",
+    "where": "/ledger/1"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "thakuri-dynasty",
+    "year": 1200,
+    "type": "dissolve",
+    "counterpart": "kathmandu"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kathmandu has no dossier yet; its group (later group (Cliopatria Kathmandu 1202-1761)) has not run"
+  },
+  {
+   "event": {
+    "slug": "tomara-dynasty",
+    "year": 736,
+    "type": "found",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "counterpart nobody, but kannauj-varman-dynasty's 732/768 shapes hold 162 of 171 cells until 771 with no event; the Tomara infobox also calls it a Pratihara vassal (8th-10th century), which gurjara-pratihara-dynasty does not carry."
+  },
+  {
+   "event": {
+    "slug": "tomara-dynasty",
+    "year": 1041,
+    "type": "gain",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ghaznavid-empire (me-08) has not run; also the Hansi/Thanesar land is already drawn as Tomara before 1041."
+  },
+  {
+   "event": {
+    "slug": "tomara-dynasty",
+    "year": 1152,
+    "type": "loss",
+    "counterpart": "chauhan-dynasty"
+   },
+   "mirror": {
+    "slug": "chauhan-dynasty",
+    "year": 1151,
+    "type": "gain",
+    "where": "/ledger/6"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "tomara-dynasty",
+    "year": 1152,
+    "type": "dissolve",
+    "counterpart": "chauhan-dynasty"
+   },
+   "mirror": {
+    "slug": "chauhan-dynasty",
+    "year": 1151,
+    "type": "gain",
+    "where": "/ledger/6"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "guhilas-of-mewar",
+    "year": 566,
+    "type": "found",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "guhilas-of-mewar",
+    "year": 728,
+    "type": "gain",
+    "counterpart": "Moris (Mauryas of Chittor)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Moris of Chittor: local rulers, no dossier."
+  },
+  {
+   "event": {
+    "slug": "guhilas-of-mewar",
+    "year": 1151,
+    "type": "loss",
+    "counterpart": "chaulukya-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "chaulukya-dynasty has no event naming the Guhilas; the Guhila page has Chittor pass to the Paramaras after Munja (later 10th century) and be Chaulukya by 1151, so the Guhila loss belongs c. 975 to paramara-dynasty, which also has no event naming guhilas-of-mewar."
+  },
+  {
+   "event": {
+    "slug": "guhilas-of-mewar",
+    "year": 1213,
+    "type": "gain",
+    "counterpart": "unknown (page silent on who held Chittor)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "free-text counterpart (unknown holder); bridge."
+  },
+  {
+   "event": {
+    "slug": "guhilas-of-mewar",
+    "year": 1303,
+    "type": "loss",
+    "counterpart": "khalji-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "khalji-dynasty has no dossier yet; its group (sa-04) has not run"
+  },
+  {
+   "event": {
+    "slug": "guhilas-of-mewar",
+    "year": 1303,
+    "type": "dissolve",
+    "counterpart": "khalji-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "khalji-dynasty has no dossier yet; its group (sa-04) has not run"
+  },
+  {
+   "event": {
+    "slug": "chera-perumal-kingdom",
+    "year": 844,
+    "type": "found",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "chera-perumal-kingdom",
+    "year": 1001,
+    "type": "vassal_start",
+    "counterpart": "kolathunadu"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kolathunadu listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "chera-perumal-kingdom",
+    "year": 1001,
+    "type": "gain",
+    "counterpart": "unknown (page silent on who held it)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "free text (unknown holder); bridge."
+  },
+  {
+   "event": {
+    "slug": "chera-perumal-kingdom",
+    "year": 1097,
+    "type": "contest_start",
+    "counterpart": "chola-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "chola-empire has no 1097 Kollam contest; the nearest Chola events naming this state are /ledger/19 (1018 gain of the whole kingdom) and /ledger/15 (1005 gain of southern Kerala, counterpart venad): see reverse rows."
+  },
+  {
+   "event": {
+    "slug": "chera-perumal-kingdom",
+    "year": 1102,
+    "type": "contest_end",
+    "counterpart": "chola-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Chola 1097-1102 contest (route to chola-empire)."
+  },
+  {
+   "event": {
+    "slug": "chera-perumal-kingdom",
+    "year": 1124,
+    "type": "vassal_end",
+    "counterpart": "kolathunadu"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kolathunadu listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "chera-perumal-kingdom",
+    "year": 1124,
+    "type": "dissolve",
+    "counterpart": "venad"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "venad listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "emirate-of-multan",
+    "year": 855,
+    "type": "found",
+    "counterpart": "abbasid-caliphate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "abbasid-caliphate has no dossier yet; its group (me-08) has not run"
+  },
+  {
+   "event": {
+    "slug": "emirate-of-multan",
+    "year": 1006,
+    "type": "contest_start",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ghaznavid-empire has no dossier yet; its group (me-08) has not run"
+  },
+  {
+   "event": {
+    "slug": "emirate-of-multan",
+    "year": 1010,
+    "type": "contest_end",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ghaznavid-empire has no dossier yet; its group (me-08) has not run"
+  },
+  {
+   "event": {
+    "slug": "emirate-of-multan",
+    "year": 1010,
+    "type": "loss",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ghaznavid-empire has no dossier yet; its group (me-08) has not run"
+  },
+  {
+   "event": {
+    "slug": "emirate-of-multan",
+    "year": 1010,
+    "type": "dissolve",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ghaznavid-empire has no dossier yet; its group (me-08) has not run"
+  },
+  {
+   "event": {
+    "slug": "bhauma-kara-dynasty",
+    "year": 736,
+    "type": "found",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "bhauma-kara-dynasty",
+    "year": 756,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "bhauma-kara-dynasty",
+    "year": 790,
+    "type": "contest_start",
+    "counterpart": "rashtrakuta-dynasty"
+   },
+   "mirror": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 772,
+    "type": "gain",
+    "where": "/ledger/4"
+   },
+   "status": "mismatch",
+   "note": "rashtrakuta-dynasty /ledger/4 gains Kalinga from bhauma-kara-dynasty in 772 and /ledger/25 loses it in 850 (both confidence 1, Cliopatria years); this dossier has a 790-829 contest. Route to rashtrakuta-dynasty: replace the gain/loss with the page's 790-829 contest."
+  },
+  {
+   "event": {
+    "slug": "bhauma-kara-dynasty",
+    "year": 790,
+    "type": "contest_start",
+    "counterpart": "pala-empire"
+   },
+   "mirror": {
+    "slug": "pala-empire",
+    "year": 825,
+    "type": "vassal_start",
+    "where": "/ledger/9"
+   },
+   "status": "mismatch",
+   "note": "pala-empire /ledger/9-10 holds Utkala as a vassal 825-860 (confidence 1); this dossier ends the Pala invasions in 829. Route to pala-empire to align the end with 829 or cite a page."
+  },
+  {
+   "event": {
+    "slug": "bhauma-kara-dynasty",
+    "year": 829,
+    "type": "contest_end",
+    "counterpart": "rashtrakuta-dynasty"
+   },
+   "mirror": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 772,
+    "type": "gain",
+    "where": "/ledger/4"
+   },
+   "status": "mismatch",
+   "note": "see 790."
+  },
+  {
+   "event": {
+    "slug": "bhauma-kara-dynasty",
+    "year": 829,
+    "type": "contest_end",
+    "counterpart": "pala-empire"
+   },
+   "mirror": {
+    "slug": "pala-empire",
+    "year": 825,
+    "type": "vassal_start",
+    "where": "/ledger/9"
+   },
+   "status": "mismatch",
+   "note": "see 790 (pala-empire vassal 825-860)."
+  },
+  {
+   "event": {
+    "slug": "bhauma-kara-dynasty",
+    "year": 950,
+    "type": "loss",
+    "counterpart": "somavamshi-dynasty"
+   },
+   "mirror": {
+    "slug": "somavamshi-dynasty",
+    "year": 882,
+    "type": "found",
+    "where": "/ledger/0"
+   },
+   "status": "mismatch",
+   "note": "somavamshi-dynasty /ledger/0 takes the Cuttack area in 882 (found, counterpart bhauma-kara-dynasty) and has no 950 gain: 69 cells drawn twice 882-950 (fix on the Somavamshi side)."
+  },
+  {
+   "event": {
+    "slug": "bhauma-kara-dynasty",
+    "year": 950,
+    "type": "dissolve",
+    "counterpart": "somavamshi-dynasty"
+   },
+   "mirror": {
+    "slug": "somavamshi-dynasty",
+    "year": 882,
+    "type": "found",
+    "where": "/ledger/0"
+   },
+   "status": "mismatch",
+   "note": "see 950 loss."
+  },
+  {
+   "event": {
+    "slug": "somavamshi-dynasty",
+    "year": 882,
+    "type": "found",
+    "counterpart": "bhauma-kara-dynasty"
+   },
+   "mirror": {
+    "slug": "bhauma-kara-dynasty",
+    "year": 950,
+    "type": "loss",
+    "where": "/ledger/6"
+   },
+   "status": "mismatch",
+   "note": "bhauma-kara-dynasty /ledger/6 loses the land in 950, not 882."
+  },
+  {
+   "event": {
+    "slug": "somavamshi-dynasty",
+    "year": 1021,
+    "type": "gain",
+    "counterpart": "rival chiefs (unnamed on the page)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "rival chiefs, unnamed on the page."
+  },
+  {
+   "event": {
+    "slug": "somavamshi-dynasty",
+    "year": 1021,
+    "type": "contest_start",
+    "counterpart": "chola-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "chola-empire has no 1021 Yayatinagara raid (route)."
+  },
+  {
+   "event": {
+    "slug": "somavamshi-dynasty",
+    "year": 1021,
+    "type": "contest_end",
+    "counterpart": "chola-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as above."
+  },
+  {
+   "event": {
+    "slug": "somavamshi-dynasty",
+    "year": 1114,
+    "type": "loss",
+    "counterpart": "eastern-ganga-kingdom"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "eastern-ganga-kingdom /ledger/3 gains Utkala from 'Somavamshi dynasty' (free text) in 1118; route: counterpart to somavamshi-dynasty and reconcile 1114 (Somavamshi page 'By 1114') with 1118."
+  },
+  {
+   "event": {
+    "slug": "somavamshi-dynasty",
+    "year": 1114,
+    "type": "dissolve",
+    "counterpart": "eastern-ganga-kingdom"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "as above."
+  },
+  {
+   "event": {
+    "slug": "karnat-dynasty-of-mithila",
+    "year": 1097,
+    "type": "found",
+    "counterpart": "pala-empire"
+   },
+   "mirror": {
+    "slug": "pala-empire",
+    "year": 1085,
+    "type": "loss",
+    "where": "/ledger/21"
+   },
+   "status": "mismatch",
+   "note": "pala-empire /ledger/21 loses Mithila to the Karnats in 1085 (confidence 1); the Simraungadh inscription dates Nanyadeva's taking of the land to 10 July 1097. Route to pala-empire: move to 1097."
+  },
+  {
+   "event": {
+    "slug": "karnat-dynasty-of-mithila",
+    "year": 1324,
+    "type": "loss",
+    "counterpart": "tughlaq-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "tughlaq-dynasty has no dossier yet; its group (sa-04) has not run"
+  },
+  {
+   "event": {
+    "slug": "karnat-dynasty-of-mithila",
+    "year": 1324,
+    "type": "dissolve",
+    "counterpart": "tughlaq-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "tughlaq-dynasty has no dossier yet; its group (sa-04) has not run"
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-ratnapura",
+    "year": 1000,
+    "type": "found",
+    "counterpart": "somavamshi-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "somavamshi-dynasty has no loss for Dakshina Kosala c. 1000 (Somavamshi page: Ratnapura 'conquered some western parts of the Somavamshis')."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-ratnapura",
+    "year": 1114,
+    "type": "gain",
+    "counterpart": "Telugu Chola governors (Chindaka Nagas)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "free text (Telugu Choda governors / Chindaka Nagas); no dossiers."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-ratnapura",
+    "year": 1225,
+    "type": "dissolve",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "page has the kingdom survive to 1758 (see fixes)."
+  },
+  {
+   "event": {
+    "slug": "ayudha-dynasty",
+    "year": 770,
+    "type": "found",
+    "counterpart": "kannauj-varman-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "duplicate of kannauj-varman-dynasty /ledger/3 (rename 770)."
+  },
+  {
+   "event": {
+    "slug": "ayudha-dynasty",
+    "year": 816,
+    "type": "loss",
+    "counterpart": "gurjara-pratihara-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "gurjara-pratihara-dynasty /ledger/16 gains Kannauj from kannauj-varman-dynasty in 816: the same event under the other slug (duplicate state)."
+  },
+  {
+   "event": {
+    "slug": "ayudha-dynasty",
+    "year": 816,
+    "type": "dissolve",
+    "counterpart": "gurjara-pratihara-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "as above; kannauj-varman-dynasty /ledger/8 is the dissolve."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-kalyani",
+    "year": 1156,
+    "type": "found",
+    "counterpart": "western-chalukya-empire"
+   },
+   "mirror": {
+    "slug": "western-chalukya-empire",
+    "year": 1157,
+    "type": "occupation_start",
+    "where": "/ledger/28"
+   },
+   "status": "mismatch",
+   "note": "western-chalukya-empire /ledger/28 records a Kalachuri occupation of Kalyani from 1157 (confidence 3); the pages make 1156-1161 a Chalukya feudatory (independence 1162)."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-kalyani",
+    "year": 1162,
+    "type": "gain",
+    "counterpart": "western-chalukya-empire"
+   },
+   "mirror": {
+    "slug": "western-chalukya-empire",
+    "year": 1183,
+    "type": "occupation_end",
+    "where": "/ledger/30"
+   },
+   "status": "mismatch",
+   "note": "western-chalukya-empire has no 1162 loss; it has occupation 1157-1183."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-kalyani",
+    "year": 1181,
+    "type": "contest_start",
+    "counterpart": "western-chalukya-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "western-chalukya-empire has no 1181-1184 contest."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-kalyani",
+    "year": 1184,
+    "type": "contest_end",
+    "counterpart": "western-chalukya-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as above."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-kalyani",
+    "year": 1184,
+    "type": "loss",
+    "counterpart": "western-chalukya-empire"
+   },
+   "mirror": {
+    "slug": "western-chalukya-empire",
+    "year": 1157,
+    "type": "occupation_start",
+    "where": "/ledger/28"
+   },
+   "status": "mismatch",
+   "note": "western-chalukya-empire /ledger/30 ends the occupation in 1183 (a year apart, different type)."
+  },
+  {
+   "event": {
+    "slug": "kalachuris-of-kalyani",
+    "year": 1184,
+    "type": "dissolve",
+    "counterpart": "western-chalukya-empire"
+   },
+   "mirror": {
+    "slug": "western-chalukya-empire",
+    "year": 1157,
+    "type": "occupation_start",
+    "where": "/ledger/28"
+   },
+   "status": "mismatch",
+   "note": "as above."
+  },
+  {
+   "event": {
+    "slug": "chandela-kingdom",
+    "year": 954,
+    "type": "gain",
+    "counterpart": "kalachuris-of-tripuri"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "No 954 loss of Kalinjar in kalachuris-of-tripuri; its K0 still draws Kalinjar to 1032 (155 cells drawn twice 960-1032)."
+  },
+  {
+   "event": {
+    "slug": "chandela-kingdom",
+    "year": 1035,
+    "type": "loss",
+    "counterpart": "kalachuris-of-tripuri"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "No Gangeya gain at Chandela expense in kalachuris-of-tripuri."
+  },
+  {
+   "event": {
+    "slug": "chandela-kingdom",
+    "year": 1070,
+    "type": "gain",
+    "counterpart": "kalachuris-of-tripuri"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "kalachuris-of-tripuri /ledger/9 ends Chandela vassalage in 1075 (no land loss)."
+  },
+  {
+   "event": {
+    "slug": "paramara-dynasty",
+    "year": 1056,
+    "type": "loss",
+    "counterpart": "kalachuris-of-tripuri"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "No Lata gain in kalachuris-of-tripuri (it has a Malwa contest 1055-1073)."
+  },
+  {
+   "event": {
+    "slug": "chaulukya-dynasty",
+    "year": 1074,
+    "type": "gain",
+    "counterpart": "kalachuris-of-tripuri"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "No Lata loss in kalachuris-of-tripuri; the Chaulukya event is confidence 3."
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1005,
+    "type": "gain",
+    "counterpart": "venad"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Southern Kerala (Kollam) in 1005 belongs to chera-perumal-kingdom, which has no loss; venad is independent only from c. 1124-1126. Route: counterpart chera-perumal-kingdom, and reconcile with the Chera dossier (vassal or loss)."
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1018,
+    "type": "gain",
+    "counterpart": "chera-perumal-kingdom"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "chera-perumal-kingdom draws all Kerala as its own 1001-1124 and says the Chola relation is overlordship; the Chera page has subjugation and a temporary appanage. 158 cells drawn twice 1018-1124."
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1031,
+    "type": "contest_start",
+    "counterpart": "eastern-chalukyas"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "The 1031-1045 Vengi succession war is not in eastern-chalukyas."
+  },
+  {
+   "event": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 784,
+    "type": "vassal_start",
+    "counterpart": "eastern-chalukyas"
+   },
+   "mirror": null,
+   "status": "matched",
+   "note": "Overlord-side vassal pair 784-850; nothing needed in eastern-chalukyas."
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1001,
+    "type": "vassal_start",
+    "counterpart": "eastern-chalukyas"
+   },
+   "mirror": null,
+   "status": "matched",
+   "note": "Overlord-side vassal pair 1001-1075."
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 791,
+    "type": "vassal_start",
+    "counterpart": "Chakrayudha (Ayudha dynasty of Kannauj)"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Free-text counterpart for the Kannauj state, which is kannauj-varman-dynasty; ayudha-dynasty is a duplicate to withdraw."
+  },
+  {
+   "event": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 750,
+    "type": "(shape)",
+    "counterpart": "guhilas-of-mewar"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Pratihara 750-960 shapes hold all 132 cells of Guhila K1 with no vassal event; the Guhila page calls them Pratihara feudatories in the 8th-9th centuries (route: vassal_start/vassal_end guhilas-of-mewar)."
+  },
+  {
+   "event": {
+    "slug": "paramara-dynasty",
+    "year": 980,
+    "type": "(shape)",
+    "counterpart": "guhilas-of-mewar"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Paramara 980-1150 shapes hold 99 of Guhila K1's 132 cells (eastern Mewar with Chittor, per the Guhila page); neither ledger has the c. 975 transfer."
+  },
+  {
+   "event": {
+    "slug": "kakatiya-dynasty",
+    "year": 1163,
+    "type": "(shape)",
+    "counterpart": "kalachuris-of-kalyani"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "94-150 cells of western Telangana drawn by both 1163-1184; the Kalyani page names only Karnataka and Maharashtra (fix on the Kalyani side)."
+  },
+  {
+   "event": {
+    "slug": "kakatiya-dynasty",
+    "year": 1188,
+    "type": "(shape)",
+    "counterpart": "kalachuris-of-ratnapura"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "133 cells of southern Chhattisgarh (Bastar side) drawn by both 1188-1225."
+  },
+  {
+   "event": {
+    "slug": "eastern-ganga-kingdom",
+    "year": 1078,
+    "type": "(shape)",
+    "counterpart": "somavamshi-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "117 of eastern-ganga-kingdom's 162 cells (southern Odisha) are inside Somavamshi K1 1078-1113 (fix on the Somavamshi side)."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Vengi",
+   "kind": "region",
+   "used_in": "eastern-chalukyas"
+  },
+  {
+   "name": "Salt Range",
+   "kind": "region",
+   "used_in": "hindu-shahis"
+  },
+  {
+   "name": "Nandana",
+   "kind": "place",
+   "used_in": "hindu-shahis"
+  },
+  {
+   "name": "Udabhandapura (Hund)",
+   "kind": "place",
+   "used_in": "hindu-shahis"
+  },
+  {
+   "name": "Baghelkhand (Dahala)",
+   "kind": "region",
+   "used_in": "kalachuris-of-tripuri"
+  },
+  {
+   "name": "Tripuri (Tewar)",
+   "kind": "place",
+   "used_in": "kalachuris-of-tripuri"
+  },
+  {
+   "name": "Kalinjar (Kalanjara)",
+   "kind": "place",
+   "used_in": "kalachuris-of-tripuri"
+  },
+  {
+   "name": "Rewa",
+   "kind": "place",
+   "used_in": "kalachuris-of-tripuri"
+  },
+  {
+   "name": "Kathmandu Valley",
+   "kind": "region",
+   "used_in": "licchavi-kingdom"
+  },
+  {
+   "name": "Gorkha",
+   "kind": "place",
+   "used_in": "licchavi-kingdom"
+  },
+  {
+   "name": "Nuwakot",
+   "kind": "place",
+   "used_in": "thakuri-dynasty"
+  },
+  {
+   "name": "Hansi",
+   "kind": "place",
+   "used_in": "tomara-dynasty"
+  },
+  {
+   "name": "Thanesar",
+   "kind": "place",
+   "used_in": "tomara-dynasty"
+  },
+  {
+   "name": "Nagda",
+   "kind": "place",
+   "used_in": "guhilas-of-mewar"
+  },
+  {
+   "name": "Ahar",
+   "kind": "place",
+   "used_in": "guhilas-of-mewar"
+  },
+  {
+   "name": "Kodungallur (Mahodayapuram)",
+   "kind": "place",
+   "used_in": "chera-perumal-kingdom"
+  },
+  {
+   "name": "Kolathunadu",
+   "kind": "region",
+   "used_in": "chera-perumal-kingdom"
+  },
+  {
+   "name": "Venad",
+   "kind": "region",
+   "used_in": "chera-perumal-kingdom"
+  },
+  {
+   "name": "Chandragiri river",
+   "kind": "region",
+   "used_in": "chera-perumal-kingdom"
+  },
+  {
+   "name": "Toshala",
+   "kind": "region",
+   "used_in": "bhauma-kara-dynasty"
+  },
+  {
+   "name": "Jajpur",
+   "kind": "place",
+   "used_in": "bhauma-kara-dynasty"
+  },
+  {
+   "name": "Utkala (northern Odisha; now resolves to all of Odisha)",
+   "kind": "region",
+   "used_in": "somavamshi-dynasty"
+  },
+  {
+   "name": "Kalinga (southern Odisha and coastal Andhra; now resolves to all of Odisha)",
+   "kind": "region",
+   "used_in": "somavamshi-dynasty"
+  },
+  {
+   "name": "Dakshina Kosala",
+   "kind": "region",
+   "used_in": "kalachuris-of-ratnapura"
+  },
+  {
+   "name": "Binka (Yayatinagara)",
+   "kind": "place",
+   "used_in": "somavamshi-dynasty"
+  },
+  {
+   "name": "Tirhut / Mithila",
+   "kind": "region",
+   "used_in": "karnat-dynasty-of-mithila"
+  },
+  {
+   "name": "Simraungadh",
+   "kind": "place",
+   "used_in": "karnat-dynasty-of-mithila"
+  },
+  {
+   "name": "Darbhanga",
+   "kind": "place",
+   "used_in": "karnat-dynasty-of-mithila"
+  },
+  {
+   "name": "Ratanpur",
+   "kind": "place",
+   "used_in": "kalachuris-of-ratnapura"
+  },
+  {
+   "name": "Bastar",
+   "kind": "region",
+   "used_in": "kalachuris-of-ratnapura"
+  },
+  {
+   "name": "Basavakalyan (Kalyani)",
+   "kind": "place",
+   "used_in": "kalachuris-of-kalyani"
+  },
+  {
+   "name": "Mangalvedha",
+   "kind": "place",
+   "used_in": "kalachuris-of-kalyani"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Kingdom of Mewar (Sisodia)",
+   "suggested_slug": "kingdom-of-mewar",
+   "years": [
+    1303,
+    1948
+   ]
+  },
+  {
+   "name": "Venad",
+   "suggested_slug": "venad",
+   "years": [
+    1124,
+    1729
+   ]
+  },
+  {
+   "name": "Kolathunadu",
+   "suggested_slug": "kolathunadu",
+   "years": [
+    1100,
+    1800
+   ]
+  },
+  {
+   "name": "Kozhikode (Zamorin)",
+   "suggested_slug": "kozhikode",
+   "years": [
+    1124,
+    1766
+   ]
+  },
+  {
+   "name": "Panduvamshi dynasty of Dakshina Kosala",
+   "suggested_slug": "panduvamshi-dynasty",
+   "years": [
+    500,
+    800
+   ]
+  },
+  {
+   "name": "Shailodbhava dynasty",
+   "suggested_slug": "shailodbhava-dynasty",
+   "years": [
+    550,
+    736
+   ]
+  },
+  {
+   "name": "Chindaka Nagas of Bastar",
+   "suggested_slug": "chindaka-nagas",
+   "years": [
+    1023,
+    1324
+   ]
+  },
+  {
+   "name": "Bhanja dynasty (Odisha)",
+   "suggested_slug": "bhanja-dynasty",
+   "years": [
+    900,
+    1200
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-sa-03-x.md",
+ "problems": [
+  "Verdicts: 1 pass, 9 thin, 5 fail (hindu-shahis, guhilas-of-mewar, somavamshi-dynasty, kalachuris-of-ratnapura, ayudha-dynasty).",
+  "ayudha-dynasty duplicates kannauj-varman-dynasty (sa-03-c), which already carries the Ayudhas as a 770 rename to 816; the orchestrator should withdraw ayudha-dynasty.json and its new_slug rather than send it back for edits.",
+  "Reviewer-applied fixes (all revalidated, read back): eastern-chalukyas and kalachuris-of-tripuri Vengi zones ({region: Andhra} replaced by the Vengi spec, 9 places); kalachuris-of-tripuri /wars/1 chalukya-dynasty -> western-chalukya-empire; hindu-shahis /wars/2 'Multan (Daud)' -> emirate-of-multan and /wars/4 lohara-principality -> lohara-dynasty; somavamshi-dynasty /ledger/1 counterpart nobody -> rival chiefs.",
+  "The author's counterparts_needing_dossiers lists lohara-principality, but lohara-dynasty (Kashmir 1003-1339) exists; drop it.",
+  "Gazetteer: 'Kalinga' and 'Utkala' both resolve to all of Odisha (568 cells), the same as {region: Odisha}; they need separate entries (southern Odisha with coastal north Andhra; northern coastal Odisha).",
+  "Neighbour dossiers to route (all already failed or thin in earlier reviews): chola-empire (1075 vs 1077 Vengi; 1005 counterpart venad; 1018 Chera gain), chalukya-dynasty (641 Vengi), pala-empire (1085 Mithila -> 1097; Chakrayudha free text; 1033 Varanasi loss missing), rashtrakuta-dynasty (772/850 Bhauma-Kara), gurjara-pratihara-dynasty (vassal Tomaras, Guhilas, Kalachuris), paramara-dynasty (c. 975 Chittor), gahadavala-dynasty and eastern-ganga-kingdom (free-text counterparts), western-chalukya-empire (Kalyani occupation pair vs feudatory/independence), chandela-kingdom (Baghelkhand overlap with Tripuri).",
+  "Groups not yet run, treated as exceptions: ghaznavid-empire, saffarid-dynasty, abbasid-caliphate (me-08); khalji-dynasty, tughlaq-dynasty, mamluk-dynasty (sa-04); kathmandu (later group).",
+  "No page failed to load. No infobox in the batch gives an area, and no state has a Cliopatria row, so the area checks are empty by construction; overlaps were measured on the H3 grid against neighbour dossiers instead."
+ ]
+}

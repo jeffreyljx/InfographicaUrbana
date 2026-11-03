@@ -1,0 +1,52 @@
+{
+ "batch_id": "fx-51",
+ "checks": [
+  {
+   "item": "G01",
+   "verdict": "pass",
+   "what": "principality-of-ryazan carried 1241-1452 (keyframe _1241 = Cliopatria 1236 shape minus the Vladimir disc, confidence 1), dissolve 1452 into ryazan (found 1453, counterpart this slug), golden-horde successor for the cells the 1453 row leaves out. The page gives 'Established: 1129', 'Incorporation into Muscovy: 1521', Oleg the Red (1252-1258) 'ruled as their vassal', Roman III 'ruled as Mongol vassal', Ivan III (1427-1456) 'renounced his allegiance to Golden Horde', 'Murom was taken by Moscow in 1392'; no Grand Principality date. Kolomna lies outside the shape (0/1 cell), Murom on its edge (1/2 cells, a separate principality). The compiler accepts a successor born the next year, so the 1452/1453 join holds. Validates OK.",
+   "page": "https://en.wikipedia.org/wiki/Principality_of_Ryazan",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "G02",
+   "verdict": "pass",
+   "what": "duchy-of-bohemia carried to 1197 (dissolve into kingdom-of-bohemia), new keyframes _1005 (Bohemia alone), _1019 (Bohemia and Moravia without Silesia), _1182 (Bohemia without Moravia), events 1003 loss of Bohemia and Moravia, 1004 gain of Bohemia, 1019 gain of Moravia, 1182 loss of Moravia to margraviate-of-moravia. Duchy page: 'In 1002, Duke Vladivoj was enfeoffed', 'the duchy became an Imperial State', Boleslaw I invaded Bohemia and Moravia the year after Vladivoj died, 'In 1004, after the Poles were expelled from Bohemia', Moravia 're-acquired ... in 1019 or 1029', elevation 'in 1198'; Moravia page: 'In 1182, the Margraviate was created', Polish rule 'from 999 until 1019'. The events mirror kingdom-of-poland ledger 5, 7, 8, 12 (1003/1004/1018) and its 1039/1050 Silesia events carry Wroclaw. Shapes resolve to 326/263/326/263 cells, none in Poland. Validates OK. Note: the Moravia page puts Polish rule of Moravia from 999, so the existing _1000 keyframe (Moravia Bohemian 1000-1002) disagrees with it; pre-existing, outside this finding.",
+   "page": "https://en.wikipedia.org/wiki/Duchy_of_Bohemia",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "G03",
+   "verdict": "fixed",
+   "what": "Page supports the extension to 1608 ('1399-1634'; 'From 1480 on, the Eastern Mongols under Mandukhai Khatun and Dayan Khan pushed the Oirats westward'; 'By 1510 Dayan Khan had unified ... including the Oirats'; the Khalkhas 'looted their properties in the Irtysh, Barkol and Altai from 1552 to 1628'). But the cut of the 1468 shape (4,097 cells) to Western Mongolia + Dzungaria dropped the Russian Altai (113 cells) and the Zaysan-Irtysh corner of East Kazakhstan (81 cells), the very Altai and Irtysh lands the page names as Oirat in 1552-1628, and handed them to mongol-khanate in 1480 against 'pushed westward'. The 1480 loss text also misdescribed the land as 'central Mongolian and southern lands ... east and south of the Oirat west': the cut land is Khovsgol (310), Tuva (631), Krasnoyarsk/Khakassia (273), Irkutsk (358), Buryatia (144) and Almaty region (74); the 1468 shape holds no central Mongolia (Karakorum outside it).",
+   "page": "https://en.wikipedia.org/wiki/Four_Oirat",
+   "fix": "Added {\"region\": \"Altai\"} to the union in keyframes four-oirats_1481 and _1510 and in the minus of ledger[8] (1480 loss); kept part now 2,306 cells, lost 1,791, disjoint and together the whole 1468 shape. Rewrote ledger[8] region.text, appended the Altai/Irtysh quote to its note, corrected the _1481 note (2,306 cells; land cut lies north and north-east; no central Mongolia in the shape) and the _1510 note. Re-validated with --resolve: OK. The mongol-khanate handoff must now use {\"minus\": [{\"cliopatria\": \"Four Oirats\", \"year\": 1468}, {\"union\": [{\"region\": \"Western Mongolia\"}, {\"region\": \"Dzungaria\"}, {\"region\": \"Altai\"}]}]} for its ledger[1] gain (year 1480).",
+   "applied": true
+  },
+  {
+   "item": "G04",
+   "verdict": "fixed",
+   "what": "Page supports the Ascanian duchy 1180-1295 ('Welfs deposed, Ascanians enfeoffed with severely belittled duchy: 1180'; territories 'around Lauenburg upon Elbe and around Wittenberg upon Elbe'; 'Definite partition into Saxe-Lauenburg and Saxe-Wittenberg: 1296', 'sometime before 20 September 1296'), the rename and the 1180 break-up ('partitioned in some dozens of territories'). But the 45 km Lauenburg circle crossed the Elbe: 14 of its 30 cells lay in Lower Saxony (Lueneburg, 17 km from Lauenburg, and Winsen; 12 of them principality-of-luneburg's in the 1300 anchor) and 3 in Hamburg. The page names the Welf possessions as the Duchy of Brunswick-Lueneburg (1235), whose found circle round Lueneburg the smaller rump would have beaten by the size rule 1235-1295, and the dissolve would then have handed those cells to house-of-ascania in 1296.",
+   "page": "https://en.wikipedia.org/wiki/Duchy_of_Saxony",
+   "fix": "Keyframe stem-duchy-of-saxony_1180, ledger[14] (1180 loss to nobody, minus) and ledger[16] (1295 dissolve): the Lauenburg circle is now {\"minus\": [{\"lon\": 10.55, \"lat\": 53.37, \"km\": 45}, {\"union\": [{\"admin1\": \"Lower Saxony\", \"country\": \"Germany\"}, {\"admin1\": \"Hamburg\", \"country\": \"Germany\"}]}]}; rump 41 cells instead of 58 (Lauenburg, Moelln, Ratzeburg and Wittenberg kept; Lueneburg and Hamburg out); loss + rump still cover all of Old Saxony. Note appended to the keyframe. Re-validated with --resolve: OK (only the pre-existing duchy-of-westphalia warning).",
+   "applied": true
+  },
+  {
+   "item": "handoffs",
+   "verdict": "pass",
+   "what": "Hierarchy rows checked against the pages: Ryazan vassal (Oleg the Red 'ruled as their vassal', Roman III 'ruled as Mongol vassal'; mongol-empire ends 1293, golden-horde starts 1294, both spans fit the dossiers); duchy-of-bohemia constituent of holy-roman-empire 1002-1197 ('the duchy became an Imperial State' in 1002; HRE dossier ends 1259); margraviate-of-moravia under duchy-of-bohemia 1182-1197 ('subject to the Duchy, later the Kingdom of Bohemia'); stem-duchy-of-saxony under holy-roman-empire to 1259 and holy-roman-empire-minor-states 1260-1295 (infobox 'State of the Holy Roman Empire (from 962)'). Stale-note handoffs for ryazan and oirat-confederation are correct.",
+   "page": "https://en.wikipedia.org/wiki/Principality_of_Ryazan",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "G03: the mongol-khanate handoff in the fixer's report is out of date after the review fix: narrow mongol-khanate ledger[1] to {\"minus\": [{\"cliopatria\": \"Four Oirats\", \"year\": 1468}, {\"union\": [{\"region\": \"Western Mongolia\"}, {\"region\": \"Dzungaria\"}, {\"region\": \"Altai\"}]}]} and date it 1480 (or delete it); otherwise its 1481 gain takes the Oirat west again.",
+  "G03: the fixer's notes (history/polities/_notes/fix-fx-51.md) and report still give 2,112 cells for the Oirat west; after the review it is 2,306 (Altai region added). The notes file was not edited by the reviewer.",
+  "G04: the Wittenberg 45 km circle still reaches Dessau (principality-of-anhalt from 1212, about 4 cells) and the Jueterbog land (archbishopric-of-magdeburg, 3 cells), and 2 Stormarn cells of the Lauenburg circle are county-of-holstein's; the size rule gives them to the rump. No page places these borders; left as is.",
+  "G01: the Ryazan-Mongol hierarchy row starts 1252 (first prince the page calls a vassal); the conquest dates from December 1237 and the page gives no formal start. The orchestrator may prefer 1241 so the 1241-1251 years are tinted too.",
+  "G02: the Margraviate of Moravia page has Polish rule of Moravia 'from 999 until 1019', against the duchy's _1000 keyframe (Moravia Bohemian 1000-1002) and the Duchy page's 1003 invasion; pre-existing, not changed."
+ ]
+}

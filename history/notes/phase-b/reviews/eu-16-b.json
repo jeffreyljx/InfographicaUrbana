@@ -1,0 +1,973 @@
+{
+ "batch_id": "eu-16-b",
+ "verdicts": [
+  {
+   "slug": "novgorod-republic",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/5, /ledger/7, /wars/0/belligerents",
+     "what": "Counterpart was the name 'Bishopric of Ösel–Wiek', not a slug, so the events could not pair with a dossier.",
+     "why": "history/polities/bishopric-of-osel-wiek.json exists (written 2026-10-31 20:20).",
+     "fix": "Counterpart and belligerent set to 'bishopric-of-osel-wiek'; note of /ledger/5 updated; re-validated (0 errors, 0 warnings).",
+     "applied": true
+    },
+    {
+     "where": "/ledger (1348-1349)",
+     "what": "Missing occupation_start/occupation_end for the Swedish capture of Orekhov (Oreshek), mirror of kingdom-of-sweden /ledger/14-15.",
+     "why": "Novgorod Republic page: 'Magnus IV of Sweden captured the key fortress of Orekhov' in August 1348; Swedish-Novgorodian Wars page: army sent 'to Oreshek and set it ablaze', 'Novgorod soon regained control' (table 1348-1351). Both pages are in this dossier's sources.",
+     "fix": "Add occupation_start 1348 month 8, counterpart kingdom-of-sweden, region {'place':'Shlisselburg','km':15,'text':'the key fortress of Orekhov'}, confidence 3, source Novgorod_Republic; occupation_end 1349 (month 2 per the Sweden dossier), confidence 2.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1337-1339)",
+     "what": "Missing contest with kingdom-of-sweden at Korela and Viborg, mirror of kingdom-of-sweden /ledger/12-13.",
+     "why": "Swedish-Novgorodian Wars page: 'In 1337, Karelians rebelled, and Magnus Eriksson's troops briefly occupied Korela Fortress'; 'In 1338, Novgorod besieged Viborg, but an armistice was soon agreed.'",
+     "fix": "Add contest_start 1337 and contest_end 1338 (armistice) or 1339 (Sweden's date), counterpart kingdom-of-sweden, zone Korela (Priozersk) and the Karelian Isthmus, confidence 2, with the zone in wars[].",
+     "applied": false
+    },
+    {
+     "where": "/ledger/3, /ledger/10",
+     "what": "1236 loss to and 1294 gain from karelians (confidence 1) have no mirror in the karelians dossier, and the cited page contradicts the counterpart.",
+     "why": "Alexander Nevsky page: 'the Karelians had been allies and tributaries of Novgorod since the mid-12th century'; karelians has no 1236 gain or 1294 loss and draws the Karelian Isthmus and South Karelia, not the Ladoga-Onega strip removed here.",
+     "fix": "Either mark novgorod-republic_1236 adjust to keep the strip (correction {'cliopatria':'Novgorod Republic','year':1220}) and drop /ledger/3 and /ledger/10, or set counterpart nobody; agree with the karelians owner.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/15",
+     "what is missing": "1314 gain from nobody, +3,668 cells (about 930,000 km2, the largest move in the dossier), confidence 1, no page dates it",
+     "page to try": "https://en.wikipedia.org/wiki/Great_Perm (also Zavolochye retried as 'Zavolochie', Yugra, Pechora River history)"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "1126 gain from nobody (+163,000 km2, Vaga-Sukhona-Dvina), confidence 1; Novgorod page has a Pechora expedition in 1032 and Yugra trade by 1096",
+     "page to try": "https://en.wikipedia.org/wiki/Bjarmaland"
+    },
+    {
+     "where": "/ledger/22",
+     "what is missing": "1468 gain from nobody (Kola, +138,000 km2), confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Kola_Peninsula"
+    },
+    {
+     "where": "/ledger/18, /ledger/21",
+     "what is missing": "1344 and 1463 losses to Moscow, confidence 1 (Novgorod page: after 1456 Moscow 'began to gradually seize land in the northern territories', undated)",
+     "page to try": "https://en.wikipedia.org/wiki/Vologda"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "1285 split of Pskov at confidence 1; the Novgorod page gives 'Pskov won its formal independence in August 1348' (Treaty of Bolotovo); decide 1285 or 1348 jointly with pskov-republic",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Bolotovo"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Novgorod_Republic",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/19, /ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Novgorod_Republic",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/23, /ledger/24, /ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Shelon",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/26",
+     "page": "https://en.wikipedia.org/wiki/Novgorod_Republic",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11, /ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Swedish%E2%80%93Novgorodian_Wars",
+     "result": "confirmed (text 'later that year'; the page's table gives the Neva campaign 1300-1301)"
+    },
+    {
+     "where": "/ledger/13, /ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Swedish%E2%80%93Novgorodian_Wars",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9, /ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Swedish%E2%80%93Novgorodian_Wars",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6, /ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Battle_on_the_Ice",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1599366,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Novgorod Republic infobox has no area (confirmed); the dossier says so in novgorod-republic_1056"
+   }
+  },
+  {
+   "slug": "principality-of-chernigov",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/6",
+     "what is missing": "dissolve 1240 at confidence 1 (Cliopatria's year); the page gives 'Disestablished: 1402', vassal of the Golden Horde 1245-1362, then Lithuania 1362-1402; orchestrator to decide whether the principality continues past 1240",
+     "page to try": "https://en.wikipedia.org/wiki/Principality_of_Chernigov"
+    },
+    {
+     "where": "/identity (Tmutarakan)",
+     "what is missing": "Tmutarakan, Chernigov's from 1054 (Kievan Rus' page), 'eventually overtaken' undated, is not drawn",
+     "page to try": "https://en.wikipedia.org/wiki/Tmutarakan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Chernigov",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Chernigov",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kievan_Rus%27",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Murom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4, /ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Mongol_invasion_of_Kievan_Rus%27",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 265814,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no infobox area (confirmed); acknowledged in the dossier notes"
+   }
+  },
+  {
+   "slug": "principality-of-kiev",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger (1067-1132)",
+     "what": "Missing mirrors of principality-of-polotsky /ledger/1-2 (contest 1067-1071), /ledger/9-10 (contest 1127-1129), /ledger/11 (1129 loss to Kiev) and /ledger/12 (1132 gain from Kiev).",
+     "why": "Polotsky cites the Vseslav of Polotsk and Principality of Vitebsk pages (Mstislav 'annexed Polotsk and its vassals including Vitebsk'); the author's notes acknowledge the omission because the Kiev page is silent, which is not one of the brief's exceptions.",
+     "fix": "Add gain 1129 and loss 1132 (counterpart principality-of-polotsky, region the Polotsk land, source Principality_of_Vitebsk) and the two contests, or agree with the polotsky owner on a different counterpart.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1054-1136)",
+     "what": "Kiev's hold over Novgorod 1054-1136 is not recorded (the suzerain side carries vassal events).",
+     "why": "Kievan Rus' page: 'Principality of Kiev and Novgorod, for the eldest son Iziaslav I of Kiev' (1054) and 'In 1136, Novgorod revolted against Kiev, and became independent.'",
+     "fix": "Add vassal_start 1054 month 2 and vassal_end 1136, counterpart novgorod-republic, region {'cliopatria':'Novgorod Republic','year':1056}, confidence 2 (vassal_end 3), source Kievan_Rus%27.",
+     "applied": false
+    },
+    {
+     "where": "/identity/rulers",
+     "what": "'Rurik Rostislavich 1180-1181' overlaps 'Sviatoslav Vsevolodovich 1177-1194', so the ruler strip is not contiguous.",
+     "why": "The two ruled jointly; the page lists both.",
+     "fix": "Drop the 1180-1181 entry or move it into Sviatoslav's note as co-rule.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/6",
+     "what is missing": "1188 loss of Turov-Pinsk (69,000 km2, half the state) at confidence 1; the Turov page gives 1162 for 'full independence'; settle the year with principality-of-turov-and-pinsk",
+     "page to try": "https://en.wikipedia.org/wiki/Principality_of_Turov"
+    },
+    {
+     "where": "/identity/end",
+     "what is missing": "end in 1240 against the page's 1471; grand-duchy-of-lithuania has a 1321 gain from principality-of-kiev; orchestrator decision",
+     "page to try": "https://en.wikipedia.org/wiki/Principality_of_Kiev"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kievan_Rus%27",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Kiev",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2, /ledger/3, /ledger/4, /ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Kiev",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7, /ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Mongol_invasion_of_Kievan_Rus%27",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 147669,
+    "ratio": null,
+    "acknowledged": null,
+    "note": "the infobox has no area (confirmed); the dossier does not mention it (harmless)"
+   }
+  },
+  {
+   "slug": "principality-of-peremyshl",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "found 1056 at confidence 1 (page: 'Established: 11th century'; earliest known prince Ryurik Rostislavich in 1087)",
+     "page to try": "https://en.wikipedia.org/wiki/Volodar_of_Peremyshl"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Peremyshl",
+     "result": "confirmed silent (confidence 1 is honest)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Terebovlia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2, /ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Peremyshl",
+     "result": "confirmed"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Peremyshl",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1124,
+    "infobox_year": null,
+    "cliopatria_km2": 62424,
+    "ratio": 0.018,
+    "acknowledged": true,
+    "note": "the infobox figure has no year and cannot be the principality's; the shape is kept, as the dossier says"
+   }
+  },
+  {
+   "slug": "principality-of-pereyaslavl",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "dissolve 1240 at confidence 1; nothing dated 1054-1239 (page silent; budget 1-2 pages); the infobox gives 'Disestablished: 1239/1323' and the page says Pereyaslavl 'evidently became a tributary of the Golden Horde'",
+     "page to try": "https://en.wikipedia.org/wiki/Pereiaslav"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Pereyaslavl",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1, /ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Pereyaslavl",
+     "result": "confirmed"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/Mongol_invasion_of_Kievan_Rus%27",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 95082,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no infobox area (confirmed); the dossier says so"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1054,
+    "type": "found",
+    "counterpart": "rus"
+   },
+   "mirror": {
+    "slug": "rus",
+    "year": 1054,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "rus successors list novgorod-republic"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1126,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1236,
+    "type": "loss",
+    "counterpart": "karelians"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "karelians has no 1236 gain; the Alexander Nevsky page calls the Karelians Novgorod's tributaries; route to the karelians owner (eu-16)"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1240,
+    "type": "occupation_start",
+    "counterpart": "teutonic-order"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "teutonic-order (eu-14) has no 1240-1241 Pskov occupation; the page names bishop Hermann of Dorpat, so bishopric-of-dorpat (exists) is an alternative counterpart"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1241,
+    "type": "occupation_end",
+    "counterpart": "teutonic-order"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1240,
+    "type": "occupation_start",
+    "counterpart": "bishopric-of-osel-wiek"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "the dossier exists (counterpart slug fixed by the reviewer) but has no 1240-1241 Votia occupation; route to its owner"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1241,
+    "type": "occupation_end",
+    "counterpart": "bishopric-of-osel-wiek"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1285,
+    "type": "split",
+    "counterpart": "pskov-republic"
+   },
+   "mirror": {
+    "slug": "pskov-republic",
+    "year": 1285,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "pskov's found has no counterpart but lists novgorod-republic among predecessors; both confidence 1; the Novgorod page gives 1348 for formal independence"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1293,
+    "type": "loss",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": 1293,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1294,
+    "type": "gain",
+    "counterpart": "karelians"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "karelians has no 1294 loss"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1300,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-sweden (eu-14) lacks the Landskrona occupation 1300-1301 (Swedish-Novgorodian Wars page)"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1301,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1314,
+    "type": "contest_start",
+    "counterpart": "karelians"
+   },
+   "mirror": {
+    "slug": "karelians",
+    "year": 1278,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "karelians has contest 1278-1323 against Novgorod (Karelians page); Novgorod has only the 1314 rising"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1314,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1323,
+    "type": "loss",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": 1323,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1323,
+    "type": "gain",
+    "counterpart": "karelians"
+   },
+   "mirror": {
+    "slug": "karelians",
+    "year": 1323,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1337,
+    "type": "contest_start",
+    "counterpart": "novgorod-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Novgorod lacks the 1337-1339 contest (finding on novgorod-republic)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1348,
+    "type": "occupation_start",
+    "counterpart": "novgorod-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Novgorod lacks the 1348-1349 Orekhov occupation, on its own page (finding on novgorod-republic)"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1344,
+    "type": "loss",
+    "counterpart": "grand-principality-of-moscow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by eu-16-f, which has not run"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1397,
+    "type": "loss",
+    "counterpart": "grand-principality-of-moscow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-16-f has not run"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1398,
+    "type": "gain",
+    "counterpart": "grand-principality-of-moscow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-16-f has not run"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1463,
+    "type": "loss",
+    "counterpart": "grand-principality-of-moscow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-16-f has not run"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1468,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1471,
+    "type": "contest_start",
+    "counterpart": "grand-principality-of-moscow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-16-f has not run; Moscow should also carry vassal_start novgorod-republic 1471 (Treaty of Korostyn)"
+  },
+  {
+   "event": {
+    "slug": "novgorod-republic",
+    "year": 1478,
+    "type": "merge",
+    "counterpart": "grand-principality-of-moscow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-16-f has not run; Moscow must take the Novgorod land in January 1478, not 1475"
+  },
+  {
+   "event": {
+    "slug": "mongol-empire",
+    "year": 1241,
+    "type": "vassal_start",
+    "counterpart": "novgorod-republic"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "mongol-empire (ia-02) dates it 1241 at confidence 1 from the overlap of the Cliopatria shapes; the Alexander Nevsky page dates the forced tribute to 1259"
+  },
+  {
+   "event": {
+    "slug": "principality-of-chernigov",
+    "year": 1024,
+    "type": "found",
+    "counterpart": "rus"
+   },
+   "mirror": {
+    "slug": "rus",
+    "year": 1024,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "principality-of-chernigov",
+    "year": 1036,
+    "type": "loss",
+    "counterpart": "rus"
+   },
+   "mirror": {
+    "slug": "rus",
+    "year": 1036,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "principality-of-chernigov",
+    "year": 1054,
+    "type": "gain",
+    "counterpart": "rus"
+   },
+   "mirror": {
+    "slug": "rus",
+    "year": 1054,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "rus successors list principality-of-chernigov"
+  },
+  {
+   "event": {
+    "slug": "principality-of-chernigov",
+    "year": 1127,
+    "type": "loss",
+    "counterpart": "principality-of-ryazan"
+   },
+   "mirror": {
+    "slug": "principality-of-ryazan",
+    "year": 1094,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "33 years apart; the Murom page: 'In 1127, it became a separate principality'; the two dossiers overlap on the Murom-Ryazan land 1094-1126; route to eu-16-c (ryazan)"
+  },
+  {
+   "event": {
+    "slug": "principality-of-chernigov",
+    "year": 1239,
+    "type": "contest_start",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1239,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "principality-of-chernigov",
+    "year": 1239,
+    "type": "contest_end",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1239,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-lithuania",
+    "year": 1357,
+    "type": "gain",
+    "counterpart": "principality-of-chernigov"
+   },
+   "mirror": {
+    "slug": "principality-of-chernigov",
+    "year": 1240,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "gain from a state the dossier ends in 1240; orchestrator to decide whether to extend Chernigov (the page runs it to 1402) or have eu-15 retarget the counterpart"
+  },
+  {
+   "event": {
+    "slug": "principality-of-galicia-volhynia",
+    "year": 1238,
+    "type": "gain",
+    "counterpart": "principality-of-chernigov"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Chernigov's dossier never draws Galicia; the 1245 gain is also after Chernigov's 1240 end; route to the galicia-volhynia owner (eu-16-e)"
+  },
+  {
+   "event": {
+    "slug": "principality-of-kiev",
+    "year": 1054,
+    "type": "found",
+    "counterpart": "rus"
+   },
+   "mirror": {
+    "slug": "rus",
+    "year": 1054,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "principality-of-kiev",
+    "year": 1149,
+    "type": "occupation_start",
+    "counterpart": "principality-of-rostov-suzdal"
+   },
+   "mirror": {
+    "slug": "principality-of-rostov-suzdal",
+    "year": 1149,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "the months (September 1149, April 1151, March 1155, May 1157) are on the Rostov-Suzdal side only"
+  },
+  {
+   "event": {
+    "slug": "principality-of-kiev",
+    "year": 1155,
+    "type": "occupation_start",
+    "counterpart": "principality-of-rostov-suzdal"
+   },
+   "mirror": {
+    "slug": "principality-of-rostov-suzdal",
+    "year": 1155,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "principality-of-kiev",
+    "year": 1188,
+    "type": "loss",
+    "counterpart": "principality-of-turov-and-pinsk"
+   },
+   "mirror": {
+    "slug": "principality-of-turov-and-pinsk",
+    "year": 1188,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "both confidence 1; the Turov page gives 1162"
+  },
+  {
+   "event": {
+    "slug": "principality-of-kiev",
+    "year": 1240,
+    "type": "contest_start",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1240,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Kiev November, Mongol side December"
+  },
+  {
+   "event": {
+    "slug": "principality-of-polotsky",
+    "year": 1129,
+    "type": "loss",
+    "counterpart": "principality-of-kiev"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Kiev lacks the 1129 gain and 1132 loss and the contests of 1067-1071 and 1127-1129 (finding on principality-of-kiev)"
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-lithuania",
+    "year": 1321,
+    "type": "gain",
+    "counterpart": "principality-of-kiev"
+   },
+   "mirror": {
+    "slug": "principality-of-kiev",
+    "year": 1240,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "gain from a state ended in 1240; the page runs Kiev to 1471; orchestrator decision"
+  },
+  {
+   "event": {
+    "slug": "principality-of-galicia-volhynia",
+    "year": 1200,
+    "type": "vassal_start",
+    "counterpart": "principality-of-kiev"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "vassal events live on the suzerain's side (schema: the counterpart is the vassal); no mirror needed. Same for 1204 and 1239 (Kiev) and 1203 (Pereyaslavl)"
+  },
+  {
+   "event": {
+    "slug": "principality-of-peremyshl",
+    "year": 1056,
+    "type": "found",
+    "counterpart": "rus"
+   },
+   "mirror": {
+    "slug": "rus",
+    "year": 1054,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "rus ends in 1054 and its successors omit principality-of-peremyshl; route to eu-16-a"
+  },
+  {
+   "event": {
+    "slug": "principality-of-peremyshl",
+    "year": 1084,
+    "type": "split",
+    "counterpart": "principality-of-terebovlia"
+   },
+   "mirror": {
+    "slug": "principality-of-terebovlia",
+    "year": 1084,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "terebovlia's found names rus (ended 1054) as counterpart; it should be principality-of-peremyshl; route to eu-16-c"
+  },
+  {
+   "event": {
+    "slug": "principality-of-peremyshl",
+    "year": 1141,
+    "type": "merge",
+    "counterpart": "principality-of-halych"
+   },
+   "mirror": {
+    "slug": "principality-of-halych",
+    "year": 1141,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "principality-of-pereyaslavl",
+    "year": 1054,
+    "type": "found",
+    "counterpart": "rus"
+   },
+   "mirror": {
+    "slug": "rus",
+    "year": 1054,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "principality-of-pereyaslavl",
+    "year": 1239,
+    "type": "contest_start",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1239,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Pereyaslavl March, Mongol side no month"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Cherven",
+   "kind": "place",
+   "used_in": "principality-of-peremyshl"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Principality of Murom",
+   "suggested_slug": "principality-of-murom",
+   "years": [
+    1127,
+    1392
+   ]
+  },
+  {
+   "name": "Tmutarakan",
+   "suggested_slug": "tmutarakan",
+   "years": [
+    1054,
+    1094
+   ]
+  },
+  {
+   "name": "Principality of Novgorod-Seversk",
+   "suggested_slug": "principality-of-novgorod-seversk",
+   "years": [
+    1097,
+    1240
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-16-b.md",
+ "problems": [
+  "Reviewer brief section 2.3 asks for a vassal_start mirror in the vassal's ledger, but the schema defines vassal_start's counterpart as the vassal itself, on the suzerain's side only. The reviewer followed the schema, so the vassal events of mongol-empire and galicia-volhynia over these states need no mirror. The brief and the schema should be reconciled.",
+  "Group scope says 'Cliopatria lacks the principalities between 1240 and 1294 ... add them', yet Kiev, Chernigov and Pereyaslavl end in 1240 (pages: Kiev to 1471, Chernigov to 1402 as a Horde vassal then Lithuanian, Pereyaslavl 1239/1323). grand-duchy-of-lithuania gains from principality-of-kiev (1321) and principality-of-chernigov (1357), and galicia-volhynia from chernigov (1245), all after those ends. Orchestrator decision: extend the three as vassals, or retarget those counterparts.",
+  "principality-of-chernigov lives 1024-1240 but has no land 1036-1053 (capitals not contiguous), to mirror rus's 1024 loss and 1036 gain; the renderer must tolerate a live state without cells, or Mstislav's Chernigov (1024-1036) should become its own dossier.",
+  "bishopric-of-osel-wiek.json existed (2026-10-31 20:20) before the author ran, but the author listed it as needing a dossier; the reviewer replaced the name with the slug in novgorod-republic (/ledger/5, /ledger/7, /wars/0) and dropped it from counterparts_needing_dossiers.",
+  "grand-principality-of-moscow (eu-16-f) has not run: 7 Novgorod events (1344-1478) await its mirrors; it should start Novgorod's land in January 1478 (not 1475) and carry vassal_start novgorod-republic 1471 (Korostyn).",
+  "Only kind of edit applied to the batch: the slug fix in novgorod-republic.json, re-validated with 0 errors and 0 warnings and read back. Text extracted by WebFetch is a model's reading; every quote above was checked against the extraction, not the raw HTML."
+ ]
+}

@@ -1,0 +1,987 @@
+{
+ "batch_id": "eu-20-j",
+ "verdicts": [
+  {
+   "slug": "bourbon-kingdom-of-france",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (after /ledger/2)",
+     "what": "The allied military occupation of north-eastern France (November 1815 to 1818) is missing from the ledger, although the author opened two pages that state it.",
+     "why": "Treaty of Paris (1815) page: 'parts of France were to be occupied by up to 150,000 soldiers for five years', 'in the eastern border territories of France, from the English Channel to the border with Switzerland', 'the foreign troops withdrew from France in 1818'. Restoration page: 'Until 1818, France was occupied by 1.2 million foreign soldiers'. The schema says for occupation_start/_end: 'the owner records the same event with the roles reversed'. The author's notes give the opposite rule ('occupation events belong to the occupiers').",
+     "fix": "Add occupation_start 1815-11 and occupation_end 1818, both with the same counterpart string (for example 'Seventh Coalition army of occupation' naming austrian-empire, kingdom-of-prussia, russian-empire and the British forces in the note). Region: France's eastern and northern border departments from the Channel to Switzerland, with the page's words in text. Confidence 3 for the start, 2 for the end year. Correct the sentence in /notes.",
+     "applied": false
+    },
+    {
+     "where": "/wars",
+     "what": "The French invasion of Spain in 1823 (Hundred Thousand Sons of Saint Louis) is missing from wars, although the source's infobox gives it.",
+     "why": "Bourbon Restoration in France infobox: 'Invasion of Spain: 6 April 1823'. Rule 10 asks that each war in the sources appears. The notes list the expedition as 'not recorded for lack of an opened page', but the page was opened.",
+     "fix": "Add a war entry (1823, belligerents bourbon-kingdom-of-france and kingdom-of-spain, zone Spain) citing the Restoration page. Add occupation_start 1823-4 with counterpart kingdom-of-spain if a page dates the end; the end (1828) needs another page (see thin).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0/correction",
+     "what is missing": "The 1814 outline adds back only Landau, Saarlouis and Bouillon. Under the 1814 treaty France also held the Chambéry and Annecy part of Savoy, Saarbrücken, Philippeville and Mariembourg, which it lost in November 1815. kingdom-of-sardinia/ledger/29 records the Savoy gain from this state at confidence 1, and this dossier has no matching loss.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Paris_(1814)"
+    },
+    {
+     "where": "/ledger/1/counterpart",
+     "what is missing": "The counterpart is free text ('Allied powers'). Landau went to Austria (then kingdom-of-bavaria in 1816), Saarlouis to kingdom-of-prussia, and Bouillon to the Netherlands' Luxembourg. No neighbour dossier carries a 1815 gain from this state.",
+     "page to try": "https://en.wikipedia.org/wiki/Saarlouis"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "Antwerp siege start at confidence 1; the netherlands dossier has no French contest.",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Antwerp_(1832)"
+    },
+    {
+     "where": "/ledger/13",
+     "what is missing": "The Gabon protectorate end at confidence 1, closed only at the state's end.",
+     "page to try": "https://en.wikipedia.org/wiki/French_Gabon"
+    },
+    {
+     "where": "/ledger (1844-1846)",
+     "what is missing": "Tahiti: kingdom-of-tahiti/ledger/3-4 has contest_start 1844-3 and contest_end 1846-12 against this state at confidence 3, with no mirror here.",
+     "page to try": "https://en.wikipedia.org/wiki/Franco-Tahitian_War"
+    },
+    {
+     "where": "/ledger (1823-1828)",
+     "what is missing": "End of the French occupation of Spain (troops stayed until 1828)",
+     "page to try": "https://en.wikipedia.org/wiki/Hundred_Thousand_Sons_of_Saint_Louis"
+    },
+    {
+     "where": "/keyframe_review/2..8",
+     "what is missing": "Overseas cells are unverified (page budget). The Ivory Coast cells of 1815-1841 come before the French posts at Grand-Bassam, and the 1846-1847 shape has no Senegal.",
+     "page to try": "https://en.wikipedia.org/wiki/Grand-Bassam"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Bourbon_Restoration_in_France",
+     "result": "confirmed (6 April 1814)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Paris_(1815)",
+     "result": "confirmed (Bouillon, Landau, Saarlouis; 20 November 1815)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Paris_(1815)",
+     "result": "confirmed (six communes of the Pays de Gex to Geneva)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/French_conquest_of_Algeria",
+     "result": "confirmed (14 June 1830)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/French_conquest_of_Algeria",
+     "result": "confirmed (5 July 1830)"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/French_conquest_of_Algeria",
+     "result": "confirmed (December 1847 surrender)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 628140,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "no area in the Restoration or July Monarchy infobox (checked on the Restoration page)"
+   }
+  },
+  {
+   "slug": "duchy-of-modena-and-reggio",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/identity/predecessors/0/slug and /ledger/0/counterpart",
+     "what": "Mis-typed slug: kingdom-of-italy-napoleonic does not exist. The Napoleonic Kingdom of Italy is the dossier italian-republic (1802-1814, alt name 'Kingdom of Italy (Napoleonic)').",
+     "why": "history/polities/italian-republic.json identity.alt_names include 'Kingdom of Italy (Napoleonic)' and 'Napoleonic Kingdom of Italy'; it ends 1814-4.",
+     "fix": "Changed both to italian-republic, removed the slug from the notes' 'Counterparts without a dossier' list and added a reviewer sentence to /notes. Validates.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/1/confidence",
+     "what": "Confidence 3 on a region the page does not name. The page says 'the former imperial fiefs in Lunigiana' and does not list them, while the region drawn is the whole of Lunigiana.",
+     "why": "Duchy of Modena and Reggio page: 'In December 1815 he obtained the transfer from his mother Maria Beatrice d'Este of the former imperial fiefs in Lunigiana' (no fiefs named). The whole region includes the Tuscan enclaves Pontremoli, Bagnone and Fivizzano (Treaty of Florence page) and Sardinian Sarzana.",
+     "fix": "Lowered to 2, with a reviewer sentence in the note. Validates.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1/region",
+     "what is missing": "Name the Este fiefs (Aulla and neighbours). The whole of Lunigiana overlaps Tuscany's Pontremoli, Bagnone and Fivizzano enclaves from 1815 to 1847 and Parma's Pontremoli from 1847.",
+     "page to try": "https://en.wikipedia.org/wiki/Lunigiana"
+    },
+    {
+     "where": "/ledger (1847-12)",
+     "what is missing": "The Enza border exchange with Parma. Treaty of Florence page: 'the two Emilian duchies would rationalize their borders by mutually exchanging territories along the Enza River'. It is in neither duchy's ledger.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Florence_(1844)"
+    },
+    {
+     "where": "/ledger (1815-4..5)",
+     "what is missing": "Neapolitan occupation of Modena. kingdom-of-naples-napoleonic/ledger/6 and /10 have it at confidence 1, with no mirror here.",
+     "page to try": "https://en.wikipedia.org/wiki/Neapolitan_War"
+    },
+    {
+     "where": "/identity (scope)",
+     "what is missing": "The duchy of 1452-1796 has no dossier. cispadane-republic (predecessor, 1796 events), cisalpine-republic (1797 gain) and duchy-of-ferrara (successor) all name this slug outside its 1814-1859 life. Either a separate dossier is needed or this one should say why not.",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Modena_and_Reggio"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Modena_and_Reggio",
+     "result": "confirmed date (December 1815); region overstated, confidence lowered to 2"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Florence_(1844)",
+     "result": "confirmed (Massa and Carrara, 1829)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Florence_(1844)",
+     "result": "confirmed (Guastalla from Parma, effective 17 December 1847)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Florence_(1844)",
+     "result": "confirmed (Tuscan vicariate of Fivizzano to Modena)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Modena_and_Reggio",
+     "result": "confirmed (December 1859, United Provinces)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 6816,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "the page gives no area, only an 1846 population"
+   }
+  },
+  {
+   "slug": "duchy-of-parma-and-piacenza",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "1848 loss to kingdom-of-sardinia at confidence 1. The Parma page says only 'an uprising in 1848 which temporarily drove them out'.",
+     "page to try": "https://en.wikipedia.org/wiki/First_Italian_War_of_Independence"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "1848-8 return from kingdom-of-sardinia at confidence 1. The Austrian occupation that followed is not recorded either.",
+     "page to try": "https://en.wikipedia.org/wiki/First_Italian_War_of_Independence"
+    },
+    {
+     "where": "/ledger (1847-12)",
+     "what is missing": "The Enza exchange with Modena (Treaty of Florence page).",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Florence_(1844)"
+    },
+    {
+     "where": "/identity (scope)",
+     "what is missing": "The duchy of 1545-1802/1808 has no dossier. papal-states/ledger/23 (1545 loss), french-consulate/ledger/9 (1802 gain) and first-french-empire/ledger/20 (1808 gain) name this slug before its 1814 start.",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Parma_and_Piacenza"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Parma_and_Piacenza",
+     "result": "confirmed (infobox 'Restored: 11 April 1814')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Florence_(1844)",
+     "result": "confirmed (Guastalla to Modena, 17 December 1847)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Florence_(1844)",
+     "result": "confirmed (Lunigiana enclaves except Fivizzano: Pontremoli, Bagnone and others)"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Parma_and_Piacenza",
+     "result": "confirmed (infobox 'Ceded to the United Provinces of Central Italy: 8 December 1859')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 5660,
+    "infobox_year": 1852,
+    "cliopatria_km2": 7460,
+    "ratio": 1.32,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "free-city-of-krakow",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (1815-5 and 1846-11)",
+     "what": "The protectorate is missing. The Free City was a protectorate of Austria, Prussia and Russia, but the ledger has no vassal events, and austrian-empire/ledger/18 (vassal_start 1815-6, confidence 3) and /26 (vassal_end 1846-11) have no mirror.",
+     "why": "Free City of Cracow infobox: 'City-state and protectorate of Austria, Prussia, and Russia'; text: 'approved and guaranteed by Article VII of the Treaty between Austria, Prussia, and Russia of 3 May 1815'. This is the author's own first source.",
+     "fix": "Add vassal_start 1815-5 and vassal_end 1846-11 with counterpart austrian-empire (and the same for kingdom-of-prussia and russian-empire, or one joint string explained in the note), region the Free City, confidence 3.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1836, 1841)",
+     "what": "The Austrian occupation of 1836-1841 is only in /keyframe_review/2/note, not in the ledger. austrian-empire/ledger/24 and /25 have occupation_start 1836 and occupation_end 1841 with this state as counterpart.",
+     "why": "Free City of Cracow page: 'Cracow was subsequently occupied by the Austrian army from 1836 to 1841.' Schema: 'the owner records the same event with the roles reversed'.",
+     "fix": "Add occupation_start 1836 and occupation_end 1841, counterpart austrian-empire, region the Free City, confidence 3.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1846-2..11)",
+     "what": "The 1846 occupations (Russian troops first, then Austrian) are given in /wars/1/outcome but not as ledger events.",
+     "why": "/wars/1/outcome quotes the Kraków Uprising page: Kraków 'occupied first by Russians (3 March) and by Austrians'.",
+     "fix": "Add occupation_start 1846-3 with counterpart russian-empire and its end, and occupation_start with counterpart austrian-empire ending at the 16 November 1846 annexation, citing the Kraków Uprising page.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "No page explains the 1830-1833 shape being 5 percent larger (1,734 against 1,645 km2). Small, and kept ok under the page budget.",
+     "page to try": "https://en.wikipedia.org/wiki/Free_City_of_Cracow"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Free_City_of_Cracow",
+     "result": "confirmed (infobox 'Established: 3 May 1815'; created from the Duchy of Warsaw)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Free_City_of_Cracow",
+     "result": "confirmed ('annexed by Austria on 16 November 1846')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Free_City_of_Cracow",
+     "result": "confirmed ('as the Grand Duchy of Kraków', 16 November 1846)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1188.8,
+    "infobox_year": 0,
+    "cliopatria_km2": 1645,
+    "ratio": 1.38,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "german-confederation",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0..10/correction, /ledger/0/region, /ledger/13/region",
+     "what": "The membership outline leaves out Carniola and the Littoral except Istria, which the page lists as members. The notes and the author's report say 'Austria's lands are not listed on the page', which is false.",
+     "why": "German Confederation page, member table: 'Only included the Lands of the Bohemian Crown – Bohemia, Moravia and Austrian Silesia –' and 'Austrian lands – Austria, Carinthia, Carniola and the Littoral except Istria'. The corrections hold country Austria and Czechia only, with no Slovenia and no Gorizia or Trieste.",
+     "fix": "Add the Austrian member lands to every correction and to the found and dissolve regions: Slovenia without Prekmurje and the Istrian coast, and Italy's Gorizia and Trieste. Check Tyrol south of the Brenner (Trentino-South Tyrol) on a page before adding it. Correct /notes.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1850)",
+     "what": "The removal of the Duchies of Auschwitz and Zator is missing. /ledger/5 adds them in 1818, but no loss follows.",
+     "why": "German Confederation page: 'the Duchies of Auschwitz and Zator, parts of the Kingdom of Galicia and Lodomeria, were only included from 1818 to 1850.'",
+     "fix": "Add a loss in 1850 (no month), counterpart austrian-empire, with the region of /ledger/5, confidence 3.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1/region, /keyframe_review/0..5/correction, /ledger (1839)",
+     "what": "Luxembourg is drawn as the modern country. Until 1839 the member Grand Duchy also held the present Belgian Province of Luxembourg, and its departure in 1839 is not recorded.",
+     "why": "German Confederation page: 'the larger province of Luxembourg had left the Confederation at its accession to Belgium in 1839' and 'In 1839, as compensation to the Netherlands for the loss of part of its province of Luxemburg to Belgium, the Duchy of Limburg was created'.",
+     "fix": "Region for 1815-1839: country Luxembourg plus the Belgian province of Luxembourg. Add a loss in 1839 (counterpart kingdom-of-belgium, region the Belgian Province of Luxembourg) beside /ledger/6.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1863-12, 1864)",
+     "what": "The federal execution in Holstein is missing. duchy-of-holstein/ledger/9 has occupation_start 1863-12 (confidence 3) and /11 occupation_end 1864-10 with german-confederation as counterpart, and no mirror is here. The notes say 'no dates on the pages'.",
+     "why": "German Confederation page: 'In 1863, the Confederation ordered the execution of the duke of Holstein (the Danish king).'",
+     "fix": "Add occupation_start 1863-12 and occupation_end 1864, counterpart duchy-of-holstein, region Holstein (and Lauenburg if a page says so), and match duchy-of-holstein's months.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/*/correction",
+     "what is missing": "Farther Pomerania (the western part of today's Pomeranian Voivodeship: Słupsk, Lębork, Bytów) was in Prussia's Province of Pomerania, a member, and is not in the outline.",
+     "page to try": "https://en.wikipedia.org/wiki/Province_of_Pomerania_(1815–1945)"
+    },
+    {
+     "where": "/ledger/11, /ledger/12",
+     "what is missing": "The 1866 contest names kingdom-of-prussia over Hanover, Saxony and Hesse land that belongs to members. kingdom-of-prussia has no mirror contest. Consider leaving the contests to the member states' dossiers.",
+     "page to try": "https://en.wikipedia.org/wiki/Austro-Prussian_War"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/German_Confederation",
+     "result": "confirmed (Hesse-Homburg joined 7 July 1817)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/German_Confederation",
+     "result": "confirmed for 1818; the same sentence ends the inclusion in 1850, which is missing"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/German_Confederation",
+     "result": "confirmed (Limburg joined 5 September 1839)"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/German_Confederation",
+     "result": "confirmed (admitted 11 April 1848)"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/German_Confederation",
+     "result": "confirmed (removed 30 May 1851)"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/German_Confederation",
+     "result": "confirmed (Peace of Prague 23 August 1866; confirmed by members the next day)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 281949,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "no Confederation total area on the page; all 11 shapes marked wrong (they are Prussia's provinces)"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "bourbon-kingdom-of-france",
+    "year": 1814,
+    "type": "found",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": {
+    "slug": "first-french-empire",
+    "year": 1814,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "both April 1814"
+  },
+  {
+   "event": {
+    "slug": "bourbon-kingdom-of-france",
+    "year": 1815,
+    "type": "loss",
+    "counterpart": "Allied powers (Austria, Great Britain, Prussia, Russia)"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "mismatch",
+   "note": "Free-text counterpart. Saarlouis went to kingdom-of-prussia (prussia/ledger/48 gains Sarre etc. from first-french-empire, 1815-6), Landau to austrian-empire then kingdom-of-bavaria (1816), Bouillon to the Netherlands-Luxembourg. No dossier has a gain from this state."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sardinia",
+    "year": 1815,
+    "type": "gain",
+    "counterpart": "bourbon-kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "bourbon-kingdom-of-france",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "sardinia/ledger/29: the Annecy and Chambéry part of Savoy, confidence 1. France has no loss, and its 1814 keyframe lacks the land. Thin item for France."
+  },
+  {
+   "event": {
+    "slug": "bourbon-kingdom-of-france",
+    "year": 1815,
+    "type": "loss",
+    "counterpart": "swiss-confederation"
+   },
+   "mirror": {
+    "slug": "swiss-confederation",
+    "year": 1815,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Pays de Gex communes, 1815-11 on both sides"
+  },
+  {
+   "event": {
+    "slug": "bourbon-kingdom-of-france",
+    "year": 1830,
+    "type": "contest_start",
+    "counterpart": "regency-of-algiers"
+   },
+   "mirror": {
+    "slug": "regency-of-algiers",
+    "year": 1830,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "1830-6 on both sides; contest_end 1830-7 matched too"
+  },
+  {
+   "event": {
+    "slug": "bourbon-kingdom-of-france",
+    "year": 1832,
+    "type": "contest_start",
+    "counterpart": "netherlands"
+   },
+   "mirror": {
+    "slug": "netherlands",
+    "year": 0,
+    "type": "contest_start"
+   },
+   "status": "missing",
+   "note": "netherlands records the Antwerp citadel as occupation_end 1832-12 against kingdom-of-belgium, with no contest against France"
+  },
+  {
+   "event": {
+    "slug": "bourbon-kingdom-of-france",
+    "year": 1836,
+    "type": "contest_start",
+    "counterpart": "emirate-of-abdelkader"
+   },
+   "mirror": {
+    "slug": "emirate-of-abdelkader",
+    "year": 1836,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "1836-1 on both sides; 1837-5 contest_end matched; 1839 restart matched"
+  },
+  {
+   "event": {
+    "slug": "bourbon-kingdom-of-france",
+    "year": 1847,
+    "type": "contest_end",
+    "counterpart": "emirate-of-abdelkader"
+   },
+   "mirror": {
+    "slug": "emirate-of-abdelkader",
+    "year": 1846,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "The emirate ends the contest in 1846 at confidence 1. The French conquest of Algeria page: surrender in December 1847. The emirate should move to 1847-12."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tahiti",
+    "year": 1844,
+    "type": "contest_start",
+    "counterpart": "bourbon-kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "bourbon-kingdom-of-france",
+    "year": 0,
+    "type": "contest_start"
+   },
+   "status": "missing",
+   "note": "tahiti/ledger/3-4, 1844-3 to 1846-12, confidence 3. France has no mirror (page budget). Thin item."
+  },
+  {
+   "event": {
+    "slug": "bourbon-kingdom-of-france",
+    "year": 1838,
+    "type": "vassal_start",
+    "counterpart": "Gabon coastal chiefs"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "free-text vassal; gabon.json starts 1960"
+  },
+  {
+   "event": {
+    "slug": "bourbon-kingdom-of-france",
+    "year": 1848,
+    "type": "dissolve",
+    "counterpart": "french-second-republic"
+   },
+   "mirror": {
+    "slug": "french-second-republic",
+    "year": 1848,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "1848-2 on both sides"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-modena-and-reggio",
+    "year": 1814,
+    "type": "found",
+    "counterpart": "italian-republic"
+   },
+   "mirror": {
+    "slug": "italian-republic",
+    "year": 1814,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Counterpart corrected by the reviewer from kingdom-of-italy-napoleonic. italian-republic/ledger/8-9 give all its land to austrian-empire in 1814-4 and name no Modena successor. Route to italian-republic."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-modena-and-reggio",
+    "year": 1815,
+    "type": "gain",
+    "counterpart": "duchy-of-massa-and-carrara"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "No dossier yet; in counterparts_needing_dossiers. eu-20-x declined to write it. The 1829 gain is the same case."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-modena-and-reggio",
+    "year": 1847,
+    "type": "gain",
+    "counterpart": "duchy-of-parma-and-piacenza"
+   },
+   "mirror": {
+    "slug": "duchy-of-parma-and-piacenza",
+    "year": 1847,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Guastalla, 1847-12 on both sides"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-modena-and-reggio",
+    "year": 1847,
+    "type": "gain",
+    "counterpart": "grand-duchy-of-tuscany"
+   },
+   "mirror": {
+    "slug": "grand-duchy-of-tuscany",
+    "year": 1847,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Fivizzano; tuscany/ledger/5 has no month"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-modena-and-reggio",
+    "year": 1859,
+    "type": "dissolve",
+    "counterpart": "united-provinces-of-central-italy"
+   },
+   "mirror": {
+    "slug": "united-provinces-of-central-italy",
+    "year": 1859,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "1859-12"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-naples-napoleonic",
+    "year": 1815,
+    "type": "occupation_start",
+    "counterpart": "duchy-of-modena-and-reggio"
+   },
+   "mirror": {
+    "slug": "duchy-of-modena-and-reggio",
+    "year": 0,
+    "type": "occupation_start"
+   },
+   "status": "missing",
+   "note": "naples/ledger/6 and /10 (1815-4 to 1815-5, confidence 1). Modena has no mirror. Thin."
+  },
+  {
+   "event": {
+    "slug": "cispadane-republic",
+    "year": 1796,
+    "type": "gain",
+    "counterpart": "duchy-of-modena-and-reggio"
+   },
+   "mirror": {
+    "slug": "duchy-of-modena-and-reggio",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "The event falls before this dossier starts (1814). The pre-1796 duchy has no dossier; the same goes for cisalpine-republic 1797 and duchy-of-ferrara's successor link."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-parma-and-piacenza",
+    "year": 1814,
+    "type": "found",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": {
+    "slug": "first-french-empire",
+    "year": 1814,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "first-french-empire/ledger/72, 1814-4"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-parma-and-piacenza",
+    "year": 1847,
+    "type": "gain",
+    "counterpart": "grand-duchy-of-tuscany"
+   },
+   "mirror": {
+    "slug": "grand-duchy-of-tuscany",
+    "year": 1847,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Pontremoli; tuscany/ledger/6"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-parma-and-piacenza",
+    "year": 1848,
+    "type": "loss",
+    "counterpart": "kingdom-of-sardinia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sardinia",
+    "year": 1848,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Confidence 1 on the Parma side, 2 on Sardinia's. The 1848-8 return is matched too."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-parma-and-piacenza",
+    "year": 1859,
+    "type": "dissolve",
+    "counterpart": "united-provinces-of-central-italy"
+   },
+   "mirror": {
+    "slug": "united-provinces-of-central-italy",
+    "year": 1859,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "1859-12"
+  },
+  {
+   "event": {
+    "slug": "papal-states",
+    "year": 1545,
+    "type": "loss",
+    "counterpart": "duchy-of-parma-and-piacenza"
+   },
+   "mirror": {
+    "slug": "duchy-of-parma-and-piacenza",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "1545 is before this dossier starts (1814). The same applies to french-consulate/ledger/9 (1802) and first-french-empire/ledger/20 (1808). The pre-1802 duchy has no dossier."
+  },
+  {
+   "event": {
+    "slug": "free-city-of-krakow",
+    "year": 1815,
+    "type": "found",
+    "counterpart": "duchy-of-warsaw"
+   },
+   "mirror": {
+    "slug": "duchy-of-warsaw",
+    "year": 1815,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "1815-5 here, 1815-6 there; within a year"
+  },
+  {
+   "event": {
+    "slug": "austrian-empire",
+    "year": 1815,
+    "type": "vassal_start",
+    "counterpart": "free-city-of-krakow"
+   },
+   "mirror": {
+    "slug": "free-city-of-krakow",
+    "year": 0,
+    "type": "vassal_start"
+   },
+   "status": "missing",
+   "note": "austrian-empire/ledger/18 (confidence 3) and /26 vassal_end 1846-11. Kraków has no protectorate events. Kraków fix."
+  },
+  {
+   "event": {
+    "slug": "austrian-empire",
+    "year": 1836,
+    "type": "occupation_start",
+    "counterpart": "free-city-of-krakow"
+   },
+   "mirror": {
+    "slug": "free-city-of-krakow",
+    "year": 0,
+    "type": "occupation_start"
+   },
+   "status": "missing",
+   "note": "austrian-empire/ledger/24-25, 1836 to 1841. Kraków fix."
+  },
+  {
+   "event": {
+    "slug": "free-city-of-krakow",
+    "year": 1846,
+    "type": "loss",
+    "counterpart": "austrian-empire"
+   },
+   "mirror": {
+    "slug": "austrian-empire",
+    "year": 1846,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "1846-11. kingdom-of-galicia-and-lodomeria/ledger/6 also gains the city, which matches the dissolve, so two Austrian dossiers both take it."
+  },
+  {
+   "event": {
+    "slug": "german-confederation",
+    "year": 1815,
+    "type": "gain",
+    "counterpart": "netherlands"
+   },
+   "mirror": {
+    "slug": "netherlands",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "Umbrella membership, not a transfer of land. The same holds for /ledger/2, 3, 5, 6, 7 and 9: the member keeps its land, so no mirror is expected."
+  },
+  {
+   "event": {
+    "slug": "german-confederation",
+    "year": 1817,
+    "type": "gain",
+    "counterpart": "landgraviate-of-hesse-homburg"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "No dossier; in counterparts_needing_dossiers (eu-20-x declined it)"
+  },
+  {
+   "event": {
+    "slug": "german-confederation",
+    "year": 1848,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-denmark-1814-1940"
+   },
+   "mirror": {
+    "slug": "kingdom-of-denmark-1814-1940",
+    "year": 0,
+    "type": "contest_start"
+   },
+   "status": "missing",
+   "note": "For 1848-1851 Denmark records only a loss to duchy-of-holstein (the rebels), with no contest against german-confederation."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark-1814-1940",
+    "year": 1864,
+    "type": "contest_start",
+    "counterpart": "german-confederation"
+   },
+   "mirror": {
+    "slug": "german-confederation",
+    "year": 0,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "denmark/ledger/4-8 (1864 contests and loss) name german-confederation. The German Confederation page says the war was 'foreign to the Confederation, which took no part in it'. Denmark should name austrian-empire and kingdom-of-prussia."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-holstein",
+    "year": 1863,
+    "type": "occupation_start",
+    "counterpart": "german-confederation"
+   },
+   "mirror": {
+    "slug": "german-confederation",
+    "year": 0,
+    "type": "occupation_start"
+   },
+   "status": "missing",
+   "note": "holstein/ledger/9 (1863-12, confidence 3) and /11 (1864-10). german-confederation fix."
+  },
+  {
+   "event": {
+    "slug": "german-confederation",
+    "year": 1866,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 0,
+    "type": "contest_start"
+   },
+   "status": "missing",
+   "note": "Prussia records gains from Hanover, Hesse, Nassau and Frankfurt but no contest with the Confederation"
+  },
+  {
+   "event": {
+    "slug": "german-confederation",
+    "year": 1866,
+    "type": "dissolve",
+    "counterpart": "north-german-confederation"
+   },
+   "mirror": {
+    "slug": "north-german-confederation",
+    "year": 1867,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "The NGC found (1867-7) names kingdom-of-prussia and lists only Prussia as predecessor. The years are within one; the counterparts disagree."
+  },
+  {
+   "event": {
+    "slug": "german-confederation",
+    "year": 1815,
+    "type": "found",
+    "counterpart": "confederation-of-the-rhine"
+   },
+   "mirror": {
+    "slug": "confederation-of-the-rhine",
+    "year": 1813,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "confederation-of-the-rhine lists german-confederation as successor; the gap 1813-1815 is historical"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Landau",
+   "kind": "place",
+   "used_in": "bourbon-kingdom-of-france"
+  },
+  {
+   "name": "Gex",
+   "kind": "place",
+   "used_in": "bourbon-kingdom-of-france"
+  },
+  {
+   "name": "Guastalla",
+   "kind": "place",
+   "used_in": "duchy-of-modena-and-reggio, duchy-of-parma-and-piacenza"
+  },
+  {
+   "name": "Fivizzano",
+   "kind": "place",
+   "used_in": "duchy-of-modena-and-reggio"
+  },
+  {
+   "name": "Massa",
+   "kind": "place",
+   "used_in": "duchy-of-modena-and-reggio"
+  },
+  {
+   "name": "Lunigiana",
+   "kind": "region",
+   "used_in": "duchy-of-modena-and-reggio"
+  },
+  {
+   "name": "Pontremoli",
+   "kind": "place",
+   "used_in": "duchy-of-parma-and-piacenza"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Duchy of Massa and Carrara",
+   "suggested_slug": "duchy-of-massa-and-carrara",
+   "years": [
+    1473,
+    1829
+   ]
+  },
+  {
+   "name": "Landgraviate of Hesse-Homburg",
+   "suggested_slug": "landgraviate-of-hesse-homburg",
+   "years": [
+    1622,
+    1866
+   ]
+  },
+  {
+   "name": "Duchy of Modena and Reggio (1452-1796)",
+   "suggested_slug": "duchy-of-modena-and-reggio-1452",
+   "years": [
+    1452,
+    1796
+   ]
+  },
+  {
+   "name": "Duchy of Parma and Piacenza (1545-1802)",
+   "suggested_slug": "duchy-of-parma-and-piacenza-1545",
+   "years": [
+    1545,
+    1802
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-20-j.md",
+ "problems": [
+  "Reviewer edit: duchy-of-modena-and-reggio.json changed in place (predecessor and /ledger/0 counterpart kingdom-of-italy-napoleonic -> italian-republic; /ledger/1 confidence 3 -> 2; reviewer sentences in /ledger/1/note and /notes). It validates and was read back. Drop kingdom-of-italy-napoleonic from the author's counterparts_needing_dossiers: italian-republic.json covers the Napoleonic Kingdom of Italy.",
+  "Pre-restoration duchies: no dossier exists for the Duchy of Modena and Reggio before 1796 or the Duchy of Parma and Piacenza before 1802. cispadane-republic, cisalpine-republic, duchy-of-ferrara, papal-states, french-consulate and first-french-empire point their events at the 1814 slugs, outside those dossiers' lives. The orchestrator must decide between new slugs and extending the dossiers.",
+  "kingdom-of-denmark-1814-1940 names german-confederation as counterpart of its 1864 contests and loss. The German Confederation page says the Confederation took no part, so route the fix to Denmark's owner.",
+  "emirate-of-abdelkader ends its contest with France in 1846 at confidence 1; the conquest page gives December 1847.",
+  "italian-republic gives all its 1814 land to austrian-empire and names no successor in Modena (or Parma via first-french-empire).",
+  "The research brief and the authors' notes read occupation events as belonging only to the occupier. The schema says the owner records them too. This misreading caused the France and Kraków failures and may recur in other batches.",
+  "Kingdom of Monaco was not written (merged into principality-of-monaco by another group), as the author reported; not reviewed here."
+ ]
+}

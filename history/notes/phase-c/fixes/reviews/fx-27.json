@@ -1,0 +1,109 @@
+{
+ "batch_id": "fx-27",
+ "checks": [
+  {
+   "item": "F054",
+   "verdict": "pass",
+   "what": "Gazetteer replay of far-eastern-republic's own ledger: found (Ulan-Ude 250 km minus Irkutsk and Mongolia, 613 cells) + Amur + Chita + Buryat (1,493) + Maritime gain = 9,016 = the 1920 keyframe; 1921 events (loss 8, Khabarovsk 60 km, 52 cells, applied as Priamurye's month-0 gain; loss 9, 3,298 cells to nobody; split 10, Primorye region = admin-1 Primor'ye, 783 cells, to Priamurye, which is born the same month and sorts first) leave 4,885 = the 1921 keyframe, difference 0. The split goes around the paired-gain rule correctly (do_event: split has no paired-gain skip). Pages: FER page has 'only the area around Verkhneudinsk', the frontier on 'the western coastline of Lake Baikal' and along Mongolia's northern border, the 26 May 1921 coup that set up 'the Provisional Government of the Priamur' in Primorskaya Oblast; Priamurye page has the 23 May coup and the undated expansion 'to Khabarovsk and then to Spassk'. Caveat: loss 9 (the Khabarovsk krai north of the city and the Jewish oblast, about 3,250 cells, to nobody, conf 1) is a bridge to the pre-existing 1921 keyframe; neither page says who held them in 1921 (the FER page's undated territory sentence includes Khabarovsk Krai and the JAO), and the note says so.",
+   "page": "https://en.wikipedia.org/wiki/Far_Eastern_Republic",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F068",
+   "verdict": "fixed",
+   "what": "Page supports every cut: Qaraqush 'captured Siwa in 1172 and conquered Cyrenaica before 1174'; Zabid May 1174, Aden 'later that year', Sanaa 1175, Hadramaut 1180, Hama and Homs 'By 1175', Karak and Mont Real after Hattin (1187); the Hejaz only as an aim. Replay: Egypt 3,364 + Cyrenaica (Libya inside Clio 1177, 379) + Zabid/Aden + Damascus = 4,073 cells at end 1174; the new keyframe has 5,460, 1,409 more (1,149 of them the Hejaz, which the fixer reported) and 22 fewer, so the snap falls from 4,780 to about 1,430 cells: partly, as reported. Corrected myself: the subtraction labelled 'Arabia south of the Hejaz' includes Saudi Al Jawf (240 cells of the Clio 1177 shape), which lies north of the Hejaz; relabelled 'Arabia outside the Hejaz (Asir, Najran and Jizan to the south, Al Jawf to the north)' in the correction text and note (no cell changes). Re-validated OK.",
+   "page": "https://en.wikipedia.org/wiki/Ayyubid_dynasty",
+   "fix": "ayyubid-sultanate_1174 correction text and note: 'Arabia south of the Hejaz' -> 'Arabia outside the Hejaz (Asir, Najran and Jizan to the south, Al Jawf to the north)'",
+   "applied": true
+  },
+  {
+   "item": "F077",
+   "verdict": "fixed",
+   "what": "The fixer's diagnosis was wrong and the change did nothing. Ledger 8 (Operation Kraai loss) resolves to 720 cells, not about 3,500, and the Dutch East Indies' December 1948 gain (its ledger/105, 902 cells) covers 719 of them, so the paired-gain rule already moved the land; writing the counterpart as a name changes one cell. The 1949 snap row removes Kalimantan Timur 702, Tengah 607, Barat 539 and so on, land the Republic gets only from ledger 15 (the 27 December 1949 transfer, 4,826 cells). The real cause: the 1949 keyframe (the 724-cell guerrilla pocket) is applied at the end of 1949, after ledger 15, so it stripped the transfer again and the 1950 keyframe re-added 4,459 cells. Page: 'Sovereignty was formally transferred on 27 December 1949' and the state 'would include all the territory of the former Dutch East Indies with the exception of Dutch New Guinea'; 'By the end of December, all major Republican held cities in Java and Sumatra were in Dutch hands'. Corrected: ledger 8 counterpart back to dutch-east-indies with the false fx-27 sentence replaced by a review note; republic-of-indonesia_1949 correction = union of its old shape and ledger 15's region (5,372 cells vs the 1950 keyframe's 5,368: 9 and 5 cells apart), with note. Re-validated OK. The fixer's handoff to widen dutch-east-indies ledger/105 is unnecessary.",
+   "page": "https://en.wikipedia.org/wiki/Indonesian_National_Revolution",
+   "fix": "republic-of-indonesia: ledger/8 counterpart -> dutch-east-indies (note corrected); keyframe republic-of-indonesia_1949 correction -> {union: [old pocket+West Sumatra+Aceh, minus(Clio DEI 1949, Papua+Papua Barat)]}",
+   "applied": true
+  },
+  {
+   "item": "F078",
+   "verdict": "pass",
+   "what": "Ledger 10 counterpart nobody -> french-africa. The snap row's 4,467 added cells are all Niger (Agadez 2,268, Zinder 558, Diffa 530...), and the french-africa keyframe rows from 1905 to 1922 hold them (french-west-africa keeps 15,105 cells before 1922 and 19,571 after), so a gain from nobody took nothing; french-africa lives to 1957, so the gain now takes Niger from it in 1922. Page: 'Niger becoming a French colony in 1922'; the Tuareg 'were not subdued until 1922, when Niger became a French colony'. Year and land unchanged.",
+   "page": "https://en.wikipedia.org/wiki/History_of_Niger",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F083",
+   "verdict": "pass",
+   "what": "74 keyframes 1609-1878 checked by script: 59 up to 1859 subtract Maguindanao+Cotabato+Sultan Kudarat and South Cotabato+General Santos; 1861, 1865, 1873, 1877 and 1878 subtract only the Buayan part; every former 'ok' now has minus over the Cliopatria shape of its own year (1732 uses Clio 1727, which was already there before). Maguindanao page: treaties of 1645, 1734 investiture, 1780, 1794, 1805, 1837, 1845; the sultanate 'was able to defend its territory, preventing the Spaniards from colonizing the entire coastal Mindanao'; no Spanish post in the valley; American occupation of Cotabato December 1899. Keeping the valley from 1861 rests on the dossier's existing Polloc 1862 quote. The size rule already gave the cells to Maguindanao, so the compile changes little.",
+   "page": "https://en.wikipedia.org/wiki/Sultanate_of_Maguindanao",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F095",
+   "verdict": "pass",
+   "what": "mamluk-dynasty 1236-1287 keyframes subtract the Paramara 1111 shape (805 cells: Madhya Pradesh 563, Rajasthan 217) minus Gwalior 80 km, Ranthambore 50 km and Mandore 50 km; 573-696 cells leave each Mamluk keyframe, and the Paramara 1227 and 1236 keyframes cover all of them (0 left uncovered) and none of the three forts. Iltutmish page: Ranthambore 1226, Mandore 'the next year', Gwalior 'on 12 December 1232', 'raided the Paramara-controlled cities of Bhilsa and Ujjain in 1234-35', 'made little effort to annex the Paramara territory', Chittor attempt failed.",
+   "page": "https://en.wikipedia.org/wiki/Iltutmish",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F096",
+   "verdict": "pass",
+   "what": "Kept, and the reasoning holds: Salghurids page has Sa'd I ibn Zangi (1198-1226) 'acknowledging the Khwarazm Shahs as his overlord' with no date, and the Salghurids ruling Fars 'first as vassals of the Seljuks then for the Khwarazm Shahs in the 13th century'. The Khwarezmid shape is an overlord's outline and the size rule gives Fars to its holder. The hierarchy.csv handoff should start the row in 1202, not 1198 (the page says 13th century).",
+   "page": "https://en.wikipedia.org/wiki/Salghurids",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F126",
+   "verdict": "pass",
+   "what": "mamluk-sultanate 1250 and 1260 keyframes now subtract region Hejaz (1,407 cells: Al Madinah 527, Makkah 527, Tabuk 353); 0 Hejaz cells left in either. Mamluk Sultanate page dates expansion into 'the Hejaz' only 'By the end of the 13th century' (Baybars, Qalawun, al-Ashraf Khalil), no earlier date; Ayyubid page has the Rasulids end Ayyubid suzerainty in 1238. The 1272 keyframe (ok) brings the Hejaz back, after hierarchy.csv's 1269 vassal row starts.",
+   "page": "https://en.wikipedia.org/wiki/Mamluk_Sultanate",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F263",
+   "verdict": "pass",
+   "what": "First row applied with F083 (Buayan part subtracted in all 74 keyframes to 1898). Buayan page: 'the Spanish could not occupy Buayan itself'; 'A capitulation treaty between Buayan and Spain was signed on 10 March 1887' and 'Buayan officially became a vassal of Spain'. Second row correctly skipped: hierarchy.csv row sultanate-of-buayan -> spanish-empire, vassal, 1887-1898 exists. Label nit: the Buayan page centres Buayan in the upper Pulangi valley with Sarangani Bay as its port; the subtracted South Cotabato/General Santos is what the Buayan dossier draws.",
+   "page": "https://en.wikipedia.org/wiki/Sultanate_of_Buayan",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F231",
+   "verdict": "pass",
+   "what": "ayyubid-sultanate_1241 = union of Clio Ayyubid and Mamluk 1241 rows minus region Hejaz: 5,286 -> 4,135 cells (1,151 removed). Page: the Rasulids ended 'Ayyubid suzerainty in the Hejaz ... which they accomplished in 1238 when Nur al-Din Umar captured Mecca'; the ledger's vassal_end 1238 agrees.",
+   "page": "https://en.wikipedia.org/wiki/Ayyubid_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F282",
+   "verdict": "pass",
+   "what": "The Karnat shape (Muzaffarpur 100 km + Simraungadh disc, 81 cells of the Mamluk shape, 80 in Bihar) is subtracted from the ten mamluk-dynasty keyframes 1215-1287. Karnat page: Harisimhadeva (r. 1295 to 1324) 'the last Karnat sovereign of Tirhut', 'no evidence that the Karnatas were subservient to the Sultan of Delhi'; Iltutmish page: Bihar 'captured ... in the 1210s', Tirhut among the states paying tribute to Ghiyasuddin of Bengal. Caveat: the Muzaffarpur 100 km circle crosses the Ganges: about 12 subtracted cells lie south of the river round Patna, plus 14 river cells, which the classifier wanted left to Delhi ('restrict to the south bank'). The compile is unchanged because the Karnat dossier draws the same circle and wins by size; see problems.",
+   "page": "https://en.wikipedia.org/wiki/Karnat_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F316",
+   "verdict": "pass",
+   "what": "All eight khwarezmid-empire keyframes 1202-1227 now subtract admin-1 Lorestan (121 cells); 0 left in any. Khorshidi page: Shoja al-Din Khorshid 'became the independent lord of Lur-e-Kuchak' after Husamuddin Shuhli died 'around 1174-75 or 1184-85' (infobox 1184-1224), 'He died around 1224', and the page never names the Khwarazm Shahs (the Lurs were earlier 'directly under the caliphs').",
+   "page": "https://en.wikipedia.org/wiki/Khorshidi_dynasty",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "Validation (validate_dossier.py --resolve): all nine changed dossiers OK, 0 errors; the warnings are about counterpart slugs with no dossier and open vassal relations, none from fx-27. republic-of-indonesia and ayyubid-sultanate re-validated OK after the review edits.",
+  "F077: drop the fixer's dutch-east-indies handoff (widen ledger/105). That gain already covers 719 of the 720 cells of the Republic's Operation Kraai loss. The 1950 snap came from the Republic's 1949 keyframe, which the review corrected. The fixer's notes line for F077 (fix-fx-27.md) still describes the wrong cause.",
+  "F068: the 1174 keyframe still draws the Hejaz directly (1,149 cells beyond the ledger). ayyubid-sultanate_1177 (Clio 1177 minus Aleppo) will drop Egypt's desert (1,355 cells of admin Egypt outside the shape) and add Transjordan, which was Frankish until 1187. A follow-up should union Egypt into it and subtract region Transjordan.",
+  "F282: karnat-dynasty-of-mithila_1097, and through it the Tirhut subtraction in mamluk-dynasty 1215-1287, uses a Muzaffarpur 100 km circle that crosses the Ganges to Patna: about 12 cells on the south bank and 14 on the river. A follow-up should cut both to the north bank (the Karnat page: Tirhut/Mithila; the Iltutmish page: Delhi captured Bihar in the 1210s).",
+  "F054: ledger 9 moves about 3,250 cells (Khabarovsk krai outside the city, and the Jewish oblast) to nobody in 1921 on confidence 1, only to match the pre-existing 1921 keyframe. No opened page says who held them in 1921.",
+  "Nothing in this batch was run through the compiler. The F054 and F077 checks replay each dossier's own ledger and keyframes through the gazetteer and read the compiler's ordering (month, births first, slug order, keyframes at month 13, deaths at 14) from tools/compile_dossiers.py."
+ ]
+}

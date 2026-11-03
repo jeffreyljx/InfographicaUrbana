@@ -1,0 +1,923 @@
+{
+ "batch_id": "eu-15-c",
+ "verdicts": [
+  {
+   "slug": "kingdom-of-hungary",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/41/counterpart, /ledger/45/counterpart",
+     "what": "Counterpart slug 'galicia-volhynia' names a Cliopatria row that has been merged into the principality-of-galicia-volhynia dossier, so the 1294 loss and 1305 gain point at a slug that will never have a dossier.",
+     "why": "history/polities/principality-of-galicia-volhynia.json identity.cliopatria_names = ['Principality of Galicia-Volhynia', 'Galicia-Volhynia'].",
+     "fix": "counterpart: principality-of-galicia-volhynia (note extended to say so).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/35/region, /ledger/36/region",
+     "what": "The 1241-1242 Mongol occupation zone was the 1236 shape minus Transdanubia, which also put Croatia, Slavonia, Dalmatia and Bosnia under occupation, but the page names only the lands east of the Danube (confidence 3).",
+     "why": "Kingdom of Hungary (1000-1301) page: 'The Mongols first occupied and thoroughly plundered the territories east of the river Danube'; they 'crossed the Danube when it was frozen in early 1242' (no occupation of Croatia stated).",
+     "fix": "minus [KoH 1236, union[region Transdanubia, country Croatia, country Bosnia and Herz.]]; text extended. The war zone /wars/10/zones/0 is left as is (the fighting reached Trogir).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/30 (and missing loss after it)",
+     "what": "Oltenia is gained in 1231 (Banate of Szoreny) and never lost, while the Wallachia dossier gains the Banate of Severin from this kingdom in 1325 and contests it in 1330 (Posada); the keyframes 1220-1546 are verdict ok and draw only about 10 of Oltenia's 107 cells, so the gain has no trace in the shapes either.",
+     "why": "principality-of-wallachia /ledger/1 (1325 gain, counterpart kingdom-of-hungary, Basarab I page: 'Basarab became disloyal to the Holy Crown of Hungary in 1325'), /ledger/2-3 (1330 contest, Battle of Posada); no Hungarian mirror and no war for the 1330 campaign.",
+     "fix": "Add a 1325 loss of the Banate of Severin (admin1 Mehedinti, Romania) to principality-of-wallachia (c2, https://en.wikipedia.org/wiki/Basarab_I_of_Wallachia), a war 'Charles I's Wallachian campaign (1330)' with that zone, and either narrow the 1231 gain to Mehedinti with keyframes 1231-1314 marked adjust, or say in the 1220 keyframe note that the march stays under-drawn by choice.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/62 (kingdom-of-hungary_1529), ledger 1529",
+     "what": "The 1529 shape drops 66 southern cells to the Ottomans with no ledger event; the Ottoman dossier records the matching 1529 gain from this kingdom.",
+     "why": "keyframe 62 note: '-405 cells: ... 219 ... Croatia 114 ... and 66 southern cells to the Ottomans'; ottoman-empire /ledger/70 1529 gain counterpart kingdom-of-hungary (c1).",
+     "fix": "Add a 1529 loss to ottoman-empire, c1, region intersect [minus [KoH 1526, KoH 1529], cliopatria Ottoman Empire 1529], text 'the 66 southern cells Cliopatria moves to the Ottoman row in 1529'.",
+     "applied": false
+    },
+    {
+     "where": "/ledger between 16 (1133) and 52 (1358)",
+     "what": "The 1358 gain of Dalmatia from Venice has no preceding loss except the Zadar contest of 1202; the page dates the Venetian takeovers of Split and Nin.",
+     "why": "Croatia in union with Hungary page: 'Venice took Split in 1327 and Nin in 1329'.",
+     "fix": "Add 1327 loss (place Split) and 1329 loss (place Nin) to republic-of-venice, c2, source Croatia_in_union_with_Hungary; or widen the 1202 contest to the coast and say so.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1284) and /ledger/48",
+     "what": "Kingdom of Syrmia gains Macva, Usora and Soli from this kingdom in 1284 with no mirror here, and both dossiers then lose Usora and Soli to Bosnia (here 1324, there 1325).",
+     "why": "Banate of Bosnia page: 'In 1284, this contiguous territory was granted to the deposed Serbian king Dragutin'; kingdom-of-syrmia /ledger/1 (1284 gain) and /ledger/7 (1325 loss to banate-of-bosnia); the 1285 keyframe note here mentions the grant but no event records it.",
+     "fix": "Add a 1284 vassal_start of kingdom-of-syrmia (Macva, Usora and Soli; c2, Banate_of_Bosnia) and its vassal_end in 1324/1325, so the Cliopatria cells stay Hungarian under a vassal; tell eu-18 to recast Syrmia's 1284 gain as vassalage or keep both and drop the 1324 loss here.",
+     "applied": false
+    },
+    {
+     "where": "/wars (1354-1355)",
+     "what": "Louis I's 1354 invasion of Serbia is missing from wars; the Serbian Empire dossier records a Hungarian occupation 1354-1355.",
+     "why": "Louis I page: 'In 1354 Louis invaded Serbia', Dusan repelled the invasion, 'Peace with Dusan was concluded in May 1355'; serbian-empire /ledger/5 and /ledger/7.",
+     "fix": "Add a war 'Louis I's Serbian campaign (1354-1355)' with empty zones and the note that no land changed hands (and tell eu-18 the occupation in serbian-empire is not on the Louis I page).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/26, /ledger/27, /ledger/28, /ledger/32",
+     "what is missing": "Belgrade-Branicevo swings 1202-1236 (62-97 cells) rest on confidence-1 events.",
+     "page to try": "https://en.wikipedia.org/wiki/Emeric,_King_of_Hungary"
+    },
+    {
+     "where": "ledger 1205-1234 (Halych)",
+     "what is missing": "Andrew II's Halych wars (Coloman king of Halych 1214-1219; Andrew 1227-1234) have no events; duchy-of-sandomierz /ledger/14-15 (1214-1215) and principality-of-galicia-volhynia /ledger/10-11 (1230, 1232) name this kingdom.",
+     "page to try": "https://en.wikipedia.org/wiki/Andrew_II_of_Hungary"
+    },
+    {
+     "where": "/ledger/41, /ledger/45",
+     "what is missing": "North-eastern (Carpathian Ruthenia) cells 1294/1305 at confidence 1; the Galicia-Volhynia dossier dates Leo's annexation to 1280 and the return to 1301.",
+     "page to try": "https://en.wikipedia.org/wiki/Leo_I_of_Galicia"
+    },
+    {
+     "where": "ledger 1284-1427 (Belgrade)",
+     "what is missing": "Belgrade's handovers (to Dragutin 1284, back c.1319, to Stefan Lazarevic 1403, back 1427 with Golubac lost) are not in the ledger.",
+     "page to try": "https://en.wikipedia.org/wiki/Sigismund,_Holy_Roman_Emperor"
+    },
+    {
+     "where": "/ledger/55",
+     "what is missing": "1363 Golden Horde cells at confidence 1; the Louis I page has Andrew Lackfi's victory of 2 February 1345 that pushed the Tatars behind the Dniester and Dragos's restoration of suzerainty in 1360.",
+     "page to try": "https://en.wikipedia.org/wiki/Louis_I_of_Hungary"
+    },
+    {
+     "where": "/ledger/59",
+     "what is missing": "End of the Vidin occupation (1369) is a bridging judgment.",
+     "page to try": "https://en.wikipedia.org/wiki/Ivan_Sratsimir"
+    },
+    {
+     "where": "/ledger/62, /ledger/63",
+     "what is missing": "Venetian takeover of the Dalmatian coast dated only by Cliopatria (1415).",
+     "page to try": "https://en.wikipedia.org/wiki/Sigismund,_Holy_Roman_Emperor"
+    },
+    {
+     "where": "/ledger/80",
+     "what is missing": "End of Moldavia's 1475 fealty (1490) is a bridging judgment.",
+     "page to try": "https://en.wikipedia.org/wiki/Stephen_the_Great"
+    },
+    {
+     "where": "/ledger/85, /ledger/88",
+     "what is missing": "1526 and 1534 southern cells at confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Moh%C3%A1cs"
+    },
+    {
+     "where": "/ledger/3, /ledger/5, /ledger/9, /ledger/17, /ledger/49",
+     "what is missing": "Small Cliopatria edge changes 1010, 1015, 1040, 1139, 1333 at confidence 1 (page silent).",
+     "page to try": "https://en.wikipedia.org/wiki/Stephen_II,_Ban_of_Bosnia"
+    },
+    {
+     "where": "/ledger/43, /ledger/44",
+     "what is missing": "Oligarch domains from 1305 at confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Matthew_III_Cs%C3%A1k"
+    },
+    {
+     "where": "ledger 1370-1387",
+     "what is missing": "Hungarian rule over Red Ruthenia (Galicia) under Louis I to 1387 is not recorded.",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Galicia%E2%80%93Volhynia"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No ruler strip.",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_Hungarian_monarchs"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Croatia_in_union_with_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Croatia_in_union_with_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Croatia_in_union_with_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Hungary_(1000%E2%80%931301)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/B%C3%A9la_III_of_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/B%C3%A9la_III_of_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/B%C3%A9la_III_of_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/B%C3%A9la_III_of_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/B%C3%A9la_III_of_Hungary",
+     "result": "confirmed (body implies Syrmia held by May 1182; lead says 1180-1181)"
+    },
+    {
+     "where": "/ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Hungary_(1000%E2%80%931301)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/33",
+     "page": "https://en.wikipedia.org/wiki/Banate_of_Bosnia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/35",
+     "page": "https://en.wikipedia.org/wiki/B%C3%A9la_IV_of_Hungary",
+     "result": "confirmed (region narrowed by reviewer)"
+    },
+    {
+     "where": "/ledger/36",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Hungary_(1000%E2%80%931301)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/38",
+     "page": "https://en.wikipedia.org/wiki/B%C3%A9la_IV_of_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/39",
+     "page": "https://en.wikipedia.org/wiki/B%C3%A9la_IV_of_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/40",
+     "page": "https://en.wikipedia.org/wiki/B%C3%A9la_IV_of_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/48",
+     "page": "https://en.wikipedia.org/wiki/Banate_of_Bosnia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/50",
+     "page": "https://en.wikipedia.org/wiki/Louis_I_of_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/51",
+     "page": "https://en.wikipedia.org/wiki/Louis_I_of_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/52",
+     "page": "https://en.wikipedia.org/wiki/Croatia_in_union_with_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/54",
+     "page": "https://en.wikipedia.org/wiki/Louis_I_of_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/56",
+     "page": "https://en.wikipedia.org/wiki/Louis_I_of_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/61",
+     "page": "https://en.wikipedia.org/wiki/Croatia_in_union_with_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/66",
+     "page": "https://en.wikipedia.org/wiki/Matthias_Corvinus",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/68",
+     "page": "https://en.wikipedia.org/wiki/Matthias_Corvinus",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/69",
+     "page": "https://en.wikipedia.org/wiki/Matthias_Corvinus",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/72",
+     "page": "https://en.wikipedia.org/wiki/Matthias_Corvinus",
+     "result": "confirmed (page: ratified at Olomouc 21 July 1478; the 1301-1526 page infobox has 2 April 1479)"
+    },
+    {
+     "where": "/ledger/74",
+     "page": "https://en.wikipedia.org/wiki/Matthias_Corvinus",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/86",
+     "page": "https://en.wikipedia.org/wiki/Croatia_in_union_with_Hungary",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/92",
+     "page": "https://en.wikipedia.org/wiki/Ottoman_Hungary",
+     "result": "confirmed (year; day from the Kingdom of Hungary page)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 282870,
+    "infobox_year": 1200,
+    "cliopatria_km2": 334971,
+    "ratio": 1.18,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1003,
+    "type": "gain",
+    "counterpart": "Gyula (Transylvania)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "plain-name counterpart; listed under counterparts_needing_dossiers (gyula-s-transylvania)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1003,
+    "type": "loss",
+    "counterpart": "kingdom-of-poland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-poland (eu-15) not written yet; also 1018 gain and 1139 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1010,
+    "type": "gain",
+    "counterpart": "first-bulgarian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "first-bulgarian-empire has no dossier yet; also the 1015 loss (both c1)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1031,
+    "type": "gain",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "holy-roman-empire ledger has no 1031 cession of the Lajta-Fischa strip to Hungary (small strip)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1091,
+    "type": "gain",
+    "counterpart": "kingdom-of-croatia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-croatia (eu-18) not written yet; also the 1102 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1105,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "byzantine-empire has no 1105 loss of Dalmatia"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1116,
+    "type": "loss",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "republic-of-venice (eu-13) not written yet; also 1133 gain, 1358 gain, 1415 loss"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1164,
+    "type": "loss",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 1167,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Byzantine dossier gains the Hungarian lands only in 1167 (c1); the Bela III page dates Syrmia 1164 and Dalmatia 1165; also KoH 1165 loss"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1167,
+    "type": "loss",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 1167,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "byzantine-empire /ledger/131"
+  },
+  {
+   "event": {
+    "slug": "byzantine-empire",
+    "year": 1167,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Byzantine dossier makes Hungary a vassal 1167-1180; this dossier records no vassalage (the pages opened do not state one)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1181,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 1188,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Byzantine loss is at Cliopatria's 1188 (c1); the Bela III page has the recovery in 1180-1182 (also KoH 1182 gain); route to eu-05"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1188,
+    "type": "occupation_start",
+    "counterpart": "principality-of-halych"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "principality-of-halych (eu-16) not written yet; also 1190 end"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1202,
+    "type": "gain",
+    "counterpart": "second-bulgarian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "second-bulgarian-empire (eu-18) not written yet; also 1206, 1216, 1236, 1255"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1214,
+    "type": "gain",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Hungarian 1214 loss / 1215 gain of Przemysl and Lubaczow (Halych wars not in this ledger)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1227,
+    "type": "vassal_start",
+    "counterpart": "cuman-kipchak-confederation"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "cuman-kipchak-confederation dossier has no vassalage to Hungary (also the 1241 vassal_end)"
+  },
+  {
+   "event": {
+    "slug": "principality-of-galicia-volhynia",
+    "year": 1230,
+    "type": "gain",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Hungarian 1230 loss / 1232 gain of Halych"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1241,
+    "type": "occupation_start",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1241,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "same years (April 1241 - 1242) but the Mongol dossier uses contest_start/contest_end, not occupation"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1253,
+    "type": "gain",
+    "counterpart": "banate-of-bosnia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "banate-of-bosnia (eu-18) not written yet; also 1235/1241 contest, 1324, 1333, 1363/1367"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1254,
+    "type": "gain",
+    "counterpart": "kingdom-of-bohemia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-bohemia (eu-15) not written yet; note duchy-of-styria records 1254 and 1260 as renames and Cliopatria draws Styria in the Holy Roman Empire row 1250-1259; also the 1261 loss"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-syrmia",
+    "year": 1284,
+    "type": "gain",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Hungarian event for the 1284 grant of Macva, Usora and Soli to Dragutin; both dossiers then lose Usora and Soli to Bosnia (KoH 1324, Syrmia 1325)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1294,
+    "type": "loss",
+    "counterpart": "principality-of-galicia-volhynia"
+   },
+   "mirror": {
+    "slug": "principality-of-galicia-volhynia",
+    "year": 1280,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "slug corrected by reviewer from galicia-volhynia; G-V dossier dates Leo's annexation 1280 (c2) and the return 1301 (c1) against 1294/1305 here (c1)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1305,
+    "type": "loss",
+    "counterpart": "Matthew III Csak"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "plain-name oligarch counterparts (also Paul Subic and the Babonic family), listed by the author"
+  },
+  {
+   "event": {
+    "slug": "principality-of-wallachia",
+    "year": 1325,
+    "type": "gain",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Hungarian loss of the Banate of Severin and no 1330 Posada contest; this ledger gains Oltenia in 1231 and never loses it"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1347,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-naples"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-naples dossier has no Hungarian occupation 1347-1351"
+  },
+  {
+   "event": {
+    "slug": "serbian-empire",
+    "year": 1354,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Hungarian war or occupation for 1354-1355; the Louis I page says Dusan repelled the invasion"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1363,
+    "type": "gain",
+    "counterpart": "golden-horde"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "golden-horde has no loss to Hungary (event c1 on Cliopatria cells)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1365,
+    "type": "occupation_start",
+    "counterpart": "despotate-of-vidin"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "despotate-of-vidin (eu-18) not written yet; also the 1369 end"
+  },
+  {
+   "event": {
+    "slug": "house-of-habsburg",
+    "year": 1437,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "house-of-habsburg models Albert (1437-1439) and Ladislaus V (1453-1457) as vassalage of Hungary; this dossier records a rename in 1437 and nothing in 1453 (personal union, not territory)"
+  },
+  {
+   "event": {
+    "slug": "ottoman-empire",
+    "year": 1443,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Hungarian contest for the Long Campaign 1443-1448; the Varna war here has empty zones"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1463,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "ottoman-empire has no 1463 loss of Jajce/Srebrenik nor 1476 loss of Sabac"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1468,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-bohemia"
+   },
+   "mirror": {
+    "slug": "margraviate-of-moravia",
+    "year": 1469,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Moravia part matched in margraviate-of-moravia within one year (also 1478 gain vs Moravia 1479 loss, 1491 loss vs Moravia 1490 gain); counterpart slug differs: this ledger names kingdom-of-bohemia (not written yet)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1475,
+    "type": "vassal_start",
+    "counterpart": "principality-of-moldavia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "principality-of-moldavia (eu-18) not written yet; also the 1490 end"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1477,
+    "type": "contest_start",
+    "counterpart": "house-of-habsburg"
+   },
+   "mirror": {
+    "slug": "house-of-habsburg",
+    "year": 1477,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "house-of-habsburg /ledger/23 and /ledger/25 (contest_end 1 December 1477)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1482,
+    "type": "occupation_start",
+    "counterpart": "house-of-habsburg"
+   },
+   "mirror": {
+    "slug": "house-of-habsburg",
+    "year": 1485,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "3 years apart: Matthias page 'occupied Lower Austria between 1482 and 1487' against the Habsburg dossier's 1481 contest and 1485 occupation (Vienna); end matched in August 1490"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1487,
+    "type": "occupation_start",
+    "counterpart": "duchy-of-styria"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "duchy-of-styria dossier has no Hungarian occupation 1487-1490"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1521,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1521,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "ottoman-empire /ledger/65"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1526,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1526,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "ottoman-empire /ledger/67; the Ottoman 1526 contest_start has no Hungarian mirror"
+  },
+  {
+   "event": {
+    "slug": "eastern-hungarian-kingdom",
+    "year": 1526,
+    "type": "found",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": {
+    "slug": "kingdom-of-hungary",
+    "year": 1528,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "EHK founded November 1526; this ledger contests its land from 1528 (EHK contest 1527, matched within one year) and loses it in 1538 (matched)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1527,
+    "type": "loss",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": {
+    "slug": "habsburg-monarchy",
+    "year": 1527,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "same year but different land: Habsburg 1527 gain is Buda and the Danube towns (60 km circle), this loss is Croatia; this dossier keeps Buda to 1541"
+  },
+  {
+   "event": {
+    "slug": "ottoman-empire",
+    "year": 1529,
+    "type": "gain",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Hungarian 1529 loss for the 66 southern cells (fix listed)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1534,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "ottoman-empire has no 1534 loss (both sides Cliopatria-driven, c1)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1538,
+    "type": "loss",
+    "counterpart": "eastern-hungarian-kingdom"
+   },
+   "mirror": {
+    "slug": "eastern-hungarian-kingdom",
+    "year": 1538,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "EHK /ledger/2-3 (Treaty of Nagyvarad, February 1538)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1541,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1541,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "ottoman-empire /ledger/74"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1546,
+    "type": "dissolve",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": {
+    "slug": "habsburg-monarchy",
+    "year": 1547,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "successor; EHK 1547 gain and Ottoman 1547 contest_end name this kingdom after its end (their dossiers' issue)"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Transdanubia",
+   "kind": "region",
+   "used_in": "kingdom-of-hungary"
+  },
+  {
+   "name": "Lusatia",
+   "kind": "region",
+   "used_in": "kingdom-of-hungary"
+  },
+  {
+   "name": "Szepesseg (Spis, Zips)",
+   "kind": "region",
+   "used_in": "kingdom-of-hungary"
+  },
+  {
+   "name": "Jajce",
+   "kind": "place",
+   "used_in": "kingdom-of-hungary"
+  },
+  {
+   "name": "Srebrenik",
+   "kind": "place",
+   "used_in": "kingdom-of-hungary"
+  },
+  {
+   "name": "Sabac",
+   "kind": "place",
+   "used_in": "kingdom-of-hungary"
+  },
+  {
+   "name": "Visegrad",
+   "kind": "place",
+   "used_in": "kingdom-of-hungary"
+  },
+  {
+   "name": "Mohacs",
+   "kind": "place",
+   "used_in": "kingdom-of-hungary"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Croatia in union with Hungary",
+   "suggested_slug": "croatia-in-union-with-hungary",
+   "years": [
+    1102,
+    1527
+   ]
+  },
+  {
+   "name": "Royal Hungary",
+   "suggested_slug": "royal-hungary",
+   "years": [
+    1541,
+    1699
+   ]
+  },
+  {
+   "name": "Ottoman Hungary (Budin Eyalet)",
+   "suggested_slug": "ottoman-hungary",
+   "years": [
+    1541,
+    1699
+   ]
+  },
+  {
+   "name": "Domain of Matthew III Csak",
+   "suggested_slug": "matthew-iii-csak",
+   "years": [
+    1301,
+    1321
+   ]
+  },
+  {
+   "name": "Gyula's Transylvania",
+   "suggested_slug": "gyula-s-transylvania",
+   "years": [
+    900,
+    1003
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-15-c.md",
+ "problems": [
+  "WebFetch returns model summaries (quotes capped at 125 characters), not raw page text; spot checks rest on those summaries.",
+  "Pages disagree on the Peace of Olomouc: Matthias Corvinus page 21 July 1478, Kingdom of Hungary (1301-1526) infobox 2 April 1479, margraviate-of-moravia dossier 1479; the dossier follows its cited page.",
+  "1526-1546 is modelled three ways: this dossier keeps Buda and the centre to 1541 and royal Hungary to 1546, habsburg-monarchy gains Buda from this kingdom in 1527, and Cliopatria draws royal Hungary in its Kingdom of Spain row from 1540; the orchestrator or eu-15-x should settle one model.",
+  "Neighbour dossiers missing a mirror of this kingdom's events (byzantine-empire, holy-roman-empire, cuman-kipchak-confederation, kingdom-of-naples, golden-horde, duchy-of-styria, ottoman-empire) belong to other groups; listed in cross_checks for routing."
+ ]
+}

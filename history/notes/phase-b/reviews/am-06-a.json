@@ -1,0 +1,1296 @@
+{
+ "batch_id": "am-06-a",
+ "verdicts": [
+  {
+   "slug": "portuguese-empire",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/56, /ledger/57, /ledger/58, /ledger/59 (region), /ledger/64/region/union/1, /wars/5/zones/0",
+     "what": "The Guarani War contest, the 1756-1759 occupation and the 1777 cession used the gazetteer region 'Jesuit Missions', which also covers Argentine Misiones and Paraguayan Itapua and Misiones, while their own text says the seven missions east of the Uruguay River.",
+     "why": "Guarani War (S3): 'The boundary drawn up between the two nations was the Uruguay River, with Portugal possessing the land east of the river'; 'The seven Jesuit missions east of the Uruguay River, known as the Misiones Orientales'. First Treaty of San Ildefonso (S4): 'Portugal ceded ... the Misiones Orientales'. regions.jsonl: Jesuit Missions = Misiones (Argentina) + Itapua + Misiones (Paraguay) + north-west Rio Grande do Sul.",
+     "fix": "Region set to {\"intersect\": [{\"region\": \"Jesuit Missions\"}, {\"admin1\": \"Rio Grande do Sul\", \"country\": \"Brazil\"}]} with the existing text (the Misiones Orientales only).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/66/region",
+     "what": "The 1 October 1777 gain of the whole admin-1 Rio Grande do Sul re-added the Misiones Orientales that /ledger/64 cedes to Spain in the same month, so the missions would be painted Portuguese from 1777 to 1801.",
+     "why": "S4: 'Portugal ceded Colonia del Sacramento, the associated island of San Gabriel and the Misiones Orientales, while Spain acknowledged Portuguese control of Southern Brazil'.",
+     "fix": "Region set to {\"minus\": [{\"admin1\": \"Rio Grande do Sul\", \"country\": \"Brazil\"}, {\"region\": \"Jesuit Missions\"}]}, text 'Rio Grande do Sul, reoccupied by 1777, without the Misiones Orientales that the same treaty ceded to Spain'.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/74 (was /ledger/75)",
+     "what": "contest_start for the Banda Oriental was dated 20 January 1817 (Montevideo) although the page and the dossier's own war entry start the fighting with the invasion of August 1816.",
+     "why": "Cisplatina (S12): 'in August 1816 they invaded the Banda Oriental, with the intention of destroying the protector and his revolution'; the infobox also gives 'invaded ... 1816'; /wars/8 runs from 1816.",
+     "fix": "Year 1816, month 8, note rewritten to lead with the invasion; event moved before the 1817 occupation_end to keep the ledger sorted (later indices unchanged).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/45/counterpart",
+     "what": "The 1698 loss of Mombasa and the Zanzibar coast named a free-text counterpart 'Imamate of Oman (Yaruba)' although the Cliopatria row yarubid-dynasty (1626-1743, modern countries Oman, Tanzania, UAE) exists, as the author's own report says.",
+     "why": "polities.csv row yarubid-dynasty; Portuguese Mozambique (S8, quoted in the note): 'the Arab seizure of Portugal's key foothold at Fort Jesus on Mombasa Island ... in 1698'.",
+     "fix": "Counterpart set to 'yarubid-dynasty' (me-10 must carry the 1698 gain).",
+     "applied": true
+    },
+    {
+     "where": "/notes",
+     "what": "The notes flagged the overlap with Cliopatria's Kingdom of Portugal row only for Ceuta, Madeira, the Azores and the 1502 coast; that row also draws the Gulf and Oman coast in 1507-1705 and Angola and Mozambique in 1824-1910, the very land the new keyframes portuguese-empire_1824, _1885, _1891 and _1895 restore.",
+     "why": "shapes.csv: kingdom-of-portugal_1507 to _1640 (1507-1705) list Oman, UAE, Saudi Arabia, Yemen; kingdom-of-portugal_1824 to _1856 189,000-193,000 km2 'Portugal;Mozambique;Angola'; _1885 1,142,246 km2; _1890 1,426,308 km2; _1895 to _1908 1.94 M km2 (Angola, Mozambique, Portugal).",
+     "fix": "Appended a paragraph 'KINGDOM OF PORTUGAL ROW' to the notes naming those shapes and leaving the choice of row to eu-12 and the compile step.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/67",
+     "what is missing": "The 1778 jump of 1.28 M km2 in the Amazon (Amazonas 4,587 of 6,010 cells) rests on a confidence-1 gain; neither San Ildefonso nor El Pardo describes the Amazon frontier.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Madrid_(13_January_1750)"
+    },
+    {
+     "where": "/keyframe_review/52",
+     "what is missing": "The 1820 shape holds 251 of 477 Jesuit Missions cells (the Misiones Orientales) with no ledger event: the Portuguese seizure of the seven missions in 1801 (War of the Oranges, Treaty of Badajoz) is absent; the author flagged it.",
+     "page to try": "https://en.wikipedia.org/wiki/War_of_the_Oranges"
+    },
+    {
+     "where": "/ledger/65",
+     "what is missing": "S4 says Cevallos 'captured the island of Santa Catarina in February' 1777; the ledger has only its October return as a gain of the whole admin-1, of land never lost. Add occupation_start (spanish-empire, February 1777, the island) and make the October event its occupation_end, with the island as region.",
+     "page to try": "https://en.wikipedia.org/wiki/First_Treaty_of_San_Ildefonso"
+    },
+    {
+     "where": "/ledger/66",
+     "what is missing": "The 1777 gain of Rio Grande do Sul from spanish-empire has no earlier loss: the Spanish hold of the southern Rio Grande from the 1762-1763 war to 1776 ('by 1777, Portugal reoccupied Rio Grande do Sul', S4) is not in the ledger.",
+     "page to try": "https://en.wikipedia.org/wiki/Spanish%E2%80%93Portuguese_War_(1776%E2%80%931777)"
+    },
+    {
+     "where": "/ledger/46, /ledger/47, /ledger/61",
+     "what is missing": "Colonia del Sacramento swings of 1706 (Spanish siege of 1705), 1713 (return under the Utrecht settlement) and 1763 (Treaty of Paris) are confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Colonia_del_Sacramento"
+    },
+    {
+     "where": "/ledger/42, /ledger/43, /ledger/48 to /ledger/53",
+     "what is missing": "Growth of the Brazilian interior 1670-1748 (Minas Gerais, Cuiaba, Goias, Mato Grosso, the Guapore) is eight confidence-1 gains; S14 is silent on the places and years.",
+     "page to try": "https://en.wikipedia.org/wiki/Brazilian_Gold_Rush"
+    },
+    {
+     "where": "/ledger/11, /ledger/14",
+     "what is missing": "Pasai 1521-1529 at confidence 1 with sultanate-of-aceh as counterpart; check whether the fort was taken from Samudera Pasai rather than Aceh and date its loss.",
+     "page to try": "https://en.wikipedia.org/wiki/Samudera_Pasai_Sultanate"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "Dili 1526 at confidence 1 (S1 gives Timor only as discovered in 1512).",
+     "page to try": "https://en.wikipedia.org/wiki/Portuguese_Timor"
+    },
+    {
+     "where": "/ledger/15",
+     "what is missing": "Malacca hinterland loss of 1529 to sultanate-of-johor at confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Portuguese_Malacca"
+    },
+    {
+     "where": "/ledger/24",
+     "what is missing": "The 1572 growth of the Brazilian coast (and the extents of the 15 captaincies of 1534-1536) at confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Captaincies_of_Brazil"
+    },
+    {
+     "where": "/ledger/63",
+     "what is missing": "Angola's 1772 coastal strip (Luanda to Benguela) at confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Angola"
+    },
+    {
+     "where": "/ledger/77 (was /ledger/78) and /identity/capitals/1",
+     "what is missing": "The court's return to Lisbon is dated 1822 at confidence 1; the capital list ends Rio in 1821 without a page.",
+     "page to try": "https://en.wikipedia.org/wiki/John_VI_of_Portugal"
+    },
+    {
+     "where": "/ledger/80",
+     "what is missing": "Flores and Solor ceded to the Dutch in 1859 at confidence 1, sourced to Portuguese India, which does not give the treaty.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Lisbon_(1859)"
+    },
+    {
+     "where": "/ledger (1507-1650)",
+     "what is missing": "No event for Muscat and the Oman coast, which Cliopatria's Kingdom of Portugal row draws in 1507-1705; if the compile step gives that land to this dossier it needs gain and loss events.",
+     "page to try": "https://en.wikipedia.org/wiki/Muscat"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Portuguese_Empire",
+     "result": "confirmed: 'By July 1511, Albuquerque had captured Malacca' (month 7 is the page's bound). Same fetch confirmed /ledger/0 'In 1415 an attack was made on Ceuta', /ledger/3 'discovered in 1456 and settled in 1462' and /ledger/79 'proclaimed the independence of Brazil on 7 September 1822'."
+    },
+    {
+     "where": "/ledger/32",
+     "page": "https://en.wikipedia.org/wiki/Dutch%E2%80%93Portuguese_War",
+     "result": "confirmed: the paragraph opening 'In 1645, most of Dutch Brazil revolted' continues 'Still in that year, the Dutch abandoned São Luís'. Same page confirmed /ledger/27 ('Malacca finally succumbed in 1641'), /ledger/28 (August 1641 alliance, 'captured Luanda and Benguela'), /ledger/30 ('before the end of 1642, the rest of Portuguese Gold Coast followed'), /ledger/34 ('final expulsion from Recife in 1654'), /ledger/36-37 ('captured Colombo in 1656 and drove the last Portuguese from Ceylon in 1658')."
+    },
+    {
+     "where": "/ledger/44",
+     "page": "https://en.wikipedia.org/wiki/Colonial_Brazil",
+     "result": "confirmed: 'In 1679, Manuel Lobo founded Colónia do Sacramento on the margin opposite to Buenos Aires'. Same page confirmed /ledger/19 (1549, Tome de Sousa, Salvador) and /ledger/21-23 (Guanabara 1555, Rio founded 1565, last French expelled 1567); infobox 8,100,200 km2."
+    },
+    {
+     "where": "/ledger/54",
+     "page": "https://en.wikipedia.org/wiki/Bandeirantes",
+     "result": "confirmed (confidence 2 is right): 'With the Treaty of Madrid (13 January 1750) ...'; Portugal's de facto control over most of the Southeast, South and Central West 'was recognized by the Treaties of Madrid in 1750 and San Ildefonso in 1777'. The note's quote is condensed and the page does not name the Amazon or Rondonia."
+    },
+    {
+     "where": "/ledger/76 (was /ledger/77) and /ledger/74 (was /ledger/75)",
+     "page": "https://en.wikipedia.org/wiki/Cisplatina",
+     "result": "confirmed for the 1821 gain ('In 1821, the Provincia Oriental ... was annexed as a province', assembly of 18 July 1821); mis-dated contest_start (page: 'in August 1816 they invaded the Banda Oriental'), fixed to 1816-08."
+    },
+    {
+     "where": "/ledger/64, /ledger/65, /ledger/66",
+     "page": "https://en.wikipedia.org/wiki/First_Treaty_of_San_Ildefonso",
+     "result": "confirmed: signed 1 October 1777; 'Portugal ceded Colonia del Sacramento, the associated island of San Gabriel and the Misiones Orientales, while Spain acknowledged Portuguese control of Southern Brazil and returned Santa Catarina island'; 'by 1777, Portugal reoccupied Rio Grande do Sul'. The page also has the February 1777 capture of Santa Catarina and the July 1777 surrender of Colonia, not in the ledger (thin)."
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 5500000,
+    "infobox_year": 1820,
+    "cliopatria_km2": 8087194,
+    "ratio": 1.47,
+    "acknowledged": true,
+    "note": "The Portuguese Empire article has no infobox area field; the figure is the article's 'At its greatest extent in 1820, the area under its control was approximately 5.5 million square kilometres'. Compared with portuguese-empire_1820 (8,087,194 km2); acknowledged in /keyframe_review/52 and the author's problems. Colonial Brazil's infobox 8,100,200 km2 against 7,832,514 km2 (1778-1804) is 0.97, as the author says."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1415,
+    "type": "found",
+    "counterpart": "marinid-sultanate"
+   },
+   "mirror": {
+    "slug": "marinid-sultanate",
+    "year": 1415,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/0: no marinid-sultanate dossier yet (owned by af-02, not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1419,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/1: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1427,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/2: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1462,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/3: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1481,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/4: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1500,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/5: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1505,
+    "type": "vassal_start",
+    "counterpart": "Kingdom of Cochin"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/6: counterpart has no Cliopatria row; listed in counterparts_needing_dossiers as kingdom-of-cochin"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1505,
+    "type": "gain",
+    "counterpart": "Cannanore ruler (not named on the page)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/7: counterpart has no Cliopatria row; listed in counterparts_needing_dossiers as kolathiri-of-cannanore"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1510,
+    "type": "gain",
+    "counterpart": "bijapur-sultanate"
+   },
+   "mirror": {
+    "slug": "bijapur-sultanate",
+    "year": 1510,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/8: no bijapur-sultanate dossier yet (owned by sa-04, not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1511,
+    "type": "gain",
+    "counterpart": "sultanate-of-malacca"
+   },
+   "mirror": {
+    "slug": "sultanate-of-malacca",
+    "year": 1511,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/9: no sultanate-of-malacca dossier yet (owned by se-02, not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1515,
+    "type": "gain",
+    "counterpart": "Hormuz (Huwala state)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/10: counterpart has no Cliopatria row; listed in counterparts_needing_dossiers as kingdom-of-hormuz"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1521,
+    "type": "gain",
+    "counterpart": "sultanate-of-aceh"
+   },
+   "mirror": {
+    "slug": "sultanate-of-aceh",
+    "year": 1521,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/11: no sultanate-of-aceh dossier yet (owned by se-02, not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1526,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/12: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1529,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1529,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/13: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1529,
+    "type": "loss",
+    "counterpart": "sultanate-of-aceh"
+   },
+   "mirror": {
+    "slug": "sultanate-of-aceh",
+    "year": 1529,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/14: no sultanate-of-aceh dossier yet (owned by se-02, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1529,
+    "type": "loss",
+    "counterpart": "sultanate-of-johor"
+   },
+   "mirror": {
+    "slug": "sultanate-of-johor",
+    "year": 1529,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/15: no sultanate-of-johor dossier yet (owned by se-02, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1534,
+    "type": "gain",
+    "counterpart": "Sultan of Guzerat (Gujarat Sultanate)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/16: counterpart has no Cliopatria row; listed in counterparts_needing_dossiers as gujarat-sultanate"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1535,
+    "type": "gain",
+    "counterpart": "Sultan of Guzerat (Gujarat Sultanate)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/17: counterpart has no Cliopatria row; listed in counterparts_needing_dossiers as gujarat-sultanate"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1539,
+    "type": "gain",
+    "counterpart": "Sultan of Guzerat (Gujarat Sultanate)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/18: counterpart has no Cliopatria row; listed in counterparts_needing_dossiers as gujarat-sultanate"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1549,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/19: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1557,
+    "type": "gain",
+    "counterpart": "ming-dynasty"
+   },
+   "mirror": {
+    "slug": "ming-dynasty",
+    "year": 1557,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/20: no ming-dynasty dossier yet (owned by ea-07, not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1567,
+    "type": "gain",
+    "counterpart": "france-antarctique"
+   },
+   "mirror": {
+    "slug": "france-antarctique",
+    "year": 1567,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/23: no france-antarctique dossier yet (owned by am-06, not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1572,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/24: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1581,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1581,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/25: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a gain in its ledger; the Iberian Union is modelled as a loss of all overseas land to spanish-empire in 1581 and its return on 1 December 1640 (personal union, S11); am-06-b/c must carry the matching 1581 gain and 1640 loss or a personal-union tint"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1640,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1640,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/26: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a loss in its ledger; the Iberian Union is modelled as a loss of all overseas land to spanish-empire in 1581 and its return on 1 December 1640 (personal union, S11); am-06-b/c must carry the matching 1581 gain and 1640 loss or a personal-union tint"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1641,
+    "type": "loss",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "dutch-republic",
+    "year": 1641,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/27: no dutch-republic dossier yet (owned by eu-09, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1641,
+    "type": "loss",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "dutch-republic",
+    "year": 1641,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/28: no dutch-republic dossier yet (owned by eu-09, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1641,
+    "type": "loss",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "dutch-republic",
+    "year": 1641,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/29: no dutch-republic dossier yet (owned by eu-09, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1642,
+    "type": "loss",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "dutch-republic",
+    "year": 1642,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/30: no dutch-republic dossier yet (owned by eu-09, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1645,
+    "type": "gain",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "dutch-republic",
+    "year": 1645,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/32: no dutch-republic dossier yet (owned by eu-09, not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1648,
+    "type": "gain",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "dutch-republic",
+    "year": 1648,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/33: no dutch-republic dossier yet (owned by eu-09, not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1654,
+    "type": "gain",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "dutch-republic",
+    "year": 1654,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/35: no dutch-republic dossier yet (owned by eu-09, not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1656,
+    "type": "loss",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "dutch-republic",
+    "year": 1656,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/36: no dutch-republic dossier yet (owned by eu-09, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1658,
+    "type": "loss",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "dutch-republic",
+    "year": 1658,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/37: no dutch-republic dossier yet (owned by eu-09, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1661,
+    "type": "loss",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": {
+    "slug": "kingdom-of-england",
+    "year": 1661,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/38: no kingdom-of-england dossier yet (owned by eu-11, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1661,
+    "type": "loss",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": {
+    "slug": "kingdom-of-england",
+    "year": 1661,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/39: no kingdom-of-england dossier yet (owned by eu-11, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1663,
+    "type": "loss",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "dutch-republic",
+    "year": 1663,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/40: no dutch-republic dossier yet (owned by eu-09, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1663,
+    "type": "vassal_end",
+    "counterpart": "Kingdom of Cochin"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/41: counterpart has no Cliopatria row; listed in counterparts_needing_dossiers as kingdom-of-cochin"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1670,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/42: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1677,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/43: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1679,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1679,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/44: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1698,
+    "type": "loss",
+    "counterpart": "yarubid-dynasty"
+   },
+   "mirror": {
+    "slug": "yarubid-dynasty",
+    "year": 1698,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/45: no yarubid-dynasty dossier yet (owned by me-10, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1706,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1706,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/46: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1713,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1713,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/47: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1718,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/48: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1721,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/49: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1727,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/50: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1734,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/51: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1738,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/52: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1748,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1748,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/53: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1750,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1750,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/54: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1752,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/55: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1756,
+    "type": "occupation_start",
+    "counterpart": "jesuit-reducciones"
+   },
+   "mirror": {
+    "slug": "jesuit-reducciones",
+    "year": 1756,
+    "type": "occupation_start"
+   },
+   "status": "exception",
+   "note": "/ledger/58: no jesuit-reducciones dossier yet (owned by am-06, not run yet); expected mirror is a occupation_start in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1759,
+    "type": "occupation_end",
+    "counterpart": "jesuit-reducciones"
+   },
+   "mirror": {
+    "slug": "jesuit-reducciones",
+    "year": 1759,
+    "type": "occupation_end"
+   },
+   "status": "exception",
+   "note": "/ledger/59: no jesuit-reducciones dossier yet (owned by am-06, not run yet); expected mirror is a occupation_end in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1762,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1762,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/60: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1763,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1763,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/61: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1769,
+    "type": "loss",
+    "counterpart": "morocco"
+   },
+   "mirror": {
+    "slug": "morocco",
+    "year": 1769,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/62: no morocco dossier yet (owned by af-02, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1772,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/63: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1777,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1777,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/64: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1777,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1777,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/65: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1777,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1777,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/66: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1778,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1778,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/67: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1778,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1778,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/68: no spanish-empire dossier yet (owned by am-06 (b/c), not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1783,
+    "type": "gain",
+    "counterpart": "maratha-empire"
+   },
+   "mirror": {
+    "slug": "maratha-empire",
+    "year": 1783,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "/ledger/69: no maratha-empire dossier yet (owned by sa-05, not run yet); expected mirror is a loss in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1788,
+    "type": "gain",
+    "counterpart": "Dessais of Kudal, Sondas and Bhonslas"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/70: counterpart has no Cliopatria row; listed in counterparts_needing_dossiers as sonda-and-kudal"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1809,
+    "type": "occupation_start",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": {
+    "slug": "first-french-empire",
+    "year": 1809,
+    "type": "occupation_start"
+   },
+   "status": "exception",
+   "note": "/ledger/72: no first-french-empire dossier yet (owned by eu-20, not run yet); expected mirror is a occupation_start in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1817,
+    "type": "occupation_end",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": {
+    "slug": "first-french-empire",
+    "year": 1817,
+    "type": "occupation_end"
+   },
+   "status": "exception",
+   "note": "/ledger/75: French Guiana returned in 1817, after first-french-empire's last year (1814); the dossier's note says the land goes to the Bourbon Kingdom of France. eu-20 must take the 1817 return in bourbon-kingdom-of-france (1815-1847) or in the first-french-empire dossier's notes; the counterpart is kept as first-french-empire so the occupation pair stays matched in the validator."
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1821,
+    "type": "gain",
+    "counterpart": "federal-league"
+   },
+   "mirror": {
+    "slug": "federal-league",
+    "year": 1821,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "/ledger/76: gain of the Banda Oriental in July 1821 from federal-league, whose Cliopatria row ends in 1819 (Wikipedia: Federal League 1815-1820). No federal-league dossier yet (am-08). The mirror can only be federal-league's dissolve or last loss in 1819-1820; am-08 should end the league with the Banda Oriental passing to portuguese-empire (Tacuarembo, 1820) so that the 1821 gain is within one year, or the author re-dates the gain to 1820 (Cliopatria adds Uruguay in the 1820 shape) and keeps 1821 as the formal annexation in the note."
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1822,
+    "type": "loss",
+    "counterpart": "empire-of-brazil"
+   },
+   "mirror": {
+    "slug": "empire-of-brazil",
+    "year": 1822,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/79: no empire-of-brazil dossier yet (owned by am-08, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1859,
+    "type": "loss",
+    "counterpart": "dutch-east-indies"
+   },
+   "mirror": {
+    "slug": "dutch-east-indies",
+    "year": 1859,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/80: no dutch-east-indies dossier yet (owned by se-03, not run yet); expected mirror is a gain in its ledger"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1885,
+    "type": "vassal_start",
+    "counterpart": "Cabinda"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/81: counterpart has no Cliopatria row; listed in counterparts_needing_dossiers as cabinda-chiefdoms"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1891,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/82: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1895,
+    "type": "gain",
+    "counterpart": "Gaza Empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/83: counterpart has no Cliopatria row; listed in counterparts_needing_dossiers as gaza-empire"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1902,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/84: counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1910,
+    "type": "dissolve",
+    "counterpart": "portuguese-republic"
+   },
+   "mirror": {
+    "slug": "portuguese-republic",
+    "year": 1910,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "/ledger/85: no portuguese-republic dossier yet (owned by eu-20, not run yet); expected mirror is a gain in its ledger"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Elmina",
+   "kind": "place",
+   "used_in": "portuguese-empire"
+  },
+  {
+   "name": "Axim",
+   "kind": "place",
+   "used_in": "portuguese-empire"
+  },
+  {
+   "name": "Vasai",
+   "kind": "place",
+   "used_in": "portuguese-empire"
+  },
+  {
+   "name": "Chaul",
+   "kind": "place",
+   "used_in": "portuguese-empire"
+  },
+  {
+   "name": "Salsette",
+   "kind": "region",
+   "used_in": "portuguese-empire"
+  },
+  {
+   "name": "Solor",
+   "kind": "place",
+   "used_in": "portuguese-empire"
+  },
+  {
+   "name": "Pasai",
+   "kind": "place",
+   "used_in": "portuguese-empire"
+  },
+  {
+   "name": "Casamance",
+   "kind": "region",
+   "used_in": "portuguese-empire"
+  },
+  {
+   "name": "Sena",
+   "kind": "region",
+   "used_in": "portuguese-empire"
+  },
+  {
+   "name": "Misiones Orientales",
+   "kind": "region",
+   "used_in": "portuguese-empire",
+   "hint": "the seven missions east of the Uruguay River (north-west Rio Grande do Sul); regions.jsonl lists it only as an alias of 'Jesuit Missions', which also covers Argentine Misiones and Paraguay's Itapua and Misiones, so the alias resolves too wide"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Dutch Brazil (New Holland)",
+   "suggested_slug": "dutch-brazil",
+   "years": [
+    1630,
+    1654
+   ]
+  },
+  {
+   "name": "Kingdom of Cochin",
+   "suggested_slug": "kingdom-of-cochin",
+   "years": [
+    1505,
+    1663
+   ]
+  },
+  {
+   "name": "Gujarat Sultanate",
+   "suggested_slug": "gujarat-sultanate",
+   "years": [
+    1534,
+    1539
+   ]
+  },
+  {
+   "name": "Kingdom of Hormuz",
+   "suggested_slug": "kingdom-of-hormuz",
+   "years": [
+    1515,
+    1622
+   ]
+  },
+  {
+   "name": "Kolathiri of Cannanore",
+   "suggested_slug": "kolathiri-of-cannanore",
+   "years": [
+    1505,
+    1505
+   ]
+  },
+  {
+   "name": "Dessais of Kudal, Sondas and Bhonslas (Novas Conquistas)",
+   "suggested_slug": "sonda-and-kudal",
+   "years": [
+    1763,
+    1788
+   ]
+  },
+  {
+   "name": "Gaza Empire",
+   "suggested_slug": "gaza-empire",
+   "years": [
+    1895,
+    1895
+   ]
+  },
+  {
+   "name": "Ngoyo, Kakongo and Loango chiefs of Cabinda",
+   "suggested_slug": "cabinda-chiefdoms",
+   "years": [
+    1885,
+    1885
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-am-06-a.md",
+ "problems": [
+  "Only one Context dossier exists (haudenosaunee), and it is not a counterpart; every counterpart of this ledger is owned by a group that has not written it yet (am-06-b/c, am-08, eu-09, eu-11, eu-20, ea-07, sa-04, sa-05, se-02, se-03, af-02, me-10), so all mirrors are exceptions and the matrix lists the mirror each one needs.",
+  "Reviewer applied five fixes in place (regions of the Seven Missions events, the 1777 Rio Grande do Sul region, the 1816 contest_start, the yarubid-dynasty slug, a notes paragraph on the Kingdom of Portugal row); the dossier re-validates with the same two expected warnings. Ledger indices from 74 to 78 shifted by the re-sort: 74 is the 1816 contest_start, 75 the 1817 occupation_end.",
+  "Cliopatria's Kingdom of Portugal row (eu-12) draws Angola and Mozambique in 1824-1910 and the Gulf and Oman coast in 1507-1705; this dossier's new keyframes 1824-1895 duplicate the African land. eu-12 and the compile step must choose one row.",
+  "federal-league (am-08) ends in 1819 in Cliopatria but this ledger takes the Banda Oriental from it in July 1821; first-french-empire (eu-20) ends in 1814 but is the counterpart of the 1817 return of French Guiana. Both need handling when those groups run.",
+  "portuguese-colonies (owned by sa-06) is merged into this dossier; sa-06 should not write a second dossier and the colour agent should alias it."
+ ]
+}

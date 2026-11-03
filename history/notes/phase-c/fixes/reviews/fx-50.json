@@ -1,0 +1,102 @@
+{
+ "batch_id": "fx-50",
+ "checks": [
+  {
+   "item": "R046",
+   "verdict": "pass",
+   "what": "house-of-ascania: every {\"place\": \"Lauenburg\", \"km\": 15} is now {\"region\": \"Duchy of Saxe-Lauenburg\"} (identity.successors[1].land, ledger/0, ledger/12, keyframe_review/0-17). Gazetteer: the region gives 8 cells, bbox 10.44-10.93 E, 53.41-53.78 N (Ratzeburg, Molln and the Lauenburg country), beside Ratzeburg 30 km (13 cells); validate --resolve gives 0 warnings, so every union now resolves. Page: 'John II., Albert III, and Eric I. received Saxony-Lauenburg' (1296 partition); Eric IV 'Duke of Saxe-Lauenburg in Lauenburg and Ratzeburg'; 'Saxe-Lauenburg (until 1689)'. The 1260-1388 keyframes are patch-controlled (patch-overrides.csv lines 235-253); editing the dossier copy does no harm.",
+   "page": "https://en.wikipedia.org/wiki/House_of_Ascania",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R047",
+   "verdict": "pass",
+   "what": "Same edit as R046 covers keyframes 1422, 1429, 1431, 1440, 1459, 1475, 1482 (keyframe_review/11-17, not patch-controlled) and successors[1].land; each is now Anhalt discs + Ratzeburg 30 km + the Saxe-Lauenburg region and resolves.",
+   "page": "https://en.wikipedia.org/wiki/House_of_Ascania",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R076",
+   "verdict": "pass",
+   "what": "mughal-empire keyframes 1700 and 1706 (keyframe_review/30-31, not patch-controlled) now subtract admin1 Kandahar: resolved shapes 13650 and 13464 cells, 0 of them in Kandahar (the 1709-1718 patch-controlled ones still hold 74, the patch overrides subtract them). Hotak page: 'established in 1709 by Mirwais Hotak'; 'The Shi'a Safavids ruled Loy Kandahar as their easternmost territory from the 16th century until the early 18th century'; no Mughal holding named; 'Hotak rule came to an end in 1738'. War page: Safavids 'captured it after a brief siege on 22 February 1649'; 'On 29 September 1653, Mughals finally gave up all attempts to recover Kandahar'; infobox 'Kandahar falls again to the Safavids'. Matches the dossier's own ledger/80 (loss Feb 1649) and /81 (contest_end Sep 1653).",
+   "page": "https://en.wikipedia.org/wiki/Hotak_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R085",
+   "verdict": "pass",
+   "what": "Keyframes 1721, 1722, 1724, 1727, 1734 and also 1653, 1659, 1662, 1670, 1673, 1677, 1679, 1687, 1691 now hold 0 Kandahar cells (were 74 each); 1687 is patch-controlled (p1680-p1689), harmless; 1648 (patch-controlled, valid 1649-1652 during the contest) and 1709-1718 (patch) left; 1738 on hold none. The 1653-1691 extension rests on the war page (Kandahar Safavid from 22 Feb 1649, Mughals gave up 29 Sep 1653) and the ledger's own loss/contest events; the 1653 keyframe drops Kandahar from January 1653, nine months before the contest_end, which is consistent with the loss of 1649. Validates (only the older keyframe_review/4 exile warning).",
+   "page": "https://en.wikipedia.org/wiki/Mughal%E2%80%93Safavid_war_(1649%E2%80%931653)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R008",
+   "verdict": "pass",
+   "what": "mauretania ledger no longer has the -203 vassal_start / -148 vassal_end with counterpart kingdom-of-numidia (ledger now 15 events, found -225 ... dissolve 44); reason recorded in notes. Page: 'the King Bokkar, ruler of what is now Morocco with his capital based in Tingis, had become a vassal of Masinissa'; footnote 'En 202 avant Jesus-Christ, apres la capture de Syphax, il devint le vassal de Massinissa'. The -148 end is only a bound ('he died early in 148 BC without a breach in the alliance' is about Rome), which the handoff marks confidence 1. Compiler: patch m0300-m0201 events/2 (vassal_end) now 'closes nothing open' (logged, moves nothing; relation_end returns 1 without set_owner) and events/3 (gain from nobody of Mauretania's own land) is a no-op; events/4 (numidia vassal_start -202, counterpart mauretania) carries the relation. Handoff to kingdom-of-numidia is correct; hierarchy.csv has no Mauretania-Numidia row.",
+   "page": "https://en.wikipedia.org/wiki/Masinissa",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R030",
+   "verdict": "pass",
+   "what": "maadi-culture ledger/0 (found -3800), ledger/1 (dissolve -3200) and successors[0].land are now identical to the m3300-m3201 keyframe_overrides/0 correction (Lower Egypt minus Matruh, Al Jizah, Alexandria, Ismailia, Port Said; plus Giza within 20 km of the Nile; plus Fayyum), so ledger and effective keyframe agree and the 668-cell snap goes. Page: Maadi culture from 'the second part of Naqada I' to 'Naqada IIc/d'; about a dozen sites, naming Maadi, el-Gerza, Haraga, Abusir el-Melek, Minshat Abu Omar, Buto, Tell Ibrahim Awad, Tell el-Rub'a, Tell el-Farkha; roots 'in the Faiyum region' with Merimda Beni Salama and el-Omari; 'replaced by Upper Egypt and Naqada culture by the end of Naqada II circa 3200 BCE'; no Western Desert, Mediterranean coast west of the Delta, Ismailia or Sinai. Validates, 0 warnings.",
+   "page": "https://en.wikipedia.org/wiki/Maadi_culture",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R043",
+   "verdict": "pass",
+   "what": "duchy-of-aquitaine ledger/2 (1030 loss to county-of-anjou, Loudunais and Mirebalais): the unknown place Mirebeau is now the disc lon 0.1825, lat 46.7858, 15 km (3 cells, bbox 0.04-0.25 E, 46.71-46.85 N) beside Loudun 15 km. Page: Mirebeau commune, Vienne, 46 47 09 N 0 10 57 E (= 46.7858, 0.1825), not a disambiguation page. Year, counterpart and source unchanged. Validates.",
+   "page": "https://en.wikipedia.org/wiki/Mirebeau",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R067",
+   "verdict": "pass",
+   "what": "kingdom-of-england ledger/96 (1649-05, England + Wales, counterpart commonwealth-of-england) changed merge -> loss. Compiler read: merge() with a living counterpart absorbs the side holding less of the region (held_by(did) >= held_by(cp)), so after commonwealth-of-england's found of the same month (counterpart kingdom-of-england, so allowed to take its cells) the kingdom with 0 cells absorbed the Commonwealth's 649 back; a loss gives only what the kingdom still holds to the living Commonwealth, a no-op after the found and a full hand-over if the found took less. The kingdom lives on to 1707 (no dissolve in 1649), so nothing else depends on the merge. Page: Act 'adopted by the Rump Parliament on 19 May 1649', 'all the Dominions and Territories thereunto belonging', 1649 to 1660. Not confirmed by a compile run; patch p1650-p1659 events/0 should be checked after the next compile. Validates (2 older first-barons-war-rebels warnings).",
+   "page": "https://en.wikipedia.org/wiki/Commonwealth_of_England",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R090",
+   "verdict": "pass",
+   "what": "akyem-abuakwa: {\"place\": \"Akwamufie\"} replaced by the disc lon 0.08, lat 6.3, 25 km in successors[0].land, keyframe_review/1 (patch-controlled, p1730-p1739) and ledger/1-3, always as the subtracted rump-Akwamu circle; same centre as akwamu.json (fx-40) and the p1730-p1739 patch. Page: no coordinates; 'The town was founded after the western portion of the Akwamu Kingdom was overrun by the Akyem in 1730'; located 'along the Akuapim-Togo range, the Volta River and in the Eastern Region, Ghana' (the disc sits on the Volta in the Eastern Region). Validates, 0 warnings.",
+   "page": "https://en.wikipedia.org/wiki/Akwamufie",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R110",
+   "verdict": "pass",
+   "what": "Kept holds: first-french-empire_1812 and _1813 are in patch-overrides.csv (lines 343-344, p1810-p1819), so a dossier edit changes nothing; the nobody cells sit in bonapartist-spain_1813 and kingdom-of-spain_1812, which the fixer does not own, and are handed off.",
+   "page": "",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R129",
+   "verdict": "pass",
+   "what": "french-africa_1900 and _1903 now union the Mossi plateau/Gourma/Yatenga provinces (301 cells) and Houet/Tuy/Mou Houn for Gwiriko (126 cells), the same specs as the p1890-p1899 overrides of 1897/1898; Cliopatria's 1900 shape holds 0 of these 427 cells and the 1905 shape all 427, so 1900-1904 no longer drop land the mossi-kingdoms (1896 loss/dissolve) and gwiriko (1897-09 loss/dissolve) ledgers hand to french-africa. Shapes: 1900 = 18763 cells, 1903 = 24026. Pages: Mossi Kingdoms 'the French entered the area in 1896 and ignored the treaty of protection, conquering the Mossi Kingdom'; Bobo-Dioulasso 'On September 25, 1897, the French briefly occupied Sia', military post 23 November 1897, 'French colonial administration (1898-1960)'. Mossi page names no separate conquest of Yatenga, Tenkodogo or Fada N'Gourma (Yatenga appears as a French ally), so those provinces from 1896 are a reading, as in the patch. Side note, not from this batch: french-west-africa (1895-1958, no hierarchy.csv row) also claims Burkina Faso from its 1901 gain, as it does the rest of French West Africa against french-africa.",
+   "page": "https://en.wikipedia.org/wiki/Mossi_Kingdoms",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R143",
+   "verdict": "pass",
+   "what": "kingdom-of-greece: identity.start 1941-01; new ledger/0 found 1941-01 (counterpart first-hellenic-republic, Cliopatria FHR 1940 shape, 381 cells); old 1945 found now a gain from nobody (384 cells). Compiler: do_end hands a dying state's land to a successor with start <= y+1, so first-hellenic-republic (dissolve 1940-10, successor kingdom-of-greece) now passes its land at the end of 1940 instead of to nobody, and hellenic-state/ledger/10 (1944-10 loss to kingdom-of-greece) and its dissolve now reach a living dossier. 1941-01 is a bookkeeping date: the restored kingdom exists from 1935, but first-hellenic-republic (renamed 1935) carries Greece to its October 1940 dissolve, so the dossier split is consistent. Page: 'King George II returned' (1935 plebiscite); 'Italian troops crossed the border on 28 October 1940'; Germany 'attacked Greece through Yugoslavia and Bulgaria on 6 April 1941'; 'a government in exile was established' in Egypt; 'German forces withdrew on 12 October 1944, and the government in exile returned to Athens'. Minor: about 13 Ionian-island cells stay with the kingdom 1941-44 (they went to nobody before; Italy held them de facto), a residual for hellenic-state/kingdom-of-italy, not a regression. Validates, 0 warnings.",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Greece",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": []
+}

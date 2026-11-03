@@ -1,0 +1,828 @@
+{
+ "batch_id": "jk-01-a",
+ "verdicts": [
+  {
+   "slug": "asuka-japan",
+   "verdict": "pass",
+   "fixes": [
+    {
+     "where": "/ledger/3/region",
+     "what": "Advisory, follows the nara-japan blocking finding: the dissolve region hands Nara only the Asuka 705 shape, not the Akita foothold gained in /ledger/2 (709).",
+     "why": "Emishi page: 'In 709, the fort of Ideha was created close to present day Akita' and 'the intervening territory between Akita and the northwestern countries of Japan was not under government control'; asuka /ledger/2 gains {place: Akita, km: 50} ('the gain is a coastal foothold the rendering agent adds'); gazetteer: 0 of the circle's 21 cells lie in the Nara Japan 710 or Heian Japan 793/800/814 shapes, all 21 lie in the Northern Fujiwara 1094 shape; asuka /ledger/3 dissolves with the Asuka 705 shape only, nara /ledger/0 founds on the Nara 710 shape only, nara /keyframe_review/0 is 'ok' with no correction, and no ledger event in nara or heian loses Akita.",
+     "fix": "When nara-japan carries the foothold, write {\"union\": [{\"cliopatria\": \"Asuka Japan\", \"year\": 705}, {\"place\": \"Akita\", \"km\": 50}], \"text\": ...} here and in /identity/successors/0/land.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "the 6th-7th century northern limit (Cliopatria 38.16 N from 540, the first Sendai-plain fort dates from 724) and the Hayato south; noted 'unverified: page budget'",
+     "page to try": "https://en.wikipedia.org/wiki/Hayato_people"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Tsushima and Iki provinces outside the bbox (noted, not corrected)",
+     "page to try": "https://en.wikipedia.org/wiki/Tsushima_Province"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Asuka_period",
+     "result": "confirmed: 'lasting from 538 to 710'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Asuka_period",
+     "result": "confirmed: timeline 694 'The imperial capital is moved to Fujiwara-kyō, in present-day Kashihara city.'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Emishi",
+     "result": "confirmed: 'In 709, the fort of Ideha was created close to present day Akita.'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Asuka_period",
+     "result": "confirmed: 'until the moving of the capital to Nara in 710'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 230061,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "period article, no infobox area (checked); author says no page gives an area"
+   },
+   "tried": "Validator 0 errors; years, capitals (Asuka 538-693, Fujiwara-kyō 694-710, both inside the bbox), the found/dissolve years, the 709 gain and the three wars against the Asuka and Emishi pages; new keyframe 538-539 carries from/to/correction. Could not break it beyond the Akita handover, which belongs to nara-japan."
+  },
+  {
+   "slug": "nara-japan",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0 (and /ledger/0/region)",
+     "what": "The Akita foothold Asuka gained in 709 vanishes in 710: the 'ok' keyframe and the found region are the Nara 710 shape only, and no event loses it.",
+     "why": "Emishi page: 'In 709, the fort of Ideha was created close to present day Akita' and 'the intervening territory between Akita and the northwestern countries of Japan was not under government control'; asuka /ledger/2 gains {place: Akita, km: 50} ('the gain is a coastal foothold the rendering agent adds'); gazetteer: 0 of the circle's 21 cells lie in the Nara Japan 710 or Heian Japan 793/800/814 shapes, all 21 lie in the Northern Fujiwara 1094 shape; asuka /ledger/3 dissolves with the Asuka 705 shape only, nara /ledger/0 founds on the Nara 710 shape only, nara /keyframe_review/0 is 'ok' with no correction, and no ledger event in nara or heian loses Akita.",
+     "fix": "Set /keyframe_review/0 to verdict adjust with correction {\"union\": [{\"cliopatria\": \"Nara Japan\", \"year\": 710}, {\"place\": \"Akita\", \"km\": 50}], \"text\": \"... the Ideha fort near Akita (709)\"}, the same union in /ledger/0/region (and asuka /ledger/3/region); or, if the foothold was abandoned, a dated loss with a page (Akita Castle, 733, suggests it was kept: try https://en.wikipedia.org/wiki/Akita_Castle).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/wars/2/to",
+     "what": "The Thirty-Eight Years' War ran past the dossier's end (to 811 against end 794), so its zone would be drawn for Nara after 794.",
+     "why": "Reviewer brief check 2 (wars inside the life); Thirty-Eight Years' War page: 'it was not until 811 that the so-called Thirty-Eight Years' War was over'; the Heian dossier carries 794-811.",
+     "fix": "to = 794, with the full span 774-811 in the note.",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/9",
+     "what is missing": "confidence 1: technical handover of the war to heian-japan in 794; no page needed",
+     "page to try": "https://en.wikipedia.org/wiki/Thirty-Eight_Years'_War"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Dewa Province (712) and Akita Castle (733) on the Japan Sea side; Hayato rebellion (720)",
+     "page to try": "https://en.wikipedia.org/wiki/Dewa_Province"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Nara_period",
+     "result": "confirmed: 'covers the years from 710 to 794'; '710: Japan's capital is moved from Fujiwara-kyō to Heijō-kyō'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Emishi",
+     "result": "confirmed: 'In 724, Taga Fort was built by Ōno no Omi Azumahito near present-day Sendai'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Emishi",
+     "result": "confirmed: 758, Fujiwara no Asakari 'penetrated into what is now northern Miyagi Prefecture, and established Momonofu Castle on the Kitakami River'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Thirty-Eight_Years'_War",
+     "result": "confirmed: 'On 5 September, 774 CE, the Emishi stormed Monou castle and the rebellion began.'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Nara_period",
+     "result": "confirmed: '784: The emperor moves the capital to Nagaoka.'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 230061,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area on the Nara period page (checked)"
+   }
+  },
+  {
+   "slug": "heian-japan",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0, /keyframe_review/1, /keyframe_review/2 and /ledger/0/region",
+     "what": "Land the Nara dossier held is missing from the Heian start: northern Miyagi (Nara /ledger/1 and /ledger/6, 724 and 758) lies outside the 793 and 800 shapes, and the Akita foothold (709) lies outside every Heian shape before the 1062 keyframe.",
+     "why": "gazetteer: 29 of Miyagi's 32 cells are outside the Heian 793 shape (26 are inside the 814 shape), so in 811-813, after /ledger/3 closes the contest, the Sendai plain and Taga are in no shape or event; Akita: see nara-japan finding (0 of 21 cells in the 793/800/814 shapes, all 21 inside the Northern Fujiwara 1094 shape used from /keyframe_review/3).",
+     "fix": "Add {\"admin1\": \"Miyagi\", \"country\": \"Japan\"} to the unions of /keyframe_review/0, /keyframe_review/1 and /ledger/0/region, and {\"place\": \"Akita\", \"km\": 50} to /keyframe_review/0, /1, /2 and /ledger/0/region (unless nara-japan records a loss).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/13, /ledger/16, /wars/6/zones",
+     "what": "The Genpei contest opens over one zone and closes over another: contest_start 1180 names Kanto + Yamanashi, contest_end April 1185 names Chugoku + Shikoku + Kyushu, so the eastern zone is never closed and the western theatre of 1183-1185 the notes describe is never opened; the counterpart kamakura-shogunate has no life before December 1185, so no mirror can exist.",
+     "why": "Genpei War page: infobox 'June 20, 1180 – April 25, 1185'; Yoritomo 'successfully made it to the provinces of Kai and Kōzuke'; 1183: Munemori 'led his army, along with the young Emperor Antoku and the Imperial regalia, to the west', 'The Taira set up a temporary Court at Dazaifu'. The validator pairs contests by counterpart only. Research brief: a rebel that held land for a year or more is a rebel dossier; the Minamoto held the Kantō from late 1180 to 1185.",
+     "fix": "Give each contest pair one zone: east (Kanto + Yamanashi) 1180-06 to its own end, and a second pair for the west 1183-07 to 1185-04 over Chugoku + Shikoku + Kyushu with its own counterpart string (e.g. 'Taira clan (western court)'); and either begin kamakura-shogunate in 1180 with the Kantō as its found region (its /ledger/0 note: 'Yoritomo had risen at Kamakura in 1180') and record the mirrors there, or use the name 'Minamoto clan' as counterpart and list it under counterparts_needing_dossiers as a rebel state 1180-1185.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/12, /ledger/17",
+     "what": "The 1087-1185 vassal tint over the Northern Fujiwara rests on a page that says the opposite, and northern-fujiwara has no mirror vassal events.",
+     "why": "Northern Fujiwara page: they 'keep their independence vis-à-vis Kyoto by the strength of their warrior bands'; no court titles or tribute for Kiyohira to Yasuhira on it; northern-fujiwara ledger has no vassal_start/vassal_end with heian-japan.",
+     "fix": "Either source the relation (Hidehira as Chinjufu-shōgun and governor of Mutsu: try https://en.wikipedia.org/wiki/Fujiwara_no_Hidehira) and add vassal_start/vassal_end with counterpart heian-japan to northern-fujiwara, or delete the pair.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/wars/0/from",
+     "what": "The Thirty-Eight Years' War began before the dossier's start (774 against start 794).",
+     "why": "Reviewer brief check 2; the Nara dossier carries 774-794.",
+     "fix": "from = 794, the full span 774-811 in the note.",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "confidence 1: the c. 850 vassal tint over the whole northern Tōhoku (Northern Fujiwara 1094 shape) rests on 'semi-autonomous feudal domains in the north'",
+     "page to try": "https://en.wikipedia.org/wiki/Mutsu_Province"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "confidence 1: a page for the Northern Fujiwara's court titles",
+     "page to try": "https://en.wikipedia.org/wiki/Fujiwara_no_Hidehira"
+    },
+    {
+     "where": "/ledger/10, /keyframe_review/3",
+     "what is missing": "confidence 2: the 1062-1086 direct rule over the whole Northern Fujiwara shape; the Former Nine Years' War page gives 'Imperial victory' and no territorial change (the Kiyohara's six districts)",
+     "page to try": "https://en.wikipedia.org/wiki/Kiyohara_clan"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Isawa (802) and Shiwa (803) castles as the dated northern steps",
+     "page to try": "https://en.wikipedia.org/wiki/Shiwa_Castle"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Thirty-Eight_Years'_War",
+     "result": "confirmed: 'it was not until 811 that the so-called Thirty-Eight Years' War was over'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Thirty-Eight_Years'_War",
+     "result": "confirmed: 'a desultory campaign that eventually led to Aterui's surrender in 802'"
+    },
+    {
+     "where": "/ledger/5, /ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Toi_invasion",
+     "result": "confirmed: 'assaulted Tsushima and Iki provinces, beginning on 27 March 1019'; Hizen 'from April 13 to May 20'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Former_Nine_Years%27_War",
+     "result": "confirmed: infobox '1051–1062', 'Imperial victory'; 'In 1062 ... Siege of Kuriyagawa'"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Genpei_War",
+     "result": "confirmed (date): infobox 'June 20, 1180 – April 25, 1185'; zone mismatch is a separate finding"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Northern_Fujiwara",
+     "result": "not on page: the page calls them independent of Kyoto (confidence 1, stated in the note)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 243639,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area on the Heian period page (checked); 814 step +13,449 km2 explained by 802/811"
+   }
+  },
+  {
+   "slug": "northern-fujiwara",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/0/from",
+     "what": "The Gosannen War began before the state's founding (1083 against start 1087), so its zone would be drawn for a state that did not exist.",
+     "why": "Reviewer brief check 2; Gosannen War page: '1083–1089 (disputed)'; Northern Fujiwara page: founded 'in 1087, when he won the victory in the Gosannen War'.",
+     "fix": "from = 1087, the full span in the note.",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "southern limit: the page says they 'ruled the Mutsu and Dewa Province', which reach the Sendai plain and Shōnai, while Cliopatria stops at 38.67 N (noted 'unverified: page budget')",
+     "page to try": "https://en.wikipedia.org/wiki/Mutsu_Province"
+    },
+    {
+     "where": "/identity",
+     "what is missing": "reign years of Kiyohira, Motohira, Hidehira, Yasuhira; the relation to the court (see heian-japan /ledger/12)",
+     "page to try": "https://en.wikipedia.org/wiki/Fujiwara_no_Hidehira"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Northern_Fujiwara",
+     "result": "confirmed: infobox 1087; 'in 1087, when he won the victory in the Gosannen War'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Northern_Fujiwara",
+     "result": "confirmed: 'On September 1, 1189, 284,000 cavalrymen led by Yoritomo set out to attack Hiraizumi.'"
+    },
+    {
+     "where": "/ledger/2, /ledger/3, /ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Northern_Fujiwara",
+     "result": "confirmed: 'on October 2, he fled Hiraizumi leaving it afire'; 'Yoritomo entered Hiraizumi the next day'; Yasuhira killed 'on October 14'"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/Gosannen_War",
+     "result": "confirmed: '1083–1089 (disputed)', 'Military stalemate', Kiyohira 'helped'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 44949,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area on the page (checked)"
+   }
+  },
+  {
+   "slug": "kamakura-shogunate",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/9, /ledger/10",
+     "what": "One contest runs from November 1274 to August 1281 over Tsushima, Iki and Hakata, so the zone is blended through 1275-1280 when no ground was held or fought over.",
+     "why": "Mongol invasions page: 1274 landings 'on 2 November 1274 ... Two days later they began landing on Tsushima', Hakata 19 November, then withdrawal; 1281 'attacked Tsushima on 9 June and Iki Island on 14 June', typhoon 'On 15 August'; the page does not say either island was held between the invasions; the dossier's own /wars/3/note: 'Tsushima and Iki were overrun in both invasions for days'.",
+     "fix": "Two pairs with counterpart mongol-empire: contest_start 1274-11 and contest_end 1274-11 (the withdrawal after Bun'ei), and contest_start 1281-06 and contest_end 1281-08 (typhoon of 15 August); keep the zone.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/1, /ledger/4",
+     "what": "The December 1185 - October 1189 vassal tint over the Northern Fujiwara is not on the cited page (which calls them independent) and has no mirror in northern-fujiwara; /ledger/4 is at confidence 3 for the end of a relation that is itself confidence 1.",
+     "why": "Northern Fujiwara page: 'keep their independence vis-à-vis Kyoto by the strength of their warrior bands'; northern-fujiwara ledger has no vassal events.",
+     "fix": "Resolve with heian-japan /ledger/12: source it and add the mirrors in northern-fujiwara, or delete /ledger/1 and /ledger/4.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/identity/rulers/1..8/source",
+     "what": "Eight of nine shogun entries cited no page.",
+     "why": "Kamakura shogunate page lists 'Minamoto no Yoriie, r. 1202–1203' ... 'Prince Morikuni, r. 1308–1333', matching every entry.",
+     "fix": "source = https://en.wikipedia.org/wiki/Kamakura_shogunate on each.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/0/correction/text",
+     "what": "Said the 1188 shape holds 'from December 1185 to 1188', contradicting /keyframe_review/1 ('holds from October 1189') and the 1189 gain.",
+     "why": "Northern Fujiwara page: 'Yoritomo entered Hiraizumi the next day' (3 October 1189).",
+     "fix": "'holds from December 1185 to September 1189'.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/identity/rulers",
+     "what": "Advisory: shogun list is not contiguous (none 1185-1192, 1199-1202, 1219-1226) though the page lists the shikken from 1203.",
+     "why": "Kamakura shogunate page: 'Hōjō Tokimasa, r. 1203–1205' ... 'Hōjō Moritoki, r. 1326–1333'.",
+     "fix": "Note the gaps in the ruler notes, or add Yoritomo from 1185 as head of the Minamoto and the regents for the vacancies.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/identity/start, /ledger/0",
+     "what": "Advisory: Heian ends in April 1185 (Dan-no-ura) and Kamakura starts in December 1185, leaving eight months with neither state at month precision.",
+     "why": "Genpei War page: 'In December 1185, Go-Shirakawa granted to Yoritomo the power ... appoint stewards and constables in all provinces'; heian /identity/end month 4.",
+     "fix": "Drop the month from one side or align them (e.g. heian end 1185-12), and decide together with the heian-japan Genpei finding.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "confidence 1: page for the Northern Fujiwara relation",
+     "page to try": "https://en.wikipedia.org/wiki/Fujiwara_no_Hidehira"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Ezo, the Andō and the Tsugaru strait; Rokuhara and Chinzei deputies; 1221 confiscations",
+     "page to try": "https://en.wikipedia.org/wiki/J%C5%8Dky%C5%AB_War"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Genpei_War",
+     "result": "confirmed: 'In December 1185, Go-Shirakawa granted to Yoritomo ... appoint stewards and constables in all provinces'; Kamakura page 'the prevailing theory was that the year was 1185'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Kamakura_shogunate",
+     "result": "confirmed: 'Minamoto no Yoritomo appointed shogun: August 21, 1192'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Mongol_invasions_of_Japan",
+     "result": "confirmed (date): fleet set off 'on 2 November 1274', 'Two days later they began landing on Tsushima Island'"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Mongol_invasions_of_Japan",
+     "result": "confirmed (date): 'On 15 August, a great typhoon ...'; the 1275-1280 span is not on the page (finding)"
+    },
+    {
+     "where": "/ledger/12, /ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Kamakura_shogunate",
+     "result": "confirmed: 'Siege of Kamakura: May 18, 1333'; 'overthrown in the Kenmu Restoration under Emperor Go-Daigo in 1333'"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Kamakura_shogunate",
+     "result": "confirmed: 'In 1331, Emperor Go-Daigo took arms against Kamakura'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 320516,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area on the page (checked); author's 1188 vs Heian 1177 comparison (275,714 vs 243,639, +13%, coastline and islands) is acknowledged"
+   }
+  },
+  {
+   "slug": "shunten-dynasty",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/0/counterpart",
+     "what": "The found event named 'tenson-dynasty' as a slug although no dossier will exist (legendary line, 'no dossier is planned'); the validator warned.",
+     "why": "Shunten dynasty page: 'the last overlord of Tenson dynasty was assassinated by the powerful official named Riyū'; schema: a counterpart without a dossier takes 'its name as the source gives it'.",
+     "fix": "counterpart = 'Tenson dynasty' (predecessor slug left as written).",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "extent beyond Urasoe (shape 2,186 km2 against Okinawa Island ~1,200 km2) and the 1264/1266 tribute of Kumejima, Kerama, Iheya and Amami",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_the_Ryukyu_Islands"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Shunten_dynasty",
+     "result": "confirmed: 'In 1187, Shunten was recognized as the new \"king\". overlord among aji.'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Eiso_dynasty",
+     "result": "confirmed: 'It was established by Eiso in 1259.' (table gives Eiso 1260–1299; noted by the author)"
+    },
+    {
+     "where": "/ledger/2, /ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Eiso_dynasty",
+     "result": "confirmed: 'Tamagusuku ascended the throne in 1314', 'split into three principalities'; Nakijin 'crowned himself as the King of Hokuzan'; Ōzato 'King of Nanzan'"
+    },
+    {
+     "where": "/identity/rulers",
+     "page": "https://en.wikipedia.org/wiki/Shunten_dynasty",
+     "result": "confirmed: Shunten 1187–1237, Shunbajunki 1238–1248, Gihon 1249–1259; Eiso page Eiso 1260–1299, Taisei 1300–1308, Eiji 1309–1313"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 2186,
+    "ratio": 1.81,
+    "acknowledged": true,
+    "note": "no infobox area; against Okinawa Island's ~1,207 km2 the ratio is 1.81, acknowledged in /keyframe_review/0"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "asuka-japan",
+    "year": 538,
+    "type": "found",
+    "counterpart": "yamato"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "yamato has no row; listed for jk-01-x (counterparts_needing_dossiers)"
+  },
+  {
+   "event": {
+    "slug": "asuka-japan",
+    "year": 709,
+    "type": "gain",
+    "counterpart": "emishi"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "emishi has no row; listed for jk-01-x, else read as nobody"
+  },
+  {
+   "event": {
+    "slug": "nara-japan",
+    "year": 724,
+    "type": "gain",
+    "counterpart": "emishi"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "emishi has no row; listed for jk-01-x, else read as nobody"
+  },
+  {
+   "event": {
+    "slug": "nara-japan",
+    "year": 758,
+    "type": "gain",
+    "counterpart": "emishi"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "emishi has no row; listed for jk-01-x, else read as nobody"
+  },
+  {
+   "event": {
+    "slug": "heian-japan",
+    "year": 802,
+    "type": "gain",
+    "counterpart": "emishi"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "emishi has no row; listed for jk-01-x, else read as nobody"
+  },
+  {
+   "event": {
+    "slug": "nara-japan",
+    "year": 774,
+    "type": "contest_start",
+    "counterpart": "emishi"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "emishi, jk-01-x; handed to heian-japan 794 (heian /ledger/1 contest_start 794, matched)"
+  },
+  {
+   "event": {
+    "slug": "heian-japan",
+    "year": 850,
+    "type": "vassal_start",
+    "counterpart": "emishi"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "emishi, jk-01-x; confidence 1"
+  },
+  {
+   "event": {
+    "slug": "asuka-japan",
+    "year": 710,
+    "type": "dissolve",
+    "counterpart": "nara-japan"
+   },
+   "mirror": {
+    "slug": "nara-japan",
+    "year": 710,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "years match; land does not: the 709 Akita foothold is in neither the dissolve nor the found region (nara-japan blocking finding)"
+  },
+  {
+   "event": {
+    "slug": "nara-japan",
+    "year": 794,
+    "type": "dissolve",
+    "counterpart": "heian-japan"
+   },
+   "mirror": {
+    "slug": "heian-japan",
+    "year": 794,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "years match; northern Miyagi (Nara 758 gain) and Akita are missing from the Heian found region (heian-japan blocking finding)"
+  },
+  {
+   "event": {
+    "slug": "heian-japan",
+    "year": 1019,
+    "type": "contest_start",
+    "counterpart": "Toi (Jurchen pirates)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "named raiders, no dossier"
+  },
+  {
+   "event": {
+    "slug": "heian-japan",
+    "year": 1051,
+    "type": "contest_start",
+    "counterpart": "Abe clan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no row; optional dossier abe-clan listed"
+  },
+  {
+   "event": {
+    "slug": "heian-japan",
+    "year": 1062,
+    "type": "gain",
+    "counterpart": "Abe clan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no row; optional dossier abe-clan listed"
+  },
+  {
+   "event": {
+    "slug": "heian-japan",
+    "year": 1087,
+    "type": "loss",
+    "counterpart": "northern-fujiwara"
+   },
+   "mirror": {
+    "slug": "northern-fujiwara",
+    "year": 1087,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "same region (Northern Fujiwara 1094 shape)"
+  },
+  {
+   "event": {
+    "slug": "heian-japan",
+    "year": 1087,
+    "type": "vassal_start",
+    "counterpart": "northern-fujiwara"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "northern-fujiwara has no vassal_start/vassal_end with heian-japan (1087-1185); cited page calls them independent"
+  },
+  {
+   "event": {
+    "slug": "heian-japan",
+    "year": 1180,
+    "type": "contest_start",
+    "counterpart": "kamakura-shogunate"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "kamakura-shogunate starts 1185-12 and cannot carry 1180-1185 events; contest_end zone differs from the start zone"
+  },
+  {
+   "event": {
+    "slug": "heian-japan",
+    "year": 1185,
+    "type": "dissolve",
+    "counterpart": "kamakura-shogunate"
+   },
+   "mirror": {
+    "slug": "kamakura-shogunate",
+    "year": 1185,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "same year; months April vs December (advisory)"
+  },
+  {
+   "event": {
+    "slug": "kamakura-shogunate",
+    "year": 1185,
+    "type": "vassal_start",
+    "counterpart": "northern-fujiwara"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "no mirror in northern-fujiwara (December 1185 - October 1189)"
+  },
+  {
+   "event": {
+    "slug": "northern-fujiwara",
+    "year": 1189,
+    "type": "contest_start",
+    "counterpart": "kamakura-shogunate"
+   },
+   "mirror": {
+    "slug": "kamakura-shogunate",
+    "year": 1189,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "both 1189-09 to 1189-10, same zone"
+  },
+  {
+   "event": {
+    "slug": "northern-fujiwara",
+    "year": 1189,
+    "type": "loss",
+    "counterpart": "kamakura-shogunate"
+   },
+   "mirror": {
+    "slug": "kamakura-shogunate",
+    "year": 1189,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "both October 1189, Northern Fujiwara 1188 shape"
+  },
+  {
+   "event": {
+    "slug": "kamakura-shogunate",
+    "year": 1221,
+    "type": "contest_start",
+    "counterpart": "Retired Emperor Go-Toba (Kyoto court)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "named faction, no dossier"
+  },
+  {
+   "event": {
+    "slug": "kamakura-shogunate",
+    "year": 1274,
+    "type": "contest_start",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "mongol-empire dossier not written yet (other group); it should carry 1274-11 and 1281-06..08 after the Kamakura fix"
+  },
+  {
+   "event": {
+    "slug": "kamakura-shogunate",
+    "year": 1331,
+    "type": "contest_start",
+    "counterpart": "kenmu-restoration"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kenmu-restoration (another jk-01 part) not written yet; its Cliopatria row starts 1333, so it cannot carry a 1331 contest unless that dossier starts in 1331"
+  },
+  {
+   "event": {
+    "slug": "kamakura-shogunate",
+    "year": 1333,
+    "type": "dissolve",
+    "counterpart": "kenmu-restoration"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kenmu-restoration not written yet (another jk-01 part)"
+  },
+  {
+   "event": {
+    "slug": "shunten-dynasty",
+    "year": 1187,
+    "type": "found",
+    "counterpart": "Tenson dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "legendary predecessor, no dossier planned"
+  },
+  {
+   "event": {
+    "slug": "shunten-dynasty",
+    "year": 1314,
+    "type": "split",
+    "counterpart": "hokuzan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "hokuzan owned by another jk-01 part, not written yet"
+  },
+  {
+   "event": {
+    "slug": "shunten-dynasty",
+    "year": 1314,
+    "type": "split",
+    "counterpart": "nanzan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nanzan owned by another jk-01 part, not written yet"
+  },
+  {
+   "event": {
+    "slug": "shunten-dynasty",
+    "year": 1314,
+    "type": "dissolve",
+    "counterpart": "chuzan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "chuzan owned by another jk-01 part, not written yet; it should name shunten-dynasty as predecessor"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Tsushima",
+   "kind": "region",
+   "used_in": "heian-japan, kamakura-shogunate"
+  },
+  {
+   "name": "Iki",
+   "kind": "region",
+   "used_in": "heian-japan, kamakura-shogunate"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Emishi",
+   "suggested_slug": "emishi",
+   "years": [
+    538,
+    1051
+   ]
+  },
+  {
+   "name": "Yamato (Kofun-period kingship)",
+   "suggested_slug": "yamato",
+   "years": [
+    250,
+    540
+   ]
+  },
+  {
+   "name": "Minamoto regime at Kamakura (Genpei War), only if kamakura-shogunate is not started in 1180",
+   "suggested_slug": "minamoto-clan",
+   "years": [
+    1180,
+    1185
+   ]
+  },
+  {
+   "name": "Abe clan of Mutsu (optional)",
+   "suggested_slug": "abe-clan",
+   "years": [
+    1050,
+    1062
+   ]
+  },
+  {
+   "name": "Kiyohara clan (optional)",
+   "suggested_slug": "kiyohara-clan",
+   "years": [
+    1062,
+    1087
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-jk-01-a.md",
+ "problems": [
+  "No page failed for the reviewer; Thirty-Eight Years' War loaded under the literal-apostrophe URL the author cites.",
+  "No Context polities in the author's brief and none of the counterparts (emishi, yamato, mongol-empire, kenmu-restoration, chuzan, hokuzan, nanzan) has a dossier in history/polities/ yet; cross-checks among the six batch dossiers only.",
+  "Reviewer edits applied and re-validated (0 errors): nara-japan /wars/2/to, heian-japan /wars/0/from, northern-fujiwara /wars/0/from, kamakura-shogunate /identity/rulers sources and /keyframe_review/0 text, shunten-dynasty /ledger/0/counterpart.",
+  "history/tools/__pycache__ exists on the mount (not created by this reviewer)."
+ ]
+}

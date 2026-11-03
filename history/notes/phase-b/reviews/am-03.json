@@ -1,0 +1,1104 @@
+{
+ "batch_id": "am-03",
+ "verdicts": [
+  {
+   "slug": "toltec",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/predecessors/0",
+     "what": "The teotihuacan predecessor does not agree with teotihuacan.json and carries no land in a dated event.",
+     "why": "teotihuacan.json (am-01) ends in 750 with successors []; this entry's own note says no land passes and quotes Cliopatria's 704 end, 125 years before the 875 start.",
+     "fix": "Remove the predecessor and keep the cultural link in notes; if it is kept, change 704 to the teotihuacan dossier's 750 and ask am-01 to list toltec as a successor.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding year: 875 is Cliopatria's (confidence 1); the Toltec page gives no year (infobox c. 950-1168) and the Tula page only 'Tula Chico was abandoned between 850 and 900CE'.",
+     "page to try": "https://en.wikipedia.org/wiki/Mesoamerican_chronology"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Toltec",
+     "result": "confirmed (page silent on the year, as the note says; infobox 'c. 950-1168 AD')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Tula_(Mesoamerican_site)",
+     "result": "confirmed ('reached its height between 900 and 1150'; 'Its political sphere is thought to include most of the present state of Hidalgo')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Tula_(Mesoamerican_site)",
+     "result": "confirmed ('Tula fell around 1150')"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "page": "https://en.wikipedia.org/wiki/Tula_(Mesoamerican_site)",
+     "result": "confirmed ('The chronology dates the destruction of Tula to around 1179')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 5604.7,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area. The Hidalgo correction resolves to 72 cells, about 18,200 km2 (3.2 x Cliopatria; the keyframe note says 20,800 km2, 3.7 x), acknowledged in /keyframe_review/1 as a soft sphere."
+   }
+  },
+  {
+   "slug": "texcoco",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction, /keyframe_review/1/correction, /keyframe_review/2/correction, /ledger/0/region, /ledger/3/region, /ledger/4/region, /wars/0/zones",
+     "what": "The 30 km Texcoco disc contained the Mexico City cell, Tenochtitlan's only cell, so two independent states owned it from 1325 to 1428.",
+     "why": "gazetteer resolve: {\"place\":\"Texcoco\",\"km\":30} = 12 cells, bbox west edge -99.14, including the single cell (-99.14, 19.46) that {\"place\":\"Mexico City\",\"km\":15} (tenochtitlan's correction) resolves to. Acolhua page: 'The Acolhua settled most of the eastern Basin of Mexico, an area known as Acolhuacan'; Tenochtitlan was a separate island city.",
+     "fix": "Replaced by {\"minus\":[{\"place\":\"Texcoco\",\"km\":30},{\"place\":\"Mexico City\",\"km\":15}]} (11 cells, about 2,780 km2), text kept, reviewer note appended.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/5/region, /ledger/6/region, /identity/successors/0/land",
+     "what": "The 1428 merge, dissolve and successor land used {\"cliopatria\":\"Texcoco\",\"year\":1428}, the shape this dossier itself marks misplaced.",
+     "why": "That shape resolves to 7 cells at 18.93-19.36 N (Xochimilco, Chalco), only one within 25 km of Texcoco; /keyframe_review/2 replaces it with the disc.",
+     "fix": "Replaced by the corrected disc {\"minus\":[{\"place\":\"Texcoco\",\"km\":30},{\"place\":\"Mexico City\",\"km\":15}]}, text kept.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Acolhua",
+     "result": "confirmed ('arrived in the Valley of Mexico in or around the year 1200 CE'; 'first capital was Coatlinchan')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Texcoco_(altepetl)",
+     "result": "confirmed ('In or about 1337, the Acolhua, with Tepanec help, expelled Chichimecs from Tetzcoco')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Texcoco_(altepetl)",
+     "result": "confirmed ('In 1418, Ixtlilxochitl I, the tlatoani (ruler) of Tetzcoco, was dethroned by Tezozomoc of Azcapotzalco')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Acolhua",
+     "result": "confirmed ('founded in 1428 when the rulers of Tenochtitlan, Texcoco, and Tlacopan formed an alliance')"
+    },
+    {
+     "where": "/identity/rulers",
+     "page": "https://en.wikipedia.org/wiki/Texcoco_(altepetl)",
+     "result": "confirmed (Quinatzin 1298-1357, Techotlalatzin 1357-1409, Ixtlilxochitl 1409-1418, Nezahualcoyotl 1420-1472)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 2631.9,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area (the city 'occupied an area of 450 hectares'); the corrected disc (about 2,780 km2) is within a factor of two of Cliopatria."
+   }
+  },
+  {
+   "slug": "michoacan",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/9/region, /wars/0/zones/1",
+     "what": "The 1480 gain drew the whole of Jalisco and Colima where the page says 'parts of'.",
+     "why": "Tarascan state page: 'Between 1480 and 1510, the Iréchikwa occupied parts of present day Colima and Jalisco'. The union resolves to about 72,000 km2 (Jalisco alone 264 cells, 66,800 km2), almost the whole empire's 75,000 km2; the cells Cliopatria actually adds (and /keyframe_review/6-7 remove) are 49 cells, about 12,400 km2.",
+     "fix": "Region now {\"intersect\":[{\"cliopatria\":\"Michoacán\",\"year\":1482},{\"union\":[Jalisco, Colima]}]}, text kept, reviewer note appended.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/4/region, /ledger/6/region, /wars/1/zones",
+     "what": "The Toluca Valley contest zone (60 km disc) reached the Mexico City cell, making the Aztec capital a contested zone for 1455-1472.",
+     "why": "{\"place\":\"Toluca\",\"km\":60} = 40 cells, bbox east edge -99.14 (the Mexico City cell); {\"place\":\"Toluca\",\"km\":50} = 27 cells, east edge -99.28, no Mexico City cell. Aztec Empire page names only 'the Toluca Valley'.",
+     "fix": "Radius cut to 50 km in both dossiers (aztec /ledger/13, /ledger/17, /wars/3 too).",
+     "applied": true
+    },
+    {
+     "where": "/ledger (no 1472 loss)",
+     "what": "The 1472 Aztec gain from michoacan has no mirror: michoacan records only a contest_end in 1472, and never a gain of the Toluca Valley.",
+     "why": "aztec-triple-alliance /ledger/18 (gain, 1472, counterpart michoacan, confidence 3). Aztec Empire page: 'In 1472, Axayacatl re-conquered the region and successfully defended it from Purépecha's attempts to take it back'; Tarascan state page: 'In 1460 the Iréchikwa reached the Pacific coast at Zacatula, advanced into the Toluca Valley'. No Cliopatria Michoacán shape reaches the Toluca disc.",
+     "fix": "Add a gain of the Toluca Valley (1460, the Tarascan page's year, confidence 2) and a 1472 loss to aztec-triple-alliance with the region of aztec /ledger/18; or, if the Tarascans held no ground there, the aztec author changes /ledger/18's counterpart (e.g. 'Matlatzinca (Toluca Valley)') and keeps the Purépecha claim as the contest.",
+     "applied": false
+    },
+    {
+     "where": "/identity/wikipedia",
+     "what": "The Wikipedia title is the modern state 'Michoacán', not the polity's article.",
+     "why": "The dossier's own main source is https://en.wikipedia.org/wiki/Tarascan_state (infobox c. 1300-1530, capital Tzintzuntzan); the author's notes say Cliopatria's field points at the modern state.",
+     "fix": "Set identity.wikipedia to 'Tarascan state' (Cliopatria's field stays in polities.csv).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/7/note",
+     "what": "The 1475-1481 correction removes Jalisco and Colima through 1481 while /ledger/9 gains them in 1480.",
+     "why": "Keyframe 7 spans 1475-1481; the gain is dated 1480 (page); the 1482 keyframe (ok) holds them.",
+     "fix": "Say in the keyframe note that 1480-1481 follow the ledger's 1480 gain (or give keyframe 7 'to': 1479 if the schema allows a narrowed Cliopatria keyframe).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Year of Hiripan's Cuitzeo conquests (1429 is Cliopatria's, confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Tzintzuntzan"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "Year of the 1440 threefold growth ('between 1401 and 1450', confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Tzintzuntzan"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "Year of Axayacatl's capture of the frontier towns ('In the 1470s', confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Axayacatl"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No ruler list (Tariacuri, Hiripan, Tangaxuan I, Tzitzipandaquare, Zuangua, Tangaxuan II); the Tangaxoan II page failed for the author.",
+     "page to try": "https://en.wikipedia.org/wiki/Tarascan_state"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Tarascan_state",
+     "result": "confirmed ('founded in the early 14th century'; infobox c. 1300-1530)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Tarascan_state",
+     "result": "confirmed ('In 1460 the Iréchikwa reached the Pacific coast at Zacatula, advanced into the Toluca Valley')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Aztec_Empire",
+     "result": "confirmed ('In 1472, Axayacatl re-conquered the region')"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Tarascan_state",
+     "result": "confirmed year ('Between 1480 and 1510 ... parts of present day Colima and Jalisco'); region overstated, fixed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Tarascan_state",
+     "result": "confirmed ('the king was executed on February 14, 1530'; 'lost its independence to the Spanish in 1530')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 75000,
+    "infobox_year": 1450,
+    "cliopatria_km2": 49787.4,
+    "ratio": 1.51,
+    "acknowledged": true,
+    "note": "Body text, not infobox: 'By A.D. 1450 ... an empire that spanned 75,000 square kilometers'; within a factor of two of the 1450 shape and quoted in the keyframe notes."
+   }
+  },
+  {
+   "slug": "tenochtitlan",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger (no vassal events)",
+     "what": "Azcapotzalco's vassalage of Tenochtitlan (1325-1428) has no mirror in this ledger.",
+     "why": "azcapotzalco /ledger/1 vassal_start 1325 and /ledger/6 vassal_end 1428, counterpart tenochtitlan. Azcapotzalco page: after 1323 'they were subject to military, economic and strategic decisions of the Tepanecas'; Itzcoatl page (quoted by the author): 'the Mexica of Tenochtitlan broke free from Tepanec domination'.",
+     "fix": "Add vassal_start 1325 and vassal_end 1428 with counterpart azcapotzalco (confidence 1 and 2, the sentences above), as the other Phase B reviews ask of a vassal's dossier.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/4/region, /ledger/5/region, /identity/successors/0/land",
+     "what": "The 1428 merge, dissolve and successor land use {\"cliopatria\":\"Tenochtitlan\",\"year\":1428}, the shape this dossier marks misplaced.",
+     "why": "That shape resolves to 8 cells at 98.84-98.43 W, 19.00-19.49 N, east of the lake, without the Mexico City cell; /keyframe_review/1 replaces it with {\"place\":\"Mexico City\",\"km\":15}.",
+     "fix": "Use {\"place\":\"Mexico City\",\"km\":15} with the same text (also in aztec /ledger/1 and /identity/predecessors/0/land).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1/region",
+     "what": "The 1337 split region is the state's whole land: {\"place\":\"Mexico City\",\"km\":6} and the state's correction {\"place\":\"Mexico City\",\"km\":15} resolve to the same single H3 cell.",
+     "why": "gazetteer resolve: both are 1 cell, (-99.14, 19.46). Drawn as written, Tlatelolco's split leaves Tenochtitlan with no land from 1337 to 1428.",
+     "fix": "Keep the event and say in its note that Tlatelolco is sub-cell (2 km north) and takes no cell; the orchestrator needs a renderer rule (see problems).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/rulers",
+     "what is missing": "Acamapichtli, Huitzilihuitl, Chimalpopoca, Itzcoatl (1427) and the domain before 1428 (flagged by the author).",
+     "page to try": "https://en.wikipedia.org/wiki/Acamapichtli"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Tenochtitlan",
+     "result": "confirmed (infobox 'Foundation: 1325'; 'the date 13 March 1325 was chosen in 1925')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Mexica",
+     "result": "confirmed ('built another city on an island north of Tenochtitlan in 1337'); confidence 3 honest"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Aztec_Empire",
+     "result": "confirmed via the Tepanec_War redirect ('In 1427, Tenochtitlan, Texcoco, Tlacopan, and Huexotzinco went to war against Azcapotzalco, emerging victorious in 1428')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Tenochtitlan",
+     "result": "confirmed (infobox 'Formation of the Aztec Empire: 1428')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 2380.6,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; the city 'covered an estimated 8 to 13.5 km2'; the correction is one cell (about 253 km2), the factor against Cliopatria acknowledged in /keyframe_review/0."
+   }
+  },
+  {
+   "slug": "aztec-triple-alliance",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/24",
+     "what": "The Soconusco gain was dated 1486 at confidence 2, but no page dates it, and the 1487 keyframe does not hold Soconusco.",
+     "why": "Aztec Empire page: Ahuitzotl 'began a new wave of conquests including the Oaxaca Valley and the Soconusco Coast', no year beyond his 1486 accession; Ahuitzotl page: years only for accession (1486) and death (1502), no Soconusco. Cliopatria adds the Tapachula cells in the 1492 shape.",
+     "fix": "Year 1492, confidence 1, reviewer note appended.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/23/confidence",
+     "what": "The Oaxaca Valley gain is at confidence 2 on Ahuitzotl's accession year, not a conquest year.",
+     "why": "Same pages: no year for the Oaxaca Valley conquest.",
+     "fix": "Confidence 1, reviewer note appended.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/13/region, /ledger/17/region, /wars/3/zones",
+     "what": "The Toluca contest zone (60 km) reached the Mexico City cell, the capital itself.",
+     "why": "See michoacan: 60 km = 40 cells to -99.14 W; 50 km = 27 cells, east edge -99.28.",
+     "fix": "Radius cut to 50 km.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/32/region",
+     "what": "The February 1521 loss of Texcoco used Cliopatria's Texcoco 1428 shape, which lies south of the lake.",
+     "why": "texcoco /keyframe_review/2 marks it misplaced; it resolves to 7 cells at 18.93-19.36 N. Spanish conquest page: 'Texcoco becomes the base of operations for the campaign against Tenochtitlan' (February 1521).",
+     "fix": "Region now {\"minus\":[{\"place\":\"Texcoco\",\"km\":30},{\"place\":\"Mexico City\",\"km\":15}]}, text kept.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/3..12/correction",
+     "what": "From 1450 the corrected shapes still hold 6 of the 7 cells of cholula.json's own land (901-1521, {\"place\":\"Cholula\",\"km\":25}); neither dossier records a conquest, vassalage or alliance.",
+     "why": "gazetteer: intersect(minus(Aztec 1482, Tlaxcala), Cholula 25 km) = 6 cells, about 1,500 km2; cholula.json (am-01) holds them to its 1521 dissolve. The author's notes record that cholula.json exists and that Cholula's status is not on the pages read.",
+     "fix": "Subtract {\"place\":\"Cholula\",\"km\":25,\"country\":\"Mexico\"} from the 1450-1519 corrections as for Tlaxcala (Cholula fought the Aztecs in the flower wars with Tlaxcala and Huexotzinco), or add a dated vassal_start from a page and ask am-01 to mirror it.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/18",
+     "what": "The 1472 gain from michoacan (confidence 3) has no loss in michoacan.json.",
+     "why": "See michoacan finding; michoacan has only a contest_end in 1472.",
+     "fix": "Agree the counterpart with the michoacan fix (michoacan adds the 1472 loss, or this counterpart becomes the Matlatzinca).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1/region, /ledger/2/region, /identity/predecessors/0/land, /identity/predecessors/1/land",
+     "what": "The 1428 merges use the Cliopatria Tenochtitlan and Texcoco shapes that both predecessor dossiers mark misplaced.",
+     "why": "tenochtitlan /keyframe_review/1 and texcoco /keyframe_review/2 replace them with discs.",
+     "fix": "Use {\"place\":\"Mexico City\",\"km\":15} and {\"minus\":[{\"place\":\"Texcoco\",\"km\":30},{\"place\":\"Mexico City\",\"km\":15}]}.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/5",
+     "what is missing": "Coyoacan 1429 (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Itzcoatl"
+    },
+    {
+     "where": "/ledger/10",
+     "what is missing": "Growth of the 1450 shape over Hidalgo and Puebla, undated (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Moctezuma_I"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "Gulf Coast 1453, undated (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Totonac"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "Cempoala client status from 1453 (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Totonac"
+    },
+    {
+     "where": "/ledger/16",
+     "what is missing": "Northern Guerrero (Tlapan) 1459, undated (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Moctezuma_I"
+    },
+    {
+     "where": "/ledger/20",
+     "what is missing": "Axayacatl's Michoacán frontier towns 1475 (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Axayacatl"
+    },
+    {
+     "where": "/ledger/22",
+     "what is missing": "Tizoc's 1482 growth (24,300 km2), undated (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Tizoc"
+    },
+    {
+     "where": "/ledger/23",
+     "what is missing": "Year of the Oaxaca Valley conquest under Ahuitzotl (now confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Ahuitzotl"
+    },
+    {
+     "where": "/ledger/24",
+     "what is missing": "Year of the Soconusco conquest (now 1492, confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Soconusco"
+    },
+    {
+     "where": "/ledger/25",
+     "what is missing": "Guerrero growth 1497, undated (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Ahuitzotl"
+    },
+    {
+     "where": "/keyframe_review/11",
+     "what is missing": "The 1502 shape adds about 30,900 km2; /ledger/26 (Oaxaca, 1504) explains about 19,700 km2; about 11,000 km2 in Veracruz and Puebla has no event, and the Oaxaca increment shows from 1502 while the event is 1504.",
+     "page to try": "https://en.wikipedia.org/wiki/Moctezuma_II"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Aztec_Empire",
+     "result": "confirmed ('The Tepanec lands were carved up among the three cities')"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Moctezuma_I",
+     "result": "confirmed ('In about 1458, Moctezuma led an expedition into Mixtec territory against the city-state of Coixtlahuaca')"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Moctezuma_I",
+     "result": "confirmed ('In the 1450s, Aztec forces under Moctezuma would invade the Valley of Oaxaca'; fitted to the 1459 shape, confidence 2 fair)"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Aztec_Empire",
+     "result": "confirmed ('In 1472, Axayacatl re-conquered the region and successfully defended it from Purépecha's attempts to take it back'); confidence 3 honest"
+    },
+    {
+     "where": "/ledger/24",
+     "page": "https://en.wikipedia.org/wiki/Ahuitzotl",
+     "result": "mis-dated (no year on the Ahuitzotl or Aztec Empire page for Soconusco); fixed to 1492 at confidence 1"
+    },
+    {
+     "where": "/ledger/29",
+     "page": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Aztec_Empire",
+     "result": "confirmed ('On 8 November 1519 ... Cortés and his forces entered Tenochtitlan')"
+    },
+    {
+     "where": "/ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Aztec_Empire",
+     "result": "confirmed (timeline '30 June - La Noche Triste'; narrative '10 July 1520', as the note says)"
+    },
+    {
+     "where": "/ledger/34",
+     "page": "https://en.wikipedia.org/wiki/Aztec_Empire",
+     "result": "confirmed (infobox Spanish conquest 13 August 1521; conquest page 'final victory on 13 August 1521')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 220000,
+    "infobox_year": 1520,
+    "cliopatria_km2": 211714.0,
+    "ratio": 1.04,
+    "acknowledged": true,
+    "note": "Infobox 220,000 km2 for 1520 against the 1519 shape; quoted in the dossier."
+   }
+  },
+  {
+   "slug": "azcapotzalco",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/4/region, /ledger/7/region",
+     "what": "The Texcoco contest zone (30 km disc) contained the Mexico City cell.",
+     "why": "As in texcoco.",
+     "fix": "Replaced by {\"minus\":[{\"place\":\"Texcoco\",\"km\":30},{\"place\":\"Mexico City\",\"km\":15}]}, text kept.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/3/region, /keyframe_review/2/correction",
+     "what": "The 1414 gain of the 'Valley of Mexico' takes Texcoco's whole disc and capital as Azcapotzalco's own land while texcoco.json holds it as its own until the contest starts in 1418: two owners for 11 cells in 1414-1417, with no texcoco event.",
+     "why": "Azcapotzalco page: 'Between 1414-1418, Azcapotzalco controlled the entire Valley of Mexico, thanks to the decisive contribution of Aztec and mercenary forces'; Texcoco page: 'In 1418, Ixtlilxochitl I ... was dethroned'. The gazetteer's Valley of Mexico is the Distrito Federal plus México state (81 cells, about 20,500 km2, the Toluca Valley included).",
+     "fix": "Start the texcoco-azcapotzalco contest in 1414 in both dossiers, citing the 1414-1418 sentence (the 1418 dethronement stays in the note), or subtract {\"minus\":[{\"place\":\"Texcoco\",\"km\":30},{\"place\":\"Mexico City\",\"km\":15}]} from the 1414 region until 1418; counterpart 'Valley of Mexico altepetl' should name texcoco for that part.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Start of the Mexica tributary status: 1325 is Tenochtitlan's founding (confidence 1). The page has 1318 ('attacked the Aztecs ... resulted in an increased tribute') and, after 1323, 'they were subject to military, economic and strategic decisions of the Tepanecas'; quote them in the note.",
+     "page to try": "https://en.wikipedia.org/wiki/Tepanecs"
+    },
+    {
+     "where": "/ledger/0/region",
+     "what is missing": "Azcapotzalco's own land 995-1384 is {\"place\":\"Mexico City\",\"km\":12}, the same single H3 cell as Tenochtitlan (vassal) and Tlatelolco; at resolution 5 they cannot be separated (problems).",
+     "page to try": "https://en.wikipedia.org/wiki/Azcapotzalco_(altepetl)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Azcapotzalco_(altepetl)",
+     "result": "confirmed ('Azcapotzalco was founded by Chichimecs in the year 995 AD')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Azcapotzalco_(altepetl)",
+     "result": "confirmed ('Tezozómoc forced the Aztecs to fight with him and together conquered the city of Colhuacan in 1385'; the partner is the Aztecs)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Azcapotzalco_(altepetl)",
+     "result": "confirmed ('Between 1414-1418, Azcapotzalco controlled the entire Valley of Mexico')"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Aztec_Empire",
+     "result": "confirmed ('The Tepanec lands were carved up among the three cities'); confidence 3 honest"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Azcapotzalco_(altepetl)",
+     "result": "confirmed (infobox 'Incorporated into Aztec Empire: 1428'; 'Together they attacked and sacked Azcapotzalco in 1428')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; not in Cliopatria."
+   }
+  },
+  {
+   "slug": "tlaxcala",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/wars/0",
+     "what": "The flower wars run 1454-1519 here and 1450-1519 in aztec-triple-alliance /wars/2.",
+     "why": "Neither page read gives a start year (Moctezuma I page: no start year).",
+     "fix": "Use one span in both dossiers.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding: the infobox puts '1348' beside the 'Tlaxcaltec migration to Central Mexico' (confidence 1; 2 would be honest for the year).",
+     "page to try": "https://en.wikipedia.org/wiki/Tlaxcala"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "End: infobox 1348-1520; the page gives no incorporation year (the four fiefdoms date from 1545); 1521 is a bridge (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Tlaxcala"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Territory: the modern state is an assumption (11 cells, about 2,780 km2); the page says only 'Tlaxcala was completely surrounded by Aztec lands'.",
+     "page to try": "https://en.wikipedia.org/wiki/Tlaxcala"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Tlaxcala",
+     "result": "confirmed (article 'Confederacy of Tlaxcala', infobox '1348-1520', '1348' for the migration)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Tlaxcala",
+     "result": "confirmed page silent (no end year beyond the infobox's 1520; 'was never conquered by the Aztec Empire')"
+    },
+    {
+     "where": "/identity/successors/0",
+     "page": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Aztec_Empire",
+     "result": "confirmed ('On 23 September 1519, Cortés arrived in Tlaxcala and was greeted with joy by the rulers')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; not in Cliopatria; Aztec corrections cut the same admin1 out, consistent."
+   }
+  },
+  {
+   "slug": "tututepec",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1/correction",
+     "what": "The 89 km disc is said to be 'about 25,000 km2', but Tututepec is on the coast: about half the disc is sea.",
+     "why": "gazetteer: {\"lon\":-97.62,\"lat\":16.15,\"km\":89} (the capital's coordinates; 'Tututepec' does not resolve) = 55 land cells, about 13,900 km2, against the page's 'more than 25,000 km2' (undated) and its possible reach 'as far west as Cahuitan'.",
+     "fix": "Widen the sphere inland and west along the coast toward Cahuitan (e.g. a union of the disc with a coastal place near the Guerrero border), or correct the area claim in the note to about 13,900 km2.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/1/correction",
+     "what": "Tilantongo is held from 1098 to 1522 with no page support after Eight Deer, and overlaps the Aztec shape from 1502 (7 cells).",
+     "why": "Tututepec page: 'After Eight Deer conquered Tilantongo he never returned to Tututepec'; no later history of Tilantongo. Aztec Mixteca campaigns: Coixtlahuaca c. 1458 (Moctezuma I page), Achiotlan 1504 (Moctezuma II page, quoted in aztec /ledger/26).",
+     "fix": "Add a loss of Tilantongo at confidence 1 (Eight Deer's death, or the Aztec Mixteca campaign of 1504 with counterpart aztec-triple-alliance) and end the union there.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Date of the 25,000 km2 sphere (Late Postclassic, undated on the page).",
+     "page to try": "https://en.wikipedia.org/wiki/Mixtec"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Tututepec",
+     "result": "confirmed ('founds Tututepec in 1083'); confidence 3 honest"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Tututepec",
+     "result": "confirmed (Four Jaguar's Toltec delegation in 1097 'aiding him in conquering Tilantongo the next year')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Tututepec",
+     "result": "confirmed ('in January 1522, arriving in Tututepec in February')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Tututepec",
+     "result": "confirmed ('conquering it by March 4')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 25000,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": null,
+    "acknowledged": false,
+    "note": "Body text, undated: 'more than 25,000 km2'; not in Cliopatria; the drawn disc is about 13,900 km2 of land (ratio 0.56), which the note misstates as about 25,000."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "texcoco",
+    "year": 1428,
+    "type": "merge",
+    "counterpart": "aztec-triple-alliance"
+   },
+   "mirror": {
+    "slug": "aztec-triple-alliance",
+    "year": 1428,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "tenochtitlan",
+    "year": 1428,
+    "type": "merge",
+    "counterpart": "aztec-triple-alliance"
+   },
+   "mirror": {
+    "slug": "aztec-triple-alliance",
+    "year": 1428,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "aztec-triple-alliance",
+    "year": 1428,
+    "type": "gain",
+    "counterpart": "azcapotzalco"
+   },
+   "mirror": {
+    "slug": "azcapotzalco",
+    "year": 1428,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "michoacan",
+    "year": 1475,
+    "type": "loss",
+    "counterpart": "aztec-triple-alliance"
+   },
+   "mirror": {
+    "slug": "aztec-triple-alliance",
+    "year": 1475,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "both confidence 1, Cliopatria year"
+  },
+  {
+   "event": {
+    "slug": "aztec-triple-alliance",
+    "year": 1472,
+    "type": "gain",
+    "counterpart": "michoacan"
+   },
+   "mirror": {
+    "slug": "michoacan",
+    "year": 1472,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "michoacan has no loss and never gains the Toluca Valley; same author, routed to both"
+  },
+  {
+   "event": {
+    "slug": "azcapotzalco",
+    "year": 1325,
+    "type": "vassal_start",
+    "counterpart": "tenochtitlan"
+   },
+   "mirror": {
+    "slug": "tenochtitlan",
+    "year": null,
+    "type": "vassal_start"
+   },
+   "status": "missing",
+   "note": "tenochtitlan has no vassal events; same batch"
+  },
+  {
+   "event": {
+    "slug": "azcapotzalco",
+    "year": 1428,
+    "type": "vassal_end",
+    "counterpart": "tenochtitlan"
+   },
+   "mirror": {
+    "slug": "tenochtitlan",
+    "year": null,
+    "type": "vassal_end"
+   },
+   "status": "missing",
+   "note": "tenochtitlan has no vassal events; same batch"
+  },
+  {
+   "event": {
+    "slug": "azcapotzalco",
+    "year": 1414,
+    "type": "gain",
+    "counterpart": "Valley of Mexico altepetl"
+   },
+   "mirror": {
+    "slug": "texcoco",
+    "year": null,
+    "type": "loss or contest_start"
+   },
+   "status": "mismatch",
+   "note": "the region includes texcoco land texcoco holds as its own until 1418"
+  },
+  {
+   "event": {
+    "slug": "texcoco",
+    "year": 1418,
+    "type": "contest_start",
+    "counterpart": "azcapotzalco"
+   },
+   "mirror": {
+    "slug": "azcapotzalco",
+    "year": 1418,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "contest pair matched (ends 1428 both)"
+  },
+  {
+   "event": {
+    "slug": "tenochtitlan",
+    "year": 1427,
+    "type": "contest_start",
+    "counterpart": "azcapotzalco"
+   },
+   "mirror": {
+    "slug": "azcapotzalco",
+    "year": 1427,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "contest pair matched (ends 1428 both)"
+  },
+  {
+   "event": {
+    "slug": "michoacan",
+    "year": 1455,
+    "type": "contest_start",
+    "counterpart": "aztec-triple-alliance"
+   },
+   "mirror": {
+    "slug": "aztec-triple-alliance",
+    "year": 1455,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "ends 1472 both; also 1476-1515 matched"
+  },
+  {
+   "event": {
+    "slug": "aztec-triple-alliance",
+    "year": 1450,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "cholula",
+    "year": null,
+    "type": "none"
+   },
+   "status": "mismatch",
+   "note": "Aztec corrected shapes from 1450 hold 6 of 7 cells of cholula.json (am-01) own land; no event on either side"
+  },
+  {
+   "event": {
+    "slug": "toltec",
+    "year": 875,
+    "type": "predecessor",
+    "counterpart": "teotihuacan"
+   },
+   "mirror": {
+    "slug": "teotihuacan",
+    "year": 750,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "teotihuacan.json ends 750 with no successors; toltec names it as predecessor"
+  },
+  {
+   "event": {
+    "slug": "tlaxcala",
+    "year": 1454,
+    "type": "war",
+    "counterpart": "aztec-triple-alliance"
+   },
+   "mirror": {
+    "slug": "aztec-triple-alliance",
+    "year": 1450,
+    "type": "war"
+   },
+   "status": "mismatch",
+   "note": "flower-war spans differ by four years"
+  },
+  {
+   "event": {
+    "slug": "tenochtitlan",
+    "year": 1337,
+    "type": "split",
+    "counterpart": "Tlatelolco"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed by the author"
+  },
+  {
+   "event": {
+    "slug": "aztec-triple-alliance",
+    "year": 1473,
+    "type": "gain",
+    "counterpart": "Tlatelolco"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed"
+  },
+  {
+   "event": {
+    "slug": "aztec-triple-alliance",
+    "year": 1428,
+    "type": "merge",
+    "counterpart": "Tlacopan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed"
+  },
+  {
+   "event": {
+    "slug": "aztec-triple-alliance",
+    "year": 1453,
+    "type": "vassal_start",
+    "counterpart": "Cempoala (Totonacs)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed (vassal_end 1519 too)"
+  },
+  {
+   "event": {
+    "slug": "aztec-triple-alliance",
+    "year": 1458,
+    "type": "gain",
+    "counterpart": "Coixtlahuaca"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed as Mixteca Alta kingdoms"
+  },
+  {
+   "event": {
+    "slug": "aztec-triple-alliance",
+    "year": 1459,
+    "type": "gain",
+    "counterpart": "Mixtec and Zapotec polities"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free text; also 1486 and 1504; Mixteca Alta listed"
+  },
+  {
+   "event": {
+    "slug": "tututepec",
+    "year": 1098,
+    "type": "gain",
+    "counterpart": "Tilantongo"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed as Mixteca Alta kingdoms"
+  },
+  {
+   "event": {
+    "slug": "aztec-triple-alliance",
+    "year": 1429,
+    "type": "gain",
+    "counterpart": "Coyoacan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text altepetl, not in the author list; added to counterparts_needing_dossiers here (also Xochimilco 1430, Mixquic 1432, Cuitlahuac 1433, Cuauhnahuac 1439)"
+  },
+  {
+   "event": {
+    "slug": "azcapotzalco",
+    "year": 1385,
+    "type": "gain",
+    "counterpart": "Colhuacan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text altepetl, added here"
+  },
+  {
+   "event": {
+    "slug": "aztec-triple-alliance",
+    "year": 1519,
+    "type": "occupation_start",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "am-06 has not run (also occupation_end 1520, contest 1520-1521, losses 1521)"
+  },
+  {
+   "event": {
+    "slug": "michoacan",
+    "year": 1530,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "am-06 has not run (contest 1522-1530 too)"
+  },
+  {
+   "event": {
+    "slug": "tututepec",
+    "year": 1522,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "am-06 has not run"
+  },
+  {
+   "event": {
+    "slug": "tlaxcala",
+    "year": 1521,
+    "type": "dissolve",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "am-06 has not run"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Metztitlán",
+   "kind": "place",
+   "used_in": "aztec-triple-alliance"
+  },
+  {
+   "name": "Xochimilco",
+   "kind": "place",
+   "used_in": "aztec-triple-alliance"
+  },
+  {
+   "name": "Mixquic",
+   "kind": "place",
+   "used_in": "aztec-triple-alliance"
+  },
+  {
+   "name": "Cuitlahuac",
+   "kind": "place",
+   "used_in": "aztec-triple-alliance"
+  },
+  {
+   "name": "Cempoala",
+   "kind": "place",
+   "used_in": "aztec-triple-alliance"
+  },
+  {
+   "name": "Coixtlahuaca",
+   "kind": "place",
+   "used_in": "aztec-triple-alliance"
+  },
+  {
+   "name": "Colhuacan",
+   "kind": "place",
+   "used_in": "azcapotzalco"
+  },
+  {
+   "name": "Tututepec",
+   "kind": "place",
+   "used_in": "tututepec"
+  },
+  {
+   "name": "Tilantongo",
+   "kind": "place",
+   "used_in": "tututepec"
+  },
+  {
+   "name": "Azcapotzalco",
+   "kind": "place",
+   "used_in": "azcapotzalco"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Xochimilco (altepetl)",
+   "suggested_slug": "xochimilco",
+   "years": [
+    1200,
+    1430
+   ]
+  },
+  {
+   "name": "Coyoacan (Tepanec altepetl)",
+   "suggested_slug": "coyoacan",
+   "years": [
+    1300,
+    1429
+   ]
+  },
+  {
+   "name": "Mixquic",
+   "suggested_slug": "mixquic",
+   "years": [
+    1300,
+    1432
+   ]
+  },
+  {
+   "name": "Cuitlahuac",
+   "suggested_slug": "cuitlahuac",
+   "years": [
+    1300,
+    1433
+   ]
+  },
+  {
+   "name": "Cuauhnahuac (Tlahuica, Morelos)",
+   "suggested_slug": "cuauhnahuac",
+   "years": [
+    1300,
+    1439
+   ]
+  },
+  {
+   "name": "Colhuacan (Culhuacan)",
+   "suggested_slug": "colhuacan",
+   "years": [
+    1100,
+    1385
+   ]
+  },
+  {
+   "name": "Tlacopan",
+   "suggested_slug": "tlacopan",
+   "years": [
+    1427,
+    1521
+   ]
+  },
+  {
+   "name": "Tlatelolco",
+   "suggested_slug": "tlatelolco",
+   "years": [
+    1337,
+    1473
+   ]
+  },
+  {
+   "name": "Spanish Empire (mirrors of 1519-1530 events)",
+   "suggested_slug": "spanish-empire",
+   "years": [
+    1516,
+    1879
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-am-03.md",
+ "problems": [
+  "WebFetch summarises pages; the quotes above are the tool's returned sentences. https://en.wikipedia.org/wiki/Coyotlatelco_culture does not exist (URL_NOT_FOUND).",
+  "Resolution limit: Azcapotzalco ({\"place\":\"Mexico City\",\"km\":12}), Tenochtitlan (15 km), Tlatelolco (6 km), Tlacopan (aztec /ledger/3, 12 km) all resolve to the one H3 cell (-99.14, 19.46); the 1337 split takes Tenochtitlan's only cell and Azcapotzalco's own land equals its vassal's. The renderer needs a rule (sub-cell events take no cell; a vassal on its suzerain's cell keeps the suzerain's colour) or the Valley of Mexico states need hand-placed neighbouring cells.",
+  "The gazetteer's 'Valley of Mexico' is the Distrito Federal plus México state (81 cells, about 20,500 km2, the Toluca Valley included), as the am-01 review also found; used by azcapotzalco and aztec /ledger/31.",
+  "Tututepec and Tilantongo do not resolve: the tututepec dossier draws nothing until the gazetteer adds them.",
+  "The aztec capital note quotes 'the other capitals of the Triple Alliance, Tlacopan and Texcoco' from the Spanish conquest page; the tool did not find that phrase (capital note only, not an event).",
+  "Reviewer edits applied and re-validated (0 errors): texcoco (10 regions), azcapotzalco (2), michoacan (5), aztec-triple-alliance (6); each changed note carries '[Reviewer am-03, 2026-10-18: ...]'."
+ ]
+}

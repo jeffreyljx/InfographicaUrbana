@@ -1,0 +1,1478 @@
+{
+ "batch_id": "eu-21-c",
+ "verdicts": [
+  {
+   "slug": "nazi-germany",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/8/correction and /keyframe_review/9/correction",
+     "what": "The 1944 and 1945 corrections are identical and still hold Alsace-Lorraine, Eupen-Malmedy, Luxembourg and the Bialystok district (Podlachian), lost between July and November 1944, and the annexed Polish lands lost January-March 1945.",
+     "why": "The two corrections compare equal (only text differs); the union includes {region: Alsace}+Metz, the Eupen disc, country=Luxembourg and admin1=Podlachian. The ledger itself removes Luxembourg only in 1945/2 (/ledger/51).",
+     "fix": "Make the 1945 keyframe the Reich at 1 January 1945 (drop Alsace-Lorraine, Eupen-Malmedy, Bialystok; keep Luxembourg until February if the page says so) and add the dated losses below.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (after /ledger/48)",
+     "what": "No loss events for the annexed lands: Eupen-Malmedy (1944/9), Bialystok district (1944/7), Alsace-Lorraine (1944/11), Memel (1945/1), Wartheland, Danzig-West Prussia, Ciechanow and Katowice districts and Danzig (1945/1-3), Lower Styria and the Sudetenland (1945/5). They were gained at /ledger/3, 6, 8, 9, 12, 13, 24, 26 and simply vanish at the dissolve.",
+     "why": "/ledger/65 dissolve region is union(Germany, Austria) while its text says 'plus the Sudetenland'; the 1945 contest (/ledger/49, 63) covers only Nazi Germany 1938 cut to Poland and Russia, i.e. pre-1938 eastern Germany, not the 1939 annexations.",
+     "fix": "Add a loss (or contest_start/contest_end + loss) for each annexed land with its month and the counterpart that took it back (french-third-republic/provisional French government, kingdom-of-belgium, second-polish-republic or the Polish successor, union-of-soviet-socialist-republics, yugoslavia, czechoslovakia); make the dissolve region match its text.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1943-1944)",
+     "what": "Occupations of Albania (8 Sep 1943 - 29 Nov 1944) and Monaco (8 Sep 1943 - 3 Sep 1944) are missing, though both dates are in the occupation table of a page the author cited.",
+     "why": "German-occupied Europe table: 'Albania: 8 Sep 1943 - 29 Nov 1944', 'Monaco: 8 Sep 1943 - 3 Sep 1944'; albania /ledger/19 and /ledger/21 and principality-of-monaco /ledger/20 and /ledger/21 already mirror them with counterpart nazi-germany.",
+     "fix": "Add occupation_start/occupation_end pairs: albania 1943/9-1944/11, principality-of-monaco 1943/9-1944/9 (confidence 3, source German-occupied Europe).",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1940-1945)",
+     "what": "Channel Islands (30 Jun / 1 Jul 1940 - 9 May 1945) and Tunisia (Nov 1942 - May 1943) are noted but not recorded; the Tunisian cells were removed from the 1943 shape with no event.",
+     "why": "German-occupied Europe table gives the Channel Islands dates; french-africa /ledger/75 and /ledger/80 record occupation_start 1942/11 and occupation_end 1943/5 by nazi-germany.",
+     "fix": "Add occupation pairs: united-kingdom (Guernsey, Jersey) 1940/6-1945/5; french-africa (Tunisia) 1942/11-1943/5.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/38",
+     "what": "Occupation of the Vichy free zone dated 1943 (confidence 1), from the growth of Cliopatria's shape; the occupation (Case Anton) began 11 November 1942.",
+     "why": "The German-occupied Europe page has no date for it (WebFetch: 'not on page'); french-africa dates the parallel Tunisian occupation 1942/11.",
+     "fix": "Open Case Anton and redate to 1942/11 (and keep the 1944/8 end).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/0 and weimar-republic /ledger/18",
+     "what": "Two months of overlap: nazi-germany is founded 1933/1 while weimar-republic dissolves 1933/3 into it.",
+     "why": "Nazi Germany infobox: 'Seizure of power: 30 January 1933', 'Enabling Act: 23 March 1933'; Weimar Republic lead: 'from 9 November 1918 to 23 March 1933'.",
+     "fix": "Found nazi-germany at 1933/3 (Enabling Act), or end Weimar at 1933/1; the two dossiers must agree.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/4 and /ledger/58",
+     "what": "Occupation counterpart is the Protectorate itself, a German creation, not the state whose land was occupied.",
+     "why": "German occupation of Czechoslovakia: rump Czecho-Slovakia was occupied 15 March 1939 and the Protectorate proclaimed on 16 March.",
+     "fix": "Use counterpart czechoslovakia (or record vassal_start protectorate-of-bohemia-and-moravia instead of an occupation).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/14 and /ledger/53",
+     "what": "Counterpart 'denmark' is a dossier that starts 1945/5; the 1814-1940 Danish dossier (kingdom-of-denmark-1814-1940) dissolves 1940/4 into nazi-germany.",
+     "why": "kingdom-of-denmark-1814-1940 /ledger/12 dissolve 1940/4 counterpart nazi-germany, yet its note says 'The Danish state went on under occupation'.",
+     "fix": "Keep the occupation reading; orchestrator to have eu-14 extend the Danish dossier to 1945 (or start 'denmark' in 1940) and then point these events at it.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/24, 30-34, 39, 42, 43, 62",
+     "what": "Soviet counterpart is union-of-soviet-socialist-republics (no dossier) while the SSR dossiers already mirror these occupations with counterpart nazi-germany; the Baltic end is lumped at 1945/5 although Estonia and Lithuania were retaken in 1944.",
+     "why": "estonian-ssr /ledger/2 (1944), lithuanian-ssr /ledger/2 (1944/10), latvian-ssr /ledger/3 (1945), ukrainian-ssr /ledger/45 (1944/10), byelorussian-ssr /ledger/16 (1944), RSFSR /ledger/46-56.",
+     "fix": "Split the occupations by SSR (estonian-, latvian-, lithuanian-, byelorussian-, ukrainian-soviet-socialist-republic, russian-soviet-federative-socialist-republic) with their own end years.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/41",
+     "what": "Italy 1943/9: Germany records an occupation of northern Italy; kingdom-of-italy records a loss to nazi-germany of Dalmatia and the Ljubljana Province (/ledger/38) and of the north to italian-social-republic (/ledger/39).",
+     "why": "kingdom-of-italy ledger 38-39.",
+     "fix": "Add the Operational Zones (Adriatic Coast, Alpine Foothills) as occupation or gain from kingdom-of-italy, and decide with eu-21-x whether the north is an RSI vassal or an occupation.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/10, 11",
+     "what is missing": "General Government creation and end of the Polish campaign at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/General_Government"
+    },
+    {
+     "where": "/ledger/13",
+     "what is missing": "Eupen-Malmedy annexation 18 May 1940 at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Eupen-Malmedy"
+    },
+    {
+     "where": "/ledger/27, 56",
+     "what is missing": "Croatia client status at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Independent_State_of_Croatia"
+    },
+    {
+     "where": "/ledger/45, 46",
+     "what is missing": "Liberation of France dated 1944/8 at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Liberation_of_France"
+    },
+    {
+     "where": "/ledger/48",
+     "what is missing": "End of the General Government occupation 1945/1 at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Vistula–Oder_offensive"
+    },
+    {
+     "where": "/keyframe_review/5-7",
+     "what is missing": "Libyan and Tunisian cells removed without a page",
+     "page to try": "https://en.wikipedia.org/wiki/North_African_campaign"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Territorial_evolution_of_Germany",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/37",
+     "page": "https://en.wikipedia.org/wiki/Territorial_evolution_of_Germany",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/49",
+     "page": "https://en.wikipedia.org/wiki/German-occupied_Europe",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/52",
+     "page": "https://en.wikipedia.org/wiki/German-occupied_Europe",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/44",
+     "page": "https://en.wikipedia.org/wiki/German-occupied_Europe",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Nazi_Germany",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/38",
+     "page": "https://en.wikipedia.org/wiki/German-occupied_Europe",
+     "result": "not on page"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 633786,
+    "infobox_year": 1939,
+    "cliopatria_km2": 699301,
+    "ratio": 1.1,
+    "acknowledged": true,
+    "note": "1940: infobox 823,505 vs shape 1,637,988 (1.99), acknowledged and corrected in /keyframe_review/4."
+   }
+  },
+  {
+   "slug": "weimar-republic",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The 1918 keyframe left out the Allied-occupied Rhineland (Cliopatria's 1920 shape omits it), so the Rhineland appeared in the 1920 keyframe with no event.",
+     "why": "Occupation of the Rhineland: occupied from 1 December 1918, sovereignty stayed German; the author's own 1920 correction adds 'Weimar 1932 minus the Saar'.",
+     "fix": "Added {minus: [Weimar Republic 1932, Saarland]} to the union and to text.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/0/region",
+     "what": "The found region (1920 shape + Alsace-Lorraine) lacked the Rhineland and the treaty lands (Posen, West Prussia, Danzig, Memel, the Saar, Eupen-Malmedy, Hultschin) that /ledger/5-11 later remove.",
+     "why": "Losses of land the found region never held.",
+     "fix": "Set the region equal to the corrected 1918 keyframe.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/2, /ledger/16",
+     "what": "Counterpart kingdom-of-great-britain ends in 1800.",
+     "why": "united-kingdom /ledger/15 (1918/12) and /ledger/21 (1926/1) mirror the Cologne zone.",
+     "fix": "Changed to united-kingdom.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/5",
+     "what": "Counterpart 'denmark' is a dossier starting 1945.",
+     "why": "kingdom-of-denmark-1814-1940 /ledger/11 gains Northern Schleswig 1920/7 from weimar-republic.",
+     "fix": "Changed to kingdom-of-denmark-1814-1940.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3, /ledger/17",
+     "what is missing": "The Koblenz zone was American until January 1923 and evacuated in November 1929, and Belgium held a zone at Aachen 1918-1929; all are carried as one French occupation to 30 June 1930 (the note admits it)",
+     "page to try": "https://en.wikipedia.org/wiki/Occupation_of_the_Rhineland"
+    },
+    {
+     "where": "/wars/1",
+     "what is missing": "Greater Poland Uprising has a zone but no contest event; Posen was de facto Polish from early 1919",
+     "page to try": "https://en.wikipedia.org/wiki/Greater_Poland_uprising_(1918–1919)"
+    },
+    {
+     "where": "/ledger/5-9",
+     "what is missing": "Transfer months for Northern Schleswig, Posen, West Prussia, Danzig, Memel, the Saar (confidence 2, treaty date)",
+     "page to try": "https://en.wikipedia.org/wiki/Schleswig_plebiscites"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Territorial_evolution_of_Germany",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Versailles",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Versailles",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Occupation_of_the_Rhineland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Occupation_of_the_Rhineland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Occupation_of_the_Rhineland",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 468787,
+    "infobox_year": 1925,
+    "cliopatria_km2": 456893,
+    "ratio": 0.97,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "estado-novo",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/8",
+     "what": "1958 shape marked ok though it still holds Dadra and Nagar Haveli, lost in 1954 (/ledger/5).",
+     "why": "Annexation of Goa: 'Between 22 July and 2 August 1954, armed activists attacked and forced the surrender of Portuguese forces stationed in Dadra and Nagar Haveli'; Nagar Haveli surrendered 11 August 1954.",
+     "fix": "Verdict adjust; correction minus(Estado Novo 1958, the ledger's Dadra disc).",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/9/correction",
+     "what": "The 1960 correction removed Goa, Daman and Diu for the whole shape, though they were Portuguese until 17-19 December 1961; nothing in 1958-1960 explained their loss.",
+     "why": "Annexation of Goa infobox '17-19 December 1961'; /ledger/9 already carries the loss.",
+     "fix": "Correction now removes only Dadra and Nagar Haveli.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/14/correction",
+     "what": "The 1979-2023 correction was Portugal alone though Macau was Portuguese until 20 December 1999; it relied on an overlapping new keyframe.",
+     "why": "Handover of Macau: 'The colony remained under de jure Portuguese rule until 20 December 1999'.",
+     "fix": "Correction union(Portugal, Macao); /ledger/19 removes Macau.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/14",
+     "what": "Counterpart 'cape-verde' has no dossier; republic-of-cabo-verde exists and founds itself from estado-novo in 1975/7.",
+     "why": "republic-of-cabo-verde /ledger/0.",
+     "fix": "Changed to republic-of-cabo-verde.",
+     "applied": true
+    },
+    {
+     "where": "/wars/2/belligerents",
+     "what": "Belligerent kingdom-of-great-britain ends in 1800.",
+     "why": "kingdom-of-great-britain dossier 1707-1800.",
+     "fix": "Changed to united-kingdom.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/16-18",
+     "what is missing": "East Timor: east-timor founds itself 1975/11 from estado-novo and Indonesia's contest and gain are with east-timor; this dossier keeps Timor to 1976/7 and contests it with Indonesia. Decide one reading (loss to east-timor 1975/11 is what both neighbours expect)",
+     "page to try": "https://en.wikipedia.org/wiki/Portuguese_Timor"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "No contest for Portuguese Guinea 1963-1974 (PAIGC held 'a large area of the rural countryside'); republic-of-guinea-bissau has contest_start 1973/9 and contest_end 1974/9 with estado-novo",
+     "page to try": "https://en.wikipedia.org/wiki/Guinea-Bissau_War_of_Independence"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "Dadra and Nagar Haveli went to Free Dadra and Nagar Haveli (India's gain is 1961 from it; portuguese-india names the United Front of Goans and Azad Gomantak Dal), not directly to India; Dadra fell in July",
+     "page to try": "https://en.wikipedia.org/wiki/Dadra_and_Nagar_Haveli"
+    },
+    {
+     "where": "/ledger/12-15",
+     "what is missing": "Independence months: Mozambique 25 June, Cape Verde 5 July, Sao Tome 12 July, Angola 11 November 1975 (neighbour dossiers carry them)",
+     "page to try": "https://en.wikipedia.org/wiki/Decolonisation_of_Portuguese_Africa"
+    },
+    {
+     "where": "whole dossier",
+     "what is missing": "The colonies are drawn as Portuguese land while colony dossiers portuguese-angola, portuguese-mozambique, portuguese-india and portuguese-timor (type colony) hold the same land to 1961/1975; neighbours found from those colony dossiers. Orchestrator decision needed (vassal relation or one layer)",
+     "page to try": "https://en.wikipedia.org/wiki/Portuguese_Empire"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Annexation_of_Goa",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Annexation_of_Goa",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Portuguese_Colonial_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Estado_Novo_(Portugal)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Handover_of_Macau",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Estado_Novo_(Portugal)",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 92212,
+    "infobox_year": 0,
+    "cliopatria_km2": 2201913,
+    "ratio": 23.88,
+    "acknowledged": true,
+    "note": "Infobox gives the metropole only, no year; the shape is the metropole plus the colonies; acknowledged in /keyframe_review/0 and used for the 1976+ keyframes."
+   }
+  },
+  {
+   "slug": "republic-of-latvia",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/8, /ledger/9",
+     "what": "Annexation counterpart union-of-soviet-socialist-republics has no dossier, while latvian-soviet-socialist-republic exists and founds itself 1940/7 from republic-of-latvia and dissolves 1991/8.",
+     "why": "Latvia page: 'The Soviet Union incorporated Latvia on 5 August 1940, as the Latvian Soviet Socialist Republic'; 'Restored: 21 August 1991'.",
+     "fix": "Changed both counterparts to latvian-soviet-socialist-republic (the 1940 occupation pair stays with the USSR).",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "Five border cells in the 1936-1938 shape and the Valka arbitration of 1920 not explained",
+     "page to try": "https://en.wikipedia.org/wiki/Valka"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Latvian_War_of_Independence",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Latvian_War_of_Independence",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Latvian_War_of_Independence",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Latvian_War_of_Independence",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Latvia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Latvia",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 64589,
+    "infobox_year": 2024,
+    "cliopatria_km2": 67931,
+    "ratio": 1.05,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "second-spanish-republic",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/2/confidence",
+     "what": "Confidence 3 for the whole Balearic Islands, which the page does not name; Menorca stayed Republican and the 1936 keyframe keeps its cells.",
+     "why": "Spanish Civil War: 'Goded and Franco immediately took control of the islands to which they were assigned'; Menorca not on the page.",
+     "fix": "Lowered to 2.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/2, /keyframe_review/3",
+     "what is missing": "Cliopatria's 1936 and 1938 shapes keep Spanish Sahara, Ifni and Spanish Guinea (about 300,000 km2) for the Republic; they sided with the Nationalists from July-September 1936. Flagged by the author, page budget",
+     "page to try": "https://en.wikipedia.org/wiki/Spanish_Guinea"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Menorca stayed Republican until February 1939; the 1936/7 loss should exclude it and a 1939/2 loss add it",
+     "page to try": "https://en.wikipedia.org/wiki/Menorca"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "1938 Aragon loss at confidence 1, from the shape difference",
+     "page to try": "https://en.wikipedia.org/wiki/Aragon_Offensive"
+    },
+    {
+     "where": "/ledger/5-7",
+     "what is missing": "Northern campaign months (Bilbao June, Santander August, Asturias October 1937)",
+     "page to try": "https://en.wikipedia.org/wiki/War_in_the_North"
+    },
+    {
+     "where": "/ledger/13",
+     "what is missing": "The 1939/3 loss and the 1939/4 dissolve carry the same region twice; keep one",
+     "page to try": "https://en.wikipedia.org/wiki/Final_offensive_of_the_Spanish_Civil_War"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Spanish_Civil_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Spanish_Civil_War",
+     "result": "not on page"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Second_Spanish_Republic",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Second_Spanish_Republic",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Second_Spanish_Republic",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 854092,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No area in the infobox (confirmed)."
+   }
+  },
+  {
+   "slug": "irish-free-state",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/predecessors/0/slug, /ledger/0/counterpart",
+     "what": "Predecessor and found counterpart kingdom-of-great-britain ends in 1800.",
+     "why": "united-kingdom /ledger/19 loses the Free State 1922/12.",
+     "fix": "Changed both to united-kingdom.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/wars",
+     "what is missing": "The Irish Civil War is on the Irish Free State page (June 1922 - April 1923) but not recorded; a war entry with empty zones (no land changed hands after 6 December 1922) would close it; Treaty Ports occupation not recorded",
+     "page to try": "https://en.wikipedia.org/wiki/Irish_Civil_War"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Irish_Free_State",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Irish_Free_State",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 70000,
+    "infobox_year": 0,
+    "cliopatria_km2": 74990,
+    "ratio": 1.07,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1935,
+    "type": "gain",
+    "counterpart": "saar-basin-territory"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "no dossier; in author's counterparts_needing_dossiers (eu-21-x)"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1938,
+    "type": "gain",
+    "counterpart": "republic-of-austria"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-21 part not run yet"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1938,
+    "type": "gain",
+    "counterpart": "czechoslovakia"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-21 part not run yet"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1939,
+    "type": "occupation_start",
+    "counterpart": "protectorate-of-bohemia-and-moravia"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "needs dossier (eu-21-x); counterpart should be czechoslovakia"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1939,
+    "type": "vassal_start",
+    "counterpart": "slovak-republic"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "needs dossier (eu-21-x)"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1939,
+    "type": "gain",
+    "counterpart": "kingdom-of-lithuania"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-21 part not run yet"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1939,
+    "type": "gain",
+    "counterpart": "free-city-of-danzig"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-20 not run yet"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1939,
+    "type": "gain",
+    "counterpart": "second-polish-republic"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-21 part not run yet (also contest and occupation)"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1940,
+    "type": "gain",
+    "counterpart": "french-third-republic"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-20 not run yet; Alsace-Lorraine"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1940,
+    "type": "gain",
+    "counterpart": "kingdom-of-belgium"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-20 not run yet; Eupen-Malmedy, also 1940/5 occupation"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1940,
+    "type": "occupation_start",
+    "counterpart": "denmark"
+   },
+   "mirror": {
+    "slug": "kingdom-of-denmark-1814-1940",
+    "year": 1940,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "the Danish dossier dissolves into nazi-germany 1940/4; 'denmark' starts 1945/5; nothing covers Denmark 1940-1945 as a state"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1940,
+    "type": "occupation_start",
+    "counterpart": "netherlands"
+   },
+   "mirror": {
+    "slug": "netherlands",
+    "year": 1940,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "end 1945/5 matched (netherlands /ledger/18)"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1940,
+    "type": "occupation_start",
+    "counterpart": "luxembourg"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-20 not run yet (also 1942 gain, 1945 loss)"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1940,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "no dossier yet"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1940,
+    "type": "occupation_start",
+    "counterpart": "vichy-france"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-21 part not run yet; June 1940 land was the Third Republic's"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "lithuanian-soviet-socialist-republic",
+    "year": 1941,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "SSR dossiers (byelorussian, estonian, latvian, lithuanian, ukrainian, RSFSR) mirror with counterpart nazi-germany; nazi-germany names the USSR (eu-17 not run); end years differ by months (Baltic 1945/5 vs 1944, Ukraine 1944/1 vs 1944/10)"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-greece"
+   },
+   "mirror": {
+    "slug": "kingdom-of-greece",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "kingdom-of-greece dossier starts 1945; no Greek state dossier covers 1941"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "yugoslavia"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-21 part not run yet (also Slovenia gain, Croatia vassal)"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1943,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-italy"
+   },
+   "mirror": {
+    "slug": "kingdom-of-italy",
+    "year": 1943,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Italy records a loss of Dalmatia and Ljubljana to nazi-germany and of the north to italian-social-republic; Germany records an occupation of the north"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1944,
+    "type": "occupation_start",
+    "counterpart": "hungarian-republic"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-21 part not run yet"
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "contest_start",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": {
+    "slug": "united-states-of-america",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "USA has only 1945/6 occupation_start nazi-germany (after the dissolve)"
+  },
+  {
+   "event": {
+    "slug": "albania",
+    "year": 1943,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "nazi-germany lacks the Albania occupation 1943/9-1944/11"
+  },
+  {
+   "event": {
+    "slug": "principality-of-monaco",
+    "year": 1943,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "nazi-germany lacks the Monaco occupation 1943/9-1944/9"
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1942,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "nazi-germany lacks the Tunisia occupation 1942/11-1943/5"
+  },
+  {
+   "event": {
+    "slug": "weimar-republic",
+    "year": 1918,
+    "type": "loss",
+    "counterpart": "french-third-republic"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-20 not run yet"
+  },
+  {
+   "event": {
+    "slug": "weimar-republic",
+    "year": 1918,
+    "type": "occupation_start",
+    "counterpart": "united-kingdom"
+   },
+   "mirror": {
+    "slug": "united-kingdom",
+    "year": 1918,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "UK side names german-empire; should name weimar-republic. End 1926/1 matched"
+  },
+  {
+   "event": {
+    "slug": "weimar-republic",
+    "year": 1918,
+    "type": "occupation_start",
+    "counterpart": "french-third-republic"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-20 not run yet (also Ruhr 1923-1925)"
+  },
+  {
+   "event": {
+    "slug": "weimar-republic",
+    "year": 1920,
+    "type": "loss",
+    "counterpart": "kingdom-of-denmark-1814-1940"
+   },
+   "mirror": {
+    "slug": "kingdom-of-denmark-1814-1940",
+    "year": 1920,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "after reviewer slug fix"
+  },
+  {
+   "event": {
+    "slug": "weimar-republic",
+    "year": 1920,
+    "type": "loss",
+    "counterpart": "second-polish-republic"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-21 part not run yet (also Upper Silesia 1922)"
+  },
+  {
+   "event": {
+    "slug": "weimar-republic",
+    "year": 1920,
+    "type": "loss",
+    "counterpart": "saar-basin-territory"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "needs dossier"
+  },
+  {
+   "event": {
+    "slug": "weimar-republic",
+    "year": 1920,
+    "type": "loss",
+    "counterpart": "free-city-of-danzig"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-20 not run yet"
+  },
+  {
+   "event": {
+    "slug": "weimar-republic",
+    "year": 1920,
+    "type": "loss",
+    "counterpart": "memel-territory"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "needs dossier"
+  },
+  {
+   "event": {
+    "slug": "weimar-republic",
+    "year": 1920,
+    "type": "loss",
+    "counterpart": "kingdom-of-belgium"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-20 not run yet"
+  },
+  {
+   "event": {
+    "slug": "weimar-republic",
+    "year": 1921,
+    "type": "loss",
+    "counterpart": "czechoslovakia"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-21 part not run yet"
+  },
+  {
+   "event": {
+    "slug": "estado-novo",
+    "year": 1926,
+    "type": "found",
+    "counterpart": "portuguese-republic"
+   },
+   "mirror": {
+    "slug": "portuguese-republic",
+    "year": 1926,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "estado-novo",
+    "year": 1942,
+    "type": "occupation_start",
+    "counterpart": "empire-of-japan"
+   },
+   "mirror": {
+    "slug": "empire-of-japan",
+    "year": 1942,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "end 1945 vs 1945/9 matched; portuguese-timor also records it"
+  },
+  {
+   "event": {
+    "slug": "estado-novo",
+    "year": 1954,
+    "type": "loss",
+    "counterpart": "republic-of-india"
+   },
+   "mirror": {
+    "slug": "portuguese-india",
+    "year": 1954,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "India gains Dadra in 1961 from Free Dadra and Nagar Haveli; portuguese-india loses it 1954/7-8 to the liberation groups"
+  },
+  {
+   "event": {
+    "slug": "estado-novo",
+    "year": 1961,
+    "type": "loss",
+    "counterpart": "republic-of-dahomey"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "needs dossier (af-08)"
+  },
+  {
+   "event": {
+    "slug": "estado-novo",
+    "year": 1961,
+    "type": "loss",
+    "counterpart": "republic-of-india"
+   },
+   "mirror": {
+    "slug": "republic-of-india",
+    "year": 1961,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "India's gain names portuguese-india (colony dossier), not estado-novo"
+  },
+  {
+   "event": {
+    "slug": "estado-novo",
+    "year": 1974,
+    "type": "loss",
+    "counterpart": "republic-of-guinea-bissau"
+   },
+   "mirror": {
+    "slug": "republic-of-guinea-bissau",
+    "year": 1973,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Guinea-Bissau founds itself 1973/9 from estado-novo with a contest to 1974/9; estado-novo has no contest"
+  },
+  {
+   "event": {
+    "slug": "estado-novo",
+    "year": 1975,
+    "type": "loss",
+    "counterpart": "people-s-republic-of-angola"
+   },
+   "mirror": {
+    "slug": "people-s-republic-of-angola",
+    "year": 1975,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Angola founds itself from portuguese-angola"
+  },
+  {
+   "event": {
+    "slug": "estado-novo",
+    "year": 1975,
+    "type": "loss",
+    "counterpart": "mozambique"
+   },
+   "mirror": {
+    "slug": "mozambique",
+    "year": 1975,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Mozambique founds itself from portuguese-mozambique"
+  },
+  {
+   "event": {
+    "slug": "estado-novo",
+    "year": 1975,
+    "type": "loss",
+    "counterpart": "republic-of-cabo-verde"
+   },
+   "mirror": {
+    "slug": "republic-of-cabo-verde",
+    "year": 1975,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "after reviewer slug fix"
+  },
+  {
+   "event": {
+    "slug": "estado-novo",
+    "year": 1975,
+    "type": "loss",
+    "counterpart": "sao-tome-and-principe"
+   },
+   "mirror": {
+    "slug": "sao-tome-and-principe",
+    "year": 1975,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "estado-novo",
+    "year": 1976,
+    "type": "loss",
+    "counterpart": "republic-of-indonesia"
+   },
+   "mirror": {
+    "slug": "east-timor",
+    "year": 1975,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "east-timor founds itself 1975/11 from estado-novo; Indonesia's contest and gain are with east-timor"
+  },
+  {
+   "event": {
+    "slug": "estado-novo",
+    "year": 1999,
+    "type": "loss",
+    "counterpart": "people-s-republic-of-china"
+   },
+   "mirror": {
+    "slug": "people-s-republic-of-china",
+    "year": 1999,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "PRC side names 'portugal'"
+  },
+  {
+   "event": {
+    "slug": "republic-of-latvia",
+    "year": 1918,
+    "type": "contest_start",
+    "counterpart": "latvian-socialist-soviet-republic"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "needs dossier (eu-21-x); also 1920/2 gain of Latgale"
+  },
+  {
+   "event": {
+    "slug": "republic-of-latvia",
+    "year": 1940,
+    "type": "occupation_start",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-17 not run yet"
+  },
+  {
+   "event": {
+    "slug": "republic-of-latvia",
+    "year": 1940,
+    "type": "loss",
+    "counterpart": "latvian-soviet-socialist-republic"
+   },
+   "mirror": {
+    "slug": "latvian-soviet-socialist-republic",
+    "year": 1940,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "after reviewer counterpart fix"
+  },
+  {
+   "event": {
+    "slug": "republic-of-latvia",
+    "year": 1991,
+    "type": "gain",
+    "counterpart": "latvian-soviet-socialist-republic"
+   },
+   "mirror": {
+    "slug": "latvian-soviet-socialist-republic",
+    "year": 1991,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "after reviewer counterpart fix"
+  },
+  {
+   "event": {
+    "slug": "second-spanish-republic",
+    "year": 1931,
+    "type": "found",
+    "counterpart": "kingdom-of-spain"
+   },
+   "mirror": {
+    "slug": "kingdom-of-spain",
+    "year": 1931,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1931,
+    "type": "vassal_end",
+    "counterpart": "spanish-morocco"
+   },
+   "mirror": {
+    "slug": "second-spanish-republic",
+    "year": 0,
+    "type": ""
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-spain says Spanish Morocco and the Sahara pass to the Republic as vassals; the Republic holds them as its own land with no vassal_start"
+  },
+  {
+   "event": {
+    "slug": "second-spanish-republic",
+    "year": 1936,
+    "type": "loss",
+    "counterpart": "spanish-nationalists"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-21 part not run yet (all 1936-1939 losses; dissolve to francoist-spain)"
+  },
+  {
+   "event": {
+    "slug": "irish-free-state",
+    "year": 1922,
+    "type": "found",
+    "counterpart": "united-kingdom"
+   },
+   "mirror": {
+    "slug": "united-kingdom",
+    "year": 1922,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "after reviewer slug fix"
+  },
+  {
+   "event": {
+    "slug": "irish-free-state",
+    "year": 1937,
+    "type": "dissolve",
+    "counterpart": "eire"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "eu-21 part not run yet"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Sudetenland",
+   "kind": "region",
+   "used_in": "nazi-germany"
+  },
+  {
+   "name": "Wartheland",
+   "kind": "region",
+   "used_in": "nazi-germany"
+  },
+  {
+   "name": "General Government",
+   "kind": "region",
+   "used_in": "nazi-germany"
+  },
+  {
+   "name": "Lower Styria",
+   "kind": "region",
+   "used_in": "nazi-germany"
+  },
+  {
+   "name": "Eupen-Malmedy",
+   "kind": "region",
+   "used_in": "weimar-republic"
+  },
+  {
+   "name": "Hultschin",
+   "kind": "region",
+   "used_in": "weimar-republic"
+  },
+  {
+   "name": "Ruhr",
+   "kind": "region",
+   "used_in": "weimar-republic"
+  },
+  {
+   "name": "Memel Territory",
+   "kind": "region",
+   "used_in": "weimar-republic"
+  },
+  {
+   "name": "Menorca",
+   "kind": "region",
+   "used_in": "second-spanish-republic"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Saar Basin Territory",
+   "suggested_slug": "saar-basin-territory",
+   "years": [
+    1920,
+    1935
+   ]
+  },
+  {
+   "name": "Memel Territory",
+   "suggested_slug": "memel-territory",
+   "years": [
+    1920,
+    1923
+   ]
+  },
+  {
+   "name": "Protectorate of Bohemia and Moravia",
+   "suggested_slug": "protectorate-of-bohemia-and-moravia",
+   "years": [
+    1939,
+    1945
+   ]
+  },
+  {
+   "name": "Slovak Republic",
+   "suggested_slug": "slovak-republic",
+   "years": [
+    1939,
+    1945
+   ]
+  },
+  {
+   "name": "Latvian Socialist Soviet Republic",
+   "suggested_slug": "latvian-socialist-soviet-republic",
+   "years": [
+    1918,
+    1920
+   ]
+  },
+  {
+   "name": "Republic of Dahomey",
+   "suggested_slug": "republic-of-dahomey",
+   "years": [
+    1960,
+    1975
+   ]
+  },
+  {
+   "name": "Free Dadra and Nagar Haveli",
+   "suggested_slug": "free-dadra-and-nagar-haveli",
+   "years": [
+    1954,
+    1961
+   ]
+  },
+  {
+   "name": "Italian Social Republic",
+   "suggested_slug": "italian-social-republic",
+   "years": [
+    1943,
+    1945
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-21-c.md",
+ "problems": [
+  "WebFetch returns model-written extracts; quotes in this review are the extract's rendering.",
+  "Greece 1941-1945 has no state dossier: kingdom-of-greece starts 1945; nazi-germany's occupation counterpart has nothing to mirror it.",
+  "Denmark 1940-1945 has no state dossier: kingdom-of-denmark-1814-1940 dissolves 1940/4 into nazi-germany, and denmark starts 1945/5 (eu-14 owner).",
+  "Colony layer: estado-novo (and second-spanish-republic) draw the colonies as their own land, while colony dossiers portuguese-angola, portuguese-mozambique, portuguese-india and portuguese-timor hold the same land and neighbours found from them; kingdom-of-spain models Spanish Morocco and the Sahara as vassals. Needs one project-wide rule.",
+  "united-kingdom /ledger/15 and /ledger/21 name german-empire for the Cologne zone from December 1918; weimar-republic starts 9 November 1918.",
+  "Reviewer applied small fixes in place to weimar-republic, estado-novo, republic-of-latvia, second-spanish-republic and irish-free-state (each marked 'Reviewer eu-21-c' in the note); all re-validate with 0 errors."
+ ]
+}

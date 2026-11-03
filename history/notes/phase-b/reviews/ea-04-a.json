@@ -1,0 +1,1071 @@
+{
+ "batch_id": "ea-04-a",
+ "verdicts": [
+  {
+   "slug": "tang-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/16",
+     "applied": false,
+     "what": "tang-dynasty_705 (705-749) is verdict ok and its note says 'The Beiting protectorate north of the Tianshan is inside the shape', but the shape lacks Beiting, the Turpan basin, Hami, Suyab and Liaodong, all of which the ledger holds as Tang in those years.",
+     "why": "shapes.csv bbox 73.08,17.77,122.71,42.76 (max lat 42.76 N; Beshbalik/Beiting is at 44.08 N, Gaochang 42.85 N, Turpan 42.94 N, Liaoyang 123.18 E). Cell test (tools/grid.py polity_cells, year 720): Turpan, Gaochang, Beshbalik, Hami, Liaoyang all absent. Ledger: Turfan gained 640 (/ledger/19), Dzungaria 657 (/ledger/25), lost only in 790 (/ledger/63); Goguryeo land gained 668 (/ledger/29), never lost. Anxi page: 'In 702 Wu Zetian set up the Beiting Protectorate in Ting Prefecture'.",
+     "fix": "Verdict adjust; correction = union of Cliopatria Tang 705 with Turfan-Hami and Dzungaria (Beiting) and with whatever Manchurian land the ledger still holds; delete the false sentence from the note; add the ledger losses that explain the eastern retreat (see /ledger/29)."
+    },
+    {
+     "where": "/keyframe_review/13",
+     "applied": false,
+     "what": "tang-dynasty_674 (674-681) correction removes only Baekje, but the shape also lacks the Tarim, the Turpan basin, Hami and Beiting while the ledger has the Tang holding the Tarim 673-677 and 679-687 and Turfan-Hami throughout.",
+     "why": "Cell diff 673->674: 5460 cells removed, median 41.2 N 84.1 E (Tarim, Dzungaria, Semirechye). Cell test at 678: Kuqa, Hotan, Turpan, Gaochang, Beshbalik, Hami absent. Ledger /ledger/33 673 gain Tarim, /ledger/37 679 gain Tarim; Anxi page: 'The Tang also captured Qiuci and established control over the Western Regions in the same year' (673) and 'In 679 the Tang general, Pei Xingjian, defeated Ashina Duzhi as well as the Tibetans'.",
+     "fix": "Correction = (Cliopatria Tang 674 minus Baekje) plus Turfan-Hami and the Beiting/Tingzhou area for the whole span, plus the Tarim Basin for 674-676 and 679-681 (or split the keyframe at 677 and 679)."
+    },
+    {
+     "where": "/keyframe_review/14",
+     "applied": false,
+     "what": "tang-dynasty_682 (682-691) is verdict ok, but the shape lacks the Tarim (the ledger holds it until the 686 withdrawal/687 loss) and the Turpan basin, Hami and Beiting (held throughout), and drops Pyongyang with no ledger event.",
+     "why": "Cell test at 685: Kuqa, Hotan, Turpan, Gaochang, Beshbalik, Hami, Pyongyang absent, Liaoyang present. Anxi page: 'In 686 Tang troops withdrew from the Four Garrisons'; 'In 687 the Tibetan Empire established control over the Western Regions' (/ledger/39).",
+     "fix": "Verdict adjust; correction adds the Tarim Basin for 682-686 and Turfan-Hami and Beiting for the span; either add Pyongyang back or add a dated loss of northern Korea."
+    },
+    {
+     "where": "/keyframe_review/15",
+     "applied": false,
+     "what": "tang-dynasty_692 (692-704) is verdict ok but lacks the Turpan basin, Hami and Beiting, which the ledger holds as Tang.",
+     "why": "Cell test at 695: Kuqa and Hotan present; Turpan, Gaochang, Beshbalik, Hami absent. Shape bbox max lat 43.34 N (Beshbalik 44.08 N).",
+     "fix": "Verdict adjust; correction = Cliopatria Tang 692 plus Turfan-Hami and (from 702 at least) the Beiting area."
+    },
+    {
+     "where": "/ledger/29",
+     "applied": false,
+     "what": "The 668 gain of Goguryeo's land (Manchuria and northern Korea) is never undone: the ledger has no loss of Pyongyang, Liaodong or Manchuria, so the map keeps them Tang to 907 while Balhae is founded there in 698.",
+     "why": "Cliopatria drops Pyongyang in the 682 shape and Liaodong in the 705 shape (cell diff 704->705: 1265 cells, about 320,000 km2, median 41.0 N 125.5 E); both keyframes are verdict ok with no event. Silla-Tang War page: 'The Tang were forced to relocate the seat of the Protectorate General to Pacify the East to ... Liaoyang' (676), then Xincheng (677), and 'Later, most of the land north of the Taedong River went to Balhae' (no year). balhae.json /ledger/0: 698 found, counterpart nobody. The 676 loss (/ledger/35) says the Tang kept the land north of the Taedong.",
+     "fix": "Add the losses with a page that dates them (Protectorate General to Pacify the East; Balhae): northern Korea around Pyongyang (c. 676-682) and Manchuria/Liaodong (c. 698-705, counterpart balhae or nobody), and make keyframes 682 and 705 consistent with them. Also say in the 666 keyframe correction that Goguryeo's land enters from 668 (Cliopatria adds it only in 674)."
+    },
+    {
+     "where": "/ledger/25",
+     "applied": false,
+     "what": "The 657 gain of Semirechye is never undone, and no Cliopatria Tang shape contains Suyab, so the corrections from 757 on drop Semirechye with no event.",
+     "why": "Anxi page (opened by the author): 'In 719 the Turgesh captured Suiye'; also 'The protectorate's seat was moved to Suyab' in 670. turgesh.json /ledger/1: 703 gain from tang-dynasty (Semirechye, Dzungaria, Chach). Cell test: Suyab absent from the Tang shapes at 672, 678, 695, 720 and 750.",
+     "fix": "Add a loss of Semirechye (Suyab) to turgesh, dated from the Anxi page (719, or 703 if a page gives it), and decide whether the 674-691 shapes need Suyab added (seat 670-, garrison 679-719)."
+    },
+    {
+     "where": "/keyframe_review/23",
+     "applied": false,
+     "what": "tang-dynasty_830 (830-849) is verdict ok, but the shape has lost Chengdu and western Sichuan (about 205,000 km2) while the note itself says Nanzhao 'withdrew the following year'; the 850 correction (/keyframe_review/24) also leaves Sichuan out.",
+     "why": "Cell diff 829->830: 812 cells removed, lat 26.1-36.3, lon 101.0-107.0, median 29.4 N 103.6 E; Chengdu, Ya'an, Leshan, Xichang, Kangding absent at 835 and 850, present at 829 and 862. Area 3.09 M -> 2.89 M km2. Nanzhao page quoted in the note: 'In 829, Wang Cuodian attacked Chengdu, but withdrew the following year'.",
+     "fix": "830: verdict adjust, correction = union(Cliopatria Tang 830, Cliopatria Tang 829 within the Sichuan Basin); 850: add the same Sichuan land to its union. No ledger event is needed if no land changed hands."
+    },
+    {
+     "where": "/keyframe_review/1/correction",
+     "applied": false,
+     "what": "The 623-625 correction adds only Jingzhou 200 km and Yangzhou 150 km, though the ledger gives the Tang Jiangxi and Guangdong (622, /ledger/11), the page says most of Xiao Xian's state was annexed in 621, and li-zitong-s-wu dissolves into the Tang with Zhejiang in 621.",
+     "why": "Transition page: 'Xiao ... surrendered, and most of his state was annexed by Tang'; xiao-xian-s-liang /ledger/4 dissolve 621 (Hubei, Hunan, ...); li-zitong-s-wu /ledger/3 dissolve 621 (Zhejiang). Keyframe and ledger disagree (rule 4).",
+     "fix": "Widen /ledger/7 to the xiao-xian-s-liang dissolve land, add Zhejiang to /ledger/8 (or a second gain), and make the 623 correction the union of the 621-622 gains (or the 626 shape minus Fu Gongshi's Song until 624)."
+    },
+    {
+     "where": "/ledger (619, missing)",
+     "applied": false,
+     "what": "No 619 loss of Shanxi to Liu Wuzhou, although the Transition page records it; the author's gaps list says 'page silent'.",
+     "why": "Transition page: 'Liu Wuzhou made a major attack south, taking over much of modern Shanxi, which Tang had controlled' and 'By summer 620, Li Shimin had defeated Liu'. liu-wuzhou-s-dingyang /ledger/1: 619 gain Taiyuan from tang-dynasty. The Tang found event (/ledger/1) includes Shanxi.",
+     "fix": "Add 619 loss, counterpart liu-wuzhou-s-dingyang, region Taiyuan 100 km or central Shanxi, confidence 2, source Transition_from_Sui_to_Tang; make the 620 gain (/ledger/3) cover the same land plus Datong."
+    },
+    {
+     "where": "/ledger/0",
+     "applied": false,
+     "what": "The 618 Qin annexation has no month and sorts before the found event of June 618, though it came after it (xue-ju-s-qin dissolves in December 618).",
+     "why": "Transition page: Xue Ju 'died in early 618'; Li Shimin then 'defeated and killed Xue Rengao, annexing his Qin state into Tang' (no month). xue-ju-s-qin /ledger/4: 618-12 dissolve.",
+     "fix": "Give month 11 or 12 from a page that dates it (Xue Rengao) and move the event after /ledger/1."
+    },
+    {
+     "where": "/ledger/22",
+     "applied": false,
+     "what": "Counterparts 'Tiele and Uyghur tribes (Yanran Protectorate)' (/ledger/22, /ledger/38) and 'Sogdian and Tokharistan principalities' (/ledger/27, /ledger/47) are names without a dossier and are not in counterparts_needing_dossiers; xueyantuo.json dissolves into the Tang in 646-08 and no Tang event names it.",
+     "why": "xueyantuo /ledger/3: 646-08 dissolve, counterpart tang-dynasty. Brief section 2.3: a counterpart without a dossier is an exception only when listed.",
+     "fix": "Use xueyantuo as the 647 counterpart or list both collective counterparts in counterparts_needing_dossiers (or as nobody with a note)."
+    },
+    {
+     "where": "/ledger (803, 809, missing)",
+     "applied": false,
+     "what": "champa.json records a 803 gain from and 809 loss to the Tang (Nghe An, Ha Tinh); the Tang ledger has neither.",
+     "why": "champa /ledger/12 and /ledger/13.",
+     "fix": "Open the Champa or Annan page and add the mirror loss (803) and gain (809), or record why not."
+    },
+    {
+     "where": "/ledger/74, /keyframe_review/26/correction, /keyframe_review/27/correction",
+     "applied": true,
+     "what": "Yizhou was drawn as a bare coordinate (93.5 E 42.8 N) and listed in gazetteer_names_needed, but the gazetteer has it: place Hami, alt name Yizhou.",
+     "why": "data/gazetteer/places.jsonl: Hami, lon 93.515, lat 42.827, alt_names include 'Yizhou'; /ledger/67 already uses {place: Hami}.",
+     "fix": "Replaced {lon 93.5, lat 42.8, km 150} with {place: Hami, km 150} in the three places and corrected the ledger note; re-validated with --resolve (valid, 0 warnings)."
+    },
+    {
+     "where": "/ledger/30/note",
+     "applied": true,
+     "what": "The note said 'Cliopatria keeps the Tarim in the Tang shape until 681'; the 674-681 shape lacks it.",
+     "why": "Cell test at 678: Kuqa, Hotan absent; bbox west edge 87.68 E.",
+     "fix": "Now reads 'until 673 (its 674-681 shape lacks the Tarim, the Turpan basin and Beiting)'."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/11",
+     "what is missing": "Lin Shihong's Chu (622) is confidence 1: no page gives its land at the Tang annexation.",
+     "page to try": "https://en.wikipedia.org/wiki/Lin_Shihong"
+    },
+    {
+     "where": "/ledger/27",
+     "what is missing": "661 vassal tint west of the Pamirs is confidence 1, from the Cliopatria shape; no page dates the Anxi/Pacify-the-West jimi prefectures in Sogdia and Tokharistan.",
+     "page to try": "https://en.wikipedia.org/wiki/Protectorate_General_to_Pacify_the_West"
+    },
+    {
+     "where": "/ledger/63",
+     "what is missing": "End of the Beiting protectorate (790, confidence 1) and its land.",
+     "page to try": "https://en.wikipedia.org/wiki/Beiting_Protectorate"
+    },
+    {
+     "where": "/ledger/59",
+     "what is missing": "Dates for the fall of Ganzhou, Suzhou, Guazhou and Shazhou after Liangzhou (764); the whole Hexi Corridor is placed in 764.",
+     "page to try": "https://en.wikipedia.org/wiki/Hexi_Corridor"
+    },
+    {
+     "where": "/ledger/29",
+     "what is missing": "Dated losses of Pyongyang/northern Korea and Liaodong/Manchuria (Andong protectorate retreat, Balhae).",
+     "page to try": "https://en.wikipedia.org/wiki/Protectorate_General_to_Pacify_the_East"
+    },
+    {
+     "where": "/ledger (803-809)",
+     "what is missing": "Champa's capture and loss of the Hoan/Ai prefectures of Annan.",
+     "page to try": "https://en.wikipedia.org/wiki/Champa"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Protectorate_General_to_Pacify_the_West",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Protectorate_General_to_Pacify_the_West",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Protectorate_General_to_Pacify_the_West",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/33",
+     "page": "https://en.wikipedia.org/wiki/Protectorate_General_to_Pacify_the_West",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/36",
+     "page": "https://en.wikipedia.org/wiki/Protectorate_General_to_Pacify_the_West",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/29",
+     "page": "https://en.wikipedia.org/wiki/Silla%E2%80%93Tang_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/32",
+     "page": "https://en.wikipedia.org/wiki/Silla%E2%80%93Tang_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/35",
+     "page": "https://en.wikipedia.org/wiki/Silla%E2%80%93Tang_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/66",
+     "page": "https://en.wikipedia.org/wiki/Guiyi_Circuit",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/67",
+     "page": "https://en.wikipedia.org/wiki/Guiyi_Circuit",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/74",
+     "page": "https://en.wikipedia.org/wiki/Guiyi_Circuit",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/79",
+     "page": "https://en.wikipedia.org/wiki/Guiyi_Circuit",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Transition_from_Sui_to_Tang",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Transition_from_Sui_to_Tang",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Tang_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Tang_dynasty",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 5400000,
+    "infobox_year": 715,
+    "cliopatria_km2": 4028116.2,
+    "ratio": 0.75,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "gao-kaidao",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (620, 621, missing)",
+     "applied": false,
+     "what": "The Tang ledger has gao-kaidao as a vassal 620-621 (/ledger/4 vassal_start, /ledger/5 vassal_end in tang-dynasty.json) but gao-kaidao.json has no mirror vassal_start/vassal_end with counterpart tang-dynasty; the notes say the pair lives only in the Tang ledger.",
+     "why": "Brief section 2.3: 'a vassal_start of X is a vassal_start in X's ledger with this state as counterpart'. Gao Kaidao page: submission in winter 620 (Gaozu made him commandant at Wei Prefecture, Prince of Beiping, gave him the Li surname); renewed rebellion in winter 621.",
+     "fix": "Add {year 620, type vassal_start, counterpart tang-dynasty, region {cliopatria: Gao Kaidao, year 623}, confidence 3, source Gao_Kaidao} and {year 621, type vassal_end, counterpart tang-dynasty, same region, confidence 3, source Gao_Kaidao}."
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Gao_Kaidao",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Gao_Kaidao",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Transition_from_Sui_to_Tang",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Gao_Kaidao",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 81783,
+    "ratio": 0.0,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 618,
+    "type": "gain",
+    "counterpart": "xue-ju-s-qin"
+   },
+   "mirror": {
+    "slug": "xue-ju-s-qin",
+    "year": 618,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Tang event has no month; the Qin dissolve is 618-12."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 618,
+    "type": "found",
+    "counterpart": "sui-dynasty"
+   },
+   "mirror": {
+    "slug": "sui-dynasty",
+    "year": 618,
+    "type": "split"
+   },
+   "status": "matched",
+   "note": "sui 618-05 split and 617 loss of Guanzhong."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 619,
+    "type": "gain",
+    "counterpart": "Li Gui (Liang of Hexi)"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "No dossier; in the author's counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "liu-wuzhou-s-dingyang",
+    "year": 619,
+    "type": "gain",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Tang lacks the 619 loss of Shanxi; the Transition page records it (fix on the Tang side)."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 620,
+    "type": "gain",
+    "counterpart": "liu-wuzhou-s-dingyang"
+   },
+   "mirror": {
+    "slug": "liu-wuzhou-s-dingyang",
+    "year": 620,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 620,
+    "type": "vassal_start",
+    "counterpart": "gao-kaidao"
+   },
+   "mirror": {
+    "slug": "gao-kaidao",
+    "year": 0,
+    "type": "vassal_start"
+   },
+   "status": "missing",
+   "note": "gao-kaidao lacks the vassal pair (fix on the gao-kaidao side)."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 621,
+    "type": "vassal_end",
+    "counterpart": "gao-kaidao"
+   },
+   "mirror": {
+    "slug": "gao-kaidao",
+    "year": 0,
+    "type": "vassal_end"
+   },
+   "status": "missing",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 621,
+    "type": "gain",
+    "counterpart": "wang-shichong-s-zheng"
+   },
+   "mirror": {
+    "slug": "wang-shichong-s-zheng",
+    "year": 621,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 621,
+    "type": "gain",
+    "counterpart": "xiao-xian-s-liang"
+   },
+   "mirror": {
+    "slug": "xiao-xian-s-liang",
+    "year": 621,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Tang gains Jingzhou 200 km; the Liang dissolves with Hubei, Hunan and more."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 621,
+    "type": "gain",
+    "counterpart": "li-zitong-s-wu"
+   },
+   "mirror": {
+    "slug": "li-zitong-s-wu",
+    "year": 620,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Yangzhou matches (620 loss); Wu's 621 dissolve with Zhejiang has no Tang gain."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 621,
+    "type": "gain",
+    "counterpart": "dou-jiande-s-xia"
+   },
+   "mirror": {
+    "slug": "dou-jiande-s-xia",
+    "year": 621,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "both 621-05"
+  },
+  {
+   "event": {
+    "slug": "dou-jiande-s-xia",
+    "year": 619,
+    "type": "gain",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Liyang (Hebi); the Transition page does not mention it; the author flagged it."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 622,
+    "type": "loss",
+    "counterpart": "Liu Heita (Handong)"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "No dossier; listed (ea-03)."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 622,
+    "type": "gain",
+    "counterpart": "lin-shihong-s-chu"
+   },
+   "mirror": {
+    "slug": "lin-shihong-s-chu",
+    "year": 622,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Tang event confidence 1."
+  },
+  {
+   "event": {
+    "slug": "liang-shidu-s-liang",
+    "year": 622,
+    "type": "loss",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "eastern city of Shuofang; small; Transition page silent."
+  },
+  {
+   "event": {
+    "slug": "du-fuwei-s-regime",
+    "year": 620,
+    "type": "dissolve",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "Transition page: Du 'submitted to Tang and was created the Prince of Wu' (no year); not modelled in the Tang ledger."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 624,
+    "type": "gain",
+    "counterpart": "Fu Gongshi (Song)"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "No dossier; listed (ea-03)."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 624,
+    "type": "gain",
+    "counterpart": "gao-kaidao"
+   },
+   "mirror": {
+    "slug": "gao-kaidao",
+    "year": 624,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "plus gao-kaidao 624 dissolve"
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 628,
+    "type": "gain",
+    "counterpart": "liang-shidu-s-liang"
+   },
+   "mirror": {
+    "slug": "liang-shidu-s-liang",
+    "year": 628,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 630,
+    "type": "gain",
+    "counterpart": "eastern-gokturks"
+   },
+   "mirror": {
+    "slug": "eastern-gokturks",
+    "year": 630,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 630,
+    "type": "vassal_start",
+    "counterpart": "eastern-gokturks"
+   },
+   "mirror": {
+    "slug": "eastern-gokturks",
+    "year": 630,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "eastern-gokturks models the Ordos settlement as a 630 gain from the Tang (and 639 gain/loss, 642 gain), no vassal_start; Tang models a vassal tint 630-645. One side must change (ia-01 or Tang)."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 645,
+    "type": "vassal_end",
+    "counterpart": "eastern-gokturks"
+   },
+   "mirror": {
+    "slug": "eastern-gokturks",
+    "year": 645,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 634,
+    "type": "vassal_start",
+    "counterpart": "tuyuhun"
+   },
+   "mirror": {
+    "slug": "tuyuhun",
+    "year": 0,
+    "type": "vassal_start"
+   },
+   "status": "missing",
+   "note": "tuyuhun has only the 634-635 contest with the Tang; no vassal_start (ea-03 side)."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 663,
+    "type": "vassal_end",
+    "counterpart": "tuyuhun"
+   },
+   "mirror": {
+    "slug": "tuyuhun",
+    "year": 663,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "the relation ends with the state (dissolve to tibetan-empire)."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 640,
+    "type": "gain",
+    "counterpart": "kingdom-of-gaochang"
+   },
+   "mirror": {
+    "slug": "kingdom-of-gaochang",
+    "year": 640,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "both 640-09"
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 644,
+    "type": "gain",
+    "counterpart": "Karasahr (Tarim oasis kingdom)"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "No dossier; listed."
+  },
+  {
+   "event": {
+    "slug": "xueyantuo",
+    "year": 646,
+    "type": "dissolve",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 647,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "Tang's 647 vassal_start names 'Tiele and Uyghur tribes', not xueyantuo."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 648,
+    "type": "gain",
+    "counterpart": "western-gokturks"
+   },
+   "mirror": {
+    "slug": "western-gokturks",
+    "year": 648,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 648,
+    "type": "gain",
+    "counterpart": "kingdom-of-kucha"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kucha",
+    "year": 648,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 657,
+    "type": "gain",
+    "counterpart": "western-gokturks"
+   },
+   "mirror": {
+    "slug": "western-gokturks",
+    "year": 657,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "plus 657 dissolve"
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 660,
+    "type": "gain",
+    "counterpart": "baekje"
+   },
+   "mirror": {
+    "slug": "baekje",
+    "year": 660,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "baekje's dissolve has an empty counterpart (jk-02 side)."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 668,
+    "type": "gain",
+    "counterpart": "goguryeo"
+   },
+   "mirror": {
+    "slug": "goguryeo",
+    "year": 668,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "goguryeo's dissolve has an empty counterpart (jk-02 side)."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 671,
+    "type": "loss",
+    "counterpart": "silla"
+   },
+   "mirror": {
+    "slug": "silla",
+    "year": 671,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 676,
+    "type": "loss",
+    "counterpart": "silla"
+   },
+   "mirror": {
+    "slug": "silla",
+    "year": 676,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "turks",
+    "year": 666,
+    "type": "vassal_start",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 0,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "turks.json has Tang vassal spans 666-677 and 685-690, a 677 gain of Kucha from the Tang and 679/698 losses to it; the Tang ledger has none and gives Kucha 677 to tibetan-empire (Anxi page: 'In 677 the Tibetan Empire captured Qiuci'). Route to ia-01 and Tang."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 682,
+    "type": "vassal_end",
+    "counterpart": "Tiele and Uyghur tribes (Yanran Protectorate)"
+   },
+   "mirror": {
+    "slug": "second-turkic-khaganate",
+    "year": 682,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "second-turkic-khaganate founds from tang-dynasty in 682; counterpart names differ."
+  },
+  {
+   "event": {
+    "slug": "balhae",
+    "year": 698,
+    "type": "found",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Tang ledger never loses the Goguryeo land gained in 668, so it overlaps Balhae from 698 (fix on the Tang side)."
+  },
+  {
+   "event": {
+    "slug": "turgesh",
+    "year": 703,
+    "type": "gain",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Semirechye/Dzungaria/Chach; the Anxi page has 'In 719 the Turgesh captured Suiye' (fix on the Tang side; years differ)."
+  },
+  {
+   "event": {
+    "slug": "turgesh",
+    "year": 736,
+    "type": "loss",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "Beshbalik; Tang ledger has no gain (Tang already holds Dzungaria in its own ledger)."
+  },
+  {
+   "event": {
+    "slug": "turgesh",
+    "year": 745,
+    "type": "loss",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "Tang ledger has no gain."
+  },
+  {
+   "event": {
+    "slug": "uyghur-khaganate",
+    "year": 751,
+    "type": "gain",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Turfan (uyghur side confidence 1); Tang keeps Turfan to 790."
+  },
+  {
+   "event": {
+    "slug": "champa",
+    "year": 803,
+    "type": "gain",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Nghe An, Ha Tinh; and champa 809 loss to tang with no Tang gain."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 670,
+    "type": "loss",
+    "counterpart": "tibetan-empire"
+   },
+   "mirror": {
+    "slug": "tibetan-empire",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "tibetan-empire not written yet (ea-04 part running in parallel); same for the 673-792 Tibet events, 763 occupation, 764-783 contest, 848 gain."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 738,
+    "type": "vassal_start",
+    "counterpart": "nanzhao"
+   },
+   "mirror": {
+    "slug": "nanzhao",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "nanzhao not written yet (ea-04); same for 751, 794, 863, 866, 902."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 850,
+    "type": "gain",
+    "counterpart": "tibetans"
+   },
+   "mirror": {
+    "slug": "tibetans",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "tibetans not written yet (ea-04); same for 851 and 861."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 755,
+    "type": "loss",
+    "counterpart": "Yan (An Lushan)"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "No dossier; listed (yan-an-lushan, ea-04-x); all Yan events 755-763."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 881,
+    "type": "loss",
+    "counterpart": "Qi (Huang Chao)"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "No dossier; listed (qi-huang-chao); 881 and 883."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 851,
+    "type": "vassal_start",
+    "counterpart": "Guiyi Circuit (Zhang Yichao)"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "No dossier; listed (guiyi-circuit); and the 907 vassal_end."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 866,
+    "type": "loss",
+    "counterpart": "qocho-kingdom"
+   },
+   "mirror": {
+    "slug": "qocho-kingdom",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "qocho-kingdom.json has no 866 gain of Xizhou, 876 gain of Yizhou or 904 loss of both (Guiyi page dates all three); fix on the qocho side."
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 907,
+    "type": "dissolve",
+    "counterpart": "later-liang-dynasty"
+   },
+   "mirror": {
+    "slug": "later-liang-dynasty",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "later-liang-dynasty not written yet (ea-04 part)."
+  },
+  {
+   "event": {
+    "slug": "sui-dynasty",
+    "year": 617,
+    "type": "loss",
+    "counterpart": "gao-kaidao"
+   },
+   "mirror": {
+    "slug": "gao-kaidao",
+    "year": 619,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "two years apart: the Gao Kaidao page has the siege of Beiping from 617 and its capture around the new year 619; the Sui side should move to 618-619 or the Gao side record the 617 occupation."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Suzhou (Jiuquan)",
+   "kind": "place",
+   "used_in": "tang-dynasty"
+  },
+  {
+   "name": "Jiangling",
+   "kind": "place",
+   "used_in": "tang-dynasty"
+  },
+  {
+   "name": "Yuyang",
+   "kind": "place",
+   "used_in": "gao-kaidao"
+  },
+  {
+   "name": "Huairong",
+   "kind": "place",
+   "used_in": "gao-kaidao"
+  }
+ ],
+ "counterparts_needing_dossiers": [],
+ "notes_path": "history/polities/_notes/review-ea-04-a.md",
+ "problems": [
+  "tibetan-empire, nanzhao, tibetans and later-liang-dynasty (ea-04 parts running in parallel) and abbasid-caliphate (me-08), rashidun-caliphate (me-07) have no dossier yet; their mirror checks are deferred (recorded as exceptions).",
+  "Shape membership was tested with tools/grid.py polity_cells (local Cliopatria cell cache) at sample years and named places; numbers in the findings are cell counts at H3 resolution 5 (about 250 km2 per cell).",
+  "The Manchuria, Semirechye, Turfan-Hami/Beiting and Sichuan-830 faults are inherited from the Phase A example polities/_example-tang-dynasty.json, which has the same ledger and keyframe verdicts for those years; the example should not be used as a reference for them.",
+  "Reviewer edits applied to tang-dynasty.json (re-validated, read back): Hami place for Yizhou in /ledger/74 and /keyframe_review/26, /keyframe_review/27 corrections; /ledger/30 note. The author's gazetteer request 'Yizhou (Hami)' is withdrawn: the gazetteer already has Hami with alt name Yizhou.",
+  "gao-kaidao fails on one finding only (the missing 620-621 vassal pair, two events verified on the Gao Kaidao page); everything else held."
+ ]
+}

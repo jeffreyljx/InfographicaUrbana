@@ -1,0 +1,21 @@
+{
+ "window": "m3300-m3201",
+ "checks": [
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "fixed",
+   "what": "maadi-culture_-3800 (-3800..-3200) cut from 'Lower Egypt'+Fayyum (803 cells, Western Desert to 24.8E) to the Delta. The page supports the cut: 'about a dozen sites, including ... Maadi near modern Cairo'; 'Major sites include el-Gerza, Haraga, Abusir el-Melek, and Minshat Abu Omar'; Buto, Tell Ibrahim Awad, Tell el-Rub'a, Tell el-Farkha; 'replaced ... by the end of Naqada II circa 3200 BCE'; nothing in the Western Desert. But the window agent's spec (129 cells) also cut the whole of Giza, including its Nile valley reach, which left the Faiyum as a separate 21-cell blob, dropped el-Gerza (west bank of the Nile, 'several miles due east of the oasis of Faiyum', 29 27 N 31 12 E: a Giza cell, not Faiyum, contrary to the patch text), and cutting Ismailia left the two Port Said cells as isolated 1-cell specks (4 components in all).",
+   "page": "https://en.wikipedia.org/wiki/Maadi_culture; https://en.wikipedia.org/wiki/Gerzeh (now the Naqada II page); https://en.wikipedia.org/wiki/Harageh",
+   "fix": "Correction changed to union[minus[Lower Egypt, union[Matruh, Al Jizah, Al Iskandariyah, Al Isma`iliyah, Bur Sa`id]], intersect[Al Jizah, river Nile 20 km], Fayyum]: 140 cells (about 35,400 km2), one piece, bbox 29.66-32.07E 29.04-31.46N; text and why updated (el-Gerza cited from the Gerzeh/Naqada II page), note extended. Trials: m3300-m3201 applied, Maadi 135 cells at -3301 (5 cells go to Naqada by R2 as before), Gerzeh cell is Maadi's; m3800-m3701 Maadi founded at -3800 with 135 cells (the keyframe overrides the found region, no 803-cell year); m3200-m3101 Maadi's 135 cells pass to Naqada at -3200 (ledger/3) plus 40 by its keyframe override, no Western Desert.",
+   "applied": true
+  }
+ ],
+ "patch_check": "/mnt/project-files/history/data/patches/m3300-m3201.json: 1 entries, 1 ok, 0 rejected; checked in 2.7 s",
+ "problems": [
+  "gazetteer region 'Lower Egypt' (data/gazetteer/regions.jsonl: 787 cells, 24.8E-32.8E) includes all of Matruh (524 cells) and Giza with its oases (126); 19 dossiers name it (achaemenid-empire, fatimid-caliphate, new-kingdom-of-egypt, the 21st-31st dynasties, naqada-culture, maadi-culture, kingdom-of-kush, neo-assyrian-empire, mamluk-beys-of-egypt, french-directory, ...). Redefining it as the Delta governorates + Cairo + intersect(Al Jizah, Nile 20 km) would fix every era at once.",
+  "maadi-culture dossier: ledger/0 (found), ledger/1 (dissolve) and identity.successors land still say Lower Egypt+Fayyum; the compile follows the keyframe so the drawing is right, but the dossier should get the same spec at its next edit.",
+  "reach: the override spans -3800..-3200 (windows m3800-m3701 to m3400-m3301); no other patch file overrides maadi-culture_-3800.",
+  "m3200-m3101 keyframe_overrides/0 (naqada-culture_-3200) already cuts Matruh and keeps intersect(Al Jizah, Nile 40 km) (22 cells), so the window agent's warning about Naqada taking the Western Desert at -3200 is handled; Naqada gains 9 desert-margin Giza cells more than Maadi held (40 km vs 20 km), harmless but the widths could be aligned.",
+  "trial summary 'conflicts: 1 pairs, 30 cell-years -> 1 pairs, 30 cell-years' is unchanged by this patch; end anchor m3200: 668 cells change owner (Maadi 803 -> 135, the rest to nobody)."
+ ]
+}

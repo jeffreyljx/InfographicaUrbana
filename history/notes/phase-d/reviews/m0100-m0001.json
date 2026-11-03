@@ -1,0 +1,112 @@
+{
+ "window": "m0100-m0001",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "kanva-dynasty loss to nobody, 28 BC, of the realm outside the Central Indian piece the Satavahanas take. Page: 'According to the Puranas, their dynasty was brought to an end by the Satavahanas in 28 BCE'; 'The defeat of the Kanva dynasty by the Satavahana dynasty was a localised event in Central India'; 'After the defeat ... the Magadha empire came to an end'; Magadha later under the Mitra dynasty of Kaushambi (no start year). Spec: 3,156 cells, 76.2-89.9 E, 21.7-31.7 N (the Ganges plain, Panchala, Vatsa, Magadha); Vidisha (77.8 E, 23.5 N) is not in it but in the Satavahana ledger/2 gain (544 cells). Trial: 3,023 cells go to nobody in 28 and the -27 Satavahana snap no longer strips 3,024. Side effect: 36 of the released cells near Gwalior/Jhansi (25-26 N, 77-78 E) are taken by the Indo-Scythian -27 keyframe and are Indo-Scythian at the p0000 anchor (before, the Satavahanas held them in 28 and released them after that snap).",
+   "page": "https://en.wikipedia.org/wiki/Kanva_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/1",
+   "verdict": "fixed",
+   "what": "vassal_end roman-republic/greek-city-states at -100. The page supports Rome as the stronger party ('The remaining resistance to Rome among the Italiot Greeks collapsed, with the remaining cities quickly seeking terms'; 'Its victory over the peninsular Greeks also cemented Rome's hegemony over Italy'). But m0300-m0201 events/0 and events/1 (written after the published compile) now close the 272 relation in 272: in the trial the 1 Jan -100 anchor has no Rome-Greek relation, Rome's cells are plain, and this event changes no cell. Its note, which becomes the -100 caption, described a 4,510-cell Greek tint that no longer exists.",
+   "page": "https://en.wikipedia.org/wiki/Pyrrhic_War",
+   "fix": "note rewritten: leads with the page's two sentences and marks the entry as a no-op guard (m0300-m0201 closes the relation in 272); type, year and region unchanged",
+   "applied": true
+  },
+  {
+   "entry": "events/2",
+   "verdict": "pass",
+   "what": "roman-republic gain from nobody, -100, Gallia Transalpina. Spec identical to the dossier's ledger/122 (294 cells, about 74,000 km2, 1.8-7.6 E, 42.4-45.9 N, less Marseille 25 km). Page: 'The area became a Roman province in 121 BC', bordered by the Pyrenees (west), the Cevennes (north), the Alps (east) and the Gulf of Lion, 'the majority of the Rhone catchment'. In the trial Rome holds 63 of the 294 cells at 1 Jan -100 (the interior was released by pre-window Cliopatria snaps once m0300-m0201 removed the Greek tint); the gain takes the 228 unowned cells, not Massalia's.",
+   "page": "https://en.wikipedia.org/wiki/Gallia_Narbonensis",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/3",
+   "verdict": "pass",
+   "what": "contest_end over 'Gaul', 58 BC, closing the dossier's ledger/174 zone (same counterpart string) so it can be reopened without the Province. Page: 'The wars began with conflict over the migration of the Helvetii in 58 BC'; the Helvetii 'entirely avoiding Roman lands'; Transalpine Gaul a province since 121. Trial: the Province is plain Roman 58-51 (published: 63 Province cells hatched).",
+   "page": "https://en.wikipedia.org/wiki/Gallic_Wars",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/4",
+   "verdict": "pass",
+   "what": "contest_start, 58 BC, over Gaul minus the Province (2,558 cells); ledger/179 closes it in 50 ('In 51 and 50 BC, there was limited resistance, and Caesar's troops mainly engaged in mop-up operations'). Trial: hatched 58-51, plain from 50. A contest with a non-dossier counterpart marks only the cells Rome holds when it opens, so the hatch now covers the 101 eastern-Gaul cells of the 58 gain; the 57, 56 and 52 gains are plain Roman when gained.",
+   "page": "https://en.wikipedia.org/wiki/Gallic_Wars",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "fixed",
+   "what": "roman-republic_-91: Cliopatria's 91 shape minus the Italian confederation, plus the Province, without the dossier's Asia cut. Page: 'This swift conquest of Asia through Phrygia took place in early 88'. Checked by a trial without this override: the dossier's -91 correction strips Asia (203 cells) and the Province interior (228) to nobody in 91, and Asia never passes to Pontus in 88. With it: Asia Roman to 88, Pontic 88-85, Roman from 85. The Province union also held Massalia's colonies at Nice and Agde (no harm at -91, but the same spec took them at -87).",
+   "page": "https://en.wikipedia.org/wiki/First_Mithridatic_War",
+   "fix": "Narbonensis union's minus changed from {place: Marseille, km 25} to the union of Marseille 25 km, {place: Nice, km 8} (cell 226908) and {place: Agde, km 8} (cell 227018), Massalia's two outlying cells; text and why updated",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "fixed",
+   "what": "roman-republic_-87: Cliopatria's 87 shape plus the Province, without the dossier's Asia union. Page: the treaty of Dardanos 'late summer or early autumn 85', 'a return to the status quo of 89'; Sulla in 86 demanded Mithridates 'surrender all his conquests'. Trial: Asia stays Pontic in 87 and 86 and returns by ledger/146 in 85. But the Province union took Massalia's colonies Nikaia (Nice) and Agathe (Agde), 2 cells, for Rome in 87 by R2 ('roman-republic succeeds massalia'), 38 years early (Massalia page: colonies 'on the sea coast of Gallia Narbonensis', 'Agathe', 'Nikaia'; Gallia Narbonensis page: Massilia 'lost all of its independence' after the civil war of 49). Re-trial: Massalia keeps both cells to 49.",
+   "page": "https://en.wikipedia.org/wiki/Massalia",
+   "fix": "Narbonensis union's minus changed from {place: Marseille, km 25} to the union of Marseille 25 km, {place: Nice, km 8} (cell 226908) and {place: Agde, km 8} (cell 227018), Massalia's two outlying cells; text and why updated",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "fixed",
+   "what": "roman-republic_-63: Cliopatria's 63 shape plus the Province, without the dossier's Gaul additions. Page: 'The wars began with conflict over the migration of the Helvetii in 58 BC'; Belgae 57; 'In 56 BC, Caesar defeated the Veneti ... and took most of northwest Gaul'. Published: Rome held 1,200 cells of Gaul beyond the Province from 63; trial: none until the ledger's 58, 57, 56 and 52 gains. Province union had the same Massalia-colony over-reach (latent).",
+   "page": "https://en.wikipedia.org/wiki/Gallic_Wars",
+   "fix": "Narbonensis union's minus changed from {place: Marseille, km 25} to the union of Marseille 25 km, {place: Nice, km 8} (cell 226908) and {place: Agde, km 8} (cell 227018), Massalia's two outlying cells; text and why updated",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/3",
+   "verdict": "pass",
+   "what": "roman-empire_-14: Cliopatria's 14 BC shape without the dossier's Rhine-Elbe union. Page: '12-9 BC: Invasions of Drusus up the Elbe from the North Sea, the Lippe and Main'; 16-13 BC only the 'Decision to ... conquest of Germania to the Elbe'. Trial: the 14 snap adds 120 Alpine cells (Noricum/Raetia), not 986; the 12 BC occupation (ledger/20) now marks 866 unowned cells as occupied by Rome; chatti/cherusci/hermunduri conflicts gone. The why's 'without a province' is loose (the page lists '9 BC: Creation of Magna Germania (capital Cologne)'), but the override only makes the keyframe match the dossier's own ledger/20 ('held as occupied land, not a province').",
+   "page": "https://en.wikipedia.org/wiki/Germanic_Wars",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/4",
+   "verdict": "fixed",
+   "what": "roman-republic_-77: the dossier's correction unchanged (checked identical) plus the Province; page as events/2. Trial: Province Roman through 77-67. Province union had the same Massalia-colony over-reach (latent).",
+   "page": "https://en.wikipedia.org/wiki/Gallia_Narbonensis",
+   "fix": "Narbonensis union's minus changed from {place: Marseille, km 25} to the union of Marseille 25 km, {place: Nice, km 8} (cell 226908) and {place: Agde, km 8} (cell 227018), Massalia's two outlying cells; text and why updated",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/5",
+   "verdict": "fixed",
+   "what": "roman-republic_-66: the dossier's correction unchanged (checked identical) plus the Province; page as events/2. Trial: Province Roman through 66-64. Province union had the same Massalia-colony over-reach (latent).",
+   "page": "https://en.wikipedia.org/wiki/Gallia_Narbonensis",
+   "fix": "Narbonensis union's minus changed from {place: Marseille, km 25} to the union of Marseille 25 km, {place: Nice, km 8} (cell 226908) and {place: Agde, km 8} (cell 227018), Massalia's two outlying cells; text and why updated",
+   "applied": true
+  }
+ ],
+ "patch_check": "11 entries, 11 ok, 0 rejected (--check-patch re-run after the review edits); trial of the edited file: 11 applied, 307 other windows' entries applied, 0 skipped; Massalia keeps Nice and Agde to 49, Asia Roman to 88, Pontic 88-85, Roman from 85; Province Roman -100..-51",
+ "problems": [
+  "events/1 is a no-op: m0300-m0201 events/0 and events/1 already close the reversed 272 Rome/Greek-cities relation in 272 (trial: no such relation at 1 Jan -100). The window agent's 'compiler' problem is handled there; roman-republic/ledger/133 and greek-city-states/ledger/72 (vassal_end, 90) and events/1 now close nothing (unclosed ends). Its claim that events/1 would close nothing after a source fix was wrong (relation_end matches both orientations), now moot.",
+  "cross-window m0200-m0101: with m0300-m0201's fix, Rome holds only the 63-cell coastal strip of the Province at 1 Jan -100 (trial start anchor); the 121 BC gain (/ledger/122) is released by Roman snaps in 121-101. That window needs the same Province union (less Marseille 25 km, Nice 8 km, Agde 8 km) in its Roman keyframe overrides.",
+  "residual, Province: the dossier's own -50 keyframe (Cliopatria) releases 49 Province cells (mostly the high Alps, 44-45 N 6-7 E, and 2 Pyrenean cells) from 50 BC; Massalia's colonies at Nice and Agde fall to nobody at its end in 49 (its successor land is Marseille 25 km only) and stay unowned to 1 BC. Same in the published compile; not from this patch.",
+  "cross-window p0000-p0099: the trial's p0000 anchor differs from the published one in 748 cells: roman-empire -705 (Germania now an occupation by Rome over unowned land), indo-scythians +36 (Gwalior/Jhansi, via events/0 and the Indo-Scythian -27 keyframe), mauretania -3 and satavahana -3/+1 (not from this patch). The roman-empire_1 and _6 keyframes draw Germania as plain Roman land in AD 1 although their notes call it an occupation.",
+  "tool: an occupation over unowned land (Germania, 866 cells, 12 BC to AD 9) is drawn plain grey by render_year.py; check the renderer and the packer draw occupier hatching on cells with no owner.",
+  "Gallic Wars hatch: contest_start with a non-dossier counterpart marks only cells Rome holds at that moment, so the 58-51 zone now covers 101 eastern-Gaul cells; Belgica (57), Armorica/Aquitania (56) and the centre (52) are plain Roman as soon as gained. If a hatch through the revolts of 54-52 is wanted, the dossier needs contest_start over each year's gain.",
+  "pre-existing, unchanged by the patch: at -87 a Pontus/Rome conflict (145 cells: the Bithynia region edge and Pisidia/Pamphylia, 37-38 N 29-32 E) is settled for Rome by R2 and the -87 snap then releases about 99 of those cells to nobody until the -77 keyframe; not examined against a page."
+ ],
+ "pages_opened": [
+  "https://en.wikipedia.org/wiki/Kanva_dynasty",
+  "https://en.wikipedia.org/wiki/Pyrrhic_War",
+  "https://en.wikipedia.org/wiki/Gallia_Narbonensis",
+  "https://en.wikipedia.org/wiki/Gallic_Wars",
+  "https://en.wikipedia.org/wiki/First_Mithridatic_War",
+  "https://en.wikipedia.org/wiki/Germanic_Wars",
+  "https://en.wikipedia.org/wiki/Massalia"
+ ]
+}

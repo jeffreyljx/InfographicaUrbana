@@ -1,0 +1,2043 @@
+{
+ "batch_id": "eu-21-x",
+ "verdicts": [
+  {
+   "slug": "slovak-republic",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (after /ledger/0) and before /ledger/9",
+     "what": "No vassal_start / vassal_end with nazi-germany, although nazi-germany /ledger/5 (vassal_start 1939-3, counterpart slovak-republic) and /ledger/85 (vassal_end 1945-5) carry the relation; the author left it out on purpose ('the overlord's dossier carries it').",
+     "why": "Reviewer brief check 3: a vassal_start of X is mirrored in X's ledger with the overlord as counterpart (the independent-state-of-croatia dossier does this). Slovak Republic page: the Treaty of Protection was 'signed on 23 March 1939, partially subordinated its foreign, military, and economic policy to that of Germany'.",
+     "fix": "Add vassal_start {year 1939, month 3, region = the found region, counterpart 'nazi-germany', confidence 3, source the Slovak Republic page, note quoting the treaty sentence} and vassal_end {1945, 4, same region, counterpart 'nazi-germany'} before the dissolve; keep the 1944 occupation pair.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0/note",
+     "what": "The note says the shape 'includes Orava and Spiš' and 'leaves out the eastern strip ceded to Hungary on 4 April 1939'; the resolved spec does the reverse.",
+     "why": "Resolved with history/tools/gazetteer.py: the cells of Sobrance and Stakčín are inside the 136-cell shape; Jabłonka and Niedzica (Polish Orava and Spiš, Slovak 1939-1945) are outside, because country Slovakia is the modern state and 'Orava'/'Spiš' do not resolve.",
+     "fix": "Say the shape is the state of 14 March 1939 (strip still Slovak, Orava and Spiš still Polish) and that /ledger/3 and /ledger/4 move them; keep the correction.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/7 to /ledger/8",
+     "what is missing": "The Red Army's advance through Slovakia, January-April 1945 (eastern Slovakia lost before Bratislava fell on 4 April); the state is drawn whole until April 1945.",
+     "page to try": "https://en.wikipedia.org/wiki/Western_Carpathian_offensive"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Slovak_Republic_(1939–1945)",
+     "result": "confirmed ('Independence: 14 March 1939')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Slovak_Republic_(1939–1945)",
+     "result": "confirmed ('cede 1,697 square kilometres'; 'War with Hungary: 23–31 March 1939')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Slovak_Republic_(1939–1945)",
+     "result": "confirmed (agreement of November 21, 1939; 752 square kilometers)"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Slovak_Republic_(1939–1945)",
+     "result": "confirmed ('Fall of Bratislava: 4 April 1945'; 'reintegrated into the recreated Third Czechoslovak Republic')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Slovak_Republic_(1939–1945)",
+     "result": "confirmed at confidence 2 (Slovak page: 'the Germans occupied the country (from October 1944)'; the 29 August date is from the uprising page)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 38055,
+    "infobox_year": 1939,
+    "cliopatria_km2": null,
+    "resolved_km2": 34394,
+    "ratio": 0.9,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "protectorate-of-bohemia-and-moravia",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0 and /ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Protectorate_of_Bohemia_and_Moravia",
+     "result": "confirmed ('German occupation: 15 March 1939')"
+    },
+    {
+     "where": "/ledger/2 and /ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Protectorate_of_Bohemia_and_Moravia",
+     "result": "confirmed ('German surrender: 8 May 1945'; 'came to an end with the surrender of Germany to the Allies in May 1945')"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Protectorate_of_Bohemia_and_Moravia",
+     "result": "confirmed: no area on the page (author says so); resolved 37,935 km2"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "resolved_km2": 37935,
+    "ratio": null,
+    "acknowledged": true
+   },
+   "note": "Tried: dates, area silence, capital, the found counterpart. Not this dossier's fault: czechoslovakia (eu-21-a) keeps the Czech lands as its own occupied land 1939-1945 and nazi-germany names czechoslovakia, so the land is claimed twice (cross_checks)."
+  },
+  {
+   "slug": "saar-basin-territory",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Territory_of_the_Saar_Basin",
+     "result": "confirmed ('Treaty of Versailles took effect: 10 January 1920')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Territory_of_the_Saar_Basin",
+     "result": "confirmed ('On 1 March, Germany re-integrated the region'; 'Disestablished: 1 March 1935')"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Territory_of_the_Saar_Basin",
+     "result": "confirmed ('closely corresponds with the modern German state of Saarland, but was slightly smaller'); no infobox area"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "resolved_km2": 2782,
+    "ratio": null,
+    "acknowledged": true
+   },
+   "note": "Both transfers mirrored (weimar-republic /ledger/7, nazi-germany /ledger/1). Rulers left empty although the page lists the Commission chairmen; optional."
+  },
+  {
+   "slug": "memel-territory",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0 and /ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Klaipėda_Region",
+     "result": "confirmed ('the French took over the temporary military administration of the region on 15 February 1920')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Klaipėda_Region",
+     "result": "confirmed ('On 19 January, the territory was annexed by Lithuania')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Klaipėda_Region",
+     "result": "confirmed ('Klaipėda Revolt: 10–15 January 1923'; body: 'On 9 January 1923 ... Lithuania occupied the territory')"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Klaipėda_Region",
+     "result": "confirmed (infobox 2,657 km2)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2657,
+    "infobox_year": 1920,
+    "cliopatria_km2": null,
+    "resolved_km2": 2276,
+    "ratio": 0.86,
+    "acknowledged": true
+   },
+   "note": "The 30 km circle resolves to 9 land cells (2,276 km2), not the 2,800 km2 the note quotes (geometric circle); the misfit is acknowledged and a 'Memelland' region requested."
+  },
+  {
+   "slug": "italian-social-republic",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Italian_Social_Republic",
+     "result": "confirmed ('The Italian Social Republic was proclaimed on 23 September 1943')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Italian_campaign_(World_War_II)",
+     "result": "confirmed ('The American forces took possession of Rome on 4 June 1944')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Italian_campaign_(World_War_II)",
+     "result": "confirmed ('succeeded in capturing it on 18 July')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Italian_campaign_(World_War_II)",
+     "result": "confirmed (final offensive 9 April 1945; 'On 21 April, Bologna was entered')"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Italian_Social_Republic",
+     "result": "confirmed ('held office from 23 September 1943 until 25 April 1945')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "resolved_km2": 142383,
+    "ratio": null,
+    "acknowledged": true
+   },
+   "note": "Tried: dates, the Operational Zones footnote ('Both OZAV and OZAK were still formally part of the RSI', flagged), Rome 10 September 1943, capital (page: 'Salò, Verona, and Milan (de facto)'). Southern Lazio and Abruzzo left out and acknowledged. kingdom-of-italy lacks the 1944 gains (cross_checks, eu-13)."
+  },
+  {
+   "slug": "general-government",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "Date and taker of the loss of the Lublin district and the Subcarpathian land (about 45,000 km2) at confidence 1; the counterpart republic-of-poland starts only in 1945-1, so the 1944 taker should be polish-committee-of-national-liberation (the author's own counterparts_needing_dossiers entry, eu-22).",
+     "page to try": "https://en.wikipedia.org/wiki/Lublin–Brest_offensive"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/General_Government",
+     "result": "confirmed ('Establishment: 26 October 1939'); 94,000 km2 confirmed on https://en.wikipedia.org/wiki/German-occupied_Poland"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/General_Government",
+     "result": "confirmed ('Galicia added: 1 August 1941')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/General_Government",
+     "result": "confirmed ('USSR captures Warsaw: 17 January 1945'; 'Disintegration: 19 January 1945')"
+    },
+    {
+     "where": "/identity/capitals",
+     "page": "https://en.wikipedia.org/wiki/General_Government",
+     "result": "confirmed ('Litzmannstadt (12 October – 4 November 1939) Krakau (4 November 1939 – 19 January 1945)')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 94000,
+    "infobox_year": 1939,
+    "cliopatria_km2": null,
+    "resolved_km2": 97114,
+    "ratio": 1.03,
+    "acknowledged": true,
+    "note": "no infobox area; figure from German-occupied Poland page"
+   }
+  },
+  {
+   "slug": "reichskommissariat-ukraine",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "Poltava oblast loss dated 1943-9 at confidence 1 (no page date).",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_the_Dnieper"
+    },
+    {
+     "where": "/ledger/14",
+     "what is missing": "Vinnytsia, Khmelnytskyi, Mykolaiv and Kherson oblasts (about 100,000 km2) lost 1944-4 at confidence 1; the Dnieper–Carpathian page dates the sub-offensives (Proskurov–Chernovtsy, Uman–Botoșani, Bereznegovatoye–Snigirevka, Odessa: 4 March - 17 April 1944) but no captures, so the month may be March.",
+     "page to try": "https://en.wikipedia.org/wiki/Uman–Botoșani_offensive"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Reichskommissariat_Ukraine",
+     "result": "confirmed ('On 20 August, Hitler established the Reichskommissariat Ukraine')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Reichskommissariat_Ukraine",
+     "result": "confirmed ('transfer to civil administration in September 1942')"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Dnieper–Carpathian_offensive",
+     "result": "confirmed ('Korosten fell on December 29, and Zhitomir followed on December 31')"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Reichskommissariat_Ukraine",
+     "result": "confirmed ('On 28 July 1944, the Red Army occupied the last part of the Reichskommissariat Ukraine in Brest')"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Reichskommissariat_Ukraine",
+     "result": "confirmed ('officially dissolved on 10 November 1944')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 340000,
+    "infobox_year": 1941,
+    "cliopatria_km2": null,
+    "resolved_km2": 353301,
+    "ratio": 1.04,
+    "acknowledged": true
+   },
+   "note": "Minor: keyframe 1 (from 1943) is the year-end 1943 shape and keyframe 2 (1944) is identical; the 1943 losses carry the months, so left as is."
+  },
+  {
+   "slug": "reichskommissariat-ostland",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/9 and /ledger/10",
+     "what is missing": "West Lithuania (Samogitia) loss and end of the Lithuanian contest dated 1944-10 at confidence 1 (Memel offensive, 5-22 October 1944, not opened).",
+     "page to try": "https://en.wikipedia.org/wiki/Baltic_offensive"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Reichskommissariat_Ostland",
+     "result": "confirmed ('Implement civil administration: 25 July 1941 at 12:00')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Reichskommissariat_Ostland",
+     "result": "confirmed ('Estonia added: 5 December 1941')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Reichskommissariat_Ostland",
+     "result": "confirmed ('On 1 April 1944, Generalbezirk Weißruthenien was detached', 'placed directly under the Reich Ministry for the Occupied Eastern Territories')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Operation_Bagration",
+     "result": "confirmed ('lost when the city fell on 13 July')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Baltic_offensive",
+     "result": "confirmed (Tallinn offensive 17–26 September 1944, 'to drive German forces from mainland Estonia')"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Reichskommissariat_Ostland",
+     "result": "confirmed ('Soviets reoccupied Riga: 13 October 1944')"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Reichskommissariat_Ostland",
+     "result": "confirmed ('held out in the Courland Pocket until 10 May 1945')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "resolved_km2": 282995,
+    "ratio": null,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "territory-of-the-military-commander-in-serbia",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Territory_of_the_Military_Commander_in_Serbia",
+     "result": "confirmed ('On 22 April 1941, the Territory was placed under the supreme authority of the German Military Commander in Serbia'); extent 'most of modern central Serbia, along with the northern part of Kosovo and the Banat' confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_U%C5%BEice",
+     "result": "confirmed ('Partisan arrival in Užice: 28 July 1941'; the page also has 'Fall of Užice: 24 September 1941')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Territory_of_the_Military_Commander_in_Serbia",
+     "result": "confirmed ('Puppet regime established: 29 August 1941')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_U%C5%BEice",
+     "result": "confirmed ('Conquered: 1 December 1941')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Territory_of_the_Military_Commander_in_Serbia",
+     "result": "confirmed ('Territory liberated: 20 October 1944'; administration 'evacuated from Serbia to Vienna in October 1944')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "resolved_km2": 60443,
+    "ratio": null,
+    "acknowledged": true
+   },
+   "note": "Who took Serbia in October 1944 differs between yugoslavia, yugoslav-partisans and this dossier (cross_checks); not this dossier's error."
+  },
+  {
+   "slug": "italian-governorate-of-montenegro",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction (and the same spec in /identity/predecessors/0/land, /identity/successors/0/land, /ledger/0, 1, 4, 5, 6, 7, /wars/0/zones/0)",
+     "what": "The shape subtracted only the Kotor bay and Plav, although the page's same sentence also lists 'the town of Ulcinj' (and a strip north of Lake Scutari, an area northeast of Podgorica, and 'including Bar') as lost to Albania.",
+     "why": "https://en.wikipedia.org/wiki/Italian_governorate_of_Montenegro: 'Montenegro lost Metohija to Albania, including Bar', 'a strip of land north of Lake Scutari, the town of Ulcinj, an area northeast of Podgorica' 'and a significant amount of the Andrijevica district including Plav and Gusinje'.",
+     "fix": "Added {admin1 Ulcinj, Montenegro} to the subtracted union in every copy of the spec (now about 11,400 km2), added Ulcinj to the region text, and wrote into the keyframe note that the strip, the area northeast of Podgorica and the Bar clause stay in the shape (no gazetteer unit; Bar unclear). Re-validated: OK.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Italian_governorate_of_Montenegro",
+     "result": "confirmed ('Italian occupation: 18 April 1941')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Italian_governorate_of_Montenegro",
+     "result": "confirmed ('Governorate established: 3 October 1941')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Italian_governorate_of_Montenegro",
+     "result": "confirmed ('German occupation: 12 September 1943')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Italian_governorate_of_Montenegro",
+     "result": "confirmed ('German forces which withdrew in December 1944')"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Italian_governorate_of_Montenegro",
+     "result": "region incomplete (Ulcinj); fixed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "resolved_km2": 11380,
+    "ratio": null,
+    "acknowledged": true
+   },
+   "note": "No loss before the dissolve: the land goes to the successor yugoslav-partisans by the dissolve; yugoslavia /ledger/20 books the gain from this dossier instead (cross_checks)."
+  },
+  {
+   "slug": "hellenic-state",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction and /keyframe_review/1/correction (and the same spec in /identity/predecessors/0/land, /identity/successors/0/land, /ledger/0, 7, 10, 11, /wars/0/zones/0)",
+     "what": "country Greece (Natural Earth, modern) includes the Dodecanese (9 cells, about 2,300 km2), which were Italian in 1941-1943 and German-held after, so the shape overlapped the Italian possession; the keyframe note said the Dodecanese 'are not in Greece's modern boundaries' and the notes field said they were outside the shape.",
+     "why": "Resolved with history/tools/gazetteer.py: intersect(country Greece, region Dodecanese) = 9 cells inside the 437-cell shape. https://en.wikipedia.org/wiki/Dodecanese: 'Italy formally annexed the Dodecanese' under the Treaty of Lausanne; 'they were formally united with Greece by the 1947 Peace Treaty with Italy'.",
+     "fix": "Added {region Dodecanese} to the subtracted union in every 'Greece minus' spec (9 copies), corrected both keyframe notes (now about 108,200 and 95,300 km2) and added the Dodecanese page to sources. Re-validated: OK.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Axis_occupation_of_Greece",
+     "result": "confirmed ('Bulgaria officially annexed the occupied territories on 14 May 1941'; 'eastern Macedonia and most of Western Thrace')"
+    },
+    {
+     "where": "/ledger/5 and /ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Axis_occupation_of_Greece",
+     "result": "confirmed ('After the Italian armistice in September 1943, the Italian zone was taken over by the Germans')"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Axis_occupation_of_Greece",
+     "result": "confirmed ('German troops evacuated Athens on 12 October 1944')"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Axis_occupation_of_Greece",
+     "result": "page says Crete was 'surrendered to the Allies by German garrisons in May and June 1945'; the 1944-10 end at confidence 2 is forced by the state's end and said in the note: accepted"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "resolved_km2": 108241,
+    "ratio": null,
+    "acknowledged": true
+   },
+   "note": "The found and 1944 loss counterpart kingdom-of-greece has no life before 1945 and first-hellenic-republic ends 1940-10 (cross_checks, eu-18/eu-22)."
+  },
+  {
+   "slug": "operational-zone-of-the-adriatic-littoral",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction (and the same spec in /identity/predecessors/0/land, /identity/successors/0/land, /ledger/0-3)",
+     "what": "The shape used the modern Udine province, which leaves out Pordenone (about 2,300 km2), part of the 1943 Province of Udine; neither this zone nor the italian-social-republic drew Pordenone, a hole in Friuli 1943-1945.",
+     "why": "https://en.wikipedia.org/wiki/Operational_Zone_of_the_Adriatic_Littoral: the Province of Udine (Central and Western Friuli) comprises 'today the provinces of Udine and Pordenone'; resolver: Pordenone's 9 cells were in neither shape. nazi-germany /ledger/50 includes Pordenone in the zone.",
+     "fix": "Added {admin1 Pordenone, Italy} after Udine in all 7 copies of the spec, noted it in the region text and the keyframe note (area now about 19,500 km2, not the 21,000 km2 the note quoted). Re-validated: OK.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Operational_Zone_of_the_Adriatic_Littoral",
+     "result": "confirmed ('established, with its headquarters in Trieste, on 10 September 1943'; the six provinces)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Operational_Zone_of_the_Adriatic_Littoral",
+     "result": "confirmed ('attached to the Gau of Carinthia')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Operational_Zone_of_the_Adriatic_Littoral",
+     "result": "confirmed (surrender to the New Zealand 2nd Division on 2 May; Partisans withdrew west of the Isonzo from 15 May)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "resolved_km2": 19473,
+    "ratio": null,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "operational-zone-of-the-alpine-foothills",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Operational_Zone_of_the_Alpine_Foothills",
+     "result": "confirmed ('OZAV was established on 10 September 1943'; 'provinces of Belluno, Bolzano and Trento')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Operational_Zone_of_the_Alpine_Foothills",
+     "result": "confirmed ('administered as part of the Reichsgau of Tirol-Vorarlberg'; Hofer)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Operational_Zone_of_the_Alpine_Foothills",
+     "result": "confirmed at confidence 2 (no end day on the page; '41 people killed at Bolzano on 3 May 1945')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "resolved_km2": 16944,
+    "ratio": null,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "slovak-republic",
+    "year": 1939,
+    "type": "found",
+    "counterpart": "czechoslovakia",
+    "ledger": "/ledger/0"
+   },
+   "mirror": {
+    "slug": "czechoslovakia",
+    "year": 1939,
+    "type": "split",
+    "ledger": "/ledger/8",
+    "counterpart": "slovak-republic"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "slovak-republic",
+    "year": 1939,
+    "type": "loss",
+    "counterpart": "hungarian-republic",
+    "ledger": "/ledger/3"
+   },
+   "mirror": {
+    "slug": "hungarian-republic",
+    "year": 1939,
+    "type": "gain",
+    "ledger": "/ledger/17",
+    "counterpart": "slovak-republic"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "slovak-republic",
+    "year": 1939,
+    "type": "gain",
+    "counterpart": "second-polish-republic",
+    "ledger": "/ledger/4"
+   },
+   "mirror": {
+    "slug": "second-polish-republic",
+    "year": 1939,
+    "type": "loss",
+    "ledger": "/ledger/25",
+    "counterpart": "slovak-republic"
+   },
+   "status": "matched",
+   "note": "second-polish-republic ends 1939-10; its loss has no month (Gorna Orawa and Javorina circle)."
+  },
+  {
+   "event": {
+    "slug": "slovak-republic",
+    "year": 1944,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/6"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "nazi-germany has no occupation_start cp slovak-republic for 1944 (it records vassal_start 1939-3 /ledger/5 to vassal_end 1945-5 /ledger/85); route to the nazi-germany owner (eu-21-c)."
+  },
+  {
+   "event": {
+    "slug": "slovak-republic",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/8"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as above: no occupation_end cp slovak-republic in nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1939,
+    "type": "vassal_start",
+    "counterpart": "slovak-republic",
+    "ledger": "/ledger/5"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "slovak-republic has no vassal_start/vassal_end with nazi-germany (author chose not to repeat it); finding /ledger in slovak-republic, back to eu-21-x."
+  },
+  {
+   "event": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "vassal_end",
+    "counterpart": "slovak-republic",
+    "ledger": "/ledger/85"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as above."
+  },
+  {
+   "event": {
+    "slug": "czechoslovakia",
+    "year": 1945,
+    "type": "gain",
+    "counterpart": "slovak-republic",
+    "ledger": "/ledger/13"
+   },
+   "mirror": {
+    "slug": "slovak-republic",
+    "year": 1945,
+    "type": "dissolve",
+    "ledger": "/ledger/9"
+   },
+   "status": "exception",
+   "note": "slovak-republic ends by dissolve with successor czechoslovakia (land passes by identity.successors); no loss event, accepted."
+  },
+  {
+   "event": {
+    "slug": "protectorate-of-bohemia-and-moravia",
+    "year": 1939,
+    "type": "found",
+    "counterpart": "czechoslovakia",
+    "ledger": "/ledger/0"
+   },
+   "mirror": {
+    "slug": "czechoslovakia",
+    "year": 1939,
+    "type": "occupation_start",
+    "ledger": "/ledger/10",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "czechoslovakia has no split/loss cp protectorate-of-bohemia-and-moravia: it keeps Bohemia and Moravia as its own land occupied by nazi-germany 1939-1945, so the Czech lands are claimed twice. Orchestrator to decide the model; then czechoslovakia (eu-21-a) adds split 1939-3 and gain 1945-5 cp protectorate, or the protectorate dossier is dropped."
+  },
+  {
+   "event": {
+    "slug": "protectorate-of-bohemia-and-moravia",
+    "year": 1939,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/1"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1939,
+    "type": "occupation_start",
+    "ledger": "/ledger/4",
+    "counterpart": "czechoslovakia"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany names the occupied party czechoslovakia, not the protectorate."
+  },
+  {
+   "event": {
+    "slug": "protectorate-of-bohemia-and-moravia",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/2"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "occupation_end",
+    "ledger": "/ledger/84",
+    "counterpart": "czechoslovakia"
+   },
+   "status": "mismatch",
+   "note": "as above."
+  },
+  {
+   "event": {
+    "slug": "saar-basin-territory",
+    "year": 1920,
+    "type": "found",
+    "counterpart": "weimar-republic",
+    "ledger": "/ledger/0"
+   },
+   "mirror": {
+    "slug": "weimar-republic",
+    "year": 1920,
+    "type": "loss",
+    "ledger": "/ledger/7",
+    "counterpart": "saar-basin-territory"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "saar-basin-territory",
+    "year": 1935,
+    "type": "loss",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/1"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1935,
+    "type": "gain",
+    "ledger": "/ledger/1",
+    "counterpart": "saar-basin-territory"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "memel-territory",
+    "year": 1920,
+    "type": "found",
+    "counterpart": "weimar-republic",
+    "ledger": "/ledger/0"
+   },
+   "mirror": {
+    "slug": "weimar-republic",
+    "year": 1920,
+    "type": "loss",
+    "ledger": "/ledger/9",
+    "counterpart": "memel-territory"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "memel-territory",
+    "year": 1920,
+    "type": "occupation_start",
+    "counterpart": "french-third-republic",
+    "ledger": "/ledger/1"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "french-third-republic (eu-20) has no occupation_start cp memel-territory for 1920-2; route to its owner."
+  },
+  {
+   "event": {
+    "slug": "memel-territory",
+    "year": 1923,
+    "type": "occupation_end",
+    "counterpart": "french-third-republic",
+    "ledger": "/ledger/4"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "french-third-republic has no occupation_end cp memel-territory for 1923-1."
+  },
+  {
+   "event": {
+    "slug": "memel-territory",
+    "year": 1923,
+    "type": "loss",
+    "counterpart": "kingdom-of-lithuania",
+    "ledger": "/ledger/5"
+   },
+   "mirror": {
+    "slug": "kingdom-of-lithuania",
+    "year": 1923,
+    "type": "gain",
+    "ledger": "/ledger/9",
+    "counterpart": "memel-territory"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "italian-social-republic",
+    "year": 1943,
+    "type": "found",
+    "counterpart": "kingdom-of-italy",
+    "ledger": "/ledger/0"
+   },
+   "mirror": {
+    "slug": "kingdom-of-italy",
+    "year": 1943,
+    "type": "loss",
+    "ledger": "/ledger/39",
+    "counterpart": "italian-social-republic"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "italian-social-republic",
+    "year": 1943,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/1"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1943,
+    "type": "occupation_start",
+    "ledger": "/ledger/49",
+    "counterpart": "kingdom-of-italy"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany names the occupied party kingdom-of-italy (author flagged)."
+  },
+  {
+   "event": {
+    "slug": "italian-social-republic",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "kingdom-of-italy",
+    "ledger": "/ledger/2"
+   },
+   "mirror": {
+    "slug": "kingdom-of-italy",
+    "year": 1945,
+    "type": "gain",
+    "ledger": "/ledger/40",
+    "counterpart": "italian-social-republic"
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-italy (eu-13) has no 1944 gain of Rome; its only gain from the RSI is the whole north in 1945 at confidence 1."
+  },
+  {
+   "event": {
+    "slug": "italian-social-republic",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "kingdom-of-italy",
+    "ledger": "/ledger/3"
+   },
+   "mirror": {
+    "slug": "kingdom-of-italy",
+    "year": 1945,
+    "type": "gain",
+    "ledger": "/ledger/40",
+    "counterpart": "italian-social-republic"
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-italy (eu-13) has no 1944 gain of Ancona; its only gain from the RSI is the whole north in 1945 at confidence 1."
+  },
+  {
+   "event": {
+    "slug": "italian-social-republic",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "kingdom-of-italy",
+    "ledger": "/ledger/4"
+   },
+   "mirror": {
+    "slug": "kingdom-of-italy",
+    "year": 1945,
+    "type": "gain",
+    "ledger": "/ledger/40",
+    "counterpart": "italian-social-republic"
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-italy (eu-13) has no 1944 gain of Umbria, Marche, Tuscany; its only gain from the RSI is the whole north in 1945 at confidence 1."
+  },
+  {
+   "event": {
+    "slug": "italian-social-republic",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/7"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "occupation_end",
+    "ledger": "/ledger/86",
+    "counterpart": "kingdom-of-italy"
+   },
+   "status": "mismatch",
+   "note": "counterpart named kingdom-of-italy in nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "general-government",
+    "year": 1939,
+    "type": "found",
+    "counterpart": "second-polish-republic",
+    "ledger": "/ledger/0"
+   },
+   "mirror": {
+    "slug": "second-polish-republic",
+    "year": 1939,
+    "type": "loss",
+    "ledger": "/ledger/32",
+    "counterpart": "general-government"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "general-government",
+    "year": 1939,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/1"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1939,
+    "type": "occupation_start",
+    "ledger": "/ledger/11",
+    "counterpart": "second-polish-republic"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany names the occupied party second-polish-republic (which ends 1939-10)."
+  },
+  {
+   "event": {
+    "slug": "general-government",
+    "year": 1941,
+    "type": "gain",
+    "counterpart": "ukrainian-soviet-socialist-republic",
+    "ledger": "/ledger/2"
+   },
+   "mirror": {
+    "slug": "ukrainian-soviet-socialist-republic",
+    "year": 1941,
+    "type": "occupation_start",
+    "ledger": "/ledger/38",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "the Ukrainian SSR records German occupation of Lviv, Ivano-Frankivsk and Ternopil from 1941-6, not a loss to the General Government."
+  },
+  {
+   "event": {
+    "slug": "general-government",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "republic-of-poland",
+    "ledger": "/ledger/3"
+   },
+   "mirror": {
+    "slug": "republic-of-poland",
+    "year": 1945,
+    "type": "found",
+    "ledger": "/ledger/0",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "republic-of-poland starts 1945-1, so it cannot gain in 1944-7; use polish-committee-of-national-liberation (no dossier, eu-22; the author listed it) or start republic-of-poland in 1944."
+  },
+  {
+   "event": {
+    "slug": "general-government",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "ukrainian-soviet-socialist-republic",
+    "ledger": "/ledger/4"
+   },
+   "mirror": {
+    "slug": "ukrainian-soviet-socialist-republic",
+    "year": 1944,
+    "type": "occupation_end",
+    "ledger": "/ledger/45",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "Ukrainian SSR ends the occupation in 1944-10 with counterpart nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "general-government",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/5"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "occupation_end",
+    "ledger": "/ledger/68",
+    "counterpart": "second-polish-republic"
+   },
+   "status": "mismatch",
+   "note": "counterpart named second-polish-republic in nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "general-government",
+    "year": 1945,
+    "type": "loss",
+    "counterpart": "republic-of-poland",
+    "ledger": "/ledger/6"
+   },
+   "mirror": {
+    "slug": "republic-of-poland",
+    "year": 1945,
+    "type": "found",
+    "ledger": "/ledger/0",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "republic-of-poland founds 1945-1 from nazi-germany, not from the General Government."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ukraine",
+    "year": 1941,
+    "type": "found",
+    "counterpart": "ukrainian-soviet-socialist-republic",
+    "ledger": "/ledger/0"
+   },
+   "mirror": {
+    "slug": "ukrainian-soviet-socialist-republic",
+    "year": 1941,
+    "type": "occupation_start",
+    "ledger": "/ledger/38",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "the Ukrainian SSR records occupation by nazi-germany (1941-6, 1941-10), no loss to the Reichskommissariat."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ukraine",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/1"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1941,
+    "type": "occupation_start",
+    "ledger": "/ledger/32",
+    "counterpart": "ukrainian-soviet-socialist-republic"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany names the Ukrainian SSR; it also draws the same land from Cliopatria 1942 (double drawing, author flagged)."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ukraine",
+    "year": 1942,
+    "type": "gain",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/2"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "nazi-germany has no loss cp reichskommissariat-ukraine for the September 1942 transfer of Taurien (an internal transfer; accept or add)."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ukraine",
+    "year": 1943,
+    "type": "loss",
+    "counterpart": "ukrainian-soviet-socialist-republic",
+    "ledger": "/ledger/4"
+   },
+   "mirror": {
+    "slug": "ukrainian-soviet-socialist-republic",
+    "year": 1943,
+    "type": "occupation_end",
+    "ledger": "/ledger/43",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "the Ukrainian SSR records occupation_end with counterpart nazi-germany (1943-11 east, 1944-10 west), not gains from the Reichskommissariat; USSR /ledger/31 gains Kyiv 1943-11 from nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ukraine",
+    "year": 1943,
+    "type": "loss",
+    "counterpart": "ukrainian-soviet-socialist-republic",
+    "ledger": "/ledger/5"
+   },
+   "mirror": {
+    "slug": "ukrainian-soviet-socialist-republic",
+    "year": 1943,
+    "type": "occupation_end",
+    "ledger": "/ledger/43",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "the Ukrainian SSR records occupation_end with counterpart nazi-germany (1943-11 east, 1944-10 west), not gains from the Reichskommissariat; USSR /ledger/31 gains Kyiv 1943-11 from nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ukraine",
+    "year": 1943,
+    "type": "loss",
+    "counterpart": "ukrainian-soviet-socialist-republic",
+    "ledger": "/ledger/6"
+   },
+   "mirror": {
+    "slug": "ukrainian-soviet-socialist-republic",
+    "year": 1943,
+    "type": "occupation_end",
+    "ledger": "/ledger/43",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "the Ukrainian SSR records occupation_end with counterpart nazi-germany (1943-11 east, 1944-10 west), not gains from the Reichskommissariat; USSR /ledger/31 gains Kyiv 1943-11 from nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ukraine",
+    "year": 1943,
+    "type": "loss",
+    "counterpart": "ukrainian-soviet-socialist-republic",
+    "ledger": "/ledger/7"
+   },
+   "mirror": {
+    "slug": "ukrainian-soviet-socialist-republic",
+    "year": 1943,
+    "type": "occupation_end",
+    "ledger": "/ledger/43",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "the Ukrainian SSR records occupation_end with counterpart nazi-germany (1943-11 east, 1944-10 west), not gains from the Reichskommissariat; USSR /ledger/31 gains Kyiv 1943-11 from nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ukraine",
+    "year": 1943,
+    "type": "loss",
+    "counterpart": "ukrainian-soviet-socialist-republic",
+    "ledger": "/ledger/10"
+   },
+   "mirror": {
+    "slug": "ukrainian-soviet-socialist-republic",
+    "year": 1944,
+    "type": "occupation_end",
+    "ledger": "/ledger/45",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "the Ukrainian SSR records occupation_end with counterpart nazi-germany (1943-11 east, 1944-10 west), not gains from the Reichskommissariat; USSR /ledger/31 gains Kyiv 1943-11 from nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ukraine",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "ukrainian-soviet-socialist-republic",
+    "ledger": "/ledger/11"
+   },
+   "mirror": {
+    "slug": "ukrainian-soviet-socialist-republic",
+    "year": 1944,
+    "type": "occupation_end",
+    "ledger": "/ledger/45",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "the Ukrainian SSR records occupation_end with counterpart nazi-germany (1943-11 east, 1944-10 west), not gains from the Reichskommissariat; USSR /ledger/31 gains Kyiv 1943-11 from nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ukraine",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "ukrainian-soviet-socialist-republic",
+    "ledger": "/ledger/12"
+   },
+   "mirror": {
+    "slug": "ukrainian-soviet-socialist-republic",
+    "year": 1944,
+    "type": "occupation_end",
+    "ledger": "/ledger/45",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "the Ukrainian SSR records occupation_end with counterpart nazi-germany (1943-11 east, 1944-10 west), not gains from the Reichskommissariat; USSR /ledger/31 gains Kyiv 1943-11 from nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ukraine",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "ukrainian-soviet-socialist-republic",
+    "ledger": "/ledger/13"
+   },
+   "mirror": {
+    "slug": "ukrainian-soviet-socialist-republic",
+    "year": 1944,
+    "type": "occupation_end",
+    "ledger": "/ledger/45",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "the Ukrainian SSR records occupation_end with counterpart nazi-germany (1943-11 east, 1944-10 west), not gains from the Reichskommissariat; USSR /ledger/31 gains Kyiv 1943-11 from nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ukraine",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "ukrainian-soviet-socialist-republic",
+    "ledger": "/ledger/14"
+   },
+   "mirror": {
+    "slug": "ukrainian-soviet-socialist-republic",
+    "year": 1944,
+    "type": "occupation_end",
+    "ledger": "/ledger/45",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "the Ukrainian SSR records occupation_end with counterpart nazi-germany (1943-11 east, 1944-10 west), not gains from the Reichskommissariat; USSR /ledger/31 gains Kyiv 1943-11 from nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ukraine",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "byelorussian-soviet-socialist-republic",
+    "ledger": "/ledger/16"
+   },
+   "mirror": {
+    "slug": "byelorussian-soviet-socialist-republic",
+    "year": 1944,
+    "type": "occupation_end",
+    "ledger": "/ledger/16",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "Byelorussian SSR ends the occupation in 1944 with counterpart nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ukraine",
+    "year": 1944,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/17"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1944,
+    "type": "occupation_end",
+    "ledger": "/ledger/55",
+    "counterpart": "ukrainian-soviet-socialist-republic"
+   },
+   "status": "mismatch",
+   "note": "counterpart named the Ukrainian SSR in nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ostland",
+    "year": 1941,
+    "type": "found",
+    "counterpart": "union-of-soviet-socialist-republics",
+    "ledger": "/ledger/0"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1941,
+    "type": "loss",
+    "ledger": "/ledger/21",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "USSR loses the Baltic and Belarus to nazi-germany (1941-7); no loss cp reichskommissariat-ostland."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ostland",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/1"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1941,
+    "type": "occupation_start",
+    "ledger": "/ledger/35",
+    "counterpart": "lithuanian-soviet-socialist-republic"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany records occupation of the Lithuanian, Latvian, Estonian and Byelorussian SSRs (/ledger/33, 35-37), not of Ostland; double drawing with Cliopatria 1942 (author flagged)."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ostland",
+    "year": 1941,
+    "type": "gain",
+    "counterpart": "estonian-soviet-socialist-republic",
+    "ledger": "/ledger/2"
+   },
+   "mirror": {
+    "slug": "estonian-soviet-socialist-republic",
+    "year": 1941,
+    "type": "occupation_start",
+    "ledger": "/ledger/1",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "Estonian SSR records occupation by nazi-germany from 1941-7, no loss cp Ostland."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ostland",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/3"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "nazi-germany has no gain cp reichskommissariat-ostland for the 1 April 1944 detachment of Weissruthenien (it keeps Belarus as occupied, /ledger/33)."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ostland",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "lithuanian-soviet-socialist-republic",
+    "ledger": "/ledger/5"
+   },
+   "mirror": {
+    "slug": "lithuanian-soviet-socialist-republic",
+    "year": 1944,
+    "type": "occupation_end",
+    "ledger": "/ledger/2",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "Lithuanian SSR ends the occupation in 1944-10 with counterpart nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ostland",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "lithuanian-soviet-socialist-republic",
+    "ledger": "/ledger/6"
+   },
+   "mirror": {
+    "slug": "lithuanian-soviet-socialist-republic",
+    "year": 1944,
+    "type": "occupation_end",
+    "ledger": "/ledger/2",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "Lithuanian SSR ends the occupation in 1944-10 with counterpart nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ostland",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "lithuanian-soviet-socialist-republic",
+    "ledger": "/ledger/9"
+   },
+   "mirror": {
+    "slug": "lithuanian-soviet-socialist-republic",
+    "year": 1944,
+    "type": "occupation_end",
+    "ledger": "/ledger/2",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "Lithuanian SSR ends the occupation in 1944-10 with counterpart nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ostland",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "estonian-soviet-socialist-republic",
+    "ledger": "/ledger/7"
+   },
+   "mirror": {
+    "slug": "estonian-soviet-socialist-republic",
+    "year": 1944,
+    "type": "occupation_end",
+    "ledger": "/ledger/2",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "Estonian SSR ends the occupation in 1944 with counterpart nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ostland",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "estonian-soviet-socialist-republic",
+    "ledger": "/ledger/12"
+   },
+   "mirror": {
+    "slug": "estonian-soviet-socialist-republic",
+    "year": 1944,
+    "type": "occupation_end",
+    "ledger": "/ledger/2",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "Estonian SSR ends the occupation in 1944 with counterpart nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ostland",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "latvian-soviet-socialist-republic",
+    "ledger": "/ledger/8"
+   },
+   "mirror": {
+    "slug": "latvian-soviet-socialist-republic",
+    "year": 1945,
+    "type": "occupation_end",
+    "ledger": "/ledger/3",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "Latvian SSR ends the occupation in 1945 (no month) with counterpart nazi-germany; Riga fell 1944-10."
+  },
+  {
+   "event": {
+    "slug": "reichskommissariat-ostland",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/14"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "occupation_end",
+    "ledger": "/ledger/89",
+    "counterpart": "latvian-soviet-socialist-republic"
+   },
+   "status": "mismatch",
+   "note": "counterpart named the Latvian SSR in nazi-germany."
+  },
+  {
+   "event": {
+    "slug": "territory-of-the-military-commander-in-serbia",
+    "year": 1941,
+    "type": "found",
+    "counterpart": "yugoslavia",
+    "ledger": "/ledger/0"
+   },
+   "mirror": {
+    "slug": "yugoslavia",
+    "year": 1941,
+    "type": "loss",
+    "ledger": "/ledger/15",
+    "counterpart": "territory-of-the-military-commander-in-serbia"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "territory-of-the-military-commander-in-serbia",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/1"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1941,
+    "type": "occupation_start",
+    "ledger": "/ledger/26",
+    "counterpart": "yugoslavia"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany names the occupied party yugoslavia."
+  },
+  {
+   "event": {
+    "slug": "territory-of-the-military-commander-in-serbia",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "yugoslav-partisans",
+    "ledger": "/ledger/5"
+   },
+   "mirror": {
+    "slug": "yugoslav-partisans",
+    "year": 1944,
+    "type": "gain",
+    "ledger": "/ledger/9",
+    "counterpart": "nazi-germany"
+   },
+   "status": "mismatch",
+   "note": "three dossiers disagree: yugoslavia /ledger/22 gains Serbia 1944-10 from this territory; yugoslav-partisans gains Belgrade 1944-10 and Serbia 1944-12 from nazi-germany (/ledger/9-10). Route to eu-21-a/e owners to agree on one taker."
+  },
+  {
+   "event": {
+    "slug": "territory-of-the-military-commander-in-serbia",
+    "year": 1944,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/6"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "occupation_end",
+    "ledger": "/ledger/67",
+    "counterpart": "yugoslavia"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany ends the occupation of Serbia in 1945-1 (counterpart yugoslavia); the page has Territory liberated: 20 October 1944."
+  },
+  {
+   "event": {
+    "slug": "italian-governorate-of-montenegro",
+    "year": 1941,
+    "type": "found",
+    "counterpart": "yugoslavia",
+    "ledger": "/ledger/0"
+   },
+   "mirror": {
+    "slug": "yugoslavia",
+    "year": 1941,
+    "type": "loss",
+    "ledger": "/ledger/6",
+    "counterpart": "italian-governorate-of-montenegro"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "italian-governorate-of-montenegro",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-italy",
+    "ledger": "/ledger/1"
+   },
+   "mirror": {
+    "slug": "kingdom-of-italy",
+    "year": 1941,
+    "type": "occupation_start",
+    "ledger": "/ledger/26",
+    "counterpart": "yugoslavia"
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-italy names the occupied party yugoslavia."
+  },
+  {
+   "event": {
+    "slug": "italian-governorate-of-montenegro",
+    "year": 1943,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-italy",
+    "ledger": "/ledger/4"
+   },
+   "mirror": {
+    "slug": "kingdom-of-italy",
+    "year": 1943,
+    "type": "occupation_end",
+    "ledger": "/ledger/35",
+    "counterpart": "yugoslavia"
+   },
+   "status": "mismatch",
+   "note": "as above."
+  },
+  {
+   "event": {
+    "slug": "italian-governorate-of-montenegro",
+    "year": 1943,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/5"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "nazi-germany has no occupation of Montenegro (1943-9 to 1944-12); it has Albania only (/ledger/51, 65). Route to eu-21-c."
+  },
+  {
+   "event": {
+    "slug": "italian-governorate-of-montenegro",
+    "year": 1944,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/6"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as above."
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1944,
+    "type": "gain",
+    "counterpart": "italian-governorate-of-montenegro",
+    "ledger": "/ledger/20"
+   },
+   "mirror": {
+    "slug": "italian-governorate-of-montenegro",
+    "year": 1944,
+    "type": "dissolve",
+    "ledger": "/ledger/7"
+   },
+   "status": "mismatch",
+   "note": "the governorate dissolves to its successor yugoslav-partisans, whose /ledger/7 gains Montenegro from nazi-germany; yugoslavia and yugoslav-partisans should agree on the taker."
+  },
+  {
+   "event": {
+    "slug": "hellenic-state",
+    "year": 1941,
+    "type": "found",
+    "counterpart": "kingdom-of-greece",
+    "ledger": "/ledger/0"
+   },
+   "mirror": {
+    "slug": "first-hellenic-republic",
+    "year": 1940,
+    "type": "dissolve",
+    "ledger": "/ledger/38",
+    "counterpart": "kingdom-of-greece"
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-greece (eu-22) starts in 1945, first-hellenic-republic (eu-18) ends 1940-10: no Greek dossier holds 1940-10 to 1945, and kingdom-of-italy and principality-of-bulgaria name first-hellenic-republic as the occupied party in 1941-1944. Route to eu-18/eu-22."
+  },
+  {
+   "event": {
+    "slug": "hellenic-state",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/1"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1941,
+    "type": "occupation_start",
+    "ledger": "/ledger/29",
+    "counterpart": "kingdom-of-greece"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany names kingdom-of-greece."
+  },
+  {
+   "event": {
+    "slug": "hellenic-state",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-italy",
+    "ledger": "/ledger/2"
+   },
+   "mirror": {
+    "slug": "kingdom-of-italy",
+    "year": 1941,
+    "type": "occupation_start",
+    "ledger": "/ledger/27",
+    "counterpart": "first-hellenic-republic"
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-italy names first-hellenic-republic."
+  },
+  {
+   "event": {
+    "slug": "hellenic-state",
+    "year": 1941,
+    "type": "loss",
+    "counterpart": "principality-of-bulgaria",
+    "ledger": "/ledger/3"
+   },
+   "mirror": {
+    "slug": "principality-of-bulgaria",
+    "year": 1941,
+    "type": "occupation_start",
+    "ledger": "/ledger/32",
+    "counterpart": "first-hellenic-republic"
+   },
+   "status": "mismatch",
+   "note": "Bulgaria records occupation (not a gain) from 1941-4, counterpart first-hellenic-republic; the Axis page says Bulgaria officially annexed the land on 14 May 1941 (eu-18 to add a gain or this dossier to use occupation)."
+  },
+  {
+   "event": {
+    "slug": "hellenic-state",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/4"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1941,
+    "type": "occupation_start",
+    "ledger": "/ledger/29",
+    "counterpart": "kingdom-of-greece"
+   },
+   "status": "mismatch",
+   "note": "Crete is inside nazi-germany's single Greek occupation."
+  },
+  {
+   "event": {
+    "slug": "hellenic-state",
+    "year": 1943,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-italy",
+    "ledger": "/ledger/5"
+   },
+   "mirror": {
+    "slug": "kingdom-of-italy",
+    "year": 1943,
+    "type": "occupation_end",
+    "ledger": "/ledger/36",
+    "counterpart": "first-hellenic-republic"
+   },
+   "status": "mismatch",
+   "note": "counterpart first-hellenic-republic."
+  },
+  {
+   "event": {
+    "slug": "hellenic-state",
+    "year": 1943,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/6"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "nazi-germany has no 1943-9 occupation_start for the former Italian zone of Greece."
+  },
+  {
+   "event": {
+    "slug": "hellenic-state",
+    "year": 1944,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/7"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "occupation_end",
+    "ledger": "/ledger/83",
+    "counterpart": "kingdom-of-greece"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany ends its Greek occupation in 1945-5 (Crete held to May 1945); this dossier closes all in 1944-10 because its life ends."
+  },
+  {
+   "event": {
+    "slug": "hellenic-state",
+    "year": 1944,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/8"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "occupation_end",
+    "ledger": "/ledger/83",
+    "counterpart": "kingdom-of-greece"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany ends its Greek occupation in 1945-5 (Crete held to May 1945); this dossier closes all in 1944-10 because its life ends."
+  },
+  {
+   "event": {
+    "slug": "hellenic-state",
+    "year": 1944,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/9"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "occupation_end",
+    "ledger": "/ledger/83",
+    "counterpart": "kingdom-of-greece"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany ends its Greek occupation in 1945-5 (Crete held to May 1945); this dossier closes all in 1944-10 because its life ends."
+  },
+  {
+   "event": {
+    "slug": "hellenic-state",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "kingdom-of-greece",
+    "ledger": "/ledger/10"
+   },
+   "mirror": {
+    "slug": "kingdom-of-greece",
+    "year": 1945,
+    "type": "found",
+    "ledger": "/ledger/0",
+    "counterpart": "first-hellenic-republic"
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-greece founds in 1945 from first-hellenic-republic, not from the hellenic-state; within one year but different counterpart."
+  },
+  {
+   "event": {
+    "slug": "operational-zone-of-the-adriatic-littoral",
+    "year": 1943,
+    "type": "found",
+    "counterpart": "kingdom-of-italy",
+    "ledger": "/ledger/0"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-italy has no loss cp operational-zone-of-the-adriatic-littoral (its 1943-9 losses go to italian-social-republic and nazi-germany); route to eu-13."
+  },
+  {
+   "event": {
+    "slug": "operational-zone-of-the-adriatic-littoral",
+    "year": 1943,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/1"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1943,
+    "type": "occupation_start",
+    "ledger": "/ledger/50",
+    "counterpart": "kingdom-of-italy"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany records the two zones as occupation of kingdom-of-italy (one event, Udine to Trento)."
+  },
+  {
+   "event": {
+    "slug": "operational-zone-of-the-adriatic-littoral",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/2"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "occupation_end",
+    "ledger": "/ledger/87",
+    "counterpart": "kingdom-of-italy"
+   },
+   "status": "mismatch",
+   "note": "as above."
+  },
+  {
+   "event": {
+    "slug": "operational-zone-of-the-alpine-foothills",
+    "year": 1943,
+    "type": "found",
+    "counterpart": "kingdom-of-italy",
+    "ledger": "/ledger/0"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-italy has no loss cp operational-zone-of-the-alpine-foothills (its 1943-9 losses go to italian-social-republic and nazi-germany); route to eu-13."
+  },
+  {
+   "event": {
+    "slug": "operational-zone-of-the-alpine-foothills",
+    "year": 1943,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/1"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1943,
+    "type": "occupation_start",
+    "ledger": "/ledger/50",
+    "counterpart": "kingdom-of-italy"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany records the two zones as occupation of kingdom-of-italy (one event, Udine to Trento)."
+  },
+  {
+   "event": {
+    "slug": "operational-zone-of-the-alpine-foothills",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany",
+    "ledger": "/ledger/2"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "occupation_end",
+    "ledger": "/ledger/87",
+    "counterpart": "kingdom-of-italy"
+   },
+   "status": "mismatch",
+   "note": "as above."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Sobrance",
+   "kind": "place",
+   "used_in": "slovak-republic"
+  },
+  {
+   "name": "Orava",
+   "kind": "region",
+   "used_in": "slovak-republic"
+  },
+  {
+   "name": "Spiš",
+   "kind": "region",
+   "used_in": "slovak-republic"
+  },
+  {
+   "name": "Memelland",
+   "kind": "region",
+   "used_in": "memel-territory"
+  },
+  {
+   "name": "Zichenau",
+   "kind": "region",
+   "used_in": "general-government"
+  },
+  {
+   "name": "Kvarner",
+   "kind": "region",
+   "used_in": "operational-zone-of-the-adriatic-littoral"
+  },
+  {
+   "name": "Province of Ljubljana",
+   "kind": "region",
+   "used_in": "operational-zone-of-the-adriatic-littoral"
+  },
+  {
+   "name": "Tuzi",
+   "kind": "place",
+   "used_in": "italian-governorate-of-montenegro"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Polish Committee of National Liberation (Lublin Committee), the 1944 taker of the Lublin district",
+   "suggested_slug": "polish-committee-of-national-liberation",
+   "years": [
+    1944,
+    1945
+   ]
+  },
+  {
+   "name": "Slovak National Council insurgents (Slovak National Uprising)",
+   "suggested_slug": "slovak-national-uprising",
+   "years": [
+    1944,
+    1944
+   ]
+  },
+  {
+   "name": "Province of Ljubljana (Italian, 1941-1943)",
+   "suggested_slug": "province-of-ljubljana",
+   "years": [
+    1941,
+    1943
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-21-x.md",
+ "problems": [
+  "Model conflict for the orchestrator: the Protectorate, General Government and both Reichskommissariats are drawn as states while nazi-germany draws the same land as occupation of czechoslovakia, second-polish-republic and the Soviet republics (and from Cliopatria's 1942 shape), and czechoslovakia keeps the Czech lands as its own occupied land; every occupation and Soviet-side mirror of these four dossiers is a counterpart mismatch (57 mismatches in cross_checks). One convention has to be chosen and applied to nazi-germany (eu-21-c), czechoslovakia (eu-21-a), the Soviet republics and these dossiers.",
+  "No Greek state dossier covers 1940-10 to 1945: first-hellenic-republic (eu-18) ends 1940, kingdom-of-greece (eu-22) starts 1945, and the occupiers name either; hellenic-state uses kingdom-of-greece.",
+  "Three reviewer edits applied to the mount (italian-governorate-of-montenegro, hellenic-state, operational-zone-of-the-adriatic-littoral), each re-validated and read back unchanged after about 14 seconds.",
+  "No page failed to load."
+ ]
+}

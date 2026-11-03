@@ -1,0 +1,945 @@
+{
+ "batch_id": "ia-01-c",
+ "verdicts": [
+  {
+   "slug": "rouran-khaganate",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/9/correction",
+     "applied": false,
+     "what": "Keyframe rouran-khaganate_480 (480-533) and K10 (534-545) keep Dzungaria, which the ledger gives to the Fufuluo from 487 (/ledger/3) and takes back only in 541 (/ledger/4); the shapes and the ledger disagree for 487-540, and the 534 keyframe re-adds Dzungaria seven years before the 541 gain.",
+     "why": "Gazetteer: intersect(Dzungaria, Rouran 480) = 1,778 cells (about 420,000 km2, 11% of the 16,250-cell shape); the same 1,778 cells are in the 534 and 546 shapes. K9's own note says 'it is not removed here because the shape spans 480-533'. Reviewer brief check 4: an event with no keyframe trace is acceptable only if small or covered by an adjust.",
+     "fix": "Split K9 into 480-486 (as now) and a new keyframe rouran-khaganate_487 (487-533, from/to set, correction minus[Rouran 480, union(Ordos, Dzungaria)]); give K10 a new keyframe for 534-540 with correction minus[Rouran 534, union(Ordos, Dzungaria)] and keep the Ordos-only correction for 541-545."
+    },
+    {
+     "where": "/keyframe_review/8 to /keyframe_review/11",
+     "applied": false,
+     "what": "All Rouran keyframes from 476 to 554 keep Turfan-Hami (619 cells) as Rouran land, while white-huns /ledger/6 (same author, same batch) has the Hephthalites gain Turfan-Hami in 479; the two dossiers draw the same land for two states 479-554.",
+     "why": "Gazetteer: intersect(Turfan-Hami, Rouran 476/480/546) = 619 cells each. Rouran /ledger/2 (479 vassal_end of kingdom-of-gaochang) ends only the vassal tint, not the land. Hephthalites page: 'In 479 they took the east end of the Tarim Basin, around the region of Turfan.' Rouran page: Kan Bozhou installed at Gaochang in 460 (no end date). The author notes flag the disagreement but leave both claims in the data.",
+     "fix": "Choose one reading and align both dossiers: either remove Turfan-Hami from the Rouran keyframes from 479 (correction minus[..., Turfan-Hami]) and add a 479 loss cp=white-huns, or drop white-huns /ledger/6 to a note. Whichever is kept, the Gaochang vassal events should cover only the Gaochang oasis, not land the shapes already draw as the suzerain's own."
+    },
+    {
+     "where": "/keyframe_review/4",
+     "applied": false,
+     "what": "K4 (417-425, ok) keeps 268 Ordos cells; K5 (426) removes the whole Ordos; no ledger event explains the 426 change (about 64,000 km2).",
+     "why": "Gazetteer: intersect(Ordos, Rouran 417) = 268 cells; intersect(Ordos, Rouran 402) = 699. Rouran page: the Rouran-Wei conflict began 'with a Wei offensive that drove the Rouran from the Ordos region' (in the paragraph on the unification under Shelun, undated).",
+     "fix": "Either mark K0-K4 adjust with the same minus-Ordos correction (the page puts the Wei offensive at the start of the conflict, so the Rouran never held the Ordos in 402-425) or add a 426 loss of intersect(Ordos, Rouran 417) cp=xia/northern-wei at confidence 1-2."
+    },
+    {
+     "where": "/ledger/7/region",
+     "applied": false,
+     "what": "The dissolve region and the successor land are the full Cliopatria Rouran 554 shape, which still includes the Ordos (701 cells) that every corrected keyframe from 426 removes, and 1,972 cells (Manchurian and North China fringe) that the Göktürk 555 shape does not take.",
+     "why": "Gazetteer: intersect(Ordos, Rouran 546) = 701; minus(Rouran 546, Göktürk 555) = 1,972 cells (Greater Manchuria 1,427). gokturk-khaganate /ledger/4 gains the same full spec.",
+     "fix": "Write the dissolve region and identity.successors[0].land as minus[Rouran 554, Ordos]; name in the note that the Manchurian strip goes to no Cliopatria polity (or to the Khitan/Xi) rather than to the Turks."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "479 vassal_end of Gaochang is bridged from the Hephthalites page at confidence 1; who held Turfan after 479",
+     "page to try": "https://en.wikipedia.org/wiki/Gaochang"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "541 return of Dzungaria at confidence 1; the Gaoche page implies Anagui as the annihilator but does not name him",
+     "page to try": "https://en.wikipedia.org/wiki/Yujiulü_Anagui"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Extent before 460: Cliopatria draws the maximum (3.87 M km2) from 402; no page dates the early conquests",
+     "page to try": "https://en.wikipedia.org/wiki/Yujiulü_Datan"
+    },
+    {
+     "where": "/keyframe_review/9",
+     "what is missing": "The 106 Liaoxi/Liaoning/Jilin cells dropped in 480 (Khitan/Xi/Goguryeo)",
+     "page to try": "https://en.wikipedia.org/wiki/Kumo_Xi"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "Mumocheng has no located site; point is the shape centroid",
+     "page to try": "https://en.wikipedia.org/wiki/Mumocheng"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Gaoche",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Rouran_Khaganate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Gaoche",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Rouran_Khaganate",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2800000,
+    "infobox_year": 405,
+    "cliopatria_km2": 3871441.5,
+    "ratio": 0.72,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "white-huns",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/6",
+     "applied": false,
+     "what": "The 479 gain of Turfan-Hami has no trace in any White Huns keyframe and is never lost, while the Rouran keyframes hold the same land 479-554.",
+     "why": "Gazetteer: intersect(Turfan-Hami, White Huns 451/490/540) = 0 cells; intersect(Turfan-Hami, Rouran 476..546) = 619 cells. No later White Huns event removes Turfan (the 560 losses are intersections of the 555 shape, which lacks it). Hephthalites page: 'In 479 they took the east end of the Tarim Basin, around the region of Turfan' (the event itself is on the page).",
+     "fix": "Either add Turfan-Hami to the corrections of every keyframe from 479 (new 479 keyframe; 490, 513, 523, 534, 540, 555 adjusted) with a 560 loss of it, and remove it from the Rouran keyframes; or turn the event into a note (suzerainty over Gaochang, not land). Align with rouran-khaganate in the same pass."
+    },
+    {
+     "where": "/ledger/5",
+     "applied": false,
+     "what": "The 479 gain of Sogdia names kidarites as counterpart, but kidarites.json ends in 467 (/ledger/10 dissolve) and has no 479 loss; and Sogdia was already gained in 466 as part of Transoxiana (/ledger/3) and is in the 451 keyframe applied from 466.",
+     "why": "Gazetteer: intersect(Sogdia, Transoxiana) = 813 cells (of Sogdia's 813); intersect(Sogdia, White Huns 451) = 641. kidarites.json: identity.end 467; /ledger/8 466 loss to white-huns of minus[Kidarites 402, Kidarites 390]. Hephthalites page: 'By 479 the Hephthalites had conquered Sogdia' and 'In 509, they captured Sogdia'.",
+     "fix": "Make /ledger/3 minus[Transoxiana, Sogdia], give the 451 keyframe a new 466-478 keyframe without Sogdia (or keep Sogdia from 466 and drop /ledger/5 to a note), and set /ledger/5's counterpart to the Sogdian city-states or 'nobody', not kidarites."
+    },
+    {
+     "where": "/keyframe_review/2",
+     "applied": false,
+     "what": "The 451 shape, applied from 466, already holds all of Bactria (825 cells) although /ledger/4 dates 'formal Hephthalite rule' over Bactria to 474; about 300 Bactrian cells beyond the Kunduz core are drawn eight years early.",
+     "why": "Gazetteer: intersect(Bactria, White Huns 451) = 825; intersect(Bactria, Kondoz 250 km) = 521. Hephthalites page: 'Bactria came under formal Hephthalite rule from that time' (474). kidarites /ledger/9 has the Sasanians take Bactria in 466.",
+     "fix": "Add a 466-473 keyframe: White Huns 451 minus (Bactria minus the Kunduz core), or note in K2 that the Sasanian Bactria of 466-473 is drawn Hephthalite and lower /ledger/4 to a caption."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/8",
+     "what is missing": "490 Indian lands (Punjab, Sindh, Gujarat, Kashmir) at confidence 1: Hephthalite or Alchon; nothing places the Hephthalites in Sindh, Makran or Gujarat",
+     "page to try": "https://en.wikipedia.org/wiki/Toramana"
+    },
+    {
+     "where": "/ledger/16",
+     "what is missing": "560 Kabulistan to the Turk Shahis at confidence 1 (Cliopatria's year)",
+     "page to try": "https://en.wikipedia.org/wiki/Turk_Shahis"
+    },
+    {
+     "where": "/ledger/17",
+     "what is missing": "The south-of-Oxus remainder of the 555 shape (about 25%) goes to no successor in the data (Sasanian suzerainty, Chaghaniyan, Nezak)",
+     "page to try": "https://en.wikipedia.org/wiki/Khosrow_I"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "534 loss of the Indian lands to 'nobody' (page names Aulikara, Gupta, Maukhari)",
+     "page to try": "https://en.wikipedia.org/wiki/Yashodharman"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Hephthalites",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Hephthalites",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Peroz_I",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Kavad_I",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 3300429.8,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Hephthalites infobox has no area (checked); the notes say so."
+   }
+  },
+  {
+   "slug": "gokturk-khaganate",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1",
+     "applied": false,
+     "what": "Between the 552 Orkhon core and the 555 shape, 4,967 cells (about 1.18 M km2, 26% of the shape) outside the Rouran 554 shape appear with no ledger event: the Kazakh steppe, Semirechye and the Altai.",
+     "why": "Gazetteer: minus(Göktürk 555, Rouran 554) = 4,967 cells: Kazakh Steppe 3,334, Semirechye 942, Altai 567. The only 555 gain (/ledger/4) is the Rouran 554 shape. Budget 1-2 pages: thin by design, but a bridging event is cheap.",
+     "fix": "Add a 555 gain cp=nobody of minus[Göktürk 555, Rouran 554] at confidence 1 ('Istämi's western conquests; year is Cliopatria's'), or have a gap-filler date Istämi's campaigns."
+    },
+    {
+     "where": "/ledger/4/region",
+     "applied": false,
+     "what": "The 555 gain of the full Cliopatria Rouran 554 shape includes the Ordos (701 cells) that the Rouran dossier says the Rouran did not hold after 426, and 1,972 cells the Göktürk 555 keyframe does not draw.",
+     "why": "Gazetteer: intersect(Ordos, Rouran 546) = 701, intersect(Ordos, Göktürk 555) = 692; minus(Rouran 546, Göktürk 555) = 1,972. rouran-khaganate K5-K11 remove the Ordos.",
+     "fix": "Write the gain region as intersect[Rouran 554, Göktürk 555] minus Ordos, and say in K1's note from whom the Ordos (692 cells in the 555 shape) came, or mark K1 adjust minus Ordos."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "The western steppe (Kazakh Steppe, Semirechye) in the 555 shape",
+     "page to try": "https://en.wikipedia.org/wiki/Istämi"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "561 Pontic/Kazakh steppe at confidence 1; the Western Turkic page dates it c. 567-576",
+     "page to try": "https://en.wikipedia.org/wiki/Istämi"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "553 Kyrgyz vassalage at confidence 1 (reign start of Muqan)",
+     "page to try": "https://en.wikipedia.org/wiki/Muqan_Qaghan"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "586 Kyrgyz vassal_end at confidence 1 (bridged)",
+     "page to try": "https://en.wikipedia.org/wiki/Muqan_Qaghan"
+    },
+    {
+     "where": "/ledger/10",
+     "what is missing": "Split/dissolve at confidence 1: 586/587 (Cliopatria) against 581 civil war and 603 division",
+     "page to try": "https://en.wikipedia.org/wiki/G%C3%B6kt%C3%BCrk_civil_war"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/First_Turkic_Khaganate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Eastern_Turkic_Khaganate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Rouran_Khaganate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Western_Turkic_Khaganate",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 6000000,
+    "infobox_year": 557,
+    "cliopatria_km2": 4980897.1,
+    "ratio": 1.2,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "yenisei-kyrgyz",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/identity/capitals/0/to",
+     "applied": true,
+     "what": "Ordu-Baliq was the capital 840-925, but the dossier's own 850 loss (/ledger/3) leaves the Kyrgyz no Mongolian land, so the point sat outside the state for 850-925.",
+     "why": "Kyrgyz Khaganate page: infobox 'Ordu-Baliq (since 840)'; Drompp: the Kyrgyz 'did not maintain a significant political or military presence there after their victories in the 840s'. Gazetteer: a 50 km disc round (102.7, 47.2) has 0 cells in the 850 correction.",
+     "fix": "Applied by reviewer: 'to' 925 -> 849, reason appended to the capital note."
+    },
+    {
+     "where": "/keyframe_review/4/note",
+     "applied": true,
+     "what": "K4's note cites '(ledger 758)' for the northern loss; the ledger event is 763.",
+     "why": "/ledger/1 is year 763; the Uyghur conquest (Yenisei Kyrgyz page: 'In 758, the Uyghurs killed the Kyrgyz khagan') is 758.",
+     "fix": "Applied by reviewer: '(ledger 763; the Uyghur conquest itself is 758)'."
+    },
+    {
+     "where": "/keyframe_review/5/correction",
+     "applied": false,
+     "what": "Even for 840-849 the Ordu-Baliq point lies 50-100 km south of the 840 correction, whose Mongolian part holds only 22 of the 289 Orkhon Valley cells; /ledger/2's note says the Kyrgyz 'take the Orkhon'.",
+     "why": "shapes.csv yenisei-kyrgyz_840 bbox lat min 47.66 (point at 47.2); Gazetteer: 0 cells within 50 km of the point are in Kyrgyz 840; intersect(Orkhon Valley, Kyrgyz 840) = 22. Uyghur Khaganate page: the Kyrgyz 'sacked Ordu-Baliq' and 'left Kulug Bagha ... in charge of the Orkhon Valley'.",
+     "fix": "Either add the Orkhon Valley to the K5 correction and the /ledger/2 region (840-849), or drop the 840-849 capital point and say the khagan's seat is not located."
+    },
+    {
+     "where": "/wars/2/zones",
+     "applied": false,
+     "what": "The war 'Kyrgyz conquest of the Uyghur Khaganate' (839-848) has an Orkhon Valley zone but the ledger carries no contest_start/contest_end for it.",
+     "why": "Ledger types: found, loss, gain, gain, loss, dissolve; no contest events.",
+     "fix": "Add contest_start 840 / contest_end 848 cp=uyghur-khaganate on the Orkhon Valley, or empty the zone and say no ground was held in contest."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/6",
+     "what is missing": "850-1205: one shape for 356 years and no event; the Baikal-to-Irtysh claim against Drompp",
+     "page to try": "https://en.wikipedia.org/wiki/Kyrgyz_people"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "555 start at confidence 1 (Cliopatria's year; page has only '6th century')",
+     "page to try": "https://en.wikipedia.org/wiki/Muqan_Qaghan"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "763 northern loss at confidence 1 (Cliopatria gap 763-792)",
+     "page to try": "https://en.wikipedia.org/wiki/Bayanchur_Khan"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "850 return of Irkutsk/Krasnoyarsk at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Kyrgyz_Khaganate"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "No seat for 555-839 and 850-1208; the Kyrgyz Khaganate infobox names 'A settlement around Uybat River', 'a settlement in Tuva, probably Kemičket (since 925)', 'Khagan-Kirghiz (since the mid-12th century)'",
+     "page to try": "https://en.wikipedia.org/wiki/Kyrgyz_Khaganate"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Uyghur_Khaganate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kyrgyz_Khaganate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Uyghur_Khaganate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Kyrgyz_Khaganate",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 211970.3,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Neither the Yenisei Kyrgyz nor the Kyrgyz Khaganate infobox gives an area (both checked)."
+   }
+  },
+  {
+   "slug": "eastern-gokturks",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/7",
+     "applied": false,
+     "what": "The 630 keyframe (the Ordos, 884 cells) has no gain behind it: the ledger takes every cell of the 628 shape away in 630 (/ledger/7 to the Tang, /ledger/8 to the Xueyantuo), and /ledger/7 even gives the Tang the 136 Ordos cells K7 keeps.",
+     "why": "Gazetteer: intersect(Ordos, Eastern Göktürks 628) = 136, intersect(Ordos, Eastern Göktürks 630) = 0, so minus(EG 630, Ordos) = all of EG 630; Ordos = 884 cells, 748 of them Tang land in 630 (intersect(Ordos, Tang 630) = 884). Eastern Turkic Khaganate page: 'Taizong made the Ashina live inside the Ordos Loop' (after the 630 fall, undated).",
+     "fix": "Add a 630 gain cp=tang-dynasty region Ordos (the resettlement, confidence 2) and write /ledger/7's region as minus[minus(EG 628, EG 630), Ordos]."
+    },
+    {
+     "where": "/keyframe_review/9",
+     "applied": false,
+     "what": "The 639 move from the Ordos to the Hetao has only the gain: the 679 Ordos cells outside the Hetao leave with no event, and in 642 they return with no event; /ledger/10 (642 loss of the Hetao) also removes the 205 Hetao cells inside the Ordos that K10 keeps.",
+     "why": "Gazetteer: Ordos 884, Hetao 371, intersect = 205; minus(Ordos, Hetao) = 679. Eastern Turkic Khaganate page: 'In 639 ... Taizong made them live between the Yellow River and Gobi'; 'In 642 the Xueyantuo drove them south of the river.'",
+     "fix": "Add a 639 loss cp=tang-dynasty region minus[Ordos, Hetao]; add a 642 gain cp=tang-dynasty region minus[Ordos, Hetao]; write /ledger/10's region as minus[Hetao, Ordos]. Keep the gains/losses against the Tang consistent with whatever ea-04 does (the Tang worked example records 630-645 only as a vassal tint)."
+    },
+    {
+     "where": "/ledger/5, /ledger/6, /ledger/7",
+     "applied": true,
+     "what": "Confidence 3 on the 629-630 contest and loss, whose region (Cliopatria's 628 minus 630 strip) the page does not name.",
+     "why": "Eastern Turkic Khaganate page names no land for the campaign: only 'Six Tang armies attacked on a 1,200 km (750 mi) front' and 'Illig was captured in 630'.",
+     "fix": "Applied by reviewer: confidence 3 -> 2 on all three, with a bracketed reviewer note."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "617 Ordos/Hetao at confidence 1; probably Liang Shidu's Shuofang regime under Turkic protection (617-628)",
+     "page to try": "https://en.wikipedia.org/wiki/Liang_Shidu"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "623 removal of the Ordos/Hetao at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Liang_Shidu"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "627 contest_end at confidence 1 (Bian Bridge treaty of 626?)",
+     "page to try": "https://en.wikipedia.org/wiki/Emperor_Taizong_of_Tang"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "612 +145 cells (Gansu, Hexi, Inner Mongolia), unverified: page budget",
+     "page to try": "https://en.wikipedia.org/wiki/Shibi_Khagan"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "No seat for 631-645 (Ordos settlement)",
+     "page to try": "https://en.wikipedia.org/wiki/Ashina_Simo"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Eastern_Turkic_Khaganate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Eastern_Turkic_Khaganate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Eastern_Turkic_Khaganate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Eastern_Turkic_Khaganate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/First_Turkic_Khaganate",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 4000000,
+    "infobox_year": 624,
+    "cliopatria_km2": 2682037.5,
+    "ratio": 1.49,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "rouran-khaganate",
+    "year": 460,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-gaochang"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed in counterparts_needing_dossiers (ia-01-x). Vassal events are suzerain-only by the schema."
+  },
+  {
+   "event": {
+    "slug": "rouran-khaganate",
+    "year": 479,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-gaochang"
+   },
+   "mirror": {
+    "slug": "white-huns",
+    "year": 479,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Same year and land (Turfan-Hami): Rouran ends only the vassal tint and keeps the land in every keyframe to 554, while white-huns gains it from Gaochang; both cannot hold."
+  },
+  {
+   "event": {
+    "slug": "rouran-khaganate",
+    "year": 487,
+    "type": "loss",
+    "counterpart": "fufuluo"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed (ia-01-x). Keyframes do not reflect it (finding)."
+  },
+  {
+   "event": {
+    "slug": "rouran-khaganate",
+    "year": 541,
+    "type": "gain",
+    "counterpart": "fufuluo"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed (ia-01-x)."
+  },
+  {
+   "event": {
+    "slug": "rouran-khaganate",
+    "year": 552,
+    "type": "contest_start",
+    "counterpart": "gokturk-khaganate"
+   },
+   "mirror": {
+    "slug": "gokturk-khaganate",
+    "year": 552,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Both 552-555 on the Mongolian Plateau."
+  },
+  {
+   "event": {
+    "slug": "rouran-khaganate",
+    "year": 555,
+    "type": "dissolve",
+    "counterpart": "gokturk-khaganate"
+   },
+   "mirror": {
+    "slug": "gokturk-khaganate",
+    "year": 555,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Same spec (Cliopatria Rouran 554); it includes the Ordos the Rouran dossier removed and 1,972 cells the Göktürk 555 shape lacks."
+  },
+  {
+   "event": {
+    "slug": "white-huns",
+    "year": 450,
+    "type": "contest_start",
+    "counterpart": "kidarites"
+   },
+   "mirror": {
+    "slug": "kidarites",
+    "year": 450,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "kidarites /ledger/6-7, 450-466."
+  },
+  {
+   "event": {
+    "slug": "white-huns",
+    "year": 466,
+    "type": "gain",
+    "counterpart": "kidarites"
+   },
+   "mirror": {
+    "slug": "kidarites",
+    "year": 466,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "kidarites /ledger/8 (minus[Kidarites 402, Kidarites 390]) against Transoxiana."
+  },
+  {
+   "event": {
+    "slug": "white-huns",
+    "year": 474,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "sasanian-empire (me-06) not written; consistent with kidarites /ledger/9 (466 Bactria to the Sasanians)."
+  },
+  {
+   "event": {
+    "slug": "white-huns",
+    "year": 479,
+    "type": "gain",
+    "counterpart": "kidarites"
+   },
+   "mirror": {
+    "slug": "kidarites",
+    "year": 467,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Kidarites end in 467; no 479 loss. Sogdia was already in the 466 Transoxiana gain."
+  },
+  {
+   "event": {
+    "slug": "white-huns",
+    "year": 479,
+    "type": "gain",
+    "counterpart": "kingdom-of-gaochang"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Counterpart has no dossier (listed), but rouran-khaganate keeps the same land in its keyframes; see the Rouran row above."
+  },
+  {
+   "event": {
+    "slug": "white-huns",
+    "year": 484,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-06 not run."
+  },
+  {
+   "event": {
+    "slug": "white-huns",
+    "year": 490,
+    "type": "gain",
+    "counterpart": "alchon-huns"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed (ia-01-x)."
+  },
+  {
+   "event": {
+    "slug": "white-huns",
+    "year": 496,
+    "type": "contest_start",
+    "counterpart": "gupta-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "gupta-empire (sa-02) not written."
+  },
+  {
+   "event": {
+    "slug": "white-huns",
+    "year": 513,
+    "type": "loss",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-06 not run."
+  },
+  {
+   "event": {
+    "slug": "white-huns",
+    "year": 534,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody (page names Aulikara, Gupta, Maukhari)."
+  },
+  {
+   "event": {
+    "slug": "white-huns",
+    "year": 557,
+    "type": "contest_start",
+    "counterpart": "gokturk-khaganate"
+   },
+   "mirror": {
+    "slug": "gokturk-khaganate",
+    "year": 557,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "557-560 both sides."
+  },
+  {
+   "event": {
+    "slug": "white-huns",
+    "year": 560,
+    "type": "loss",
+    "counterpart": "gokturk-khaganate"
+   },
+   "mirror": {
+    "slug": "gokturk-khaganate",
+    "year": 560,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Same spec intersect[White Huns 555, Göktürk 561]."
+  },
+  {
+   "event": {
+    "slug": "white-huns",
+    "year": 560,
+    "type": "loss",
+    "counterpart": "turk-shahis"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "turk-shahis (sa-03) not written."
+  },
+  {
+   "event": {
+    "slug": "gokturk-khaganate",
+    "year": 553,
+    "type": "vassal_start",
+    "counterpart": "yenisei-kyrgyz"
+   },
+   "mirror": {
+    "slug": "yenisei-kyrgyz",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Suzerain-only by the schema; yenisei-kyrgyz notes acknowledge 553-586."
+  },
+  {
+   "event": {
+    "slug": "gokturk-khaganate",
+    "year": 561,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody."
+  },
+  {
+   "event": {
+    "slug": "gokturk-khaganate",
+    "year": 586,
+    "type": "split",
+    "counterpart": "eastern-gokturks"
+   },
+   "mirror": {
+    "slug": "eastern-gokturks",
+    "year": 587,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "One year apart; same spec (Cliopatria Eastern Göktürks 587)."
+  },
+  {
+   "event": {
+    "slug": "gokturk-khaganate",
+    "year": 586,
+    "type": "split",
+    "counterpart": "western-gokturks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "western-gokturks (ia-01-d) not written yet."
+  },
+  {
+   "event": {
+    "slug": "yenisei-kyrgyz",
+    "year": 763,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody."
+  },
+  {
+   "event": {
+    "slug": "yenisei-kyrgyz",
+    "year": 840,
+    "type": "gain",
+    "counterpart": "uyghur-khaganate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "uyghur-khaganate (ia-01-d) not written; it should carry a 840 loss of the Orkhon to the Kyrgyz and the 758-840 vassal tint."
+  },
+  {
+   "event": {
+    "slug": "yenisei-kyrgyz",
+    "year": 850,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody."
+  },
+  {
+   "event": {
+    "slug": "yenisei-kyrgyz",
+    "year": 850,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody."
+  },
+  {
+   "event": {
+    "slug": "yenisei-kyrgyz",
+    "year": 1208,
+    "type": "dissolve",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "mongol-empire (ia-02) not written; it should draw the 1208-1219 land."
+  },
+  {
+   "event": {
+    "slug": "eastern-gokturks",
+    "year": 617,
+    "type": "gain",
+    "counterpart": "sui-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "sui-dynasty (ea-03) not written."
+  },
+  {
+   "event": {
+    "slug": "eastern-gokturks",
+    "year": 623,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody."
+  },
+  {
+   "event": {
+    "slug": "eastern-gokturks",
+    "year": 626,
+    "type": "contest_start",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "tang-dynasty.json (ea-04) not written; the worked example has no 626 contest."
+  },
+  {
+   "event": {
+    "slug": "eastern-gokturks",
+    "year": 629,
+    "type": "contest_start",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ea-04 not run; the worked example has no 629-630 contest."
+  },
+  {
+   "event": {
+    "slug": "eastern-gokturks",
+    "year": 630,
+    "type": "loss",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 630,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Against the worked example (_example-tang-dynasty.json /ledger/3, union(Hetao, Inner Mongolia)); tang-dynasty.json itself not written."
+  },
+  {
+   "event": {
+    "slug": "eastern-gokturks",
+    "year": 630,
+    "type": "loss",
+    "counterpart": "xueyantuo"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed (ia-01-x)."
+  },
+  {
+   "event": {
+    "slug": "eastern-gokturks",
+    "year": 639,
+    "type": "gain",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "The worked example records no 639 loss of the Hetao (only vassal_start 630 / vassal_end 645 over Inner Mongolia); ea-04 and this dossier must agree on gains versus a vassal tint."
+  },
+  {
+   "event": {
+    "slug": "eastern-gokturks",
+    "year": 642,
+    "type": "loss",
+    "counterpart": "xueyantuo"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed."
+  },
+  {
+   "event": {
+    "slug": "eastern-gokturks",
+    "year": 645,
+    "type": "dissolve",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 645,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": "Worked example /ledger/8."
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Kingdom of Gaochang",
+   "suggested_slug": "kingdom-of-gaochang",
+   "years": [
+    460,
+    640
+   ]
+  },
+  {
+   "name": "Fufuluo (Gaoche)",
+   "suggested_slug": "fufuluo",
+   "years": [
+    487,
+    541
+   ]
+  },
+  {
+   "name": "Alchon Huns",
+   "suggested_slug": "alchon-huns",
+   "years": [
+    370,
+    670
+   ]
+  },
+  {
+   "name": "Xueyantuo",
+   "suggested_slug": "xueyantuo",
+   "years": [
+    629,
+    646
+   ]
+  },
+  {
+   "name": "Second Turkic Khaganate",
+   "suggested_slug": "second-turkic-khaganate",
+   "years": [
+    682,
+    744
+   ]
+  },
+  {
+   "name": "Principality of Chaghaniyan",
+   "suggested_slug": "principality-of-chaghaniyan",
+   "years": [
+    560,
+    710
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ia-01-c.md",
+ "problems": [
+  "No page failed to load; 14 WebFetch reads.",
+  "Reviewer brief check 3 asks for a vassal_start mirror in the vassal's ledger, but the schema makes vassal events suzerain-only (counterpart = the vassal); treated as exceptions.",
+  "tang-dynasty.json does not exist yet (ea-04); the Tang mirrors were checked against _example-tang-dynasty.json.",
+  "Only two Context neighbours have dossiers (wusun, kidarites); every other counterpart's group has not run.",
+  "Reviewer edits applied on the mount: yenisei-kyrgyz.json (capital to 849; K4 note) and eastern-gokturks.json (/ledger/5-7 confidence 3 -> 2); both re-validated (0 errors) and read back."
+ ]
+}

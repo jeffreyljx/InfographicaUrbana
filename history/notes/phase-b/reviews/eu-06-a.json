@@ -1,0 +1,964 @@
+{
+ "batch_id": "eu-06-a",
+ "verdicts": [
+  {
+   "slug": "huns",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/5",
+     "what": "The occupation_end of the 395 raid was a confidence-1 bridge at 396; the page that dates it gives 398.",
+     "why": "Eutropius (consul 399): 'Eutropius' ascension to power was assisted by his defeat of a Hun invasion in 398.' eastern-roman-empire /ledger/6 closes the same occupation in 398.",
+     "fix": "Year 398, confidence 2, source https://en.wikipedia.org/wiki/Eutropius_(consul_399) (added to sources), note and dossier notes updated.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/14, /keyframe_review/15, /keyframe_review/16 and /ledger",
+     "what": "The belt of Germanic subject lands north of the Danube (Germany, Bohemia, Slovakia, southern Poland, up to 53.7 N and west to 6.8 E) enters the shape in 451 with no gain and leaves it in 455 with no loss: the largest land move in the dossier is not in the ledger.",
+     "why": "Grid check (tools/grid.py, gazetteer): the 451 shape minus Gaul has about 2,650 res-5 cells (~670,000 km2) more than the 443 shape minus Moesia and Thrace; the 452 shape minus northern Italy has about 3,300 cells (~830,000 km2) that are neither in the 455 shape nor in the /ledger/17 Gepid regions, of which only ~300 are Pannonia (/ledger/18). The only 451 events are the Gaul occupation; the 452 note keeps the belt 'as drawn'.",
+     "fix": "Either correct 451-454 to drop the belt and draw the subject peoples as vassals (vassal_start 451 or the year a page gives, vassal_end 454 at Nedao, rule 4), or add a dated gain for the belt (451, page needed) and losses in 454-455 to the peoples of Nedao (rugii-heruli-sciri, Ostrogoths, nobody for the north), so that every cell of the 452 shape that is not in the 455 shape leaves by an event.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/2/correction",
+     "what": "The 373-375 correction (Huns 373 minus Gothia 372) keeps about 694 cells (~175,000 km2) that are in neither the Huns 371 shape nor Gothia 372, with no ledger event; its text says 'the Don-to-Caspian lands of the 371 shape', which the spec does not produce.",
+     "why": "Grid check: 155 of the 157 cells of Cliopatria's Cimmerian Bosporus 372 shape and 539 cells of north-Azov and lower-Don steppe (32-43 E, 45-51 N) enter the Hun shape in 373. cimmerian-bosporus /ledger/23 has a 372 loss to huns that has no mirror here.",
+     "fix": "Add a gain from cimmerian-bosporus at 372/373 (region intersect Huns 373 and Cimmerian Bosporus 372, mirroring its /ledger/23) and a dated gain (counterpart sarmatians or nobody, with a page) for the Azov/lower-Don steppe, or set the correction to the Huns 371 shape for 373-374 and fold the rest into dated gains.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/3",
+     "what": "huns_378 (378-382) is marked ok although /ledger/3 gains the whole Gothia 373 shape in 376: 692 of its 1,157 cells (Banat, Crisana, Transylvania, west of 22.6 E) are not in the 378-382 shape and enter only in 383.",
+     "why": "Grid check: Gothia 373 minus Huns 378 = 692 cells, all of them in Huns 383. gothia /keyframe_review/12 removes these cells from Gothia for 378-382 because 'the Huns' own shape also lies from 376', so in keyframes they belong to nobody while both ledgers give them to the Huns in 376.",
+     "fix": "Mark huns_378 adjust with correction union(Huns 378, Gothia 373), or restrict /ledger/3 to intersect(Gothia 373, Huns 378) and add a dated gain for the rest (that gain then also explains the 383 growth).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/8",
+     "what": "huns_407 grows by about 325 cells (~82,000 km2, 18.9-23 E: the Danube-Tisza interfluve and upper Tisza) with no ledger event, and 276 of those cells also leave in 455 with no loss.",
+     "why": "Grid check Huns 407 minus Huns 383 = 325 cells; the 454 Gepid regions and Pannonia do not cover 276 of them. sarmatians.json dissolves to huns in 375 with 'the steppe between the Danube and the Tisza' (the Iazyges), which no huns event receives.",
+     "fix": "Add a gain from sarmatians (Iazyges) for the interfluve, dated by a page (Iazyges page) or at Cliopatria's 407 at confidence 1, and its loss in 454/455.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/11/correction",
+     "what": "The 426-440 correction adds Pannonia from 426, seven years before the cession it cites (/ledger/8, 433); its own text says 'from 433'.",
+     "why": "Huns page: 'In 433 some parts of Pannonia were ceded to them by Flavius Aetius'; western-roman-empire /ledger/21 loses it in 433.",
+     "fix": "Keep the 426 shape as drawn (verdict ok, Pannonia arrives with the 433 gain) or split it with a new keyframe hunnic-empire_433 (433-440) that adds Pannonia.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/1/counterpart",
+     "what": "Counterpart 'Alans of the Don (Pontic Alans)' is not a slug; sarmatians.json now exists and carries the Alans of the Lower Volga and North Caucasus (alt name 'Alans (steppe)', successor huns).",
+     "why": "Alans page: 'Around 370 ... the Huns attacked the Don Alans' and 'Following the Hunnic invasion in 370' (supports this dossier's 370); sarmatians dissolves to huns in 375.",
+     "fix": "Set counterpart to sarmatians and drop the Alans from counterparts_needing_dossiers; the sarmatians author should date the loss of the Alan lands to 370 (or split 370/375).",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/9-12",
+     "what": "eastern-roman-empire records territorial losses to the Huns in 441 (Danube cities) and 447 (the strip from Singidunum to Novae) and gains back in 451 and 455; this dossier has only contest zones. Also contest_end 448 here against 449 in eastern-roman-empire and on the Huns page.",
+     "why": "Huns page: 'a truce was concluded in 441', 'autumn 443 signed the Peace of Anatolius', 'The war came to an end in 449'; Utus page: the strip was 'a no man's land in the Roman territory' and the treaty 'in the fall of 447' or 'a year later in 448'. This dossier's reading follows the pages; the eastern-roman-empire side is the one to change.",
+     "fix": "Route to eu-05: eastern-roman-empire should turn its 441 and 447 losses and 451/455 gains into contest or occupation events, or both dossiers agree on a cession. Consider 449 for /ledger/12 (Huns page).",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/17/counterpart",
+     "what": "The 454 loss names kingdom-of-the-gepids, whose Cliopatria row opens only in 510, while the author's report asks for a separate 'gepids' dossier for 454-509.",
+     "why": "Author report counterparts_needing_dossiers: suggested_slug 'gepids', years 454-509.",
+     "fix": "Use whichever slug the orchestrator assigns to the Gepids of 454-509 in both places.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/identity/rulers",
+     "what": "Rulers have gaps (380-399, 410-411); the brief asks for contiguous rulers where given.",
+     "why": "Balamber 370-379, Uldin 400-409, Charaton 412-419.",
+     "fix": "State the gaps in the rulers' notes (no ruler recorded) or leave as is if the schema allows gaps.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "found 106 is Cliopatria's year at confidence 1 ('first reported living east of the Volga').",
+     "page to try": "https://en.wikipedia.org/wiki/Xiongnu"
+    },
+    {
+     "where": "/ledger/18",
+     "what is missing": "455 loss of Pannonia to the Ostrogoths at confidence 1 (Cliopatria's year).",
+     "page to try": "https://en.wikipedia.org/wiki/Ostrogoths"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Uldin",
+     "result": "confirmed ('forced to re-cross the Danube by March 23, 409')"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_the_Catalaunian_Plains",
+     "result": "confirmed (Rhine 'early in 451', Metz 7 April, final assault 14 June)"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_the_Catalaunian_Plains",
+     "result": "confirmed ('circa 20 June'; Gallic Chronicle 'withdrew to his homeland')"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Dengizich",
+     "result": "confirmed (Marcellinus Comes and Chronicon Paschale quotes, 469)"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Nedao",
+     "result": "confirmed ('decisively defeated in 469', 'After that point, the Huns cease to exist in European history.')"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Nedao",
+     "result": "confirmed for 454 and the victors; the Gepids taking Dacia and the Tisza plain is not on the page (confidence 2 is right)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Ermanaric",
+     "result": "confirmed (invasion 'in the 370s', death 376 in the infobox); 'c. 375' is on the Goths page"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Alans",
+     "result": "confirmed ('Around 370 ... the Huns attacked the Don Alans')"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Huns",
+     "result": "confirmed ('In 433 some parts of Pannonia were ceded to them by Flavius Aetius')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Eutropius_(consul_399)",
+     "result": "mis-dated (396 bridge; page has 398) - fixed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 1913270,
+    "ratio": 0.0,
+    "acknowledged": false,
+    "note": "The Huns page has no infobox area (map caption only: 'Estimated territory under Hunnic political control under Attila, c. 450 CE'); the dossier notes do not mention the check. Cliopatria peak 1.91 M km2 (451)."
+   }
+  },
+  {
+   "slug": "goths",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/2/counterpart",
+     "what": "Counterpart 'Ulmerugi (Rugii)' is neither a slug nor listed in counterparts_needing_dossiers.",
+     "why": "Gothiscandza page: the Ulmerugi 'had arrived in the area already before the Goths' (Jordanes, undated). No dossier will be written for a 1st-century Jordanes tribe.",
+     "fix": "Set counterpart to nobody and keep the Ulmerugi in the note, or list them in counterparts_needing_dossiers.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "30 start is Cliopatria's (confidence 1); no page dates a Gothic polity in Sweden.",
+     "page to try": "https://en.wikipedia.org/wiki/Getica"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "43 departure from Scandza is Cliopatria's year inside 'the first half of the 1st century CE' (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Berig"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "154 loss of the Pomeranian coast at confidence 1; the Wielbark page dates the Pomeranian abandonment to the first half of the 3rd century, not 154.",
+     "page to try": "https://en.wikipedia.org/wiki/Wielbark_culture"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "206 end is Cliopatria's (confidence 1); Oium/Filimer undated.",
+     "page to try": "https://en.wikipedia.org/wiki/Filimer"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Gothiscandza",
+     "result": "confirmed ('during the first half of the 1st century CE'; Jordanes' reliability 'called into question')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Gothiscandza",
+     "result": "confirmed (naming of Gothiscandza, Ulmerugi, Vandals defeated; undated)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Wielbark_culture",
+     "result": "confirmed quote ('Isolated pockets ... until the 5th century'); year 154 is Cliopatria's, the page dates the Pomeranian abandonment to the first half of the 3rd century"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Goths",
+     "result": "confirmed ('Beginning in the middle of the 2nd century, the Wielbark culture shifted southeast towards the Black Sea')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 117739,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No infobox area on the Goths page (checked); acknowledged in the author's notes."
+   }
+  },
+  {
+   "slug": "burgundians",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/2/counterpart",
+     "what": "Counterpart 'Alemanni' was not a slug; alemanni.json (213-461) now exists.",
+     "why": "history/polities/alemanni.json identity slug 'alemanni'. Burgundians page: 'Burgundiones Alamannorum agros occupauere' (panegyric of 291).",
+     "fix": "Counterpart set to alemanni. The alemanni dossier has no 291 loss to burgundians: routed in cross_checks.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/4-6",
+     "what": "western-roman-empire models the 413 settlement as vassal_start of burgundian-kingdom (land stays Roman, tinted vassal) and has no 409-413 occupation; this dossier has a 409 occupation, a 413 occupation_end and a 413 gain from western-roman-empire.",
+     "why": "western-roman-empire /ledger/16: 413 vassal_start, counterpart burgundian-kingdom. Kingdom of the Burgundians page: 'accepted as Roman foederati' after 413; infobox grant 411.",
+     "fix": "Agree one model with eu-04: either this dossier's 413 gain becomes a vassal_start (counterpart western-roman-empire) or western-roman-empire adds the 409 occupation and a 413 loss to burgundians.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "291 westward move over the Oder at confidence 1 (page: 'shifting westwards over the Oder', undated).",
+     "page to try": "https://en.wikipedia.org/wiki/Laterculus_Veronensis"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "409 Rhine crossing at confidence 1: Burgundians page 'In about 406', Kingdom page 'before 409'.",
+     "page to try": "https://en.wikipedia.org/wiki/Crossing_of_the_Rhine"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Burgundians",
+     "result": "confirmed ('between the Suevus (probably the Oder) and Vistula rivers'; year 154 is Cliopatria's)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Burgundians",
+     "result": "confirmed (panegyric of 291; 'Burgundiones Alamannorum agros occupauere')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Burgundians",
+     "result": "confirmed ('In 409, Saint Jerome first listed the Burgundians')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Burgundians",
+     "result": "confirmed (Prosper, 413: 'gave the Burgundians a part of it near the Rhine')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Burgundians",
+     "result": "confirmed (infobox 'Borbetomagus (411-437)'; grant 411 in the infobox timeline)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 100279,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No infobox area on the Burgundians or Kingdom of the Burgundians page (checked); acknowledged in the author's notes."
+   }
+  },
+  {
+   "slug": "gothia",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/5, /keyframe_review/10/correction",
+     "what": "The loss of the Greuthungi steppe was dated 373 against huns /ledger/2 at 375, leaving the steppe stateless in 373-374.",
+     "why": "Goths page (this dossier's source): 'Around 375 the Huns overran the Alans ... and then, along with Alans, invaded the territory of the Goths'; Alans page: 'These Alans successfully invaded the Goths in 375 together with the Huns'; Greuthungi page only 'in the early 370s'; Ermanaric infobox: died 376.",
+     "fix": "Loss moved to 375 (source Goths page); gothia_373 correction now the Gothia 372 shape (steppe kept until the 375 loss); successor text and notes updated.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/1/counterpart",
+     "what": "The 260 gain names nobody, but sarmatians.json loses the same land (Gothia 260 minus Gothia 207) to gothia in 260.",
+     "why": "sarmatians ledger: 260 loss, counterpart gothia, region minus(Gothia 260, Gothia 207); its 207 loss to gothia is also unmatched here (the found event names goths).",
+     "fix": "Set counterpart to sarmatians (and say in the found note that the 207 land came from the Sarmatian steppe).",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/12/note",
+     "what": "The note says the Huns' own shape covers Dacia, Wallachia and Transylvania from 376; it does so only from 383 for 692 of the 1,157 Gothia 373 cells.",
+     "why": "Grid check Gothia 373 minus Huns 378 = 692 cells, all in Huns 383. The fix belongs in huns (/keyframe_review/3); this note should not assert it.",
+     "fix": "Reword once the huns fix is made.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "207 start and 207-237 realm are Cliopatria's (confidence 1, keyframe unverified: page budget).",
+     "page to try": "https://en.wikipedia.org/wiki/Chernyakhov_culture"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "260 eastward growth to the Don at confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Gothia_(Roman_province)"
+    },
+    {
+     "where": "/keyframe_review/5-9",
+     "what is missing": "Gothic holding of Dacia 270-372 unverified (Taifali, Victohali and Carpi share it).",
+     "page to try": "https://en.wikipedia.org/wiki/Taifals"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Goths",
+     "result": "confirmed ('In 270 ... Aurelian, who, however, did surrender Dacia beyond the Danube')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Greuthungi",
+     "result": "mis-dated relative to the Goths and Alans pages (373 vs 'Around 375'/'in 375') - fixed to 375"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Gothic_War_(376%E2%80%93382)",
+     "result": "confirmed ('In the summer of 376 ...'; 'placed the Thervings along the southern bank of the Danube in Lower Mœsia')"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Gothic_War_(376%E2%80%93382)",
+     "result": "confirmed ('peace was declared on 3 October 382'; Scythia, Mœsia and possibly Macedonia)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Thervingi",
+     "result": "confirmed (Valens attacked north of the Danube; 369 peace 'in the middle of the Danube'; 'Gothic War of 367-369' on the Gothic War page)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 634927,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "'Gothia' is a disambiguation page (checked); no infobox on the Goths, Thervingi or Greuthungi pages. Acknowledged in the author's notes."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "huns",
+    "year": 370,
+    "type": "gain",
+    "counterpart": "Alans of the Don (Pontic Alans)"
+   },
+   "mirror": {
+    "slug": "sarmatians",
+    "year": 375,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "sarmatians.json now covers the Alans; 5 years apart. Alans page supports 370. Route the date to the sarmatians author; huns should name sarmatians."
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 375,
+    "type": "gain",
+    "counterpart": "gothia"
+   },
+   "mirror": {
+    "slug": "gothia",
+    "year": 375,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Gothia moved from 373 to 375 by the reviewer (Goths and Alans pages)."
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 376,
+    "type": "gain",
+    "counterpart": "gothia"
+   },
+   "mirror": {
+    "slug": "gothia",
+    "year": 376,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Extent disagrees with huns_378 keyframe (692 cells); see huns fix."
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 395,
+    "type": "occupation_start",
+    "counterpart": "eastern-roman-empire"
+   },
+   "mirror": {
+    "slug": "eastern-roman-empire",
+    "year": 395,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 398,
+    "type": "occupation_end",
+    "counterpart": "eastern-roman-empire"
+   },
+   "mirror": {
+    "slug": "eastern-roman-empire",
+    "year": 398,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "huns moved from 396 to 398 by the reviewer."
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 408,
+    "type": "occupation_start",
+    "counterpart": "eastern-roman-empire"
+   },
+   "mirror": {
+    "slug": "eastern-roman-empire",
+    "year": 408,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 409,
+    "type": "occupation_end",
+    "counterpart": "eastern-roman-empire"
+   },
+   "mirror": {
+    "slug": "eastern-roman-empire",
+    "year": 409,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "Both March 409."
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 433,
+    "type": "gain",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 433,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 451,
+    "type": "occupation_start",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 451,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "April 451 both."
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 451,
+    "type": "occupation_end",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 451,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "June 451 both."
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 452,
+    "type": "occupation_start",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 452,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 452,
+    "type": "occupation_end",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 452,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 454,
+    "type": "loss",
+    "counterpart": "kingdom-of-the-gepids"
+   },
+   "mirror": {
+    "slug": "kingdom-of-the-gepids",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "No dossier; Cliopatria row opens 510; author lists the Gepids of 454-509 under counterparts_needing_dossiers (slug 'gepids' there)."
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 455,
+    "type": "loss",
+    "counterpart": "ostrogoths"
+   },
+   "mirror": {
+    "slug": "ostrogoths",
+    "year": 454,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "ostrogoths found 454 (counterpart huns), predecessor land Pannonia 455."
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 441,
+    "type": "loss",
+    "counterpart": "huns"
+   },
+   "mirror": {
+    "slug": "huns",
+    "year": 441,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "ERE loses the Danube cities; huns has a contest only (Huns page: truce 441, no cession). Route to eu-05."
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 447,
+    "type": "loss",
+    "counterpart": "huns"
+   },
+   "mirror": {
+    "slug": "huns",
+    "year": 447,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "ERE loses the Singidunum-Novae strip; Utus page calls it 'a no man's land in the Roman territory'. Route to eu-05."
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 451,
+    "type": "gain",
+    "counterpart": "huns"
+   },
+   "mirror": {
+    "slug": "huns",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "mismatch",
+   "note": "Follows from the 447 loss; no huns loss."
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 455,
+    "type": "gain",
+    "counterpart": "huns"
+   },
+   "mirror": {
+    "slug": "huns",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "mismatch",
+   "note": "Danube bank re-established; no huns loss to ERE."
+  },
+  {
+   "event": {
+    "slug": "cimmerian-bosporus",
+    "year": 372,
+    "type": "loss",
+    "counterpart": "huns"
+   },
+   "mirror": {
+    "slug": "huns",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "155 Bosporan cells enter huns_373 with no gain; huns fix /keyframe_review/2."
+  },
+  {
+   "event": {
+    "slug": "sarmatians",
+    "year": 375,
+    "type": "dissolve",
+    "counterpart": "huns"
+   },
+   "mirror": {
+    "slug": "huns",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "Iazyges' Danube-Tisza steppe never received by huns (huns_407 growth unexplained)."
+  },
+  {
+   "event": {
+    "slug": "rugiland",
+    "year": 454,
+    "type": "found",
+    "counterpart": "huns"
+   },
+   "mirror": {
+    "slug": "huns",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "huns successor note: Rugiland outside the Hun shapes; but the 452 belt is not released by any event (huns fix)."
+  },
+  {
+   "event": {
+    "slug": "gothia",
+    "year": 207,
+    "type": "found",
+    "counterpart": "goths"
+   },
+   "mirror": {
+    "slug": "goths",
+    "year": 206,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "sarmatians",
+    "year": 207,
+    "type": "loss",
+    "counterpart": "gothia"
+   },
+   "mirror": {
+    "slug": "gothia",
+    "year": 207,
+    "type": "found"
+   },
+   "status": "exception",
+   "note": "gothia's found names goths only; acceptable if gothia's note names the Sarmatian steppe."
+  },
+  {
+   "event": {
+    "slug": "gothia",
+    "year": 260,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "sarmatians",
+    "year": 260,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Counterpart: gothia says nobody, sarmatians says gothia. Gothia should name sarmatians."
+  },
+  {
+   "event": {
+    "slug": "gothia",
+    "year": 270,
+    "type": "gain",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": 271,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Year within one; roman-empire's counterpart is nobody (Dacia abandoned 271-275). Goths page: 270. Route to eu-04 to name gothia or keep nobody by agreement."
+  },
+  {
+   "event": {
+    "slug": "gothia",
+    "year": 376,
+    "type": "occupation_start",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "Roman Lower Moesia and Dobruja under the Thervingi 376-382: roman-empire has no occupation. Route to eu-04."
+  },
+  {
+   "event": {
+    "slug": "gothia",
+    "year": 382,
+    "type": "occupation_end",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": 382,
+    "type": "contest_end"
+   },
+   "status": "exception",
+   "note": "roman-empire closes the war (3 Oct 382), not an occupation; resolves with the 376 item."
+  },
+  {
+   "event": {
+    "slug": "gothia",
+    "year": 382,
+    "type": "dissolve",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": 382,
+    "type": "contest_end"
+   },
+   "status": "exception",
+   "note": "Foederati settled on Roman land; no land changes owner."
+  },
+  {
+   "event": {
+    "slug": "cimmerian-bosporus",
+    "year": 330,
+    "type": "loss",
+    "counterpart": "goths"
+   },
+   "mirror": {
+    "slug": "gothia",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "mismatch",
+   "note": "Tanais 'devastated by Goths AD 330': goths ended in 206, the counterpart should be gothia (or nobody for a raid); no Gothia shape reaches the Don mouth. Route to eu-01."
+  },
+  {
+   "event": {
+    "slug": "goths",
+    "year": 43,
+    "type": "gain",
+    "counterpart": "Ulmerugi (Rugii)"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "Legendary (Jordanes), confidence 1, no dossier; should be nobody or listed."
+  },
+  {
+   "event": {
+    "slug": "goths",
+    "year": 206,
+    "type": "dissolve",
+    "counterpart": "gothia"
+   },
+   "mirror": {
+    "slug": "gothia",
+    "year": 207,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "burgundians",
+    "year": 291,
+    "type": "gain",
+    "counterpart": "alemanni"
+   },
+   "mirror": {
+    "slug": "alemanni",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "alemanni.json (213-461) has no 291 loss to burgundians. Route to the alemanni author."
+  },
+  {
+   "event": {
+    "slug": "burgundians",
+    "year": 409,
+    "type": "occupation_start",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "WRE has no Burgundian occupation 409-413."
+  },
+  {
+   "event": {
+    "slug": "burgundians",
+    "year": 413,
+    "type": "occupation_end",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "burgundians",
+    "year": 413,
+    "type": "gain",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 413,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "WRE: vassal_start of burgundian-kingdom (land stays Roman); burgundians: gain. Agree one model."
+  },
+  {
+   "event": {
+    "slug": "burgundians",
+    "year": 413,
+    "type": "dissolve",
+    "counterpart": "burgundian-kingdom"
+   },
+   "mirror": {
+    "slug": "burgundian-kingdom",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "burgundian-kingdom belongs to another part of eu-06, not written yet."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Pannonia",
+   "kind": "region",
+   "used_in": "huns"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Gepids before 510",
+   "suggested_slug": "gepids",
+   "years": [
+    454,
+    509
+   ]
+  },
+  {
+   "name": "Rugii, Heruli, Sciri and Danubian Suebi",
+   "suggested_slug": "rugii-heruli-sciri",
+   "years": [
+    454,
+    490
+   ]
+  },
+  {
+   "name": "Gothic foederati of Moesia and Thrace",
+   "suggested_slug": "gothic-foederati",
+   "years": [
+    382,
+    395
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-06-a.md",
+ "problems": [
+  "Neighbour dossiers read: roman-empire, western-roman-empire, eastern-roman-empire, sasanian-empire (no Hun or Gothic events for this batch), cimmerian-bosporus; also sarmatians, alemanni, ostrogoths, rugiland. Not written yet (counterparts owned by groups that have not run): vandals, caucasian-albania, caucasian-iberia, lazica, kingdom-of-armenia, burgundian-kingdom, kingdom-of-the-gepids.",
+  "The author's 'Alans of the Don' and 'alemanni' requests are now covered by sarmatians.json and alemanni.json.",
+  "hunnic-empire.json does not exist (good): huns.json reviews both Cliopatria rows; keep it that way.",
+  "WebFetch failed for https://en.wikipedia.org/wiki/Eutropius_(consul) (as for the author); https://en.wikipedia.org/wiki/Eutropius_(consul_399) loaded.",
+  "Grid checks used tools/grid.py polity_cells and the gazetteer; Pannonia cannot be resolved, so the Pannonian part of the huns figures is estimated (lon < 19 E, lat < 48.6 N).",
+  "Reviewer edits applied in place and re-validated (0 errors, 0 warnings): huns /ledger/5 and sources/notes; gothia /ledger/5, /keyframe_review/10, successors text, notes; burgundians /ledger/2 counterpart."
+ ]
+}

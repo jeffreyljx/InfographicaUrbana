@@ -1,0 +1,18 @@
+{
+ "window": "m2400-m2301",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "what": "kish gain from sumerian-city-states at -2400 of the 40 km Kish disk. Page (Kish (Sumer)): 'Kish III dynasty (c. 2430 – c. 2360 BC)'; Kug-Bau 'r. c. 2400 BC (100 years)', 'said to have gained independence from En-anna-tum I of Lagash and En-shag-kush-ana of Uruk' (historicity 'uncertain'); location 'in Babil Governorate (Iraq), located 80 km (50 mi) south of Baghdad and 12 km (7.5 mi) east of the ancient city of Babylon' (quoted correctly). Spec resolves to 19 cells (~4,805 km2, 44.28-44.98 E, 32.24-32.86 N), the same {place: Kish, km: 40} disk the kish dossier uses for its found, Lagash occupation (-2450/-2400) and Uruk occupation (-2350/-2340) events, so it covers the city and its fields at grid resolution and no more. Defect confirmed in the published draft: at -2350 sumerian-city-states/ledger/9 drew 'sumerian-city-states occupied by kish' on 15 cells (reversed). Own trial (all 82 patch files): the event moves the 15 cells Sumer -> Kish at -2400; -2350 now reads kish occupied by sumerian-city-states on all 19 disk cells; -2340 dissolve hands Kish's 111 cells to sumerian-city-states; -2334 Akkad still takes the same 193 cells; conflicts 0 -> 0, snaps 0 -> 0; no disk cell differs in the m2400 or m2300 anchors (the 379-cell m2300 change is all sumerian-city-states -> unowned from m2500-m2401's overrides). Only fault: the note's first sentence, which becomes the caption, was a 280-character quote dump duplicating kish/ledger/3's 'Kug-Bau's Kish is independent again.'",
+   "page": "https://en.wikipedia.org/wiki/Kish_(Sumer)",
+   "fix": "Rewrote the note's first sentence to '2400 BCE: Kug-Bau's Kish holds its own city and fields again.' and moved the quotes after it (dash and 'historicity uncertain' as on the page); region, year, type, counterpart unchanged. --check-patch re-run: 1 ok, 0 rejected.",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch m2400-m2301: 1 entries, 1 ok, 0 rejected (after the caption fix); trial: events/0 applied, 15 cells sumerian-city-states -> kish at -2400, conflicts 0 -> 0, snaps 0 -> 0, the patch changes no anchor cell",
+ "problems": [
+  "The same defect remains before this window: the Kish city disk (15 of 19 cells of {place: Kish, km: 40}) is drawn as sumerian-city-states land from kish_-2750 (-2750) to -2401, because the Akkad overlap goes to the collective by R2; kish/ledger/2 (Lagash occupation of Kish, -2450..-2400) so hatches only Kish's 4 disk cells. One gain of that disk from sumerian-city-states at -2750 (window m2800-m2701) would fix -2750..-2401 in every later window; this window's -2400 event then becomes a harmless no-op.",
+  "Confirmed, from other windows: with all patches, the m2300 anchor loses 379 sumerian-city-states cells to unowned and the m2400 anchor also moves 22 Sumer cells to Lagash, 7 to Umma and 3 Lagash to Umma; these come from m2500-m2401's keyframe overrides first-dynasty-of-ur_-2500 and lagash_-2450, not from this patch. The orchestrator should confirm the unowned desert south and west of the alluvium is intended."
+ ]
+}

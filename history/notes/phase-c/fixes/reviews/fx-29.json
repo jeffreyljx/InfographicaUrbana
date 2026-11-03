@@ -1,0 +1,94 @@
+{
+ "batch_id": "fx-29",
+ "checks": [
+  {
+   "item": "F128",
+   "verdict": "fixed",
+   "what": "Sufi page supports it: infobox 'Founded c. 1361', 'Husain Sufi took control of Urgench and the rest of the northern part of Khwarezm', independence 'c. 1361 - 1379'. The keyframe cuts (1363, 1375) resolve to 0 overlap with the Sufi found. But white-horde /ledger/0 (found 1363) still claimed the whole Cliopatria 1363 shape, Khwarezm included, so the 647-cell 1363 conflict would stay through the found claim (conflict_places lists white-horde/ledger/0 as a claimant). I cut Khwarezm from the found region too (minus {region: Khwarezm}), noted it, and re-validated: OK, found overlap with the Sufi found now 0. merge/dissolve 1380 move only held cells, so they need no change.",
+   "page": "https://en.wikipedia.org/wiki/Sufi_dynasty",
+   "fix": "white-horde /ledger/0 region = {minus: [cliopatria White Horde 1363, region Khwarezm]}",
+   "applied": true
+  },
+  {
+   "item": "F134",
+   "verdict": "pass",
+   "what": "The page confirms 'On 12 December 1960, Gizenga declared his new government', 'On 24 December, Stanleyville troops occupied Bukavu', 'Pro-Gizenga administrators were installed in the Maniema and Sankuru districts', and 'not fully reintegrated ... until Gizenga was arrested in January 1962' (infobox disestablished 16 January 1962). The 1961 keyframe subtracts exactly the regions of the ledger's 1960-61 losses (/ledger/1-7), which matches the Free Republic's gains. The snap runs after the 1961 ledger, so the October 1961 Maniema loss is already applied. The keyframe has no from/to (snap only in 1961), and the 1962-63 gains restore the land. Katanga and South Kasai dates come from existing ledger events.",
+   "page": "https://en.wikipedia.org/wiki/Free_Republic_of_the_Congo",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F138",
+   "verdict": "pass",
+   "what": "The Vistahm page says 'Vistahm received the post of spahbed of the East, encompassing Tabaristan and Khorasan' after Blarathon. The Blarathon page gives 'August 591' and 'escaped east to Nishapur'. The vistahm gain (591-08, region Khorasan, counterpart bahram-chobin) moves only the cells Bahram holds (Iranian Khorasan), and Bahram's mirror loss is suppressed by the matching gain. Cutting the found to Tabaristan + Ardabil and reducing the Bahram 591 keyframe to Media are both consistent. The open point is noted correctly: the page says Vistahm was spahbed of the West before Blarathon and revolted only after Vinduyih's execution, so the 591 found is early (pre-existing, made less wrong).",
+   "page": "https://en.wikipedia.org/wiki/Vistahm",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F145",
+   "verdict": "pass",
+   "what": "The Jin page says Jin 'consisted of most of Shanxi' in 907, 'Linfen, Hezhong, Jincheng, Qinyang were taken by Later Liang' and 'In 912, Jin took over Jincheng'. The Later Liang page says Shanxi (Jin) 'remained largely outside Later Liang control'. Overlaps re-resolved with the gazetteer are 0 for 911/907, 908/907, 915/915 and 916/916. The 911 keyframe's to 914 ends the 911-921 Cliopatria span that re-claimed land at the 915 and 916 snaps, and its own note supports it. The 912 Jincheng mirror loss matches Jin /ledger/1.",
+   "page": "https://en.wikipedia.org/wiki/Jin_(Later_Tang_precursor)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F147",
+   "verdict": "pass",
+   "what": "The page has 'Feng controlled the provinces of Gansu, Shaanxi and Henan' and the infobox 'Warlord coalitions of Yan Xishan, Feng Yuxiang and Li Zongren'. Cutting Henan from the coalition's found and 1930 keyframe leaves it with guominjun, which holds it to its Nov 1930 dissolve (successor republic-of-china). This settles the 816-cell conflict. One inconsistency is left: the coalition still draws Feng's Gansu and Shaanxi (the page names them alongside Henan), uncontested only because guominjun does not hold them in 1930. The hierarchy.csv handoff covers the tint.",
+   "page": "https://en.wikipedia.org/wiki/Central_Plains_War",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F150",
+   "verdict": "pass",
+   "what": "The Orontid page says Neoptolemus 'seems to have failed to take control of the country', 'the Macedonians never established firm control over the country', 'the Orontids ruled as kings in practice', and Seleucid sphere only 'Starting from 301 BC'. Removing the Armenian Highlands plus Cliopatria's Armenia 307 outline from the Anatolia part of the found and the -306/-304 keyframes is supported. Later Antigonid years are untouched (the keyframes end -305 and -302).",
+   "page": "https://en.wikipedia.org/wiki/Orontid_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F154",
+   "verdict": "pass",
+   "what": "The Bagirmi page says 'Bagirmi regained their independence from Bornu' (al-Amin 1751-1785), 'Wadai ... invaded in 1805' and 'Bagirmi subsequently became a tributary'; no sentence after 1751 has Bornu holding Bagirmi again. Cutting Chari-Baguirmi from Bornu's 1805-1890 shapes is supported. The 1522 kept part holds: Bornu 'succeeded in absorbing Bagirmi' only under Idris Alooma (1571-). The vassal 1571-1750 skip is right: hierarchy.csv line 56 has bagirmi-sultanate -> empire-of-kanem 1571-1750 vassal. The Hadjer-Lamis shore left to the size rule is correctly reported as open.",
+   "page": "https://en.wikipedia.org/wiki/Bagirmi_Sultanate",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F156",
+   "verdict": "pass",
+   "what": "Kept reasoning holds. Infobox 'Status: March of the Kingdom of Italy'; lead 'a march of the Kingdom of Italy and the Holy Roman Empire'; 'Rainier was deposed from the march by Holy Roman Emperor Conrad II' (1027). The size rule's answer (the March keeps its land) is right, and no hierarchy.csv row exists for march-of-tuscany, so the handoff is needed.",
+   "page": "https://en.wikipedia.org/wiki/March_of_Tuscany",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F247",
+   "verdict": "pass",
+   "what": "The skip is right: hierarchy.csv line 207 has dai-sixteen-kingdoms -> later-zhao 324-350 vassal, confidence 2. The Dai page has 'Lady Qi submitted to the Later Zhao dynasty'.",
+   "page": "https://en.wikipedia.org/wiki/Dai_(Sixteen_Kingdoms)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F248",
+   "verdict": "pass",
+   "what": "The Dai page gives capital Shengle 340-376 and the end in 376 ('Former Qin ... captured Yunzhong, thus ending the Dai'). Its infobox lists Former Yan only as one of Dai's overlords, and it mentions a marriage alliance with 'clashes', so Dai kept its own land. The cut equals the dai-sixteen-kingdoms shape (Hohhot 120 km + Datong 140 km, constant 310-376), so overlap is 0. The rest of Yan's Shanxi is untouched.",
+   "page": "https://en.wikipedia.org/wiki/Dai_(Sixteen_Kingdoms)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F249",
+   "verdict": "pass",
+   "what": "The Dai page has Yilu 'appointed the Duke of Dai ... by the Western Jin dynasty in 310 ... as a reward for helping Liu Kun ... fight against the Han-Zhao dynasty', 'five counties north of the mountain ranges', and 'The Tuoba became a vital fighting force for Jin in their war against Han'. Cutting the Dai shape from the Han-Zhao 311 and 324 keyframes is supported. The dissolve/split regions intersect held cells only, so other years are unaffected. The Han-Zhao page was not re-opened.",
+   "page": "https://en.wikipedia.org/wiki/Dai_(Sixteen_Kingdoms)",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": []
+}

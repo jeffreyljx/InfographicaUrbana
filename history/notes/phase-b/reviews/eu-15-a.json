@@ -1,0 +1,895 @@
+{
+ "batch_id": "eu-15-a",
+ "verdicts": [
+  {
+   "slug": "samo-s-empire",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/1",
+     "what": "The 631 gain from the Sorbs takes the whole 627-to-633 shape change (23,520 km2), including 6,828 km2 at 46.5-48.4N (Upper Austria and Salzburg), which is not Lusatia.",
+     "why": "gazetteer: (Samo 633 minus Samo 627) intersected with (Bavarians 617 minus Bavarians 633) = 27 cells, 6,828 km2, bbox 12.87-14.55E 46.51-48.35N; bavarians /ledger/4 records this as a 633 loss to samo-s-empire (c1). The 633 verdict mentions only the west and north.",
+     "fix": "Limit the Sorbian gain to the northern part of the delta and add a 631 gain from bavarians (c1) for the southern strip, or explain the strip in /keyframe_review/2.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/3",
+     "what": "The 658 loss to the Avars takes every part of the shape in Slovakia (32,877 km2, including Nitra), but the page says only 'at least to southernmost modern Slovakia'.",
+     "why": "Samo's Empire page: 'the Avars returned to their previous territories (at least to southernmost modern Slovakia)' and 'The centre of the union was most likely in Moravia and Nitravia (Nitra)'; the avar-khaganate mirror (/ledger/15, 661, c1) takes back 5,058 km2 of Samo's shape at 16.2-17.5E 46.6-48.1N (Burgenland/western Hungary), none in Slovakia.",
+     "fix": "Narrow the region to southern Slovakia (or to Samo 656 intersected with Avar Khaganate 661) and give the rest to nobody; align the year with avar-khaganate.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "The 658 loss names carantania, which its own dossier founds in 661, so the Alpine land has no holder in 658-660.",
+     "why": "Carantania page: 'In 658 Samo died and his Tribal Union disintegrated', a smaller part 'preserved independence'; carantania /ledger/0 found 661 (Cliopatria year).",
+     "fix": "Samo's side follows the page; route to eu-06 so carantania starts in 658 (or Samo gives the land to nobody until 661).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "Who held the rest of the union after 658 (c1, to nobody); bavarians /ledger/5 gains 2,529 km2 of it in 661",
+     "page to try": "https://en.wikipedia.org/wiki/Chronicle_of_Fredegar"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "The southern 6,800 km2 of the 627-to-633 change is not explained by the Sorbian gain",
+     "page to try": "https://en.wikipedia.org/wiki/Bavarians"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Samo%27s_Empire",
+     "result": "confirmed: 'went to the Slavs in c. 623-624'; revolt of 623-24"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Sorbs",
+     "result": "confirmed: joined Samo's union 'after Samo's decisive victory against Frankish King Dagobert I in 631'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Carantania",
+     "result": "confirmed: 'In 658 Samo died and his Tribal Union disintegrated'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Samo%27s_Empire",
+     "result": "confirmed year; region broader than the page ('at least to southernmost modern Slovakia')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the article's infobox gives no area"
+   }
+  },
+  {
+   "slug": "great-moravia",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/10",
+     "what": "BLOCKING: the 896 loss to nobody (183,100 km2) contains 53,109 km2 that magyars /ledger/3 gains in 895, also from nobody.",
+     "why": "gazetteer: /ledger/10 region intersected with Cliopatria Magyars 896 = 210 cells, 53,109 km2, bbox 19.13-23.42E 47.46-49.52N (eastern Slovakia, upper Tisza); the same cells are in magyars /ledger/3 (895 gain from nobody). Both dossiers are in this batch; the land is double-held in 895.",
+     "fix": "Split /ledger/10: the part intersecting Cliopatria Magyars 896 is a loss to magyars (same year as the magyars gain, 895 or 896); the rest stays to nobody.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/11",
+     "what": "BLOCKING: Nitra leaves direct Moravian rule in 898 (the 898 keyframe drops it and the nitra dossier is founded with counterpart great-moravia) but the ledger has only a vassal_start; Nitra remains direct land from the 833 gain.",
+     "why": "The nitra dossier's /ledger/0 found 898 cp great-moravia has no split or loss mirror here; the 890 Bohemian case uses vassal_end plus gain, so the reverse needs split/loss plus vassal_start.",
+     "fix": "Add {year 898, type split, counterpart nitra, region {cliopatria Nitra 898}, confidence 1} before /ledger/11.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/13",
+     "what": "The 900 loss (8,852 km2) names principality-of-hungary, but the land lies wholly inside Cliopatria's East Franks 900 shape.",
+     "why": "gazetteer: (Great Moravia 898 minus 900) intersected with East Franks 900 = 35 of 35 cells, bbox 14.99-16.89E 48.21-48.93N; the author's note already says East Francia is as likely.",
+     "fix": "Counterpart east-franks (c1) and route the mirror gain to eu-07, or explain why Hungary.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/17",
+     "what": "The 907 dissolve gives the Czech remnant of Moravia (about 20,000 km2) to principality-of-hungary, which Cliopatria never draws there and which disagrees with duchy-of-bohemia /ledger/4 (955 gain of Moravia from nobody).",
+     "why": "gazetteer: remnant intersected with Principality of Hungary 900/911/920/930/950 = 0-2 cells; Battle of Pressburg page: 'Hungarian suzerainty over the rest of Moravia' (suzerainty, not direct rule).",
+     "fix": "Counterpart nobody for the remnant (the Hungary dossier may carry a vassal_start), keep principality-of-hungary as successor for the 902 eastern loss.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/4-9; /ledger/3,7,8,9",
+     "what": "The Bohemia corrections and events use {region: Bohemia} (58,926 km2), larger than Cliopatria's Bohemia (45,600 km2) and overlapping the Moravian shapes.",
+     "why": "gazetteer: Great Moravia 850 intersected with region Bohemia = 7,334 km2 at 15.4-16.7E 49.1-50.2N that Great Moravia held 814-859 and loses with no event in 860; 14,415 km2 of the 860 shape inside 'Bohemia' is held by neither dossier in 870-889.",
+     "fix": "Use {cliopatria: Duchy of Bohemia, year: 896} in place of {region: Bohemia} in the corrections and in the 872, 890 and 895 events (and in duchy-of-bohemia /ledger/1-2).",
+     "applied": false
+    },
+    {
+     "where": "/wars/3",
+     "what": "The Wilhelminer War ends in 884 but /ledger/6 contest_end is 885.",
+     "why": "Wilhelminer War page: 'An actual agreement was not reached between the Moravians and Arnulf until late 885'.",
+     "fix": "Set the war's to to 885 or move the contest_end to 884.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/7, /ledger/8",
+     "what": "Source was the Bořivoj page, which gives only c. 889; the 890 date is on the Svatopluk I page.",
+     "why": "Svatopluk I page: 'They met at Omuntesperch ... during the winter of 890.'",
+     "fix": "Source changed to https://en.wikipedia.org/wiki/Svatopluk_I_of_Moravia (reviewer).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/1, /ledger/11, /keyframe_review/1,2,13",
+     "what": "Misquotes: 'Around 833, he expelled Pribina' and 'was later ruled as an appanage by the heir' are not on the Great Moravia page.",
+     "why": "Page: Mojmír expelled 'one Pribina' across the Danube; Pribina 'fled to Ratpot who administered the March of Pannonia from around 833'; Nitra 'was ruled autonomously by the heir of the dynasty as an appanage'.",
+     "fix": "Quotations corrected (reviewer).",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "875 gain of 132,267 km2 (Vistula, Silesia, Lusatia) at c1: year and land are Cliopatria's",
+     "page to try": "https://en.wikipedia.org/wiki/Vistulans"
+    },
+    {
+     "where": "/ledger/10",
+     "what is missing": "Who took the northern lands after 894 (c1)",
+     "page to try": "https://en.wikipedia.org/wiki/Mojmir_II"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "The heir and year of the Nitra appanage (c1)",
+     "page to try": "https://en.wikipedia.org/wiki/Svatopluk_II"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "The Rastislav page dates the eastern gain only within 846-854",
+     "page to try": "https://en.wikipedia.org/wiki/Rastislav_of_Moravia"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Nitra",
+     "result": "confirmed: 'In 833, Pribina was ousted by the Moravian prince Mojmír I and both regions were united'; the cited Great Moravia page has 'early 830s' and infobox 'c. 833'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Great_Moravia",
+     "result": "confirmed: 'accepted King Arnulf's suzerainty in June 895'"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Pressburg",
+     "result": "confirmed: 'In 902, the Hungarian armies, probably led by Kurszán, defeated Great Moravia and occupied its eastern area'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Bo%C5%99ivoj_I,_Duke_of_Bohemia",
+     "result": "confirmed: 'recognised as such around 872 by his overlord King Svatopluk I'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Rastislav_of_Moravia",
+     "result": "confirmed in substance: new territories in the east and a border with Bulgaria in his first eight years (no single year)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Svatopluk_I_of_Moravia",
+     "result": "confirmed: Omuntesperch 'during the winter of 890' (source corrected)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the article's infobox gives no area"
+   }
+  },
+  {
+   "slug": "principality-of-nitra",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1",
+     "what": "The confidence-3 loss cited the Great Moravia page, which dates it only 'early 830s' / 'from around 833', with the misquote 'Around 833, he expelled Pribina'.",
+     "why": "Nitra page: 'In 833, Pribina was ousted by the Moravian prince Mojmír I and both regions were united'.",
+     "fix": "Source changed to https://en.wikipedia.org/wiki/Nitra and the quotation corrected in all notes (reviewer).",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Nitra",
+     "result": "confirmed: infobox 'Independent state (825-833)', 'Established: c. 825'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Nitra",
+     "result": "confirmed: 'In 833, Pribina was ousted by the Moravian prince Mojmír I'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Nitra",
+     "result": "confirmed: infobox 'Independent state (825-833)'; Pribina 'driven across the Danube by Mojmir'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the article's infobox gives no area"
+   }
+  },
+  {
+   "slug": "magyars",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/3",
+     "what": "BLOCKING: the 895 gain from nobody (121,392 km2) includes 53,109 km2 that great-moravia holds to 895 and loses to nobody in 896.",
+     "why": "gazetteer: /ledger/3 region intersected with Cliopatria Great Moravia 895 = 210 cells, 53,109 km2, bbox 19.13-23.42E 47.46-49.52N; great-moravia /ledger/10 (896 loss to nobody) contains the same cells.",
+     "fix": "Split off the part intersecting Cliopatria Great Moravia 892 as a gain from great-moravia, in the same year as the great-moravia loss.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/4",
+     "what is missing": "884: -14,000 km2 with no event (within the 5-page budget)",
+     "page to try": "https://en.wikipedia.org/wiki/Khazars"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Start 840 bridges 'Around 830' (Hungarians) and 'around 850' (Etelköz), c1",
+     "page to try": "https://en.wikipedia.org/wiki/Levedia"
+    },
+    {
+     "where": "/ledger/4, /ledger/5",
+     "what is missing": "Lower Dniester steppe gained from and lost to Bulgaria 895/898, c1",
+     "page to try": "https://en.wikipedia.org/wiki/Byzantine%E2%80%93Bulgarian_war_of_894%E2%80%93896"
+    },
+    {
+     "where": "/ledger/6-9",
+     "what is missing": "900 and 907 hand-over to the Principality of Hungary, c1",
+     "page to try": "https://en.wikipedia.org/wiki/Kursz%C3%A1n"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Pechenegs",
+     "result": "confirmed: 'drove the Magyars west of the Dnieper River by 892'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Etelk%C3%B6z",
+     "result": "confirmed: 'A new Pecheneg invasion compelled the Magyars to leave Etelköz and cross the Carpathian Mountains around 895'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Hungarians",
+     "result": "confirmed: 'In 895/896, under the leadership of Árpád, some Hungarians crossed the Carpathians and entered the Carpathian Basin'"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Hungarians",
+     "result": "confirmed as a bridge: 'Around 830' (Hungarians) and 'around 850' (Etelköz page)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the article's infobox gives no area"
+   }
+  },
+  {
+   "slug": "duchy-of-bohemia",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/1",
+     "what": "Source was the Bořivoj page, which gives only c. 889; the 890 date is on the Svatopluk I page.",
+     "why": "Svatopluk I page: 'during the winter of 890'.",
+     "fix": "Source changed to https://en.wikipedia.org/wiki/Svatopluk_I_of_Moravia (reviewer).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/1, /ledger/2",
+     "what": "{region: Bohemia} (58,926 km2) is larger than the dossier's own keyframes (45,600 km2) and overlaps Great Moravia's 896 shape.",
+     "why": "gazetteer: Great Moravia 900 intersected with region Bohemia = 5,817 km2 at 15.55-16.61E.",
+     "fix": "Use {cliopatria: Duchy of Bohemia, year: 896}, as in great-moravia.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/7",
+     "what": "The 1002 dissolve to holy-roman-empire ends a state the page continues to 1198; holy-roman-empire has no event receiving Bohemia and margraviate-of-meissen /ledger/8 records a 1076 loss to duchy-of-bohemia.",
+     "why": "Duchy of Bohemia page: infobox 'Raised to Kingdom: 1198'; 'what had been a fully sovereign duchy became part of the Holy Roman Empire'.",
+     "fix": "Orchestrator to route: extend the dossier to 1198/1201 with new keyframes (or hand over to kingdom-of-bohemia as a rename) and make holy-roman-empire record a vassal_start of Bohemia in 1002. The author flagged it.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "947 Silesian slice: year and land are Cliopatria's (c1)",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Silesia"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "960 Kraków: year is Cliopatria's (c1); Czech rule there 'only nominal' (Mieszko page)",
+     "page to try": "https://en.wikipedia.org/wiki/Vistulans"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "Rulers 889-935 and 999-1002 missing (Spytihněv I, Vratislaus I, Wenceslaus, Boleslaus III)",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_rulers_of_Bohemia"
+    },
+    {
+     "where": "/identity/end",
+     "what is missing": "1003-1198: the duchy continues with no Cliopatria row",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Bohemia"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Bohemia",
+     "result": "confirmed: 'formed around 870 by Czechs as part of the Great Moravian realm'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Great_Moravia",
+     "result": "confirmed: 'accepted King Arnulf's suzerainty in June 895'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Bohemia",
+     "result": "confirmed: 'fought in the 955 Battle of Lechfeld and after the defeat of the Magyars received the lands of Moravia'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Mieszko_I_of_Poland",
+     "result": "confirmed: war of 990 with Theophanu supporting Mieszko; Silesia annexed 'possibly ... around 985'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Bohemia",
+     "result": "confirmed: 'In 1002, Duke Vladivoj was enfeoffed ... by King Henry II'; but infobox 'Raised to Kingdom: 1198'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the article's infobox gives no area"
+   }
+  },
+  {
+   "slug": "nitra",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/0, /keyframe_review/0, /identity/predecessors/0",
+     "what": "Misquote 'was later ruled as an appanage by the heir'.",
+     "why": "Great Moravia page: 'Nitra, the centre of the eastern part of the Empire, was ruled autonomously by the heir of the dynasty as an appanage.'",
+     "fix": "Quotation corrected (reviewer).",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Year (898) and heir of the appanage, c1 (thin by design: 2 shapes, 1-2 pages)",
+     "page to try": "https://en.wikipedia.org/wiki/Svatopluk_II"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Nitra",
+     "result": "confirmed: infobox 'Vassal of the Great Moravia (833-906/907)', 'Principality of Hungary (906/907-1000/1001)'"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Great_Moravia",
+     "result": "confirmed as stated: appanage sentence, no year (c1)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the article's infobox gives no area"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "samo-s-empire",
+    "year": 623,
+    "type": "found",
+    "counterpart": "avar-khaganate"
+   },
+   "mirror": {
+    "slug": "avar-khaganate",
+    "year": 626,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "3 years apart: Samo follows 'revolt of 623-24', the Avar dossier the infobox 'Defeated by Samo: 626'. Route to eu-06 or note."
+  },
+  {
+   "event": {
+    "slug": "samo-s-empire",
+    "year": 631,
+    "type": "gain",
+    "counterpart": "Sorbs under Dervan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier for the Sorbs (in counterparts_needing_dossiers); but 6,828 km2 of the region is the Bavarian strip, see next."
+  },
+  {
+   "event": {
+    "slug": "bavarians",
+    "year": 633,
+    "type": "loss",
+    "counterpart": "samo-s-empire"
+   },
+   "mirror": {
+    "slug": "samo-s-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Samo has no gain from bavarians; its 631 Sorbian gain covers the strip (46.5-48.4N)."
+  },
+  {
+   "event": {
+    "slug": "samo-s-empire",
+    "year": 658,
+    "type": "loss",
+    "counterpart": "carantania"
+   },
+   "mirror": {
+    "slug": "carantania",
+    "year": 661,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "carantania founded 661 (Cliopatria); the Carantania page dates the break-up to 658. Route to eu-06."
+  },
+  {
+   "event": {
+    "slug": "samo-s-empire",
+    "year": 658,
+    "type": "loss",
+    "counterpart": "avar-khaganate"
+   },
+   "mirror": {
+    "slug": "avar-khaganate",
+    "year": 661,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "3 years and different land: Samo gives 32,877 km2 in Slovakia, the Avar gain (c1) covers 5,058 km2 of Samo's shape in Burgenland/western Hungary."
+  },
+  {
+   "event": {
+    "slug": "bavarians",
+    "year": 661,
+    "type": "gain",
+    "counterpart": "samo-s-empire"
+   },
+   "mirror": {
+    "slug": "samo-s-empire",
+    "year": 658,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Samo's 658 loss of that land goes to nobody (/ledger/4)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-the-franks",
+    "year": 814,
+    "type": "loss",
+    "counterpart": "great-moravia"
+   },
+   "mirror": {
+    "slug": "great-moravia",
+    "year": 822,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "8 years: great-moravia starts at the first record (822) from nobody; route to eu-07."
+  },
+  {
+   "event": {
+    "slug": "great-moravia",
+    "year": 833,
+    "type": "gain",
+    "counterpart": "principality-of-nitra"
+   },
+   "mirror": {
+    "slug": "principality-of-nitra",
+    "year": 833,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "great-moravia",
+    "year": 850,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "great-moravia",
+    "year": 872,
+    "type": "vassal_start",
+    "counterpart": "duchy-of-bohemia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "overlord side only, as the schema asks; the duchy is founded in 870 'as part of the Great Moravian realm', two years before."
+  },
+  {
+   "event": {
+    "slug": "great-moravia",
+    "year": 875,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody (c1)"
+  },
+  {
+   "event": {
+    "slug": "east-franks",
+    "year": 884,
+    "type": "vassal_start",
+    "counterpart": "great-moravia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "overlord side (Kaumberg, Wilhelminer War page); vassal_end 892 July; no mirror needed."
+  },
+  {
+   "event": {
+    "slug": "great-moravia",
+    "year": 890,
+    "type": "gain",
+    "counterpart": "duchy-of-bohemia"
+   },
+   "mirror": {
+    "slug": "duchy-of-bohemia",
+    "year": 890,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "both use {region: Bohemia}; see the region finding"
+  },
+  {
+   "event": {
+    "slug": "great-moravia",
+    "year": 895,
+    "type": "loss",
+    "counterpart": "duchy-of-bohemia"
+   },
+   "mirror": {
+    "slug": "duchy-of-bohemia",
+    "year": 895,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "June 895 on both"
+  },
+  {
+   "event": {
+    "slug": "east-franks",
+    "year": 895,
+    "type": "vassal_start",
+    "counterpart": "duchy-of-bohemia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "overlord side; agrees with the June 895 fealty."
+  },
+  {
+   "event": {
+    "slug": "great-moravia",
+    "year": 896,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "magyars",
+    "year": 895,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "53,109 km2 lost to nobody (896) and gained from nobody (895) by two dossiers of this batch; should name each other in one year."
+  },
+  {
+   "event": {
+    "slug": "nitra",
+    "year": 898,
+    "type": "found",
+    "counterpart": "great-moravia"
+   },
+   "mirror": {
+    "slug": "great-moravia",
+    "year": 898,
+    "type": "vassal_start"
+   },
+   "status": "missing",
+   "note": "great-moravia has no split/loss of Nitra in 898."
+  },
+  {
+   "event": {
+    "slug": "great-moravia",
+    "year": 900,
+    "type": "loss",
+    "counterpart": "principality-of-hungary"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "principality-of-hungary not yet written (eu-15 other part); the land lies in Cliopatria's East Franks 900 shape, so the counterpart should probably be east-franks (no gain there)."
+  },
+  {
+   "event": {
+    "slug": "great-moravia",
+    "year": 902,
+    "type": "loss",
+    "counterpart": "principality-of-hungary"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "principality-of-hungary not yet written (eu-15 other part)."
+  },
+  {
+   "event": {
+    "slug": "great-moravia",
+    "year": 907,
+    "type": "dissolve",
+    "counterpart": "principality-of-hungary"
+   },
+   "mirror": {
+    "slug": "duchy-of-bohemia",
+    "year": 955,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "GM gives the Moravian remnant to Hungary; duchy-of-bohemia gains Moravia in 955 from nobody; Cliopatria's Hungary shapes never hold it."
+  },
+  {
+   "event": {
+    "slug": "nitra",
+    "year": 907,
+    "type": "loss",
+    "counterpart": "principality-of-hungary"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not yet written (eu-15 other part)."
+  },
+  {
+   "event": {
+    "slug": "magyars",
+    "year": 892,
+    "type": "loss",
+    "counterpart": "pechenegs"
+   },
+   "mirror": {
+    "slug": "pechenegs",
+    "year": 892,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "magyars",
+    "year": 895,
+    "type": "loss",
+    "counterpart": "pechenegs"
+   },
+   "mirror": {
+    "slug": "pechenegs",
+    "year": 895,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "magyars",
+    "year": 895,
+    "type": "gain",
+    "counterpart": "first-bulgarian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "first-bulgarian-empire (eu-18) not yet written."
+  },
+  {
+   "event": {
+    "slug": "magyars",
+    "year": 898,
+    "type": "loss",
+    "counterpart": "first-bulgarian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "first-bulgarian-empire (eu-18) not yet written."
+  },
+  {
+   "event": {
+    "slug": "magyars",
+    "year": 900,
+    "type": "loss",
+    "counterpart": "principality-of-hungary"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not yet written (eu-15 other part)."
+  },
+  {
+   "event": {
+    "slug": "magyars",
+    "year": 907,
+    "type": "merge",
+    "counterpart": "principality-of-hungary"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not yet written (eu-15 other part)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-germany",
+    "year": 929,
+    "type": "vassal_start",
+    "counterpart": "duchy-of-bohemia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "overlord side; agrees with 'submitting to King Henry in 929'; also 950 vassal_start and a 936-950 contest zone over Bohemia, while the duchy's war has empty zones."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-bohemia",
+    "year": 947,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody (c1)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-bohemia",
+    "year": 960,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody (c1)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-bohemia",
+    "year": 990,
+    "type": "loss",
+    "counterpart": "kingdom-of-poland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-poland not yet written (eu-15 other part)."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-bohemia",
+    "year": 1002,
+    "type": "dissolve",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "holy-roman-empire (eu-08, written) has no event receiving Bohemia in 1002."
+  },
+  {
+   "event": {
+    "slug": "margraviate-of-meissen",
+    "year": 1076,
+    "type": "loss",
+    "counterpart": "duchy-of-bohemia"
+   },
+   "mirror": {
+    "slug": "duchy-of-bohemia",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "duchy-of-bohemia ends in 1002; the 1076 counterpart is not alive (1003-1198 gap)."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Lusatia",
+   "kind": "region",
+   "used_in": "samo-s-empire; great-moravia"
+  },
+  {
+   "name": "Etelköz",
+   "kind": "region",
+   "used_in": "magyars"
+  },
+  {
+   "name": "Pannonia",
+   "kind": "region",
+   "used_in": "great-moravia"
+  },
+  {
+   "name": "Mikulčice",
+   "kind": "place",
+   "used_in": "great-moravia"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Sorbs under Dervan",
+   "suggested_slug": "sorbs-under-dervan",
+   "years": [
+    615,
+    636
+   ],
+   "note": "low priority; pechenegs (listed by the author) now exists"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-15-a.md",
+ "problems": [
+  "No infobox of the six articles gives an area: no area comparison possible for any state.",
+  "The reviewer brief says not to edit dossiers; the orchestrator's adjustment allowed small verified fixes, which were applied to principality-of-nitra, nitra, great-moravia and duchy-of-bohemia (sources and quotations only) and re-validated.",
+  "duchy-of-bohemia 1003-1198 has no dossier coverage (Cliopatria has no row); needs routing to kingdom-of-bohemia or a gap-filler.",
+  "The gazetteer region 'Bohemia' overlaps Cliopatria's Moravian shapes by 5,800-7,300 km2; other dossiers using it against Cliopatria shapes may show the same seam."
+ ]
+}

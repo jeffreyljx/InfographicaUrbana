@@ -1,0 +1,142 @@
+{
+ "window": "sm-01",
+ "images": [
+  {
+   "year": -1300,
+   "bbox": "30,28,45,38",
+   "stage": "published",
+   "seen": "Egypt draws dark direct cells north of Canaan (Rif Dimashq 25, As Suwayda' 11, Tafilah 8 and more) inside and above the Canaan vassal tint, up toward Amurru: the 65-cell snap of the 'wrong' -1300 keyframe."
+  },
+  {
+   "year": -1240,
+   "bbox": "30,28,45,38",
+   "stage": "published",
+   "seen": "Same direct Syrian and Transjordan patches still drawn for Egypt at -1240 (the 'wrong' -1240 shape), Moab inside them."
+  },
+  {
+   "year": -1000,
+   "bbox": "24,21,38,34",
+   "stage": "published",
+   "seen": "Twenty-first Dynasty is the Delta only (direct) with the priests' Nile valley as vassal tint; no New Valley, Red Sea or Matruh cells: the m1000-m0901 override of new-kingdom-of-egypt_-1000 is in force, no snap."
+  },
+  {
+   "year": -900,
+   "bbox": "24,21,38,34",
+   "stage": "published",
+   "seen": "Whole Egyptian outline (New Valley, Red Sea hills, Matruh) back at -900: the +759/-48 snap of keyframe new-kingdom-of-egypt_-900."
+  },
+  {
+   "year": -1300,
+   "bbox": "30,28,45,38",
+   "stage": "trial (my patch)",
+   "seen": "Egypt is Egypt plus Canaan in vassal tint only; no Syrian cells north of Canaan; Amurru and Kadesh land is Hittite or Amurru's."
+  },
+  {
+   "year": -1240,
+   "bbox": "30,28,45,38",
+   "stage": "scratch trial with the proposed m1200-m1101 fix (not the real state)",
+   "seen": "Canaan in vassal tint, Syrian patches gone except one small direct patch in North Lebanon (kept from the 1275 Kadesh gain, inside Canaan)."
+  },
+  {
+   "year": -900,
+   "bbox": "24,21,38,34",
+   "stage": "trial (my patch)",
+   "seen": "Twenty-second Dynasty is the Delta (with the gazetteer's Lower Egypt wing into the Giza desert), the Nile valley and the Fayyum; no desert, Red Sea or Matruh cells; no snap."
+  },
+  {
+   "year": -837,
+   "bbox": "24,21,38,34",
+   "stage": "trial (my patch)",
+   "seen": "Twenty-second Dynasty shrinks to the Delta (the dossier's Lower Egypt keyframe); the Twenty-third holds the south including the New Valley, as its page says ('including the Western Desert Oases')."
+  }
+ ],
+ "issues": [
+  {
+   "what": "Egypt's 'wrong' keyframe new-kingdom-of-egypt_-1300 (-1300..-1241) carries Cliopatria's own Syria-reaching shape as its correction; the compiler reads it as a claim and, with the -1400 shape cut at -1353, snapped Egypt at -1300 to Syria north of Canaan (65 cells; kept for 1273..1241 too, although the dossier's keyframe -1275 holds Amurru and Kadesh for 1275-1274 only).",
+   "years": [
+    -1300,
+    -1241
+   ],
+   "slugs": [
+    "new-kingdom-of-egypt"
+   ],
+   "decision": "patched",
+   "patch": "m1300-m1201.json: keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Battle_of_Kadesh",
+    "https://en.wikipedia.org/wiki/Egyptian%E2%80%93Hittite_peace_treaty"
+   ],
+   "result": "Trial: the -1300 snap is gone; the -1275 keyframe adds the 65 Syrian cells for 1275-1274 (as the dossier intends) and the -1273 keyframe releases 59 of them (9 kept by others)."
+  },
+  {
+   "what": "The twin keyframe new-kingdom-of-egypt_-1240 (-1240..-1151) has the same defect. It is already overridden by m1200-m1101 keyframe_overrides/0 with Cliopatria's whole -1240 shape (-1240..-1201), and the compiler reads patch files in file-name order, so m1200-m1101 comes before m1300-m1201 and wins: an override written in m1300-m1201 is skipped ('keyframe already overridden by data/patches/m1200-m1101.json: keyframe_overrides/0', seen in a scratch trial).",
+   "years": [
+    -1240,
+    -1201
+   ],
+   "slugs": [
+    "new-kingdom-of-egypt"
+   ],
+   "decision": "left: cannot be patched from m1300-m1201; m1200-m1101 keyframe_overrides/0 must be corrected (see problems)",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Battle_of_Kadesh",
+    "https://en.wikipedia.org/wiki/Egyptian%E2%80%93Hittite_peace_treaty"
+   ],
+   "result": "With my -1300 override alone, the -1240 snap (m1200-m1101's whole shape) gives Egypt 59 direct Syrian and Transjordan cells again (25 more kept by others) from -1240 until the -1200 snap removes them; the m1200 end anchor is unchanged."
+  },
+  {
+   "what": "Seam at -900: twenty-second-dynasty-of-egypt keyframe new-kingdom-of-egypt_-900 (Cliopatria's whole Egypt outline, -900..-801 by shapes.csv, no 'to' although the dossier note holds it for -900..-838 only) snapped the state back to the outline at -900 (+759 cells: New Valley 525, Red Sea 180, Matruh 48; -48) after the m1000-m0901 override of the -943 keyframe ended at -901, and was unioned with the Lower Egypt keyframe at -837. Overridden with the Delta plus Nile valley plus Fayyum shape of the -943 override, from -900 to -838.",
+   "years": [
+    -900,
+    -838
+   ],
+   "slugs": [
+    "twenty-second-dynasty-of-egypt"
+   ],
+   "decision": "patched",
+   "patch": "m0900-m0801.json: keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Twenty-second_Dynasty_of_Egypt",
+    "https://en.wikipedia.org/wiki/Shoshenq_I",
+    "https://en.wikipedia.org/wiki/Third_Intermediate_Period_of_Egypt"
+   ],
+   "result": "Trial: no -900 snap; the m0900 anchor is identical to the published one; the dossier's own -837 Lower Egypt keyframe now trims 176 cells (Giza 98, Minya 29, Suez 18, +6) and adds 19, so the m0800 anchor has 381 fewer Twenty-second Dynasty cells (they were removed later by the m0800-m0701 snap of -800). New conflict row: kingdom-of-kush / twenty-second-dynasty-of-egypt, 42 cells at -900, Kush wins (R2): the same Lower Nubia strip that m1000-m0901 rulings/1 and the R2 rule already give to Kush at -1000 and -943."
+  },
+  {
+   "what": "Seam at -1000: the dossier keyframe new-kingdom-of-egypt_-1000 (whole outline) would add about 486 New Valley and Red Sea cells to Tanis as a snap; the Twenty-first Dynasty page does not mention the oases.",
+   "years": [
+    -1000,
+    -944
+   ],
+   "slugs": [
+    "twenty-first-dynasty-of-egypt"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Twenty-first_Dynasty_of_Egypt"
+   ],
+   "result": "Already decided by m1000-m0901 keyframe_overrides/0 (Lower Egypt minus Matruh, -1000..-944): no 21st-dynasty snap at -1000 in the published draft or keyframe_snaps.csv, the m1000 anchor holds 263 Twenty-first Dynasty plus 216 priests' cells and no oasis cells. The page confirms silence: 'mostly active only in Lower Egypt, which they controlled'; 'High Priests of Amun at Thebes effectively ruled Middle and Upper Egypt in all but name'; no oases, Western Desert or Red Sea. The Assyria remark of the report (97 cells at -1000) is not part of the Egyptian question and was not touched."
+  }
+ ],
+ "patch_file": "m1300-m1201,m0900-m0801",
+ "patch_entries": {
+  "events": 0,
+  "keyframe_overrides": 2,
+  "rulings": 0
+ },
+ "patch_check": "all applied",
+ "colour_clashes": [],
+ "dossier_requests": [],
+ "pages_opened": 6,
+ "problems": [
+  "FILE ORDER: the README and the brief say 'the first window in order wins' when two files override one shape, but compile_dossiers.patch_files sorts the file names as strings, so for the m (BCE) windows the later window comes first: m1200-m1101 before m1300-m1201, m1000-m0901 before m1100-m1001, and so on. Any seam item that needs an override in the earlier-starting window of a shape already overridden in a later-named file is silently skipped by the compile (my scratch trial shows it; --check-patch of one file does not).",
+  "NEEDS ORCHESTRATOR (m1200-m1101.json, which I may not touch): replace keyframe_overrides/0 (new-kingdom-of-egypt_-1240, adjust, -1240..-1201): {\"correction\": {\"union\": [{\"cliopatria\": \"New Kingdom of Egypt\", \"year\": -1500, \"text\": \"Egypt and Nubia as in the -1500 shape\"}, {\"region\": \"Canaan\", \"text\": \"Canaan\"}], \"text\": \"Egypt, Nubia and Canaan (vassal tint), the shape of keyframes -1352 and -1273, with no Syria north of Canaan\"}} in place of its present correction (the whole Cliopatria -1240 shape); keep from -1240, to -1201 and the source. Tested in a scratch copy of the patches folder: the -1240 snap disappears, the -1273 snap releases 59 cells, and the m1200 end anchor then differs from the published one only by 47 Egyptian cells that become unowned.",
+  "hierarchy: none.",
+  "m0800-m0701: its packet's -800 snap of twenty-second-dynasty-of-egypt_-800 (published: removed 381) will shrink, because those desert cells are now released at -837 by the dossier's own Lower Egypt keyframe (m0800 anchor: 381 cells change from the Twenty-second Dynasty to nobody). No patch there is affected.",
+  "My m0900-m0801 keyframe_overrides/0 reaches -838, inside the window; nothing crosses a window boundary. The -1300 override keeps shapes.csv years (-1300..-1241), all inside m1300-m1201.",
+  "Observation, not patched: the gazetteer's 'Lower Egypt' (used by the m1100-m1001, m1000-m0901 and now m0900-m0801 corrections) includes a wing of the Giza governorate's western desert (about 98 cells, Bahariya side) drawn as Egyptian from -1077 to -838; the pages name no desert land for the Twenty-first or Twenty-second Dynasty. It disappears at -837 with the Lower Egypt keyframe. I kept the same spec as the neighbour windows so no snap is created.",
+  "Observation: both trials list a keyframe snap shang-dynasty_-1240 (-1240: removed 544) that is not in the published draft; it comes from a dossier edit made after the 2 Nov 22:32 compile, not from my patches."
+ ]
+}

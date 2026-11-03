@@ -1,0 +1,733 @@
+{
+ "batch_id": "am-01",
+ "verdicts": [
+  {
+   "slug": "teotihuacan",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1 (also /keyframe_review/2, /4, /5)",
+     "what": "The Cliopatria Teotihuacan shape accepted as ok (years only for 106) is not 'the eastern Basin of Mexico around the city': it lies mostly in the Puebla-Tlaxcala valley, excludes the capital and contains the capitals of cholula and cacaxtla.",
+     "why": "Resolved on the project grid (tools/gazetteer.py), the -50/106/656/692 shape has 20 cells: 7 in México state, 5 in Tlaxcala, 8 in Puebla; polities.csv centroid -98.51, 19.295 is about 55 km SSE of the city; only 1 of the 3 cells of the dossier's own 15 km city circle is inside and the capital (19.69 N, 98.84 W) is about 11 km outside it; Cholula's capital cell (295380) and Cacaxtla's (295354) are inside. No page opened puts Cholula under Teotihuacan (Cholula page: 'a major center contemporaneous with Teotihuacan'; Teotihuacan page: after the fall 'Cholula, Xochicalco, and Cacaxtla competed to fill the power void').",
+     "fix": "Mark the four Cliopatria keyframes adjust and redraw them around the city: e.g. {\"place\":\"Teotihuacan\",\"km\":40,\"country\":\"Mexico\"} (or the Cliopatria shape united with the 15 km city circle and minus {\"place\":\"Cholula\",\"km\":25} and, from 650, minus {\"place\":\"Cacaxtla\",\"km\":10}); correct the K1 note's description; make /ledger/1 and /ledger/5 regions consistent with the new shapes. Only if a page says Cholula was Teotihuacan's dependency, record it instead as vassal events in both dossiers.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/3/correction (also /ledger/2/region, /ledger/5/region)",
+     "what": "{\"region\":\"Valley of Mexico\"} resolves to all of México state plus the Distrito Federal, Toluca valley included, making the 200..649 keyframe about 23,770 km2, 4.2 times Cliopatria's shape, with no page giving that extent.",
+     "why": "Gazetteer regions.jsonl: Valley of Mexico = admin1 Distrito Federal + México (81 cells, about 20,485 km2, bbox -100.43..-98.66, 18.49..20.28); all 12 cells within 30 km of Toluca are inside. The Cuicuilco page sends Cuicuilco's people 'towards Toluca and Teotihuacan' (Toluca separate) and calls Teotihuacan only 'the center of the Basin of Mexico'. The K3 note itself says the region is broader than the basin and that a 60 km radius 'is an acceptable substitute', but keeps the broad region.",
+     "fix": "Use {\"place\":\"Teotihuacan\",\"km\":60,\"country\":\"Mexico\"} (40 cells, about 10,100 km2, bbox -99.30..-98.34, 19.16..20.18, no overlap with cholula or cacaxtla) in K3, L2 and L5, with the text 'the center of the Basin of Mexico' (Cuicuilco page).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/4",
+     "what": "Years 650..655 have no keyframe: K3 ends at 649, K2 is limited to 106..199 and K4 (verdict ok) keeps Cliopatria's 656 start.",
+     "why": "Teotihuacan page: 'Period IV describes the time period between 650 and 750 CE' (the ledger's 650 loss).",
+     "fix": "K4 verdict adjust, correction the (redrawn) shape with text 'unchanged shape; years 650..691'.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "the -50 growth from the city to its hinterland is Cliopatria's date (confidence 1); no page dates it",
+     "page to try": "https://en.wikipedia.org/wiki/Teotihuacan_Mapping_Project"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "the 426 end of the Tikal relation is derived from Yax Nuun Ahiin I's 47-year reign; the Tikal page says only that the line was 'rapidly Mayanized'",
+     "page to try": "https://en.wikipedia.org/wiki/Yax_Nuun_Ahiin_I"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "the sphere beyond Tikal (Kaminaljuyu, Matacapan, Copán 426, the Oaxaca barrio) has no dated events",
+     "page to try": "https://en.wikipedia.org/wiki/Kaminaljuyu"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Teotihuacan",
+     "result": "confirmed: 'The city is thought to have been established around 100 BCE'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Cuicuilco",
+     "result": "confirmed: abandoned 'around AD 150 to 200 after the eruption of a nearby volcano'; 'dispersion of Cuicuilca culture towards Toluca and Teotihuacan'; the region drawn is too broad (fix 2)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Tikal",
+     "result": "confirmed: Chak Tok Ich'aak 'killed on 14 January 378 AD', Siyaj K'ak' arrived the same day; Yax Nuun Ahiin I enthroned 13 September 379"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Teotihuacan",
+     "result": "confirmed: 'Period IV describes the time period between 650 and 750 CE'; decline 'between 600 and 700 CE'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Teotihuacan",
+     "result": "confirmed: infobox 'Abandoned: 750 CE'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 33.8,
+    "infobox_year": null,
+    "cliopatria_km2": 5674.0,
+    "ratio": 0.006,
+    "acknowledged": true,
+    "note": "infobox 'Area: 3,381.71 ha' is the archaeological zone, not the state; not comparable; the K1 note says so"
+   }
+  },
+  {
+   "slug": "olmec-civilization",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction and /ledger/0/region",
+     "what": "The new -1200..-651 keyframe reuses Cliopatria's -650 shape and its note says San Lorenzo is inside it, but the capital's grid cell falls about 13 km outside the shape.",
+     "why": "Capital 17.75 N, 94.76 W (cell 380950) is not among the 54 cells of {\"cliopatria\":\"Olmec Civilization\",\"year\":-650}; San Lorenzo page: 'located in the southeast portion of the Mexican state of Veracruz', 'the largest city in Mesoamerica from roughly 1200 BCE until 900 BCE'.",
+     "fix": "Correction and found region set to {\"union\":[{\"cliopatria\":\"Olmec Civilization\",\"year\":-650},{\"lon\":-94.76,\"lat\":17.75,\"km\":20}]} with the source text kept; note extended. Re-validated: 0 errors, 0 warnings; 56 cells, capital inside.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Olmecs",
+     "result": "confirmed: infobox 'c. 1200 – 400 BC'; 'from roughly 1200 to 400 BC'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Olmecs",
+     "result": "confirmed: San Lorenzo 'was all but abandoned around 900 BC at about the same time that La Venta rose to prominence'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Olmecs",
+     "result": "confirmed: 'By about 400 BC the major centres of the Olmec civilization had been abandoned'; La Venta abandoned 'around 400 BC'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 17602.6,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area on the page; the K1 note says so"
+   }
+  },
+  {
+   "slug": "epi-olmec-culture",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Epi-Olmec_culture",
+     "result": "confirmed: 'Concentrated in the Papaloapan River basin', 'from roughly 300 BCE to roughly 250 CE'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Epi-Olmec_culture",
+     "result": "confirmed: 'By 250 CE, Cerro de las Mesas, Remojadas, and other sites further north along the Veracruz coast had eclipsed Tres Zapotes'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no Cliopatria row and no area on the page; drawn region about 14,900 km2; Tres Zapotes inside it; no overlap with zapotec-civilization"
+   }
+  },
+  {
+   "slug": "zapotec-civilization",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/5 (also /keyframe_review/6/correction, /ledger/3/region)",
+     "what": "Cliopatria's 602 shape, accepted as ok and described as 'the Valley of Oaxaca again', lies east and south of Monte Albán and excludes the capital for 602..900.",
+     "why": "Only 10 of the shape's 31 grid cells fall within 40 km of Oaxaca; Monte Albán's cell (380841) is about 17 km outside it; the shape runs east to 95.78 W. Monte Albán page: the city 'lost its political pre-eminence by the end of the Late Classic (c. AD 500–750)' but 'By the end of the same period (c. AD 900–1000), the ancient capital was largely abandoned', so the valley around it is still the state's in 602..900, as the ledger's 602 loss (which keeps the 40 km Oaxaca radius) already assumes.",
+     "fix": "K5 verdict ok -> adjust, correction {\"union\":[{\"cliopatria\":\"Zapotec Civilization\",\"year\":602},{\"place\":\"Oaxaca\",\"km\":40,\"country\":\"Mexico\"}]}; the same union with year 892 in K6 and in the dissolve region; notes extended. Re-validated: 0 errors, 0 warnings; 39 cells (about 9,860 km2), capital inside.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "the 602 loss of the outer valleys is Cliopatria's year inside the page's 'c. AD 500–750' (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Lambityeco"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Monte_Alb%C3%A1n",
+     "result": "confirmed: 'Founded toward the end of the Middle Formative period at around 500 BC'; 'uninhabited prior to 500 BCE'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Monte_Alb%C3%A1n",
+     "result": "confirmed: 'Monte Albán II phase, c. 100 BCE – CE 200'; expansion to 'the Cañada de Cuicatlán' and 'the southern Ejutla and Sola de Vega valleys'; Isthmus and coast not on the page (the removal is supported)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Monte_Alb%C3%A1n",
+     "result": "confirmed as a window: 'lost its political pre-eminence by the end of the Late Classic (c. AD 500–750)'; 602 is Cliopatria's, confidence 1 is honest"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Monte_Alb%C3%A1n",
+     "result": "confirmed: 'By the end of the same period (c. AD 900–1000), the ancient capital was largely abandoned'; Cuilapan, Zaachila, Lambityeco, Mitla, El Palmillo named"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 69767.8,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area on either page; Zapotec civilization page: 'dominated much of the territory which today is known as the Mexican state of Oaxaca', 'By 200 ... from Quiotepec in the North to Ocelotepec and Chiltepec in the South'; the adjusted -91..601 shape is about 47,300 km2 (half of Oaxaca state), consistent"
+   }
+  },
+  {
+   "slug": "classic-veracruz-culture",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0, /1, /2 (and /notes)",
+     "what": "The Cliopatria shapes accepted (years only) as El Tajín's do not contain El Tajín, so the row's identification as the El Tajín polity 'by its shapes' and the notes' 'four shapes centred on El Tajín' are false.",
+     "why": "El Tajín (infobox 20°26′53″N 97°22′42″W) lies outside the shapes.csv bbox of all four shapes (-97.3534..-96.3824, 19.5719..20.4077) and about 38 km from the nearest grid cell of the 555 shape, whose cells centre on 19.94 N, 96.89 W (the Nautla–Misantla coast); a 40 km circle around El Tajín shares 1 cell with it; the 705 shape centres on 19.37 N, 96.63 W (central Veracruz coast). The page's core 'between the Cazones and Tecolutla Rivers' lies north of the shape.",
+     "fix": "Either (a) keep the El Tajín reading and redraw: K0 and K2 = {\"place\":\"El Tajín\",\"km\":40} with text 'controlled an area from between the Cazones and Tecolutla Rivers to the modern state of Puebla', K1 = union of that circle with the 705 shape, ledger regions to match, notes corrected; or (b) write the row as the Classic Veracruz culture (type culture, 'roughly 100 to 1000 CE' on its page), whose central-Veracruz shapes these are, and give El Tajín its own slug (el-tajin). Either way state which in notes.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "the 705 southward expansion is Cliopatria's date; the page attaches only 'From 600 to 1200 CE' to 'eventually controlled much of what is now modern Veracruz state' (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Totonac"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/El_Taj%C3%ADn",
+     "result": "confirmed: 'by 600 CE, El Tajín was a city'; 'flourished from 600 to 1200'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/El_Taj%C3%ADn",
+     "result": "extent confirmed, undated: the only date is the sentence's 'From 600 to 1200 CE'; confidence 1 is honest"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/El_Taj%C3%ADn",
+     "result": "confirmed: apogee 'in the Epi-Classic (900-1100 CE)'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/El_Taj%C3%ADn",
+     "result": "confirmed: 'prospered until the early years of the 13th century, when it was destroyed by fire'; no exact year on the page"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2.4,
+    "infobox_year": null,
+    "cliopatria_km2": 18503.9,
+    "ratio": 0.0001,
+    "acknowledged": true,
+    "note": "infobox 'Area: 240 ha' is the site, not the state; not comparable; the K0 note says so"
+   }
+  },
+  {
+   "slug": "cholula",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0",
+     "what": "The -300..749 keyframe (25 km circle) contains Cacaxtla's capital for 650..749, while cacaxtla holds its 10 km core from 650: the same land is drawn for two states.",
+     "why": "Grid: {\"place\":\"Cholula\",\"km\":25} includes cell 295354, Cacaxtla's capital cell and one of the 2 cells of cacaxtla /keyframe_review/0. Cacaxtla page: 'Cacaxtla and Xochitecatl prospered 650–900 CE'. The 750..900 keyframe already subtracts Cacaxtla; 650..749 does not.",
+     "fix": "End K0 at 649; add keyframe cholula_650 (650..749) = {\"minus\":[{\"place\":\"Cholula\",\"km\":25,\"country\":\"Mexico\"},{\"place\":\"Cacaxtla\",\"km\":10,\"country\":\"Mexico\"}]}; add a 650 loss (counterpart cacaxtla, confidence 2, Cacaxtla page) and set cacaxtla /ledger/0 counterpart to cholula; or shrink the circle to 20 km.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0 (cross-dossier with teotihuacan)",
+     "what": "Teotihuacan's Cliopatria shapes (-50..704) contain 5 of Cholula's 7 cells including the capital; neither dossier records a relation.",
+     "why": "Grid overlap 5 cells (about 1,260 km2); no page opened says Cholula was Teotihuacan's dependency.",
+     "fix": "Resolved in teotihuacan (fix 1 there); no change needed here unless a page makes Cholula a Teotihuacan dependency, in which case add vassal events in both.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "the 900 regain of the northern valley from cacaxtla is an inference (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Olmeca-Xicalanca"
+    },
+    {
+     "where": "/ledger (1200..1521)",
+     "what is missing": "no vassal events for 'Sometime between 1200 and 1517, Cholula was conquered by the neighboring city-state of Tlaxcala' and 'In 1517, Cholula seceded from the Tlaxcala Triple Alliance, opting to join the far more powerful Aztec equivalent'; the mirror rule wants them in cholula's ledger too (counterparts tlaxcala, aztec-triple-alliance; am-03)",
+     "page to try": "https://en.wikipedia.org/wiki/Cholula_(Mesoamerican_site)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Cholula_(Mesoamerican_site)",
+     "result": "confirmed: 'When the pyramid was originally built in 300 BCE'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Cholula_(Mesoamerican_site)",
+     "result": "confirmed: Tlachihualtepetl phase (CE 700–1200), 'taken over by the Gulf Coast group known as the Olmeca-Xicallanca, who made it their capital'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Cacaxtla",
+     "result": "confirmed: 'After the fall of the nearby city Cholula (c. 650 – 750)', 'Cacaxtla became the hegemonic power in this part of the Tlaxcala–Puebla valley'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Cholula_(Mesoamerican_site)",
+     "result": "confirmed: 'In CE 1200, ethnic Tolteca-Chichimeca conquered Cholula'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Cholula_(Mesoamerican_site)",
+     "result": "confirmed without a year: 'peacefully transferred to Spanish hands after the Spanish-Aztec War's conclusion'; the note says the year is the war's end"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no Cliopatria row; page gives city sizes only (2, 5, 10 km2); the K0 note says so"
+   }
+  },
+  {
+   "slug": "cacaxtla",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "no founding year, coordinates or extent on the page beyond 'this part of the Tlaxcala–Puebla valley'; Xochitécatl page not opened",
+     "page to try": "https://en.wikipedia.org/wiki/Xochit%C3%A9catl"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Cacaxtla",
+     "result": "confirmed: 'Cacaxtla and Xochitecatl prospered 650–900 CE'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Cacaxtla",
+     "result": "confirmed: 'After the fall of the nearby city Cholula (c. 650 – 750)' ... 'hegemonic power in this part of the Tlaxcala–Puebla valley'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Cacaxtla",
+     "result": "confirmed: 'Its ascendancy came to an end around 900 CE and, by 1000, the city had been abandoned'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area on the page ('enclave population of no more than 10,000'); the 650..749 overlap with cholula is that dossier's fix; /ledger/0 counterpart becomes cholula if cholula adds the 650 loss"
+   }
+  },
+  {
+   "slug": "xochicalco",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/0/confidence and /ledger/1/confidence",
+     "what": "Found and dissolve at confidence 3 although the page names no territory; the 30 km radius is the researcher's reading (the K0 note says so).",
+     "why": "Xochicalco page: 'founded in about 650 AD by the Olmeca-Xicallanca'; 'around 900 CE the city of Xochicalco was burned and destroyed'; territorial extent not on the page (only 'towns that paid tribute to Xochicalco' on the carvings). Schema: 3 only when the page 'names the land in its own words'.",
+     "fix": "Both set to confidence 2, notes extended. Re-validated: 0 errors, 0 warnings.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "no territorial extent: the tribute towns carved on the Pyramid of the Feathered Serpent could bound the 30 km reading",
+     "page to try": "https://en.wikipedia.org/wiki/Xochicalco"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Xochicalco",
+     "result": "confirmed: 'Xochicalco was founded in about 650 AD by the Olmeca-Xicallanca'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Xochicalco",
+     "result": "confirmed: 'At some point around 900 CE the city of Xochicalco was burned and destroyed'; Teotihuacan page: 'Xochicalco was sacked and burned in 900'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 7.1,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "infobox 'Area: 707.65 ha' is the site; drawn radius about 2,530 km2; the K0 note cites the 707.65 ha zone"
+   }
+  },
+  {
+   "slug": "western-mexico-shaft-tomb-tradition",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger",
+     "what is missing": "the Teuchitlán tradition (300 BCE–900 CE) that continues on the same land after 400 has no dossier; the author's URL had an accent",
+     "page to try": "https://en.wikipedia.org/wiki/Teuchitlan_tradition"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Western_Mexico_shaft_tomb_tradition",
+     "result": "confirmed: 'thought to have developed around 300 BCE'; Jalisco, Nayarit and 'to a lesser extent' Colima, Tequila valleys the 'undisputed core'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Western_Mexico_shaft_tomb_tradition",
+     "result": "confirmed: 'roughly dating to the period between 300 BCE and 400 CE'; 'lasted until at least 300 CE although there is not wide agreement on the end date'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "culture area, no area on the page; the note quotes 'not a unified cultural area'"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "teotihuacan",
+    "year": -50,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "teotihuacan",
+    "year": 200,
+    "type": "gain",
+    "counterpart": "Cuicuilco"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; Cuicuilco listed in the author's counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "teotihuacan",
+    "year": 378,
+    "type": "vassal_start",
+    "counterpart": "mayan-city-states"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "mayan-city-states is owned by am-02 (Maya), not yet run; it should carry vassal_start 378 (14 January) / 379 naming teotihuacan"
+  },
+  {
+   "event": {
+    "slug": "teotihuacan",
+    "year": 426,
+    "type": "vassal_end",
+    "counterpart": "mayan-city-states"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "am-02 not yet run; derived end year (47-year reign from 379)"
+  },
+  {
+   "event": {
+    "slug": "teotihuacan",
+    "year": 650,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "zapotec-civilization",
+    "year": -100,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody; Cliopatria's shape changes at -91"
+  },
+  {
+   "event": {
+    "slug": "zapotec-civilization",
+    "year": 602,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "classic-veracruz-culture",
+    "year": 705,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "classic-veracruz-culture",
+    "year": 1100,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "cholula",
+    "year": 750,
+    "type": "loss",
+    "counterpart": "cacaxtla"
+   },
+   "mirror": {
+    "slug": "cacaxtla",
+    "year": 750,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "both at 750 on the Cacaxtla page; land Cacaxtla 30 km on both sides"
+  },
+  {
+   "event": {
+    "slug": "cholula",
+    "year": 900,
+    "type": "gain",
+    "counterpart": "cacaxtla"
+   },
+   "mirror": {
+    "slug": "cacaxtla",
+    "year": 900,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "cholula confidence 1, cacaxtla dissolve names cholula"
+  },
+  {
+   "event": {
+    "slug": "cholula",
+    "year": 1521,
+    "type": "dissolve",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "spanish-empire owned by am-06 / eu-12, not yet run"
+  },
+  {
+   "event": {
+    "slug": "cholula",
+    "year": 1517,
+    "type": "vassal_start",
+    "counterpart": "aztec-triple-alliance"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "not in cholula's ledger: page 'In 1517, Cholula seceded from the Tlaxcala Triple Alliance, opting to join the far more powerful Aztec equivalent'; aztec-triple-alliance is am-03's (not run); Tlaxcala subjection 'sometime between 1200 and 1517' likewise (tlaxcala has no dossier, listed)"
+  },
+  {
+   "event": {
+    "slug": "teotihuacan",
+    "year": -50,
+    "type": "keyframe",
+    "counterpart": "cholula"
+   },
+   "mirror": {
+    "slug": "cholula",
+    "year": -300,
+    "type": "keyframe"
+   },
+   "status": "mismatch",
+   "note": "land: teotihuacan's Cliopatria shapes (-50..704) and its 200..649 union contain 5 of the 7 cells of cholula's 25 km circle, Cholula's capital included; no relation in either ledger; fix in teotihuacan"
+  },
+  {
+   "event": {
+    "slug": "teotihuacan",
+    "year": 650,
+    "type": "keyframe",
+    "counterpart": "cacaxtla"
+   },
+   "mirror": {
+    "slug": "cacaxtla",
+    "year": 650,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "land: teotihuacan's 656 shape (kept 650..704) contains all of cacaxtla's 10 km core (cacaxtla founded 650); Teotihuacan page names Cacaxtla among the centres that 'competed to fill the power void'; fix in teotihuacan"
+  },
+  {
+   "event": {
+    "slug": "cholula",
+    "year": 650,
+    "type": "keyframe",
+    "counterpart": "cacaxtla"
+   },
+   "mirror": {
+    "slug": "cacaxtla",
+    "year": 650,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "land: cholula's -300..749 circle contains Cacaxtla's capital cell 650..749; fix in cholula (650 loss and a cholula_650 keyframe minus Cacaxtla 10 km)"
+  },
+  {
+   "event": {
+    "slug": "olmec-civilization",
+    "year": -400,
+    "type": "dissolve",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "epi-olmec-culture",
+    "year": -300,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "successor/predecessor entries agree (Olmec -366 shape); -399..-301 nobody's land, stated on both sides"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Basin of Mexico (hydrological basin, without the Toluca valley)",
+   "kind": "region",
+   "used_in": "teotihuacan"
+  },
+  {
+   "name": "San Lorenzo Tenochtitlán",
+   "kind": "place",
+   "used_in": "olmec-civilization"
+  },
+  {
+   "name": "Valley of Oaxaca",
+   "kind": "region",
+   "used_in": "zapotec-civilization"
+  },
+  {
+   "name": "Cañada de Cuicatlán",
+   "kind": "region",
+   "used_in": "zapotec-civilization"
+  },
+  {
+   "name": "Isthmus of Tehuantepec",
+   "kind": "region",
+   "used_in": "zapotec-civilization"
+  },
+  {
+   "name": "Papantla",
+   "kind": "place",
+   "used_in": "classic-veracruz-culture"
+  },
+  {
+   "name": "Tequila",
+   "kind": "place",
+   "used_in": "western-mexico-shaft-tomb-tradition"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Cuicuilco",
+   "suggested_slug": "cuicuilco",
+   "years": [
+    -150,
+    200
+   ]
+  },
+  {
+   "name": "Tlaxcala (Tlaxcallan)",
+   "suggested_slug": "tlaxcala",
+   "years": [
+    1200,
+    1521
+   ]
+  },
+  {
+   "name": "El Tajín (if the Cliopatria row is rewritten as the Classic Veracruz culture)",
+   "suggested_slug": "el-tajin",
+   "years": [
+    600,
+    1200
+   ]
+  },
+  {
+   "name": "Teuchitlán tradition",
+   "suggested_slug": "teuchitlan-tradition",
+   "years": [
+    -300,
+    900
+   ]
+  },
+  {
+   "name": "Postclassic Zapotec city-states (Zaachila, Mitla)",
+   "suggested_slug": "zaachila",
+   "years": [
+    900,
+    1521
+   ]
+  },
+  {
+   "name": "Totonac polities (Papantla, Cempoala)",
+   "suggested_slug": "totonacapan",
+   "years": [
+    1200,
+    1519
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-am-01.md",
+ "problems": [
+  "The orchestrator's adjustment lets the reviewer apply small fixes, against brief section 5 ('Do not edit dossiers'); three were applied (olmec-civilization K0/L0, zapotec-civilization K5/K6/L3, xochicalco L0/L1 confidence) and re-validated, the rest left for the author.",
+  "Ruling still needed from the orchestrator: type 'culture' used after 3400 BCE for olmec-civilization, epi-olmec-culture and western-mexico-shaft-tomb-tradition (author's problem 1).",
+  "The gazetteer's 'Valley of Mexico' (Distrito Federal + México state) takes in the Toluca valley; a hydrological Basin of Mexico entry would serve teotihuacan and later Toltec/Aztec dossiers.",
+  "Author's failed pages: Teuchitl%C3%A1n_tradition (try Teuchitlan_tradition) and the Seshat Monte Albán page; no page failed for the reviewer.",
+  "Context polities for am-01 are none (brief section 6); no neighbour dossier existed to read; mayan-city-states (am-02), aztec-triple-alliance (am-03) and spanish-empire (am-06/eu-12) have not been written yet."
+ ]
+}

@@ -1,0 +1,900 @@
+{
+ "batch_id": "eu-22-b",
+ "verdicts": [
+  {
+   "slug": "second-republic-of-austria",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/0/counterpart, /ledger/1/counterpart, /wars/0/belligerents",
+     "what": "The 1945 Yugoslav occupation of Carinthia named socialist-federal-republic-of-yugoslavia, a state this batch founds only in November 1945.",
+     "why": "Carinthia page: Yugoslav troops occupied Klagenfurt at the end of the war, 'the Allied forces did not reach Carinthia before May 8, 1945', and were 'soon forced to withdraw by the British forces'; SFRY page: 'on 29 November 1945, the Federal People's Republic of Yugoslavia was proclaimed'. The author's own note says the troops were the Yugoslav Army before the federal republic, and yugoslav-partisans (dissolve 1945-03) hands its land to slug yugoslavia.",
+     "fix": "Counterpart and belligerent set to 'yugoslavia' (the Yugoslav state of May 1945, Cliopatria row 'Yugoslavia'); note of /ledger/0 extended. Re-validated: 0 errors, 0 warnings.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0, /ledger/1",
+     "what is missing": "Month of the Yugoslav entry into Klagenfurt (May 1945) and the withdrawal date; both events carry no month, so /ledger/0 sorts before the found event of 1945-04 although it came after 8 May 1945",
+     "page to try": "https://en.wikipedia.org/wiki/World_War_II_in_Yugoslavia"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Allied-occupied_Austria",
+     "result": "confirmed: 'declared independence from Nazi Germany on 27 April 1945'; infobox 'Established: 27 April 1945'"
+    },
+    {
+     "where": "/ledger/3-6",
+     "page": "https://en.wikipedia.org/wiki/Allied-occupied_Austria",
+     "result": "confirmed: 'On 9 July 1945 the Allies agreed on the borders of their occupation zones'; Salzburg and Upper Austria south of the Danube (US), East Tyrol, Carinthia, Styria (UK), Vorarlberg and North Tyrol (France), Burgenland, Lower Austria, Muhlviertel (USSR); 'Vienna was divided among all four Allies' (the dossier draws Vienna in the Soviet hatch and says so)"
+    },
+    {
+     "where": "/ledger/7-10",
+     "page": "https://en.wikipedia.org/wiki/Allied-occupied_Austria",
+     "result": "confirmed: State Treaty 'came into force on 27 July and on 25 October the country was free of occupying troops'"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Carinthia",
+     "result": "confirmed: 'Yugoslav troops occupied parts of Carinthia, including the capital city of Klagenfurt', no month (confidence 2 is honest)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 83879,
+    "infobox_year": 2024,
+    "cliopatria_km2": 85349,
+    "ratio": 1.02,
+    "acknowledged": true,
+    "note": "Austria page infobox 83,879 km2 (no year, present day) against second-republic-of-austria_1947 (1947-1991); the 1946 shape (59,811 km2, Soviet zone missing) is marked adjust with the 1947 outline"
+   }
+  },
+  {
+   "slug": "socialist-federal-republic-of-yugoslavia",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/0, /ledger/1",
+     "what": "The Carinthia occupation of May 1945 is ledgered for a state whose start is 1945-11; the events precede the state's foundation.",
+     "why": "Carinthia page: occupation after 8 May 1945 and 'soon' withdrawn; SFRY page: FPR Yugoslavia proclaimed 29 November 1945; the note itself says 'The troops are those of the Yugoslav Army before the federal republic was proclaimed in November'. Austria's mirror now names 'yugoslavia' (reviewer fix in second-republic-of-austria).",
+     "fix": "Delete /ledger/0 and /ledger/1 here (and the Carinthia mention from the 1945 certainty note if it implies SFRY ownership); the events belong to the yugoslavia dossier (eu-21, not written). If instead the author moves the start to March 1945 and treats Democratic Federal Yugoslavia as this state (rename at 1945-11), say so in notes and in the report so the orchestrator can restore Austria's counterpart and change yugoslav-partisans' successor.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "occupation_start of Istria and the Julian March at 1945-06 precedes the start (1945-11) and names republic-of-italy, which did not exist until 1946-06 (kingdom-of-italy held the land).",
+     "why": "Free Territory of Trieste page: Morgan Line signed at Duino on 10 June, 'Yugoslav troops withdrew to their area on 12 June 1945'; republic-of-italy/0 found 1946-06 from kingdom-of-italy; neither kingdom-of-italy nor republic-of-italy has a mirror occupation event.",
+     "fix": "Open the occupation at the found (1945-11, note: inherited from the Yugoslav army's administration since May-June 1945) with counterpart kingdom-of-italy, close it at 1946-06 and reopen it with counterpart republic-of-italy to 1947-09 (the pairing rule needs one string per pair); route the mirrors to kingdom-of-italy and republic-of-italy.",
+     "applied": false
+    },
+    {
+     "where": "/wars/1/to",
+     "what": "The Croatian War of Independence runs to 1995 in a dossier that ends in 1991; wars must lie inside the life.",
+     "why": "Croatian War page infobox 'March 1, 1991 - November 12, 1995'; identity.end 1991; the outcome text already says 'The SFRY's part ends with its dissolution in 1991'.",
+     "fix": "Set to 1991 and keep the 1995 end in outcome.",
+     "applied": false
+    },
+    {
+     "where": "/identity/successors",
+     "what": "Two land-holding entities that found from the SFRY are not listed as successors.",
+     "why": "croatian-republic-of-herzeg-bosnia/0 found 1991-11 counterpart socialist-federal-republic-of-yugoslavia; republika-srpska/0 found 1992-01 counterpart socialist-federal-republic-of-yugoslavia.",
+     "fix": "Add both to successors with their land (or explain in notes why they are counted under bosnia-and-herzegovina).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/13",
+     "what is missing": "contest_end with Croatia at 1991-11 is confidence 1 (bridged to the Badinter finding); a dated end of the army's front or the 2 January 1992 ceasefire",
+     "page to try": "https://en.wikipedia.org/wiki/Badinter_Arbitration_Committee"
+    },
+    {
+     "where": "/ledger/10",
+     "what is missing": "Day dates of the Ten-Day War (start 27 June 1991, Brioni 7 July)",
+     "page to try": "https://en.wikipedia.org/wiki/Ten-Day_War"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Paris_Peace_Treaties,_1947",
+     "result": "confirmed: signed 10 February 1947, in force 15 September 1947; 'Istria, the provinces of Fiume and Zara, and most of Gorizia and Pola' ceded to Yugoslavia"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Free_Territory_of_Trieste",
+     "result": "confirmed: London Memorandum 5 October 1954, 'Zone B would be annexed by Yugoslavia' with nine villages of Zone A; Zone B 515.5 km2"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Free_Territory_of_Trieste",
+     "result": "confirmed for the month (Duino 10 June, withdrawal to their area 12 June 1945) but the event predates the state's start: see fixes"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Socialist_Federal_Republic_of_Yugoslavia",
+     "result": "confirmed: 'The country was renamed Socialist Federal Republic of Yugoslavia in 1963' (infobox second constitution 7 April 1963)"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Croatian_War_of_Independence",
+     "result": "confirmed: 'In August 1991, the Battle of Vukovar began'; Yugoslav and Serb forces 'held something less than one-third of the Croatian territory'"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Breakup_of_Yugoslavia",
+     "result": "confirmed in substance: Badinter found 'the SFR Yugoslavia was in the process of dissolution'; the page dates the formal end to 27 April 1992 (the dossier says so; confidence 2 honest)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 255804,
+    "infobox_year": 0,
+    "cliopatria_km2": 250252,
+    "ratio": 0.98,
+    "acknowledged": true,
+    "note": "infobox gives no year; shape socialist-federal-republic-of-yugoslavia_1949 (1949-1990)"
+   }
+  },
+  {
+   "slug": "hungary",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/2, /ledger/3, /identity/start, /identity/end, /identity/capitals/0, /certainty/1",
+     "what": "The dossier keeps Hungary alive 1946-2024 and bridges 1949-1989 with two rename events, while a separate dossier, hungarian-people-s-republic (eu-22), holds the same land 1949-08 to 1989-10 with hungary as predecessor and successor: two states on one land for forty years, and the two dossiers disagree on what happened in 1949 and 1989 (rename here, found and dissolve there).",
+     "why": "Schema: rename means 'colour and dossier continue'; capitals (Budapest 1946-2024) and certainty (sharp 1947-2024) assert the state through 1949-1989. Hungarian People's Republic page: it existed 'from 20 August 1949 until the establishment of the current Republic of Hungary on 23 October 1989', infobox predecessor 'Second Hungarian Republic', successor 'Third Hungarian Republic'; the batch convention elsewhere (people-s-republic-of-bulgaria / republic-of-bulgaria, socialist-republic-of-romania / romania) is one dossier per regime.",
+     "fix": "Split the Cliopatria row 'Hungary' (brief rule for one row covering successive states): new dossier second-hungarian-republic (1946-02 to 1949-08; found from hungarian-republic, the 1947 loss of the three villages, dissolve with successor hungarian-people-s-republic; reviews shape hungary_1947), reported under new_slugs; this dossier becomes the Third Republic from 1989-10 (found counterpart hungarian-people-s-republic; reviews hungary_1990 to hungary_2024). hungarian-people-s-republic's predecessor then becomes second-hungarian-republic (other part of eu-22). If the orchestrator prefers the opposite ruling (the People's Republic is a rename of one Hungary), merge the 'Hungarian People's Republic' row into this dossier instead and withdraw hungarian-people-s-republic.",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Second_Hungarian_Republic",
+     "result": "confirmed: infobox 'Monarchy abolished: 1 February 1946'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Paris_Peace_Treaties,_1947",
+     "result": "confirmed: three villages south of Bratislava (Horvatjarfalu, Oroszvar, Dunacsun) transferred to Czechoslovakia; in force 15 September 1947"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Hungarian_People%27s_Republic",
+     "result": "confirmed: 'People's Republic: 20 August 1949'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Hungarian_People%27s_Republic",
+     "result": "confirmed: 'Third Republic: 23 October 1989'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 93011,
+    "infobox_year": 1947,
+    "cliopatria_km2": 91985,
+    "ratio": 0.99,
+    "acknowledged": true,
+    "note": "Second Hungarian Republic infobox 93,073 km2 (1946), 93,011 km2 (1947, 1949) against hungary_1947"
+   }
+  },
+  {
+   "slug": "kingdom-of-bulgaria",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/identity (whole dossier)",
+     "what": "A second dossier for the Tsardom of Bulgaria 1908-1946, which principality-of-bulgaria already carries; the schema has no alias type, so the state gets two pages, two lives and two copies of the 1940 Southern Dobruja gain against kingdom-of-romania's single loss.",
+     "why": "principality-of-bulgaria: alt_names 'Kingdom of Bulgaria', 'Tsardom of Bulgaria'; /ledger/5 rename 1908-10, /ledger/31 gain kingdom-of-romania 1940-09 (same Craiova sentence), /ledger/40 dissolve 1946-09 with successor people-s-republic-of-bulgaria. This dossier: found 1908-10, gain 1940-09, dissolve 1946-09, no drawable keyframe (its one shape is marked wrong and handed to people-s-republic-of-bulgaria).",
+     "fix": "Withdraw kingdom-of-bulgaria.json. In people-s-republic-of-bulgaria add 'Kingdom of Bulgaria' to cliopatria_names and turn the new keyframe people-s-republic-of-bulgaria_1946 into the review of shape kingdom-of-bulgaria_1947 (verdict adjust, from 1946, to 1947, same correction and note), and drop kingdom-of-bulgaria from its predecessors; tell the colour agent the slug has no hue. If the orchestrator requires a file for every Cliopatria slug, it must rule on an alias form; the current file is not one.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/0",
+     "what": "found with counterpart principality-of-bulgaria has no mirror: that dossier records 1908-10 as a rename of the same state, not a split or loss.",
+     "why": "principality-of-bulgaria/5 rename 1908-10.",
+     "fix": "Resolved by withdrawing the dossier (above).",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Bulgaria",
+     "result": "confirmed: 'Independence declared: 5 October 1908'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Bulgaria",
+     "result": "confirmed: 'On 7 September 1940 Bulgaria succeeded in negotiating the recovery of Southern Dobruja' (Treaty of Craiova)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Bulgaria",
+     "result": "confirmed: 'Monarchy abolished: 15 September 1946'; 'The republic was formally proclaimed a week later'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 122134,
+    "infobox_year": 1915,
+    "cliopatria_km2": 110018,
+    "ratio": 0.9,
+    "acknowledged": true,
+    "note": "only shape is 1947, after the monarchy; the keyframe note compares and explains"
+   }
+  },
+  {
+   "slug": "people-s-republic-of-bulgaria",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/People%27s_Republic_of_Bulgaria",
+     "result": "confirmed: infobox 'Monarchy abolished: 15 September 1946'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/People%27s_Republic_of_Bulgaria",
+     "result": "confirmed: 'On 15 November the People's Republic of Bulgaria was officially renamed to the Republic of Bulgaria' (infobox 15 November 1990)"
+    },
+    {
+     "where": "/keyframe_review/1/note",
+     "page": "https://en.wikipedia.org/wiki/People%27s_Republic_of_Bulgaria",
+     "result": "confirmed: 'Geographically, the People's Republic of Bulgaria had the same borders as present-day Bulgaria' and the contradictory Pirin Macedonia sentence; not applying the latter is right"
+    },
+    {
+     "where": "/keyframe_review/0/note",
+     "page": "https://en.wikipedia.org/wiki/Paris_Peace_Treaties,_1947",
+     "result": "confirmed: Bulgaria 'restored to its borders of 1 January 1941', kept Southern Dobruja"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 110994,
+    "infobox_year": 0,
+    "cliopatria_km2": 109564,
+    "ratio": 0.99,
+    "acknowledged": true,
+    "note": "infobox gives no year; shape people-s-republic-of-bulgaria_1949 (1949-1989). If kingdom-of-bulgaria is withdrawn (fix there), this dossier takes the 'Kingdom of Bulgaria' row and drops that predecessor."
+   }
+  },
+  {
+   "slug": "socialist-republic-of-romania",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Socialist_Republic_of_Romania",
+     "result": "confirmed: 'Forced abdication of Michael I: 30 December 1947'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Socialist_Republic_of_Romania",
+     "result": "confirmed: name changed to Socialist Republic of Romania on 21 August 1965"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Socialist_Republic_of_Romania",
+     "result": "confirmed: 'Name changed to \"Romania\": 28 December 1989' (fall of Ceausescu 22 December; the 8 December 1991 abolition is noted and not applied)"
+    },
+    {
+     "where": "/keyframe_review/0/note",
+     "page": "https://en.wikipedia.org/wiki/Paris_Peace_Treaties,_1947",
+     "result": "confirmed: Romania 'restored to its borders of 1 January 1941', Northern Transylvania returned, Bessarabia and Northern Bukovina loss confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 238172,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the page has no area in its infobox (checked); one outline 1947-1989, identical to kingdom-of-romania_1947 and romania_1990"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "second-republic-of-austria",
+    "year": 1945,
+    "type": "occupation_start",
+    "counterpart": "yugoslavia"
+   },
+   "mirror": {
+    "slug": "yugoslavia",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Counterpart changed from SFRY by the reviewer; the yugoslavia dossier (eu-21, Cliopatria 'Yugoslavia' 1919-1945) is not written. SFRY/0 currently holds a mirror and must drop it."
+  },
+  {
+   "event": {
+    "slug": "second-republic-of-austria",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "yugoslavia"
+   },
+   "mirror": {
+    "slug": "yugoslavia",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "As above; SFRY/1 to be dropped."
+  },
+  {
+   "event": {
+    "slug": "second-republic-of-austria",
+    "year": 1945,
+    "type": "found",
+    "counterpart": "nazi-germany"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany/96 dissolve 1945-05; its identity.successors name 'republic-of-austria' (the First Republic slug, ends 1937) instead of second-republic-of-austria: route to nazi-germany's group."
+  },
+  {
+   "event": {
+    "slug": "second-republic-of-austria",
+    "year": 1945,
+    "type": "occupation_start",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": {
+    "slug": "united-states-of-america",
+    "year": 1945,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "united-states-of-america/110 (no month)."
+  },
+  {
+   "event": {
+    "slug": "second-republic-of-austria",
+    "year": 1955,
+    "type": "occupation_end",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": {
+    "slug": "united-states-of-america",
+    "year": 1955,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "united-states-of-america/125."
+  },
+  {
+   "event": {
+    "slug": "second-republic-of-austria",
+    "year": 1945,
+    "type": "occupation_start",
+    "counterpart": "french-fourth-republic"
+   },
+   "mirror": {
+    "slug": "french-fourth-republic",
+    "year": 1945,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "french-fourth-republic/3, 1945-07."
+  },
+  {
+   "event": {
+    "slug": "second-republic-of-austria",
+    "year": 1955,
+    "type": "occupation_end",
+    "counterpart": "french-fourth-republic"
+   },
+   "mirror": {
+    "slug": "french-fourth-republic",
+    "year": 1955,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "french-fourth-republic/9, 1955-10."
+  },
+  {
+   "event": {
+    "slug": "second-republic-of-austria",
+    "year": 1945,
+    "type": "occupation_start",
+    "counterpart": "united-kingdom"
+   },
+   "mirror": {
+    "slug": "united-kingdom",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "united-kingdom has occupation events for Germany (nazi-germany, 1945-06) but none for Austria (British zone: Carinthia, Styria, East Tyrol, 9 July 1945 to 25 October 1955)."
+  },
+  {
+   "event": {
+    "slug": "second-republic-of-austria",
+    "year": 1955,
+    "type": "occupation_end",
+    "counterpart": "united-kingdom"
+   },
+   "mirror": {
+    "slug": "united-kingdom",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "As above."
+  },
+  {
+   "event": {
+    "slug": "second-republic-of-austria",
+    "year": 1945,
+    "type": "occupation_start",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "USSR dossier (eu-17) has no Austrian zone events (Lower Austria, Burgenland, Muhlviertel, Vienna sector, 1945-07 to 1955-10)."
+  },
+  {
+   "event": {
+    "slug": "second-republic-of-austria",
+    "year": 1955,
+    "type": "occupation_end",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "As above."
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1945,
+    "type": "occupation_start",
+    "counterpart": "second-republic-of-austria"
+   },
+   "mirror": {
+    "slug": "second-republic-of-austria",
+    "year": 1945,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "Austria/0 now names 'yugoslavia' (the event predates SFRY's 1945-11 start); SFRY must drop its /0 and /1."
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1945,
+    "type": "occupation_start",
+    "counterpart": "republic-of-italy"
+   },
+   "mirror": {
+    "slug": "republic-of-italy",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "SFRY/2, 1945-06: no mirror in republic-of-italy (founded 1946-06) nor kingdom-of-italy; the counterpart is anachronistic (see SFRY fixes)."
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1947,
+    "type": "occupation_end",
+    "counterpart": "republic-of-italy"
+   },
+   "mirror": {
+    "slug": "republic-of-italy",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "SFRY/4: republic-of-italy has no occupation_end for the Yugoslav-held Julian March."
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1945,
+    "type": "found",
+    "counterpart": "yugoslavia"
+   },
+   "mirror": {
+    "slug": "yugoslavia",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "yugoslavia dossier not written (author lists it in counterparts_needing_dossiers, eu-21); it should end in November 1945."
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1947,
+    "type": "gain",
+    "counterpart": "republic-of-italy"
+   },
+   "mirror": {
+    "slug": "republic-of-italy",
+    "year": 1947,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "republic-of-italy/2, 1947-09."
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1947,
+    "type": "occupation_start",
+    "counterpart": "free-territory-of-trieste"
+   },
+   "mirror": {
+    "slug": "free-territory-of-trieste",
+    "year": 1947,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "free-territory-of-trieste/3, 1947-09 (roles reversed as the schema asks)."
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1954,
+    "type": "occupation_end",
+    "counterpart": "free-territory-of-trieste"
+   },
+   "mirror": {
+    "slug": "free-territory-of-trieste",
+    "year": 1954,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "free-territory-of-trieste/8, 1954-10."
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1954,
+    "type": "gain",
+    "counterpart": "free-territory-of-trieste"
+   },
+   "mirror": {
+    "slug": "free-territory-of-trieste",
+    "year": 1954,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "free-territory-of-trieste/7, 1954-10."
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1991,
+    "type": "contest_start",
+    "counterpart": "republic-of-slovenia"
+   },
+   "mirror": {
+    "slug": "republic-of-slovenia",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "republic-of-slovenia not written (eu-22 part not run yet)."
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1991,
+    "type": "contest_start",
+    "counterpart": "republic-of-croatia"
+   },
+   "mirror": {
+    "slug": "republic-of-croatia",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "republic-of-croatia not written (eu-22 part not run yet)."
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1991,
+    "type": "dissolve",
+    "counterpart": "bosnia-and-herzegovina"
+   },
+   "mirror": {
+    "slug": "bosnia-and-herzegovina",
+    "year": 1992,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "bosnia-and-herzegovina/0 found 1992-03 from SFRY, within a year of the 1991-11 dissolve."
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1991,
+    "type": "dissolve",
+    "counterpart": "serbia-montenegro"
+   },
+   "mirror": {
+    "slug": "serbia-montenegro",
+    "year": 1992,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "serbia-montenegro/0 found 1992-04 from SFRY, within a year."
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1991,
+    "type": "dissolve",
+    "counterpart": "republika-srpska"
+   },
+   "mirror": {
+    "slug": "republika-srpska",
+    "year": 1992,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "republika-srpska/0 found 1992-01 from SFRY, but SFRY's successors omit it."
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1991,
+    "type": "dissolve",
+    "counterpart": "croatian-republic-of-herzeg-bosnia"
+   },
+   "mirror": {
+    "slug": "croatian-republic-of-herzeg-bosnia",
+    "year": 1991,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "croatian-republic-of-herzeg-bosnia/0 found 1991-11 from SFRY, but SFRY's successors omit it."
+  },
+  {
+   "event": {
+    "slug": "hungary",
+    "year": 1946,
+    "type": "found",
+    "counterpart": "hungarian-republic"
+   },
+   "mirror": {
+    "slug": "hungarian-republic",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "hungarian-republic not written (author lists it; eu-20/eu-21); it should end 1946-02 and needs a 1944-1945 keyframe."
+  },
+  {
+   "event": {
+    "slug": "hungary",
+    "year": 1947,
+    "type": "loss",
+    "counterpart": "czechoslovakia"
+   },
+   "mirror": {
+    "slug": "czechoslovakia",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "czechoslovakia (eu-21) has no 1947 gain of Cunovo, Jarovce, Rusovce (62 km2, Bratislava bridgehead); author flagged it."
+  },
+  {
+   "event": {
+    "slug": "hungary",
+    "year": 1949,
+    "type": "rename",
+    "counterpart": null
+   },
+   "mirror": {
+    "slug": "hungarian-people-s-republic",
+    "year": 1949,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "hungarian-people-s-republic/0 found 1949-08 counterpart hungary; this dossier calls the same moment a rename and continues: see hungary fixes."
+  },
+  {
+   "event": {
+    "slug": "hungary",
+    "year": 1989,
+    "type": "rename",
+    "counterpart": null
+   },
+   "mirror": {
+    "slug": "hungarian-people-s-republic",
+    "year": 1989,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "hungarian-people-s-republic/3 dissolve 1989-10 with successor hungary; this dossier a rename."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bulgaria",
+    "year": 1908,
+    "type": "found",
+    "counterpart": "principality-of-bulgaria"
+   },
+   "mirror": {
+    "slug": "principality-of-bulgaria",
+    "year": 1908,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "principality-of-bulgaria/5 treats 1908 as a rename of the same state: duplicate dossier."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bulgaria",
+    "year": 1940,
+    "type": "gain",
+    "counterpart": "kingdom-of-romania"
+   },
+   "mirror": {
+    "slug": "principality-of-bulgaria",
+    "year": 1940,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Duplicate of principality-of-bulgaria/31 (same gain, same sentence); kingdom-of-romania itself not written (eu-21)."
+  },
+  {
+   "event": {
+    "slug": "people-s-republic-of-bulgaria",
+    "year": 1946,
+    "type": "found",
+    "counterpart": "principality-of-bulgaria"
+   },
+   "mirror": {
+    "slug": "principality-of-bulgaria",
+    "year": 1946,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "principality-of-bulgaria/40 dissolve 1946-09 with successor people-s-republic-of-bulgaria."
+  },
+  {
+   "event": {
+    "slug": "people-s-republic-of-bulgaria",
+    "year": 1990,
+    "type": "dissolve",
+    "counterpart": "republic-of-bulgaria"
+   },
+   "mirror": {
+    "slug": "republic-of-bulgaria",
+    "year": 1990,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "republic-of-bulgaria/0 found 1990-11."
+  },
+  {
+   "event": {
+    "slug": "socialist-republic-of-romania",
+    "year": 1947,
+    "type": "found",
+    "counterpart": "kingdom-of-romania"
+   },
+   "mirror": {
+    "slug": "kingdom-of-romania",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-romania not written (author lists it, eu-21); it should end 1947-12."
+  },
+  {
+   "event": {
+    "slug": "socialist-republic-of-romania",
+    "year": 1989,
+    "type": "dissolve",
+    "counterpart": "romania"
+   },
+   "mirror": {
+    "slug": "romania",
+    "year": 1989,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "romania/0 found 1989-12 from socialist-republic-of-romania."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Mühlviertel",
+   "kind": "region",
+   "used_in": "second-republic-of-austria"
+  },
+  {
+   "name": "East Tyrol",
+   "kind": "region",
+   "used_in": "second-republic-of-austria"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Yugoslavia (Kingdom; Democratic Federal Yugoslavia to November 1945)",
+   "suggested_slug": "yugoslavia",
+   "years": [
+    1919,
+    1945
+   ]
+  },
+  {
+   "name": "Kingdom of Romania",
+   "suggested_slug": "kingdom-of-romania",
+   "years": [
+    1919,
+    1947
+   ]
+  },
+  {
+   "name": "Kingdom of Hungary (Cliopatria 'Hungarian Republic')",
+   "suggested_slug": "hungarian-republic",
+   "years": [
+    1919,
+    1946
+   ]
+  },
+  {
+   "name": "Second Hungarian Republic (if the hungary split is ruled)",
+   "suggested_slug": "second-hungarian-republic",
+   "years": [
+    1946,
+    1949
+   ]
+  },
+  {
+   "name": "Republic of Slovenia (eu-22 part not run yet)",
+   "suggested_slug": "republic-of-slovenia",
+   "years": [
+    1991,
+    2024
+   ]
+  },
+  {
+   "name": "Republic of Croatia (eu-22 part not run yet)",
+   "suggested_slug": "republic-of-croatia",
+   "years": [
+    1991,
+    2024
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-22-b.md",
+ "problems": [
+  "No page failed to load. All 18 spot-checked events (4 to 6 per dossier) say on their pages what the notes claim, with the year; no fabricated or mis-dated event found. The three fails are structural (events before the founding, two dossiers for one state), not sourcing.",
+  "Reviewer fix applied (orchestrator allowance): second-republic-of-austria /ledger/0, /ledger/1 counterpart and /wars/0 belligerent set to 'yugoslavia'; re-validated 0 errors, 0 warnings; read back.",
+  "Routing for other groups: nazi-germany successors name republic-of-austria instead of second-republic-of-austria; united-kingdom and union-of-soviet-socialist-republics lack the Austrian zone occupation events; czechoslovakia lacks the 1947 Bratislava-bridgehead gain; kingdom-of-italy / republic-of-italy lack the Yugoslav occupation of the Julian March 1945-1947.",
+  "The hungary and kingdom-of-bulgaria fixes need an orchestrator ruling because they touch dossiers of the other eu-22 part (hungarian-people-s-republic, principality-of-bulgaria) and the colour assignments.",
+  "The shared mount is slow: a scan of all 2,900 dossiers for counterparts took over two minutes; neighbour checks were done on the named files."
+ ]
+}

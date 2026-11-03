@@ -1,0 +1,1179 @@
+{
+ "batch_id": "eu-14-f",
+ "verdicts": [
+  {
+   "slug": "teutonic-order",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (1466-10, 1525-4)",
+     "what": "No vassal_start/vassal_end for the Order's status as a Polish fief 1466-1525, although the suzerain's dossier carries both.",
+     "why": "Second Peace of Thorn (1466) page: 'The eastern part remained with the Teutonic Order as a fief of the Polish Crown' (signed 19 October 1466); house-of-jagiellon ledger has 1466-10 vassal_start and 1525-4 vassal_end with counterpart teutonic-order. The reviewer brief (item 3) requires the vassal's own ledger to mirror them; 'vassalage belongs in the suzerain's dossier' is not an accepted exception.",
+     "fix": "Add {year:1466, month:10, type:vassal_start, counterpart:house-of-jagiellon, region:{cliopatria:'Teutonic Order', year:1468, text:'the eastern part ... as a fief of the Polish Crown'}, source: Second_Peace_of_Thorn_(1466), confidence:3} and a vassal_end 1525-4 with the same counterpart before the dissolve (Prussian Homage, State page).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/identity/capitals/0-1",
+     "what": "Capitals Acre (1230-1290) and Venice (1291-1308) lie outside every Teutonic shape: they are the Order's headquarters, not a seat of the Prussian state, and would plot the state's capital in Palestine and Italy.",
+     "why": "Reviewer brief item 9: capitals must fall inside the state's shapes in those years; shapes.csv bbox of teutonic-order_1236..1305 is 17.1-29.3 E, 52.9-59.9 N; Acre is 35.07 E 32.93 N, Venice 12.33 E 45.44 N. The author's own capital notes say 'Headquarters of the Order, not of the Prussian state'.",
+     "fix": "Drop the two entries (capitals start in 1309 at Marienburg) or replace them with a Prussian seat from a page (Thorn/Torun or Elbing, the Landmeister's seat), and move Acre/Venice to the notes.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/18/counterpart",
+     "what": "Gotland 1398 is gained from 'kingdom-of-sweden', which is not alive in 1398: that dossier merges into kalmar-union in June 1397 and reappears only in 1502.",
+     "why": "Teutonic Order page: 'King Albert of Sweden ceded Gotland to the Order as a pledge'; 'An invasion force under Grand Master Konrad von Jungingen conquered the island in 1398'. Albert was the deposed Mecklenburg king (deposed 1389); kingdom-of-sweden ledger: 1397-6 merge into kalmar-union, 1502 split.",
+     "fix": "Use a free-text counterpart for the pledge-holder (e.g. 'Albert of Mecklenburg / Victual Brothers') and list it under counterparts_needing_dossiers, or 'nobody' with a note; do not cite a dossier that is dead in 1398.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/2 and /ledger/3",
+     "what": "K2 removes the Pskov and Leningrad cells from the 1241 shape from 1241 on, yet L3 records their loss in 1242: the ledger loses land the keyframes never draw.",
+     "why": "K2 correction = 1241 shape minus Pskov and Leningrad oblasts for 1241-1249; L3 (1242, conf 1) loses the same intersect. One of the two is wrong.",
+     "fix": "Either keep the cells (or Pskov alone) in a new 1241-1242 keyframe and let L3 remove them in 1242 (the Order held Pskov 1240-1242, see the Battle on the Ice page), or delete L3 and keep K2 as is.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what": "K1 (1236-1240) adds the Swordbrothers' land from 1236, a year before the 1237 union recorded in L2; livonian-brothers-of-the-sword also draws it to 1237, so 1236 is double-drawn.",
+     "why": "L2 gain 1237 (Livonian Order page: 'most of the former Swordbrothers became members of the Teutonic Order' in 1237); livonian-brothers-of-the-sword ledger: 1237 merge/dissolve teutonic-order.",
+     "fix": "Keep the 1236 shape alone for 1236 (verdict ok for 1236) and add a new keyframe teutonic-order_1237 (1237-1240) with the union correction.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/29/counterpart",
+     "what": "Neumark 1455 was sold to 'margraviate-of-brandenburg', whose dossier ends in March 1414; the live counterpart is electorate-of-brandenburg, which records the 1455 gain from teutonic-order.",
+     "why": "Thirteen Years' War page: 'In 1454 and 1455, the Teutonic Knights first pawned, then sold the Neumark back to the Margraviate of Brandenburg'; margraviate-of-brandenburg end 1414-3, successor electorate-of-brandenburg; electorate-of-brandenburg ledger 1455 gain cp teutonic-order.",
+     "fix": "counterpart: electorate-of-brandenburg (applied by the reviewer; file re-validated).",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/25",
+     "what is missing": "1422 split of the Livonian branch is Cliopatria's (conf 1); no page dates it.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Melno"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "What the Order held east of the Narva in 1240-1242 (Pskov, Koporye) and when it was lost.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_on_the_Ice"
+    },
+    {
+     "where": "/ledger (1392-1411)",
+     "what is missing": "Dobrzyn Land pledges 1392-1405 and 1409-1411, Treaty of Salynas 1398 and Peace of Raciaz 1404 (Samogitia), Peace of Brzesc Kujawski 1435.",
+     "page to try": "https://en.wikipedia.org/wiki/Dobrzy%C5%84_Land"
+    },
+    {
+     "where": "/ledger (1317-1343)",
+     "what is missing": "Michalow Land, relinquished by Poland at Kalisz 1343 (page: 'relinquishes Pomerelia, Chelmno Land and Michalow Land'), has no gain event.",
+     "page to try": "https://en.wikipedia.org/wiki/Micha%C5%82%C3%B3w_Land"
+    },
+    {
+     "where": "/notes",
+     "what is missing": "Whether Harrien-Wierland stayed under the Prussian Grand Master to 1525 (Plettenberg page) or passed to the Livonian branch in 1347; affects the 1422 split.",
+     "page to try": "https://en.wikipedia.org/wiki/Wolter_von_Plettenberg"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No Grand Master list (rulers null).",
+     "page to try": "https://en.wikipedia.org/wiki/Grand_Master_of_the_Teutonic_Order"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Kalisz_(1343)",
+     "result": "confirmed: 'signed on 8 July 1343'; Poland 'regains Kuyavia and Dobrzyn Land'"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Teutonic_Order",
+     "result": "confirmed: 'conquered the island in 1398' after Albert's pledge (counterpart wrong, see fixes)"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/State_of_the_Teutonic_Order",
+     "result": "confirmed: table 'Neumark | 1402-1455'; 'the Luxembourgs gave the region in pawn'"
+    },
+    {
+     "where": "/ledger/32",
+     "page": "https://en.wikipedia.org/wiki/Second_Peace_of_Thorn_(1466)",
+     "result": "confirmed: 19 October 1466; Gdansk/Eastern Pomerania, Chelmno Land, Elbing and Marienburg, Warmia to Poland"
+    },
+    {
+     "where": "/ledger/29",
+     "page": "https://en.wikipedia.org/wiki/Thirteen_Years%27_War_(1454%E2%80%931466)",
+     "result": "confirmed: pawned 1454, sold 1455"
+    },
+    {
+     "where": "/ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Thirteen_Years%27_War_(1454%E2%80%931466)",
+     "result": "confirmed: 'On 6 June 1457, the castles of Marienburg, Dirschau, and Eylau were transferred to the Polish army'"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Danish_Estonia",
+     "result": "confirmed: sold 1346 for 19,000 marks; sovereignty shifted 1 November 1346"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 192255,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Neither the Teutonic Order nor the State of the Teutonic Order infobox has an Area field (read 2026-10-25); the author's source note says 'no area figure'."
+   }
+  },
+  {
+   "slug": "danish-magnates",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2",
+     "what": "K2 (Cliopatria 1344 shape, span 1344-1351) adds the Estonian province for the whole span, though Estonia was sold on 1 November 1346; teutonic-order K12 draws it from 1346, so 1347-1351 is drawn twice unless the window agent applies L3 inside the span.",
+     "why": "Danish Estonia page: 'The shift of sovereignty from Denmark to the Teutonic Order took place on 1 November 1346'; K2 note itself says 'The Estonian province is added for 1344-1346'.",
+     "fix": "Give the Estonian addition its own new keyframe danish-magnates_1344 limited to 1344-1346 and a new keyframe danish-magnates_1347 (1347-1351) = the 1344 shape alone; or say in K2's text that L3 removes Estonia in November 1346.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/identity/end and /ledger/3/counterpart",
+     "what": "The row's polity (Denmark 'subdued by various mortgagees' after Christopher II) lasted eight years on the page, i.e. to 1340, but the dossier holds Estonia to 1346 and Jutland to 1351; the 1346 seller was the restored crown, not the mortgagees.",
+     "why": "Christopher II page: 'Upon his death Denmark ceased being a formal kingdom, and for the next eight years it was subdued by various mortgagees'; successor in the infobox 'Valdemar IV Atterdag'; the Danish Estonia page lists a new captain (Konrad Preen) from 1340. The teutonic-order L17 note itself says 'The seller is the Danish crown'.",
+     "fix": "Open Valdemar IV's page and decide: end the dossier in 1340 with the Estonian province and the Jutland sliver passing to kingdom-of-denmark (then the 1346 sale belongs to kingdom-of-denmark, which is not written yet), or keep Cliopatria's span and state in notes that 1340-1351 is a Cliopatria construct.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "1351 end and the 4,720 km2 southern-Jutland sliver of 1344-1351 (conf 1, page silent).",
+     "page to try": "https://en.wikipedia.org/wiki/Valdemar_IV_of_Denmark"
+    },
+    {
+     "where": "/identity/end",
+     "what is missing": "Date of Valdemar IV's accession and the end of the mortgagee regime (1340).",
+     "page to try": "https://en.wikipedia.org/wiki/Valdemar_IV_of_Denmark"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Christopher_II_of_Denmark",
+     "result": "confirmed: 'Died: 2 August 1332'; mortgagees 'for the next eight years'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Danish_Estonia",
+     "result": "confirmed: Reval and Wesenberg 'handed over to the Order by the pro-German party on 16 May 1343'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Danish_Estonia",
+     "result": "confirmed: sovereignty shifted 1 November 1346"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Danish_Estonia",
+     "result": "confirmed: 'sold for 19,000' Cologne marks to the Teutonic Order in 1346"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 13776,
+    "ratio": 1.23,
+    "acknowledged": true,
+    "note": "The article (Christopher II) is a person's; no area. Author's estimate: Harju + Laane-Viru + Ida-Viru about 11,000 km2 against 13,776 km2 (ratio about 1.23), noted in K1."
+   }
+  },
+  {
+   "slug": "kalmar-union",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/wars/8/to",
+     "what": "Swedish War of Liberation ended 1524, a year after the union's end (1523-6); wars must lie inside the life.",
+     "why": "Swedish War of Liberation page: infobox Date '1521-23'; 'Stockholm was taken on 17 June' 1523; Gustav Vasa proclaimed king 6 June 1523.",
+     "fix": "to: 1523 (applied by the reviewer; the outcome still mentions the Treaty of Malmo of 1 September 1524; file re-validated).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/1,2,4,5 vs /keyframe_review/6",
+     "what": "The 1402-1428 shapes are marked ok although their own notes say Sweden and Finland are 'drawn only in part (1,617 of 2,440 and 797 of 1,695 cells)'; the 1429 shape adds about 315,000 km2 of northern Sweden, Finland and Norway with no ledger event, so the change between K5 and K6 is unexplained.",
+     "why": "shapes.csv: kalmar-union_1422 954,515 km2, kalmar-union_1429 1,269,468 km2; the sum of the predecessors' 1395-1401 shapes (Sweden 349,561 + Norway 519,922 + Denmark 95,830) is about 965,000, and Sweden's own 1526 shape (673,138) already holds the north. No page dates a 1429 change (K6 note).",
+     "fix": "Pick one reading and make keyframes and ledger agree: mark K0-K5 adjust with the northern cells added (union with the Kalmar 1429 shape's Swedish, Finnish and Norwegian cells) if the north was already the kingdoms' in 1397, or add a 1429 gain from 'nobody' at confidence 1 saying the north enters the drawing; coordinate with kingdom-of-sweden, whose 1375 shape lacks the same north.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/wars/1/zones",
+     "what": "Engelbrekt rebellion (1434-1436) has empty zones and its outcome does not say no ground changed hands; the rebels took Sweden's castles and deposed Eric.",
+     "why": "Reviewer brief item 10: empty zones only where no ground changed hands, and said so. Kalmar page (W1 outcome as written): it 'led to Eric's overthrow in Denmark and Sweden in 1439'.",
+     "fix": "Add a contest_start/contest_end pair over the Swedish realm (Kingdom of Sweden 1502 shape) for 1434-1436 from the Engelbrekt page, with the war's zone, or state why no ground moved.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/6",
+     "what is missing": "Dated evidence for the northern lands (Norrland, Lapland, Ostrobothnia) in 1397-1428.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_N%C3%B6teborg"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "Greenland cells leave in 1429 (conf 1) while norse-greenland dissolves in 1408; align the two.",
+     "page to try": "https://en.wikipedia.org/wiki/Hvalsey_Church"
+    },
+    {
+     "where": "/wars/1",
+     "what is missing": "Engelbrekt rebellion's dates and ground.",
+     "page to try": "https://en.wikipedia.org/wiki/Engelbrekt_rebellion"
+    },
+    {
+     "where": "/notes",
+     "what is missing": "Eric of Pomerania on Gotland 1439-1449; capital dates; ruler list; Iceland and the Faroes.",
+     "page to try": "https://en.wikipedia.org/wiki/Eric_of_Pomerania"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kalmar_Union",
+     "result": "confirmed: 'Inception: 17 June 1397'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Christian_I_of_Denmark",
+     "result": "confirmed: February 1449 part of the Norwegian council backed Karl"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Christian_I_of_Denmark",
+     "result": "confirmed: Swedish reign '23 June 1457 - 23 June 1464'"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Christian_I_of_Denmark",
+     "result": "confirmed: 'in Ribe 5 March 1460'; Duke of Schleswig and Count of Holstein that year"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Christian_I_of_Denmark",
+     "result": "confirmed: reign in Sweden ended 23 June 1464"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Kalmar_Union",
+     "result": "confirmed: 'in 1472 the Kingdom of Scotland annexed the islands' (footnote 1470)"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Swedish_War_of_Liberation",
+     "result": "confirmed: 'The war began in January 1521'"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Swedish_War_of_Liberation",
+     "result": "confirmed: proclaimed king at Strangnas on 6 June 1523"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1285990,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Kalmar Union infobox has no Area field (read 2026-10-25); the author's K1 note says so."
+   }
+  },
+  {
+   "slug": "livonian-conference",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (1559, 1561-11)",
+     "what": "No vassal_start/vassal_end for Livonia's Polish-Lithuanian protection 1559-1561, although house-of-jagiellon carries vassal_start 1559-6 and vassal_end 1561-11 with counterpart livonian-conference.",
+     "why": "Livonian War page: 'In June 1559, the estates of Livonia came under Polish-Lithuanian protection through the first Treaty of Vilnius' (the author's war note gives 31 August 1559; the house-of-jagiellon dossier uses June).",
+     "fix": "Add vassal_start 1559 (month 6 per the Livonian War page, or 8 if the Treaty of Vilnius (1559) page is opened and says 31 August) counterpart house-of-jagiellon over the remaining Livonian lands, and vassal_end 1561-11 before the dissolve.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger (1560)",
+     "what": "The Russian conquest of Fellin (Viljandi) and the defeat at Ergeme in August 1560 are missing: land moved between the 1559 and 1561 keyframes with no event.",
+     "why": "Livonian War page: 'The Livonian knights suffered a disastrous defeat by the Russians at the Battle of Ergeme in August 1560'; the tsar's forces took Fellin (Viljandi) in the same campaign (no month).",
+     "fix": "Add a 1560 loss (and extend the Russian contest zone) of Fellin/Viljandi county to tsardom-of-russia, confidence 2, and carry it into keyframes K5 (to 1560) and K6.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/4/region",
+     "what": "The 1559 sale is of the Bishopric of Osel-Wiek, but the region is Saare county only (Wiek and Dago are left in the confederation); denmark-norway's mirror gain takes Osel-Wiek and Pilten.",
+     "why": "Livonian War page: the bishop of 'Osel-Wiek' signed on 26 September 1559 giving Frederick II the right to nominate the bishop, 'a sale for 30,000 thalers'; denmark-norway ledger 1559 gain cp livonian-conference text 'the Bishopric of Osel-Wiek and Courland's Pilten'.",
+     "fix": "Region: union of Estonia admin1 Saare, Hiiu and Laane (Osel-Wiek), carried into K5 and K6; settle Pilten with the denmark-norway author.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/wars/1/to",
+     "what": "Livonian War listed to 1583, after the confederation's end (1561-11); wars must lie inside the life.",
+     "why": "Livonian War page: the Order 'was dissolved by the second Treaty of Vilnius in 1561'.",
+     "fix": "to: 1561 (applied by the reviewer, with a note that the war itself ran to 1583; file re-validated).",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "1422 start (conf 1): pages give the Diet of 1419 and the Walk agreement of 4 December 1435, not 1422.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Melno"
+    },
+    {
+     "where": "/wars/0",
+     "what is missing": "Russo-Livonian War 1501-1503 (pages failed); zones empty with status quo.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Smolino"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Livonian_Confederation",
+     "result": "confirmed (page served as Terra Mariana): agreement 'signed in Walk on 4 December 1435'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Livonian_War",
+     "result": "confirmed: Dorpat and Narva taken in 1558 (May/July, footnote reverses the order)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Livonian_War",
+     "result": "date confirmed (26 September 1559); region incomplete: the page names Osel-Wiek"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Livonian_War",
+     "result": "confirmed: 1561, Harrien-Wierland and Jerwen yielded to Sweden; Reval accepted Swedish rule"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Livonian_War",
+     "result": "year confirmed: 'dissolved by the second Treaty of Vilnius in 1561' (no day on this page)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 108000,
+    "infobox_year": 1350,
+    "cliopatria_km2": 116338,
+    "ratio": 0.93,
+    "acknowledged": true,
+    "note": "No infobox area; the Terra Mariana text gives about 67,000 km2 for the Order and about 41,000 km2 for the Church by the mid-14th century; compared with the 1422 shape in K0."
+   }
+  },
+  {
+   "slug": "house-of-oldenburg",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/identity",
+     "what": "A dynasty dossier for a house that succeeded on the same land without a break; it draws nothing (both shapes wrong with empty corrections) and its land is already corrected inside kalmar-union (K9, K10, rename 1448-9).",
+     "why": "Schema, identity.type: 'a dynasty that merely succeeds another on the same land without a break is not a new dossier (master plan rule 2)'; the author's own report: 'house-of-oldenburg is not a separate state ... The orchestrator may prefer to merge it'. Both rows share Seshat sv_kalmar_union.",
+     "fix": "Merge: add 'House of Oldenburg' to kalmar-union's cliopatria_names, move the two shape verdicts (house-of-oldenburg_1450, _1453: wrong, land handled by kalmar-union K9/K10/K11) into kalmar-union's keyframe_review, and withdraw house-of-oldenburg.json (orchestrator's call).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/wars/0/from",
+     "what": "Contest for Norway began in 1449, before this row's start (1450-8); wars must lie inside the life.",
+     "why": "Christian I page: Karl crowned in Trondheim 20 November 1449; Christian crowned there 2 August 1450.",
+     "fix": "from: 1450 with a note that the contest began in February 1449 (applied by the reviewer; file re-validated). Moot if the dossier is merged.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/0/counterpart",
+     "what": "The found event names kingdom-of-sweden, which is not alive in 1450 in its own dossier (merged into kalmar-union 1397-6 until 1502).",
+     "why": "kingdom-of-sweden ledger: 1397-6 merge, 1502 split, nothing for 1448-1457.",
+     "fix": "Leave as is if the kingdom-of-sweden dossier is given its 1448-1457 reign (cross-check routed); otherwise moot after the merge.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "1458 end is Cliopatria's (conf 1); no page will date it because the row is an artefact.",
+     "page to try": "https://en.wikipedia.org/wiki/House_of_Oldenburg"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Christian_I_of_Denmark",
+     "result": "confirmed: 'on 2 August he was crowned king of Norway in Trondheim' (1450)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1181117,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "A dynasty article; no area. Both shapes are marked wrong."
+   }
+  },
+  {
+   "slug": "prussian-confederation",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (1454-3)",
+     "what": "The Confederation's lands were incorporated into Poland and its delegates swore allegiance to Casimir IV in March 1454, but the dossier records no relation to house-of-jagiellon: it stands as an independent rebel state for twelve years, and house-of-jagiellon's own contest over the same land (1454-3 contest_start cp teutonic-order) has no link to it.",
+     "why": "Prussian Confederation page: the King 'signed an act of incorporation in Krakow in March 1454' and the delegates 'pledged allegiance to the Polish King'; Thirteen Years' War page: 'delegates of the Prussian Confederation pledged allegiance to Casimir on 6 March 1454'. The author's report asks house-of-jagiellon to carry this vassal_start, but neither dossier does.",
+     "fix": "Either add vassal_start 1454-3 counterpart house-of-jagiellon (region West Prussia) and vassal_end 1466-10, or end the dossier in March 1454 with a merge into house-of-jagiellon and move the Order's contest counterpart to house-of-jagiellon from 1454-3 (matching house-of-jagiellon's contest_start). State the choice in notes.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/identity/successors/0",
+     "what": "The successor's land (West Prussia) is recorded by house-of-jagiellon as a 1466-10 gain from teutonic-order, not from prussian-confederation.",
+     "why": "house-of-jagiellon ledger: 1466-10 gain cp teutonic-order (two events).",
+     "fix": "Follows from the fix above; if the Confederation stays a vassal, ask the house-of-jagiellon author to note that the land came through the Confederation.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Prussian_Confederation",
+     "result": "confirmed: 'In February 1454, the Prussian Confederation rose against the Teutonic Order's rule'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Thirteen_Years%27_War_(1454%E2%80%931466)",
+     "result": "confirmed: rebellion two days after 4 February 1454"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Second_Peace_of_Thorn_(1466)",
+     "result": "confirmed: signed 19 October 1466 (war page text says 10 October; month unaffected)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Prussian_Confederation",
+     "result": "confirmed: 'ceased to exist as such' after the 1466 peace (no exact date)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "New state with no Cliopatria row; the page has no infobox."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1230,
+    "type": "found",
+    "counterpart": "duchy-of-masovia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "duchy-of-masovia not written (eu-15 has not run)."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1237,
+    "type": "gain",
+    "counterpart": "livonian-brothers-of-the-sword"
+   },
+   "mirror": {
+    "slug": "livonian-brothers-of-the-sword",
+    "year": 1237,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": "K1 draws the land from 1236 (see fixes)."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1242,
+    "type": "loss",
+    "counterpart": "novgorod-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "novgorod-republic not written (eu-16); L3 loses cells K2 never draws."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1308,
+    "type": "gain",
+    "counterpart": "kingdom-of-poland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-poland not written (eu-15); also 1332 gain, 1343 loss, 1422 loss (Nieszawa)."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1309,
+    "type": "gain",
+    "counterpart": "margraviate-of-brandenburg"
+   },
+   "mirror": {
+    "slug": "margraviate-of-brandenburg",
+    "year": 1309,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Pomerelia, Treaty of Soldin."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1346,
+    "type": "gain",
+    "counterpart": "danish-magnates"
+   },
+   "mirror": {
+    "slug": "danish-magnates",
+    "year": 1346,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Estonia, 1 November 1346; the seller was arguably the restored crown (kingdom-of-denmark), see danish-magnates fixes."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1398,
+    "type": "gain",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": 1397,
+    "type": "merge"
+   },
+   "status": "mismatch",
+   "note": "Gotland: kingdom-of-sweden is merged into kalmar-union from 1397-6 and has no 1398 event; counterpart is not alive."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1398,
+    "type": "gain",
+    "counterpart": "grand-duchy-of-lithuania"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "grand-duchy-of-lithuania not written (eu-15); also the 1411 loss of Samogitia."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1402,
+    "type": "gain",
+    "counterpart": "margraviate-of-brandenburg"
+   },
+   "mirror": {
+    "slug": "margraviate-of-brandenburg",
+    "year": 1402,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Neumark pawned."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1408,
+    "type": "loss",
+    "counterpart": "kalmar-union"
+   },
+   "mirror": {
+    "slug": "kalmar-union",
+    "year": 1408,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Gotland."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1422,
+    "type": "split",
+    "counterpart": "livonian-conference"
+   },
+   "mirror": {
+    "slug": "livonian-conference",
+    "year": 1422,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Both at confidence 1 (Cliopatria's boundary)."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1455,
+    "type": "loss",
+    "counterpart": "electorate-of-brandenburg"
+   },
+   "mirror": {
+    "slug": "electorate-of-brandenburg",
+    "year": 1455,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "After the reviewer's counterpart fix (was margraviate-of-brandenburg, dead since 1414)."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1457,
+    "type": "loss",
+    "counterpart": "house-of-jagiellon"
+   },
+   "mirror": {
+    "slug": "house-of-jagiellon",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Marienburg 6 June 1457: house-of-jagiellon has no 1457 gain (its 1454-3 contest covers the land); small."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1466,
+    "type": "loss",
+    "counterpart": "house-of-jagiellon"
+   },
+   "mirror": {
+    "slug": "house-of-jagiellon",
+    "year": 1466,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "West Prussia and Warmia (two events each side)."
+  },
+  {
+   "event": {
+    "slug": "house-of-jagiellon",
+    "year": 1466,
+    "type": "vassal_start",
+    "counterpart": "teutonic-order"
+   },
+   "mirror": {
+    "slug": "teutonic-order",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "teutonic-order has no vassal_start 1466 / vassal_end 1525 (fix listed)."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1525,
+    "type": "dissolve",
+    "counterpart": "duchy-of-prussia"
+   },
+   "mirror": {
+    "slug": "duchy-of-prussia",
+    "year": 1525,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "April 1525."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-pomerania",
+    "year": 1329,
+    "type": "loss",
+    "counterpart": "teutonic-order"
+   },
+   "mirror": {
+    "slug": "teutonic-order",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "duchy-of-pomerania records Stolp lands lost to the Order 1329, regained 1341, and Lauenburg-Butow gained from the Order 1466; teutonic-order has none of these. Route to both authors to verify."
+  },
+  {
+   "event": {
+    "slug": "house-of-jagiellon",
+    "year": 1454,
+    "type": "contest_start",
+    "counterpart": "teutonic-order"
+   },
+   "mirror": {
+    "slug": "teutonic-order",
+    "year": 1454,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "teutonic-order's Thirteen Years' War contest names prussian-confederation only (1454-2); house-of-jagiellon's names teutonic-order (1454-3)."
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1454,
+    "type": "contest_start",
+    "counterpart": "prussian-confederation"
+   },
+   "mirror": {
+    "slug": "prussian-confederation",
+    "year": 1454,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Ends 1466-10 on both sides."
+  },
+  {
+   "event": {
+    "slug": "prussian-confederation",
+    "year": 1454,
+    "type": "vassal_start",
+    "counterpart": "house-of-jagiellon"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Allegiance to Casimir IV 6 March 1454 recorded in neither dossier."
+  },
+  {
+   "event": {
+    "slug": "prussian-confederation",
+    "year": 1466,
+    "type": "dissolve",
+    "counterpart": "house-of-jagiellon"
+   },
+   "mirror": {
+    "slug": "house-of-jagiellon",
+    "year": 1466,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "house-of-jagiellon gains West Prussia from teutonic-order, not from prussian-confederation."
+  },
+  {
+   "event": {
+    "slug": "danish-magnates",
+    "year": 1332,
+    "type": "found",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-denmark not written yet (eu-14 sibling part); also the 1351 dissolve."
+  },
+  {
+   "event": {
+    "slug": "kalmar-union",
+    "year": 1397,
+    "type": "found",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": 1397,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": "kingdom-of-sweden 1397-6 merge cp kalmar-union; old-kingdom-of-norway 1397-6 dissolve with successor kalmar-union; kingdom-of-denmark not written."
+  },
+  {
+   "event": {
+    "slug": "kalmar-union",
+    "year": 1408,
+    "type": "gain",
+    "counterpart": "teutonic-order"
+   },
+   "mirror": {
+    "slug": "teutonic-order",
+    "year": 1408,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Gotland."
+  },
+  {
+   "event": {
+    "slug": "kalmar-union",
+    "year": 1429,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "norse-greenland",
+    "year": 1408,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Kalmar keeps 20 Greenland cells to 1428 (conf 1); norse-greenland dissolves in 1408 to nobody. Align."
+  },
+  {
+   "event": {
+    "slug": "kalmar-union",
+    "year": 1435,
+    "type": "loss",
+    "counterpart": "Counts of Holstein (Holstein-Rendsburg)"
+   },
+   "mirror": {
+    "slug": "duchy-of-schleswig",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "Counterpart has no dossier (listed county-of-holstein), but duchy-of-schleswig exists and draws Schleswig as a Danish vassal 1058-1864 with no change in 1435 or 1460: the two models of Schleswig conflict. Route to duchy-of-schleswig's group."
+  },
+  {
+   "event": {
+    "slug": "kalmar-union",
+    "year": 1448,
+    "type": "loss",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-sweden is absorbed 1397-1502; it has no 1448 secession, 1457 return, 1464 secession, 1497 return, 1520 return or 1521-1523 contest. Route to kingdom-of-sweden: rows for 1448-1457, 1464-1497, 1501-1520, 1521-1523."
+  },
+  {
+   "event": {
+    "slug": "kalmar-union",
+    "year": 1449,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Norway contest 1449-2 to 1450-8 (Karl Knutsson); same root cause."
+  },
+  {
+   "event": {
+    "slug": "kalmar-union",
+    "year": 1460,
+    "type": "gain",
+    "counterpart": "Counts of Holstein (Holstein-Rendsburg)"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1459,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "HRE minor states lose 32 Holstein cells to kalmar-union in 1459 (conf 1); Kalmar names the Counts of Holstein. Year within one; counterpart naming differs."
+  },
+  {
+   "event": {
+    "slug": "kalmar-union",
+    "year": 1472,
+    "type": "loss",
+    "counterpart": "kingdom-of-scotland"
+   },
+   "mirror": {
+    "slug": "kingdom-of-scotland",
+    "year": 1472,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Orkney and Shetland."
+  },
+  {
+   "event": {
+    "slug": "kalmar-union",
+    "year": 1501,
+    "type": "loss",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": 1502,
+    "type": "split"
+   },
+   "status": "matched",
+   "note": "Within a year; kingdom-of-sweden's split is conf 1."
+  },
+  {
+   "event": {
+    "slug": "kalmar-union",
+    "year": 1523,
+    "type": "dissolve",
+    "counterpart": "denmark-norway"
+   },
+   "mirror": {
+    "slug": "denmark-norway",
+    "year": 1526,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "denmark-norway starts 1526 (conf 1); 1523-1525 undrawn. Route to denmark-norway: start 1523."
+  },
+  {
+   "event": {
+    "slug": "livonian-conference",
+    "year": 1422,
+    "type": "found",
+    "counterpart": "teutonic-order"
+   },
+   "mirror": {
+    "slug": "teutonic-order",
+    "year": 1422,
+    "type": "split"
+   },
+   "status": "matched",
+   "note": "conf 1 both."
+  },
+  {
+   "event": {
+    "slug": "pskov-republic",
+    "year": 1422,
+    "type": "loss",
+    "counterpart": "livonian-conference"
+   },
+   "mirror": {
+    "slug": "livonian-conference",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Two Cliopatria cells, conf 1; small, inside livonian K0."
+  },
+  {
+   "event": {
+    "slug": "livonian-conference",
+    "year": 1558,
+    "type": "loss",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "tsardom-of-russia not written (eu-16); also the contest 1558-1561."
+  },
+  {
+   "event": {
+    "slug": "livonian-conference",
+    "year": 1559,
+    "type": "loss",
+    "counterpart": "denmark-norway"
+   },
+   "mirror": {
+    "slug": "denmark-norway",
+    "year": 1559,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Land differs: Livonian gives Saare only, denmark-norway Osel-Wiek and Pilten."
+  },
+  {
+   "event": {
+    "slug": "house-of-jagiellon",
+    "year": 1559,
+    "type": "vassal_start",
+    "counterpart": "livonian-conference"
+   },
+   "mirror": {
+    "slug": "livonian-conference",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Livonian ledger has no vassal_start 1559 / vassal_end 1561-11."
+  },
+  {
+   "event": {
+    "slug": "livonian-conference",
+    "year": 1561,
+    "type": "loss",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": 1561,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Sweden has month 6 and omits Ida-Viru (Narva held by Russia since 1558)."
+  },
+  {
+   "event": {
+    "slug": "livonian-conference",
+    "year": 1561,
+    "type": "loss",
+    "counterpart": "house-of-jagiellon"
+   },
+   "mirror": {
+    "slug": "house-of-jagiellon",
+    "year": 1561,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "November 1561."
+  },
+  {
+   "event": {
+    "slug": "livonian-conference",
+    "year": 1561,
+    "type": "loss",
+    "counterpart": "duchy-of-courland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed in counterparts_needing_dossiers (Cliopatria row covers only 1734-1793)."
+  },
+  {
+   "event": {
+    "slug": "house-of-oldenburg",
+    "year": 1450,
+    "type": "found",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "Same root cause as the Kalmar-Sweden mismatches."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Pomesania",
+   "kind": "region",
+   "used_in": "teutonic-order"
+  },
+  {
+   "name": "Samland",
+   "kind": "region",
+   "used_in": "teutonic-order"
+  },
+  {
+   "name": "Chelmno Land",
+   "kind": "region",
+   "used_in": "teutonic-order"
+  },
+  {
+   "name": "Dobrzyn Land",
+   "kind": "region",
+   "used_in": "teutonic-order"
+  },
+  {
+   "name": "Neumark",
+   "kind": "region",
+   "used_in": "teutonic-order"
+  },
+  {
+   "name": "Michalow Land",
+   "kind": "region",
+   "used_in": "teutonic-order"
+  },
+  {
+   "name": "Nieszawa",
+   "kind": "place",
+   "used_in": "teutonic-order"
+  },
+  {
+   "name": "Kwidzyn",
+   "kind": "place",
+   "used_in": "teutonic-order"
+  },
+  {
+   "name": "Harrien-Wierland",
+   "kind": "region",
+   "used_in": "danish-magnates"
+  },
+  {
+   "name": "Osel-Wiek",
+   "kind": "region",
+   "used_in": "livonian-conference"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Royal Prussia (Polish province)",
+   "suggested_slug": "royal-prussia",
+   "years": [
+    1454,
+    1772
+   ]
+  },
+  {
+   "name": "Counts of Holstein (Holstein-Rendsburg)",
+   "suggested_slug": "county-of-holstein",
+   "years": [
+    1326,
+    1460
+   ]
+  },
+  {
+   "name": "Duchy of Courland and Semigallia",
+   "suggested_slug": "duchy-of-courland",
+   "years": [
+    1561,
+    1795
+   ]
+  },
+  {
+   "name": "Duchy of Livonia",
+   "suggested_slug": "duchy-of-livonia",
+   "years": [
+    1561,
+    1621
+   ]
+  },
+  {
+   "name": "Free imperial city of Riga",
+   "suggested_slug": "riga",
+   "years": [
+    1561,
+    1581
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-14-f.md",
+ "problems": [
+  "Verdict convention for this run: 'fix' = everything needed was applied by the reviewer; findings with applied false and blocking true need the author; blocking false are advisory or routed. Four small fixes were applied and re-validated (teutonic-order /ledger/29 counterpart; kalmar-union /wars/8/to; livonian-conference /wars/1/to; house-of-oldenburg /wars/0/from).",
+  "No infobox on the Teutonic Order, State of the Teutonic Order, Kalmar Union or Christopher II pages carries an Area field; area checks for those are recorded as null.",
+  "The Livonian_Confederation URL serves the Terra Mariana article (as the author reported).",
+  "Sibling dossiers outside this batch need work found here: kingdom-of-sweden (no 1448-1523 secessions), denmark-norway (starts 1526 not 1523), duchy-of-schleswig (no 1435/1460 change), norse-greenland vs kalmar-union Greenland cells, house-of-jagiellon (no 1457 Marienburg gain; prussian-confederation link), duchy-of-pomerania (Stolp, Lauenburg-Butow) - see cross_checks.",
+  "Page budget: teutonic-order used 10 pages for itself against 9 (author reported); not counted as a fault."
+ ]
+}

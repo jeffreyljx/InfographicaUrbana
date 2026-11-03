@@ -1,0 +1,44 @@
+{
+ "window": "m2100-m2001",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "what": "Middle Kingdom gains the Siut valley from nobody in -2033. The page supports the year and the parties: Mentuhotep II 'would eventually defeat the Heracleopolitan kings around 2033 BC' and reunify Egypt, and 'The Siut province acted as a buffer state between the northern and southern rulers'. The region was too narrow. intersect(MK -2000, Abydos 60 km | Asyut gov.) filled 8 nobody's cells, but it left out the two Siut cells that events/1 and keyframe_overrides/1 empty: 27.09 N 31.12 E (beside Asyut city, west bank) and 27.20 N 31.41 E. It also left out 27.10 N 30.93 E. My trial of the original patch showed these 3 cells nobody's inside the kingdom's own outline for -2033..-2001, and the first two had been Middle Kingdom land before the patch. So the patch fixed one notch at Siut and opened another.",
+   "page": "https://en.wikipedia.org/wiki/First_Intermediate_Period_of_Egypt",
+   "fix": "Added {\"place\":\"Asyut\",\"km\":30} to the union. The region now resolves to 33 cells, all inside Cliopatria's MK -2000 outline, and 11 of them change hands. I also rewrote the note as a short historical caption with the two quotes and moved the reviewer remark into region.text. Trial: at -2033 and -2001 every cell of the MK -2000 outline is Middle Kingdom (0 holes, before the fix 3). End anchor m2000: 9 cells change owner. The render of -2033 shows a continuous valley.",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "fixed",
+   "what": "Middle Kingdom loses Asyut 25 km (7 cells) to nobody in -2055. It acts only on the 2 cells the founding region (Cliopatria Upper Egypt -2050 minus the Asyut governorate) re-adds. The other 5 are not Middle Kingdom land, and the Asyut contest with lower-egypt still has its 4 cells. The page supports 'short of Siut': Siut was 'a buffer state between the northern and southern rulers', and Intef III 'completed the conquest of Abydos, moving into Middle Egypt'. Only 27.20 N 31.41 E is truly detached. 27.09 N 31.12 E is a tip joined to the strip, but both lie at Siut itself, so cutting them is right. The note became the -2055 caption and read as in-house text ('the Theban kingdom is drawn ...', cell coordinates, 'speckle').",
+   "page": "https://en.wikipedia.org/wiki/First_Intermediate_Period_of_Egypt",
+   "fix": "Rewrote the note as a historical caption with the two quotes and moved the cell detail into region.text. The region and the year are unchanged.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "fixed",
+   "what": "The Ur III keyframe gutian-dynasty_-2100 becomes Cliopatria's Gutian -2100 outline + the Diyala governorate (79 cells, about 20,000 km2) + one cell. Pages: Kutik-Inshushinak says Ur-Nammu (r. 2112-2094) 'early in his reign, reconquered the northern territories that had been occupied by Puzur-Inshushinak', and the inscription in its footnote names 'the lands of Esnuna, Tutub, Zimudar, and Akkade'. The Third Dynasty of Ur page has his 'domination in the northeast direction towards Diyala'. The override matches the dossier's own ledger/2 (Akkad + Diyala, -2100). Trial: the Diyala is Ur III's from -2100 instead of nobody's for -2100..-2048, it is lost at -2020 as the ledger says, and nothing changes outside the window. The 12 km circle fills a real enclosed one-cell gap at 33.12 N 45.24 E, all 6 of whose neighbours are in the union, but the text called it 'Badra', which lies at about 45.9 E. That text is the -2100 keyframe caption.",
+   "page": "https://en.wikipedia.org/wiki/Kutik-Inshushinak",
+   "fix": "In correction.text, replaced 'the one-cell gap at Badra' with 'the one-cell gap at 33.1 N 45.2 E'. The region is unchanged.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "what": "upper-egypt_-2061 becomes Cliopatria Upper Egypt -2050 minus (Asyut governorate + Asyut 25 km). This is 61 cells, 2 fewer than the dossier's 63, and cuts exactly the two Siut cells. The result is one connected strip; before, there were 2 components. The page supports 'short of Siut' for -2061..-2055: Intef III 'completed the conquest of Abydos, moving into Middle Egypt' and 'The Siut province acted as a buffer state'. from/to stay -2061..-2055. Trial: the -2061 snap adds 19 and removes 75, with no side effects.",
+   "page": "https://en.wikipedia.org/wiki/First_Intermediate_Period_of_Egypt",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "patch_check": "After the reviewer's edits: --check-patch gives 4 entries, 4 ok, 0 rejected. The trial applies all 4. Conflicts are unchanged at 2 pairs and 148 cell-years, and snaps at 4 (Ur III -2100: +322/-437; Upper Egypt -2061: +19/-75). End anchor m2000: 9 cells change owner, all Middle Kingdom at Siut/Abydos.",
+ "problems": [
+  "The cell that keyframe_overrides/0 adds at 33.12 N 45.24 E stays Ur III after the Diyala loss of -2020, because ledger/8 takes only the Diyala governorate. From -2008, when Isin takes its neighbours, it is a detached one-cell Ur III speck until -2005. It is too small to patch; if the Ur III dossier is touched again, its -2020 loss region could add {\"lon\":45.24,\"lat\":33.12,\"km\":12}.",
+  "The window agent's 'Nile valley continuous, no speckle' at -2033 hid 3 nobody's cells at Siut inside the Middle Kingdom outline. These were produced by its own events/1 and keyframe_overrides/1, and I closed them via events/0.",
+  "-2033 shows two Middle Kingdom gain captions: the dossier's ledger/2 'Mentuhotep II conquers the north and reunites Egypt' and the patch's events/0 'Siut ... falls to the reunited kingdom'. This is cosmetic.",
+  "MK keyframe middle-kingdom-of-egypt_-2055 (from -2055 to -2034) still includes the two Siut cells. Only the sub-20-cell snap threshold and events/1 keep them out. A dossier edit, cutting {\"place\":\"Asyut\",\"km\":25} from that keyframe and from ledger/0, would be cleaner than the patch event."
+ ]
+}

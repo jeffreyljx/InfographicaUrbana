@@ -1,0 +1,385 @@
+{
+ "batch_id": "me-03-c",
+ "verdicts": [
+  {
+   "slug": "twenty-sixth-dynasty-of-egypt",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/identity/start; /keyframe_review/0; /ledger/0; /ledger/1",
+     "applied": false,
+     "blocking": true,
+     "what": "Lower Egypt is drawn by two dossiers in 664-655: this one (found -664, Delta keyframe -664..-656) and assyrian-egypt (passed in me-02: Psamtik I's vassal kingdom, found -664 with Lower Egypt, gains Upper Egypt from Kush -656, dissolves -655 into this state); the -664 found names assyrian-egypt as counterpart but assyrian-egypt has no loss in 664.",
+     "why": "assyrian-egypt /ledger/0 (-664 found, Lower Egypt), /ledger/1 (-656 gain Upper Egypt from kingdom-of-kush), /ledger/2 (-655 dissolve, counterpart twenty-sixth-dynasty-of-egypt); kingdom-of-kush /ledger/11 (-656 loss to assyrian-egypt); neo-assyrian-empire /ledger/37 (-664 vassal_start assyrian-egypt) and /ledger/41 (-655 vassal_end). Assyrian conquest of Egypt page: 'He installed a native Egyptian Pharaoh, Psammetichus, as a vassal king in 664 BCE'; 'Psamtik I threw off his ties to the Assyrians circa 655 BCE'. The author flagged the overlap and left the decision to the reviewer.",
+     "fix": "Recommended (agrees with three reviewed neighbours): start at -655. Delete /keyframe_review/0; keep /keyframe_review/1 (-655..-616); replace /ledger/0 and /ledger/1 with one found at -655, counterpart assyrian-egypt, region {\"cliopatria\": \"Twenty-sixth Dynasty of Egypt\", \"year\": -615}, confidence 2, source https://en.wikipedia.org/wiki/Assyrian_conquest_of_Egypt (add to sources; quote 'Psamtik I threw off his ties to the Assyrians circa 655 BCE'); set identity.start, capitals[0].from, rulers[0].from and certainty[0].from to -655 (ruler note: king from 664 as Assyrian vassal, see assyrian-egypt); drop the kingdom-of-kush predecessor entry (Kush gives Upper Egypt to assyrian-egypt in -656). Alternative for the orchestrator: merge assyrian-egypt into this dossier (start -664 with vassal_start to neo-assyrian-empire, gain Upper Egypt from kingdom-of-kush -656, vassal_end -655), which retires assyrian-egypt and re-points kingdom-of-kush /ledger/11 and neo-assyrian-empire /ledger/37, /40, /41."
+    },
+    {
+     "where": "/ledger/2/counterpart",
+     "applied": false,
+     "blocking": false,
+     "what": "The -550 Cyprus gain names greek-city-states, which holds no Cyprus after 709.",
+     "why": "greek-city-states /ledger/4: -709 loss of Cyprus to neo-assyrian-empire, no later Cyprus gain; neo-assyrian-empire /ledger/26 gains Cyprus -709 and has no later Cyprus event before its end -609. The counterpart is read from a Cliopatria shape, not a page (confidence 1).",
+     "fix": "Set counterpart to nobody (the Cypriot city-kingdoms, no dossier) unless a page names a holder; keep /ledger/3 (phoenicia) pending me-04; say so in the note."
+    },
+    {
+     "where": "/identity/predecessors/1",
+     "applied": false,
+     "blocking": false,
+     "what": "Predecessor kingdom-of-kush with Upper Egypt disagrees with the Kush dossier, which hands Upper Egypt to assyrian-egypt in -656.",
+     "why": "kingdom-of-kush /ledger/11 (-656 loss, counterpart assyrian-egypt).",
+     "fix": "Drop this entry with the start change above (or, under the merge alternative, keep it and add the -656 gain from kingdom-of-kush)."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Year of reunification and independence: confidence 1, borrowed from neighbours; resolved by fix 1 with the Assyrian conquest of Egypt page (656 Thebes, c. 655 independence).",
+     "page to try": "https://en.wikipedia.org/wiki/Assyrian_conquest_of_Egypt"
+    },
+    {
+     "where": "/ledger/2; /ledger/3",
+     "what is missing": "Year of Amasis II's Cyprus conquest and the previous holders (confidence 1, from Cliopatria).",
+     "page to try": "https://en.wikipedia.org/wiki/Ancient_history_of_Cyprus"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "Fate of Cyprus in or before 525 (Persian submission year, confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Ancient_history_of_Cyprus"
+    },
+    {
+     "where": "/ledger (609-605)",
+     "what is missing": "Necho II's hold on the Levant after Megiddo (609) until Carchemish (605); not on the dynasty page (confirmed). neo-babylonian-empire has the -605 Battle of Carchemish with zone Levant naming this state and gains the Levant from Assyria in -609, so an Egyptian Levant would need the Babylonian side adjusted.",
+     "page to try": "https://en.wikipedia.org/wiki/Necho_II"
+    },
+    {
+     "where": "/wars/1",
+     "what is missing": "Result of Psamtik II's Nubian campaign; kingdom-of-kush dates it -593 (Napata page), this dossier -592 (Amasis II page).",
+     "page to try": "https://en.wikipedia.org/wiki/Psamtik_II"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Twenty-sixth_Dynasty_of_Egypt",
+     "result": "confirmed (Established: 664 BC; Capital: Sais; extent is a reading, confidence 2 honest)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Twenty-sixth_Dynasty_of_Egypt",
+     "result": "confirmed quotes; page gives no year, as the note says (confidence 1 honest)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Amasis_II",
+     "result": "confirmed ('to this he added Cyprus'; 'first pharaoh to conquer Cyprus after Thutmose III'; no year, as the note says)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Twenty-sixth_Dynasty_of_Egypt",
+     "result": "confirmed ('Cambyses II captured and later executed Psamtik III'; Disestablished 525 BC; Amasis II page 'battle of Pelusium in 525 BC')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Twenty-sixth_Dynasty_of_Egypt",
+     "result": "confirmed ('Cambyses founded the First Egyptian Satrapy'; Succeeded by: Twenty-seventh Dynasty)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 452849,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Neither the dynasty page nor Amasis II gives an area (confirmed); the -615 shape is Egypt east of 28.3E to the First Cataract, which Amasis II's page supports."
+   }
+  },
+  {
+   "slug": "thirtieth-dynasty-of-egypt",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction; /keyframe_review/1; /keyframe_review/2; /ledger/4",
+     "applied": false,
+     "blocking": false,
+     "what": "The Libyan coast to 18.7E (Cyrenaica, about 16% of the shape) is kept as Egyptian 380-343; the author marked it unverified (page budget), and the Cyrenaica page contradicts it.",
+     "why": "Cyrenaica page: 'In 525 BC, after conquering Egypt, the Achaemenid (Persian) army of Cambyses II seized the Pentapolis', a satrapy 'for about the next two centuries'; 'The Persians were followed by Alexander the Great in 332 BC'; no Egyptian rule in the 4th century. greek-city-states /ledger/15: Cyrenaica lost to achaemenid-empire -525. Below a factor of two and flagged by the author, so not blocking.",
+     "fix": "Corrections of /keyframe_review/0, /1, /2 = {\"minus\": [{\"cliopatria\": \"Thirtieth Dynasty of Egypt\", \"year\": Y}, {\"country\": \"Libya\"}], \"text\": \"Egypt without Cyrenaica, a Persian satrapy 525-332 (Cyrenaica page)\"} with Y = -383, -366, -350 and verdict adjust (/1 becomes adjust); delete /ledger/4; add https://en.wikipedia.org/wiki/Cyrenaica to sources; update the successors land text and notes. Route to me-05: achaemenid-empire should hold Cyrenaica 380-343 or say who did."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0; /ledger/4",
+     "what is missing": "Libyan coast: page found (see fix); remove it from the corrections and drop the confidence-1 loss.",
+     "page to try": "https://en.wikipedia.org/wiki/Cyrenaica"
+    },
+    {
+     "where": "/wars",
+     "what is missing": "The failed Persian invasion of 373 BC (Pharnabazus and Iphicrates, Mendes): a war with no zone, absent because the dynasty page does not name it.",
+     "page to try": "https://en.wikipedia.org/wiki/Nectanebo_I"
+    },
+    {
+     "where": "/wars/0",
+     "what is missing": "Year and outcome of Teos' Syrian campaign (with Agesilaus and Chabrias) and whether any ground was held.",
+     "page to try": "https://en.wikipedia.org/wiki/Teos_of_Egypt"
+    },
+    {
+     "where": "/ledger/3; /ledger/5",
+     "what is missing": "Persian reconquest year: dynasty page 343, Second Achaemenid conquest page 340 or 339 (both confirmed); a third page to settle it.",
+     "page to try": "https://en.wikipedia.org/wiki/Nectanebo_II"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Thirtieth_Dynasty_of_Egypt",
+     "result": "confirmed ('Nectanebo I had gained control of all of Egypt by November of 380 BC'; 'founded after the overthrow of Nepherites II in 380 BC')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Thirtieth_Dynasty_of_Egypt",
+     "result": "confirmed (343; 'forced to withdraw from his defenses in the Nile Delta to Memphis')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Second_Achaemenid_conquest_of_Egypt",
+     "result": "confirmed (dynasty page 343; Second Achaemenid conquest page 'took place in 340 or 339 BC', 'after a failed attempt in 351'; confidence 2 honest)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Thirtieth_Dynasty_of_Egypt",
+     "result": "confirmed ('Succeeded by: Thirty-first Dynasty of Egypt'; 'Flight of Nectanebo II: 343 BC')"
+    },
+    {
+     "where": "/keyframe_review/0 (Libyan part)",
+     "page": "https://en.wikipedia.org/wiki/Cyrenaica",
+     "result": "not on page as Egyptian: page has Cyrenaica a Persian satrapy 525-332 (author had marked it unverified)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 687196,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area (confirmed). 16% of the -383 shape is Libya, which the Cyrenaica page assigns to Persia; Egypt alone is about 84% (about 577,000 km2)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "twenty-sixth-dynasty-of-egypt",
+    "year": -664,
+    "type": "found",
+    "counterpart": "assyrian-egypt"
+   },
+   "mirror": {
+    "slug": "assyrian-egypt",
+    "year": -664,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Both hold Lower Egypt 664-655; assyrian-egypt has no loss to this state in 664 (its /ledger/0 founds with the same land). Fix 1 of the 26th."
+  },
+  {
+   "event": {
+    "slug": "twenty-sixth-dynasty-of-egypt",
+    "year": -655,
+    "type": "gain",
+    "counterpart": "assyrian-egypt"
+   },
+   "mirror": {
+    "slug": "assyrian-egypt",
+    "year": -655,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "assyrian-egypt /ledger/2 dissolve, counterpart twenty-sixth-dynasty-of-egypt, all of Egypt."
+  },
+  {
+   "event": {
+    "slug": "twenty-sixth-dynasty-of-egypt",
+    "year": -655,
+    "type": "predecessor",
+    "counterpart": "kingdom-of-kush"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kush",
+    "year": -656,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Kush loses Upper Egypt to assyrian-egypt, not to this state."
+  },
+  {
+   "event": {
+    "slug": "twenty-sixth-dynasty-of-egypt",
+    "year": -550,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "greek-city-states lost Cyprus to neo-assyrian-empire in -709 (its /ledger/4) and has no later Cyprus; neo-assyrian-empire gains Cyprus -709 and never loses it before -609."
+  },
+  {
+   "event": {
+    "slug": "twenty-sixth-dynasty-of-egypt",
+    "year": -550,
+    "type": "gain",
+    "counterpart": "phoenicia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "phoenicia is owned by me-04, which has not run."
+  },
+  {
+   "event": {
+    "slug": "twenty-sixth-dynasty-of-egypt",
+    "year": -525,
+    "type": "loss",
+    "counterpart": "achaemenid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Egypt; achaemenid-empire owned by me-05, not run. me-05 must add the First Egyptian Satrapy from 525 (Cliopatria's Achaemenid -530 shape holds only Sinai)."
+  },
+  {
+   "event": {
+    "slug": "twenty-sixth-dynasty-of-egypt",
+    "year": -525,
+    "type": "loss",
+    "counterpart": "achaemenid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Cyprus, confidence 1; me-05 not run."
+  },
+  {
+   "event": {
+    "slug": "thirtieth-dynasty-of-egypt",
+    "year": -380,
+    "type": "found",
+    "counterpart": "twenty-ninth-dynasty-of-egypt"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; in counterparts_needing_dossiers (me-03-x, not run)."
+  },
+  {
+   "event": {
+    "slug": "thirtieth-dynasty-of-egypt",
+    "year": -343,
+    "type": "loss",
+    "counterpart": "achaemenid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Egypt; me-05 not run; must add the Second Egyptian Satrapy from 343 (Cliopatria's Achaemenid -350..-338 shape holds only Sinai)."
+  },
+  {
+   "event": {
+    "slug": "thirtieth-dynasty-of-egypt",
+    "year": -343,
+    "type": "loss",
+    "counterpart": "achaemenid-empire"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -525,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "The Libyan coast: greek-city-states and the Cyrenaica page have Cyrenaica Persian from 525 to 332, so it was not Egyptian to lose in 343; fix of the 30th removes it."
+  },
+  {
+   "event": {
+    "slug": "thirtieth-dynasty-of-egypt",
+    "year": -343,
+    "type": "contest_start",
+    "counterpart": "achaemenid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-05 not run."
+  },
+  {
+   "event": {
+    "slug": "twenty-sixth-dynasty-of-egypt",
+    "year": -592,
+    "type": "war",
+    "counterpart": "kingdom-of-kush"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kush",
+    "year": -593,
+    "type": "war"
+   },
+   "status": "matched",
+   "note": "Psamtik II's Nubian campaign: one year apart (Amasis II page 592, Napata page 593); no land either side."
+  },
+  {
+   "event": {
+    "slug": "neo-babylonian-empire",
+    "year": -605,
+    "type": "war",
+    "counterpart": "twenty-sixth-dynasty-of-egypt"
+   },
+   "mirror": {
+    "slug": "twenty-sixth-dynasty-of-egypt",
+    "year": -612,
+    "type": "war"
+   },
+   "status": "matched",
+   "note": "Carchemish (zone Levant) falls inside the 26th's 612-567 Saite-Babylonian conflict, which has no zone; the Egyptian Levant 609-605 is a thin item."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Sebennytos",
+   "kind": "place",
+   "used_in": "thirtieth-dynasty-of-egypt"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Twenty-ninth Dynasty of Egypt",
+   "suggested_slug": "twenty-ninth-dynasty-of-egypt",
+   "years": [
+    -398,
+    -380
+   ]
+  },
+  {
+   "name": "Twenty-eighth Dynasty of Egypt",
+   "suggested_slug": "twenty-eighth-dynasty-of-egypt",
+   "years": [
+    -404,
+    -398
+   ]
+  },
+  {
+   "name": "First Egyptian Satrapy (Twenty-seventh Dynasty)",
+   "suggested_slug": "twenty-seventh-dynasty-of-egypt",
+   "years": [
+    -525,
+    -404
+   ]
+  },
+  {
+   "name": "Second Egyptian Satrapy (Thirty-first Dynasty)",
+   "suggested_slug": "thirty-first-dynasty-of-egypt",
+   "years": [
+    -343,
+    -332
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-me-03-c.md",
+ "problems": [
+  "No page failed. Pages opened: Twenty-sixth Dynasty of Egypt, Amasis II, Thirtieth Dynasty of Egypt, Second Achaemenid conquest of Egypt, Cyrenaica, Assyrian conquest of Egypt.",
+  "Decision needed from the orchestrator on the 664-655 overlap: recommended start of twenty-sixth-dynasty-of-egypt at -655 (keeps assyrian-egypt, kingdom-of-kush and neo-assyrian-empire unchanged); the alternative merges assyrian-egypt into it.",
+  "Routing for me-05 (achaemenid-empire): add the First Egyptian Satrapy from 525 and the Second from 343, and Cyrenaica 525-332 (the 30th's Libyan part is to be removed); Cliopatria's Achaemenid shapes of -530..-501 and -350..-338 hold only Sinai of Egypt.",
+  "No reviewer edits were applied to either dossier."
+ ]
+}

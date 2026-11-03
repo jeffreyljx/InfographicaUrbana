@@ -1,0 +1,45 @@
+{
+ "window": "p1660-p1669",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "what": "morocco loss to nobody, 1660, of the Saadi 1660 shape minus Sijilmasa 80 km. Supported by the Alawi page: Mawlay Sharif 'declared sultan of the Tafilalt in 1631', the Dala'iyya held 'all the territory west and south of Sijilmasa' from 1646, Fez taken 'in June 1666', Marrakesh 'In July' 1668. The spec resolves to 1375 cells but a loss moves only Morocco's own cells: the trial moves exactly 695 (Marrakesh-Tensift, Souss/Guelmim edge, Tadla, Middle Atlas, the Oriental) and Morocco keeps the 77-cell Tafilalt disc of its own morocco_1631 keyframe; the morocco_1666 snap (-695) disappears, 1666 adds Fez (+43), 1668 regains the rest, end anchor Morocco 1422 cells as before. Only the caption overstated the page: '1660-1665: the Alawis hold only the Tafilalt', whereas the page has al-Rashid recognised as sultan by the Banu Ma'qil and Ait Yaznasin in 1664, Sidi Mohammed's base 'as far west as Azrou' at the same time, and the Angad battle of 2 August 1664.",
+   "page": "https://en.wikipedia.org/wiki/Alawi_dynasty",
+   "fix": "Changed the first sentence of the note (the caption) to \"1660: the Saadi legacy is not the Alawis'; they hold the Tafilalt, take Fez in June 1666 and Marrakesh in July 1668.\" and added a review remark on the 1664 recognition and Azrou. Region and year unchanged.",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "fixed",
+   "what": "dutch-gold-coast loss to english-colonial-empire, 1664, Axim. The page's fort table supports it: Fort Santo Antonio (Axim) 'Occupied between 1664 and 1665 by the British'. But the spec (Axim 12 km = cell 383562) names a cell the Dutch did not hold: their Cliopatria-based shape (dutch-gold-coast_1653, ok) draws Axim at 383563, one cell to the north-west, and 383562 was nobody's. In the agent's trial the event moved nothing: no change in 1664, and the English never held Axim.",
+   "page": "https://en.wikipedia.org/wiki/Dutch_Gold_Coast",
+   "fix": "Region changed to {\"intersect\":[{\"place\":\"Axim\",\"km\":25,\"country\":\"Ghana\"},{\"cliopatria\":\"Dutch Gold Coast\",\"year\":1664}]}, which resolves to the single Dutch cell 383563. Re-trial: in 1664 cell 383563 goes from dutch-gold-coast to english-colonial-empire (events/1, n=1).",
+   "applied": true
+  },
+  {
+   "entry": "events/2",
+   "verdict": "fixed",
+   "what": "dutch-gold-coast gain from english-colonial-empire, 1665, Cormantin and Axim. The pages support it: Dutch Gold Coast fort table, Fort Amsterdam (Cormantin) 'captured in 1665 by Engel de Ruyter', and Axim English only 1664-1665; the Fort Amsterdam (Ghana) page places the fort at Abandze 'on the north-east of Cape Coast', English-built 1638-1645, taken by de Ruyter in 1665. But the spec used Moree 12 km for Cormantin (the gazetteer files 'Fort Amsterdam (Kormantin)' as an alternative name of Moree); that cell, 383720, is Fort Nassau's and already Dutch, so the English kept their two Gold Coast cells (383722, 385462, north-east of Cape Coast) to 1670. The Axim part took nobody's cell 383562 (since the English held none in the region), giving the Dutch a new cell instead of a return.",
+   "page": "https://en.wikipedia.org/wiki/Fort_Amsterdam_(Ghana)",
+   "fix": "Region changed to the union of {\"intersect\":[{\"place\":\"Cape Coast\",\"km\":60,\"country\":\"Ghana\"},{\"cliopatria\":\"English Colonial Empire\",\"year\":1664}]} (the two English cells 383722 and 385462, the same cells english-colonial-empire/ledger/25 gave the English in 1640) and the Axim spec of events/1 (383563). Re-trial: in 1665 cells 383563, 383722, 385462 go from english-colonial-empire to dutch-gold-coast (n=3); 383562 stays nobody's. This matches Cliopatria's own 1670 Dutch Gold Coast shape, which holds 383722 and 385462.",
+   "applied": true
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "fixed",
+   "what": "thirteen-colonies against haudenosaunee, 1664-1669, winner haudenosaunee, region New York (518 cells). The Province of New York page supports it: 'no fixed western border', 'The territory of western New York was disputed with the indigenous Iroquois Confederacy', upstate New York 'occupied by the Five Nations', the Duke 'exercised little direct control'. The ruling acts only on the 300 conflict cells (42.0-45.0 N, 79.7-73.4 W), the nearest about 56 km from Albany and 33 km from Schenectady, so Fort Orange and the Hudson valley are untouched; trial: settled 300 cell-years in 1664, Haudenosaunee keep 1095 cells to the p1670 anchor. The why had two small errors: it dated New Amsterdam's capture to September (the page: surrendered 27 August 1664) and listed a capture of Long Island that the page does not mention.",
+   "page": "https://en.wikipedia.org/wiki/Province_of_New_York",
+   "fix": "Last clause of why changed to 'the English capture of 1664 is New Amsterdam (surrendered 27 August) and Fort Orange (24 September), neither of which lies in these cells (the nearest is about 56 km from Albany).' Years, parties, winner and region unchanged.",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch p1660-p1669 after my edits: 4 entries, 4 ok, 0 rejected. Trial of the corrected file (stage /tmp/claude-0/work/review-p1660-p1669/stage): all 4 applied; morocco -695 in 1660 and no morocco_1666 snap; Axim to the English 1664 and back with Cormantin 1665 (3 cells); ruling settles 300 cell-years in 1664.",
+ "problems": [
+  "Crossing the boundary (as the window agent says): rulings/0 ends in 1669; thirteen-colonies_1673 and _1674 (window p1670-p1679) and later keyframes will claim the same 300 New York cells and R1 hands them to the colony again. The p1670-p1679 window needs a matching ruling (winner haudenosaunee, region New York, source Province of New York page).",
+  "Gazetteer: 'Fort Amsterdam (Kormantin)' is filed as an alternative name of Moree (Ghana). The Fort Amsterdam (Ghana) page puts the fort at Abandze, north-east of Cape Coast; Moree is Fort Nassau. The alias should be removed or moved to a separate Abandze/Kormantin place, or other windows will repeat the no-op this patch had.",
+  "dutch-gold-coast/ledger/11 and /12 are still skipped by the compile (places 'Egya' and 'Cormantin' not in the gazetteer); events/1 and events/2 now replace them. A dossier tidy-up could replace those ledger regions with the patch's specs. Fort Egya (temporary-forts table 1647-1664, 'Demolished in 1665 by the British after they had recaptured it in the year before') has no location on the page and stays undrawn (about one cell).",
+  "Morocco 1664-1665: the Alawi page has al-Rashid recognised as sultan by the Banu Ma'qil and the Ait Yaznasin in 1664 and Sidi Mohammed killed attacking Angad on 2 August 1664, and Sidi Mohammed's base 'as far west as Azrou'. So some of the north-east (Angad and the Beni Snassen country) was arguably Alawi from 1664; the page gives no extent, so the morocco_1631 keyframe (Tafilalt only to 1665) and this patch leave it nobody's. A dossier request if a page with the extent turns up.",
+  "The 1664 thirteen-colonies_1664 keyframe still adds 225 cells from nobody, 160 of them in New York (the land between New Netherland and the Haudenosaunee). Not touched by this patch; the next reviewer of the colony's dossier may want to check it against the 'no fixed western border' statement."
+ ]
+}

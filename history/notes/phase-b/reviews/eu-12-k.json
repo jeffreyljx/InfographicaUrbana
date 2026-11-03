@@ -1,0 +1,1465 @@
+{
+ "batch_id": "eu-12-k",
+ "verdicts": [
+  {
+   "slug": "crown-of-aragon",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/2",
+     "what": "1168 gain of 33 Taifa of Murcia cells is credited to the Treaty of Sanguesa, which the page describes only as a partition of land still to be conquered; the cells lie in Lower Aragon (bbox 0.77 W-0.58 E, 40.49-41.40 N), far from Murcia.",
+     "why": "Alfonso II page (opened 2026-10-25): the treaty was 'dividing the territory of the Taifa of Murcia between them'; no handover and no towns. gazetteer resolve of the event's region: 33 cells, 8,346 km2, bbox [-0.77, 40.49, 0.58, 41.4].",
+     "fix": "Confidence lowered 2 -> 1 and a reviewer sentence appended to the note saying the date and land rest on Cliopatria (page silent). A gap-filler may find the real Lower Aragon dates (Alcaniz, Caspe, Morella) on the Ramon Berenguer IV or Alfonso II pages.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/33/region",
+     "what": "1324 gain drew the whole island of Sardinia while keyframe crown-of-aragon_1326 holds only Cliopatria's 68 Sardinian cells and the page names only the Pisan lands and Sassari (Arborea was the ally).",
+     "why": "Kingdom of Sardinia page: 'occupied the Pisan territories of Cagliari and Gallura along with the city of Sassari'; Crown of Aragon page: 'In 1324, James II finally started to seize the Pisan territories in the former states of Cagliari and Gallura'.",
+     "fix": "Region replaced by {intersect: [Sardinia, Crown of Aragon 1326]} with the page's words in text; note appended. Validator: 0 errors, 0 warnings.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/39, /keyframe_review/40, /keyframe_review/41, /keyframe_review/42, /keyframe_review/43, /ledger/54, /ledger/61",
+     "what": "Navarre (38-40 cells, 9,610 km2, bbox 2.11 W-0.90 W, 41.91-43.26 N) is kept inside the Crown's corrected shapes for 1429-1478 although the keyframe note itself says it was John II's kingdom, not Alfonso V's, until 1458 and a separate crown in personal union afterwards.",
+     "why": "kingdom-of-navarre dossier (1134-1620) draws Navarre throughout with no event naming crown-of-aragon in 1429 or 1479 (its 1479 event is a rename to the Foix line); county-of-foix has no 1479 gain. The land is drawn twice for 50 years. gazetteer: intersect(Crown of Aragon 1429, Kingdom of Navarre 1428) = 38 cells.",
+     "fix": "Subtract {\"cliopatria\": \"Kingdom of Navarre\", \"year\": 1428} (or the 1429-minus-1422 Crown cells) from the corrections of crown-of-aragon_1429, _1450, _1453, _1459 and _1463; delete /ledger/54 (1429 gain) and /ledger/61 (1479 loss to county-of-foix) and keep the personal union as a sentence in notes.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/31, /keyframe_review/32, /ledger/44, /ledger/46, /ledger/47",
+     "what": "The Greek cells (Attica, Boeotia, Neopatras) are drawn as the Crown's own land 1379-1389 with counterpart 'duchy-of-athens', the Frankish duchy whose dossier ends in 1311; the Catalan duchies already have a dossier, catalan-company (eu-05, 1311-1390), which draws the same land as its own until 1388/1390.",
+     "why": "catalan-company ledger: 1377 rename ('the title of Duke of Athens and Neopatras was assumed by Peter IV of Aragon'; the land stays with the Company), 1379 loss of Thebes to the Navarrese Company, 1388 loss of Athens and 1390 loss of Neopatras to acciaioli-duchy-of-athens. duchy-of-athens dossier: 1205-1311. The author's counterparts_needing_dossiers asks for 'catalan-duchy-of-athens', which is not needed.",
+     "fix": "Remove the Greek cells from crown-of-aragon_1379 and _1385 (minus {\"country\": \"Greece\"}); replace /ledger/44 by a vassal_start with counterpart catalan-company (1379, or 1377 if the Duchy of Athens page dates it so) and /ledger/46-47 by vassal_end events (1388 Athens, 1390 Neopatras, counterpart catalan-company, Acciaioli named in the note); keyframe crown-of-aragon_1390 then equals 1385 and can be merged.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/0/correction, /keyframe_review/1, /keyframe_review/3 to /keyframe_review/7",
+     "what": "Cerdanya is drawn twice 1163-1208: the Crown's 1163 keyframe (Kingdom of Aragon + County of Barcelona 1163) already contains the 20 cells of Cliopatria's County of Berga 1169 shape, and keyframes 1169-1206 'restore' the Berga row's cells, while county-of-berga holds them continuously from 1162 to 1242. No Crown event records Cerdanya at all.",
+     "why": "gazetteer: intersect(Aragon 1163 + Barcelona 1163, County of Berga 1169) = 20 cells, 5,058 km2, bbox [1.25, 41.8, 2.79, 42.48]. county-of-barcelona /ledger/14: 1162 loss of Cerdanya to county-of-berga ('Pere (Peter) received Cerdanya'); county-of-berga /ledger/10 1162 gain, /ledger/11 1168 rename (Sancho I). Alfonso II page (opened): 'the counties of Cerdanya (1168) and Roussillon (inherited in 1172)'.",
+     "fix": "Subtract {\"cliopatria\": \"County of Berga\", \"year\": 1169} from crown-of-aragon_1163 (1163-1167) and add a 1168 event for Cerdanya with counterpart county-of-berga citing the Alfonso II page: a gain if the Crown holds it directly, or a vassal_start if Sancho's tenure 1168-1223 is read as an appanage (then the 1169-1206 corrections must not restore the cells). Route the matching 1168 event to county-of-berga's owner (eu-12).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger (missing, 1199)",
+     "what": "The 1199 purchase of Berga by Peter II has no event in the Crown.",
+     "why": "county-of-berga /ledger/12: 1199 loss to crown-of-aragon, 'Berga was sold to king Peter II of Aragon in 1199' (c2).",
+     "fix": "Add a 1199 gain from county-of-berga, region a 20 km circle at 1.845 E, 42.101 N ('Berga and the Berguedà'), source the Berga page the neighbour cites; adjust the 1199-1208 shape accordingly once Cerdanya is reconciled.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/7, /keyframe_review/6 onward",
+     "what": "The 12 Pallars Sobirà cells enter the Crown in 1202 (confidence 1, page silent) while county-of-pallars-sobira runs to 1487 and loses the county to the Crown only then; the land is drawn twice 1202-1486.",
+     "why": "county-of-pallars-sobira ledger: 1199 rename (Guillelma, then Comminges), 1487 loss to crown-of-aragon, c2: Hugh Roger III 'lost his County to the Crown in 1487'. gazetteer: Crown 1202 minus 1192 = 14 cells, 12 of them the Pallars Sobirà 1192 shape (3,035 km2, bbox 0.71-1.30 E, 42.31-42.73 N).",
+     "fix": "Subtract {\"cliopatria\": \"County of Pallars Sobirà\", \"year\": 1192} from the Crown corrections 1202-1486 (or tint it as a vassal with a vassal_start), replace /ledger/7 by a 1487 gain from county-of-pallars-sobira citing its page.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/48, /ledger/49, /ledger/50",
+     "what": "Empúries is gained 1395, lost 1402 and regained 1415 at confidence 1, while county-of-ampuria dates the escheat to 1410 (c2) and calls the county royal from 1402.",
+     "why": "county-of-ampuria /ledger/9 1402 rename (infobox 'Annexed into the Principality of Catalonia: 1402'); /ledger/10-11 1410 loss and dissolve to crown-of-aragon ('Empúries escheated to the crown between 1410 and 1436').",
+     "fix": "Replace the three events by one gain in 1410 (or 1402) from county-of-ampuria matching the neighbour, and drop the 4 Empúries cells from the Crown corrections before that year.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/20/counterpart",
+     "what": "The 1244 gain names taifa-of-denia, whose dossier ends in 1227 (loss and dissolve).",
+     "why": "taifa-of-denia ledger: 1227 loss and dissolve; almohad-caliphate /ledger/44: 1228 'Zayyan ibn Mardanish ... took control' of Valencia.",
+     "fix": "Name the holder in 1244 (taifa-of-valencia for Zayyan's realm, as /ledger/19) or nobody, with a note; or ask the Denia owner to extend its dossier if a page supports it.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/11",
+     "what": "Menorca 1232 is a gain at confidence 3; the page says 'acquired', and the Kingdom of Majorca page says its sovereignty was surrendered while Muslim rule continued; the conquest of Menorca (Alfonso III) is not in the ledger.",
+     "why": "James I page: 'Menorca (1232) and Ibiza (1235) were later acquired during the reconquest' (confirmed). Kingdom of Majorca page footnote: Menorca 'was still under the rule of Muslims until 1231 when its sovereignty was surrendered to James I'.",
+     "fix": "Consider a vassal_start (counterpart nobody, a tributary Muslim ruler) instead of a gain and look for the conquest of Menorca on the Alfonso III page; the kingdom-of-majorca dossier's 1305 Menorca gain (c1) also needs the same answer.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/1/counterpart (neighbour side)",
+     "what": "The Crown merges county-of-barcelona in 1162, but county-of-barcelona /ledger/15 names kingdom-of-aragon as the merge partner.",
+     "why": "county-of-barcelona ledger 1162: merge kingdom-of-aragon (c3), dissolve.",
+     "fix": "No change here; route to the county-of-barcelona owner (eu-12) to name crown-of-aragon as counterpart and successor.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/5, /ledger/8, /ledger/14, /ledger/16",
+     "what is missing": "Southern frontier steps 1188, 1206, 1236, 1241 (Castello, Tortosa, Valencia districts) are Cliopatria-only, counterpart almohad-caliphate with no mirror in the Almohad dossier.",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Valencia"
+    },
+    {
+     "where": "/ledger/21",
+     "what is missing": "1260 Alicante cells (5 from the Almohad row, 1 from Castile); the Almohads held nothing there in 1260; holder and date unknown.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Almizra"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "Pallars Jussa 1192 is confidence 1 here but the neighbour dates it 27 May 1192 at confidence 3 from its page.",
+     "page to try": "https://en.wikipedia.org/wiki/Pallars_Juss%C3%A0"
+    },
+    {
+     "where": "/ledger/13",
+     "what is missing": "Urgell cells 1236, page silent.",
+     "page to try": "https://en.wikipedia.org/wiki/County_of_Urgell"
+    },
+    {
+     "where": "/ledger/25, /ledger/31, /ledger/32",
+     "what is missing": "Murcia/Alicante frontier 1285-1305 (Torrellas 1304, Elche 1305) is confidence 1; crown-of-castile has a 1304 loss that pairs with /ledger/31 but nothing for /ledger/25 or /ledger/32.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Torrellas"
+    },
+    {
+     "where": "/ledger/45",
+     "what is missing": "Sicily from 1385 is Cliopatria-only; the Crown page has 'Sicily was dissociated in the hands of Martin I from 1395 to 1409', so the union date is open.",
+     "page to try": "https://en.wikipedia.org/wiki/Martin_I_of_Sicily"
+    },
+    {
+     "where": "/ledger/53, /ledger/58",
+     "what is missing": "Corsica 1422-1449 rests on 'much of Corsica by the 1420s'; the Kingdom of Sardinia page says Corsica 'had never been conquered'.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Corsica"
+    },
+    {
+     "where": "/ledger/67",
+     "what is missing": "1515 dissolve into kingdom-of-spain is Cliopatria-only (Ferdinand II died in January 1516).",
+     "page to try": "https://en.wikipedia.org/wiki/Ferdinand_II_of_Aragon"
+    },
+    {
+     "where": "/keyframe_review (missing 1166-1173)",
+     "what is missing": "Provence under Alfonso II 1166-1173 (page text) is not drawn and county-of-provence has no matching period.",
+     "page to try": "https://en.wikipedia.org/wiki/County_of_Provence"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "Ruler strip omitted (page budget).",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_Aragonese_monarchs"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/James_I_of_Aragon",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/James_I_of_Aragon",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Alfonso_II_of_Aragon",
+     "result": "not on page"
+    },
+    {
+     "where": "/ledger/27",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Majorca",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/57",
+     "page": "https://en.wikipedia.org/wiki/Alfonso_V_of_Aragon",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/60",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Barcelona_(1493)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/62",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Barcelona_(1493)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/52",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Sardinia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/33",
+     "page": "https://en.wikipedia.org/wiki/Crown_of_Aragon",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 120000,
+    "infobox_year": 1300,
+    "cliopatria_km2": 122175,
+    "ratio": 0.98,
+    "acknowledged": true,
+    "note": "Shape alive in 1300 is crown-of-aragon_1294 (1294-1304); the author's corrected shape (no Sicily, no Balearics) is about 94,000 km2, ratio 1.28 infobox/corrected; within a factor of two and stated in the keyframe note."
+   }
+  },
+  {
+   "slug": "taifa-of-cordoba",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/wars/0/from",
+     "what": "War 'Almohad conquest of al-Andalus' started in 1146, before the dossier's start (1147).",
+     "why": "Brief section 2.2: wars inside the life.",
+     "fix": "Set from 1147 with a reviewer note (the wider war ran 1146-1173).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/2, /keyframe_review/3, /ledger/3 to /ledger/7, /identity/capitals/1, /wars/2",
+     "what": "The 1241-1249 shape (9 cells containing Jaen) is Ibn al-Ahmar's Jaen, already drawn by emirate-of-granada; this dossier draws it a second time 1241-1246 and its 1246 loss has no mirror, since crown-of-castile takes Jaen from emirate-of-granada.",
+     "why": "Emirate of Granada page (opened): 'Jaén, Guadix, and Baeza accepted his authority quickly in 1232'; 'agreed to surrender Jaén and to become Ferdinand's vassal' (March 1246). emirate-of-granada /ledger/1 (1232 gain of Jaen) and /ledger/7 (1246 loss to crown-of-castile); crown-of-castile /ledger/5 (1246 gain of Jaen from emirate-of-granada). The author's own note says the land 'probably belongs under the Emirate of Granada'.",
+     "fix": "Mark taifa-of-cordoba_1241 'wrong' (correction: the land is emirate-of-granada's, nothing drawn here), delete keyframe taifa-of-cordoba_1246, ledger 3-7, the Jaen capital and the third war, and end the dossier with its first shape (see the next finding). The orchestrator should relabel Cliopatria's 1241 shape to the Emirate of Granada.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/1/verdict, /ledger/2",
+     "what": "Keyframe taifa-of-cordoba_1236 is marked 'ok' while its note says the one cell does not contain Cordoba, lies inside the Almohad shape and that 'No page names a state on this land'; the 1236 gain from almohad-caliphate has no mirror.",
+     "why": "Cordoba page: 'Ferdinand III entered the city on 29 June 1236'; almohad-caliphate has no 1236 event naming taifa-of-cordoba; crown-of-castile /ledger/1 gains Cordoba itself in 1236 from taifa-of-cordoba, which this dossier does not hold.",
+     "fix": "Set the verdict to 'wrong' with an empty-land correction note, delete /ledger/2, and route crown-of-castile /ledger/1 to its owner (eu-12) to name the 1236 holder of Cordoba.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/1, /identity/end, /keyframe_review/0",
+     "what": "Cordoba city is drawn twice 1147-1149 and held here to 1151, though the neighbours date its fall to the Almohads, from the Almoravids, to 1149 on a page.",
+     "why": "almohad-caliphate /ledger/11: 1149 gain of Cordoba from almoravid-dynasty, 'They took control of Cordoba in 1149' (Abd al-Mu'min page); almoravid-dynasty /ledger/45: 1149 loss of Cordoba to the Almohads; neither has a 1147 event naming taifa-of-cordoba. Taifa page (opened): Cordoba is listed only for 1031-1091; 'Jaén: 1145–1159 (to Murcia); 1168 (to Almohads)'.",
+     "fix": "Either (a) a gap-filler finds a page for an independent Cordoba ruler in 1145-1149 (Ibn Hamdin, Spanish 'Taifa de Córdoba'), the dossier ends with a 1149 loss and dissolve to almohad-caliphate, and almoravid-dynasty adds the 1147 loss; or (b) the 1147 shape is marked wrong (Almoravid and Jaen-taifa land) and the dossier is withdrawn. With the findings above this leaves at most 1147-1149.",
+     "applied": false,
+     "blocking": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0, /ledger/1",
+     "what is missing": "Any page naming a Cordoba taifa or ruler in 1145-1151 (Ibn Hamdin did not load in English).",
+     "page to try": "https://es.wikipedia.org/wiki/Taifa_de_C%C3%B3rdoba"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Taifa",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Emirate_of_Granada",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Emirate_of_Granada",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Emirate_of_Granada",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 15320,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The article (1031-1091 republic) gives no area; stated in keyframe taifa-of-cordoba_1147."
+   }
+  },
+  {
+   "slug": "taifa-of-tejada",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/0/to",
+     "what": "War 'Almohad conquest of al-Andalus' ran to 1173, past the dossier's end (1150).",
+     "why": "Brief section 2.2: wars inside the life.",
+     "fix": "Set to 1150 with a reviewer note (the wider war ran 1146-1173).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/identity/rulers/0/from",
+     "what": "The first ruler starts in 1145, a year before the dossier's start (1146).",
+     "why": "Taifa of Tejada page (opened): ruler list 'Abu al-Walid Mohammed ibn al-Mundir: 1145-1146', infobox 'Established: 1146'; the Taifa page gives 'Tejada: 1145–1150 (to Almohads)'.",
+     "fix": "Choose one: start the dossier in 1145 (two pages support it) or clip the ruler to 1146 and keep 1145 in the note.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/0/counterpart",
+     "what": "The found event names almoravid-dynasty, but the infobox says 'Preceded by: Taifa of Silves' and the first ruler (1145-1146) is Ibn al-Mundhir; neither almoravid-dynasty nor taifa-of-silves has a matching 1146 event.",
+     "why": "Taifa of Tejada page (opened): infobox 'Preceded by: Taifa of Silves'; almoravid-dynasty 1145 gives Huelva province to taifa-of-niebla; taifa-of-silves has no Tejada event.",
+     "fix": "Keep almoravid-dynasty or switch to taifa-of-silves, say why in the note, and route the mirror to the chosen owner (af-02 or eu-12).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Tejada",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Tejada",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Tejada",
+     "result": "confirmed"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Tejada",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 2252,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; the circle keeps Cliopatria's area."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "taifa-of-tejada",
+    "year": 1146,
+    "type": "found",
+    "counterpart": "almoravid-dynasty"
+   },
+   "mirror": {
+    "slug": "almoravid-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "No Almoravid loss to Tejada; Almoravid gives Huelva province to taifa-of-niebla in 1145. Route to af-02 (or switch counterpart to taifa-of-silves)."
+  },
+  {
+   "event": {
+    "slug": "taifa-of-tejada",
+    "year": 1150,
+    "type": "loss",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": 1152,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Almohad dates it 1152 at c1 (Cliopatria bridging); the Tejada page gives 1150. Route to af-02 to move to 1150."
+  },
+  {
+   "event": {
+    "slug": "taifa-of-cordoba",
+    "year": 1147,
+    "type": "found",
+    "counterpart": "almoravid-dynasty"
+   },
+   "mirror": {
+    "slug": "almoravid-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Almoravid holds Cordoba to 1149 (loss to Almohads); no event naming taifa-of-cordoba."
+  },
+  {
+   "event": {
+    "slug": "taifa-of-cordoba",
+    "year": 1152,
+    "type": "loss",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": 1152,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Both c1; but almohad-caliphate already gains Cordoba city from almoravid-dynasty in 1149."
+  },
+  {
+   "event": {
+    "slug": "taifa-of-cordoba",
+    "year": 1236,
+    "type": "gain",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "No Almohad event; Cliopatria artefact (one cell)."
+  },
+  {
+   "event": {
+    "slug": "taifa-of-cordoba",
+    "year": 1241,
+    "type": "gain",
+    "counterpart": "taifa-of-almeria"
+   },
+   "mirror": {
+    "slug": "taifa-of-almeria",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No dossier yet (eu-12, listed by the author)."
+  },
+  {
+   "event": {
+    "slug": "taifa-of-cordoba",
+    "year": 1246,
+    "type": "loss",
+    "counterpart": "crown-of-castile"
+   },
+   "mirror": {
+    "slug": "crown-of-castile",
+    "year": 1246,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Castile gains Jaen from emirate-of-granada, not from taifa-of-cordoba; Jaen is drawn by both Cordoba and Granada 1241-1246."
+  },
+  {
+   "event": {
+    "slug": "taifa-of-cordoba",
+    "year": 1249,
+    "type": "dissolve",
+    "counterpart": "crown-of-castile"
+   },
+   "mirror": {
+    "slug": "crown-of-castile",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "No Castile event in 1249."
+  },
+  {
+   "event": {
+    "slug": "crown-of-castile",
+    "year": 1236,
+    "type": "gain",
+    "counterpart": "taifa-of-cordoba"
+   },
+   "mirror": {
+    "slug": "taifa-of-cordoba",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "Castile takes Cordoba city from taifa-of-cordoba, which holds no land at Cordoba in 1236. Route to Castile owner (eu-12)."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1162,
+    "type": "merge",
+    "counterpart": "county-of-barcelona"
+   },
+   "mirror": {
+    "slug": "county-of-barcelona",
+    "year": 1162,
+    "type": "merge"
+   },
+   "status": "mismatch",
+   "note": "Barcelona names kingdom-of-aragon as merge partner, not crown-of-aragon."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1168,
+    "type": "gain",
+    "counterpart": "taifa-of-murcia"
+   },
+   "mirror": {
+    "slug": "taifa-of-murcia",
+    "year": 1169,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Both Cliopatria-based (Crown now c1, Murcia c1)."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1171,
+    "type": "gain",
+    "counterpart": "taifa-of-murcia"
+   },
+   "mirror": {
+    "slug": "taifa-of-murcia",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Teruel: Murcia has no 1171 (or 1177) loss to the Crown."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1172,
+    "type": "gain",
+    "counterpart": "county-of-rosellon"
+   },
+   "mirror": {
+    "slug": "county-of-rosellon",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No dossier yet (eu-12, listed)."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1188,
+    "type": "gain",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "c1; route to af-02 or rename counterpart."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1192,
+    "type": "gain",
+    "counterpart": "county-of-pallars-jussa"
+   },
+   "mirror": {
+    "slug": "county-of-pallars-jussa",
+    "year": 1192,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Neighbour has 27 May 1192 at c3; Crown is c1."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1202,
+    "type": "gain",
+    "counterpart": "county-of-pallars-sobira"
+   },
+   "mirror": {
+    "slug": "county-of-pallars-sobira",
+    "year": 1487,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Neighbour keeps the county to 1487; land drawn twice 1202-1486."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1206,
+    "type": "gain",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "c1."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1209,
+    "type": "vassal_start",
+    "counterpart": "county-of-berga"
+   },
+   "mirror": {
+    "slug": "county-of-berga",
+    "year": 1209,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Berga records a gain of Roussillon, not a vassal_start; Berga also holds Cerdanya 1162-1242 which the Crown draws as its own 1163-1208."
+  },
+  {
+   "event": {
+    "slug": "county-of-berga",
+    "year": 1199,
+    "type": "loss",
+    "counterpart": "crown-of-aragon"
+   },
+   "mirror": {
+    "slug": "crown-of-aragon",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Berga sold to Peter II in 1199; no Crown event."
+  },
+  {
+   "event": {
+    "slug": "county-of-barcelona",
+    "year": 1162,
+    "type": "loss",
+    "counterpart": "county-of-berga"
+   },
+   "mirror": {
+    "slug": "county-of-berga",
+    "year": 1162,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "But the Crown 1163 keyframe still contains these 20 Cerdanya cells (double drawing 1163-1208)."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1229,
+    "type": "gain",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": 1230,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Almohad 1230 loss is the whole Balearic Islands."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1232,
+    "type": "gain",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": 1230,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Almohad gives all Balearics in 1230; Crown has Menorca 1232. Route to af-02."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1235,
+    "type": "gain",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": 1230,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Ibiza: Almohad 1230 vs Crown 1235."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1236,
+    "type": "gain",
+    "counterpart": "county-of-urgell"
+   },
+   "mirror": {
+    "slug": "county-of-urgell",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No dossier yet (eu-12, listed)."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1236,
+    "type": "gain",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "c1."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1238,
+    "type": "gain",
+    "counterpart": "taifa-of-valencia"
+   },
+   "mirror": {
+    "slug": "taifa-of-valencia",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No dossier yet (eu-12, listed)."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1241,
+    "type": "gain",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "c1."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1242,
+    "type": "gain",
+    "counterpart": "county-of-berga"
+   },
+   "mirror": {
+    "slug": "county-of-berga",
+    "year": 1242,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1242,
+    "type": "vassal_end",
+    "counterpart": "county-of-berga"
+   },
+   "mirror": {
+    "slug": "county-of-berga",
+    "year": 1242,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Berga has no vassal pair."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1244,
+    "type": "gain",
+    "counterpart": "taifa-of-valencia"
+   },
+   "mirror": {
+    "slug": "taifa-of-valencia",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No dossier yet (eu-12, listed)."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1244,
+    "type": "gain",
+    "counterpart": "taifa-of-denia"
+   },
+   "mirror": {
+    "slug": "taifa-of-denia",
+    "year": 1227,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Denia dossier ends in 1227."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1260,
+    "type": "gain",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "c1; the Almohads held nothing in Alicante in 1260."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1276,
+    "type": "split",
+    "counterpart": "kingdom-of-majorca"
+   },
+   "mirror": {
+    "slug": "kingdom-of-majorca",
+    "year": 1276,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1279,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-majorca"
+   },
+   "mirror": {
+    "slug": "kingdom-of-majorca",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Majorca has no vassal_start. Route to eu-12 (Majorca owner)."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1282,
+    "type": "gain",
+    "counterpart": "house-of-anjou-sicily"
+   },
+   "mirror": {
+    "slug": "house-of-anjou-sicily",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "eu-18 has not run."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1285,
+    "type": "gain",
+    "counterpart": "crown-of-castile"
+   },
+   "mirror": {
+    "slug": "crown-of-castile",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "c1."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1285,
+    "type": "split",
+    "counterpart": "kingdom-of-sicily"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sicily",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "eu-13 has not run."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1286,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-majorca"
+   },
+   "mirror": {
+    "slug": "kingdom-of-majorca",
+    "year": 1286,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Same year, different type: Majorca records an outright loss of Mallorca only."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1291,
+    "type": "merge",
+    "counterpart": "kingdom-of-sicily"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sicily",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "eu-13 has not run."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1295,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-majorca"
+   },
+   "mirror": {
+    "slug": "kingdom-of-majorca",
+    "year": 1295,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Same year, type differs (gain vs occupation_end)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-majorca",
+    "year": 1305,
+    "type": "gain",
+    "counterpart": "crown-of-aragon"
+   },
+   "mirror": {
+    "slug": "crown-of-aragon",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Menorca c1 in Majorca; the Crown drew no Menorca 1295-1305."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1295,
+    "type": "loss",
+    "counterpart": "papal-states"
+   },
+   "mirror": {
+    "slug": "papal-states",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "eu-13 has not run."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1305,
+    "type": "gain",
+    "counterpart": "crown-of-castile"
+   },
+   "mirror": {
+    "slug": "crown-of-castile",
+    "year": 1304,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Torrellas/Elche."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1305,
+    "type": "loss",
+    "counterpart": "crown-of-castile"
+   },
+   "mirror": {
+    "slug": "crown-of-castile",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "c1."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1324,
+    "type": "gain",
+    "counterpart": "republic-of-pisa"
+   },
+   "mirror": {
+    "slug": "republic-of-pisa",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "eu-13 has not run."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1343,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-majorca"
+   },
+   "mirror": {
+    "slug": "kingdom-of-majorca",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Majorca has no vassal_end."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1344,
+    "type": "gain",
+    "counterpart": "kingdom-of-majorca"
+   },
+   "mirror": {
+    "slug": "kingdom-of-majorca",
+    "year": 1343,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Majorca 1343 Balearics, 1344 Roussillon/Cerdanya."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1353,
+    "type": "contest_start",
+    "counterpart": "giudicato-of-arborea"
+   },
+   "mirror": {
+    "slug": "giudicato-of-arborea",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "eu-13 has not run."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1357,
+    "type": "contest_start",
+    "counterpart": "crown-of-castile"
+   },
+   "mirror": {
+    "slug": "crown-of-castile",
+    "year": 1357,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1363,
+    "type": "contest_start",
+    "counterpart": "crown-of-castile"
+   },
+   "mirror": {
+    "slug": "crown-of-castile",
+    "year": 1363,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1375,
+    "type": "contest_end",
+    "counterpart": "crown-of-castile"
+   },
+   "mirror": {
+    "slug": "crown-of-castile",
+    "year": 1369,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "Six years apart."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1368,
+    "type": "loss",
+    "counterpart": "giudicato-of-arborea"
+   },
+   "mirror": {
+    "slug": "giudicato-of-arborea",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "eu-13 has not run."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1379,
+    "type": "gain",
+    "counterpart": "duchy-of-athens"
+   },
+   "mirror": {
+    "slug": "catalan-company",
+    "year": 1377,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "Wrong counterpart slug (duchy-of-athens ends 1311); catalan-company draws the land as its own to 1388/1390."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1385,
+    "type": "gain",
+    "counterpart": "kingdom-of-sicily"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sicily",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "eu-13 has not run."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1388,
+    "type": "loss",
+    "counterpart": "duchy-of-athens"
+   },
+   "mirror": {
+    "slug": "catalan-company",
+    "year": 1388,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Athens falls to acciaioli-duchy-of-athens from catalan-company, not from the Crown."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1390,
+    "type": "loss",
+    "counterpart": "duchy-of-athens"
+   },
+   "mirror": {
+    "slug": "catalan-company",
+    "year": 1390,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Neopatras, as above."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1395,
+    "type": "gain",
+    "counterpart": "county-of-ampuria"
+   },
+   "mirror": {
+    "slug": "county-of-ampuria",
+    "year": 1410,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Neighbour dates the escheat 1410."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1402,
+    "type": "loss",
+    "counterpart": "county-of-ampuria"
+   },
+   "mirror": {
+    "slug": "county-of-ampuria",
+    "year": 1402,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1415,
+    "type": "gain",
+    "counterpart": "county-of-ampuria"
+   },
+   "mirror": {
+    "slug": "county-of-ampuria",
+    "year": 1410,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1420,
+    "type": "gain",
+    "counterpart": "giudicato-of-arborea"
+   },
+   "mirror": {
+    "slug": "giudicato-of-arborea",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "eu-13 has not run."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1422,
+    "type": "gain",
+    "counterpart": "republic-of-genoa"
+   },
+   "mirror": {
+    "slug": "republic-of-genoa",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "eu-13 has not run."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1429,
+    "type": "gain",
+    "counterpart": "kingdom-of-navarre"
+   },
+   "mirror": {
+    "slug": "kingdom-of-navarre",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "Navarre dossier keeps the kingdom 1134-1620; land drawn twice 1429-1478."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1442,
+    "type": "gain",
+    "counterpart": "kingdom-of-naples"
+   },
+   "mirror": {
+    "slug": "kingdom-of-naples",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "eu-13 has not run."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1450,
+    "type": "loss",
+    "counterpart": "republic-of-genoa"
+   },
+   "mirror": {
+    "slug": "republic-of-genoa",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "eu-13 has not run."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1458,
+    "type": "split",
+    "counterpart": "kingdom-of-naples"
+   },
+   "mirror": {
+    "slug": "kingdom-of-naples",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "eu-13 has not run."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1462,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "France has no 1462 gain of Roussillon/Cerdagne. Route to eu-10."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1479,
+    "type": "loss",
+    "counterpart": "county-of-foix"
+   },
+   "mirror": {
+    "slug": "county-of-foix",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Moot once Navarre is removed from the Crown."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1493,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1497,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "France c1 (Cliopatria) 1497; the Treaty of Barcelona page gives 19 January 1493. Route to eu-10."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1500,
+    "type": "gain",
+    "counterpart": "kingdom-of-naples"
+   },
+   "mirror": {
+    "slug": "kingdom-of-naples",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "eu-13 has not run."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1503,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1503,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1515,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-spain"
+   },
+   "mirror": {
+    "slug": "kingdom-of-spain",
+    "year": 1516,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": ""
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Menorca",
+   "kind": "region",
+   "used_in": "crown-of-aragon"
+  },
+  {
+   "name": "Ibiza",
+   "kind": "region",
+   "used_in": "crown-of-aragon"
+  },
+  {
+   "name": "Cerdanya",
+   "kind": "region",
+   "used_in": "crown-of-aragon"
+  },
+  {
+   "name": "Conflent",
+   "kind": "region",
+   "used_in": "crown-of-aragon"
+  },
+  {
+   "name": "Teruel",
+   "kind": "place",
+   "used_in": "crown-of-aragon"
+  },
+  {
+   "name": "Tarazona",
+   "kind": "place",
+   "used_in": "crown-of-aragon"
+  },
+  {
+   "name": "Alghero",
+   "kind": "place",
+   "used_in": "crown-of-aragon"
+  },
+  {
+   "name": "Sangüesa",
+   "kind": "place",
+   "used_in": "crown-of-aragon"
+  },
+  {
+   "name": "Tejada",
+   "kind": "place",
+   "used_in": "taifa-of-tejada"
+  }
+ ],
+ "counterparts_needing_dossiers": [],
+ "notes_path": "history/polities/_notes/review-eu-12-k.md",
+ "problems": [
+  "No page failed to load for the reviewer; 11 WebFetch calls (James I, Alfonso II, Kingdom of Majorca, Alfonso V, Treaty of Barcelona (1493), Kingdom of Sardinia, Crown of Aragon x2, Emirate of Granada, Taifa of Tejada, Taifa).",
+  "The author's counterparts_needing_dossiers is stale: catalan-company (eu-05) already holds the Catalan duchies, crown-of-castile, taifa-of-murcia and kingdom-of-majorca exist; the rest (kingdom-of-sicily, house-of-anjou-sicily, republic-of-pisa, giudicato-of-arborea, republic-of-genoa, kingdom-of-naples, papal-states: eu-13/eu-18; taifa-of-valencia, taifa-of-almeria, county-of-urgell, county-of-rosellon, kingdom-of-aragon: eu-12) are owned by groups that have not written them, so none is listed as needing a new dossier.",
+  "Orchestrator decision needed for Cliopatria row 'Taifa of Córdoba': the 1236 cell and the 1241-1249 Jaén shape are not a Córdoba taifa (the 1241 shape is Ibn al-Ahmar's Jaén, drawn by emirate-of-granada); the 1147-1151 shape conflicts with the Almoravid/Almohad dossiers, which put Córdoba under the Almoravids until the Almohad capture of 1149.",
+  "Moving the Cliopatria Taifa of Tejada shape to Huelva leaves its 8 eastern Algarve cells (8.17-7.45 W, 37.00-37.45 N) with no holder in 1147-1151 unless taifa-of-silves or almoravid-dynasty covers them; check when the Algarve dossiers are reviewed.",
+  "kingdom-of-aragon has no dossier yet; it must end in 1162 (the Crown draws its land from 1163), as the author says."
+ ]
+}

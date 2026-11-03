@@ -1,0 +1,105 @@
+{
+ "window": "p1970-p1979",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Sinai_Peninsula",
+   "fix": "",
+   "applied": true,
+   "what": "The Sinai page supports it: after the October 1973 war 'Israel withdrew from immediate proximity with the Suez Canal', and its withdrawal from the Sinai ended only in 1982. The compiler's relation_end ignores the region, so the dossier's partial occupation_end of Oct 1973 closes the pair's whole occupation, and the entry has to re-open it. The spec resolves to 189 cells (47,798 km2), the gazetteer's Sinai, which is the North and South Sinai governorates. The 15 km canal minus removes no cell because the land beside the canal lies in the canal governorates, outside that region. Trial: 185 cells are Egyptian land occupied by Israel at end 1973 (with no patch: plain Egypt)."
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Sinai_Peninsula",
+   "fix": "",
+   "applied": true,
+   "what": "The same check for 1974: the dossier's occupation_end for the west bank closes the whole relation, and the entry re-opens the Sinai (189 cells). The page backs the east-bank exchange of 1974 ('Israel exchanged the ten kilometers along the east bank ... for a 1974 ceasefire') and Israeli rule over the rest until 1982. Trial: 185 cells occupied at end 1974."
+  },
+  {
+   "entry": "events/2",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Sinai_Peninsula",
+   "fix": "",
+   "applied": true,
+   "what": "1975: the page has 'The canal was reopened in 1975' and the 1979 treaty under which Israel 'agreed to withdraw from the entirety of the Sinai'. The spec is 188 cells (the 20 km buffer frees one). Trial: 184 cells occupied 1975-1979; the dossier's own 1982 occupation_end closes the relation. The staged returns of 1979-82 are not modelled, but the page gives them no dates ('withdrew in several stages, ending in 1982')."
+  },
+  {
+   "entry": "events/3",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Hala%27ib_Triangle",
+   "fix": "",
+   "applied": true,
+   "what": "The page backs Sudanese administration ('considered part of Sudan's Red Sea State'; Egyptian troops of Feb 1958 withdrawn 'the same month'; 'joint control ... until 1992'; Egypt takes control in 1994; Sudan withdraws in 2000). The spec is 86 cells (21,749 km2) against the page's 20,580 km2. About 10 of those cells lie north of 23.2N, beyond the apex near Shalateen, and the western corner west of 34.5E is left out. The spec is identical to the one the Egypt keyframes cut and the Sudan keyframes add, so it fills exactly the hole the dossiers leave. Trial: the 86 cells are Sudan's 1970-1979 (with no patch: Egypt 1970-72, nobody's from 1973)."
+  },
+  {
+   "entry": "events/4",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Western_Sahara_War",
+   "applied": true,
+   "fix": "counterpart francoist-spain -> kingdom-of-spain (francoist-spain ends in Nov 1975; the SADR's found names kingdom-of-spain); note amended",
+   "what": "The page has 'On 26 February 1976, Spain officially announced its full withdrawal' and 'proclaimed the Sahrawi Arab Democratic Republic on 27 February 1976', which fits month 2. The spec is 393 cells. 20 of them are Morocco's Tarfaya strip north of 27.67N; the gain takes only nobody's cells, so they are untouched. The fix leaves the effect unchanged: 128 Smara cells go to the SADR (with no patch they were owned by nobody 1976-1979)."
+  },
+  {
+   "entry": "events/5",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Western_Sahara_War",
+   "fix": "",
+   "applied": true,
+   "what": "The page has 'Morocco took over the Saguia El Hamra and the northern two-thirds of the territory'. It gives no month, so the agent's month 3 is only an ordering device (Moroccan troops entered El Aaiun on 11 Dec 1975). Trial: 373 Western Sahara cells (Laayoune-Boujdour and Smara) are SADR land occupied by Morocco 1976-1979, and the 20 Moroccan Tarfaya cells are untouched. Not covered: 47 cells of Oued el Dahab at 24.0-24.5N, north of Tiris and part of Morocco's share, stay plain SADR (see problems)."
+  },
+  {
+   "entry": "events/6",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence",
+   "fix": "",
+   "applied": true,
+   "what": "The page has 'All of Eritrea was liberated with the exception of Asmara, Massawa, Assab and Barentu', and the EPLF took Barentu only in summer 1985. The spec, a 40 km circle on Barentu, is 21 cells: exactly the 21 cells the EPLF 1977 keyframe left owned by nobody. That is wide for a town, but it fills the keyframe's hole. Side effect in the trial: the EPLF 1977 keyframe now falls under the snap tolerance (13 < 20 cells). So 8 Sudanese border cells are no longer taken by the EPLF and passed to Ethiopia in 1978 (an improvement), and the 5 Asmara-area cells that the keyframe cuts become nobody's in 1978 instead of 1977."
+  },
+  {
+   "entry": "events/7",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Kuril_Islands_dispute",
+   "applied": true,
+   "fix": "slug union-of-soviet-socialist-republics -> russian-soviet-federative-socialist-republic; note amended",
+   "what": "The page has 'The Soviet Union invaded South Sakhalin and the Kuril Islands' in 1945, Japan's renunciation of 1951, and the disputed islands 'under Russian administration'. The spec is 16 cells, of which the 7 Japanese ones move. As written, the entry gave them to the USSR directly, a full-tint speckle among the RSFSR's constituent cells. The RSFSR's own ledger 63 gains southern Sakhalin from Japan in Sep 1945, and USSR-direct cells would not follow the RSFSR's 1991 succession. After the fix, all 16 cells are RSFSR land, constituent of the USSR, 1970-1979, and the Japan/USSR conflict (21 cell-years) is gone."
+  },
+  {
+   "entry": "events/8",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Golan_Heights",
+   "fix": "",
+   "applied": true,
+   "what": "The page has 'the Israel Defense Forces captured the Golan Heights on 9-10 June' 1967; the Golan is Syrian land. The spec is the Golan region, 10 cells (2,529 km2); the 7 cells owned by nobody move (about 1,770 km2, against the page's 1,800 km2). After the events/9 fix the Ba'ath party holds them under Israeli occupation in 1970-71. In 1972 they become nobody's again, because the Ba'ath dissolve region ('Syria without the Golan Heights') hands only the rest to syria. The entry does not fix 1972 (see problems)."
+  },
+  {
+   "entry": "events/9",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Golan_Heights",
+   "applied": true,
+   "fix": "month 6 -> 12; note amended",
+   "what": "As written it did the opposite of its aim. events/8 has no month, so it takes month 11 from the Ba'ath dossier's November 1970 rename, and events/9 (month 6) ran first. At that point the Golan was still nobody's and Israel held 2 cells of the region (204195 at 33.26N 35.64E and 204234 at 32.97N 35.59E, Israel proper). The occupation was read the wrong way round: in the trial those 2 Israeli cells were occupied by the Ba'ath party in 1970-71, and the 7 Golan cells were plain Syria. After the fix the 7 Golan cells are Ba'ath land occupied by Israel in 1970-71; the page has the 1967 capture and that the Heights stayed in Israeli hands."
+  },
+  {
+   "entry": "events/10",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Golan_Heights",
+   "fix": "",
+   "applied": true,
+   "what": "It is needed: syria's own 1973 occupation_start is wiped by its October contest_end, which resets the cells to direct. The page has 'Syrian forces overran much of the southern Golan, before being pushed back' and the 1974 agreement 'left almost all the Heights in Israeli hands'. Trial: the 7 cells are Syria's, occupied by Israel, 1973-1979; syria ledger 7 and Israel ledger 30 close the relation in Dec 1981. Caveat: the one Quneitra admin1 cell (204193) stays occupied 1974-81, although the dossiers return Quneitra to Syria in 1974 (the page: 'Civil administration of a third of the Golan Heights, including the capital Quneitra')."
+  }
+ ],
+ "patch_check": "--check-patch p1970-p1979: 11 entries, 11 ok, 0 rejected (after review fixes to events/4, events/7, events/9); trial: all 11 applied",
+ "problems": [
+  "Western Sahara, 1979 (existed before the patch; the window agent missed it): the SADR's ledger 7 (1979/8, occupation_start with Morocco over Oued el Dahab) runs after Morocco holds the cells, so its roles are reversed. Tiris al-Gharbiya (226 cells) is drawn from Aug 1979 as Morocco's land occupied by the SADR (open occupation: owner morocco, occupier sahrawi-arab-democratic-republic, n 226). A fix tested in a scratch trial: two sahrawi-arab-democratic-republic events, year 1979, month 8, both over {\"admin1\":\"Oued el Dahab\",\"country\":\"Morocco\"}: first a gain with counterpart morocco, then an occupation_start with counterpart morocco. All 273 cells then become SADR land occupied by Morocco. Source: Western Sahara War page ('unilaterally annexed by Morocco on 11 August 1979'). This runs on past 1979.",
+  "Western Sahara, 1976-79: the 47 cells of Oued el Dahab at 24.0-24.5N (north of Tiris, in Morocco's share) arrive with the SADR keyframe at year end, after events/4-5, so they stay plain SADR land. The 1979 fix above covers them from Aug 1979. Covering 1976-78 would mean adding Oued el Dahab north of 24N to both events/4 and events/5.",
+  "Western Sahara Free Zone (existed before the patch): francoist-spain ledger 11 (1975) hands the 330 'W. Sahara' cells east of the later berm to Morocco, and from 1976 they are drawn as Morocco's land, contested. The SADR's found event names that land as the SADR's, and the west is drawn as SADR land under Moroccan occupation, so the two are inconsistent. This needs a dossier request (francoist-spain ledger 11 or the SADR found).",
+  "Golan, 1972: the 7 cells are owned by nobody at end 1972 because the dissolve region of arab-socialist-ba-ath-party ledger 3 is 'Syria without the Golan Heights'. Dossier request: let that dissolve region include the Golan, so that syria inherits it.",
+  "Golan, 1967-1972 (existed before the patch): Israel's ledger 23 (1967/6, occupation_start with syria, a dossier not alive until 1973) finds Israel holding 2 cells of the Golan region and reverses the roles. Cells 204195 and 204234 (Israel proper) are drawn as occupied by syria until 1973; the p1960-p1969 window should look at this.",
+  "Sinai (existed before the patch): 4 coastal cells inside the Sinai region (31.1N, 33.0-33.9E, the Bardawil coast) have no owner from 1973 to 1979. Before 1973 they were occupied by Israel with no owner.",
+  "Halaib spec (in both dossiers and in events/3): the intersect of Egypt with a 120 km circle reaches about 10 cells north of 23.2N, beyond the triangle's apex near Shalateen, and misses the western corner. A project-wide spec issue, not this patch's.",
+  "events/3, events/5 and events/10 reach past 1979, as the window agent reported. Halaib is Sudan's until Egypt's 1994 contest and 2000 gain. Morocco's occupation of the Saguia el-Hamra stays open. The Golan occupation is closed in Dec 1981 by the dossiers.",
+  "The trial against the no-patch baseline: the end-1979 map differs in 686 cells, all of them intended (Sinai 184, W. Sahara 245+128, Halaib 86, Barentu 21, 8 border cells stay Sudan's, Golan 7, Sakhalin/Kuril 7). The window's other conflict and snap changes (republic-of-poland/USSR, greek-junta 1973, zaire 1971) are the same with and without the patch."
+ ]
+}

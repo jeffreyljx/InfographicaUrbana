@@ -1,0 +1,312 @@
+{
+ "window": "p1770-p1779",
+ "images": [
+  {
+   "year": 1770,
+   "bbox": "world --jan1",
+   "seen": "Start anchor reads as expected: Rupert's Land, Quebec and Thirteen Colonies as separate British colonies; no stray speckle."
+  },
+  {
+   "year": 1779,
+   "bbox": "world",
+   "seen": "End of window: USA on the Atlantic seaboard, Rio de la Plata viceroyalty and Venezuela captaincy drawn as Spanish colonies, Thonburi in Indochina; nothing drawn after it ended."
+  },
+  {
+   "year": 1778,
+   "bbox": "-85,-58,-33,14 (+Cliopatria)",
+   "seen": "Spanish Empire direct patches in the Amazon (4,091-cell snap, flagged unverified in its own dossier) and in Rio Grande do Sul (the Misiones Orientales, which belong inside the Rio de la Plata viceroyalty); southern Mendoza and San Luis unowned."
+  },
+  {
+   "year": 1772,
+   "bbox": "18,49,36,58 (+Cliopatria)",
+   "seen": "Two grey holes inside Poland-Lithuania east of Minsk (132 cells of Vitebsk and Mogilev) after the First Partition: Russia's gain and its keyframe snap disagreed. Fixed (events/0); redrawn 1773 from stage shows no holes."
+  },
+  {
+   "year": 1776,
+   "bbox": "-100,25,-60,55 (+Cliopatria)",
+   "seen": "Quebec Act land overlaps Spanish Louisiana and Rupert's Land in Minnesota and Ontario; the British umbrella shape took and released 178 cells of Quebec's own St Lawrence land (grey patches inside Quebec). Fixed with rulings/0-2; redrawn from stage (-100,40,-60,54)."
+  },
+  {
+   "year": 1775,
+   "bbox": "68,8,90,34 (+Cliopatria)",
+   "seen": "Maratha block over the Delhi plain where Cliopatria draws the Mughals; dossier cuts Mughals to Delhi and Agra. Large grey stretches in Haryana and Rajasthan. Left: sourced dossier decision, pages silent on dates."
+  },
+  {
+   "year": 1773,
+   "bbox": "69,26,80,35 (+Cliopatria)",
+   "seen": "Sikh Confederacy drawn narrower than Cliopatria (its 1772 keyframe is Cliopatria plus the Cis-Sutlej lands); unowned land between Sikh, Bikaner, Jaipur and Delhi. Left."
+  }
+ ],
+ "issues": [
+  {
+   "what": "First Partition of 1772: Russia's gain event named all of Vitebsk and Mogilev, its keyframe holds only the part east of the Dvina-Drut-Dnieper line, and Poland's keyframe did not take the rest back until 1775, leaving 132 cells unowned in 1772-1774.",
+   "years": [
+    1772,
+    1774
+   ],
+   "slugs": [
+    "russian-empire",
+    "polish-lithuanian-commonwealth"
+   ],
+   "decision": "patched",
+   "patch": "events/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/First_Partition_of_Poland"
+   ]
+  },
+  {
+   "what": "Quebec Act keyframe draws all of Minnesota (400 cells): west-bank cells that Spanish Louisiana holds were given to Quebec by the size rule, and Hudson Bay drainage land of Rupert's Land (northwest Minnesota, northern Ontario, 468 cells) likewise. The Act runs 'west to the Mississippi River' and 'north to the southern boundary of ... Rupert's Land'.",
+   "years": [
+    1774,
+    1779
+   ],
+   "slugs": [
+    "province-of-quebec",
+    "spanish-louisiana",
+    "rupert-s-land"
+   ],
+   "decision": "patched",
+   "patch": "rulings/0, rulings/2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Province_of_Quebec_(1763%E2%80%931791)",
+    "https://en.wikipedia.org/wiki/Louisiana_(New_Spain)"
+   ]
+  },
+  {
+   "what": "The gazetteer's Louisiana region still holds Minnesota east of the Mississippi (Spanish Louisiana note says so), so Spanish Louisiana held it in 1770-1773 and the Spanish Empire shape of 1772 took it too; the 1763 Treaty of Paris split Upper Louisiana at the river.",
+   "years": [
+    1770,
+    1773
+   ],
+   "slugs": [
+    "spanish-louisiana",
+    "spanish-empire"
+   ],
+   "decision": "patched",
+   "patch": "events/1, keyframe_overrides/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Louisiana_(New_Spain)"
+   ]
+  },
+  {
+   "what": "Size rule (R1) between the Province of Quebec and the British Colonial Empire umbrella: the umbrella took 453 cells of Quebec's St Lawrence land in 1775, released 178 to nobody in 1776 and took them back in 1778.",
+   "years": [
+    1775,
+    1778
+   ],
+   "slugs": [
+    "province-of-quebec",
+    "british-colonial-empire"
+   ],
+   "decision": "patched",
+   "patch": "rulings/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Province_of_Quebec_(1763%E2%80%931791)"
+   ]
+  },
+  {
+   "what": "Viceroyalty of the Rio de la Plata keyframe (countries only) left out Puno (Chucuito governorate, in the viceroyalty 1776-1796) and the Misiones Orientales (until 1801); the 1776 snap put 263 + 226 cells under the Spanish Empire direct, so the dossier's own 1796 and 1801 loss events had nothing to remove.",
+   "years": [
+    1776,
+    1779
+   ],
+   "slugs": [
+    "viceroyalty-of-the-rio-de-la-plata",
+    "spanish-empire"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Viceroyalty_of_the_R%C3%ADo_de_la_Plata"
+   ]
+  },
+  {
+   "what": "Maine (298 cells) was held by the British Colonial Empire umbrella, not the Thirteen Colonies, until the umbrella's 1775 keyframe dropped it and left it unowned for 1775 (the dossier draws the colonies from modern state names).",
+   "years": [
+    1770,
+    1775
+   ],
+   "slugs": [
+    "thirteen-colonies",
+    "british-colonial-empire"
+   ],
+   "decision": "patched",
+   "patch": "events/2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Province_of_Massachusetts_Bay"
+   ]
+  },
+  {
+   "what": "spanish-empire_1778 snap adds 4,091 cells (Amazonas and Acre in Brazil, Amazonas in Venezuela and Colombia); the dossier itself calls the block unverified claim land and the San Ildefonso and El Pardo pages it cites say nothing on the Amazon. Colour is the same as the viceroyalties, so only the tint differs.",
+   "years": [
+    1778,
+    1779
+   ],
+   "slugs": [
+    "spanish-empire",
+    "portuguese-empire"
+   ],
+   "decision": "left: pages silent (dossier note; no new page opened)",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Mughal Empire cut to Delhi (578 km2) in 1772-73 and Delhi plus Agra from 1774; Maratha, Bharatpur and nobody hold the Delhi plain; Najaf Khan, 'highest commander of the Mughal army from 1772 till his death in April 1782', is the likely real holder of Agra and Jat lands.",
+   "years": [
+    1772,
+    1779
+   ],
+   "slugs": [
+    "mughal-empire",
+    "maratha-empire",
+    "bharatpur-state"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Mirza_Najaf_Khan"
+   ]
+  },
+  {
+   "what": "Alta California and Baja California drawn whole for New Spain from 1776 (3,420 cells, 1,066 of them in Nevada): claim versus control; the dossier says the page gives no earlier dates.",
+   "years": [
+    1776,
+    1779
+   ],
+   "slugs": [
+    "viceroyalty-of-new-spain"
+   ],
+   "decision": "left: pages silent (dossier note; no new page opened)",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Mekong delta (about 86 cells) and Kordofan (804 cells, from c. 1772) unowned because their holders have no dossier: Nguyen Anh's rump at Gia Dinh 1778-1782, and Hashim's Musabba'at in Kordofan.",
+   "years": [
+    1772,
+    1782
+   ],
+   "slugs": [
+    "tay-son-dynasty",
+    "funj-sultanate"
+   ],
+   "decision": "dossier request",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Russian Empire 1778: 412 cells of Chukotka stay unowned after the keyframe snap while the ledger gives Russia the coast; dossier says Russian Empire page is silent.",
+   "years": [
+    1778,
+    1779
+   ],
+   "slugs": [
+    "russian-empire"
+   ],
+   "decision": "left: pages silent (dossier note; no new page opened)",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Other conflicts of 300+ cell-years: Bharatpur over the Marathas (222), Bamana over the Pashalik of Timbuktu (209, 1770), Ottoman over Russia in Odessa and Mykolayiv (140; the neighbour window's Yedisan override already stands), Mysore over Hyderabad and the Marathas: smaller state won in each and the pages the dossiers cite agree with it.",
+   "years": [
+    1770,
+    1779
+   ],
+   "slugs": [
+    "bharatpur-state",
+    "bamana-empire",
+    "ottoman-empire",
+    "kingdom-of-mysore"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/p1770-p1779.json",
+ "patch_entries": {
+  "events": 3,
+  "keyframe_overrides": 2,
+  "rulings": 3
+ },
+ "patch_check": "all applied (--check-patch: 8 ok, 0 rejected; --trial: 8 applied)",
+ "colour_clashes": [
+  {
+   "a": "british-colonial-empire",
+   "b": "province-of-quebec",
+   "years": [
+    1770,
+    1779
+   ],
+   "note": "all share #dc7d97 with thirteen-colonies and rupert-s-land; Quebec and Rupert's Land, two separate territories, are almost indistinguishable in the 1776 image"
+  },
+  {
+   "a": "british-empire",
+   "b": "east-india-company",
+   "years": [
+    1770,
+    1779
+   ],
+   "note": "same #dc7d97, 268 shared edges"
+  },
+  {
+   "a": "spanish-empire",
+   "b": "viceroyalty-of-peru",
+   "years": [
+    1770,
+    1779
+   ],
+   "note": "all Spanish colonies share #df911a (also new-granada, rio-de-la-plata, venezuela, chile, guatemala, spanish-louisiana, new-spain); only the colony tint tells them apart, and the Amazon direct patches look like the viceroyalties"
+  },
+  {
+   "a": "colonial-brazil",
+   "b": "portuguese-empire",
+   "years": [
+    1770,
+    1779
+   ],
+   "note": "same #47a962 as state-of-maranhao-and-grao-para"
+  },
+  {
+   "a": "habesh-eyalet",
+   "b": "ottoman-empire",
+   "years": [
+    1770,
+    1779
+   ],
+   "note": "same #70782c"
+  },
+  {
+   "a": "habsburg-monarchy",
+   "b": "habsburg-military-frontier",
+   "years": [
+    1770,
+    1779
+   ],
+   "note": "same #be3d70 as kingdom-of-galicia-and-lodomeria"
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "nguyen-lords",
+   "what": "The Nguyen rump of Nguyen Anh at Gia Dinh (Saigon), 1778-1782, is missing: nguyen-lords ends in 1777 and nguyen-dynasty starts in 1788, so the Mekong delta (about 86 cells) is unowned 1778-1781.",
+   "why": "tay-son-dynasty ledger/7 (1778) has Nguyen Anh retaking Saigon and ledger/9 (1782) has the Tay Son retaking it, but its counterpart 'nguyen-dynasty' is not alive until 1788; needs a dossier or an earlier start/second life for one of the two.",
+   "source": "https://en.wikipedia.org/wiki/Quang_Trung"
+  },
+  {
+   "slug": "funj-sultanate",
+   "what": "Kordofan (804 cells) falls to nobody c. 1772-1785 because Hashim of the Musabba'at has no dossier (funj ledger/9, then Darfur from c. 1785).",
+   "why": "A short dossier for the Musabba'at of Kordofan, or an event giving the land to sultanate-of-darfur, would close the gap.",
+   "source": "https://en.wikipedia.org/wiki/Sultanate_of_Darfur"
+  }
+ ],
+ "pages_opened": 7,
+ "problems": [
+  "Patch dependency: the Red River and northwest Minnesota land (604 cells) is Rupert's Land in my trial only because p1760-p1769.json rulings 0 and 1 (1762-1769, Rupert's Land over Spanish Louisiana and the Spanish Empire) are in the compile; in the published draft the Spanish Empire holds it throughout 1770-1779. The conflicts rupert-s-land / spanish-empire (about 2,700 cell-years) then appear in my window and Rupert's Land wins by R1.",
+  "Boundary: the british-colonial-empire / province-of-quebec ruling and the Quebec/Louisiana and Quebec/Rupert's Land rulings stop at 1779, but province-of-quebec_1774 runs to 1782 and the umbrella's keyframes of 1780-1782 can repeat the size-rule flip; the p1780-p1789 agent should extend the Quebec ruling over the umbrella to 1791 (Quebec keyframe 1783 onward) and check Maine and the Minnesota east bank.",
+  "Boundary: the p1760-p1769 window still has Maine under british-colonial-empire (1700-1769) and Minnesota east of the Mississippi under spanish-louisiana (1762-1769); events/1 and events/2 start at 1770-01. The root cause is the gazetteer region 'Louisiana' (Minnesota east bank) and the dossier colony shapes built from modern state names (no Maine); a fix to the region would also clear the 8 remaining east-bank cells the Spanish Empire keyframes of 1775-1778 hold.",
+  "Boundary: viceroyalty-of-the-rio-de-la-plata_1776 runs to 1809 and now includes Puno and the Misiones Orientales; its dossier ledger losses of 1796 (Puno to Peru) and 1801 (Misiones to Brazil) in p1790-p1799 and p1800-p1809 now have land to remove, and those windows should check them.",
+  "Unowned by design, left: 499 cells of southern Mendoza and San Luis (outside Cliopatria's Spanish shape, so unowned from 1776), Maine north (84 cells) and western Georgia 1776-1777, the Haryana, Punjab and Rajasthan stretches between Sikh, Bikaner, Jaipur and the Mughal core, and the Ukrainian steppe (70 cells)."
+ ]
+}

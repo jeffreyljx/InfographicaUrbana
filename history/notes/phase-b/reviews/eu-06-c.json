@@ -1,0 +1,820 @@
+{
+ "batch_id": "eu-06-c",
+ "verdicts": [
+  {
+   "slug": "burgundian-kingdom",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/15",
+     "what": "The 524 gain (confidence 1) takes minus(Provence, Burgundian Kingdom 500): 88 cells, about 22,255 km2, of which 86 lie inside Cliopatria's Ostrogothic Kingdom 523 shape; no page gives that extent, and the 523 keyframe (523-533, adjusted for years only) does not hold Provence, so ledger and keyframe disagree for 524-534.",
+     "why": "Kingdom of the Burgundians page: Godomar II's reign included 'the recovery of territory south of the Durance' (no year, no bounds). ostrogothic-kingdom holds Provence from its /ledger/3 (510 gain) to /ledger/12 (540 loss to the Franks) and has no 524 loss to the Burgundians. Gazetteer: the region resolves to 88 cells, 86 of them in the Ostrogothic Kingdom 523 shape.",
+     "fix": "Shrink the region to what the page says, for example intersect(minus(Provence, Burgundian Kingdom 500), {river: Durance, km: 20}) with text 'territory south of the Durance', and add that same strip to the 523 correction from the event year (note it), or keep the event without the Provence region. Keep confidence 1 and list the Ostrogothic loss for the ostrogothic-kingdom author.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/2/confidence",
+     "what": "The 443 Sapaudia gain was confidence 3, but the region (Cliopatria's 443 shape) reaches the Yonne and Nievre, land neither page names.",
+     "why": "Kingdom page: Sapaudia 'included Geneva, and Neuchatel' in Maxima Sequania. Sapaudia page: 'It originally covered the territory around Lake Neuchatel', bounded by the Vosges, the Aar, the upper Rhone and the Saone valley. The 443 shape runs west to 2.95 E (about 60 of 334 cells lie west of 4.3 E).",
+     "fix": "Confidence lowered to 2 and the reason added to the note.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/wars/4/belligerents",
+     "what": "'Odoacer' was free text although kingdom-of-odoacer.json exists (476-493); 'ostrogothic-kingdom' starts in 500, so in 490 Theoderic's people are ostrogoths (454-499).",
+     "why": "Gundobad page: the Burgundians invaded Liguria 'in the early months of 490' while Odoacer and Theoderic fought; identity years of kingdom-of-odoacer, ostrogoths, ostrogothic-kingdom.",
+     "fix": "Belligerents set to burgundian-kingdom, kingdom-of-odoacer, ostrogoths.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/11-14, /keyframe_review/12/correction, /wars/6/zones",
+     "what": "The 507-509 Provence region (Provence minus the 500 shape) includes Arles, which the Burgundians never took; visigothic-kingdom keeps Provence to 510.",
+     "why": "Gundobad page: 'the Ostrogothic army arrived to relieve the Burgundian siege of Arles'; the Burgundians had 'lost all their conquered territories and hope of acquiring Arles and Avignon'. visigothic-kingdom /ledger/14 loses Provence to ostrogothic-kingdom only in 510; it has no 507 loss to the Burgundians.",
+     "fix": "Subtract {place: Arles, km: 30} from the region in the four ledger events, the 507 keyframe correction and the war zone; list the 507 Provence loss for the visigothic-kingdom author.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/0-1",
+     "what": "western-roman-empire models 413-436 as a vassalage (its /ledger/16 vassal_start and /ledger/23 vassal_end, counterpart burgundian-kingdom); this dossier has no vassal events.",
+     "why": "This dossier's own 413 note: 'the Burgundians were accepted as Roman foederati'. Review eu-06-a raised the same point for burgundians.",
+     "fix": "Add vassal_start 413 and vassal_end 436, counterpart western-roman-empire (Kingdom page), or agree a single model with eu-04.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/2 and /ledger/8",
+     "what": "The 443 keyframe (ok) already holds the land of the mid-470s campaign, so the 475 gain moves no cell; the ledger and keyframes disagree on when the Langres and Lugdunensis I land became Burgundian.",
+     "why": "Kingdom page: by the mid-470s the Burgundians fought the Alemanni in the Langres-Besancon-Jura region, 'eventually incorporating much of Maxima Sequanorum and parts of Lugdunensis I'. The 443 shape holds about 60 cells west of 4.3 E (Nievre, Yonne, western Cote-d'Or), and the Sapaudia page already puts Franche-Comte inside Sapaudia.",
+     "fix": "Either adjust the 443-469 keyframes to leave out the Lugdunensis I cells until 475 and make /ledger/8 their gain (counterpart western-roman-empire or nobody: kingdom-of-alamannia, founded 462 between Strasbourg and Augsburg, records no loss), or mark the 443 shape 'unverified: page budget' and drop Franche-Comte from the 475 region.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/15",
+     "what is missing": "Year and extent of Godomar II's recovery south of the Durance, and the Ostrogothic occupation of 523 (Tuluin) that it reversed",
+     "page to try": "https://en.wikipedia.org/wiki/Tuluin"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No ruler for 437-456; the Kingdom page names Gundioc in the campaign of 456",
+     "page to try": "https://en.wikipedia.org/wiki/Gundioc"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "Holder of the Rhine land after about 436",
+     "page to try": "https://en.wikipedia.org/wiki/Flavius_Aetius"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Burgundians",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Burgundians",
+     "result": "confirmed (year); region wider than the page, confidence lowered"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Burgundians",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Burgundians",
+     "result": "confirmed ('later 460s', as the note says)"
+    },
+    {
+     "where": "/ledger/9-10",
+     "page": "https://en.wikipedia.org/wiki/Gundobad",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Burgundians",
+     "result": "confirmed (year); region includes Arles, see fixes"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Burgundians",
+     "result": "confirmed as undated; region not on page"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Burgundians",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 120408,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The infobox gives no area; the dossier says so."
+   }
+  },
+  {
+   "slug": "kingdom-of-the-suebi",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/6/confidence",
+     "what": "The 441 gain of Seville and Baetica was confidence 3, but the Kingdom page doubts the hold of Baetica.",
+     "why": "Kingdom of the Suebi page: 'It has been said, however, that the Suevi conquest of Baetica and Carthaginensis was limited to raids'; the Rechila page has Seville taken in 441.",
+     "fix": "Confidence lowered to 2 and the quote added to the note.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/1/confidence",
+     "what": "The 411 gain was confidence 3, but the region also holds land south of the Douro that no page gives the Suebi.",
+     "why": "Kingdom page: the Suebi shared Gallaecia with the Hasding Vandals, 'by lot'. The region (the 414 shape plus Pontevedra and La Coruna) has 77 of the shape's 197 cells south of 41.1 N, reaching 39.8 N in Roman Lusitania.",
+     "fix": "Confidence lowered to 2 and the reason added to the note.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/identity/rulers/1-15/source",
+     "what": "15 of 16 rulers cited no page.",
+     "why": "The Kingdom of the Suebi page's list of rulers gives every name and year as in the dossier, from Rechila 438-448 to Malaric 585.",
+     "fix": "Source set to https://en.wikipedia.org/wiki/Kingdom_of_the_Suebi for the 15 rulers.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/7 and /ledger/9",
+     "what": "The 458 correction removes the Lisbon cells (7 cells) that the 426, 439 and 441 keyframes (all ok) hold, but no ledger event loses them: /ledger/9 is minus(457, 458), and both Cliopatria shapes contain Lisbon.",
+     "why": "Kingdom page: Lisbon was captured in 469, 'surrendered by its leader, Lusidio'. Gazetteer: intersect(Suebi 458, Lisboa) is 7 cells; intersect(Suebi 441, Lisboa) is 9.",
+     "fix": "Either drop the Lisbon cells from the 426-457 keyframes (the page gives the Suebi Lisbon only in 469), or add a 458 loss of intersect(Suebi 457, Lisboa) at confidence 1.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/8-10",
+     "what": "The 469, 476 and 577 corrections keep Lisbon Suebian to 585, but visigothic-kingdom gains 'the west of the peninsula' in 469 and its 469-587 shapes hold 6 of the 7 Lisbon cells: two dossiers claim the same land for 117 years.",
+     "why": "visigothic-kingdom /ledger/5 (469 gain, counterpart western-roman-empire) and keyframes 469 to 577; gazetteer: intersect(Visigothic Kingdom 480 or 570, Suebi 458, Lisboa) is 6 cells. The 476 note admits the page records no Suebi hold of Lisbon after 469, only no loss.",
+     "fix": "Agree with the visigothic-kingdom author: either add a 476 loss of Lisbon (confidence 1) and drop it from the 476 and 577 corrections, as Cliopatria draws it, or ask visigothic-kingdom to subtract Lisbon for 469-585.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/13",
+     "what": "The 576 tribute treaty is only a contest_end here; the dossier asks visigothic-kingdom to carry a vassal_start but has none itself.",
+     "why": "Leovigild page: 'Miro rapidly agreeing to a treaty which included paying tribute, if but for a short period.'",
+     "fix": "Add vassal_start 576, counterpart visigothic-kingdom (Leovigild page, confidence 2 or 3), and a vassal_end (confidence 1; 583 or the 585 dissolve).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "Any Suebi hold south of the Mondego before 439 (page: Heremigarius plundered Lusitania in 429)",
+     "page to try": "https://en.wikipedia.org/wiki/Heremigarius"
+    },
+    {
+     "where": "/keyframe_review/6",
+     "what is missing": "Whether Baetica was held in 441-458 or only raided (the largest shape of the dossier, 248,614 km2)",
+     "page to try": "https://en.wikipedia.org/wiki/Rechiar"
+    },
+    {
+     "where": "/ledger (569-576)",
+     "what is missing": "Leovigild's undated conquests of Sabaria, Braganza and Torre de Moncorvo; Braganza (41.8 N, 6.76 W) is inside the 476 shape, so this is a Suebi loss",
+     "page to try": "https://en.wikipedia.org/wiki/Miro_of_Galicia"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "Gap 469-550; the page lists Hermeneric fl. c. 485 and Veremund fl. 535",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_the_Suebi"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "Dates of the returns to Braga after Merida and after Lugo",
+     "page to try": "https://en.wikipedia.org/wiki/Braga"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Suebi",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Suebi",
+     "result": "confirmed (year); region not named, confidence lowered"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Suebi",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Rechila",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Rechila",
+     "result": "confirmed (Seville 441); Baetica doubted on the Kingdom page, confidence lowered"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Suebi",
+     "result": "confirmed (5 October, Braga 28 October)"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Suebi",
+     "result": "confirmed (July 458)"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Suebi",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Leovigild",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Leovigild",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 248614,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page (map caption only: greatest extent c. 455); the dossier says so."
+   }
+  },
+  {
+   "slug": "frankish-burgundy",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/1/note, /ledger/1/region, /keyframe_review/1",
+     "what": "The 595 note's quote is not the page's, and 'The other cities are not named' is wrong: the page names ten civitates, and the 595-599 keyframe adds only three.",
+     "why": "Theuderic II page: 'He also received the lordship of the cities (civitates) of Toulouse, Agen, Nantes, Angers, Saintes, Angouleme,' then Perigueux, Blois, Chartres and Le Mans.",
+     "fix": "Quote the sentence correctly and add Angers, Saintes, Angouleme, Perigueux, Blois, Chartres and Le Mans (60 km radii, like the others) to /ledger/1/region and the 595 correction, and to the nested copies in /ledger/2/region and /wars/0/zones.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/identity and /keyframe_review/6-8",
+     "what": "From 639 the polity drawn is Neustria and Burgundy (Paris, Rouen, Soissons, Flanders, Artois), not Burgundy; the name and notes do not say so.",
+     "why": "Francia page: 'Clovis II, Dagobert's successor in Neustria and Burgundy, which were thereafter attached yet ruled separately'. Cliopatria's Kingdom of the Franks for 644-660 is Austrasia only (132,986 km2).",
+     "fix": "Say in identity notes (and alt_names) that 639-660 is the Neustro-Burgundian realm, and tell eu-07 that kingdom-of-the-franks then holds only Austrasia; or leave the choice to the orchestrator.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/2-6",
+     "what": "The counterparts are kingdom-of-the-franks, but the page gives Chlothar II of Neustria (600) and Theudebert II of Austrasia (610-612), which the author lists as austrasia in counterparts_needing_dossiers.",
+     "why": "Theuderic II page: 'In 610, he lost Alsace, the Saintois, the Thurgau, and Champagne to his brother'; Toul c. 611, Tolbiac 612.",
+     "fix": "When eu-07 settles its slugs, use austrasia or neustria as counterparts.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/9",
+     "what is missing": "End of Burgundy as a separate realm (660 is only Cliopatria's last year, confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Burgundy"
+    },
+    {
+     "where": "/ledger/7-8",
+     "what is missing": "Burgundy 614-638: the state has no land, ruler or capital; it kept its own mayor of the palace under Chlothar II",
+     "page to try": "https://en.wikipedia.org/wiki/Warnachar"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "Capital after 639 (none given); Metz for 612-613 ('his Austrasian capital of Metz')",
+     "page to try": "https://en.wikipedia.org/wiki/Neustria"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Francia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Theuderic_II",
+     "result": "confirmed (year); quote and city list wrong, see fixes"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Theuderic_II",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Theuderic_II",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Theuderic_II",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Francia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Theuderic_II",
+     "result": "confirmed (died late 613; Francia: Sigebert II heir in 613)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Francia",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 583653,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No Wikipedia article for this state; the Kingdom of Burgundy page has no infobox."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "burgundian-kingdom",
+    "year": 413,
+    "type": "found",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 413,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "WRE /ledger/16 vassal_start of burgundian-kingdom 413 and /ledger/23 vassal_end 436; this dossier has no vassal events (non-blocking fix)."
+  },
+  {
+   "event": {
+    "slug": "burgundian-kingdom",
+    "year": 436,
+    "type": "loss",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 436,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "WRE /ledger/24."
+  },
+  {
+   "event": {
+    "slug": "burgundian-kingdom",
+    "year": 443,
+    "type": "gain",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 443,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "WRE /ledger/30."
+  },
+  {
+   "event": {
+    "slug": "burgundian-kingdom",
+    "year": 456,
+    "type": "gain",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 456,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "WRE /ledger/39."
+  },
+  {
+   "event": {
+    "slug": "burgundian-kingdom",
+    "year": 458,
+    "type": "loss",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "WRE has no 458/459 gain of Lyon from the Burgundians (its 459 gains name visigothic-kingdom). Route to eu-04."
+  },
+  {
+   "event": {
+    "slug": "burgundian-kingdom",
+    "year": 462,
+    "type": "gain",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 462,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "WRE /ledger/48 (confidence 1)."
+  },
+  {
+   "event": {
+    "slug": "burgundian-kingdom",
+    "year": 475,
+    "type": "gain",
+    "counterpart": "kingdom-of-alamannia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-alamannia",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "kingdom-of-alamannia has only 462 found and 496 loss; the event moves no cell here. Route to eu-06-e or change the counterpart."
+  },
+  {
+   "event": {
+    "slug": "burgundian-kingdom",
+    "year": 507,
+    "type": "gain",
+    "counterpart": "visigothic-kingdom"
+   },
+   "mirror": {
+    "slug": "visigothic-kingdom",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "mismatch",
+   "note": "visigothic-kingdom keeps Provence until its /ledger/14 (510 loss to ostrogothic-kingdom). Route to eu-06-d."
+  },
+  {
+   "event": {
+    "slug": "burgundian-kingdom",
+    "year": 509,
+    "type": "loss",
+    "counterpart": "ostrogothic-kingdom"
+   },
+   "mirror": {
+    "slug": "ostrogothic-kingdom",
+    "year": 510,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "ostrogothic-kingdom /ledger/3 gains Provence in 510 from visigothic-kingdom, not from the Burgundians."
+  },
+  {
+   "event": {
+    "slug": "burgundian-kingdom",
+    "year": 524,
+    "type": "gain",
+    "counterpart": "ostrogothic-kingdom"
+   },
+   "mirror": {
+    "slug": "ostrogothic-kingdom",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "ostrogothic-kingdom holds Provence 510-540 and has no loss; region overlap is a blocking fix in burgundian-kingdom."
+  },
+  {
+   "event": {
+    "slug": "burgundian-kingdom",
+    "year": 534,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": {
+    "slug": "kingdom-of-the-franks",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "kingdom-of-the-franks belongs to eu-07, not run yet."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-the-suebi",
+    "year": 411,
+    "type": "gain",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "WRE has no 409-411 loss of Gallaecia to the Suebi. Route to eu-04."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-the-suebi",
+    "year": 419,
+    "type": "gain",
+    "counterpart": "vandals"
+   },
+   "mirror": {
+    "slug": "vandals",
+    "year": 419,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "vandals /ledger/10."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-the-suebi",
+    "year": 427,
+    "type": "gain",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "Confidence 1 raid; WRE silent."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-the-suebi",
+    "year": 439,
+    "type": "gain",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "WRE has no 439 loss of Merida to the Suebi. Route to eu-04."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-the-suebi",
+    "year": 441,
+    "type": "gain",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "WRE has no 441 loss of Seville/Baetica to the Suebi. Route to eu-04."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-the-suebi",
+    "year": 458,
+    "type": "loss",
+    "counterpart": "visigothic-kingdom"
+   },
+   "mirror": {
+    "slug": "visigothic-kingdom",
+    "year": 456,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "visigothic-kingdom /ledger/2 gains the Spanish provinces in 456 from western-roman-empire, and /ledger/3 leaves Spain in 459; the Kingdom of the Suebi page dates the Gothic arrival in Baetica to July 458. Route to eu-06-d."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-the-suebi",
+    "year": 469,
+    "type": "gain",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 469,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "WRE /ledger/53; but visigothic-kingdom /ledger/5 (469) and its shapes to 587 also hold 6 of the 7 Lisbon cells (double claim, non-blocking fix)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-the-suebi",
+    "year": 569,
+    "type": "contest_start",
+    "counterpart": "visigothic-kingdom"
+   },
+   "mirror": {
+    "slug": "visigothic-kingdom",
+    "year": 569,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "visigothic-kingdom /ledger/20 gains Zamora, Palencia and Leon from the Suebi; the Suebi shape never reaches them, so a contest here (explained by the author)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-the-suebi",
+    "year": 576,
+    "type": "contest_end",
+    "counterpart": "visigothic-kingdom"
+   },
+   "mirror": {
+    "slug": "visigothic-kingdom",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "The tribute treaty should be a vassal_start in both dossiers; neither has one."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-the-suebi",
+    "year": 585,
+    "type": "dissolve",
+    "counterpart": "visigothic-kingdom"
+   },
+   "mirror": {
+    "slug": "visigothic-kingdom",
+    "year": 585,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "visigothic-kingdom /ledger/28."
+  },
+  {
+   "event": {
+    "slug": "frankish-burgundy",
+    "year": 561,
+    "type": "found",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": {
+    "slug": "kingdom-of-the-franks",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "eu-07 not run; Cliopatria Kingdom of the Franks 561-601 also holds this land."
+  },
+  {
+   "event": {
+    "slug": "frankish-burgundy",
+    "year": 595,
+    "type": "gain",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": {
+    "slug": "kingdom-of-the-franks",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "eu-07 not run."
+  },
+  {
+   "event": {
+    "slug": "frankish-burgundy",
+    "year": 600,
+    "type": "gain",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": {
+    "slug": "kingdom-of-the-franks",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "eu-07 not run; the page counterpart is Chlothar II (Neustria)."
+  },
+  {
+   "event": {
+    "slug": "frankish-burgundy",
+    "year": 610,
+    "type": "loss",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": {
+    "slug": "kingdom-of-the-franks",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "eu-07 not run; page counterpart is Theudebert II of Austrasia (suggested slug austrasia)."
+  },
+  {
+   "event": {
+    "slug": "frankish-burgundy",
+    "year": 612,
+    "type": "gain",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": {
+    "slug": "kingdom-of-the-franks",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "eu-07 not run; Austrasia."
+  },
+  {
+   "event": {
+    "slug": "frankish-burgundy",
+    "year": 613,
+    "type": "loss",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": {
+    "slug": "kingdom-of-the-franks",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "eu-07 not run."
+  },
+  {
+   "event": {
+    "slug": "frankish-burgundy",
+    "year": 639,
+    "type": "gain",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": {
+    "slug": "kingdom-of-the-franks",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "eu-07 not run; Cliopatria Kingdom of the Franks 617-643 holds the same land."
+  },
+  {
+   "event": {
+    "slug": "frankish-burgundy",
+    "year": 660,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": {
+    "slug": "kingdom-of-the-franks",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "eu-07 not run."
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Austrasia",
+   "suggested_slug": "austrasia",
+   "years": [
+    561,
+    613
+   ],
+   "group": "eu-07"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-06-c.md",
+ "problems": [
+  "None of the three articles gives an infobox area (frankish-burgundy has no article), so no area ratio could be computed.",
+  "The author's counterparts_needing_dossiers names odoacers-kingdom-of-italy, but history/polities/kingdom-of-odoacer.json already exists (476-493); the reviewer used that slug in burgundian-kingdom /wars/4.",
+  "hunnic-empire was not written: confirmed that huns.json lists both 'Huns' and 'Hunnic Empire' and reviews 12 hunnic-empire shapes, so drop hunnic-empire from the dossier list.",
+  "frankish-burgundy and kingdom-of-the-franks (eu-07, not written) draw the same land for 561-601 and 617-643 in Cliopatria; eu-07 must subtract Burgundy (and Neustria for 639-660) or the orchestrator must choose."
+ ]
+}

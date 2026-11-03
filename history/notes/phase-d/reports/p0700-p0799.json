@@ -1,0 +1,343 @@
+{
+ "window": "p0700-p0799",
+ "images": [
+  {
+   "year": 700,
+   "bbox": "world, jan1",
+   "seen": "Coherent start: Umayyad, Tang, Tibetan, Byzantine and Frankish blocks all in their regions; no stray speckle."
+  },
+  {
+   "year": 799,
+   "bbox": "world",
+   "seen": "Coherent end; Dzungaria/Beshbalik is nobody's land in 793-799 (see issues)."
+  },
+  {
+   "year": 799,
+   "bbox": "Tarim and Dzungaria, --compare-cliopatria",
+   "seen": "Matches Cliopatria's Tang/Tibet/Uyghur split; the Kimek-Kipchak confederation is absent by design (dossier gives no cells)."
+  },
+  {
+   "year": 750,
+   "bbox": "west Asia and Mediterranean",
+   "seen": "Umayyad-to-Abbasid takeover reads right; the Armenian and Iberian vassals are untinted in 744-750 (hierarchy rows end at 743)."
+  },
+  {
+   "year": 732,
+   "bbox": "Europe",
+   "seen": "Frankish core, Septimania and Aquitaine look better than Cliopatria; Neustria gap was only visible in 724-731 (see 726 after)."
+  },
+  {
+   "year": 763,
+   "bbox": "East Asia",
+   "seen": "WRONG before patch: Hexi/Longyou and Dunhuang grey (nobody's) while Tang still held them; fixed by keyframe_overrides/0-2."
+  },
+  {
+   "year": 720,
+   "bbox": "Tarim",
+   "seen": "Contested Stone City zone looks fine."
+  },
+  {
+   "year": 745,
+   "bbox": "steppe",
+   "seen": "Uyghur succession drawn properly; no hole."
+  },
+  {
+   "year": 718,
+   "bbox": "Near East and Central Asia, jan1 and year end",
+   "seen": "Byzantine inner Anatolia (Afyon, Konya) was drawn Umayyad after the 718 snap, fixed by keyframe_overrides/4; the Umayyad 718 snap still adds Sind, Baluchistan and Turkmenistan, which the dossier accepts."
+  },
+  {
+   "year": 770,
+   "bbox": "Hexi Corridor, before and after patch",
+   "seen": "Before: grey gap along Hexi. After: Liangzhou, Jiuquan and Lanzhou Tibetan from 764, Dunhuang and Guazhou Tang to 785 then Tibetan in 786."
+  },
+  {
+   "year": 726,
+   "bbox": "Europe (-6,42,16,54), from stage after patch",
+   "seen": "Frankish heartland (Metz, Cologne, Mainz, Lyon, Wuerzburg) restored; before the patch it was nobody's after the 724 Neustria dissolve. Verification render, 13th image file (10 diagnostic plus 718 jan1, 770 after, 726 after)."
+  }
+ ],
+ "issues": [
+  {
+   "what": "Tang Hexi, Longyou and Dunhuang drawn as nobody's land (about 10,000 cell-years) because the Tang keyframes 757, 763 and 768 stopped at Cliopatria's shape. The overrides keep Hexi Tang until the Tibetan conquest (Liangzhou, Jiuquan and Lanzhou go Tibetan in 764) and keep Dunhuang and Guazhou Tang to 785 (Tibetan from 786).",
+   "years": [
+    757,
+    785
+   ],
+   "slugs": [
+    "tang-dynasty",
+    "tibetan-empire"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0, keyframe_overrides/1, keyframe_overrides/2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Protectorate_General_to_Pacify_the_West",
+    "https://en.wikipedia.org/wiki/Guiyi_Circuit",
+    "https://en.wikipedia.org/wiki/Sino-Tibetan_relations_during_the_Tang_dynasty"
+   ]
+  },
+  {
+   "what": "Umayyad Morocco and Algeria drawn too early (705-707 snap added 1913 cells; the 701 snap went from 241 to 2,929 added cells after p0600-p0699's Algeria patch). Subtracted Morocco and non-Numidian Algeria from Cliopatria 705 and the 692 shape for 701-704.",
+   "years": [
+    701,
+    707
+   ],
+   "slugs": [
+    "umayyad-caliphate"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/3, keyframe_overrides/5",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Muslim_conquest_of_the_Maghreb"
+   ]
+  },
+  {
+   "what": "Byzantine inner Anatolia 718-723 drawn Umayyad after the 718 snap; restored Byzantine land inside the 36-42.5 N, 26-36 E box from Cliopatria 717.",
+   "years": [
+    718,
+    723
+   ],
+   "slugs": [
+    "byzantine-empire",
+    "umayyad-caliphate"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/4",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Arab%E2%80%93Byzantine_wars"
+   ]
+  },
+  {
+   "what": "Melayu Kingdom held Jambi from 692 to 1027 because the merge with Srivijaya was applied in the wrong direction (about 18,100 cell-years in the window). Added a 692 gain for Srivijaya from Melayu; page: annexed by Srivijaya 692, independence restored 1028.",
+   "years": [
+    700,
+    799
+   ],
+   "slugs": [
+    "srivijaya",
+    "melayu-kingdom"
+   ],
+   "decision": "patched",
+   "patch": "events/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Melayu_Kingdom"
+   ]
+  },
+  {
+   "what": "Kingdom of Neustria dissolved in 724 and its remaining 1,526 cells went to nobody (successors intersect its own cells), erasing the Frankish core for 724-731 (about 12,000 cell-years). Override gives Neustria its own Cliopatria 724 shape so the dissolve hands the right land on.",
+   "years": [
+    724,
+    731
+   ],
+   "slugs": [
+    "kingdom-of-neustria",
+    "kingdom-of-the-franks"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/6",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Charles_Martel"
+   ]
+  },
+  {
+   "what": "Dzungaria and Beshbalik nobody's in 793-799. Pages say the Tibetans briefly held Beshbalik in 790 and are silent after that; Tang presence at Beiting is attested only for 789.",
+   "years": [
+    793,
+    799
+   ],
+   "slugs": [
+    "beiting-protectorate",
+    "tang-dynasty",
+    "uyghur-khaganate",
+    "tibetan-empire"
+   ],
+   "decision": "left: pages silent",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Beshbalik",
+    "https://en.wikipedia.org/wiki/Uyghur_Khaganate",
+    "https://en.wikipedia.org/wiki/Sino-Tibetan_relations_during_the_Tang_dynasty"
+   ]
+  },
+  {
+   "what": "Yaxchilan and Bonampak: Bonampak's page gives no coordinates for a polity border, so no subordinate shape could be drawn.",
+   "years": [
+    700,
+    799
+   ],
+   "slugs": [
+    "yaxchilan"
+   ],
+   "decision": "left: pages silent",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Bonampak"
+   ]
+  },
+  {
+   "what": "Kannauj shape in 725 is generous and the Qinghai contested overlay (Tang and Tibet) runs long; both follow the dossiers.",
+   "years": [
+    725,
+    799
+   ],
+   "slugs": [
+    "kannauj-varman-dynasty",
+    "tibetan-empire"
+   ],
+   "decision": "fine as drawn"
+  },
+  {
+   "what": "Size-rule conflicts checked: Tang/Tibetan, Pratihara/Umayyad, Nanzhao/Tang, Austrasia/Franks (Austrasia 741-751 per its dossier, R2) and Alamannia/Franks (Charles Martel's 730-732 campaigns). The winner in each case agrees with the dossiers. The Austrasia/Franks and Alamannia/Franks pairs shift in the trial (1761 to 1758 cell-years, and 4 to 181); I did not trace the cause.",
+   "years": [
+    700,
+    799
+   ],
+   "slugs": [
+    "kingdom-of-austrasia",
+    "kingdom-of-alamannia",
+    "kingdom-of-the-franks",
+    "tang-dynasty"
+   ],
+   "decision": "fine as drawn"
+  },
+  {
+   "what": "Principality of Armenia and Principality of Iberia vassal rows end in 743 but the Umayyad state lasts to 750, leaving 744-750 untinted; the Abbasid rows start in 751. These are hierarchy.csv rows, which a patch cannot fix; reported under problems for the orchestrator.",
+   "years": [
+    744,
+    750
+   ],
+   "slugs": [
+    "principality-of-armenia",
+    "principality-of-iberia",
+    "umayyad-caliphate"
+   ],
+   "decision": "dossier request",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Principality_of_Armenia"
+   ]
+  },
+  {
+   "what": "Principality of Abasgia (Black Sea coast between the Gumista and Bzyb rivers, 7,076 km2 in Cliopatria's Georgia row 724-777) has no dossier, so the coast is nobody's land in 724-777. Page infobox: Established 64, Disestablished 786. The Kingdom of Abkhazia dossier already notes that it needs a dossier. Also Lazica's cells pass to Abkhazia one year early (777, 66 cells) through the dossier's own 777 dissolve; left, one year only.",
+   "years": [
+    724,
+    777
+   ],
+   "slugs": [
+    "principality-of-abasgia",
+    "kingdom-of-lazica",
+    "kingdom-of-abkhazia"
+   ],
+   "decision": "dossier request",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Abasgia"
+   ]
+  },
+  {
+   "what": "Kashmir (625-1339) and Karkota Dynasty (625-855) look like one state in two dossiers: same start year, same Alchon Huns predecessor, 316 and 328 cells in the packet. No conflict is listed between them, so they are drawn on separate land. I did not open either page; flag only.",
+   "years": [
+    725,
+    799
+   ],
+   "slugs": [
+    "kashmir",
+    "karkota-dynasty"
+   ],
+   "decision": "dossier request"
+  }
+ ],
+ "patch_file": "history/data/patches/p0700-p0799.json",
+ "patch_entries": {
+  "events": 1,
+  "keyframe_overrides": 7,
+  "rulings": 0
+ },
+ "patch_check": "all applied",
+ "colour_clashes": [
+  {
+   "a": "beiting-protectorate",
+   "b": "protectorate-general-to-pacify-the-west",
+   "years": [
+    700,
+    799
+   ],
+   "note": "identical #d6ab1b, 258 shared edges; both are Tang protectorates"
+  },
+  {
+   "a": "protectorate-general-to-pacify-the-west",
+   "b": "tang-dynasty",
+   "years": [
+    700,
+    799
+   ],
+   "note": "identical #d6ab1b, 252 edges; sub-unit shares the metropole colour"
+  },
+  {
+   "a": "protectorate-general-to-pacify-the-south",
+   "b": "tang-dynasty",
+   "years": [
+    700,
+    799
+   ],
+   "note": "identical #d6ab1b, 74 edges; same"
+  },
+  {
+   "a": "byzantine-empire",
+   "b": "exarchate-of-ravenna",
+   "years": [
+    700,
+    751
+   ],
+   "note": "identical #8e3776, 66 edges; exarchate shares the metropole colour"
+  },
+  {
+   "a": "kingdom-of-the-franks",
+   "b": "merovingian-empire",
+   "years": [
+    710,
+    723
+   ],
+   "note": "identical #697bc2, 36 edges; merovingian-empire (710-723 in its dossier) and the Frankish kingdom are the same people, same colour is intended"
+  },
+  {
+   "a": "beiting-protectorate",
+   "b": "tang-dynasty",
+   "years": [
+    700,
+    799
+   ],
+   "note": "identical #d6ab1b, 27 edges"
+  },
+  {
+   "a": "byzantine-empire",
+   "b": "exarchate-of-africa",
+   "years": [
+    700,
+    709
+   ],
+   "note": "identical #8e3776, 4 edges; exarchate-of-africa runs to 709 in its dossier; colony shares the metropole colour"
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "principality-of-abasgia",
+   "what": "missing state: Principality of Abasgia, infobox Established 64, Disestablished 786; land between the Gumista and Bzyb rivers (7,076 km2 in Cliopatria Georgia 724-777), predecessor of the Kingdom of Abkhazia",
+   "why": "The coast is nobody's land in 724-777 because no dossier holds it; the Abkhazia dossier notes the same need",
+   "source": "https://en.wikipedia.org/wiki/Abasgia"
+  },
+  {
+   "slug": "kashmir",
+   "what": "merge with karkota-dynasty as one state",
+   "why": "Same start year (625) and same predecessor in both dossiers; the Karkota page and the Kashmir page were not opened in this run, so this is a flag only",
+   "source": "https://en.wikipedia.org/wiki/Karkota_dynasty"
+  }
+ ],
+ "pages_opened": 12,
+ "problems": [
+  "hierarchy: principality-of-armenia,umayyad-caliphate,661,743,vassal,3 ends seven years before the Umayyad end (750); the Abbasid row starts 751, so 744-750 is independent. Armenia page: governor Ishaq ibn Muslim al-Uqayli 744-750 under the Umayyads, Abu Ja'far 750-753 under the Abbasids. Suggest end 750.",
+  "hierarchy: principality-of-iberia,umayyad-caliphate,661,743,vassal,3 has the same seven-year gap before the Abbasid row (751-813). The page I opened (Armenia) does not date Iberia, so the end year is unverified; suggest 750 if the orchestrator can confirm.",
+  "events/0 is dated 692, inside p0600-p0699, but the wrong merge runs through 700-1027. It is applied (the check says year outside the window); the p0600-p0699 agent may want the same fix.",
+  "keyframe_overrides/3 and /5 fix the Algeria seam that p0600-p0699 keyframe_overrides/5-8 opened; they depend on that patch staying in place.",
+  "keyframe_overrides/2 (tang-dynasty_768) runs to 829 and so also changes p0800-p0899 years; its Dunhuang cut and Karashahr removal follow the dossier minus-Karashahr spec. p0800-p0899 already carries tang_850/860 and rustamid_778 overrides, which my trial leaves untouched.",
+  "Trial start anchors differ from the published draft where other windows' patches changed them; 223 other-window entries applied, 0 skipped.",
+  "Image budget: 10 diagnostic images plus 3 post-patch verification renders (718 jan1, 770 after, 726 after), 13 image files in total.",
+  "Left alone: Umayyad 718 snap adds 2974 cells (Sind, Baluchistan, Turkmenistan) and the Franks 732 keyframe snap adds 1544 cells; both are the dossiers' own shapes."
+ ]
+}

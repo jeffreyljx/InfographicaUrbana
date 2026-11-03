@@ -1,0 +1,311 @@
+{
+ "window": "p0000-p0099",
+ "images": [
+  {
+   "year": 0,
+   "bbox": "world, 1 Jan",
+   "seen": "start anchor looks right: Han, Xiongnu, Parthia, Rome (no Germania after the m0100 patch), Kangju, protectorate and Kushan lands in place; nothing far out of region"
+  },
+  {
+   "year": 99,
+   "bbox": "world, end of year",
+   "seen": "Xianbei hold the Mongolian plateau, Xiongnu only a remnant, Kushan between Parthia and India, protectorate over the Tarim; plausible"
+  },
+  {
+   "year": 80,
+   "bbox": "70,30,110,50",
+   "seen": "Tarim a Han/Xiongnu contested zone with Turfan-Hami as Xiongnu vassal; the protectorate's Khotan and Kashgar (Han control 'by 74') missing, so wrong before the patch"
+  },
+  {
+   "year": 25,
+   "bbox": "95,18,135,48 with Cliopatria",
+   "seen": "warlord states (Chimei, Zhang Bu, Liu Yong, Lu Fang, Wei Ao, Dou Rong, Wang Tiao) look right; the Sichuan basin was a grey hole between Chengjia's two parts, wrong before the patch"
+  },
+  {
+   "year": 60,
+   "bbox": "55,22,100,48 with Cliopatria",
+   "seen": "Kangju, Kushan, Indo-Parthian, Indo-Scythian, Western Satrap layout matches the period; Tarim in Xiongnu vassal tint follows the Xiongnu ledger; fine"
+  },
+  {
+   "year": 40,
+   "bbox": "117,32,135,46",
+   "seen": "Goguryeo holds the old Lelang core after 37 and Han is back in Lelang from 44; consistent with the ledger; fine"
+  },
+  {
+   "year": 12,
+   "bbox": "-10,35,40,56 (after patch, stage)",
+   "seen": "Roman frontier on Rhine and Danube, Germania unowned, Thracian kingdom in vassal tint, Moesia strip now Roman, no hole in Bosnia"
+  },
+  {
+   "year": 80,
+   "bbox": "70,32,100,46 (after patch, stage)",
+   "seen": "Khotan and Kashgar circles now drawn in the protectorate's tint inside the contested Tarim"
+  }
+ ],
+ "issues": [
+  {
+   "what": "Tarim 73-90: the protectorate's gains of Khotan and Kashgar (ledger/6-7) name counterparts with no dossier, so the cells stay Xiongnu or contested; han-dynasty 74 and 91 'client land' keyframes lose about 4,700 cell-years to Xiongnu on size",
+   "years": [
+    74,
+    90
+   ],
+   "slugs": [
+    "protectorate-of-the-western-regions",
+    "xiongnu",
+    "han-dynasty"
+   ],
+   "decision": "patched (events/0 gives the two oasis circles, 477 cells, to the protectorate from 74 until the 91 keyframe); the rest of the basin stays a Han/Xiongnu contest to 89, as the Western Regions pages describe it, so the remaining size-rule conflict is left as drawn",
+   "patch": "events/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Ban_Chao"
+   ]
+  },
+  {
+   "what": "Sichuan basin (1,123 cells) was the Gengshi Han's in 23-24 and unowned in 25 (Han's 25 keyframe drops it, Chengjia's keyframe starts 26); Chengjia's found at 24 took only the 888 free cells",
+   "years": [
+    24,
+    25
+   ],
+   "slugs": [
+    "chengjia",
+    "han-dynasty"
+   ],
+   "decision": "patched (events/1: Chengjia gains all of Yi Province from 24; the chengjia_26 snap of 1,104 cells disappears)",
+   "patch": "events/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Gongsun_Shu"
+   ]
+  },
+  {
+   "what": "Agricola's Scotland never appears: roman-empire_84 correction applies the 91 shape (Cheviot limit) from 84, against its own text '84-86 as given' and ledger/61 (gain 84) and ledger/62 (loss 87)",
+   "years": [
+    84,
+    86
+   ],
+   "slugs": [
+    "roman-empire"
+   ],
+   "decision": "patched (Cliopatria's 84 shape, 120 Scottish cells, 84-86; ledger/62 drops them in 87)",
+   "patch": "keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Roman_Britain"
+   ]
+  },
+  {
+   "what": "Western Hexi Corridor (225 cells, Dunhuang side, 93-98E) drops out of Han at 91 because han_91's shape lacks it (the 43-74 keyframes all add the Hexi Corridor, the 91 correction does not); 210 cells unowned and 15 Xiongnu to 99 and into the next window",
+   "years": [
+    91,
+    99
+   ],
+   "slugs": [
+    "han-dynasty"
+   ],
+   "decision": "patched (han_91 correction plus the Hexi Corridor; snap removes 5 instead of 230 cells; 15 Gobi cells stay Xiongnu by the size rule, left)",
+   "patch": "keyframe_overrides/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Hexi_Corridor"
+   ]
+  },
+  {
+   "what": "Moesia Inferior (130 cells of the Danube bank) is taken out of the Thracian kingdom at 6 (Thracian ledger/6) but Cliopatria's Roman shapes omit it until 51, so it is unowned for 45 years; a gain event at 6 was tested and is undone by the next Roman keyframe snap",
+   "years": [
+    6,
+    50
+   ],
+   "slugs": [
+    "roman-empire",
+    "thracian-kingdom"
+   ],
+   "decision": "patched (Roman keyframes 6, 9, 14, 23 and 43 each get the Moesia strip added to the dossier's own correction)",
+   "patch": "keyframe_overrides/2,3,4,5,6",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Moesia"
+   ]
+  },
+  {
+   "what": "Illyrian interior (101 Bosnian cells) unowned 9-13: ledger/25 ends the revolt in 9 and says 'Cliopatria's 9 shape has the interior back' but the shape lacks it until the 14 shape",
+   "years": [
+    9,
+    13
+   ],
+   "slugs": [
+    "roman-empire"
+   ],
+   "decision": "patched (roman_9 correction plus the revolt zone; the 9 snap removal falls from 843 cells to 5, together with the m0100 Germania patch)",
+   "patch": "keyframe_overrides/3",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Great_Illyrian_Revolt"
+   ]
+  },
+  {
+   "what": "han-dynasty_37 drops 581 western Sichuan and 231 Qinghai (Xining disc) cells the ledger gave Han in 36 (Chengjia's land, Dou Rong's land) and no later Han keyframe has them to 99",
+   "years": [
+    37,
+    99
+   ],
+   "slugs": [
+    "han-dynasty",
+    "chengjia",
+    "dou-rong"
+   ],
+   "decision": "left: pages silent (no opened page says Han held or lost the highland edge of Sichuan or the Xining disc after 36; every Han shape of the window omits them, so a fix would need seven overrides on an unsourced reading)",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Germania snaps (roman_1 -518, roman_6 +466, roman_9 -843) in the published draft",
+   "years": [
+    1,
+    9
+   ],
+   "slugs": [
+    "roman-empire"
+   ],
+   "decision": "fine as drawn: they come from the m0100-m0001 patch not yet compiled in; with it the snaps fall to -55, +3, and (after my Bosnia fix) -5",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Han/Xiongnu 14..91 conflict (4,739 cell-years) and the Han/Lu Fang, Han/Goguryeo, Han/Xianbei conflicts",
+   "years": [
+    14,
+    91
+   ],
+   "slugs": [
+    "han-dynasty",
+    "xiongnu",
+    "lu-fang",
+    "goguryeo",
+    "xianbei"
+   ],
+   "decision": "fine as drawn: Lu Fang held the Ordos 24-42, Goguryeo held Lelang's core 37-43 (Han back from 44), and the Tarim 'client land' claims end as contest then protectorate; no source contradicts the smaller state winning",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Kangju/Kushan (1,013 cell-years, 50-91), Kangju/Parthia (384), Kuninda/Kushan (170)",
+   "years": [
+    1,
+    91
+   ],
+   "slugs": [
+    "kangju",
+    "kushan-empire",
+    "parthian-empire",
+    "kuninda-kingdom"
+   ],
+   "decision": "left: pages silent (no page opened on the Sogdian or Kashkadarya borders; the picture at 60 is plausible)",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Xianbei 49 (4,969 cells) and 91 (+5,545) gains",
+   "years": [
+    49,
+    91
+   ],
+   "slugs": [
+    "xianbei"
+   ],
+   "decision": "fine as drawn: Cliopatria-shaped Liao-Xing'an steppe from 49 and the plateau from 91, as the dossier's quotes from the Xianbei page say",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Xiongnu vassal tint over the Tarim 23-73 and Turfan-Hami 77-90",
+   "years": [
+    23,
+    90
+   ],
+   "slugs": [
+    "xiongnu"
+   ],
+   "decision": "fine as drawn: follows xiongnu ledger/27 and ledger/31 ('gained control over the Western Regions')",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/p0000-p0099.json",
+ "patch_entries": {
+  "events": 2,
+  "keyframe_overrides": 7,
+  "rulings": 0
+ },
+ "patch_check": "all applied (check-patch: 9 entries, 9 ok, 0 rejected; trial: 9 applied, 0 skipped)",
+ "colour_clashes": [
+  {
+   "a": "han-dynasty",
+   "b": "xin-dynasty",
+   "years": [
+    9,
+    23
+   ],
+   "note": "identical #d24e3e, 12 shared cell edges; one state replaces the other on the same land, so the change needs a visible border"
+  },
+  {
+   "a": "han-dynasty",
+   "b": "xuantu-commandery",
+   "years": [
+    0,
+    99
+   ],
+   "note": "identical #d24e3e, 8 shared edges"
+  },
+  {
+   "a": "xin-dynasty",
+   "b": "xuantu-commandery",
+   "years": [
+    9,
+    23
+   ],
+   "note": "identical #d24e3e, 8 shared edges"
+  },
+  {
+   "a": "roman-empire",
+   "b": "tetrarchy-of-galilee-and-peraea",
+   "years": [
+    0,
+    39
+   ],
+   "note": "distance 0.075, 40 shared edges"
+  },
+  {
+   "a": "roman-empire",
+   "b": "tetrarchy-of-philip",
+   "years": [
+    0,
+    34
+   ],
+   "note": "distance 0.047, 15 shared edges"
+  },
+  {
+   "a": "tetrarchy-of-galilee-and-peraea",
+   "b": "tetrarchy-of-philip",
+   "years": [
+    0,
+    34
+   ],
+   "note": "distance 0.035, 10 shared edges"
+  },
+  {
+   "a": "lu-fang",
+   "b": "dou-rong / wei-ao / zhang-bu / dong-okjeo / mahan",
+   "years": [
+    24,
+    42
+   ],
+   "note": "seen in the images: these share one mustard-olive colour family and are hard to tell apart by eye where they meet (distances not measured)"
+  }
+ ],
+ "dossier_requests": [],
+ "pages_opened": 6,
+ "problems": [
+  "hierarchy: data/hierarchy.csv row 299 (kingdom-of-kucha, xiongnu, 23-84, vassal, confidence 1) ends the Xiongnu tie after 84; the Ban Chao page has the Protector General stationed at Qiuci (Kucha) in 91 and is silent on Kucha's allegiance 85-90, so 85-90 may be wrong; 51 cells, low confidence, left to the orchestrator.",
+  "cross-window: keyframe_overrides/1 (han-dynasty_91) governs 91-105, so it also acts on 100-105 in p0100-p0199, and the p0100 start anchor changes by 230 cells (Hexi cells now Han); the next window should not override han_91 again (first in window order wins).",
+  "cross-window: all trial numbers include the unpublished m0100-m0001 patch (roman-empire_-14), which already changes the p0000 start anchor; the published draft of 1 Nov still shows the Germania cells.",
+  "dossier: roman-empire corrections of keyframes 6, 9, 14, 23 and 43 should carry the Moesia strip (thracian-kingdom ledger/6 removes it at 6); roman-empire_9 should add the Illyrian interior; roman-empire_84's correction contradicts its own '84-86 as given'; han-dynasty_91's correction lacks the Hexi Corridor (its note counts 437 Hexi cells, the region now resolves to 842). Patched here; correct in the dossiers too.",
+  "compiler: a patch gain event does not survive a later keyframe snap of the same state when the keyframe's shape lacks the land (tested with a Moesia gain at 6, removed again by roman_6), so land that Cliopatria's shapes omit needs a keyframe override per keyframe; a gain whose counterpart has no dossier (protectorate ledger/5-7, 'Khotan', 'Shule') does not take cells another state owns.",
+  "tool: render_year.py draws occupations only over owned cells, so the Germania occupation (owner nobody) shows as plain grey, as m0100-m0001 already noted.",
+  "the 15 Gobi cells (94-95E, 41-42N) of the Hexi region that xiongnu_91 claims against han_91 stay Xiongnu by the size rule in 91-99; left (15 cells)."
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "batch_id": "fx-20",
+ "checks": [
+  {
+   "item": "F131",
+   "verdict": "fixed",
+   "what": "kingdom-of-spain: Low Countries removed 1516-1555. Resolved: found region (ledger/0) and keyframes _1516.._1547 hold 0 Low Countries/Nord/Pas-de-Calais cells; _1556 holds 334 again (hierarchy.csv row 203, constituent 1556-1709). Habsburg Netherlands page: 'In 1516, Charles became the king of Spain, but also continued to rule over his domains in the Netherlands and Burgundy' ... 'but without annexation'; Philip II 'incorporated them into the Spanish Crown' after the 1555-1556 abdications; Spanish Netherlands page: 'held in personal union by the Spanish Habsburgs, but not annexed to the Spanish Crown', infobox 'Habsburg Spain gained Habsburg Netherlands: 1556'. Deleting the 1524 Friesland gain is right: habsburg-netherlands ledger/2 carries Friesland 1524 (page footnote 'after 1524'). Side effect the fixer left: deleting Spain old ledger/3 made five cross-references in habsburg-monarchy stale by one.",
+   "page": "https://en.wikipedia.org/wiki/Habsburg_Netherlands",
+   "fix": "habsburg-monarchy ledger notes updated to the new kingdom-of-spain indices: ledger/50 '(its /ledger/45)'->44 (Milan, March 1707), /51 'Mirrors kingdom-of-spain /ledger/44'->43 (Naples 1707), /54 'its /ledger/43'->42 (Dutch occupation 1706), /61 '/ledger/52'->51 (Sardinia 1717), /66 '/ledger/54'->53 (Sardinia 1720); keyframe habsburg-monarchy_1526 note 'ledger/6' -> 'ledger/5 (then /6)'. Re-validated: 0 errors.",
+   "applied": true
+  },
+  {
+   "item": "F206",
+   "verdict": "fixed",
+   "what": "Low Countries now only habsburg-netherlands (checked: 0 cells in Spain 1516-1547 and monarchy 1519-1552 shapes). Franche-Comte meant to be kingdom-of-spain only, but Spain's keyframes _1521, _1524 and _1526 (Cliopatria's Spain 1521/1526 shapes) held 0 Franche-Comte cells while the fixer removed it from habsburg-monarchy _1519/_1526 (the only Cliopatria row covering the county 1519-1528, 58 cells). Result: the 1521 Spain snap released the county and nobody drew it 1521-1528, although those keyframe notes said 'The Franche-Comte stays here'. Free County of Burgundy page: in 1521 Charles relinquished the Austrian domains to Ferdinand 'but without Burgundian lands', which 'were kept by Charles as his own domain within the Empire'; also 'In 1512, it was included into the newly formed Burgundian Circle and administered as part of the Habsburg Netherlands' and 'the County was never annexed into the Kingdom of Spain' (so Spain is a confidence-1 convention, as the fixer says).",
+   "page": "https://en.wikipedia.org/wiki/Free_County_of_Burgundy",
+   "fix": "kingdom-of-spain keyframes _1521, _1524, _1526: correction wrapped as union(old spec, intersect(Kingdom of Spain 1556 shape, region Franche-Comte)), same member as _1529-_1547, text quoting the page; note tagged 'Review 2026-11-01 (fx-20 review)'. Resolved: Spain now holds 59 Franche-Comte cells in every keyframe 1516-1556, 0 Low Countries cells. Validated: 0 errors (6 old counterpart warnings).",
+   "applied": true
+  },
+  {
+   "item": "F204",
+   "verdict": "pass",
+   "what": "habsburg-monarchy: _1519/_1526 minus Doubs/Jura/Haute-Saone; _1529/_1540 = Austrian 1526 shape + Kingdom of Bohemia 1528 (959 cells, 0 Low Countries, 2 Belfort cells of Further Austria); _1547/_1552 = Cliopatria 1556 shape (1368 cells, 0 Low Countries). Raw Cliopatria check confirms the swap: the 'Habsburg Monarchy' row 1529-1552 is mostly the Netherlands (277-332 cells) plus the Franche-Comte, while Austria/Bohemia sit in the 'Kingdom of Spain' row. Deleted events (1519 Franche-Comte, 1529 Guelders+Overijssel, 1536 Groningen+Drenthe, 1556 loss of the Seventeen Provinces) are Netherlands/county land the monarchy no longer draws; ledger and keyframes agree. Free County page: the Burgundian lands stayed with Charles, not Ferdinand. Part (a) kept: hierarchy.csv line 80 already has habsburg-monarchy same_state under habsburg-netherlands 1487-1515 (R3 draws the parent), so the reasoning holds.",
+   "page": "https://en.wikipedia.org/wiki/Free_County_of_Burgundy",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F205",
+   "verdict": "pass",
+   "what": "habsburg-monarchy_1526 now = Austrian lands (no Menorca, no Franche-Comte) + Kingdom of Bohemia 1528 shape; resolved 959 cells, 530 of them Cliopatria's Bohemia 1528 (Bohemia, Moravia, Silesia, Lusatia; the fixer's '232' counts Bohemia proper). Kingdom of Bohemia page: 'The Bohemian Diet elected Louis' brother-in-law, Archduke Ferdinand, as the new king of Bohemia'; infobox 'King Ferdinand I, Holy Roman Emperor: 16 December 1526' and 'Crown land of the Habsburg monarchy (1526-1804)'. In 1526 the smaller kingdom-of-bohemia still wins by size until its December dissolve, so the 1527-1528 gap is closed without overdrawing 1526. ledger/5 note updated.",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Bohemia",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F209",
+   "verdict": "pass",
+   "what": "Kept, and the reasoning holds: data/hierarchy.csv line 177 has habsburg-netherlands as a constituent of iberian-union 1580-1640 (confidence 2), so R3 gives the child the cells. Subtracting the Low Countries from the union would leave the parent with a hole. Spanish Netherlands page: 'held in personal union by the Spanish Habsburgs, but not annexed to the Spanish Crown'; Isabella and Albert had 'formal independence from Spain' until 1621; the page does not mention Portugal or the Iberian Union.",
+   "page": "https://en.wikipedia.org/wiki/Spanish_Netherlands",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "Validation after review: kingdom-of-spain OK (0 errors, 6 pre-existing counterpart warnings for spanish-sahara/spanish-morocco); habsburg-monarchy OK (0 errors, 0 warnings). The compiler was not run.",
+  "Open handoff (fixer's): holy-roman-empire-minor-states ledger/42 (1526 loss to kingdom-of-spain), /43 (1529), /45 (1540), /47 (1552) (losses to habsburg-monarchy) name counterparts that no longer draw these Netherlands cells. Retarget them to habsburg-netherlands at its own years (1524, 1528, 1536, 1543) or delete them.",
+  "Not in the fixer's handoffs: prince-bishopric-of-utrecht ledger/5 (1528 dissolve) and identity.successors[0] name habsburg-monarchy for Utrecht+Overijssel. They should name habsburg-netherlands, which carries the 1528 gain from prince-bishopric-of-utrecht at its ledger/3. In compile this is probably harmless, because habsburg-netherlands takes the cells before the year-end dissolve, but the link is stale.",
+  "Not in the fixer's handoffs: data/hierarchy.csv evidence strings in the duchy-of-cieszyn/habsburg-monarchy row (line 74) cite 'habsburg-monarchy.json ledger/6', which is now /5. The further-austria/habsburg-monarchy row (line 77) cites ledger/117 and /119, which are now /113 (1803 Breisgau to Modena) and /115 (1805 Pressburg). These are in addition to the rows the fixer listed (lines 78-79: /6->/5, /58-59->/54-55, /108->/104). The kingdom-of-spain ledger/2 reference in co-principality-of-andorra is unchanged and still correct.",
+  "Franche-Comte stays a confidence-1 convention in kingdom-of-spain 1516-1555. The Free County page says the county was 'administered as part of the Habsburg Netherlands' from 1512 and was 'never annexed into the Kingdom of Spain', so a franche-comte dossier (1493-1678) remains the right fix. The fixer's handoff stands."
+ ]
+}

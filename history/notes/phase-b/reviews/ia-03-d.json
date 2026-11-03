@@ -1,0 +1,927 @@
+{
+ "batch_id": "ia-03-d",
+ "verdicts": [
+  {
+   "slug": "dzungar-khanate",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/6/counterpart",
+     "what": "The 1680 gain of the Tarim Basin named 'yarkent-khanate', a slug with no dossier, while the Yarkent Khanate is the existing eastern-moghulistan dossier.",
+     "why": "eastern-moghulistan.json identity name 'Yarkent Khanate (Eastern Moghulistan)', alt_names include 'Yarkent Khanate'; its /ledger/4 is a 1680 loss of the Tarim Basin to dzungar-khanate (confidence 3). Dzungar page: 'soon in 1680, Galdan led 120,000 men into the Yarkent Khanate and conquered it'.",
+     "fix": "Counterpart set to eastern-moghulistan in /ledger/6 and /wars/1/belligerents/1; the notes sentence on counterparts without dossiers updated. Re-validated: valid, no warnings.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/4",
+     "what": "The 1677 gain of 'Dzungaria' from khoshut-khanate moves no land and has no mirror: Dzungaria is already inside this dossier's own keyframe dzungar-khanate_1658 (839,091 km2, 73.4-91.0 E, drawn 1658-1676), and the khoshut-khanate dossier (1637-1717, Qinghai and Tibet) never held Dzungaria and has no 1677 loss.",
+     "why": "Galdan page: 'In 1678 Galdan forced Ochirtu to flee to Kokonur and established hegemony over the Oirats' (the Dzungar page has 1677). Ochirtu's Khoshuts in Dzungaria were an Oirat group inside the land the dossier already draws; khoshut-khanate.json has no event naming Ochirtu or 1677/1678.",
+     "fix": "Remove the gain (keep Galdan's victory as war /wars/2 with empty zones and a note that no frontier moved, since the land is already drawn), or name the counterpart as a string ('Ochirtu Tsetsen Khan's Khoshuts') and give a region the 1658-1676 keyframe excludes; in either case note the 1677/1678 conflict.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (missing event after /ledger/12); /keyframe_review/8, 9, 11, 12, 13, 14",
+     "what": "A dated loss of Hami in 1696 is missing, and the notes and gaps say 'no dated loss on any page' for Hami, which is false: the Dzungar page dates it.",
+     "why": "Dzungar Khanate page (opened by the author): 'Abdullah Tarkhan Beg of Hami also rebelled in 1696 and defected to the Qing dynasty'; also 'In 1698, Qing troops were stationed in Hami'. The keyframes from 1696 to 1757 keep Hami (Cliopatria's shapes reach 95.9 E) for 60 years.",
+     "fix": "Add {year: 1696, type: loss, region: {place: Hami, km: <radius>}, counterpart: qing-dynasty, source: Dzungar page, confidence 2 or 3}, mark the keyframes from 1696 on adjust with corrections minus the Hami radius (or explain in a note why Hami stays Dzungar, e.g. the 1714 sack), and correct the notes and the report gap.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/17/note",
+     "what": "The note calls the 1723 seizure of Khujand, Samarkand, Andijan and the Fergana Valley 'raids', but the page says the Dzungars occupied the Fergana Valley; no occupation of Kokand's Fergana is in this ledger or in khanate-of-kokand.",
+     "why": "Kazakh-Dzungar Wars page: 'They also captured Khujand, Samarkand, and Andijan, occupying the Fergana Valley' (same 1723 campaign). Kokand page: 'the Jungars forced Baba Biy on the Kokand throne' and the 1745 Dzungar invasion ended with 'a full Dzungar withdrawal'.",
+     "fix": "Either add occupation_start 1723 / occupation_end (year the pages give, else confidence 1) for the Fergana Valley with counterpart khanate-of-kokand, mirrored in khanate-of-kokand, or justify the 'raids' reading in the note with a page sentence. Not blocking on its own.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/23",
+     "what": "The 1757 loss of the Tarim Basin names qing-dynasty, but the land passed first to the Aq Taghliq (Afaqi) khojas, whom the Qing fought in 1758-1759.",
+     "why": "Galdan page confirms the year ('The Dzungars kept control over the Tarim Basin until 1757'); the Dzungar page: 'In February 1758, the Qing sent ... against the Aq Taghliq regime' (as quoted in the author's own note) and 'The Tarim Basin was pacified in 1759'.",
+     "fix": "Name the counterpart as the khojas' regime (string, or a dossier from ia-03-x) and say in the note that the Qing gain is 1759; or keep qing-dynasty and say why. Advisory, not blocking.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/12",
+     "what is missing": "Turfan's defection to the Qing (the Dzungar page has Turpan 'had previously defected to the Qing dynasty' before the 1731 attack, undated); the year of the loss",
+     "page to try": "https://en.wikipedia.org/wiki/Turpan"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Cliopatria's 1636 enlargement of the Oirat row to Semirechye (applied from 1658 here); any page dating the Dzungar hold on Jetisu between 1635 and 1658",
+     "page to try": "https://en.wikipedia.org/wiki/Erdeni_Batur"
+    },
+    {
+     "where": "/keyframe_review/10",
+     "what is missing": "How far the Dzungar occupation of Tibet reached in 1717-1720 (Cliopatria adds all of Tibet)",
+     "page to try": "https://en.wikipedia.org/wiki/Chinese_expedition_to_Tibet_(1720)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kazakh%E2%80%93Dzungar_Wars",
+     "result": "confirmed",
+     "detail": "'killing Abushukher Noyan in 1658'; 'The border was consolidated from the Ayagöz River to the Talas River.'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Dzungar_Khanate",
+     "result": "confirmed",
+     "detail": "'soon in 1680, Galdan led 120,000 men into the Yarkent Khanate and conquered it'; 'Conquest of Altishahr: 1680-1681'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Galdan_Boshugtu_Khan",
+     "result": "confirmed",
+     "detail": "'he entered Khalkha territory in 1688'; Olgoi Lake 'on August 3, 1688'"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Dzungar_Khanate",
+     "result": "confirmed",
+     "detail": "'In 1696, Galdan was defeated by the Qing dynasty and lost Outer Mongolia.' Galdan page: 'On 12 June 1696'"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Dzungar_Khanate",
+     "result": "confirmed",
+     "detail": "'The Dzungars controlled Jetisu and Tashkent until 1745.'"
+    },
+    {
+     "where": "/ledger/23",
+     "page": "https://en.wikipedia.org/wiki/Galdan_Boshugtu_Khan",
+     "result": "confirmed",
+     "detail": "'The Dzungars kept control over the Tarim Basin until 1757.' (counterpart questioned, see fixes)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 3600000,
+    "infobox_year": 1650,
+    "cliopatria_km2": 839091,
+    "ratio": 4.29,
+    "acknowledged": true,
+    "note": "Cliopatria row alive in 1650 is the Oirat Confederation shape (839,091 km2); the dossier's own 1650 keyframe is 365,737 km2 (ratio 9.8). Acknowledged in /keyframe_review/1: the infobox figure equals the 1687-1695 peak (3.65 M km2), so its year is probably wrong. Accepted."
+   }
+  },
+  {
+   "slug": "khanate-of-kokand",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger (1864)",
+     "what": "Shymkent (Chimkent), taken in 1864 after a failed first attack, has no loss event; only keyframe khanate-of-kokand_1864b (which leaves it out) records it.",
+     "why": "Russian conquest page: 'He failed to take Shymkent in his first attack and retreated, but was able to take it in his next attack' (1864 campaign, no month).",
+     "fix": "Add a 1864 loss {place: Shymkent, km: 60} to russian-empire at confidence 2. Advisory.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/9",
+     "what is missing": "The 1822 growth of 301,000 km2 (Syr Darya to Ak-Mechet, Chu, Talas, Issyk-Kul, south-east Kazakh steppe) is a confidence-1 bridge; the dates of the Kokand forts (Ak-Mechet, Pishpek, Aulie-Ata, Tokmak) and of Umar and Madali Khan's conquests are needed",
+     "page to try": "https://en.wikipedia.org/wiki/Umar_Khan_(Kokand)"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "The Syr Darya lands to Turkestan in the 1809 shape (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Alim_Khan_(Kokand)"
+    },
+    {
+     "where": "/ledger/5, /ledger/6",
+     "what is missing": "Uroteppa contest end 1785 and restart 1788 are confidence 1; the Kokand page also has Abd al-Rahim Biy who 'briefly occupied Khujand, Urateppe, and the remnants of Samarkand' in the 1720s-1730s, not in the ledger",
+     "page to try": "https://en.wikipedia.org/wiki/Istaravshan"
+    },
+    {
+     "where": "/wars/1",
+     "what is missing": "Bukhara's seizure of Istaravshan and Khujand and Kokand's tribute in 1839-1842 are in the war outcome but have no ledger events (loss / vassal_start of Kokand to emirate-of-bukhara)",
+     "page to try": "https://en.wikipedia.org/wiki/Nasrullah_Khan_(Bukhara)"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "Reigns 1858-1862 and 1863-1865 (Malla Khan, Shah Murad, Sultan Sayyid) and any Russian treaty of 1868 (the Kokand page has none: confirmed)",
+     "page to try": "https://en.wikipedia.org/wiki/Khudayar_Khan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Khanate_of_Kokand",
+     "result": "confirmed",
+     "detail": "'In 1709, the leader of the Ming tribe, Shahrukh Biy ... established the Koktonliq Ata fortress near Kokand'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Khanate_of_Kokand",
+     "result": "confirmed",
+     "detail": "'temporarily took control of Tashkent in 1765 before Ablay Khan retook it'"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Russian_conquest_of_Central_Asia",
+     "result": "confirmed",
+     "detail": "Ak-Mechet 'the Kokand Khanate's most influential and critical northern stronghold', captured in the 1853 operation"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Russian_conquest_of_Central_Asia",
+     "result": "confirmed",
+     "detail": "'In September 1861, Alexander Debu led an army from Fort Dzhulek to Yany-Kurgan'"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Russian_conquest_of_Central_Asia",
+     "result": "confirmed",
+     "detail": "'In June 1864 Veryovkin took Hazrat-i-Turkestan from Kokand.'"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Khanate_of_Kokand",
+     "result": "confirmed",
+     "detail": "'on 29 June 1865 Tashkent was taken by the Russian troops of General Chernyayev'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 647497,
+    "infobox_year": 1838,
+    "cliopatria_km2": 475816,
+    "ratio": 0.73,
+    "acknowledged": true,
+    "note": "Infobox 'Late 1830s'; within a factor of two; noted in /keyframe_review/5."
+   }
+  },
+  {
+   "slug": "hotaki-dynasty",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/12/confidence",
+     "what": "Confidence 2 for a year the page does not give.",
+     "why": "Mahmud Hotak page: 'military success in seizing Shiraz as well as the two southernly towns of Golpeyagan and Kashan' with no year; the note itself says 'undated on the page'. Brief: 1 when bridging a silence.",
+     "fix": "Lowered to 1 with a reviewer sentence in the note; re-validated (valid).",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/4",
+     "what": "The new keyframe hotaki-dynasty_1722 draws Shiraz and Kashan from 1722 while /ledger/12 dates their gain 1723.",
+     "why": "Ledger and keyframe disagree by a year on the same land.",
+     "fix": "Start the Shiraz and Kashan radii in a 1723 keyframe, or date /ledger/12 1722 (both are bridges). Advisory.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "The 1718 addition of Sistan, Balochistan and the Makran coast (about 400,000 km2) is a confidence-1 bridge from Cliopatria; the Hotak page only has 'In 1720, Mahmud's Afghan forces crossed the deserts of Sistan'",
+     "page to try": "https://en.wikipedia.org/wiki/Khanate_of_Kalat"
+    },
+    {
+     "where": "/wars/4",
+     "what is missing": "The siege of Kandahar has a zone but no contest_start (1737) or contest_end; the siege page failed for the author",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Kandahar_(1738)"
+    },
+    {
+     "where": "/keyframe_review/5",
+     "what is missing": "The west edge of the 1727-1733 shape (Hamadan and beyond) and the dates of the Ottoman and Russian seizures of Persian land",
+     "page to try": "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Hotaki_War_(1726%E2%80%931727)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Hotak_dynasty",
+     "result": "confirmed",
+     "detail": "infobox 'Hotak revolt: 21 April 1709'; 'That opportunity came in April 1709.'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Mahmud_Hotak",
+     "result": "confirmed",
+     "detail": "'The Ghilzais easily conquered the Kirman town but failed to take its citadel on October 1721'"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Mahmud_Hotak",
+     "result": "confirmed",
+     "detail": "Gulnabad 8 March 1722; the siege 'not ending until 23 October 1722'"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Ashraf_Hotak",
+     "result": "confirmed",
+     "detail": "'The Afghan and Ottoman armies met at Khorramabad in November 1726'; agreement of October 1727 (not ratified); Kermanshah battle named"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Ashraf_Hotak",
+     "result": "confirmed",
+     "detail": "'Ashraf fled Isfahan on 13 November 1729, three days before Nader entered the city'"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Hotak_dynasty",
+     "result": "confirmed",
+     "detail": "infobox 'Siege of Kandahar: 24 March 1738'"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Mahmud_Hotak",
+     "result": "not on page",
+     "detail": "no year for Shiraz, Kashan or Golpayegan; confidence lowered to 1 (applied)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1918357,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Hotak dynasty infobox has no area; the 1727-1733 peak matches 'de facto rulers of most of Persia'."
+   }
+  },
+  {
+   "slug": "kalmyk-khanate",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/2/confidence, /ledger/3/confidence",
+     "what": "Confidence 3 on a region the page does not name.",
+     "why": "Nogai Horde page: infobox 'Conquered by the Kalmyk Khanate: 1634' and '1634 major defeat of Nogais by Kalmyks'; no sentence names the land (the region is Cliopatria's Small Horde 1635/1636 difference).",
+     "fix": "Lowered both to 2 with a reviewer sentence in the notes; re-validated (valid).",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what": "kalmyk-khanate_1632 is 'ok' for 1632-1635 though /ledger/3 gains the Small Horde strip (25,293 km2) in 1634; the shape takes it only in 1636.",
+     "why": "shapes.csv: small-horde_1588 108,451 km2 to 52.3 E, small-horde_1636 83,157 km2 to 42.4 E; kalmyk-khanate_1632 58,332 km2 to 1635.",
+     "fix": "Mark the keyframe adjust for 1634-1635 (union with the strip), or say in its note that the 1634 gain is drawn from 1636. Advisory.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "The 1636 growth of 105,000 km2 (west to 41.3 E and south to 43.3 N) is a confidence-1 gain from 'nobody'; the Kalmyk page says the Oirats consolidated 'by expelling the majority of the native inhabitants, the Nogai Horde', so the counterpart is probably nogai-horde and the year needs a page",
+     "page to try": "https://en.wikipedia.org/wiki/Kalmyks"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "The 1738 growth (+12,300 km2) is a confidence-1 bridge",
+     "page to try": "https://en.wikipedia.org/wiki/Donduk_Ombo"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "The Russian oaths and treaties (client status, 1655-1673) are on none of the four pages; the Kalmyk page says only 'Numerous oaths and treaties were signed'",
+     "page to try": "https://en.wikipedia.org/wiki/Ayuka_Khan"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "No capital: the infobox gives 'Ayuka Khan's residence (1697-1724)' without a place",
+     "page to try": "https://en.wikipedia.org/wiki/Ayuka_Khan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kalmyk_Khanate",
+     "result": "confirmed",
+     "detail": "infobox 'Established by the Oirat Mongols: 1630'; 'Upon arrival in the lower Volga region in 1630'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Nogai_Horde",
+     "result": "confirmed",
+     "detail": "'The first group was broken up circa 1632 by the Kalmyks.'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Nogai_Horde",
+     "result": "confirmed",
+     "detail": "year confirmed ('Conquered by the Kalmyk Khanate: 1634'); land not named, confidence lowered to 2 (applied)"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Kalmyk_Khanate",
+     "result": "confirmed",
+     "detail": "'Catherine II abolished the Kalmyk Khanate in October 1771'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 175318,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Kalmyk Khanate infobox has no area."
+   }
+  },
+  {
+   "slug": "oirat-confederation",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1/confidence",
+     "what": "Confidence 3 on a region the page does not name.",
+     "why": "Oirat page: 'In 1628, the Torghut chief Khoo Orlug with some Dorbets and Khoshuts moved westward across the Kazakh steppes'; the Volga region is the researcher's reading.",
+     "fix": "Lowered to 2 with a reviewer sentence in the note; re-validated (valid).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/1/region",
+     "what": "The split's region is the Kalmyk Khanate's 1632 shape on the lower Volga, land the Oirat Confederation never held (its keyframes are Dzungaria, 79.9-91.0 E); the mirror kalmyk-khanate /ledger/0 is a 1630 found with counterpart nogai-horde.",
+     "why": "Schema: 'split: part of the state becomes a new state'. The Oirat shape does not change in 1628, so the event moves no Oirat land; drawn as written it would place the Kalmyk state on the Volga from 1628, two years before its found event.",
+     "fix": "Say in the note that the split carries people, not Oirat land, and either date the split 1630 to match kalmyk-khanate's found event or let kalmyk-khanate's found note name oirat-confederation as the source of the people. Advisory, not blocking.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "The 1609 start is Cliopatria's (confidence 1); the union of c. 1620, Khara Khula and Erdeni Batur are on no page opened",
+     "page to try": "https://en.wikipedia.org/wiki/Khara_Khula"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Dzungar_Khanate",
+     "result": "confirmed",
+     "detail": "'From 1609-1616, the Oirats devastated the Kazakhs and the Kyrgyz, subjugating them in the process.' (start year itself is Cliopatria's, confidence 1 as stated)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Oirat_Confederation",
+     "result": "confirmed",
+     "detail": "'In 1628, the Torghut chief Khoo Orlug with some Dorbets and Khoshuts moved westward across the Kazakh steppes.'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Oirat_Confederation",
+     "result": "confirmed",
+     "detail": "infobox 'Disestablished: 1634'; successors Dzungar, Kalmyk, Khoshut khanates"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 365737,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Oirat Confederation infobox has no area."
+   },
+   "decision": "The 1634 break between oirat-confederation and dzungar-khanate (against Cliopatria's 1619/1677 labels) is supported by both pages (Oirat 'Disestablished: 1634', Dzungar 'Established: 1634') and is accepted; kazakh-khanate must rename its 1643 and 1658 counterparts to dzungar-khanate."
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1643,
+    "type": "contest_start",
+    "counterpart": "kazakh-khanate"
+   },
+   "mirror": {
+    "slug": "kazakh-khanate",
+    "year": 1643,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "kazakh-khanate /ledger/24 names oirat-confederation; after the accepted 1634 split it must name dzungar-khanate (kazakh-khanate author)."
+  },
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1658,
+    "type": "gain",
+    "counterpart": "kazakh-khanate"
+   },
+   "mirror": {
+    "slug": "kazakh-khanate",
+    "year": 1658,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Same year and land (Semirechye; Kazakh 1635/1636 shape difference), but kazakh-khanate /ledger/25-26 name oirat-confederation; rename to dzungar-khanate (kazakh-khanate author)."
+  },
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1677,
+    "type": "gain",
+    "counterpart": "khoshut-khanate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "khoshut-khanate (1637-1717, Qinghai/Tibet) has no 1677 loss and never held Dzungaria; the land is already in dzungar-khanate_1658. Fix on the Dzungar side."
+  },
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1679,
+    "type": "gain",
+    "counterpart": "Turfan and Hami (oasis rulers)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed in counterparts_needing_dossiers (kumul-khanate, ia-03-x)."
+  },
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1680,
+    "type": "gain",
+    "counterpart": "eastern-moghulistan"
+   },
+   "mirror": {
+    "slug": "eastern-moghulistan",
+    "year": 1680,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Counterpart corrected by the reviewer from yarkent-khanate."
+  },
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1684,
+    "type": "gain",
+    "counterpart": "kazakh-khanate"
+   },
+   "mirror": {
+    "slug": "kazakh-khanate",
+    "year": 1684,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1687,
+    "type": "loss",
+    "counterpart": "kazakh-khanate"
+   },
+   "mirror": {
+    "slug": "kazakh-khanate",
+    "year": 1687,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Both sides confidence 1-2."
+  },
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1688,
+    "type": "gain",
+    "counterpart": "Khalkha Mongols"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed (khalkha-khanates, ia-03-x)."
+  },
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1696,
+    "type": "loss",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "qing-dynasty belongs to ea-08, not yet written."
+  },
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1696,
+    "type": "loss (missing: Hami)",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Dzungar page: Hami 'defected to the Qing dynasty' in 1696; not in the ledger."
+  },
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1717,
+    "type": "gain",
+    "counterpart": "khoshut-khanate"
+   },
+   "mirror": {
+    "slug": "khoshut-khanate",
+    "year": 1717,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Both December 1717, Central Tibet."
+  },
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1720,
+    "type": "loss",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ea-08 not yet written."
+  },
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1723,
+    "type": "occupation_start",
+    "counterpart": "kazakh-khanate"
+   },
+   "mirror": {
+    "slug": "kazakh-khanate",
+    "year": 1723,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "Regions compatible (Tashkent/Shymkent/Turkistan radii against South Kazakhstan + Chach). The Fergana occupation of the same campaign is in neither dossier."
+  },
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1745,
+    "type": "occupation_end",
+    "counterpart": "kazakh-khanate"
+   },
+   "mirror": {
+    "slug": "kazakh-khanate",
+    "year": 1745,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "dzungar-khanate",
+    "year": 1757,
+    "type": "loss",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Dzungaria and Tarim Basin; ea-08 not yet written. Tarim counterpart questioned (Aq Taghliq khojas until 1759)."
+  },
+  {
+   "event": {
+    "slug": "oirat-confederation",
+    "year": 1628,
+    "type": "split",
+    "counterpart": "kalmyk-khanate"
+   },
+   "mirror": {
+    "slug": "kalmyk-khanate",
+    "year": 1630,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Two years apart; kalmyk-khanate's found names nogai-horde; the split region (Volga) was never Oirat land."
+  },
+  {
+   "event": {
+    "slug": "oirat-confederation",
+    "year": 1634,
+    "type": "dissolve",
+    "counterpart": "dzungar-khanate"
+   },
+   "mirror": {
+    "slug": "dzungar-khanate",
+    "year": 1634,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Handoff year drawn by both on identical cells (accepted)."
+  },
+  {
+   "event": {
+    "slug": "kalmyk-khanate",
+    "year": 1632,
+    "type": "contest_start",
+    "counterpart": "nogai-horde"
+   },
+   "mirror": {
+    "slug": "nogai-horde",
+    "year": 1632,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kalmyk-khanate",
+    "year": 1634,
+    "type": "gain",
+    "counterpart": "nogai-horde"
+   },
+   "mirror": {
+    "slug": "nogai-horde",
+    "year": 1636,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Same land; nogai-horde /ledger/14 dates it 1636 at confidence 1 (Cliopatria's shape change) while the Nogai page infobox has 'Conquered by the Kalmyk Khanate: 1634'. The nogai-horde side should move to 1634 (ia-02 / nogai-horde author)."
+  },
+  {
+   "event": {
+    "slug": "kalmyk-khanate",
+    "year": 1636,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "'nobody'; but the Kalmyk page has the Nogais expelled, so probably nogai-horde (thin)."
+  },
+  {
+   "event": {
+    "slug": "kalmyk-khanate",
+    "year": 1738,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "'nobody', confidence 1."
+  },
+  {
+   "event": {
+    "slug": "kalmyk-khanate",
+    "year": 1771,
+    "type": "dissolve",
+    "counterpart": "russian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "russian-empire belongs to eu-17, not yet written."
+  },
+  {
+   "event": {
+    "slug": "hotaki-dynasty",
+    "year": 1712,
+    "type": "gain",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "safavid-dynasty (me-10) not yet written; same for the gains of 1718, 1721, 1722, 1723 and the 1709 found."
+  },
+  {
+   "event": {
+    "slug": "hotaki-dynasty",
+    "year": 1729,
+    "type": "loss",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-10 not yet written."
+  },
+  {
+   "event": {
+    "slug": "hotaki-dynasty",
+    "year": 1738,
+    "type": "loss",
+    "counterpart": "afsharid-iran"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-10 not yet written."
+  },
+  {
+   "event": {
+    "slug": "khanate-of-kokand",
+    "year": 1709,
+    "type": "found",
+    "counterpart": "khanate-of-bukhara"
+   },
+   "mirror": {
+    "slug": "khanate-of-bukhara",
+    "year": 1709,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "khanate-of-kokand",
+    "year": 1734,
+    "type": "contest_start",
+    "counterpart": "khanate-of-bukhara"
+   },
+   "mirror": {
+    "slug": "khanate-of-bukhara",
+    "year": 1734,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "contest_end 1785 also matched (both confidence 1)."
+  },
+  {
+   "event": {
+    "slug": "khanate-of-kokand",
+    "year": 1765,
+    "type": "contest_start",
+    "counterpart": "kazakh-khanate"
+   },
+   "mirror": {
+    "slug": "kazakh-khanate",
+    "year": 1765,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "contest_end 1765 matched."
+  },
+  {
+   "event": {
+    "slug": "khanate-of-kokand",
+    "year": 1809,
+    "type": "gain",
+    "counterpart": "tashkent-state"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed (tashkent-state, ia-03-x)."
+  },
+  {
+   "event": {
+    "slug": "khanate-of-kokand",
+    "year": 1809,
+    "type": "gain",
+    "counterpart": "kazakh-khanate"
+   },
+   "mirror": {
+    "slug": "kazakh-khanate",
+    "year": 1809,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Both confidence 1."
+  },
+  {
+   "event": {
+    "slug": "khanate-of-kokand",
+    "year": 1822,
+    "type": "gain",
+    "counterpart": "kazakh-khanate"
+   },
+   "mirror": {
+    "slug": "kazakh-khanate",
+    "year": 1822,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Both confidence 1."
+  },
+  {
+   "event": {
+    "slug": "khanate-of-kokand",
+    "year": 1842,
+    "type": "occupation_start",
+    "counterpart": "emirate-of-bukhara"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "emirate-of-bukhara (ia-03, another part) not yet written; also the 1788-1866 Uroteppa contest."
+  },
+  {
+   "event": {
+    "slug": "khanate-of-kokand",
+    "year": 1842,
+    "type": "contest_start",
+    "counterpart": "kara-kyrgyz-khanate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed (ia-03-x)."
+  },
+  {
+   "event": {
+    "slug": "khanate-of-kokand",
+    "year": 1853,
+    "type": "loss",
+    "counterpart": "russian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-17 not yet written; same for the losses of 1859, 1861, 1862, 1864, 1865, 1866 and 1876."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Sayram",
+   "kind": "place",
+   "used_in": "dzungar-khanate"
+  },
+  {
+   "name": "Margilan",
+   "kind": "place",
+   "used_in": "khanate-of-kokand"
+  },
+  {
+   "name": "Golpayegan",
+   "kind": "place",
+   "used_in": "hotaki-dynasty"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Khalkha Mongols (Khalkha khanates)",
+   "suggested_slug": "khalkha-khanates",
+   "years": [
+    1688,
+    1696
+   ]
+  },
+  {
+   "name": "Turfan and Hami oasis rulers (Kumul Khanate)",
+   "suggested_slug": "kumul-khanate",
+   "years": [
+    1679,
+    1679
+   ]
+  },
+  {
+   "name": "Tashkent state of Yunus Khoja",
+   "suggested_slug": "tashkent-state",
+   "years": [
+    1784,
+    1809
+   ]
+  },
+  {
+   "name": "Kara-Kyrgyz Khanate (Ormon Khan)",
+   "suggested_slug": "kara-kyrgyz-khanate",
+   "years": [
+    1842,
+    1844
+   ]
+  },
+  {
+   "name": "Aq Taghliq khojas' regime in Altishahr (Burhan al-Din, Khoja Jihan)",
+   "suggested_slug": "altishahr-khojas",
+   "years": [
+    1757,
+    1759
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ia-03-d.md",
+ "problems": [
+  "yarkent-khanate is not a needed dossier: the Yarkent Khanate is eastern-moghulistan (counterpart corrected in dzungar-khanate).",
+  "kazakh-khanate (another ia-03 part) must rename its 1643 contest_start and 1658 contest_end/loss counterparts from oirat-confederation to dzungar-khanate; nogai-horde should date its loss to the Kalmyks 1634, not 1636.",
+  "Counterpart dossiers not yet written (exceptions): qing-dynasty (ea-08), russian-empire (eu-17), safavid-dynasty, afsharid-iran, ottoman-empire (me-10), emirate-of-bukhara (ia-03). Context dossiers present and read: kazakh-khanate, khanate-of-bukhara, khoshut-khanate, eastern-moghulistan, astrakhan-khanate, golden-horde, khanate-of-khiva, crimean-khanate, western-moghulistan, tumed, plus nogai-horde and four-oirats; small-horde, tsardom-of-russia, mughal-empire, tibet and don-cossacks have no dossier yet.",
+  "Reviewer edits applied in place (all re-validated, read back): dzungar-khanate /ledger/6, /wars/1, /notes; hotaki-dynasty /ledger/12; kalmyk-khanate /ledger/2, /ledger/3; oirat-confederation /ledger/1.",
+  "No page failed to load for the reviewer."
+ ]
+}

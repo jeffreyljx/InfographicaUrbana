@@ -1,0 +1,2283 @@
+{
+ "batch_id": "ea-02-x",
+ "verdicts": [
+  {
+   "slug": "yellow-turbans",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (after /ledger/4); /keyframe_review/0",
+     "what": "Nanyang (Wancheng, 70 km circle) is held in K0 184-185 and gone in K1, but no ledger event loses it.",
+     "why": "Yellow Turban Rebellion page: 'By the beginning of 185, the rebellion had mostly been suppressed following Zhu Jun's recapture of Wancheng in Nanyang Commandery'; Zhao Hong was killed during or after October 184.",
+     "fix": "Add a loss, 185 month 1 (or 184), counterpart han-dynasty, region the Nanyang 70 km circle, source the Yellow Turban Rebellion page, confidence 2.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The Xuchang 90 km circle (Runan-Yingchuan) is drawn as held territory for 184-185, but the ledger has only a contest_start (184/5) and contest_end (184/6) there, no gain.",
+     "why": "Rule 4: a held area needs a gain/loss; a contest zone is not ownership. The page has Bo Cai fighting at Changshe, Yangzhai and Xihua, not holding a territory.",
+     "fix": "Drop the Xuchang circle from K0 (leave it as the contest zone), or add a gain 184/5 and a loss 184/6.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what": "The Taihang circle (Shijiazhuang 120 km) appears in 186 with no ledger gain; the state then lasts to 205 on Zhang Yan's Heishan alone.",
+     "why": "Zhang Yan page: he 'raised forces during the Yellow Turban revolt', raided Julu in 185, and his group 'became known as the Heishan bandits'; the page never says the Heishan were Yellow Turbans.",
+     "fix": "Add a gain (185, confidence 1 or 2, Zhang Yan page) for the Taihang ground, and state in notes and identity why the Heishan confederacy is carried in this dossier rather than as its own rebel entry.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/2/correction",
+     "what": "Shandong (admin1) is drawn as held 188-192, but the ledger only opens and closes a contest there (/ledger/5 contest_start 188/11, /ledger/6 contest_end 192/5).",
+     "why": "Page: 'In c.November 188, there was a resurgence in Yellow Turban rebels in both Qing and Xu provinces, and they raided numerous counties'; raids, not a held province.",
+     "fix": "Keep Shandong out of the K2 shape (contest zone only) or replace the contest pair with a gain 188/11 and a loss 192/5 of a named smaller area.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/3/correction",
+     "what": "The Shijiazhuang 120 km circle (193-205) lies inside yuan-shao's admin1 Hebei (191-204): the same ground is drawn for both states.",
+     "why": "yuan-shao.json /keyframe_review/0-3 use admin1 Hebei.",
+     "fix": "Resolve with yuan-shao (fix listed there): either yuan-shao takes 'minus' this circle or this keyframe is narrowed to the Taihang range itself.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1, /keyframe_review/3",
+     "what is missing": "Extent of the Heishan/Taihang holding 186-205 (confidence-1 placeholder).",
+     "page to try": "https://en.wikipedia.org/wiki/Heishan_bandits"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "The eight provinces of the 184 rising and the You and Yang fronts are not mapped.",
+     "page to try": "https://en.wikipedia.org/wiki/Yellow_Turban_Rebellion"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Yellow_Turban_Rebellion",
+     "result": "confirmed",
+     "note": "'In March, Zhang Jue started the Yellow Turban Rebellion with roughly 360,000 followers'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Yellow_Turban_Rebellion",
+     "result": "confirmed",
+     "note": "'the main Yellow Turban Rebellion ended by February 185'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Yellow_Turban_Rebellion",
+     "result": "confirmed",
+     "note": "'In c.November 188, there was a resurgence ... in both Qing and Xu provinces'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Yellow_Turban_Rebellion",
+     "result": "confirmed",
+     "note": "'Around May 192' paragraph; 300,000 surrendered to Cao Cao in Jibei"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Zhang_Yan_(Han_dynasty)",
+     "result": "confirmed",
+     "note": "'In the summer of 205 ... Zhang Yan brought his 100,000 followers' and surrendered; Heishan not called Yellow Turbans"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "yuan-shao",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction, /keyframe_review/1/correction, /keyframe_review/2/correction, /ledger/0/region",
+     "what": "Ji Province is drawn as the whole of admin1 Hebei for 191-198, which includes northern Hebei (Baoding, Langfang, Tangshan, Zhangjiakou, Chengde, Qinhuangdao) that belonged to You Province: gongsun-zan draws a Baoding 100 km circle (Yijing) for 193-199, and yellow-turbans a Shijiazhuang 120 km circle for 193-205, so the same ground is in two states.",
+     "why": "gongsun-zan.json /keyframe_review/0 (union Beijing, Tianjin, Baoding 100 km, 193-199); Yuan Shao page: You Province came to Yuan Shao only after Yijing fell in 199; Gongsun Zan page: 'he retreated to Yijing where he prepared strong defences'.",
+     "fix": "Write K0-K2 (and /ledger/0) as {\"minus\": [Hebei, union(Baoding 100 km, the You commanderies of northern Hebei)]} for 191-198 so that You is added only at /ledger/5 (199); decide the Taihang circle with yellow-turbans (minus it here for 193-204, or narrow it there).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "The 193 gain of Qing has counterpart gongsun-zan, but gongsun-zan's ledger and shape hold no Qing ground, so the gain has no mirror.",
+     "why": "Yuan Shao page: 'driving out Gongsun Zan's general Tian Kai in 193' (the counterpart is right); gongsun-zan notes: 'Qing and Ji claims not drawn'.",
+     "fix": "Keep the counterpart; gongsun-zan must add the Qing claim (Tian Kai, Pingyuan) and a loss in 193 (listed under gongsun-zan). Alternatively mark the exception in notes.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "Date Bing Province was taken (199 at confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Gao_Gan"
+    },
+    {
+     "where": "/keyframe_review/4, /keyframe_review/5",
+     "what is missing": "Holder of You Province 204-207 (Yuan Xi) and its extent.",
+     "page to try": "https://en.wikipedia.org/wiki/Yuan_Xi"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/End_of_the_Han_dynasty",
+     "result": "confirmed",
+     "note": "Ji Province taken from Han Fu in 191"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Yuan_Shao",
+     "result": "confirmed",
+     "note": "'driving out Gongsun Zan's general Tian Kai in 193'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Yuan_Tan",
+     "result": "confirmed",
+     "note": "'Yuan Tan managed to seize Beihai State from Kong Rong in the east in 196' (note's quote not verbatim)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Yuan_Shao",
+     "result": "confirmed",
+     "note": "bridge: four provinces by early 199; Bing Province not named, no date (confidence 1 is honest)"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Yuan_Shao",
+     "result": "confirmed",
+     "note": "'after conquering Ye city in 204'"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/End_of_the_Han_dynasty",
+     "result": "confirmed",
+     "note": "'Gao Gan also surrendered Bing Province to Cao Cao' in the early-204 narrative"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Yuan_Tan",
+     "result": "confirmed",
+     "note": "Battle of Nanpi, first lunar month of 205 (7 Feb to 7 Mar 205)"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Yuan_Shao",
+     "result": "confirmed",
+     "note": "'completely eliminated Yuan Shao's heirs and remnants by 207'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "gongsun-zan",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger (193)",
+     "what is missing": "Gongsun Zan's Qing claim: Tian Kai was his Inspector of Qing and was driven out by Yuan Tan in 193; yuan-shao /ledger/2 gains Qing from gongsun-zan in 193 with no mirror here (add the claim and a loss 193 cp yuan-shao).",
+     "page to try": "https://en.wikipedia.org/wiki/Yuan_Tan"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "Yijing as capital from 193: the page says only that he 'retreated to Yijing' (undated); Ji (Beijing) may be the seat before.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Yijing"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Gongsun_Zan",
+     "result": "confirmed",
+     "note": "infobox Inspector of You 193 - March 199 (self-appointed); Liu Yu's killing undated (confidence 2 is honest)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Gongsun_Zan",
+     "result": "confirmed",
+     "note": "'In 199, Yuan Shao besieged Yijing'; occupied in the 3rd month of Jian'an 4 (14 April to 12 May 199)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Gongsun_Zan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Gongsun_Zan",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "yuan-shu",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/8/note",
+     "what": "The note quoted 'The article doesn't describe what happened to his territory' as if it were page text (it is the fetch tool's summary) and said he died at Shouchun.",
+     "why": "Yuan Shu page: he 'died shortly thereafter of starvation' after being forced back to Shouchun; a footnote puts the death at Jiangting, 80 li from Shouchun.",
+     "fix": "Rewrote the note without the pseudo-quotation and with Jiangting; tagged [Reviewer ea-02-x].",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "K1 (192) still holds Nanyang although /ledger/1 loses it in 192; and the holder of Nanyang after Yuan Shu is unknown.",
+     "page to try": "https://en.wikipedia.org/wiki/Zhang_Xiu_(warlord)"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "Yuan Shu's Yu Province lands (Runan, Chen) and Lujiang/Guangling 193-199 are not drawn.",
+     "page to try": "https://en.wikipedia.org/wiki/Yuan_Shu"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Yuan_Shu",
+     "result": "confirmed",
+     "note": "'moved his residence to Chenliu, and extended his influence into Yang Province in 192'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Yuan_Shu",
+     "result": "confirmed",
+     "note": "'In early 193, Yuan Shu suffered repeated defeats, such as the Battle of Fengqiu'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Yuan_Shu",
+     "result": "confirmed",
+     "note": "fled to Shouchun, deposed Chen Wen (no year on the page; confidence 2 honest)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Yuan_Shu",
+     "result": "confirmed",
+     "note": "'From 194 to early 197, Sun Ce ... conquered many territories in Jiangdong on Yuan Shu's behalf' (194 on page, 195 in dossier: within a year)"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Yuan_Shu",
+     "result": "confirmed",
+     "note": "'declared himself emperor ... in early 197'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Yuan_Shu",
+     "result": "confirmed",
+     "note": "6th month of Jian'an 4 = 11 July to 9 August 199"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "liu-biao",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger (208)",
+     "what is missing": "Jiangxia lost to Sun Quan (Huang Zu killed at the Battle of Jiangxia, spring 208) before Liu Biao's death: a loss cp sun-ce/eastern-wu is missing.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Jiangxia"
+    },
+    {
+     "where": "/ledger (c. 198-201)",
+     "what is missing": "Zhang Xian's revolt of Changsha, Lingling and Guiyang against Liu Biao (a contest or loss and recovery).",
+     "page to try": "https://en.wikipedia.org/wiki/Huang_Zhong"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Single keyframe for 190-208; Nanyang (Zhang Xiu as Liu Biao's ally 197-199) and the move of the seat to Xiangyang are undated.",
+     "page to try": "https://en.wikipedia.org/wiki/Zhang_Xiu_(warlord)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Liu_Biao",
+     "result": "confirmed",
+     "note": "'in 190 CE, when Dong Zhuo appointed him to the position'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Liu_Biao",
+     "result": "confirmed",
+     "note": "died 8th month of Jian'an 13 (29 Aug to 27 Sep 208); Liu Cong surrendered later that year"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Jing_Province",
+     "result": "confirmed",
+     "note": "Liu Cong 'surrendered and ceded the province to the warlord Cao Cao in the same year' (208); split after Red Cliffs"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "liu-zhang",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger (200-201)",
+     "what is missing": "Zhao Wei's rebellion against Liu Zhang (200) and Zhang Lu's break with him (the Liu Zhang page implies 200) are not in the ledger.",
+     "page to try": "https://en.wikipedia.org/wiki/Liu_Zhang_(warlord)"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Yi Province's southern commanderies (Yizhou, Yongchang, Zangke, Yuexi: Yunnan, Guizhou) are not drawn; Liu Yan's own page not opened for 188-194.",
+     "page to try": "https://en.wikipedia.org/wiki/Liu_Yan_(warlord)"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Overlap with zhang-lu's Guangyuan circle (inside admin1 Sichuan) 194-214: resolved by the fix listed under zhang-lu, or by a 'minus' here.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Yangping"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/End_of_the_Han_dynasty",
+     "result": "confirmed",
+     "note": "'Liu Yan was commissioned as the Governor of Yi Province' (188 reform; confidence 2 honest)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Liu_Bei",
+     "result": "confirmed",
+     "note": "'In the spring of 213, Liu Zhang sent Liu Gui, Ling Bao, Zhang Ren, Deng Xian, Wu Yi ... to stop him at Fu'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Liu_Zhang_(warlord)",
+     "result": "confirmed",
+     "note": "'by 214 they had surrounded Yi Province's capital, Chengdu'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Liu_Bei",
+     "result": "confirmed",
+     "note": "succeeded Liu Zhang as Governor; summary table 214"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "zhang-lu",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction and /ledger/0-4/region",
+     "what": "Every region is Hanzhong 100 km plus a Guangyuan 80 km circle standing for Bazhong, held 194-215; Guangyuan lies in Sichuan, inside liu-zhang's admin1 Sichuan for 188-214, so the two states overlap for twenty years, and the opened pages put Zhang Lu in Bazhong only as his 215 refuge.",
+     "why": "Battle of Yangping page: 'Between 9 December 215 and 6 January 216, Zhang Lu led his followers out of Bazhong'; no opened page gives Zhang Lu land south of Hanzhong before 215; liu-zhang.json /keyframe_review/0 = union(Sichuan, Chongqing) 188-214.",
+     "fix": "Make K0 (194-214) the Hanzhong circle only; if the Bazhong refuge is kept, add a 215 keyframe/event with place 'Bazhong' (gazetteer name needed) instead of the Guangyuan stand-in; or have liu-zhang take 'minus' that circle.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Month 8 for the contest_start is not on the page (campaign launched 17 April-15 May 215; the Yangping fighting is undated in the text).",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Yangping"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Way_of_the_Celestial_Masters",
+     "result": "confirmed",
+     "note": "'After the success of the rebellion in 194, they founded the theocratic state of Zhang Han in the Hanzhong Valley'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Yangping",
+     "result": "confirmed",
+     "note": "9 December 215 - 6 January 216 surrender"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Yangping",
+     "result": "confirmed",
+     "note": "Nanzheng occupied, Hanning renamed Hanzhong (undated)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Way_of_the_Celestial_Masters",
+     "result": "confirmed",
+     "note": "'In 215, Zhang Lu submitted to Cao Cao'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "sun-ce",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction, /keyframe_review/1/correction, /keyframe_review/2/correction",
+     "what": "Wu Commandery (Suzhou-Wuxi, southern Jiangsu) is in no keyframe at all, and Kuaiji enters only in 197, although the page has the whole region south-east of the Yangtze conquered within a year of Niuzhu (195).",
+     "why": "Sun Ce page: 'from the occupation of Niuzhu to the conquest of the entire region southeast of the Long River, took less than a year' (Niuzhu in 195); Liu Yao, Xu Gong (Wu) and Wang Lang (Kuaiji) are beaten in that campaign (undated).",
+     "fix": "Add Wu Commandery (e.g. place Suzhou 100 km) to every keyframe from 196 with a gain 196 (confidence 2) cp han-dynasty; consider Kuaiji in 196 at confidence 2 (the infobox's Administrator of Kuaiji 197 is an office date).",
+     "applied": false
+    },
+    {
+     "where": "/ledger (195, 197)",
+     "what": "No vassal tie to Yuan Shu, although yuan-shu /ledger/5 (vassal_start 195, cp sun-ce) and /ledger/7 (vassal_end 197) assert one: the mirror is missing.",
+     "why": "Sun Ce page: he went to Yuan Shu in 194 (infobox allegiance 'Yuan Shu's forces') and in 197, when Yuan Shu declared himself emperor, he 'denounced the move and broke ties'.",
+     "fix": "Add vassal_start 195 cp yuan-shu and vassal_end 197 cp yuan-shu (Sun Ce page, confidence 2) with the 195 region.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Yuzhang and Luling are undated on the page; the whole of Jiangxi is entered in 199 at confidence 2 (1 would be honest for Jiangxi; Wan County is 199).",
+     "page to try": "https://en.wikipedia.org/wiki/Hua_Xin"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "End year 206 is a bridge (confidence 1) to Cliopatria's Eastern Wu (ea-03); Sun Quan's 200-206 holdings undated.",
+     "page to try": "https://en.wikipedia.org/wiki/Sun_Quan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Sun_Ce",
+     "result": "confirmed",
+     "note": "'successfully occupied the strategic position of Niuzhu' in 195"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Sun_Ce",
+     "result": "confirmed",
+     "note": "infobox Administrator of Kuaiji 197-198; Wang Lang's surrender undated"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Sun_Ce",
+     "result": "confirmed",
+     "note": "Wan County captured after Yuan Shu's death (199); Yuzhang/Luling undated"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Sun_Ce",
+     "result": "not on page",
+     "note": "K0's Wuhu-Nanjing-only extent contradicts 'the entire region southeast of the Long River' within a year"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "shi-xie",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0",
+     "what": "K0 (187-209) draws the seven commanderies (Vietnam, Guangdong, Guangxi) from 187, but /ledger/0 founds the state on Jiaozhi only (Hanoi 100 km) and /ledger/1 gains the seven commanderies c. 207 (confidence 1): for twenty years the keyframe holds some 400,000 km2 the ledger does not give.",
+     "why": "Shi Xie page: 'In 187 ... reassigned him to be the Administrator of Jiaozhi'; the decree for the seven commanderies is undated and follows the killing of Zhu Fu (200); the brothers' posts are undated.",
+     "fix": "Split K0: 187 to the year before the gain = Jiaozhi only (the /ledger/0 region); from the gain (c. 201-207, confidence 1) to 209 = the family's commanderies.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0-1/correction, /ledger/1, /ledger/5, /ledger/6",
+     "what": "admin1 Guangxi (Cangwu, Yulin) is drawn as Shi family land 207-227, but the page names the family's posts as Jiaozhi (Shi Xie), Hepu (Shi Yi), Jiuzhen (Shi Wei) and Nanhai (Shi Wu); Cangwu's Administrator was Wu Ju, beheaded by Bu Zhi in 210.",
+     "why": "Shi Xie page body and footnotes 11 and 14 (Bu Zhi sent in Jian'an 15 = 210; Shi Xie and his brothers submitted to him; Bu Zhi beheaded Wu Ju, Administrator of Cangwu).",
+     "fix": "Replace Guangxi with Hepu (coastal Guangxi round Beihai-Qinzhou) and keep Guangdong only as Nanhai; from 210 drop Cangwu, which Bu Zhi took.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "The 210 submission to Sun Quan's governor is typed 'rename'; it is a change of overlord.",
+     "why": "Shi Xie page footnote 14: Shi Xie and his brothers submitted to Bu Zhi, sent by Sun Quan in Jian'an 15 (210).",
+     "fix": "Retype as vassal_start, counterpart eastern-wu (ea-03, not yet run), with the 210 region; keep the 227 loss as the end.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Date of the seven-commandery decree and of the brothers' appointments (after 200).",
+     "page to try": "https://en.wikipedia.org/wiki/Shi_Yi_(Han_dynasty)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Shi_Xie",
+     "result": "confirmed",
+     "note": "187, Administrator of Jiaozhi"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Shi_Xie",
+     "result": "confirmed",
+     "note": "decree undated (confidence 1 honest)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Shi_Xie",
+     "result": "confirmed",
+     "note": "Jian'an 15 (210) in footnote 14"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Shi_Xie",
+     "result": "confirmed",
+     "note": "227 executions; split into Jiao and Guang (no date for the split)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "liang-province-rebels",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Liang_Province_rebellion",
+     "result": "confirmed",
+     "note": "'The rebellion began in the winter of 184'; Jincheng the main stronghold"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Liang_Province_rebellion",
+     "result": "confirmed",
+     "note": "'For the first time, the rebels extended their sway over the entire Liang Province' (187)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Liang_Province_rebellion",
+     "result": "confirmed",
+     "note": "'In spring 189, Wang Guo's men became worn out and abandoned the siege'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Liang_Province_rebellion",
+     "result": "confirmed",
+     "note": "'finally splintered into three groups' after spring 189 (no explicit year on the page)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   },
+   "tried": "years, keyframe-ledger walk (187 gain explains K1), mirrors with han-dynasty (187 matched), han-sui and song-jian (189 split matched), capital inside the shape"
+  },
+  {
+   "slug": "han-sui",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/3, /ledger/5, /keyframe_review/1/correction",
+     "what": "'Guanzhong' (the Wei valley round Chang'an) stands for Yong Province and is given to Han Sui 197-211, but Yong of 194-213 was the Hexi commanderies, and no page gives Han Sui or Ma Teng Chang'an or the Guanzhong.",
+     "why": "Yong Province page: 'In AD 194, the Eastern Han government established a Yongzhou Inspectorate' over 'Wuwei, Zhangye, Jiuquan, Dunhuang, and Xihai ... west of the Liang River', seat Guzang; the Three Adjuncts joined it only in 213. Ma Teng page: they controlled Liang Province and tried and failed to seize Chang'an. End of the Han page (197): Cao Cao 'was able to persuade Ma Teng and Han Sui, who controlled Yong and Liang provinces' to submit.",
+     "fix": "Drop region Guanzhong from /ledger/3, /ledger/5 and K1 (Hexi is already inside the Gansu admin1); make the 197 event a vassal_start cp han-dynasty (submission to the court) rather than a gain; keep the Baoji circle for Ma Teng's Wei-valley group if wanted. Tell ea-02-c that han-dynasty /ledger/98 (196 loss of Yong to han-sui) carries the same error.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0-2/correction",
+     "what": "admin1 Gansu (189-215) contains song-jian's Fuhan (Linxia 80 km circle, 189-214): the two states overlap for 25 years.",
+     "why": "song-jian.json /keyframe_review/0; Liang Province rebellion page: Song Jian 'ruled in isolated autonomy for almost thirty years' at Fuhan.",
+     "fix": "Write K0-K2 as {\"minus\": [Gansu (and Baoji), Linxia 80 km circle]} for 189-214.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/5/note",
+     "what": "The note quotes 'Ma Chao and Han Sui held Liang and Yong until 211' from the End of the Han page; the page has no such sentence.",
+     "why": "End of the Han page: a coalition of north-western warlords 'who controlled Liang and Yong provinces, led by Ma Chao and Han Sui, was defeated by Cao Cao at the Battle of Tong Pass in 211'; their territories 'were annexed by Cao over the next few years'.",
+     "fix": "Replace the quotation with the page's wording; the year 211 stands.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/1/correction",
+     "what": "Ningxia appears in K1 (197) with no event; K0 (189-196) lacks it although liang-province-rebels held it to 189.",
+     "why": "Rule 4 keyframe walk.",
+     "fix": "Either include Ningxia from 189 (as the rebels' successor) or add the event that brings it in.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "Extent 211-215 (confidence-1 shape) and Ma Chao's 212-214 campaign in Liang (siege of Jicheng).",
+     "page to try": "https://en.wikipedia.org/wiki/Ma_Chao"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Han_Sui",
+     "result": "confirmed",
+     "note": "'Early in 192, the two of them submitted ...'; defeat 'west of Chang'an'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/End_of_the_Han_dynasty",
+     "result": "confirmed",
+     "note": "197 submission confirmed; the land (Guanzhong for Yong) is wrong: see fixes"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Ma_Teng",
+     "result": "confirmed",
+     "note": "'Battle of Tong Pass in September 211'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/End_of_the_Han_dynasty",
+     "result": "confirmed",
+     "note": "year confirmed; the quotation in the note is not on the page"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Han_Sui",
+     "result": "confirmed",
+     "note": "5th month of Jian'an 20 = 15 June to 13 July 215"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "song-jian",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Liang_Province_rebellion",
+     "result": "confirmed",
+     "note": "'Song Jian's group in Fuhan' after spring 189 (confidence 2 honest)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Liang_Province_rebellion",
+     "result": "confirmed",
+     "note": "Xiahou Yuan's 214 expedition; 'his capital of Fuhan was captured'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Liang_Province_rebellion",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   },
+   "tried": "years, start vs 'almost thirty years' (flagged by the author), capital Linxia inside the shape; the overlap with han-sui is that dossier's fix"
+  },
+  {
+   "slug": "qiang",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Liang_Province",
+     "result": "confirmed",
+     "note": "'In 107 CE, the Xianlian Qiang rebelled against Han authority'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Qiang_(historical_people)",
+     "result": "confirmed",
+     "note": "'In 109 CE, he conquered Longxi'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Liang_Province",
+     "result": "confirmed",
+     "note": "'this First Great Qiang Rebellion was quelled in 118'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Liang_Province",
+     "result": "confirmed",
+     "note": "resettlement 'from 129 to 144'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   },
+   "tried": "years, 117 vs 118 (flagged by the author), contest pair mirrored in han-dynasty /ledger/78-79; note for the orchestrator: the slug 'qiang' names a whole people but the dossier is only Dianlian's 107-118 rebel state"
+  },
+  {
+   "slug": "chengjia",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/3/confidence",
+     "what": "Wei Ao's submission to Gongsun Shu is dated 30 at confidence 3, but the page attaches no year to the submission (it follows the summer-30 campaign sentence).",
+     "why": "Emperor Guangwu page: 'formally submitted to Gongsun and accepted a princely title - Prince of Shuoning - from him', no year on the sentence.",
+     "fix": "Lowered to confidence 2 and tagged the note [Reviewer ea-02-x].",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Whether Hou Dan's 26 attempt on Hanzhong succeeded (gain at confidence 1, K1 holds Hanzhong 26-36).",
+     "page to try": "https://en.wikipedia.org/wiki/Hou_Dan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Gongsun_Shu",
+     "result": "confirmed",
+     "note": "'in 24 proclaimed himself king of Shu'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Gongsun_Shu",
+     "result": "confirmed",
+     "note": "'in 25 asserted independence by adopting the title of Emperor of Cheng'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Gongsun_Shu",
+     "result": "confirmed",
+     "note": "'In 26, Gongsun Shu sent general Hou Dan to conquer the region of Hanzhong' (outcome not on page; confidence 1 honest)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Gongsun_Shu",
+     "result": "confirmed",
+     "note": "'In 35, Emperor Guangwu ordered an army to conquer Chengjia'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Gongsun_Shu",
+     "result": "confirmed",
+     "note": "December 36; died 24 December 36"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han",
+     "result": "confirmed",
+     "note": "submission confirmed, year not attached: confidence lowered"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "wei-ao",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (30, 34)",
+     "what": "No vassal tie to Chengjia, although chengjia /ledger/3 (vassal_start 30, cp wei-ao) and /ledger/4 (vassal_end 34) assert one: the mirror is missing in the same batch, from this dossier's only source.",
+     "why": "Emperor Guangwu page: Wei 'formally submitted to Gongsun and accepted a princely title - Prince of Shuoning - from him'.",
+     "fix": "Add vassal_start 30 (confidence 2) cp chengjia and vassal_end 34 cp chengjia, region as K0.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/0/counterpart",
+     "what": "Counterpart 'lulin' for a 25 event; the lulin dossier ends in 23 (absorbed by the Gengshi Han, carried as han-dynasty).",
+     "why": "lulin.json identity.end 23, /ledger/3 dissolve cp han-dynasty; xin-dynasty /ledger/7 (23) loss cp han-dynasty.",
+     "fix": "Changed to han-dynasty and tagged the note.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Wei Ao's rise (23 in Tianshui), his nominal submission to Liu Xiu before 30, and extent beyond eastern Gansu (start at confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Gengshi_Emperor"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han",
+     "result": "confirmed",
+     "note": "'in the summer of AD 30'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han",
+     "result": "confirmed",
+     "note": "'In the winter of AD 34, Shuoning's capital Luomen ... fell, and Wei Chun surrendered'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "dou-rong",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger (29)",
+     "what is missing": "Dou Rong's submission to the Eastern Han in 29 is on the page already cited but not in the ledger: add vassal_start 29 cp han-dynasty (vassal_end 36 with the handover).",
+     "page to try": "https://en.wikipedia.org/wiki/Hexi_Corridor"
+    },
+    {
+     "where": "/wars",
+     "what is missing": "His part in Guangwu's 32 campaign against Wei Ao is not recorded (no land moved).",
+     "page to try": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Hexi_Corridor",
+     "result": "confirmed",
+     "note": "'came under the control of warlord Dou Rong' after the Xin collapse in 23 CE (footnote: from A.D. 24)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han",
+     "result": "confirmed",
+     "note": "'turned over the lands under his control to Emperor Guangwu in AD 36'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "liu-yong",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/2/counterpart",
+     "what": "Counterpart 'lulin' for the 25 conquest of six commanderies; the lulin dossier ends in 23 (absorbed by the Gengshi Han, carried as han-dynasty).",
+     "why": "lulin.json identity.end 23; Liu Yong page places the conquest under the Gengshi Emperor's reign.",
+     "fix": "Changed to han-dynasty and tagged the note.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "Tanhai (Linyi 70 km) appears in 27 with no gain event; its location and when Liu Yong took it are not on the page.",
+     "page to try": "https://en.wikipedia.org/wiki/Liu_Yong_(Xin_dynasty)"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "The six-commandery conquest (Zhou Jian) is undated (confidence 1), between 23 and 25 in the narrative.",
+     "page to try": "https://en.wikipedia.org/wiki/Liu_Yong_(Xin_dynasty)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Liu_Yong_(Xin_dynasty)",
+     "result": "confirmed",
+     "note": "Prince of Liang, Suiyang, 23"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Liu_Yong_(Xin_dynasty)",
+     "result": "confirmed",
+     "note": "'In AD 25 ... Liu Yong proclaimed himself emperor'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Liu_Yong_(Xin_dynasty)",
+     "result": "confirmed",
+     "note": "'In the spring of AD 27, Liu Yong named Zhang Bu as Prince of Qi'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Liu_Yong_(Xin_dynasty)",
+     "result": "confirmed",
+     "note": "Suiyang surrounded, Liu Yong killed by Qing Wu (27 implied, no month)"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Liu_Yong_(Xin_dynasty)",
+     "result": "confirmed",
+     "note": "'during August AD 29, Liu Yu's Tanhai Commandery was captured'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "zhang-bu",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/1",
+     "what": "The 27 appointment as Prince of Qi by Liu Yong is typed 'rename', while liu-yong /ledger/4 and /ledger/5 record it as vassal_start/vassal_end with zhang-bu: the mirror is missing.",
+     "why": "Liu Yong page: 'In the spring of AD 27, Liu Yong named Zhang Bu as Prince of Qi'; the dossier's own note says 'nominal vassalage to Liu Yong'.",
+     "fix": "Retype /ledger/1 as vassal_start 27 cp liu-yong (region as K0) and add vassal_end 27 cp liu-yong at Liu Yong's death (liu-yong /ledger/5).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0/correction and /ledger/0, /ledger/2, /ledger/3 regions",
+     "what": "admin1 Shandong (25-29) contains liu-yong's ground: south-west Shandong (Jiyin, Shanyang, inside liu-yong's Shangqiu 120 km circle, 25-26) and Tanhai (liu-yong's Linyi 70 km circle, 27-29).",
+     "why": "Liu Yong page: his general attacked 'Jiyin, Shanyang, Pei, Chu, Huaiyang, and Runan Commanderies'; liu-yong.json /keyframe_review/1-2.",
+     "fix": "Write the shape as {\"minus\": [Shandong, liu-yong's circles]} (split K0 at 27), or narrow it to Qi's commanderies of north and central Shandong.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/0/counterpart",
+     "what": "Counterpart 'lulin' for a 25 event; the lulin dossier ends in 23.",
+     "why": "lulin.json identity.end 23.",
+     "fix": "Changed to han-dynasty and tagged the note.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Zhang Bu's rise (c. 23-25 in Langya and Qi), capital (Ju) and the 27-29 campaign (start at confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Geng_Yan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Liu_Yong_(Xin_dynasty)",
+     "result": "confirmed",
+     "note": "spring 27, Prince of Qi"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han",
+     "result": "confirmed",
+     "note": "'surrendered and was created a marquess' (29); 'independently controlled the modern Shandong region'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "peng-chong",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/0/counterpart",
+     "what": "Counterpart 'lulin' for a 25 event; the lulin dossier ends in 23.",
+     "why": "lulin.json identity.end 23; Peng Chong held Yuyang for the Gengshi and then the Eastern Han before his revolt.",
+     "fix": "Changed to han-dynasty and tagged the note.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Start year: Peng Chong revolted against Liu Xiu in 26 and took the title Prince of Yan later; the Guangwu page dates neither (confidence 1 at 25).",
+     "page to try": "https://en.wikipedia.org/wiki/Peng_Chong_(Han_dynasty)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han",
+     "result": "confirmed",
+     "note": "'Also in AD 29, Peng's slaves assassinated him'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han",
+     "result": "confirmed",
+     "note": "title Prince of Yan on the page with no year (confidence 1 honest)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "lu-fang",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/1/confidence",
+     "what": "The 42 loss gives Ordos and Hetao to the Xiongnu at confidence 3; the page says only that Lu Fang (by then the Han's Prince of Dai) fled to the Xiongnu.",
+     "why": "Emperor Guangwu page: after initially submitting he was made 'the Prince of Dai' (no year) and 'eventually fled to Xiongnu in AD 42'.",
+     "fix": "Lowered to confidence 2 and tagged the note; the counterpart stays for the gap-filler (see thin).",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (c. 40)",
+     "what is missing": "Lu Fang's submission to the Han and title Prince of Dai (c. 40): a vassal_start cp han-dynasty, and then the counterpart of the 42 loss (han-dynasty rather than xiongnu, which has no mirror).",
+     "page to try": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Rise year and capital (Jiuyuan); the only source for 24 is a disambiguation entry with a red link ('fl. 24-41').",
+     "page to try": "https://en.wikipedia.org/wiki/Lu_Fang"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han",
+     "result": "confirmed",
+     "note": "year 42 confirmed; land to the Xiongnu not on page: confidence lowered"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Lu_Fang",
+     "result": "confirmed",
+     "note": "disambiguation page: 'Lu Fang (warlord) (fl. 24-41)', red link (confidence 1 honest)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "zhang-chu",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Territory beyond Chen County: the towns taken in 209 BC (Daze, Qi, Zhi, Cuo, Ku, Zhe, Qiao) and the fronts at Xingyang and in Zhao; only Chen is drawn.",
+     "page to try": "https://en.wikipedia.org/wiki/Chen_Sheng_and_Wu_Guang_uprising"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Chen_Sheng",
+     "result": "confirmed",
+     "note": "August or September 209 BC; King of Rising Chu 'only months after'; capital Chen"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Chen_Sheng",
+     "result": "confirmed",
+     "note": "'assassinated by his guard Zhuang Jia in c.January 208 BC'; holder of Chen afterwards not on page (confidence 1 honest)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Chen_Sheng",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "huainan",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/0/counterpart",
+     "what": "The -203 found gives the land from han-dynasty, whose dossier starts in -202; the page has Ying Bu take Jiujiang from Chu.",
+     "why": "Ying Bu page: Long Ju had conquered Jiujiang; 'later that year' (203 BC) Ying Bu 'led an army to attack Jiujiang and conquered many cities ... and persuaded Zhou Yin to defect from Chu to Han'.",
+     "fix": "Changed to western-chu and tagged the note. The author should also add western-chu to identity.predecessors.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (-203)",
+     "what is missing": "Huainan was a kingdom instated by Liu Bang: a vassal_start -203 cp kingdom-of-han (then han-dynasty from -202), ended by the -196 revolt, is missing.",
+     "page to try": "https://en.wikipedia.org/wiki/Ying_Bu"
+    },
+    {
+     "where": "/identity/predecessors",
+     "what is missing": "western-chu (Jiujiang taken from Chu in -203) is not listed.",
+     "page to try": "https://en.wikipedia.org/wiki/Ying_Bu"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Ying_Bu",
+     "result": "confirmed",
+     "note": "infobox King of Huainan c. August 203 BC; capital Lu; Jiujiang, Lushan, Hengshan, Yuzhang"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Ying_Bu",
+     "result": "confirmed",
+     "note": "'started a rebellion in August or September 196 BCE'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Ying_Bu",
+     "result": "confirmed",
+     "note": "killed at Zi Village, Poyang; 12 Nov - 10 Dec 196 BC"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Ying_Bu",
+     "result": "confirmed",
+     "note": "Liu Chang installed as Prince of Huainan (no separate date)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  },
+  {
+   "slug": "changsha-kingdom",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger (-202..-157)",
+     "what is missing": "The dossier calls Changsha a Han vassal kingdom but carries no vassal_start -202 / vassal_end -157 with han-dynasty.",
+     "page to try": "https://en.wikipedia.org/wiki/Changsha_Kingdom"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "Zhao Tuo 'twice invaded Changsha, occupying a few counties' (183 BC): a loss to nanyue (and the return) could replace the confidence-1 contest; the end year 179 is not on the Changsha page.",
+     "page to try": "https://en.wikipedia.org/wiki/Nanyue"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Changsha_Kingdom",
+     "result": "confirmed",
+     "note": "King of Hengshan 'one year later' after 207 BC; Eighteen Kingdoms row: 'eastern Hubei, Jiangxi'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Ying_Bu",
+     "result": "confirmed",
+     "note": "Hengshan and Yuzhang under Huainan in 203 BC"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Changsha_Kingdom",
+     "result": "confirmed",
+     "note": "'in 203 or 202 BC'; 'present-day Hunan and some surrounding areas'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Changsha_Kingdom",
+     "result": "confirmed",
+     "note": "'dying in 157 BC without male issue'; 'In 155 BC, the kingdom was reestablished'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no area in the article's infobox and no Cliopatria row (cliopatria_names []); nothing to compare"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "yuan-shao",
+    "year": 193,
+    "type": "gain",
+    "counterpart": "gongsun-zan"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "gongsun-zan draws no Qing; fix in gongsun-zan (thin) or note the exception"
+  },
+  {
+   "event": {
+    "slug": "yuan-shao",
+    "year": 199,
+    "type": "gain",
+    "counterpart": "gongsun-zan"
+   },
+   "mirror": {
+    "slug": "gongsun-zan",
+    "year": 199,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "yuan-shu",
+    "year": 195,
+    "type": "vassal_start",
+    "counterpart": "sun-ce"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "sun-ce has no vassal events; fix listed under sun-ce"
+  },
+  {
+   "event": {
+    "slug": "yuan-shu",
+    "year": 197,
+    "type": "vassal_end",
+    "counterpart": "sun-ce"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "chengjia",
+    "year": 30,
+    "type": "vassal_start",
+    "counterpart": "wei-ao"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "wei-ao has no vassal events; fix listed under wei-ao"
+  },
+  {
+   "event": {
+    "slug": "chengjia",
+    "year": 34,
+    "type": "vassal_end",
+    "counterpart": "wei-ao"
+   },
+   "mirror": {
+    "slug": "wei-ao",
+    "year": 34,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "wei-ao has the 34 loss to han-dynasty but no vassal_end"
+  },
+  {
+   "event": {
+    "slug": "liu-yong",
+    "year": 27,
+    "type": "vassal_start",
+    "counterpart": "zhang-bu"
+   },
+   "mirror": {
+    "slug": "zhang-bu",
+    "year": 27,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "zhang-bu types it rename; fix listed under zhang-bu"
+  },
+  {
+   "event": {
+    "slug": "liu-yong",
+    "year": 27,
+    "type": "vassal_end",
+    "counterpart": "zhang-bu"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "changsha-kingdom",
+    "year": -203,
+    "type": "loss",
+    "counterpart": "huainan"
+   },
+   "mirror": {
+    "slug": "huainan",
+    "year": -203,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "huainan found covers Hengshan and Yuzhang"
+  },
+  {
+   "event": {
+    "slug": "han-sui",
+    "year": 189,
+    "type": "found",
+    "counterpart": "liang-province-rebels"
+   },
+   "mirror": {
+    "slug": "liang-province-rebels",
+    "year": 189,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "song-jian",
+    "year": 189,
+    "type": "found",
+    "counterpart": "liang-province-rebels"
+   },
+   "mirror": {
+    "slug": "liang-province-rebels",
+    "year": 189,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "yellow-turbans",
+    "year": 184,
+    "type": "found",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event)"
+  },
+  {
+   "event": {
+    "slug": "yellow-turbans",
+    "year": 184,
+    "type": "gain",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event)"
+  },
+  {
+   "event": {
+    "slug": "yellow-turbans",
+    "year": 185,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event)"
+  },
+  {
+   "event": {
+    "slug": "yuan-shao",
+    "year": 191,
+    "type": "found",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 191,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "yuan-shao",
+    "year": 196,
+    "type": "gain",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 196,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "yuan-shao",
+    "year": 199,
+    "type": "gain",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event) (Bing Province)"
+  },
+  {
+   "event": {
+    "slug": "yuan-shao",
+    "year": 204,
+    "type": "loss",
+    "counterpart": "cao-cao"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 207,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "yuan-shao gives Ye/Bing (204) and Qing (205) to cao-cao (ea-03, not run); han-dynasty /ledger/102 gains the Yuan lands from yuan-shao in 207. ea-02-c and ea-03 must agree who receives the land and when"
+  },
+  {
+   "event": {
+    "slug": "gongsun-zan",
+    "year": 193,
+    "type": "found",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 193,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "yuan-shu",
+    "year": 189,
+    "type": "found",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 191,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "han-dynasty /ledger/90 loses the Huai country to yuan-shu in 191; yuan-shu holds Nanyang from 189 and gains the Huai only in 193 (Yuan Shu page). Route to ea-02-c"
+  },
+  {
+   "event": {
+    "slug": "yuan-shu",
+    "year": 192,
+    "type": "gain",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event) (Chenliu)"
+  },
+  {
+   "event": {
+    "slug": "yuan-shu",
+    "year": 193,
+    "type": "gain",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 191,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "2 years apart; as above"
+  },
+  {
+   "event": {
+    "slug": "yuan-shu",
+    "year": 193,
+    "type": "loss",
+    "counterpart": "cao-cao"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by ea-03, not yet run"
+  },
+  {
+   "event": {
+    "slug": "yuan-shu",
+    "year": 192,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody"
+  },
+  {
+   "event": {
+    "slug": "yuan-shu",
+    "year": 199,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody"
+  },
+  {
+   "event": {
+    "slug": "liu-biao",
+    "year": 190,
+    "type": "found",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 190,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "liu-biao",
+    "year": 208,
+    "type": "loss",
+    "counterpart": "cao-cao"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by ea-03, not yet run"
+  },
+  {
+   "event": {
+    "slug": "liu-zhang",
+    "year": 188,
+    "type": "found",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 188,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "liu-zhang",
+    "year": 214,
+    "type": "loss",
+    "counterpart": "shu-han"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by ea-03, not yet run (Liu Bei before 221: shu-han or a liu-bei dossier)"
+  },
+  {
+   "event": {
+    "slug": "zhang-lu",
+    "year": 194,
+    "type": "found",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 194,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "zhang-lu",
+    "year": 215,
+    "type": "loss",
+    "counterpart": "cao-cao"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by ea-03, not yet run"
+  },
+  {
+   "event": {
+    "slug": "sun-ce",
+    "year": 195,
+    "type": "found",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 195,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "sun-ce",
+    "year": 197,
+    "type": "gain",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 196,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "sun-ce",
+    "year": 199,
+    "type": "gain",
+    "counterpart": "Liu Xun (Lujiang) and the Han governors of Yuzhang"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "free-text counterpart, no dossier; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "shi-xie",
+    "year": 187,
+    "type": "found",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event)"
+  },
+  {
+   "event": {
+    "slug": "shi-xie",
+    "year": 207,
+    "type": "gain",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event)"
+  },
+  {
+   "event": {
+    "slug": "shi-xie",
+    "year": 227,
+    "type": "loss",
+    "counterpart": "eastern-wu"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by ea-03, not yet run"
+  },
+  {
+   "event": {
+    "slug": "liang-province-rebels",
+    "year": 184,
+    "type": "found",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event)"
+  },
+  {
+   "event": {
+    "slug": "liang-province-rebels",
+    "year": 187,
+    "type": "gain",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 187,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "han-sui",
+    "year": 197,
+    "type": "gain",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 196,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "years match, but both sides put Yong in the Guanzhong; Yong of 194-213 was the Hexi commanderies (Yong Province page): fix in han-sui, and ea-02-c should correct /ledger/98"
+  },
+  {
+   "event": {
+    "slug": "han-sui",
+    "year": 211,
+    "type": "loss",
+    "counterpart": "cao-cao"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 211,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "han-dynasty /ledger/103 gains from han-sui; han-sui loses to cao-cao (ea-03): same land, two receivers"
+  },
+  {
+   "event": {
+    "slug": "song-jian",
+    "year": 214,
+    "type": "loss",
+    "counterpart": "cao-cao"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by ea-03, not yet run"
+  },
+  {
+   "event": {
+    "slug": "qiang",
+    "year": 107,
+    "type": "found",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 107,
+    "type": "contest_start"
+   },
+   "status": "missing",
+   "note": "han-dynasty has only the contest pair (107/118), no loss of Hanyang; route to ea-02-c"
+  },
+  {
+   "event": {
+    "slug": "qiang",
+    "year": 109,
+    "type": "gain",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event) (Longxi)"
+  },
+  {
+   "event": {
+    "slug": "qiang",
+    "year": 118,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event)"
+  },
+  {
+   "event": {
+    "slug": "chengjia",
+    "year": 24,
+    "type": "found",
+    "counterpart": "xin-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "xin-dynasty ends 23/10 with its land to han-dynasty; no chengjia event. Route to ea-02-c"
+  },
+  {
+   "event": {
+    "slug": "chengjia",
+    "year": 26,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody"
+  },
+  {
+   "event": {
+    "slug": "chengjia",
+    "year": 36,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 36,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "wei-ao",
+    "year": 25,
+    "type": "found",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event) (counterpart changed from lulin by the reviewer)"
+  },
+  {
+   "event": {
+    "slug": "wei-ao",
+    "year": 34,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 34,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "dou-rong",
+    "year": 23,
+    "type": "found",
+    "counterpart": "xin-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "xin-dynasty has no dou-rong event; route to ea-02-c"
+  },
+  {
+   "event": {
+    "slug": "dou-rong",
+    "year": 36,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 36,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "liu-yong",
+    "year": 23,
+    "type": "found",
+    "counterpart": "lulin"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "lulin (ends 23) has no liu-yong event; route to ea-02-c"
+  },
+  {
+   "event": {
+    "slug": "liu-yong",
+    "year": 25,
+    "type": "gain",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event) (counterpart changed from lulin by the reviewer)"
+  },
+  {
+   "event": {
+    "slug": "liu-yong",
+    "year": 27,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 29,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "han-dynasty /ledger/54 gains Liu Yong's land in 29; Suiyang fell in 27 (Liu Yong page), Tanhai in August 29. ea-02-c should split its event"
+  },
+  {
+   "event": {
+    "slug": "zhang-bu",
+    "year": 25,
+    "type": "found",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event)"
+  },
+  {
+   "event": {
+    "slug": "zhang-bu",
+    "year": 29,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 29,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "peng-chong",
+    "year": 25,
+    "type": "found",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event)"
+  },
+  {
+   "event": {
+    "slug": "peng-chong",
+    "year": 29,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 29,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "lu-fang",
+    "year": 24,
+    "type": "found",
+    "counterpart": "xin-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "xin-dynasty ended 23; no event; route to ea-02-c"
+  },
+  {
+   "event": {
+    "slug": "lu-fang",
+    "year": 42,
+    "type": "loss",
+    "counterpart": "xiongnu"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "xiongnu (ia-01) has no 42 gain, and the page does not give the land to the Xiongnu (Lu Fang had submitted to the Han as Prince of Dai); counterpart likely han-dynasty"
+  },
+  {
+   "event": {
+    "slug": "zhang-chu",
+    "year": -209,
+    "type": "found",
+    "counterpart": "qin-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "qin-dynasty has no zhang-chu event (its -209 loss is to yan); route to the qin-dynasty group"
+  },
+  {
+   "event": {
+    "slug": "zhang-chu",
+    "year": -208,
+    "type": "loss",
+    "counterpart": "qin-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "huainan",
+    "year": -203,
+    "type": "found",
+    "counterpart": "western-chu"
+   },
+   "mirror": {
+    "slug": "western-chu",
+    "year": -203,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "counterpart changed to western-chu by the reviewer; western-chu /ledger/8 instead gains Jiujiang in -203 (c1) and records no loss to huainan. Route to ea-02-b"
+  },
+  {
+   "event": {
+    "slug": "huainan",
+    "year": -196,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event) (Liu Chang's Huainan is a Han vassal inside the Han shape)"
+  },
+  {
+   "event": {
+    "slug": "changsha-kingdom",
+    "year": -206,
+    "type": "found",
+    "counterpart": "western-chu"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "western-chu has no Hengshan event in -206; route to ea-02-b"
+  },
+  {
+   "event": {
+    "slug": "changsha-kingdom",
+    "year": -202,
+    "type": "gain",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "route to ea-02-c (han-dynasty has no event); a vassal tie is the better model (thin)"
+  },
+  {
+   "event": {
+    "slug": "changsha-kingdom",
+    "year": -183,
+    "type": "contest_start",
+    "counterpart": "nanyue"
+   },
+   "mirror": {
+    "slug": "nanyue",
+    "year": -183,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "nanyue and han-dynasty carry the same war with han-dynasty as counterpart"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Bazhong",
+   "kind": "place",
+   "used_in": "zhang-lu"
+  },
+  {
+   "name": "Julu",
+   "kind": "place",
+   "used_in": "yellow-turbans"
+  },
+  {
+   "name": "Luomen",
+   "kind": "place",
+   "used_in": "wei-ao"
+  },
+  {
+   "name": "Yijing",
+   "kind": "place",
+   "used_in": "yuan-shao;gongsun-zan"
+  },
+  {
+   "name": "Shouchun",
+   "kind": "place",
+   "used_in": "yuan-shu"
+  },
+  {
+   "name": "Fuhan",
+   "kind": "place",
+   "used_in": "song-jian"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Liu Xun (Lujiang, to 199)",
+   "suggested_slug": "liu-xun",
+   "years": [
+    197,
+    199
+   ],
+   "note": "sun-ce /ledger/2 free-text counterpart; or use nobody"
+  },
+  {
+   "name": "Liu Bei before 221",
+   "suggested_slug": "liu-bei",
+   "years": [
+    209,
+    221
+   ],
+   "note": "liu-zhang uses shu-han for 213-214; ea-03 to decide"
+  },
+  {
+   "name": "Lü Bu (Xu Province)",
+   "suggested_slug": "lu-bu",
+   "years": [
+    196,
+    198
+   ],
+   "note": "named in yuan-shu's war, from the author's list"
+  },
+  {
+   "name": "Zhang Xiu (Wancheng)",
+   "suggested_slug": "zhang-xiu",
+   "years": [
+    196,
+    200
+   ],
+   "note": "holder of Nanyang after Yuan Shu (yuan-shu, liu-biao thin)"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ea-02-x.md",
+ "problems": [
+  "Reviewer applied small fixes in place (orchestrator's adjustment to the brief): counterparts lulin->han-dynasty in liu-yong /ledger/2, wei-ao /ledger/0, zhang-bu /ledger/0, peng-chong /ledger/0; han-dynasty->western-chu in huainan /ledger/0; confidence 3->2 in chengjia /ledger/3 and lu-fang /ledger/1; yuan-shu /ledger/8 note rewritten. All re-validated (0 errors, 0 warnings, --resolve) and read back; backups in /tmp/claude-0/work/review-ea-02-x/backup/.",
+  "Cross-group, for ea-02-c: han-dynasty /ledger/98 (196 loss of Yong to han-sui) uses the Guanzhong too, but Yong of 194-213 was the Hexi commanderies (Yong Province page); /ledger/90 (Yuan Shu, 191) and /ledger/54 (Liu Yong, 29) disagree by two years with the dossiers here; many found events of this batch (yellow-turbans, yuan-shao 199, shi-xie, qiang, the 23-25 regimes) have no han-dynasty mirror.",
+  "Cross-group, for ea-02-c and ea-03: this batch gives the warlords' land to cao-cao (204-215) while han-dynasty /ledger/102-103 gives the same land to han-dynasty (207, 211); one model must be chosen before rendering.",
+  "Overlaps between contemporaneous dossiers of this batch (same ground drawn for two states): yuan-shao Hebei vs gongsun-zan Baoding (193-198) and yellow-turbans Taihang (193-204); han-sui Gansu vs song-jian Linxia (189-214); liu-zhang Sichuan vs zhang-lu Guangyuan (194-214); zhang-bu Shandong vs liu-yong (25-29). Fixes are listed on yuan-shao, han-sui, zhang-lu and zhang-bu.",
+  "Identity note: the slug 'qiang' names a whole people but the dossier covers only Dianlian's rebel state 107-118; a later dossier for the Qiang as neighbours would need another slug.",
+  "No Wikipedia infobox in this batch gives an area and no dossier has a Cliopatria row, so every area_check is empty by necessity.",
+  "No page failed to load for the reviewer."
+ ]
+}

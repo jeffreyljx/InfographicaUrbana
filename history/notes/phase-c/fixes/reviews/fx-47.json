@@ -1,0 +1,109 @@
+{
+ "batch_id": "fx-47",
+ "checks": [
+  {
+   "item": "R018",
+   "verdict": "pass",
+   "what": "kept, patch controls it: m1100-m1001 keyframe_overrides/0 replaces assyria_-1100 with -1100..-1056 (listed in patch-overrides.csv). Page infobox 'Second period of decline: 1055-935 BC'; Ashur-bel-kala 'r. 1073-1056 BC'; 'The period of decline initiated after Ashur-bel-kala's death was not reversed until the middle of the 10th century BC.' Reasoning holds.",
+   "page": "https://en.wikipedia.org/wiki/Middle_Assyrian_Empire",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R021",
+   "verdict": "pass",
+   "what": "assyria ledger/21 (loss -1206 to nobody) moves 1,675 cells and leaves the 97-cell heartland (Cliopatria Assyria -1000, wholly inside the corrected -1220 shape), which is exactly the patched assyria_-1200 heartland keyframe, so no snap at -1200. Page: infobox 'First period of decline: c. 1206-1115 BC'; 'The assassination of Tukulti-Ninurta I c. 1207 BC led to inter-dynastic conflict...'; 'Assyria became restricted mostly to just the Assyrian heartland.' Keyframes -1200/-1150 and the -1150 cancelling loss are patch-controlled (m1200-m1101 keyframe_overrides/3, /4, events/4), so 'partly' is right.",
+   "page": "https://en.wikipedia.org/wiki/Middle_Assyrian_Empire",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R071",
+   "verdict": "pass",
+   "what": "thirteen-colonies_1673 now cuts New York only by New York x Cliopatria New Netherland 1662 (50 cells, = ledger/10 and /11 regions) plus the homeland; the rest of inland New York stays with the colony in 1673. Page: the Dutch 'recaptured New Netherland' (August 1673), 'They chose Anthony Colve as governor and renamed the city New Orange', Andros took over 10 November 1674; the page names no Dutch territory beyond the colony. The 55 New Netherland 1662 cells outside New York (New Jersey, Delaware) that overlap the 1673 keyframe were already there before the fix.",
+   "page": "https://en.wikipedia.org/wiki/New_Netherland",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R080",
+   "verdict": "pass",
+   "what": "Cliopatria Haudenosaunee 1702 (282 cells) is cut from thirteen-colonies keyframes 1664-1768 and ledger/9 and /17; checked 0 overlap left in the 1664, 1673, 1674, 1763 and 1768 keyframes. Page: 'the Iroquois preserved considerable independence'; 'until 1707, treaties were between the Five Nations and England'; homeland 'central and west New York State including the Finger Lakes region'; Fort Stanwix 1784 'ceded much of their historical homeland to the Americans'. Fits patch p1660-p1669 rulings/0 (winner haudenosaunee). Side effect in problems: the cut is the 1702 shape to 1776, so the land the haudenosaunee dossier gives up in 1757-1769 no longer goes to the colony.",
+   "page": "https://en.wikipedia.org/wiki/Iroquois",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R005",
+   "verdict": "pass",
+   "what": "minyue ledger/8 (split -135, dongyue) region is now the kingdom minus itself; the compiler skips events whose region resolves to no land cell (compile_dossiers.py line 1383, which names 'a polity minus itself'), so the 680 cells stay Minyue to -110. Page: infobox 'Divided by the Han dynasty among the Minyue king and the Dongyue king: 135 BC'; 'As a result, there were two kings coexisting in the country'; it names no territory for either king after the split. Patch keyframe minyue_-135 is unaffected.",
+   "page": "https://en.wikipedia.org/wiki/Minyue",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R023",
+   "verdict": "pass",
+   "what": "babylonia_-1700 correction (369 cells, up from 237 under the rectangle) now has the same form as the patched -1600 and -1500 overrides (Sealand land plus the Muthanna desert cut out), with 0 overlap with the patched first-sealand-dynasty_-1700. Ledger/11 (-1460 gain from the Sealand) is now the corrected Sealand land (194 cells, including all of Nippur's disc). Page: 'Sealand pottery has been found at Girsu, Uruk, and Lagash but in no site north of that'; Ilum-ma-ili 'is thought to have conquered Nippur late in Samsu-iluna's reign'; Ulam-Buriash 'conquered the Sealand, incorporated it into Babylonia'. babylonia_-1600, -1500 and -1460 are patch-controlled.",
+   "page": "https://en.wikipedia.org/wiki/First_Sealand_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R039",
+   "verdict": "pass",
+   "what": "saffarid-dynasty identity.successors no longer lists abbasid-caliphate, and abbasid-caliphate lists neither as predecessor nor successor, so R2 no longer gives the Abbasids every conflict cell. Page infobox: 'Preceded by: Tahirid dynasty; Abbasid Caliphate; Zunbil dynasty'; 'Succeeded by: Samanid Empire; Ghaznavid Empire'; 'the dynasty fought the Abbasids for the possession of Fars'. The page gives no 910 date; the 910 loss of Fars stays in ledger/24 (Amr ibn al-Layth page), as the fixer said.",
+   "page": "https://en.wikipedia.org/wiki/Saffarid_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R057",
+   "verdict": "pass",
+   "what": "Every Hohhot 200 km disc in tumed (keyframes 0 and 2-11, ledger 0/2/4/5/6, wars/2, successors/0) is now the disc intersected with Inner Mongol (510 of the disc's 627 cells; drops 114 Shanxi/Shaanxi cells and 3 others). Keyframes 1582-1696 hold 0 Shanxi/Shaanxi cells. Page: 'the Tumed's pastures were north of the border with Shanxi, in present-day Inner Mongolia'. Remaining: tumed_1552 (1552-1581, Cliopatria's 1552 shape, which has no disc) still holds 6 Shanxi and 29 Shaanxi cells; see problems.",
+   "page": "https://en.wikipedia.org/wiki/Altan_Khan_of_the_Tumed",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R086",
+   "verdict": "pass",
+   "what": "cossack-hetmanate successors are now empty, and russian-empire lists only tsardom-of-russia as predecessor, so R2 no longer applies from 1721. hierarchy.csv row 585 (vassal of russian-empire 1721-1764) gives the conflict cells to the Hetmanate. The new ledger/19 loss in October 1764 hands the left bank to russian-empire before the dissolve, which now has no successor and would otherwise leave the land to nobody. russian-empire ledger/1 (found, 1721) already excludes the left bank. Page: 'According to a decree issued on 21 October 1764, the hetman's post was officially liquidated'; 'from 1764 to 1781, the Cossack Hetmanate was incorporated as the Little Russia Governorate'.",
+   "page": "https://en.wikipedia.org/wiki/Cossack_Hetmanate",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R105",
+   "verdict": "pass",
+   "what": "mamluk-beys-of-egypt now ends 1801-04. Ledger/10 (1798-07) leaves Upper Egypt (gazetteer region, 2,359 cells) and gives the other 852 Egyptian cells to nobody; the new keyframe _1799 is Upper Egypt for 1799-1801; the dissolve and successor pass Upper Egypt to ottoman-empire. Murad Bey page: 'fled to Cairo and then Upper Egypt'; guerrilla war 'staved off the armies of Louis Desaix for a year'; in 1800 peace with Kleber, 'responsible for collecting taxes from Upper Egypt on behalf of the French First Republic'; died 22 April 1801. Ottoman Egypt page: 'Murad Bey sought an interview with Kleber, and succeeded in obtaining the government of Upper Egypt from him'; 'After Anglo-Turkish forces expelled the French in 1801'; 'succeeded by Osman Bey al-Bardisi'.",
+   "page": "https://en.wikipedia.org/wiki/Murad_Bey",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R123",
+   "verdict": "fixed",
+   "what": "The dossier change is supported. Page: 'The Treaty of Berlin caused Bosnia and Herzegovina to nominally remain under sovereignty of the Ottoman Empire'; 'The occupation of Bosnia and Herzegovina started on 29 July 1878'; 'the Bosnia Vilayet, which officially remained part of the Ottoman Empire'. The loss has no month and no earlier 1878 event in the dossier, so the compiler gives it month 0 (build_actions). The dossier's claim that patch p1870-p1879 events/1-3 'can be dropped' is wrong. ottoman-empire ledger/196 (loss of Bosnia and Herzegovina to austria-hungary, 1878-07, Congress of Berlin page) moved nothing while the eyalet held the land. Now that the month-0 loss makes the land Ottoman, ledger/196 hands it to Austria-Hungary as direct land in July. Patch events/2-3 (September 1878: Ottoman gain from austria-hungary, then occupation_start) put it back as Ottoman land under occupation. Only events/1 is redundant.",
+   "page": "https://en.wikipedia.org/wiki/Condominium_of_Bosnia_and_Herzegovina",
+   "fix": "Corrected the two notes in bosnia-eyalet (ledger/19 note and the dossier notes) that said patch events/1-3 can be dropped: they now say only events/1 is redundant and events/2-3 must stay while ottoman-empire ledger/196 exists. Re-validated: OK, 0 errors, 0 warnings.",
+   "applied": true
+  },
+  {
+   "item": "R140",
+   "verdict": "pass",
+   "what": "italian-africa successors/0 (british-africa) land now adds Eritrea and Somalia minus Somaliland, matching ledger/53 and /56. This has no land effect at the February 1943 dissolve, because the 1941-1943 keyframes and the ledger leave only Libya with the state, but it makes the land agree with the entry's text. Pages: BMA Eritrea infobox 'Established: 25 February 1941', 'British forces defeated the Italian army in Eritrea in 1941 at the Battle of Keren'; Italian Somaliland infobox 'British occupation: 26 February 1941', 'British forces occupied Italian Somaliland and militarily administered the territory'.",
+   "page": "https://en.wikipedia.org/wiki/Italian_Somaliland",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "bosnia-eyalet (R123): do NOT drop patch p1870-p1879 events/2-3, as the fixer's report and the dossier notes advised; only events/1 is redundant. ottoman-empire ledger/196 (loss 1878-07 of 'Bosnia and Herz.' to austria-hungary) now acts on land the Ottomans hold after the eyalet's month-0 loss, and on its own it would draw Bosnia as direct Austro-Hungarian land from July 1878. Handoff to the ottoman-empire owner: drop ledger/196 or make it name no land, since the occupation is austria-hungary ledger/2 (1878-07) and the annexation is ledger/5 (1908-10). After that, events/2-3 can go too.",
+  "thirteen-colonies (R080): the cut is the constant Haudenosaunee 1702 shape up to the 1776 dissolve, but the haudenosaunee dossier gives land up to british-colonial-empire in 1757 (ledger/26), 1763 (ledger/27, 126 cells of the 1702 shape gone by then) and 1769 (ledger/29, 226 gone). Those cells now stay British Colonial Empire direct land (125 of 126 and 218 of 226 lie inside its Cliopatria shape) instead of the colony's Province of New York to 1776. Before the fix they were the colony's. Optional refinement: subtract the Haudenosaunee shape of the year in thirteen-colonies_1763 (Cliopatria Haudenosaunee 1763) and _1768 (1769), with colony gains from british-colonial-empire at 1763 and 1769 that mirror the haudenosaunee losses. The pages opened (Iroquois; the Fort Stanwix 1768 page as the haudenosaunee notes report it) do not explain these contractions, so confidence would be 1.",
+  "tumed (R057, minor): tumed_1552 (1552-1581) is Cliopatria's 1552 shape and has no disc, so it still holds 6 Shanxi and 29 Shaanxi cells (bbox 109.0-114.24 E, 37.96-40.6 N). Ledger/2 now also includes them, because it subtracts the smaller disc. Rulings p1500-p1599 give only Shanxi to Ming, so the 29 northern Shaanxi cells stay Tumed by the size rule in 1552-1581. The Altan Khan page names only Shanxi as the border, so this needs another page before any change; the fixer's 'removes the Shanxi and Shaanxi cells for 1547-1635' is true only of the disc.",
+  "cossack-hetmanate (R086, minor): the page infobox gives 'Hetman post abolished in Russia: 21 (10) November 1764' but the body gives '21 October 1764'. The dossier uses month 10 for the new loss and the dissolve (the year is not affected). Patch p1750-p1759 events/1-2 (gain from russian-empire and vassal_start in 1750) are now redundant, since without R2 hierarchy.csv row 585 keeps the left bank with the Hetmanate from 1721; they are harmless.",
+  "assyria (R021): notes in patches m1200-m1101 events/4 ('ledger 21') and m1100-m1001 events/0 ('ledger/23') cite dossier ledger indexes that shifted by one with the new ledger/21; they are now ledger/22 and ledger/24. Only the note text is affected; patches do not reference dossier events by index.",
+  "Validation (python3 -I -B history/tools/validate_dossier.py --resolve): all 10 changed dossiers OK, 0 errors. Warnings: minyue 2 (dongyue has no dossier; ledger/8 resolves to no cells, both intended); tumed 3 (khalkha has no dossier, pre-existing). bosnia-eyalet was re-validated after the reviewer's note edit: OK, 0 errors, 0 warnings."
+ ]
+}

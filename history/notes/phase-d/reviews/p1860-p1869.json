@@ -1,0 +1,158 @@
+{
+ "window": "p1860-p1869",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Duar_War",
+   "fix": "",
+   "applied": true,
+   "what": "kingdom-of-bhutan contest_start 1864 vs british-raj (replaces skipped ledger/15). Page: 'a war fought between British India and Bhutan in 1864 to 1865'; the treaty text says 'the British Government has been compelled to seize by an armed force the whole of the Doars'; 'The column in the east went up to the fort Dewangiri, called Deothang'; Treaty of Sinchula 'signed 11 November 1865', ceding the Assam and Bengal Duars, 'the Hill territory on the left bank of the Teesta' and '83 km2 of territory of Dewangiri'. Region resolves to 37 cells: Bengal Duars 32 (88.57-89.90 E, 26.40-26.92 N), Kalimpong 20 km 4, Dewangiri point 1 (91.54 E 26.91 N, inside Samdrup Jongkhar). Same land as the dossier's skipped event (unknown place 'Dewangiri') with the point in its place. Trial: 30 Bhutan and 2 Raj cells striped in 1864, back to plain owners after November 1865; no other effect."
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Duar_War",
+   "fix": "",
+   "applied": true,
+   "what": "kingdom-of-bhutan contest_end November 1865 (replaces skipped ledger/16); page: Treaty of Sinchula 'signed 11 November 1865'. Same 37-cell region as events/0."
+  },
+  {
+   "entry": "events/2",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Duar_War",
+   "fix": "",
+   "applied": true,
+   "what": "british-raj contest_start 1864, mirror of events/0 (replaces skipped british-raj ledger/6); page supports the war of 1864-1865 over the Duars."
+  },
+  {
+   "entry": "events/3",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Duar_War",
+   "fix": "",
+   "applied": true,
+   "what": "british-raj contest_end November 1865, mirror of events/1 (replaces skipped ledger/7); 11 November 1865 on the page."
+  },
+  {
+   "entry": "events/4",
+   "verdict": "fail",
+   "page": "https://en.wikipedia.org/wiki/Duar_War",
+   "applied": true,
+   "what": "kingdom-of-bhutan loss of Dewangiri (1 cell, 91.54 E 26.91 N, about 253 km2 for an 83 km2 cession) to british-raj, November 1865. The date and cession are on the page, but the entry is harmful: the one cell sits outside every Cliopatria Raj shape, so british-raj's own 1868 keyframe drops it again, and that one extra cell lifts the british-raj_1868 snap over the 20-cell tolerance (it did not fire in a trial without this patch). The snap then releases 19 cells to nobody in 1868-1869 and after: 5 Bengal Duars cells (26.75-26.92 N, 89.0-89.9 E) that Britain had gained in 1865, 9 Darjeeling/Siliguri-terai cells (87.85-88.14 E, 26.5-27.2 N), the Dewangiri cell itself (Bhutanese in the published draft, nobody now), and 4 of the 8 Nicobar cells that danish-india/ledger/16 hands to the Raj in 1868. Verified with three trials: without the window patch, with it, and with it minus events/4-5. The window agent's report blames these '18 scattered cells' on dossier edits; in fact this entry pair causes them. Also, nothing returns the cell in 1949: kingdom-of-bhutan ledger/20 and republic-of-india ledger/6 use the same unknown place.",
+   "fix": "Withdraw events/4 and events/5 together: delete both entries and renumber (events/6-10 become events/4-8; update the file note 'events/0-5' to 'events/0-3'). Dewangiri is a third of one cell, so the cell stays Bhutanese. Keep events/0-3. Verified by a scratch trial of exactly that file: british-raj_1868 is back within tolerance (snaps 112 -> 111), no british-raj, Bhutan or danish-india cell differs from the no-patch baseline in 1868-1869, and the other entries' effects are unchanged (end anchor p1870: 1,709 cells change instead of 1,729)."
+  },
+  {
+   "entry": "events/5",
+   "verdict": "fail",
+   "page": "https://en.wikipedia.org/wiki/Duar_War",
+   "applied": true,
+   "what": "british-raj gain of Dewangiri, mirror of events/4. The cession date is on the page, but the entry has the same harmful effect: the cell reaches the Raj in 1865, and in 1868 it tips the british-raj_1868 snap over tolerance, so 19 cells (Duars, Darjeeling terai, Dewangiri, 4 Nicobar cells) fall to nobody in 1868-1869.",
+   "fix": "Delete together with events/4 (see events/4)."
+  },
+  {
+   "entry": "events/6",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Principality_of_Herat",
+   "fix": "",
+   "applied": true,
+   "what": "principality-of-herat gains the whole admin-1 Hirat (203 cells, 60.5-64.4 E, 32.9-35.5 N) from nobody in January 1860. In the published draft and the no-patch trial, 38 cells round Herat city (61.7-62.9 E, 33.7-34.9 N) belong to nobody from 1857 to 1869. Page: Sultan Ahmad Khan was 'installed onto the throne of Herat in April 1857', died 'on March 6, 1863', and was succeeded by Shah Nawaz Khan; Dost Mohammad's forces 'capture[d] the city on May 27, 1863, ending Herat's existence as an independent state'. Trial: the principality holds 203/203 cells in 1860-1862 and the Emirate of Afghanistan holds 203/203 from 1863. The gain sits inside the dossier's own keyframe (Hirat+Badghis+Farah+Ghor). The hole is older than the window: it is already there in 1857-1859, see problems."
+  },
+  {
+   "entry": "events/7",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Third_Italian_War_of_Independence",
+   "fix": "",
+   "applied": true,
+   "what": "kingdom-of-italy loses admin-1 Trieste and Gorizia (Italy), 3 cells at 13.40-13.87 E 45.60-45.84 N, to austrian-empire in October 1866, right after its ledger/4 gain of the whole 'Friuli' region (which resolves to Gorizia+Pordenone+Trieste+Udine). Page: Treaty of Vienna 'on 3 October 1866', 'the Austrian cession of Venetia, consisting of modern Veneto, parts of Friuli and the city of Mantua'; 'the annexation of Trentino, the remainder of Friuli and Trieste at the end of World War I'. Trial: 2 cells are Austrian, then Austro-Hungarian, from 1866. The third cell (13.40 E 45.84 N, Lombardy-Venetia in 1865) stays Italian because Italy's 1866 keyframe, Cliopatria's 1868 shape, claims it. That is harmless and the window agent reported it."
+  },
+  {
+   "entry": "events/8",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Taiping_Rebellion",
+   "fix": "",
+   "applied": true,
+   "what": "qing-dynasty gains, in January 1861, the Taiping 1860 shape minus the 1861 shape: 470 cells (Hubei 267, Anhui 99, Henan 88, Hunan 11, Jiangxi 5; 110.9-117.0 E). Without the entry, the Taiping 1861 snap releases them to nobody. Page: 'In December 1856 Qing forces retook Wuchang for the final time', 'In May 1858, the Xiang Army captured Jiujiang and then the rest of Jiangxi by September', so this was Qing land. The January month is a mechanical choice (before the snaps), not a page date, but it is consistent with the page. Trial: 359 cells go Taiping -> Qing in 1861. No Nian, Panthay or other cell changes (Nian 593 cells, the same in all trials)."
+  },
+  {
+   "entry": "events/9",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Taiping_Rebellion",
+   "fix": "",
+   "applied": true,
+   "what": "qing-dynasty gains, in January 1862, the Taiping 1861 shape minus the 1862 shape: 536 cells (Jiangxi 206, Hubei 164, Anhui 121, Jiangsu 30, Zhejiang 4; includes Wuhan, Jiujiang and Nanchang, but not Ningbo or Hangzhou, so Ningbo is not taken early). Page supports Qing control of Wuchang (1856), Jiangxi (1858) and Anqing (1861). Trial: 466 cells Taiping -> Qing in 1862, which were nobody before."
+  },
+  {
+   "entry": "events/10",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Taiping_Rebellion",
+   "fix": "",
+   "applied": true,
+   "what": "qing-dynasty gains, in January 1864, the Taiping 1862 shape minus the 1864 shape: 233 cells (Anhui 181, Jiangsu 51; includes Hefei, not Nanjing). The dossier's own Taiping 1864 keyframe drops them, and without the entry the baseline leaves 153 of them to nobody in 1864. Page: 'Nanjing fell in July 1864 to the imperial armies'. It gives no date for the Anhui and Jiangsu land, but the dossier's own Taiping 1864 keyframe no longer holds it, and the Qing taking it in January is better than nobody. Trial: 153 cells Taiping -> Qing in January 1864, and the rest of the Taiping land passes to Qing by ledger/63 in July. (The why's 'Anhui 101' is 181 by my count; it is only a figure in the text.)"
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Panthay_Rebellion",
+   "fix": "",
+   "applied": true,
+   "what": "qing-dynasty_1860 = Cliopatria Qing 1860 + (Cliopatria Panthay 1860 ∩ China) (1,575 cells, 99.5-107.4 E, 22.5-31.5 N). The dossier's own entry was 'ok' (plain Cliopatria), so nothing of it is lost. Page quotes check out: 'Hui from provinces which were not in rebellion, like Sichuan and Zhejiang, served as negotiators'; 'On multiple occasions Kunming was attacked and sacked by Du Wenxiu's forces' (attacked, not held); 'The eight years from 1860 to 1868 were the heyday of the Sultanate'; Ma Rulong 'defected to the Qing side' and fought 'in central and west Yunnan' (the page gives no year; the why's 'in the 1860s' is a gloss). Calling Sichuan Qing is supported directly; east Yunnan and the Guizhou edge are an inference from the page, but the alternative is nobody. Trial: 1,285 nobody cells -> Qing in 1860. The Panthay keeps its 494 dossier cells (R2), and no other state loses a cell."
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Taiping_Rebellion",
+   "fix": "",
+   "applied": true,
+   "what": "qing-dynasty_1861 = Qing 1861 + Panthay∩China + Taiping 1860 shape. The dossier entry was 'ok'. The Taiping 1860 addition keeps the events/8 land in the Qing snap, and the Taiping keep their own 1861 cells by R2 (Taiping 1,410 cells at end 1861). Side effect, consistent with the page: the dossier's own qing-dynasty/ledger/57 gain of Anqing (100 km, 1861; page: in 1861 'Zeng Guofan's Xiang Army captured Anqing') now sticks, giving Qing 152 cells; the baseline's snaps undid it. Trial: 1,644 nobody cells and 152 Taiping cells -> Qing in 1861."
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Taiping_Rebellion",
+   "fix": "",
+   "applied": true,
+   "what": "qing-dynasty_1862 = Qing 1862 + Panthay∩China + Taiping 1861 shape (alive 1862-1863). The dossier entry was 'ok'. Side effect, consistent with the page: the dossier's own ledger/59 Ningbo gain (80 km, May 1862; page: Ningbo 'reclaimed on 10 May' 1862) now sticks, so 74 east-Zhejiang cells (120.7-122.2 E, 29.2-31.4 N) are Qing at the end of 1862-1863 instead of Taiping. Trial: 1,818 nobody cells -> Qing in 1862-1863."
+  },
+  {
+   "entry": "keyframe_overrides/3",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Taiping_Rebellion",
+   "fix": "",
+   "applied": true,
+   "what": "qing-dynasty_1864 keeps the dossier's correction (Qing 1864 + Taiping 1864) and adds the Taiping 1862 shape and Panthay∩China. Supported as above ('Nanjing fell in July 1864'). Trial: 1,438 nobody cells -> Qing in 1864. Minor side effect: one cell at the Yangtze mouth (121.44 E 31.60 N, Chongming) that events/9 made Qing is released by this snap, and because the 1865 snap now stays within tolerance it remains nobody 1864-1869 (the baseline had it Qing from 1865). One cell only; not worth an entry."
+  },
+  {
+   "entry": "keyframe_overrides/4",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Panthay_Rebellion",
+   "fix": "",
+   "applied": true,
+   "what": "qing-dynasty_1865 keeps the dossier's correction (Cliopatria Qing 1866 shape) and adds Panthay∩China (1865 shape). Trial: 1,285 nobody cells -> Qing in 1865. Because the Qing already holds that land, the 1865 snap no longer fires (moves fewer than 20 cells). So 13 nobody cells on the Qaidam/Kunlun edge (80.4-92.9 E, 35.5-39.2 N), which the baseline's snap gave to Qing for 1865 only, stay nobody that year and go to Yettishar in 1866 as before. Negligible."
+  },
+  {
+   "entry": "keyframe_overrides/5",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Panthay_Rebellion",
+   "fix": "",
+   "applied": true,
+   "what": "qing-dynasty_1866 = Qing 1866 + Panthay∩China. The dossier entry was 'ok'. The why also cites the Shi Dakai page, which I opened: Shi's army 'weaved in and out of the ... Sichuan province' and tried to cross the Dadu 'to reach ... Chengdu'; 'On 13 June, Shi Dakai negotiated with the Qing'; sentenced 'on the 25th'; the infobox gives his death on 'June 26, 1863 ... Chengdu, Sichuan, Qing Empire' (the body names the Anshun Court). The page says nothing of him holding Sichuan land, which fits Sichuan being Qing. Trial: 1,285 nobody cells -> Qing in 1866-1867."
+  },
+  {
+   "entry": "keyframe_overrides/6",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Panthay_Rebellion",
+   "fix": "",
+   "applied": true,
+   "what": "qing-dynasty_1868 = Qing 1868 + (Panthay 1868 ∩ China) (1,302 cells, to 106.0 E, 30.35 N). The dossier entry was 'ok'. Trial: 1,013 nobody cells -> Qing in 1868-1869, and the Panthay 1868 keyframe (Tengchong added) is unaffected. This keyframe lives 1868-1872, so the override reaches into p1870-p1879; the window agent reported that (see problems)."
+  }
+ ],
+ "patch_check": "--check-patch p1860-p1869: 18 entries, 18 ok, 0 rejected (3.9 s). Trial: all 18 applied. I did not edit the patch file. Two entries fail (events/4-5, harmful side effect); a scratch trial without them was checked.",
+ "problems": [
+  "events/4-5 (Dewangiri cession) push the british-raj_1868 keyframe snap over its 20-cell tolerance. 19 cells fall to nobody in 1868-1869 (5 Bengal Duars cells 89.0-89.9 E, 9 Darjeeling/Siliguri-terai cells 87.85-88.14 E, the Dewangiri cell 91.54 E 26.91 N, and 4 Nicobar cells that danish-india/ledger/16 hands to the Raj in 1868), and they stay nobody after the window unless a later Raj snap takes them back. The window agent's report attributes the '18 scattered cells' to dossier edits. That is wrong: a trial with the same dossiers and no window patch shows none of it, and a trial of the patch minus events/4-5 shows none of it either. The fix is to delete events/4-5 (see checks).",
+  "Dewangiri gazetteer gap: kingdom-of-bhutan ledger/15, 16, 18, 20 (1949 return), british-raj ledger/6, 7, 9 and republic-of-india ledger/6 all use the unknown place 'Dewangiri'. If the name is ever added to the gazetteer, the dossiers' own 1865 cession will cause the same 1868 Raj snap side effect. Dewangiri (83 km2) is a third of one cell, so the cleaner dossier fix is to drop the Dewangiri leaf from the gain/loss events (keep it in the contests at most).",
+  "Earlier window p1850-p1859 (not this patch's years): the published draft has the same holes before 1860. 1,173 cells (1857-1858) and 1,285 cells (1859) of Cliopatria's Panthay shape in Sichuan and east Yunnan belong to nobody (the Qing keyframes 1856/1857/1859 leave them out), and the 38 cells round Herat city belong to nobody from 1857 (after the 1856-57 Qajar occupation of Herat). This patch fixes both only from 1 January 1860.",
+  "Cross-window: keyframe_overrides/6 (qing-dynasty_1868, alive 1868-1872) changes the p1870 start anchor: 1,013 Sichuan/Yunnan cells become Qing. The p1870-p1879 agent should also check 1871, when the Panthay shrinks to Tali 150 km: the cells it releases are not claimed by any Qing snap that year.",
+  "Residual, not patched: in 1860 Cliopatria's Taiping 1860 shape ('ok' in the dossier) still gives the Taiping Hubei west to Yichang (110.85 E) and 88 Henan cells, although the Taiping Rebellion page has Wuchang retaken 'for the final time' in December 1856. events/8 corrects this only from January 1861.",
+  "Confirmed against a no-patch trial: the habesh-eyalet 1865 keyframe and Arabian overlaps and the Bavaria gain come from dossier edits, not from this patch, as the window agent says. The 1868-1869 British Raj loss does come from this patch (above). End anchor p1870: 1,729 cells change with the patch as written, 1,709 without events/4-5."
+ ]
+}

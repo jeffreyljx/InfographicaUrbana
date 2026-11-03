@@ -1,0 +1,858 @@
+{
+ "batch_id": "se-02-b",
+ "verdicts": [
+  {
+   "slug": "kahuripan",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/2",
+     "what": "Bali is taken in 1028 as a direct 'gain' from early-balinese-kingdoms and drawn as Kahuripan's own land (keyframes kahuripan_1028 and kahuripan_1040 'ok' with 22 Bali cells), but the early-balinese-kingdoms dossier keeps Bali under its own kings for 1010-1045 (its keyframe early-balinese-kingdoms_1010), so the two dossiers both draw Bali in 1028-1045 and neither carries the other's event.",
+     "why": "Airlangga page (a source of this dossier): 'Bali in the 11th century probably was an ally or vassal of Java'; Kahuripan page: 'Later, he extended his kingdom to Central Java and Bali' (no year). early-balinese-kingdoms has no 1028 loss and no 1045 gain.",
+     "fix": "Make /ledger/2 a vassal_start (counterpart early-balinese-kingdoms, confidence 1) and /ledger/6 a vassal_end; mark kahuripan_1028 and kahuripan_1040 'adjust' with the shape unchanged and text saying Bali is vassal land (Airlangga page sentence); se-02-a adds the mirror vassal_start 1028 / vassal_end 1045 to early-balinese-kingdoms.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/wars/0",
+     "what": "The 1006 Wurawari war lies 13 years before the state's 1019 start (validator warning) and is Mataram's war: mataram-kingdom /wars/2 already carries it, dated 1016.",
+     "why": "Kahuripan and Airlangga pages: 'In 1006, a rebellion incited by a vassal king Wurawari from Lwaram destroyed the capital of Watugaluh'; mataram-kingdom /wars/2 'Wurawari revolt against Dharmawangsa' 1016-1016.",
+     "fix": "Drop /wars/0 (or keep wars empty with the reason in notes) and record the 1006 (Kahuripan/Airlangga pages) versus 1016 (Mataram dossier) disagreement in notes.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Year of Kahuripan's growth into Central Java (the 1028 is Cliopatria's, confidence 1); the Airlangga page dates only 1019, 1025 ('increased the power and influence of Kahuripan'), 1035, 1037 and 1045.",
+     "page to try": "https://id.wikipedia.org/wiki/Airlangga"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Year and status (direct or vassal) of Bali under Airlangga; see the fix above.",
+     "page to try": "https://en.wikipedia.org/wiki/Bali_Kingdom"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "Bali's release in 1045 rests on the partition alone (confidence 1).",
+     "page to try": "https://id.wikipedia.org/wiki/Kerajaan_Kahuripan"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "Location of Watan Mas (dot is a placeholder at Madiun).",
+     "page to try": "https://id.wikipedia.org/wiki/Airlangga"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kahuripan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kahuripan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kahuripan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Kahuripan",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 80771,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Kahuripan infobox (checked); keyframe note says so."
+   }
+  },
+  {
+   "slug": "kediri-kingdom",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/8/note",
+     "what": "The note quoted the Kediri page as 'lasted only about a year, ending with attacks by Yuan and Raden Wijaya's forces'; the page's words differ (same in /keyframe_review/4/note).",
+     "why": "Kediri Kingdom page: the restored kingdom 'lasted only one year due to a combined attack launched by Yuan dynasty troops and Raden Wijaya troops'.",
+     "fix": "Quote replaced with the page's words in both notes; file re-validated (no errors, no warnings).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/6",
+     "what": "The 1222 'loss' to singhasari is mirrored in singhasari by a vassal_start of kediri-kingdom (/ledger/1) and a 1292 vassal_end (/ledger/6), not by a gain: the two dossiers disagree on whether Kediri was annexed or a vassal.",
+     "why": "Ken Arok page: 'Kediri became a fief under the kingdom of Singasari'; Kediri page: 'Kediri became an area under the rule of Singhasari' and infobox '1042 until 1222 (1292-1293 under Jayakatwang)'. kediri-kingdom has no keyframe 1222-1291 and its certainty says it holds no territory then.",
+     "fix": "Reconcile on the singhasari side (smaller change): turn singhasari /ledger/1 into a gain from kediri-kingdom (fief status in the note), drop singhasari /ledger/6 (the 1292 loss covers it) and reword singhasari_1227's text; or, if Kediri is kept as a vassal, give kediri-kingdom its 1220 shape to 1291 with vassal_start 1222 / vassal_end 1292 (counterpart singhasari).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger",
+     "what is missing": "Kediri's tributaries: the Kediri page has 'During the reign [of Jayabhaya, 1135-1159], Ternate was a vassal state of Kediri' and tributaries in southern Kalimantan and Maluku, Bali ('Ma-li') in the Chu-fan-chi list; no vassal events (the author's gap).",
+     "page to try": "https://en.wikipedia.org/wiki/Jayabaya"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Janggala",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Ken_Arok",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Kediri_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Kediri_Kingdom",
+     "result": "confirmed (quote corrected)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 73225,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Kediri infobox (checked)."
+   }
+  },
+  {
+   "slug": "kingdom-of-janggala",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Janggala",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kahuripan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Janggala",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Janggala",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 34429,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Janggala infobox (checked). Tried and could not break: 1045 formation, 1049-1052 war, 1135-1157 wording read as a contest start at confidence 2, 1136 union (infobox), Legge's contradiction flagged, every event mirrored in kahuripan and kediri-kingdom, capital Surabaya inside the 1046 bbox."
+   }
+  },
+  {
+   "slug": "sultanate-of-kedah",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/5/note",
+     "what": "Two cited pages date Setul's creation differently and the note gave only 1808.",
+     "why": "Kedah Sultanate page: 'establishing the Kingdom of Setul Mambang Segara in 1808'; Siamese invasion of Kedah page: Tunku Bisnu made ruler of Setul in 1811.",
+     "fix": "Sentence added to the note naming the 1811 date; event kept at 1808, confidence 2; file re-validated (no errors).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger",
+     "what": "No vassal_start 1842 / vassal_end 1909-7 (counterpart rattanakosin-kingdom), although rattanakosin-kingdom /ledger/21 and /ledger/38 record Kedah as Siam's vassal 1842-1909.",
+     "why": "Siamese invasion of Kedah page: Kedah 'was eventually restored to the Kedah Sultanate in 1842 under Siamese suzerainty'; Kedah Sultanate infobox 'Anglo-Siamese Treaty of 1909: 9 July 1909'.",
+     "fix": "Add vassal_start 1842 (counterpart rattanakosin-kingdom, region {cliopatria: Sultanate of Kedah, year 1842}, confidence 3, Siamese_invasion_of_Kedah) and vassal_end 1909-7 (same counterpart, Kedah_Sultanate) before the dissolve.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "The 1294-1458 Satun-Songkhla strip (18 cells) and its 1459 loss (/ledger/2) rest on Cliopatria alone (confidence 1); no page opened puts Kedah north of Perlis.",
+     "page to try": "https://en.wikipedia.org/wiki/Satun_province"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "The 1895 southern cell (confidence 1, Cliopatria only).",
+     "page to try": "https://en.wikipedia.org/wiki/Kedah"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "The missing 1842-1909 Siamese vassal pair (see fixes) and Kedah's overlords before 1821: Malacca (the Kedah Sultanate page has Kedah ask 'to be Malacca's vassal'), Ayutthaya/Siam bunga mas; none has a vassal event.",
+     "page to try": "https://en.wikipedia.org/wiki/Bunga_mas"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Shapes 1294, 1375, 1459, 1512, 1572, 1588 unverified (page budget).",
+     "page to try": "https://en.wikipedia.org/wiki/Kedah"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/History_of_Penang",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Kedah_Sultanate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Siamese_invasion_of_Kedah",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Kedah_Sultanate",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 18586,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Kedah Sultanate infobox (checked). The 1842 shape (9,327 km2) is close to modern Kedah state."
+   }
+  },
+  {
+   "slug": "namayan",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding year: 1000 is the latest year fitting 'Established: before the 11th century' (confidence 1); Cliopatria's 1202 is on no page.",
+     "page to try": "https://tl.wikipedia.org/wiki/Namayan"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "The one-cell changes of 1375 and 1497 have no ledger event (no page records a change; page budget spent). The added districts already cover the Santa Ana/Manila cell (gazetteer: Manila and Mandaluyong share cell 362891), so the capital is inside the corrected shape.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Manila"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Namayan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Namayan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Namayan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/keyframe_review/1/correction",
+     "page": "https://en.wikipedia.org/wiki/Santa_Ana,_Manila",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1128,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Namayan infobox (checked); the grid cells are larger than the polity, which the author says."
+   }
+  },
+  {
+   "slug": "singhasari",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/1",
+     "what": "vassal_start of kediri-kingdom (and /ledger/6 vassal_end 1292) is mirrored in kediri-kingdom by a 1222 loss, not a vassal_start.",
+     "why": "See kediri-kingdom fix /ledger/6: Ken Arok page 'Kediri became a fief'; kediri-kingdom /ledger/6 is a loss and it has no land 1222-1291.",
+     "fix": "Turn /ledger/1 into a gain from kediri-kingdom (fief status in the note), drop /ledger/6, reword singhasari_1227's text; or have kediri-kingdom keep its land as a vassal.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "The 1284 vassal_start of Bali and 1292 vassal_end are mirrored in early-balinese-kingdoms by a 1284 loss and a 1293 gain (type mismatch).",
+     "why": "Kertanagara page: 'In 1284, he subjected nearby Bali to vassalage'; Bali Kingdom page: 'This expedition seems to have integrated Bali into Singhasari's realm' (early-balinese-kingdoms /ledger/1 quotes it as 'integrated Bali into the Singhasari kingdom's territory', not the page's words).",
+     "fix": "Keep the vassal reading here (better supported); se-02-a changes early-balinese-kingdoms /ledger/1 to vassal_start and /ledger/2 to vassal_end 1292.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger",
+     "what": "No occupation_start 1288 / occupation_end 1292 of Palembang (counterpart srivijaya), although srivijaya /ledger/10-11 record Singhasari's occupation of Palembang 1288-1293 (Melayu Kingdom and Pamalayu pages); srivijaya's 1293 end falls after Singhasari's 1292 end.",
+     "why": "srivijaya /ledger/10 (1288 occupation_start, counterpart singhasari, 'Mahesa Anabrang conquered Palembang and Jambi (Malayu)'), /ledger/11 (1293 occupation_end).",
+     "fix": "Add occupation_start 1288 (counterpart srivijaya, region {place: Palembang, km: 60}, source the Pamalayu page) and occupation_end 1292; se-02-a moves srivijaya's occupation_end to 1292 or names the successor.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/wars/3/to",
+     "what": "'Mongol demand for tribute' runs to 1293, after the state's 1292 end.",
+     "why": "Singhasari page: the Mongol fleet came after Kertanagara's death (May or June 1292, Kertanagara page); the 1293 landing is in kediri-kingdom /wars/3.",
+     "fix": "Set to 1292.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "Year of Madura's submission (1285 is Cliopatria's, confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Pamalayu"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "End of the Melayu vassalage (confidence 1, the state's end year) and the start (c. 1290 vs 1275 vs Srivijaya's 1288).",
+     "page to try": "https://en.wikipedia.org/wiki/Melayu_Kingdom"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Ken_Arok",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kertanagara",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Kertanagara",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Bali_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Kertanagara",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 78238,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Singhasari infobox (checked)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kahuripan",
+    "year": 1028,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Central Java; Mataram had fallen (1016 in mataram-kingdom)."
+  },
+  {
+   "event": {
+    "slug": "kahuripan",
+    "year": 1028,
+    "type": "gain",
+    "counterpart": "early-balinese-kingdoms"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "early-balinese-kingdoms (se-02-a) has no 1028 loss and keeps Bali under its own kings 1010-1045; both dossiers draw Bali 1028-1045. Recommended: vassal pair on both sides."
+  },
+  {
+   "event": {
+    "slug": "kahuripan",
+    "year": 1045,
+    "type": "split",
+    "counterpart": "kediri-kingdom"
+   },
+   "mirror": {
+    "slug": "kediri-kingdom",
+    "year": 1045,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kahuripan",
+    "year": 1045,
+    "type": "split",
+    "counterpart": "kingdom-of-janggala"
+   },
+   "mirror": {
+    "slug": "kingdom-of-janggala",
+    "year": 1045,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kahuripan",
+    "year": 1045,
+    "type": "loss",
+    "counterpart": "early-balinese-kingdoms"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "early-balinese-kingdoms has no 1045 gain (see 1028)."
+  },
+  {
+   "event": {
+    "slug": "mataram-kingdom",
+    "year": 1016,
+    "type": "dissolve",
+    "counterpart": "kahuripan"
+   },
+   "mirror": {
+    "slug": "kahuripan",
+    "year": 1019,
+    "type": "found"
+   },
+   "status": "exception",
+   "note": "Not a mirror type; three-year gap 1016-1019 is page-based on both sides."
+  },
+  {
+   "event": {
+    "slug": "kediri-kingdom",
+    "year": 1136,
+    "type": "gain",
+    "counterpart": "kingdom-of-janggala"
+   },
+   "mirror": {
+    "slug": "kingdom-of-janggala",
+    "year": 1136,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kediri-kingdom",
+    "year": 1222,
+    "type": "loss",
+    "counterpart": "singhasari"
+   },
+   "mirror": {
+    "slug": "singhasari",
+    "year": 1222,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "Type: loss vs vassal_start of kediri-kingdom (and singhasari 1292 vassal_end has no kediri mirror). Both in this batch."
+  },
+  {
+   "event": {
+    "slug": "kediri-kingdom",
+    "year": 1292,
+    "type": "gain",
+    "counterpart": "singhasari"
+   },
+   "mirror": {
+    "slug": "singhasari",
+    "year": 1292,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-janggala",
+    "year": 1136,
+    "type": "loss",
+    "counterpart": "kediri-kingdom"
+   },
+   "mirror": {
+    "slug": "kediri-kingdom",
+    "year": 1136,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-kedah",
+    "year": 1294,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Cliopatria-only strip, confidence 1."
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-kedah",
+    "year": 1459,
+    "type": "loss",
+    "counterpart": "ayutthaya-kingdom"
+   },
+   "mirror": {
+    "slug": "ayutthaya-kingdom",
+    "year": 1459,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Both confidence 1, Cliopatria's year."
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-kedah",
+    "year": 1786,
+    "type": "loss",
+    "counterpart": "british-colonial-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Owned by eu-11, not run yet."
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-kedah",
+    "year": 1800,
+    "type": "loss",
+    "counterpart": "british-colonial-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Owned by eu-11, not run yet."
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-kedah",
+    "year": 1808,
+    "type": "loss",
+    "counterpart": "setul-mambang-segara"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-kedah",
+    "year": 1821,
+    "type": "loss",
+    "counterpart": "rattanakosin-kingdom"
+   },
+   "mirror": {
+    "slug": "rattanakosin-kingdom",
+    "year": 1821,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Both November 1821."
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-kedah",
+    "year": 1842,
+    "type": "gain",
+    "counterpart": "rattanakosin-kingdom"
+   },
+   "mirror": {
+    "slug": "rattanakosin-kingdom",
+    "year": 1842,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "rattanakosin-kingdom",
+    "year": 1842,
+    "type": "vassal_start",
+    "counterpart": "sultanate-of-kedah"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "sultanate-of-kedah has no vassal_start 1842 (owner se-02-b)."
+  },
+  {
+   "event": {
+    "slug": "rattanakosin-kingdom",
+    "year": 1909,
+    "type": "vassal_end",
+    "counterpart": "sultanate-of-kedah"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "sultanate-of-kedah has no vassal_end 1909-7 (owner se-02-b)."
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-kedah",
+    "year": 1892,
+    "type": "gain",
+    "counterpart": "setul-mambang-segara"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-kedah",
+    "year": 1895,
+    "type": "gain",
+    "counterpart": "british-colonial-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Owned by eu-11, not run yet; confidence 1."
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-kedah",
+    "year": 1909,
+    "type": "loss",
+    "counterpart": "rattanakosin-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Setul/Satun stays with Siam in July 1909; rattanakosin-kingdom (se-01) has only the vassal_end of Kedah, no gain of Satun."
+  },
+  {
+   "event": {
+    "slug": "srivijaya",
+    "year": 1139,
+    "type": "loss",
+    "counterpart": "sultanate-of-kedah"
+   },
+   "mirror": {
+    "slug": "sultanate-of-kedah",
+    "year": 1136,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Three years apart: srivijaya (se-02-a) uses Cliopatria's 1139; Kedah Sultanate page 'Conversion to Islam: 1136'. se-02-a should move to 1136."
+  },
+  {
+   "event": {
+    "slug": "namayan",
+    "year": 1571,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1571,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "singhasari",
+    "year": 1222,
+    "type": "vassal_start",
+    "counterpart": "kediri-kingdom"
+   },
+   "mirror": {
+    "slug": "kediri-kingdom",
+    "year": 1222,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "See kediri-kingdom 1222."
+  },
+  {
+   "event": {
+    "slug": "singhasari",
+    "year": 1284,
+    "type": "vassal_start",
+    "counterpart": "early-balinese-kingdoms"
+   },
+   "mirror": {
+    "slug": "early-balinese-kingdoms",
+    "year": 1284,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Type: vassal vs loss; Kertanagara page 'subjected nearby Bali to vassalage'. se-02-a should change its side."
+  },
+  {
+   "event": {
+    "slug": "singhasari",
+    "year": 1285,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Madura, Cliopatria's year, confidence 1."
+  },
+  {
+   "event": {
+    "slug": "singhasari",
+    "year": 1290,
+    "type": "vassal_start",
+    "counterpart": "melayu-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "singhasari",
+    "year": 1292,
+    "type": "loss",
+    "counterpart": "kediri-kingdom"
+   },
+   "mirror": {
+    "slug": "kediri-kingdom",
+    "year": 1292,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "singhasari",
+    "year": 1292,
+    "type": "vassal_end",
+    "counterpart": "kediri-kingdom"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "kediri-kingdom has no vassal_end (it records the 1292 gain)."
+  },
+  {
+   "event": {
+    "slug": "singhasari",
+    "year": 1292,
+    "type": "vassal_end",
+    "counterpart": "early-balinese-kingdoms"
+   },
+   "mirror": {
+    "slug": "early-balinese-kingdoms",
+    "year": 1293,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Type differs; year within one."
+  },
+  {
+   "event": {
+    "slug": "singhasari",
+    "year": 1292,
+    "type": "vassal_end",
+    "counterpart": "melayu-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier."
+  },
+  {
+   "event": {
+    "slug": "srivijaya",
+    "year": 1288,
+    "type": "occupation_start",
+    "counterpart": "singhasari"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "singhasari has no occupation of Palembang; srivijaya's occupation_end (1293) is after singhasari's end (1292)."
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Melayu Kingdom (Dharmasraya, Jambi)",
+   "suggested_slug": "melayu-kingdom",
+   "years": [
+    1275,
+    1347
+   ],
+   "group": "se-02-x"
+  },
+  {
+   "name": "Kingdom of Setul Mambang Segara",
+   "suggested_slug": "setul-mambang-segara",
+   "years": [
+    1808,
+    1909
+   ],
+   "group": "se-03",
+   "note": "Siamese invasion of Kedah page dates Tunku Bisnu's appointment to 1811"
+  },
+  {
+   "name": "Kedah Kingdom (pre-Islamic Kedah)",
+   "suggested_slug": "kedah-kingdom",
+   "years": [
+    634,
+    1136
+   ],
+   "group": "se-03"
+  },
+  {
+   "name": "Kingdom of Kubang Pasu",
+   "suggested_slug": "kubang-pasu",
+   "years": [
+    1839,
+    1839
+   ],
+   "group": "se-03",
+   "note": "end (absorption into Kedah) undated on the pages read"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-se-02-b.md",
+ "problems": [
+  "No page failed to load. No dossier has an unapplied blocking finding; no confidence-3 event was fabricated or mis-dated (22 spot checks).",
+  "Reviewer applied two small fixes: kediri-kingdom /ledger/8 and /keyframe_review/4 notes (quote corrected to the Kediri page's words); sultanate-of-kedah /ledger/5 note (1811 date of the Siamese invasion page added). Both files re-validated without errors and were read back.",
+  "For se-02-a: early-balinese-kingdoms /ledger/1 quotes the Bali Kingdom page as 'integrated Bali into the Singhasari kingdom's territory'; the page reads 'This expedition seems to have integrated Bali into Singhasari's realm'. The vassal reading of the Kertanagara page fits better; and its keyframe early-balinese-kingdoms_1010 overlaps kahuripan's Bali in 1028-1045.",
+  "For se-02-a: mataram-kingdom dates the Wurawari revolt 1016; the Kahuripan and Airlangga pages say 1006. srivijaya's 1139 loss to sultanate-of-kedah should be 1136 (Kedah Sultanate page).",
+  "For se-01: rattanakosin-kingdom has no 1909 gain of Satun (Setul), which Kedah loses to Siam by the Anglo-Siamese Treaty of 1909."
+ ]
+}

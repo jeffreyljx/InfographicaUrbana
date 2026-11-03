@@ -1,0 +1,364 @@
+{
+ "window": "m0300-m0201",
+ "images": [
+  {
+   "year": -300,
+   "bbox": "world, jan1",
+   "seen": "82 states; Cyrenaica hatched as contested with Ptolemy until 300; Maurya and Seleucid blocks right; Japan still Jomon."
+  },
+  {
+   "year": -201,
+   "bbox": "world",
+   "seen": "80 states; as drawn, Rome and Numidia in Greek-city-states and Mauretania tints (the two inverted vassal relations); Xiongnu, Han, Seleucid, Maurya blocks plausible. After the patch the same view has Rome in its own red."
+  },
+  {
+   "year": -203,
+   "bbox": "98,20,128,45 +cliopatria",
+   "seen": "Han block matches Cliopatria; Yan (Liaoning), Linjiang, Western Chu contested, Huainan, Minyue, Nanyue, Au Lac right; Kingdom of Han's land labelled Han dynasty a year early; han-2 in the same red as Han."
+  },
+  {
+   "year": -202,
+   "bbox": "98,20,128,45 +cliopatria",
+   "seen": "Han dynasty swallows Yan, Zhao, Qi, Chu, Liang as direct land (their vassal kings have no dossiers; same as Cliopatria); Changsha constituent and Huainan inside; fine as drawn."
+  },
+  {
+   "year": -216,
+   "bbox": "-10,30,30,47 +cliopatria",
+   "seen": "WRONG before patch: Rome's Etruria, Umbria, Sardinia, Corsica, Sicily and Spanish land in the pale blue of greek-city-states ('vassal of greek-city-states' since 272). Contest stripes over Carthaginian Iberia and Hannibal's Italy as the dossiers have them. After patch: Rome red, Etruria filled by the -216 override."
+  },
+  {
+   "year": -216,
+   "bbox": "8,36,19,46",
+   "seen": "Italy before and after the Rome fix (-262, -250, -216, -212 also looked at after): Rome red with Umbri, Samnites, Lucanians in vassal tint, Capua independent; no holes after the keyframe override."
+  },
+  {
+   "year": -225,
+   "bbox": "22,24,75,46 +cliopatria",
+   "seen": "Matches Cliopatria: Seleucid, Parthia, Greco-Bactria, Atropatene, Armenia, Pontus, Pergamon shrunk to 131 cells after Achaeus; fine as drawn."
+  },
+  {
+   "year": -230,
+   "bbox": "60,5,95,36 +cliopatria",
+   "seen": "Maurya fills the subcontinent as in Cliopatria; Cholas, Pandyas, Anuradhapura right; fine as drawn."
+  },
+  {
+   "year": -204,
+   "bbox": "22,20,40,33 +cliopatria",
+   "seen": "Ankhwennefer's Theban kingdom a block in the Thebaid inside the Ptolemaic land, Kush south; fine as drawn."
+  },
+  {
+   "year": -202,
+   "bbox": "-12,28,12,38",
+   "seen": "WRONG before patch: Kingdom of Numidia in the olive tint of Mauretania (reversed vassal). After patch: Numidia in its own blue, Mauretania in the Numidian tint."
+  },
+  {
+   "year": -204,
+   "bbox": "98,25,125,42",
+   "seen": "WRONG before patch: Guanzhong, Yong, Sai, Zhai (Shaanxi) and Yin empty for the Han kingdom in 204; han-2 independent in Han's red. After patch: Han holds Shaanxi, han-2 in vassal tint."
+  },
+  {
+   "year": -220,
+   "bbox": "100,20,126,42",
+   "seen": "WRONG before patch: Zhejiang nobody's 222-219 and 66-cell Han and 58-cell Wei enclaves inside Qin until 209. After patch: Qin holds Zhejiang, no Han or Wei enclave 230-209."
+  }
+ ],
+ "issues": [
+  {
+   "what": "roman-republic drawn as the vassal of greek-city-states from 272: greek-city-states/ledger/58 (vassal_start roman-republic) is the reverse mirror of roman-republic/ledger/26; both record it, so the compiler takes the party whose keyframe holds the land as the vassal and every Roman cell, including all later gains, is drawn in the Greek cities' pale blue until the vassal_ends of 90.",
+   "years": [
+    -272,
+    -90
+   ],
+   "slugs": [
+    "roman-republic",
+    "greek-city-states"
+   ],
+   "decision": "patched",
+   "patch": "events/0, events/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Roman_expansion_in_Italy"
+   ]
+  },
+  {
+   "what": "kingdom-of-numidia drawn as the vassal of mauretania (mauretania/ledger/1 vassal_start names Numidia as the vassal; the page has Bokkar of Morocco as Masinissa's vassal). Numidia tinted olive from 202 to the end of the window.",
+   "years": [
+    -203,
+    -148
+   ],
+   "slugs": [
+    "kingdom-of-numidia",
+    "mauretania"
+   ],
+   "decision": "patched",
+   "patch": "events/2, events/3, events/4",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Masinissa"
+   ]
+  },
+  {
+   "what": "han-2 (Hán, Han Xin of Hán, made king by Liu Bang in 205) drawn as an independent state in the same red as Han; size rule gave it the cells against Cliopatria's Han shapes.",
+   "years": [
+    -205,
+    -203
+   ],
+   "slugs": [
+    "han-2",
+    "kingdom-of-han"
+   ],
+   "decision": "patched",
+   "patch": "rulings/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Xin_of_Han"
+   ]
+  },
+  {
+   "what": "Roman keyframe -216 (216-213) holds only 65 of 153 cells of Tuscany, Umbria and the Marche; once the Greek tint stopped hiding it the Etruscan land went to nobody in the year of Cannae.",
+   "years": [
+    -216,
+    -213
+   ],
+   "slugs": [
+    "roman-republic"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Second_Punic_War"
+   ]
+  },
+  {
+   "what": "kingdom-of-han keyframe for 204 (han_-206) drops Shaanxi and Yin that the 205 keyframe holds (627 Shaanxi cells to nobody for one year, back in 203).",
+   "years": [
+    -204,
+    -204
+   ],
+   "slugs": [
+    "kingdom-of-han"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Chu%E2%80%93Han_Contention"
+   ]
+  },
+  {
+   "what": "qin keyframe -222 marked ok but holds 82 of Zhejiang's 484 cells; the 222 Wuyue gain is stripped and Zhejiang is nobody's until the Qin dynasty shape of 218.",
+   "years": [
+    -222,
+    -219
+   ],
+   "slugs": [
+    "qin"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Qin%27s_wars_of_unification"
+   ]
+  },
+  {
+   "what": "Han (Warring States) 66 cells and Wei 58 cells stay drawn in Henan inside Qin for 22 and 16 years after the conquests of 230 and 225 (han/ledger/15 is applied as qin's gain, which covers 16 of 82 cells; wei's 225 keyframe puts the Daliang disc back).",
+   "years": [
+    -230,
+    -209
+   ],
+   "slugs": [
+    "han",
+    "wei",
+    "qin",
+    "qin-dynasty"
+   ],
+   "decision": "patched",
+   "patch": "events/5, events/6, rulings/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Qin%27s_wars_of_unification"
+   ]
+  },
+  {
+   "what": "Ptolemaic keyframe -291 removes 2157 Libyan desert cells (Al Kufrah 1404) that cyrenaica/ledger/6 gave at 300; the Pentapolis stays Ptolemaic until Magas' kingdom of 276 as the dossier says.",
+   "years": [
+    -291,
+    -291
+   ],
+   "slugs": [
+    "ptolemaic-kingdom",
+    "cyrenaica"
+   ],
+   "decision": "fine as drawn",
+   "pages": []
+  },
+  {
+   "what": "Carthage / Masaesyli (982 cell-years), Carthage / Celtiberians, Bruttii / Greek city-states, Epirus / Antigonid conflicts: the smaller state wins, as the dossiers have them.",
+   "years": [
+    -300,
+    -201
+   ],
+   "slugs": [
+    "carthage",
+    "masaesyli",
+    "celtiberians",
+    "bruttii"
+   ],
+   "decision": "fine as drawn",
+   "pages": []
+  },
+  {
+   "what": "Pergamon keyframe -225 trims 844 cells two years before the 223 loss; the 227 gain region ('Seleucid Asia Minor north of the Taurus', tenuous) resolves as far as Sanliurfa, so the snap is the more sensible picture.",
+   "years": [
+    -225,
+    -224
+   ],
+   "slugs": [
+    "kingdom-of-pergamon",
+    "seleucid-empire"
+   ],
+   "decision": "fine as drawn",
+   "pages": []
+  },
+  {
+   "what": "Greco-Bactria drawn as Seleucid vassal from 209 (Bactra besieged 208-206, peace 206, 'nominal obedience' in the Seleucid ledger); judgement call, left.",
+   "years": [
+    -209,
+    -201
+   ],
+   "slugs": [
+    "greco-bactrian-kingdom",
+    "seleucid-empire"
+   ],
+   "decision": "left: pages silent",
+   "pages": []
+  },
+  {
+   "what": "Japan blank from 300: jomon-period ends 300 with successors yayoi-period and epi-jomon that have no dossier.",
+   "years": [
+    -300,
+    -201
+   ],
+   "slugs": [
+    "jomon-period"
+   ],
+   "decision": "dossier request",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Yayoi_period"
+   ]
+  },
+  {
+   "what": "kingdom-of-han ends -203 but han-dynasty starts -202, so the land is labelled Han dynasty a year early (kingdom-of-han/ledger/12).",
+   "years": [
+    -203,
+    -203
+   ],
+   "slugs": [
+    "kingdom-of-han",
+    "han-dynasty"
+   ],
+   "decision": "dossier request",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Xin_of_Han"
+   ]
+  },
+  {
+   "what": "Spurious Roman enclave of 7 to 26 cells in Oriental Morocco (Cliopatria bleed in the Roman shapes -212 to -202); the Han vassal kings of 202-201 (Chu, Liang, Zhao, Qi) have no dossiers and are drawn as direct Han land.",
+   "years": [
+    -212,
+    -201
+   ],
+   "slugs": [
+    "roman-republic",
+    "han-dynasty"
+   ],
+   "decision": "left: pages silent",
+   "pages": []
+  },
+  {
+   "what": "Qin -208 snap drops Guangxi (696 cells) and Inner Mongolia (535); Guangdong and Guangxi are nobody's from 207 until Nanyue 204; Au Lac wins Guangxi cells against Qin 212-209. Not checked against pages.",
+   "years": [
+    -208,
+    -205
+   ],
+   "slugs": [
+    "qin-dynasty",
+    "nanyue",
+    "au-lac"
+   ],
+   "decision": "left: pages silent",
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/m0300-m0201.json",
+ "patch_entries": {
+  "events": 7,
+  "keyframe_overrides": 3,
+  "rulings": 2
+ },
+ "patch_check": "all applied: --check-patch 12 ok, 0 rejected; --trial from the mounted file applied all 12 (rulings/0 settled 402 cell-years, rulings/1 33; conflicts 196 pairs 21000 cell-years -> 191 pairs 19313)",
+ "colour_clashes": [
+  {
+   "a": "han-2",
+   "b": "kingdom-of-han",
+   "years": [
+    -206,
+    -203
+   ],
+   "note": "identical #d24e3e (distance 0.000). han-2 is Han Cheng and Han Xin's Hán, kingdom-of-han is Liu Bang's Han; colours.json README calls han-2 'Liu Bang's Kingdom of Han'. rulings/0 draws han-2 in the vassal tint 205-203, which helps but not 206."
+  },
+  {
+   "a": "han-2",
+   "b": "han-dynasty",
+   "years": [
+    -202,
+    -201
+   ],
+   "note": "identical #d24e3e (distance 0.000), shared border 102 cell edges; han-2 as an independent Hán state beside Han dynasty."
+  },
+  {
+   "a": "western-chu",
+   "b": "yin",
+   "years": [
+    -206,
+    -205
+   ],
+   "note": "look alike in the render (cyan, bordering); the packet lists no pair under 0.08 for them, so not a flagged pair."
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "greek-city-states",
+   "what": "Delete ledger 58 (-272 vassal_start roman-republic) and ledger 72 (-90 vassal_end roman-republic), the reverse mirrors of roman-republic/ledger/26 and /133. With them gone patch events/0 and /1 are redundant (harmless).",
+   "why": "They make the compiler draw Rome as a vassal of the Greek cities from 272 to 90.",
+   "source": "https://en.wikipedia.org/wiki/Roman_expansion_in_Italy"
+  },
+  {
+   "slug": "mauretania",
+   "what": "Move ledger 1 (-203 vassal_start counterpart kingdom-of-numidia) and ledger 3 (-148 vassal_end) to kingdom-of-numidia with counterpart mauretania (the vassal), year 202 for the start. Then patch events/2, /3, /4 can go.",
+   "why": "A vassal_start in a dossier makes the counterpart the vassal; Bokkar was Masinissa's vassal, not the reverse.",
+   "source": "https://en.wikipedia.org/wiki/Masinissa"
+  },
+  {
+   "slug": "yayoi-period",
+   "what": "New dossier, Kyushu, Shikoku and Honshu south of northern Tohoku, from -300 to 300 (jomon-period/ledger/6 already names it as successor); also epi-jomon for Hokkaido and northern Tohoku (jomon-period/ledger/5; that page was not opened).",
+   "why": "Japan is blank from 300 BCE.",
+   "source": "https://en.wikipedia.org/wiki/Yayoi_period"
+  },
+  {
+   "slug": "kingdom-of-han",
+   "what": "End the dossier at -202 (dissolve -202) or start han-dynasty at -203: the realm passes to han-dynasty a year early.",
+   "why": "Xin of Han page: Hán Xin 'became a vassal of the Hàn Empire after Liu Bang defeated Xiang Yu in 202 BC'; the Han empire dates from 202.",
+   "source": "https://en.wikipedia.org/wiki/Xin_of_Han"
+  },
+  {
+   "slug": "qin",
+   "what": "Widen qin/ledger -230 gain han to Han's whole shape (the region of han/ledger/15); patch events/5 does it now.",
+   "why": "Leaves a 66-cell Han shape drawn inside Qin for 22 years.",
+   "source": "https://en.wikipedia.org/wiki/Qin%27s_wars_of_unification"
+  }
+ ],
+ "pages_opened": 7,
+ "problems": [
+  "Cross-window reach: events/0 and events/1 (dated -272) change the draw of Rome through -90 (m0200-m0101 and m0100-m0001); the dossier vassal_ends of -90 then close nothing. events/2 to /4 reach -148 (m0200-m0101): Numidia is its own colour and Mauretania the vassal until mauretania/ledger/3.",
+  "Side effect to check in m0200-m0101 and m0100-m0001: the Greek tint was hiding that the Roman ledger holds more land than Cliopatria's Roman shapes. With direct status the keyframe snaps trim it (e.g. roman-republic_-206 now shows removed 410 in the trial). In this window only 24 Umbria/Marche cells -212..-204 and 82 cells at -225 go to nobody.",
+  "events/5 and /6 and the wei|qin ruling resolve inside the window (-230, -225, -225..-219).",
+  "Page budget: 7 pages opened (Masinissa, Roman expansion in Italy, Xin of Han, Second Punic War, Yayoi period, Chu-Han Contention, Qin's wars of unification). Images: about 20 renders, more than the 10 the brief names, because each fix needed a before and after.",
+  "hierarchy: none found wrong; the nine rows overlapping the window (cyrenaica, boii, carthage, kingdom-of-numidia, lucanians, picentes, samnites, syracuse, umbri, changsha-kingdom) agree with their dossiers."
+ ]
+}

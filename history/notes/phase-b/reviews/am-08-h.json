@@ -1,0 +1,1156 @@
+{
+ "batch_id": "am-08-h",
+ "verdicts": [
+  {
+   "slug": "second-mexican-empire",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/2 (was /ledger/0)",
+     "what": "The Monterrey occupation_start had no month, so it sorted before the found event of April 1864, and its note said no page dated the capture.",
+     "why": "Second French intervention in Mexico page: 'Vidaurri's forces captured Monterrey on 15 August' (1864); the Federated Republic dossier's mirror (L38) is 1864-08.",
+     "fix": "Set month 8, source to the Second French intervention page (already in sources[]), rewrote the note with the quote; the event now sits after the April 1864 events. Re-validated: 0 errors.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/1/correction and /keyframe_review/2/correction",
+     "what": "The 1865 and 1866 corrected extents leave out the ports the pages say the Imperialists held, so the ledger's 1866 losses of Guaymas (/ledger/8), Matamoros (/ledger/10) and Mazatlán (/ledger/11) take away land the Empire is never drawn holding.",
+     "why": "Gazetteer: the intersection of the K1 correction with a 60 km radius round Mazatlán, Guaymas and Matamoros is 0 cells (Tampico 4 cells out of about 45). Second French intervention page: 'Castagny went to Mazatlán to follow up on the Imperialist victory there from the previous November' (November 1864); Negrete 'retreated from Matamoros after facing Tomás Mejía and French troops' (1865); 'with Castagny hoping to capture Guaymas' (1865); 'The Mexican Gulf port of Tampico was captured by the French Navy on 11 August' (1863). K2's note says the 1866 losses 'trim' the shape, which they cannot do for land it does not hold.",
+     "fix": "Add Mazatlán, Matamoros, Guaymas and Tampico (60 km radii, as in the losses) to the 1865 and 1866 corrections, each with an occupation_start (counterpart federated-republic-of-mexico) at the date the page gives (Mazatlán 1864-11, Tampico 1863-08 or the found event, Matamoros and Guaymas 1865) and turn the 1866 losses of those ports into the matching occupation_end, so the pairs validate; or, if the extent is kept, delete those losses.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/16/region",
+     "what": "The dissolve region of June 1867 still includes Querétaro, which the ledger loses in May 1867 (/ledger/15).",
+     "why": "Second French intervention page: 'on the night of 14 May, he opened the gates of Querétaro to the Republicans'; /ledger/17 (occupation_end, same month) already omits Querétaro.",
+     "fix": "Drop the Santiago de Querétaro radius from the dissolve region (Mexico City and Veracruz only).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (no event)",
+     "what is missing": "The Empire as a client of France 1864-1867: the infobox says 'Independent monarchy, client state of France'; the vassal tie belongs in the second-french-empire ledger (eu-20, not written yet), from April 1864 to the French evacuation (Bazaine left Mexico City 5 February 1867).",
+     "page to try": "https://en.wikipedia.org/wiki/Second_Mexican_Empire"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Imperial extent in Puebla, Guanajuato, Michoacán, Yucatán and the Pacific coast in 1865 rests on cities named on two pages (page budget 2/2).",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Quer%C3%A9taro"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2 (Monterrey, 1864)",
+     "page": "https://en.wikipedia.org/wiki/Second_French_intervention_in_Mexico",
+     "result": "mis-dated",
+     "note": "page dates it 15 August 1864; month added (fix applied)"
+    },
+    {
+     "where": "/ledger/4 (Chihuahua, 1865-08)",
+     "page": "https://en.wikipedia.org/wiki/Second_French_intervention_in_Mexico",
+     "result": "confirmed",
+     "note": "'He entered Chihuahua City ... on 15 August'"
+    },
+    {
+     "where": "/ledger/5 (Tampico, 1866-07)",
+     "page": "https://en.wikipedia.org/wiki/Second_French_intervention_in_Mexico",
+     "result": "confirmed",
+     "note": "'The French held the port but surrendered in July'"
+    },
+    {
+     "where": "/ledger/7 (Saltillo, 1866-08)",
+     "page": "https://en.wikipedia.org/wiki/Second_French_intervention_in_Mexico",
+     "result": "confirmed",
+     "note": "'Monterrey was evacuated by the Imperialists on 25 July, and Saltillo on 4 August'"
+    },
+    {
+     "where": "/ledger/11 (Mazatlán, 1866-11)",
+     "page": "https://en.wikipedia.org/wiki/Second_French_intervention_in_Mexico",
+     "result": "confirmed",
+     "note": "'On 13 November, the French completed the evacuation of Mazatlán'"
+    },
+    {
+     "where": "/ledger/13 (Guadalajara, 1866-12)",
+     "page": "https://en.wikipedia.org/wiki/Second_French_intervention_in_Mexico",
+     "result": "confirmed",
+     "note": "'abandoned by the French on 12 December 1866'"
+    },
+    {
+     "where": "/ledger/15 (Querétaro, 1867-05)",
+     "page": "https://en.wikipedia.org/wiki/Second_French_intervention_in_Mexico",
+     "result": "confirmed",
+     "note": "'on the night of 14 May'"
+    },
+    {
+     "where": "/ledger/16 (dissolve, 1867-06)",
+     "page": "https://en.wikipedia.org/wiki/Second_Mexican_Empire",
+     "result": "confirmed",
+     "note": "'formally ended on 19 June 1867'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 2006419,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The infobox gives no area (checked). Cliopatria's whole-country shape is a claim; all four keyframes are adjust to the held extent, and the note says so."
+   }
+  },
+  {
+   "slug": "republic-of-colombia",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/4 and /ledger/5",
+     "what": "The Peruvian seizure of Leticia is coded only as a contest; the Peru dossier codes it as an occupation of Colombian land (republic-of-peru L30 occupation_start 1932-09, L31 occupation_end 1933-05), and an occupation must be recorded by the owner with the roles reversed.",
+     "why": "Colombia-Peru War page: 'In the early hours of September 1, 1932, what is now known as the Leticia Incident took place'; 'lasted from September 1, 1932, to May 24, 1933'. Leticia page: 'The conflict lasted until May 1933, when a cease-fire negotiated by the League of Nations went into effect'; 'The League finally awarded the disputed area to Colombia in June 1934.' Schema: 'the owner records the same event with the roles reversed'.",
+     "fix": "Add occupation_start 1932-09 and occupation_end 1933-05 (counterpart republic-of-peru, the Leticia region already used), sourced to the Colombia-Peru War page; keep the contest pair only if fighting outside Leticia is wanted (it then ends 1933-05 with the cease-fire, not 1934-06), and say in the note that the League commission held Leticia until June 1934.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/wars/0",
+     "what is missing": "Thousand Days' War (1899-1902): no zones; the Colombia page dates the war and its end in 1902 only.",
+     "page to try": "https://en.wikipedia.org/wiki/Thousand_Days%27_War"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Leticia handover date (1930) and the 1922 treaty text: the author's two failed URLs misspell the title (Salómon); the article is 'Salomón–Lozano Treaty'.",
+     "page to try": "https://en.wikipedia.org/wiki/Salom%C3%B3n%E2%80%93Lozano_Treaty"
+    },
+    {
+     "where": "/ledger (no events)",
+     "what is missing": "Venezuelan frontier (1891 Spanish award, 1922 Swiss award, 1941 treaty) and Ecuadorian frontier (1916 treaty); Cliopatria shows no change, so these are dates for the certainty notes, not border moves.",
+     "page to try": "https://en.wikipedia.org/wiki/Colombia%E2%80%93Venezuela_border"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1 (split, 1903-11)",
+     "page": "https://en.wikipedia.org/wiki/Separation_of_Panama_from_Colombia",
+     "result": "confirmed",
+     "note": "'formalized on 3 November 1903'"
+    },
+    {
+     "where": "/ledger/2 (Leticia gain, 1928)",
+     "page": "https://en.wikipedia.org/wiki/Leticia,_Amazonas",
+     "result": "confirmed",
+     "note": "'despite the treaty's ratification in 1928' (no month)"
+    },
+    {
+     "where": "/ledger/4 (contest_start, 1932-09)",
+     "page": "https://en.wikipedia.org/wiki/Colombia%E2%80%93Peru_War",
+     "result": "confirmed",
+     "note": "'September 1, 1932'"
+    },
+    {
+     "where": "/ledger/5 (contest_end, 1934-06)",
+     "page": "https://en.wikipedia.org/wiki/Leticia,_Amazonas",
+     "result": "confirmed",
+     "note": "'awarded the disputed area to Colombia in June 1934'; the cease-fire is May 1933"
+    },
+    {
+     "where": "/ledger/3 (gain from Brazil, 1928)",
+     "page": "https://en.wikipedia.org/wiki/Brazil%E2%80%93Colombia_border",
+     "result": "confirmed",
+     "note": "the 1928 treaty is on the page; which side gained is not (confidence 2 is right)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1141748,
+    "infobox_year": 2024,
+    "cliopatria_km2": 1149958,
+    "ratio": 1.007,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "mexico",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/wikidata",
+     "what": "identity.wikidata is Q5062192, which is the Centralist Republic's item, as the dossier's own notes say.",
+     "why": "polities.csv: centralist-mexico 'Centralist Republic of Mexico', Q5062192; the Mexico row borrows it. The notes field: 'the Q5062192 id is the Centralist Republic's and should not be used for the state page link'.",
+     "fix": "Set identity.wikidata to Mexico's own item (Q96, to be confirmed by whoever can reach Wikidata) or to null.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/4/region, /ledger/5/region, /wars/0/zones/0",
+     "what": "The Maderista zone is drawn as the whole state of Chihuahua (about 247,000 km2), against the 28,831 km2 zone the keyframe note describes and the 34,589 km2 Maderistas row.",
+     "why": "keyframe_review/5 note: 'Cliopatria cuts a Maderista zone of 28,831 km2 in Chihuahua'; shapes.csv maderistas_1911 34,588.9 km2, bbox -107.86..-105.25, 27.48..29.41.",
+     "fix": "Use {\"cliopatria\": \"Maderistas\", \"year\": 1911} (or the minus of Mexico 1912 and Mexico 1911) with the same text in both events and the war zone.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger (missing events)",
+     "what": "The US occupation of Veracruz in 1914 is on two pages the author opened but is not in the ledger; the notes say the revolution pages 'name no zones'.",
+     "why": "Mexican Revolution page: 'the seizure and occupation of the port of Veracruz by U.S. Marines and sailors' (April 1914), 'a seven-month stalemate', 'American forces eventually left Veracruz in the hands of the Carrancistas'; Mexico page: 'Wilson ordered troops to occupy the strategic port of Veracruz in 1914.'",
+     "fix": "Add occupation_start 1914-04 and occupation_end 1914-11 (counterpart united-states-of-america, {\"place\": \"Veracruz\", \"km\": 30}), the end month from the 'seven-month' span at confidence 2; the Pershing expedition (March 1916 to early 1917, Chihuahua) may be added the same way.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/8 and /ledger/9",
+     "what": "The 1970 and 2009 Rio Grande exchanges are coded one way only.",
+     "why": "Mexico-United States border page: 1970 treaty 'transferred an area of Mexican territory to the U.S., near Presidio and Hidalgo' and 'the U.S. ceded other land to Mexico, including five parcels near Presidio'; 24 November 2009 'the U.S. ceded 6 islands in the Rio Grande to Mexico' while 'Mexico ceded 3 islands and 2 bancos to the U.S.'",
+     "fix": "Add a 1970 gain (counterpart united-states-of-america, {\"place\": \"Ojinaga\", \"km\": 10} or the Rio Grande region, the page's words) and a 2009-11 loss (3 islands and 2 bancos). Both are below one cell; confidence 2.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "Maderista loss is confidence 1: the page dates no capture and no extent before May 1911.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Ciudad_Ju%C3%A1rez_(1911)"
+    },
+    {
+     "where": "/keyframe_review/7",
+     "what is missing": "1913-1919 is the whole country: Villa's Chihuahua (governor 1914), Zapata's Morelos and the Convention's capital (December 1914) are on the Mexican Revolution page without extents.",
+     "page to try": "https://en.wikipedia.org/wiki/Convention_of_Aguascalientes"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "The Caste War: 'The Caste War continued to flare up in Yucatán' (Restored Republic page); the Maya state of Chan Santa Cruz held eastern Yucatán until 1901 and has no row or dossier.",
+     "page to try": "https://en.wikipedia.org/wiki/Caste_War_of_Yucat%C3%A1n"
+    },
+    {
+     "where": "/ledger (no event)",
+     "what is missing": "Belize-Mexico treaty (1893) and Clipperton (1931; below the grid).",
+     "page to try": "https://en.wikipedia.org/wiki/Belize%E2%80%93Mexico_border"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0 (found, 1867-07)",
+     "page": "https://en.wikipedia.org/wiki/Restored_Republic",
+     "result": "confirmed",
+     "note": "'President Juárez entered the city on the morning of July 15'"
+    },
+    {
+     "where": "/ledger/1 (loss, 1873)",
+     "page": "https://en.wikipedia.org/wiki/Mexico%E2%80%93United_States_border",
+     "result": "confirmed",
+     "note": "'By 1873 ... cut off approximately 2.4 square kilometers'"
+    },
+    {
+     "where": "/ledger/3 (gain Motozintla, 1882-09)",
+     "page": "https://en.wikipedia.org/wiki/Guatemala%E2%80%93Mexico_border",
+     "result": "confirmed",
+     "note": "'September 27 of 1882'; 'Mexico received the county of Motozintla'"
+    },
+    {
+     "where": "/ledger/5 (gain from Maderistas, 1911-05)",
+     "page": "https://en.wikipedia.org/wiki/Mexican_Revolution",
+     "result": "confirmed",
+     "note": "'signed on 21 May 1911'; 'Díaz resigned in May 1911'"
+    },
+    {
+     "where": "/ledger/9 (gain, 2009-11)",
+     "page": "https://en.wikipedia.org/wiki/Mexico%E2%80%93United_States_border",
+     "result": "confirmed",
+     "note": "'On November 24, 2009, the U.S. ceded 6 islands in the Rio Grande to Mexico' (the reverse transfer is missing, see fixes)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1972550,
+    "infobox_year": 2024,
+    "cliopatria_km2": 1995099,
+    "ratio": 1.011,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "brazilian-republic",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/4/region",
+     "what": "The land Brazil gave Bolivia was a 60 km radius round -65.4,-10.0 (about 11,300 km2), almost four times the page's figure, and did not match Bolivia's mirror.",
+     "why": "Treaty of Petrópolis page: 'over 3,000 km2 of Brazilian territory between the Abuna River and Madeira River'; bolivia L16 uses {\"place\": \"Abunã\", \"km\": 31}.",
+     "fix": "Region set to {\"place\": \"Abunã\", \"km\": 31, \"country\": \"Brazil\"} with the same text, reviewer remark added to the note. Re-validated: 0 errors, 0 warnings.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/7",
+     "what": "A 1928 gain of one cell from Peru near Tabatinga cites the Brazil-Colombia border page, which says nothing about Peru's land; the Peru dossier has no matching loss. Mexico's dossier treats changes of this size as grid noise with no event.",
+     "why": "Brazil-Colombia border page: the only mention of Peru is the phrase 'Brazilian-Peruvian antecedent'; republic-of-peru has no 1928 event with brazilian-republic.",
+     "fix": "Delete the event and say in /keyframe_review/4 that the cell is grid noise, or keep it at confidence 1 and send the mirror to republic-of-peru; not blocking.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/5",
+     "what is missing": "The Roraima gain of 1904 is confidence 1: the page gives the award (15 June 1904) but not what Brazil kept.",
+     "page to try": "https://en.wikipedia.org/wiki/Pirara"
+    },
+    {
+     "where": "/ledger/10, /ledger/11, /ledger/12",
+     "what is missing": "1936 Porto Murtinho cell changes (Paraguay, Bolivia) are confidence 1 with no page; neither neighbour's ledger has them.",
+     "page to try": "https://en.wikipedia.org/wiki/Brazil%E2%80%93Paraguay_border"
+    },
+    {
+     "where": "/ledger/9, /ledger/17",
+     "what is missing": "Renames of 1932 and 1967 are confidence 1 (Cliopatria's labels; the dates of the 1934 and 1967 constitutions are not opened).",
+     "page to try": "https://en.wikipedia.org/wiki/Constitution_of_Brazil"
+    },
+    {
+     "where": "/ledger (no events)",
+     "what is missing": "Amapá (1 December 1900 Swiss award against France) and Palmas (1895 Cleveland award against Argentina) are inside the 1890 shape with no event; the Peru treaty of 1909 is not opened.",
+     "page to try": "https://en.wikipedia.org/wiki/Argentina%E2%80%93Brazil_border"
+    },
+    {
+     "where": "/wars",
+     "what is missing": "Rebel-held land of the Federalist Revolution (1893-1895), Canudos (1896-1897), the Contestado (1912-1916) and the São Paulo Constitutionalist zone of 1932 (zones: []) is not coded.",
+     "page to try": "https://en.wikipedia.org/wiki/Constitutionalist_Revolution"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "The Acrean rebels (Republic of Acre, 1899-1903) are the counterpart Brazil occupied in 1903; no dossier (author's counterparts_needing_dossiers).",
+     "page to try": "https://en.wikipedia.org/wiki/Acre_War"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3 (gain Acre, 1903-11)",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Petr%C3%B3polis",
+     "result": "confirmed",
+     "note": "'signed on November 17, 1903'; 'the territory of Acre (191,000 km2)'"
+    },
+    {
+     "where": "/ledger/4 (loss to Bolivia, 1903-11)",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Petr%C3%B3polis",
+     "result": "confirmed",
+     "note": "date confirmed; region over-drawn, fixed"
+    },
+    {
+     "where": "/ledger/1 (occupation, 1903)",
+     "page": "https://en.wikipedia.org/wiki/Acre_War",
+     "result": "confirmed",
+     "note": "Rio Branco 'ordered the Acre occupation' after 27 January 1903"
+    },
+    {
+     "where": "/ledger/5 (Roraima, 1904-06)",
+     "page": "https://en.wikipedia.org/wiki/Brazil%E2%80%93Guyana_border",
+     "result": "confirmed",
+     "note": "award 'June 15, 1904', 'ruled in favor of Britain'; Brazil's share not given (confidence 1 is honest)"
+    },
+    {
+     "where": "/ledger/16 (rename, 1964-04)",
+     "page": "https://en.wikipedia.org/wiki/Brazil",
+     "result": "confirmed",
+     "note": "'deposed in April 1964 by a coup'"
+    },
+    {
+     "where": "/ledger/19 (rename, 1988-10)",
+     "page": "https://en.wikipedia.org/wiki/Brazil",
+     "result": "confirmed",
+     "note": "'promulgated on 5 October 1988'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 8510346,
+    "infobox_year": 2024,
+    "cliopatria_km2": 8530587,
+    "ratio": 1.002,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "cuban-nationalists",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "No page gives the extent of rebel-held land ('the Republic lacked control over stable territory'); the 1897 sentence 'the liberation army maintained a privileged position in Camagüey and Oriente, where the Spanish controlled only a few cities' supports the shape but not a border.",
+     "page to try": "https://en.wikipedia.org/wiki/Spanish%E2%80%93American_War"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "No seat: the Council of Government 'operated in the field, relocating frequently'; the Camagüey dot is a reading (the author says so).",
+     "page to try": "https://en.wikipedia.org/wiki/Republic_of_Cuba_in_Arms"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0 (found, 1895-02)",
+     "page": "https://en.wikipedia.org/wiki/Cuban_War_of_Independence",
+     "result": "confirmed",
+     "note": "'The insurrection began on February 24, 1895'; Oriente"
+    },
+    {
+     "where": "/ledger/1 (gain Camagüey, 1895-06)",
+     "page": "https://en.wikipedia.org/wiki/Cuban_War_of_Independence",
+     "result": "confirmed",
+     "note": "'By the end of June, all of Camagüey was at war'"
+    },
+    {
+     "where": "/ledger/3 (contest_start, 1896-01)",
+     "page": "https://en.wikipedia.org/wiki/Cuban_War_of_Independence",
+     "result": "confirmed",
+     "note": "'arrived at the westernmost tip of the island on January 22, 1896'"
+    },
+    {
+     "where": "/ledger/4 (contest_end, 1898-12)",
+     "page": "https://en.wikipedia.org/wiki/Cuban_War_of_Independence",
+     "result": "confirmed",
+     "note": "'On December 10, 1898, the United States and Spain signed the Treaty of Paris'"
+    },
+    {
+     "where": "/ledger/5 (dissolve, 1899-04)",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Cuba_in_Arms",
+     "result": "confirmed",
+     "note": "'the dissolution of the Representative Assembly on April 4, 1899'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 56839,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the Republic of Cuba in Arms page; the shape is Oriente and Camagüey, consistent with the page's 1897 sentence."
+   },
+   "tried": "Years against two pages (all five confirmed), the Spain counterpart against Cliopatria's rows (Kingdom of Spain holds Cuba after 1879, the Spanish Empire row ends 1879), keyframe corrections against the shape cell counts, capital inside the bbox, certainty span. The Spain slug conflict with the spanish-empire dossier and the US counterpart are other dossiers' problems (cross_checks)."
+  },
+  {
+   "slug": "republic-of-cuba",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1",
+     "what": "The Guantánamo lease was a 30 km radius round Guantánamo city (about 2,800 km2, centred inland, 20 km from the base) at confidence 1 with no month, sourced to a page that gives no year.",
+     "why": "Guantanamo Bay Naval Base page: agreement 'signed 16 February 1903; 23 February 1903' (second part 2 July 1903); the base lies 'on 45 square miles (117 km2) of land and water on the shore of Guantánamo Bay'. The gazetteer has the Natural Earth unit 'USNB Guantanamo Bay'.",
+     "fix": "Set month 2, region {\"country\": \"USNB Guantanamo Bay\"} with the page's words, source the Guantanamo Bay Naval Base page (added to sources[], accessed 2026-10-19), confidence 3, note rewritten. Re-validated: 0 errors, 0 warnings. The US dossier's mirror (L89, 1903-12, 30 km radius) should take the same region.",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (no event)",
+     "what is missing": "Sugar Intervention 1917-1922: 'in 1917, U.S. Marines returned to Cuba to quell a revolution' (Republic of Cuba page), with no place; an occupation of part of Oriente if a page names it.",
+     "page to try": "https://en.wikipedia.org/wiki/Sugar_Intervention"
+    },
+    {
+     "where": "/ledger (no event)",
+     "what is missing": "Client state of the United States 1902-1934 ('From 1902 to 1934, Cuban and U.S. law included the Platt Amendment'; Treaty of Relations 29 May 1934): by the schema the vassal_start/vassal_end belong in the US ledger (am-07), counterpart republic-of-cuba.",
+     "page to try": "https://en.wikipedia.org/wiki/Platt_Amendment"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0 (found, 1902-05)",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Cuba_(1902%E2%80%931959)",
+     "result": "confirmed",
+     "note": "'Cuba gained formal independence on 20 May 1902, as the Republic of Cuba'"
+    },
+    {
+     "where": "/ledger/2 (occupation_start, 1906-09)",
+     "page": "https://en.wikipedia.org/wiki/Second_Occupation_of_Cuba",
+     "result": "confirmed",
+     "note": "Provisional Government 29 September 1906"
+    },
+    {
+     "where": "/ledger/3 (occupation_end, 1909-01)",
+     "page": "https://en.wikipedia.org/wiki/Second_Occupation_of_Cuba",
+     "result": "confirmed",
+     "note": "Gómez took office 28 January 1909; 'last American forces leaving ... on 6 February 1909' is in the note"
+    },
+    {
+     "where": "/ledger/4 (gain Isle of Pines, 1925-03)",
+     "page": "https://en.wikipedia.org/wiki/Hay%E2%80%93Quesada_Treaty",
+     "result": "confirmed",
+     "note": "'ratified by the United States Senate on March 13, 1925'; infobox 'Effective: 23 March 1925'"
+    },
+    {
+     "where": "/ledger/6 (gain from rebels, 1959-01)",
+     "page": "https://en.wikipedia.org/wiki/Cuban_Revolution",
+     "result": "confirmed",
+     "note": "'fled Cuba by air for the Dominican Republic just hours later on 1 January 1959'"
+    },
+    {
+     "where": "/ledger/1 (Guantánamo, 1903)",
+     "page": "https://en.wikipedia.org/wiki/Guantanamo_Bay_Naval_Base",
+     "result": "mis-dated",
+     "note": "year right, no month and an over-drawn region at confidence 1; fixed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 110860,
+    "infobox_year": 2024,
+    "cliopatria_km2": 123918,
+    "ratio": 1.118,
+    "acknowledged": true,
+    "note": "Infobox 110,860 km2 (undated) on both the Cuba and Republic of Cuba pages; Cliopatria 120,880 (1905) to 124,490 (1960); the author's notes give the coastal-cell reason."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "second-mexican-empire",
+    "year": 1864,
+    "type": "found",
+    "counterpart": "mexican-monarchists"
+   },
+   "mirror": {
+    "slug": "mexican-monarchists",
+    "year": 1864,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "both April 1864"
+  },
+  {
+   "event": {
+    "slug": "second-mexican-empire",
+    "year": 1864,
+    "type": "occupation_start",
+    "counterpart": "federated-republic-of-mexico"
+   },
+   "mirror": {
+    "slug": "federated-republic-of-mexico",
+    "year": 1864,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "April 1864, Mexican Monarchists 1864 shape on both sides"
+  },
+  {
+   "event": {
+    "slug": "second-mexican-empire",
+    "year": 1864,
+    "type": "occupation_start",
+    "counterpart": "federated-republic-of-mexico"
+   },
+   "mirror": {
+    "slug": "federated-republic-of-mexico",
+    "year": 1864,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "Monterrey, August 1864 on both sides (after the reviewer's month fix), but the land differs: a 100 km radius round Monterrey here, all of Nuevo León and Coahuila in the Federated Republic (L38)"
+  },
+  {
+   "event": {
+    "slug": "second-mexican-empire",
+    "year": 1865,
+    "type": "occupation_start",
+    "counterpart": "federated-republic-of-mexico"
+   },
+   "mirror": {
+    "slug": "federated-republic-of-mexico",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Oaxaca (1865) not in the Federated Republic ledger (am-08-c)"
+  },
+  {
+   "event": {
+    "slug": "second-mexican-empire",
+    "year": 1865,
+    "type": "occupation_start",
+    "counterpart": "federated-republic-of-mexico"
+   },
+   "mirror": {
+    "slug": "federated-republic-of-mexico",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Chihuahua (15 August 1865) not in the Federated Republic ledger (am-08-c)"
+  },
+  {
+   "event": {
+    "slug": "second-mexican-empire",
+    "year": 1866,
+    "type": "occupation_end",
+    "counterpart": "federated-republic-of-mexico"
+   },
+   "mirror": {
+    "slug": "federated-republic-of-mexico",
+    "year": 1867,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "Monterrey evacuated 25 July 1866 here; the Federated Republic keeps Nuevo León and Coahuila occupied until June 1867 (L45)"
+  },
+  {
+   "event": {
+    "slug": "second-mexican-empire",
+    "year": 1866,
+    "type": "occupation_end",
+    "counterpart": "federated-republic-of-mexico"
+   },
+   "mirror": {
+    "slug": "federated-republic-of-mexico",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Oaxaca retaken 1 November 1866: no mirror (no start either)"
+  },
+  {
+   "event": {
+    "slug": "second-mexican-empire",
+    "year": 1866,
+    "type": "loss",
+    "counterpart": "federated-republic-of-mexico"
+   },
+   "mirror": {
+    "slug": "federated-republic-of-mexico",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "The eight 1866-1867 Republican recaptures (Tampico 1866-07, Saltillo 1866-08, Guaymas 1866-09, Matamoros, Mazatlán, Durango 1866-11, Guadalajara 1866-12, Querétaro 1867-05) have no mirror; the Federated Republic ledger keeps its whole occupation to June 1867 (am-08-c)"
+  },
+  {
+   "event": {
+    "slug": "second-mexican-empire",
+    "year": 1867,
+    "type": "occupation_end",
+    "counterpart": "federated-republic-of-mexico"
+   },
+   "mirror": {
+    "slug": "federated-republic-of-mexico",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Chihuahua retaken March 1867: no mirror"
+  },
+  {
+   "event": {
+    "slug": "second-mexican-empire",
+    "year": 1867,
+    "type": "occupation_end",
+    "counterpart": "federated-republic-of-mexico"
+   },
+   "mirror": {
+    "slug": "federated-republic-of-mexico",
+    "year": 1867,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "June 1867, the central core (L44)"
+  },
+  {
+   "event": {
+    "slug": "second-mexican-empire",
+    "year": 1867,
+    "type": "dissolve",
+    "counterpart": "mexico"
+   },
+   "mirror": {
+    "slug": "mexico",
+    "year": 1867,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "June / July 1867"
+  },
+  {
+   "event": {
+    "slug": "republic-of-colombia",
+    "year": 1886,
+    "type": "found",
+    "counterpart": "united-states-of-colombia"
+   },
+   "mirror": {
+    "slug": "united-states-of-colombia",
+    "year": 1886,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "1886, same shape"
+  },
+  {
+   "event": {
+    "slug": "republic-of-colombia",
+    "year": 1903,
+    "type": "split",
+    "counterpart": "republic-of-panama"
+   },
+   "mirror": {
+    "slug": "republic-of-panama",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "republic-of-panama has no dossier yet; another part of am-08 owns it (not run)"
+  },
+  {
+   "event": {
+    "slug": "republic-of-colombia",
+    "year": 1928,
+    "type": "gain",
+    "counterpart": "republic-of-peru"
+   },
+   "mirror": {
+    "slug": "republic-of-peru",
+    "year": 1928,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Peru gives March 1928; the Leticia page gives no month"
+  },
+  {
+   "event": {
+    "slug": "republic-of-colombia",
+    "year": 1928,
+    "type": "gain",
+    "counterpart": "brazilian-republic"
+   },
+   "mirror": {
+    "slug": "brazilian-republic",
+    "year": 1928,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "3 cells on the Apaporis, both confidence 2"
+  },
+  {
+   "event": {
+    "slug": "republic-of-colombia",
+    "year": 1932,
+    "type": "contest_start",
+    "counterpart": "republic-of-peru"
+   },
+   "mirror": {
+    "slug": "republic-of-peru",
+    "year": 1932,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "Peru codes an occupation of Leticia 1932-09 to 1933-05 (L30-L31); Colombia codes a contest 1932-09 to 1934-06 and no occupation (fix listed)"
+  },
+  {
+   "event": {
+    "slug": "mexico",
+    "year": 1867,
+    "type": "found",
+    "counterpart": "second-mexican-empire"
+   },
+   "mirror": {
+    "slug": "federated-republic-of-mexico",
+    "year": 1867,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "both predecessors dissolve into mexico in June 1867"
+  },
+  {
+   "event": {
+    "slug": "mexico",
+    "year": 1873,
+    "type": "loss",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": {
+    "slug": "united-states-of-america",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "2.4 km2 cut off by the Rio Grande; no mexico events in the US ledger (am-07)"
+  },
+  {
+   "event": {
+    "slug": "mexico",
+    "year": 1882,
+    "type": "gain",
+    "counterpart": "guatemala"
+   },
+   "mirror": {
+    "slug": "guatemala",
+    "year": null,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Motozintla, treaty of 27 September 1882; the Guatemala ledger has only the 1842 Soconusco loss (am-08 part)"
+  },
+  {
+   "event": {
+    "slug": "mexico",
+    "year": 1911,
+    "type": "loss",
+    "counterpart": "maderistas"
+   },
+   "mirror": {
+    "slug": "maderistas",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "maderistas has no dossier yet; another part of am-08 owns it (not run)"
+  },
+  {
+   "event": {
+    "slug": "mexico",
+    "year": 1911,
+    "type": "gain",
+    "counterpart": "maderistas"
+   },
+   "mirror": {
+    "slug": "maderistas",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "mexico",
+    "year": 1963,
+    "type": "gain",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": {
+    "slug": "united-states-of-america",
+    "year": null,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Chamizal; also the 1963 loss, the 1970 loss and the 2009-11 gain have no US mirror (am-07). All below one cell"
+  },
+  {
+   "event": {
+    "slug": "brazilian-republic",
+    "year": 1889,
+    "type": "found",
+    "counterpart": "empire-of-brazil"
+   },
+   "mirror": {
+    "slug": "empire-of-brazil",
+    "year": 1889,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "15 November 1889"
+  },
+  {
+   "event": {
+    "slug": "brazilian-republic",
+    "year": 1903,
+    "type": "occupation_start",
+    "counterpart": "bolivia"
+   },
+   "mirror": {
+    "slug": "bolivia",
+    "year": null,
+    "type": "occupation_start"
+   },
+   "status": "missing",
+   "note": "Brazil's occupation of Acre (ordered after 27 January 1903): Bolivia's ledger has no occupation (am-08 part)"
+  },
+  {
+   "event": {
+    "slug": "brazilian-republic",
+    "year": 1903,
+    "type": "gain",
+    "counterpart": "bolivia"
+   },
+   "mirror": {
+    "slug": "bolivia",
+    "year": 1903,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Acre, 17 November 1903, both confidence 3"
+  },
+  {
+   "event": {
+    "slug": "brazilian-republic",
+    "year": 1903,
+    "type": "loss",
+    "counterpart": "bolivia"
+   },
+   "mirror": {
+    "slug": "bolivia",
+    "year": 1903,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Abunã strip; the land now agrees (reviewer fix, 31 km on both sides)"
+  },
+  {
+   "event": {
+    "slug": "brazilian-republic",
+    "year": 1904,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Roraima north-east, confidence 1"
+  },
+  {
+   "event": {
+    "slug": "brazilian-republic",
+    "year": 1928,
+    "type": "gain",
+    "counterpart": "republic-of-peru"
+   },
+   "mirror": {
+    "slug": "republic-of-peru",
+    "year": null,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "one cell near Tabatinga, confidence 1, probably grid noise (fix listed)"
+  },
+  {
+   "event": {
+    "slug": "brazilian-republic",
+    "year": 1936,
+    "type": "gain",
+    "counterpart": "paraguay"
+   },
+   "mirror": {
+    "slug": "paraguay",
+    "year": null,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Porto Murtinho cells, confidence 1; also the 1936 loss to Paraguay"
+  },
+  {
+   "event": {
+    "slug": "brazilian-republic",
+    "year": 1936,
+    "type": "gain",
+    "counterpart": "bolivia"
+   },
+   "mirror": {
+    "slug": "bolivia",
+    "year": null,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "4 cells, confidence 1"
+  },
+  {
+   "event": {
+    "slug": "cuban-nationalists",
+    "year": 1895,
+    "type": "found",
+    "counterpart": "kingdom-of-spain"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1895,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-spain has no dossier (eu-12, not run), but the spanish-empire dossier (life to 1899-02, successors include cuban-nationalists) holds Cuba until 1899 and codes a contest over all of Cuba from 1895 (L116) with no loss. Cliopatria's Spanish Empire row ends in 1879 and its Kingdom of Spain row holds Cuba after; the orchestrator must say which slug owns Spain's Cuba in 1895-1899"
+  },
+  {
+   "event": {
+    "slug": "cuban-nationalists",
+    "year": 1896,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-spain"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1895,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "here January 1896 over Cuba minus the rebel zone; spanish-empire 1895 over all of Cuba; different Spain slug"
+  },
+  {
+   "event": {
+    "slug": "cuban-nationalists",
+    "year": 1898,
+    "type": "contest_end",
+    "counterpart": "kingdom-of-spain"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1898,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": "10 December 1898 on both sides (different Spain slug)"
+  },
+  {
+   "event": {
+    "slug": "cuban-nationalists",
+    "year": 1899,
+    "type": "dissolve",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": {
+    "slug": "united-states-of-america",
+    "year": 1898,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "the US ledger occupies Cuba from 1898-12 with counterpart republic-of-cuba (L82), a state that did not exist until 1902; the counterpart should be the Spain slug or cuban-nationalists (am-07)"
+  },
+  {
+   "event": {
+    "slug": "republic-of-cuba",
+    "year": 1902,
+    "type": "found",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": {
+    "slug": "united-states-of-america",
+    "year": 1902,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "20 May 1902"
+  },
+  {
+   "event": {
+    "slug": "republic-of-cuba",
+    "year": 1903,
+    "type": "loss",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": {
+    "slug": "united-states-of-america",
+    "year": 1903,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "lease February 1903 here, possession 10 December 1903 in the US (L89); the US region (30 km radius) should become 'USNB Guantanamo Bay'"
+  },
+  {
+   "event": {
+    "slug": "republic-of-cuba",
+    "year": 1906,
+    "type": "occupation_start",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": {
+    "slug": "united-states-of-america",
+    "year": 1906,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "September 1906"
+  },
+  {
+   "event": {
+    "slug": "republic-of-cuba",
+    "year": 1909,
+    "type": "occupation_end",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": {
+    "slug": "united-states-of-america",
+    "year": 1909,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "January 1909"
+  },
+  {
+   "event": {
+    "slug": "republic-of-cuba",
+    "year": 1925,
+    "type": "gain",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": {
+    "slug": "united-states-of-america",
+    "year": null,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Isle of Pines, Hay-Quesada effective 23 March 1925; the US ledger lacks the loss (author flagged; am-07)"
+  },
+  {
+   "event": {
+    "slug": "republic-of-cuba",
+    "year": 1958,
+    "type": "loss",
+    "counterpart": "cuban-communists"
+   },
+   "mirror": {
+    "slug": "cuban-communists",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "cuban-communists has no dossier yet; another part of am-08 owns it (not run); also the 1959-01 gain"
+  },
+  {
+   "event": {
+    "slug": "republic-of-cuba",
+    "year": 1902,
+    "type": "vassal_start",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": {
+    "slug": "united-states-of-america",
+    "year": null,
+    "type": "vassal_start"
+   },
+   "status": "missing",
+   "note": "not an event in either ledger: Cuba as a US client 1902-1934 (Platt Amendment; Treaty of Relations 29 May 1934) belongs in the US ledger (am-07)"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Motozintla",
+   "kind": "place",
+   "used_in": "mexico"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Republic of Acre",
+   "suggested_slug": "republic-of-acre",
+   "years": [
+    1899,
+    1903
+   ],
+   "note": "from the author's report; am-08-x"
+  },
+  {
+   "name": "Chan Santa Cruz (Maya state of the Caste War)",
+   "suggested_slug": "chan-santa-cruz",
+   "years": [
+    1850,
+    1901
+   ],
+   "note": "years approximate, not from a page; counterpart of federated-republic-of-mexico and mexico in eastern Yucatán; am-08-x"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-am-08-h.md",
+ "problems": [
+  "Reviewer applied three small fixes in place and re-validated each (0 errors): second-mexican-empire /ledger/2 (month 8 and source), brazilian-republic /ledger/4 (region), republic-of-cuba /ledger/1 (month, region, source, confidence; one source added).",
+  "Spain in Cuba 1880-1899: the spanish-empire dossier (another group) extends to February 1899 and codes the Cuban contest, while Cliopatria's Spanish Empire row ends in 1879 and cuban-nationalists uses kingdom-of-spain (eu-12, not written). The orchestrator must pick one slug and route the fix.",
+  "united-states-of-america (am-07): no events with mexico after 1854 (1873, 1963, 1970, 2009 Rio Grande changes; 1914 Veracruz and 1916 Pershing occupations), no Isle of Pines loss (March 1925), no vassal events for Cuba 1902-1934, and its 1898-12 Cuba occupation names republic-of-cuba as counterpart.",
+  "federated-republic-of-mexico (am-08-c) and second-mexican-empire disagree on the Empire's extent after 1864: the Federated Republic has no 1865 occupations (Oaxaca, Chihuahua) and no 1866 Republican recaptures.",
+  "The author's failed Salomón-Lozano URLs misspell the title (Salómon); the right title is 'Salomón–Lozano Treaty'.",
+  "Wikidata could not be reached to confirm Mexico's item id (Q96); action=info on Wikipedia failed to load."
+ ]
+}

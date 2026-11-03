@@ -1,0 +1,864 @@
+{
+ "batch_id": "sa-02-c",
+ "verdicts": [
+  {
+   "slug": "kushan-empire",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/4/correction (also /5, /6, /7, /8)",
+     "what": "The Tarim correction subtracts {\"region\": \"Tarim Basin\"}, but 156 cells (about 39,000 km2) of the 893-cell strip added in 117 lie outside that region (the Tian Shan rim, bbox 72.42-86.53 E, 33.70-42.75 N). They stay in the corrected 117-183 shapes and then vanish in 184 with no ledger event, since /ledger/11 covers only the 236-cell Kashgar circle.",
+     "why": "Gazetteer: K117 minus K91 = 893 cells, of which 704 are in Tarim Basin and 33 more in the Kashgar circle. In corrected terms the 184 shape loses 391 cells: 236 Kashgar and 155 others, 316 of them to protectorate-of-the-western-regions. The correction text says the strip is removed, and the note says it is unsupported.",
+     "fix": "Subtract the strip itself rather than the basin. For 117 use union([minus([{cliopatria: Kushan Empire, 117}, minus([{Kushan Empire, 117}, {Kushan Empire, 91}])]), Kashgar]), and do the same for 127, 154, 161 and 165 with that year's shape in the first slot. Then re-check that 184 needs only the Kashgar event.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/4/correction (also /5 to /8)",
+     "what": "The 150 km Kashgar circle is added to the directly held shape, but the note says 'Kashgar itself is a client king, not direct land', and /ledger/6 records it as a vassal_start. The client is therefore drawn twice.",
+     "why": "Note of keyframe_review/4 against its correction; /ledger/6 vassal_start covers place Kashgar km 150.",
+     "fix": "Leave Kashgar out of the corrections and let the vassal_start draw it, or explain in the note why it is direct land.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "The 51 gain names counterpart 'nobody', and its text says 'held by no Cliopatria state'. But 168 of its 181 cells are Cliopatria's Great Yuan (Fergana) shape of 43, a row that runs from -110 to 50. great-yuan.json dissolves in 50 and lists kushan-empire as its successor, while kushan-empire does not list great-yuan as a predecessor.",
+     "why": "Gazetteer: (K51 minus K43) minus IS43 = 181 cells, 168 of them in {cliopatria: Great Yuan, year 43} (172 cells), and 11 in Indo-Parthians 43. great-yuan /ledger/3 is a dissolve in 50 with a null counterpart; great-yuan identity.successors includes kushan-empire.",
+     "fix": "Split the event: a gain from great-yuan (intersect with {cliopatria: Great Yuan, year: 43}, text 'Fergana (Dayuan)'), with the rest staying 'nobody'. Add great-yuan to identity.predecessors. Ask ia-01 to give the great-yuan dissolve counterpart kushan-empire.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/identity/capitals/0 and /keyframe_review/2",
+     "what": "The capital is Purushapura (Peshawar) from 30, but the point lies outside the 43 and 51 shapes and enters only in 91. Keyframe 51 is 'ok', even though the Kushan Empire page's Hou Hanshu passage has Kujula take 'Jibin' (glossed Kapisha/Gandhara), and indo-parthians /ledger/2 loses Gandhara, Taxila and Kabulistan to the Kushans in 50.",
+     "why": "Point test: 71.53 E, 34.01 N is not in kushan-empire_43 or _51, and is in _91. Kushan Empire infobox capitals: '1st Century BCE: Kapisa/Pushkalavati; from 1st century CE: Purushapura/Mathura'. Kapisa (69.2 E, 35.0 N) lies inside both early shapes.",
+     "fix": "Either mark kushan-empire_51 'adjust' to add {region: Gandhara} with a 51 gain from indo-parthians (mirroring IP's 50 loss), or start Purushapura at 91 and use Kapisa for 30-90.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/9, /ledger/12",
+     "what": "The vassal_start and vassal_end for western-satraps (127-225) have no mirror in western-satraps.json. The page that dates the relation is the Western Satraps page, and it says 'the Western Satraps were vassals of the Kushans, at least in the early period', which points to the Kshaharata and Chastana years more than 127-225. That page is not among this dossier's sources.",
+     "why": "Western Satraps page (WebFetch 2026-10-19); western-satraps.json has no vassal event.",
+     "fix": "Agree the years with western-satraps (both dossiers carry the pair), and cite the Western Satraps page, adding it to sources[].",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/identity/rulers/0",
+     "what": "Kujula Kadphises was listed 25-85: he began before the state's life (30) and left a gap of 85-90 before Vima Takto (c. 90).",
+     "why": "Kushan Empire page list: 'Kujula Kadphises (c. 50 – c. 90)', 'Vima Takto (c. 90 – c. 113)'; infobox 25-85.",
+     "fix": "Set to 30-90, with a reviewer note.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/identity/rulers/1-5",
+     "what": "Five rulers had no source.",
+     "why": "The Kushan Empire page list gives Vima Takto c. 90-113, Vima Kadphises c. 113-127, Kanishka 127-c. 151, Huvishka c. 151-190 and Vasudeva I c. 190-230.",
+     "fix": "Added source https://en.wikipedia.org/wiki/Kushan_Empire.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/10/note, /ledger/10/source",
+     "what": "The note attributes to the Kanishka page a remark that the Rabatak text is unclear about Champa. The Kanishka page has no such caveat; the remark is on the Kushan Empire page.",
+     "why": "Kanishka page: Champa is listed as 'Ziri-Tambo (Janjgir-Champa)' with no qualification. Kushan Empire page: 'the text is not clear whether Champa was a possession of Kanishka or just beyond it'.",
+     "fix": "Note reworded to quote the Kushan Empire page; source set to the Kushan Empire page.",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1, /ledger/2",
+     "what is missing": "The year of Kujula's conquest of Kabul and Gandhara (the page says 'after 45 CE'; the event uses Cliopatria's 51).",
+     "page to try": "https://en.wikipedia.org/wiki/Indo-Parthian_Kingdom"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "When Mathura became Kushan. Cliopatria says 91; the Vima Kadphises page says 113-127; indo-scythians has 75 and 100. The Kushan Empire page only has Huvishka 'exerting greater control over the city of Mathura'.",
+     "page to try": "https://en.wikipedia.org/wiki/Northern_Satraps"
+    },
+    {
+     "where": "/ledger/10",
+     "what is missing": "The 161 loss of Chhattisgarh and Jharkhand is page-silent.",
+     "page to try": "https://en.wikipedia.org/wiki/Huvishka"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "The end of the Kashgar client kingdom (184 is Cliopatria's year).",
+     "page to try": "https://en.wikipedia.org/wiki/Shule_Kingdom"
+    },
+    {
+     "where": "/ledger/9, /ledger/12",
+     "what is missing": "Dated limits of the Western Satraps' vassalage.",
+     "page to try": "https://en.wikipedia.org/wiki/Chastana"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kushan_Empire",
+     "result": "confirmed: infobox 'Kujula Kadphises unites Yuezhi tribes into a confederation: 30'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kushan_Empire",
+     "result": "confirmed: 'expanded the Kushan Empire into the northwest of South Asia'; Hou Hanshu 'defeated Tianzhu'; Vima Takto c. 90-c. 113"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Kushan_Empire",
+     "result": "confirmed: 'during the Yuánchū period (AD 114–120), the Kushans sent a military force to install Chenpan ... as king of Kashgar'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Kanishka",
+     "result": "confirmed: Falk dates the accession to 127; the Rabatak list holds Kundina, Ujjain, Kausambi, Saketa, Pataliputra and Champa. The quotes 'submitted all India' and 'at least as far as Saketa and Sarnath' are on the Kushan Empire page, not on the cited Kanishka page."
+    },
+    {
+     "where": "/ledger/13, /ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Kushan_Empire",
+     "result": "confirmed: 'After the death of Vasudeva I in 225, the Kushan empire split into western and eastern halves'"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Kanishka",
+     "result": "not on page: the Champa caveat is on the Kushan Empire page. Confidence 1; note and source fixed by the reviewer."
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2000000,
+    "infobox_km2_high": 2500000,
+    "infobox_year": 200,
+    "cliopatria_km2": 1938519,
+    "cliopatria_shape": "kushan-empire_184",
+    "ratio": 0.97,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "western-satraps",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (missing vassal_start / vassal_end)",
+     "what": "There is no vassal relation with the Kushans. kushan-empire /ledger/9 and /12 record the Satraps as Kushan feudatories from 127 to 225, and two pages the author opened state the relation.",
+     "why": "Western Satraps page: 'the Western Satraps were vassals of the Kushans, at least in the early period', with 'The question is not considered perfectly settled'. Rudradaman I page: the Kushans 'were the suzerains of the Western Kshatrapas'.",
+     "fix": "Add a vassal_start and a vassal_end with counterpart kushan-empire, years agreed with kushan-empire (the page's 'early period' suggests ending with Rudradaman c. 130), source the Western Satraps page, confidence 1-2.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/0, /keyframe_review/0",
+     "what": "The 35-42 keyframe holds the 43 shape back to 35, but indo-scythians /ledger/13 loses that same land to the Western Satraps only in 43, so 35-42 is drawn in both dossiers.",
+     "why": "WS infobox 'Established: 35' and 'c. 35: Abhiraka' (confirmed); indo-scythians /ledger/13: a 43 loss with counterpart western-satraps, region IS14 minus IS43.",
+     "fix": "Settle a single year with indo-scythians (sa-02-b). The page supports 35, so indo-scythians should move its loss to 35. Record the outcome in both notes.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/identity/capitals/1",
+     "what": "The capital is Ujjain from 78, but Ujjain is outside the 43-126 shapes; Cliopatria gives it to satavahana-dynasty in 100. The keyframes for 91 and 106 are 'ok' without mentioning it.",
+     "why": "Point test: 75.79 E, 23.19 N is not in western-satraps_91 and is in western-satraps_127. The capital note itself rests on Ptolemy (c. 150).",
+     "fix": "Start Ujjain at 127 and keep the Bharuch/Minnagara seat until 126, or mark keyframes 91 and 106 'adjust' to add Ujjain and western Malwa, with a mirrored loss for satavahana-dynasty.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/2, /keyframe_review/5",
+     "what": "The gain is dated 130 (Rudradaman), yet keyframe 127 ('adjust') keeps Cliopatria's 127 start, so the land is drawn from 127 to 129 with no event. satavahana-dynasty /ledger/5 loses the same land in 127.",
+     "why": "Rudradaman I page: reign '130–150' (confirmed). shapes.csv: western-satraps_127 from 127.",
+     "fix": "Either give the keyframe a 130 start (the 106 outline holding 127-129), or move the gain to 127 with Rudradaman's 130 in the note. Then agree the year with satavahana-dynasty.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/5",
+     "what": "The 224 gain names satavahana-dynasty, but satavahana-dynasty /ledger/8 gives Nasik to the Abhiras in 203 and /ledger/9 dissolves to abhira-dynasty in 224, so there is no Satavahana loss to mirror it. The author's own note says nothing on the page has the Satraps take any of it.",
+     "why": "satavahana-dynasty.json ledger lines 8-9; note of /ledger/5.",
+     "fix": "For Nasik, use counterpart abhira-dynasty (listed under counterparts_needing_dossiers), or drop Nasik from the gain and keep confidence 1.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/1 to /4 (no 124 loss)",
+     "what": "satavahana-dynasty /ledger/4 gains Konkan, Malwa, Nasik and Pune from western-satraps in 124 (Gautamiputra over Nahapana), but there is no loss here. The 43-126 shapes hold none of that land, even though the author's K1 note quotes the page's Nahapana lands (Malwa, southern Gujarat, northern Konkan, Nasik, Poona).",
+     "why": "satavahana-dynasty /ledger/4; keyframe_review/1 note.",
+     "fix": "Settle it with satavahana-dynasty. Either add the Nahapana lands through an adjust on the pre-124 keyframes plus a 124 loss here, or have satavahana-dynasty drop the counterpart.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3, /ledger/5, /ledger/6, /ledger/7, /ledger/8, /ledger/9",
+     "what is missing": "The years 154, 224, 260, 270, 306 and 347 are Cliopatria's (confidence 1). In particular, the 270 gain of Sindh from the Eastern Kushans conflicts with the Junagadh list of 150, which already has Sindhu-Sauvira.",
+     "page to try": "https://en.wikipedia.org/wiki/Abhira_dynasty"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "The Gupta takeover of Rajasthan and Sindh in 347, and Eran under Samudragupta.",
+     "page to try": "https://en.wikipedia.org/wiki/Samudragupta"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "The year the Yaudheyas took Rajasthan (306).",
+     "page to try": "https://en.wikipedia.org/wiki/Yaudheya"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "There is no ruler strip.",
+     "page to try": "https://en.wikipedia.org/wiki/Western_Satraps"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Western_Satraps",
+     "result": "confirmed: 'Established: 35', 'c. 35: Abhiraka', 'Disestablished: 415 CE'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Western_Satraps",
+     "result": "confirmed: Chastana's reign 'started in the year 78 CE, thus making him the founder of the Saka era'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Rudradaman_I",
+     "result": "confirmed: reign 130–150; regained 'all the former territories previously held by Nahapana, except for the southern territory of Poona and Nasik'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Rudradaman_I",
+     "result": "confirmed: Aparanta given to Vashishtiputra Satakarni as dowry; the page gives no year, so confidence 1 is honest"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Western_Satraps",
+     "result": "confirmed: Yajna Sri Satakarni 'defeated the Western Satraps in the late 2nd century CE, thereby reconquering their southern regions'"
+    },
+    {
+     "where": "/ledger/11, /ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Chandragupta_II",
+     "result": "confirmed: victory 'tentatively dated to sometime between 397 and 409'; coins dated 409"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 842057,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The infobox gives no area, only a map captioned circa 350. The 476-489 stubs (55 km2, listed in data/README) are marked wrong."
+   }
+  },
+  {
+   "slug": "eastern-kushans",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/rulers/6",
+     "what": "Kipunada was listed to 350, past the dossier's end (346).",
+     "why": "Kushan Empire page list: 'Kipunada (335 – 350)'.",
+     "fix": "Clipped to 346, with a reviewer note.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/identity/rulers/1-6",
+     "what": "Six rulers had no source.",
+     "why": "The Kushan Empire page lists Vashishka c. 247-267, Kanishka III c. 267-270, Vasudeva II 270-300, Mahi 300-305, Shaka 305-335 and Kipunada 335-350.",
+     "fix": "Added source https://en.wikipedia.org/wiki/Kushan_Empire.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/4/note",
+     "what": "The note said the page names no one for the 270 breakaway and does not mention Haryana. The page names the Yaudheyas, whose country is Haryana.",
+     "why": "Kushan Empire page: 'Around 270 their territories on the Gangetic plain became independent under local dynasties such as the Yaudheyas'.",
+     "fix": "Note reworded to quote the page. Counterpart 'nobody' kept, because Cliopatria's Yaudheya row begins only in 306.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/identity/successors (kidarites), /ledger/6",
+     "what": "The dossier ends in 346 with a Gupta dissolve, while the pages keep the Kushans in the Punjab under Gupta suzerainty. kidarites.json /ledger/3 takes the 'Kushan remnants in Gandhara' only c. 390 and does not name eastern-kushans.",
+     "why": "Kushan Empire page: 'by the time of the Allahabad inscription the Kushans still ruled in Punjab, but under the suzerainty of the Gupta Emperor'; the infobox has 'Subjugated by the Sasanians, Guptas and Hepthalites: 375'.",
+     "fix": "Gap, not a blocker. Either extend the dossier as a Gupta vassal (vassal_start counterpart gupta-empire, c. 350, to c. 375) or drop kidarites from successors. The Gupta dossier (sa-02) should carry the relation.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/6",
+     "what is missing": "The real end: 346 is Cliopatria's year. The pages give Gupta suzerainty from the mid-4th century and an end at 375 (infobox) or with the Kidarites c. 390-410.",
+     "page to try": "https://en.wikipedia.org/wiki/Samudragupta"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "The 270 transfer of Sindh and the southern Punjab to the Satraps (confidence 1, page-silent).",
+     "page to try": "https://en.wikipedia.org/wiki/Western_Satraps"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kushano-Sasanian_Kingdom",
+     "result": "confirmed: under Shapur I (240–270) the Sasanians went 'further to the eastern parts of their empire in western Pakistan'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kushano-Sasanian_Kingdom",
+     "result": "confirmed within the 240-270 window; 260 is Cliopatria's year, as the note says"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Kushan_Empire",
+     "result": "confirmed: 'Around 270 their territories on the Gangetic plain became independent under local dynasties such as the Yaudheyas'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Kushan_Empire",
+     "result": "confirmed as to subjugation by Samudragupta, with the Kushans still ruling the Punjab under Gupta suzerainty; 346 is Cliopatria's year (confidence 1). The cited Samudragupta page was not opened."
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1240514,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Kushan Empire infobox area (2.0-2.5 M km2, c. 200) is for the undivided empire, so no comparison is possible."
+   }
+  },
+  {
+   "slug": "western-kushans",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/1 (missing vassal_start)",
+     "what": "Sasanian overlordship is this state's defining fact on both pages opened, but the ledger holds only a 'rename' at 230. With no vassal_start (counterpart sasanian-empire), the Kushanshahs would be drawn as independent from 230 to 259. The author left the relation to the Sasanian dossier, but the mirror rule needs it on both sides.",
+     "why": "Kushano-Sasanian Kingdom page: the Sasanians 'captured the provinces of Sogdia, Bactria and Gandhara from the declining Kushan Empire' (225), 'extended their dominion into Bactria during the reign of Ardashir I around 230', and 'the local Sasanian governors then went on to take the title of Kushanshah'.",
+     "fix": "Add a vassal_start at 230 (or 225, the capture), counterpart sasanian-empire, confidence 2, source the Kushano-Sasanian page, and keep the rename. No vassal_end is needed if the 259 dissolve hands the land to indo-sasanian-empire.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/identity/rulers/1",
+     "what": "Peroz I Kushanshah was listed to 275, past the dossier's end (259), with no source.",
+     "why": "Kushano-Sasanian page list: 'Peroz I Kushanshah (245–275)'.",
+     "fix": "Clipped to 259 and given the source https://en.wikipedia.org/wiki/Kushano-Sasanian_Kingdom.",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Nothing ends in 259 on the page, which gives the kingdom c. 230 to c. 365. The 259 end is Cliopatria's row change, and the whole 247 shape lies inside indo-sasanian-empire_260. Identity has to be reconciled with me-06.",
+     "page to try": "https://en.wikipedia.org/wiki/Kushano-Sasanian_Kingdom"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Whether the western half was ever independent between 225 and 230; the page has the Sasanian capture in 225.",
+     "page to try": "https://en.wikipedia.org/wiki/Ardashir_I"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kushan_Empire",
+     "result": "confirmed: the split after Vasudeva I's death in 225"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kushano-Sasanian_Kingdom",
+     "result": "confirmed: Ardashir I 'around 230'; governors took the title Kushanshah. Ardashir I Kushanshah is listed 230–245 (infobox 'c. 230 CE')."
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kushano-Sasanian_Kingdom",
+     "result": "not on page: the kingdom runs c. 230-c. 365 and the 259 end is Cliopatria's (confidence 1, the note says so)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 684686,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Kushano-Sasanian Kingdom infobox gives no area."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kushan-empire",
+    "year": 51,
+    "type": "gain",
+    "counterpart": "indo-scythians"
+   },
+   "mirror": {
+    "slug": "indo-scythians",
+    "year": 51,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Kabul and Arachosia."
+  },
+  {
+   "event": {
+    "slug": "kushan-empire",
+    "year": 51,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "great-yuan",
+    "year": 50,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "168 of 181 cells are Great Yuan 43. great-yuan dissolves with a null counterpart but lists kushan-empire as successor, and kushan-empire does not list great-yuan as a predecessor."
+  },
+  {
+   "event": {
+    "slug": "indo-parthians",
+    "year": 50,
+    "type": "loss",
+    "counterpart": "kushan-empire"
+   },
+   "mirror": {
+    "slug": "kushan-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "IP loses Gandhara, Taxila and Kabulistan in 50. Kushan gains Gandhara and Taxila from IP only in 91; its 51 shape holds Kabul (already in 43) but not Gandhara."
+  },
+  {
+   "event": {
+    "slug": "kushan-empire",
+    "year": 91,
+    "type": "gain",
+    "counterpart": "indo-parthians"
+   },
+   "mirror": {
+    "slug": "indo-parthians",
+    "year": 90,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Within one year."
+  },
+  {
+   "event": {
+    "slug": "kushan-empire",
+    "year": 91,
+    "type": "gain",
+    "counterpart": "indo-scythians"
+   },
+   "mirror": {
+    "slug": "indo-scythians",
+    "year": 75,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "IS has a 75 loss of the north-west (Indo-Scythians page) and a 100 dissolve for Mathura (Northern Satraps page). Kushan has Mathura and the Punjab at 91 (Cliopatria). 9-16 years apart."
+  },
+  {
+   "event": {
+    "slug": "kushan-empire",
+    "year": 117,
+    "type": "vassal_start",
+    "counterpart": "Kingdom of Kashgar"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No dossier; listed in counterparts_needing_dossiers (ea-02)."
+  },
+  {
+   "event": {
+    "slug": "kushan-empire",
+    "year": 127,
+    "type": "vassal_start",
+    "counterpart": "western-satraps"
+   },
+   "mirror": {
+    "slug": "western-satraps",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "western-satraps has no vassal_start; both of its pages state the Kushan suzerainty."
+  },
+  {
+   "event": {
+    "slug": "kushan-empire",
+    "year": 225,
+    "type": "vassal_end",
+    "counterpart": "western-satraps"
+   },
+   "mirror": {
+    "slug": "western-satraps",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "As above."
+  },
+  {
+   "event": {
+    "slug": "kushan-empire",
+    "year": 225,
+    "type": "split",
+    "counterpart": "eastern-kushans"
+   },
+   "mirror": {
+    "slug": "eastern-kushans",
+    "year": 226,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kushan-empire",
+    "year": 225,
+    "type": "split",
+    "counterpart": "western-kushans"
+   },
+   "mirror": {
+    "slug": "western-kushans",
+    "year": 226,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "western-satraps",
+    "year": 35,
+    "type": "found",
+    "counterpart": "indo-scythians"
+   },
+   "mirror": {
+    "slug": "indo-scythians",
+    "year": 43,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "8 years apart; the 35-42 land is drawn in both dossiers."
+  },
+  {
+   "event": {
+    "slug": "satavahana-dynasty",
+    "year": 124,
+    "type": "gain",
+    "counterpart": "western-satraps"
+   },
+   "mirror": {
+    "slug": "western-satraps",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "The WS shapes hold none of the Nahapana lands before 127."
+  },
+  {
+   "event": {
+    "slug": "western-satraps",
+    "year": 130,
+    "type": "gain",
+    "counterpart": "satavahana-dynasty"
+   },
+   "mirror": {
+    "slug": "satavahana-dynasty",
+    "year": 127,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "3 years apart. The WS shape changes at 127 but its event is at 130."
+  },
+  {
+   "event": {
+    "slug": "western-satraps",
+    "year": 154,
+    "type": "loss",
+    "counterpart": "satavahana-dynasty"
+   },
+   "mirror": {
+    "slug": "satavahana-dynasty",
+    "year": 154,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Aparanta."
+  },
+  {
+   "event": {
+    "slug": "western-satraps",
+    "year": 184,
+    "type": "loss",
+    "counterpart": "satavahana-dynasty"
+   },
+   "mirror": {
+    "slug": "satavahana-dynasty",
+    "year": 184,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "western-satraps",
+    "year": 224,
+    "type": "gain",
+    "counterpart": "satavahana-dynasty"
+   },
+   "mirror": {
+    "slug": "satavahana-dynasty",
+    "year": 224,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Satavahana dissolves to abhira-dynasty, and Nasik went to the Abhiras in 203."
+  },
+  {
+   "event": {
+    "slug": "western-satraps",
+    "year": 260,
+    "type": "loss",
+    "counterpart": "vakataka-kingdom"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "vakataka-kingdom not yet written (sa-02)."
+  },
+  {
+   "event": {
+    "slug": "western-satraps",
+    "year": 270,
+    "type": "gain",
+    "counterpart": "eastern-kushans"
+   },
+   "mirror": {
+    "slug": "eastern-kushans",
+    "year": 270,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "1,339 cells."
+  },
+  {
+   "event": {
+    "slug": "western-satraps",
+    "year": 306,
+    "type": "loss",
+    "counterpart": "yaudheya-republic"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "yaudheya-republic not yet written (sa-02)."
+  },
+  {
+   "event": {
+    "slug": "western-satraps",
+    "year": 347,
+    "type": "loss",
+    "counterpart": "gupta-empire"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "gupta-empire not yet written (sa-02)."
+  },
+  {
+   "event": {
+    "slug": "western-satraps",
+    "year": 409,
+    "type": "dissolve",
+    "counterpart": "gupta-empire"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "gupta-empire not yet written (sa-02)."
+  },
+  {
+   "event": {
+    "slug": "eastern-kushans",
+    "year": 240,
+    "type": "contest_start",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "sasanian-empire not yet written (me-06)."
+  },
+  {
+   "event": {
+    "slug": "eastern-kushans",
+    "year": 260,
+    "type": "loss",
+    "counterpart": "indo-sasanian-empire"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "indo-sasanian-empire not yet written (me-06)."
+  },
+  {
+   "event": {
+    "slug": "eastern-kushans",
+    "year": 270,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No Cliopatria holder in 270. The page names the Yaudheyas, whose row starts in 306, and the Nagas (sa-02-x)."
+  },
+  {
+   "event": {
+    "slug": "eastern-kushans",
+    "year": 346,
+    "type": "dissolve",
+    "counterpart": "gupta-empire"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "gupta-empire not yet written; the Gupta vassal phase is a gap."
+  },
+  {
+   "event": {
+    "slug": "kidarites",
+    "year": 390,
+    "type": "gain",
+    "counterpart": "Kushan remnants in Gandhara"
+   },
+   "mirror": {
+    "slug": "eastern-kushans",
+    "year": 346,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "eastern-kushans lists kidarites as a successor but ends 44 years earlier; kidarites does not name eastern-kushans."
+  },
+  {
+   "event": {
+    "slug": "western-kushans",
+    "year": 230,
+    "type": "rename",
+    "counterpart": null
+   },
+   "mirror": {
+    "slug": "sasanian-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "No vassal_start on either side; sasanian-empire not yet written (me-06)."
+  },
+  {
+   "event": {
+    "slug": "western-kushans",
+    "year": 259,
+    "type": "dissolve",
+    "counterpart": "indo-sasanian-empire"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "indo-sasanian-empire not yet written (me-06); identity to reconcile."
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Nagas of Padmavati",
+   "suggested_slug": "nagas-of-padmavati",
+   "years": [
+    210,
+    350
+   ]
+  },
+  {
+   "name": "Nagas of Vindhyatabi",
+   "suggested_slug": "nagas-of-vindhyatabi",
+   "years": [
+    250,
+    350
+   ]
+  },
+  {
+   "name": "Kingdom of Kashgar (Shule)",
+   "suggested_slug": "kingdom-of-kashgar",
+   "years": [
+    114,
+    184
+   ]
+  },
+  {
+   "name": "Abhira dynasty",
+   "suggested_slug": "abhira-dynasty",
+   "years": [
+    203,
+    300
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-sa-02-c.md",
+ "problems": [
+  "Identity (orchestrator decision): the Kushan Empire page carries the dynasty without a break through Kanishka II, Vasishka, Kanishka III, Vasudeva II and on to Kipunada (335-350), and its infobox ends in 375. eastern-kushans is therefore the empire's continuing line, and under the shared-Wikidata rule it could be one dossier with kushan-empire (rows 'Kushan Empire' and 'Eastern Kushans'). The author's three-way split is explained in notes; not counted as a fault.",
+  "western-kushans (Cliopatria 238-259) lies wholly inside indo-sasanian-empire_260 and is the early Kushano-Sasanian Kingdom (c. 230-365). me-06 should reconcile it with indo-sasanian-empire.",
+  "kidarites.json (ia-01) uses the slug kushano-sasanian-kingdom, which has no dossier, as predecessor and counterpart; it should be indo-sasanian-empire. Its 390 'Kushan remnants' counterpart has no dossier alive.",
+  "Not yet written, so their mirrors are unchecked: sasanian-empire, parthian-empire, indo-sasanian-empire (me-06); vakataka-kingdom, gupta-empire, yaudheya-republic, maitraka-dynasty (sa-02); protectorate-of-the-western-regions, han-dynasty (ea-02); cao-wei (ea-03).",
+  "Reviewer edits were applied in place to kushan-empire, eastern-kushans and western-kushans (rulers, sources and two notes); all three re-validate with 0 errors and 0 warnings. western-satraps was not edited.",
+  "No page failed to load. Pages opened: Kushan Empire (twice), Kanishka, Western Satraps, Rudradaman I, Kushano-Sasanian Kingdom, Chandragupta II."
+ ]
+}

@@ -1,0 +1,888 @@
+{
+ "batch_id": "am-08-e",
+ "verdicts": [
+  {
+   "slug": "venezuela",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/3/outcome",
+     "what": "The outcome dates Venezuela's denunciation of the 1899 award to '12 November 1962', which is not on the cited page.",
+     "why": "Guayana_Esequiba: 'Venezuela denounced it before the first assembly of the United Nations in 1945'; 'Venezuela formally raised the issue again at an international level before the United Nations in 1962'.",
+     "fix": "Reviewer rewrote it as: denounced before the UN in 1945 and 'formally raised the issue again' there in 1962.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "1877 loss of 7 cells to British Guiana at confidence 1 (page silent; the Schomburgk Line dates are 1840 and October 1886). Probably rasterisation noise like the 1853 one-cell change: either find a dated 1877 event or drop it and say so in /keyframe_review/3.",
+     "page to try": "https://en.wikipedia.org/wiki/Schomburgk_Line"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "1877 gain of 4 cells from empire-of-brazil at confidence 1; the Brazil-Venezuela border page has only the 5 May 1859 treaty and the 1929 protocol, and empire-of-brazil has no mirror. Same choice: a dated event or drop as noise.",
+     "page to try": "https://en.wikipedia.org/wiki/Brazil%E2%80%93Venezuela_border"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "The Ankoko occupation has no end (still held, per the page); the validator warning stays by design.",
+     "page to try": "https://en.wikipedia.org/wiki/Ankoko_Island"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Venezuela",
+     "result": "confirmed (infobox 'from Gran Colombia: 13 January 1830'; body 'proclamation of a newly independent Venezuela, on 22 September')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Venezuela",
+     "result": "confirmed (with /ledger/2 and /ledger/6: 'Estado de Venezuela (1830-1856), Republica de Venezuela (1856-1864) ... Estados Unidos de Venezuela (1864-1953), and again Republica de Venezuela (1953-1999)')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Guayana_Esequiba",
+     "result": "confirmed ('On 3 October 1899 the Tribunal ruled largely in favour of Britain'; 'Venezuela received Barima Point at the mouth of the Orinoco'; border 'at the Wenamu River')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Ankoko_Island",
+     "result": "confirmed ('began their occupation of Ankoko Island in October 1966'; 6 43 N 61 8 W; 'remains under Venezuelan administration')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 916445,
+    "infobox_year": 2024,
+    "cliopatria_km2": 937211,
+    "ratio": 1.02,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "centralist-mexico",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/6",
+     "what": "The return of Coahuila, Nuevo Leon and Tamaulipas from the Republic of the Rio Grande is dated 1842 (confidence 1, 'page silent') though the rebellion ended on 6 November 1840.",
+     "why": "Republic_of_the_Rio_Grande: 'The rebellion lasted from January 17 to November 6, 1840'; Canales 'surrendered at Camargo' on 6 November 1840. The federated-republic-of-mexico dossier (/ledger/11) and this dossier's own note quote the same dates.",
+     "fix": "Move the gain to 1840-11 with source https://en.wikipedia.org/wiki/Republic_of_the_Rio_Grande (add it to sources), confidence 2; add a new keyframe for 1840-11..1841 (or split /keyframe_review/2) whose correction is union(the current 1840 correction, Coahuila, Nuevo Leon, Tamaulipas); note that Cliopatria's Rio Grande row runs a year too long.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what": "The Centralist corrections keep Cliopatria's cells in Alta California, Arizona and New Mexico while the federated-republic-of-mexico dossier adds {'region': 'Alta California'} to its own 1836-1845 shapes: the two dossiers draw the same land.",
+     "why": "gazetteer.py resolve intersect: Centralist Mexico 1836 holds 105 cells of California (about 26,600 km2), 280 of Arizona, 30 of New Mexico; the 1842 shape holds 76 of California, 278 of Arizona, 129 of New Mexico and 20 of Texas. federated-republic-of-mexico /keyframe_review/3-5 corrections are union(Federated shape, Alta California).",
+     "fix": "In /keyframe_review/0-4 corrections subtract {'region':'Alta California'} (and the New Mexico province and Texas cells the Federated row holds), or agree with the Federated author which row holds the north; say which in the notes.",
+     "applied": false
+    },
+    {
+     "where": "/wars/3/zones",
+     "what": "The Mexican-American War lists zones (Alta California, Texas) but this ledger has no contest or occupation event for them; the federated-republic-of-mexico and united-states-of-america dossiers carry the 1846 contests with federated-republic-of-mexico as counterpart. /wars/0/zones (Texas, for the Texas Revolution) has the same problem: the 1836 shape holds no Texas cells.",
+     "why": "Validator rule: contest events need a war zone; here the war zones have no events. Centralist_Republic_of_Mexico: 'American forces were seizing Alta California' before 22 August 1846.",
+     "fix": "Either empty both wars' zones with a note that the Federated row carries those fronts, or add contest_start 1846-04/06 and contest_end 1846-08 with united-states-of-america over the land this shape holds (the Nueces cells of Tamaulipas, the California cells).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/5",
+     "what is missing": "1842 gain of Chihuahua, Durango and southern New Mexico from federated-republic-of-mexico at confidence 1: a Cliopatria drawing transfer between two rows of one country (the author says so). Resolves only with the orchestrator's decision on the two rows.",
+     "page to try": "https://en.wikipedia.org/wiki/Centralist_Republic_of_Mexico"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Centralist_Republic_of_Mexico",
+     "result": "confirmed ('a unitary political regime established in Mexico on 23 October 1835')"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Centralist_Republic_of_Mexico",
+     "result": "confirmed ('on 22 August 1846 restored the Constitution of 1824, putting an end to Centralist Republic')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Yucat%C3%A1n",
+     "result": "confirmed ('On June 6, 1840, the city of Campeche surrendered to the Yucatecan Federalists'); /ledger/7 (August 1842, Carmen Island) and /ledger/8 (5 December 1843, 'the Republic retained its sovereignty') also confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Soconusco",
+     "result": "confirmed ('which Soconusco did in 1842', no month; Guatemala 'declaring it part of the Quetzaltenango District in 1840')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_the_Rio_Grande",
+     "result": "mis-dated (page: rebellion 'from January 17 to November 6, 1840'; ledger 1842, confidence 1)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 4350000,
+    "infobox_year": 0,
+    "cliopatria_km2": 2144956,
+    "ratio": 0.49,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "peru-bolivian-confederation",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/4/region",
+     "what": "The 1838 Bolivian occupation was drawn as the whole of Jujuy and Salta provinces (about 210,000 km2); neither page names Salta.",
+     "why": "Peru-Bolivian_Confederation: Bolivia was 'occupying and incorporating certain disputed territories in northern Argentina in 1838' (no places); War_of_the_Confederation: Argentina lost 'some territories north of Jujuy'.",
+     "fix": "Reviewer narrowed the region to {'admin1':'Jujuy','country':'Argentina'} here, in /ledger/7/region and in /wars/0/zones/2, kept confidence 2 (1 for /ledger/7) and the source text, and noted the change in the /ledger/4 note.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/7",
+     "what is missing": "The return of the occupied Argentine land is dated 1839 at confidence 1; the War page says only that the territories 'are returned' under the Bolivia-Argentina peace. The occupied places themselves (the Puna of Jujuy?) are also unnamed.",
+     "page to try": "https://es.wikipedia.org/wiki/Guerra_contra_la_Confederaci%C3%B3n_Per%C3%BA-Boliviana"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Peru%E2%80%93Bolivian_Confederation",
+     "result": "confirmed ('by decree given in Lima on 28 October 1836'; capital Tacna)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Confederation",
+     "result": "confirmed ('The Chilean army landed at Islay in southern Peru in October, 1837, occupying the city of Arequipa')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Confederation",
+     "result": "confirmed with /ledger/6 ('occupied Lima at the end of October, 1838 but abandoned it on November 3')"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Peru%E2%80%93Bolivian_Confederation",
+     "result": "confirmed ('Dissolution declared: 25 August 1839'; Velasco 'later declared the confederation dissolved on 26 October 1839'); /ledger/8 Yungay 20 January 1839 confirmed on the War page"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Peru%E2%80%93Bolivian_Confederation",
+     "result": "year confirmed (1838), region overstated: Salta on no page (fixed)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 3195637,
+    "ratio": 0.0,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "riograndense-republic",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/successors/0/land",
+     "what": "The land handed to the empire was the raw Cliopatria 1842 shape, which includes the Uruguayan and Argentine border slivers the keyframe corrections remove.",
+     "why": "/keyframe_review/0-1 and /ledger/5 use minus(Rio Grande do Sul, Porto Alegre 25 km); Riograndense_Republic: the republic 'was reincorporated into the Brazilian Empire'.",
+     "fix": "Reviewer set the successor land to the same minus(Rio Grande do Sul, Porto Alegre 25 km) region, keeping its text.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/capitals",
+     "what is missing": "Capital spans (Piratini 1836-1842, Alegrete 1843-1845) are bridges; the page lists five capitals without years.",
+     "page to try": "https://en.wikipedia.org/wiki/Piratini"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Riograndense_Republic",
+     "result": "confirmed ('It was proclaimed on 11 September 1836 by general Antonio de Sousa Neto')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Riograndense_Republic",
+     "result": "confirmed ('Laguna was taken ... on 22 July 1839'; Juliana Republic proclaimed 29 July)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Riograndense_Republic",
+     "result": "confirmed ('The retaking of Laguna on 1 November 1839 put an end to the Juliana Republic')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Riograndense_Republic",
+     "result": "confirmed ('on 1 March 1845, peace was signed: the Ponche Verde Treaty'); /keyframe_review/0 Porto Alegre confirmed on Ragamuffin_War ('recaptured by the empire in June 1836, and the rebels never managed to retake it')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 287825,
+    "ratio": 0.0,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "guatemala",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/wars/2/outcome",
+     "what": "The 1863 war's outcome said the page records 'only' the open war, but the cited page also has Carrera besieging and occupying San Salvador.",
+     "why": "History_of_Guatemala: the rivalry 'escalated into open war in 1863' and Carrera 'besieged and occupied San Salvador' (no date given).",
+     "fix": "Reviewer rewrote the outcome to quote the occupation and flagged the missing ledger event in the war note.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger",
+     "what is missing": "Missing occupation_start/occupation_end of San Salvador by Guatemala in 1863 (counterpart republic-of-el-salvador, region {'place':'San Salvador','km':30}); the History of Guatemala page gives the year but no month, so a dated page is needed.",
+     "page to try": "https://en.wikipedia.org/wiki/Gerardo_Barrios"
+    },
+    {
+     "where": "/certainty/0",
+     "what is missing": "The 1882 Mexican treaty, the 1933 Honduran arbitration and the Salvadoran frontier are on no page opened (no shape change in Cliopatria, so only certainty notes depend on them).",
+     "page to try": "https://en.wikipedia.org/wiki/Guatemala%E2%80%93Mexico_border"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Guatemala",
+     "result": "confirmed ('Declared from the Federal Republic of Central America: 17 April 1839')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Los_Altos_(state)",
+     "result": "confirmed (infobox 'Forcible reincorporation into Guatemala: January 1840'; body 2 April 1840, as the note says)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Guatemala",
+     "result": "confirmed ('On 21 March 1847, Guatemala declared itself an independent republic and Carrera became its first president')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Los_Altos_(state)",
+     "result": "confirmed ('The existence of Los Altos lasted until 8 May 1849'); /ledger/4 26 August 1848 also confirmed; Los Altos had eight departments 'as well as the Soconusco region'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Soconusco",
+     "result": "confirmed (1842, no month)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 108889,
+    "infobox_year": 2024,
+    "cliopatria_km2": 109084,
+    "ratio": 1.0,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "honduras",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/2/note",
+     "what": "The note quotes 'By 1859 Britain ceded the northern part of the Mosquito Coast to Honduras', a sentence the page does not have (the year is in the sentence before).",
+     "why": "Mosquito_Coast: 'By 1859 British opinion was no longer supportive of their nation's presence in the Mosquito Coast.' 'The British government returned the Bay Islands and ceded the northern part of the Mosquito Coast to Honduras'.",
+     "fix": "Reviewer replaced the quote with the two verbatim sentences; year and confidence 2 unchanged.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/4/note",
+     "what": "The note puts in quotation marks words on neither page ('cuts the cape in half', 'was disputed from 1869').",
+     "why": "Mosquito_Coast: 'Attempts to decide the sovereignty over the northern bank of the Wanks/Coco River' were made from 1869 until the ICJ ruled for Honduras; Cape_Gracias_a_Dios has only the 1906 award and the 1960 confirmation.",
+     "fix": "Reviewer rewrote the sentence with the verbatim phrase; year 1869 and confidence 2 unchanged.",
+     "applied": true
+    },
+    {
+     "where": "/wars/1/note",
+     "what": "The Football War note said the page gives no ceasefire date, but it does, and the Salvadoran withdrawal too.",
+     "why": "Honduras: 'on 14 July 1969, the Salvadoran army invaded Honduras'; an OAS 'cease-fire which took effect on 20 July'; 'a withdrawal of Salvadoran troops in early August'.",
+     "fix": "Reviewer rewrote the note with the dates and flagged the missing occupation as a gap.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "1846 loss of the eastern Mosquitia to the Mosquito Kingdom at confidence 1 (Cliopatria's date; the page has the British protectorate of 1844).",
+     "page to try": "https://en.wikipedia.org/wiki/Mosquito_Kingdom"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "Missing occupation_start 1969-07 / occupation_end 1969-08 by republic-of-el-salvador: dates on the Honduras page, the occupied towns not.",
+     "page to try": "https://en.wikipedia.org/wiki/Football_War"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "Missing 1907 Nicaraguan-backed invasion: History of Honduras: 'Supported by elements of the Nicaraguan army, the exiles invaded Honduras in February 1907' (ground and dates needed).",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Namasig%C3%BCe"
+    },
+    {
+     "where": "/keyframe_review/7",
+     "what is missing": "The 1992 ICJ judgment on the Salvadoran frontier (the bolsones) is on no page opened; Cliopatria's 1979-1991 and 1992 shapes differ by 56 km2.",
+     "page to try": "https://en.wikipedia.org/wiki/El_Salvador%E2%80%93Honduras_relations"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Honduras",
+     "result": "confirmed (infobox 'Declared, as Honduras, from the Federal Republic of Central America: 5 November 1838')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Honduras",
+     "result": "confirmed ('Comayagua was the capital of Honduras until 1880, when the capital moved to Tegucigalpa')"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/History_of_Honduras",
+     "result": "confirmed ('On November 22, 1971, the United States handed over the Swan Islands to Honduras'; sovereignty from 1 September 1972); the 1906 war is also on the page ('resisted an invasion from Guatemala in 1906')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Mosquito_Coast",
+     "result": "confirmed, quote not verbatim (fixed): 1859 is in the preceding sentence"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Mosquito_Coast",
+     "result": "confirmed ('In 1960 the northern part was granted to Honduras by the International Court of Justice'); /ledger/7 confirmed on Honduras ('transferred from Nicaragua to Honduras')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 112492,
+    "infobox_year": 2024,
+    "cliopatria_km2": 114698,
+    "ratio": 1.02,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "venezuela",
+    "year": 1830,
+    "type": "found",
+    "counterpart": "gran-colombia"
+   },
+   "mirror": {
+    "slug": "gran-colombia",
+    "year": 1830,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "gran-colombia has 1830-05 (Valencia congress), this dossier 1830-09; same year."
+  },
+  {
+   "event": {
+    "slug": "venezuela",
+    "year": 1877,
+    "type": "loss",
+    "counterpart": "british-colonial-empire"
+   },
+   "mirror": {
+    "slug": "british-colonial-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "british-colonial-empire (eu-11) not written yet; confidence 1, possibly noise."
+  },
+  {
+   "event": {
+    "slug": "venezuela",
+    "year": 1877,
+    "type": "gain",
+    "counterpart": "empire-of-brazil"
+   },
+   "mirror": {
+    "slug": "empire-of-brazil",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "empire-of-brazil has no venezuela event; this side is confidence 1 page silent: drop as noise rather than add a mirror."
+  },
+  {
+   "event": {
+    "slug": "venezuela",
+    "year": 1899,
+    "type": "gain",
+    "counterpart": "british-colonial-empire"
+   },
+   "mirror": {
+    "slug": "british-colonial-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "group eu-11 has not run."
+  },
+  {
+   "event": {
+    "slug": "venezuela",
+    "year": 1966,
+    "type": "occupation_start",
+    "counterpart": "guyana"
+   },
+   "mirror": {
+    "slug": "guyana",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "guyana (am-08) not written yet."
+  },
+  {
+   "event": {
+    "slug": "centralist-mexico",
+    "year": 1835,
+    "type": "found",
+    "counterpart": "federated-republic-of-mexico"
+   },
+   "mirror": {
+    "slug": "federated-republic-of-mexico",
+    "year": 1835,
+    "type": "split"
+   },
+   "status": "matched",
+   "note": "Both 1835-10."
+  },
+  {
+   "event": {
+    "slug": "centralist-mexico",
+    "year": 1840,
+    "type": "loss",
+    "counterpart": "republic-of-yucatan"
+   },
+   "mirror": {
+    "slug": "republic-of-yucatan",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers (am-08-x); also the 1840 and 1842-1843 contests."
+  },
+  {
+   "event": {
+    "slug": "centralist-mexico",
+    "year": 1842,
+    "type": "gain",
+    "counterpart": "guatemala"
+   },
+   "mirror": {
+    "slug": "guatemala",
+    "year": 1842,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Soconusco, both 1842 without month."
+  },
+  {
+   "event": {
+    "slug": "centralist-mexico",
+    "year": 1842,
+    "type": "gain",
+    "counterpart": "federated-republic-of-mexico"
+   },
+   "mirror": {
+    "slug": "federated-republic-of-mexico",
+    "year": 1842,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Both confidence 1 drawing transfers between two rows of one Mexico (orchestrator decision)."
+  },
+  {
+   "event": {
+    "slug": "centralist-mexico",
+    "year": 1842,
+    "type": "gain",
+    "counterpart": "republic-of-the-rio-grande"
+   },
+   "mirror": {
+    "slug": "republic-of-the-rio-grande",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Dossier not written (am-08); but the page ends the republic on 1840-11-06 and federated-republic-of-mexico has the loss to it in 1840-01: this gain should be 1840-11."
+  },
+  {
+   "event": {
+    "slug": "centralist-mexico",
+    "year": 1846,
+    "type": "dissolve",
+    "counterpart": "federated-republic-of-mexico"
+   },
+   "mirror": {
+    "slug": "federated-republic-of-mexico",
+    "year": 1846,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Both 1846-08."
+  },
+  {
+   "event": {
+    "slug": "peru-bolivian-confederation",
+    "year": 1836,
+    "type": "found",
+    "counterpart": "republic-of-peru"
+   },
+   "mirror": {
+    "slug": "republic-of-peru",
+    "year": 1836,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Both 1836-10."
+  },
+  {
+   "event": {
+    "slug": "peru-bolivian-confederation",
+    "year": 1836,
+    "type": "gain",
+    "counterpart": "bolivia"
+   },
+   "mirror": {
+    "slug": "bolivia",
+    "year": 1836,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Both 1836-10."
+  },
+  {
+   "event": {
+    "slug": "peru-bolivian-confederation",
+    "year": 1837,
+    "type": "occupation_start",
+    "counterpart": "republic-of-chile"
+   },
+   "mirror": {
+    "slug": "republic-of-chile",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "republic-of-chile has no events 1835-1841; it should carry occupation_start 1837-10 / occupation_end 1837-11 of Arequipa."
+  },
+  {
+   "event": {
+    "slug": "peru-bolivian-confederation",
+    "year": 1838,
+    "type": "occupation_start",
+    "counterpart": "republic-of-chile"
+   },
+   "mirror": {
+    "slug": "republic-of-chile",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Lima, end of October to 3 November 1838: missing in republic-of-chile."
+  },
+  {
+   "event": {
+    "slug": "peru-bolivian-confederation",
+    "year": 1838,
+    "type": "occupation_start",
+    "counterpart": "argentine-confederation"
+   },
+   "mirror": {
+    "slug": "argentine-confederation",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "argentine-confederation has no 1837-1839 event for the War of the Confederation; it should carry the Bolivian occupation of northern Jujuy (1838-1839) with peru-bolivian-confederation as counterpart."
+  },
+  {
+   "event": {
+    "slug": "peru-bolivian-confederation",
+    "year": 1839,
+    "type": "loss",
+    "counterpart": "republic-of-peru"
+   },
+   "mirror": {
+    "slug": "republic-of-peru",
+    "year": 1839,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Both 1839-01."
+  },
+  {
+   "event": {
+    "slug": "peru-bolivian-confederation",
+    "year": 1839,
+    "type": "loss",
+    "counterpart": "bolivia"
+   },
+   "mirror": {
+    "slug": "bolivia",
+    "year": 1839,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Both 1839-10."
+  },
+  {
+   "event": {
+    "slug": "riograndense-republic",
+    "year": 1836,
+    "type": "found",
+    "counterpart": "empire-of-brazil"
+   },
+   "mirror": {
+    "slug": "empire-of-brazil",
+    "year": 1836,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Both 1836-09."
+  },
+  {
+   "event": {
+    "slug": "riograndense-republic",
+    "year": 1836,
+    "type": "contest_start",
+    "counterpart": "empire-of-brazil"
+   },
+   "mirror": {
+    "slug": "empire-of-brazil",
+    "year": 1835,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Empire's contest starts 1835-09 with the rising, before the republic existed; acceptable."
+  },
+  {
+   "event": {
+    "slug": "riograndense-republic",
+    "year": 1839,
+    "type": "contest_start",
+    "counterpart": "empire-of-brazil"
+   },
+   "mirror": {
+    "slug": "empire-of-brazil",
+    "year": 1839,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "Land differs: Laguna 40 km here (page: 'Laguna was taken ... on 22 July 1839'), all of Santa Catarina in empire-of-brazil /ledger/15-16 (confidence 2, no month). empire-of-brazil should narrow to Laguna and add months 7 and 11."
+  },
+  {
+   "event": {
+    "slug": "riograndense-republic",
+    "year": 1845,
+    "type": "dissolve",
+    "counterpart": "empire-of-brazil"
+   },
+   "mirror": {
+    "slug": "empire-of-brazil",
+    "year": 1845,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Both 1845-03, with the contest_end."
+  },
+  {
+   "event": {
+    "slug": "guatemala",
+    "year": 1839,
+    "type": "found",
+    "counterpart": "united-provinces-of-central-america"
+   },
+   "mirror": {
+    "slug": "united-provinces-of-central-america",
+    "year": 1839,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Both 1839-04."
+  },
+  {
+   "event": {
+    "slug": "guatemala",
+    "year": 1840,
+    "type": "gain",
+    "counterpart": "los-altos"
+   },
+   "mirror": {
+    "slug": "los-altos",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "los-altos (am-08) not written yet; it should end in 1840-01 (not 1841) and carry the 1848-08..1849-05 second state."
+  },
+  {
+   "event": {
+    "slug": "guatemala",
+    "year": 1842,
+    "type": "loss",
+    "counterpart": "centralist-mexico"
+   },
+   "mirror": {
+    "slug": "centralist-mexico",
+    "year": 1842,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Soconusco."
+  },
+  {
+   "event": {
+    "slug": "guatemala",
+    "year": 1848,
+    "type": "loss",
+    "counterpart": "los-altos"
+   },
+   "mirror": {
+    "slug": "los-altos",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Not written yet; also the 1849-05 gain."
+  },
+  {
+   "event": {
+    "slug": "honduras",
+    "year": 1838,
+    "type": "found",
+    "counterpart": "united-provinces-of-central-america"
+   },
+   "mirror": {
+    "slug": "united-provinces-of-central-america",
+    "year": 1838,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Federation 1838-10, Honduras 1838-11 (page infobox 5 November)."
+  },
+  {
+   "event": {
+    "slug": "honduras",
+    "year": 1846,
+    "type": "loss",
+    "counterpart": "mosquito-kingdom"
+   },
+   "mirror": {
+    "slug": "mosquito-kingdom",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "mosquito-kingdom (am-08) not written yet; also the 1859 gain."
+  },
+  {
+   "event": {
+    "slug": "honduras",
+    "year": 1859,
+    "type": "gain",
+    "counterpart": "british-colonial-empire"
+   },
+   "mirror": {
+    "slug": "british-colonial-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Bay Islands; eu-11 has not run."
+  },
+  {
+   "event": {
+    "slug": "honduras",
+    "year": 1960,
+    "type": "gain",
+    "counterpart": "republic-of-nicaragua"
+   },
+   "mirror": {
+    "slug": "republic-of-nicaragua",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "republic-of-nicaragua (am-08) not written yet; also the 1869-1960 contest."
+  },
+  {
+   "event": {
+    "slug": "honduras",
+    "year": 1971,
+    "type": "gain",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": {
+    "slug": "united-states-of-america",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "united-states-of-america has no 1971 Swan Islands loss (Treaty of the Swan Islands, 22 November 1971)."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Soconusco",
+   "kind": "region",
+   "used_in": "centralist-mexico"
+  },
+  {
+   "name": "Soconusco",
+   "kind": "region",
+   "used_in": "guatemala"
+  },
+  {
+   "name": "Swan Islands",
+   "kind": "region",
+   "used_in": "honduras"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Republic of Yucatan",
+   "suggested_slug": "republic-of-yucatan",
+   "years": [
+    1840,
+    1848
+   ]
+  },
+  {
+   "name": "Juliana Republic",
+   "suggested_slug": "juliana-republic",
+   "years": [
+    1839,
+    1839
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-am-08-e.md",
+ "problems": [
+  "Orchestrator decision still open (also review-am-08-c item 5): Cliopatria's Centralist Mexico and Federated Republic of Mexico rows draw one country as two simultaneous states in 1836-1846; the centralist-mexico and federated-republic-of-mexico dossiers keep the split, with confidence-1 'drawing transfer' gains in 1842 and overlapping Alta California land. Either merge (centralist-mexico becomes rename events 1835-10 and 1846-08 in federated-republic-of-mexico and its shapes are reviewed there) or keep the split and give both one colour and disjoint corrections.",
+  "republic-of-the-rio-grande (not yet written) should end on 6 November 1840 (Republic_of_the_Rio_Grande page), not 1841 as Cliopatria draws; centralist-mexico /ledger/6 must move with it.",
+  "los-altos (not yet written) should end its first life in January 1840 and carry the second state of 26 August 1848 - 8 May 1849, matching guatemala.",
+  "Mirrors to route to written dossiers: republic-of-chile (Arequipa 1837, Lima 1838 occupations), argentine-confederation (Bolivian occupation of northern Jujuy 1838-1839), united-states-of-america (Swan Islands loss 1971-11), empire-of-brazil (Laguna rather than all of Santa Catarina in 1839).",
+  "Reviewer edits applied and re-validated (0 errors): venezuela /wars/3/outcome; peru-bolivian-confederation /ledger/4, /ledger/7, /wars/0/zones/2 (Salta removed); riograndense-republic /identity/successors/0/land; guatemala /wars/2; honduras /ledger/2, /ledger/4, /wars/1 notes.",
+  "WebFetch: 18 distinct pages opened, all loaded."
+ ]
+}

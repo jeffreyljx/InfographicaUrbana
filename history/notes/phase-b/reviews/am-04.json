@@ -1,0 +1,1567 @@
+{
+ "batch_id": "am-04",
+ "verdicts": [
+  {
+   "slug": "chimor",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/4/source",
+     "what": "The 1375 Lambayeque gain (confidence 3) cited the Chimor page, which gives no date for that conquest; the quoted 'circa 1375' and 'in 1375' are the Lambayeque culture page's.",
+     "why": "Chimor page: the Lambayeque/Sican conquest has 'No date'; Lambayeque culture page: 'ended with the conquest of the Lambayeque region by the Chimú kingdom of Chimor circa 1375' and 'By the time of the Chimú conquest of the Lambayeque region in 1375'.",
+     "fix": "source set to https://en.wikipedia.org/wiki/Lambayeque_culture (already in sources[]); note tagged.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/2/region",
+     "what": "The c. 1370 gain (and the 1344 shape used from 1370, /keyframe_review/6) gives Chimor 2 Lambayeque-department cells (the Zaña valley, about 500 km2) that sican-culture holds, as the whole Lambayeque department, until 1375; the counterpart is 'Zaña, Chao and Santa valley societies'.",
+     "why": "Gazetteer: intersect(Chimu Empire 1202 shape, Lambayeque) = 2 cells, inside sican-culture's region 750-1374; Lambayeque culture page names the Zaña among the Sicán valleys.",
+     "fix": "Either name sican-culture as counterpart of the Zaña part and add a 1370 loss of {intersect:[Chimu Empire 1202, Lambayeque]} to sican-culture, or move the Zaña cells to the 1375 gain.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "1370 gain of the coast south to Carabayllo (about 36,000 km2) at confidence 1 with counterpart nobody; the Casma, Huarmey and Chancay valleys were inhabited, and no page dates the push",
+     "page to try": "https://en.wikipedia.org/wiki/Chancay_culture"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "1375 gain of Piura and Tumbes (about 28,000 km2) at confidence 1: no page opened names Piura or Tumbes",
+     "page to try": "https://en.wikipedia.org/wiki/Tumbes_Region"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Chimor",
+     "result": "confirmed: 'The Chimú conquered the Jequetepeque around 1320'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Chimor",
+     "result": "confirmed: Ñancempinco 'believed to have ruled around 1370', expansion 'both north and south of the Moche Valleys'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Lambayeque_culture",
+     "result": "confirmed on the Lambayeque culture page (circa 1375); not on the cited Chimor page, source corrected"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Chimor",
+     "result": "confirmed: infobox 'Inca conquest: 1470'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 97568.3,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area. The page's 'encompassing 1,000 kilometres ... of coastline' and 'as far as Carabayllo' fit the 1375 shape (Tumbes to Carabayllo), as /keyframe_review/7 says."
+   }
+  },
+  {
+   "slug": "cuzco",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Yucay and Calca gain has no year (confidence 1); its 4-cell disc lies outside Cliopatria's Cusco shape and is not carried into inca-empire's 1438 keyframe",
+     "page to try": "https://en.wikipedia.org/wiki/Viracocha_Inca"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Cusco",
+     "result": "confirmed: infobox 'Manco Capac organized the Kingdom of Cusco: c. 1200'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Cusco",
+     "result": "confirmed: 'Inca Roca ... becomes the first Hanan Cusco ruler: c. 1350'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Cusco",
+     "result": "confirmed undated: 'Viracocha Inca invaded the valleys of Yucay and Calca'; no year, confidence 1 is honest"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Cusco",
+     "result": "confirmed: infobox 'Cusi Yupanqui defeats the Chanka people: c. 1438' (drawn 1437, explained)"
+    },
+    {
+     "where": "/identity/rulers",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Cusco",
+     "result": "confirmed: the nine infobox reigns match"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 8783.3,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; the three identical Cliopatria shapes are kept as 'extent unverified'."
+   }
+  },
+  {
+   "slug": "inca-empire",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/identity/capitals/1",
+     "what": "Vilcabamba's coordinates (-73.0, -13.11) lie outside the Vilcabamba shape (shapes.csv inca-empire_1540 bbox east edge -73.06; the gazetteer resolves the shape to -73.65..-73.07).",
+     "why": "Vilcabamba, Peru page: '12°54′14″S 73°12′11″W ... 12.904°S 73.203°W'.",
+     "fix": "lon -73.203, lat -12.904; the page added to sources[]; note tagged.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/25/confidence",
+     "what": "capital_move to Vilcabamba in 1537 was confidence 3, but Manco first went to Vitcos and the Vilcabamba page dates the capital from 1539.",
+     "why": "Neo-Inca State page: he 'retreated to Vitcos and finally to the remote jungles of Vilcabamba'; Vilcabamba, Peru page: 'Vilcabamba was the capital of the Neo-Inca State from 1539 to 1572'.",
+     "fix": "confidence 2; note tagged.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/26",
+     "what": "The Neo-Inca State's vassal status under Spain, 1567-1571, was missing (the author's own source note names Acobamba 1566).",
+     "why": "Neo-Inca State infobox: 'Treaty of Acobamba: 1566'; status 'Independent state in Vilcabamba Vassal of the Spanish Empire(1567–1571)'.",
+     "fix": "Added vassal_start 1567 and vassal_end 1571 (/ledger/26, /ledger/27), counterpart spanish-empire, region the 1564 Vilcabamba shape, confidence 2.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what": "The 1450 shape, verdict ok for 1450-1474, and the 1450 central-highland gain (/ledger/2) held 12 cells (about 3,000 km2) of lupaca-kingdom's extent round Puno, which the Lupaca page keeps independent to c. 1463 and this ledger gains in 1463.",
+     "why": "Gazetteer: Inca Empire 1450 shape ∩ {Ilave 45 km ∪ Puno 30 km} = 12 cells; Lupaca infobox 'Conquered by the Inca Empire under Pachacuti: c. 1463'; the author's own /ledger/4 note says 'Cliopatria holds only the Puno edge of the lake'.",
+     "fix": "/keyframe_review/2 verdict adjust, correction minus[Inca Empire 1450, Lupaca lands]; /ledger/2 region minus the Lupaca lands; overlap now 0.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/3/region",
+     "what": "The Colla region (Juliaca 80 km minus Puno 30 km) overlapped lupaca-kingdom's Ilave disc by 4 cells; changed together with colla-kingdom.",
+     "why": "Gazetteer: 4 shared cells; the author's notes say the discs were 'built not to overlap'.",
+     "fix": "Colla region is now Juliaca 80 km minus (Puno 30 km ∪ Ilave 45 km) in /ledger/2 and /ledger/3.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/11/region",
+     "what": "Three gains re-took land already gained earlier in the ledger: /ledger/8 (1475) 57 Cajamarca cells (gained 1465) and 8 Chimor cells; /ledger/9 (1477, from aymara-kingdoms) 19 Lupaca and 21 Colla cells; /ledger/11 (1497, from the Collasuyu peoples) 108 Chachapoya cells in Amazonas plus Chincha, Colla, Lupaca and central-highland cells, though its text names only central Chile, the Bolivian lowlands and northwest Argentina.",
+     "why": "Gazetteer intersections of the ledger regions; the land went to the wrong counterparts.",
+     "fix": "Each region now subtracts the earlier gains (minus union of those regions); remaining overlaps are 3 cells or fewer, besides the legitimate 1532 regain from atahualpa-faction.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/6/region",
+     "what": "The 1470 Chachapoya gain uses the whole Amazonas department, which overreaches north (see chachapoya-culture); it must follow that dossier's corrected extent.",
+     "why": "Chachapoya culture page: 'the southern part of the Department of Amazonas'; inca-empire's own 1497 shape holds only 108 of the 138 cells and the dossier has an Inca-Shuar frontier war at the Chinchipe.",
+     "fix": "Replace with chachapoya-culture's corrected region when the author fixes it.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/8",
+     "what is missing": "1475 gain of the northern highlands to Quito (about 233,000 km2) at confidence 1 dated by Cliopatria's shape year; the Inca Empire page has 'Túpac Inca Yupanqui began conquests to the north in 1463', a dated lead the ledger does not use",
+     "page to try": "https://en.wikipedia.org/wiki/Topa_Inca_Yupanqui"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "1450 gain of the central highlands (about 106,000 km2: Huanca, Yauyos, Atavillos) at confidence 1; the Pachacuti page dates none",
+     "page to try": "https://en.wikipedia.org/wiki/Pachacuti"
+    },
+    {
+     "where": "/ledger/20",
+     "what is missing": "1534 fall of Quito at confidence 1 (the Spanish conquest page gives no date)",
+     "page to try": "https://en.wikipedia.org/wiki/Sebasti%C3%A1n_de_Belalc%C3%A1zar"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Lupaca",
+     "result": "confirmed: infobox 'Conquered by the Inca Empire under Pachacuti: c. 1463'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Chimor",
+     "result": "confirmed: infobox 'Inca conquest: 1470'"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Atahualpa",
+     "result": "confirmed: 'In April 1532 ... battles of Mullihambato, Chimborazo and Quipaipán'; 'reigning from April 1532'"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Inca_Empire",
+     "result": "confirmed: 'reached the city on 15 November 1532'; ambuscade 'on 16 November 1532'"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Inca_Empire",
+     "result": "confirmed: 'entered the heart of the Tawantinsuyu on 15 November 1533'"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Inca_Empire",
+     "result": "confirmed: 'In January 1535, Lima was founded'"
+    },
+    {
+     "where": "/ledger/24",
+     "page": "https://en.wikipedia.org/wiki/Neo-Inca_State",
+     "result": "confirmed: infobox 'Manco Inca Yupanqui created the Neo-Inca state of Vilcabamba: 1537'"
+    },
+    {
+     "where": "/ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Neo-Inca_State",
+     "result": "partly: Manco went to Vitcos first; Vilcabamba capital from 1539 (Vilcabamba, Peru page); confidence lowered to 2"
+    },
+    {
+     "where": "/ledger/28",
+     "page": "https://en.wikipedia.org/wiki/Neo-Inca_State",
+     "result": "confirmed: war declared 14 April 1572; 'On 24 June, the Spanish entered Vilcabamba'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2000000,
+    "infobox_year": 1527,
+    "cliopatria_km2": 2095032.0,
+    "ratio": 0.95,
+    "acknowledged": true,
+    "note": "Infobox '1527: 2,000,000 km2' against inca-empire_1497 (1497-1533); the author's notes compare the two."
+   }
+  },
+  {
+   "slug": "moche-culture",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Moche_culture",
+     "result": "confirmed: infobox 'Established: 100 CE'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Moche_culture",
+     "result": "confirmed: 'Disestablished: 800 CE'; 'Succeeded by: Wari culture and Sican culture'"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Moche_culture",
+     "result": "confirmed: Southern Moche 'Chicama and Moche valleys'; Northern Moche 'lower Lambayeque Valley system' (La Leche, Reque, Zaña) and 'lower Jequetepeque'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No Cliopatria row, no area on the page; the drawn extent resolves to about 13,900 km2. It overlaps sican-culture on the Lambayeque department 750-799, which the author flags in sican-culture's predecessor note (see cross_checks)."
+   }
+  },
+  {
+   "slug": "sican-culture",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "capital move to Túcume c. 1100 has no year on the page (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/T%C3%BAcume"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Lambayeque_culture",
+     "result": "confirmed: 'The Early Sican period began around 750'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Lambayeque_culture",
+     "result": "confirmed undated: Túcume 'constructed as the new Late Sican capital'; centres 'burned and abandoned between 1050 and 1100'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Lambayeque_culture",
+     "result": "confirmed: 'conquest of the Lambayeque region by the Chimú kingdom of Chimor circa 1375'; region named"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; the Lambayeque department (about 11,900 km2) stands for 'the Lambayeque region, including the Motupe, La Leche, Lambayeque, and Zaña valleys'."
+   }
+  },
+  {
+   "slug": "nazca-culture",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Nazca_culture",
+     "result": "confirmed: infobox 'Established: 100 BCE'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Nazca_culture",
+     "result": "confirmed: 'Disestablished: 800 CE' (the page also has 'by 750 AD the civilization had fallen completely', noted by the author); 'Succeeded by: Wari culture'"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Nazca_culture",
+     "result": "confirmed: 'the Rio Grande de Nazca drainage and the Ica Valley'; 'Today part of: Ica Department'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; the Ica department (about 17,700 km2) stands for the two drainages."
+   }
+  },
+  {
+   "slug": "chavin-culture",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/successors/0",
+     "what": "Successor nazca-culture carried Chavín's own land (a Huaraz disc) that never passed to the Nazca, and nazca-culture lists no predecessor.",
+     "why": "Its own note: 'Cultural succession, no land passes'; Chavín infobox 'Followed by: Moche, Lima, Nazca' is a cultural sequence; nazca-culture.json predecessors [].",
+     "fix": "Removed the successor; the cultural link is recorded in notes.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Chav%C3%ADn_culture",
+     "result": "confirmed: infobox '900 – 250 BCE'; 'developed in the northern Andean highlands of Peru around 900 BCE'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Chav%C3%ADn_culture",
+     "result": "confirmed: 'ending around 250 BCE'"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Chav%C3%ADn_culture",
+     "result": "confirmed: 'Mosna Valley', 'present-day Ancash Region'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; a 70 km disc round Huaraz (about 13,400 km2) stands for the Mosna valley core."
+   }
+  },
+  {
+   "slug": "norte-chico-civilization",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Norte_Chico_civilization",
+     "result": "confirmed: 'From 3100 BCE onward, large-scale human settlement and communal construction become clearly apparent'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Norte_Chico_civilization",
+     "result": "confirmed: 'a period of decline around 1800 BCE'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1800,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.34,
+    "acknowledged": true,
+    "note": "Page: 'The three principal valleys cover only 1,800 km2'; the 60 km Huacho disc resolves to about 5,300 km2 (ratio 0.34, page/drawn); the keyframe note says the disc overstates the area."
+   }
+  },
+  {
+   "slug": "wari-empire",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1",
+     "what": "The keyframes did not follow the ledger: the provincial gain is dated 650 but the second keyframe began in 700, and the 800 gain of the Ica department (60 percent of the empire's drawn area) appeared in no keyframe, though the 1000 dissolve region includes it.",
+     "why": "Ledger /ledger/1 (650) and /ledger/2 (800, admin1 Ica) against keyframes 600-699 and 700-999 without Ica.",
+     "fix": "Keyframes now 600-649 (Wari disc), 650-799 (the four discs) and a new wari-empire_800 for 800-999 (the four discs plus Ica).",
+     "applied": true
+    },
+    {
+     "where": "/identity/successors/1",
+     "what": "Successor chimor (land: a Chiclayo disc) does not agree with chimor.json, which lists only moche-culture as predecessor and takes the Chiclayo area only in 1375 from sican-culture.",
+     "why": "chimor.json /identity/predecessors; /ledger/4 (1375 gain from sican-culture).",
+     "fix": "Removed; the infobox's 'Succeeded by: Kingdom of Chimor' is recorded in notes as a cultural link.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "The extent omits two of the four provincial centres the page names ('Provincial centers include Viracochapampa, Honcopampa, and Cerro Baúl'); Viracochapampa (near Huamachuco, which the gazetteer has) and Honcopampa (Áncash) are not drawn",
+     "page to try": "https://en.wikipedia.org/wiki/Wari_Empire"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "650 provincial expansion at confidence 1 ('sometime in the seventh century', no year)",
+     "page to try": "https://en.wikipedia.org/wiki/Pikillacta"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "800 gain of the Ica department at confidence 1 from 'heavy Wari influence' (no date, influence not conquest)",
+     "page to try": "https://en.wikipedia.org/wiki/Nazca_culture"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Wari_Empire",
+     "result": "confirmed: 'emerged in around 600 CE in Peru's Ayacucho Basin'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Wari_Empire",
+     "result": "consistent, undated: 'an expansionist culture beginning sometime in the seventh century AD' (confidence 1 honest)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Huari_(archaeological_site)",
+     "result": "consistent, undated: 'Nasca, a city believed to have been under heavy Wari influence' (confidence 1 honest)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Huari_(archaeological_site)",
+     "result": "confirmed: 'The city was abandoned ca. 1000 AD' (the Wari Empire page has 'until ca. AD 1100', noted by the author)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page. Drawn: 17,700 km2 (600-649), 29,100 km2 (650-799), 46,800 km2 (800-999). The Moquegua disc is shared with tiwanaku-empire 650-1000 (8 cells); the page says 'The two empires met at Moquegua, where the Wari and Tiwanaku populations co-existed without conflicts' (see cross_checks)."
+   }
+  },
+  {
+   "slug": "tiwanaku-empire",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/successors",
+     "what": "Successors listed only lupaca-kingdom and said 'The other Aymara kingdoms (Colla, Pacajes, Carangas) have no dossier', but colla-kingdom and aymara-kingdoms exist in this batch and both name tiwanaku-empire as predecessor.",
+     "why": "colla-kingdom.json and aymara-kingdoms.json /identity/predecessors/0.",
+     "fix": "Added colla-kingdom and aymara-kingdoms as successors with their predecessor land specs; stale sentence replaced.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "The Azapa valley colony the page names ('Small colonies were also established in Chile's Azapa Valley') is not drawn; the gazetteer has Arica but no Azapa entry",
+     "page to try": "https://en.wikipedia.org/wiki/Tiwanaku_Empire"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Tiwanaku_Empire",
+     "result": "confirmed: infobox 'c. 600–c. 1000'; 'Beginning around 600 its population grew rapidly'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Tiwanaku_Empire",
+     "result": "confirmed: 'Around 1000, Tiwanaku ceramics stopped being produced' (end 'sometimes extended to 1150')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; drawn about 31,900 km2 (Tiwanaku 100 km and Moquegua 30 km discs); the page questions statehood, noted by the author."
+   }
+  },
+  {
+   "slug": "lupaca-kingdom",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Yunguyo and Zepita, two of the seven Lupaca centres the page names, lie outside the drawn extent (Ilave 45 km + Puno 30 km reaches only about 69.3 W); the page also has the Lupaca defeated 'at the southern tip of Lake Titicaca where the Desaguadero River flows from the lake' (Desaguadero is in the gazetteer; Yunguyo and Zepita are not)",
+     "page to try": "https://en.wikipedia.org/wiki/Lupaca"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Lupaca",
+     "result": "confirmed: infobox 'Established: c. 1150'; capital 'Cutimbo (1150-1463)'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Lupaca",
+     "result": "confirmed: 'Conquered by the Inca Empire under Pachacuti: c. 1463'; towns Chucuito, Acora, Ilave, Juli named"
+    },
+    {
+     "where": "/wars/1",
+     "page": "https://en.wikipedia.org/wiki/Lupaca",
+     "result": "confirmed: 'Revolt crushed by Topa Inca Yupanqui: c. 1473'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; drawn about 7,800 km2."
+   }
+  },
+  {
+   "slug": "colla-kingdom",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The Colla extent (Juliaca 80 km minus Puno 30 km) overlapped lupaca-kingdom's Ilave 45 km disc by 4 cells (about 1,000 km2), against the author's note that the discs were 'built not to overlap'.",
+     "why": "Gazetteer: 4 cells in both extents for 1150-1449.",
+     "fix": "Colla region is now Juliaca 80 km minus (Puno 30 km ∪ Ilave 45 km) in all seven places (predecessor, successor, ledger, keyframe, war zone) and in inca-empire /ledger/2-3; overlap now 0.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Colla_Kingdom",
+     "result": "confirmed: infobox 'Established: c. 1150'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Colla-Inca_war",
+     "result": "confirmed: 'between 1445 and 1450'; result 'End of the Colla Kingdom' (the Colla page's c. 1463 is noted by the author)"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Colla_Kingdom",
+     "result": "confirmed: Hatunqulla 'located 34 km north of Puno'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 20000,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 1.44,
+    "acknowledged": true,
+    "note": "Page: 'covering 20.000 square kilometres'; drawn about 13,900 km2 after the Lupaca carve (ratio 1.44); the keyframe note quotes the figure."
+   }
+  },
+  {
+   "slug": "aymara-kingdoms",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Four whole Bolivian departments (about 349,000 km2) include the La Paz Amazon lowlands and the eastern lowlands of Chuquisaca; 129 cells (about 32,600 km2) lie outside every Inca shape and become ownerless at 1477, and only 1,066 of the 1,381 cells are gained by the Inca in 1477; the author calls it 'a generous reading'. An intersect with the Altiplano and the inter-Andean valleys would draw the lordships the page lists",
+     "page to try": "https://en.wikipedia.org/wiki/Aymara_people"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Aymara_kingdoms",
+     "result": "confirmed: 'They were developed between 1150 and 1477'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Aymara_kingdoms",
+     "result": "consistent: 1477 is the page's span end; it 'disappeared due to the military conquest of the Inca Empire' with no conquest year, as the note says (confidence 2)"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Aymara_kingdoms",
+     "result": "confirmed: 'Pacajes (La Paz)', 'Carangas (Oruro)', 'Charcas (Chuquisaca)', 'Quillacas (Potosí)' among twelve"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; acknowledged in the keyframe note as a generous reading of the departments the page names."
+   }
+  },
+  {
+   "slug": "chincha-kingdom",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/note",
+     "what": "The drawn extent is more than twice the page's dimensions and the note did not say so.",
+     "why": "Page: the valley extends 'about 25 kilometres ... north to south along the coast and extending about 20 kilometres ... inland' (about 500 km2); the 25 km disc resolves to 5 cells, about 1,260 km2 (ratio about 2.5).",
+     "fix": "Sentence added to the note acknowledging the ratio as the grid's minimum drawable extent.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding at 1000 is a bridge for 'the 11th century' (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/La_Centinela"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Chincha_people",
+     "result": "confirmed: 'In the 11th century, the sophisticated and warlike culture known as the Chincha began'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Chincha_people",
+     "result": "confirmed: 'became part of the Inca Empire around 1480'; Topa Inca Yupanqui 'brought the Chincha Kingdom into a true territorial annexation'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 500,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.4,
+    "acknowledged": true,
+    "note": "Page dimensions 25 km by 20 km (about 500 km2) against about 1,260 km2 drawn; now acknowledged in the keyframe note."
+   }
+  },
+  {
+   "slug": "chachapoya-culture",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The extent is the whole Amazonas department, but the page puts the Chachapoya in its southern part: 66 of its 138 cells lie north of 5°S (Condorcanqui and northern Bagua, Jivaroan lowlands), while the page's southern extension beyond Amazonas (the Abiseo basin) is not drawn. The same region is used in /ledger/0-2, /identity/successors/0 and inca-empire /ledger/6.",
+     "why": "Chachapoya culture page: 'the southern part of the Department of Amazonas'; northern edge 'the triangular region formed by the confluence of the Marañón River and the Utcubamba in Bagua Province'; 'up to the basin of the Abiseo River where the Gran Pajáten is located'; 'land to the south up to the Chuntayaku River'; Garcilaso '50 by 20 leagues' (about 30,900 km2). Gazetteer: Amazonas = 138 cells, bbox north to 3.14°S.",
+     "fix": "Redraw as the southern Amazonas plus the Abiseo basin, e.g. {union:[{intersect:[{admin1:Amazonas,country:Peru},{place:Chachapoyas,km:110}]}, a disc or polygon over the Abiseo basin (Gran Pajatén, about 7.7°S 77.3°W)]} with the page's words as text (the intersect alone is 60 cells, about 15,200 km2); use the same region in the ledger, the successor and inca-empire /ledger/6.",
+     "applied": false,
+     "blocking": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "The Abiseo basin (Gran Pajatén) south of Amazonas is named on the page but has no gazetteer entry",
+     "page to try": "https://en.wikipedia.org/wiki/Gran_Pajat%C3%A9n"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Chachapoya_culture",
+     "result": "confirmed: infobox 'c. 800 - 1470'; 'started around the year 800'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Chachapoya_culture",
+     "result": "confirmed: 'in about 1470' (also 'around 1475' under Tupac Inca Yupanqui, noted by the author)"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Chachapoya_culture",
+     "result": "not on page as drawn: the page says 'the southern part of the Department of Amazonas', not the whole department"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": null,
+    "acknowledged": false,
+    "note": "No infobox area; Garcilaso's 50 by 20 leagues is about 30,900 km2 against 34,900 km2 drawn (size within a factor of two, placement wrong; the note does not mention it)."
+   }
+  },
+  {
+   "slug": "muisca-confederation",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Muisca",
+     "result": "confirmed: 'Funza was conquered and founded on April 20, 1537'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Muisca",
+     "result": "confirmed: 'On August 20, 1537, the zaque was submitted in his bohío in Hunza'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Muisca",
+     "result": "confirmed: 'On August 25, 1537, other sources state a date in early September, the troops arrived in the Iraca Valley'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Muisca",
+     "result": "confirmed: 'On August 6, 1538, Gonzalo Jiménez de Quesada founded Bogotá'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Muisca",
+     "result": "confirmed: 'Gonzalo Suárez Rendón founded Tunja on August 6, 1539'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Muisca",
+     "result": "confirmed: Maldonado entered Tundama's territory 15 December 1539, 'defeated the cacique of Tundama at the end of 1539'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 25000,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 1.28,
+    "acknowledged": true,
+    "note": "Conquest page 'approximately 25,000 square kilometres' (the Muisca page about 22,000 per the author) against 19,500 km2 drawn; quoted in the keyframe note. Cosmetic: the capital point is Bogotá's (4.598, -74.085) though the name says Funza, and the capital ends 1538 while the state ends December 1539."
+   }
+  },
+  {
+   "slug": "tairona",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "End of independence at 1600 (confidence 1): the page's only dated conflict is 'the 1600 revolt'; no Spanish expedition into the Sierra is dated",
+     "page to try": "https://en.wikipedia.org/wiki/Sierra_Nevada_de_Santa_Marta"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Tairona",
+     "result": "confirmed: 'a hierarchical network of villages that developed around 900'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Santa_Marta",
+     "result": "confirmed: 'Founded on July 29, 1525, by the Spanish conqueror Rodrigo de Bastidas'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Tairona",
+     "result": "confirmed as the page's only date: 'following the defeat of the 1600 revolt'; no end of independence given"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; a 90 km Santa Marta disc (about 11,900 km2) stands for the Sierra Nevada, said in the keyframe note."
+   }
+  },
+  {
+   "slug": "atahualpa-faction",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Inca_Civil_War",
+     "result": "confirmed: infobox '1529 – April 1532'; 'It began in 1529'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Inca_Civil_War",
+     "result": "confirmed: 'He assembled the former imperial army in Quito, the Northern region left for his control'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Atahualpa",
+     "result": "confirmed: April 1532 victories at Mullihambato, Chimborazo and Quipaipán"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Atahualpa",
+     "result": "confirmed: 'Self-installation: April 1532'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the pages; the Quito region plus a Cuenca disc (about 65,800 km2) is the author's reading of 'the Northern region', said in the keyframe note."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "chimor",
+    "year": 1320,
+    "type": "gain",
+    "counterpart": "Jequetepeque valley societies (unnamed on the page)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier: unnamed or non-state groups named in the author's notes (counterparts without a dossier)"
+  },
+  {
+   "event": {
+    "slug": "chimor",
+    "year": 1370,
+    "type": "gain",
+    "counterpart": "Zaña, Chao and Santa valley societies (unnamed on the page)"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "The Zaña part (2 Lambayeque cells) is inside sican-culture's region until 1375; sican-culture has no 1370 loss."
+  },
+  {
+   "event": {
+    "slug": "chimor",
+    "year": 1370,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "chimor",
+    "year": 1375,
+    "type": "gain",
+    "counterpart": "sican-culture"
+   },
+   "mirror": {
+    "slug": "sican-culture",
+    "year": 1375,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "chimor",
+    "year": 1375,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "chimor",
+    "year": 1470,
+    "type": "loss",
+    "counterpart": "inca-empire"
+   },
+   "mirror": {
+    "slug": "inca-empire",
+    "year": 1470,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "cuzco",
+    "year": 1410,
+    "type": "gain",
+    "counterpart": "Yucay and Calca valley groups (unnamed on the page)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier: unnamed or non-state groups named in the author's notes (counterparts without a dossier)"
+  },
+  {
+   "event": {
+    "slug": "cuzco",
+    "year": 1437,
+    "type": "loss",
+    "counterpart": "inca-empire"
+   },
+   "mirror": {
+    "slug": "inca-empire",
+    "year": 1438,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1438,
+    "type": "gain",
+    "counterpart": "Chanka confederation"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier: listed in the author's counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1450,
+    "type": "gain",
+    "counterpart": "Andean highland chiefdoms (Huanca, Yauyos, Atavillos and others; undated on the page)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier: unnamed or non-state groups named in the author's notes (counterparts without a dossier)"
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1450,
+    "type": "gain",
+    "counterpart": "colla-kingdom"
+   },
+   "mirror": {
+    "slug": "colla-kingdom",
+    "year": 1450,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1463,
+    "type": "gain",
+    "counterpart": "lupaca-kingdom"
+   },
+   "mirror": {
+    "slug": "lupaca-kingdom",
+    "year": 1463,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1465,
+    "type": "gain",
+    "counterpart": "Cajamarca polity (the list's 'Cajamarcas'; unnamed)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier: listed in the author's counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1470,
+    "type": "gain",
+    "counterpart": "chachapoya-culture"
+   },
+   "mirror": {
+    "slug": "chachapoya-culture",
+    "year": 1470,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Matched in year and land, but the shared region (whole Amazonas) is to be redrawn (chachapoya-culture finding)."
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1470,
+    "type": "gain",
+    "counterpart": "chimor"
+   },
+   "mirror": {
+    "slug": "chimor",
+    "year": 1470,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1475,
+    "type": "gain",
+    "counterpart": "northern highland chiefdoms (Cajamarca, Cañari, Carangue, Quito; undated on the pages)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier: listed in the author's counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1477,
+    "type": "gain",
+    "counterpart": "aymara-kingdoms"
+   },
+   "mirror": {
+    "slug": "aymara-kingdoms",
+    "year": 1477,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Year matches, land does not: aymara-kingdoms loses 1,381 cells (four whole departments); inca-empire gains 1,066 of them in 1477 (Altiplano part), 186 more only in 1497 (/ledger/11, other counterparts) and 129 never."
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1480,
+    "type": "gain",
+    "counterpart": "chincha-kingdom"
+   },
+   "mirror": {
+    "slug": "chincha-kingdom",
+    "year": 1480,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1497,
+    "type": "gain",
+    "counterpart": "Diaguita, Huarpe, Omaguaca, Atacama and other peoples of Collasuyu (the list)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier: unnamed or non-state groups named in the author's notes (counterparts without a dossier)"
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1529,
+    "type": "loss",
+    "counterpart": "atahualpa-faction"
+   },
+   "mirror": {
+    "slug": "atahualpa-faction",
+    "year": 1529,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1532,
+    "type": "gain",
+    "counterpart": "atahualpa-faction"
+   },
+   "mirror": {
+    "slug": "atahualpa-faction",
+    "year": 1532,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1533,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "spanish-empire is group am-06, which has not run (no spanish-empire.json)"
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1534,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "spanish-empire is group am-06, which has not run (no spanish-empire.json)"
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1535,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "spanish-empire is group am-06, which has not run (no spanish-empire.json)"
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1537,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "spanish-empire is group am-06, which has not run (no spanish-empire.json)"
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1567,
+    "type": "vassal_start",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "spanish-empire is group am-06, which has not run (no spanish-empire.json)"
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1571,
+    "type": "vassal_end",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "spanish-empire is group am-06, which has not run (no spanish-empire.json)"
+  },
+  {
+   "event": {
+    "slug": "inca-empire",
+    "year": 1572,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "spanish-empire is group am-06, which has not run (no spanish-empire.json)"
+  },
+  {
+   "event": {
+    "slug": "sican-culture",
+    "year": 1375,
+    "type": "loss",
+    "counterpart": "chimor"
+   },
+   "mirror": {
+    "slug": "chimor",
+    "year": 1375,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "wari-empire",
+    "year": 650,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "wari-empire",
+    "year": 800,
+    "type": "gain",
+    "counterpart": "nazca-culture"
+   },
+   "mirror": {
+    "slug": "nazca-culture",
+    "year": 800,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "lupaca-kingdom",
+    "year": 1463,
+    "type": "loss",
+    "counterpart": "inca-empire"
+   },
+   "mirror": {
+    "slug": "inca-empire",
+    "year": 1463,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "colla-kingdom",
+    "year": 1450,
+    "type": "loss",
+    "counterpart": "inca-empire"
+   },
+   "mirror": {
+    "slug": "inca-empire",
+    "year": 1450,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "aymara-kingdoms",
+    "year": 1477,
+    "type": "loss",
+    "counterpart": "inca-empire"
+   },
+   "mirror": {
+    "slug": "inca-empire",
+    "year": 1477,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Year matches, land does not: aymara-kingdoms loses 1,381 cells (four whole departments); inca-empire gains 1,066 of them in 1477 (Altiplano part), 186 more only in 1497 (/ledger/11, other counterparts) and 129 never."
+  },
+  {
+   "event": {
+    "slug": "chincha-kingdom",
+    "year": 1480,
+    "type": "loss",
+    "counterpart": "inca-empire"
+   },
+   "mirror": {
+    "slug": "inca-empire",
+    "year": 1480,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "chachapoya-culture",
+    "year": 1470,
+    "type": "loss",
+    "counterpart": "inca-empire"
+   },
+   "mirror": {
+    "slug": "inca-empire",
+    "year": 1470,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Matched in year and land, but the shared region (whole Amazonas) is to be redrawn (chachapoya-culture finding)."
+  },
+  {
+   "event": {
+    "slug": "muisca-confederation",
+    "year": 1538,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "spanish-empire is group am-06, which has not run (no spanish-empire.json)"
+  },
+  {
+   "event": {
+    "slug": "muisca-confederation",
+    "year": 1539,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "spanish-empire is group am-06, which has not run (no spanish-empire.json)"
+  },
+  {
+   "event": {
+    "slug": "muisca-confederation",
+    "year": 1539,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "spanish-empire is group am-06, which has not run (no spanish-empire.json)"
+  },
+  {
+   "event": {
+    "slug": "tairona",
+    "year": 1525,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "spanish-empire is group am-06, which has not run (no spanish-empire.json)"
+  },
+  {
+   "event": {
+    "slug": "atahualpa-faction",
+    "year": 1529,
+    "type": "gain",
+    "counterpart": "inca-empire"
+   },
+   "mirror": {
+    "slug": "inca-empire",
+    "year": 1529,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "atahualpa-faction",
+    "year": 1532,
+    "type": "loss",
+    "counterpart": "inca-empire"
+   },
+   "mirror": {
+    "slug": "inca-empire",
+    "year": 1532,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "atahualpa-faction",
+    "year": 1532,
+    "type": "merge",
+    "counterpart": "inca-empire"
+   },
+   "mirror": {
+    "slug": "inca-empire",
+    "year": 1532,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "moche-culture",
+    "year": 800,
+    "type": "dissolve",
+    "counterpart": "sican-culture"
+   },
+   "mirror": {
+    "slug": "sican-culture",
+    "year": 750,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Both draw the Lambayeque department 750-799 (the pages give Moche 100-800 and Sicán from about 750); flagged by the author in sican-culture's predecessor note. Suggest ending the Moche Lambayeque strip in 749 or dating the Sicán found to 800."
+  },
+  {
+   "event": {
+    "slug": "wari-empire",
+    "year": 650,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "tiwanaku-empire",
+    "year": 600,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "The Moquegua 30 km disc (8 cells) is drawn in both wari-empire (650-999) and tiwanaku-empire (600-999); the Wari Empire page: 'The two empires met at Moquegua, where the Wari and Tiwanaku populations co-existed without conflicts'. Needs one owner or a shared band."
+  },
+  {
+   "event": {
+    "slug": "tiwanaku-empire",
+    "year": 1000,
+    "type": "dissolve",
+    "counterpart": "lupaca-kingdom"
+   },
+   "mirror": {
+    "slug": "lupaca-kingdom",
+    "year": 1150,
+    "type": "found"
+   },
+   "status": "exception",
+   "note": "150-year gap with no owner, explained by the pages (kingdoms formed after the collapse)."
+  },
+  {
+   "event": {
+    "slug": "wari-empire",
+    "year": 1000,
+    "type": "dissolve",
+    "counterpart": "cuzco"
+   },
+   "mirror": {
+    "slug": "cuzco",
+    "year": 1200,
+    "type": "found"
+   },
+   "status": "exception",
+   "note": "200-year gap; the Wari page lists the Kingdom of Cusco as successor, no handover."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Supe valley",
+   "kind": "region",
+   "used_in": "norte-chico-civilization"
+  },
+  {
+   "name": "Hatunqulla (Hatuncolla)",
+   "kind": "place",
+   "used_in": "colla-kingdom"
+  },
+  {
+   "name": "Sacred Valley of the Incas",
+   "kind": "region",
+   "used_in": "cuzco"
+  },
+  {
+   "name": "Azapa valley",
+   "kind": "region",
+   "used_in": "tiwanaku-empire"
+  },
+  {
+   "name": "Viracochapampa",
+   "kind": "place",
+   "used_in": "wari-empire"
+  },
+  {
+   "name": "Honcopampa",
+   "kind": "place",
+   "used_in": "wari-empire"
+  },
+  {
+   "name": "Gran Pajatén (Abiseo river basin)",
+   "kind": "place",
+   "used_in": "chachapoya-culture"
+  },
+  {
+   "name": "Yunguyo",
+   "kind": "place",
+   "used_in": "lupaca-kingdom"
+  },
+  {
+   "name": "Zepita",
+   "kind": "place",
+   "used_in": "lupaca-kingdom"
+  },
+  {
+   "name": "Vitcos",
+   "kind": "place",
+   "used_in": "inca-empire"
+  },
+  {
+   "name": "Funza",
+   "kind": "place",
+   "used_in": "muisca-confederation"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Chanka confederation",
+   "suggested_slug": "chanka-confederation",
+   "years": [
+    1200,
+    1438
+   ]
+  },
+  {
+   "name": "Kingdom of Quito",
+   "suggested_slug": "kingdom-of-quito",
+   "years": [
+    0,
+    0
+   ]
+  },
+  {
+   "name": "Ayarmaca",
+   "suggested_slug": "ayarmaca",
+   "years": [
+    1260,
+    1290
+   ]
+  },
+  {
+   "name": "Cajamarca polity",
+   "suggested_slug": "cajamarca-polity",
+   "years": [
+    1460,
+    1469
+   ]
+  },
+  {
+   "name": "Mapuche",
+   "suggested_slug": "mapuche",
+   "years": [
+    1471,
+    1530
+   ]
+  },
+  {
+   "name": "Spanish Empire (group am-06): mirrors for 1532-1572 in inca-empire (incl. the 1567-1571 vassalage added by the reviewer), 1537-1539 in muisca-confederation, 1525 and 1600 in tairona",
+   "suggested_slug": "spanish-empire",
+   "years": [
+    1525,
+    1600
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-am-04.md",
+ "problems": [
+  "All pages loaded; WebFetch returns summaries, so quotes are the tool's returned sentences.",
+  "Reviewer edits applied in place and re-validated (0 errors): chimor, inca-empire, colla-kingdom, wari-empire, tiwanaku-empire, chincha-kingdom, chavin-culture; each change carries a '[Reviewer am-04, 2026-10-19: ...]' tag in its note; originals kept in /tmp/claude-0/work/review-am-04/bak/.",
+  "Schema defines type culture as 'an archaeological culture before 3400 BCE', but this group's brief told the author to draw post-3400 BCE Andean societies as cultures (moche, sican, nazca, chavin, chachapoya, tairona, norte-chico from 3100 BCE); the orchestrator should confirm the renderer accepts that.",
+  "spanish-empire.json (am-06) does not exist yet, so every Spanish-side mirror is an exception.",
+  "Kingdom of Quito has no years on the pages (counterparts_needing_dossiers years 0,0).",
+  "The orchestrator's fill date is 2026-10-18; the environment date is 2026-10-19, used in tags and the added source."
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "window": "p1600-p1609",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "New Spain gains the state of New Mexico (1,067 cells = 1,084 minus the 17 the Spanish Empire's 1600 shape keeps) in 1600 from spanish-empire. The page says 'On July 12, 1598, Oñate established the New Spain colony of Santa Fe de Nuevo Méjico', 'The first capital was San Juan de los Caballeros from 1598 until 1610', and that the province took in 'most of the present-day American state of New Mexico'. The cells sit inside the dossier's own 'New Mexico (province)' region (2,208 cells), which already contains the whole state. In the trial the 1,067 cells pass from spanish-empire to viceroyalty-of-new-spain, as its vassal, in 1600. The spanish-empire_1600 snap now removes 14 cells instead of 1,081. At the 1609 Spanish Empire snap New Spain keeps its 49 New Mexico cells. Drawing the whole state is generous: the page puts actual settlement between Taos and Albuquerque. That breadth comes from the dossier's region, not from this patch.",
+   "page": "https://en.wikipedia.org/wiki/Santa_Fe_de_Nuevo_M%C3%A9xico",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "safavid-dynasty_1609 is the dossier's correction (Cliopatria 1609 minus Kandahar and Iraq) plus the exact regions of Safavid ledger/38-40. The page supports every date: Tabriz 'on 21 October 1603', Nakhchivan entered 'at the same month', Yerevan captured 'in June' 1604, and 'Ganja, Baku, Shirvan, and Shamakhi in Azerbaijan in June 1606'. Cliopatria's 1609 Safavid shape holds only 16 cells in Azerbaijan and Armenia (gazetteer), so the dossier's snap did erase the gains. In the trial the snap removes 2 cells instead of 370. The Ottoman/Safavid overlap is 0, and the Cliopatria Safavid 1612 shape holds 420 Azerbaijan and Armenia cells, so the next keyframe keeps the land. A minor reach is inherited from ledger/39: the Yerevan 100 km disc covers 30 Turkish cells (Igdir 15, Agri 8, Kars 7), which the Safavids already held from 1604.",
+   "page": "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Safavid_War_(1603%E2%80%931618)",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "fixed",
+   "what": "Replacing the dossier's 250 km Tabriz disc and its whole-country cuts with the Safavid gain regions did keep Van (43 cells), Hakkari (26), the Iraqi Kurdistan edge (34) and West Azarbaijan (32) Ottoman, as they were in 1608. That part is right: the page has the Ottoman commander 'withdraw to the fortress of Van'. But dropping {country: Azerbaijan} and {country: Armenia} made the 1609 snap hand the Ottomans 47 unowned Karabakh cells (Kelbajar 9, Aghdam 6, Khojavend 6, Lankaran 6, Zangilan 4 and more). Those cells had been nobody's since kingdom-of-artsakh dissolved in 1603. The Principality of Khachen page says 'In 1603 the Persians established a protectorate over the Khamsa', and the Ottoman ledger already loses Armenia (June 1604) and Azerbaijan (June 1606). That was an unexplained Ottoman reconquest, not 'stays Ottoman'. I added both countries back to the subtraction and updated the text and why. The trial now gives ottoman-empire_1609 added 686 / removed 882 (published 686/1034, before the fix 733/882). The 47 cells stay unowned, as they were from 1603 to 1608.",
+   "page": "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Safavid_War_(1603%E2%80%931618); https://en.wikipedia.org/wiki/Principality_of_Khachen",
+   "fix": "Added {\"country\": \"Azerbaijan\"} and {\"country\": \"Armenia\"} to correction.minus[1].union, rewrote correction.text, and appended a [Reviewer, 2 Nov 2026] note to why.",
+   "applied": true
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "pass",
+   "what": "The page says 'the Tümed's pastures were north of the border with Shanxi, in present-day Inner Mongolia'. The Hohhot 200 km disc of tumed_1600/1609 covers 105 Shanxi cells (gazetteer), and the ruling is limited to Shanxi. In the trial it settles 306 cell-years in 1600 and 1609, and the Ming 1600 snap takes 102 Tumed cells in Shanxi. Tumed keeps 32 cell-years outside Shanxi.",
+   "page": "https://en.wikipedia.org/wiki/Altan_Khan_of_the_Tumed",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch after the fix: 4 entries, 4 ok, 0 rejected. The trial applies all 4: the ruling settles 306 cell-years in 2 years; ottoman-empire_1609 snap added 686 / removed 882 (published 686/1034); safavid-dynasty_1609 891/2 (published 873/370); spanish-empire_1600 removed 14 (published 1081); 1894 end-anchor cells change owner.",
+ "problems": [
+  "The 47 Karabakh (Khamsa) cells, from Kelbajar and Aghdam to Khojavend, Zangilan and Lankaran, have been nobody's from 1603 through 1611. kingdom-of-artsakh/ledger/4 dissolves them with counterpart safavid-dynasty but moves no cells. The Principality of Khachen page says 'In 1603 the Persians established a protectorate over the Khamsa', yet safavid-dynasty/ledger/41 gains Karabakh 'from the Ottomans' only in Nov 1612. Dossier request: give the Khamsa to the Safavids (vassal or protectorate) from 1603, and make ledger/41 consistent with that.",
+  "Ottoman pockets inside Safavid land: 17 Ardebil (Moghan, north of Ardabil) cells and 32 West Azarbaijan cells (Urmia, Khoy) stay Ottoman from 1603 to 1611. The pages date only Tabriz, Nakhchivan, Yerevan and the Shirvan towns. safavid-dynasty/ledger/41 gains West Azarbaijan in 1612 but not Ardebil, so the Moghan enclave may outlast 1612; p1610-p1619 should check it.",
+  "Ottoman ledger/97-99 and /101 (losses of Tbilisi, the 250 km Tabriz disc, Armenia and Azerbaijan) produce no changes in the draft. Only the Safavid gains move cells, so the Ottoman ledger overstates its losses. This is harmless now, but anyone who reads that ledger as truth will be misled.",
+  "The Yerevan 100 km disc (safavid ledger/39, reused by keyframe_overrides/0 and /1) covers 30 Turkish cells (Igdir, Agri, Kars), though the page has the Safavids only 'advance towards Kars'. This is a dossier-level choice, inherited.",
+  "The rulings/0 Shanxi ruling covers only 1600-1609, so the 105 Tumed cells of the 1599 anchor jump to the Ming at 1600. The Tumed dossier's Hohhot disc (1547-1635) should be cut at Shanxi; the window agent's dossier request stands.",
+  "While I reviewed, another window's patch file changed: between my two trials, other windows' applied entries went from 651 to 650. The trial also shows dossier edits unrelated to this patch, such as the duchy-of-pomerania conflicts.",
+  "The window agent's report marks the 1609 Karabakh pocket 'fine as drawn' (Ottoman until 1612). That holds no longer: after the fix it is grey (nobody), as in 1603-1608."
+ ]
+}

@@ -1,0 +1,1109 @@
+{
+ "batch_id": "eu-12-m",
+ "verdicts": [
+  {
+   "slug": "kingdom-of-spain",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/49/correction (and /keyframe_review/50-54, /ledger/45-47, /ledger/51-54)",
+     "blocking": true,
+     "applied": false,
+     "what": "The 1877-1898 shapes keep Cuba, Puerto Rico, the Philippines, Guam, the Marianas, the Carolines, Palau and Fernando Po/Annobon in the Kingdom of Spain (as 'vassal tint'), but the spanish-empire dossier (am-06) corrects its own 1873, 1877 and 1878 keyframes to hold exactly this land to 10 December 1898, so about 490,000 km2 is drawn twice for 22 years.",
+     "why": "spanish-empire.json keyframe spanish-empire_1878 correction: 'Cuba, Puerto Rico, the whole Philippines (Sulu a vassal after July 1878), Guam, the Northern Marianas, the Carolines and Palau, plus the African posts Fernando Po, Annobon and Ifni' (1878-1898; spanish-empire_1873 and _1877 likewise); its ledger/121-125 cede them in 1898-12/1899-02 and dissolve into kingdom-of-spain. captaincy-general-of-cuba and spanish-east-indies (type colony) record no vassal relation to kingdom-of-spain. The group scope for eu-12 asks for 'the Spanish and Portuguese metropoles distinct from their overseas empires'. Areas: 1877 shape 984,377 km2, 1890 shape 1,294,162 km2 against the infobox 506,030 km2 (factor 1.9-2.6).",
+     "fix": "Correct keyframes 1877, 1880, 1885, 1890, 1895 and 1898 to the metropole plus the African land this dossier itself acquires (intersect the drawn shape with Spain, Morocco, Western Sahara, Mauritania; leave out the Americas, Asia, the Pacific and, until February 1899, Fernando Po/Annobon, which spanish-empire carries); delete /ledger/45, 46, 47, 51, 52, 53 and 54 (the sale to Germany is spanish-empire ledger/124, 12 February 1899); add a 1899-02 gain from spanish-empire of Fernando Po, Annobon and Ifni to mirror spanish-empire's dissolve. Remove spanish-puerto-rico from counterparts_needing_dossiers if no longer used."
+    },
+    {
+     "where": "/ledger/63, /ledger/64 (and /ledger/48, /ledger/56)",
+     "blocking": true,
+     "applied": false,
+     "what": "The protectorates over Spanish Morocco (from 1912) and Spanish Sahara (from 1884) are kept as this dossier's vassals until 1956 and 1975, although /ledger/62 hands all the kingdom's land to second-spanish-republic on 14 April 1931 and the dossier holds nothing until /ledger/65 (November 1975).",
+     "why": "Ledger/62 note: 'The Republic, the Civil War (1936-1939) and Franco's state (1939-1975) are other Cliopatria rows.' morocco.json ledger/18 (7 April 1956), /21 (1 April 1958) and /22 (5 January 1969) name francoist-spain, not kingdom-of-spain, as the counterpart. A landless state cannot be suzerain for 25-44 years; the tint would be drawn for a polity not on the map, beside the Republic's and Franco's own claims.",
+     "fix": "End both relations at 1931-04 (vassal_end spanish-morocco and vassal_end spanish-sahara, note: passed to the Second Republic with the rest of the state); drop /ledger/63 and /ledger/64 here (they belong in second-spanish-republic/francoist-spain); keep the 1956 and 1975 facts in notes."
+    },
+    {
+     "where": "/ledger/10",
+     "blocking": false,
+     "applied": false,
+     "what": "The 1640 event is a split of Portugal from Spain, but /ledger/9 merged all of Spain into iberian-union in 1580 and no event gives Spain its land back in 1640; the split belongs to iberian-union's ledger.",
+     "why": "Schema: 'merge: this state absorbs or is absorbed into counterpart'; 'split: part of the state becomes a new state named in counterpart'. After /ledger/9 the dossier holds nothing; Habsburg Spain page: 'in 1640, the Portuguese revolted and fought successfully for their independence from the rest of Iberia' (confirmed).",
+     "fix": "Replace /ledger/10 by a 1640 split (or gain) with counterpart iberian-union and region {cliopatria: Kingdom of Spain, year: 1640} (Spain re-emerging as the union breaks), and leave Portugal's split to the iberian-union and kingdom-of-portugal dossiers; month 12 (1 December 1640) if a page gives it."
+    },
+    {
+     "where": "/ledger/19",
+     "blocking": false,
+     "applied": false,
+     "what": "Luxembourg is lost to France in 1691 (Cliopatria's year, confidence 1); France took it in June 1684.",
+     "why": "Siege of Luxembourg (1684) page: the siege ran 'from 27 April to 7 June 1684'; 'The surrender of the Spanish garrison was signed in the French headquarters in Merl' on 3 June; the duchy 'was returned to the Habsburgs by the Treaty of Ryswick in 1697'. kingdom-of-france.json ledger/137: 1684-06 gain from kingdom-of-spain (confidence 3).",
+     "fix": "Re-date /ledger/19 to 1684, month 6, confidence 2, source https://en.wikipedia.org/wiki/Siege_of_Luxembourg_(1684) (add to sources[]); mark keyframe kingdom-of-spain_1683 adjust with a correction that removes the Duchy of Luxembourg from June 1684; keep the 1691 keyframe note for the remaining Liege-side cells."
+    },
+    {
+     "where": "/ledger/49",
+     "blocking": false,
+     "applied": false,
+     "what": "The Sahara interior is gained in 1890 (Cliopatria's year, confidence 1, note says the page has no date), but the page cited dates the inland extension to 1886-1887.",
+     "why": "Spanish Sahara page: Spain 'signed a treaty with the Emir of Adrar and Saharawi chieftains which ceded to Spain control over vast areas of desert' (1886) and 'an 1887 decree extended Spanish jurisdiction 150 miles inland'. The interior is also written as a direct gain from nobody while the coast is a vassal (spanish-sahara), so the two halves of one colony get different tints.",
+     "fix": "Re-date to 1887 (confidence 2), make it the same relation as /ledger/48 (vassal tint under spanish-sahara, or turn /ledger/48 into a gain), and adjust keyframe kingdom-of-spain_1885 to include the interior from 1887."
+    },
+    {
+     "where": "/ledger/6, /ledger/7, /wars/0/belligerents",
+     "blocking": false,
+     "applied": false,
+     "what": "The 1568 contest and 1572 loss name dutch-republic, whose dossier starts in 1582; the Republic cannot mirror events before it exists.",
+     "why": "dutch-republic.json identity.start 1582 (found from union-of-utrecht); union-of-utrecht.json starts 1579.",
+     "fix": "Name the rebels for 1568-1578 (e.g. counterpart 'Dutch rebels (States of Holland and Zeeland)', listed under counterparts_needing_dossiers or explained in notes) and union-of-utrecht from 1579."
+    },
+    {
+     "where": "/ledger/25",
+     "blocking": false,
+     "applied": false,
+     "what": "The 1706 event is a loss of the Spanish Netherlands to dutch-republic, but the page describes an occupation 'for the remainder of the conflict', and /ledger/28 loses the same land again to habsburg-monarchy in 1713; dutch-republic has no 1706 event.",
+     "why": "Spanish Netherlands page: 'in 1706 the Habsburg Netherlands became an Anglo-Dutch condominium for the remainder of the conflict.' War of the Spanish Succession page: the Allied army 'then occupied much of the Spanish Netherlands in under two weeks' (confirmed).",
+     "fix": "Make /ledger/25 an occupation_start (counterpart dutch-republic, the owner recording the occupier's event) and add the occupation_end at 1713/1714 where the land passes to habsburg-monarchy (/ledger/28)."
+    },
+    {
+     "where": "/keyframe_review/0-48 (all shapes 1516-1872)",
+     "blocking": false,
+     "applied": false,
+     "what": "The Canary Islands (Castilian since before 1516) are in no shape before 1877, Ceuta (Spanish from 1640, ceded by Portugal in 1668) only from 1778, and Melilla (Spanish since 1497) only as the one-cell flicker from 1912 that the author's keyframe 57 note mentions; no correction is written (the author flags the Canaries).",
+     "why": "shapes.csv: no Kingdom of Spain bbox 1516-1872 reaches south of 35.26 N (35.77 N in 1516-1533, 36.03 N in 1534-1777, 35.26 N from 1778); the 1976 shape reaches 27.61 N. The Canaries are about 7,450 km2.",
+     "fix": "Add the Canary Islands (and Ceuta from 1640, Melilla throughout) to every keyframe correction 1516-1872 (and the ok shapes get verdict adjust), citing a Canary Islands/Ceuta page."
+    },
+    {
+     "where": "/ledger/0",
+     "blocking": false,
+     "applied": false,
+     "what": "A gain dated 1516 with no month sorts before the found event (1516-03), so the state gains land before it exists; its counterpart habsburg-monarchy (the Austrian line) never held the Low Countries, which were Charles's Burgundian inheritance from 1506.",
+     "why": "Charles V page: 'In 1506, Charles inherited all of his father's territories in the Low Countries' (confirmed).",
+     "fix": "Give it month 3 and place it after /ledger/1, with counterpart the Habsburg/Burgundian Netherlands (habsburg-netherlands, the name eu-09 uses) or fold the Low Countries into the found event's region."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "Friesland 1526 (confidence 1, counterpart a bare name); the Charles V page only mentions the Frisian peasants' rebellion 1515-1523",
+     "page to try": "https://en.wikipedia.org/wiki/Lordship_of_Frisia"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "The 1572 rebel hold on Holland and Zeeland (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Capture_of_Brielle"
+    },
+    {
+     "where": "/ledger/23",
+     "what is missing": "Loss of Milan 1706 (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Turin"
+    },
+    {
+     "where": "/ledger/24",
+     "what is missing": "Aragon and Valencia for the Archduke 1706 (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Almansa"
+    },
+    {
+     "where": "/ledger/37",
+     "what is missing": "The French-held zone (confidence 1, dated 1809 by the shape although the Peninsular War page dates the invasion February 1808 and Joseph's entry 20 July 1808)",
+     "page to try": "https://en.wikipedia.org/wiki/Peninsular_War"
+    },
+    {
+     "where": "/ledger/43",
+     "what is missing": "Proclamation of the First Republic (confidence 1; 11 February 1873)",
+     "page to try": "https://en.wikipedia.org/wiki/First_Spanish_Republic"
+    },
+    {
+     "where": "/ledger/55",
+     "what is missing": "Rio Muni 1900 (confidence 1) and Spanish Guinea's status as a colony",
+     "page to try": "https://en.wikipedia.org/wiki/Spanish_Guinea"
+    },
+    {
+     "where": "/ledger/59",
+     "what is missing": "The 1924 Spanish withdrawal in the Rif (confidence 1; the protectorate page is silent)",
+     "page to try": "https://en.wikipedia.org/wiki/Rif_War"
+    },
+    {
+     "where": "/keyframe_review/37-39",
+     "what is missing": "Menorca out of the shape 1799-1802 has no ledger event (British capture November 1798, returned at Amiens 1802)",
+     "page to try": "https://en.wikipedia.org/wiki/Capture_of_Minorca_(1798)"
+    },
+    {
+     "where": "/ledger (1801)",
+     "what is missing": "Olivenza gained from Portugal by the Treaty of Badajoz (1801); no event",
+     "page to try": "https://en.wikipedia.org/wiki/War_of_the_Oranges"
+    },
+    {
+     "where": "/ledger and /wars (1667-1678)",
+     "what is missing": "War of Devolution and Franco-Dutch War: France's dossier has contest_start 1667-05, occupations of Franche-Comte 1668-02 and 1674, Ghent 1678-03, and the 1678-09 return of Charleroi, Ghent and other towns to Spain; none is mirrored here",
+     "page to try": "https://en.wikipedia.org/wiki/Franco-Dutch_War"
+    },
+    {
+     "where": "/ledger and /wars (1694-1697, 1793-1795)",
+     "what is missing": "French occupation of Girona and Palamos 1694-1697 (France ledger/141, /143) and of Gipuzkoa and Figueres in the War of the Pyrenees",
+     "page to try": "https://en.wikipedia.org/wiki/War_of_the_Pyrenees"
+    },
+    {
+     "where": "/ledger and /wars (1848, 1859-1860)",
+     "what is missing": "Chafarinas 1848 (morocco ledger/10) and the Hispano-Moroccan War (morocco ledger/11-12 contest events with kingdom-of-spain)",
+     "page to try": "https://en.wikipedia.org/wiki/Hispano-Moroccan_War_(1859%E2%80%931860)"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "Rulers strip not written",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_Spanish_monarchs"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "Capital before 1561 (itinerant court: Toledo, Valladolid)",
+     "page to try": "https://en.wikipedia.org/wiki/Toledo,_Spain"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Spain",
+     "result": "confirmed",
+     "note": "infobox 'Sole sovereign: 14 March 1516'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Charles_V,_Holy_Roman_Emperor",
+     "result": "confirmed",
+     "note": "'upon the death of King Ferdinand II of Aragon, on 23 January 1516, Joanna inherited the Crown of Aragon'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Charles_V,_Holy_Roman_Emperor",
+     "result": "confirmed",
+     "note": "'In 1535, Francesco II Sforza died without heirs, and Charles V annexed the territory'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Habsburg_Spain",
+     "result": "confirmed",
+     "note": "'In January 1579, Friesland, Gelderland, Groningen, Holland, Overijssel, Utrecht and Zeeland formed the United Provinces'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Habsburg_Spain",
+     "result": "confirmed",
+     "note": "'In 1580...'; 'in June sent ... Duke of Alba with an army to Lisbon'"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Habsburg_Spain",
+     "result": "confirmed",
+     "note": "1640 revolt and Treaty of Lisbon (1668) on the page; event type wrong (fix 3)"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Spanish_Netherlands",
+     "result": "confirmed",
+     "note": "Peace of Munster 30 January 1648; Zeelandic Flanders, North Brabant, Maastricht"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Siege_of_Luxembourg_(1684)",
+     "result": "mis-dated",
+     "note": "Luxembourg surrendered 3 June 1684, not 1691 (confidence 1)"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Spanish_Netherlands",
+     "result": "confirmed",
+     "note": "'restored to Spain by the Treaty of Rijswijk 1697'"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
+     "result": "confirmed",
+     "note": "'Charles died on 1 November 1700'; 'proclaimed Philip V of Spain on 16 November 1700'"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
+     "result": "confirmed",
+     "note": "'The 1705 Pact of Genoa between Catalan representatives and Britain'"
+    },
+    {
+     "where": "/ledger/25",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
+     "result": "confirmed",
+     "note": "Ramillies and the occupation of the Spanish Netherlands; type should be occupation (fix 7)"
+    },
+    {
+     "where": "/ledger/27",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
+     "result": "confirmed",
+     "note": "'defeat at Almansa in April 1707'"
+    },
+    {
+     "where": "/ledger/31",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
+     "result": "confirmed",
+     "note": "'Catalonia and Majorca were not finally subdued by the Bourbons until June 1715'"
+    },
+    {
+     "where": "/ledger/38",
+     "page": "https://en.wikipedia.org/wiki/Peninsular_War",
+     "result": "confirmed",
+     "note": "'The French invaded Andalusia on 19 January 1810'"
+    },
+    {
+     "where": "/ledger/40",
+     "page": "https://en.wikipedia.org/wiki/Peninsular_War",
+     "result": "confirmed",
+     "note": "Madrid 'surrendered on 14 August' 1812"
+    },
+    {
+     "where": "/ledger/42",
+     "page": "https://en.wikipedia.org/wiki/Peninsular_War",
+     "result": "confirmed",
+     "note": "Vitoria 21 June 1813"
+    },
+    {
+     "where": "/ledger/48",
+     "page": "https://en.wikipedia.org/wiki/Spanish_Sahara",
+     "result": "confirmed",
+     "note": "'declare a protectorate over Rio de Oro, Cape Blanc and Angra de Cintra in December 1884'"
+    },
+    {
+     "where": "/ledger/49",
+     "page": "https://en.wikipedia.org/wiki/Spanish_Sahara",
+     "result": "mis-dated",
+     "note": "page gives the 1886 Adrar treaty and the 1887 decree 'extended Spanish jurisdiction 150 miles inland' (confidence 1, fix 5)"
+    },
+    {
+     "where": "/ledger/56",
+     "page": "https://en.wikipedia.org/wiki/Spanish_protectorate_in_Morocco",
+     "result": "confirmed",
+     "note": "'established on 27 November 1912'; 'about 20,000 km2'"
+    },
+    {
+     "where": "/ledger/57",
+     "page": "https://en.wikipedia.org/wiki/Spanish_protectorate_in_Morocco",
+     "result": "confirmed",
+     "note": "infobox 'Rif War: June 1921 - May 1926'"
+    },
+    {
+     "where": "/ledger/62",
+     "page": "https://en.wikipedia.org/wiki/Spain",
+     "result": "confirmed",
+     "note": "'the proclamation of the Republic on 14 April ensued'"
+    },
+    {
+     "where": "/ledger/63",
+     "page": "https://en.wikipedia.org/wiki/Spanish_protectorate_in_Morocco",
+     "result": "confirmed",
+     "note": "'became part of independent Morocco on 7 April 1956' (but outside this dossier's land, fix 2)"
+    },
+    {
+     "where": "/ledger/64",
+     "page": "https://en.wikipedia.org/wiki/Spanish_Sahara",
+     "result": "confirmed",
+     "note": "infobox 'Madrid Accords: 14 November 1975' (fix 2)"
+    },
+    {
+     "where": "/ledger/65",
+     "page": "https://en.wikipedia.org/wiki/Spain",
+     "result": "confirmed",
+     "note": "'With Franco's death in November 1975, Juan Carlos succeeded to the position of King of Spain'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 506030,
+    "infobox_year": 2024,
+    "cliopatria_km2": 506537,
+    "ratio": 1.0,
+    "acknowledged": true,
+    "note": "Spain page infobox 'Total: 506,030 km2' (body 505,992) against the 1976-2024 shapes (506,537 km2). The 1877-1898 shapes (984k-1,294k km2) are 1.9-2.6 times the metropole; acknowledged in keyframe 49's note but resolved by keeping the colonies, which double-draws spanish-empire's land (fix 1)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1516,
+    "type": "gain",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception) (eu-09); see fix 9 on the counterpart"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1516,
+    "type": "merge",
+    "counterpart": "crown-of-aragon"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception) (eu-12 part)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1526,
+    "type": "gain",
+    "counterpart": "Friesland"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "bare name, no slug and not listed under counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1535,
+    "type": "gain",
+    "counterpart": "duchy-of-milan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1572,
+    "type": "loss",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "dutch-republic",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "dutch-republic starts 1582; cannot mirror a 1572 event"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1579,
+    "type": "loss",
+    "counterpart": "union-of-utrecht"
+   },
+   "mirror": {
+    "slug": "union-of-utrecht",
+    "year": 1579,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "year agrees; union-of-utrecht names habsburg-netherlands (no dossier, requested by eu-09-j) as the losing side, not kingdom-of-spain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1580,
+    "type": "merge",
+    "counterpart": "iberian-union"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception) (eu-12 part)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1640,
+    "type": "split",
+    "counterpart": "kingdom-of-portugal"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception) (eu-12 part); event type wrong, fix 3"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1648,
+    "type": "loss",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "dutch-republic",
+    "year": 1648,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "dutch-republic ledger/25 names habsburg-netherlands, not kingdom-of-spain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1659,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1659,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "France ledger/112 (Artois, Hainaut, Roussillon) and /111 occupation_end; France ledger/105 occupation_start of Roussillon 1642 has no mirror here"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1668,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1668,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "France ledger/121; France ledger/118-119 (occupation of Franche-Comte Feb-May 1668) unmirrored"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1678,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1678,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "France ledger/130; France ledger/131 and /133 (loss of Charleroi and other towns back to Spain, 1678-09) and /125, /128 occupations unmirrored"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1691,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1684,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "France ledger/137 1684-06 (Luxembourg); Spain dates it 1691 from the shape; fix 4"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1697,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1697,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "France ledger/146 1697-09; France ledger/141-143 (Girona, Palamos 1694-1697) unmirrored"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1705,
+    "type": "loss",
+    "counterpart": "pro-habsburg-spain"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception) (eu-12 part)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1706,
+    "type": "loss",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1706,
+    "type": "loss",
+    "counterpart": "pro-habsburg-spain"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1706,
+    "type": "loss",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "dutch-republic",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "dutch-republic has no 1705-1707 event; the page describes an Anglo-Dutch condominium (occupation), fix 7"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1707,
+    "type": "loss",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1707,
+    "type": "gain",
+    "counterpart": "pro-habsburg-spain"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1713,
+    "type": "loss",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1713,
+    "type": "loss",
+    "counterpart": "kingdom-of-great-britain"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception) (eu-11)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1713,
+    "type": "loss",
+    "counterpart": "house-of-savoy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception) (eu-13)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1715,
+    "type": "gain",
+    "counterpart": "pro-habsburg-spain"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1717,
+    "type": "occupation_start",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1718,
+    "type": "occupation_start",
+    "counterpart": "house-of-savoy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1720,
+    "type": "occupation_end",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1720,
+    "type": "occupation_end",
+    "counterpart": "house-of-savoy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1783,
+    "type": "gain",
+    "counterpart": "kingdom-of-great-britain"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1809,
+    "type": "loss",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception); 1810, 1812, 1813 events likewise"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1873,
+    "type": "loss",
+    "counterpart": "first-spanish-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1875,
+    "type": "gain",
+    "counterpart": "first-spanish-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1877,
+    "type": "vassal_start",
+    "counterpart": "captaincy-general-of-cuba"
+   },
+   "mirror": {
+    "slug": "captaincy-general-of-cuba",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "captaincy-general-of-cuba records no vassal relation to kingdom-of-spain; spanish-empire holds Cuba to 1898 (fix 1)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1877,
+    "type": "vassal_start",
+    "counterpart": "spanish-east-indies"
+   },
+   "mirror": {
+    "slug": "spanish-east-indies",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "spanish-east-indies records no vassal relation to kingdom-of-spain; spanish-empire holds the land to 1898-1899 (fix 1)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1877,
+    "type": "vassal_start",
+    "counterpart": "spanish-puerto-rico"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers; but the land is spanish-empire's (fix 1)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1884,
+    "type": "vassal_start",
+    "counterpart": "spanish-sahara"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1890,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody; mis-dated, fix 5"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1895,
+    "type": "loss",
+    "counterpart": "cuban-nationalists"
+   },
+   "mirror": {
+    "slug": "cuban-nationalists",
+    "year": 1895,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "cuban-nationalists ledger/0 found 1895-02 and /1 gain 1895-06 from kingdom-of-spain; if fix 1 is made both sides should name spanish-empire (which has contest_start 1895 with cuban-nationalists)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1898,
+    "type": "vassal_end",
+    "counterpart": "captaincy-general-of-cuba"
+   },
+   "mirror": {
+    "slug": "captaincy-general-of-cuba",
+    "year": 1898,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "captaincy-general-of-cuba ledger/14-15 loss and dissolve to united-states-of-america; no vassal_end"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1898,
+    "type": "vassal_end",
+    "counterpart": "spanish-east-indies"
+   },
+   "mirror": {
+    "slug": "spanish-east-indies",
+    "year": 1898,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "spanish-east-indies ledger/28 loss to united-states-of-america; no vassal_end"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1899,
+    "type": "loss",
+    "counterpart": "german-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1899,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "duplicate: spanish-empire ledger/124 records the same sale (12 February 1899) as its own loss; german-empire has no dossier"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1899,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1899,
+    "type": "dissolve"
+   },
+   "status": "missing",
+   "note": "spanish-empire ledger/125 dissolves in 1899-02 with kingdom-of-spain as successor of the African posts; no gain here"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1900,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1912,
+    "type": "vassal_start",
+    "counterpart": "spanish-morocco"
+   },
+   "mirror": {
+    "slug": "morocco",
+    "year": 1912,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "morocco ledger/16 records an outright loss to kingdom-of-spain; this dossier records a protectorate of an undossiered spanish-morocco"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1922,
+    "type": "loss",
+    "counterpart": "republic-of-the-rif"
+   },
+   "mirror": {
+    "slug": "republic-of-the-rif",
+    "year": 1921,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Rif ledger/0 1921-09 found from kingdom-of-spain (within one year)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1924,
+    "type": "loss",
+    "counterpart": "republic-of-the-rif"
+   },
+   "mirror": {
+    "slug": "republic-of-the-rif",
+    "year": 1924,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Rif ledger/3"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1926,
+    "type": "gain",
+    "counterpart": "republic-of-the-rif"
+   },
+   "mirror": {
+    "slug": "republic-of-the-rif",
+    "year": 1926,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Rif ledger/5 (1925-09 loss) and /8 (1926-05 dissolve)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1931,
+    "type": "loss",
+    "counterpart": "second-spanish-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1956,
+    "type": "vassal_end",
+    "counterpart": "spanish-morocco"
+   },
+   "mirror": {
+    "slug": "morocco",
+    "year": 1956,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "morocco ledger/18 names francoist-spain; this dossier has no land 1931-1975 (fix 2)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1975,
+    "type": "vassal_end",
+    "counterpart": "spanish-sahara"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "in the Franco years; morocco ledger/23-24 name francoist-spain (fix 2)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-spain",
+    "year": 1975,
+    "type": "gain",
+    "counterpart": "francoist-spain"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owner group has not run (exception)"
+  },
+  {
+   "event": {
+    "slug": "morocco",
+    "year": 1848,
+    "type": "loss",
+    "counterpart": "kingdom-of-spain"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Chafarinas Islands; no gain here (small, inside the 1840-1858 shape span)"
+  },
+  {
+   "event": {
+    "slug": "morocco",
+    "year": 1859,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-spain"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Hispano-Moroccan War 1859-1860; no war or contest events here"
+  },
+  {
+   "event": {
+    "slug": "cuban-nationalists",
+    "year": 1896,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-spain"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no contest events for Cuba here (they belong to spanish-empire if fix 1 is made)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1674,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-spain"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Franche-Comte 1674-1678; also France ledger/105 (Roussillon 1642), /118 (Franche-Comte 1668), /128 (Ghent 1678), /141 (Girona 1694)"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Menorca",
+   "kind": "region",
+   "used_in": "kingdom-of-spain"
+  },
+  {
+   "name": "Cerdanya",
+   "kind": "region",
+   "used_in": "kingdom-of-spain"
+  },
+  {
+   "name": "Ifni",
+   "kind": "region",
+   "used_in": "kingdom-of-spain"
+  },
+  {
+   "name": "Cape Juby",
+   "kind": "region",
+   "used_in": "kingdom-of-spain"
+  },
+  {
+   "name": "Rio Muni",
+   "kind": "region",
+   "used_in": "kingdom-of-spain"
+  },
+  {
+   "name": "Spanish Sahara",
+   "kind": "region",
+   "used_in": "kingdom-of-spain"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Habsburg (Spanish, later Austrian) Netherlands",
+   "suggested_slug": "habsburg-netherlands",
+   "years": [
+    1482,
+    1795
+   ],
+   "note": "already requested by eu-09-j; the orchestrator must decide whether the Low Countries 1516-1706 are kingdom-of-spain's land (this dossier) or habsburg-netherlands' (eu-09's counterparts)"
+  },
+  {
+   "name": "Spanish Sahara",
+   "suggested_slug": "spanish-sahara",
+   "years": [
+    1884,
+    1976
+   ]
+  },
+  {
+   "name": "Spanish Morocco",
+   "suggested_slug": "spanish-morocco",
+   "years": [
+    1912,
+    1956
+   ]
+  },
+  {
+   "name": "Spanish Guinea",
+   "suggested_slug": "spanish-guinea",
+   "years": [
+    1778,
+    1968
+   ]
+  },
+  {
+   "name": "Bourbon Kingdom of Naples and Sicily",
+   "suggested_slug": "kingdom-of-naples-and-sicily",
+   "years": [
+    1734,
+    1816
+   ]
+  },
+  {
+   "name": "Duchy of Parma and Piacenza (Bourbon-Parma)",
+   "suggested_slug": "duchy-of-parma",
+   "years": [
+    1748,
+    1802
+   ]
+  },
+  {
+   "name": "Kingdom of Spain (Joseph Bonaparte)",
+   "suggested_slug": "kingdom-of-spain-napoleonic",
+   "years": [
+    1808,
+    1813
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-12-m.md",
+ "problems": [
+  "Cross-group conflict for the orchestrator: kingdom-of-spain (eu-12-m) keeps the overseas colonies 1877-1898 as vassal-tinted land while spanish-empire (am-06) corrects its 1873-1898 shapes to hold the same land; one side must yield (fix 1 assigns it to spanish-empire, per eu-12's scope 'metropoles distinct from their overseas empires').",
+  "Cross-group naming conflict: eu-09 dossiers (union-of-utrecht, dutch-republic) name habsburg-netherlands as the Spanish side in the Low Countries 1579-1713; kingdom-of-spain holds the Low Countries as its own land 1516-1706 and names dutch-republic/union-of-utrecht. Decide one owner.",
+  "Validator: 0 errors, 6 warnings (counterpart slugs spanish-puerto-rico, spanish-sahara, spanish-morocco have no dossier). No fixes applied by the reviewer; none of the findings was a small one-field edit.",
+  "All 8 pages opened loaded; WebFetch returns a model summary, quotes are from it."
+ ]
+}

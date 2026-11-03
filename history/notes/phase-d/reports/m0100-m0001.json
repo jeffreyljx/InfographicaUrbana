@@ -1,0 +1,357 @@
+{
+ "window": "m0100-m0001",
+ "images": [
+  {
+   "year": -100,
+   "bbox": "world, 1 Jan",
+   "seen": "Roman Republic drawn in pale Greek-city-states tint (reversed vassal relation); Tarim contest hatched; no other gross errors"
+  },
+  {
+   "year": -95,
+   "bbox": "22,34,48,44 + Cliopatria",
+   "seen": "Rome (Asia, Aegean, Macedonia) pale blue instead of red: the reversed Greek-cities tint; Parthia holds the Armenian highlands as suzerain"
+  },
+  {
+   "year": -86,
+   "bbox": "22,34,48,44 + Cliopatria",
+   "seen": "Rome held western Anatolia in 86 although Mithridates held Asia 88-85 (keyframe -87); fixed in stage"
+  },
+  {
+   "year": -62,
+   "bbox": "-10,35,30,55",
+   "seen": "Rome held Aquitaine, Brittany, Belgium and eastern Gaul from 63, five years before the Gallic Wars; fixed in stage, and Gallia Narbonensis found reduced to a coastal strip, restored in stage"
+  },
+  {
+   "year": -48,
+   "bbox": "70,36,125,58 + Cliopatria",
+   "seen": "Zhizhi holds a very large Siberian block (Khakassia, Tuva, Transbaikal) while Huhanye's Xiongnu keeps Mongolia: matches the dossier, large but sourced; fine as drawn"
+  },
+  {
+   "year": -28,
+   "bbox": "65,5,95,32 + Cliopatria",
+   "seen": "Satavahana drawn over the whole Ganges plain for one year (Kanva succession), 3,000 cells that snap back in -27; fixed in stage"
+  },
+  {
+   "year": -30,
+   "bbox": "60,28,130,56 + Cliopatria",
+   "seen": "Han, Protectorate (Han tint), Xiongnu as Han vassal, Kangju, Wusun, Korean polities all plausible"
+  },
+  {
+   "year": -60,
+   "bbox": "60,5,90,38 + Cliopatria",
+   "seen": "India plausible: Indo-Scythians, Kanva, Satavahana, Mahameghavahana, Kuninda"
+  },
+  {
+   "year": -45,
+   "bbox": "32,10,62,34 + Cliopatria",
+   "seen": "Arabia and the Red Sea plausible (Saba, Qataban, Hadramawt, Himyar, Lihyan, Nabataeans)"
+  },
+  {
+   "year": -8,
+   "bbox": "-5,40,40,56 + Cliopatria",
+   "seen": "Rome plain red to the Elbe (Germania as a province), Chatti hatched, Iazyges at Kecskemet, Marcomanni; Germania should be an occupation"
+  },
+  {
+   "year": -1,
+   "bbox": "-10,25,60,50 + Cliopatria",
+   "seen": "Roman Empire, client kingdoms in vassal tint, Parthia with Elymais, Characene, Persis; matches Cliopatria apart from Germany"
+  }
+ ],
+ "issues": [
+  {
+   "what": "Kanva dynasty ends in 28 and the whole Ganges-plain realm passes to the Satavahanas for one year (R2 succession), 3,024 cells that the -27 keyframe strips again; the Kanva page calls the Satavahana victory 'a localised event in Central India' and gives Magadha to nobody (later the Mitra dynasty)",
+   "years": [
+    -28,
+    -28
+   ],
+   "slugs": [
+    "kanva-dynasty",
+    "satavahana-dynasty"
+   ],
+   "decision": "patched: loss of the Ganges-plain land to nobody in the Kanva ledger before its dissolve (an end runs after the year's events, so a Satavahana-side loss would be too early)",
+   "patch": "events/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kanva_dynasty"
+   ]
+  },
+  {
+   "what": "Rome drawn as a vassal of the Greek city-states, all 4,510 cells in the Greek tint, from 272 to 90 (roman-republic/ledger/26 read with roles reversed by the compiler); pale-blue Rome in the first image of the window",
+   "years": [
+    -100,
+    -91
+   ],
+   "slugs": [
+    "roman-republic",
+    "greek-city-states"
+   ],
+   "decision": "patched for -100..-91 (vassal_end at -100); earlier windows need the same, or a source fix",
+   "patch": "events/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Pyrrhic_War"
+   ]
+  },
+  {
+   "what": "Roman -87 keyframe adds Mysia, Troad, Lydia, Ionia and Caria 'from 85' but acts from 87, so Rome holds Asia in 87 and 86 while Mithridates held it from early 88 to the treaty of Dardanos in 85",
+   "years": [
+    -87,
+    -86
+   ],
+   "slugs": [
+    "roman-republic",
+    "kingdom-of-pontus"
+   ],
+   "decision": "patched: keyframe is Cliopatria's 87 shape (plus Narbonensis); the ledger returns Asia in 85",
+   "patch": "keyframe_overrides/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/First_Mithridatic_War"
+   ]
+  },
+  {
+   "what": "Roman -91 keyframe cuts Asia from 91 although it fell in 88 (the cut was hidden by the reversed Greek tint, and would bite once that is closed)",
+   "years": [
+    -91,
+    -88
+   ],
+   "slugs": [
+    "roman-republic"
+   ],
+   "decision": "patched: only the Italian confederation cut (plus Narbonensis); Asia goes by ledger/140 in 88",
+   "patch": "keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/First_Mithridatic_War"
+   ]
+  },
+  {
+   "what": "Roman -63 keyframe puts eastern Gaul, Belgium, Brittany and Aquitaine into Rome from 63 (+1,316 cells) although the ledger adds them in 58, 57, 56 and 52; the Gallic Wars began in 58",
+   "years": [
+    -63,
+    -59
+   ],
+   "slugs": [
+    "roman-republic"
+   ],
+   "decision": "patched: Cliopatria's 63 shape (north limit 46.2 N) plus Narbonensis",
+   "patch": "keyframe_overrides/2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Gallic_Wars"
+   ]
+  },
+  {
+   "what": "Gallia Transalpina (Provence, Languedoc, Rhone valley, a Roman province since 121) is only a coastal strip in Rome's holdings from the window start to 51: the 121 gain is released by Cliopatria-shaped keyframe snaps",
+   "years": [
+    -100,
+    -51
+   ],
+   "slugs": [
+    "roman-republic"
+   ],
+   "decision": "patched: gain at -100 and the province unioned into the -91, -87, -77, -66 and -63 keyframes; -121..-101 is the previous window's",
+   "patch": "events/2, keyframe_overrides/0,1,2,4,5",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Gallia_Narbonensis"
+   ]
+  },
+  {
+   "what": "The Gallic Wars contest zone covers the whole 'Gaul' region, hatching the Roman Province for 58 to 50 once the Province is Roman",
+   "years": [
+    -58,
+    -50
+   ],
+   "slugs": [
+    "roman-republic"
+   ],
+   "decision": "patched: contest closed and reopened over Gaul beyond the Province, the dossier's own end in 50 closes it",
+   "patch": "events/3, events/4",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Gallic_Wars"
+   ]
+  },
+  {
+   "what": "Roman Empire -14 keyframe adds the Rhine-Elbe Germania as plain Roman land from 14 (+986 cells), two years before the 12 BC invasion; the ledger's occupation_start (12, counterpart nobody) then marks nothing because Rome already owns the cells, so Germania stays plain Roman to AD 9 against the dossier's own 'held as occupied land, not a province'",
+   "years": [
+    -14,
+    -1
+   ],
+   "slugs": [
+    "roman-empire"
+   ],
+   "decision": "patched: Cliopatria's 14 shape; the 12 BC occupation now marks 866 unowned cells as occupied by Rome",
+   "patch": "keyframe_overrides/3",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Germanic_Wars"
+   ]
+  },
+  {
+   "what": "Zhizhi's -49 keyframe adds 2,623 cells (Chita 1,497, Buryatia 1,051, Khakassia 75) that no Xiongnu cell covers: the Transbaikal region name resolves to all of Zabaykalsky and Buryatia",
+   "years": [
+    -49,
+    -45
+   ],
+   "slugs": [
+    "zhizhi-xiongnu",
+    "xiongnu"
+   ],
+   "decision": "fine as drawn (dossier's sourced Jiankun and Dingling lands; large)",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Xiongnu -91 keyframe adds 2,543 cells of the Gobi and Inner Mongolia that the ledger dropped to nobody in 119 BC; -66 keyframe removes 2,426 (East Kazakhstan, Khentii, Irkutsk)",
+   "years": [
+    -91,
+    -66
+   ],
+   "slugs": [
+    "xiongnu"
+   ],
+   "decision": "left: pages silent (the Han-Xiongnu War page dates no Xiongnu return south of the Gobi and no campaign in 104-97 BC)",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Han-Xiongnu_War"
+   ]
+  },
+  {
+   "what": "Biggest size-rule conflicts (mahameghavahana/satavahana 741 in Chhattisgarh, kangju/yuezhi 705, cappadocia/pontus 506, armenia/osroene 472, armenia/parthia 426, dardania/rome 320, judea/nabataeans 316): smaller state won",
+   "years": [
+    -100,
+    -1
+   ],
+   "slugs": [
+    "mahameghavahana-dynasty",
+    "kangju",
+    "yuezhi",
+    "kingdom-of-cappadocia",
+    "kingdom-of-pontus"
+   ],
+   "decision": "fine as drawn for Chhattisgarh (the Kanva and Satavahana dossiers cede it to the Mahameghavahanas to 109); the others not examined, no page budget left for them",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Tarim and Dzungaria: Protectorate (from 60) and Han/Xiongnu contest look right at -30; the 74 and 91 CE claims are outside the window",
+   "years": [
+    -72,
+    -1
+   ],
+   "slugs": [
+    "han-dynasty",
+    "xiongnu",
+    "protectorate-of-the-western-regions"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Not examined: Ptolemaic 34/30 Cyrenaica and Libyan desert (2,116 cells), Armenia 91 growth (+497, no event between 95 and 91), Sarmatians -100 (-808 in Ukraine), Indo-Scythians 66/-50, Indo-Greeks -50 (-416), Oshara tradition rectangle (1,878 cells) in the US South-west",
+   "years": [
+    -100,
+    -1
+   ],
+   "slugs": [
+    "ptolemaic-kingdom",
+    "kingdom-of-armenia",
+    "sarmatians",
+    "indo-scythians",
+    "indo-greeks",
+    "oshara-tradition"
+   ],
+   "decision": "left: not examined",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/m0100-m0001.json",
+ "patch_entries": {
+  "events": 5,
+  "keyframe_overrides": 6,
+  "rulings": 0
+ },
+ "patch_check": "all applied (11 of 11 ok under --check-patch; trial: 11 applied, 0 skipped)",
+ "colour_clashes": [
+  {
+   "a": "scordisci",
+   "b": "thracian-kingdom",
+   "years": [
+    -100,
+    -1
+   ],
+   "note": "identical #c882c2 and adjacent in the Balkans; also identical to kingdom-of-pontus (not neighbours across the Black Sea). Not in the packet's list"
+  },
+  {
+   "a": "kingdom-of-bithynia",
+   "b": "kingdom-of-cappadocia",
+   "years": [
+    -100,
+    -74
+   ],
+   "note": "identical #f7a597; separated by Galatia, so only near-neighbours"
+  },
+  {
+   "a": "mahameghavahana-dynasty",
+   "b": "kuninda-kingdom",
+   "years": [
+    -100,
+    -1
+   ],
+   "note": "identical #0c82bf; far apart, no shared border"
+  },
+  {
+   "a": "roman-empire",
+   "b": "roman-republic",
+   "years": [
+    -31,
+    -27
+   ],
+   "note": "identical #cb4644; one state in succession, fine"
+  },
+  {
+   "a": "han-dynasty",
+   "b": "lintun-commandery / zhenfan-commandery / xuantu-commandery",
+   "years": [
+    -108,
+    -1
+   ],
+   "note": "all #d24e3e; colonies in Han tint anyway"
+  },
+  {
+   "a": "tetrarchy-of-galilee-and-peraea",
+   "b": "tetrarchy-of-philip",
+   "years": [
+    -4,
+    -1
+   ],
+   "note": "0.035 apart, shared border; also close to roman-empire (0.047 and 0.075)"
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "roman-republic",
+   "what": "ledger/26 (272 BC, vassal_start counterpart greek-city-states, region Naples, Taranto, Reggio): the compiler read it with the roles reversed, so Rome is the Greek cities' vassal from 272 to 90; record it so the Greek cities are the vassals, or let the Greek dossier record the pair",
+   "why": "Pyrrhic War page: 'The remaining resistance to Rome among the Italiot Greeks collapsed, with the remaining cities quickly seeking terms' and 'Its victory over the peninsular Greeks also cemented Rome's hegemony over Italy'",
+   "source": "https://en.wikipedia.org/wiki/Pyrrhic_War"
+  },
+  {
+   "slug": "roman-republic",
+   "what": "keyframes -63 and -87 carry corrections that put Gaul and Asia in the shape years early, and the -91 keyframe cuts Asia three years early; patched here, correct in the dossier too",
+   "why": "Gallic Wars: 'The wars began with conflict over the migration of the Helvetii in 58 BC'; First Mithridatic War: 'This swift conquest of Asia through Phrygia took place in early 88' and Dardanos 'a return to the status quo of 89' in 85",
+   "source": "https://en.wikipedia.org/wiki/First_Mithridatic_War"
+  },
+  {
+   "slug": "roman-empire",
+   "what": "keyframe -14 correction adds Germania as plain Roman land from 14 BC; patched here, correct in the dossier too",
+   "why": "its own ledger/20 says Germania was occupied land from 12 BC, not a province",
+   "source": "https://en.wikipedia.org/wiki/Germanic_Wars"
+  }
+ ],
+ "pages_opened": 7,
+ "problems": [
+  "compiler: roman-republic/ledger/26 opens ('vassal', greek-city-states, roman-republic) at 272 BC and it stays open to 90 BC, with 4,510 cells in the Greek tint. m0300-m0201 and m0200-m0101 draw Rome in that tint too; my events/1 closes it at -100, so the 1 January -100 anchor still shows it. A fix at the source (dossier or compiler role heuristic in vassal_start, case 'recorded by the vassal (roles reversed)') clears the whole span, after which events/1 closes nothing (harmless).",
+  "cross-window: events/2 restores Gallia Narbonensis from -100; the 121 BC gain (roman-republic/ledger/122) is released by Cliopatria-shaped keyframe snaps before -100 (the pre-window shapes draw only the coast), so m0200-m0101 draws a coastal strip from 121 to 101. Tell that window's agent, or restore at the source.",
+  "cross-window: keyframe_overrides/3 (roman-empire -14) changes the p0000 end anchor: roman-empire loses 705 cells (Germania, now an unowned occupation), indo-scythians gains 36, mauretania loses 3, satavahana-dynasty loses 2. p0000-p0099 starts from that; its roman-empire AD 1 and AD 6 keyframes (cells 'east of the Rhine are an occupation') should now agree.",
+  "tool: render_year.py draws 'occupied' only for owned cells, so the 866 Germania cells (occupied by roman-empire, owner nobody, from -12) show as plain grey in the render; the data holds the occupation. Check that the packer and the site draw an occupation over unowned land, or the Germania of 12 BC to AD 9 disappears from the map.",
+  "order: compile applies a dossier's `dissolve` succession after the year's events and keyframes (key 14), so an event cannot undo a succession in the same year from the successor's ledger; events/0 therefore sits in kanva-dynasty's ledger.",
+  "events/3 and events/4 close and reopen the Gallic Wars contest with the dossier's own counterpart string; the dossier's -50 contest_end closes the reopened one.",
+  "no hierarchy.csv row examined as wrong; stray single cells seen (a Xiongnu cell near the Altai in -48, a Han wedge near Ferghana in -30) left."
+ ]
+}

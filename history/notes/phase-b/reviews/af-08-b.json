@@ -1,0 +1,806 @@
+{
+ "batch_id": "af-08-b",
+ "verdicts": [
+  {
+   "slug": "french-africa",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/17",
+     "what": "Keyframe french-africa_1900 is 'ok' for 1900-1904 although the ledger gains the whole Algerian Sahara in 1903 (/ledger/35, confidence 3) and the AOF Sahara-Sahel interior in 1904 (/ledger/36): about 5.6 million km2 enter the ledger one to two years before any keyframe draws them.",
+     "why": "shapes.csv: french-africa_1900 4,488,516 km2 (1900-1904), french-africa_1905 10,130,495 km2; the keyframe_review/18 note itself counts Algeria +5,263, Niger +4,204, Mauritania +3,990, Mali +3,681 cells in 1905. Brief rule 4: an event with no trace in the keyframes is fine only if small or the keyframe is marked adjust.",
+     "fix": "Add a new keyframe french-africa_1903 (from 1903, to 1904, verdict adjust, correction = union of Cliopatria French Africa 1900 and intersect(minus(French Africa 1905, French Africa 1900), Algeria)), and mark french-africa_1900 adjust 'valid for 1900-1902'. For /ledger/36 either draw the AOF interior in the same new keyframe or re-date it to 1905 at confidence 1: the French West Africa page's 1904 sentences ('formally named French West Africa (AOF)', 'both Mauritania and Niger were classed Military Territories') date an administrative act, not an acquisition, so lower /ledger/36 to confidence 1 in either case.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/10",
+     "what": "New keyframe french-africa_1881 (1881-1884) omits Guinea while /ledger/14 gains all of Guinea (about 245,000 km2) in 1884 at confidence 3.",
+     "why": "Scramble for Africa page: 'In 1884, Germany declared Togoland, the Cameroons and South West Africa to be under its protection;' ... 'France occupied Guinea.' Cliopatria draws Guinea from 1885.",
+     "fix": "Either split the keyframe (french-africa_1881 to 1883, new french-africa_1884 = 1880 shape plus Tunisia plus Guinea) or say in the note that the 1884 Guinea gain is drawn from 1885.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger (missing, 1892 and 1907)",
+     "what": "No gains from republic-of-liberia, although the Liberia dossier records two losses to french-africa.",
+     "why": "republic-of-liberia ledger: 1892-12 loss to french-africa (Franco-Liberian treaty of 8 December 1892, source https://en.wikipedia.org/wiki/Ivory_Coast%E2%80%93Liberia_border) and 1907-09 loss to french-africa (18 September 1907, source https://en.wikipedia.org/wiki/Guinea%E2%80%93Liberia_border).",
+     "fix": "Add gain events 1892-12 and 1907-09, counterpart republic-of-liberia, with the same regions as the Liberia dossier's losses, citing those two pages (add them to sources).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/40",
+     "what": "Wadai is a single 1911 gain at confidence 1, while the wadai-empire dossier records a war and an occupation by french-africa with no mirror here.",
+     "why": "wadai-empire ledger (source https://en.wikipedia.org/wiki/Wadai_War, confidence 3): contest_start 1908-05, occupation_start 1909-06, contest_end 1911-10, occupation_end and dissolve to french-africa 1912.",
+     "fix": "Open the Wadai War page; add contest_start 1908-05, occupation_start 1909-06 (Abeche), contest_end 1911-10 and occupation_end 1912, move the gain to 1912 (or explain the year), and add the Wadai War to wars[] with its zone.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/20",
+     "what": "Dahomey's 1890 loss to french-africa and the two Franco-Dahomean wars have no mirror; the 1894 gain has no month.",
+     "why": "dahomey ledger: contest_start 1890-03, loss 1890-10 and contest_end 1890-10 (First_Franco-Dahomean_War, confidence 3); contest_start 1892-07, contest_end 1894-01, loss and dissolve 1894-01 (Second_Franco-Dahomean_War / Dahomey). The Scramble for Africa page gives only 'in 1894'.",
+     "fix": "Add the 1890-10 gain from dahomey and the contest pairs (or say why the wars hold no ground), give /ledger/20 month 1 from the Dahomey page, and add the First Franco-Dahomean War to wars[].",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/13",
+     "what": "Porto-Novo is gained only in 1882; the French Africa page and the kingdom-of-porto-novo dossier also give the 1863 protectorate.",
+     "why": "French Africa page list: 'Porto-Novo(protectorate) (1863–1865, 1882)'. kingdom-of-porto-novo ledger: 1863 loss and dissolve to french-africa (Porto-Novo page, confidence 3). Counterpart string 'Porto-Novo kingdom' replaced by the slug kingdom-of-porto-novo (applied, see next finding).",
+     "fix": "Add the 1863 protectorate (vassal_start or gain, counterpart kingdom-of-porto-novo) and its 1865 end, keep 1882; note the disagreement with the Porto-Novo dossier, which ends the kingdom in 1863.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/13/counterpart, /ledger/29/counterpart, /ledger/33/counterpart, /ledger/42/counterpart",
+     "what": "Counterparts written as names ('Porto-Novo kingdom', 'Dar al Kuti' twice, 'Emirate of Trarza') although those dossiers now exist.",
+     "why": "history/polities/ holds kingdom-of-porto-novo.json, dar-al-kuti.json and emirate-of-trarza.json; emirate-of-trarza records loss 1902-12 to french-africa, dar-al-kuti loss 1912-12.",
+     "fix": "Replaced by the slugs kingdom-of-porto-novo, dar-al-kuti (both vassal events, so they still pair) and emirate-of-trarza; validator re-run, valid, no warnings.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/42",
+     "what": "Dar al Kuti ends as a vassal in 1912 but is never gained: the page says it was annexed.",
+     "why": "French Equatorial Africa page: 'declaring the slaves in Dar al Kuti free and annexing the territory in 1912'. dar-al-kuti ledger: loss 1912-12 and dissolve to french-africa. Madagascar is handled correctly with vassal_end plus gain in 1897.",
+     "fix": "Add a 1912 gain, counterpart dar-al-kuti, same region (admin1 Bamingui-Bangoran), source French_Equatorial_Africa, confidence 3; the Dar al Kuti dossier should add the 1897 vassal_start (it has none).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/63",
+     "what": "Tunisia is gained from nazi-germany on 13 May 1943 although the ledger never lost or occupied it in 1942.",
+     "why": "French protectorate of Tunisia page: 'The occupation of the country in 1942 by Germany'; 'when the Axis were forced out of Tunisia in 1943'; Bey deposed 'on 13 May 1943'. No 1942 event in the ledger.",
+     "fix": "Add an occupation_start 1942 (counterpart nazi-germany, the eastern Tunisian bridgehead, month from the Tunisian campaign page if opened) and change /ledger/63 to occupation_end 1943-05 with the same counterpart.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/60",
+     "what": "Djibouti is lost to british-africa in December 1942 but regained in 1943 from free-french (/ledger/61); british-africa has no mirror.",
+     "why": "French Somaliland infobox (opened): 'British occupation: December 28, 1942' and no sentence on the return. british-africa ledger has no Djibouti event 1940-1943.",
+     "fix": "Make the 1942 event an occupation by british-africa (occupation_start 1942-12, occupation_end 1943 at confidence 1) or name free-french on both sides with a page that says so; either way the 1942 and 1943 counterparts must agree, and british-africa (af-08) needs the mirror.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/51, /ledger/52, /ledger/54",
+     "what": "The mandate years end the occupation of Neukamerun, Cameroon (1919) and Togo (1922-07) without any gain, so the ledger never makes them French land though every later keyframe draws them.",
+     "why": "Schema: occupation_end ends a hatched occupation; annexation is a gain (the dossier itself pairs vassal_end with a gain for Madagascar in 1897). /ledger/51 text also says Neukamerun became 'part of French Cameroon', but its region (French Africa 1905 minus 1911) is the slice of Gabon, Middle Congo and Ubangi-Shari that went back to the AEF.",
+     "fix": "Add gain events from german-africa beside /ledger/51, /ledger/52 and /ledger/54 (same regions, same sources); correct the /ledger/51 text to the AEF colonies.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/wars/14",
+     "what": "The Algerian War ran to 1962, past the dossier's end of 1957 (brief rule 2: wars inside the life).",
+     "why": "identity.end.year 1957; war from 1954 to 1962.",
+     "fix": "Set to 1957 and prefixed the outcome with a sentence that the war continues in the french-fifth-republic dossier; validator re-run, valid.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/38, /ledger/53",
+     "what": "The 1905 'gain from ottoman-tripolitania' (534 Libyan cells, including Ghat) and the 1920 loss to italian-africa rest on no page, and ottoman-tripolitania records no loss to french-africa.",
+     "why": "Both events confidence 1, 'page silent'; ottoman-tripolitania ledger has no event with counterpart french-africa; Ghat lies inside the block the 1920 keyframe note describes.",
+     "fix": "Find a page for the Saharan frontier (the 1919 Franco-Italian frontier agreement, the Algeria-Libya border); if none shows French rule there, mark keyframes 1905-1919 adjust without the Libyan block and drop both events.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Cliopatria's 1846 start (Senegal posts, Gabon, Mayotte); no page dates a French Africa entity in 1846",
+     "page to try": "https://en.wikipedia.org/wiki/French_colonial_empire"
+    },
+    {
+     "where": "/ledger/2, /ledger/3, /ledger/4, /ledger/5, /ledger/6",
+     "what is missing": "the 1849-1860 steps in Gabon, Senegal, the upper Senegal and the north bank (Faidherbe era)",
+     "page to try": "https://en.wikipedia.org/wiki/French_Senegal"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "the 1870 Algerian step of +931 cells (about 244,000 km2)",
+     "page to try": "https://en.wikipedia.org/wiki/Southern_Territories"
+    },
+    {
+     "where": "/ledger/15, /ledger/18",
+     "what is missing": "the 1885 and 1890 small steps (Ivory Coast, Central African Republic cells)",
+     "page to try": "https://en.wikipedia.org/wiki/French_Congo"
+    },
+    {
+     "where": "/ledger/22, /ledger/23",
+     "what is missing": "the 1895 Gabon-Congo-Ubangi and Algerian steps (+9,754 cells in all)",
+     "page to try": "https://en.wikipedia.org/wiki/French_Congo"
+    },
+    {
+     "where": "/ledger/38, /ledger/53",
+     "what is missing": "the Libyan Sahara block of 1905-1919 and its 1920 loss",
+     "page to try": "https://en.wikipedia.org/wiki/Algeria%E2%80%93Libya_border"
+    },
+    {
+     "where": "/ledger/40",
+     "what is missing": "the conquest of Wadai and Chad (1908-1912)",
+     "page to try": "https://en.wikipedia.org/wiki/Wadai_War"
+    },
+    {
+     "where": "/ledger/61",
+     "what is missing": "the 1943 reunion of the Free French and the Algiers command",
+     "page to try": "https://en.wikipedia.org/wiki/French_Committee_of_National_Liberation"
+    },
+    {
+     "where": "/ledger/68",
+     "what is missing": "the end year: the AOF and AEF lasted to 1958 and the colonies went independent in 1960",
+     "page to try": "https://en.wikipedia.org/wiki/French_Community"
+    },
+    {
+     "where": "/ledger (missing, 1942)",
+     "what is missing": "the British invasion of Madagascar (May-November 1942) and its handover to the Free French",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Madagascar"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/French_protectorate_of_Tunisia",
+     "result": "confirmed",
+     "note": "'On 12 May 1881, forced Bey Muhammad III as-Sadiq to sign the Treaty of Bardo'; contest_start 24 April 1881 also on the page"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Scramble_for_Africa",
+     "result": "confirmed",
+     "note": "'In 1884 ...' 'France occupied Guinea.' (keyframe does not draw it until 1885: see fixes)"
+    },
+    {
+     "where": "/ledger/32, /ledger/35",
+     "page": "https://en.wikipedia.org/wiki/French_conquest_of_Algeria",
+     "result": "confirmed",
+     "note": "'In 1902, a French military expedition entered Hoggar Mountains and defeated Kel Ahaggar in a battle in Tit'; 'The conquest of the Saharan lands in Algeria finished in 1903'"
+    },
+    {
+     "where": "/ledger/41",
+     "page": "https://en.wikipedia.org/wiki/Scramble_for_Africa",
+     "result": "confirmed",
+     "note": "'In November 1911, a compromise was reached ... in return for a slice of territory in the French Equatorial African colony of Middle Congo'"
+    },
+    {
+     "where": "/ledger/42",
+     "page": "https://en.wikipedia.org/wiki/French_Equatorial_Africa",
+     "result": "confirmed",
+     "note": "'annexing the territory in 1912' (Dar al Kuti)"
+    },
+    {
+     "where": "/ledger/43, /ledger/66",
+     "page": "https://en.wikipedia.org/wiki/French_protectorate_in_Morocco",
+     "result": "confirmed",
+     "note": "'officially established 30 March 1912'; 'the northern tenth of the country'; 'dissolution of the Treaty of Fez on 2 March 1956'"
+    },
+    {
+     "where": "/ledger/55, /ledger/56, /ledger/59",
+     "page": "https://en.wikipedia.org/wiki/French_Equatorial_Africa",
+     "result": "confirmed",
+     "note": "'French Cameroon and the entirety of the AEF except for Gabon rallied to the Free French Forces in August 1940'; 'Gabon instead remained loyal to Vichy France until 12 November 1940'"
+    },
+    {
+     "where": "/ledger/60",
+     "page": "https://en.wikipedia.org/wiki/French_Somaliland",
+     "result": "confirmed",
+     "note": "infobox 'British occupation: December 28, 1942'; the page says nothing of the return"
+    },
+    {
+     "where": "/ledger/62, /ledger/65",
+     "page": "https://en.wikipedia.org/wiki/French_military_administration_in_Fezzan",
+     "result": "confirmed",
+     "note": "'Free French forces moved north from Chad to take control of the territory in January 1943'; 'to form the Kingdom of Libya on 24 December 1951'"
+    },
+    {
+     "where": "/ledger/36",
+     "page": "https://en.wikipedia.org/wiki/French_West_Africa",
+     "result": "confirmed (year), over-read",
+     "note": "the 1904 sentences date the naming of the AOF and the Military Territories, not an acquisition: confidence should be 1"
+    },
+    {
+     "where": "/ledger/64",
+     "page": "https://en.wikipedia.org/wiki/French_West_Africa",
+     "result": "confirmed",
+     "note": "'The French Empire was renamed the French Union on 27 October 1946'"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/French_Africa",
+     "result": "confirmed, incomplete",
+     "note": "'Porto-Novo(protectorate) (1863–1865, 1882)': the 1863-1865 phase is missing"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 11095479.9,
+    "ratio": 1.0,
+    "acknowledged": true,
+    "note": "The French Africa page has no area. Component infoboxes: French West Africa 4,689,000 km2 and French Equatorial Africa 2,500,000 km2 (both undated), Tunisia 155,000 km2 (text); with Algeria (2,381,741 km2, quoted by the author from French Algeria), Madagascar, French Morocco, Cameroon, Togo and Djibouti the sum is about 11.2 million km2 against Cliopatria's 11,095,480 km2 (1953-1955, without Fezzan) and 11,671,356 km2 (1946-1952, with Fezzan): ratio about 1.0. The author's notes quote the same component figures."
+   }
+  },
+  {
+   "slug": "kamerun",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/note",
+     "what": "The note says the Kamerun page 'gives no area or boundary', but its infobox gives 495,000 km2 (1910) and 790,000 km2 (1912).",
+     "why": "Kamerun page infobox: '1910: 495,000 km2', '1912: 790,000 km2' (the German colony 1884-1916; no kamerun shape is alive in those years).",
+     "fix": "Note extended: the infobox areas are the later German colony's, years in which this row has no shape. Validator re-run, valid.",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "why the post ends in 1870 and the same patch passes to Cliopatria's German Africa row in 1871 (the page is silent on 1869-1871)",
+     "page to try": "https://en.wikipedia.org/wiki/Douala"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kamerun",
+     "result": "confirmed",
+     "note": "'The first German trading post in the Duala area on the Kamerun River delta was established in 1868 by the Hamburg trading company C. Woermann.'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kamerun",
+     "result": "confirmed silent",
+     "note": "nothing on 1869-1871, as the confidence-1 note says"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Kamerun",
+     "result": "confirmed",
+     "note": "9.708 E 4.062 N lies inside the shape bbox 9.34-9.86 E, 3.89-4.34 N"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 495000,
+    "infobox_year": 1910,
+    "cliopatria_km2": 1897.5,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The infobox areas (495,000 km2 in 1910, 790,000 km2 in 1912) are the German protectorate's; this row's only shapes are 1868-1870, so no comparison applies. Acknowledged in the keyframe note after the reviewer's fix."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1848,
+    "type": "gain",
+    "counterpart": "french-algeria"
+   },
+   "status": "matched",
+   "note": "French Algeria dissolves to french-africa in December 1847",
+   "mirror": {
+    "slug": "french-algeria",
+    "year": 1847,
+    "type": "dissolve"
+   }
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1849,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "status": "exception",
+   "note": "counterpart nobody (also 1853, 1856, 1859, 1860, 1870, 1885, 1890, 1895 x2, 1904)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1868,
+    "type": "gain",
+    "counterpart": "Cotonou chiefdom"
+   },
+   "status": "exception",
+   "note": "string counterpart, no dossier and not in the author's counterparts_needing_dossiers; dahomey has no 1868 loss",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1880,
+    "type": "gain",
+    "counterpart": "Upper Senegal chiefdoms"
+   },
+   "status": "exception",
+   "note": "generic string (also Guinea chiefdoms 1884, Ivory Coast and Upper Niger chiefdoms 1895, Chad local states 1900, Gadabuursi and Issa clans 1885)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1881,
+    "type": "gain",
+    "counterpart": "beylik-of-tunis"
+   },
+   "status": "matched",
+   "note": "contest pair 1881-04/05 matches too",
+   "mirror": {
+    "slug": "beylik-of-tunis",
+    "year": 1881,
+    "type": "dissolve"
+   }
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1882,
+    "type": "gain",
+    "counterpart": "kingdom-of-porto-novo"
+   },
+   "status": "mismatch",
+   "note": "Porto-Novo dossier gives its loss and dissolve to french-africa in 1863; French Africa page lists 1863-1865 and 1882",
+   "mirror": {
+    "slug": "kingdom-of-porto-novo",
+    "year": 1863,
+    "type": "loss"
+   }
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1885,
+    "type": "gain",
+    "counterpart": "merina-kingdom"
+   },
+   "status": "matched",
+   "note": "Diego-Suarez, Treaty of Tamatave 17 December 1885",
+   "mirror": {
+    "slug": "merina-kingdom",
+    "year": 1885,
+    "type": "loss"
+   }
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1890,
+    "type": "gain",
+    "counterpart": "dahomey"
+   },
+   "status": "missing",
+   "note": "dahomey records a loss to french-africa in October 1890 (First Franco-Dahomean War); french-africa has no event",
+   "mirror": {
+    "slug": "dahomey",
+    "year": 1890,
+    "type": "loss"
+   }
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1894,
+    "type": "gain",
+    "counterpart": "dahomey"
+   },
+   "status": "matched",
+   "note": "dahomey loss and dissolve 1894-01; french-africa gives no month",
+   "mirror": {
+    "slug": "dahomey",
+    "year": 1894,
+    "type": "loss"
+   }
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1894,
+    "type": "gain",
+    "counterpart": "Sultanate of Bangassou"
+   },
+   "status": "exception",
+   "note": "listed by the author for af-08-x",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1894,
+    "type": "contest_start",
+    "counterpart": "merina-kingdom"
+   },
+   "status": "matched",
+   "note": "merina contest 1894-12 to 1895-10",
+   "mirror": {
+    "slug": "merina-kingdom",
+    "year": 1894,
+    "type": "contest_start"
+   }
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1895,
+    "type": "vassal_start",
+    "counterpart": "merina-kingdom"
+   },
+   "status": "missing",
+   "note": "merina-kingdom records no vassal_start (only rename 1896 and dissolve 1897); route to its group",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1897,
+    "type": "gain",
+    "counterpart": "merina-kingdom"
+   },
+   "status": "matched",
+   "note": "merina dissolves 1897 with successor french-africa",
+   "mirror": {
+    "slug": "merina-kingdom",
+    "year": 1897,
+    "type": "dissolve"
+   }
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1897,
+    "type": "vassal_start",
+    "counterpart": "dar-al-kuti"
+   },
+   "status": "missing",
+   "note": "dar-al-kuti records no 1897 protectorate; route to its group (af-08-x)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1899,
+    "type": "gain",
+    "counterpart": "Sultanate of Damagaram"
+   },
+   "status": "exception",
+   "note": "listed by the author for af-03",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1902,
+    "type": "gain",
+    "counterpart": "emirate-of-trarza"
+   },
+   "status": "matched",
+   "note": "emirate-of-trarza loss and dissolve 1902-12; counterpart slug applied by the reviewer",
+   "mirror": {
+    "slug": "emirate-of-trarza",
+    "year": 1902,
+    "type": "loss"
+   }
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1903,
+    "type": "gain",
+    "counterpart": "Kel Ahaggar"
+   },
+   "status": "exception",
+   "note": "listed by the author for af-08-x",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1905,
+    "type": "gain",
+    "counterpart": "Taganit confederation"
+   },
+   "status": "exception",
+   "note": "listed by the author for af-08-x",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1905,
+    "type": "gain",
+    "counterpart": "ottoman-tripolitania"
+   },
+   "status": "missing",
+   "note": "ottoman-tripolitania has no loss to french-africa; french-africa's event is confidence 1 with no page",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1907,
+    "type": "gain",
+    "counterpart": "republic-of-liberia"
+   },
+   "status": "missing",
+   "note": "Liberia records losses to french-africa in 1892-12 and 1907-09; french-africa has neither",
+   "mirror": {
+    "slug": "republic-of-liberia",
+    "year": 1907,
+    "type": "loss"
+   }
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1909,
+    "type": "gain",
+    "counterpart": "Emirate of Adrar"
+   },
+   "status": "exception",
+   "note": "listed by the author for af-08-x",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1911,
+    "type": "gain",
+    "counterpart": "wadai-empire"
+   },
+   "status": "mismatch",
+   "note": "wadai-empire: contest 1908-05 to 1911-10, occupation by french-africa 1909-06 to 1912, dissolve 1912; french-africa has only a 1911 gain at confidence 1",
+   "mirror": {
+    "slug": "wadai-empire",
+    "year": 1912,
+    "type": "dissolve"
+   }
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1911,
+    "type": "loss",
+    "counterpart": "german-africa"
+   },
+   "status": "exception",
+   "note": "german-africa (af-08) not written yet; also the 1914-1922 contest and occupation events",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1912,
+    "type": "vassal_end",
+    "counterpart": "dar-al-kuti"
+   },
+   "status": "mismatch",
+   "note": "dar-al-kuti records a loss to french-africa 1912-12; french-africa records only vassal_end, no gain",
+   "mirror": {
+    "slug": "dar-al-kuti",
+    "year": 1912,
+    "type": "loss"
+   }
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1912,
+    "type": "gain",
+    "counterpart": "morocco"
+   },
+   "status": "matched",
+   "note": "",
+   "mirror": {
+    "slug": "morocco",
+    "year": 1912,
+    "type": "loss"
+   }
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1920,
+    "type": "loss",
+    "counterpart": "italian-africa"
+   },
+   "status": "exception",
+   "note": "italian-africa (af-08) not written yet; also the Fezzan occupation 1943-1951",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1940,
+    "type": "loss",
+    "counterpart": "free-french"
+   },
+   "status": "exception",
+   "note": "free-french (eu-21) not written yet; also the 1943 gain",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1942,
+    "type": "loss",
+    "counterpart": "british-africa"
+   },
+   "status": "missing",
+   "note": "british-africa has no Djibouti event; and french-africa regains Djibouti from free-french in 1943, not from british-africa",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1943,
+    "type": "gain",
+    "counterpart": "nazi-germany"
+   },
+   "status": "exception",
+   "note": "nazi-germany (eu-21) not written yet; but no 1942 occupation in french-africa's own ledger (see fixes)",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1956,
+    "type": "loss",
+    "counterpart": "morocco"
+   },
+   "status": "matched",
+   "note": "",
+   "mirror": {
+    "slug": "morocco",
+    "year": 1956,
+    "type": "gain"
+   }
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1956,
+    "type": "loss",
+    "counterpart": "republic-of-tunisia"
+   },
+   "status": "exception",
+   "note": "republic-of-tunisia (af-08) not written yet",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1957,
+    "type": "dissolve",
+    "counterpart": "french-fifth-republic"
+   },
+   "status": "exception",
+   "note": "french-fifth-republic (eu-22) not written yet",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "sokoto-caliphate",
+    "year": 1903,
+    "type": "dissolve",
+    "counterpart": "french-africa"
+   },
+   "status": "missing",
+   "note": "sokoto-caliphate lists french-africa as successor for its Niger part (no year); french-africa has no event naming Sokoto",
+   "mirror": null
+  },
+  {
+   "event": {
+    "slug": "kamerun",
+    "year": 1870,
+    "type": "dissolve",
+    "counterpart": "german-africa"
+   },
+   "status": "exception",
+   "note": "german-africa (af-08) not written yet",
+   "mirror": null
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Neukamerun",
+   "kind": "region",
+   "used_in": "french-africa"
+  },
+  {
+   "name": "British Togoland",
+   "kind": "region",
+   "used_in": "french-africa"
+  },
+  {
+   "name": "Hoggar",
+   "kind": "region",
+   "used_in": "french-africa"
+  },
+  {
+   "name": "Territoires du Sud",
+   "kind": "region",
+   "used_in": "french-africa"
+  },
+  {
+   "name": "Dar al Kuti",
+   "kind": "region",
+   "used_in": "french-africa"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Kel Ahaggar",
+   "suggested_slug": "kel-ahaggar",
+   "years": [
+    1902,
+    1903
+   ]
+  },
+  {
+   "name": "Sultanate of Bangassou",
+   "suggested_slug": "sultanate-of-bangassou",
+   "years": [
+    1894,
+    1894
+   ]
+  },
+  {
+   "name": "Sultanate of Damagaram",
+   "suggested_slug": "sultanate-of-damagaram",
+   "years": [
+    1899,
+    1899
+   ]
+  },
+  {
+   "name": "Emirate of Adrar",
+   "suggested_slug": "emirate-of-adrar",
+   "years": [
+    1909,
+    1909
+   ]
+  },
+  {
+   "name": "Taganit confederation",
+   "suggested_slug": "taganit-confederation",
+   "years": [
+    1905,
+    1905
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-af-08-b.md",
+ "problems": [
+  "Context dossiers not written yet (counted as exceptions): german-africa, italian-africa, free-french, nazi-germany, republic-of-tunisia, french-fifth-republic, kingdom-of-libya, british-gold-coast.",
+  "Dar al Kuti, Emirate of Trarza and Porto-Novo now have dossiers (dar-al-kuti, emirate-of-trarza, kingdom-of-porto-novo); the reviewer replaced the name strings with their slugs in french-africa.",
+  "kamerun is a 1,897.5 km2 trading post continued by german-africa from 1871; the orchestrator may prefer to merge it into german-africa as its first phase (the author's suggestion).",
+  "No page failed to load."
+ ]
+}

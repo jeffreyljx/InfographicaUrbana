@@ -1,0 +1,519 @@
+{
+ "batch_id": "eu-15-f",
+ "verdicts": [
+  {
+   "slug": "duchy-of-opole",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (new event, 1291)",
+     "what": "The Bohemian overlordship of 1291 is missing from the ledger although the page the author opened gives it.",
+     "why": "Duchy of Opole infobox (read 2026-11-01): 'Status: Silesian duchy Fiefdom of Bohemia (1291–1306; 1327–1348)'. The author deferred it to kingdom-of-bohemia, but the brief requires the vassal_start in both ledgers, and kingdom-of-bohemia has only the 1289 Bytom homage (its /ledger/12). As things stand nobody draws Opole as a Bohemian vassal 1291-1304.",
+     "fix": "Add {year 1291, type vassal_start, counterpart kingdom-of-bohemia, region {cliopatria 'Duchy of Opole', year 1294}, confidence 2 (infobox only), source Duchy_of_Opole} with no vassal_end inside the life (note: fief to 1306 per the infobox, after the dossier's end). Route the mirror vassal_start to the kingdom-of-bohemia author.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (new events, 1234 and 1238/1239)",
+     "what": "Henry the Bearded's control of Opole-Racibórz 1234 to late 1238/early 1239 is not in the ledger, so duchy-of-silesia's 1234 gain and 1239 loss (counterpart duchy-of-opole) have no mirror.",
+     "why": "Mieszko II the Fat page: Henry I was 'taking the full control over Opole-Racibórz, but without denying their hereditary rights' (in the 1234 Kalisz/Wieluń grant passage) and 'It is unknown exactly when Mieszko II took over the rule over Opole-Racibórz, but this has been probably in late 1238 or early 1239.' duchy-of-silesia /ledger/15 (1234 gain, admin1 Opole) and /ledger/18 (1239 loss). The author's notes flag the disagreement as 'not reconciled'.",
+     "fix": "Add vassal_start 1234 counterpart duchy-of-silesia (region {cliopatria 'Duchy of Opole', year 1216}, confidence 2, source Mieszko_II_the_Fat) and vassal_end 1239 counterpart duchy-of-silesia (confidence 2, note 'late 1238 or early 1239'). Route to duchy-of-silesia: its 1234 gain / 1239 loss should become vassal_start / vassal_end (guardianship 'without denying their hereditary rights'), and it needs a 1234 loss of Kalisz and Wieluń to Opole (it gains Kalisz from Greater Poland in /ledger/14 and never passes it on).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/14/correction and /ledger/11",
+     "what": "The 1281-1284 keyframe already removes the whole Cliopatria Bytom shape (Gliwice, Koźle) from Opole in 1281, while duchy-of-bytom draws only a 15 km disc round Bytom for 1281-1283 and gains Koźle, Toszek, Gliwice and Siewierz from Opole in 1284; the Gliwice-Koźle lands are drawn by nobody in 1281-1283 and Bytom's 1284 gain has no mirror.",
+     "why": "duchy-of-bytom /ledger/0 (1281 found, region Bytom 15 km) and /ledger/1 (1284 gain from duchy-of-opole, Gliwice/Toszek/Siewierz/Koźle); its keyframe duchy-of-bytom_1281 (1281-1283, Bytom 15 km). The Opole page itself says 'the Duchy of Opole was recreated for Casimir and his brother Bolko I', i.e. Casimir (later of Bytom) co-ruled Opole, which fits the 1284 division. Gazetteer: Gliwice 10 km disc meets both the Opole 1285 and Bytom 1285 shapes.",
+     "fix": "Set /ledger/11 region to {place Bytom, km 15} (the Bytom dossier's found land); add a 1284 loss counterpart duchy-of-bytom with region {minus: [{cliopatria 'Duchy of Bytom', year 1285}, {place Bytom, km 15}]} (confidence 2, citing the Opole page's joint rule and the Bytom dossier's 1284 date); make the 1281-1284 keyframe 1281-1283 with correction {union: [{cliopatria 'Duchy of Opole', year 1285}, that same minus]}, and a 1284 keyframe (Opole 1285 shape) or extend K15 back to 1284.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/10/region",
+     "what": "The 1281 Racibórz split region (1275 Opole shape minus 1285 Opole shape) also contains the whole Bytom shape, so the Bytom lands are split off twice in 1281 (to Racibórz here and to Bytom in /ledger/11).",
+     "why": "duchy-of-raciborz /ledger/0 gives its 1281 land as {cliopatria 'Duchy of Racibórz', year 1285}; the Opole 1285 shape excludes Bytom, so the difference holds Racibórz plus Bytom.",
+     "fix": "Use {cliopatria 'Duchy of Racibórz', year 1285} (the mirror's region), or subtract {cliopatria 'Duchy of Bytom', year 1285} as well.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/12",
+     "what is missing": "Confidence-1 dissolve at Cliopatria's last year; the duchy continues (Bohemian fief, to 1532). Also the 1285-1304 reign of Bolko I, unopened.",
+     "page to try": "https://en.wikipedia.org/wiki/Bolko_I_of_Opole"
+    },
+    {
+     "where": "/keyframe_review/13",
+     "what is missing": "Why Cliopatria drops Cieszyn from 1272 (Viola's dower ended with her death in 1251); who held Cieszyn 1272-1280.",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Cieszyn"
+    },
+    {
+     "where": "/keyframe_review/8",
+     "what is missing": "Kalisz 1239-1241: the Mieszko II infobox ends his Kalisz rule in 1239 and in 1241 Władysław 'received ... the Duchy of Kalisz given to him by Henry II the Pious', implying Silesia held Kalisz 1239-1241; the dossier keeps it Opole's 1234-1244.",
+     "page to try": "https://en.wikipedia.org/wiki/Henry_II_the_Pious"
+    },
+    {
+     "where": "/identity/rulers/4",
+     "what is missing": "Reign of Władysław Opolski 1246-1281 (page failed for the author).",
+     "page to try": "https://en.wikipedia.org/wiki/W%C5%82adys%C5%82aw_Opolski"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Opole",
+     "result": "confirmed: 'When Duke Jarosław died in 1201, the Opole lands reverted to his still living father Bolesław'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Opole",
+     "result": "confirmed: 'in 1202 Opole was taken by his brother Duke Mieszko I Tanglefoot of Racibórz, who merged it with his duchy'; Mieszko page 'surprise attack at the beginning of 1202'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Mieszko_I_Tanglefoot",
+     "result": "confirmed: bull of 9 June 1210; Kraków taken 'without fighting'; Duke of Kraków 'from 9 June 1210 until his death one year later'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Mieszko_I_Tanglefoot",
+     "result": "confirmed: died 16 May 1211; 'Only after Mieszko's death could Leszek the White return to Kraków'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Mieszko_II_the_Fat",
+     "result": "confirmed: infobox 'Duke of Kalisz 1234–1239', 'Duke of Wieluń 1234–1239'; same passage has Henry 'taking the full control over Opole-Racibórz' (see fixes)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Mieszko_II_the_Fat",
+     "result": "confirmed: 'in 1244, Władysław was forced to withdraw from Kalisz'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Mieszko_II_the_Fat",
+     "result": "confirmed: Wieluń 'ultimately also lost in 1249'; taker not named"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Opole",
+     "result": "confirmed: 'After the death of Mieszko's grandson Duke Władysław Opolski in 1281, his sons again divided the Duchy of Opole'; infobox 'Split off Racibórz: 1281'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 95164.4,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No Area line on the Duchy of Opole infobox (checked). The only large area move, Cliopatria's 95,164 km2 shape of 1210-1215 against about 12,710 km2 before and after, is acknowledged and corrected (Kraków 1210-1211 only); the author's quoted areas match shapes.csv except the 1250 note, which quotes both the gazetteer 14,162 and the table 12,997."
+   }
+  },
+  {
+   "slug": "duchy-of-kuyavia",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/0, /ledger/2 and new vassal events",
+     "what": "The ledger does not record that Kuyavia was Greater Poland's land 1186-1198 (an appanage of Mieszko III's son); duchy-of-greater-poland draws the same Cliopatria Kuyavia shape as its own direct territory 1186-1198, so the land is drawn twice, and the counterparts disagree: Kuyavia's 1186 found names Masovia, whose 1186 loss names Greater Poland; Greater Poland's 1199 loss to duchy-of-kuyavia has no mirror here.",
+     "why": "Mieszko III the Old page (read 2026-11-01): 'he took the Kuyavia region and annexed it to his Duchy', map caption 'Kuyavia, held by Bolesław 1186–95', 'In 1198 ... compelled to cede Kuyavia to Casimir's sons'. duchy-of-greater-poland /ledger/4 (1186 gain, region Kuyavia 1188 shape), keyframes _1186 and _1188 (union with the Kuyavia 1188 shape to 1198), /ledger/11 (1199 loss, counterpart duchy-of-kuyavia); duchy-of-masovia /ledger/5 (1186 loss, counterpart duchy-of-greater-poland). The author's notes flag only the 1198/1199 date difference.",
+     "fix": "Add vassal_start 1186 counterpart duchy-of-greater-poland (region {cliopatria 'Duchy of Kuyavia', year 1188}, confidence 3, 'annexed it to his Duchy', held by his son Bolesław) and vassal_end 1198 counterpart duchy-of-greater-poland (confidence 3, 'compelled to cede Kuyavia to Casimir's sons'); replace the 1198 rename with that vassal_end plus a vassal_start counterpart duchy-of-masovia (Konrad; the Greater Poland page's 'cede it to Duke Konrad of Masovia ... in 1199', confidence 2) left open to the 1205 dissolve. Route to duchy-of-greater-poland: turn its 1186 gain / 1199 loss into vassal_start / vassal_end with duchy-of-kuyavia and drop the Kuyavia union from its 1186 and 1188 corrections (or the orchestrator decides which dossier draws the land).",
+     "applied": false
+    },
+    {
+     "where": "/identity/capitals/0 and /keyframe_review/1",
+     "what": "The capital Inowrocław lies outside every shape drawn (gazetteer: Inowrocław 12 km disc meets the Kuyavia 1188 shape in 0 cells; bbox west edge 18.264 E, Inowrocław 18.25 E), and the 1188 keyframe is marked ok although the author's own check finds it misses Inowrocław and Kruszwica and holds Gostynin, Kutno and Łowicz.",
+     "why": "Duchy of Kuyavia infobox gives 'Capital: Inowrocław' for the independent duchy of 1230-1267 only; no page gives a seat for 1186-1205. shapes.csv duchy-of-kuyavia_1188 bbox 18.2641-20.2316 E.",
+     "fix": "Either mark the 1188 and 1202 keyframes adjust with a correction that adds Inowrocław and Kruszwica (e.g. union with {place Inowrocław, km 25}) and says why, or keep the shape and move the capital to a seat inside it with a note that no page names the 1186-1205 seat; do not leave a capital outside the drawn state.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "Confidence-1 dissolve in 1205; the Kuyavia page is silent; the Masovia dossier's 1205 gain cites 'in 1205, the adjacent lands of Kuyavia as well'.",
+     "page to try": "https://en.wikipedia.org/wiki/Konrad_I_of_Masovia"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "The 316 km2 shrink of 1202 (unverified: page budget 1-2 pages; thin by design).",
+     "page to try": "https://en.wikipedia.org/wiki/Kuyavia"
+    },
+    {
+     "where": "/identity/rulers/1",
+     "what is missing": "Who held Kuyavia 1195-1198 after Bolesław's death: the Mieszko III page does not say (Mieszko III is the author's inference, the event is confidence 2).",
+     "page to try": "https://en.wikipedia.org/wiki/Mieszko_III_the_Old"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Mieszko_III_the_Old",
+     "result": "confirmed: 'he took the Kuyavia region and annexed it to his Duchy' after Leszek's death in 1186; caption 'Kuyavia, held by Bolesław 1186–95' (but annexed to Greater Poland: see fixes)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Mieszko_III_the_Old",
+     "result": "confirmed: Battle of Mozgawa 13 September 1195, Bolesław of Kuyavia killed; the page does not say who held Kuyavia 1195-1198"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Mieszko_III_the_Old",
+     "result": "confirmed: 'In 1198 ... compelled to cede Kuyavia to Casimir's sons'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Kuyavia",
+     "result": "not on page (acknowledged at confidence 1): the page mentions only 1231 and 1233 in 1186-1233; infobox 'Separation from the Duchy of Masovia: 1230'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 6843.8,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the Duchy of Kuyavia or Mieszko III pages (checked); the author says so."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "duchy-of-opole",
+    "year": 1172,
+    "type": "found",
+    "counterpart": "duchy-of-silesia"
+   },
+   "mirror": {
+    "slug": "duchy-of-silesia",
+    "year": 1172,
+    "type": "split"
+   },
+   "status": "matched",
+   "note": "Silesia /ledger/4 'a strip around Opole goes to Jarosław'."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-opole",
+    "year": 1201,
+    "type": "loss",
+    "counterpart": "duchy-of-silesia"
+   },
+   "mirror": {
+    "slug": "duchy-of-silesia",
+    "year": 1201,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Silesia /ledger/7."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-opole",
+    "year": 1202,
+    "type": "gain",
+    "counterpart": "duchy-of-silesia"
+   },
+   "mirror": {
+    "slug": "duchy-of-silesia",
+    "year": 1202,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Silesia /ledger/8."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-opole",
+    "year": 1202,
+    "type": "merge",
+    "counterpart": "duchy-of-raciborz"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "duchy-of-raciborz starts in 1281; the 1172-1202 Racibórz duchy is in the author's counterparts_needing_dossiers (Silesia /ledger/3 1172 split to Racibórz has the same gap)."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-opole",
+    "year": 1210,
+    "type": "gain",
+    "counterpart": "duchy-of-sandomierz"
+   },
+   "mirror": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1210,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Sandomierz /ledger/12."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-opole",
+    "year": 1211,
+    "type": "loss",
+    "counterpart": "duchy-of-sandomierz"
+   },
+   "mirror": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1211,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Sandomierz /ledger/13."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-opole",
+    "year": 1227,
+    "type": "gain",
+    "counterpart": "duchy-of-sandomierz"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Czeladź: Sandomierz has only a 1227 loss of Kraków to Greater Poland (/ledger/16, confidence 1); add a small Czeladź loss there or the orchestrator accepts it as too small to draw."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-opole",
+    "year": 1234,
+    "type": "gain",
+    "counterpart": "duchy-of-silesia"
+   },
+   "mirror": {
+    "slug": "duchy-of-silesia",
+    "year": 1234,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Kalisz and Wieluń: Silesia gains Kalisz from Greater Poland in 1234 (/ledger/14) but never passes it to Opole; instead Silesia /ledger/15 gains Opole itself in 1234. duchy-of-kalisz /ledger/6 also re-forms a Kalisz duchy 1234-1238 from Greater Poland, so Kalisz is drawn by up to three dossiers in 1234-1238."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1234,
+    "type": "gain",
+    "counterpart": "duchy-of-opole"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Opole has no 1234 event; the Mieszko II page supports Henry's 'full control over Opole-Racibórz, but without denying their hereditary rights': both sides should record vassal_start 1234 (see Opole fixes)."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1239,
+    "type": "loss",
+    "counterpart": "duchy-of-opole"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Opole has no 1239 event; should be vassal_end 1239 ('late 1238 or early 1239') on both sides."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-opole",
+    "year": 1244,
+    "type": "loss",
+    "counterpart": "duchy-of-greater-poland"
+   },
+   "mirror": {
+    "slug": "duchy-of-greater-poland",
+    "year": 1244,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Year and land agree (Kalisz), counterpart does not: Greater Poland /ledger/24 names duchy-of-silesia; the Mieszko II page has Władysław of Opole 'forced to withdraw from Kalisz' in 1244, so Greater Poland should name duchy-of-opole."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-opole",
+    "year": 1249,
+    "type": "loss",
+    "counterpart": "duchy-of-greater-poland"
+   },
+   "mirror": {
+    "slug": "duchy-of-greater-poland",
+    "year": 1249,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Greater Poland /ledger/26 (Wieluń)."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-opole",
+    "year": 1281,
+    "type": "split",
+    "counterpart": "duchy-of-raciborz"
+   },
+   "mirror": {
+    "slug": "duchy-of-raciborz",
+    "year": 1281,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Year matches; land does not: Opole's region (1275 Opole minus 1285 Opole) includes the Bytom shape, Racibórz's is the Racibórz 1285 shape."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-opole",
+    "year": 1281,
+    "type": "split",
+    "counterpart": "duchy-of-bytom"
+   },
+   "mirror": {
+    "slug": "duchy-of-bytom",
+    "year": 1281,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Opole gives the whole Bytom 1285 shape in 1281; Bytom takes only a 15 km disc round Bytom in 1281."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-bytom",
+    "year": 1284,
+    "type": "gain",
+    "counterpart": "duchy-of-opole"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Koźle, Toszek, Gliwice and Siewierz from Opole in 1284: no 1284 loss in Opole, and Opole's 1281-1284 keyframe has already dropped them, so they are undrawn 1281-1283."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-opole",
+    "year": 1291,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-bohemia"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Not in either ledger: Opole infobox 'Fiefdom of Bohemia (1291–1306; 1327–1348)'; Bohemia has only the 1289 Bytom homage (/ledger/12)."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-opole",
+    "year": 1304,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-bohemia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Cliopatria's row ends; the duchy continues (confidence 1, acknowledged). Bohemia has no 1304 event; no mirror needed for an artificial end, but the successor link should not be captioned as a conquest."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-kuyavia",
+    "year": 1186,
+    "type": "found",
+    "counterpart": "duchy-of-masovia"
+   },
+   "mirror": {
+    "slug": "duchy-of-masovia",
+    "year": 1186,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Masovia /ledger/5 loses Kuyavia to duchy-of-greater-poland, not to Kuyavia."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-greater-poland",
+    "year": 1186,
+    "type": "gain",
+    "counterpart": "duchy-of-masovia"
+   },
+   "mirror": {
+    "slug": "duchy-of-kuyavia",
+    "year": 1186,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Greater Poland draws the Kuyavia 1188 shape as its own 1186-1198 (keyframes _1186, _1188) while the Kuyavia dossier draws the same land as a separate state: drawn twice. Fix by vassal_start/vassal_end on both sides."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-greater-poland",
+    "year": 1199,
+    "type": "loss",
+    "counterpart": "duchy-of-kuyavia"
+   },
+   "mirror": {
+    "slug": "duchy-of-kuyavia",
+    "year": 1198,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "Kuyavia records a 1198 rename (no counterpart); Greater Poland a 1199 loss to Kuyavia. Pages differ (Mieszko III page 1198, Greater Poland page 1199); both sides need the same event type and counterpart."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-kuyavia",
+    "year": 1205,
+    "type": "dissolve",
+    "counterpart": "duchy-of-masovia"
+   },
+   "mirror": {
+    "slug": "duchy-of-masovia",
+    "year": 1205,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Masovia /ledger/7 'in 1205, the adjacent lands of Kuyavia as well'."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Kalisz",
+   "kind": "place",
+   "used_in": "duchy-of-opole"
+  },
+  {
+   "name": "Wieluń",
+   "kind": "place",
+   "used_in": "duchy-of-opole"
+  },
+  {
+   "name": "Czeladź",
+   "kind": "place",
+   "used_in": "duchy-of-opole"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Duchy of Racibórz 1172-1202 (Mieszko Tanglefoot)",
+   "suggested_slug": "duchy-of-raciborz",
+   "years": [
+    1172,
+    1202
+   ],
+   "note": "extend the existing dossier backwards; counterpart of Opole's 1202 merge and Silesia's 1172 split"
+  },
+  {
+   "name": "Duchy of Opole 1305-1532",
+   "suggested_slug": "duchy-of-opole",
+   "years": [
+    1305,
+    1532
+   ],
+   "note": "author's gap; additions batch eu-15-x"
+  },
+  {
+   "name": "Duchy of Kuyavia 1230-1347",
+   "suggested_slug": "duchy-of-kuyavia-1230",
+   "years": [
+    1230,
+    1347
+   ],
+   "note": "author's gap; additions batch eu-15-x; Masovia /ledger/11 and /16 name 'Casimir I of Kuyavia' as a free-text counterpart"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-15-f.md",
+ "problems": [
+  "No page failed for the reviewer: Duchy_of_Opole, Mieszko_I_Tanglefoot, Mieszko_II_the_Fat, Mieszko_III_the_Old, Duchy_of_Kuyavia all loaded.",
+  "Neighbour dossiers duchy-of-wroc-aw and kievan-rus are not written yet (groups not run); no event of this batch names them.",
+  "Several fixes are cross-dossier: duchy-of-silesia (1234/1239 Opole, missing 1234 Kalisz-Wieluń loss), duchy-of-greater-poland (1186-1199 Kuyavia as vassal not gain; 1244 Kalisz counterpart), duchy-of-bytom/duchy-of-opole (1281 vs 1284), kingdom-of-bohemia (1291 Opole vassal_start), duchy-of-sandomierz (1227 Czeladź), duchy-of-kalisz (1234-1238 overlap)."
+ ]
+}

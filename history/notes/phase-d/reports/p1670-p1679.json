@@ -1,0 +1,319 @@
+{
+ "window": "p1670-p1679",
+ "images": [
+  {
+   "year": 1676,
+   "bbox": "70,15,135,55 (with Cliopatria)",
+   "seen": "Wu's Zhou holds Yunnan, Guizhou, Hunan, Guangxi, Sichuan; Qing/Wu contest hatched over Shaanxi, Gansu, Zhejiang, Jiangxi; Khoshut/Tibet and the Qing vassal tint read correctly; the 1674-1675 maps (not drawn) kept Hunan, Sichuan, Guangxi with the Qing, found from the numbers"
+  },
+  {
+   "year": 1677,
+   "bbox": "95,16,125,42",
+   "seen": "wrong: Guangdong, Fujian, Hubei, Jiangxi, Zhejiang, Shaanxi and part of Gansu (about 1,790 cells) drawn as nobody's land after the Qing keyframe snap, to the end of the window"
+  },
+  {
+   "year": 1673,
+   "bbox": "-6,42,42,60 (with Cliopatria)",
+   "seen": "mostly right: Ottoman occupation of the Hetmanate hatched, Podolia contested, French occupations of Lorraine and the Dutch Republic hatched; wrong: Denmark-Norway drawn pale as a vassal of the Duchy of Holstein (already closed by p1500-p1599 events/0) and about 50 Danish-Norwegian cells inside Sweden"
+  },
+  {
+   "year": 1673,
+   "bbox": "-82,38,-64,48",
+   "seen": "New Netherland is a strip along the Hudson; the inland New York cells between the Hudson and the Haudenosaunee are nobody's for 1673 only (left, see issues)"
+  },
+  {
+   "year": 1675,
+   "bbox": "95,16,125,42 (stage, after the patch)",
+   "seen": "right after the patch: Wu holds Yunnan, Guizhou, Hunan, Guangxi, Sichuan and Fujian (with Tungning's coastal cells); Guangdong still Qing until 1676"
+  }
+ ],
+ "issues": [
+  {
+   "what": "Qing keyframe qing-dynasty_1673 takes its years from Cliopatria (1673-1676), so the union of keyframes alive in 1674-1676 contains the wide shape and swallows the narrower explicit qing-dynasty_1674 and _1676: Hunan, Sichuan, Guangxi stay Qing through 1675 and Wu holds them only from the 1676 snap (2,841 cells)",
+   "years": [
+    1674,
+    1676
+   ],
+   "slugs": [
+    "qing-dynasty",
+    "wu-sangui-s-zhou"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Revolt_of_the_Three_Feudatories"
+   ]
+  },
+  {
+   "what": "Fujian: Wu's 1676 keyframe holds it 'before Geng's surrender', which cancels ledger/5 (Fujian to the Qing in 1676); at 1677 Wu's next keyframe drops the 490 cells to nobody",
+   "years": [
+    1676,
+    1677
+   ],
+   "slugs": [
+    "wu-sangui-s-zhou",
+    "qing-dynasty"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/1, keyframe_overrides/2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Revolt_of_the_Three_Feudatories"
+   ]
+  },
+  {
+   "what": "The 'ok' Qing 1677 shape (Cliopatria, rebel zone cut out) strips 1,791 cells of Fujian, Guangdong, Hubei, Jiangxi, Zhejiang, Shaanxi and Gansu from the Qing; they stay nobody's through 1679 though the ledger returned them (Guangdong 1677, contests over Shaanxi, Gansu, Zhejiang, Jiangxi ended 1677). Rebuilt as Cliopatria 1677 plus its Southern Ming row minus Wu's core (same construction as p1680-p1689 qing-dynasty_1680); the 1678-1679 shape likewise",
+   "years": [
+    1677,
+    1679
+   ],
+   "slugs": [
+    "qing-dynasty",
+    "wu-sangui-s-zhou"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/3, keyframe_overrides/4",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Revolt_of_the_Three_Feudatories",
+    "https://en.wikipedia.org/wiki/Shang_Zhixin"
+   ]
+  },
+  {
+   "what": "Denmark-Norway (about 2,480 cells) drawn as a vassal of the Duchy of Holstein (role reversal of duchy-of-holstein ledger/3, open since 1523)",
+   "years": [
+    1670,
+    1679
+   ],
+   "slugs": [
+    "denmark-norway",
+    "duchy-of-holstein"
+   ],
+   "decision": "fine as drawn: already closed by p1500-p1599 events/0 (vassal_end in 1526); the trial of this window shows Denmark-Norway direct",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "About 50 cells of present Sweden (Dalarna, Vastra Gotaland, Vasterbotten, Kronoberg, Jamtland/Harjedalen border) sit in the Cliopatria Denmark-Norway shape and the size rule keeps them against Sweden",
+   "years": [
+    1670,
+    1679
+   ],
+   "slugs": [
+    "denmark-norway",
+    "swedish-empire"
+   ],
+   "decision": "patched",
+   "patch": "events/0, keyframe_overrides/5",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Denmark%E2%80%93Norway"
+   ]
+  },
+  {
+   "what": "Fezzan: ledger/3 hands the whole Fezzan (2,015 cells) to the Ottoman empire in 1679 and leaves the Awlad Muhammad dynasty, alive to 1811, with no land; the pages only say 'occupied fully from times to time like in 1679-1682' and that the dynasty carried on paying tribute after 1682. Redrawn as an occupation 1679-1682",
+   "years": [
+    1679,
+    1682
+   ],
+   "slugs": [
+    "awlad-muhammad-dynasty",
+    "ottoman-empire"
+   ],
+   "decision": "patched",
+   "patch": "events/1, events/2, events/3",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Fezzan",
+    "https://en.wikipedia.org/wiki/Awlad_Muhammad"
+   ]
+  },
+  {
+   "what": "Acadia: ledger/13 gives it back to France in 1670 but the 1670 keyframe (1670-1672) lacks it, so the 53 Nova Scotia and New Brunswick cells are snapped away to 1673",
+   "years": [
+    1670,
+    1672
+   ],
+   "slugs": [
+    "new-france"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/6",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Acadia"
+   ]
+  },
+  {
+   "what": "New Mexico: the dossier's 1677 correction cuts it out for 1677-1682, three years before the Pueblo Revolt (August 1680); 67 cells nobody's from 1677",
+   "years": [
+    1677,
+    1679
+   ],
+   "slugs": [
+    "spanish-empire"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/7",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Pueblo_Revolt"
+   ]
+  },
+  {
+   "what": "Inland New York (156 cells in the trial, 454 before other windows' patches): thirteen-colonies_1673 cuts New York and the Hudson valley for the Dutch recapture while new-netherland_1673 holds only the 1662 footprint, so the rest is nobody's for 1673 only",
+   "years": [
+    1673,
+    1673
+   ],
+   "slugs": [
+    "thirteen-colonies",
+    "new-netherland"
+   ],
+   "decision": "left: pages silent (the New Netherland page says only 'In August 1673, the Dutch recaptured New Netherland' and names no territory; the dossier author chose this cut on purpose). A first event returning the cells to the English moved nothing and was dropped",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/New_Netherland"
+   ]
+  },
+  {
+   "what": "Tsardom of Russia keyframes add 4,004 cells in 1670 (Sakha, Khabarovsk, Buryat) and 1,156 in 1677 (Krasnoyarsk, Arctic coast) with no ledger event; the dossier itself says the 1677 growth is undated",
+   "years": [
+    1670,
+    1677
+   ],
+   "slugs": [
+    "tsardom-of-russia"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Khoshut khanate and Tibet win western Sichuan (Kham) against Wu's Sichuan claim by the size rule; Khoshut is drawn as a Qing vassal (hierarchy row 1654-1717, confidence 2)",
+   "years": [
+    1674,
+    1679
+   ],
+   "slugs": [
+    "khoshut-khanate",
+    "tibet",
+    "wu-sangui-s-zhou"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Eastern Sabah: Brunei's ledger/10 cedes it to Sulu in 1673 but Sulu's 1673 keyframe leaves North Borneo out until 1704, so 147 cells are nobody's from 1673",
+   "years": [
+    1673,
+    1679
+   ],
+   "slugs": [
+    "sultanate-of-brunei",
+    "sultanate-of-sulu"
+   ],
+   "decision": "left: pages silent (no page opened in this run; deliberate in the Sulu dossier, whose 1673 keyframe note puts North Borneo in only from 1704)",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Other conflicts and snaps in the packet (Mughal/Safavid at Kandahar, Maratha/Mughal in Maharashtra, Hunza and Janjira against the Mughals, Tripura at Chittagong, Circassia/Nogai, Cossack hetmanate/Zaporozhians, Franco-Dutch War occupations, Ottoman-Polish Podolia 1672-1676, Rupert's Land 1670 keyframe) look like the smaller state rightly winning or keyframe growth no page contradicts",
+   "years": [
+    1670,
+    1679
+   ],
+   "slugs": [],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/p1670-p1679.json",
+ "patch_entries": {
+  "events": 4,
+  "keyframe_overrides": 8,
+  "rulings": 0
+ },
+ "patch_check": "all applied (--check-patch: 12 entries, 12 ok, 0 rejected; trial: 12 applied, events/3 noted as outside the window)",
+ "colour_clashes": [
+  {
+   "a": "spanish-empire",
+   "b": "viceroyalty-of-peru / viceroyalty-of-new-spain / captaincy-general-of-chile / captaincy-general-of-guatemala / captaincy-general-of-cuba / spanish-east-indies / spanish-florida",
+   "years": [
+    1670,
+    1679
+   ],
+   "note": "all #df911a, distance 0.000, 457 shared edges with Peru; only the thin outlines tell them apart (same realm, so possibly intended)"
+  },
+  {
+   "a": "ottoman-empire",
+   "b": "habesh-eyalet / ottoman-hungary",
+   "years": [
+    1670,
+    1679
+   ],
+   "note": "#70782c identical, 156 and 56 shared edges"
+  },
+  {
+   "a": "swedish-empire",
+   "b": "swedish-livonia / swedish-estonia / kexholm-county / swedish-pomerania / bremen-verden",
+   "years": [
+    1670,
+    1679
+   ],
+   "note": "#3082b5 identical; in the 1673 image Swedish Livonia is drawn in the vassal tint, which separates it"
+  },
+  {
+   "a": "portuguese-empire",
+   "b": "colonial-brazil / state-of-maranhao-and-grao-para / portuguese-mozambique / portuguese-mombasa",
+   "years": [
+    1670,
+    1679
+   ],
+   "note": "#47a962 identical; Brazil and Maranhao touch each other as well"
+  },
+  {
+   "a": "habsburg-monarchy",
+   "b": "habsburg-military-frontier",
+   "years": [
+    1670,
+    1679
+   ],
+   "note": "#be3d70 identical, 47 shared edges"
+  },
+  {
+   "a": "berbice",
+   "b": "essequibo",
+   "years": [
+    1670,
+    1679
+   ],
+   "note": "#c85d00 identical (also the Dutch Republic's colour), 13 shared edges"
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "awlad-muhammad-dynasty",
+   "what": "Turn ledger 3-10 (loss/gain of the Fezzan in 1679/1682, 1690/1691, 1716/1717, 1718/1719) into occupation_start/occupation_end; the patch does 1679-1682 only",
+   "why": "The page says the Fezzan was 'occupied fully from times to time'; the Awlad page has the dynasty carry on paying tribute after the Ottoman attack of 1682, so loss/gain draws the dynasty with no land",
+   "source": "https://en.wikipedia.org/wiki/Fezzan"
+  },
+  {
+   "slug": "duchy-of-holstein",
+   "what": "ledger/3 (1523 vassal_start, counterpart denmark-norway) has its roles reversed: it makes Denmark-Norway the vassal of Holstein from 1523 to 1814; p1500-p1599 events/0 closes it in 1526 but the dossier should be repaired",
+   "why": "Not opened in this run: the dossier's own ledger/1 and the p1500-p1599 patch note describe a personal union under the Danish king, not an overlordship of Denmark or Norway",
+   "source": "https://en.wikipedia.org/wiki/Duchy_of_Holstein"
+  },
+  {
+   "slug": "thirteen-colonies",
+   "what": "Reconcile thirteen-colonies_1673 (cuts all of New York and the Hudson valley) with new-netherland_1673 (holds only the 1662 footprint), which leaves inland New York nobody's in 1673",
+   "why": "The page names no Dutch territory beyond the recaptured colony; low priority, one year",
+   "source": "https://en.wikipedia.org/wiki/New_Netherland"
+  }
+ ],
+ "pages_opened": 8,
+ "problems": [
+  "boundary: keyframe_overrides/5 (denmark-norway_1670) covers 1670-1708 and keyframe_overrides/3 (qing-dynasty_1677) its default 1677-1682; both reach past 1679, and events/3 (Fezzan occupation_end) is dated 1682. p1680-p1689 should expect the Fezzan occupation open on 1 January 1680.",
+  "boundary: spanish-empire_1677 is cut to 1677-1679, so no Spanish keyframe is alive in 1680-1682; ledger/34 removes New Mexico in 1680, and the next window should add a 1680-1682 shape without New Mexico if it wants snaps there.",
+  "systemic: a keyframe without from/to takes the span of its Cliopatria shape, and the union of keyframes alive lets a wide shape swallow a narrower explicit one (qing-dynasty_1673 here). The same overlap, small, remains in bijapur-sultanate_1670/_1675 (63 cells), kingdom-of-france_1673/_1674 (41), nayaks-of-madurai_1572/_1673 (29); not patched.",
+  "stale packet: the draft and packet of 1 Nov 20:39 predate the other windows' patches; the trial shows 623 other entries applied and, for example, Denmark-Norway no longer a vassal of Holstein and a different New York split (Haudenosaunee 298, English 156 cells in 1672).",
+  "hierarchy: no wrong row found in this window.",
+  "Bohuslan, Scania and Halland rest on the Denmark-Norway page's undated Roskilde account; only the 1645 cessions (Jamtland, Harjedalen, Idre and Sarna) are dated on the page."
+ ]
+}

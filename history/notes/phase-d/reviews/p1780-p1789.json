@@ -1,0 +1,79 @@
+{
+ "window": "p1780-p1789",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Shah_Alam_II",
+   "what": "mughal-empire gain from gwalior-state, 1788/10, of Delhi city to Palam (1 cell, 28.62 N 77.22 E; the mughal-empire_1783 correction). Page: Scindia 'taking possession of Delhi on 2 October 1788', 'He restored Shah Alam II to the throne and acted as his protector', infobox 'Second reign: 16 October 1788 - 19 November 1806', 'Shah Alam II was only left with Delhi city to rule', 'The empire of Shah Alam is from Delhi to Palam', 'a Gwalior state garrison permanently occupied Delhi in 1788'. Trial: without the event Gwalior's ledger/4-5 take the last Mughal cell in Oct 1788; with it the Mughal Empire holds the cell at the end of 1788 and 1789, inside the open 1784 vassal relation to gwalior-state; mughal-empire_1791 redraws the same cell from 1791, so no later year changes. Small caveat: the note's 'client of the Gwalior State' wording is the page's for the 1772 restoration; the post-1788 status rests on 'protector' and the garrison sentence.",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Treaty_of_Paris_(1783)",
+   "what": "united-states-of-america_1783 (1783-1787): the dossier's correction kept unchanged, plus Wisconsin (43 cells), Georgia (33 cells, and 2 cells at the Chattahoochee-Flint fork from Spain by R2), Kentucky (31 holes) and Minnesota east of the Mississippi. Page: Article 2 runs to 'the northwesternmost point' of the Lake of the Woods 'in present-day Minnesota', 'and from thence on a due west course to the river Mississippi', then 'along the middle of the said river' to 31 N. Errors found: the Minnesota polygon (copied from province-of-quebec_1774) covered 400 cells, about 100 of them west of the river (61 in south-east Minnesota below Hastings, where the river is the Wisconsin line, the rest in the Leech Lake pocket inside the river's upper loop); and R1 kept 202 of its cells (north of 47 N, held by Rupert's Land since the p1770-p1779 ruling against Quebec) from the United States, so the 'no grey gap' outcome covered only 111 of the Minnesota cells. The why's figures (399 cells released, 489 removed) are from the published draft; with the current dossiers Quebec held 111 Minnesota cells east of the river, Spanish Louisiana 87 and Rupert's Land 202. Georgia south of 31 N: the page does not quote the St Marys line, but Georgia was one of the thirteen states and footnote 19 runs the line 'to Georgia, then south to Spain's East Florida'.",
+   "fix": "Minnesota element replaced by {minus: [Minnesota x the old polygon, union(p1770-p1779 rulings/0 west-of-river polygon, a pocket polygon along the river from Lake Itasca by Grand Rapids to Aitkin)]}: 289 cells, all east of the river; rulings/2 added so the claim wins over Rupert's Land; reviewer note appended to the why. Trial: the 1783 snap now removes 19 cells (200 in the current baseline), all 289 Minnesota cells are US from 1783, Spanish Louisiana keeps its 87.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Treaty_of_Paris_(1783)",
+   "what": "united-states-of-america_1788 (1788-1790): same additions and same Minnesota polygon error as keyframe_overrides/0; the base correction is the dossier's unchanged. Before the patch Spain's 1788 shape took 110 Minnesota cells east of the river; with it the US keeps them (R2). Reaches 1790, which is in p1790-p1799.",
+   "fix": "Same Minnesota spec as keyframe_overrides/0 and the same reviewer note. Trial: 1788-1789 Minnesota east of the river all US; Spain's 1788 snap adds 43 cells instead of 151 (current baseline).",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Agha_Mohammad_Khan",
+   "what": "zand-dynasty_1780 (1780-1787) minus Mazandaran; base correction identical to the dossier's. Page: Agha Mohammad defeated his brothers 'on 2 April, conquering Mazandaran' (1779 by context: after Karim Khan's death on 1 March 1779, before the autumn-1780 Babol events). The Zand ledger/12 already loses Mazandaran in 1779/4; the 1780 snap gave back 83 of its 92 cells. Trial: 83 cells Zand -> nobody 1780-1787, Qajar from 1789, nothing else changes; the zand_1780 snap adds 453 cells instead of 536. Not drawn (minor, pages say it): the Zand army retook Mazandaran in June 1784 ('its people quickly surrendered to the Zands') until Agha Mohammad 'defeated a Zand force at Ashraf' on 14 November 1784. The years 1780-1788 stay unowned because the Qajar dossier starts in 1789 (the window agent's dossier request).",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/3",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/East_India_Company",
+   "what": "british-empire_1788 (East India Company, 1788-1790) minus Minnesota; base correction identical to the dossier's. The page's only North American references are trade ('to sell tea from its colonies in Asia in the American colonies'); its holdings are 'large parts of the Indian subcontinent and Saint Helena'. Trial: no Company cell west of 0 in 1788-1789; the one Minnesota cell goes to the United States. Reaches 1790 (next window).",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Province_of_Quebec_(1763%E2%80%931791)",
+   "what": "british-colonial-empire vs province-of-quebec 1780-1789, winner Quebec. Page: 'established by the Kingdom of Great Britain in 1763', 'from 1774 extended from the coast of Labrador', 'In 1791, the territory north of the Great Lakes was reorganised and divided into Lower Canada and Upper Canada'. Effect checked against a no-patch trial: 461-470 cells per year to Quebec (Quebec province, Ontario, Labrador, and Michigan in 1780-1782). Error: it also gave Quebec the 12 Detroit-area cells of Michigan in 1780-1782; Quebec's ledger/3 (1783 loss to the United States) then releases them while the US correction leaves Detroit out, so the Detroit hole of 1783-1787 grew from 7 to 12 cells (5 had stayed with the umbrella).",
+   "fix": "Region added: every cell both claim in Canada and the United States except Michigan x Detroit 40 km; reviewer note appended. Trial: settles 1861 cell-years in 4 years, the umbrella keeps the 5 Detroit cells (British until 1796 per the page: 'the British maintained a military presence there until 1796'), no cell released to nobody.",
+   "applied": true
+  },
+  {
+   "entry": "rulings/1",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Province_of_Quebec_(1763%E2%80%931791)",
+   "what": "province-of-quebec vs rupert-s-land 1783-1789 in Ontario 49-50.3 N (477 cells), winner Rupert's Land. Page: the Quebec Act set Quebec 'north to the southern boundary of lands owned by the Hudson's Bay Company, or Rupert's Land'. Trial: the 266 cells it settles are exactly the 266 that Rupert's Land held through 1782 (p1770-p1779 rulings/2 ruled the same 266 for 1774-1779) and that the new province-of-quebec_1783 keyframe took by R1, so the ruling keeps the 1782 line; nothing outside the band moves. The why called the whole band Hudson Bay drainage including Lake Nipigon and cited the earlier ruling for Minnesota only; no opened page says either.",
+   "fix": "Region text and why reworded to rest on continuity with 1774-1782 (and the earlier ruling of the same 266 cells), with a reviewer note; region unchanged.",
+   "applied": true
+  },
+  {
+   "entry": "rulings/2",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Treaty_of_Paris_(1783)",
+   "what": "Added by the reviewer to make keyframe_overrides/0-1 do what their why says: rupert-s-land vs united-states-of-america 1783-1789, winner the United States, region the corrected Minnesota-east-of-the-Mississippi spec. Page: footnote 22 runs the line through '[Lake Superior ... Long Lake, Lake of the Woods]' to 'the most northwesternmost point of the Lake of the Woods in present-day Minnesota'. Without it R1 kept 180 cells of northern Minnesota south of that line (the Arrowhead interior, the Rainy River and Red Lake country east of 95.2 W, the North Shore) with Rupert's Land through 1789.",
+   "fix": "Trial: settles 180 cell-years in 1783 (the conflict recurs nowhere else in the window); the 22 Rupert's Land cells west of the river (Leech Lake pocket) are outside the region and stay with Rupert's Land.",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch p1780-p1789: 8 entries, 8 ok, 0 rejected (after the reviewer's fixes: Minnesota spec of keyframe_overrides/0-1 cut at the river, region on rulings/0, why of rulings/1, rulings/2 added). Reviewer trial: all 8 applied; rulings/0 settles 1861 cell-years in 4 years, rulings/1 266 in 1 year, rulings/2 180 in 1 year; against a no-patch trial the only changes are the Quebec/umbrella swap (460-470 cells a year), 266 Ontario cells kept by Rupert's Land, 216 + 180 + 110 + 2 cells to the US, 83 Mazandaran cells Zand -> nobody 1780-1787, the 1 Delhi cell kept by the Mughal Empire in 1788-1789 and 1 Company cell to the US.",
+ "problems": [
+  "Reviewer added a new entry, rulings/2 (rupert-s-land vs united-states-of-america 1783-1789), rather than only correcting existing ones: without it keyframe_overrides/0-1 left 180 Minnesota cells south of the Treaty of Paris line with Rupert's Land (R1).",
+  "Carries into p1790-p1799: keyframe_overrides/1 (united-states-of-america_1788) and /3 (british-empire_1788) run to 1790. The United States corrections of 1791, 1792 and 1796 use the same 92 W / 31-50 N box and omit Minnesota and Kentucky, so the next window needs the same additions (and, if Rupert's Land re-claims northern Minnesota at a later snap, the same ruling as rulings/2).",
+  "Pre-existing hole, not fixed: 7 Detroit-area cells in Michigan are nobody's 1783-1789 (also a Toledo hole): province-of-quebec ledger/3 (1783 loss to the United States) releases Detroit while the US correction leaves it out; the Quebec page: 'the British maintained a military presence there until 1796 and the Jay Treaty'. Fix: an event {slug province-of-quebec, year 1783, type gain, counterpart nobody, region intersect(Michigan, Detroit 40 km)} with that source, or a dossier fix to ledger/3 (then upper-canada must carry Detroit from 1791 to 1796).",
+  "About 73 cells of the 49-50.3 N band between 90.4 and 87.2 W (the Lake Nipigon country) have been Rupert's Land since before 1774; if that basin drains to Lake Superior (not checked on a page in this run), the Quebec Act's line would make it Quebec's for 1774-1791. A question for the province-of-quebec and rupert-s-land dossiers, not for this window's ruling.",
+  "Mazandaran: the page dates a Zand reoccupation (June 1784, 'its people quickly surrendered to the Zands') ended by the battle at Ashraf on 14 November 1784; not drawn. The whole of Agha Mohammad Khan's land stays unowned until 1789 pending the Qajar dossier request.",
+  "Pre-existing, not from this patch (present in the no-patch trial): a new rupert-s-land / spanish-empire conflict of 2236 cell-years (Spain's 1788 'Louisiana' shape over Rupert's Land, R1 to Rupert's Land), and a thin Spanish Empire strip on the west bank of the Mississippi near Minneapolis in 1788-1789 beside Spanish Louisiana.",
+  "The window agent's US figures (399 Minnesota cells released, 489 removed, Spain taking 399 in 1788) were measured on the published draft; dossier edits since then (the p1770-p1779 rulings, the new province-of-quebec_1783 keyframe) changed them to 111 released, 200 removed and 110 taken; noted in the why."
+ ]
+}

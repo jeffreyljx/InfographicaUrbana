@@ -1,0 +1,265 @@
+{
+ "batch_id": "fx-52",
+ "findings": [
+  {
+   "item": "K01",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "muhammad-ali-dynasty"
+   ],
+   "changes": [
+    "muhammad-ali-dynasty: ledger/2: contest_start 1811 narrowed from Hejaz+Najd to the Hejaz",
+    "muhammad-ali-dynasty: new ledger/3: contest_end 1815 (spring) Hejaz, emirate-of-diriyah, mirrors ottoman-empire /169",
+    "muhammad-ali-dynasty: new ledger/4: contest_start 1816 Najd, emirate-of-diriyah, mirrors ottoman-empire /170; ledger/5 (1818-09 contest_end) closes it",
+    "muhammad-ali-dynasty: later ledger indices +2; self-references in keyframe_review/6-8, ledger/20 and notes bumped"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Wahhabi_War"
+   ],
+   "why": "Wahhabi War page dates the 1811 landing, Medina/Jeddah/Mecca 1812-13, the spring 1815 peace treaty, the resumed war of 1816 and Diriyah's surrender on 11 September 1818; it has no sentence stating there was no fighting in Najd in 1811-1815 (it dates only Western Arabian fighting then). Patch p1810-p1819 events/0 and events/2 are for the orchestrator to drop (not touched)."
+  },
+  {
+   "item": "K02",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "principality-of-rostov-suzdal"
+   ],
+   "changes": [
+    "principality-of-rostov-suzdal: identity.successors: principality-of-vladimir-suzdal first with the 1236 shape plus Vladimir and Ustyug discs as land, mongol-empire second",
+    "principality-of-rostov-suzdal: ledger/13 (1240 dissolve): counterpart mongol-empire -> principality-of-vladimir-suzdal, note extended"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Vladimir-Suzdal"
+   ],
+   "why": "Compiler do_end hands a dying state's cells to living successors in list order (a successor starting y+1 counts as living). Page: princes 'submitted to Mongol rule' from 1238-46, 'Vladimir became a vassal of the Mongol Empire', Nevsky 'the last prince to reign directly in Vladimir', thrones united by 1389: the state did not end in 1240."
+  },
+  {
+   "item": "K03",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "ottoman-empire",
+    "muhammad-ali-dynasty"
+   ],
+   "changes": [
+    "ottoman-empire: ledger/225 (1914-11 vassal_end, counterpart muhammad-ali-dynasty) dropped; the Ottoman ledger opens no vassal relation with khedivate-of-egypt, so nothing to repoint to",
+    "ottoman-empire: ledger/189-190 notes: muhammad-ali-dynasty/ledger/25 -> /27, khedivate span pointed to khedivate-of-egypt ledger/1 and /27; 'Vassal pairing' note rewritten",
+    "muhammad-ali-dynasty: ledger/27 note and notes: stale 'ottoman-empire /ledger/220 closes the relation in 1914' replaced"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Khedivate_of_Egypt"
+   ],
+   "why": "Khedivate page: 'an autonomous tributary state of the Ottoman Empire', infobox 'Largely independent vassal state ... under British occupation from 1882 onwards', 'abolished the Khedivate on 5 November 1914'. khedivate-of-egypt ledger/1 and /27 carry 1866-Dec 1914. Validator now warns once on ottoman ledger/189 (FIFO count of three starts against two ends in one relation), explained in the notes. hierarchy.csv lacks khedivate-of-egypt under ottoman-empire (handoff)."
+  },
+  {
+   "item": "K04",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "sasanian-empire"
+   ],
+   "changes": [
+    "sasanian-empire: ledger/61 (510 gain, caucasian-albania): region widened to union of Cliopatria Albania 509 and {region Karabakh}; source -> Caucasian Albania page (added to sources[]); confidence 1 -> 2; note rewritten"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Caucasian_Albania"
+   ],
+   "why": "Page: Vachagan III r. 485-510, Mihranid princes in the 6th century, 'Albania became a vassal state of the Sassanid Empire' with the Sassanid marzban holding most authority, Persians 'included' Artsakh and Utik 'into a single province (marzpanate) called Aghvank (Arran)'. The page does not date the marzpanate, so 510 stays Cliopatria's year / the end of the Albanian reign."
+  },
+  {
+   "item": "K05",
+   "verdict": "partly",
+   "dossiers_changed": [
+    "qin",
+    "chu"
+   ],
+   "changes": [
+    "qin: ledger/19 note rewritten without the unverifiable quotations, source -> Timeline of the Warring States page (added), confidence stays 1",
+    "qin: wars/5 renamed 'Qin-Chu war of 312 BC', outcome/note/source rewritten; keyframe_review/7 (qin_-315) correction.text and note de-quoted; sources[] King Huai note corrected",
+    "chu: ledger/37 note rewritten, source -> Timeline page (added), confidence stays 1; wars/5 renamed and span set to 312; keyframe_review/11 (chu_-315) note and sources[] King Huai note corrected"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/King_Huai_of_Chu",
+    "https://en.wikipedia.org/wiki/Hanzhong",
+    "https://en.wikipedia.org/wiki/Zhang_Yi_(strategist)",
+    "https://en.wikipedia.org/wiki/King_Huiwen_of_Qin",
+    "https://en.wikipedia.org/wiki/Timeline_of_the_Warring_States_and_the_Qin_dynasty"
+   ],
+   "why": "The King Huai of Chu page as served is a ~480-word stub (328-299 BC reign, 299 hostage, 296 death) without the quoted sentences; none of Hanzhong, Zhang Yi, King Huiwen of Qin or the Timeline names Danyang, Lantian or the Hanzhong seizure. Dated on pages: Timeline '312 BC: Qin defeats a Chu army' (no place); Zhang Yi 'Chu went to war with Qin. Qin defeated Chu and demanded a further six hundred li of land' (no year). Events kept at confidence 1 (already the floor) as bridging readings; fabricated quotations withdrawn."
+  },
+  {
+   "item": "K06",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "mongol-khanate"
+   ],
+   "changes": [
+    "mongol-khanate: keyframe_review/0-8 (1455, 1468, 1475, 1481, 1482, 1495, 1516, 1519, 1521) and ledger/0 (found): subtract the 2,169 Gansu (634) and Qinghai (1,535) cells of Ming 1467 minus Ming 1468 (the land of ming-dynasty ledger/45); 97 Gansu cells west of Jiayu Pass stay Mongol",
+    "mongol-khanate: keyframe 1468 note carries the full page evidence; sources[] gains Hexi Corridor and Qinghai pages"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Hexi_Corridor",
+    "https://en.wikipedia.org/wiki/Qinghai"
+   ],
+   "why": "Hexi Corridor: Ming seized the eastern section in 1370, Jiayu Pass left Dunhuang to the Northern Yuan, Turfan Khanate at Dunhuang 1524, Ming wall 1539-1541 and 1573; Qinghai: 'under the control of early Ming dynasty', Khoshut control only from 1640. No page puts the Great Khan there in 1468-1546; Cliopatria's own 1547 Mongol shape holds none of the cells."
+  },
+  {
+   "item": "K07",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "kingdom-of-ireland"
+   ],
+   "changes": [
+    "kingdom-of-ireland: ledger/14 type split -> gain (counterpart commonwealth-of-england), month 5 added, note rewritten; one older note's '(ledger merge 1653, split 1660)' updated"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kingdom_of_Ireland",
+    "https://en.wikipedia.org/wiki/Commonwealth_of_England"
+   ],
+   "why": "Kingdom of Ireland page gives 1660 only ('The kingdom's order was restored 1660 with the restoration of Charles II'); the month is May from the Commonwealth page ('On 8 May it proclaimed that King Charles II had been the lawful monarch since ... January 1649'). Patch redundancy: p1660-p1669 events/3 redundant; events/4 and events/5 still needed (cells outside the Ireland/Northern Ireland regions); p1690-p1699 events/0 redundant once the recompile shows no nobody cells 1662-1690; p1670-p1679 and p1680-p1689 hold no Irish entries."
+  },
+  {
+   "item": "K08",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "russian-soviet-federative-socialist-republic"
+   ],
+   "changes": [
+    "russian-soviet-federative-socialist-republic: new contest_start 1942-08 and contest_end 1943-01, nazi-germany, {place Volgograd, km 100}",
+    "russian-soviet-federative-socialist-republic: ledger/50 (1941-10 Crimea occupation) narrowed to Crimea minus Sevastopol; new Sevastopol occupation_start 1942-07 and matching occupation_end 1944-05; Crimea end (1944-05) narrowed to Crimea minus Sevastopol; 'autumn 1941' quotation corrected",
+    "russian-soviet-federative-socialist-republic: four events inserted (later ledger indices +4)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Eastern_Front_(World_War_II)",
+    "https://en.wikipedia.org/wiki/Crimean_offensive"
+   ],
+   "why": "Eastern Front page: Volga reached on 23 August 1942, 6th Army surrendered 31 January 1943, Sevastopol 'held out until 3 July 1942', the peninsula taken 'by autumn'; Crimean offensive page: 'the city fell on 9 May'. The extra end keeps the validator's start/end pairing."
+  },
+  {
+   "item": "K09",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "mexico"
+   ],
+   "changes": [
+    "mexico: ledger/8 (1970 loss): region replaced by the empty intersection of Mexico and the United States (as fx-42 R148), source -> Boundary Treaty of 1970 page, note rewritten",
+    "mexico: ledger/1 (1873 loss, same {river Rio Grande, km 5} defect, 51 cells): same empty-region fix",
+    "mexico: sources[] gains the Boundary Treaty of 1970 page"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Boundary_Treaty_of_1970"
+   ],
+   "why": "Treaty tracts are 650 ha, 102 ha net and 194.93 ha (acres and hectares only on the page), each far below one 253 km2 cell; the 5 km river strip moved 51 Mexican cells (Coahuila 18, Chihuahua 17, Tamaulipas 15, Nuevo Leon 1). Validator shows three 'region resolves to no cells' warnings (ledger 1, 8, 9) by design. p2000-p2009 events/0 is a different cause (anchor border fit) and stays."
+  },
+  {
+   "item": "K10",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "republic-of-china"
+   ],
+   "changes": [
+    "republic-of-china: the four vassal_starts (Guangxi clique, Guominjun, Shanxi clique, Fengtian clique) moved from 1930 to 1929 and reordered before the 1930 gain (now ledger/26-29; the 1930 gain is /30); notes extended"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Nanjing_decade"
+   ],
+   "why": "Page: the Northern Expedition 'successfully reunited China by the end of the year' (1928), four army groups, Li Zongren clash March 1929, Feng Yuxiang rebellion 19 May, Central Plains War May 1930. The page gives no 1929 status for the realms, so confidence stays 1; hierarchy.csv already covers the Shanxi clique 1912-1930, its event kept for the pairing."
+  },
+  {
+   "item": "K11",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "empire-of-brazil"
+   ],
+   "changes": [
+    "empire-of-brazil: keyframe_review/1-7 (1824, 1825, 1828, 1834, 1836, 1840, 1846): verdict adjust, correction = Cliopatria shape of the year plus the 768 Brazilian cells that the 1853 shape adds to the 1846 shape (upper Rio Negro and Japura, Amazonas), source Amazonas page",
+    "empire-of-brazil: ledger/20 (1853 gain from nobody) note extended: it now finds only the Colombian-side cells"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Amazonas_(Brazilian_state)"
+   ],
+   "why": "Page: the Province of Para, 'including the comarca of Rio Negro, the upper Amazon region, was incorporated into the Empire of Brazil in 1824'; fort built 1761. A gain event would be undone by the next keyframe snap (more than 20 cells), so the keyframes carry the land. Gran Colombia's Cliopatria 1822 shape still draws 766 of these cells in 1824-1830 (handoff)."
+  }
+ ],
+ "dossiers_changed": [
+  "muhammad-ali-dynasty",
+  "principality-of-rostov-suzdal",
+  "ottoman-empire",
+  "sasanian-empire",
+  "qin",
+  "chu",
+  "mongol-khanate",
+  "kingdom-of-ireland",
+  "russian-soviet-federative-socialist-republic",
+  "mexico",
+  "republic-of-china",
+  "empire-of-brazil"
+ ],
+ "validation": {
+  "muhammad-ali-dynasty": "ok",
+  "principality-of-rostov-suzdal": "ok",
+  "ottoman-empire": "ok (1 warning: ledger/189 vassal_start with no end, first-in-first-out counting artifact explained in notes)",
+  "sasanian-empire": "ok",
+  "qin": "ok",
+  "chu": "ok",
+  "mongol-khanate": "ok (7 warnings, all pre-existing: Aksu without country, counterpart 'khalkha')",
+  "kingdom-of-ireland": "ok",
+  "russian-soviet-federative-socialist-republic": "ok (1 warning, pre-existing: 'St.  Petersburg' without country)",
+  "mexico": "ok (3 warnings by design: empty regions in ledger 1, 8, 9)",
+  "republic-of-china": "ok (4 warnings, pre-existing: Aksu, Baitag Bogd)",
+  "empire-of-brazil": "ok"
+ },
+ "handoffs": [
+  {
+   "kind": "hierarchy",
+   "dossier": "khedivate-of-egypt",
+   "where": "data/hierarchy.csv (no row)",
+   "what": "child khedivate-of-egypt, parent ottoman-empire, 1866-1914, vassal",
+   "why": "Khedivate page: 'an autonomous tributary state of the Ottoman Empire'; khedivate-of-egypt ledger/1 and /27 carry the span, ottoman-empire no longer mirrors it after K03; hierarchy.csv has no row for it",
+   "source": "https://en.wikipedia.org/wiki/Khedivate_of_Egypt"
+  },
+  {
+   "kind": "hierarchy",
+   "dossier": "muhammad-ali-dynasty",
+   "where": "data/hierarchy.csv row for muhammad-ali-dynasty under ottoman-empire (1805-1840)",
+   "what": "extend the vassal span to 1865 (ottoman-empire ledger/189 vassal_start February 1841, ledger/190 vassal_end 1865; muhammad-ali-dynasty ledger/27 vassal_end 1865)",
+   "why": "the row stops in 1840 but both dossiers keep the relation to 1865 (History of Egypt under the Muhammad Ali dynasty page, firmans of 1841); the Ottoman ledger events cover it if the compiler pairs them",
+   "source": "https://en.wikipedia.org/wiki/History_of_Egypt_under_the_Muhammad_Ali_dynasty"
+  },
+  {
+   "dossier": "gran-colombia",
+   "where": "keyframe_review gran-colombia_1824 (and _1829, the Cliopatria 1822 shape in 1824-1830)",
+   "what": "subtract {country Brazil} (766 cells of Brazilian Amazonas, the upper Rio Negro and Japura) from the 1824 and 1829 keyframes",
+   "why": "Amazonas page: the comarca of Rio Negro 'was incorporated into the Empire of Brazil in 1824'; empire-of-brazil now draws these cells from 1824 and loses them to Gran Colombia by the size rule in 1824-1830 otherwise",
+   "source": "https://en.wikipedia.org/wiki/Amazonas_(Brazilian_state)"
+  },
+  {
+   "dossier": "ming-dynasty",
+   "where": "ledger/45 (1468 loss to nobody, Qinghai and western Gansu) and keyframe ming-dynasty_1468 ('Qinghai and western Gansu stay out')",
+   "what": "keep the Hexi Corridor east of Jiayu Pass (the 634 Gansu cells of the release) as Ming land after 1468; only the land west of the pass and Qinghai are left without a holder",
+   "why": "Hexi Corridor page: Ming seized the eastern section in 1370 and rebuilt the Great Wall through the corridor in 1539-1541 and 1573; no page gives the corridor east of the pass to anyone else",
+   "source": "https://en.wikipedia.org/wiki/Hexi_Corridor"
+  },
+  {
+   "dossier": "union-of-soviet-socialist-republics",
+   "where": "ledger/38 and ledger/39 notes",
+   "what": "update the cited russian-soviet-federative-socialist-republic ledger indices: Petsamo is now /65 and Tuva /64 (the notes said /59 and /58, already stale before K08 inserted four events)",
+   "why": "cosmetic cross-reference only",
+   "source": "https://en.wikipedia.org/wiki/Eastern_Front_(World_War_II)"
+  },
+  {
+   "dossier": "fengtian-clique, guominjun, kuomintang",
+   "where": "notes citing republic-of-china /ledger/27-30",
+   "what": "the four vassal_starts are now republic-of-china /ledger/26-29 and begin in 1929, not 1930",
+   "why": "cosmetic cross-reference after K10",
+   "source": "https://en.wikipedia.org/wiki/Nanjing_decade"
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "not_reached": [],
+ "notes_path": "history/polities/_notes/fix-fx-52.md",
+ "problems": [
+  "K05: the King Huai of Chu page as served (about 480 words) holds none of the items credited to it in qin and chu (also Yue 306, Chongqiu 301, eight cities 299, Shaoling 311); only the Hanzhong items were in this finding and were fixed, the others are left unverified and should be rechecked in a later batch.",
+  "K06: the pre-1468 behaviour of the Mongol 1455-1467 keyframe against the Ming shape could not be checked without the compiler; the subtraction was applied there too because the same page evidence holds (Ming held Gansu and Qinghai to 1467 in Cliopatria's shape).",
+  "K03: ottoman-empire ledger/189 keeps a validator warning (counting artifact), accepted rather than inventing an end event.",
+  "WebFetch answers come from a small model summary; every quotation in the notes was taken from those answers."
+ ]
+}

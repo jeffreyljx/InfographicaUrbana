@@ -1,0 +1,330 @@
+{
+ "window": "p1800-p1809",
+ "images": [
+  {
+   "year": 1800,
+   "bbox": "world",
+   "seen": "Louisiana hatched as Spanish-occupied French land, colonies tinted pink; Misiones Orientales (S Brazil) ownerless, east Hispaniola ownerless"
+  },
+  {
+   "year": 1809,
+   "bbox": "world",
+   "seen": "US with Louisiana, Sokoto caliphate, Grand Duchy of Finland; nothing far outside its region"
+  },
+  {
+   "year": 1806,
+   "bbox": "-12,35,32,60 +cliopatria",
+   "seen": "Piedmont drawn as Kingdom of Sardinia (wrong: French since Sept 1802); Prussia occupied after Jena; Denmark in a vassal tint of Holstein (published draft only)"
+  },
+  {
+   "year": 1805,
+   "bbox": "30,10,62,36 +cliopatria",
+   "seen": "Hejaz still Habesh Eyalet (Ottoman vassal) though Mecca fell in 1803 and Medina by 1805; Emirate of Diriyah otherwise as Cliopatria"
+  },
+  {
+   "year": 1805,
+   "bbox": "66,6,90,32 +cliopatria",
+   "seen": "India plausible (Maratha, Hyderabad, Mysore vassal tints, British Ceded Provinces); Bikaner and Jaipur drawn as rings from 140 km and 90 km circles; Cis-Sutlej Sikh chiefs ownerless"
+  },
+  {
+   "year": 1809,
+   "bbox": "-10,3,25,20 +cliopatria",
+   "seen": "West Africa richer than Cliopatria, Sokoto and Kanem-Bornu plausible; Timbuktu pashalik ring-shaped (dossier circle), left"
+  },
+  {
+   "year": 1804,
+   "bbox": "-125,-5,-55,50 +cliopatria",
+   "seen": "US with Louisiana Purchase, Texas contested, Spanish Florida; east Hispaniola grey (ownerless), no other fault"
+  },
+  {
+   "year": 1809,
+   "bbox": "5,40,32,56",
+   "seen": "Kingdom of Sardinia still on Piedmont; Illyrian Provinces too small (Military Frontier kept the Croatian lands SW of the Sava); grey hole at Tarnopol"
+  },
+  {
+   "year": 1805,
+   "bbox": "30,10,62,36 (after)",
+   "seen": "Hejaz now Emirate of Diriyah as the pages say"
+  },
+  {
+   "year": 1806,
+   "bbox": "-8,36,20,52 (after)",
+   "seen": "Piedmont French, Sardinia only the island"
+  }
+ ],
+ "issues": [
+  {
+   "what": "Piedmont and Aosta drawn as the Kingdom of Sardinia 1802-1809 (84 cells; 106 cell-years of conflict 1803 and 642 R2 cell-years 1804-1809 with France). Cause: kingdom-of-sardinia_1800 says 'for 1800-1801 only' but inherits Cliopatria's span to 1813 and the compiler unions overlapping keyframes, so the island-only keyframe of 1802 never narrows it; then french-consulate_1802 omits Piedmont and releases the 84 cells France got in September 1802",
+   "years": [
+    1802,
+    1809
+   ],
+   "slugs": [
+    "kingdom-of-sardinia",
+    "french-consulate",
+    "first-french-empire"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0 (to 1801), keyframe_overrides/4 (Piedmont and Aosta added to the 1802-1804 French keyframe)",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Subalpine_Republic"
+   ]
+  },
+  {
+   "what": "Egypt (168 cells) drawn French again in 1802 after the evacuation of 1801: french-consulate_1800 (Cliopatria 1800 shape with Egypt, span 1800-1802) is unioned with the 'without Egypt' keyframe of 1802",
+   "years": [
+    1802,
+    1802
+   ],
+   "slugs": [
+    "french-consulate"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/1 (to 1801)",
+   "pages": [
+    "https://en.wikipedia.org/wiki/French_campaign_in_Egypt_and_Syria"
+   ]
+  },
+  {
+   "what": "The Hejaz (1,407 cells) stays Ottoman (Habesh Eyalet, colony rule R1, 2,434 conflict cell-years 1800-1805) although Mecca was Saudi from 1803 and Medina by 1805; the emirate's gains from the Ottoman Empire find nothing to take. The p1810-p1819 patch asks for exactly this ruling for the years before 1811",
+   "years": [
+    1803,
+    1810
+   ],
+   "slugs": [
+    "emirate-of-diriyah",
+    "habesh-eyalet"
+   ],
+   "decision": "patched",
+   "patch": "rulings/0 (settled 1,397 cell-years)",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Wahhabi_War"
+   ]
+  },
+  {
+   "what": "Misiones Orientales (226 cells in S Brazil) ownerless from 1800 to the end of the window and beyond: spanish-empire_1800 strips them a year early, colonial-brazil_1801 (Cliopatria 1805 shape) leaves them out, and from 1803 the portuguese-empire keyframes release them again",
+   "years": [
+    1800,
+    1809
+   ],
+   "slugs": [
+    "spanish-empire",
+    "colonial-brazil",
+    "portuguese-empire"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/3 (Spanish 1800 keyframe), keyframe_overrides/2 (Brazil 1801 keyframe), events/0 (Portuguese crown to Brazil, Oct 1801)",
+   "pages": [
+    "https://en.wikipedia.org/wiki/War_of_the_Oranges"
+   ]
+  },
+  {
+   "what": "Santo Domingo (east of Hispaniola, 243 cells) ownerless in 1800 and 1802-1808: the Spanish 1800 keyframe removes it a year early, the French keyframes omit it so haiti/ledger/10 (Kerverseau 1802) is undone at year end, and the empire keyframes are 'without overseas cells'",
+   "years": [
+    1800,
+    1808
+   ],
+   "slugs": [
+    "spanish-empire",
+    "french-consulate",
+    "first-french-empire"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/3, keyframe_overrides/4, keyframe_overrides/5",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Saint-Domingue_expedition",
+    "https://en.wikipedia.org/wiki/Captaincy_General_of_Santo_Domingo",
+    "https://en.wikipedia.org/wiki/Toussaint_Louverture"
+   ]
+  },
+  {
+   "what": "Croatian lands southwest of the Sava ceded at Schoenbrunn stayed with the Military Frontier (size rule, 110 cell-years in 1809, 55 more in 1810)",
+   "years": [
+    1809,
+    1813
+   ],
+   "slugs": [
+    "illyrian-provinces",
+    "habsburg-military-frontier"
+   ],
+   "decision": "patched",
+   "patch": "rulings/1 (settled 55 cell-years in 1809; 1810-1813 reach into the next window)",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Illyrian_Provinces",
+    "https://en.wikipedia.org/wiki/Treaty_of_Sch%C3%B6nbrunn"
+   ]
+  },
+  {
+   "what": "Tarnopol district (47 cells) ceded to Russia in October 1809: only 15 cells stuck, 32 stayed ownerless because russian-empire_1809 (Cliopatria shape) holds only a few of them and releases the rest",
+   "years": [
+    1809,
+    1810
+   ],
+   "slugs": [
+    "russian-empire",
+    "kingdom-of-galicia-and-lodomeria"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/6 (shape 1809-1810 plus the Tarnopol circle)",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Treaty_of_Sch%C3%B6nbrunn"
+   ]
+  },
+  {
+   "what": "Cis-Sutlej Sikh states (Patiala, Jind, Nabha, Kaithal, Kapurthala and others; about 130 cells of Indian Punjab and Haryana) are ownerless 1800-1809; the page says the chiefs were 'de facto ruling independently' until the British protectorate of 1809",
+   "years": [
+    1800,
+    1809
+   ],
+   "slugs": [
+    "sikh-confederacy",
+    "sikh-empire"
+   ],
+   "decision": "dossier request",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Cis-Sutlej_states"
+   ]
+  },
+  {
+   "what": "Other overlapping keyframes where an earlier keyframe lacks 'to' (nawab-of-awadh_1800, tay-son-dynasty_1800, maratha-empire_1803, papal-states_1807, duchy-of-bavaria_1797, helvetic-republic_1800/1802, empire-of-haiti_1805 and empire-of-haiti_1809 against haiti_1807, spanish-empire_1803 against _1804, french-louisiana_1803)",
+   "years": [
+    1801,
+    1809
+   ],
+   "slugs": [
+    "nawab-of-awadh",
+    "tay-son-dynasty",
+    "maratha-empire",
+    "papal-states",
+    "duchy-of-bavaria",
+    "helvetic-republic",
+    "haiti",
+    "spanish-empire",
+    "french-louisiana"
+   ],
+   "decision": "left: no visible effect (ledger events already move the land) except about 27 cells of kingdom-of-haiti drawn as Haiti's constituent 1807-1809 and up to 110 Maratha cells in 1804; pages not opened"
+  },
+  {
+   "what": "Bikaner (140 km circle, 113 cells) and Jaipur (90 km circle) drawn as rings whose centres are taken by Marwar and others; Pashalik of Timbuktu likewise a ring in 1809",
+   "years": [
+    1800,
+    1809
+   ],
+   "slugs": [
+    "bikaner-state",
+    "jaipur-state",
+    "pashalik-of-timbuktu"
+   ],
+   "decision": "left: pages silent (dossiers say a circle stands in for the extent)"
+  },
+  {
+   "what": "Serbia: 43 cells of ex-Ottoman land ownerless at the end of 1805 (serbs_1805 keyframe releases them), Ottoman again from 1806",
+   "years": [
+    1805,
+    1805
+   ],
+   "slugs": [
+    "serbs",
+    "ottoman-empire"
+   ],
+   "decision": "left: pages not opened, one year only"
+  },
+  {
+   "what": "Size-rule conflicts of the packet (Diriyah/Mamluk Iraq 1805, Hyderabad/Maratha, Bhutan, Tripura, Coorg, Koch Bihar, Bavaria/Austria in Tyrol 1806-1809, Dendi/Sokoto, Bagirmi/Kanem, Mandara/Kanem, Awadh/Nepal)",
+   "years": [
+    1800,
+    1809
+   ],
+   "slugs": [
+    "mamluk-iraq",
+    "hyderabad-state",
+    "kingdom-of-bhutan",
+    "kingdom-of-bavaria"
+   ],
+   "decision": "fine as drawn: the smaller, independent or allied state rightly keeps its land"
+  },
+  {
+   "what": "Denmark-Norway drawn as a pale vassal of the Duchy of Holstein (164 cells, 1800-1809) in the published draft; the trial with the dossiers as they are now draws it direct",
+   "years": [
+    1800,
+    1809
+   ],
+   "slugs": [
+    "denmark-norway",
+    "duchy-of-holstein"
+   ],
+   "decision": "fine as drawn: cleared by dossier edits since the published compile"
+  }
+ ],
+ "patch_file": "history/data/patches/p1800-p1809.json",
+ "patch_entries": {
+  "events": 1,
+  "keyframe_overrides": 7,
+  "rulings": 2
+ },
+ "patch_check": "all applied",
+ "colour_clashes": [
+  {
+   "a": "british-empire",
+   "b": "east-india-company",
+   "years": [
+    1800,
+    1809
+   ],
+   "note": "identical #dc7d97; the same realm, told apart only by outlines (also rupert-s-land, upper-canada, lower-canada, british-colonial-empire)"
+  },
+  {
+   "a": "spanish-empire",
+   "b": "viceroyalty-of-new-granada / viceroyalty-of-peru / viceroyalty-of-the-rio-de-la-plata / captaincy-general-of-venezuela / spanish-louisiana",
+   "years": [
+    1800,
+    1809
+   ],
+   "note": "all #df911a, adjacent; the viceroyalties are drawn as one tint and separated only by thin outlines"
+  },
+  {
+   "a": "austrian-empire",
+   "b": "habsburg-military-frontier / kingdom-of-galicia-and-lodomeria",
+   "years": [
+    1805,
+    1809
+   ],
+   "note": "identical #be3d70, same realm"
+  },
+  {
+   "a": "colonial-brazil",
+   "b": "portuguese-empire",
+   "years": [
+    1800,
+    1809
+   ],
+   "note": "identical #47a962, same realm"
+  },
+  {
+   "a": "habesh-eyalet",
+   "b": "muhammad-ali-dynasty",
+   "years": [
+    1805,
+    1809
+   ],
+   "note": "both a khaki tint of the Ottoman olive and adjacent in the Hejaz and Egypt"
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "cis-sutlej-states",
+   "what": "New dossier for the Cis-Sutlej Phulkian and other Sikh chiefs (Patiala, Jind, Nabha, Kaithal, Kapurthala, Kalsia, Ladwa, Faridkot): independent about 1800-1809, British protectorate from 25 April / 3 May 1809",
+   "why": "about 130 cells of Indian Punjab and Haryana are ownerless for the whole window; sikh-confederacy ends in 1799 and sikh-empire holds only the north",
+   "source": "https://en.wikipedia.org/wiki/Cis-Sutlej_states"
+  }
+ ],
+ "pages_opened": 10,
+ "problems": [
+  "Entries that reach across the window boundary: rulings/0 (Hejaz) to 1810; rulings/1 (Illyrian Provinces against the Military Frontier) to 1813, 55 cell-years in 1810 in the p1810-p1819 packet; keyframe_overrides/0 (kingdom-of-sardinia_1800 now ends in 1801, so the island-only keyframe is alone to 1813); keyframe_overrides/2 (colonial-brazil_1801 spans 1801-1815); keyframe_overrides/6 (russian-empire_1809 spans 1809-1810, so russian-empire_1811, _1812 and _1814 of the next window may release the Tarnopol circle again; the p1810 agent should add it there).",
+  "New keyframe ids 1800b, 1802b and 1804b (spanish-empire, french-consulate, first-french-empire) rely on the compiler unioning the keyframes alive in a year; they end in 1800, 1804 and 1808, and spanish-empire/ledger/74-76 returns Santo Domingo to Spain in 1809.",
+  "Systematic: dossiers whose keyframe text says 'for 18xx only' but which keep a longer Cliopatria span union with later keyframes; 35 overlapping pairs touch 1800-1809 (nine slugs listed under issues). A validator warning for keyframe overlaps would catch them for every window.",
+  "Unresolved region: kingdom-of-tahiti ledger/1 (1808, Moorea) is unknown to the gazetteer, so the loss moves nothing; a patch cannot change an existing event, and I opened no page on it.",
+  "hierarchy: no wrong row found in the 1800-1809 rows checked (Coorg as vassal of the East India Company from 1790 and Tripura from 1809 are unverified).",
+  "Trial result: end anchor p1810 changes owner or status in 1,861 cells (against the published draft; includes dossier edits since 1 Nov 20:39 such as Denmark)."
+ ]
+}

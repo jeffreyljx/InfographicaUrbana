@@ -1,0 +1,694 @@
+{
+ "batch_id": "eu-09-j",
+ "verdicts": [
+  {
+   "slug": "duchy-of-prussia",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/end, /ledger/1, /ledger/2",
+     "what": "The 1618 inheritance by Brandenburg had no month, so the duchy ended with a bare year while electorate-of-brandenburg /ledger/11 dates the union to 1618-08.",
+     "why": "Margraviate of Brandenburg page, infobox: 'Brandenburg-Prussia: 27 August 1618'; text: 'When Albert Frederick, Duke of Prussia died without a son in 1618'. The Duchy of Prussia page gives the year only.",
+     "fix": "Set identity.end to 1618-08 and month 8 on the merge and dissolve events; the merge now cites the Margraviate of Brandenburg page, which was added to sources[] (/sources/2).",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Prussia",
+     "result": "confirmed (infobox 'Prussian Homage 10 April 1525'; 'On 10 April 1525, Albert resigned his position')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Prussia",
+     "result": "confirmed ('The duchy was inherited by the Hohenzollern prince-electors of Brandenburg in 1618'); month 8 added from https://en.wikipedia.org/wiki/Margraviate_of_Brandenburg"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Margraviate_of_Brandenburg",
+     "result": "confirmed (27 August 1618)"
+    },
+    {
+     "where": "/keyframe_review/1/correction (Warmia)",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Prussia",
+     "result": "confirmed: the page has Warmia 'part of Poland' (Treaty of Labiau sentence), so removing Warmia from the duchy is supported"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 30000,
+    "infobox_year": null,
+    "cliopatria_km2": 38518.1,
+    "ratio": 1.28,
+    "acknowledged": true,
+    "note": "The infobox gives no year; the shape minus Warmia (134 of 165 cells) is about 31,300 km2."
+   }
+  },
+  {
+   "slug": "union-of-utrecht",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/0/from, /wars/0/to",
+     "what": "The Eighty Years' War was entered as 1566-1648, outside the Union's life (1579-01 to 1581-07).",
+     "why": "Brief rule 2: wars inside the life (other reviews clip the same way, e.g. the Texas Revolution).",
+     "fix": "Set from 1579 and to 1581 and recorded the war's full dates (c. 1566/1568 to 30 January 1648) in the war note.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (missing, 1580)",
+     "what is missing": "Rennenberg's defection in March 1580 took the city of Groningen and much of the north-east over to Spain during the Union's life. The Union page names Rennenberg only as the stadtholder who brought Groningen city in, and the ledger carries no loss. This date is the reviewer's own knowledge and must be confirmed on the page.",
+     "page to try": "https://en.wikipedia.org/wiki/George_van_Lalaing,_Count_of_Rennenberg"
+    },
+    {
+     "where": "/ledger (missing, 1580-1581)",
+     "what is missing": "Spanish reconquests inside the Union's life, such as Breda (1581) and towns in Flanders. The 1579 gain draws Breda, and the Republic's 1590 recapture implies an earlier loss that is not dated anywhere in the batch (only the c1 1588 loss in dutch-republic covers it).",
+     "page to try": "https://en.wikipedia.org/wiki/Eighty_Years%27_War,_1576%E2%80%931588"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Union_of_Utrecht",
+     "result": "confirmed (signed 23 January 1579 by Holland, Zeeland, Utrecht (not all) and the province (not the city) of Groningen)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Union_of_Utrecht",
+     "result": "confirmed (Ghent and Friesland towns 'in the following months'; three Guelders quarters; Amersfoort, Ypres, Antwerp, Breda and Brussels in summer 1579); month 6 is a placeholder at c2, as the note says"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Union_of_Utrecht",
+     "result": "confirmed (February 1580: Lier, Bruges and the surrounding area; the city of Groningen also signed)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Union_of_Utrecht",
+     "result": "confirmed (April 1580: Overijssel and Drenthe)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Eighty_Years%27_War",
+     "result": "confirmed ('on 26 July 1581 proclaimed the Act of Abjuration')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 38590.0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Union page gives no area (checked); the clipped shape is the land of the listed members."
+   }
+  },
+  {
+   "slug": "dutch-republic",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/22 (was /ledger/25)",
+     "what": "The loss of Venlo and Roermond was dated 1648 at confidence 1 from Cliopatria, but Spain retook both towns in 1637.",
+     "why": "Cardinal-Infante Ferdinand page, 1637 paragraph: 'taking the Dutch towns of Venlo and Roermond in the Meuse valley' (the gains that cut Maastricht off). The Eighty Years' War, Generality Lands, Venlo and Frederick Henry pages are silent on it.",
+     "fix": "Moved the event to 1637 (after the Breda gain), source Cardinal-Infante Ferdinand page (added to sources[]), confidence 2. The region is unchanged: the cells of the 1645 core missing from the 1648 core.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/20, /keyframe_review/21, /keyframe_review/22, /keyframe_review/23 (correction)",
+     "what": "The keyframes for 1637, 1640, 1642 and 1645 drew Venlo and Roermond as Dutch until 1647.",
+     "why": "As above: Spain retook them in 1637.",
+     "fix": "Each correction is now {minus: [old correction, the 1637 loss region]}, and a reviewer sentence was added to its note and to the 1648 keyframe's note.",
+     "applied": true
+    },
+    {
+     "where": "/wars/0/from",
+     "what": "The Eighty Years' War started in 1566, before the Republic's start (1582).",
+     "why": "Brief rule 2: wars inside the life.",
+     "fix": "Set from to 1582 and recorded the war's full dates in the note.",
+     "applied": true
+    },
+    {
+     "where": "/wars/2",
+     "what": "The war was entered as 'Siege of Lille (1708)' running 1708-1713. A siege lasting four months is not the war, and the War of the Spanish Succession was missing under its own name.",
+     "why": "Dutch Republic page: 'War of the Spanish Succession (1702-1713)'; Siege of Lille: 12 August-10 December 1708.",
+     "fix": "Renamed it 'War of the Spanish Succession' (1702-1713) with source the Dutch Republic page, and kept the Lille zone and the siege dates in the note.",
+     "applied": true
+    },
+    {
+     "where": "/wars (missing)",
+     "what": "The Dutch Republic page names two of the Republic's wars that the dossier does not list: the War of the First Coalition (1792-1797) and the Nine Years' War.",
+     "why": "Dutch Republic page lists 'War of the First Coalition' (1792-1797) and says 'at the start of the Nine Years' War with France'. The 1794 losses (/ledger/43, /ledger/44) belong to the First Coalition war, which has no war entry.",
+     "fix": "Add the War of the First Coalition, clipped to 1792-1795, with zones for Staats-Brabant, Staats-Vlaanderen, Maastricht and Venlo (and the 1793 French invasion of Brabant if a page dates it). Add the Nine Years' War (1688-1697) with empty zones and a note that no Dutch land changed hands.",
+     "applied": false
+    },
+    {
+     "where": "/wars/8/zones",
+     "what": "The Batavian Revolution war has empty zones, although the French invasion of winter 1794/95 overran the whole Republic.",
+     "why": "The war's own outcome text: 'a French army with some Patriot Dutch units invaded over the frozen frontier rivers'. Brief: empty zones only where no ground changed hands.",
+     "fix": "Give it a zone (the Republic's core north of the rivers, December 1794 to January 1795) or fold it into the War of the First Coalition entry.",
+     "applied": false
+    },
+    {
+     "where": "/sources/10",
+     "what": "Flanders_campaign is a disambiguation page and no event or war cites it.",
+     "why": "The author's own note says so.",
+     "fix": "Drop it from sources[] or replace it with the actual 1793-95 campaign article.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "The 1588 loss of the east (c1, Cliopatria's year). The towns the Republic retook in 1590-1594 were lost between 1580 and 1587. From the reviewer's memory, to be confirmed: Groningen through Rennenberg in 1580, Steenwijk 1582, Zutphen 1583, Nijmegen 1585, Deventer 1587. Cliopatria's 1582 shape probably keeps them too long.",
+     "page to try": "https://en.wikipedia.org/wiki/Eighty_Years%27_War,_1576%E2%80%931588"
+    },
+    {
+     "where": "/ledger/12, /ledger/13",
+     "what is missing": "The 1606 losses (c2 and c1): which towns Spinola took in 1605-1606 (Oldenzaal, Lingen, Groenlo, Rheinberg?). The Eighty Years' War page names the campaign and no towns.",
+     "page to try": "https://en.wikipedia.org/wiki/Ambrogio_Spinola,_1st_Marquess_of_the_Balbases"
+    },
+    {
+     "where": "/ledger (missing, 1604) and /keyframe_review/12-14",
+     "what is missing": "Maurice's capture of Sluis in 1604, which began Staats-Vlaanderen, is not in the ledger (the Eighty Years' War page does not have it). Zeeland's southern bank is missing from the 1609-1621 shapes, as the author flagged.",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Sluis_(1604)"
+    },
+    {
+     "where": "/ledger/14, /ledger/15",
+     "what is missing": "The 1619 and 1622 gains (c1, Cliopatria's years) during the Twelve Years' Truce and just after it.",
+     "page to try": "https://en.wikipedia.org/wiki/Twelve_Years%27_Truce"
+    },
+    {
+     "where": "/ledger/35",
+     "what is missing": "The return of Maastricht in August 1678 (c1). The Franco-Dutch War page does not have it.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaties_of_Nijmegen"
+    },
+    {
+     "where": "/ledger/40, /ledger/41 and missing events",
+     "what is missing": "The 1747 French occupation of Zeelandic Flanders (c1). The French captures of Bergen op Zoom (1747) and Maastricht (1748) are not in the ledger; the Dutch Republic page names neither.",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Bergen_op_Zoom_(1747)"
+    },
+    {
+     "where": "/ledger/39, /ledger/42",
+     "what is missing": "The Barrier fortresses: the Barrier Treaty page names only Dendermonde for 1715, and the French conquest of the Barrier towns in 1745-1746 breaks the 1715-1781 occupation. The page gives no date for the garrisons' withdrawal after Joseph II voided the treaty in 1781.",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Tournai_(1745)"
+    },
+    {
+     "where": "/ledger/43",
+     "what is missing": "The 1794 fall of the southern Generality lands (c1). The Siege of Maastricht (1794) page dates the fall of Sluis to 24 August 1794. 's-Hertogenbosch, Venlo, Breda and Hulst still need dates.",
+     "page to try": "https://en.wikipedia.org/wiki/War_of_the_First_Coalition"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No rulers. The stadtholders and stadtholderless periods are in the Dutch Republic infobox (the author listed them in the notes).",
+     "page to try": "https://en.wikipedia.org/wiki/Stadtholder"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Eighty_Years%27_War",
+     "result": "confirmed ('Zutphen, Deventer, Delfzijl, and Nijmegen in 1591')"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Eighty_Years%27_War",
+     "result": "confirmed ('Grol, Enschede, Ootmarsum, and Oldenzaal in 1597')"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Eighty_Years%27_War",
+     "result": "confirmed ('Venlo, Roermond and Maastricht along the Meuse (1632)')"
+    },
+    {
+     "where": "/ledger/22 (was /ledger/25)",
+     "page": "https://en.wikipedia.org/wiki/Cardinal-Infante_Ferdinand",
+     "result": "mis-dated: Venlo and Roermond were retaken by Spain in 1637, not 1648 (c1; fixed by the reviewer)"
+    },
+    {
+     "where": "/ledger/26, /ledger/27",
+     "page": "https://en.wikipedia.org/wiki/Franco-Dutch_War",
+     "result": "confirmed (Utrecht's council 'delivered the keys of the gates', William withdrew 18 June; 'On 19 June, the French took the fortress of Naarden')"
+    },
+    {
+     "where": "/ledger/32",
+     "page": "https://en.wikipedia.org/wiki/Franco-Dutch_War",
+     "result": "confirmed (Maastricht 'surrendered on 30 June' 1673)"
+    },
+    {
+     "where": "/ledger/36, /ledger/38",
+     "page": "https://en.wikipedia.org/wiki/Lille",
+     "result": "confirmed ('For five years, from 1708 to 1713, the Dutch continued to occupy the city')"
+    },
+    {
+     "where": "/ledger/37",
+     "page": "https://en.wikipedia.org/wiki/Generality_Lands",
+     "result": "confirmed ('a part of Spanish Guelders, including Venlo and Echt, was ceded to the United Provinces', Treaty of Utrecht 1713)"
+    },
+    {
+     "where": "/ledger/39",
+     "page": "https://en.wikipedia.org/wiki/Barrier_Treaty",
+     "result": "confirmed date ('signed on 15 November 1715'); the page names only Dendermond, and the note honestly calls the five towns a reading (c2)"
+    },
+    {
+     "where": "/ledger/44",
+     "page": "https://en.wikipedia.org/wiki/Siege_of_Maastricht_(1794)",
+     "result": "confirmed (siege from 22 September, 'capitulated on 4 November', garrison out 7 November 1794)"
+    },
+    {
+     "where": "/ledger/16, /ledger/21, /ledger/23, /ledger/24, /ledger/9-11",
+     "page": "https://en.wikipedia.org/wiki/Eighty_Years%27_War",
+     "result": "confirmed (Breda 1625 and 1637; Sas van Gent 1644; Hulst 1645; Siege of Ostend 1601-1604)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Dutch Republic page has no area figure (checked; the infobox gives only the 1795 population). The author clipped each shape to 300 km around 5.4 E 52.0 N: 130-156 cells, about 33,000-39,000 km2, close to the modern Netherlands. The unclipped Cliopatria areas (32,000-334,000 km2) are mostly overseas company land. The Cliopatria 1588 shape (17,899 km2) is half the 1582 shape; the c1 1588 loss explains it and is flagged."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "duchy-of-prussia",
+    "year": 1618,
+    "type": "merge",
+    "counterpart": "brandenburg-prussia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No brandenburg-prussia dossier yet; it is owned by eu-09 and its part has not run. electorate-of-brandenburg /ledger/11 records dissolve 1618-08 into brandenburg-prussia, which agrees (27 August 1618). The brandenburg-prussia dossier should open in 1618-08 and take the duchy's land minus Warmia."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-prussia",
+    "year": 1525,
+    "type": "vassal (not recorded)",
+    "counterpart": "Kingdom of Poland / house-of-jagiellon"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "The duchy was a Polish fief from 1525 (Prussian Homage) until 1657. Under the schema the suzerain records vassal_start with the duchy as counterpart. house-of-jagiellon (1450-1571) and polish-lithuanian-commonwealth (1572-) are owned by eu-15 and not written yet, so their dossiers need vassal_start duchy-of-prussia 1525-04, carried on 1618-1657 by brandenburg-prussia."
+  },
+  {
+   "event": {
+    "slug": "union-of-utrecht",
+    "year": 1579,
+    "type": "gain",
+    "counterpart": "habsburg-netherlands"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "habsburg-netherlands has no Cliopatria row and no dossier and is listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "union-of-utrecht",
+    "year": 1580,
+    "type": "gain",
+    "counterpart": "habsburg-netherlands"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "habsburg-netherlands has no Cliopatria row and no dossier and is listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "union-of-utrecht",
+    "year": 1580,
+    "type": "gain",
+    "counterpart": "habsburg-netherlands"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "habsburg-netherlands has no Cliopatria row and no dossier and is listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "dutch-republic",
+    "year": "1585-1648, 1713",
+    "type": "gain/loss (23 events) and contest 1601-1604",
+    "counterpart": "habsburg-netherlands"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No habsburg-netherlands dossier; it is listed in counterparts_needing_dossiers. When it is written it must mirror the 1637 Venlo/Roermond gain (moved from 1648 by this review)."
+  },
+  {
+   "event": {
+    "slug": "dutch-republic",
+    "year": 1715,
+    "type": "occupation_start/occupation_end (1781)",
+    "counterpart": "habsburg-netherlands"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "The Barrier garrisons. Austrian Netherlands land with no dossier yet (habsburg-monarchy, owned by eu-09, is not written yet either)."
+  },
+  {
+   "event": {
+    "slug": "dutch-republic",
+    "year": 1672,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1672,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "France /ledger/123, June 1672: Utrecht, Naarden, Nijmegen."
+  },
+  {
+   "event": {
+    "slug": "dutch-republic",
+    "year": 1673,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1674,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "Within one year. France /ledger/124 has 1674 at c2, the Republic has 1673 (Utrecht, c2) and 1673-09 (Naarden). The Franco-Dutch War page has Louis evacuating in late 1673 and Naarden retaken in September 1673, so France's 1674 is the weaker reading."
+  },
+  {
+   "event": {
+    "slug": "dutch-republic",
+    "year": 1673,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Maastricht, 30 June 1673 (Franco-Dutch War page). kingdom-of-france (eu-10) has no 1673 gain from dutch-republic, and its 1674 note mentions only that Maastricht stayed French."
+  },
+  {
+   "event": {
+    "slug": "dutch-republic",
+    "year": 1678,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Maastricht back to the Republic, 1678-08, c1. kingdom-of-france has no 1678 loss to dutch-republic."
+  },
+  {
+   "event": {
+    "slug": "dutch-republic",
+    "year": 1708,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1708,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Lille. The Republic records an occupation (the Lille page: 'the Dutch continued to occupy the city'); France /ledger/154 records an outright loss to dutch-republic. The occupation reading is better supported, so France should record occupation_start with counterpart dutch-republic."
+  },
+  {
+   "event": {
+    "slug": "dutch-republic",
+    "year": 1713,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1713,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Lille returns. France /ledger/155 has it as a gain from dutch-republic; it should be occupation_end."
+  },
+  {
+   "event": {
+    "slug": "dutch-republic",
+    "year": 1747,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "French occupation of Zeelandic Flanders (c1). kingdom-of-france has nothing on it in 1740-1750 (only the c1 German occupation of 1741-1744)."
+  },
+  {
+   "event": {
+    "slug": "dutch-republic",
+    "year": 1748,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "As above."
+  },
+  {
+   "event": {
+    "slug": "dutch-republic",
+    "year": 1672,
+    "type": "occupation_start/occupation_end (1674-04)",
+    "counterpart": "prince-bishopric-of-munster"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Overijssel. There is no Munster dossier; it is listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "dutch-republic",
+    "year": 1794,
+    "type": "loss (two events)",
+    "counterpart": "french-first-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "french-first-republic is owned by eu-20, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "dutch-republic",
+    "year": 1795,
+    "type": "dissolve (successor)",
+    "counterpart": "batavian-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "batavian-republic is owned by eu-20, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "union-of-utrecht",
+    "year": 1581,
+    "type": "dissolve (successor)",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": {
+    "slug": "dutch-republic",
+    "year": 1582,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "The Republic's found event names union-of-utrecht and its predecessor land is the Union's 1581 shape clipped to the same circle. The gap from 1581-07 to 1582 is Cliopatria's, as the author flagged."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Breda",
+   "kind": "place",
+   "used_in": "dutch-republic, union-of-utrecht"
+  },
+  {
+   "name": "Zutphen",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Deventer",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Delfzijl",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Nijmegen",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Steenwijk",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Coevorden",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Groenlo",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Enschede",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Ootmarsum",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Oldenzaal",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Oostende",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Venlo",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Roermond",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Echt",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Naarden",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Hulst",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Sas van Gent",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Tournai",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Ypres",
+   "kind": "place",
+   "used_in": "dutch-republic, union-of-utrecht"
+  },
+  {
+   "name": "Menen",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Dendermonde",
+   "kind": "place",
+   "used_in": "dutch-republic"
+  },
+  {
+   "name": "Lier",
+   "kind": "place",
+   "used_in": "union-of-utrecht"
+  },
+  {
+   "name": "Amersfoort",
+   "kind": "place",
+   "used_in": "union-of-utrecht"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Habsburg Netherlands (Spanish, then Austrian Netherlands)",
+   "suggested_slug": "habsburg-netherlands",
+   "years": [
+    1482,
+    1795
+   ]
+  },
+  {
+   "name": "Prince-Bishopric of Munster",
+   "suggested_slug": "prince-bishopric-of-munster",
+   "years": [
+    1672,
+    1674
+   ]
+  },
+  {
+   "name": "Dutch Coromandel",
+   "suggested_slug": "dutch-coromandel",
+   "years": [
+    1605,
+    1825
+   ]
+  },
+  {
+   "name": "Dutch Bengal",
+   "suggested_slug": "dutch-bengal",
+   "years": [
+    1627,
+    1825
+   ]
+  },
+  {
+   "name": "Dutch Malabar",
+   "suggested_slug": "dutch-malabar",
+   "years": [
+    1665,
+    1795
+   ]
+  },
+  {
+   "name": "Dutch Mauritius",
+   "suggested_slug": "dutch-mauritius",
+   "years": [
+    1638,
+    1710
+   ]
+  },
+  {
+   "name": "Goree (Dutch)",
+   "suggested_slug": "dutch-goree",
+   "years": [
+    1619,
+    1652
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-09-j.md",
+ "problems": [
+  "The author's counterparts_needing_dossiers calls teutonic-order 'unowned'. It is a polities.csv row owned by eu-14, so it needs no new dossier; the eu-14 author should subtract Warmia from the order's 1521-1525 shape, as the duchy dossier does.",
+  "Reviewer edits applied in place and re-validated (0 errors): duchy-of-prussia (end month and source), union-of-utrecht (war years), dutch-republic (Venlo/Roermond loss moved from 1648 to 1637 with four keyframe corrections; war years; War of the Spanish Succession renamed). The author's notes file history/polities/_notes/eu-09-j.md still describes the 1648 Venlo/Roermond loss; review-eu-09-j.md records the change.",
+  "Pages that did not have what was asked (not load failures): the Venlo and Frederick Henry pages do not mention the 1637 recapture. The Cardinal-Infante Ferdinand page does, and it is now the source.",
+  "kingdom-of-france (eu-10) needs the mirrors listed in cross_checks: Maastricht 1673 gain and 1678 loss; Lille 1708-1713 as an occupation, not a loss and gain; Zeelandic Flanders 1747-1748 occupation."
+ ]
+}

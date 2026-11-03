@@ -1,0 +1,2419 @@
+{
+ "batch_id": "eu-13-c",
+ "verdicts": [
+  {
+   "slug": "republic-of-venice",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/54/correction",
+     "what": "BLOCKING. The 1509-1511 correction ('the 1507 shape without Verona') keeps Brescia, Bergamo, Crema and Cremona Venetian after Agnadello.",
+     "why": "War of the League of Cambrai page: after 14 May 1509 'Louis proceeded to occupy Venetian territory as far east as Brescia without encountering any significant resistance'; in February 1512 Brescia 'had rebelled against the French', so it was French in 1509-1511. The dossier's own 1509 note quotes Venice losing 'all the territory that they had accumulated in northern Italy'.",
+     "fix": "Correction for 1509-1511: the 1507 shape minus Verona, Brescia, Bergamo, Crema and Cremona (admin1 Verona, Brescia, Bergamo, Cremona; Crema lies in Cremona province), text from the page. Re-check the 1512 keyframe the same way (Bergamo and Crema need their own return dates).",
+     "applied": false
+    },
+    {
+     "where": "/ledger (new event, 1509-05)",
+     "what": "BLOCKING. No event records the loss of the Lombard Terraferma (Brescia, Bergamo, Crema, Cremona) to France in May 1509.",
+     "why": "Same Cambrai sentence ('occupy Venetian territory as far east as Brescia'); the ledger only loses Padua, Verona and Vicenza to Maximilian (/ledger/74) and Ravenna and the Polesine.",
+     "fix": "Add {year 1509, month 5, type loss, counterpart kingdom-of-france, region union admin1 Brescia, Bergamo, Cremona, text 'Venetian territory as far east as Brescia', source the Cambrai page, confidence 3}; add returns (Bergamo, Crema, Brescia 1512-1516) only with a page that dates them.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/77",
+     "what": "Brescia's loss to France is dated February 1512 at confidence 3, but Brescia was French from 1509; February 1512 is a brief Venetian-backed rebellion crushed by the French sack.",
+     "why": "Cambrai page: '18 February 1512: Sack of Brescia'; Brescia 'had rebelled against the French and garrisoned itself with Venetian troops'.",
+     "fix": "Fold into the new 1509 loss; if kept, write the rebellion as a February 1512 gain and the sack (18 February 1512) as the loss, both counterpart kingdom-of-france.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/78",
+     "what": "Cremona's loss bridged to December 1516 (confidence 1); it went to France with the rest of Lombardy in 1509.",
+     "why": "Cambrai page (French occupation as far east as Brescia, 1509); the Treaty of Brussels clause 'except for Cremona' (6 December 1516) only confirms it was not returned.",
+     "fix": "Move Cremona into the 1509-05 loss to kingdom-of-france and delete this bridging event.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/62/correction and /keyframe_review/63/correction",
+     "what": "BLOCKING. The Crete keyframes over-draw Venetian Crete: 1647 is drawn as the whole island without Chania and Rethymno, and the 1648-1668 shape keeps about 3,500 km2 of central Crete; no ledger event loses the Cretan countryside.",
+     "why": "Cretan War page: 'By the beginning of 1648, the Ottomans held all of Crete except Candia and a few strongholds, such as Gramvousa'; the dossier's own /ledger/98 note says that by 1647 the Ottomans held most of eastern Crete 'except the fortress of Siteia'. Areas: the 1645 shape is 49,682 km2 and the 1648 shape 44,836 km2, while Crete is about 8,300 km2, so about 3,500 km2 of Crete stays in.",
+     "fix": "Add a loss {year 1647, counterpart ottoman-empire, region Kriti minus Candia (Iraklio km 15), Sitia, Souda, Spinalonga, Gramvousa, source Cretan War page}; 1645 keyframe for 1647 = 1645 shape minus Crete plus those places; 1648 keyframe = 1648 shape minus Crete plus Candia, Sitia (to 1651), Souda, Spinalonga and Gramvousa.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/72",
+     "what": "The Polesine (Rovigo) is lost to Ferrara in 1509 and never regained, yet Venice held Rovigo until 1797 and the 1512-1525 and 1517 keyframes are taken as drawn.",
+     "why": "Unpaired loss in the ledger (Rovigo: 1482+, 1484+, 1509-). The Cambrai page says only that d'Este 'seized the Polesine'.",
+     "fix": "Add the Venetian recovery of the Polesine, dated from a page (Rovigo or Polesine article), counterpart duchy-of-ferrara.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/71",
+     "what": "Ravenna is lost in 1509, but no event ever gains it (Ravenna 1441, Faenza and Rimini 1503), and the source page does not say Ravenna was Venetian.",
+     "why": "Cambrai page: 'Julius invaded the Romagna and captured Ravenna with the assistance of Alfonso d'Este'; the main page has no sentence putting Ravenna, Faenza or Rimini under Venice. The note itself says the page does not say Ravenna was Venetian.",
+     "fix": "Reviewer lowered the confidence to 2 (applied). Author: add the 1441 Ravenna and 1503 Romagna gains from a page, or drop the loss.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/13 and /ledger/82, /ledger/83, /ledger/86, /ledger/92, /ledger/93",
+     "what": "The 1207 Cyclades gain (direct Venetian rule) and its later losses duplicate the land of the Duchy of the Archipelago, which has its own dossier (1207-1579) with no Venetian relation. The keyframes do not draw the islands before 1385, so the 1207 gain has no keyframe trace.",
+     "why": "Stato da Mar page: the Cyclades were held mostly 'as the Duchy of the Archipelago'; duchy-of-the-archipelago.json: 1207 found (Marco Sanudo), 1566 rename, 1579 dissolve.",
+     "fix": "Re-code it as a relation with the duchy (vassal_start or vassal_end, with years from a page) and keep direct gains and losses only for islands a page puts under direct Venetian rule (Tinos and Mykonos after 1390, Kythira). Then re-check the 1385-1563 Aegean polygons that Cliopatria draws for Venice.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/49",
+     "what": "Euboea is lost in 1470 but never gained. Cliopatria draws it as Venetian in 1210-1474 (keyframes ok), and the negroponte dossier keeps the island as its own state until July 1470.",
+     "why": "negroponte.json: '1390 rename, counterpart republic-of-venice: the last triarch's lands pass to Venice and Negroponte becomes a Venetian colony'. The keyframe note at /keyframe_review/20 cites 'Euboea (the Venetian share after 1204 on the main page)'.",
+     "fix": "Add the gain of Euboea (1390, a merge or gain from negroponte, with a page such as Triarchy of Negroponte) and a vassal relation for 1209-1390, or mark the 1210-1389 keyframes adjust to remove Euboea; agree with the eu-05 Negroponte dossier on who holds the island in 1390-1470.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/36",
+     "what": "Patras is gained in 1408 and never lost.",
+     "why": "Stato da Mar list (read by the reviewer): 'Patras (Patraso/Patrasso), 1408–1430 and 1687–1715'; despotate-of-the-morea.json has a 1430 gain of Patras from republic-of-venice.",
+     "fix": "Add {year 1430, type loss, counterpart despotate-of-the-morea, place Patra km 15, source Stato da Mar, confidence 3}.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/28, /ledger/30, /ledger/35, /ledger/11",
+     "what": "Counterparts given as readings disagree with neighbour dossiers that cite pages.",
+     "why": "lordship-of-argos-and-nauplia.json: Nauplia sold to Venice on 12 December 1388. despotate-of-the-morea.json: Argos lost to Venice in June 1394. despotate-of-arta.json: Naupactus lost to Venice in 1407. principality-of-achaea.json: Modon and Coron lost to Venice in June 1209.",
+     "fix": "Set the counterparts to lordship-of-argos-and-nauplia (month 12), despotate-of-the-morea (month 6) and despotate-of-arta. For Modon and Coron, reconcile 1207 against 1209 and the counterpart (Achaea or the Byzantine Empire) with the Achaea dossier.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/36 and /keyframe_review/37",
+     "what": "The Attica-Boeotia polygon (1395-1406) is left 'ok, unverified'. A neighbour dossier explains it, and the ledger has no event for it.",
+     "why": "acciaioli-duchy-of-athens.json: 22 May 1390 Megara ceded to Venice; 18 March 1395 'The Venetian Senate acknowledged the annexation of Athens'; contest 1402-1403; 1403 Antonio I regains Athens.",
+     "fix": "Add gains of Megara (1390) and Athens/Attica (1395-03) from acciaioli-duchy-of-athens, the 1402-1403 contest and the 1403 loss; mark the 1402 keyframe adjust (no Attica from 1403).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/121/region",
+     "what": "Aegina is lost in 1715 (/ledger/123) but never gained; the 1699 gain's text names Aegina while its region is only the Peloponnese.",
+     "why": "/ledger/121 note: 'Venice kept the Morea, Aegina and Kephalonia'.",
+     "fix": "Add place Aegina (km 15) to the union of /ledger/121 (or a 1687 gain if a page dates it).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/84",
+     "what": "The northern Sporades are lost in 1538, but their 1453 gain is missing.",
+     "why": "Stato da Mar: 'Skyros (Sciro), 1207–1270s and 1453–1538'.",
+     "fix": "Add a 1453 gain (Skiathos, Skopelos, Skyros), source Stato da Mar, holder not named by the page.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (Thessalonica)",
+     "what is missing": "Venetian Thessalonica, 1423-1430: byzantine-empire.json loses it to Venice in September 1423 and ottoman-empire.json gains it from Venice in 1430; this ledger has neither.",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Thessalonica_(1422%E2%80%931430)"
+    },
+    {
+     "where": "/keyframe_review/11-16",
+     "what is missing": "Dalmatia in 1018-1133. kingdom-of-croatia.json loses the Dalmatian cities to Venice in 1018 and 1085, and kingdom-of-hungary.json and croatia-in-union-with-hungary.json record a Venetian seizure in 1116 and a Hungarian recovery of all but Zadar in 1133. The Venice keyframes hold Dalmatia from 1000 to 1186 without a break.",
+     "page to try": "https://en.wikipedia.org/wiki/Croatia_in_personal_union_with_Hungary"
+    },
+    {
+     "where": "/ledger (Istria)",
+     "what is missing": "The western Istrian coast in the 13th century: patriarchate-of-aquileia.json loses it to Venice in 1291. The ledger's only Istria event is in 1000.",
+     "page to try": "https://en.wikipedia.org/wiki/Patriarchate_of_Aquileia_(state)"
+    },
+    {
+     "where": "/ledger (Rovigo 1395-1438)",
+     "what is missing": "The main page (read by the reviewer) says: 'In 1481, Venice retook nearby Rovigo, which it had held previously from 1395 to 1438'. The ledger has no 1395 gain and no 1438 loss.",
+     "page to try": "https://en.wikipedia.org/wiki/Republic_of_Venice"
+    },
+    {
+     "where": "/ledger (Lefkada 1715-1716)",
+     "what is missing": "The 1714-1718 war page says the Ottomans 'occupied the island of Lefkada (Santa Maura), which the Venetians had taken in 1684'. The ledger has no loss, and no regain is dated.",
+     "page to try": "https://en.wikipedia.org/wiki/Lefkada"
+    },
+    {
+     "where": "/ledger (Lombardy 1447-1454, Crema)",
+     "what is missing": "ambrosian-republic.json loses Lodi and Piacenza to Venice in 1447, and duchy-of-milan.json regains them in 1453 (both confidence 1). Crema (Venetian from 1449) and the 1454 Peace of Lodi line are not in the ledger.",
+     "page to try": "https://en.wikipedia.org/wiki/Peace_of_Lodi"
+    },
+    {
+     "where": "/ledger/54",
+     "what is missing": "Confidence 1: the loss of Imbros, Thasos and Samothrace is bridged to 1479.",
+     "page to try": "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Venetian_War_(1463%E2%80%931479)"
+    },
+    {
+     "where": "/ledger/79",
+     "what is missing": "Confidence 1: Brescia's return to Venice is bridged to 1517 (it returned in 1516), and Bergamo's and Crema's returns are missing.",
+     "page to try": "https://en.wikipedia.org/wiki/Brescia"
+    },
+    {
+     "where": "/keyframe_review/19-36",
+     "what is missing": "Cliopatria polygons the author left unverified: the Crimea (Sudak/Soldaia) 1206-1278 and 1305-1374, near Kos 1206-1325, Vlore 1326-1332, the Euboea dip 1279-1284, the Dalmatia dips 1169-1187 and 1440-1449, Tenedos 1377-1381, Chios 1694, and the 1537-1540 war.",
+     "page to try": "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Venetian_War_(1537%E2%80%931540)"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "There is no rulers strip (no list of doges was opened).",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_doges_of_Venice"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Venice",
+     "result": "confirmed ('in the year 1000 he managed to subjugate the coastal cities of Istria and Dalmatia')"
+    },
+    {
+     "where": "/ledger/32 and /ledger/33",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Venice",
+     "result": "confirmed ('Vicenza, Belluno, and Feltre were acquired in 1404, and Padua, Verona, and Este in 1405')"
+    },
+    {
+     "where": "/ledger/62",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Venice",
+     "result": "confirmed ('In February 1489, the island of Cyprus ... was added to Venice's holdings')"
+    },
+    {
+     "where": "/ledger/64",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Venice",
+     "result": "confirmed (1499, 'gaining Cremona')"
+    },
+    {
+     "where": "/ledger/11, /ledger/17, /ledger/34, /ledger/36, /ledger/55, /ledger/67",
+     "page": "https://en.wikipedia.org/wiki/Stato_da_M%C3%A0r",
+     "result": "confirmed (Methoni 1207-1500; Kythira 1238-1715; Ulcinj 1405-1571; Patras 1408-1430; Zakynthos 1479-1797; Cephalonia 1500-1797). Patras's 1430 end is not in the ledger"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Stato_da_M%C3%A0r",
+     "result": "confirmed as a list entry, but the page says the Cyclades were held 'as the Duchy of the Archipelago' (see fixes)"
+    },
+    {
+     "where": "/ledger/74, /ledger/80",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_League_of_Cambrai",
+     "result": "confirmed (Padua, Verona and Vicenza surrendered to Maximilian, 1509; Verona surrendered to Venice in January 1517)"
+    },
+    {
+     "where": "/ledger/77",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_League_of_Cambrai",
+     "result": "mis-dated: Brescia was French from 1509 ('occupy Venetian territory as far east as Brescia'); 18 February 1512 is the sack after its rebellion against the French"
+    },
+    {
+     "where": "/ledger/71, /ledger/72",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_League_of_Cambrai",
+     "result": "confirmed as quoted. The page does not say Ravenna was Venetian; confidence lowered to 2 by the reviewer"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Zadar",
+     "result": "confirmed (18 February 1358; 'from the Kvarner to the Bay of Kotor'; kept 'the Istrian coast and the Treviso region')"
+    },
+    {
+     "where": "/ledger/95, /ledger/96, /ledger/99-103",
+     "page": "https://en.wikipedia.org/wiki/Cretan_War_(1645%E2%80%931669)",
+     "result": "confirmed (Chania 22 August 1645; Rethymno 20 October 1646; Tenedos and Lemnos 1656-1657; Candia 5 September 1669, and Venice kept Tinos, Kythera, Spinalonga, Gramvousa and Souda). The page also says that by early 1648 the Ottomans held all of Crete except Candia and a few strongholds, which the keyframes ignore"
+    },
+    {
+     "where": "/ledger/123, /ledger/124, /ledger/127, /ledger/128, /ledger/130",
+     "page": "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Venetian_War_(1714%E2%80%931718)",
+     "result": "confirmed (Tinos and Aigina; Nauplia 20 July 1715; 'within a hundred days' after the 25 June entry; Souda and Spinalonga capitulated; Preveza and Arta 1717). The page also has the 1715 Ottoman occupation of Lefkada, which is not in the ledger"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 65312.0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The reviewer confirmed the infobox has no area (only a 16th-century population estimate of 2,500,000). Cliopatria's largest shape is 65,312 km2 (1687-1690). The author's notes acknowledge the missing area."
+   }
+  },
+  {
+   "slug": "republic-of-saint-titus",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/wikipedia and /sources",
+     "what": "wikipedia was null, but the revolt has its own article.",
+     "why": "https://en.wikipedia.org/wiki/Revolt_of_Saint_Titus exists (title 'Revolt of Saint Titus', infobox August 1363-1364, body: Venetian rule consolidated over the whole island in 1368).",
+     "fix": "Set identity.wikipedia to 'Revolt of Saint Titus' and add the page to sources[] (done by the reviewer; the file re-validates with no errors or warnings).",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "The stages of the Venetian reconquest in 1364-1368 are undated. The revolt article says that after May 1364 'the entire western part of Crete was in the hands of the insurgents' and that they gained 'most of the countryside'; the keyframe 'Crete outside Candia' is a fair reading, but the 1367 capture of the Kallergis brothers in Sfakia and the end in 1368 have no regions.",
+     "page to try": "https://en.wikipedia.org/wiki/Revolt_of_Saint_Titus"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Candia",
+     "result": "confirmed (feudal lords rose on 9 August 1363 and declared the 'Republic of Saint Titus'; the revolt 'spread quickly to the rest of the island')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Candia",
+     "result": "confirmed (Candia surrendered on 9 May 1364)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Candia",
+     "result": "confirmed (infobox 'Revolt of St. Titus: 1363–1368'; the Kallergis brothers captured in April 1367). The quoted sentence is a paraphrase, not verbatim"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Revolt_of_Saint_Titus",
+     "result": "confirmed (Venetian rule consolidated over the whole island in 1368)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "There is no Cliopatria row and no infobox area; the drawn land is Crete (about 8,300 km2)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1000,
+    "type": "gain",
+    "counterpart": "kingdom-of-croatia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-croatia",
+    "year": 1018,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "/ledger/3 the coastal cities of Istria and Dalmatia and the : Croatia dossier: contest 1000-1018, loss of the Dalmatian cities to Venice in 1018, then a contest in 1075-1085 and a loss in 1085. Venice gains in 1000 and holds the cities without a break."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1030,
+    "type": "loss",
+    "counterpart": "republic-of-ragusa"
+   },
+   "mirror": {
+    "slug": "republic-of-ragusa",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/4 Ragusa (Dubrovnik): 1000-1030: No dossier yet: owned by eu-18, whose part has not run."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1186,
+    "type": "loss",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": {
+    "slug": "kingdom-of-hungary",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/5 Zara (Zadar): 998-1186: Hungary's dossier has no gain of Zara in 1186."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1202,
+    "type": "gain",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": {
+    "slug": "kingdom-of-hungary",
+    "year": 1202,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "/ledger/6 Zara recaptured with the Fourth Crusade: Hungary records only a contest_start in 1202, with no loss of Zara."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1205,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 1204,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/7 Dyrrhachium, the province of Dyrrhachium and Arban"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1205,
+    "type": "gain",
+    "counterpart": "republic-of-ragusa"
+   },
+   "mirror": {
+    "slug": "republic-of-ragusa",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/8 Ragusa (Dubrovnik): 1205-1358: No dossier yet: owned by eu-18, whose part has not run."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1205,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 1204,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/9 Crete, bought from Boniface of Montferrat"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1207,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "principality-of-achaea",
+    "year": 1209,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "/ledger/11 Methoni (Modon) and Koroni (Coron): Achaea loses Modon and Coron to Venice in June 1209 (Treaty of Sapienza). Venice dates the gain 1207 and reads the Byzantine Empire as the loser."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1207,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/12 Corfu (Kerkyra): 1207-1214: The Byzantine 1204 loss names 'many ports and islands ... including Crete', three years earlier and without Corfu."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1207,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "duchy-of-the-archipelago",
+    "year": 1207,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "/ledger/13 Syros, Paros, Antiparos, Mykonos, Naxos, Milos, An: The Cyclades are the Duchy of the Archipelago's land (found 1207); Venice's direct gain double-claims it."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1213,
+    "type": "loss",
+    "counterpart": "despotate-of-epirus"
+   },
+   "mirror": {
+    "slug": "despotate-of-epirus",
+    "year": 1213,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "/ledger/15 Durazzo (Durres): 1205-1213"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1214,
+    "type": "loss",
+    "counterpart": "despotate-of-epirus"
+   },
+   "mirror": {
+    "slug": "despotate-of-epirus",
+    "year": 1213,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "/ledger/16 Corfu (Kerkyra): 1207-1214"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1238,
+    "type": "gain",
+    "counterpart": "holder not named by the page"
+   },
+   "mirror": {
+    "slug": "holder not named by the page",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/17 Kythira (Cerigo) and Antikythera (Cerigotto): 1238: The page names no previous holder (author's exception)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1278,
+    "type": "loss",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/18 Lemnos: 1207-1278: no mirror in byzantine-empire."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1337,
+    "type": "gain",
+    "counterpart": "Scaliger rulers at Verona"
+   },
+   "mirror": {
+    "slug": "Scaliger rulers at Verona",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/19 the Mestre mainland: No dossier: listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1339,
+    "type": "gain",
+    "counterpart": "Scaliger rulers at Verona"
+   },
+   "mirror": {
+    "slug": "Scaliger rulers at Verona",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/20 Treviso and Bassano del Grappa: No dossier: listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1358,
+    "type": "loss",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": {
+    "slug": "kingdom-of-hungary",
+    "year": 1358,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "/ledger/22 all Venetian possessions in Dalmatia 'from the Kva"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1363,
+    "type": "loss",
+    "counterpart": "republic-of-saint-titus"
+   },
+   "mirror": {
+    "slug": "republic-of-saint-titus",
+    "year": 1363,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "/ledger/24 Crete, taken by the rebel 'Republic of Saint Titus"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1364,
+    "type": "gain",
+    "counterpart": "republic-of-saint-titus"
+   },
+   "mirror": {
+    "slug": "republic-of-saint-titus",
+    "year": 1364,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/25 Candia, retaken by Venice on 9 May 1364"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1368,
+    "type": "gain",
+    "counterpart": "republic-of-saint-titus"
+   },
+   "mirror": {
+    "slug": "republic-of-saint-titus",
+    "year": 1368,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/26 the rest of Crete after the revolt"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1386,
+    "type": "gain",
+    "counterpart": "house-of-anjou-sicily"
+   },
+   "mirror": {
+    "slug": "house-of-anjou-sicily",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/27 Corfu: 'came under permanent Venetian rule in 1386: no mirror in house-of-anjou-sicily."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1388,
+    "type": "gain",
+    "counterpart": "principality-of-achaea"
+   },
+   "mirror": {
+    "slug": "lordship-of-argos-and-nauplia",
+    "year": 1388,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "/ledger/28 Nafplio (Nauplia): 1388-1540: The Lordship of Argos and Nauplia sells Nauplia to Venice on 12 December 1388. The Venice counterpart is Achaea."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1392,
+    "type": "gain",
+    "counterpart": "albanian-principalities"
+   },
+   "mirror": {
+    "slug": "albanian-principalities",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/29 Durazzo (Durres): 1392-1501: No dossier yet: owned by eu-18, whose part has not run."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1394,
+    "type": "gain",
+    "counterpart": "principality-of-achaea"
+   },
+   "mirror": {
+    "slug": "despotate-of-the-morea",
+    "year": 1394,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "/ledger/30 Argos: 1394-1462: The Despotate of the Morea loses Argos to Venice in June 1394. The Venice counterpart is Achaea."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1396,
+    "type": "gain",
+    "counterpart": "albanian-principalities"
+   },
+   "mirror": {
+    "slug": "albanian-principalities",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/31 Scutari (Shkoder): 1396-1479: No dossier yet: owned by eu-18, whose part has not run."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1404,
+    "type": "gain",
+    "counterpart": "holder not named by the page"
+   },
+   "mirror": {
+    "slug": "holder not named by the page",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/32 Vicenza, Belluno and Feltre: The page names no previous holder (author's exception)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1405,
+    "type": "gain",
+    "counterpart": "Carrara lordship of Padua"
+   },
+   "mirror": {
+    "slug": "Carrara lordship of Padua",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/33 Padua, Verona and Este: No dossier: listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1405,
+    "type": "gain",
+    "counterpart": "holder not named by the page"
+   },
+   "mirror": {
+    "slug": "holder not named by the page",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/34 Ulcinj (Dulcigno): 1405-1571: The page names no previous holder (author's exception)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1407,
+    "type": "gain",
+    "counterpart": "albanian-principalities"
+   },
+   "mirror": {
+    "slug": "despotate-of-arta",
+    "year": 1407,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "/ledger/35 Nafpaktos (Lepanto): 1390, 1407-1499: The Despotate of Arta loses Naupactus to Venice in 1407. The Venice counterpart is albanian-principalities (no dossier)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1408,
+    "type": "gain",
+    "counterpart": "principality-of-achaea"
+   },
+   "mirror": {
+    "slug": "principality-of-achaea",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/36 Patras: 1408-1430: Patras is never lost in the Venice ledger; despotate-of-the-morea gains it from Venice in 1430."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1409,
+    "type": "gain",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": {
+    "slug": "kingdom-of-hungary",
+    "year": 1415,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "/ledger/37 Zara (Zadar): 1409-1797: Hungary: contest_start 1409 and loss in 1415 (confidence 1, from Cliopatria cells). croatia-in-union-with-hungary loses Dalmatia to Venice in 1409, which matches."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1417,
+    "type": "gain",
+    "counterpart": "holder not named by the page"
+   },
+   "mirror": {
+    "slug": "holder not named by the page",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/38 Pylos (Navarino): 1417-1501: The page names no previous holder (author's exception)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1420,
+    "type": "gain",
+    "counterpart": "patriarchate-of-aquileia"
+   },
+   "mirror": {
+    "slug": "patriarchate-of-aquileia",
+    "year": 1419,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/39 the Friulian territories of the Imperial Patriarch"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1420,
+    "type": "gain",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": {
+    "slug": "kingdom-of-hungary",
+    "year": 1415,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "/ledger/40 Traù, Spalato and the other Dalmatian cities: Hungary's Dalmatian loss is dated 1415 (confidence 1); Venice dates Trau and Spalato to 1420."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1420,
+    "type": "gain",
+    "counterpart": "Commune of Kotor (page names no ruler)"
+   },
+   "mirror": {
+    "slug": "Commune of Kotor (page names no ruler)",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/41 Kotor (Cattaro) and Perast: 1420-1797: The page names no ruler; no polity."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1426,
+    "type": "gain",
+    "counterpart": "duchy-of-milan"
+   },
+   "mirror": {
+    "slug": "duchy-of-milan",
+    "year": 1426,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/42 Brescia"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1428,
+    "type": "gain",
+    "counterpart": "duchy-of-milan"
+   },
+   "mirror": {
+    "slug": "duchy-of-milan",
+    "year": 1429,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/43 Bergamo"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1463,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/44 Argos: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1464,
+    "type": "gain",
+    "counterpart": "holder not named by the page"
+   },
+   "mirror": {
+    "slug": "holder not named by the page",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/45 Monemvasia: 1464-1540: The page names no previous holder (author's exception)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1464,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/46 Lemnos: 1464-1479: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1466,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/47 Imbros, Thasos and Samothrace: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1470,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "negroponte",
+    "year": 1470,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "/ledger/49 Negroponte: 'the whole island then came under Otto: Ottoman dossier has no 1470 Negroponte event against Venice. The negroponte dossier holds the island until July 1470 after its 1390 'rename' to Venetian rule, while the Venice ledger never gains it."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1473,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-cyprus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-cyprus",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/51 the Kingdom of Cyprus under the Cornaro queen: The Cyprus dossier has no vassal_start with Venice in 1473."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1479,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/53 Lemnos: 1464-1479: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1479,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/54 Imbros, Thasos and Samothrace: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1479,
+    "type": "gain",
+    "counterpart": "despotate-of-epirus"
+   },
+   "mirror": {
+    "slug": "despotate-of-epirus",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/55 Zakynthos (Zante): 1479-1797: no mirror in despotate-of-epirus."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1479,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/56 Shkodra, ceded in the Treaty of Constantinople: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1482,
+    "type": "gain",
+    "counterpart": "duchy-of-ferrara"
+   },
+   "mirror": {
+    "slug": "duchy-of-ferrara",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/59 Rovigo: No dossier: listed in the author's counterparts_needing_dossiers (eu-13-x)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1484,
+    "type": "gain",
+    "counterpart": "duchy-of-ferrara"
+   },
+   "mirror": {
+    "slug": "duchy-of-ferrara",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/60 the town of Rovigo and a broad swath of the fertil: No dossier: listed in the author's counterparts_needing_dossiers (eu-13-x)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1489,
+    "type": "gain",
+    "counterpart": "kingdom-of-cyprus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-cyprus",
+    "year": 1489,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "/ledger/62 'In February 1489, the island of Cyprus, previousl"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1489,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-cyprus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-cyprus",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/63 Cyprus: Cyprus ends with a dissolve in February 1489 (counterpart Venice), with no vassal_end. The 1489 gain is matched."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1499,
+    "type": "gain",
+    "counterpart": "duchy-of-milan"
+   },
+   "mirror": {
+    "slug": "duchy-of-milan",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/64 Cremona: Milan has no 1499 loss of Cremona to Venice."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1499,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/65 Lepanto: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1500,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/66 Modon and Coron: 1207-1500: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1500,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/67 Cephalonia: 1500-1797: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1501,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/68 Pylos (Navarino): 1417-1501: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1501,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/69 Durazzo (Durres): 1392-1501: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1503,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/70 Ithaca: 1503-1797: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1509,
+    "type": "loss",
+    "counterpart": "papal-states"
+   },
+   "mirror": {
+    "slug": "papal-states",
+    "year": 1509,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "/ledger/71 Ravenna: 'Julius took Ravenna with Alfonso d'Este': Papal States: contest_start and contest_end in May 1509 for the Romagna, with no gain. Venice never gains Ravenna."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1509,
+    "type": "loss",
+    "counterpart": "duchy-of-ferrara"
+   },
+   "mirror": {
+    "slug": "duchy-of-ferrara",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/72 the Polesine, seized by Alfonso d'Este: No dossier: listed in the author's counterparts_needing_dossiers (eu-13-x)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1509,
+    "type": "loss",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/74 Padua, Verona and Vicenza, 'left undefended and su: no mirror in holy-roman-empire."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1509,
+    "type": "gain",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/75 Padua: no mirror in holy-roman-empire."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1509,
+    "type": "gain",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/76 Vicenza: no mirror in holy-roman-empire."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1512,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/77 Brescia: no mirror in kingdom-of-france."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1516,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/78 Cremona: no mirror in kingdom-of-france."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1517,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/79 Brescia: no mirror in kingdom-of-france."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1517,
+    "type": "gain",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/80 Verona: no mirror in holy-roman-empire."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1522,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/82 Syros: 1207-1522: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1537,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/83 Paros, Antiparos and Mykonos: 1207-1537: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1538,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/84 Skiathos, Skopelos, Alonnisos and Skyros: 1453-153: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1540,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1540,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "/ledger/85 Nauplia and Monemvasia: 'Nafplio 1388-1540; Monemv"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1566,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/86 Naxos, Milos, Andros, Ios, Amorgos, Kimolos, Sikin: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1570,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1571,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "/ledger/88 Nicosia"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1571,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/89 Ulcinj (Dulcigno): 1405-1571: The Ottoman 1571 gain is Cyprus only; no Ulcinj."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1571,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1571,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "/ledger/90 Famagusta and the rest of Cyprus: 'with ammunition"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1576,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/92 Santorini: 1301-1576: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1617,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/93 Kythnos and Sifnos: 1207-1617: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1645,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/95 Chania (Canea), fallen after a siege of 56 days: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1646,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/96 Rethymno: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1647,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/97 Novigrad, Klis and (briefly) Knin: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1651,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/98 Sitia: ca.1210-1651: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1656,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/99 Tenedos: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1656,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/100 Lemnos: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1657,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/101 Lemnos: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1657,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/102 Tenedos: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1669,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1669,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "/ledger/103 Crete, except the island fortresses of Souda, Gram"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1684,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/105 Santa Maura (Lefkada), captured 6 August 1684: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1685,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/107 Coron: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1686,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1687,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/108 Navarino (old surrendered the day after the 2 June"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1686,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1687,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/109 Modon"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1686,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1687,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/110 Nauplia"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1686,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/111 Sinj: The Ottoman 1687 loss is 'the Morea, with Athens' (confidence 1); there is no Dalmatian event."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1687,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1687,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/112 Corinth"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1687,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1687,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/113 Athens"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1687,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/114 Herceg Novi (Castelnuovo): 1687-1797: The Ottoman 1687 loss is the Morea only; no Herceg Novi."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1688,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/115 Risan: 1688-1797: The Ottoman 1687 loss is the Morea only; no Risan."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1688,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/116 Athens and Attica, evacuated: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1688,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/117 Knin: The Ottoman 1687 loss is the Morea only; no Knin."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1690,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/118 Monemvasia: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1690,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/120 Vrgorac: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1699,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/121 the Morea, organised as the Kingdom of the Morea, : no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1699,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/122 Popovo polje, Klek and Sutorina, given up 'to keep: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1715,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/123 Tinos and Aegina: The Ottoman 1715 gain is 'the Morea' (confidence 2); Tinos and Aegina appear only in its 1714-1718 contest zone."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1715,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/124 Souda and Spinalonga, the last Venetian outposts o: The Ottoman 1715 gain is the Morea only; no Souda or Spinalonga."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1715,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/125 Kythira (Cerigo): 1238-1715, 1718-1797: The Ottoman 1715 gain is the Morea only; no Kythira."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1715,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1715,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "/ledger/127 Nauplia, stormed on 20 July 1715 after nine days"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1715,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1715,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "/ledger/128 the whole Peloponnese retaken 'within a hundred da"
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1717,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/130 Preveza: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1718,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "/ledger/131 Kythira (Cerigo): 1718-1797: no mirror in the Ottoman dossier (me-10)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1796,
+    "type": "occupation_start",
+    "counterpart": "french-directory"
+   },
+   "mirror": {
+    "slug": "french-directory",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/132 Venetian territory up to the Adige: French Directory row exists in polities.csv but no dossier yet (owner group not run)."
+  },
+  {
+   "event": {
+    "slug": "republic-of-venice",
+    "year": 1797,
+    "type": "occupation_end",
+    "counterpart": "french-directory"
+   },
+   "mirror": {
+    "slug": "french-directory",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "/ledger/133 Venetian territory up to the Adige: French Directory row exists in polities.csv but no dossier yet (owner group not run)."
+  },
+  {
+   "event": {
+    "slug": "acciaioli-duchy-of-athens",
+    "year": 1390,
+    "type": "loss",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Megara ceded to Venice on 22 May 1390; no Venice gain."
+  },
+  {
+   "event": {
+    "slug": "acciaioli-duchy-of-athens",
+    "year": 1395,
+    "type": "loss",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Venice annexes Athens on 18 March 1395; no Venice gain (the Attica polygon of /keyframe_review/36 is left unexplained)."
+  },
+  {
+   "event": {
+    "slug": "acciaioli-duchy-of-athens",
+    "year": 1403,
+    "type": "gain",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Antonio I retakes Athens from Venice in 1403; no Venice loss."
+  },
+  {
+   "event": {
+    "slug": "byzantine-empire",
+    "year": 1423,
+    "type": "loss",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Thessalonica handed to Venice in September 1423; no Venice gain."
+  },
+  {
+   "event": {
+    "slug": "ottoman-empire",
+    "year": 1430,
+    "type": "gain",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Thessaloniki taken from Venice in 1430; no Venice loss."
+  },
+  {
+   "event": {
+    "slug": "despotate-of-the-morea",
+    "year": 1430,
+    "type": "gain",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Patras taken from Venice in 1430; no Venice loss (Stato da Mar: Patras 1408-1430)."
+  },
+  {
+   "event": {
+    "slug": "negroponte",
+    "year": 1390,
+    "type": "rename",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "The last triarch's lands pass to Venice in 1390; no Venice gain of Euboea."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1116,
+    "type": "loss",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Venice seizes Biograd, Split, Trogir, Sibenik and Zadar in 1116; Venice holds them from 1000 with no event (croatia-in-union-with-hungary has the same)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hungary",
+    "year": 1133,
+    "type": "gain",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Bela II wins back the cities except Zadar in 1133; no Venice loss (croatia-in-union-with-hungary has the same)."
+  },
+  {
+   "event": {
+    "slug": "patriarchate-of-aquileia",
+    "year": 1291,
+    "type": "loss",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "The western Istrian coast passes to Venice in 1291; no Venice gain."
+  },
+  {
+   "event": {
+    "slug": "ambrosian-republic",
+    "year": 1447,
+    "type": "loss",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Lodi and Piacenza go to Venice in 1447 (confidence 1); no Venice gain."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-milan",
+    "year": 1453,
+    "type": "gain",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Lodi and Piacenza are retaken from Venice in 1453 (confidence 1); no Venice loss."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-milan",
+    "year": 1429,
+    "type": "loss",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Crema goes to Venice in 1429 with Bergamo; the Venice 1428 gain has Bergamo only."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1407,
+    "type": "loss",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "48 Veneto cells lost to Venice in 1407 (confidence 1). Venice has the 1404-1405 gains from the Carrara and unnamed lords: a mismatch of years and counterpart."
+  },
+  {
+   "event": {
+    "slug": "habsburg-monarchy",
+    "year": 1797,
+    "type": "gain",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": {
+    "slug": "republic-of-venice",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Habsburg gains Venice and its lands in October 1797 with Venice as counterpart, after Venice's dissolve in May 1797. An exception: a successor hand-over, recorded in Venice's successors."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Methoni",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Koroni",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Pylos",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Nafplio",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Monemvasia",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Argos",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Nafpaktos",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Rethymno",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Souda",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Spinalonga",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Tinos",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Aegina",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Cephalonia",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Zakynthos",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Lefkada",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Ithaca",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Kythira",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Syros",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Paros",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Mykonos",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Skiathos",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Skopelos",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Skyros",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Santorini",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Kythnos",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Sifnos",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Imbros",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Thasos",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Samothrace",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Lemnos",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Tenedos",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Preveza",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Perast",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Feltre",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Este",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Mestre",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Bassano del Grappa",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Knin",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Vrgorac",
+   "kind": "place",
+   "used_in": "republic-of-venice"
+  },
+  {
+   "name": "Kvarner",
+   "kind": "region",
+   "used_in": "republic-of-venice"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Scaliger rulers at Verona (Della Scala lordship)",
+   "suggested_slug": "scaliger-lordship-of-verona",
+   "years": [
+    1337,
+    1339
+   ],
+   "group": "eu-13-x"
+  },
+  {
+   "name": "Carrara lordship of Padua",
+   "suggested_slug": "carrara-lordship-of-padua",
+   "years": [
+    1404,
+    1406
+   ],
+   "group": "eu-13-x"
+  },
+  {
+   "name": "Duchy of Ferrara",
+   "suggested_slug": "duchy-of-ferrara",
+   "years": [
+    1482,
+    1509
+   ],
+   "group": "eu-13-x"
+  },
+  {
+   "name": "Provisional Municipality of Venice",
+   "suggested_slug": "provisional-municipality-of-venice",
+   "years": [
+    1797,
+    1797
+   ],
+   "group": "eu-13-x"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-13-c.md",
+ "problems": [
+  "WebFetch returns a small model's extract, so quotes are the extract's wording. Every page opened loaded.",
+  "Reviewer edits (all re-validated): republic-of-saint-titus.json, identity.wikipedia set and the Revolt of Saint Titus page added to sources; republic-of-venice.json, /ledger/71 confidence lowered from 3 to 2 with a reviewer note. Each file was read back after writing.",
+  "Venice fails on three findings that are not mine to apply: the 1509-1511 Cambrai keyframe and the missing 1509 Lombard loss to France; the Crete keyframes of 1647-1668; and the unpaired Polesine, Euboea and Patras events. The Cyclades double-claim with the eu-05 Duchy of the Archipelago and the Negroponte overlap need both groups."
+ ]
+}

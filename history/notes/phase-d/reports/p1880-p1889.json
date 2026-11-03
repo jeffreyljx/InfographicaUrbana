@@ -1,0 +1,357 @@
+{
+ "window": "p1880-p1889",
+ "images": [
+  {
+   "year": 1880,
+   "bbox": "12,38,32,50",
+   "seen": "Balkans, published draft: Bosnia and Herzegovina drawn as nobody's grey land (A-H keyframe snap removed 187 cells); the p1870-p1879 patch (Ottoman land occupied by A-H) removes that snap in my trial (austria-hungary_1880 snap gone, 194 cells occupied at the end of 1889). 12 grey cells of southern Moldova (Cahul, Cantemir, Taraclia, Comrat) until 1884."
+  },
+  {
+   "year": 1880,
+   "bbox": "36,12,62,32",
+   "seen": "Arabia, published draft: Oman, Trucial States, Nejd, Jabal Shammar, Kathiri and the Ottoman strip look right; Dhofar's desert interior is nobody's (Cliopatria shape), the coast down to Salalah is Omani. Fine."
+  },
+  {
+   "year": 1885,
+   "bbox": "-80,-30,-62,-12",
+   "seen": "South America with Cliopatria, trial baseline: Tacna and Arica drawn as direct Chilean land (should be Peruvian land occupied by Chile); Antofagasta correctly occupied. After the patch (second render, same bbox) Tacna and Arica are hatched, Tarapaca direct Chile."
+  },
+  {
+   "year": 1885,
+   "bbox": "-20,-36,52,38",
+   "seen": "Africa with Cliopatria: the compiled map is much finer than Cliopatria's (Mahdist State, Equatoria, Congo Free State, German and British blocks, Lozi, Lunda). Nothing out of place at this scale; a numeric check afterwards found the Loango coast (239 cells) falling to nobody in 1884-1889, patched."
+  },
+  {
+   "year": 1884,
+   "bbox": "44,34,86,50",
+   "seen": "Central Asia with Cliopatria: Russian Turkestan as a tinted colony, Khiva and Bukhara tinted vassals, Transcaspia and Merv Russian direct, Khorasan Qajar, Ili Qing. Matches the pages; the Qajar/Russia and Qing/Russia size-rule wins are correct."
+  },
+  {
+   "year": 1889,
+   "bbox": "20,0,42,24",
+   "seen": "Sudan with Cliopatria: Mahdist State to about 4 N (matches Cliopatria's 1890 shape), Egypt tinted to its south edge, Ethiopian vassals and Kaffa/Jimma drawn. Fine."
+  }
+ ],
+ "issues": [
+  {
+   "what": "Tacna and Arica: the Treaty of Ancon (20 Oct 1883) had Chile occupy them for ten years, but the October 1883 and August 1884 occupation_end events (Tarapaca, Lima, Moquegua) close the whole Chile-over-Peru relation, so they were free Peruvian land 1883-1884 and Chilean direct land from the 1885 keyframe snap.",
+   "years": [
+    1883,
+    1889
+   ],
+   "slugs": [
+    "republic-of-chile",
+    "republic-of-peru"
+   ],
+   "decision": "patched",
+   "patch": "events/0, events/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/War_of_the_Pacific"
+   ]
+  },
+  {
+   "what": "Chile's 1880-1884 Cliopatria shape claims Puno (58), Lima (15), Ica (5) and Arequipa (3) cells as direct land; the size rule gave Chile 456 cell-years there (the packet's second conflict). The page has only occupations (Lima Jan 1881 to 29 Oct 1883, Arequipa and Puno at the end) and only Tarapaca ceded.",
+   "years": [
+    1880,
+    1884
+   ],
+   "slugs": [
+    "republic-of-chile",
+    "republic-of-peru"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/War_of_the_Pacific"
+   ]
+  },
+  {
+   "what": "Mexico holds 27 cells inside Texas (20), New Mexico (4) and Arizona (3), carried in the anchor and won on size at the 1880 US keyframe.",
+   "years": [
+    1880,
+    1889
+   ],
+   "slugs": [
+    "mexico",
+    "united-states-of-america"
+   ],
+   "decision": "patched",
+   "patch": "rulings/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Mexico%E2%80%93United_States_border"
+   ]
+  },
+  {
+   "what": "The British colonial empire's 1885 keyframe takes 29 border cells inside the United States (Alaska panhandle, Vermont, Montana and others) as vassal land.",
+   "years": [
+    1885,
+    1889
+   ],
+   "slugs": [
+    "british-colonial-empire",
+    "united-states-of-america"
+   ],
+   "decision": "patched",
+   "patch": "rulings/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Canada%E2%80%93United_States_border"
+   ]
+  },
+  {
+   "what": "Canada/US 1880 conflict (93 cell-years): border-fit cells went to whichever state was smaller or larger by keyframe; cells inside each country now go to that country.",
+   "years": [
+    1880,
+    1880
+   ],
+   "slugs": [
+    "canada",
+    "united-states-of-america"
+   ],
+   "decision": "patched",
+   "patch": "rulings/2, rulings/3",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Canada%E2%80%93United_States_border"
+   ]
+  },
+  {
+   "what": "Southern Bessarabia: 12 Moldovan cells (Cahul, Cantemir, Taraclia, Comrat) stayed Romanian in the anchor, were dropped to nobody by Romania's 1880 shape and reached Russia only with the 1884 keyframe.",
+   "years": [
+    1880,
+    1884
+   ],
+   "slugs": [
+    "russian-empire",
+    "united-principalities-of-moldavia-and-wallachia"
+   ],
+   "decision": "patched",
+   "patch": "rulings/4",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Treaty_of_Berlin_(1878)"
+   ]
+  },
+  {
+   "what": "The Loango coast (Kouilou, Pointe-Noire, Niari, Nyanga: 239 cells) is handed to French Africa in 1883 by the Loango dossier, then thrown back to nobody by the french-africa_1884 and french-africa_1885 keyframe snaps (Cliopatria's French shape has no Congo coast) for 1884-1889.",
+   "years": [
+    1884,
+    1889
+   ],
+   "slugs": [
+    "french-africa",
+    "kingdom-of-loango"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/1, keyframe_overrides/2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/French_Congo"
+   ]
+  },
+  {
+   "what": "Qajar/Russian Empire conflict in Khorasan (574 cell-years) and Qing/Russian Empire in Xinjiang (317): Qajar and Qing win on size.",
+   "years": [
+    1880,
+    1885
+   ],
+   "slugs": [
+    "qajar-dynasty",
+    "russian-empire",
+    "qing-dynasty"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Austria-Hungary 1880 snap (187 Bosnian cells removed, Bosnia drawn as nobody's land).",
+   "years": [
+    1880,
+    1889
+   ],
+   "slugs": [
+    "austria-hungary",
+    "bosnia-eyalet"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Mahdist State 1885 and 1889 snaps and Equatoria Province 1885 snap (1,516 cells): the picture matches the dossiers (Equatoria outpost south of the Mahdist front, Mahdist shape to about 4 N in 1889).",
+   "years": [
+    1885,
+    1889
+   ],
+   "slugs": [
+    "mahdist-state",
+    "equatoria-province",
+    "turco-egyptian-sudan"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Oman 1880 snap removing 465 Dhofar cells: the coast to Salalah stays Omani, only the Empty Quarter part of the governorate is nobody's.",
+   "years": [
+    1880,
+    1880
+   ],
+   "slugs": [
+    "sultanate-of-oman"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "French Africa 1880 keyframe holds 60 Segou and 256 Koulikoro cells (Tukulor and Mandinka land) as French vassal land, a coarse Cliopatria fit.",
+   "years": [
+    1880,
+    1885
+   ],
+   "slugs": [
+    "french-africa",
+    "tukulor-empire"
+   ],
+   "decision": "left: not verified, no page opened on the French conquest of the Sudan",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Gabon proper (935 cells) is nobody's land throughout the window; French Congo 'formally added Gabon in 1891' per the page, French Libreville not checked.",
+   "years": [
+    1880,
+    1889
+   ],
+   "slugs": [
+    "french-africa",
+    "french-equatorial-africa"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/French_Congo"
+   ]
+  },
+  {
+   "what": "Skipped colony-of-new-zealand gain 1887 (Kermadec Islands): no grid cell.",
+   "years": [
+    1887,
+    1887
+   ],
+   "slugs": [
+    "colony-of-new-zealand"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Unresolved successor region akwamu identity.successors[0], place 'Akwamufie' not in the gazetteer, so the 1886 end hands the land to nobody.",
+   "years": [
+    1886,
+    1886
+   ],
+   "slugs": [
+    "akwamu",
+    "british-gold-coast"
+   ],
+   "decision": "dossier request",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "khedivate-of-egypt is vassal of british-africa (2,380 cells, dossier ledger) and still of the Ottoman Empire (339 cells in the Harar, Somali and Darfur fringes) from 1885: two suzerains at once.",
+   "years": [
+    1885,
+    1889
+   ],
+   "slugs": [
+    "khedivate-of-egypt",
+    "british-africa"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/p1880-p1889.json",
+ "patch_entries": {
+  "events": 2,
+  "keyframe_overrides": 3,
+  "rulings": 5
+ },
+ "patch_check": "all applied (--check-patch: 10 entries, 10 ok, 0 rejected; trial: all applied, rulings settled 27, 29, 14, 54 and 12 cell-years; Chile/Peru conflict 456 -> 7 cell-years)",
+ "colour_clashes": [
+  {
+   "a": "russian-empire",
+   "b": "russian-turkestan",
+   "years": [
+    1880,
+    1889
+   ],
+   "note": "identical #236436 (colony of the empire; tint draws it lighter, thin outline separates them)"
+  },
+  {
+   "a": "british-burma",
+   "b": "british-raj",
+   "years": [
+    1880,
+    1889
+   ],
+   "note": "identical #dc7d97 and 319 shared edges; both British, no tint relation between them, so only the thin border separates them. The same #dc7d97 is shared by every British colony of the window (Australian colonies, Newfoundland, New Zealand, Natal, Bechuanaland, Guiana), by design of the realm family."
+  },
+  {
+   "a": "german-africa",
+   "b": "german-east-africa",
+   "years": [
+    1884,
+    1889
+   ],
+   "note": "identical #786f89, 95 shared edges; East Africa is a colony of the German Empire drawn inside German Africa"
+  },
+  {
+   "a": "dutch-suriname",
+   "b": "netherlands-antilles",
+   "years": [
+    1880,
+    1889
+   ],
+   "note": "identical #c85d00, 16 shared edges (not neighbours in the colony tint relation)"
+  },
+  {
+   "a": "khedivate-of-egypt",
+   "b": "turco-egyptian-sudan",
+   "years": [
+    1880,
+    1885
+   ],
+   "note": "identical #a05000, 730 shared edges; the Sudan is the Khedivate's colony"
+  },
+  {
+   "a": "austria-hungary",
+   "b": "kingdom-of-galicia-and-lodomeria",
+   "years": [
+    1880,
+    1889
+   ],
+   "note": "identical #be3d70 (constituent crownland)"
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "akwamu",
+   "what": "identity.successors[0].land uses {\"place\": \"Akwamufie\", \"km\": 25, \"country\": \"Ghana\"}, which the gazetteer does not know; replace it by a known place name or a {lon, lat, km} spec near Akwamufie on the Volta",
+   "why": "the compile reports it unresolved (1886) and the land goes to nobody",
+   "source": "https://en.wikipedia.org/wiki/Akwamu"
+  }
+ ],
+ "pages_opened": 5,
+ "problems": [
+  "Patch events/0-1 (Chile occupying Tacna and Arica, Nov 1883 and Sep 1884) keep the occupation open to the end of 1889, but the occupation really runs to 1929; p1890-p1899 and later windows must check that the Chile keyframes of 1905, 1924 and 1926 (which include Tacna and Arica) do not snap them back to direct Chilean land, and that no occupation_end of the Peru dossier closes the relation early.",
+  "Patch keyframe_overrides/1-2 add the Loango coast to french-africa_1884 and french-africa_1885 (valid to 1889); Cliopatria's french-africa_1890 and later shapes lack it too, so p1890-p1899 needs the same union or the 239 cells fall to nobody again in 1890.",
+  "Rulings/0 (Mexico) and rulings/1 (British colonial empire) act only in their conflict year; if a later Mexico or British-colonial-empire keyframe claims the same border cells again, the ruling must be repeated in that window.",
+  "No entry reaches outside 1880-1889 in its dates; the Chile keyframe override covers shape republic-of-chile_1880 (years 1880-1884) and french-africa_1885 covers 1885-1889, both inside the window.",
+  "Border-fit speckle outside my patch: Colombia's shape holds 26 cells inside Peru (Loreto) and the Brazilian shape 10; not in the conflict list, left.",
+  "No hierarchy.csv row checked and found wrong; none reported."
+ ]
+}

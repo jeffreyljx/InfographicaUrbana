@@ -1,0 +1,614 @@
+{
+ "batch_id": "sa-01-b",
+ "verdicts": [
+  {
+   "slug": "janapada-of-magadha",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0",
+     "what": "Keyframe -600 is marked ok, but the Cliopatria disc does not hold the page's Magadha: the capital Rajgir (85.42E 25.03N) lies about 44 km outside the shape, Gaya district is missing, and the disc crosses the Ganga to the north (5 of 20 cells north of 25.62N, the Vaishali bank) and the Son to the west (to 84.51E).",
+     "why": "Magadha page: 'The core of the kingdom was the area of Bihar south of the Ganges'; 'bounded to the north, west, and east respectively by the Gaṅgā, Son, and Campā rivers, and the eastern spurs of the Vindhya mountains formed its southern border'; 'Patna and Gaya districts'. shapes.csv janapada-of-magadha_-600 bbox 84.51-85.452E, 25.10-25.87N; gazetteer: nearest shape cell centre to Rajgir 43.8 km. The dossier's own capital is drawn outside its state.",
+     "fix": "Verdict adjust with a correction on the page's bounds, e.g. {\"intersect\":[{\"union\":[{\"place\":\"Patna\",\"km\":45},{\"place\":\"Rajgir\",\"km\":35},{\"place\":\"Gaya\",\"km\":45}]},{\"polygon\":[[84.85,24.3],[86.2,24.3],[86.2,25.3],[85.7,25.42],[85.2,25.58],[84.85,25.62],[84.85,24.3]]}]} (tested: 35 cells, about 8,850 km2, one piece, contains Rajgir), text quoting the Ganga/Son/Campa sentence; use the same base in /ledger/0, /keyframe_review/1, /ledger/3 and /identity/successors/0/land.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/1/correction",
+     "what": "The -530 union resolves to two islands (the Magadha disc, 20 cells, and Anga plus Bhagalpur 60 km, 59 cells) with an unowned gap of about 90 km between Magadha and the Anga it has just annexed.",
+     "why": "Gazetteer resolution of the correction gives 2 connected components; the Magadha page has the Campa as Magadha's eastern border, i.e. the two countries touch.",
+     "fix": "Rebuild on the corrected -600 base (above) and close the gap to the Anga land (for example a place circle at Lakhisarai/Munger or a polygon to the Campa); check that the union is one component. Carry the same land into /ledger/3 and the successors entry.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1/note",
+     "what": "Misquote: the note said 'according to the Mahavagga chronology'.",
+     "why": "Haryanka page: 'Bimbisara reigned from 544 to 492 BCE, according to the Mahavamsa chronology.'",
+     "fix": "Replaced with 'according to the Mahavamsa chronology'; re-validated (0 errors).",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Year of the Anga annexation (-530 is borrowed from the Anga dossier; confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Bimbisara"
+    },
+    {
+     "where": "/wars",
+     "what is missing": "The earlier Anga-Magadha war (Anga's Brahmadatta against Bhattiya of Magadha) that the Anga dossier carries as a contest over Magadha land -600..-543 has no war entry here.",
+     "page to try": "https://en.wikipedia.org/wiki/Bimbisara"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding is a confidence-1 bridge at Cliopatria's -600; the dissolve at /ledger/3 is Cliopatria's row change.",
+     "page to try": "https://en.wikipedia.org/wiki/Brihadratha_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Haryanka_dynasty",
+     "result": "confirmed ('Established: 544 BCE'; 'Bimbisara is considered to be the founder of the dynasty'); note misquote fixed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Mahajanapadas",
+     "result": "confirmed ('Anga was annexed by Magadha in the time of Bimbisara'; 'This was the one and only conquest of Bimbisara'); undated on the page, confidence 1 is honest"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Magadha",
+     "result": "confirmed ('Patna and Gaya districts'), but the drawn region does not hold it (see /keyframe_review/0)"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Magadha",
+     "result": "confirmed ('its first capital was Rajagriha (modern day Rajgir)'); coordinates lie outside the shape"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 5040.0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the Magadha page (author says so)."
+   }
+  },
+  {
+   "slug": "janapada-of-kosala",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The Awadh correction (also in /keyframe_review/1/correction, /ledger/0/region, /ledger/2/region and /identity/successors/0/land) runs south across the Ganga and the Yamuna and west across the Gomti, swallowing two neighbouring Mahajanapadas: 14 of the 15 cells of Cliopatria's Vatsa disc (Kausambi, -600..-451) and about 57 cells (about 14,400 km2) of the Cedi dossier's corrected land (Banda 90 km + Rewa 50 km, -600..-451). The note acknowledges only the west.",
+     "why": "Kosala page: 'Kosala was bounded by the Gomti River in the west, Sarpika River in the south, Sadanira in the east' and 'the Nepal Hills in the north'. The gazetteer's Awadh is Uttar Pradesh intersected with 79.5-83.5E, 25.4-28.5N (about 118,600 km2). Cell overlaps computed with tools/gazetteer.py against janapada-of-vatsa_-600 and janapada-of-cedi ledger/0.",
+     "fix": "Cut Awadh to the page's bounds, e.g. {\"union\":[{\"intersect\":[{\"region\":\"Awadh\"},{\"polygon\":[[80.9,26.2],[81.6,26.0],[82.4,25.9],[83.5,25.9],[83.5,28.5],[80.9,28.5],[80.9,26.2]]}]},{\"cliopatria\":\"Janapada of Kāśī\",\"year\":-600}]} with a minus of {\"cliopatria\":\"Janapada of Vatsa\",\"year\":-600} (tested: 233 cells, about 58,900 km2, one piece, 2 Vatsa cells before the minus, 0 Cedi cells); apply it in all five places and say in the note which neighbours it borders.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1/note",
+     "what": "Says the Kosala page has the Kashi annexation 'in the 6th century BCE'; the page gives no century for it (also in /keyframe_review/0/note).",
+     "why": "Kosala page: 'It annexed the powerful kingdom of Kashi' (undated) and 'By the 5th century BCE under the reign of King Mahakosala, the neighboring Kingdom of Kashi had been conquered'; its '6th century' sentences are about Kosala's rise ('By the 6th century BCE, it had consolidated into one of the four great powers').",
+     "fix": "Quote the Mahakosala sentence instead; the confidence-2 year rests on the Kāśī infobox, which is right.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Year of Kosala's absorption by Magadha (page: '5th century BCE'; -451 is Cliopatria's), confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Ajatashatru"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "Viḍūḍabha's annexations of the Sakya and Koliya republics and the Kālāmas ('Shortly after the Buddha's death', undated; no event and no counterpart dossiers).",
+     "page to try": "https://en.wikipedia.org/wiki/Shakya"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding is a confidence-1 bridge at -600 (infobox 'Established: c. 7th century BCE').",
+     "page to try": "https://en.wikipedia.org/wiki/Kosala"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/K%C4%81%C5%9B%C4%AB_(kingdom)",
+     "result": "confirmed (infobox 'Conquered by Kaṃsa of Kosala: c. 600 BCE')"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kosala",
+     "result": "confirmed sentence ('roughly corresponds to modern-day Awadh region'), but the page's own borders exclude the drawn south"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kosala",
+     "result": "confirmed undated ('finally defeated and absorbed into the Magadha kingdom in the 5th century BCE'; 'Viḍūḍabha was defeated and killed by the Māgadhī king Ajātasattu')"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/K%C4%81%C5%9B%C4%AB_(kingdom)",
+     "result": "confirmed undated ('Pasenadi revoked his rights over the village in Kāśī, after which a war between Kosala and Magadha ensued')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 4989.7,
+    "ratio": 24.1,
+    "acknowledged": true,
+    "note": "No infobox area. The 24x enlargement is acknowledged but leaves the overshoot into Vatsa and Cedi unresolved (see fixes)."
+   }
+  },
+  {
+   "slug": "janapada-of-malla",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1/note",
+     "what": "Inverted wording: 'the disc is right but ends 17 years early' (Cliopatria's disc runs 17 years too long, to -451; the dossier ends at -468).",
+     "why": "Malla page: Magadha able 'to finally defeat the Vajjika League by 468 BCE'; Cliopatria row ends -451.",
+     "fix": "Replaced with 'the disc is right but Cliopatria keeps it 17 years too long (to -451)'; re-validated (0 errors).",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "The Mallas' own fall is dated by the Vajjika League's (468 BCE); confidence 2.",
+     "page to try": "https://en.wikipedia.org/wiki/Ajatashatru"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding is a confidence-1 bridge at -600 (infobox 'Established: c. 7th century BCE').",
+     "page to try": "https://en.wikipedia.org/wiki/Malla_(tribe)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Malla_(tribe)",
+     "result": "confirmed ('declared war on the Vajjika League in 484 BCE'; 'to finally defeat the Vajjika League by 468 BCE'; 'The Mallas also became part of Ajatashatru's Māgadhī empire')"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Malla_(tribe)",
+     "result": "confirmed ('The Mallas lived in the region now covered by the Kushinagar district')"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/Malla_(tribe)",
+     "result": "confirmed (484-468 BCE)"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Mahajanapadas",
+     "result": "confirmed ('Kushinagar (modern Kasia near Gorakhpur) as its capital'); inside the shape (4.8 km from a cell centre)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 5485.7,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; Cliopatria disc kept."
+   }
+  },
+  {
+   "slug": "janapada-of-kamboja",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The Kamboja land (also /keyframe_review/1/correction, /ledger/0/region, /ledger/2/region, /identity/successors/0/land) overlaps the Gandhara dossier's: the 50 km circle at Rajouri takes 6 cells of Gandhara's Kashmir Valley (Srinagar 70 km) and Nuristan 2 more cells of Gandhara's own region, for -600..-518 (and the Kashmir Valley passes to the Achaemenids with Gandhara's -518 dissolve while Kamboja still holds it to -501).",
+     "why": "Gazetteer resolution: Kamboja correction 66 cells, Gandhara correction (janapada-of-gandhara /keyframe_review/0, /ledger/0, /ledger/2 include {\"region\":\"Kashmir Valley\"}) overlap 8 cells, Rajouri circle alone 6. The author read the Gandhara dossier (notes say so) and did not flag the overlap.",
+     "fix": "Subtract the Gandhara land, e.g. {\"minus\":[<current union>,{\"union\":[{\"region\":\"Kashmir Valley\"},{\"region\":\"Gandhara\"}]}]}, or agree a Pir Panjal line with the Gandhara owner (sa-01-a) and note it.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Date of Cyrus's destruction of Kapisi (page: 'is said to have destroyed', undated; confidence 1). Lead, not checked on a page: ancient Kapisi (Begram) may lie in modern Parwan rather than Kapisa province.",
+     "page to try": "https://en.wikipedia.org/wiki/Begram"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Whether and when Kamboja became Achaemenid (Mahajanapadas page's 'twentieth satrapy' against the conquest page, where the twentieth province is 'The Indians'); end year is Cliopatria's.",
+     "page to try": "https://en.wikipedia.org/wiki/Achaemenid_Empire"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding and extent are confidence 1 (capital 'site remains unknown'; Lamotte 'from Kafiristan to the southwestern part of Kashmir'); the land is three separate islands (Nuristan, Kapisa, Rajouri).",
+     "page to try": "https://en.wikipedia.org/wiki/Kambojas"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Mahajanapadas",
+     "result": "confirmed ('The capital of Kamboja was probably Rajapura (modern Rajori) in the south-west of Kashmir'; Kambojas page: Lamotte 'from Kafiristan to the southwestern part of Kashmir')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Mahajanapadas",
+     "result": "confirmed undated ('Cyrus II is said to have destroyed the famous Kamboja city called Kapisi (modern Begram) in Paropamisade'); confidence 1 honest"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Mahajanapadas",
+     "result": "confirmed sentence ('Kamboja and Gandhara formed the twentieth and richest satrapy'); contradicted by the conquest page, flagged by the author"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/Achaemenid_conquest_of_the_Indus_Valley",
+     "result": "confirmed (infobox belligerents 'Gandhara Sindhu-Sauvīra Kambojas'; 'Around 518 BCE ... up to the Jhelum River')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 5086.8,
+    "ratio": 3.3,
+    "acknowledged": false,
+    "note": "No infobox on the Kambojas page. The corrected land is about 16,700 km2 (3.3 times the disc) and the notes do not give its size; add it to the /keyframe_review/0 note."
+   }
+  },
+  {
+   "slug": "janapada-of-kuru",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The union Delhi + Meerut 40 km + Thanesar 40 km (also /keyframe_review/1, /keyframe_review/2, /ledger/0/region, /ledger/1/region) resolves to three separate islands (5, 19 and 18 cells; two today, as Thanesar is not in the gazetteer), leaving Ghaziabad and the Sonipat-Panipat-Karnal country unowned and dropping Cliopatria's disc around Delhi; the page describes one country.",
+     "why": "Mahajanapadas page: 'The country of the Kurus roughly corresponded to the modern Thanesar, state of Delhi, and Meerut district'. Gazetteer resolution: 3 connected components.",
+     "fix": "A contiguous union, e.g. {\"union\":[{\"admin1\":\"Delhi\",\"country\":\"India\"},{\"place\":\"Ghaziabad\",\"km\":30},{\"place\":\"Meerut\",\"km\":40},{\"place\":\"Sonipat\",\"km\":35},{\"place\":\"Panipat\",\"km\":35},{\"place\":\"Karnal\",\"km\":45}]} (tested: one piece, 65 cells, about 16,400 km2; shrink the radii to taste), Karnal standing for Thanesar until the gazetteer has it.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/2/note",
+     "what": "Says Cliopatria's Shaishunaga row 'covers this country'; it does not.",
+     "why": "shapes.csv magadha-shaishunaga-dynasty_-404 bbox reaches only 27.672N (Kuru lies at 28.25-29.97N); gazetteer: 0 cells shared with the Kuru disc or the Kuru correction.",
+     "fix": "Delete the claim and the 'may overlap' line in the report: the -404..-346 extension does not collide with the Shaishunaga shape.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Who took the Kuru land at c. 345 BCE (counterpart nobody; the infobox end-year likely reflects Mahapadma Nanda's conquests).",
+     "page to try": "https://en.wikipedia.org/wiki/Mahapadma_Nanda"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding is a confidence-1 bridge at -600.",
+     "page to try": "https://en.wikipedia.org/wiki/Kuru_Kingdom"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Mahajanapadas",
+     "result": "confirmed ('roughly corresponded to the modern Thanesar, state of Delhi, and Meerut district')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kuru_Kingdom",
+     "result": "confirmed (infobox 'c. 1900 BCE – c. 345 BCE'); the end is not explained on the page"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "page": "https://en.wikipedia.org/wiki/Mahajanapadas",
+     "result": "confirmed ('Kautiliya's Arthashastra also attests the Kurus'); the words '4th century BCE' were not in the extract"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Mahajanapadas",
+     "result": "confirmed ('the capital of the Kurus was Indraprastha (Indapatta) near modern Delhi'); inside the Cliopatria disc"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 5231.7,
+    "ratio": 2.0,
+    "acknowledged": true,
+    "note": "No infobox area; author notes the correction is about 10,500 km2, twice the disc."
+   }
+  },
+  {
+   "slug": "janapada-of-kasi",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding is a confidence-1 bridge at -600 (infobox 'Established: c. 1375 BCE'); the one-year life rests on the infobox 'c. 600 BCE' (confidence 2).",
+     "page to try": "https://en.wikipedia.org/wiki/K%C4%81%C5%9B%C4%AB_(kingdom)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/K%C4%81%C5%9B%C4%AB_(kingdom)",
+     "result": "confirmed (infobox 'Conquered by Kaṃsa of Kosala: c. 600 BCE'; 'finally conquered for good by Kosala under the latter's king Kaṃsa, shortly before the time of the Buddha')"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/K%C4%81%C5%9B%C4%AB_(kingdom)",
+     "result": "confirmed ('The capital of Kāśī was the city of Vārāṇasī'; Sarpikā/Syandikā and Son borders)"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "page": "https://en.wikipedia.org/wiki/K%C4%81%C5%9B%C4%AB_(kingdom)",
+     "result": "confirmed ('Kāśī was a full part of the kingdom of Kosala by the time of its king Mahākosala'; Ajātasattu 'annexed Kosala')"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/K%C4%81%C5%9B%C4%AB_(kingdom)",
+     "result": "confirmed (conquest by Kaṃsa); Mahajanapadas page 'during Buddha's time' is the conflict the author flagged"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 5039.9,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; '300 leagues' is a length (author says so)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "janapada-of-magadha",
+    "year": -530,
+    "type": "gain",
+    "counterpart": "janapada-of-anga"
+   },
+   "mirror": {
+    "slug": "janapada-of-anga",
+    "year": -530,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Same land (Cliopatria Anga + Bhagalpur 60 km)."
+  },
+  {
+   "event": {
+    "slug": "janapada-of-anga",
+    "year": -600,
+    "type": "contest_start",
+    "counterpart": "janapada-of-magadha"
+   },
+   "mirror": {
+    "slug": "janapada-of-magadha",
+    "year": null,
+    "type": "war"
+   },
+   "status": "missing",
+   "note": "Anga contests Magadha land -600..-543 (Bimbisara page); Magadha has no war for it. Routed as thin to Magadha."
+  },
+  {
+   "event": {
+    "slug": "janapada-of-kosala",
+    "year": -600,
+    "type": "gain",
+    "counterpart": "janapada-of-kasi"
+   },
+   "mirror": {
+    "slug": "janapada-of-kasi",
+    "year": -600,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Same land (Cliopatria Kāśī -600)."
+  },
+  {
+   "event": {
+    "slug": "janapada-of-magadha",
+    "year": -501,
+    "type": "dissolve",
+    "counterpart": "magadha-haryanka-dynasty"
+   },
+   "mirror": {
+    "slug": "magadha-haryanka-dynasty",
+    "year": null,
+    "type": "found"
+   },
+   "status": "exception",
+   "note": "Haryanka dossier owned by another sa-01 part that has not run; the author argues both are one state (see problems)."
+  },
+  {
+   "event": {
+    "slug": "janapada-of-kosala",
+    "year": -451,
+    "type": "dissolve",
+    "counterpart": "magadha-haryanka-dynasty"
+   },
+   "mirror": {
+    "slug": "magadha-haryanka-dynasty",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "Haryanka not written yet; Cliopatria's Haryanka -450 shape (335,215 km2, to 80.90E 27.80N) does take Kosala in -450."
+  },
+  {
+   "event": {
+    "slug": "janapada-of-malla",
+    "year": -468,
+    "type": "dissolve",
+    "counterpart": "magadha-haryanka-dynasty"
+   },
+   "mirror": {
+    "slug": "magadha-haryanka-dynasty",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "Haryanka not written yet; its Cliopatria shape reaches the Malla latitude only in -450, so the Haryanka dossier needs a -468 gain."
+  },
+  {
+   "event": {
+    "slug": "janapada-of-kamboja",
+    "year": -530,
+    "type": "loss",
+    "counterpart": "achaemenid-empire"
+   },
+   "mirror": {
+    "slug": "achaemenid-empire",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "Achaemenid dossier belongs to the Iran group, not run yet."
+  },
+  {
+   "event": {
+    "slug": "janapada-of-kamboja",
+    "year": -501,
+    "type": "dissolve",
+    "counterpart": "achaemenid-empire"
+   },
+   "mirror": {
+    "slug": "achaemenid-empire",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "Iran group not run. Gandhara (same 'twentieth satrapy' sentence) dissolves to the Achaemenids at -518; the two years differ by 17."
+  },
+  {
+   "event": {
+    "slug": "janapada-of-kuru",
+    "year": -345,
+    "type": "dissolve",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Counterpart nobody; who took the land is a gap (thin)."
+  },
+  {
+   "event": {
+    "slug": "janapada-of-kosala",
+    "year": -600,
+    "type": "found",
+    "counterpart": "janapada-of-vatsa"
+   },
+   "mirror": {
+    "slug": "janapada-of-vatsa",
+    "year": -600,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Land overlap: Kosala's Awadh holds 14 of 15 cells of Vatsa's Cliopatria disc, -600..-451. Vatsa (sa-01) not written yet."
+  },
+  {
+   "event": {
+    "slug": "janapada-of-kosala",
+    "year": -600,
+    "type": "found",
+    "counterpart": "janapada-of-cedi"
+   },
+   "mirror": {
+    "slug": "janapada-of-cedi",
+    "year": -600,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Land overlap: about 57 cells of Cedi's corrected land (Banda 90 km + Rewa 50 km) inside Kosala's Awadh, -600..-451."
+  },
+  {
+   "event": {
+    "slug": "janapada-of-kamboja",
+    "year": -600,
+    "type": "found",
+    "counterpart": "janapada-of-gandhara"
+   },
+   "mirror": {
+    "slug": "janapada-of-gandhara",
+    "year": -600,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Land overlap of 8 cells (Rajouri circle vs Kashmir Valley; Nuristan vs Gandhara region), -600..-518."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Rajouri",
+   "kind": "place",
+   "used_in": "janapada-of-kamboja"
+  },
+  {
+   "name": "Thanesar",
+   "kind": "place",
+   "used_in": "janapada-of-kuru"
+  },
+  {
+   "name": "Shravasti",
+   "kind": "place",
+   "used_in": "janapada-of-kosala"
+  },
+  {
+   "name": "Kushinagar",
+   "kind": "place",
+   "used_in": "janapada-of-malla"
+  },
+  {
+   "name": "Kafiristan",
+   "kind": "region",
+   "used_in": "janapada-of-kamboja"
+  },
+  {
+   "name": "Hindu Kush",
+   "kind": "region",
+   "used_in": "janapada-of-kamboja"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Sakya republic (Kapilavastu)",
+   "suggested_slug": "sakya-republic",
+   "years": [
+    -600,
+    -451
+   ]
+  },
+  {
+   "name": "Koliya republic",
+   "suggested_slug": "koliya-republic",
+   "years": [
+    -600,
+    -451
+   ]
+  },
+  {
+   "name": "Kalama republic",
+   "suggested_slug": "kalama-republic",
+   "years": [
+    -600,
+    -451
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-sa-01-b.md",
+ "problems": [
+  "janapada-of-magadha and magadha-haryanka-dynasty are one state by the research brief's one-state-per-dossier rule (Haryanka 'Established: 544 BCE' falls inside the Magadha row); the assignment split them, so the Magadha dossier carries a -544 rename to Haryanka and then a -501 dissolve into Haryanka. The orchestrator should decide whether the Haryanka dossier continues this one.",
+  "The gazetteer's Awadh region (Uttar Pradesh within 79.5-83.5E, 25.4-28.5N) reaches south of the Ganga and Yamuna; historical Awadh lies north of the Ganga. Worth tightening at the gazetteer, beyond the Kosala fix.",
+  "Kamboja/Gandhara overlap needs the Gandhara owner (sa-01-a) too.",
+  "The author's worry that Kuru's extension to -345 overlaps Cliopatria's Shaishunaga row is unfounded: 0 shared cells.",
+  "Applied two note-text fixes in place (janapada-of-magadha /ledger/1/note, janapada-of-malla /keyframe_review/1/note); both re-validated with 0 errors.",
+  "Quotes checked come from WebFetch extracts (a small model reads the page); no page failed to load."
+ ]
+}

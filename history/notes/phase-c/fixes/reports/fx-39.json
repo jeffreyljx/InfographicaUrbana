@@ -1,0 +1,307 @@
+{
+ "batch_id": "fx-39",
+ "findings": [
+  {
+   "item": "R059",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "ottoman-empire"
+   ],
+   "changes": [
+    "ottoman-empire: ledger 1603 loss (Tabriz): 250 km Tabriz disc -> East Azarbaijan + Tabriz 100 km + Nakhchivan 60 km (the lands safavid-dynasty gains in 1603)",
+    "ottoman-empire: ledger 1604 loss (Armenia) and June 1606 loss (Azerbaijan): the 'already lost' subtraction is now the same exact regions instead of the 250 km disc",
+    "ottoman-empire_1609 keyframe left alone: the p1600-p1609 patch controls it (and already uses the exact regions)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Safavid_War_(1603%E2%80%931618)"
+   ],
+   "why": "Page: Tabriz 21 Oct 1603, Yerevan June 1604, Ganja/Baku/Shirvan/Shamakhi June 1606, and after Lake Urmia (9 Sep 1605) 'Cağaloğlu had to withdraw to the fortress of Van'. The disc (761 cells) also removed Van, Hakkari and the Iraqi Kurdistan edge from 1603; the Safavid dossier gains only East Azarbaijan, Tabriz 100 km and the Caucasus lands in 1603-1606 (West Azarbaijan in 1612)."
+  },
+  {
+   "item": "R065",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "ottoman-empire"
+   ],
+   "changes": [
+    "ottoman-empire: keyframe_review ottoman-empire_1662: ok -> adjust, Cliopatria 1662 shape plus Crete without Candia (Iraklio 25 km); source Cretan War page added to sources",
+    "ottoman-empire_1648 keyframe untouched: the p1640-p1649 patch controls it and already adds Crete without Candia"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Cretan_War_(1645%E2%80%931669)"
+   ],
+   "why": "The patch closes the 1648-1661 hole, but Cliopatria's 1662 shape holds only 12 of Crete's 27 cells, so the 1662 snap (12 released + 10 added = 22 moved, tolerance 20) would have released the rural Cretan cells again until 1669. Page: 'By the beginning of 1648, all of Crete, except Candia and a few strongholds like the island of Gramvousa, was in Ottoman hands'; Candia surrendered 5 September 1669."
+  },
+  {
+   "item": "R107",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "ottoman-empire"
+   ],
+   "changes": [
+    "ottoman-empire: ledger 1811 contest_start narrowed from Hejaz+Najd to the Hejaz, source Wahhabi War page",
+    "ottoman-empire: added contest_end 1815 (Hejaz, spring 1815 treaty) and contest_start 1816 (Najd), mirroring emirate-of-diriyah ledger 25/26; the 1818 contest_end closes it",
+    "source Wahhabi War added"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Wahhabi_War"
+   ],
+   "why": "Page: Yanbu landing 1811, Medina late 1812, Mecca January 1813, Taif 1814, 'In the spring of 1815 ... the Wahhabis had to give up Hijaz', 'the Ottomans resumed the war in 1816', Qasim 1817, Diriyah 1818; no Najd fighting 1811-1815. muhammad-ali-dynasty ledger/2 is not mine (handoff). A contest_end closes the whole pair relation, so the p1810-p1819 patch events/0 and /2 now only cut the Hejaz contest short and should be dropped."
+  },
+  {
+   "item": "R119",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "ottoman-empire"
+   ],
+   "changes": [
+    "ottoman-empire: added vassal_start Feb 1841 (counterpart muhammad-ali-dynasty, Cliopatria dynasty shape of 1842) after the Nov 1840 vassal_end",
+    "ottoman-empire: added mirror vassal_end 1865 (pairs the start; khedivate-of-egypt ledger/1 carries the vassalage from 1866)",
+    "note appended to the Nov 1840 vassal_end explaining it closes the whole relation; source 'History of Egypt under the Muhammad Ali dynasty' added"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/History_of_Egypt_under_the_Muhammad_Ali_dynasty"
+   ],
+   "why": "Page: firmans of 13 February 1841 'confined the pasha's authority to Egypt, including the Sinai peninsula' and the Sudan, 'Various restrictions were laid upon Muhammad Ali, emphasizing his position as vassal', pashalik made hereditary; Ismail's 1866 firman raised the annual tribute from 376,000 to 720,000 pounds. The compiler's vassal_end closes the whole (Ottoman, dynasty) relation, so Egypt was direct from 1840 to 1865; the patch p1850-p1859 merges with the new relation. hierarchy.csv row for the pair still ends 1840 (not mine)."
+  },
+  {
+   "item": "R135",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "ottoman-empire"
+   ],
+   "changes": [
+    "ottoman-empire: added gain 9 September 1922 (Izmir admin-1 from first-hellenic-republic)",
+    "ottoman-empire: keyframe ottoman-empire_1922 correction, dissolve event region and identity.successors[republic-of-turkey].land are now Cliopatria 1922 Ottoman shape union Izmir admin-1",
+    "source Greco-Turkish War (1919-1922) added"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Greco-Turkish_War_(1919%E2%80%931922)"
+   ],
+   "why": "Page: 'Turkish cavalry entered Smyrna on 9 September'; expulsion of the Greek army completed 18 September; Mudanya 11 October 1922. The compiler hands land to the successors' identity land, not the dissolve region, so both were extended; Izmir admin-1 has 42 cells, 25 in Cliopatria's 1922 Ottoman shape and 14 in Greece's 1922 shape."
+  },
+  {
+   "item": "R009",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "kingdom-of-han"
+   ],
+   "changes": [
+    "kingdom-of-han: identity.end -203 -> {-202, month 2}; dissolve moved to 28 Feb 202 BC",
+    "kingdom-of-han: Yan vassal_end and western-chu contest_end (paired only because the dossier ended) moved to -202 month 2; certainty span extended to -202; sources Xin of Han added, Gaozu note extended"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Emperor_Gaozu_of_Han",
+    "https://en.wikipedia.org/wiki/Xin_of_Han"
+   ],
+   "why": "Gaozu page infobox: King of Han from c. March 206 to 28 February 202 BC, emperor from 28 February 202 BC; Xin of Han page: 'became a vassal of the Hàn Empire after Liu Bang defeated Xiang Yu in 202 BC'. han-dynasty (start -202) lists the kingdom as predecessor, so its R2 successor rule takes the realm in -202."
+  },
+  {
+   "item": "R031",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "linear-pottery-culture"
+   ],
+   "changes": [
+    "linear-pottery-culture: keyframes -5300, -5200, -5000, -4940, -4800, ledger/1 (-5300 gain) and ledger/11 (dissolve region): whole Niedersachsen -> Niedersachsen minus a polygon band north of 53.25 N (North Sea coast and Elbe-Weser Geest, 45 of 218 cells)",
+    "source note for the LBK page extended"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Linear_Pottery_culture"
+   ],
+   "why": "Page: 'The LBK culture extended across central Europe but did not reach the northern coastal regions of Germany, Poland, or Denmark'; 'not evidenced in Denmark or the northern coastal strips of Germany and Poland'. The dossier's Polish entries are all inland, so only Lower Saxony needed cutting. The -5500 keyframe has no Niedersachsen entry; the m5000-m4901 patch does not touch it."
+  },
+  {
+   "item": "R045",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "principality-of-vladimir-suzdal"
+   ],
+   "changes": [
+    "principality-of-vladimir-suzdal: identity.start 1294 -> 1241; found event moved to 1241 on the 1236 Rostov-Suzdal shape (Cliopatria 1236 + Vladimir 70 km + Ustyug 50 km), confidence 1",
+    "new keyframe principality-of-vladimir-suzdal_1241 (1241-1293, adjust, same land); predecessor land updated; certainty span 1241-1293 added",
+    "vassal_start 1241 and vassal_end 1293 with mongol-empire (golden-horde/ledger/2 opens the relation in 1294); notes and sources updated"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Vladimir-Suzdal"
+   ],
+   "why": "Page: 'Vladimir became a vassal of the Mongol Empire'; 'Yaroslav II (r. 1238-1246) and the other princes submitted to Mongol rule'; 'Alexander Nevsky (r. 1252-1263) was the last prince to reign directly in Vladimir'; 'Established: 1125', 'Disestablished: 1389'. Tver (1246) and Moscow (1263) list this dossier as predecessor and take their land from it, so the 1294 keyframe snap is small."
+  },
+  {
+   "item": "R068",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "kingdom-of-kebbi"
+   ],
+   "changes": [
+    "kingdom-of-kebbi: ledger/1 (vassal_start 1525) and ledger/4 (vassal_end 1650) region Hausaland -> Hausaland minus Kebbi admin-1 (heartland); notes extended with the page's 1556 sentence"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kebbi_Kingdom"
+   ],
+   "why": "The compiler closes the whole pair relation whatever the vassal_end region, and the 1525 start drew the heartland in the vassal tint, so 1650 released all 706 cells. Excluding the heartland from the relation keeps it direct under the keyframe to 1808 and still releases the tribute land (Zinder etc.) in 1650. Year 1650 kept as a bridge: the page says 'in 1556 Kanta died, and the Hausa states stopped paying tribute' but also that tributaries Gobir and Zamfara revolted 'by the early 18th century'. The p1650-p1659 patch events/4 becomes redundant."
+  },
+  {
+   "item": "R092",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "dutch-gold-coast"
+   ],
+   "changes": [
+    "dutch-gold-coast: ledger/23 and /24 place 'Keta' -> {lon 0.9868, lat 5.9031, km 12} (Keta Municipal District page coordinates)",
+    "side repair of the dossier's other unresolved places: Cormantin and Egya -> gazetteer alias 'Fort Amsterdam (Kormantin)' (ledger 8, 11, 12, 25, 27, 31 and wars 1, 3); Apam -> disc at 5.286 N 0.7281 W (Fort Patience page) (ledger 17, 25, 27, 31, wars 3)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Dutch_Gold_Coast",
+    "https://en.wikipedia.org/wiki/Keta_Municipal_District",
+    "https://en.wikipedia.org/wiki/Fort_Prinzenstein",
+    "https://en.wikipedia.org/wiki/Fort_Patience"
+   ],
+   "why": "Dutch Gold Coast table: Fort Singelenburgh at Keta 1734, 'Destroyed by the Dutch in 1737 after it was attacked by the local population'; Fort Prinzenstein page: 'The Dutch West India Company had built Fort Singelenburgh at the site of the current fort in 1734'. The Keta town, Fort Prinzenstein and Dutch Gold Coast pages print no coordinates, so the disc uses the municipal district's infobox point (the district capital is Keta); it resolves to 1 cell. Egya is placed on Kormantin because the dossier itself puts it 'near Cormantin' (approximation)."
+  },
+  {
+   "item": "R112",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "kingdom-of-hanover"
+   ],
+   "changes": [
+    "kingdom-of-hanover: ledger/10 (1815 gain): 'Lingen' -> 20 km disc at 52.52 N 7.32 E; region equals the p1810-p1819 patch events/4 (Osnabrück 30 km added, Münsterland limited to Cliopatria's Hanover of 1840)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kingdom_of_Hanover",
+    "https://en.wikipedia.org/wiki/County_of_Lingen",
+    "https://en.wikipedia.org/wiki/Lingen"
+   ],
+   "why": "Kingdom page: Hanover increased its area 'gaining the Prince-Bishopric of Hildesheim, East Frisia, the Prince-Bishopric of Osnabrück, the Lower County of Lingen and the northern part of the Prince-Bishopric of Münster' (no date; Bentheim annexed separately); County of Lingen page: 'in 1815 became part of the newly founded kingdom of Hanover'. None of the Lingen pages print coordinates, so 52.52 N 7.32 E is the window's; the patch event now duplicates this one harmlessly."
+  },
+  {
+   "item": "R130",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "portuguese-angola"
+   ],
+   "changes": [
+    "portuguese-angola: keyframes 1910, 1912 (all Angola minus Cabinda minus the Mbanza Kongo 100 km country) and 1914, 1915 (all Angola minus Cabinda) replace the growing patchwork corrections; source and notes updated"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Portuguese_Angola"
+   ],
+   "why": "Page: 'Agreements concluded with the Congo Free State, the German Empire and France in 1885-1886 fixed the limits of the province'; south-east frontier by the 1891 treaty and the 1905 award; Cabinda incorporated only in the 1920s. Cliopatria's Portuguese Republic shape holds 99 percent of the colony's land, so the unoccupied interior (about 2,000 cells) was the Republic's direct land. Caveat: the page also says control was completed only by 'final campaigns of conquest between 1890 and 1920', so 1910-1919 now draws the claimed province; the Kongo country is excluded until 1914 so the colony's R1 priority does not swallow it."
+  },
+  {
+   "item": "R144",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "madhya-bharat"
+   ],
+   "changes": [
+    "madhya-bharat: identity.successors[0].slug madhya-pradesh -> republic-of-india (same land); dissolve event counterpart likewise"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Madhya_Bharat"
+   ],
+   "why": "Page: 'On 1 November 1956, Madhya Bharat, together with the states of Vindhya Pradesh and Bhopal State, was merged into Madhya Pradesh'; Madhya Bharat was 'an Indian state'. No madhya-pradesh dossier exists, so the land stays in republic-of-india; the p1950-p1959 patch (India gains the land, constituent ruling 1951-1956) stays compatible."
+  }
+ ],
+ "dossiers_changed": [
+  "ottoman-empire",
+  "kingdom-of-han",
+  "linear-pottery-culture",
+  "principality-of-vladimir-suzdal",
+  "kingdom-of-kebbi",
+  "dutch-gold-coast",
+  "kingdom-of-hanover",
+  "portuguese-angola",
+  "madhya-bharat"
+ ],
+ "validation": {
+  "ottoman-empire": "ok",
+  "kingdom-of-han": "ok (7 pre-existing warnings: Cliopatria shapes of the Warring States Han lack a verdict)",
+  "linear-pottery-culture": "ok",
+  "principality-of-vladimir-suzdal": "ok",
+  "kingdom-of-kebbi": "ok",
+  "dutch-gold-coast": "ok",
+  "kingdom-of-hanover": "ok",
+  "portuguese-angola": "ok",
+  "madhya-bharat": "ok"
+ },
+ "handoffs": [
+  {
+   "dossier": "muhammad-ali-dynasty",
+   "where": "ledger/2 (1811 contest_start, Hejaz and Najd, counterpart emirate-of-diriyah)",
+   "what": "Narrow the region to the Hejaz; add a Najd contest_start in 1816 (and optionally a Hejaz contest_end in spring 1815), as done for ottoman-empire",
+   "why": "Wahhabi War page places no fighting in Najd between 1811 and 1815; a contest_end closes the whole pair relation",
+   "source": "https://en.wikipedia.org/wiki/Wahhabi_War"
+  },
+  {
+   "dossier": "patches p1810-p1819",
+   "where": "data/patches/p1810-p1819.json events/0 (ottoman-empire) and events/2 (muhammad-ali-dynasty), both contest_end Nejd 1811",
+   "what": "Drop both once the dossiers are fixed: a contest_end closes the whole relation of the pair, so they would end the (now Hejaz-only) contest in 1811 as well",
+   "why": "compile_dossiers.relation_end closes the relation whatever the region; ottoman-empire now has its own Hejaz end (1815) and Najd start (1816)",
+   "source": "https://en.wikipedia.org/wiki/Wahhabi_War"
+  },
+  {
+   "dossier": "principality-of-rostov-suzdal",
+   "where": "identity.successors (order and land)",
+   "what": "List principality-of-vladimir-suzdal first with the 1236 shape as land (mongol-empire second) so the 1240 dissolve hands the land to the principality instead of the Mongol Empire; today the 1241 found takes it back by the size rule",
+   "why": "principality-of-vladimir-suzdal now starts in 1241 and carries the land as a Mongol vassal",
+   "source": "https://en.wikipedia.org/wiki/Vladimir-Suzdal"
+  },
+  {
+   "dossier": "data/hierarchy.csv",
+   "where": "row muhammad-ali-dynasty -> ottoman-empire (1805-1840)",
+   "what": "Optionally extend the end year to 1865; the ottoman-empire ledger now carries the vassalage 1841-1865 (vassal_start Feb 1841, vassal_end 1865)",
+   "why": "1841 firmans 'emphasizing his position as vassal', hereditary pashalik",
+   "source": "https://en.wikipedia.org/wiki/History_of_Egypt_under_the_Muhammad_Ali_dynasty"
+  },
+  {
+   "dossier": "patches p1650-p1659 and p1810-p1819",
+   "where": "p1650-p1659 events/4 (kingdom-of-kebbi gain 1650); p1810-p1819 events/4 (kingdom-of-hanover gain 1815)",
+   "what": "Now redundant with the dossier fixes (harmless duplicates)",
+   "why": "kingdom-of-kebbi ledger/1 and /4 no longer release the heartland; kingdom-of-hanover ledger/10 now carries the same region",
+   "source": "https://en.wikipedia.org/wiki/Kebbi_Kingdom"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Egya",
+   "kind": "place",
+   "used_in": "dutch-gold-coast",
+   "hint": "Fort Egya near Kormantin/Elmina in Ghana's Central Region; placed for now on the alias 'Fort Amsterdam (Kormantin)'; no opened page prints its coordinates"
+  },
+  {
+   "name": "Keta",
+   "kind": "place",
+   "used_in": "dutch-gold-coast",
+   "hint": "Keta town, Volta Region, Ghana (district point 5.9031 N 0.9868 E); the gazetteer's only Keta is a Siberian lake"
+  },
+  {
+   "name": "Lingen",
+   "kind": "place",
+   "used_in": "kingdom-of-hanover",
+   "hint": "Lingen (Ems), Lower Saxony, about 52.52 N 7.32 E"
+  },
+  {
+   "name": "Apam",
+   "kind": "place",
+   "used_in": "dutch-gold-coast",
+   "hint": "Apam, Central Region, Ghana, 5.286 N 0.7281 W (Fort Patience page)"
+  },
+  {
+   "name": "Cormantin",
+   "kind": "place",
+   "used_in": "dutch-gold-coast",
+   "hint": "Kormantin/Kormantse, Ghana; resolves today only through the alias of Moree ('Fort Amsterdam (Kormantin)')"
+  }
+ ],
+ "not_reached": [],
+ "notes_path": "history/polities/_notes/fix-fx-39.md",
+ "problems": [
+  "R107: the Ottoman-diriyah and dynasty-diriyah contests are closed whole by the window patch's contest_end events; until patches p1810-p1819 events/0 and /2 are dropped the Hejaz contest still ends in 1811.",
+  "R130: drawing the whole claimed province from 1910 is a representation choice; the page says control was completed only by 1920.",
+  "R092: Keta coordinates are the Keta Municipal District's infobox point; Egya is an approximation on Kormantin.",
+  "R112: the Lingen coordinates (52.52 N 7.32 E) come from the window; no page opened prints them.",
+  "I could not run the compiler, so no snap or conflict counts were re-measured after the edits; counts quoted in the notes come from gazetteer arithmetic."
+ ]
+}

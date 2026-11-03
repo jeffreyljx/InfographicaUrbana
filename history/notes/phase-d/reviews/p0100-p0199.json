@@ -1,0 +1,61 @@
+{
+ "window": "p0100-p0199",
+ "checks": [
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "han-dynasty_106: the dossier's own correction unchanged (19,009 cells), range cut from 106-116 (the shapes.csv default) to 106-106, as the dossier note says ('holds 106 only'). Protectorate page opened: 'On 29 July 107, a series of Qiang uprisings ... Duan Xi was killed and the post was abandoned'; 'restored from 123 to 124 by the son of Ban Chao, Ban Yong'. Trial against a no-patch baseline: the 106 snap is identical (the 560-cell release is in the baseline too); the 107 snap now adds 677 (the Hami disc and the southern Tarim band inside Cliopatria's Han 117 shape) instead of 2,540, so the Tarim is no longer Han land in 107-116 (-1,905 Han cells). Nothing else moves for the Han in those years.",
+   "page": "https://en.wikipedia.org/wiki/Protectorate_of_the_Western_Regions",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "what": "protectorate_117: same correction as the dossier (Cliopatria 117 shape, 944 cells, about 238,700 km2), years cut from 117-183 to 123-175. Protectorate page: restored 123-124 by Ban Yong; Chief Official page: 'The chief official of the Western Regions was last seen in 175'. The 117-122 protectorate drawing is gone (Tarim nobody's 107-122). Side effect, not in the entry's why: because the protectorate holds nothing when Han ledger 81 (123 vassal_start, 'vassal holds none' branch) runs, the Han tints all 2,295 Tarim and Turfan-Hami cells of its 106 shape (1,733 nobody's plus 562 of its own direct cells), and Han ledger 82 (125 vassal_end) hands them all to the protectorate: 2,295 cells in 125-175 instead of 944. The window agent reported the 2,295 (left, pages silent) but not the knock-ons listed under problems. 42 stray protectorate cells outside the Tarim region (74-75 E 39-40 N; 82-87 E 42 N, from Han ledger 77) now last to 122 instead of 116.",
+   "page": "https://en.wikipedia.org/wiki/Chief_Official_of_the_Western_Regions",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "what": "protectorate_184 (184-196): verdict wrong with an empty correction (Tarim Basin minus itself, 0 cells), so the compiler skips the snap ('keyframe resolves to no land cell'). It implements the dossier's own text ('none of these years belong to this state'), whose correction was wrongly the shape itself. Chief Official page: 'last seen in 175'; 'subsequently re-established and maintained by the Cao Wei and the Western Jin until around 328'. Trial: the 184 snap of 1,833 cells is gone; kangju gets back 30 cells and yueban 28 cells that the snap had taken.",
+   "page": "https://en.wikipedia.org/wiki/Chief_Official_of_the_Western_Regions",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/3",
+   "verdict": "pass",
+   "what": "protectorate_197 (197-223): same empty correction, same page support (no office between 175 and the undated Cao Wei revival); the 562-cell 197 snap is gone. The keyframe runs to 223, so the entry acts in p0200-p0299 too (Tarim not the protectorate's in 200-223); that window's patch has no entry on this slug, so nothing clashes, but the window agent did not list the reach under problems.",
+   "page": "https://en.wikipedia.org/wiki/Chief_Official_of_the_Western_Regions",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "what": "protectorate loss to nobody in 176 of Tarim Basin + Turfan-Hami (4,045 cells; a loss moves only the protectorate's own cells: 1,351, after the dossier's own 176 loss of 944). Page: 'last seen in 175', re-established by Cao Wei and Western Jin. Needed: without it the 1,351 cells handed over in 125 would stay the protectorate's after 175. Trial: protectorate holds 0 cells 176-199. Error corrected: confidence was 2, but the page does not date the end (only 'last seen in 175'), so 176 is a bridging judgment, confidence 1 by the schema, as in the dossier's own 176 loss. Note: of the 1,351 cells, 562 are the southern Tarim band the Han held directly before 123; they are nobody's 176-183 and the Han takes them back at its 184 snap (see problems).",
+   "page": "https://en.wikipedia.org/wiki/Chief_Official_of_the_Western_Regions",
+   "fix": "confidence 2 -> 1, with a review note appended to the note; --check-patch re-run: 6 ok.",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "cao-cao gain of Xu Province in 198 from Lu Bu (no dossier). End of the Han page, 198: 'Lu Bu was captured and executed on Cao Cao's order, and Xu Province came under Cao's control'; c. 200 list: Lu Bu 'seized control of Xu Province (covering present-day northern Jiangsu)'. Spec: Jiangsu north of 32.25 N, 358 cells (about 90,500 km2, 116.4-121.3 E, 32.25-35.0 N), 68% of Jiangsu; a gain against a non-dossier counterpart takes only nobody's cells, so 343 move and Sun Ce's and Yuan Shu's cells stay. Render of 199 (stage): northern Jiangsu joins Cao Cao's block cleanly. Minor: the 32.25 N line leaves a thin nobody's strip on the north bank of the Yangtze east of about 119.9 E (Jingjiang, Nantong, Haimen; under 53 cells including some south-bank cells), acceptable since the page names only 'northern Jiangsu'.",
+   "page": "https://en.wikipedia.org/wiki/End_of_the_Han_dynasty",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch p0100-p0199: 6 entries, 6 ok, 0 rejected (after the events/0 confidence fix). Trial (stage /tmp/claude-0/work/review-p0100/stage) against a no-patch baseline trial: all 6 applied; Han -1,905 cells 107-116, protectorate none 107-122 except 42 stray edge cells, 2,295 cells 125-175, 0 from 176; cao-cao +343 in 198; kangju +30 and yueban +28 from 184; new conflicts protectorate/xianbei 860 cell-years (151-165) and han/kushan 130 cell-years (117).",
+ "problems": [
+  "Knock-on of keyframe_overrides/1 with Han ledger 81/82: in 125-175 the protectorate holds 2,295 cells (Tarim and Turfan-Hami of the Han 106 shape), not its 944-cell oasis shape. It takes in (a) 562 southern-Tarim cells (81.8-93.5 E, 36.9-41.0 N) that Cliopatria's Han 117-183 shapes keep as Han direct land; and (b) 215 Turfan-side cells (87.1-93.8 E, 40.8-42.9 N) that the Xianbei keyframes of 151, 154, 161 and 165 claim: a new protectorate/xianbei conflict of 860 cell-years (the protectorate wins by R1), plus 89 cells kept from the Xiongnu 127-150. After events/0 the 215 cells are nobody's 176-196 (Xianbei's in the draft) until the Xianbei 197 snap. The pages are silent on the extent in 125-175. If the 944-cell shape is wanted, the cleanest change is a new protectorate keyframe 125-175 (Cliopatria 117 shape), which releases the rest at 125, or narrowing Han ledger 81/82 to that shape (a dossier fix).",
+  "Southern Tarim band (562 cells) flickers: Han to 124, protectorate 125-175, nobody 176-183, then Han again 184-195 because the Han keyframes from han-dynasty_184 through _195 are built on Cliopatria's 184 shape, which includes the band; nobody's again from 196 (Han ledger 100). No page gives the Han any Tarim presence after 175. Fix: subtract {\"region\": \"Tarim Basin\"} from han-dynasty_184, _187, _188, _190, _191, _193, _194 and _195 (keyframe_overrides; 184-195 are in this window), or accept the flicker.",
+  "keyframe_overrides/3 (protectorate_197) runs to 223, so it reaches into p0200-p0299 (the Tarim is not the protectorate's in 200-223); not listed under problems by the window agent. p0200-p0299.json has no entry on this slug.",
+  "events/1 carries into p0200-p0299: Cao Cao's next snap (cao-cao_204, the Cliopatria 197 shape plus Ji Province) lacks Xu Province and will probably release northern Jiangsu in 204; Liu Bei's seizure of Xu Province in early 200 and Cao Cao's retaking of it (End of the Han page, 200) also belong to that window.",
+  "Same overlap pattern seen in other dossiers: cao-cao_197 says 'holds 197-203 only' but has no from/to (runs 197-206); it is harmless here because the 204 and 205 shapes contain it."
+ ]
+}

@@ -1,0 +1,854 @@
+{
+ "batch_id": "ea-04-c",
+ "verdicts": [
+  {
+   "slug": "former-shu",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2/correction, /keyframe_review/3/correction, /keyframe_review/4/correction",
+     "what": "The 915-925 keyframes were Cliopatria's Former Shu shape minus Baoji or Fengxiang, which leaves out the part of the Tianshui country (Qin Prefecture) that Cliopatria draws inside its Qi shape. After Shu's 915 gain (/ledger/1) and Qi's shrinking to Fengxiang, about 4,800 km2 belonged to nobody from 915 to 925.",
+     "why": "Wang Jian (Former Shu) page: 'In fall 915, Wang Jian launched a major attack against Qi ... Feng Prefecture fell, and Li Jichong surrendered Qin.' Gazetteer: Former Shu 911 intersected with Tianshui/60 is 8,346 km2 and Qi Kingdom 911 intersected with Tianshui/60 is 4,805 km2, so Shu's shape lacks about a third of the disc that /ledger/1 gains.",
+     "fix": "Each of the three corrections is now {union: [<previous minus>, {place: Tianshui, km: 60}]}, and its text says why. Re-validated: 0 errors, 0 warnings.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Feng Prefecture, which the page has falling to Shu in fall 915, is not placed. K0 and K1 give it to Shu from 907. Locate it (modern Feng County, Shaanxi) and cut it from K0/K1.",
+     "page to try": "https://en.wikipedia.org/wiki/Feng_County,_Shaanxi"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "The Guizhou and Yunnan fringes of the Cliopatria outline are unverified (page budget).",
+     "page to try": "https://en.wikipedia.org/wiki/Wang_Jian_(Former_Shu)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Wang_Jian_(Former_Shu)",
+     "result": "confirmed (infobox reign 'November 3, 907 - July 11, 918')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Wang_Jian_(Former_Shu)",
+     "result": "confirmed (fall 915, Feng fell, Qin surrendered)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Wang_Jian_(Former_Shu)",
+     "result": "confirmed (916: Baoji captured, Fengxiang besieged, siege lifted)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Wang_Jian_(Former_Shu)",
+     "result": "confirmed (fall 916, Shu renamed Han)"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Wang_Jian_(Former_Shu)",
+     "result": "confirmed (early spring 918, back to Shu)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Former_Shu",
+     "result": "confirmed (infobox 'Ended by the Later Tang: 925')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 605241,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Former Shu infobox gives no area."
+   }
+  },
+  {
+   "slug": "qi-kingdom",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/4",
+     "what": "This confidence-1 event gives the rest of Cliopatria's Qi shape to 'nobody' in 916, and its note says no opened page says what became of that land. Yet the event's own source page records a 915 surrender of the Jingnan Circuit to Later Liang, and the ledger has no such event.",
+     "why": "Li Maozhen page: 'in 915, Li Jihui's adoptive son Li Baoheng killed Li Yanlu and surrendered Jingnan Circuit to Later Liang'. Jingnan is '靜難, headquartered in modern Xianyang'. Gazetteer: a 15 km disc at Qingyang (107.64, 35.73) falls in Cliopatria's Qi 911 shape. Discs at Bin (108.08, 35.05) and Ning (107.92, 35.50) fall in Cliopatria's Later Liang 911 shape, not in Qi's.",
+     "fix": "Add a 915 loss to later-liang-dynasty (confidence 2, source Li_Maozhen) of the Jingnan Circuit: Bin, Ning and Qing prefectures, for example the union of discs at Binzhou, Ningxian and Qingyang, with the page's sentence as text. Add Jingnan to K0/K1 for 907-914 and drop it from K2 (915). Keep the confidence-1 'nobody' event only for the Pingliang-Guyuan remainder, and correct its note.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what": "K0 (907-914) leaves out the Baoda and Baosai circuits (Yan'an), and the ledger has no event for their 908 surrender to Later Liang.",
+     "why": "Li Maozhen page (908): 'the Qi military governor of Baoda, Li Yanbo, ... surrendered to Later Liang', together with Baosai's officer Gao Wanxing. Baoda is '保大, headquartered in modern Yan'an' and Baosai is '保塞, headquartered in modern Yan'an'.",
+     "fix": "Split K0. Make a new keyframe for 907 (or 907-908) that adds the Yan'an country, for example {place: Yan'an, km: 80}, and add a 908 loss to later-liang-dynasty (confidence 2, source Li_Maozhen).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/2/correction",
+     "what": "K2 (915) keeps the whole Cliopatria Qi shape, including its roughly 4,800 km2 of the Tianshui country, although /ledger/1 gives Qin Prefecture to Shu in fall 915. /ledger/4's region then excludes the Tianshui disc, so those cells leave Qi with no event.",
+     "why": "Gazetteer: Qi Kingdom 911 intersected with Tianshui/60 is 4,805 km2. Former Shu K2-K4 now carry Tianshui/60 (reviewer fix in former-shu).",
+     "fix": "K2 = {minus: [{union: [Qi 911, Baoji/40]}, Tianshui/60]}, or say in its text that 915 shows the state before the autumn campaign.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "Who held the Pingliang (Zhangyi Circuit, 'headquartered in modern Pingliang, Gansu') and Guyuan country in 916-924. It is recorded as nobody at confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Zhu_Wen"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Qi_(Li_Maozhen%27s_state)",
+     "result": "confirmed (infobox 'Established: 907')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Li_Maozhen",
+     "result": "confirmed (915, Wang Zonghan attacked Qin and Li Jichong surrendered)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Li_Maozhen",
+     "result": "mis-dated: the page gives a 915 surrender of the Jingnan Circuit to Later Liang, which the note says no page gives"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Li_Maozhen",
+     "result": "confirmed (spring 924, son Li Jiyan sent to Emperor Zhuangzong; died May 17, 924)"
+    },
+    {
+     "where": "/keyframe_review/3",
+     "page": "https://en.wikipedia.org/wiki/Li_Maozhen",
+     "result": "confirmed (fall 916 siege; 'limited to Fengxiang Municipality and its immediate surroundings')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 94436,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area. Cliopatria's shape omits the capital Fengxiang; the author found and corrected this."
+   }
+  },
+  {
+   "slug": "later-liang-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2/correction and /ledger/3",
+     "what": "The 916 north-bank loss cuts only the Hebei, Shanxi, Beijing and Tianjin cells. That leaves about 33,900 km2 of Cliopatria's Liang shape in Henan north of the Yellow River (Anyang, Hebi, Xinxiang, Jiaozuo, Puyang) with Liang for 916-921.",
+     "why": "Zhu Youzhen page: 'By fall 916, nearly all of the Later Liang territory north of the Yellow River had fallen to Jin.' Wei Prefecture (衛州, 'in modern Puyang, Henan') held a Jin garrison until Dai Siyuan's surprise attack. Gazetteer: Later Liang 911 ∩ Henan ∩ a polygon north of the river is 33,889 km2.",
+     "fix": "Add Henan north of the river (for example discs at Anyang, Xinxiang and Puyang, or a named region) to the L3 loss and to the K2 minus. Then K3 adds back only Wei Prefecture.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/5 and /keyframe_review/3/correction",
+     "what": "The 922 regained foothold is placed at Daming (115.15, 36.28; Tianxiong's 魏州). The page names a different prefecture, 衛州 in modern Puyang, Henan, and says it was captured.",
+     "why": "Zhu Youzhen page, paragraph opening 'In 921': Dai Siyuan 'was able to attack Wei Prefecture (衛州, in modern Puyang, Henan) and surprise the Jin garrison there, capturing it', regaining a foothold north of the Yellow River.",
+     "fix": "Region {place: Puyang, km: 40, text: 'Wei Prefecture (衛州, in modern Puyang, Henan)'} at confidence 2, with a note that the paragraph begins in 921 and the campaign ran into 922. Use the same disc in the K3 union, once fix 1 has removed it from K2.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0, /keyframe_review/1, /ledger",
+     "what": "Two gains from Qi that the Li Maozhen page documents are missing: the Baoda and Baosai circuits (Yan'an) in 908, and the Jingnan Circuit (Xianyang: Bin, Ning, Qing) in 915. Cliopatria's Liang 911 shape already contains Bin and Ning, so K0/K1 overstate Liang for 907-914.",
+     "why": "Li Maozhen page, 908: Baoda's Li Yanbo and Baosai's Gao Wanxing 'surrendered to Later Liang'. 915: Li Baoheng 'surrendered Jingnan Circuit to Later Liang'. Gazetteer: 15 km discs at Bin (108.08, 35.05) and Ning (107.92, 35.50) fall inside Later Liang 911.",
+     "fix": "Add gain events for 908 (Yan'an country, counterpart qi-kingdom, confidence 2) and 915 (Jingnan, counterpart qi-kingdom, confidence 2), source Li_Maozhen. Add a keyframe for 911-914 (and K0 for 907) that removes Bin/Ning/Qing and, for 907, Yan'an.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6/counterpart",
+     "what": "The counterpart 'Zhaoyi Circuit (Li Jitao)' is not a slug, and it is not listed in the report's counterparts_needing_dossiers.",
+     "why": "Zhu Youzhen page: 'in spring 923, Li Jitao, fearing that Li Cunxu would eventually act against him anyway, submitted his circuit to Later Liang'. The land came out of Li Cunxu's Jin.",
+     "fix": "Set counterpart to 'former-jin' and keep Li Jitao in the note.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Zhu Wen's 907-912 wars, and the 911-915 outline, which is Cliopatria's and unverified.",
+     "page to try": "https://en.wikipedia.org/wiki/Zhu_Wen"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Later_Liang_(Five_Dynasties)",
+     "result": "confirmed (infobox 'Established: 1 June 907')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Later_Liang_(Five_Dynasties)",
+     "result": "confirmed (infobox 'Luoyang (907-913) Kaifeng (913-923)')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Zhu_Youzhen",
+     "result": "confirmed for the year (fall 916); the land drawn is incomplete (fix 1)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Zhu_Youzhen",
+     "result": "mis-located: 衛州, modern Puyang, not Daming; the capture is confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Zhu_Youzhen",
+     "result": "confirmed (spring 923)"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Later_Liang_(Five_Dynasties)",
+     "result": "confirmed (infobox 'Surrender of Kaifeng: 19 November 923')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 793636,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area."
+   }
+  },
+  {
+   "slug": "later-jin",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "The Later Jin's vassalage to the Liao is not in the ledger: there is no vassal_start or vassal_end. The author's notes leave the pair to the Liao dossier only, but the mirror rule wants it in both ledgers, and the page the author cites states the suzerainty.",
+     "why": "Later Jin (Five Dynasties) page: 'with aid from the Liao dynasty, which assumed suzerainty over the Later Jin' and 'often been described as a puppet of the emerging Khitan-led Liao dynasty'. Shi Chonggui page: after his accession in summer 942 he wrote to Taizong as 'grandson' 'but not as \"your subject.\"'",
+     "fix": "Add a vassal_start at 936/11 (counterpart liao-dynasty, region the realm, source Later_Jin_(Five_Dynasties), confidence 2) and a vassal_end at 942 (counterpart liao-dynasty, source Shi_Chonggui, confidence 2), and add vassal certainty notes.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger",
+     "what is missing": "Fan Yanguang's revolt at Yedu (Wei Prefecture) against Shi Jingtang is undated and not drawn, though a rebellion that held a city for about a year may need contest events.",
+     "page to try": "https://en.wikipedia.org/wiki/Fan_Yanguang"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "The Sixteen Prefectures cession year is disputed (936 promised, 937 once, 938 three times on the Sixteen Prefectures page). The liao-dynasty dossier (ea-05) must agree.",
+     "page to try": "https://en.wikipedia.org/wiki/Emperor_Taizong_of_Liao"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Later_Jin_(Five_Dynasties)",
+     "result": "confirmed (infobox 'Shi Jingtang proclaimed Emperor by Liao: 28 November, 936')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Sixteen_Prefectures",
+     "result": "confirmed (938 three times, 937 once)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Shi_Chonggui",
+     "result": "confirmed (early 944, reached Yedu; late 944 again)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Later_Jin_(Five_Dynasties)",
+     "result": "confirmed (infobox 'Emperor Chu's surrender to Liao: 11 January, 947')"
+    },
+    {
+     "where": "/identity/capitals",
+     "page": "https://en.wikipedia.org/wiki/Later_Jin_(Five_Dynasties)",
+     "result": "confirmed (Taiyuan 936, Luoyang 937, Kaifeng 937-947)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 790319,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area. The 911-921 'Later Jin' shape (71,612 km2) is Li Keyong's Jin and is correctly marked wrong."
+   }
+  },
+  {
+   "slug": "min",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Wang_Yanzheng",
+     "result": "confirmed (Yin declared at Jian Prefecture; infobox 'March or April 943')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Wang_Yanzheng",
+     "result": "confirmed (944: 'Zhang, Quan, and Ting had all submitted to Yin')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Southern_Tang",
+     "result": "confirmed ('By February 945 ... Wang Yanzheng reunited Min')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Southern_Tang",
+     "result": "confirmed ('On 2 October 945 Jianzhou fell'; Jianzhou and Tingzhou to Southern Tang)"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Wang_Yanzheng",
+     "result": "confirmed (Min reign to 'October 2, 945')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 121944,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Min Kingdom page gives no area. The shape is 98 percent of modern Fujian, which is plausible."
+   }
+  },
+  {
+   "slug": "southern-chu",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/1/counterpart",
+     "what": "The counterpart 'Lang Prefecture (Hongnong's ally)' is not a slug, and it is not in the report's counterparts_needing_dossiers (only in the notes).",
+     "why": "Ma Yin page: 'In summer 908, without Hongnong aid, Lang Prefecture fell.' The page does not say who held Lang.",
+     "fix": "List it under counterparts_needing_dossiers (done in this review), or use 'nobody' with a note if no page names the holder.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4 and /identity/successors",
+     "what is missing": "Who took the Guilin and Wuzhou country (Gui, Zhao, He, Wu and other Guangxi prefectures) in 950-951. The dissolve passes all of it toward the southern-tang counterpart, while the successors cover only Hunan.",
+     "page to try": "https://en.wikipedia.org/wiki/Southern_Han"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "Rong and Gao prefectures. The Ma Yin page has a 911 sentence, 'allowing Liu Yin to take over Rong and Gao Prefectures'; whether Chu held them in 909-911 is unsettled.",
+     "page to try": "https://en.wikipedia.org/wiki/Liu_Yin"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "The 947-951 civil war between Ma Xiguang and Ma Xi'e, and any ground it moved. Li Prefecture, taken with Lang in 908, is not placed (only Changde/50 is).",
+     "page to try": "https://en.wikipedia.org/wiki/Ma_Xiguang"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Ma_Yin",
+     "result": "confirmed (created Prince of Chu after the 907 events; Ma Chu infobox 'Became the State: 907')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Ma_Yin",
+     "result": "confirmed (summer 908, Lang Prefecture fell)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Ma_Yin",
+     "result": "confirmed (six prefectures from Liu Yin, 'Later in the year' after summer 908)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Southern_Tang",
+     "result": "confirmed (Ma Xi'e 'deposed in December 951')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Ma_Chu",
+     "result": "confirmed (infobox 'Ended by Southern Tang: 951')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 416709,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area. The author's corrected outline (Hunan + Guilin/120 + Wuzhou/100) resolves to 296,399 km2, ratio 0.71 to Cliopatria. This is acknowledged and rests on the Ma Chu page's 'present-day Hunan and northeastern Guangxi'."
+   }
+  },
+  {
+   "slug": "yin-ten-kingdoms",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Wang_Yanzheng",
+     "result": "confirmed (Yin at Jian Prefecture, March or April 943)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Wang_Yanzheng",
+     "result": "confirmed (944: Zhang, Quan and Ting submitted)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Southern_Tang",
+     "result": "confirmed (reunion by February 945)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Wang_Yanzheng",
+     "result": "confirmed (Yin reign to 'February or March 945')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No Cliopatria row and no infobox."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "former-shu",
+    "year": 915,
+    "type": "gain",
+    "counterpart": "qi-kingdom"
+   },
+   "mirror": {
+    "slug": "qi-kingdom",
+    "year": 915,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Qin Prefecture (Tianshui/60)."
+  },
+  {
+   "event": {
+    "slug": "former-shu",
+    "year": 916,
+    "type": "gain",
+    "counterpart": "qi-kingdom"
+   },
+   "mirror": {
+    "slug": "qi-kingdom",
+    "year": 916,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Baoji; regions agree (Baoji/25 vs Baoji/40 minus Fengxiang/30)."
+  },
+  {
+   "event": {
+    "slug": "former-shu",
+    "year": 916,
+    "type": "contest_start",
+    "counterpart": "qi-kingdom"
+   },
+   "mirror": {
+    "slug": "qi-kingdom",
+    "year": 916,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Fengxiang siege, closed the same year on both sides."
+  },
+  {
+   "event": {
+    "slug": "former-shu",
+    "year": 925,
+    "type": "loss",
+    "counterpart": "later-tang"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "the counterpart dossier does not exist yet (its ea-04 part has not run); later-tang must carry a 925 gain of Sichuan."
+  },
+  {
+   "event": {
+    "slug": "qi-kingdom",
+    "year": 916,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Counterpart nobody, but the Li Maozhen page gives the Jingnan Circuit to Later Liang in 915. Later Liang has no gain (see both verdicts)."
+  },
+  {
+   "event": {
+    "slug": "qi-kingdom",
+    "year": 908,
+    "type": "loss (missing)",
+    "counterpart": "later-liang-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Baoda and Baosai (Yan'an) surrendered to Later Liang in 908 (Li Maozhen page). The event is in neither ledger."
+  },
+  {
+   "event": {
+    "slug": "qi-kingdom",
+    "year": 915,
+    "type": "loss (missing)",
+    "counterpart": "later-liang-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Jingnan Circuit (Bin, Ning, Qing) surrendered to Later Liang in 915 (Li Maozhen page). The event is in neither ledger."
+  },
+  {
+   "event": {
+    "slug": "qi-kingdom",
+    "year": 924,
+    "type": "loss",
+    "counterpart": "later-tang"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "the counterpart dossier does not exist yet (its ea-04 part has not run); later-tang must carry Qi's submission in spring 924."
+  },
+  {
+   "event": {
+    "slug": "later-liang-dynasty",
+    "year": 915,
+    "type": "loss",
+    "counterpart": "former-jin"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "the counterpart dossier does not exist yet (its ea-04 part has not run); former-jin needs a 915 gain of Tianxiong."
+  },
+  {
+   "event": {
+    "slug": "later-liang-dynasty",
+    "year": 916,
+    "type": "loss",
+    "counterpart": "former-jin"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "the counterpart dossier does not exist yet (its ea-04 part has not run); former-jin needs the 916 north-bank gain, including Henan north of the river."
+  },
+  {
+   "event": {
+    "slug": "later-liang-dynasty",
+    "year": 922,
+    "type": "gain",
+    "counterpart": "former-jin"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "the counterpart dossier does not exist yet (its ea-04 part has not run); Wei Prefecture (衛州, Puyang), not Daming."
+  },
+  {
+   "event": {
+    "slug": "later-liang-dynasty",
+    "year": 923,
+    "type": "gain",
+    "counterpart": "Zhaoyi Circuit (Li Jitao)"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "The counterpart is a free string; the land came from Jin, so it should be former-jin."
+  },
+  {
+   "event": {
+    "slug": "later-liang-dynasty",
+    "year": 923,
+    "type": "loss",
+    "counterpart": "later-tang"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "the counterpart dossier does not exist yet (its ea-04 part has not run); Yun Prefecture (Tianping) to Li Siyuan in 923."
+  },
+  {
+   "event": {
+    "slug": "later-liang-dynasty",
+    "year": 923,
+    "type": "loss",
+    "counterpart": "later-tang"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "the counterpart dossier does not exist yet (its ea-04 part has not run); 19 November 923, the whole realm. Cliopatria's Later Tang row starts 926, so the later-tang dossier must start in 923."
+  },
+  {
+   "event": {
+    "slug": "later-jin",
+    "year": 937,
+    "type": "gain",
+    "counterpart": "later-tang"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "the counterpart dossier does not exist yet (its ea-04 part has not run); the Later Tang ended 11 January 937, but Cliopatria's later-tang row ends 935."
+  },
+  {
+   "event": {
+    "slug": "later-jin",
+    "year": 938,
+    "type": "loss",
+    "counterpart": "liao-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "liao-dynasty belongs to ea-05, which has not run. Cliopatria's Liao shape holds the Sixteen Prefectures from 936, which disagrees by two years."
+  },
+  {
+   "event": {
+    "slug": "later-jin",
+    "year": 936,
+    "type": "vassal_start (missing)",
+    "counterpart": "liao-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Liao suzerainty 936-942 (Later Jin page; Shi Chonggui page). Wanted in both ledgers."
+  },
+  {
+   "event": {
+    "slug": "later-jin",
+    "year": 947,
+    "type": "loss",
+    "counterpart": "liao-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ea-05 has not run. Liao occupation of Kaifeng in January 947 and withdrawal the same year; later-han follows."
+  },
+  {
+   "event": {
+    "slug": "min",
+    "year": 943,
+    "type": "loss",
+    "counterpart": "yin-ten-kingdoms"
+   },
+   "mirror": {
+    "slug": "yin-ten-kingdoms",
+    "year": 943,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Jian Prefecture (Nanping/60) on both sides."
+  },
+  {
+   "event": {
+    "slug": "min",
+    "year": 944,
+    "type": "loss",
+    "counterpart": "yin-ten-kingdoms"
+   },
+   "mirror": {
+    "slug": "yin-ten-kingdoms",
+    "year": 944,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Zhang, Quan and Ting; same region spec."
+  },
+  {
+   "event": {
+    "slug": "min",
+    "year": 945,
+    "type": "merge",
+    "counterpart": "yin-ten-kingdoms"
+   },
+   "mirror": {
+    "slug": "yin-ten-kingdoms",
+    "year": 945,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": "Reunion under Wang Yanzheng, February or March 945."
+  },
+  {
+   "event": {
+    "slug": "min",
+    "year": 945,
+    "type": "loss",
+    "counterpart": "southern-tang"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "the counterpart dossier does not exist yet (its ea-04 part has not run); Jianzhou and Tingzhou, 2 October 945. The Wuyue vassalage of Fuzhou (946-947) and Qingyuan (Quan, Zhang) have no dossier yet."
+  },
+  {
+   "event": {
+    "slug": "southern-chu",
+    "year": 908,
+    "type": "gain",
+    "counterpart": "Lang Prefecture (Hongnong's ally)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "A free-string counterpart with no dossier; listed under counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "southern-chu",
+    "year": 908,
+    "type": "gain",
+    "counterpart": "southern-han"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "the counterpart dossier does not exist yet (its ea-04 part has not run). The southern-han dossier must begin by 908 (Liu Yin's circuit) or this counterpart needs a different slug; Cliopatria's southern-han row starts 911."
+  },
+  {
+   "event": {
+    "slug": "southern-chu",
+    "year": 951,
+    "type": "loss",
+    "counterpart": "southern-tang"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "the counterpart dossier does not exist yet (its ea-04 part has not run); December 951. Cliopatria's southern-tang row starts 960, so the southern-tang dossier must start by 937."
+  },
+  {
+   "event": {
+    "slug": "yin-ten-kingdoms",
+    "year": 944,
+    "type": "gain",
+    "counterpart": "min"
+   },
+   "mirror": {
+    "slug": "min",
+    "year": 944,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Same region spec."
+  },
+  {
+   "event": {
+    "slug": "yin-ten-kingdoms",
+    "year": 945,
+    "type": "merge",
+    "counterpart": "min"
+   },
+   "mirror": {
+    "slug": "min",
+    "year": 945,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "tang-dynasty",
+    "year": 907,
+    "type": "dissolve",
+    "counterpart": "later-liang-dynasty"
+   },
+   "mirror": {
+    "slug": "later-liang-dynasty",
+    "year": 907,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Tang's successors list names all six states of this batch. Former Shu (907/11), Qi (907), Chu (907) and Min (909/4) are founded from tang-dynasty after its June 907 end, so Fujian has no holder from 907/6 to 909/4."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Fengxiang",
+   "kind": "place",
+   "used_in": "qi-kingdom"
+  },
+  {
+   "name": "Daming",
+   "kind": "place",
+   "used_in": "later-liang-dynasty"
+  },
+  {
+   "name": "Dongping",
+   "kind": "place",
+   "used_in": "later-liang-dynasty"
+  },
+  {
+   "name": "Jian'ou",
+   "kind": "place",
+   "used_in": "min"
+  },
+  {
+   "name": "Shangdang (Lu Prefecture)",
+   "kind": "place",
+   "used_in": "later-liang-dynasty"
+  },
+  {
+   "name": "Sixteen Prefectures",
+   "kind": "region",
+   "used_in": "later-jin"
+  },
+  {
+   "name": "Hedong",
+   "kind": "region",
+   "used_in": "later-jin"
+  },
+  {
+   "name": "Yedu",
+   "kind": "place",
+   "used_in": "later-jin"
+  },
+  {
+   "name": "Feng Prefecture (Fengzhou, Feng County, Shaanxi)",
+   "kind": "place",
+   "used_in": "former-shu"
+  },
+  {
+   "name": "Jingnan Circuit (Bin, Ning, Qing prefectures)",
+   "kind": "region",
+   "used_in": "qi-kingdom"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Wuping Circuit (former Chu land under Liu Yan, Wang Kui, Zhou Xingfeng)",
+   "suggested_slug": "wuping-circuit",
+   "years": [
+    952,
+    963
+   ]
+  },
+  {
+   "name": "Qingyuan Circuit (Quanzhou and Zhangzhou under Liu Congxiao)",
+   "suggested_slug": "qingyuan-circuit",
+   "years": [
+    945,
+    978
+   ]
+  },
+  {
+   "name": "Lang Prefecture garrison (Hongnong's ally, Changde)",
+   "suggested_slug": "lang-prefecture",
+   "years": [
+    907,
+    908
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ea-04-c.md",
+ "problems": [
+  "The reviewer brief section 5 forbids editing dossiers. The orchestrator's adjustment allowed small verified fixes, and one was applied: former-shu keyframes 915-925 now add Tianshui/60. Re-validated: 0 errors, 0 warnings.",
+  "Of the Context neighbours, only tibetans exists in history/polities/; it has no events with this batch. tang-dynasty (ea-04-a) was also read. All others (later-tang, former-jin, southern-han, southern-tang, wuyue, later-shu, liao-dynasty, later-han, jingnan, yan-kingdom, southern-wu) are missing and were treated as 'group not yet run'.",
+  "Cliopatria's 'Later Jin' 911-921 shape is Li Keyong's Jin. The former-jin dossier (another ea-04 part) must take it, along with its 922-925 row.",
+  "WebFetch returns summaries. The Zhu Youzhen page puts 衛州 'in modern Puyang, Henan' (historically the seat was near Weihui, Xinxiang). Either way it is in Henan north of the river, not Daming.",
+  "No infobox area on any of the seven state pages, so no area ratio could be computed."
+ ]
+}

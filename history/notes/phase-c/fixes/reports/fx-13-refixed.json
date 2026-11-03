@@ -1,0 +1,61 @@
+{
+ "batch_id": "fx-13",
+ "findings": [
+  {
+   "item": "F152 handoff (hazaraspids)",
+   "verdict": "kept",
+   "dossiers_changed": [
+    "jalayirid-sultanate"
+   ],
+   "changes": [
+    "jalayirid-sultanate: keyframe_review/0-5 note and ledger/0 note: replaced '(the sentence is undated); the hazaraspids dossier draws all of Khuzestan, which is a handoff (177 cells remain in conflict)' by the dated Hasan Buzurg context, the two Hazaraspids-page sentences (Yusuf Shah I 'added Khuzestan', Yusuf Shah II 'annexed the cities of Shushtar, Hoveizeh and Basra') and the statement that the size rule keeps the 177 Khuzestan cells with the Hazaraspids; region specs unchanged",
+    "hazaraspids: no change and no handoff (the Idaj-only narrowing is withdrawn)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Hazaraspids",
+    "https://en.wikipedia.org/wiki/Hasan_Buzurg",
+    "https://en.wikipedia.org/wiki/Jalayirid_Sultanate"
+   ],
+   "why": "Hazaraspids page reopened: Yusuf Shah I (r. 1274-1288) 'added Khuzestan, Kuhgiluya, Firuzan (near Isfahan) and Golpayegan to his domain'; Rukn al-Din Yusuf Shah II (r. 1330-1340) 'annexed the cities of Shushtar, Hoveizeh and Basra in the first half of fourteenth century'. So the 1274-1339 Khuzestan claim is supported and hazaraspids_1274, _1330 and ledger/1 must stay. For 1340-1395 both dynasties are drawn on the plain: Hasan Buzurg page 'Peace was declared in late 1338 ... Despite all loss Hasan Buzurg retained control of Diyar Bakr, Iraq, Khuzestan and Baghdad' (no mention of the Hazaraspids); Jalayirid Sultanate page has Khuzistan only in 1405 and 1423 sentences, nothing between 1340 and 1395. No page dates an end to either claim, so a contest_start/contest_end pair would need years no page gives; the size rule's result (Hazaraspids, the smaller state, keep the plain) stands. Confidence 1-2."
+  },
+  {
+   "item": "F241 handoff (khwarezmid-empire)",
+   "verdict": "handoff",
+   "dossiers_changed": [],
+   "changes": [
+    "khwarezmid-empire (read-only): handoff narrowed to the Hazaraspid core only (98 cells) for ledger/0 found region and keyframes 1202-1227; the 'from 1274 also Khuzestan, Kohgiluyeh and Buyer Ahmad (287 cells)' clause is dropped"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Khwarazmian_Empire",
+    "https://en.wikipedia.org/wiki/Hazaraspids"
+   ],
+   "why": "The khwarezmid-empire dossier ends in August 1231 (ledger/31-32), and conflicts.csv lists the pair only for 1202-1227 (98 cells, 8 years); the 287 cells are the hazaraspids' own 1274 gain, not a Khwarezmid overlap. Gazetteer: the union {admin1 Chahar Mahall and Bakhtiari, Iran} + {lon 49.87, lat 31.83, km 60} resolves to 98 cells, all inside the Khwarezmid Cliopatria shapes 1202-1227 and inside all eight keyframe corrections. Khwarazmian Empire page reopened: no mention of Khuzestan, Luristan, Bakhtiari, Hazaraspids or Kohgiluyeh; it gives 'by late 1217, he controlled all of Persian Iraq, with Arran, Azerbaijan, and Derbent becoming his vassals'. Hazaraspids page: capital Idaj 'in present-day northern Khuzestan'; Malik Hazarasp (r. 1204-1248) 'assisted Jalal-al-din Khwarezmshah in his struggle against the Mongols' (an ally, no overlordship stated). The size rule already gives the 98 cells to hazaraspids in all eight years, so the cut is optional and cosmetic (confidence 1)."
+  }
+ ],
+ "dossiers_changed": [
+  "jalayirid-sultanate"
+ ],
+ "validation": {
+  "jalayirid-sultanate": "ok",
+  "golden-horde": "ok (unchanged in this refix)"
+ },
+ "handoffs": [
+  {
+   "dossier": "khwarezmid-empire",
+   "where": "ledger/0 found region and keyframe_review entries for keyframes khwarezmid-empire_1202 to _1227 (optional)",
+   "what": "Subtract {union: [{admin1: Chahar Mahall and Bakhtiari, country: Iran}, {lon: 49.87, lat: 31.83, km: 60}]} (98 cells, the Hazaraspid core) from the found region and from keyframes 1202-1227. Do not subtract Khuzestan, Kohgiluyeh or Buyer Ahmad: they are not in conflict with this dossier, which ends in 1231.",
+   "why": "No page opened puts Khwarezmid rule in the Bakhtiari country or at Idaj; the Khwarazmian page gives Persian Iraq (late 1217), Arran, Azerbaijan and Derbent; the Hazaraspids page has Malik Hazarasp (r. 1204-1248) assisting Jalal al-Din, an ally. The size rule already awards the cells to hazaraspids, so this only tidies the outline.",
+   "source": "https://en.wikipedia.org/wiki/Khwarazmian_Empire"
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "not_reached": [],
+ "notes_path": "history/polities/_notes/fix-fx-13.md",
+ "problems": [
+  "The hazaraspids handoff of fx-13.json is withdrawn: do not narrow Khuzestan in hazaraspids_1274, _1330 or ledger/1. The other two handoffs of fx-13.json (chobanids ledger/4-5 and data/hierarchy.csv row principality-of-murom) were not rejected and are not repeated here.",
+  "The F241 handoff of fx-13.json is replaced by the one above (drop the 'from 1274' clause).",
+  "Note correction (not a dossier change): fix-fx-13.md and fx-13.json said the 1356 Tiflis occupation is on no page opened; the Jalayirid Sultanate page has 'Jani Beg occupied the Georgian capital of Tiflis in 1356, and issued his own coinage there'. Tiflis is outside the 1333-1352 golden-horde outlines, so the F308 cut is unaffected; an optional occupation_start 1356 / occupation_end 1357 of {place: Tbilisi, km: 40} (golden-horde against kingdom-of-georgia) is not written.",
+  "The old text in the jalayirid-sultanate notes calling the Hasan Buzurg sentence undated is now 'follows the late-1338 peace'; the page does not say with whom the peace was made.",
+  "The compiler was not run; cell counts come from tools/gazetteer.py."
+ ]
+}

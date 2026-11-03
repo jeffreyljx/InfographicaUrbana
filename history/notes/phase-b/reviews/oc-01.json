@@ -1,0 +1,1291 @@
+{
+ "batch_id": "oc-01",
+ "verdicts": [
+  {
+   "slug": "kingdom-of-hawai-i",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/0/from",
+     "what": "The Unification of Hawaii war began in 1782, nine years before the dossier's start (1791).",
+     "why": "Reviewer brief check 2: wars lie inside the life; the war's own note dates its start to Kalaniʻōpuʻu's death and Mokuʻōhai (1782).",
+     "fix": "'from' set to 1791; a sentence added to the war's note saying the war began in 1782.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger (1795), /identity/capitals/1",
+     "what": "The court's 1795 move to Honolulu/Waikīkī is in identity.capitals but has no capital_move event (the 1812, 1820 and 1845 moves do).",
+     "why": "Hawaiian Kingdom infobox: 'Waikīkī / Honolulu / Kailua-Kona' following Kamehameha I's movements (1795-1820).",
+     "fix": "Add a capital_move 1795 (confidence 2, source Hawaiian_Kingdom) or say in the capital's note why there is none.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/notes",
+     "what is missing": "Cliopatria's relation row (Allegiance of Kingdom of Hawaiʻi to British Empire) 1811-1819 is confirmed by no page opened; no vassal event recorded.",
+     "page to try": "https://en.wikipedia.org/wiki/George_Vancouver"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Unification_of_Hawaii",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kaumuali%CA%BBi",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Hawaiian_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Paulet_affair",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Paulet_affair",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Hawaiian_Kingdom",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 24849.7,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; the notes say so and call Cliopatria's 24,850 km2 (1811-1893) and 11,830 km2 (1791) plausible."
+   }
+  },
+  {
+   "slug": "kingdom-of-fiji",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1/region/union/1, /identity/predecessors/1/land/union/1",
+     "what": "Ma'afu's Lau was drawn as Natural Earth's Eastern Division, which also holds Lomaiviti (Bau's, in kingdom-of-bau) and Kadavu (Burebasaga).",
+     "why": "Gazetteer: Fiji admin1 'Eastern' (FJ-E) is the Eastern Division (Lau, Lomaiviti, Kadavu); tovata-confederacy draws the same land as the Lau circle plus the Northern Division; Enele Maʻafu page: the Tovata 'covering most of northern and eastern Fiji', Tovata page: 'Bua, Macuata and Cakaudrove on Vanua Levu, plus the Lau Islands'.",
+     "fix": "Replaced admin1 Eastern by {\"lon\": -178.8, \"lat\": -18.3, \"km\": 160} (the Lau stand-in tovata-confederacy uses), text kept, so the merge land equals tovata-confederacy's dissolve land.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/identity/predecessors/0/land",
+     "what": "Bau's handover land is the Central Division, which holds Rewa, Namosi and Serua as well as Tailevu and Naitasiri (see the kingdom-of-bau finding).",
+     "why": "Kubuna page: 'It consists of the provinces of Tailevu, Naitasiri, Lomaiviti, Ra, Rotuma, and parts of the western province of Ba'.",
+     "fix": "Copy the corrected kingdom-of-bau land here once the Bau author fixes it.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Merge of the Tovata at confidence 1: no page opened dates Ma'afu's adhesion to Cakobau's kingdom.",
+     "page to try": "https://en.wikipedia.org/wiki/Lau_Islands"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Fiji",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Fiji",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Fiji",
+     "result": "not on page (declared a bridging event at confidence 1; the page names Ma'afu only as a signatory of the 1874 cession)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 21695.7,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; notes compare Cliopatria's 21,696 km2 with Fiji's land and accept it."
+   }
+  },
+  {
+   "slug": "kingdom-of-tonga",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1/region, /ledger/2/region",
+     "what": "The Lau claim of 1848-1868 was drawn as the whole Eastern Division (Lau, Lomaiviti, Kadavu), so Lomaiviti is a Tongan vassal while kingdom-of-bau holds it (1852-1868).",
+     "why": "Enele Maʻafu page: 'Ma'afu established himself at Lakeba as leader of the Tongan community in the Lau Islands in 1848' (Lau only); gazetteer FJ-E is the Eastern Division.",
+     "fix": "Replaced admin1 Eastern by {\"lon\": -178.8, \"lat\": -18.3, \"km\": 160} (the Lau stand-in tovata-confederacy uses), text kept.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/2/month",
+     "what": "The Tongan disclaimer had no month.",
+     "why": "Enele Maʻafu page: 'Ma'afu was faced with a crisis in June 1868, when the Tongan government disclaimed all sovereignty over Fijian territory'.",
+     "fix": "Month 6 added.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/1, /ledger/2 (counterpart 'Lau Islands (Ma'afu)')",
+     "what": "From February 1867 the same Lau land is tovata-confederacy's (found, counterpart nobody), while this dossier keeps it as a Tongan vassal until June 1868; neither dossier says so.",
+     "why": "Tovata page: conceived '14 February 1867 by the Tui Lau, Ma'afu'; Maʻafu page: the June 1868 disclaimer, after which he 'lost his authority as a Tongan prince over Lau' (author's quote).",
+     "fix": "Say in the note of /ledger/2 (and in tovata-confederacy /ledger/0) that from 1867 the vassal is Ma'afu's Tovata, or end the vassal tint in 1867.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Lau as a Tongan vassal from 1848 at confidence 1: the page says Ma'afu led the Tongan community, not that Tonga held suzerainty.",
+     "page to try": "https://en.wikipedia.org/wiki/Lau_Islands"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/George_Tupou_I",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Enele_Ma%CA%BBafu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Enele_Ma%CA%BBafu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/George_Tupou_I",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 748,
+    "infobox_year": 2026,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "New keyframe (country Tonga); keyframe note quotes the infobox's 748 km2."
+   }
+  },
+  {
+   "slug": "tu-i-tonga-empire",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/3/region, /ledger/8/region",
+     "what": "'Parts of Fiji: the Lau Islands' was drawn as the whole Eastern Division (Lau, Lomaiviti, Kadavu).",
+     "why": "History of Tonga lists 'parts of Fiji'; the event's text names the Lau Islands; gazetteer FJ-E is the whole Eastern Division.",
+     "fix": "Replaced admin1 Eastern by {\"lon\": -178.8, \"lat\": -18.3, \"km\": 160} (the Lau stand-in tovata-confederacy uses), text kept.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/wars/1/to",
+     "what": "The Tongan civil war ran to 1845, 46 years past the state's end (1799).",
+     "why": "Reviewer brief check 2 (wars inside the life); the war's note concedes it 'lies after this state's end'.",
+     "fix": "'to' set to 1799; a sentence added to the note saying the war ran to the 1845 unification.",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1, /ledger/2, /ledger/3, /ledger/4, /ledger/5, /ledger/6, /ledger/8, /ledger/9, /ledger/10",
+     "what is missing": "Nine confidence-1 placings of oral chronology (pages give centuries: 12th century extent, '13th or 14th century' Samoan expulsion, '15th and 16th centuries' ʻUvea-Futuna, decline after 1535).",
+     "page to try": "https://en.wikipedia.org/wiki/Malietoa"
+    },
+    {
+     "where": "/ledger/6, /ledger/10",
+     "what is missing": "ʻUvea and Futuna: years of the Tongan hold.",
+     "page to try": "https://en.wikipedia.org/wiki/Wallis_and_Futuna"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Tu%CA%BBi_Tonga_Empire",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Tu%CA%BBi_Tonga_Empire",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Tu%CA%BBi_Tonga_Empire",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/History_of_Tonga",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/History_of_Tonga",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; new keyframes (Tongatapu, then the Tongan group)."
+   }
+  },
+  {
+   "slug": "provisional-government-of-hawaii",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Provisional_Government_of_Hawaii",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Provisional_Government_of_Hawaii",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 24849.7,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; the shape is the kingdom's 1890 shape for 1893-1894. Tried: dates (17 January 1893, 4 July 1894), the handover to and from the kingdom and the Republic, the capital, the president (the infobox's Lorrin A. Thurston conflicts with the text's Dole; the dossier follows the text)."
+   }
+  },
+  {
+   "slug": "kingdom-of-tahiti",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/note",
+     "what": "The 1808-1815 loss of Tahiti island, most of the kingdom's land, falls inside keyframe 0 (1788-1842) and the keyframe did not mention it.",
+     "why": "Kingdom of Tahiti page: 'forced to take refuge in Moʻorea 22 December 1808'; 'the decisive Battle of Te Fe'i Pī, on 12 November 1815'. Reviewer brief check 4: an event with no trace in the keyframes must be small or flagged in the keyframe.",
+     "fix": "Sentence added to the keyframe note pointing to /ledger/1 and /ledger/2.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger (1843-1847)",
+     "what": "France's annexation of November 1843 to February 1847 is drawn as neither an occupation nor a loss; only the 1844-1846 contest is recorded.",
+     "why": "Franco-Tahitian War page: 'In November 1843, Dupetit Thouars deposed the queen for her continued resistance and formally annexed the islands'; 'In February 1847, Queen Pōmare IV returned from her exile and acquiesced to rule under the protectorate'.",
+     "fix": "Add occupation_start 1843-11 / occupation_end 1847-02 with counterpart bourbon-kingdom-of-france (the owner's side of rule 4), or say in keyframe 1's note why the annexation is not drawn.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "The Kingdom page's lead says the kingdom 'eventually annexed the Tuamotus, and the Austral Islands'; undated and not drawn (the notes name only the Tuamotus).",
+     "page to try": "https://en.wikipedia.org/wiki/Austral_Islands"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "The rebel chiefs who held Tahiti in 1808-1815 are not named on the page (counterpart is a string with no dossier).",
+     "page to try": "https://en.wikipedia.org/wiki/P%C5%8Dmare_II"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Tahiti",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Tahiti",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Franco-Tahitian_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Franco-Tahitian_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Tahiti",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; the keyframe note gives about 1,260 km2 of cells for Tahiti and Moʻorea."
+   }
+  },
+  {
+   "slug": "kingdom-of-bau",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction, /ledger/0/region, /ledger/2/region, /identity/successors/0/land",
+     "what": "Bau's land is drawn as Natural Earth's Central Division, which besides Tailevu and Naitasiri holds Rewa, Namosi and Serua: the Burebasaga side, with Rewa Bau's enemy in these years. The text equates the division with 'Tailevu and Naitasiri', which is wrong.",
+     "why": "Kubuna page: 'It consists of the provinces of Tailevu, Naitasiri, Lomaiviti, Ra, Rotuma, and parts of the western province of Ba' and 'The capital of the confederacy is the chiefly island of Bau in Tailevu'. The keyframe note itself: 'Rewa, in the Central Division, is the rival chiefdom of the Bau-Rewa wars'. kingdom-of-tonga /wars/0 has 'Rewa and the Bauan rebels' fighting Bau at Kaba in 1855.",
+     "fix": "Replace admin1 Central by a stand-in for Tailevu and Naitasiri only (for example a circle of about 35 km at 178.45 E, 17.75 S, or Central minus a circle over the Rewa delta, Suva, Namosi and Serua), keep the Lomaiviti circle, and copy the same land into kingdom-of-fiji /identity/predecessors/0/land.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/wars",
+     "what": "The Battle of Kaba (1855), where Tonga fought for Cakobau, is not in Bau's wars, though kingdom-of-tonga lists kingdom-of-bau as a belligerent.",
+     "why": "Cakobau page: 'Cakobau crushed the rebellion with the aid of the King of Tonga'; George Tupou I page: 'Tupou defeated Cakobau's enemies at the Battle of Kaba in 1855'.",
+     "fix": "Add a war 'Battle of Kaba', 1855-1855, belligerents kingdom-of-bau, kingdom-of-tonga, 'Rewa and the Bauan rebels', zones [] (no ground recorded as changing hands), source George_Tupou_I (add it to sources).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger",
+     "what is missing": "The Bau-Rewa wars, Bau's extent in 1852-1871 and Cakobau's title in 1869-1871 are on no page opened.",
+     "page to try": "https://en.wikipedia.org/wiki/Ratu_Tanoa_Visawaqa"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Seru_Epenisa_Cakobau",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Seru_Epenisa_Cakobau",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Seru_Epenisa_Cakobau",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area (Bau Island page; Kingdom of Bau does not exist)."
+   }
+  },
+  {
+   "slug": "tovata-confederacy",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/0/note",
+     "what": "The Lau core is founded on nobody's land in February 1867 while kingdom-of-tonga keeps Lau as a Tongan vassal until June 1868.",
+     "why": "Enele Maʻafu page: 'a crisis in June 1868, when the Tongan government disclaimed all sovereignty over Fijian territory'.",
+     "fix": "Say in the note that Ma'afu held Lau as a Tongan prince until June 1868 (the same note as kingdom-of-tonga /ledger/2).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "The adhesion to the Kingdom of Fiji (June 1871) is bridged at confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Lau_Islands"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "Macuata's joining is undated (placed with Cakaudrove and Bua in May 1869).",
+     "page to try": "https://en.wikipedia.org/wiki/Macuata_Province"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Tovata",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Enele_Ma%CA%BBafu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Fiji",
+     "result": "not on page (declared a bridging event at confidence 1)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area."
+   }
+  },
+  {
+   "slug": "kingdom-of-samoa",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/0 (new)",
+     "what": "The infobox's 'War between Pulefou and Taimua and Faipule: 1879-1881' was not in wars (the notes mention it as 'named only in the infobox').",
+     "why": "Kingdom of Samoa infobox, read by the reviewer. Reviewer brief check 10: each war in the sources appears, with empty zones where no ground changed hands.",
+     "fix": "Added as /wars/0 with zones [] and a note; the First and Second Samoan Civil Wars are now /wars/1 and /wars/2.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/wars/1/from",
+     "what": "The First Samoan Civil War starts in 1886, a year neither infobox gives.",
+     "why": "Kingdom of Samoa infobox: 'First Samoan Civil War: 1889-1894'; First Samoan Civil War page infobox: '1887–1889' and '1893–1894'. The war's note says the body text gives 1886-1894 (not verified by the reviewer).",
+     "fix": "Quote the body sentence for 1886 in the note, or use 1887 and cite First_Samoan_Civil_War.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger (1882, 1887)",
+     "what": "The capital returns to Mulinuʻu in 1882 and moves to Leulumoega in 1887 in identity.capitals, with no capital_move events.",
+     "why": "Infobox: 'Mulinu'u (1873-1887)', 'Leulumoega 1880-1881', 'Leulumoega (1887-1888)', 'Mulinu'u (1889-1899)'.",
+     "fix": "Add capital_move 1882 and 1887 (confidence 2, source Kingdom_of_Samoa).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/wars/2",
+     "what is missing": "Mataʻafa's 1899 rebel government at Aele and its land are not drawn.",
+     "page to try": "https://en.wikipedia.org/wiki/Second_Samoan_Civil_War"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Samoa",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Samoa",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Samoa",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Samoa",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area."
+   }
+  },
+  {
+   "slug": "united-tribes-of-new-zealand",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/United_Tribes_of_New_Zealand",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/United_Tribes_of_New_Zealand",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Infobox gives no area; Northland stand-in for 'the north of the North Island' ('52 signatories from Northland'). Tried: the dates, the land, the end at the 21 May 1840 proclamation against the February 1840 treaty, the successor (Colony of New South Wales then Colony of New Zealand, both in the infobox, both in the notes)."
+   }
+  },
+  {
+   "slug": "maori-king-movement",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1, /keyframe_review/0/correction, /ledger/0/region",
+     "what": "The King Country (70 km circle, about 15,400 km2) appears in keyframe 1 (1864) with no ledger event bringing it in: between the keyframes the ledger holds only the Waikato loss (/ledger/4), yet the drawn area doubles (keyframe 0 is a 50 km circle, about 7,850 km2).",
+     "why": "Māori King Movement page: the 'first circle' of supporters was Waikato, Maniapoto and Hauraki; King Country page: 'the Kingite forces retreated southwards from the Waikato after the battle at Ōrākau in April 1864' into Ngāti Maniapoto land. Reviewer brief check 4.",
+     "fix": "Either add the King Country to the 1858 found region and keyframe 0's correction (union of the Hamilton 50 km circle and the King Country stand-in, Maniapoto being in the movement from its founding), or add a gain 1864-04 (counterpart nobody, source King_Country) of the King Country; and say which in keyframe 1's note.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/1/correction, /ledger/5/region, /identity/successors/0/land",
+     "what": "The King Country circle (175.1 E, 38.5 S, 70 km) reaches 37.87 S, north of the aukati on the Pūniu near Kihikihi (about 38.04 S), and so re-draws Te Awamutu and Ōrākau, which are in the Waikato lost in April 1864 (/ledger/4, a Hamilton 50 km circle).",
+     "why": "King Country page: 'a line of pā alongside the Puniu River near Kihikihi'; its north edge is 'Kawhia Harbour and the town of Ōtorohanga'.",
+     "fix": "Move the circle south or shrink it so its north edge stays at the Pūniu (for example 175.1 E, 38.6 S, 55 km), or subtract the Hamilton 50 km circle.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/capitals/1",
+     "what is missing": "The king's seat 1864-1883 is not named.",
+     "page to try": "https://en.wikipedia.org/wiki/T%C4%81whiao"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/M%C4%81ori_King_Movement",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Invasion_of_the_Waikato",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Invasion_of_the_Waikato",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Invasion_of_the_Waikato",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/King_Country",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; the Invasion page's confiscation ('about 12,000 km2', '486,500 hectares') is quoted in /ledger/4."
+   }
+  },
+  {
+   "slug": "rapa-nui",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Start 1200 at confidence 1: the page gives settlement estimates from 400 to 1300 CE ('current best estimate ... 12th century').",
+     "page to try": "https://en.wikipedia.org/wiki/Hotu_Matu%CA%BBa"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "No seat for the ariki mau.",
+     "page to try": "https://en.wikipedia.org/wiki/Anakena"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Easter_Island",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Easter_Island",
+     "result": "confirmed"
+    },
+    {
+     "where": "/wars/1",
+     "page": "https://en.wikipedia.org/wiki/Easter_Island",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 163.6,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": 1.55,
+    "acknowledged": true,
+    "note": "One grid cell (about 253 km2) against the infobox's 163.6 km2; stated in the keyframe note."
+   }
+  },
+  {
+   "slug": "pohnpei-chiefdoms",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Saudeleur_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Saudeleur_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Pohnpei",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 334,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": 1.5,
+    "acknowledged": true,
+    "note": "Two grid cells (about 506 km2) against the page's 334 km2; stated in the keyframe note. Tried: start (c. 1100-1200), the c. 1628 rename against the legend's 1500s (noted), the end (Pohnpei page: 'Spanish period 1886–1899', 'By 1886 the Spaniards claimed the Caroline Islands'), Nan Madol's coordinates, the successor slug kingdom-of-spain (polities.csv 1516-2024)."
+   }
+  },
+  {
+   "slug": "yapese-empire",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "End 1899 (sale to Germany) bridged at confidence 1. The batch's own pohnpei-chiefdoms ends the Carolines' independence at Spain's claim 'by 1886' (Pohnpei page: 'Spanish period 1886–1899'), so Yap more likely passes to kingdom-of-spain about 1885-1886, then to german-empire in 1899.",
+     "page to try": "https://en.wikipedia.org/wiki/Caroline_Islands"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Sawei",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Yap",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 100,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": 2.5,
+    "acknowledged": true,
+    "note": "One grid cell (about 253 km2) against the infobox's 100 km2 of land: a grid-resolution limit, stated in the keyframe note."
+   }
+  },
+  {
+   "slug": "kingdom-of-maui",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/identity/capitals",
+     "what is missing": "No capital (empty list); Kahekili's seat on Maui is on no page opened.",
+     "page to try": "https://en.wikipedia.org/wiki/Wailuku,_Hawaii"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kahekili_II",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Unification_of_Hawaii",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Unification_of_Hawaii",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Unification_of_Hawaii",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Unification_of_Hawaii",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Unification_of_Hawaii",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No article (Kingdom of Maui does not exist on Wikipedia), no area. Tried: each dated event of 1765-1795 against the Kahekili II and Unification pages, the 1794 loss and gain pair against kingdom-of-kauai, the 1795 transfer against kingdom-of-hawai-i."
+   }
+  },
+  {
+   "slug": "kingdom-of-kauai",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/identity/capitals",
+     "what is missing": "No capital (empty list).",
+     "page to try": "https://en.wikipedia.org/wiki/Waimea,_Kauai_County,_Hawaii"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kamakahelei",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Unification_of_Hawaii",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kamakahelei",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kaumuali%CA%BBi",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; keyframe note compares about 1,430 km2 with about 1,000 km2 of cells. Tried: the 1770 start, the 1794 pair with kingdom-of-maui, the 1810-1824 tributary span (recorded by the suzerain kingdom-of-hawai-i), the 26 May 1824 end."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kingdom-of-hawai-i",
+    "year": 1795,
+    "type": "gain",
+    "counterpart": "kingdom-of-maui"
+   },
+   "mirror": {
+    "slug": "kingdom-of-maui",
+    "year": 1795,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Maui Nui by loss, Oʻahu by Maui's dissolve, both to kingdom-of-hawai-i; same circles."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hawai-i",
+    "year": 1810,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-kauai"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kauai",
+    "year": 1770,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Schema: vassal events live in the suzerain's ledger only; kingdom-of-kauai runs to 1824 so the tint has land."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hawai-i",
+    "year": 1824,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-kauai"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kauai",
+    "year": 1824,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "May 1824 both sides."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hawai-i",
+    "year": 1824,
+    "type": "gain",
+    "counterpart": "kingdom-of-kauai"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kauai",
+    "year": 1824,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Kauaʻi's dissolve names kingdom-of-hawai-i as successor (Lihue 100 km both sides)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hawai-i",
+    "year": 1843,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-great-britain"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-great-britain (polities.csv 1709-2024) has no dossier yet: its group has not run; it should record occupation_start 1843-02 / occupation_end 1843-07 of kingdom-of-hawai-i."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-hawai-i",
+    "year": 1843,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-great-britain"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "As above."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-fiji",
+    "year": 1871,
+    "type": "merge",
+    "counterpart": "tovata-confederacy"
+   },
+   "mirror": {
+    "slug": "tovata-confederacy",
+    "year": 1871,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "June 1871 both sides; land now identical (Northern Division plus the Lau circle) after the reviewer's fix to kingdom-of-fiji."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-fiji",
+    "year": 1871,
+    "type": "found",
+    "counterpart": "kingdom-of-bau"
+   },
+   "mirror": {
+    "slug": "kingdom-of-bau",
+    "year": 1871,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "June 1871; the handed-over land (Central Division plus Lomaiviti) is wrong on both sides and is fixed with the kingdom-of-bau finding."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tonga",
+    "year": 1848,
+    "type": "vassal_start",
+    "counterpart": "Lau Islands (Ma'afu)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "String counterpart with no dossier (Ma'afu's Tongan community in Lau)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tonga",
+    "year": 1868,
+    "type": "vassal_end",
+    "counterpart": "Lau Islands (Ma'afu)"
+   },
+   "mirror": {
+    "slug": "tovata-confederacy",
+    "year": 1867,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Tovata founds itself on the same Lau land in February 1867 with counterpart nobody while Tonga's vassal tint runs to June 1868; overlap of 16 months, unexplained on both sides (non-blocking note in both dossiers)."
+  },
+  {
+   "event": {
+    "slug": "tu-i-tonga-empire",
+    "year": 1100,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody."
+  },
+  {
+   "event": {
+    "slug": "tu-i-tonga-empire",
+    "year": 1100,
+    "type": "vassal_start",
+    "counterpart": "Samoa (Malietoa)"
+   },
+   "mirror": {
+    "slug": "tu-i-tonga-empire",
+    "year": 1250,
+    "type": "vassal_end"
+   },
+   "status": "exception",
+   "note": "String counterpart, no dossier for the pre-1873 Samoan districts; kingdom-of-samoa starts 1873."
+  },
+  {
+   "event": {
+    "slug": "tu-i-tonga-empire",
+    "year": 1100,
+    "type": "vassal_start",
+    "counterpart": "Lau Islands (Fiji)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "String counterpart, no dossier; region now the Lau circle."
+  },
+  {
+   "event": {
+    "slug": "tu-i-tonga-empire",
+    "year": 1100,
+    "type": "vassal_start",
+    "counterpart": "Niue, Rotuma and Tokelau"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "String counterpart, no dossier."
+  },
+  {
+   "event": {
+    "slug": "tu-i-tonga-empire",
+    "year": 1450,
+    "type": "vassal_start",
+    "counterpart": "ʻUvea and Futuna"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "String counterpart, no dossier."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tahiti",
+    "year": 1808,
+    "type": "loss",
+    "counterpart": "Tahitian rebel chiefs"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Unnamed rebel chiefs on the page; no dossier possible from the pages opened (thin)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-tahiti",
+    "year": 1815,
+    "type": "gain",
+    "counterpart": "Tahitian rebel chiefs"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "As above."
+  },
+  {
+   "event": {
+    "slug": "bourbon-kingdom-of-france",
+    "year": 1842,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-tahiti"
+   },
+   "mirror": {
+    "slug": "kingdom-of-tahiti",
+    "year": 1788,
+    "type": "found"
+   },
+   "status": "exception",
+   "note": "Missing on the suzerain side: bourbon-kingdom-of-france, french-second-republic, second-french-empire and french-third-republic have no dossiers yet (group not run); they must carry the protectorate 9 September 1842 - 29 June 1880."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-great-britain",
+    "year": 1900,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-tonga"
+   },
+   "mirror": {
+    "slug": "kingdom-of-tonga",
+    "year": 1845,
+    "type": "found"
+   },
+   "status": "exception",
+   "note": "Missing on the suzerain side (Treaty of Friendship 18 May 1900 - 4 June 1970, Tonga infobox); british-colonial-empire / kingdom-of-great-britain group not run."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-maui",
+    "year": 1783,
+    "type": "gain",
+    "counterpart": "kingdom-of-oahu"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-oahu has no dossier; listed in the author's counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-maui",
+    "year": 1794,
+    "type": "loss",
+    "counterpart": "kingdom-of-kauai"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kauai",
+    "year": 1794,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "July 1794 both sides, Maui Nui circle."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-maui",
+    "year": 1794,
+    "type": "gain",
+    "counterpart": "kingdom-of-kauai"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kauai",
+    "year": 1794,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "December 1794 both sides (Kāʻeokūlani killed 12 December 1794)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-maui",
+    "year": 1790,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-hawai-i"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Counterpart kingdom-of-hawai-i starts in 1791, so in 1790 it does not exist; its war 'Unification of Hawaii' now starts 1791. Not blocking: Kamehameha's pre-1791 domain on Hawaiʻi island has no dossier; consider naming the 1790 counterpart 'Kamehameha (Kona, Kohala, Hāmākua)' or noting it."
+  },
+  {
+   "event": {
+    "slug": "maori-king-movement",
+    "year": 1864,
+    "type": "loss",
+    "counterpart": "colony-of-new-zealand"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "colony-of-new-zealand has no dossier or Cliopatria row (New Zealand starts 1948); listed in the author's counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "tovata-confederacy",
+    "year": 1869,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "nobody."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Moorea",
+   "kind": "place",
+   "used_in": "kingdom-of-tahiti"
+  },
+  {
+   "name": "King Country (Rohe Pōtae)",
+   "kind": "region",
+   "used_in": "maori-king-movement"
+  },
+  {
+   "name": "Waikato",
+   "kind": "region",
+   "used_in": "maori-king-movement"
+  },
+  {
+   "name": "Lau Islands",
+   "kind": "region",
+   "used_in": "tovata-confederacy; kingdom-of-fiji; kingdom-of-tonga; tu-i-tonga-empire"
+  },
+  {
+   "name": "Lomaiviti",
+   "kind": "region",
+   "used_in": "kingdom-of-bau"
+  },
+  {
+   "name": "Tailevu",
+   "kind": "region",
+   "used_in": "kingdom-of-bau (needed for the fix)"
+  },
+  {
+   "name": "Naitasiri",
+   "kind": "region",
+   "used_in": "kingdom-of-bau (needed for the fix)"
+  },
+  {
+   "name": "Rewa",
+   "kind": "region",
+   "used_in": "kingdom-of-bau (to subtract)"
+  },
+  {
+   "name": "Bau",
+   "kind": "place",
+   "used_in": "kingdom-of-bau"
+  },
+  {
+   "name": "Easter Island (Rapa Nui)",
+   "kind": "region",
+   "used_in": "rapa-nui"
+  },
+  {
+   "name": "Yap outer islands (Ulithi, Woleai, Satawal, Lamotrek, Elato)",
+   "kind": "region",
+   "used_in": "yapese-empire"
+  },
+  {
+   "name": "Maui Nui",
+   "kind": "region",
+   "used_in": "kingdom-of-maui; kingdom-of-hawai-i; kingdom-of-kauai"
+  },
+  {
+   "name": "Oʻahu",
+   "kind": "region",
+   "used_in": "kingdom-of-maui; kingdom-of-hawai-i"
+  },
+  {
+   "name": "Kauaʻi and Niʻihau",
+   "kind": "region",
+   "used_in": "kingdom-of-kauai; kingdom-of-hawai-i"
+  },
+  {
+   "name": "Hawaiʻi island",
+   "kind": "region",
+   "used_in": "kingdom-of-hawai-i"
+  },
+  {
+   "name": "Manuʻa Islands",
+   "kind": "region",
+   "used_in": "tu-i-tonga-empire; kingdom-of-samoa (admin1 Manu's has 0 cells)"
+  },
+  {
+   "name": "Niuas",
+   "kind": "region",
+   "used_in": "tu-i-tonga-empire"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Colony of New Zealand",
+   "suggested_slug": "colony-of-new-zealand",
+   "years": [
+    1841
+   ]
+  },
+  {
+   "name": "Kingdom of Oʻahu (Kahahana)",
+   "suggested_slug": "kingdom-of-oahu",
+   "years": [
+    1783
+   ]
+  },
+  {
+   "name": "Keōua Kūʻahuʻula's Kaʻū and Puna chiefdom",
+   "suggested_slug": "kau-and-puna-chiefdom",
+   "years": [
+    1790,
+    1791
+   ]
+  },
+  {
+   "name": "Burebasaga Confederacy (Rewa)",
+   "suggested_slug": "burebasaga-confederacy",
+   "years": []
+  },
+  {
+   "name": "Leeward Islands kingdoms (Raiatea-Tahaa, Huahine, Bora Bora)",
+   "suggested_slug": "leeward-islands-kingdoms",
+   "years": [
+    1847,
+    1897
+   ]
+  },
+  {
+   "name": "Tuʻi Manuʻa (Manuʻa chiefdom)",
+   "suggested_slug": "tui-manua",
+   "years": [
+    1904
+   ]
+  },
+  {
+   "name": "Faitasiga (Samoan confederacy)",
+   "suggested_slug": "faitasiga",
+   "years": [
+    1873
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-oc-01.md",
+ "problems": [
+  "No page failed to load for the reviewer (29 Wikipedia pages opened).",
+  "Neighbour dossiers: the author brief's Context list is empty ('none within 25 km in this era'); every counterpart outside the batch (kingdom-of-great-britain, british-colonial-empire, bourbon-kingdom-of-france and the later French states, german-empire, united-states-of-america, republic-of-chile, kingdom-of-spain, republic-of-hawai-i) has no file in history/polities/ yet: counted as 'group not run'.",
+  "Reviewer edits (orchestrator's small-fix rule; each re-validated with 0 errors and read back after more than 10 s): kingdom-of-fiji (Lau region in /ledger/1 and /identity/predecessors/1), kingdom-of-tonga (/ledger/1-2 Lau region, /ledger/2 month 6), tu-i-tonga-empire (/ledger/3 and /ledger/8 Lau region, /wars/1/to 1799), kingdom-of-hawai-i (/wars/0/from 1791), kingdom-of-tahiti (/keyframe_review/0/note), kingdom-of-samoa (new /wars/0; later wars shift by one).",
+  "kingdom-of-bau's land fix must be copied into kingdom-of-fiji /identity/predecessors/0/land (kingdom-of-fiji is otherwise accepted).",
+  "republic-of-hawai-i (another group) should start in July 1894, where provisional-government-of-hawaii ends; Cliopatria's row starts 1895."
+ ]
+}

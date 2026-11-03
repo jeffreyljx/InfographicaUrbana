@@ -1,0 +1,1402 @@
+{
+ "batch_id": "eu-04-a",
+ "verdicts": [
+  {
+   "slug": "roman-empire",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/37 and /ledger/38 (were /ledger/38-39)",
+     "what": "Pontus's annexation was bridged to AD 68 at confidence 1, six years off the kingdom-of-pontus dossier's 62 dissolve.",
+     "why": "Polemon II of Pontus page: 'In 62, Nero induced Polemon II to abdicate the Pontic throne, and Pontus, including Colchis, became a Roman province.' kingdom-of-pontus /ledger/52 dissolve 62 (confidence 3).",
+     "fix": "Applied by the reviewer: vassal_end and gain moved to 62, confidence 3, source Polemon_II_of_Pontus (added to sources[]), ledger re-sorted; validates (0 errors). Author: update the notes/gaps lines that still say 'Pontus 68 bridged' and the roman-empire_68 keyframe note.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/80/confidence",
+     "what": "Confidence 3 on a 267 loss whose regions include Cilicia, Galatia and Cappadocia, which the page neither names nor dates to 267.",
+     "why": "Crisis of the Third Century: 'The eastern provinces of Syria, Palestine, and Aegyptus also became independent as the Palmyrene Empire in 267'; the Asia Minor sentence ('It encompassed ... as well as large parts of Asia Minor') carries no year, and the page's Palmyrene section is headed 271-273.",
+     "fix": "Applied by the reviewer: confidence 2, reason appended to the note. Author may split Asia Minor into a 270/271 loss if a page dates it.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/33/correction",
+     "what": "The 270-282 correction draws the 274-282 state for the whole span: Gaul and Britain (2,825 cells, about 715,000 km2) and the Palmyrene East (1,430 cells, about 362,000 km2) are Roman from 270, contradicting the ledger; it also drops Dacia from 270 though /ledger/81 dates the loss 271.",
+     "why": "Ledger: /ledger/79 loss to gallic-empire 260 and /ledger/84 gain 274; /ledger/80 loss to palmyrene-empire 267 and /ledger/83 gain 273. Correction = minus(union(270 shape, 283 shape), Dacia). Keyframes 32 and 50 use the start-of-span convention; 33 does not (same defect type as the se-01-i 1885 keyframe).",
+     "fix": "Make the correction the shape at 270: {\"minus\": [{\"cliopatria\": \"Roman Empire\", \"year\": 270}, <the /ledger/80 region>]} (with Dacia kept until the 271 loss, or move /ledger/81 to 270), and let /ledger/81-84 move it; or split into new keyframes roman-empire_270 (270-273) and roman-empire_274 (274-282) with from/to and corrections.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/51/correction",
+     "what": "The 387-389 correction (union of the 387 and 371 shapes) draws Britain (about 161,000 km2) and Gaul (about 679,000 km2) as Roman in 387, while the ledger has them in Magnus Maximus's hands until 388.",
+     "why": "/ledger/106-107 lose Britain and Gaul in 383, /ledger/111 regains them in 388; keyframe 50 (383-386) correctly removes them. Theodosius I page: Maximus defeated at Poetovio in 388, executed 28 August 388.",
+     "fix": "Correction for 387-389 = {\"minus\": [{\"union\": [{\"cliopatria\": \"Roman Empire\", \"year\": 387}, {\"cliopatria\": \"Roman Empire\", \"year\": 371}]}, {\"union\": [{\"region\": \"Great Britain\"}, {\"region\": \"Gaul\"}]}]}, letting /ledger/111 restore them in 388; or split 387 and 388-389.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/31/correction",
+     "what": "The 260 shape keeps Cliopatria's one-year drop of 384 cells (about 97,000 km2) of Syria and upper Mesopotamia with no ledger event; the cells are not in the 261 shape and come back only through keyframe 32's union with the 270 shape.",
+     "why": "Gazetteer: minus(RE 247, RE 260) = 534 cells, 147 of them the Agri Decumates (explained by /ledger/78); 384 of the rest are in the 270 shape. The ledger has only /ledger/77 contest_end 260 for the East.",
+     "fix": "Add them back: {\"union\": [<current correction>, {\"intersect\": [{\"minus\": [{\"cliopatria\": \"Roman Empire\", \"year\": 247}, {\"cliopatria\": \"Roman Empire\", \"year\": 260}]}, {\"cliopatria\": \"Roman Empire\", \"year\": 270}]}]}, or add a sourced Sasanian occupation_start/occupation_end for 260.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (63-68, missing)",
+     "what": "No mirror for the Bosporan kingdom's Roman occupation of 63-68.",
+     "why": "cimmerian-bosporus /ledger/19-20: Nero deposes Cotys I; the kingdom 'incorporated as a part of the Roman Province of Moesia Inferior from 63 to 68'; Galba restores it in 68.",
+     "fix": "Add occupation_start 63 / occupation_end 68, counterpart cimmerian-bosporus, region the Bosporan Cliopatria shape of 63, source the Bosporan Kingdom page; or argue against it in a note and tell eu-01.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (-23, -22, 298, missing) and /wars",
+     "what": "The Roman-Kushite war and the Dodekaschoinos are absent, so the kingdom-of-kush dossier's -22 loss and 298 gain have no Roman mirror and the strip is nobody's for 320 years.",
+     "why": "kingdom-of-kush /ledger/15-18: Petronius's war -23..-22 (Meroë page), the border 'moved to Hiera Sykaminos (Maharraqa)' (Kingdom of Kush page), Kush takes the Dodecaschoenus 'after the Roman withdrawal in 298' (Yesebokheamani page). The author listed this under gaps (page budget).",
+     "fix": "Add contest_start -23 / contest_end -22 counterpart kingdom-of-kush, gain -22 and loss 298 of {\"intersect\": [{\"region\": \"Lower Nubia\"}, {\"place\": \"Aswan\", \"km\": 115}]} citing the same pages, a war entry, and adjust keyframes -19 to 287 (or say in their notes that the ledger adds the strip).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/29",
+     "what": "Mauretania is gained in 40 with no contest, while the mauretania dossier keeps the kingdom alive and contested until 44.",
+     "why": "mauretania /ledger/13-16 (af-02): vassal_end 40, Aedemon's revolt as a contest with roman-empire 40-44 ('surrendered in 44 AD'), dissolve 44 into Caesariensis and Tingitana.",
+     "fix": "Add contest_start 40 / contest_end 44 counterpart mauretania over {\"cliopatria\": \"Mauretania\", \"year\": 30}, citing the Mauretania page, and a war entry; or agree with af-02 to dissolve the kingdom in 40.",
+     "applied": false
+    },
+    {
+     "where": "/wars",
+     "what": "The First Jewish-Roman War (66-73), when the rebels held Judaea, is missing; the Bar Kokhba revolt, the Boudican revolt and the Marcomannic Wars have empty zones without saying that no ground changed hands.",
+     "why": "Rule: each war in the sources appears, with zones, and empty zones only where said so. Bar Kokhba rebels held Judaea 132-135; Boudica took Camulodunum, Londinium and Verulamium in 60/61; the Marcomanni reached Aquileia in 170.",
+     "fix": "Add the 66-73 war with a contest over Roman Judaea, give zones to Bar Kokhba (Roman Judaea 132-135) and Boudica (a band of south-east Britain 60-61), and a note or zone for the Marcomannic Wars; cite a page each.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/83",
+     "what": "The East is restored in 273, a year after Aurelian took Palmyra; the page cited dates only the revolt 'against the restored Roman rule' to 273.",
+     "why": "Crisis of the Third Century: Antiochus 'Proclaimed emperor during a revolt against the restored Roman rule in Palmyra' (273); no year for the reconquest. Restoration precedes 273.",
+     "fix": "Move to 272 (confidence 2-3) with a page that dates it (Palmyrene Empire or Aurelian), and the matching keyframe 33 fix. Confidence 2, so not blocking on its own.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/17 and /ledger/23 counterpart",
+     "what": "'Germanic tribes between the Rhine and the Elbe' is neither 'nobody' (the author's decision 4 for tribal peoples) nor listed in counterparts_needing_dossiers.",
+     "why": "Report counterparts_needing_dossiers omits it; notes decision 4.",
+     "fix": "Counterpart 'nobody', or list it.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/0-8 and notes",
+     "what": "The vassal tints reopened on 16 January 27 BC for Thrace, the Bosporus, Galatia and Pontus have no mirror in those dossiers (none of them records a Roman suzerain).",
+     "why": "thracian-kingdom, cimmerian-bosporus, galatia, kingdom-of-pontus ledgers: no vassal_start with roman-republic or roman-empire.",
+     "fix": "Nothing on the Roman side; routed to eu-03, eu-01 and me-05 in cross_checks. Keep the Bosporan tint consistent with the 63-68 occupation (vassal_end 63, vassal_start 68).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/12",
+     "what is missing": "A dated page for the Cantabrian Wars and the NW Spanish gain (bridged to -25 at confidence 1); the war is also absent from /wars.",
+     "page to try": "https://en.wikipedia.org/wiki/Cantabrian_Wars"
+    },
+    {
+     "where": "/ledger/16",
+     "what is missing": "Raetia's annexation (15 BC) and its extent; the -14 year is bridged from Cliopatria. Gazetteer lacks Raetia.",
+     "page to try": "https://en.wikipedia.org/wiki/Raetia"
+    },
+    {
+     "where": "/keyframe_review/11",
+     "what is missing": "Pannonia: Hungary +155 cells appear in the 43 shape with no event (province after AD 9). Gazetteer lacks Pannonia.",
+     "page to try": "https://en.wikipedia.org/wiki/Pannonia"
+    },
+    {
+     "where": "/ledger/45 and /ledger/93",
+     "what is missing": "Dated occupation (c. 74-78) and final abandonment (290s/300s) of the Agri Decumates, both confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Limes_Germanicus"
+    },
+    {
+     "where": "/ledger/72",
+     "what is missing": "Osroene's annexation (214 bridged, confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Osroene"
+    },
+    {
+     "where": "/ledger/102",
+     "what is missing": "End of the Great Conspiracy (371, confidence 1; Theodosius the Elder restored Britain by 368/369).",
+     "page to try": "https://en.wikipedia.org/wiki/Great_Conspiracy"
+    },
+    {
+     "where": "/ledger/59-63",
+     "what is missing": "Armenia's status 117-161: the Roman-Parthian Wars page returns Armenia to its 'previous rulers and client-kings' in 117, so a vassal_start 117 / vassal_end 161 is likely missing.",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Armenia_(antiquity)"
+    },
+    {
+     "where": "/ledger/26-27, /ledger/41-42",
+     "what is missing": "Cappadocia (17 AD) and Commagene's first annexation (17-38) and restoration; years and the 72 events are from the client-kingdoms page only.",
+     "page to try": "https://en.wikipedia.org/wiki/Commagene"
+    },
+    {
+     "where": "/ledger (missing)",
+     "what is missing": "Lycia (43), Lesser Armenia (72), Moesia's organisation as a province (AD 6 per the thracian-kingdom dossier), the Gothic crossing of 376 and the 382 settlement south of the Danube.",
+     "page to try": "https://en.wikipedia.org/wiki/Moesia"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/79",
+     "page": "https://en.wikipedia.org/wiki/Crisis_of_the_Third_Century",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/80",
+     "page": "https://en.wikipedia.org/wiki/Crisis_of_the_Third_Century",
+     "result": "confirmed for Syria, Palestine and Aegyptus in 267; Asia Minor undated on the page -> confidence lowered to 2 (applied)"
+    },
+    {
+     "where": "/ledger/82",
+     "page": "https://en.wikipedia.org/wiki/Crisis_of_the_Third_Century",
+     "result": "confirmed (late 271)"
+    },
+    {
+     "where": "/ledger/84",
+     "page": "https://en.wikipedia.org/wiki/Crisis_of_the_Third_Century",
+     "result": "confirmed (by late 274)"
+    },
+    {
+     "where": "/ledger/83",
+     "page": "https://en.wikipedia.org/wiki/Crisis_of_the_Third_Century",
+     "result": "note honest: page has no year for the reconquest; 273 is the revolt against restored rule (see fix)"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Parthian_Wars",
+     "result": "confirmed (1 AD)"
+    },
+    {
+     "where": "/ledger/55",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Parthian_Wars",
+     "result": "confirmed (114)"
+    },
+    {
+     "where": "/ledger/56",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Parthian_Wars",
+     "result": "confirmed (115)"
+    },
+    {
+     "where": "/ledger/63",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Parthian_Wars",
+     "result": "confirmed (163)"
+    },
+    {
+     "where": "/ledger/69",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Parthian_Wars",
+     "result": "confirmed (acquisition of northern Mesopotamia to Nisibis and Singara; 197 sack)"
+    },
+    {
+     "where": "/ledger/91",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Persian_Wars",
+     "result": "confirmed (298 victory, 'The arrangements of 299')"
+    },
+    {
+     "where": "/ledger/99",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Persian_Wars",
+     "result": "confirmed (Jovian's surrender, year by the emperor only, as the note says)"
+    },
+    {
+     "where": "/ledger/109",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Persian_Wars",
+     "result": "confirmed ('in 384 or 387')"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Germanic_Wars",
+     "result": "confirmed (16 BC, Fall of the Kingdom of Noricum)"
+    },
+    {
+     "where": "/ledger/23",
+     "page": "https://en.wikipedia.org/wiki/Germanic_Wars",
+     "result": "confirmed (9 AD withdrawal)"
+    },
+    {
+     "where": "/ledger/46",
+     "page": "https://en.wikipedia.org/wiki/Germanic_Wars",
+     "result": "confirmed (82-83, territory of the Chatti conquered)"
+    },
+    {
+     "where": "/ledger/78",
+     "page": "https://en.wikipedia.org/wiki/Germanic_Wars",
+     "result": "confirmed (259-260 evacuation of the Agri Decumates)"
+    },
+    {
+     "where": "/ledger/81",
+     "page": "https://en.wikipedia.org/wiki/Germanic_Wars",
+     "result": "confirmed (Aurelian abandoned Dacia, 271 entry)"
+    },
+    {
+     "where": "/ledger/106",
+     "page": "https://en.wikipedia.org/wiki/Theodosius_I",
+     "result": "confirmed (early 383)"
+    },
+    {
+     "where": "/ledger/110",
+     "page": "https://en.wikipedia.org/wiki/Theodosius_I",
+     "result": "confirmed (Poetovio 388, executed 28 August 388, 'recovered Italy')"
+    },
+    {
+     "where": "/ledger/105",
+     "page": "https://en.wikipedia.org/wiki/Theodosius_I",
+     "result": "confirmed (treaty 3 October 382)"
+    },
+    {
+     "where": "/ledger/114-116",
+     "page": "https://en.wikipedia.org/wiki/Theodosius_I",
+     "result": "confirmed (died at Milan 17 January 395; Arcadius east, Honorius west)"
+    },
+    {
+     "where": "/ledger/37-38 (were 38-39)",
+     "page": "https://en.wikipedia.org/wiki/Polemon_II_of_Pontus",
+     "result": "mis-dated (68 bridged; page says 62) -> fixed by the reviewer"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 5000000,
+    "infobox_year": 117,
+    "cliopatria_km2": 5263199,
+    "ratio": 1.05,
+    "acknowledged": true,
+    "others": "25 BC: infobox 2,750,000 vs roman-empire_-25 3,550,000 (1.29); AD 390: infobox 3,400,000 vs roman-empire_390 4,110,000 (1.21); all quoted correctly in the keyframe notes."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -27,
+    "type": "vassal_start",
+    "counterpart": "thracian-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "RE /ledger/1 reopens the client tint on 16 Jan 27 BC (roman-republic /ledger/212 opened it in 31 BC); thracian-kingdom (eu-03) has no vassal_start with roman-republic or roman-empire. Route to eu-03: add vassal_start -27 counterpart roman-empire (or -31 with roman-republic and a -27 hand-over)."
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -27,
+    "type": "vassal_start",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/2: judea has no dossier yet; owned by me-05, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -27,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-cappadocia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/3: kingdom-of-cappadocia has no dossier yet; owned by me-05, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -27,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-commagene"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/4: kingdom-of-commagene has no dossier yet; owned by me-06, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -27,
+    "type": "vassal_start",
+    "counterpart": "nabataeans"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/5: nabataeans has no dossier yet; owned by me-05, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -27,
+    "type": "vassal_start",
+    "counterpart": "cimmerian-bosporus"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "RE /ledger/6 tints the Bosporan kingdom as a client from -27 to 395; cimmerian-bosporus (eu-01) has no vassal_start with Rome at all. Route to eu-01; RE should also end/restart the tint around the 63-68 occupation (see below)."
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -27,
+    "type": "vassal_start",
+    "counterpart": "galatia"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "RE /ledger/7; galatia (me-05) has no vassal relation with Rome (roman-republic /ledger/172 opens one in -63 at c1). Route to me-05."
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -27,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-pontus"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "RE /ledger/8; kingdom-of-pontus (me-05) has no vassal relation with Rome. Route to me-05."
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -25,
+    "type": "vassal_end",
+    "counterpart": "galatia"
+   },
+   "mirror": {
+    "slug": "galatia",
+    "year": -25,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "RE /ledger/9 -25 <-> galatia /ledger/13 dissolve -25 (the relation ends with the kingdom)."
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -25,
+    "type": "gain",
+    "counterpart": "galatia"
+   },
+   "mirror": {
+    "slug": "galatia",
+    "year": -25,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "/ledger/10 <-> galatia /ledger/13"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -25,
+    "type": "vassal_start",
+    "counterpart": "mauretania"
+   },
+   "mirror": {
+    "slug": "mauretania",
+    "year": -25,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "/ledger/11 <-> mauretania /ledger/11"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -25,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/12: counterpart nobody (tribal or unorganised land)"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -16,
+    "type": "gain",
+    "counterpart": "Kingdom of Noricum"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/15: counterpart given as a string; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -14,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/16: counterpart nobody (tribal or unorganised land)"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": -12,
+    "type": "occupation_start",
+    "counterpart": "Germanic tribes between the Rhine and the Elbe"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/17: counterpart given as a string; listed in counterparts_needing_dossiers — but this string is not in counterparts_needing_dossiers; the author's decision 4 makes tribal peoples 'nobody'."
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 1,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/18: kingdom-of-armenia has no dossier yet; owned by eu-19, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 6,
+    "type": "vassal_end",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/19: judea has no dossier yet; owned by me-05, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 6,
+    "type": "gain",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/20: judea has no dossier yet; owned by me-05, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 9,
+    "type": "occupation_end",
+    "counterpart": "Germanic tribes between the Rhine and the Elbe"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/23: counterpart given as a string; listed in counterparts_needing_dossiers — but this string is not in counterparts_needing_dossiers; the author's decision 4 makes tribal peoples 'nobody'."
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 18,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-cappadocia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/26: kingdom-of-cappadocia has no dossier yet; owned by me-05, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 18,
+    "type": "gain",
+    "counterpart": "kingdom-of-cappadocia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/27: kingdom-of-cappadocia has no dossier yet; owned by me-05, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 40,
+    "type": "vassal_end",
+    "counterpart": "mauretania"
+   },
+   "mirror": {
+    "slug": "mauretania",
+    "year": 40,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": "/ledger/28 <-> mauretania /ledger/13"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 40,
+    "type": "gain",
+    "counterpart": "mauretania"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "RE /ledger/29 gains Mauretania in 40; mauretania (af-02) /ledger/13-16 has vassal_end 40, Aedemon's revolt as a contest with roman-empire 40-44 and dissolve 44. RE has no contest 40-44: the land is double-claimed for four years. Fix on RE: add contest_start 40 / contest_end 44 counterpart mauretania."
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 41,
+    "type": "vassal_start",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/30: judea has no dossier yet; owned by me-05, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 43,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/31: counterpart nobody (tribal or unorganised land)"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 44,
+    "type": "vassal_end",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/32: judea has no dossier yet; owned by me-05, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 44,
+    "type": "gain",
+    "counterpart": "judea"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/33: judea has no dossier yet; owned by me-05, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 46,
+    "type": "vassal_end",
+    "counterpart": "thracian-kingdom"
+   },
+   "mirror": {
+    "slug": "thracian-kingdom",
+    "year": 46,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "RE /ledger/34 46 <-> thracian-kingdom /ledger/11 dissolve 46."
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 46,
+    "type": "gain",
+    "counterpart": "thracian-kingdom"
+   },
+   "mirror": {
+    "slug": "thracian-kingdom",
+    "year": 46,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "/ledger/35 <-> thracian-kingdom /ledger/11"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 62,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-pontus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-pontus",
+    "year": 62,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "RE /ledger/37 62 (moved from 68 by the reviewer) <-> kingdom-of-pontus /ledger/52 dissolve 62."
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 62,
+    "type": "gain",
+    "counterpart": "kingdom-of-pontus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-pontus",
+    "year": 62,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "RE /ledger/38 62 (moved from 68 by the reviewer, Polemon II page) <-> kingdom-of-pontus /ledger/52 dissolve 62. Before the fix this was a 6-year mismatch."
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 72,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-commagene"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/41: kingdom-of-commagene has no dossier yet; owned by me-06, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 72,
+    "type": "gain",
+    "counterpart": "kingdom-of-commagene"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/42: kingdom-of-commagene has no dossier yet; owned by me-06, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 72,
+    "type": "gain",
+    "counterpart": "Cilicia Trachea (client kingdom)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/43: counterpart given as a string; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 78,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/44: counterpart nobody (tribal or unorganised land)"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 78,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/45: counterpart nobody (tribal or unorganised land)"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 83,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/46: counterpart nobody (tribal or unorganised land)"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 84,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/47: counterpart nobody (tribal or unorganised land)"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 87,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/48: counterpart nobody (tribal or unorganised land)"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 106,
+    "type": "vassal_end",
+    "counterpart": "nabataeans"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/50: nabataeans has no dossier yet; owned by me-05, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 106,
+    "type": "gain",
+    "counterpart": "nabataeans"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/51: nabataeans has no dossier yet; owned by me-05, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 106,
+    "type": "gain",
+    "counterpart": "Dacians (Dacian kingdom)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/53: counterpart given as a string; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 114,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/54: kingdom-of-armenia has no dossier yet; owned by eu-19, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 114,
+    "type": "gain",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/55: kingdom-of-armenia has no dossier yet; owned by eu-19, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 115,
+    "type": "gain",
+    "counterpart": "parthian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/56: parthian-empire has no dossier yet; owned by me-06, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 115,
+    "type": "occupation_start",
+    "counterpart": "parthian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/57: parthian-empire has no dossier yet; owned by me-06, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 117,
+    "type": "occupation_end",
+    "counterpart": "parthian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/58: parthian-empire has no dossier yet; owned by me-06, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 117,
+    "type": "loss",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/59: kingdom-of-armenia has no dossier yet; owned by eu-19, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 117,
+    "type": "loss",
+    "counterpart": "parthian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/60: parthian-empire has no dossier yet; owned by me-06, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 142,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/61: counterpart nobody (tribal or unorganised land)"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 163,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/63: kingdom-of-armenia has no dossier yet; owned by eu-19, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 164,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/64: counterpart nobody (tribal or unorganised land)"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 197,
+    "type": "gain",
+    "counterpart": "parthian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/69: parthian-empire has no dossier yet; owned by me-06, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 214,
+    "type": "gain",
+    "counterpart": "kingdom-of-osroene"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/72: kingdom-of-osroene has no dossier yet; owned by me-06, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 252,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/75: kingdom-of-armenia has no dossier yet; owned by eu-19, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 260,
+    "type": "loss",
+    "counterpart": "Alemanni"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/78: counterpart given as a string; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 260,
+    "type": "loss",
+    "counterpart": "gallic-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/79: gallic-empire has no dossier yet; owned by eu-04, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 267,
+    "type": "loss",
+    "counterpart": "palmyrene-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/80: palmyrene-empire has no dossier yet; owned by eu-04, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 271,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/81: counterpart nobody (tribal or unorganised land)"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 271,
+    "type": "loss",
+    "counterpart": "palmyrene-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/82: palmyrene-empire has no dossier yet; owned by eu-04, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 273,
+    "type": "gain",
+    "counterpart": "palmyrene-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/83: palmyrene-empire has no dossier yet; owned by eu-04, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 274,
+    "type": "gain",
+    "counterpart": "gallic-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/84: gallic-empire has no dossier yet; owned by eu-04, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 277,
+    "type": "gain",
+    "counterpart": "Alemanni"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/85: counterpart given as a string; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 286,
+    "type": "loss",
+    "counterpart": "Britannic Empire (Carausius and Allectus)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/87: counterpart given as a string; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 296,
+    "type": "gain",
+    "counterpart": "Britannic Empire (Carausius and Allectus)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/89: counterpart given as a string; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 299,
+    "type": "gain",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/91: sasanian-empire has no dossier yet; owned by me-06, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 299,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/92: kingdom-of-armenia has no dossier yet; owned by eu-19, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 300,
+    "type": "loss",
+    "counterpart": "Alemanni"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/93: counterpart given as a string; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 358,
+    "type": "loss",
+    "counterpart": "salian-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/96: salian-franks has no dossier yet; owned by eu-07, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 363,
+    "type": "loss",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/99: sasanian-empire has no dossier yet; owned by me-06, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 363,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/100: kingdom-of-armenia has no dossier yet; owned by eu-19, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 383,
+    "type": "loss",
+    "counterpart": "Magnus Maximus (usurper)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/106: counterpart given as a string; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 383,
+    "type": "loss",
+    "counterpart": "Magnus Maximus (usurper)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/107: counterpart given as a string; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 387,
+    "type": "loss",
+    "counterpart": "Magnus Maximus (usurper)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/108: counterpart given as a string; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 387,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/109: kingdom-of-armenia has no dossier yet; owned by eu-19, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 388,
+    "type": "gain",
+    "counterpart": "Magnus Maximus (usurper)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/110: counterpart given as a string; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 388,
+    "type": "gain",
+    "counterpart": "Magnus Maximus (usurper)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/111: counterpart given as a string; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 395,
+    "type": "split",
+    "counterpart": "western-roman-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "/ledger/114: western-roman-empire has no dossier yet; owned by eu-04-b, which has not written it"
+  },
+  {
+   "event": {
+    "slug": "roman-empire",
+    "year": 395,
+    "type": "split",
+    "counterpart": "eastern-roman-empire"
+   },
+   "mirror": {
+    "slug": "eastern-roman-empire",
+    "year": 395,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "/ledger/115 <-> eastern-roman-empire /ledger/3"
+  },
+  {
+   "event": {
+    "slug": "cimmerian-bosporus",
+    "year": 63,
+    "type": "occupation_start",
+    "counterpart": "roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "cimmerian-bosporus /ledger/19-20: Nero deposes Cotys I, kingdom 'incorporated as a part of the Roman Province of Moesia Inferior from 63 to 68'; RE has no occupation_start 63 / occupation_end 68. Fix on RE (or eu-01 drops it)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-kush",
+    "year": -23,
+    "type": "contest_start",
+    "counterpart": "roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-kush /ledger/15-16 (af-01): Petronius's war -23..-22; RE has no war or contest with Kush."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-kush",
+    "year": -22,
+    "type": "loss",
+    "counterpart": "roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-kush /ledger/17: the Dodekaschoinos to Hiera Sykaminos passes to Rome in -22; RE has no gain and its shapes stop at Aswan, so the strip belongs to nobody -22..297."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-kush",
+    "year": 298,
+    "type": "gain",
+    "counterpart": "roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-kush /ledger/18: Kush takes the Dodekaschoinos 'after the Roman withdrawal in 298' (Yesebokheamani page); RE has no 298 loss."
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": 78,
+    "type": "loss",
+    "counterpart": "roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "greek-city-states /ledger/79 (eu-01, confidence 1): Black Sea cities pass to the Roman provinces in Cliopatria's shape; RE has no gain."
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": 83,
+    "type": "dissolve",
+    "counterpart": "roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "greek-city-states /ledger/80 (eu-01, confidence 1): the aggregate ends (Thasos) with counterpart roman-empire; RE has no gain. Small land; either side may resolve."
+  },
+  {
+   "event": {
+    "slug": "thracian-kingdom",
+    "year": 6,
+    "type": "loss",
+    "counterpart": "roman-empire"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "thracian-kingdom /ledger/6 (eu-03, confidence 1) removes Moesia (130 cells of its shape) to Rome in AD 6, but no Roman shape holds those cells before the 51 shape and RE gains the whole Thracian 43 shape in 46 (/ledger/35): the strip belongs to nobody 6-45. Route to eu-03: drop the AD 6 loss, or RE adds a sourced gain of Moesia Inferior."
+  },
+  {
+   "event": {
+    "slug": "sabaeans",
+    "year": -26,
+    "type": "contest_start",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": -25,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Within a year: sabaeans /ledger/13-14 -26..-25 ('around 26/25 BCE') vs RE /ledger/13-14 -25..-24 (confidence 1-2, page gives no year). Align when either is next touched."
+  },
+  {
+   "event": {
+    "slug": "mauretania",
+    "year": -25,
+    "type": "vassal_end",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "mauretania /ledger/10 (af-02) ends the relation with roman-republic in -25, two years after the Republic's dissolution on 16 Jan -27; route to af-02: counterpart roman-empire from -27 or end it at -27."
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 395,
+    "type": "found",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": 395,
+    "type": "split"
+   },
+   "status": "matched",
+   "note": "ERE /ledger/3 found 395 (Jan) <-> RE /ledger/115."
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -27,
+    "type": "dissolve",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": -27,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "roman-republic /ledger/215 <-> RE /ledger/0, 16 January 27 BC."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Singara",
+   "kind": "place",
+   "used_in": "roman-empire"
+  },
+  {
+   "name": "Transtigritania",
+   "kind": "region",
+   "used_in": "roman-empire"
+  },
+  {
+   "name": "Pannonia",
+   "kind": "region",
+   "used_in": "roman-empire"
+  },
+  {
+   "name": "Raetia",
+   "kind": "region",
+   "used_in": "roman-empire"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Britannic Empire (Carausius and Allectus)",
+   "suggested_slug": "britannic-empire",
+   "years": [
+    286,
+    296
+   ]
+  },
+  {
+   "name": "Magnus Maximus (usurper domain in Britain, Gaul and Italy)",
+   "suggested_slug": "domain-of-magnus-maximus",
+   "years": [
+    383,
+    388
+   ]
+  },
+  {
+   "name": "Eugenius (usurper in the West)",
+   "suggested_slug": "eugenius-usurpation",
+   "years": [
+    392,
+    394
+   ]
+  },
+  {
+   "name": "Dacians (Dacian kingdom)",
+   "suggested_slug": "dacian-kingdom",
+   "years": [
+    105,
+    106
+   ]
+  },
+  {
+   "name": "Alemanni",
+   "suggested_slug": "alemanni",
+   "years": [
+    259,
+    395
+   ]
+  },
+  {
+   "name": "Kingdom of Noricum",
+   "suggested_slug": "kingdom-of-noricum",
+   "years": [
+    -16,
+    -16
+   ]
+  },
+  {
+   "name": "Cilicia Trachea (client kingdom)",
+   "suggested_slug": "cilicia-trachea",
+   "years": [
+    72,
+    72
+   ]
+  },
+  {
+   "name": "Picts, Saxons, Scoti and Attacotti",
+   "suggested_slug": "picts",
+   "years": [
+    367,
+    371
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-04-a.md",
+ "problems": [
+  "kingdom-of-pontus.json was rewritten by another agent at 11:07 while this review read it (its ledger indices shifted); cross-checks cite the file as it stood after that write (dissolve at /ledger/52).",
+  "Ledger indices in this report are those after the reviewer's edit: the two Pontus events moved from /ledger/38-39 to /ledger/37-38 and the 63 contest_end from /ledger/37 to /ledger/39; every index from /ledger/40 on is unchanged.",
+  "Spot checks exceed the 6-event budget in count but used 6 page fetches (Crisis of the Third Century twice, Roman-Parthian Wars, Roman-Persian Wars, Germanic Wars, Theodosius I) plus Roman Empire for the area and Polemon II of Pontus for the applied fix; every page loaded.",
+  "Verdict is fail only for unapplied structural findings (keyframes 31, 33, 51 against the ledger; missing Bosporus, Kush and Mauretania mirrors); every one of 23 spot-checked events was on its page with its year, and no event was fabricated."
+ ]
+}

@@ -1,0 +1,824 @@
+{
+ "batch_id": "eu-05-e",
+ "verdicts": [
+  {
+   "slug": "catalan-company",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/10/counterpart, /ledger/12/counterpart, /ledger/13/counterpart, /identity/successors/0/slug, /wars/4/belligerents/0",
+     "what": "The 1388 and 1390 losses, the dissolve and the successor named 'duchy-of-athens', but the duchy-of-athens dossier ends in March 1311 (successor catalan-company), so the counterpart did not exist in 1388-1390.",
+     "why": "duchy-of-athens identity.end = 1311-03 and its notes: 'Either way Cliopatria lacks the Acciaioli Duchy of Athens (1388-1458)'. The author's own report lists acciaioli-duchy-of-athens under counterparts_needing_dossiers. Duchy of Neopatras page: 'Athens fell to Acciaioli in 1388'; 'in 1390 he captured Neopatras as well'.",
+     "fix": "Counterpart, successor slug and belligerent changed to 'acciaioli-duchy-of-athens' (5 lines). Re-validated: valid, 0 errors, 3 warnings, all 'looks like a slug but no polity or dossier has it' for that slug, which is expected until the Acciaioli dossier is written.",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/6/region",
+     "what is missing": "Which Catalan places in Thessaly were lost to the Serbs in 1348. The region ('Thessaly' minus Neopatras) is the modern Thessalia unit, which hardly overlaps the Catalan shapes (south of 38.93 N), so the loss removes almost nothing and no keyframe shows it. The Neopatras page names Domokos, Gardiki and Pharsalus as taken 'apparently briefly' by 1325.",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Neopatras"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "Confidence-1 capital move to Athens in 1379: no page gives the Company's seat.",
+     "page to try": "https://en.wikipedia.org/wiki/Navarrese_Company"
+    },
+    {
+     "where": "/keyframe_review/7, /keyframe_review/8",
+     "what is missing": "The end of the County of Salona (kept to 1390), and who took the land lost in 1379-1380 besides Thebes. Neopatras page: 'In 1378-79, the Aragonese lost most of their possessions in Boeotia to the Navarrese Company'.",
+     "page to try": "https://en.wikipedia.org/wiki/County_of_Salona"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Halmyros",
+     "result": "confirmed: 'fought on 15 March 1311'; 'All of Attica and Boeotia passed peacefully into the hands of the Catalans'; Thebes 'the capital of the Duchy'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Neopatras",
+     "result": "confirmed: 'the Catalans took Neopatras in 1319'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Neopatras",
+     "result": "confirmed: lost 'when the region was conquered by the Serbs of Stefan Dushan in 1348'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Athens",
+     "result": "confirmed: 'In 1379 the Navarrese Company ... conquered Thebes' and part of the Duchy of Neopatras; Neopatras page: 'By 1380, the Catalans were left only with the two capitals of Athens and Neopatras, as well as the County of Salona'"
+    },
+    {
+     "where": "/ledger/10, /ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Neopatras",
+     "result": "confirmed: 'Athens fell to Acciaioli in 1388'; 'in 1390 he captured Neopatras as well'"
+    },
+    {
+     "where": "/ledger/1, /identity/end",
+     "page": "https://en.wikipedia.org/wiki/Catalan_Company",
+     "result": "confirmed: 'In 1312, they accepted the overlordship of the Aragonese crown of Sicily'; duchies held 'until 1388-1390'; infobox 'Active: 1302-1390'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 10273.0,
+    "cliopatria_year": 1352,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on Catalan Company, Duchy of Neopatras or Duchy of Athens (checked); author says so in notes."
+   }
+  },
+  {
+   "slug": "thessaly",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/5 and a missing 1332 loss to despotate-of-epirus",
+     "what": "The 1332 loss gives all of Thessaly to byzantine-empire at confidence 3, but the pages and the despotate-of-epirus dossier give western Thessaly to John II Orsini of Epirus from 1332 to his death about 1335/6; this dossier has no loss to Epirus.",
+     "why": "Thessaly page: 'In 1332, most of Thessaly was taken by the Byzantines' (most, not all). Stephen Gabrielopoulos page: the Byzantines 'established direct control over the northern and eastern part of the region'; his heirs' quarrels led to 'an invasion by the Epirote ruler John II Orsini'; 'With Orsini's death three years later, all of Thessaly came under Byzantine control.' Medieval Thessaly: per Ferjancic 'the western part remained under Epirote rule until Orsini's death three years later'. despotate-of-epirus /ledger/40: 1332 gain, counterpart thessaly, region minus[Thessaly, Larissa 50 km]; /ledger/41: 1336 loss of 'the Epirote part of Thessaly' to byzantine-empire. The dossier's own dissolve note says 'with the western part claimed by John II Orsini of Epirus'.",
+     "fix": "Split /ledger/5: (a) 1332 loss, counterpart byzantine-empire, region the north and east (e.g. intersect of Thessaly with a Larissa 50 km disc, the complement of Epirus /ledger/40), confidence 2, text 'most of Thessaly'; (b) add 1332 loss, counterpart despotate-of-epirus, region {minus:[{region:Thessaly},{place:Larissa,km:50}]} to match Epirus /ledger/40, confidence 2, source Stephen_Gabrielopoulos or Medieval_Thessaly. Add despotate-of-epirus (western Thessaly) to identity.successors. The byzantine-empire dossier's 1333 gain of all 'Thessaly' (/ledger/172) needs the same split (route to its owner).",
+     "applied": false,
+     "blocking": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/2, /keyframe_review/3",
+     "what is missing": "The 1318-1332 division (Gabrielopoulos at Trikala, the Maliasenoi around Volos, Byzantine north) is drawn as one state; flagged by the author.",
+     "page to try": "https://en.wikipedia.org/wiki/John_II_Doukas"
+    },
+    {
+     "where": "/wars/1",
+     "what is missing": "How long Naupaktos (1295) was held.",
+     "page to try": "https://en.wikipedia.org/wiki/Nikephoros_I_Komnenos_Doukas"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Medieval_Thessaly",
+     "result": "confirmed: dominions 'divided between Nikephoros ... and Michael's illegitimate son John Doukas'; reign 1267/8-1289; capital Neopatras"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Thessaly",
+     "result": "confirmed: 'In 1318, with the death of John II, Thessalian independence came to an end'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Thessaly",
+     "result": "confirmed: 'the Almogavars occupied Siderokastron and southern Thessaly (1319)'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Thessaly",
+     "result": "year confirmed ('In 1332, most of Thessaly was taken by the Byzantines'), but the region overstates: 'most', and the Stephen Gabrielopoulos and Medieval Thessaly pages leave the west to Epirus (see fixes)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 14406.8,
+    "cliopatria_year": 1272,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Thessaly infobox is the modern region; Medieval Thessaly has no infobox area. Acknowledged in /keyframe_review/1."
+   }
+  },
+  {
+   "slug": "empire-of-thessalonica",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Whether Thessaly was Manuel's in 1230-1237: the Empire page says yes ('the dynasty's lands in Thessaly and Epirus'), the Manuel page names only Thessalonica and its environs. The author flagged it.",
+     "page to try": "https://en.wikipedia.org/wiki/Theodore_Komnenos_Doukas"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Empire_of_Thessalonica",
+     "result": "confirmed: 'Manuel's rule lasted until 1237, when he was deposed in a coup by Theodore', who crowned his son John"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Manuel_Komnenos_Doukas",
+     "result": "confirmed: 'Manuel returned to Greece in 1239 with the support of Nicaea' and 'captured several fortresses, including Larissa and Pharsalos, from Theodore's son John Komnenos Doukas'; after his death c. 1241 'the area passed into the hands of ... Michael II'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Empire_of_Thessalonica",
+     "result": "confirmed: John renounced the imperial title and recognised Nicaean authority; infobox 'Vassal ... of the Empire of Nicaea (1242-46)'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Empire_of_Thessalonica",
+     "result": "confirmed: 'Thessalonica was incorporated into the Nicaean state'; infobox 'Fall of Thessalonica to Nicaea: 1246'"
+    },
+    {
+     "where": "/ledger/0 region",
+     "page": "https://en.wikipedia.org/wiki/Empire_of_Thessalonica",
+     "result": "confirmed: 'He still controlled the environs of Thessalonica as well as the dynasty's lands in Thessaly and Epirus' (1230)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 22045.4,
+    "cliopatria_year": 1236,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on Empire of Thessalonica (checked). What I tried and could not break: years 1230-1246 against Epirus /ledger/14 (1230 split) and Nicaea /ledger/31-33 (1242 vassal, 1246 gain); keyframes 1236 -> 1239 (minus Thessaly) -> 1241 agree with /ledger/2; rulers contiguous; capital inside the 1241 bbox."
+   }
+  },
+  {
+   "slug": "commune-of-the-zealots",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Byzantine_civil_war_of_1341%E2%80%931347",
+     "result": "confirmed: after 2 March 1342 the armies 'arrived too late'; Synadenos and the aristocrats 'had fled after an uprising led by ... the Zealots'; Zealots page: 'from 1342 until 1350'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Zealots_of_Thessalonica",
+     "result": "confirmed: 'At the end of 1349, the people of the city finally rose in revolt'; 'in 1350, Kantakouzenos ... made a triumphal entry into the city'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Byzantine_civil_war_of_1341%E2%80%931347",
+     "result": "confirmed for 1350 ('to recover Thessalonica from the Zealots'); the note's 'only Macedonian city still Byzantine after 1345' is a paraphrase of 'leaving only Thessalonica in Byzantine hands' (after 1350), harmless"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1759.7,
+    "cliopatria_year": 1344,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Neither page has an area; the 25 km disc (1,963 km2) matches Cliopatria's 1,760 km2. What I tried and could not break: dates 1342/1350 on both pages; type rebel per schema; identity.wikipedia/wikidata keep Cliopatria's values as the schema asks."
+   }
+  },
+  {
+   "slug": "duchy-of-the-archipelago",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1/correction, /keyframe_review/4/correction, /ledger/1/region, /ledger/3/region, /ledger/6/region, /wars/0 and /wars/2 zones, /identity/successors/0",
+     "what": "The corrections and events say 'all the Cyclades except Mykonos, Tinos (the Ghisi) and Andros (Dandolo)' but the spec subtracts only a 22 km disc at Andros, so Tinos and Mykonos are drawn inside the duchy 1210-1276 and 1310-1579.",
+     "why": "Duchy page: 'It included all the Cyclades (except Mykonos and Tinos)'. Gazetteer 'Cyclades' = Notio Aigaio intersect box 24.2-26.3 E, 36.3-37.9 N, which contains Tinos (25.16 E 37.54-37.66 N) and Mykonos (25.33 E 37.45 N); the Andros disc (24.9 E 37.83 N, 22 km) stops short of Tinos (24 km to its northern tip, 40 km to Tinos town) and is 57 km from Mykonos. The spec contradicts its own text.",
+     "fix": "In every spec that reads {minus:[{region:Cyclades},{lon:24.9,lat:37.83,km:22}]} add to the minus a Tinos disc (lon 25.16, lat 37.59, km 14) and a Mykonos disc (lon 25.36, lat 37.45, km 10), or the gazetteer names once added; the nested minus specs of /ledger/2, /ledger/3, /keyframe_review/2 and /wars/0 inherit it.",
+     "applied": false,
+     "blocking": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Confidence-1 Licario loss dated 1277: the Licario page dates Skopelos 1277 (a Ghisi island, not the duchy's), then 'Kythera and Antikythera', 'later Kea, Astypalaia, and Santorini', and Sifnos and Serifos, all before c. 1280; the duchy page gives no year ('late 13th century'). A year in 1278-1280 is likelier for the duchy's islands.",
+     "page to try": "https://en.wikipedia.org/wiki/Marco_II_Sanudo"
+    },
+    {
+     "where": "/keyframe_review/4",
+     "what is missing": "1310-1579 rests on one page; island-by-island changes (Venetian and Ottoman takeovers before 1579) unverified within the 1-2 page budget.",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_the_Archipelago"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_the_Archipelago",
+     "result": "confirmed: 'created in 1207 by the Venetian nobleman' Marco Sanudo, who 'largely captured the island'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_the_Archipelago",
+     "result": "confirmed for year and text ('With the entire island occupied in 1210' ... 'Melos and the rest of the islands of the Cyclades'); region spec wrong (see fixes)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_the_Archipelago",
+     "result": "confirmed: 'They relinquished control of their gains in 1310'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_the_Archipelago",
+     "result": "confirmed: 'annexed by the Ottomans in 1579'; infobox 'Expropriated by Murad III: 1579'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Licario",
+     "result": "page dates the island campaign 1277-c.1280, names no duchy island in 1277 (confidence 1 is honest; see thin)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1233.1,
+    "cliopatria_year": 1210,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the duchy page. Cliopatria's 1210 and 1305 shapes are the wrong islands (author marked 1305 'wrong' and corrected 1210), so no area comparison is meaningful."
+   }
+  },
+  {
+   "slug": "principality-of-theodoro",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2/correction, /keyframe_review/3/correction, /ledger/1/region, and a missing 1433 gain",
+     "what": "The 1423-1475 keyframe and the 1423 gain draw Cembalo (Balaklava) as Theodoro's for the whole span, while the ledger loses Cembalo to Genoa in June 1434 (/ledger/4) and the page has it Genoese before the February 1433 rising; there is no gain of Cembalo for the 1434 loss to undo.",
+     "why": "Principality of Theodoro page: 'Alexios supported a Greek rebellion in Cembalo in February 1433'; 'A Genoese force reconquered Cembalo in June 1434'; 'While Alexios lost Cembalo it seems that he retained the rest of his conquests'; 'Cembalo revolted once more in 1439'. The Sevastopol place (33.465 E, 44.60 N, gazetteer) with km 20 contains Balaklava (33.60 E, 44.50 N, 15 km away) and most of the /ledger/4 Cembalo disc (33.6, 44.5, 15 km).",
+     "fix": "Subtract the Cembalo disc (lon 33.6, lat 44.5, km 15) from /ledger/1/region and from the 1423 keyframe correction; add a February 1433 gain of Cembalo from republic-of-genoa (confidence 2: the page says Alexios supported the rebellion and Genoa 'reconquered' it) so that /ledger/4 undoes it; either split the 1423 keyframe at 1433/1434 or note that the Cembalo episode falls inside its span and is small. /keyframe_review/3 copies the same correction and needs the same change.",
+     "applied": false,
+     "blocking": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding year (confidence 1, Cliopatria's 1333; page: 'first mentioned in the early 14th century').",
+     "page to try": "https://en.wikipedia.org/wiki/Mangup"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "Confidence-1 coastal gain dated 1423: the page's 1423 sentence is a repelled attack ('the Genoese had to spend a large sum of money to repel him'); the note says so. Date and extent of the coastal strip.",
+     "page to try": "https://en.wikipedia.org/wiki/Alexios_I_of_Theodoro"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Cliopatria's 1375 halving (1,331 to 653.5 km2) is unexplained; within budget, flagged by the author.",
+     "page to try": "https://en.wikipedia.org/wiki/Gothia"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Theodoro",
+     "result": "page has 'In 1423 prince Alexios attacked and the Genoese had to spend a large sum of money to repel him' and 'From the first half of the 15th century it also included parts of the coastline'; no capture date (confidence 1 honest)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Theodoro",
+     "result": "confirmed: 'Alexios supported a Greek rebellion in Cembalo in February 1433'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Theodoro",
+     "result": "confirmed: 'A Genoese force reconquered Cembalo in June 1434'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Theodoro",
+     "result": "confirmed: 'At the end of December 1475, Mangup surrendered to the Ottomans'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1330.7,
+    "cliopatria_year": 1333,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the Theodoro page (checked)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "catalan-company",
+    "year": 1311,
+    "type": "found",
+    "counterpart": "duchy-of-athens"
+   },
+   "mirror": {
+    "slug": "duchy-of-athens",
+    "year": 1311,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "duchy-of-athens /ledger/6 dissolve, counterpart catalan-company, 15 March 1311."
+  },
+  {
+   "event": {
+    "slug": "catalan-company",
+    "year": 1319,
+    "type": "gain",
+    "counterpart": "thessaly"
+   },
+   "mirror": {
+    "slug": "thessaly",
+    "year": 1319,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Neopatras disc on both sides."
+  },
+  {
+   "event": {
+    "slug": "catalan-company",
+    "year": 1325,
+    "type": "gain",
+    "counterpart": "thessaly"
+   },
+   "mirror": {
+    "slug": "thessaly",
+    "year": 1325,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Same region spec (Catalan 1326 minus 1314) on both sides."
+  },
+  {
+   "event": {
+    "slug": "catalan-company",
+    "year": 1348,
+    "type": "loss",
+    "counterpart": "serbian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "serbian-empire (eu-18) not written yet; note Cliopatria's Serbian Empire row starts only in 1352."
+  },
+  {
+   "event": {
+    "slug": "catalan-company",
+    "year": 1379,
+    "type": "loss",
+    "counterpart": "Navarrese Company"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers (navarrese-company)."
+  },
+  {
+   "event": {
+    "slug": "catalan-company",
+    "year": 1388,
+    "type": "loss",
+    "counterpart": "acciaioli-duchy-of-athens"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Was 'duchy-of-athens' (dead since 1311); reviewer changed it to the author's suggested new slug. Needs a dossier."
+  },
+  {
+   "event": {
+    "slug": "catalan-company",
+    "year": 1390,
+    "type": "loss",
+    "counterpart": "acciaioli-duchy-of-athens"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "As above (Neopatras 1390)."
+  },
+  {
+   "event": {
+    "slug": "thessaly",
+    "year": 1268,
+    "type": "found",
+    "counterpart": "despotate-of-epirus"
+   },
+   "mirror": {
+    "slug": "despotate-of-epirus",
+    "year": 1268,
+    "type": "split"
+   },
+   "status": "matched",
+   "note": "despotate-of-epirus /ledger/29."
+  },
+  {
+   "event": {
+    "slug": "thessaly",
+    "year": 1332,
+    "type": "loss",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 1333,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Years within one; but both sides give all of Thessaly to Byzantium, while Epirus /ledger/40 takes western Thessaly in 1332 (next row)."
+  },
+  {
+   "event": {
+    "slug": "despotate-of-epirus",
+    "year": 1332,
+    "type": "gain",
+    "counterpart": "thessaly"
+   },
+   "mirror": {
+    "slug": "thessaly",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Thessaly has no 1332 loss to Epirus; pages (Stephen Gabrielopoulos, Medieval Thessaly) support Epirus. Fix in thessaly (and the byzantine-empire 1333 gain should exclude the west until 1336)."
+  },
+  {
+   "event": {
+    "slug": "empire-of-thessalonica",
+    "year": 1230,
+    "type": "found",
+    "counterpart": "despotate-of-epirus"
+   },
+   "mirror": {
+    "slug": "despotate-of-epirus",
+    "year": 1230,
+    "type": "split"
+   },
+   "status": "matched",
+   "note": "despotate-of-epirus /ledger/14."
+  },
+  {
+   "event": {
+    "slug": "empire-of-thessalonica",
+    "year": 1239,
+    "type": "loss",
+    "counterpart": "Manuel Komnenos Doukas (Thessaly)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers (thessaly-under-manuel-komnenos-doukas)."
+  },
+  {
+   "event": {
+    "slug": "despotate-of-epirus",
+    "year": 1241,
+    "type": "gain",
+    "counterpart": "empire-of-thessalonica"
+   },
+   "mirror": {
+    "slug": "empire-of-thessalonica",
+    "year": 1239,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Epirus /ledger/18 takes Thessaly from empire-of-thessalonica in 1241, but Thessalonica lost it to Manuel in 1239 (Manuel page: after his death 'the area passed into the hands of ... Michael II'). Epirus should name Manuel's lordship as counterpart. Route to the despotate-of-epirus owner."
+  },
+  {
+   "event": {
+    "slug": "despotate-of-epirus",
+    "year": 1236,
+    "type": "gain",
+    "counterpart": "empire-of-thessalonica"
+   },
+   "mirror": {
+    "slug": "empire-of-thessalonica",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "Epirus /ledger/17 (Corfu, confidence 1) has no mirror: no empire-of-thessalonica shape or event covers Corfu (shapes start at 21.36 E). Epirus side should change counterpart or region. Route to the despotate-of-epirus owner."
+  },
+  {
+   "event": {
+    "slug": "empire-of-thessalonica",
+    "year": 1246,
+    "type": "loss",
+    "counterpart": "nicaean-empire"
+   },
+   "mirror": {
+    "slug": "nicaean-empire",
+    "year": 1246,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "nicaean-empire /ledger/33; Nicaea also carries vassal_start 1242 / vassal_end 1246 (overlord side, consistent with /ledger/3 here)."
+  },
+  {
+   "event": {
+    "slug": "commune-of-the-zealots",
+    "year": 1342,
+    "type": "found",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "byzantine-empire has no 1342 loss of Thessalonica; flagged by the author. Route to the byzantine-empire owner (eu-05)."
+  },
+  {
+   "event": {
+    "slug": "commune-of-the-zealots",
+    "year": 1350,
+    "type": "loss",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "byzantine-empire has no 1350 gain of Thessalonica. Route to the byzantine-empire owner."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-the-archipelago",
+    "year": 1207,
+    "type": "found",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 1204,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "byzantine-empire /ledger/149 gives Venice 'many ports and islands' in 1204 and holds nothing in the Aegean 1205-1261; the duchy takes the Cyclades from byzantine-empire in 1207/1210. One side must change (republic-of-venice or nobody as counterpart here, or the Byzantine 1204 loss should exclude the Cyclades)."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-the-archipelago",
+    "year": 1210,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "As for 1207."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-the-archipelago",
+    "year": 1277,
+    "type": "loss",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "byzantine-empire has no Licario gains (1276-1280) in the Cyclades. Route to the byzantine-empire owner."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-the-archipelago",
+    "year": 1310,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "byzantine-empire has no 1310 loss of the Cyclades. Route to the byzantine-empire owner."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-the-archipelago",
+    "year": 1579,
+    "type": "dissolve",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No ottoman-empire dossier yet."
+  },
+  {
+   "event": {
+    "slug": "latin-empire",
+    "year": 1210,
+    "type": "vassal_start",
+    "counterpart": "duchy-of-the-archipelago"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Overlord side only (schema: vassal events are the overlord's); latin-empire /ledger/16 and /ledger/39, principality-of-achaea /ledger/8 and /ledger/24 agree with the duchy's notes (1248, 1278)."
+  },
+  {
+   "event": {
+    "slug": "principality-of-theodoro",
+    "year": 1423,
+    "type": "gain",
+    "counterpart": "republic-of-genoa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "republic-of-genoa (eu-13) not written yet; confidence 1."
+  },
+  {
+   "event": {
+    "slug": "principality-of-theodoro",
+    "year": 1434,
+    "type": "loss",
+    "counterpart": "republic-of-genoa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-13 not run; the matching 1433 gain is missing in this dossier (see fixes)."
+  },
+  {
+   "event": {
+    "slug": "principality-of-theodoro",
+    "year": 1475,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No ottoman-empire dossier yet."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Neopatras (Ypati)",
+   "kind": "place",
+   "used_in": "catalan-company; thessaly"
+  },
+  {
+   "name": "Salona (Amfissa, Greece)",
+   "kind": "place",
+   "used_in": "catalan-company"
+  },
+  {
+   "name": "Trikala",
+   "kind": "place",
+   "used_in": "thessaly"
+  },
+  {
+   "name": "Zetounion (Lamia)",
+   "kind": "place",
+   "used_in": "catalan-company; thessaly"
+  },
+  {
+   "name": "Loidoriki",
+   "kind": "place",
+   "used_in": "catalan-company; thessaly"
+  },
+  {
+   "name": "Siderokastron",
+   "kind": "place",
+   "used_in": "catalan-company; thessaly"
+  },
+  {
+   "name": "Vitrinitsa",
+   "kind": "place",
+   "used_in": "catalan-company; thessaly"
+  },
+  {
+   "name": "Naxos",
+   "kind": "place",
+   "used_in": "duchy-of-the-archipelago"
+  },
+  {
+   "name": "Paros",
+   "kind": "place",
+   "used_in": "duchy-of-the-archipelago"
+  },
+  {
+   "name": "Andros",
+   "kind": "place",
+   "used_in": "duchy-of-the-archipelago"
+  },
+  {
+   "name": "Tinos",
+   "kind": "place",
+   "used_in": "duchy-of-the-archipelago"
+  },
+  {
+   "name": "Mykonos",
+   "kind": "place",
+   "used_in": "duchy-of-the-archipelago"
+  },
+  {
+   "name": "Cembalo (Balaklava)",
+   "kind": "place",
+   "used_in": "principality-of-theodoro"
+  },
+  {
+   "name": "Mangup",
+   "kind": "place",
+   "used_in": "principality-of-theodoro"
+  },
+  {
+   "name": "Kalamita Bay",
+   "kind": "region",
+   "used_in": "principality-of-theodoro"
+  },
+  {
+   "name": "Gothia (Crimean coast)",
+   "kind": "region",
+   "used_in": "principality-of-theodoro"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Navarrese Company",
+   "suggested_slug": "navarrese-company",
+   "years": [
+    1379,
+    1380
+   ]
+  },
+  {
+   "name": "Acciaioli Duchy of Athens",
+   "suggested_slug": "acciaioli-duchy-of-athens",
+   "years": [
+    1388,
+    1458
+   ]
+  },
+  {
+   "name": "County of Salona",
+   "suggested_slug": "county-of-salona",
+   "years": [
+    1311,
+    1390
+   ]
+  },
+  {
+   "name": "Thessaly under Manuel Komnenos Doukas",
+   "suggested_slug": "thessaly-under-manuel-komnenos-doukas",
+   "years": [
+    1239,
+    1241
+   ]
+  },
+  {
+   "name": "Lordship of Andros (Dandolo)",
+   "suggested_slug": "lordship-of-andros",
+   "note": "years not on the pages opened; held outside the duchy from 1207 (duchy page)"
+  },
+  {
+   "name": "Lordship of Tinos and Mykonos (Ghisi)",
+   "suggested_slug": "lordship-of-tinos-and-mykonos",
+   "note": "years not on the pages opened; held outside the duchy from 1207 (duchy page)"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-05-e.md",
+ "problems": [
+  "No page failed to load for the reviewer. No infobox in the batch gives an area, so every area_check is null with the author's acknowledgement.",
+  "catalan-company was edited by the reviewer (5 slug lines, duchy-of-athens -> acciaioli-duchy-of-athens for 1388-1390); it now validates with 3 expected 'no dossier has this slug' warnings until the Acciaioli dossier exists.",
+  "Mirrors missing in byzantine-empire (eu-05, another part): 1342 loss / 1350 gain of Thessalonica (Zealots), Licario's Cycladic gains 1277 and their 1310 loss, the western-Thessaly split of 1332-1336; its 1204 loss of 'many ports and islands' to Venice conflicts with the Archipelago's 1207/1210 counterpart.",
+  "despotate-of-epirus (eu-05) needs counterpart changes: /ledger/18 (1241 Thessaly, should be Manuel's lordship) and /ledger/17 (1236 Corfu, empire-of-thessalonica never held it in any shape).",
+  "Years for county-of-salona are the span the catalan-company dossier draws it; Andros and Tinos-Mykonos years are not on the pages opened."
+ ]
+}

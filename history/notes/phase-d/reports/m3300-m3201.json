@@ -1,0 +1,101 @@
+{
+ "window": "m3300-m3201",
+ "images": [
+  {
+   "year": -3300,
+   "bbox": "world, with --compare-cliopatria",
+   "seen": "Cliopatria has only the Sumerian city-states; the compiled map shows the 30 archaeological cultures, each in its own region; the -3300 changes (Funnelbeaker loss to the Globular Amphora culture, Daxi ending, Majiayao and Liangzhu starting) match their ledger events"
+  },
+  {
+   "year": -3201,
+   "bbox": "-12,22,60,62 (Europe, Near East, Egypt), with --compare-cliopatria",
+   "seen": "Funnelbeaker, Atlantic megaliths, Cucuteni-Trypillia, Yamnaya (Don-Volga only, as its -3400 keyframe says), Uruk outposts and the Sumerian city-states look right and match Cliopatria; Maadi culture was wrong: about 800 cells running 25E to 33E over the Western Desert"
+  },
+  {
+   "year": -3201,
+   "bbox": "95,17,148,48 (East Asia)",
+   "seen": "Yangshao, Dawenkou, Majiayao, Qujialing, Liangzhu, Hongshan, Dapenkeng, Jeulmun, Jomon and Hoabinhian sit in their regions; no speckle, no hole, no state drawn after its end"
+  },
+  {
+   "year": -3201,
+   "bbox": "22,24,36,33 (Egypt), --from stage, after the patch",
+   "seen": "Maadi culture is now the Delta and the Faiyum (129 cells); Naqada stays a thin Nile strip; the Western Desert is empty"
+  }
+ ],
+ "issues": [
+  {
+   "what": "Maadi culture's only keyframe (-3800..-3200) used the gazetteer region 'Lower Egypt', which holds the whole governorates of Matruh (524 cells) and Giza (126) as well as Alexandria and Ismailia: 803 cells (about 200,000 km2) for a Delta culture, drawn from 24.8E to 32.8E. Cut to the Delta governorates plus Cairo and the Faiyum (129 cells, about 32,600 km2), which holds every site the page names except Abusir el-Melek.",
+   "years": [
+    -3300,
+    -3201
+   ],
+   "slugs": [
+    "maadi-culture"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Maadi_culture"
+   ]
+  },
+  {
+   "what": "The -3300 busy year (3317 cells): Funnelbeaker loses its eastern and southern groups to the Globular Amphora culture, Daxi ends, Majiayao and Liangzhu begin. Each has a dated ledger event or a keyframe boundary; the packet lists 0 conflicts, 0 snaps, 0 skipped events, 0 unresolved regions.",
+   "years": [
+    -3300,
+    -3300
+   ],
+   "slugs": [
+    "funnelbeaker-culture",
+    "daxi-culture",
+    "majiayao-culture",
+    "liangzhu-culture"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Yamnaya is the Don-Volga steppe only (Rostov, Volgograd, Kalmykia) until -3201; the dossier widens it to the Pontic-Caspian steppe by an event at -3200, which belongs to the next window.",
+   "years": [
+    -3300,
+    -3201
+   ],
+   "slugs": [
+    "yamnaya-culture"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Uruk period: the isolated blobs around Kermanshah, Sanliurfa and Al Hasakah are the northern colony sites of the dossier keyframe, not a speckle error; the core alluvium belongs to the Sumerian city-states from -3400, matching Cliopatria.",
+   "years": [
+    -3300,
+    -3201
+   ],
+   "slugs": [
+    "uruk-period",
+    "sumerian-city-states"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/m3300-m3201.json",
+ "patch_entries": {
+  "events": 0,
+  "keyframe_overrides": 1,
+  "rulings": 0
+ },
+ "patch_check": "all applied",
+ "colour_clashes": [],
+ "dossier_requests": [],
+ "pages_opened": 1,
+ "problems": [
+  "patch reach: keyframe_overrides/0 replaces maadi-culture_-3800, which spans -3800..-3200, so the correction also changes years -3800..-3301 (windows m3800-m3701 to m3400-m3301). If an earlier window also overrides that shape_id, the earlier file in window order wins and mine is reported as a duplicate; the other window's agent would have seen the same oversized shape.",
+  "gazetteer: the region 'Lower Egypt' (data/gazetteer/regions.jsonl; 787 cells, 24.8E to 32.8E) is the admin-1 units Matruh (524 cells), Al Jizah (126), Al Isma`iliyah (20), Al Iskandariyah (9) and the Delta governorates (about 108), so it is about 7 times the Delta. 22 dossiers use it by name. Page: https://en.wikipedia.org/wiki/Maadi_culture (sites all in the Delta, near Cairo or the Faiyum; no mention of the Western Desert). The orchestrator may want to redefine it (Delta governorates plus Cairo, without Matruh, Giza, Alexandria, Ismailia).",
+  "next window m3200-m3101: naqada-culture ledger/3 (-3200, gain from maadi-culture) and its keyframe naqada-culture_-3200 use the same 'Lower Egypt' region, so Naqada will take the Western Desert at -3200 unless that window's agent patches it or the gazetteer region is fixed. Not patched here because it is outside my years.",
+  "trial summary line 'conflicts: 1 pairs, 30 cell-years -> 1 pairs, 30 cell-years' was unchanged by my patch and is not in my window (my stage packet lists 0 pairs); it comes from dossier edits since the published compile."
+ ]
+}

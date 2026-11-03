@@ -1,0 +1,116 @@
+{
+ "batch_id": "fx-08",
+ "findings": [
+  {
+   "item": "F003",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "republic-of-china"
+   ],
+   "changes": [
+    "republic-of-china: keyframe_review 1,2,10-21 (1913, 1914, 1932-1948): verdict ok -> adjust, correction = the Cliopatria Republic shape of that year minus Tibet's shape (Cliopatria Tibet 1928/1929 plus the Tawang tract, as tibet.json draws it)",
+    "republic-of-china: keyframe_review 3-8 (1916, 1917, 1919, 1921, 1926, 1927): existing minus corrections nested and Tibet's shape subtracted; source -> Tibet (1912-1951) page, old source named in the note",
+    "republic-of-china: keyframes 1912 (settled by the 1912 occupation event) and 1930 (0 overlapping cells) left as they were; occupation events /ledger/4, /ledger/9 unchanged"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Tibet_(1912%E2%80%931951)"
+   ],
+   "why": "Cliopatria's Republic outline holds about 1,240 cells of Tibet's land (Chamdo, western Kham, Tawang tract) in each keyframe; the Tibet page says Tibet was de facto independent from 1912, Lhasa regained Chamdo and western Kham in 1918, and 1919-1949 its government controlled all of U-Tsang and western Kham. The size rule already gave the cells to Tibet; the dossier no longer claims them (resolved overlap 0 for all edited keyframes)."
+  },
+  {
+   "item": "F005",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "republic-of-china"
+   ],
+   "changes": [
+    "republic-of-china: keyframe_review 22 (republic-of-china_1949): verdict ok -> adjust, correction = Cliopatria Republic 1950 shape union Dachen (30 km), 291 cells, source Chinese Civil War page; note explains the compiler compares a keyframe with the post-ledger state",
+    "republic-of-china: ledger/94 (October 1949 loss to the PRC): the Zhoushan islands (50 km) added to the land kept by the Republic, since Zhoushan fell in May 1950 (/ledger/98)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Chinese_Civil_War"
+   ],
+   "why": "The ledger already loses the whole mainland during 1949 (events 90-94, 293 cells at year end) but the keyframe was the early-1949 shape (21,561 cells), which the compiler applies after the year's events and so restored the mainland. The keyframe is now the year-end land; the ledger carries the in-year losses."
+  },
+  {
+   "item": "F099",
+   "verdict": "kept",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Khoshut_Khanate",
+    "https://en.wikipedia.org/wiki/Kangding",
+    "https://en.wikipedia.org/wiki/Revolt_of_the_Three_Feudatories",
+    "https://en.wikipedia.org/wiki/Garz%C3%AA_Tibetan_Autonomous_Prefecture"
+   ],
+   "why": "The overlap is 1,021 cells of the Kham part of modern Sichuan, drawn by wu-sangui-s-zhou as part of Sichuan and by the Khoshut as Kham. The four pages are silent on the extent of Wu's Sichuan and on a Khoshut eastern border (Revolt page: only 'Wu's forces captured Hunan and Sichuan provinces'); nothing contradicts the size rule's answer, so no dossier changed."
+  },
+  {
+   "item": "F114",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "empire-of-china"
+   ],
+   "changes": [
+    "empire-of-china: keyframe_review 0 (empire-of-china_1916): correction nested and Tibet's shape (Cliopatria Tibet 1928 plus the Tawang tract) subtracted; source -> Tibet (1912-1951) page",
+    "empire-of-china: ledger/0 (found, 1916/1): region = Republic of China 1915 shape minus Tibet's shape",
+    "empire-of-china: sources[]: Tibet (1912-1951) page added"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Tibet_(1912%E2%80%931951)"
+   ],
+   "why": "The Empire's note said its outline sits next to Tibet, but the Cliopatria 1916 outline holds about 1,240 Tibetan cells (both the found event and the keyframe claimed them). The Tibet page: 'Since 1912, Tibet had been de facto independent of Chinese control'."
+  },
+  {
+   "item": "F125",
+   "verdict": "kept",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Xi_dynasty",
+    "https://en.wikipedia.org/wiki/Khoshut_Khanate",
+    "https://en.wikipedia.org/wiki/Garz%C3%AA_Tibetan_Autonomous_Prefecture"
+   ],
+   "why": "Same Kham part of Sichuan as F099 (1,021 cells in 1645, 9 in 1644). The Xi page says only 'based at Chengdu since 1644' and 'ruled most of Sichuan province' and is silent on western Sichuan and Tibetan areas; the size rule gives the cells to the Khoshut and no opened page contradicts it."
+  },
+  {
+   "item": "F167",
+   "verdict": "skipped",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [],
+   "why": "hierarchy.csv supplies it: row zhili-clique -> republic-of-china 1925-1927 vassal (confidence 1; 1920-1924 constituent). The finding asks only for mirror vassal events."
+  },
+  {
+   "item": "F217",
+   "verdict": "skipped",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [],
+   "why": "hierarchy.csv supplies it: row tibet -> khoshut-khanate 1642-1717 vassal (confidence 2); tibet.json /ledger/8 already takes Kham and the Tsangpa realm from the khoshut-khanate by a gain with that counterpart (the compiler removes them from the Khoshut), /ledger/9 and /ledger/17 give the protectorate's start and end. khoshut-khanate is read-only and needs no change."
+  }
+ ],
+ "dossiers_changed": [
+  "republic-of-china",
+  "empire-of-china"
+ ],
+ "validation": {
+  "republic-of-china": "ok (0 errors; 2 pre-existing warnings: gazetteer unknown place 'Baitag Bogd' in /ledger/86, /ledger/87)",
+  "empire-of-china": "ok"
+ },
+ "handoffs": [],
+ "gazetteer_names_needed": [
+  {
+   "name": "Baitag Bogd",
+   "kind": "place",
+   "used_in": "republic-of-china",
+   "hint": "pre-existing warning in /ledger/86-87 (1947 Peitashan/Beitashan border incident on the Mongolia-Xinjiang border); the resolver does not know the name"
+  }
+ ],
+ "not_reached": [],
+ "notes_path": "history/polities/_notes/fix-fx-08.md",
+ "problems": [
+  "F099 and F125 left unchanged because four Wikipedia pages (Khoshut Khanate, Kangding, Revolt of the Three Feudatories, Garze prefecture, Xi dynasty) are silent on the western Sichuan boundary; the size rule's answer (Khoshut holds the Kham part of Sichuan) is unconfirmed but uncontradicted.",
+  "republic-of-china ledger/94 now excludes Zhoushan from the October 1949 loss, which is slightly beyond the F005 snap itself; the Dachen Islands in the 1949 keyframe mirror the existing 1950 keyframe and are not backed by the Chinese Civil War page (it does not mention them)."
+ ]
+}

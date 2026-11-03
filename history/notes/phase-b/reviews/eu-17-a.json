@@ -1,0 +1,1519 @@
+{
+ "batch_id": "eu-17-a",
+ "verdicts": [
+  {
+   "slug": "russian-empire",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/9/counterpart",
+     "what": "1735 loss of Baku, Shirvan and Derbent named afsharid-iran as counterpart, a state whose dossier starts in January 1736.",
+     "why": "afsharid-iran.json identity.start 1736-01; safavid-dynasty.json (to March 1736) records this as /ledger/71 '1735 gain russian-empire'. The note itself says RE does not name the Persian side.",
+     "fix": "counterpart safavid-dynasty (done, note extended, dossier re-validated).",
+     "applied": true
+    },
+    {
+     "where": "/ledger (new event, 1739)",
+     "what": "Missing gain of Azov from the Ottoman Empire in 1739, on a page the author opened.",
+     "why": "TE table row: '1739 | Anna of Russia | Regain of Azov | Ottoman Empire | Russo-Turkish War (1735-1739)'. ottoman-empire.json /ledger/146: 1739 loss russian-empire c3 ('Ottomans cede the demilitarized Azov to Russia, as well as the Zaporozhye region').",
+     "fix": "Add {year 1739, type gain, counterpart ottoman-empire, region {place Azov, km 60}, source TE, confidence 3}; add the war 'Russo-Turkish War (1735-1739)' to wars[]; in /ledger/18 (1774) say Azov was already Russian (or keep it only as the Cliopatria shape date) so the land is not gained twice.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (new event, 1771)",
+     "what": "Missing annexation of the Kalmyk Khanate in 1771, on a page the author opened.",
+     "why": "TE row: '1771 | Catherine the Great | Kalmyk Khanate | Kalmyk Khanate | exodus of the Kalmyks to Dzungaria'. kalmyk-khanate.json /ledger/6: October 1771 dissolve, counterpart russian-empire, c3.",
+     "fix": "Add {year 1771, month 10, type gain, counterpart kalmyk-khanate, region {cliopatria 'Kalmyk Khanate', year 1771}, source TE, confidence 3}, and say in the 1772 keyframe note whether the Volga steppe is already inside the 1769/1772 shapes.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (new events 1859-1864) and /keyframe_review/48",
+     "what": "The 1863 to 1864 keyframe change (22.04 to 22.96 M km2, about 3,090 cells in Kazakhstan, Uzbekistan, Kyrgyzstan) has no ledger event, although the opened CA page dates the steps.",
+     "why": "CA: 'in 1862, Russia took Tokmak' (and Pishpek), 'In 1864, Chernayev ... captured Aulie-Ata', 'In June 1864 Veryovkin took Hazrat-i-Turkestan from Kokand', Chimkent taken in 1864. khanate-of-kokand.json /ledger/15-19 records losses to russian-empire in 1859, 1861-09, 1862, 1864 and 1864-06 with no mirror here.",
+     "fix": "Add gains from khanate-of-kokand: 1862 (Bishkek/Tokmak radius), 1864 (Taraz@80), 1864-06 (Turkistan@60), 1864 (Shymkent@60), and 1859/1861 (Syr Darya forts, Qyzylorda radius) from the CA page, matching the Kokand dossier's regions.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/48",
+     "what": "Verdict 'ok' on the 1864-1867 shape although its own note says it holds Tashkent and Samarkand, which the ledger gains in 1865-06 (/ledger/78) and 1868-05 (/ledger/81), and Bukhara's Jizzakh land (1866).",
+     "why": "Note: 'the shape (which already holds Tashkent, 49 of 49 cells, and most of Samarkand, 47 of 53) runs one to four years ahead of the page'. Brief section 2.4: a keyframe and its ledger must agree.",
+     "fix": "verdict adjust; correction {minus: [{cliopatria Russian Empire 1864}, {union: [Tashkent@60, Samarkand@80, Jizzakh admin1, Istaravshan@60, Khujand@60]}]} with text; the 1865, 1866 and 1868 gains then add them back.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/50",
+     "what": "1813 Duchy of Warsaw recorded as a gain at confidence 3, but the cited page says occupation.",
+     "why": "TE row: '1813 | Alexander I of Russia | Duchy of Warsaw (Under occupation) | France | Napoleonic Wars'; the note itself says 'Russia occupies the Duchy of Warsaw'. With /ledger/55 the same land is gained twice (1813 and 1815).",
+     "fix": "type occupation_start (counterpart duchy-of-warsaw); add an occupation_end 1815 for the same region just before /ledger/55; /ledger/55 stays the 1815 gain of Congress Poland.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (new events 1804-1805, 1827-1828)",
+     "what": "Missing gains and an occupation on the Persian front that the qajar-dynasty dossier records at confidence 2-3.",
+     "why": "qajar-dynasty.json /ledger/13 '1804-01 loss russian-empire: Ganja falls to Russia on 15 January' (c3), /ledger/14 1805-05 Karabakh and Shaki (c2), /ledger/15 1805-12 Shirvan (c2), /ledger/20 '1827-10 occupation_start: Tabriz surrendered ... 24 October 1827' (c3) with end 1828. The Russo-Persian War (1804-1813) page (S5) was opened. The 1805 keyframe note counts Dagestan +123 and Azerbaijan +60 cells that only the Karabakh vassal event covers.",
+     "fix": "Add gain 1804-01 Ganja@60 (S5), gain 1805-05 Sheki@50 and 1805-12 Shirvan (counterpart qajar-dynasty, or the khanates if they get dossiers), and occupation_start 1827-10 / occupation_end 1828-02 for Tabriz and Ardabil with a war entry for 1826-1828 zones.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (new event, 1875)",
+     "what": "Missing loss of the Kuril Islands to Japan under the 1875 Treaty of Saint Petersburg, the other half of the Sakhalin exchange in /ledger/87.",
+     "why": "empire-of-japan.json /ledger/15: 1877 gain russian-empire, 'The entire Kuril archipelago Japanese territory' (treaty 'signed on 7 May 1875'). No loss on this side; the 1875 Sakhalin gain also disagrees with Japan's /ledger/14 contest_end dated 1877.",
+     "fix": "Add {year 1875, month 5, type loss, counterpart empire-of-japan, region {region 'Kuril Islands'} minus the southern islands already Japanese}, citing https://en.wikipedia.org/wiki/Treaty_of_Saint_Petersburg_(1875); agree the year (1875 signature vs 1877 effect) with jk-01.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/89/counterpart",
+     "what": "1878 regain of Southern Bessarabia from ottoman-empire contradicts the dossier's own /ledger/71, which gives the same land to Moldavia in 1856.",
+     "why": "TE row does say '1878 | Regain of Southern Bessarabia | Ottoman Empire', but ottoman-empire.json /ledger/199 (1878-07) lists only Kars, Ardahan and Batum; southern Bessarabia was Moldavian/Romanian from 1856 to 1878.",
+     "fix": "counterpart united-principalities-of-moldavia-and-wallachia (Romania), month 7, confidence 2, citing https://en.wikipedia.org/wiki/Treaty_of_Berlin_(1878) or https://en.wikipedia.org/wiki/Southern_Bessarabia.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/79/region",
+     "what": "1866 gain from Bukhara drawn as all of Russian Uzbekistan in 1868, which includes Tashkent (gained from Kokand 1865) and Samarkand (gained 1868-05).",
+     "why": "emirate-of-bukhara.json /ledger/6 (1866 loss russian-empire, c3) names 'Ura-Tepe and Jizzakh': region union(Jizzakh admin1, Istaravshan@60). Brief 2.8: regions specific enough to draw.",
+     "fix": "region {union: [{admin1 Jizzakh, country Uzbekistan}, {place Istaravshan, km 60}]}; add the 1866 gain of Khujand from khanate-of-kokand (Kokand /ledger/22).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/93",
+     "what": "1885 Panjdeh gain drawn as the whole of Mary Province, which also holds Merv (gained 1884-03, /ledger/92); month missing.",
+     "why": "CA names only 'the Afghan fort of Panjdeh'; emirate-of-afghanistan.json /ledger/16 dates the loss to 1885-03 (c3).",
+     "fix": "region a radius around Panjdeh (Tagtabazar, about 40 km), month 3; Panjdeh may need a gazetteer place.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/12/counterpart and /ledger/10/counterpart",
+     "what": "Shape-bridge gains from 'nobody' where neighbour dossiers record the same land as their loss to the Russian Empire.",
+     "why": "zaporozhian-cossacks.json /ledger/9: 1752 loss russian-empire (New Serbia, 'on the land of the Zaporizhian Sich'), matching the 92 Ukrainian cells of /ledger/12; kazakh-khanate.json /ledger/32: 1738 loss russian-empire (Orenburg country, 52-61 E), matching /ledger/10.",
+     "fix": "Split /ledger/12 into a Ukrainian part (counterpart zaporozhian-cossacks) and a steppe part; set /ledger/10's steppe part to kazakh-khanate.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/68, /ledger/70",
+     "what": "Occupation of the Danubian principalities dated 1849 to 1856 as one span (c1), against the Wallachia dossier's two dated occupations.",
+     "why": "principality-of-wallachia.json /ledger/29-34: occupation_start 1848-09 (c3), end 1851-04 (c3); start 1853-07 (c3), end 1854 (c3).",
+     "fix": "Re-date to 1848-09..1851-04 and 1853-07..1854 (two pairs), confidence 2-3 from the pages the Wallachia dossier cites; the 1849 keyframe stays adjust for the cells to 1855.",
+     "applied": false
+    },
+    {
+     "where": "/wars",
+     "what": "Wars in the opened sources are missing: Russo-Turkish War (1735-1739), Russo-Turkish War (1828-1829); the World War I entry lacks the Caucasus and Persian fronts.",
+     "why": "TE gives both Russo-Turkish wars as the background of its 1739 and 1829 rows; /ledger/61 (1829 gain) has no war; /ledger/107 (Iran 1915) and /ledger/111 (Turkey 1916) fall in no war zone; ottoman-empire.json /ledger/219 has contest_start 1914-11 with russian-empire.",
+     "fix": "Add the two wars with zones (Azov; Danube Delta, Anapa, Poti, Akhaltsikhe), and either add ottoman-empire and qajar-dynasty to the World War I belligerents with zones (eastern Anatolia, northern Iran) or add a Caucasus campaign war.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/13",
+     "what is missing": "Start of the occupation of East Prussia: dated 1762 from the shape; kingdom-of-prussia.json has the contest from 1757-08 and cites the Russian advance through East Prussia in 1758.",
+     "page to try": "https://en.wikipedia.org/wiki/East_Prussia"
+    },
+    {
+     "where": "/ledger/8, /ledger/10, /ledger/12",
+     "what is missing": "1734, 1738 and 1752 steppe and Siberian frontier steps (shape bridges, c1).",
+     "page to try": "https://en.wikipedia.org/wiki/Orenburg"
+    },
+    {
+     "where": "/ledger/15",
+     "what is missing": "Sloboda Ukraine: gained 1769 from the shape, but sloboda-ukraine.json ends 1765-07 (dissolve without counterpart) and the land was already the tsar's.",
+     "page to try": "https://en.wikipedia.org/wiki/Sloboda_Ukraine"
+    },
+    {
+     "where": "/ledger/21",
+     "what is missing": "Destruction of the Zaporozhian Sich (zaporozhian-cossacks.json dissolve 1775-08).",
+     "page to try": "https://en.wikipedia.org/wiki/Zaporozhian_Sich"
+    },
+    {
+     "where": "/ledger/22",
+     "what is missing": "Chukotka coast 1778 (shape only).",
+     "page to try": "https://en.wikipedia.org/wiki/Chukchi_people"
+    },
+    {
+     "where": "/ledger/25, /ledger/26",
+     "what is missing": "1791-1792 occupation of Moldavia and Wallachia (shape only): principality-of-wallachia.json has no Russian occupation in these years; check which principality Russia held and from when.",
+     "page to try": "https://en.wikipedia.org/wiki/Russo-Turkish_War_(1787%E2%80%931792)"
+    },
+    {
+     "where": "/ledger/35, /ledger/36",
+     "what is missing": "1796 Persian expedition (no qajar-dynasty mirror).",
+     "page to try": "https://en.wikipedia.org/wiki/Persian_expedition_of_1796"
+    },
+    {
+     "where": "/ledger/47, /ledger/51",
+     "what is missing": "1812 French invasion and 1813 recovery of Lithuania and Belarus.",
+     "page to try": "https://en.wikipedia.org/wiki/French_invasion_of_Russia"
+    },
+    {
+     "where": "/ledger/60, /ledger/64",
+     "what is missing": "1828-1834 occupation of the principalities (Wallachia dossier: 1828 to 1834-04).",
+     "page to try": "https://en.wikipedia.org/wiki/Russo-Turkish_War_(1828%E2%80%931829)"
+    },
+    {
+     "where": "/ledger/62, /ledger/63",
+     "what is missing": "November Uprising 1830-1831 (Cliopatria 'Poles' 1830-1833).",
+     "page to try": "https://en.wikipedia.org/wiki/November_Uprising"
+    },
+    {
+     "where": "/ledger/68, /ledger/70",
+     "what is missing": "1848-1851 and 1853-1854 occupations (see fixes).",
+     "page to try": "https://en.wikipedia.org/wiki/Crimean_War"
+    },
+    {
+     "where": "/ledger/83",
+     "what is missing": "Novaya Zemlya 1870.",
+     "page to try": "https://en.wikipedia.org/wiki/Novaya_Zemlya"
+    },
+    {
+     "where": "/ledger/84, /ledger/94",
+     "what is missing": "Ili occupation 1871 to 1881 (qing-dynasty.json /ledger/73: returned under the 1881 Treaty of Saint Petersburg, c3; this dossier ends it in 1885 at c1).",
+     "page to try": "https://en.wikipedia.org/wiki/Ili_crisis"
+    },
+    {
+     "where": "/ledger/96",
+     "what is missing": "Second 1895 cell change (shape only).",
+     "page to try": "https://en.wikipedia.org/wiki/Great_Game"
+    },
+    {
+     "where": "/ledger/98",
+     "what is missing": "Occupation of Manchuria 1900 (qing-dynasty.json has 1900-06 at c3).",
+     "page to try": "https://en.wikipedia.org/wiki/Russian_invasion_of_Manchuria"
+    },
+    {
+     "where": "/ledger/102",
+     "what is missing": "Severnaya Zemlya 1913.",
+     "page to try": "https://en.wikipedia.org/wiki/Severnaya_Zemlya"
+    },
+    {
+     "where": "/ledger/107",
+     "what is missing": "Russian occupation of northern Iran: qajar-dynasty.json has Tabriz 1909 and Urmia/Khoy 1910 (c3) and 1915-11 (c2) with ends 1917; this dossier has only 1915 at c1.",
+     "page to try": "https://en.wikipedia.org/wiki/Persian_campaign_(World_War_I)"
+    },
+    {
+     "where": "/ledger/111",
+     "what is missing": "Occupation of eastern Anatolia 1916 (ottoman-empire.json /ledger/221 c3 'captured Western Armenia in 1916').",
+     "page to try": "https://en.wikipedia.org/wiki/Caucasus_campaign"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "Ruler strip omitted (author flagged).",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_Russian_monarchs"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Territorial_evolution_of_Russia",
+     "result": "confirmed: row '1723 | Peter the Great | Derbent, Baku, Shirvan, Gilan, Mazandaran, and Astarabad | Guarded Domains of Iran'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Russian_conquest_of_Central_Asia",
+     "result": "confirmed: 'Tevkelev met with the leaders of the Junior juz on 10 October 1731' (/ledger/5 Middle Juz: emissaries 15 December 1731, oath undated; c2 is honest)"
+    },
+    {
+     "where": "/ledger/37",
+     "page": "https://en.wikipedia.org/wiki/Territorial_evolution_of_Russia",
+     "result": "confirmed: row '1799 | Paul I of Russia | Alaska | Indigenous people | Russian America'"
+    },
+    {
+     "where": "/ledger/45",
+     "page": "https://en.wikipedia.org/wiki/Russian_Empire",
+     "result": "confirmed: 'the signing of the Treaty of Fredrikshamn on 17 September 1809'"
+    },
+    {
+     "where": "/ledger/50",
+     "page": "https://en.wikipedia.org/wiki/Territorial_evolution_of_Russia",
+     "result": "confirmed year, wrong type: row reads 'Duchy of Warsaw (Under occupation) | France', recorded as gain (see fixes)"
+    },
+    {
+     "where": "/ledger/61",
+     "page": "https://en.wikipedia.org/wiki/Territorial_evolution_of_Russia",
+     "result": "confirmed: row '1829 | Danube Delta, Anapa, Novorossiysk, Poti, Akhaltsikhe and Akhalkalaki | Ottoman Empire | Russo-Turkish War (1828-1829)'"
+    },
+    {
+     "where": "/ledger/72",
+     "page": "https://en.wikipedia.org/wiki/Amur_Annexation",
+     "result": "confirmed: Aigun 1858 'ceded all territories north of the Amur to Russia' (page gives the year only)"
+    },
+    {
+     "where": "/ledger/89",
+     "page": "https://en.wikipedia.org/wiki/Territorial_evolution_of_Russia",
+     "result": "confirmed as quoted ('Regain of Southern Bessarabia | Ottoman Empire'); counterpart conflicts with /ledger/71 (see fixes)"
+    },
+    {
+     "where": "/ledger/92",
+     "page": "https://en.wikipedia.org/wiki/Russian_conquest_of_Central_Asia",
+     "result": "confirmed: 'On 16 March 1884, Komarov occupied Merv.'"
+    },
+    {
+     "where": "/ledger/95",
+     "page": "https://en.wikipedia.org/wiki/Territorial_evolution_of_Russia",
+     "result": "confirmed: row '1895 | Alexander III of Russia | East Tajikistan | sparsely populated | Exploration of the Pamir plateau'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 22800000,
+    "infobox_year": 1895,
+    "cliopatria_km2": 22339057,
+    "ratio": 0.98,
+    "acknowledged": true,
+    "note": "also 1725: 15,000,000 vs russian-empire_1721 14,451,556 (0.96); 1906: 22,500,000 vs russian-empire_1905 22,299,103 (0.99); quoted correctly in keyframe notes"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1721,
+    "type": "gain",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": {
+    "slug": "swedish-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-14 not run)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1723,
+    "type": "gain",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 1723,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1731,
+    "type": "vassal_start",
+    "counterpart": "kazakh-khanate"
+   },
+   "mirror": {
+    "slug": "kazakh-khanate",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "kazakh-khanate has no vassal_start; it records losses to russian-empire 1721, 1738, 1769 (c1) and occupation_start 1822/1824, ends 1847; route to ia-03 to agree the 1731 oaths (CA 10 October 1731)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1732,
+    "type": "loss",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 1732,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1735,
+    "type": "loss",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 1735,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "counterpart corrected by reviewer from afsharid-iran"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1738,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "kazakh-khanate",
+    "year": 1738,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "kazakh-khanate records the Orenburg country as lost to russian-empire; this dossier says nobody"
+  },
+  {
+   "event": {
+    "slug": "ottoman-empire",
+    "year": 1739,
+    "type": "loss",
+    "counterpart": "russian-empire"
+   },
+   "mirror": {
+    "slug": "russian-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "TE row 1739 Regain of Azov; no gain in this dossier"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1743,
+    "type": "gain",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": {
+    "slug": "swedish-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-14)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1752,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "zaporozhian-cossacks",
+    "year": 1752,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "New Serbia: zaporozhian-cossacks records the loss to russian-empire"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1762,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1757,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "Prussia: contest 1757-08 to 1762-05 (two starts); this dossier occupation only in 1762 (c1)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1762,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1762,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": "type differs (occupation vs contest), month 5 agrees"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1769,
+    "type": "gain",
+    "counterpart": "sloboda-ukraine"
+   },
+   "mirror": {
+    "slug": "sloboda-ukraine",
+    "year": 1765,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "sloboda-ukraine ends 1765-07 without counterpart; 4 years apart"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1769,
+    "type": "occupation_start",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "principality-of-wallachia",
+    "year": 1769,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "RE 1769-09 vs Wallachia 1769-11; Moldavia has no dossier (eu-18)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1771,
+    "type": "gain (absent)",
+    "counterpart": "kalmyk-khanate"
+   },
+   "mirror": {
+    "slug": "kalmyk-khanate",
+    "year": 1771,
+    "type": "dissolve"
+   },
+   "status": "missing",
+   "note": "kalmyk-khanate dissolve 1771-10 counterpart russian-empire; TE row 1771; no event here"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1772,
+    "type": "gain",
+    "counterpart": "polish-lithuanian-commonwealth"
+   },
+   "mirror": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-15)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1774,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1774,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1774,
+    "type": "vassal_start",
+    "counterpart": "crimean-khanate"
+   },
+   "mirror": {
+    "slug": "crimean-khanate",
+    "year": 1774,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "crimean-khanate has no vassal_start: occupation 1771-07..1772-11 and 1776-11..1783-04, loss of Kerch 1774-07"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1774,
+    "type": "occupation_end",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "principality-of-wallachia",
+    "year": 1774,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1775,
+    "type": "gain",
+    "counterpart": "zaporozhian-cossacks"
+   },
+   "mirror": {
+    "slug": "zaporozhian-cossacks",
+    "year": 1775,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "zaporozhian dissolve 1775-08 has no counterpart; suggest russian-empire"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1783,
+    "type": "gain",
+    "counterpart": "crimean-khanate"
+   },
+   "mirror": {
+    "slug": "crimean-khanate",
+    "year": 1783,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "crimean 1783-04; add month 4 here"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1791,
+    "type": "occupation_start",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "principality-of-wallachia",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "principality-of-wallachia has no Russian occupation in 1791; c1 here"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1792,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1792,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1793,
+    "type": "gain",
+    "counterpart": "polish-lithuanian-commonwealth"
+   },
+   "mirror": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-15)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1795,
+    "type": "gain",
+    "counterpart": "polish-lithuanian-commonwealth"
+   },
+   "mirror": {
+    "slug": "polish-lithuanian-commonwealth",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-15)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1795,
+    "type": "gain",
+    "counterpart": "duchy-of-courland"
+   },
+   "mirror": {
+    "slug": "duchy-of-courland",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-14)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1796,
+    "type": "occupation_start",
+    "counterpart": "qajar-dynasty"
+   },
+   "mirror": {
+    "slug": "qajar-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "qajar-dynasty has no 1796 event; c1 here"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1801,
+    "type": "gain",
+    "counterpart": "kingdom-of-georgia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-georgia",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-19)"
+  },
+  {
+   "event": {
+    "slug": "qajar-dynasty",
+    "year": 1804,
+    "type": "loss",
+    "counterpart": "russian-empire"
+   },
+   "mirror": {
+    "slug": "russian-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Ganja 1804-01 c3 in qajar; no gain here"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1805,
+    "type": "vassal_start",
+    "counterpart": "Karabakh Khanate"
+   },
+   "mirror": {
+    "slug": "qajar-dynasty",
+    "year": 1805,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "Karabakh Khanate has no dossier (listed); qajar records Karabakh and Shaki as loss 1805-05 and Shirvan 1805-12 (Shaki, Shirvan missing here)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1806,
+    "type": "gain",
+    "counterpart": "qajar-dynasty"
+   },
+   "mirror": {
+    "slug": "qajar-dynasty",
+    "year": 1806,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "qajar 1806-02"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1806,
+    "type": "occupation_start",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "principality-of-wallachia",
+    "year": 1806,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1807,
+    "type": "gain",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1807,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "prussia 1807-07; add month 7 here"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1809,
+    "type": "gain",
+    "counterpart": "austrian-empire"
+   },
+   "mirror": {
+    "slug": "austrian-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-20)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1809,
+    "type": "gain",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": {
+    "slug": "swedish-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-14); denmark-norway /ledger/36 has an odd 1809 loss of one Finnmark cell to russian-empire (c1), route to eu-14"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1810,
+    "type": "gain",
+    "counterpart": "kingdom-of-imereti"
+   },
+   "mirror": {
+    "slug": "kingdom-of-imereti",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-19)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1812,
+    "type": "loss",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": {
+    "slug": "first-french-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1812,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1812,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Bessarabia"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1812,
+    "type": "occupation_end",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "principality-of-wallachia",
+    "year": 1812,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1813,
+    "type": "gain",
+    "counterpart": "duchy-of-warsaw"
+   },
+   "mirror": {
+    "slug": "duchy-of-warsaw",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet; should be occupation_start (see fixes)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1813,
+    "type": "gain",
+    "counterpart": "qajar-dynasty"
+   },
+   "mirror": {
+    "slug": "qajar-dynasty",
+    "year": 1813,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "1813-10"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1815,
+    "type": "gain",
+    "counterpart": "duchy-of-warsaw"
+   },
+   "mirror": {
+    "slug": "duchy-of-warsaw",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1815,
+    "type": "loss",
+    "counterpart": "austrian-empire"
+   },
+   "mirror": {
+    "slug": "austrian-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-20)"
+  },
+  {
+   "event": {
+    "slug": "qajar-dynasty",
+    "year": 1827,
+    "type": "occupation_start",
+    "counterpart": "russian-empire"
+   },
+   "mirror": {
+    "slug": "russian-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Tabriz 1827-10 c3; no occupation here"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1828,
+    "type": "gain",
+    "counterpart": "qajar-dynasty"
+   },
+   "mirror": {
+    "slug": "qajar-dynasty",
+    "year": 1828,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "qajar 1828-02; add month 2 here"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1828,
+    "type": "occupation_start",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "principality-of-wallachia",
+    "year": 1828,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1829,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1829,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "ottoman 1829-09"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1830,
+    "type": "loss",
+    "counterpart": "poles"
+   },
+   "mirror": {
+    "slug": "poles",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (Cliopatria row Poles 1830-1833)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1834,
+    "type": "occupation_end",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "principality-of-wallachia",
+    "year": 1834,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "wallachia 1834-04"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1847,
+    "type": "gain",
+    "counterpart": "kazakh-khanate"
+   },
+   "mirror": {
+    "slug": "kazakh-khanate",
+    "year": 1847,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "kazakh records occupation_end and contest_end 1847, no loss; types disagree"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1849,
+    "type": "occupation_start",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "principality-of-wallachia",
+    "year": 1848,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "Wallachia 1848-09..1851-04 and 1853-07..1854 (c3) vs 1849..1856 here (c1)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1853,
+    "type": "gain",
+    "counterpart": "khanate-of-kokand"
+   },
+   "mirror": {
+    "slug": "khanate-of-kokand",
+    "year": 1853,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1856,
+    "type": "loss",
+    "counterpart": "principality-of-moldavia"
+   },
+   "mirror": {
+    "slug": "principality-of-moldavia",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-18); the Danube Delta part went to the Ottomans and ottoman-empire has no 1856 gain"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1858,
+    "type": "gain",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "qing-dynasty",
+    "year": 1858,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "qing treats the Amur left bank as contested 1858-05..1860-11 (Qing refused to ratify Aigun, per AM); both defensible, agree with ea-08"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1860,
+    "type": "gain",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "qing-dynasty",
+    "year": 1860,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "1860-11"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1859,
+    "type": "gain",
+    "counterpart": "caucasian-imamate"
+   },
+   "mirror": {
+    "slug": "caucasian-imamate",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-19)"
+  },
+  {
+   "event": {
+    "slug": "khanate-of-kokand",
+    "year": 1859,
+    "type": "loss",
+    "counterpart": "russian-empire"
+   },
+   "mirror": {
+    "slug": "russian-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "also 1861-09, 1862, 1864, 1864-06, 1866 (Khujand) Kokand losses with no gain here"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1864,
+    "type": "gain",
+    "counterpart": "Circassians"
+   },
+   "mirror": {
+    "slug": "circassia",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1865,
+    "type": "gain",
+    "counterpart": "khanate-of-kokand"
+   },
+   "mirror": {
+    "slug": "khanate-of-kokand",
+    "year": 1865,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "1865-06"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1866,
+    "type": "gain",
+    "counterpart": "emirate-of-bukhara"
+   },
+   "mirror": {
+    "slug": "emirate-of-bukhara",
+    "year": 1866,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "regions disagree (see fixes)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1867,
+    "type": "loss",
+    "counterpart": "united-states-of-america"
+   },
+   "mirror": {
+    "slug": "united-states-of-america",
+    "year": 1867,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "1867-10"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1868,
+    "type": "gain",
+    "counterpart": "emirate-of-bukhara"
+   },
+   "mirror": {
+    "slug": "emirate-of-bukhara",
+    "year": 1868,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "1868-05"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1868,
+    "type": "vassal_start",
+    "counterpart": "emirate-of-bukhara"
+   },
+   "mirror": {
+    "slug": "emirate-of-bukhara",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "emirate-of-bukhara has contest_end 1868-07 but no vassal_start; route to ia-03"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1871,
+    "type": "occupation_start",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "qing-dynasty",
+    "year": 1871,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1885,
+    "type": "occupation_end",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "qing-dynasty",
+    "year": 1881,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "qing 1881 c3 (Treaty of Saint Petersburg) vs 1885 c1 here"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1873,
+    "type": "gain",
+    "counterpart": "khanate-of-khiva"
+   },
+   "mirror": {
+    "slug": "khanate-of-khiva",
+    "year": 1873,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "khiva 1873-08"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1873,
+    "type": "vassal_start",
+    "counterpart": "khanate-of-khiva"
+   },
+   "mirror": {
+    "slug": "khanate-of-khiva",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "khanate-of-khiva has no vassal_start; route to ia-03"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1875,
+    "type": "gain",
+    "counterpart": "empire-of-japan"
+   },
+   "mirror": {
+    "slug": "empire-of-japan",
+    "year": 1877,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "japan dates the Sakhalin exchange to 1877 (effect) and has the Kuril gain from russian-empire in 1877; no Kuril loss here"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1876,
+    "type": "gain",
+    "counterpart": "khanate-of-kokand"
+   },
+   "mirror": {
+    "slug": "khanate-of-kokand",
+    "year": 1876,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "also kokand 1876 loss"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1878,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1878,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Budjak: ottoman 1878-07 loss is Kars, Ardahan, Batum only; southern Bessarabia was Romanian"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1878,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1878,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Kars and Ajaria; ottoman 1878-07"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1885,
+    "type": "gain",
+    "counterpart": "emirate-of-afghanistan"
+   },
+   "mirror": {
+    "slug": "emirate-of-afghanistan",
+    "year": 1885,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "afghanistan 1885-03"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1898,
+    "type": "occupation_start",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "qing-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Kwantung lease 1898-03: qing-dynasty has no event; route to ea-08"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1900,
+    "type": "occupation_start",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "qing-dynasty",
+    "year": 1900,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "qing 1900-06 c3; c1 here"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1905,
+    "type": "loss",
+    "counterpart": "empire-of-japan"
+   },
+   "mirror": {
+    "slug": "empire-of-japan",
+    "year": 1905,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "1905-09"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1905,
+    "type": "occupation_end",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": {
+    "slug": "empire-of-japan",
+    "year": 1905,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Kwantung to Japan 1905-09; qing occupation_end 1905 c1"
+  },
+  {
+   "event": {
+    "slug": "qajar-dynasty",
+    "year": 1909,
+    "type": "occupation_start",
+    "counterpart": "russian-empire"
+   },
+   "mirror": {
+    "slug": "russian-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Tabriz 1909, Urmia and Khoy 1910 (c3) not in this dossier"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1914,
+    "type": "vassal_start",
+    "counterpart": "republic-of-uryankhay"
+   },
+   "mirror": {
+    "slug": "republic-of-uryankhay",
+    "year": 1914,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "uryankhay records loss (and end) 1914-04; TU says protectorate, so this side is right"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1914,
+    "type": "occupation_start",
+    "counterpart": "austria-hungary"
+   },
+   "mirror": {
+    "slug": "austria-hungary",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-20)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1915,
+    "type": "loss",
+    "counterpart": "german-empire"
+   },
+   "mirror": {
+    "slug": "german-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet (eu-20)"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1915,
+    "type": "occupation_start",
+    "counterpart": "qajar-dynasty"
+   },
+   "mirror": {
+    "slug": "qajar-dynasty",
+    "year": 1915,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "qajar 1915-11"
+  },
+  {
+   "event": {
+    "slug": "russian-empire",
+    "year": 1916,
+    "type": "occupation_start",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1916,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "ottoman records a loss (c3); types disagree"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Yedisan",
+   "kind": "region",
+   "used_in": "russian-empire"
+  },
+  {
+   "name": "Panjdeh",
+   "kind": "place",
+   "used_in": "russian-empire"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Circassia (Circassians)",
+   "suggested_slug": "circassia",
+   "years": [
+    1817,
+    1864
+   ]
+  },
+  {
+   "name": "Karabakh Khanate",
+   "suggested_slug": "karabakh-khanate",
+   "years": [
+    1805,
+    1813
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-17-a.md",
+ "problems": [
+  "No page failed for the reviewer (TE, RE, CA, AM opened).",
+  "Reviewer applied one fix in place (/ledger/9 counterpart afsharid-iran -> safavid-dynasty) and re-validated: valid, 0 errors, same 7 warnings.",
+  "Mirror gaps on the neighbours' side to route: emirate-of-bukhara and khanate-of-khiva lack vassal_start to russian-empire (ia-03); qing-dynasty lacks the 1898 Kwantung lease (ea-08); denmark-norway /ledger/36 gives a Finnmark cell to russian-empire in 1809 (eu-14)."
+ ]
+}

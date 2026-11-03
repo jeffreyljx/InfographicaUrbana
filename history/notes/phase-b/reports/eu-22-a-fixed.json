@@ -1,0 +1,116 @@
+{
+ "group_id": "eu-22-a",
+ "dossiers_written": [
+  {
+   "slug": "french-fourth-republic",
+   "path": "history/polities/french-fourth-republic.json",
+   "name": "French Fourth Republic",
+   "years": [
+    1945,
+    1958
+   ],
+   "cliopatria_names": [
+    "French Fourth Republic"
+   ],
+   "new_state": false,
+   "keyframes_reviewed": 6,
+   "keyframe_verdicts": {
+    "ok": 0,
+    "adjust": 6,
+    "wrong": 0
+   },
+   "events": 12,
+   "low_confidence_events": 1,
+   "wars": 2,
+   "sources": 9,
+   "validates": true,
+   "resolve_warnings": 6
+  }
+ ],
+ "events_total": 12,
+ "sources_total": 9,
+ "new_slugs": [],
+ "gazetteer_names_needed": [
+  {
+   "name": "Tende",
+   "kind": "place",
+   "used_in": "french-fourth-republic",
+   "hint": "commune in the upper Roya valley, Alpes-Maritimes, about 44.09 N 7.60 E; ceded by Italy in 1947 (a 12 km circle at 44.08 N 7.6 E stands in; the circle adds cell 44.16 N 7.68 E to the one Cliopatria already draws)"
+  },
+  {
+   "name": "La Brigue",
+   "kind": "place",
+   "used_in": "french-fourth-republic",
+   "hint": "commune next to Tende, Alpes-Maritimes, about 44.07 N 7.62 E; ceded with Tende in 1947"
+  },
+  {
+   "name": "French sector of Berlin",
+   "kind": "region",
+   "used_in": "french-fourth-republic",
+   "hint": "the French occupation sector of Berlin (1945-1990); the dossier uses admin1 Berlin intersected with the 1945 shape, which is one cell at 52.54 N 13.28 E; the West Berlin page names no districts"
+  }
+ ],
+ "pages_failed": [],
+ "gaps": [
+  {
+   "slug": "french-fourth-republic",
+   "what": "month, districts and takeover day of the French sector of Berlin (year 1945 and end 3 October 1990 are dated)",
+   "why": "page silent: the West Berlin page has an empty 'In the French sector' heading and gives no month"
+  },
+  {
+   "slug": "french-fourth-republic",
+   "what": "day of departmentalisation of Guadeloupe, Martinique and French Guiana (Réunion is dated 19 March 1946; the three are already in the shape)",
+   "why": "page silent: the Overseas departments and regions page only says they were defined as overseas departments under the 1947 Constitution"
+  },
+  {
+   "slug": "french-fourth-republic",
+   "what": "dossier start kept at 1945, not 1944 (the Provisional Government was created 3 June 1944 and sat in Paris from 31 August 1944)",
+   "why": "out of scope: the Free French row covers 1944 (data/polities.csv 1940..1944) and a 1944 start would cover that year twice"
+  },
+  {
+   "slug": "french-fourth-republic",
+   "what": "Morocco, Tunisia, French India, Cameroon transitions; day of the Tende and La Brigue transfer (September 1947 is the treaty's entry into force)",
+   "why": "out of scope: colonial rows french-africa, french-india, french-indochina belong to other groups; page silent on the transfer day"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "West Berlin (the Allied sectors of Berlin, French sector among them)",
+   "suggested_slug": "west-berlin",
+   "years": [
+    1945,
+    1990
+   ],
+   "group": "eu-22-x"
+  },
+  {
+   "name": "Saar Protectorate",
+   "suggested_slug": "saar-protectorate",
+   "years": [
+    1946,
+    1957
+   ],
+   "group": "eu-22-x"
+  },
+  {
+   "name": "Allied-occupied Germany (zones of occupation)",
+   "suggested_slug": "allied-occupied-germany",
+   "years": [
+    1945,
+    1949
+   ],
+   "group": "eu-22-x"
+  }
+ ],
+ "notes_path": "history/polities/_notes/eu-22-a.md",
+ "fixes_applied": 7,
+ "problems": [
+  "Only french-fourth-republic was touched; the other five eu-22-a dossiers (pass, or fixed by the reviewer) are unchanged. Totals above cover this one dossier.",
+  "Applied: reviewer fixes 1-4 (keyframes 4 and 5 now subtract all of Germany, K5 regains the Tende circle, notes corrected, occupation_end of 23 May 1949 leaves the Berlin cell occupied) plus, beyond the list, the dissolve event's region (same 9 German cells) and, from the thin items, a Reunion gain event of 19 March 1946 (Réunion page; Réunion added to keyframes 1-5, 10 cells) and a 1945 Berlin-sector occupation_start (West Berlin page; counterpart west-berlin, no occupation_end because the occupation runs to 3 October 1990, past this state's end). The zone event /ledger/2 now excludes the Berlin cell so the two events do not overlap.",
+  "Disagreement, thin item /ledger/0: the Provisional Government page dates the government 3 June 1944 (infobox preceded by Free France), but the start stays 1945 because Cliopatria's Free French row ends in 1944 and a 1944 start would cover that year twice; confidence stays 1, the note now carries the page's dates, the alt name reads 1944-1946 and the predecessor note cites the infobox.",
+  "Reviewer suggestion {place: Berlin, km 15} for the occupation_end was replaced by admin1 Berlin: both resolve to the same single cell 52.54 N 13.28 E.",
+  "Validation: python3 -I history/tools/validate_dossier.py history/polities/french-fourth-republic.json --resolve: 0 errors, 6 warnings (counterparts west-berlin, allied-occupied-germany, saar-protectorate have no dossier yet; the Berlin occupation_start has no later end by design). Resolve of the corrected 1950 and 1956 specs intersected with Germany: 0 cells.",
+  "For the french-fifth-republic author: shapes.csv gives its 1958 to 2023 shapes a bbox reaching 52.5863 N, so they hold a Berlin cell as well; it is occupied land until 3 October 1990 and not French land afterwards.",
+  "The 1949 occupation_end region still contains the 11 Saarland cells that the Feb 1946 Saar vassal_start had already taken out of the occupation; left as is (not listed by the reviewer, no effect on the map)."
+ ]
+}

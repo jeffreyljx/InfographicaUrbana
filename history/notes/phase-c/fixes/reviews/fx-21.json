@@ -1,0 +1,114 @@
+{
+ "batch_id": "fx-21",
+ "checks": [
+  {
+   "item": "F002",
+   "verdict": "fixed",
+   "what": "russian-state /5 and /6 (3 and 4 Nov 1918) merge -> gain: correct. compile_dossiers.merge() with a non-dossier counterpart releases the state's own cells when it holds at least as many as are free, which explains the 20,662-cell November release; the page dates the transfer ('signed on November 3, 1918, in Omsk'), the Russian State page the 4 November order dissolving the regional governments. Keyframe _1918 minus Samara 100 km and Syzran 60 km is supported ('October 3, 1918 Syzran was left, October 8 - Samara') and now equals found minus those circles (23,451 cells). The second part of the fix did nothing, though. The RSFSR /11 widening adds Sverdlovsk and Chelyabinsk, but both are already inside the gazetteer's Urals region (Sverdlovsk, Chelyabinsk, Perm', Bashkortostan, Orenburg, Udmurt; minus-check 0 cells). Also, the compiler never applies /11: paired_gain() skips any RSFSR loss to the state in 1918 because the state has a 1918 gain from the RSFSR (Kungur-Perm, December). The found claim on RSFSR-held Urals cells loses under R2 (the RSFSR is the state's successor), and the RSFSR 1918 keyframe has 0 cells in the six Urals oblasts. So about 2,000 cells (Sverdlovsk 687, Chelyabinsk 284, Bashkortostan 234, Orenburg 177 ...) would still have snapped in 1918. Corrected: new russian-state /1 (Sept 1918 gain from the RSFSR, region Urals minus Kungur 40 km and Perm 80 km, 2,599 cells, conf 2), the mirror of RSFSR /11. Perm and Kungur stay with the December gain (now /10). The end-1918 map is unchanged; the snap goes. In-text index references in russian-state and in the RSFSR's 'russian-state /ledger/N' were shifted by one. Validated OK.",
+   "page": "https://en.wikipedia.org/wiki/Eastern_Front_(Russian_Civil_War)",
+   "fix": "russian-state ledger: inserted /1 {year 1918, month 9, gain, counterpart russian-soviet-federative-socialist-republic, region {minus:[{region:Urals},{union:[Kungur 40 km, Perm 80 km]}]}, conf 2}, quoting 'In May 1918 ... revolted against the Bolsheviks in Chelyabinsk', 'a Provisional Regional Government of the Urals in Yekaterinburg on 25 August 1918' and 'created by the Ufa Conference on 23 September 1918'.",
+   "applied": true
+  },
+  {
+   "item": "F002",
+   "verdict": "pass",
+   "what": "Provisional Siberian Government page checked: 'The transfer of power to the Provisional All-Russian Government was signed on November 3, 1918, in Omsk'; the territory is 'the regions of Siberia' (no boundary). It supports the date and type of /5 (gain, Western Siberia, Krasnoyarsk, Irkutsk; this land is already inside the found region).",
+   "page": "https://en.wikipedia.org/wiki/Provisional_Siberian_Government_(Omsk)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F013",
+   "verdict": "pass",
+   "what": "Keyframe russian-state_1919 = Krasnoyarsk admin1 (8,656 cells), the end-of-1919 shape. The compiler runs keyframes at sort key month 13, after the year's events, so the year-end shape is the right one. The page supports 'The pursuing Red 5th Army took Tomsk on 20 December 1919 and Krasnoyarsk on 7 January 1920' and 'Omsk was conquered by the Reds on 14 November 1919'. The new loss of 7 Jan 1920 (now /23) mirrors RSFSR /28; RSFSR /26 (Dec 1919) no longer carries Krasnoyarsk. The RSFSR 1919 keyframe holds 0 Krasnoyarsk and 0 Irkutsk cells and its 1920 keyframe holds all of both, so the two dossiers now agree at both year ends (no overlap between the two 1919 keyframes). The July 1919 Urals widening (state /15, RSFSR /21) is backed by the Russian State page ('the whole of the Ural was occupied', then 'withdrew to the Trans-Urals. Ekaterinburg and Chelyabinsk were left'). Its Sverdlovsk and Chelyabinsk entries add nothing, since both lie inside the Urals region (harmless). A residual release of about 144 cells (Bugulma and Samara circle edges) at the 1919 snap is disclosed.",
+   "page": "https://en.wikipedia.org/wiki/Great_Siberian_Ice_March",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F133",
+   "verdict": "pass",
+   "what": "Settled through F013: the corrected 1919 keyframe no longer draws Aqmola, Pavlodar or East Kazakhstan. The state ledger never gains them, so RSFSR /26 takes only state-held cells and the size-rule result (Alash) is unchanged. The Alash page has the territory 'under the de facto control of the region's Russian-appointed governor' until 1919, 'aligned with the White Army', and negotiating with the Bolsheviks in 1919. Note for later: the Russian State page lists 'Akmola and Semipalatinsk regions' in Kolchak's West Siberian district, so the White claim on the Steppe in spring 1919 is not drawn anywhere. That is a gap, but not an error this batch introduced.",
+   "page": "https://en.wikipedia.org/wiki/Alash_Autonomy",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F014",
+   "verdict": "pass",
+   "what": "RSFSR /28 (gain, 7 Jan 1920, Krasnoyarsk from russian-state, conf 2) is cited on the Great Siberian Ice March page. The state is still alive in 1920, so the gain takes the state-held cells. Irkutsk (/29, from the non-dossier Political Centre) now takes cells the state released in Dec 1919 (state /21), because the state's 1919 keyframe no longer re-adds Irkutsk. The 1920 keyframe should therefore add only the small undated remainders the fixer lists.",
+   "page": "https://en.wikipedia.org/wiki/Great_Siberian_Ice_March",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F017",
+   "verdict": "pass",
+   "what": "Partly fixed, as reported. The Krasnoyarsk removal (8,656) goes through the /26 change. The 1919 additions in Sverdlovsk, Perm' and Chelyabinsk are covered by /21 now carrying the Urals region; that region includes all of Perm' krai, so the fixer's remark that Perm krai beyond the circle stays is wrong but harmless. Volgograd 303, Crimea 105, Vitebsk, Mogilev and Smolensk are left undated, as reported.",
+   "page": "https://en.wikipedia.org/wiki/Russian_State",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F022",
+   "verdict": "pass",
+   "what": "RSFSR /2 (gain, Feb 1918, from nobody, the 1917 keyframe region, conf 2). The October Revolution page supports the note verbatim ('9 November 1917: ... Saratov, Samara', '10 November 1917: ... Tver', '17 January 1918: Petrozavodsk', '8 February 1918: Kiev and Vologda', '17 February 1918: Arkhangelsk'; 'largely successful in Russia proper'). The region is all of Russia less the exclusions (63,571 cells), but the gain takes only unheld cells. In the last compile the only states that later took unheld cells of this region in 1918 were russian-state (Samara-Syzran, released again by RSFSR /5 and /8 before the state's found), Finland's 1918 keyframe (79 Karelia and Murmansk cells, which the RSFSR keyframe also claims), Georgia (9), Azerbaijan (2), Latvia (2) and Estonia (1). The event-year mask therefore costs at most about 90 cells for 1918. The Tuva, Navoi and heartland handoff to russian-republic is reasonable.",
+   "page": "https://en.wikipedia.org/wiki/October_Revolution",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F004",
+   "verdict": "pass",
+   "what": "Keyframe people-s-republic-of-china_1949 = Cliopatria PRC 1950 (36,303 cells, containing the CPC 1949 outline of 14,096: 0 outside), the end-of-1949 mainland. The Chinese Civil War page supports it: 'the majority of the resistance collapsed after the fall of Chengdu on 10 December 1949', 'retreat to Taiwan on 7 December', 'By late 1949 ... only Tibet was left'. The shape has no Hainan cells ('the Communist conquest of Hainan Island ... in April 1950', ledger /5), and the 1950 keyframe is unchanged, so the 1950 snap should disappear.",
+   "page": "https://en.wikipedia.org/wiki/Chinese_Civil_War",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F006",
+   "verdict": "pass",
+   "what": "Same edit as F004; the 19,925-cell release is gone. The new keyframe does claim 1,244 cells of the 1949 Tibet-held Kham (PRC 1950 shape ∩ Tibet 1929 shape = 1,244). The Annexation of Tibet page confirms they were Tibetan until 'captured the border town of Chamdo by 19 October' 1950. The size rule keeps them Tibetan, so the map is right, but a new PRC-Tibet conflict row will appear for 1949 (the 1950 one existed before). About 1,000 unheld outline cells remain a small 1949 snap, as disclosed. Optional cleanup: correction {minus:[PRC 1950, {cliopatria: Tibet, year: 1929}]}.",
+   "page": "https://en.wikipedia.org/wiki/Annexation_of_Tibet_by_the_People%27s_Republic_of_China",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F060",
+   "verdict": "pass",
+   "what": "Ledger /36 (Aug 1598) = Western Siberia ∩ Cliopatria 1600 = 4,565 cells (was 8,904). The page: 'in August 1598, Kuchum Khan was defeated at the Battle of Irmen near the Ob River'; Mangazeya 1601, Tomsk 1604, Yeniseysk 1619 and Krasnoyarsk 1628 have their own events. The 1600 shape exceeds the 1595 shape by only 22 cells (Belgorod and Kursk), so the 1600 snap shrinks to about 22 cells added (still just above the 20-cell threshold, as disclosed).",
+   "page": "https://en.wikipedia.org/wiki/Russian_conquest_of_Siberia",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F010",
+   "verdict": "pass",
+   "what": "Ledger /53 (1632) = Cliopatria 1632 minus 1629 (7,399 cells, conf 2). The page dates 'Kirensk ... 1630', '1631 ... Bratsk ... Ust-Kutsk' and '1632 - Pyotr Beketov founded Yakutsk and Zhigansk'. The 1629 shape exceeds the 1632 shape by only 9 cells, so the 1632 keyframe now falls within tolerance. The 1638-1647 east-Sakha events keep their land.",
+   "page": "https://en.wikipedia.org/wiki/Russian_conquest_of_Siberia",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F029",
+   "verdict": "fixed",
+   "what": "The new gain /61 (1653 shape minus 1648 shape, without Transbaikal, Chukotka and Kamchatka, 3,609 cells, conf 1) matches the page's dated steps ('1643 ... Kolesnikov reaches Lake Baikal while Mikhail Stadukhin reaches Kolyma', '1647 - Ivan Moskvitin founded Okhotsk', '1648-1653 - Yerofey Khabarov's campaigns in Dauria', '1652 - Battle of Achan prison'). Leaving Chukotka and Kamchatka (1,458 cells) as a deliberate 1653 snap is consistent with '1697-1698 ... Kamchatka' and '1778 - The final annexation of Chukotka'. The keyframe change was harmful as written. Widening keyframe _1653 to the whole Transbaikal region (3,383 cells) only moves the snap: the 1659 and 1662 shapes hold just 1,116 Transbaikal cells, and Ulan-Ude and the Selenga side enter only in 1670-1691. The compiler would have drawn all of Buryatia and Zabaykalsky as Russian in 1653-1658, then released about 2,270 of those cells at 1659. The page dates two forts, not a region. Corrected: /60 region narrowed to Transbaikal ∩ Cliopatria 1659 (1,116 cells, Chita inside, Nerchinsk not), and the keyframe _1653 correction changed to the 1653 shape plus that same land. The 1653 and 1659 keyframes now agree on Transbaikal (0 cells in one and not the other). Validated: 0 errors and the same 10 older warnings.",
+   "page": "https://en.wikipedia.org/wiki/Russian_conquest_of_Siberia",
+   "fix": "tsardom-of-russia ledger /60 region -> {intersect:[{region:Transbaikal},{cliopatria:Tsardom of Russia, year 1659}]}; keyframe_review tsardom-of-russia_1653 correction -> {union:[{cliopatria:Tsardom of Russia, year 1653}, same intersect]}; notes tagged [fx-21 review].",
+   "applied": true
+  },
+  {
+   "item": "F169",
+   "verdict": "pass",
+   "what": "Eight tsardom keyframes (1572, 1579, 1582, 1659, 1711, 1713, 1714, 1718) now subtract Cliopatria Duchy of Courland 1734 (122 cells). The resolved corrections overlap none of the five duchy-of-courland keyframe shapes (0 cells each); Riga (30 km) is untouched, and Cliopatria's raw tsardom shapes overlapped the duchy by 8 cells (1572-1582), 1 (1659) and 122 (1713, 1718). The page supports it: 'Vassal state of Grand Duchy of Lithuania (1561–1569) and Poland–Lithuania (1569–1795)', 'On 24 October 1795, it was annexed by the Russian Empire'. For 1710-1718 the page gives only Russian influence (Bestuzhev 'the most powerful man in the duchy'), not occupation. The handoff for the 1561-1569 Lithuanian vassal row is appropriate.",
+   "page": "https://en.wikipedia.org/wiki/Duchy_of_Courland_and_Semigallia",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "Validation after review edits: russian-state, russian-soviet-federative-socialist-republic and people-s-republic-of-china OK (0 errors, 0 warnings); tsardom-of-russia 0 errors and 10 older warnings. The fixer reported these as only Nevel and Usvyaty; they also include kingdom-of-livonia (/13, /15) and cossack-hetmanate without vassal_end (/62). alash-autonomy and duchy-of-courland were unchanged and OK.",
+  "Compiler behaviour worth knowing for other batches: paired_gain() treats a loss as applied by the counterpart if the counterpart has any gain from this dossier in the same year, whatever its region. A loss whose counterpart also gains something else from it that year therefore moves nothing; a mirror gain is needed.",
+  "Residual snaps the fixer disclosed and accepted: russian-state 1919 (about 144 cells), RSFSR 1918 Bashkortostan side, PRC 1949 (about 1,000 unheld outline cells, plus a new 1949 PRC-Tibet conflict of 1,244 cells that the size rule settles for Tibet), tsardom 1600 (22 cells), tsardom 1653 (Chukotka and Kamchatka, 1,458 cells, deliberate)."
+ ]
+}

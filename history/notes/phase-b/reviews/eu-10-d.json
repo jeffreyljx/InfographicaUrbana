@@ -1,0 +1,1105 @@
+{
+ "batch_id": "eu-10-d",
+ "verdicts": [
+  {
+   "slug": "kingdom-of-france",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/61",
+     "what": "Provence gain dated 1482 at confidence 1 although the cited Crown lands page dates the Angevin inheritance to 1481.",
+     "why": "Crown lands of France, entry 1481: 'Charles IV, Duke of Anjou, Count of Maine, Guise, Mortain and Gien, who succeeded his uncle René I of Anjou as Duke of Anjou and Count of Provence and Forcalquier' (dies, lands to Louis XI); house-of-valois-anjou /ledger/13 dissolves in December 1481 with Provence to the crown.",
+     "fix": "Year 1481, confidence 2, note and region text quote the 1481 entry. Applied by the reviewer; file re-validated (0 errors, 0 warnings).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/127",
+     "what": "Occupation of Savoy ended in September 1706 at confidence 3, but the page does not say the French left Savoy then and implies they still held Savoy and Nice after 1707 (mis-dated confidence-3 event).",
+     "why": "War of the Spanish Succession page: 'by May 1706, the French held most of Savoy except Turin' and 'By the end of 1707, fighting in Italy ceased, apart from minor attempts by Victor Amadeus to recover Nice and Savoy.' The page only dates the relief of Turin (September 1706). The 'Savoy' of the page is the Savoyard state; /keyframe_review/94 (1702 shape) adds Piedmont 32, Italy 34 and Nice 13 cells and no Savoy-proper cells, while /ledger/126 occupies only region Savoy.",
+     "fix": "Split the occupation: /ledger/126 occupation_start 1703 (or 1704) of union Piedmont + County of Nice + Savoy (counterpart house-of-savoy, confidence 2); occupation_end 1706-09 for Piedmont only (Turin relieved); occupation_end for Savoy and County of Nice at Utrecht (1713-04) from a page that says so (Victor Amadeus II of Sardinia or Treaty of Utrecht); keyframes 1706-1712 keep Savoy and Nice as occupation, not solid. Do not keep confidence 3 on a 1706 end for Savoy.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/97",
+     "what": "Lille comes back into the 1713 shape with no event: the ledger loses Lille in 1708 (/ledger/128) and never regains it, and the 1713 note does not mention it.",
+     "why": "Cell check (grid.polity_cells): Lille's H3 cell is inside the 1702 and 1706 shapes, outside the 1709 shape and inside the 1713 and 1734 shapes. /ledger/129 (1713) only cedes Ypres, Tournai, Menen, Veurne, Knokke and Warneton; the War of the Spanish Succession page is silent on Lille's return.",
+     "fix": "Add a 1713-04 gain of Lille (place Lille, km 30) citing a page that states its return at Utrecht (Treaty of Utrecht, Lille or Siege of Lille (1708)); name a real counterpart for /ledger/128 and the new gain (the Dutch Republic held Lille 1708-1713: dutch-republic) instead of 'Allies (the page names no state)'.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/111",
+     "what": "The 1678 loss returns Charleroi (and Ghent) that the ledger never gained: the 1668 War of Devolution gains are missing.",
+     "why": "Franco-Dutch War page: 'The retention of border towns like Charleroi and Tournai in 1668 allowed Louvois to pre-position supply dumps.' Cell check: Lille, Tournai and Dunkirk are outside the 1659 and 1662 shapes and inside the 1670 shape (/keyframe_review/84 'which Flemish towns these cells are is not stated'); no event between 1662 and 1670 adds them. The page names Charleroi and Tournai; it is one the author opened.",
+     "fix": "Add a 1668-05 gain from kingdom-of-spain (Treaty of Aix-la-Chapelle) of Charleroi and Tournai (and Lille, Douai etc. from a page that lists them: War of Devolution or Treaty of Aix-la-Chapelle (1668)); add an occupation_start for Ghent (taken March 1678) or drop Ghent from /ledger/111; add the War of Devolution to wars[].",
+     "applied": false
+    },
+    {
+     "where": "/ledger/132",
+     "what": "Freiburg, Breisach and Kehl are lost twice (1697 /ledger/125 and 1714 /ledger/132) and never gained; Landau is 'retained' with no event.",
+     "why": "Franco-Dutch War page: 'the French commander succeeded in capturing Freiburg in November 1677.' War of the Spanish Succession page: '[Villars] then captured Kehl and Breisach' (1703), 'during the 1703 campaign French forces retook Landau', 'after the loss of Landau and Freiburg in November 1713', 'France retained Landau'. Both pages are in sources[]. Cell check: Freiburg is outside every France shape 1659-1734.",
+     "fix": "Add a 1677-11 gain (or occupation_start confirmed by Nijmegen 1679) of Freiburg from holy-roman-empire; a 1703 occupation_start/gain of Breisach, Kehl and Landau; a 1713-11 capture of Freiburg and Landau; keep the 1714 return of Freiburg, Breisach and Kehl; mark the keyframes 1677-1696 adjust (or note) for the Freiburg cells Cliopatria lacks.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/29",
+     "what": "The 1363 shape drops 379 cells but the ledger records only the Bretigny cessions and Burgundy: the apanage detachments of 1356-1361 (Anjou and Maine, Berry and Auvergne, Touraine) and the return of Anjou in 1480 have no events.",
+     "why": "/keyframe_review/28-29 cite the Crown lands page for 'Berry 1360, Touraine 1361' and list Maine 38, Anjou 31, Auvergne 69, Touraine 13 among the cells lost. house-of-valois-anjou /ledger/0 founds the house in 1356 from kingdom-of-france with Anjou and Maine; its /ledger/9-10 have a French occupation of Anjou 1474-1476 and /ledger/11 a 1480-07 loss of Anjou to kingdom-of-france ('Louis XI again added Anjou to the royal domain'); the France ledger mirrors none of them (the 1482 keyframe's +31 Anjou cells are explained only by Maine 1481).",
+     "fix": "Add loss events: Anjou and Maine to house-of-valois-anjou (1356, or 1360 if the Crown lands page so dates the apanage); Berry and Auvergne (1360) and Touraine (1361) to their apanage holders (needs a counterpart slug, e.g. duchy-of-berry, or flag in counterparts_needing_dossiers); occupation_start 1474 / occupation_end 1476 of Anjou and a 1480-07 gain of Anjou from house-of-valois-anjou.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/58",
+     "what": "The 1453 gain from kingdom-of-england includes Bearn, which was not English and which the page does not name; the 1453-1588 keyframes then draw Bearn solid French although the dossier itself treats Bearn as Navarre's until 1620.",
+     "why": "Hundred Years' War page: 'Bordeaux fell to the French on 19 October and there were no more hostilities afterwards'; WebFetch found no mention of Bearn on the page. The note admits 'Bearn cells in the shape are Cliopatria's'. /ledger/88 (vassal_start 1589) and /ledger/91-92 (1620 'merged into the Kingdom of France') contradict a French Bearn from 1453; /keyframe_review/70 cuts Bearn only from 1595.",
+     "fix": "Drop {region: Bearn} from /ledger/58; cut Bearn from the solid shapes 1453-1588 (/keyframe_review/43-69: minus region Bearn, as the 1595 correction does) or justify it with a page; check the 7 Bearn cells of the 1285 shape the same way.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/106",
+     "what": "Occupation region {country: Netherlands} at confidence 3 is the whole Republic; the page has the French in Utrecht and Gelderland only.",
+     "why": "Franco-Dutch War page: 'the council of Utrecht delivered the keys of the gates', 'On 19 June, the French took the fortress of Naarden', 'After Nijmegen had been taken on 9 July', 'he also did not continue his advance to the west', 'the province of Overijssel surrendered as a whole to the bishop of Münster'. The 1673 shape has 41 Netherlands cells, a fraction of the country.",
+     "fix": "Replace the region in /ledger/106 and /ledger/107 with union admin1 Utrecht + Gelderland (Netherlands) (+ Naarden, which the gazetteer lacks), and keep confidence 3 only with that region.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/75",
+     "what": "Milan lost in February 1525 (Pavia) at confidence 2, but the page dates the loss of Milan to November 1521.",
+     "why": "Italian Wars page: in November 1521 an Imperial-Papal army 'captured Milan and restored Francesco II Sforza as duke'; 'a French attempt to retake Milan was ended by defeat at Bicocca on 27 April' 1522; the page does not say Milan was retaken in 1524.",
+     "fix": "Loss year 1521, month 11; mark /keyframe_review/57 (1521 shape) adjust with Lombardy removed from 1522 (or a new keyframe 1522-1525); if a 1524 reoccupation is wanted, find a page for it.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/97",
+     "what": "Roussillon is gained twice from Spain (1642 and again 1659, /ledger/102) and Artois twice (1640 /ledger/95 and 1659) with no loss between.",
+     "why": "Kingdom of France page: 'formalised France's seizure (1642) of ... Roussillon' and 'County of Artois (1659)': the 1642 and 1640 events are military seizures, the 1659 events the cessions.",
+     "fix": "Make the 1642 Roussillon event (and the 1640 Artois part) an occupation_start or contest_start closed by the 1659 gain.",
+     "applied": false
+    },
+    {
+     "where": "/ledger",
+     "what": "The French occupations of the Comtat Venaissin (1663, 1668, 1768-1774) recorded by comtat-venaissin have no mirror in this ledger.",
+     "why": "comtat-venaissin /ledger/3-8: occupation_start/end with counterpart kingdom-of-france, citing the Comtat Venaissin infobox 'French occupation: 1663, 1668, 1768-1774'.",
+     "fix": "Add occupation_start/occupation_end pairs for 1663, 1668 and 1768-1774 (region Comtat Venaissin, source the Comtat Venaissin page).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/76",
+     "what": "Bourbon lands: this ledger gains them in 1531, house-of-bourbon loses them in August 1523; the 1564 loss to house-of-bourbon (/ledger/85) has no mirror there; Bourbon's 1327 foundation and La Marche gains (1327, 1477) from kingdom-of-france have no mirror here.",
+     "why": "Crown lands page: '1531: possessions of the disgraced Charles III, Duke of Bourbon are confiscated'; house-of-bourbon /ledger/7: 'In August 1523, all the disputed lands were sequestered from Bourbon'; house-of-bourbon /ledger/0, /ledger/1, /ledger/5.",
+     "fix": "Agree with the house-of-bourbon owner: e.g. occupation_start 1523-08 (sequestration) and gain 1531 here, occupation in Bourbon's ledger; give /ledger/85 a page or drop it; add the 1327 and 1477 mirrors or explain why the Bourbonnais fief is not removed from the shape.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/88",
+     "what": "A 28-cell Gulf of St Lawrence strip is kept in the metropolitan shape 1683-1762 with no page, against the dossier's own rule of cutting colonies (1791), and /ledger/139 loses it in 1763.",
+     "why": "Note of /keyframe_review/88: 'no page opened describes them; kept'. new-france (existing dossier) carries Cape Breton and New France to 1763.",
+     "fix": "Cut the Canada cells from /keyframe_review/88-103 (intersect with country Canada removed) and drop /ledger/139, or cite a page and confirm no overlap with new-france's keyframes.",
+     "applied": false
+    },
+    {
+     "where": "/identity/predecessors/0",
+     "what": "Start 987 overlaps west-franks, which ends in 989.",
+     "why": "west-franks /ledger/35 dissolve 989: 'the traditional end of West Francia is the Capetian election of June 987'.",
+     "fix": "No change here; the west-franks owner should end in 987 (route to that group).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "990 vassal_start of Aquitaine rests on the Cliopatria relation row (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Aquitaine"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "1003 loss and 1018 gain of Burgundy (confidence 1); the succession war of 1003-1016",
+     "page to try": "https://en.wikipedia.org/wiki/Robert_II_of_France"
+    },
+    {
+     "where": "/ledger/10",
+     "what is missing": "1138/1139 Aquitaine union and 1152 loss (confidence 1); the marriage was 1137, the annulment March 1152",
+     "page to try": "https://en.wikipedia.org/wiki/Eleanor_of_Aquitaine"
+    },
+    {
+     "where": "/ledger/23",
+     "what is missing": "1250 apanages of Toulouse/Poitou and Anjou/Maine/Touraine (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Alphonse,_Count_of_Poitiers"
+    },
+    {
+     "where": "/ledger/31",
+     "what is missing": "1305 Limousin addition (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Limousin_(province)"
+    },
+    {
+     "where": "/ledger/46",
+     "what is missing": "1402 and 1407 additions (Guyenne, Orleanais, Gascony; Auvergne, Languedoc) at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/John,_Duke_of_Berry"
+    },
+    {
+     "where": "/ledger/64",
+     "what is missing": "1482 Franche-Comte/Artois entry and 1497 exit (confidence 1); the treaties are Arras 1482 and Senlis 1493",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Senlis"
+    },
+    {
+     "where": "/ledger/69",
+     "what is missing": "1497 loss of Roussillon (confidence 1) has no prior gain; Roussillon enters the 1463 shape unexplained (Treaty of Bayonne 1462, returned by the Treaty of Barcelona 1493)",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Barcelona_(1493)"
+    },
+    {
+     "where": "/ledger/85",
+     "what is missing": "1564 exit of the Bourbon block (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/House_of_Bourbon"
+    },
+    {
+     "where": "/ledger/93",
+     "what is missing": "Lorraine occupation 1636-1659 (confidence 1); restitution by the Treaty of Vincennes 1661",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Lorraine"
+    },
+    {
+     "where": "/ledger/95",
+     "what is missing": "1640 Artois, Picardy and Alsace additions (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Arras_(1640)"
+    },
+    {
+     "where": "/ledger/133",
+     "what is missing": "1741-1744 German-lands occupation (confidence 1); War of the Austrian Succession not in wars[]",
+     "page to try": "https://en.wikipedia.org/wiki/War_of_the_Austrian_Succession"
+    },
+    {
+     "where": "/wars/6",
+     "what is missing": "French Wars of Religion has 0 zones; the group scope asks for the Wars of Religion zones (1562-1598)",
+     "page to try": "https://en.wikipedia.org/wiki/French_Wars_of_Religion"
+    },
+    {
+     "where": "/keyframe_review/83",
+     "what is missing": "Dunkirk (bought from England in 1662) enters the shape by 1670 with no event",
+     "page to try": "https://en.wikipedia.org/wiki/Dunkirk"
+    },
+    {
+     "where": "/keyframe_review/98",
+     "what is missing": "1734 additions (Germany 7, Lorraine 8): War of the Polish Succession (Kehl, Philippsburg, Lorraine to Stanislaw 1737) absent from ledger and wars",
+     "page to try": "https://en.wikipedia.org/wiki/War_of_the_Polish_Succession"
+    },
+    {
+     "where": "/keyframe_review/10",
+     "what is missing": "Lyonnais cells added 1188, 1314, 1540 unexplained (Lyon annexed 1312)",
+     "page to try": "https://en.wikipedia.org/wiki/Lyonnais"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Crown_lands_of_France",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/42",
+     "page": "https://en.wikipedia.org/wiki/Crown_lands_of_France",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/61",
+     "page": "https://en.wikipedia.org/wiki/Crown_lands_of_France",
+     "result": "mis-dated"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Louis_VIII_of_France",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/52",
+     "page": "https://en.wikipedia.org/wiki/Hundred_Years%27_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/58",
+     "page": "https://en.wikipedia.org/wiki/Hundred_Years%27_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/127",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
+     "result": "not on page"
+    },
+    {
+     "where": "/ledger/128",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/129",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/132",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/106",
+     "page": "https://en.wikipedia.org/wiki/Franco-Dutch_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/111",
+     "page": "https://en.wikipedia.org/wiki/Franco-Dutch_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/75",
+     "page": "https://en.wikipedia.org/wiki/Italian_Wars",
+     "result": "mis-dated"
+    },
+    {
+     "where": "/ledger/70",
+     "page": "https://en.wikipedia.org/wiki/Italian_Wars",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/71",
+     "page": "https://en.wikipedia.org/wiki/Italian_Wars",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/79",
+     "page": "https://en.wikipedia.org/wiki/Italian_Wars",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/78",
+     "page": "https://en.wikipedia.org/wiki/Crown_lands_of_France",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/140",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_France",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 10000000,
+    "infobox_year": 1714,
+    "cliopatria_km2": 528772,
+    "ratio": 0.053,
+    "acknowledged": true,
+    "note": "infobox figure includes colonies; acknowledged in /keyframe_review/88 and /keyframe_review/97"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 987,
+    "type": "found",
+    "counterpart": "west-franks"
+   },
+   "mirror": {
+    "slug": "west-franks",
+    "year": 989,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "west-franks dissolves 989 (its /ledger/35); this dossier starts July 987; 987-989 claimed by both. West-franks should end 987."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1481,
+    "type": "gain",
+    "counterpart": "house-of-valois-anjou"
+   },
+   "mirror": {
+    "slug": "house-of-valois-anjou",
+    "year": 1481,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Maine; mirror is Valois-Anjou's December 1481 dissolve."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1481,
+    "type": "gain",
+    "counterpart": "house-of-valois-anjou"
+   },
+   "mirror": {
+    "slug": "house-of-valois-anjou",
+    "year": 1481,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Provence (moved from 1482 by the reviewer)."
+  },
+  {
+   "event": {
+    "slug": "house-of-valois-anjou",
+    "year": 1356,
+    "type": "found",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Anjou and Maine leave the crown in 1356 in Valois-Anjou's ledger; no loss in kingdom-of-france (the 1363 keyframe drops them)."
+  },
+  {
+   "event": {
+    "slug": "house-of-valois-anjou",
+    "year": 1474,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "French occupation of Anjou 1474-1476 not in kingdom-of-france."
+  },
+  {
+   "event": {
+    "slug": "house-of-valois-anjou",
+    "year": 1480,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Anjou to the crown July 1480; kingdom-of-france has no 1480 gain of Anjou."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1531,
+    "type": "gain",
+    "counterpart": "house-of-bourbon"
+   },
+   "mirror": {
+    "slug": "house-of-bourbon",
+    "year": 1523,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Bourbon's ledger loses the lands by sequestration in August 1523; Crown lands page dates the confiscation 1531."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1564,
+    "type": "loss",
+    "counterpart": "house-of-bourbon"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Confidence-1 event from the shapes; house-of-bourbon has no 1564 gain from kingdom-of-france."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1589,
+    "type": "gain",
+    "counterpart": "house-of-bourbon"
+   },
+   "mirror": {
+    "slug": "house-of-bourbon",
+    "year": 1589,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Henry IV's accession; Bourbon dissolves 2 August 1589."
+  },
+  {
+   "event": {
+    "slug": "house-of-bourbon",
+    "year": 1327,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Bourbon's 1327 foundation and La Marche gains (1327, 1477) from kingdom-of-france have no loss here; the France shape keeps the Bourbonnais (overlap noted by the author)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1791,
+    "type": "gain",
+    "counterpart": "comtat-venaissin"
+   },
+   "mirror": {
+    "slug": "comtat-venaissin",
+    "year": 1791,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Comtat dissolves 14 September 1791."
+  },
+  {
+   "event": {
+    "slug": "comtat-venaissin",
+    "year": 1663,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "French occupations of 1663, 1668 and 1768-1774 are not in kingdom-of-france."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1763,
+    "type": "loss",
+    "counterpart": "kingdom-of-great-britain"
+   },
+   "mirror": {
+    "slug": "new-france",
+    "year": 1763,
+    "type": "dissolve"
+   },
+   "status": "exception",
+   "note": "Gulf of St Lawrence strip in the France shape; new-france (existing dossier) dissolves 1763-02 for New France proper; kingdom-of-great-britain (eu-11) not yet written. See fix on /keyframe_review/88."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1708,
+    "type": "loss",
+    "counterpart": "Allies (the page names no state)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Descriptive counterpart, not in counterparts_needing_dossiers; the Dutch Republic held Lille 1708-1713 (dutch-republic, eu-09, not yet written). The 1713 regain is missing."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1191,
+    "type": "gain",
+    "counterpart": "Artois (holder not named by the page)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Descriptive counterpart not in counterparts_needing_dossiers; Artois came from the Flemish inheritance: county-of-flanders (eu-10, not yet written), not county-of-artois (row starts 1241)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1271,
+    "type": "gain",
+    "counterpart": "Alfonso, Count of Poitou (apanage)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Descriptive counterpart; use county-of-toulouse / county-of-poitou (eu-10, not yet written)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1402,
+    "type": "gain",
+    "counterpart": "Guyenne, Orleanais and Gascony cells (holder not named by the pages opened)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Confidence-1 shape addition with no holder; listed under thin."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1407,
+    "type": "gain",
+    "counterpart": "Auvergne and Languedoc (holder not named by the pages opened)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Confidence-1 shape addition with no holder; listed under thin."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1640,
+    "type": "gain",
+    "counterpart": "Artois, Picardy and Alsace (holder not named by the pages opened)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Confidence-1; holder is kingdom-of-spain for Artois and the Empire/Habsburgs for Alsace; also double-counts the 1659 Artois gain."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 990,
+    "type": "vassal_start",
+    "counterpart": "duchy-of-aquitaine"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-10, not yet written; 5 event(s) to mirror: 990 vassal_start, 1138 vassal_end, 1139 gain, 1259 vassal_start, 1337 vassal_end"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1003,
+    "type": "loss",
+    "counterpart": "duchy-of-burgundy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-10, not yet written; 9 event(s) to mirror: 1003 loss, 1018 gain, 1034 loss, 1361 gain, 1364 loss, 1477 occupation_start, 1482 occupation_end, 1482 gain, 1482 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1077,
+    "type": "gain",
+    "counterpart": "county-of-vexin"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-10, not yet written; 1 event(s) to mirror: 1077 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1152,
+    "type": "loss",
+    "counterpart": "angevin-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-11, not yet written; 3 event(s) to mirror: 1152 loss, 1200 gain, 1204 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1191,
+    "type": "gain",
+    "counterpart": "county-of-vermandois"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-10, not yet written; 1 event(s) to mirror: 1191 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1224,
+    "type": "gain",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-11, not yet written; 11 event(s) to mirror: 1224 gain, 1347 loss, 1360 loss, 1360 loss, 1380 gain, 1419 loss, 1422 loss, 1435 gain, 1450 gain, 1453 gain, 1558 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1226,
+    "type": "gain",
+    "counterpart": "county-of-toulouse"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-10, not yet written; 3 event(s) to mirror: 1226 gain, 1229 gain, 1250 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1237,
+    "type": "loss",
+    "counterpart": "county-of-artois"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-10, not yet written; 1 event(s) to mirror: 1237 loss"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1250,
+    "type": "gain",
+    "counterpart": "county-of-poitou"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-10, not yet written; 1 event(s) to mirror: 1250 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1250,
+    "type": "loss",
+    "counterpart": "capetian-house-of-anjou"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-10, not yet written; 2 event(s) to mirror: 1250 loss, 1322 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1284,
+    "type": "gain",
+    "counterpart": "county-of-champagne"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-10, not yet written; 1 event(s) to mirror: 1284 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1284,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-navarre"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-12, not yet written; 5 event(s) to mirror: 1284 vassal_start, 1328 vassal_end, 1589 vassal_start, 1620 vassal_end, 1620 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1349,
+    "type": "gain",
+    "counterpart": "dauphine"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-10, not yet written; 1 event(s) to mirror: 1349 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1491,
+    "type": "vassal_start",
+    "counterpart": "duchy-of-brittany"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-10, not yet written; 3 event(s) to mirror: 1491 vassal_start, 1532 vassal_end, 1532 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1495,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-naples"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-13, not yet written; 3 event(s) to mirror: 1495 occupation_start, 1495 occupation_end, 1501 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1497,
+    "type": "loss",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-09, not yet written; 2 event(s) to mirror: 1497 loss, 1713 loss"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1497,
+    "type": "loss",
+    "counterpart": "crown-of-aragon"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-12, not yet written; 2 event(s) to mirror: 1497 loss, 1503 loss"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1499,
+    "type": "gain",
+    "counterpart": "duchy-of-milan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-13, not yet written; 4 event(s) to mirror: 1499 gain, 1512 loss, 1515 gain, 1525 loss"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1536,
+    "type": "occupation_start",
+    "counterpart": "county-of-savoy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-13, not yet written; 2 event(s) to mirror: 1536 occupation_start, 1559 occupation_end"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1552,
+    "type": "gain",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-08, not yet written; 5 event(s) to mirror: 1552 gain, 1648 gain, 1681 gain, 1697 loss, 1714 loss"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1553,
+    "type": "occupation_start",
+    "counterpart": "republic-of-genoa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-13, not yet written; 2 event(s) to mirror: 1553 occupation_start, 1559 occupation_end"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1601,
+    "type": "loss",
+    "counterpart": "house-of-savoy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-13, not yet written; 7 event(s) to mirror: 1601 loss, 1601 gain, 1690 occupation_start, 1696 occupation_end, 1703 occupation_start, 1706 occupation_end, 1713 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1636,
+    "type": "occupation_start",
+    "counterpart": "duchy-of-lorraine"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-09, not yet written; 5 event(s) to mirror: 1636 occupation_start, 1659 occupation_end, 1670 occupation_start, 1697 occupation_end, 1766 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1641,
+    "type": "vassal_start",
+    "counterpart": "catalonia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-12, not yet written; 2 event(s) to mirror: 1641 vassal_start, 1652 vassal_end"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1642,
+    "type": "gain",
+    "counterpart": "kingdom-of-spain"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-12, not yet written; 12 event(s) to mirror: 1642 gain, 1659 gain, 1667 occupation_start, 1668 occupation_end, 1674 occupation_start, 1678 occupation_end, 1678 gain, 1678 loss, 1684 gain, 1694 occupation_start, 1697 occupation_end, 1697 loss"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1672,
+    "type": "occupation_start",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-09, not yet written; 2 event(s) to mirror: 1672 occupation_start, 1674 occupation_end"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1713,
+    "type": "gain",
+    "counterpart": "principality-of-orange"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-10, not yet written; 1 event(s) to mirror: 1713 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1757,
+    "type": "occupation_start",
+    "counterpart": "electorate-of-hanover"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-09, not yet written; 2 event(s) to mirror: 1757 occupation_start, 1758 occupation_end"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1769,
+    "type": "gain",
+    "counterpart": "corsican-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart owned by group eu-13, not yet written; 1 event(s) to mirror: 1769 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1055,
+    "type": "gain",
+    "counterpart": "County of Sens (holder not named by the page)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in the author's counterparts_needing_dossiers: 1055 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1068,
+    "type": "gain",
+    "counterpart": "Gatinais (holder not named by the page)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in the author's counterparts_needing_dossiers: 1068 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1081,
+    "type": "gain",
+    "counterpart": "Moret-sur-Loing (holder not named by the page)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in the author's counterparts_needing_dossiers: 1081 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1101,
+    "type": "gain",
+    "counterpart": "Viscounty of Bourges (holder not named by the page)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in the author's counterparts_needing_dossiers: 1101 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1284,
+    "type": "gain",
+    "counterpart": "County of Chartres (seller not named by the page)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in the author's counterparts_needing_dossiers: 1284 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1336,
+    "type": "gain",
+    "counterpart": "County of Ponthieu (holder not named by the page)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in the author's counterparts_needing_dossiers: 1336 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1305,
+    "type": "gain",
+    "counterpart": "Limousin (holder not named by the pages opened)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in the author's counterparts_needing_dossiers: 1305 gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1760,
+    "type": "occupation_start",
+    "counterpart": "Hesse (the page names no state)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in the author's counterparts_needing_dossiers: 1760 occupation_start, 1762 occupation_end"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-france",
+    "year": 1741,
+    "type": "occupation_start",
+    "counterpart": "German lands (holder not named by the pages opened)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in the author's counterparts_needing_dossiers: 1741 occupation_start, 1744 occupation_end"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Vexin",
+   "kind": "region",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Sens",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Evreux",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Issoudun",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Perigueux",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Cahors",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Chartres",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Angouleme",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Tournai",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Ypres",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Saluzzo",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Valenciennes",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Saint-Omer",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Marburg",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Kehl",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Breisach",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Landau",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Toul",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Verdun",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Chateau-Landon",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Moret-sur-Loing",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Bresse",
+   "kind": "region",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Bugey",
+   "kind": "region",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Gex",
+   "kind": "region",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Naarden",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  },
+  {
+   "name": "Dunkirk",
+   "kind": "place",
+   "used_in": "kingdom-of-france"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Landgraviate of Hesse-Kassel (French occupation 1760-1762)",
+   "suggested_slug": "landgraviate-of-hesse-kassel",
+   "years": [
+    1760,
+    1762
+   ]
+  },
+  {
+   "name": "Apanage of John, Duke of Berry (Berry and Auvergne)",
+   "suggested_slug": "duchy-of-berry",
+   "years": [
+    1360,
+    1416
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-10-d.md",
+ "problems": [
+  "Only 4 of the 40 Context polities have dossiers (comtat-venaissin, duchy-of-bavaria, house-of-bourbon, house-of-valois-anjou); the rest belong to groups not yet run and are counted as exceptions. west-franks and new-france (not in the Context list) were also read.",
+  "All pages opened loaded through WebFetch (Crown lands of France, Louis VIII of France, Hundred Years' War, War of the Spanish Succession, Franco-Dutch War, Italian Wars, Kingdom of France); facts rest on WebFetch's extraction.",
+  "Cell checks used tools/grid.py polity_cells on H3 res-5 cells; Kehl, Strasbourg and Breisach share or adjoin Rhine cells, so their presence is ambiguous; Lille, Tournai, Dunkirk, Charleroi and Freiburg are unambiguous.",
+  "The reviewer brief section 5 says reviewers do not edit dossiers; under the orchestrator's adjustment one small verified fix (/ledger/61) was applied in place and the file re-validated (0 errors, 0 warnings)."
+ ]
+}

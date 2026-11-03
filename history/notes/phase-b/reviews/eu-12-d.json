@@ -1,0 +1,1652 @@
+{
+ "batch_id": "eu-12-d",
+ "verdicts": [
+  {
+   "slug": "caliphate-of-cordoba",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/9",
+     "what": "Confidence 3 on a region the page does not name (the 973 contest zone is the Moroccan and western Algerian part of the 980 shape).",
+     "why": "Almanzor page: 'In 973, he undertook the logistical, administrative and diplomatic aspects of the caliphal campaign against the Idrisids' - no land named.",
+     "fix": "Lowered to 2 by the reviewer; dossier re-validated (0 errors, 0 warnings).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/11",
+     "what": "Confidence 3 on a region the page does not name (974 contest_end, same zone).",
+     "why": "Almanzor page: 'Achieving victory against the Idrisids, Ibn Abi Amir returned sick to the Cordoban court in September 974' - no land named.",
+     "fix": "Lowered to 2 by the reviewer; dossier re-validated.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/2/correction, /keyframe_review/3/correction, /keyframe_review/4/correction, /keyframe_review/5",
+     "what": "[blocking] Ceuta (gained 931, /ledger/2) and Tangier (gained 951, /ledger/8) are never lost in the ledger but are missing from every keyframe from 932 to 979; only the 980, 990 and 1010 corrections add them back, and the 961 verdict says the shape \"correctly shows no Africa\".",
+     "why": "shapes.csv: the 936, 947 and 961 shapes end at 36.03 N (Ceuta 35.89 N, Tangier 35.77 N) and the corrections are the bare Iberian shapes. Caliphate page: 'Abd al-Rahman III secured Melilla in 927, Ceuta in 931, and Tangier in 951'; the Almanzor page has troops sent to hold Ceuta in September 979, so it stayed caliphal.",
+     "fix": "Add {'admin1':'Ceuta','country':'Spain'} to the 932, 936, 947 and 961 corrections (text: Ceuta from 931); add the Tangier 60 km circle to 961 and to 947 (text: from 951); 961 becomes adjust. Consider Melilla (927, same sentence) in the founding region and keyframes.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (after /ledger/8); /keyframe_review/4; /keyframe_review/5; /wars/1",
+     "what": "[blocking] The occupation of northern Morocco from 949 to 958 is missing, although the page opened says so and fatimid-caliphate already gives that land to this state.",
+     "why": "Caliphate page: 'The Umayyads besieged Tangier in 949 and defeated Abul-Aish, forcing him to retreat ... and then occupied the rest of northern Morocco.' The dossier's own 961 note quotes the Abd al-Rahman III page: influence 'disappeared after a Fatimid offensive in 958'. fatimid-caliphate /ledger/20: 948 loss to caliphate-of-cordoba, 'Morocco outside the Rif and Jbala country' (c2). With no event here that land has no holder on the map 948-958.",
+     "fix": "Add a 949 vassal_start (or gain, if read as direct rule) of northern Morocco, counterpart as the page names it (the Idrisids of Abul-Aish / the Zenata clients), region the Morocco-only spec used for the 974 tint, conf 2, source Caliphate_of_Cordoba; close it in 958 (vassal_end or loss, counterpart fatimid-caliphate, source Abd_al-Rahman_III); add the zone to /wars/1. me-08 should add the 958 recovery to fatimid-caliphate.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/12, /ledger/13",
+     "what": "[non-blocking] The September 979 relief of Ceuta is recorded as an occupation pair with fatimid-caliphate, i.e. as this state occupying Fatimid land; Ceuta was already this state's own land (/ledger/2), the second event is a confidence-1 filler and the note says nothing changes on the map.",
+     "why": "Schema: 'occupation_start / occupation_end: this state occupies region belonging to counterpart without annexing it'. Almanzor page: 'In September 979, he sent troops from Algeciras to the aid of Ceuta', threatened by Buluggin ibn Ziri - a defence, not an occupation. fatimid-caliphate has no 979 event.",
+     "fix": "Delete both events (mention the relief in the note of /wars/1 or /wars/2), or, if a page shows Buluggin taking ground, record a contest pair over that ground with the Zirid/Fatimid counterpart.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/9, /ledger/10, /ledger/11, /ledger/29, /wars/2/zones/0",
+     "what": "[non-blocking] The client tint and contest zone include western Algeria (and Morocco south to 31.3 N), contrary to the dossier's own notes (\"nothing supports Algeria\").",
+     "why": "Caliphate page: 'much of northern Morocco also came directly within the sphere of influence'; 'By 974, Al-Hassan II was taken to Córdoba, and the remaining Idrisids recognized Umayyad rule' - Morocco only.",
+     "fix": "Use {'intersect':[{'cliopatria':'Caliphate of Córdoba','year':980},{'country':'Morocco'}]} (or a northern-Morocco region) in these five places and in the new 949-958 events.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/7; /ledger (990); /wars/3/outcome",
+     "what": "[non-blocking] Cliopatria's 990 shape is 11,512 km2 larger than the 980 shape (the Mondego: Coimbra, Aveiro) and kingdom-of-leon /ledger/7 loses exactly that land to this state in 990, but this ledger has no gain between 980 and 990, and /wars/3 says the campaigns \"took no land\".",
+     "why": "shapes.csv 980 553,201.6 vs 990 564,713.5 km2 (Africa unchanged); Leon 961 144,144.6 vs 990 132,744.8 km2; kingdom-of-leon /ledger/7 (990 loss, counterpart caliphate-of-cordoba, c1).",
+     "fix": "Add a 990 gain from kingdom-of-leon with Leon's /ledger/7 region, conf 1 (987 for Coimbra if a page dates it), and correct /wars/3 (zone: the Mondego; outcome: Coimbra and the Mondego held from 987/990).",
+     "applied": false
+    },
+    {
+     "where": "/ledger (931, 934)",
+     "what": "[non-blocking] No mirror of emirate-of-nekor /ledger/4 (931 vassal_start, counterpart caliphate-of-cordoba, 'the Umayyad's vassal') and /ledger/7 (934 vassal_end).",
+     "why": "Schema: in vassal events the counterpart is the vassal itself; the overlord records vassal_start/vassal_end naming emirate-of-nekor.",
+     "fix": "Add vassal_start 931 and vassal_end 934, counterpart emirate-of-nekor, region Nekor, conf as the Nekor dossier (2/1), citing its page; or tell af-02 the Nekor events are wrong.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (966)",
+     "what": "[non-blocking] No mirror of kingdom-of-pamplona /ledger/6 (966 loss of Calahorra and the Cidacos valley to caliphate-of-cordoba, c3).",
+     "why": "kingdom-of-pamplona ledger read; this ledger has no event between 951 and 973.",
+     "fix": "Add a 966 gain of Calahorra from kingdom-of-pamplona citing the Pamplona dossier's page, or record the disagreement in notes.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/8/correction",
+     "what": "[non-blocking] The 1010 correction already removes Murcia and Almería, whose losses the ledger dates 1011 (/ledger/20, /ledger/21).",
+     "why": "Correction 'minus' Murcia and Almería with text 'applied by the 1011-1013 events'.",
+     "fix": "Keep Murcia and Almería in the 1010 keyframe and let the 1011 events remove them, or redate the events.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/15, /ledger/16, /ledger/17",
+     "what is missing": "Badajoz, Toledo and Tortosa taifa years (conf 1); the Taifa page lists no date",
+     "page to try": "https://en.wikipedia.org/wiki/Taifa_of_Toledo"
+    },
+    {
+     "where": "/ledger/29",
+     "what is missing": "the year the Moroccan clients fell away (bridge 1015, conf 1) and the loss of Ceuta",
+     "page to try": "https://en.wikipedia.org/wiki/Hammudid_dynasty"
+    },
+    {
+     "where": "/ledger/13",
+     "what is missing": "conf-1 filler (see fixes: delete)",
+     "page to try": "https://en.wikipedia.org/wiki/Buluggin_ibn_Ziri"
+    },
+    {
+     "where": "/keyframe_review/9-11",
+     "what is missing": "the Mértola/Beja strip in the 1018-1033 shapes is undated",
+     "page to try": "https://en.wikipedia.org/wiki/Taifa_of_Mértola"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Abd_al-Rahman_III",
+     "result": "confirmed ('the surrender of Ibn Marwan of Badajoz in 930')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Abd_al-Rahman_III",
+     "result": "confirmed ('surrendered on 2 August 932, after a siege of two years')"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Caliphate_of_Cordoba",
+     "result": "confirmed (Tangier 951; the same passage has the 949-958 occupation the dossier omits)"
+    },
+    {
+     "where": "/ledger/9, /ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Almanzor",
+     "result": "confirmed (973 campaign; return September 974); region not named on page -> conf lowered to 2"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Caliphate_of_Cordoba",
+     "result": "confirmed ('By 974 ... the remaining Idrisids recognized Umayyad rule')"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Almanzor",
+     "result": "confirmed date (September 979); event type misused"
+    },
+    {
+     "where": "/ledger/4, /ledger/6, /ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Abd_al-Rahman_III",
+     "result": "confirmed (937 Zaragoza, Simancas 939, peace with Ordoño III 951)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "page_body_km2": 400000,
+    "page_body_year": 1000,
+    "cliopatria_km2": 564714,
+    "cliopatria_shape": "caliphate-of-cordoba_990",
+    "ratio": 0.71,
+    "acknowledged": true,
+    "note": "No infobox area on the page; body: 'Around 1000 CE, the caliphate occupied some four hundred thousand square kilometers'. Ratio 0.71 with Africa, 1.08 against the author's corrected 369,491 km2; acknowledged in /keyframe_review/7."
+   }
+  },
+  {
+   "slug": "kingdom-of-leon",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/8; /keyframe_review/10; new keyframe kingdom-of-leon_1046",
+     "what": "[required] Union years 1046-1065 are drawn as Castile, leaving León with no land for twenty years (see the union decision).",
+     "why": "Union decision (asked for in the author's notes): 1038-1065 is drawn per crown, not as one Castile shape. Castile was a county until 1065 (Kingdom of Castile infobox 'Established: 1065'; the Castile dossier's own /ledger/10 rename), Ferdinand I was crowned king in León on 22 June 1038, Cliopatria itself draws León and Castile apart under the same king in 1040-1045, no page dates any change in 1046 (both 1046 events are confidence 1), and taifa-of-badajoz already names kingdom-of-leon for the Mondego.",
+     "fix": "Drop /ledger/8 (1046 loss to Castile, c1). Add keyframe kingdom-of-leon_1046 (1046-1065) = the León 1040 shape plus Lamego (Nov 1057), Viseu (Jul 1058) and Coimbra (Jul 1064) from their dates; move Castile's /ledger/5, /ledger/6, /ledger/9 here as gains from taifa-of-badajoz (taifa-of-badajoz /ledger/4-7 already name kingdom-of-leon); replace /ledger/9 (1065/12 gain from Castile) by a 1065/12 loss of Galicia and the Portuguese lands to kingdom-of-galicia (moved from Castile /ledger/12). The Toledo parias (1062) go with the crown the Ferdinand I page gives them to in 1065.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/8; /ledger (1028-1035)",
+     "what": "[non-blocking] No mirror of kingdom-of-pamplona /ledger/13 (1028 gain of the Pisuerga-Cea land from kingdom-of-leon, c2), /ledger/15 (1033/3 Zamora and the west, c3), /ledger/16 (1034 the city of León, c3) and /ledger/19 (1035 loss back to León); the dossier keeps the 1010 shape unchanged to 1037.",
+     "why": "This dossier's own page, Kingdom of León: 'Sancho III of Navarre (1004-1035) took over Castile in the 1020s, and managed León in the last year of his life' (the author quoted only the first half).",
+     "fix": "Add a 1034 loss (or occupation pair) of the city of León and the west to kingdom-of-pamplona and a 1035 recovery on Sancho's death (18 October 1035), conf 2, Kingdom_of_Le%C3%B3n; add the 1028 Pisuerga-Cea loss at conf 1 citing the Pamplona dossier's page, or ask eu-12-a to lower its 1033 event. Make kingdom-of-leon_1034 adjust accordingly.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/12; /ledger/12",
+     "what": "[non-blocking] 1126-1138: the León 1126 shape holds the Portuguese lands that county-of-portugal draws as its own land from 1096 (overlap on the map); this dossier gives them up only in 1139 (conf 1).",
+     "why": "county-of-portugal: found 1096, keyframe county-of-portugal_1096 (1096-1138, adjust); the eu-12-i review asks that dossier for a dependency on León. Alfonso VII page: Portugal 'recognized as independent de jure in 1143'.",
+     "fix": "Mark kingdom-of-leon_1126 adjust minus the county's land (county-of-portugal_1139 shape) and record the county as a vassal: vassal_start 1126/3 (inherited) and vassal_end 1143, counterpart county-of-portugal; drop /ledger/12.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/16",
+     "what": "[non-blocking] almohad-caliphate /ledger/35 gains Trujillo and Montánchez (Cáceres) from kingdom-of-leon in 1195 (c2), inside León's 1188 shape, but León loses its Extremadura cells only in 1202 (conf 1).",
+     "why": "almohad-caliphate ledger read; Leon /ledger/15-16 are both conf-1 bridges on Cliopatria years.",
+     "fix": "Redate /ledger/16 to 1195-1196 (after Alarcos) to agree with the Almohad gain, or have af-02 change its counterpart; say which in notes.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/18/region",
+     "what": "[non-blocking] The 1230 merge region is the León 1227 shape, which /keyframe_review/19 itself corrects to the 1202 shape; the dissolve (/ledger/19) and Castile's merge (/ledger/44 there) use the 1202 shape plus Mérida and Badajoz.",
+     "why": "/keyframe_review/19 correction: the 1202 shape for 1227-1229.",
+     "fix": "Use /ledger/19's region in /ledger/18.",
+     "applied": false
+    },
+    {
+     "where": "/wars/1/zones",
+     "what": "[non-blocking] Almanzor's campaigns have no zone, but /ledger/7 loses the Mondego to the Caliphate in that war.",
+     "why": "Rule 10: empty zones only where no ground changed hands.",
+     "fix": "Add the /ledger/7 region as the zone.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/rulers",
+     "what is missing": "rulers omitted (fetch kept only some reigns)",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_Leonese_monarchs"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "the Mondego loss is conf 1 and dated by Cliopatria (Coimbra fell to Almanzor in 987)",
+     "page to try": "https://en.wikipedia.org/wiki/Coimbra"
+    },
+    {
+     "where": "/ledger/15, /ledger/16; /keyframe_review/15",
+     "what is missing": "Extremadura 1188-1201 (Cáceres) unverified; conf-1 bridges",
+     "page to try": "https://en.wikipedia.org/wiki/Ferdinand_II_of_Le%C3%B3n"
+    },
+    {
+     "where": "/wars/4",
+     "what is missing": "the 1205/1207/1209 treaties ceded territory to Castile; no land named",
+     "page to try": "https://en.wikipedia.org/wiki/Berengaria_of_Castile"
+    },
+    {
+     "where": "/ledger/12, /ledger/13",
+     "what is missing": "1139 transfers are conf-1 bookkeeping on Cliopatria's re-drawing (no event that year)",
+     "page to try": "https://en.wikipedia.org/wiki/Alfonso_VII_of_Le%C3%B3n_and_Castile"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Le%C3%B3n",
+     "result": "confirmed ('When García died in 914 ... ruled both León and Galicia')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Le%C3%B3n",
+     "result": "confirmed ('The County of Castile split off in 931')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Ramiro_II_of_Le%C3%B3n",
+     "result": "confirmed (Simancas 939; 'advance of the Leonese border of the Duero to the Tormes', undated: conf 2 right)"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Alfonso_IX_of_Le%C3%B3n",
+     "result": "confirmed ('capturing Mérida and Badajoz in 1230')"
+    },
+    {
+     "where": "/ledger/18, /ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Le%C3%B3n",
+     "result": "confirmed ('Permanent union of Castile and León: 10 December 1230')"
+    },
+    {
+     "where": "/keyframe_review/8",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Le%C3%B3n",
+     "result": "page says Sancho III 'managed León in the last year of his life'; dossier quotes only the Castile half"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Kingdom of León page gives no area (infobox or body); the author says so in /keyframe_review/0. Shapes 59,553-192,464 km2 are plausible for the kingdom."
+   }
+  },
+  {
+   "slug": "kingdom-of-castile",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/3; /ledger/5; /ledger/6; /ledger/9; /ledger/11; /ledger/12; /keyframe_review/5",
+     "what": "[required] Union years 1046-1065 are drawn as one Castile shape: León and Galicia are labelled with the County of Castile, which became a kingdom only in 1065 (this dossier's own /ledger/10).",
+     "why": "Union decision (asked for in the author's notes): 1038-1065 is drawn per crown, not as one Castile shape. Castile was a county until 1065 (Kingdom of Castile infobox 'Established: 1065'; the Castile dossier's own /ledger/10 rename), Ferdinand I was crowned king in León on 22 June 1038, Cliopatria itself draws León and Castile apart under the same king in 1040-1045, no page dates any change in 1046 (both 1046 events are confidence 1), and taifa-of-badajoz already names kingdom-of-leon for the Mondego.",
+     "fix": "Drop /ledger/3 (1046 gain, c1). /keyframe_review/5 becomes adjust: correction = the Castile 1040 shape plus La Bureba (Sept 1054). Move /ledger/5, /ledger/6, /ledger/9 (Lamego, Viseu, Coimbra) to kingdom-of-leon. Drop /ledger/11 (1065/12 loss to León) and move /ledger/12 (loss of Galicia) to León. 1060 Zaragoza parias stay with Castile (Sancho II's share).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/42; /keyframe_review/21; /keyframe_review/22; /keyframe_review/23; /keyframe_review/24",
+     "what": "[non-blocking] Baeza and Úbeda are drawn as Castilian from July 1212 to 1235, but the page cited says Baeza was evacuated after the battle, and the Ferdinand III page (also opened) dates Úbeda to 1233 and has Castile occupying Baeza only in 1225 (/ledger/43 gains Baeza a second time with no loss between). /keyframe_review/22 marks the 1216 shape (northern Jaén 32 of 54 cells) ok while quoting that 1225 sentence.",
+     "why": "Las Navas de Tolosa page: 'Shortly after the battle, the Castilians took Baeza and then conquered Úbeda'; 'Baeza was evacuated and its people moved to Úbeda'; 'Alfonso laid siege, killing 60,000 Muslims and enslaving many more.' Ferdinand III page: 'Cazorla in 1231, Úbeda in 1233'; 'the Castilians remained in occupation of al-Bayyasi's holdings in Andújar, Baeza and Martos' (1225).",
+     "fix": "Replace /ledger/42 by a 1212 contest_start/contest_end pair over Baeza and Úbeda (or drop it); remove the two circles from the 1212 correction; mark 1216 and 1227 adjust (northern Jaén out until the 1225 gain); add gains Cazorla 1231 and Úbeda 1233 (Ferdinand III page, conf 3) and show them in /keyframe_review/24. Tell af-02 to recast almohad-caliphate /ledger/39 (1212 loss, c3) the same way.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/25; /keyframe_review/8; /keyframe_review/9",
+     "what": "[non-blocking] Lisbon, Sintra and Santarém are lost in November 1094 but were never gained: no 1093 event, and the 1085 and 1094 shapes end at 39.45 N (Santarém 39.24 N, Lisbon 38.72 N).",
+     "why": "Alfonso VI page: 'As the price for this alliance, Alfonso VI had obtained Lisbon, Sintra, and Santarém, but lost them in November 1094'. shapes.csv bbox of kingdom-of-castile_1085 and _1094: south 39.4496.",
+     "fix": "Add a 1093 gain of the same region from taifa-of-badajoz (the cession; conf 2 on this page, the year from a page that dates it), and note in /keyframe_review/8 that the 1093-1094 cession sits on top of the shape.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/31/region",
+     "what": "[non-blocking] Santarém is lost twice: to the Almoravids in November 1094 (/ledger/25) and again to the County of Portugal in 1111.",
+     "why": "/ledger/25 region includes the Santarém 50 km circle; /ledger/31 region includes it again with no gain in between.",
+     "fix": "Remove the Santarém circle from /ledger/31 (and see the next finding on the year).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/31; /keyframe_review/9; /keyframe_review/10",
+     "what": "[non-blocking] The Portuguese lands stay in Castile to 1111 (conf 1, Cliopatria) while county-of-portugal holds them from 1096: overlap on the map 1096-1110.",
+     "why": "county-of-portugal /ledger/0: found 1096 (counterpart kingdom-of-galicia, which in 1096 was part of Alfonso VI's realm, i.e. this dossier). Alfonso VI page: 'he gave Henry and Teresa the government of the County of Portugal'.",
+     "fix": "Move /ledger/31 to 1096 (loss, or vassal_start of county-of-portugal per the eu-12-i decision that the county was a dependency) and mark the 1094 and 1099 keyframes adjust minus the county from 1096; ask eu-12 to change the county's founding counterpart to kingdom-of-castile.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/20; /ledger/34",
+     "what": "[non-blocking] Coria is gained twice (1079 from taifa-of-badajoz, 1142 from almoravid-dynasty) with no loss between.",
+     "why": "Alfonso VI page: 'In 1079, he conquered Coria.' Alfonso VII page: 'In 1142, Alfonso besieged Coria a second time and took it.'",
+     "fix": "Add a conf-1 loss of Coria to almoravid-dynasty in the Urraca years (bridge; a page that dates it would raise it), and check that the 1111 and 1139 keyframes agree.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1017-1028; 1134-1136; 1157; 1173-1177; 1199-1200)",
+     "what": "[non-blocking] Missing mirrors of neighbour events: kingdom-of-pamplona /ledger/8 (1017 vassal_start, Castile as vassal, c3) and /ledger/11 (1028 vassal_end); kingdom-of-navarre /ledger/1 (1135 Zaragoza as Castile's fief), /ledger/2 (1136 La Rioja surrendered to Castile, c3 - this ledger never loses La Rioja to Aragon), /ledger/6 (1157 Artajona returned), /ledger/7-8 (1173-1177 contest over Rioja and Bureba) and /ledger/9, /ledger/11 (1199-1200 contest).",
+     "why": "Neighbour ledgers read; none has a counterpart event here.",
+     "fix": "Add vassal_start/vassal_end 1017-1028 (counterpart kingdom-of-pamplona); the loss of La Rioja to Alfonso I of Aragon and its recovery 1134-1136 (Urraca years, see thin); the 1173-1177 and 1199-1200 contest pairs; or say in notes which neighbour events are wrong.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/22",
+     "what": "[non-blocking] almohad-caliphate /ledger/40 loses to Castile in 1216 (conf 1) the cells Cliopatria's 1216 shape adds, but this ledger has no 1216 event; the +39,400 km2 is unexplained.",
+     "why": "shapes.csv: 1202 116,987 km2, 1216 156,417 km2; no ledger event in 1213-1224.",
+     "fix": "Add a conf-1 1216 gain from almohad-caliphate for the non-Jaén part (Albacete, southern Cuenca) mirroring the Almohad event, until a page dates Alcaraz (1213) and the rest.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/wars/5; 1109-1126",
+     "what is missing": "Urraca's reign: the wars with Alfonso I of Aragon, his hold on La Rioja and the eastern march (zones empty)",
+     "page to try": "https://en.wikipedia.org/wiki/Urraca_of_Le%C3%B3n_and_Castile"
+    },
+    {
+     "where": "/keyframe_review/22",
+     "what is missing": "the 1216 increment: Alcaraz (1213), southern Cuenca, the Córdoba cells",
+     "page to try": "https://en.wikipedia.org/wiki/Alcaraz"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "rulers omitted",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_Castilian_monarchs"
+    },
+    {
+     "where": "/ledger/41; /keyframe_review/14",
+     "what is missing": "the Calatrava step (1147) and its 1212 restoration are conf 1",
+     "page to try": "https://en.wikipedia.org/wiki/Calatrava_la_Vieja"
+    },
+    {
+     "where": "/ledger/17, /ledger/23, /ledger/24",
+     "what is missing": "Zaragoza and Granada paria ends 1076/1086 are conf 1",
+     "page to try": "https://en.wikipedia.org/wiki/Taifa_of_Zaragoza"
+    },
+    {
+     "where": "/ledger/45",
+     "what is missing": "1235 end into crown-of-castile is Cliopatria's year (conf 1); the pages date the union 1230",
+     "page to try": "https://en.wikipedia.org/wiki/Crown_of_Castile"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Castile",
+     "result": "confirmed ('In 931 the county was reunified by Count Fernán González')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Castile",
+     "result": "confirmed ('García was assassinated in 1028 while in León')"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Castile",
+     "result": "confirmed (infobox 'Established: 1065')"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Alfonso_VI_of_Le%C3%B3n_and_Castile",
+     "result": "confirmed ('finally fell on 25 May 1085')"
+    },
+    {
+     "where": "/ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Alfonso_VI_of_Le%C3%B3n_and_Castile",
+     "result": "confirmed ('lost them in November 1094'); the prior gain is missing"
+    },
+    {
+     "where": "/ledger/28",
+     "page": "https://en.wikipedia.org/wiki/Alfonso_VI_of_Le%C3%B3n_and_Castile",
+     "result": "confirmed (evacuation 'in March and April' 1102)"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Alfonso_VI_of_Le%C3%B3n_and_Castile",
+     "result": "confirmed ('In 1079, he conquered Coria')"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Alfonso_VI_of_Le%C3%B3n_and_Castile",
+     "result": "annexation of Álava, Vizcaya, part of Guipúzcoa and La Bureba is on the page but undated; 1076 at conf 2 acceptable"
+    },
+    {
+     "where": "/ledger/42",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Las_Navas_de_Tolosa",
+     "result": "taking confirmed, holding not: 'Baeza was evacuated'; Ferdinand III page dates Úbeda 1233"
+    },
+    {
+     "where": "/ledger/43",
+     "page": "https://en.wikipedia.org/wiki/Ferdinand_III_of_Castile",
+     "result": "confirmed (1225, Andújar, Baeza and Martos)"
+    },
+    {
+     "where": "/ledger/44",
+     "page": "https://en.wikipedia.org/wiki/Ferdinand_III_of_Castile",
+     "result": "confirmed (Benavente, 11 December 1230)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Kingdom of Castile infobox gives no area (status entries only). No figure to compare."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 930,
+    "type": "gain",
+    "counterpart": "Ibn Marwan of Badajoz"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "string counterpart (rebel lord, no dossier); emirate-of-cordoba leaves these lands to unnamed autonomous lords"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 931,
+    "type": "gain",
+    "counterpart": "Ceuta's previous holders"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "string counterpart"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 932,
+    "type": "gain",
+    "counterpart": "Toledo (rebel city)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "string counterpart"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 937,
+    "type": "gain",
+    "counterpart": "Muhammad ibn Hashim al-Tugib"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "string counterpart"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 937,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-leon"
+   },
+   "mirror": {
+    "slug": "kingdom-of-leon",
+    "year": 937,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "951 contest_end matched too"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 939,
+    "type": "loss",
+    "counterpart": "kingdom-of-leon"
+   },
+   "mirror": {
+    "slug": "kingdom-of-leon",
+    "year": 939,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Duero-Tormes belt, same region"
+  },
+  {
+   "event": {
+    "slug": "emirate-of-nekor",
+    "year": 931,
+    "type": "vassal_start",
+    "counterpart": "caliphate-of-cordoba"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no 931-934 vassal pair in the Caliphate"
+  },
+  {
+   "event": {
+    "slug": "fatimid-caliphate",
+    "year": 948,
+    "type": "loss",
+    "counterpart": "caliphate-of-cordoba"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Morocco outside the Rif and Jbala: the Caliphate has no 948/949 gain or vassal_start and no 958 end (blocking finding); the Fatimid side also lacks a 958 recovery"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 951,
+    "type": "gain",
+    "counterpart": "idrisids"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "idrisids (af-02) has no 951 Tangier loss"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pamplona",
+    "year": 966,
+    "type": "loss",
+    "counterpart": "caliphate-of-cordoba"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Calahorra (pamplona /ledger/6, c3); no Caliphate gain"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 974,
+    "type": "vassal_start",
+    "counterpart": "idrisids"
+   },
+   "mirror": {
+    "slug": "idrisids",
+    "year": 974,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "idrisids records a loss and dissolves into the Caliphate in 974; the Caliphate keeps a vassal tint of \"idrisids\" to 1015 (vassal of a dissolved state). One side must give; the Caliphate page supports clients (\"the remaining Idrisids recognized Umayyad rule\")"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 979,
+    "type": "occupation_start",
+    "counterpart": "fatimid-caliphate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Fatimid 979 event; recommended deletion (Ceuta was the Caliphate's own land)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 990,
+    "type": "loss",
+    "counterpart": "caliphate-of-cordoba"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "the Mondego; no Caliphate gain although its 990 shape grows by the same 11.5k km2"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1009,
+    "type": "loss",
+    "counterpart": "taifa-of-alpuente"
+   },
+   "mirror": {
+    "slug": "taifa-of-alpuente",
+    "year": 1010,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "within one year"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1010,
+    "type": "loss",
+    "counterpart": "taifa-of-badajoz"
+   },
+   "mirror": {
+    "slug": "taifa-of-badajoz",
+    "year": 1009,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "within one year"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1010,
+    "type": "loss",
+    "counterpart": "taifa-of-denia"
+   },
+   "mirror": {
+    "slug": "taifa-of-denia",
+    "year": 1010,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1015,
+    "type": "loss",
+    "counterpart": "taifa-of-denia"
+   },
+   "mirror": {
+    "slug": "taifa-of-denia",
+    "year": 1015,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Balearic Islands"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1010,
+    "type": "loss",
+    "counterpart": "taifa-of-toledo"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1010,
+    "type": "loss",
+    "counterpart": "taifa-of-tortosa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1010,
+    "type": "loss",
+    "counterpart": "taifa-of-valencia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1011,
+    "type": "loss",
+    "counterpart": "taifa-of-murcia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1011,
+    "type": "loss",
+    "counterpart": "taifa-of-almeria"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1011,
+    "type": "loss",
+    "counterpart": "taifa-of-albarracin"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1011,
+    "type": "loss",
+    "counterpart": "taifa-of-arcos"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1012,
+    "type": "loss",
+    "counterpart": "taifa-of-saltes-and-huelva"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1013,
+    "type": "loss",
+    "counterpart": "taifa-of-granada"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1013,
+    "type": "loss",
+    "counterpart": "taifa-of-carmona"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1013,
+    "type": "loss",
+    "counterpart": "taifa-of-moron"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1018,
+    "type": "loss",
+    "counterpart": "taifa-of-zaragoza"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1023,
+    "type": "loss",
+    "counterpart": "taifa-of-seville"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1023,
+    "type": "loss",
+    "counterpart": "taifa-of-niebla"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1026,
+    "type": "loss",
+    "counterpart": "Taifa of Málaga"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "string counterpart; in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1031,
+    "type": "dissolve",
+    "counterpart": "taifa-of-cordoba"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 910,
+    "type": "found",
+    "counterpart": "kingdom-of-asturias"
+   },
+   "mirror": {
+    "slug": "kingdom-of-asturias",
+    "year": 910,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 914,
+    "type": "gain",
+    "counterpart": "kingdom-of-galicia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file); kingdom-of-galicia must end 914, not 921/922, or it overlaps León"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 924,
+    "type": "gain",
+    "counterpart": "kingdom-of-asturias"
+   },
+   "mirror": {
+    "slug": "kingdom-of-asturias",
+    "year": 924,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "plus dissolve"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 931,
+    "type": "loss",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": {
+    "slug": "kingdom-of-castile",
+    "year": 931,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pamplona",
+    "year": 1028,
+    "type": "gain",
+    "counterpart": "kingdom-of-leon"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Pisuerga-Cea land; no Leon loss"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pamplona",
+    "year": 1034,
+    "type": "gain",
+    "counterpart": "kingdom-of-leon"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "1033/3 and 1034 gains and the 1035 loss back have no Leon mirror; the Leon page says Sancho \"managed León in the last year of his life\", so Leon should add them"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 1046,
+    "type": "loss",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": {
+    "slug": "kingdom-of-castile",
+    "year": 1046,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "both conf 1; to be dropped under the union decision"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-badajoz",
+    "year": 1055,
+    "type": "loss",
+    "counterpart": "kingdom-of-leon"
+   },
+   "mirror": {
+    "slug": "kingdom-of-castile",
+    "year": 1057,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Badajoz names León (1055 Mondego; 1064 Coimbra), Castile carries Lamego 1057, Viseu 1058, Coimbra 1064; resolved by moving the three gains to León (union decision); Badajoz should split its 1055 loss by the page dates"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 1065,
+    "type": "gain",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": {
+    "slug": "kingdom-of-castile",
+    "year": 1065,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "to be reworked under the union decision"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 1072,
+    "type": "loss",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": {
+    "slug": "kingdom-of-castile",
+    "year": 1072,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Golpejera, 12 January 1072"
+  },
+  {
+   "event": {
+    "slug": "almoravid-dynasty",
+    "year": 1094,
+    "type": "gain",
+    "counterpart": "kingdom-of-leon"
+   },
+   "mirror": {
+    "slug": "kingdom-of-castile",
+    "year": 1094,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "same land and month; the 1072-1125 union is in the Castile dossier, so almoravid-dynasty should name kingdom-of-castile"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 1126,
+    "type": "gain",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": {
+    "slug": "kingdom-of-castile",
+    "year": 1126,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 1139,
+    "type": "loss",
+    "counterpart": "county-of-portugal"
+   },
+   "mirror": {
+    "slug": "county-of-portugal",
+    "year": 1096,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "the county founds in 1096 and holds the land throughout; Leon 1126-1138 and Castile 1096-1110 overlap it"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 1139,
+    "type": "loss",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": {
+    "slug": "kingdom-of-castile",
+    "year": 1139,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "conf-1 bookkeeping on both sides"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 1157,
+    "type": "gain",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": {
+    "slug": "kingdom-of-castile",
+    "year": 1157,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "August 1157"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 1188,
+    "type": "gain",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": 1188,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "both conf 1"
+  },
+  {
+   "event": {
+    "slug": "almohad-caliphate",
+    "year": 1195,
+    "type": "gain",
+    "counterpart": "kingdom-of-leon"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Trujillo and Montánchez; Leon loses Extremadura only in 1202"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 1202,
+    "type": "loss",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": 1202,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "both conf 1; see the 1195 Almohad gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 1230,
+    "type": "gain",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "almohad-caliphate has no 1230 loss of Mérida and Badajoz"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-leon",
+    "year": 1230,
+    "type": "merge",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": {
+    "slug": "kingdom-of-castile",
+    "year": 1230,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": "December 1230; Leon merge region should equal its dissolve region"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 931,
+    "type": "found",
+    "counterpart": "kingdom-of-leon"
+   },
+   "mirror": {
+    "slug": "kingdom-of-leon",
+    "year": 931,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pamplona",
+    "year": 1017,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Castile as Pamplona's vassal 1017-1028 (c3); no Castile pair"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1028,
+    "type": "loss",
+    "counterpart": "kingdom-of-pamplona"
+   },
+   "mirror": {
+    "slug": "kingdom-of-pamplona",
+    "year": 1028,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1035,
+    "type": "gain",
+    "counterpart": "kingdom-of-pamplona"
+   },
+   "mirror": {
+    "slug": "kingdom-of-pamplona",
+    "year": 1035,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1054,
+    "type": "gain",
+    "counterpart": "kingdom-of-pamplona"
+   },
+   "mirror": {
+    "slug": "kingdom-of-pamplona",
+    "year": 1054,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "La Bureba and the Tirón valley"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1057,
+    "type": "gain",
+    "counterpart": "taifa-of-badajoz"
+   },
+   "mirror": {
+    "slug": "taifa-of-badajoz",
+    "year": 1055,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "see the 1055 row: counterpart and two years apart; move to León"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1064,
+    "type": "gain",
+    "counterpart": "taifa-of-badajoz"
+   },
+   "mirror": {
+    "slug": "taifa-of-badajoz",
+    "year": 1064,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "same month; Badajoz names León; move to León"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1060,
+    "type": "vassal_start",
+    "counterpart": "taifa-of-zaragoza"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1062,
+    "type": "vassal_start",
+    "counterpart": "taifa-of-toledo"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1065,
+    "type": "loss",
+    "counterpart": "kingdom-of-galicia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1071,
+    "type": "gain",
+    "counterpart": "kingdom-of-galicia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1074,
+    "type": "vassal_start",
+    "counterpart": "taifa-of-granada"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1085,
+    "type": "gain",
+    "counterpart": "taifa-of-toledo"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1099,
+    "type": "gain",
+    "counterpart": "taifa-of-valencia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1111,
+    "type": "loss",
+    "counterpart": "kingdom-of-galicia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1076,
+    "type": "gain",
+    "counterpart": "kingdom-of-pamplona"
+   },
+   "mirror": {
+    "slug": "kingdom-of-pamplona",
+    "year": 1076,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "La Rioja, Álava, Biscay and part of Gipuzkoa (two Castile events against one)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1079,
+    "type": "gain",
+    "counterpart": "taifa-of-badajoz"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "taifa-of-badajoz has no 1079 Coria loss"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1094,
+    "type": "loss",
+    "counterpart": "almoravid-dynasty"
+   },
+   "mirror": {
+    "slug": "almoravid-dynasty",
+    "year": 1094,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "almoravid names kingdom-of-leon; Castile also lacks the 1093 gain from taifa-of-badajoz"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1102,
+    "type": "loss",
+    "counterpart": "almoravid-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "almoravid-dynasty has no 1102 Valencia gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1111,
+    "type": "loss",
+    "counterpart": "county-of-portugal"
+   },
+   "mirror": {
+    "slug": "county-of-portugal",
+    "year": 1096,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "county founds 1096 from kingdom-of-galicia; overlap 1096-1110"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-navarre",
+    "year": 1135,
+    "type": "gain",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Zaragoza as Castile's fief; no Castile event"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-navarre",
+    "year": 1136,
+    "type": "loss",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "La Rioja surrendered to Castile (c3); Castile never lost it to Aragon in its ledger"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1142,
+    "type": "gain",
+    "counterpart": "almoravid-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Almoravid loss of Coria; Castile also lacks the earlier loss"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1147,
+    "type": "gain",
+    "counterpart": "Almería's Muslim holders"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "string counterpart"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1157,
+    "type": "loss",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": 1157,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Almería"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-navarre",
+    "year": 1157,
+    "type": "gain",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Artajona returned; no Castile event"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-navarre",
+    "year": 1173,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "1173-1177 contest over Rioja and Bureba; no Castile pair"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1186,
+    "type": "gain",
+    "counterpart": "kingdom-of-navarre"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-navarre has no 1186 loss (its 1177 contest_end says the land was confirmed Castilian)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1195,
+    "type": "loss",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": 1195,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "the Almohad 1195 gain names kingdom-of-leon (Trujillo, Montánchez); no Almohad gain of the Calatrava country from Castile"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1200,
+    "type": "gain",
+    "counterpart": "kingdom-of-navarre"
+   },
+   "mirror": {
+    "slug": "kingdom-of-navarre",
+    "year": 1200,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Castile lacks the 1199-1200 contest pair"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1212,
+    "type": "gain",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": 1212,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Baeza and Úbeda, both sides (Almohad c3) contradicted by the pages: Baeza evacuated, Úbeda 1233; the conf-1 Calatrava return has no Almohad mirror"
+  },
+  {
+   "event": {
+    "slug": "almohad-caliphate",
+    "year": 1216,
+    "type": "loss",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "conf 1 on both sides would do; Castile has no 1216 event"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1225,
+    "type": "gain",
+    "counterpart": "al-Bayyasi"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "string counterpart; in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1230,
+    "type": "merge",
+    "counterpart": "kingdom-of-leon"
+   },
+   "mirror": {
+    "slug": "kingdom-of-leon",
+    "year": 1230,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1235,
+    "type": "dissolve",
+    "counterpart": "crown-of-castile"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "owned by a part of eu-12 that has not run yet (no file)"
+  },
+  {
+   "event": {
+    "slug": "county-of-ribagorza",
+    "year": 1010,
+    "type": "split",
+    "counterpart": "kingdom-of-castile"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Ribagorza names Castile in a 1010 split; Castile has no 1010 event (already flagged by the eu-12-a review)"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Lamego",
+   "kind": "place",
+   "used_in": "kingdom-of-castile"
+  },
+  {
+   "name": "Baeza",
+   "kind": "place",
+   "used_in": "kingdom-of-castile"
+  },
+  {
+   "name": "Úbeda",
+   "kind": "place",
+   "used_in": "kingdom-of-castile"
+  },
+  {
+   "name": "Andújar",
+   "kind": "place",
+   "used_in": "kingdom-of-castile"
+  },
+  {
+   "name": "Martos",
+   "kind": "place",
+   "used_in": "kingdom-of-castile"
+  },
+  {
+   "name": "Coria",
+   "kind": "place",
+   "used_in": "kingdom-of-castile"
+  },
+  {
+   "name": "La Bureba",
+   "kind": "region",
+   "used_in": "kingdom-of-castile"
+  },
+  {
+   "name": "Sintra",
+   "kind": "place",
+   "used_in": "kingdom-of-castile"
+  },
+  {
+   "name": "Calatrava la Vieja",
+   "kind": "place",
+   "used_in": "kingdom-of-castile"
+  },
+  {
+   "name": "Alarcos",
+   "kind": "place",
+   "used_in": "kingdom-of-castile"
+  },
+  {
+   "name": "Cazorla",
+   "kind": "place",
+   "used_in": "kingdom-of-castile (recommended 1231 gain)"
+  },
+  {
+   "name": "Tormes",
+   "kind": "region",
+   "used_in": "kingdom-of-leon"
+  },
+  {
+   "name": "Trujillo (Cáceres, Spain)",
+   "kind": "place",
+   "used_in": "kingdom-of-leon (recommended 1195 loss)"
+  },
+  {
+   "name": "Montánchez",
+   "kind": "place",
+   "used_in": "kingdom-of-leon (recommended 1195 loss)"
+  },
+  {
+   "name": "Calahorra",
+   "kind": "place",
+   "used_in": "caliphate-of-cordoba (recommended 966 gain)"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Taifa of Málaga",
+   "suggested_slug": "taifa-of-malaga",
+   "years": [
+    1026,
+    1090
+   ]
+  },
+  {
+   "name": "Emirate of Baeza (al-Bayyasi)",
+   "suggested_slug": "emirate-of-baeza",
+   "years": [
+    1224,
+    1226
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-12-d.md",
+ "problems": [
+  "No page failed for the reviewer. 9 fetches: Abd_al-Rahman_III, Almanzor, Caliphate_of_Cordoba, Kingdom_of_Le%C3%B3n (twice), Ramiro_II_of_Le%C3%B3n, Alfonso_IX_of_Le%C3%B3n, Kingdom_of_Castile, Alfonso_VI_of_Le%C3%B3n_and_Castile, Ferdinand_III_of_Castile, Battle_of_Las_Navas_de_Tolosa. None of the three pages has an infobox area.",
+  "Union decision for the orchestrator: Union decision (asked for in the author's notes): 1038-1065 is drawn per crown, not as one Castile shape. Castile was a county until 1065 (Kingdom of Castile infobox 'Established: 1065'; the Castile dossier's own /ledger/10 rename), Ferdinand I was crowned king in León on 22 June 1038, Cliopatria itself draws León and Castile apart under the same king in 1040-1045, no page dates any change in 1046 (both 1046 events are confidence 1), and taifa-of-badajoz already names kingdom-of-leon for the Mondego. 1072-1125 and 1139-1157 keep Cliopatria's allocation (Castile row), as both dossiers now do; neighbours that name kingdom-of-leon in those years (almoravid-dynasty 1094) rename to kingdom-of-castile. 1126-1138 stays León as drawn.",
+  "Reviewer-applied fix: caliphate-of-cordoba /ledger/9 and /ledger/11 confidence 3 -> 2 (re-validated, 0 errors 0 warnings). The dossier still fails on two unapplied blocking findings (Africa).",
+  "Routing to groups that have run: af-02 idrisids (951 Tangier loss; 974 loss vs vassal tint), af-02 almohad-caliphate (1195 counterpart; 1212 Baeza/Úbeda c3 contradicted; 1212 Calatrava; 1230 Mérida and Badajoz loss to León), af-02 almoravid-dynasty (1094 counterpart -> kingdom-of-castile; 1102 Valencia gain; Coria gain c.1113 and 1142 loss), af-02 emirate-of-nekor (931-934 vassal: Caliphate to add), me-08 fatimid-caliphate (958 recovery of Morocco; nothing for 979), eu-12 taifa-of-badajoz (1055 loss split by dates; 1079 Coria; 1093 cession of Lisbon, Sintra, Santarém), eu-12 kingdom-of-navarre (1186 loss of part of La Rioja), eu-12 county-of-portugal (founding counterpart in 1096 = kingdom-of-castile), eu-12 kingdom-of-pamplona (keep 1034-1035; León adds the mirrors), eu-12 kingdom-of-galicia not yet written (end 914)."
+ ]
+}

@@ -1,0 +1,1097 @@
+{
+ "batch_id": "eu-02-b",
+ "verdicts": [
+  {
+   "slug": "achaean-league",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/10/correction",
+     "what": "BLOCKING. The 206-165 correction is union(minus(clio@-206, Corinth), Peloponnese), which draws the whole Peloponnese, Corinth included, from 206. The dossier's own text and ledger say it holds only from 191.",
+     "why": "The correction's own text reads '206-198 the league without Corinth; Argos lost to Nabis 198-195; Corinth back 197; Sparta 192; Messene and Elis 191: the whole Peloponnese from 191'. The ledger gains Argos in 195 (/ledger/22), Sparta in 192 (/ledger/24) and Messenia and Elis in 191 (/ledger/25), all land this keyframe already shows from 206. The peloponnesian-league dossier holds Laconia to its 192 dissolve and antigonid-dynasty holds Corinth to 196/197, so Laconia, Messenia, Elis and Corinth are drawn twice for 15 years. The overdraw is about 10 k km2 on an 11.8 k km2 shape.",
+     "fix": "Make /keyframe_review/10 correction {\"minus\": [{\"cliopatria\": \"Achaean League\", \"year\": -206}, {\"place\": \"Corinth\", \"km\": 15}]} with text '206-192: the league without Corinth (Macedonian to 197); Argos with Nabis 198-195'. Add a new keyframe achaean-league_-191 (from -191, to -165, verdict adjust) with correction {\"region\": \"Peloponnese\", \"text\": \"the whole peninsula from 191\"}. Optionally add achaean-league_-198 (-198..-192) for the shape minus Argos, with Corinth back from 197.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/8/correction",
+     "what": "BLOCKING. The 225-211 correction removes Argos and the Acte (a 35 km disc, about 3.8 k km2) for all 15 years, though its text limits that to 225-224. Megara (lost 223) and Heraea and Orchomenus (ceded to Macedon 224) stay in.",
+     "why": "The text says 'for 225-224, less the Argolid cities that surrendered to Cleomenes'. /ledger/13 regains Argos in 224 ('The Argives revolted against Cleomenes, and the Achaean reinforcements took the whole city'). /ledger/14 loses Megara in 223, confirmed on the Achaean League page: 'In 223 BC, Megara in Attica deserted the Achaean League and joined the Boeotian Confederacy'. The next keyframe (/keyframe_review/9, 210-207) does subtract Megara.",
+     "fix": "Keep /keyframe_review/8 as is for 225 only: an adjust whose text says the shape holds 225-225. Add a new keyframe achaean-league_-224 (from -224, to -211, verdict adjust) with correction minus(clio@-225, union(Corinth 15 km, Megara disc 10 km from 223)), the same as /keyframe_review/9. Heraea and Orchomenus to Macedon (infobox of the Cleomenean War) may go in its text.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/19/counterpart",
+     "what": "The 198 loss of Argos named peloponnesian-league. Argos went to Philip V first, and only in 197 to Nabis.",
+     "why": "Nabis of Sparta page: 'During the Second Macedonian War, Nabis sided with King Philip V of Macedon and in return he received the city of Argos.' The event's own note: 'Argos went over to Philip V'. antigonid-dynasty /ledger/54 has the 198 gain from achaean-league, and /ledger/55 the 197 hand-over to peloponnesian-league.",
+     "fix": "counterpart 'antigonid-dynasty' (applied by the reviewer; validates).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/25/counterpart",
+     "what": "The 191 gain of Messenia (Kalamata) and Elis (Pirgos) names greek-city-states, but messene has a dossier that loses Messenia to achaean-league in 191.",
+     "why": "messene /ledger/3: -191 loss achaean-league, Messenia, c1; /ledger/4: dissolve. greek-city-states /ledger/68 has a 191 loss of 'Peloponnese' to achaean-league.",
+     "fix": "Split /ledger/25 into a 191 gain of Kalamata from messene and a 191 gain of Pirgos (Elis) from 'Elis' or greek-city-states. Both stay at confidence 1.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/6/correction",
+     "what": "Megalopolis (joined 235) and Tripoli (Orchomenus and Mantinea, c. 234) are added for all of 239-231, so they are drawn 4-5 years early. This is minor.",
+     "why": "/ledger/6 is dated 235 (Achaean League page: 'Corinth was followed by Megalopolis in 235 BC'); /ledger/7 is c. 234, c1.",
+     "fix": "Optional: a new keyframe achaean-league_-235 (-235..-231) carrying the additions, with /keyframe_review/6 reduced to clio@-239 for 239-236.",
+     "applied": false
+    },
+    {
+     "where": "/wars",
+     "what": "The First Macedonian War (211-205) and the Roman-Seleucid War (192-188) are missing from wars[]. The league fought in both (Philopoemen at Mantinea 207; Messene and Elis added 191).",
+     "why": "/keyframe_review/9 note: 'Philopoemen's victory at Mantinea (207) changed no border'.",
+     "fix": "Add both wars, with empty zones for 211-205 and the note 'no ground changed hands'.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/7",
+     "what is missing": "The year and source for Orchomenus and Mantinea joining (c. 234, confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Mantinea"
+    },
+    {
+     "where": "/ledger/25",
+     "what is missing": "The year Messene and Elis joined (191 by the usual chronology; the page says 'no dates given').",
+     "page to try": "https://en.wikipedia.org/wiki/Messene"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Achaean_League",
+     "result": "confirmed: 'Corinth was followed by Megalopolis in 235 BC'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Achaean_League",
+     "result": "confirmed: '... and Argos in 229 BC'"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Achaean_League",
+     "result": "confirmed: 'In 223 BC, Megara in Attica deserted the Achaean League and joined the Boeotian Confederacy'"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Nabis_of_Sparta",
+     "result": "confirmed: 'Nabis was forced to surrender both Argos and the port of Gytheum' after Flamininus's ultimatum (195)"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Social_War_(220%E2%80%93217_BC)",
+     "result": "confirmed: 'At the turn of 219/18 BC' Philip 'stormed the city of Psophis and handed it over to his Achaean ally Aratus the Younger'; infobox 'Psophis and Lasion to Achaea'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 11769.5,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The infobox gives no area (re-founded 280, conquered 146). The author's notes say the 206-145 polygon is undersized against the whole Peloponnese, which is acknowledged but drawn wrongly (see /keyframe_review/10)."
+   }
+  },
+  {
+   "slug": "greek-colonies",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review (whole dossier)",
+     "what": "The same aggregate is drawn twice for 271-226: greek-city-states /keyframe_review/60-61 (greek-city-states_-271 and the -257 piece) draw clio:Greek Colonies@-271 for the same years.",
+     "why": "greek-city-states K60 note: 'The orchestrator must decide whether eu-02 writes greek-colonies as a separate dossier (then this keyframe is dropped)'. The author of this dossier flags the duplicate too.",
+     "fix": "Orchestrator: keep one. If this dossier stays, greek-city-states drops K60 and K61. If not, withdraw this dossier and fold its six reviewed shapes into greek-city-states.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/5/correction",
+     "what": "If this dossier replaces the greek-city-states bridge, Attica after Athens's liberation in 229 is in neither dossier.",
+     "why": "greek-city-states K60/K61 add Attica (union) to the aggregate, and antigonid-dynasty /ledger/31 has a 229 vassal_end of Attica with greek-city-states. This dossier's corrections never add Attica.",
+     "fix": "If kept: add {\"region\": \"Attica\"} to /keyframe_review/5 (230-226) and say in its text that Athens is free from 229.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0/correction and /keyframe_review/1/correction",
+     "what": "Messana (the Mamertines' to 257) is not carved, but greek-city-states carves a 25 km disc at 15.55 E 38.19 N out of the same clio:Greek Colonies@-271 shape.",
+     "why": "greek-city-states K60 correction minus(..., pt(15.55,38.19,25km)) for 271-258; the mamertines dossier draws Messana to 257.",
+     "fix": "Carve the Mamertine disc out of K0 and K1 (271-257), or say in the note that the Sicilian cluster does not reach Messina.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/2/correction",
+     "what": "Antipolis and Nikaia are carved from 256, while massalia gains them in 250 (massalia /ledger/3). For six years they are in neither dossier. This is negligible.",
+     "why": "The Massalia page dates Antipolis and Nikaia 'c. mid-3rd c.'.",
+     "fix": "Either carve them only from the 247 shape or leave it with a note.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Who took the 13 inland Carian cells around 264 (Ptolemaic, Seleucid or Rhodian).",
+     "page to try": "https://en.wikipedia.org/wiki/Caria"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "The Carian and Sicilian cells that left around 256.",
+     "page to try": "https://en.wikipedia.org/wiki/Caria"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "The Propontic and Aegean cells added around 239.",
+     "page to try": "https://en.wikipedia.org/wiki/Cyzicus"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "The Colchian coast (Dioscurias), Elis and the Propontic cells added around 230.",
+     "page to try": "https://en.wikipedia.org/wiki/Dioscurias"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "The West Pontic, Olbia, Crimean, Cretan, Iberian and Propontic clusters (unverified: page budget).",
+     "page to try": "https://en.wikipedia.org/wiki/Olbia,_Ukraine"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Greek_colonisation",
+     "result": "confirmed: 'particularly during the 8th-6th centuries BCE'; 'usually independent of the metropolis and had their own governance'; 'did not involve demanding tribute or laying claim to the hinterland'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Hiero_II_of_Syracuse",
+     "result": "confirmed: 'in 263 he concluded a treaty with Rome, by which he was to rule over the south-east of Sicily ... the eastern coast as far as Tauromenium'"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "page": "https://en.wikipedia.org/wiki/Massalia",
+     "result": "confirmed: Tauroentium '(early 3rd c.)', Antipolis and Nikaia '(c. mid-3rd c.)', 'persisted as an independent colony', 'faithful ally of Rome during all of the Punic Wars (264-146 BC)'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Chersonesos_Taurica",
+     "result": "confirmed as paraphrase (confidence 1): the page has a classical democracy and a civic oath 'from the 3rd century BC onwards', and names neither Colchis nor Dioscurias, as the note says"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 82557.7,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "An aggregate row; the Greek colonisation page is not about a state and has no infobox area."
+   }
+  },
+  {
+   "slug": "illyrian-kingdom",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger (213) and /keyframe_review/4",
+     "what": "The 213 loss of Lissus 'and the surrounding territories' to Philip V is missing. /keyframe_review/4 freezes 228-197, yet /ledger/10 regains Lezhe from antigonid-dynasty in 196 without the dossier ever losing it.",
+     "why": "First Macedonian War page, 213-212 campaign: 'by capturing Lissus and its seemingly impregnable citadel, after which the surrounding territories surrendered'; 'he took Dassaretis, Atintani and Parthini, and the town of Dimale'. antigonid-dynasty /ledger/45 is a 213 gain from illyrian-kingdom of union(Lezhe, Ohrid), c2.",
+     "fix": "Add a -213 loss to antigonid-dynasty, region Lezhe (admin-1), source First_Macedonian_War, confidence 2. Add a new keyframe illyrian-kingdom_-213 (-213..-197) that subtracts Lezhe, with /keyframe_review/4 ending in 214.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/7 and /ledger/8",
+     "what": "The 229-228 losses go to roman-republic, but roman-republic /ledger/43 records a 228 vassal_start of 'Greek cities of the Illyrian coast (Epidamnos, Apollonia, Corcyra, Issa)' and no gain. The author's own counterparts_needing_dossiers lists Corcyra, Epidamnos and the Parthini as the receivers.",
+     "why": "First Illyrian War page: 'The Romans had gained control of the strategic ports of Epidamnos, Apollonia and Corcyra'; 'The Parthini and Atintani became Roman clients'.",
+     "fix": "Agree with roman-republic. Either name the client cities (free text, as in roman-republic /ledger/43) as counterparts of /ledger/7 and /ledger/8, or ask eu-03 for a 228 gain. Routed to the orchestrator.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/12",
+     "what": "The 168 loss to roman-republic is mirrored in roman-republic /ledger/71 as a vassal_start of 'Illyria (the three cantons of Gentius' kingdom)', not a gain.",
+     "why": "Gentius page: 'the Romans split the region into three administrative divisions' (meris).",
+     "fix": "Align with eu-03: either loss to the cantons (free text) with roman-republic's vassal_start, or a roman-republic gain.",
+     "applied": false
+    },
+    {
+     "where": "/identity/rulers/1 and /identity/rulers/2",
+     "what": "Agron ends and Pinnes starts in 231, while the Illyrian kingdom page lists Agron '250 BC to 230 BC' and Pinnes 'B.C 230~B.C 217'. The author's notes record the 231/230 conflict. This is a note-only fix.",
+     "why": "Illyrian kingdom page, list of rulers.",
+     "fix": "Say in the ruler note that the kingdom page gives 230 and the Agron page 231.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "The founding year (256 is Cliopatria's) and the extent for 256-248.",
+     "page to try": "https://en.wikipedia.org/wiki/Ardiaei"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "The date of Agron's northern extension to Narona (247 is Cliopatria's year).",
+     "page to try": "https://en.wikipedia.org/wiki/Agron_of_Illyria"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "The date of the Epirote coast and Epidamnus annexation (239 is Cliopatria's year); no mirror in kingdom-of-epirus.",
+     "page to try": "https://en.wikipedia.org/wiki/Epirus_(ancient_state)"
+    },
+    {
+     "where": "/ledger/10",
+     "what is missing": "The land restored in 196 (Livy has Lychnidus and the Parthini given to Pleuratus); Lissus is a bridge.",
+     "page to try": "https://en.wikipedia.org/wiki/Pleuratus_III"
+    },
+    {
+     "where": "/ledger (219)",
+     "what is missing": "The Second Illyrian War (220-219): Demetrius of Pharos's Pharos and Dimale to Roman protection (roman-republic /ledger/48, 219 vassal_start).",
+     "page to try": "https://en.wikipedia.org/wiki/Second_Illyrian_War"
+    },
+    {
+     "where": "/keyframe_review/4",
+     "what is missing": "The extent for 228-197 (unverified: page budget).",
+     "page to try": "https://en.wikipedia.org/wiki/Scerdilaidas"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/First_Illyrian_War",
+     "result": "confirmed: 'In 231 BC, the fleet and army attacked Elis and Messenia'; 'On the way home, Teuta sent her general Scerdilaidas to capture the city of Phoenice'; the capture is dated only by sequence, as the note says"
+    },
+    {
+     "where": "/ledger/5 and /ledger/7",
+     "page": "https://en.wikipedia.org/wiki/First_Illyrian_War",
+     "result": "confirmed: the siege in the 229 narrative; 'Corcyra was surrendered and was occupied by a garrison under the command of Demetrius of Pharos'; 'Corcyra welcomed the Romans and, with the aid of Demetrius, surrendered its garrison'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/First_Illyrian_War",
+     "result": "confirmed: 'Before the end of winter, Teuta's envoys appeared in Rome and a treaty was concluded' (war 229-228); 'forced to give up all their recent conquests south of the Drin'; 'not to sail south of Lissus'"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Gentius",
+     "result": "confirmed: 'the Dalmatae and Daorsi declared themselves independent from his rule' (180)"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Gentius",
+     "result": "confirmed: 'he was defeated at Scodra by a Roman force under L. Anicius Gallus' (168); 'He ruled in 181-168 BC'; three meris"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 49700.7,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The infobox has no area (Established c. 500 BC, Disestablished 135 BC). The end of 168 against the infobox's 135 is flagged in the author's notes."
+   }
+  },
+  {
+   "slug": "rhodes",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger (164)",
+     "what": "The author's notes ask roman-republic to carry a 164 vassal_start on Rhodes, but Rhodes's own ledger has no such event. A vassal pair must appear in both ledgers.",
+     "why": "Rhodes page: a formal alliance with Rome in 164 BC sharply limited Rhodes's freedom in foreign affairs, but 'Rhodes continued to remain nominally independent'.",
+     "fix": "Either add a 164 vassal_start with roman-republic (confidence 2, Rhodes page) and a vassal_end at the end year, or withdraw the request in the notes and treat the alliance as no change of level.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1 and /ledger/2 against /keyframe_review/1",
+     "what": "In 188 the same land (the mainland less the Cnidus-Kaunos strip) is both gained outright (/ledger/1, c3) and made tributary (/ledger/2, c1), and /keyframe_review/1 ('ok') draws all of it as full Rhodian territory.",
+     "why": "Rhodian Peraia page: 'the entirety of Caria and Lycia south of the Maeander River came under Rhodian rule'; 'During this time, the Peraia comprised the fully incorporated portion, lying between Cnidus and Kaunos, and the remainder of Caria and Lycia, which were tributary to Rhodes'.",
+     "fix": "Choose one level for 188-167. Either gain only the incorporated strip and record the rest as vassal_start (dropping it from /keyframe_review/1 with a correction), or drop /ledger/2 and /ledger/3 and keep the gain.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "The mainland Peraia held before 188 (the Cnidian and Trachea peninsulas; Caunus bought c. 191; Stratonicea). The page says only that it 'grew with the addition of various vassal regions', undated.",
+     "page to try": "https://en.wikipedia.org/wiki/Kaunos"
+    },
+    {
+     "where": "/ledger/2 and /ledger/3",
+     "what is missing": "The dating of the tributary remainder of Caria and Lycia (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Apamea"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "The end of Rhodian self-rule. 39 is a bridge; the Rhodes page says only 'After losing its independence', undated. The free city lasted into the Principate.",
+     "page to try": "https://en.wikipedia.org/wiki/Lycia_et_Pamphylia"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Rhodes",
+     "result": "confirmed: 'In 408 BC, the cities united to form one territory', with a new capital at the northern end"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Rhodian_Peraia",
+     "result": "confirmed: 'It reached its greatest extent after the Treaty of Apamea in 188 BC', Caria and Lycia south of the Maeander"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Rhodian_Peraia",
+     "result": "confirmed: 'when Rhodes submitted to Rome in 167 BC, this region was lost again'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Rhodian_Peraia",
+     "result": "confirmed: 'Rhodes retained a portion of its old domains in Asia until 39 BC, when they were ceded to Stratonicea'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1400.68,
+    "infobox_year": null,
+    "cliopatria_km2": 25801.4,
+    "ratio": 18.42,
+    "acknowledged": true,
+    "note": "The infobox is the modern island only. /keyframe_review/0 compares the island (about 1,517 km2, ratio 1.08) and /keyframe_review/1 explains the mainland Peraia."
+   }
+  },
+  {
+   "slug": "molossians",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Third_Macedonian_War",
+     "result": "confirmed: infobox 'Molossians (from 170 BC)' on the Macedonian side; 'Molossians in Epirus, on the west coast of Greece, went over to the Macedonians'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Molossians",
+     "result": "confirmed: 'The Molossians sided with the Macedonians against Rome in the Third Macedonian War (171-168 BC) and were defeated'; 150,000 enslaved, undated"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Molossians",
+     "result": "confirmed: no 167 date on the Molossians or Third Macedonian War pages (Pydna 168; 'Troops were sent to seventy cities' undated)"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Molossians",
+     "result": "confirmed: Pyrrhus 'transferred the capital of his kingdom from Passaron to Ambracia' (295)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 4707.9,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on either page. The shape lies inside kingdom-of-epirus's Epirus keyframe (K8, 231-167): the double drawing is routed to the orchestrator under problems, not a fault of this dossier."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -275,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -275,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Aegium"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -251,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -251,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Sicyon"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -243,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -243,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Corinth"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -243,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -243,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Megara, Epidaurus, Troezen"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -235,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -235,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Megalopolis"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -234,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -234,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Tripoli (Orchomenus, Mantinea), both c1"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -229,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -229,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Land differs: achaean gains Argos (22.72 E 37.63 N, 25 km); antigonid-dynasty /ledger/32 loses 'Tripoli' (Arcadia). antigonid-dynasty should name Argos."
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -226,
+    "type": "loss",
+    "counterpart": "peloponnesian-league"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Mantinea to Cleomenes (Cleomenes III page); peloponnesian-league has no 226 gain (its /ledger/53 is a 229 gain of Tripoli from greek-city-states). Route to eu-01."
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -225,
+    "type": "loss",
+    "counterpart": "peloponnesian-league"
+   },
+   "mirror": {
+    "slug": "peloponnesian-league",
+    "year": -225,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Argolid and Corinth"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -224,
+    "type": "loss",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -224,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Acrocorinth"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -224,
+    "type": "gain",
+    "counterpart": "peloponnesian-league"
+   },
+   "mirror": {
+    "slug": "peloponnesian-league",
+    "year": -222,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Argos returns in 224 (Cleomenean War page); peloponnesian-league /ledger/56 has the loss in 222 at c1. eu-01 should move it to 224."
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -223,
+    "type": "loss",
+    "counterpart": "Boeotian League"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; not in the author's counterparts_needing_dossiers, so the reviewer adds it."
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -218,
+    "type": "gain",
+    "counterpart": "Elis"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; the reviewer adds Elis to counterparts_needing_dossiers (antigonid-dynasty /ledger/39 also names it)."
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -198,
+    "type": "loss",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -198,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "After the reviewer's fix (counterpart was peloponnesian-league)."
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -197,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -196,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "antigonid-dynasty /ledger/58 gives Corinth (with Chalcis and Demetrias) to roman-republic in 196, while achaean-league has Corinth rejoin in 197 under a Roman garrison."
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -197,
+    "type": "occupation_start",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "roman-republic has no occupation of Corinth 197-194 (nor its occupation_end). Route to eu-03."
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -195,
+    "type": "gain",
+    "counterpart": "peloponnesian-league"
+   },
+   "mirror": {
+    "slug": "peloponnesian-league",
+    "year": -195,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Argos"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -192,
+    "type": "gain",
+    "counterpart": "peloponnesian-league"
+   },
+   "mirror": {
+    "slug": "peloponnesian-league",
+    "year": -192,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Sparta"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -191,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -191,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Matched with greek-city-states /ledger/68, but messene /ledger/3 also loses Messenia to achaean-league in 191: two dossiers give up the same land. Split /ledger/25 (see fixes)."
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -146,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -146,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Peloponnese"
+  },
+  {
+   "event": {
+    "slug": "greek-colonies",
+    "year": -271,
+    "type": "found",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -271,
+    "type": "keyframe greek-city-states_-271"
+   },
+   "status": "mismatch",
+   "note": "The same aggregate is drawn by both dossiers 271-226 (duplicate); the orchestrator keeps one."
+  },
+  {
+   "event": {
+    "slug": "greek-colonies",
+    "year": -264,
+    "type": "loss",
+    "counterpart": "undetermined (page silent)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Carian cells, confidence 1."
+  },
+  {
+   "event": {
+    "slug": "greek-colonies",
+    "year": -256,
+    "type": "loss",
+    "counterpart": "undetermined (page silent)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Carian and Sicilian cells, confidence 1."
+  },
+  {
+   "event": {
+    "slug": "greek-colonies",
+    "year": -239,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Propontic cells, confidence 1."
+  },
+  {
+   "event": {
+    "slug": "greek-colonies",
+    "year": -230,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Colchis, Elis and Propontis cells, confidence 1."
+  },
+  {
+   "event": {
+    "slug": "illyrian-kingdom",
+    "year": -247,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Narona extension, confidence 1."
+  },
+  {
+   "event": {
+    "slug": "illyrian-kingdom",
+    "year": -239,
+    "type": "gain",
+    "counterpart": "kingdom-of-epirus"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-epirus K7 (271-232) keeps union(Epirus, Arta) and has no loss to illyrian-kingdom."
+  },
+  {
+   "event": {
+    "slug": "illyrian-kingdom",
+    "year": -231,
+    "type": "gain",
+    "counterpart": "kingdom-of-epirus"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Phoenice; no mirror in kingdom-of-epirus."
+  },
+  {
+   "event": {
+    "slug": "illyrian-kingdom",
+    "year": -230,
+    "type": "loss",
+    "counterpart": "kingdom-of-epirus"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Phoenice returned; no mirror in kingdom-of-epirus."
+  },
+  {
+   "event": {
+    "slug": "illyrian-kingdom",
+    "year": -229,
+    "type": "gain",
+    "counterpart": "Corcyra (Corfu)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "illyrian-kingdom",
+    "year": -229,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -228,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "roman-republic /ledger/43 makes Corcyra a client city (vassal_start of 'Greek cities of the Illyrian coast'), not a roman-republic gain."
+  },
+  {
+   "event": {
+    "slug": "illyrian-kingdom",
+    "year": -228,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -228,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "Same: Epidamnos and Apollonia become client cities in roman-republic's ledger; no gain."
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -213,
+    "type": "gain",
+    "counterpart": "illyrian-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "illyrian-kingdom has no 213 loss of Lissus (First Macedonian War page confirms the capture)."
+  },
+  {
+   "event": {
+    "slug": "illyrian-kingdom",
+    "year": -196,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "antigonid-dynasty has no 196 loss to illyrian-kingdom (its /ledger/59 loses Dytiki Makedonia and other land to nobody)."
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -219,
+    "type": "vassal_start",
+    "counterpart": "Illyrian towns under Roman protection (Pharos, Dimale)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "illyrian-kingdom has nothing in 220-219 (Second Illyrian War not opened); thin."
+  },
+  {
+   "event": {
+    "slug": "illyrian-kingdom",
+    "year": -180,
+    "type": "loss",
+    "counterpart": "Dalmatae"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "illyrian-kingdom",
+    "year": -168,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -168,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "roman-republic /ledger/71 makes 'Illyria (the three cantons of Gentius' kingdom)' a vassal, not a gain."
+  },
+  {
+   "event": {
+    "slug": "rhodes",
+    "year": -408,
+    "type": "found",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "greek-city-states never subtracts the island of Rhodes (no keyframe of 85 names it), so the island is drawn twice from 408. Route to eu-01, as the author asks."
+  },
+  {
+   "event": {
+    "slug": "rhodes",
+    "year": -188,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "seleucid-empire (me-05) has not run."
+  },
+  {
+   "event": {
+    "slug": "rhodes",
+    "year": -188,
+    "type": "vassal_start",
+    "counterpart": "Caria and Lycia (tributary communities)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed as lycian-league in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "rhodes",
+    "year": -167,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Caria and Lycia freed."
+  },
+  {
+   "event": {
+    "slug": "rhodes",
+    "year": -39,
+    "type": "loss",
+    "counterpart": "Stratonicea"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "molossians",
+    "year": -170,
+    "type": "found",
+    "counterpart": "kingdom-of-epirus"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "kingdom-of-epirus K8 (231-167, Epirus) still draws the Molossis and has no 170 split or loss: the Molossis is drawn by both dossiers 170-168."
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -170,
+    "type": "vassal_start",
+    "counterpart": "molossians"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "antigonid-dynasty /ledger/67 (c3) and /ledger/68 make the Molossians vassals; the Third Macedonian War page says they 'went over to the Macedonians' (an ally on the infobox). molossians has no vassal pair. Route to eu-02-a: drop the pair or lower it."
+  },
+  {
+   "event": {
+    "slug": "molossians",
+    "year": -168,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -167,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Within a year; roman-republic /ledger/73 gains all of Epirus from molossians, wider than the Molossian shape."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Agde",
+   "kind": "place",
+   "used_in": "greek-colonies"
+  },
+  {
+   "name": "Laconia",
+   "kind": "region",
+   "used_in": "greek-colonies"
+  },
+  {
+   "name": "Phoenice (Finiq)",
+   "kind": "place",
+   "used_in": "illyrian-kingdom"
+  },
+  {
+   "name": "Rhizon (Risan)",
+   "kind": "place",
+   "used_in": "illyrian-kingdom"
+  },
+  {
+   "name": "Cnidus",
+   "kind": "place",
+   "used_in": "rhodes"
+  },
+  {
+   "name": "Kaunos",
+   "kind": "place",
+   "used_in": "rhodes"
+  },
+  {
+   "name": "Passaron",
+   "kind": "place",
+   "used_in": "molossians"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Elis",
+   "suggested_slug": "elis",
+   "years": [
+    -245,
+    -191
+   ],
+   "note": "named as free text by achaean-league /ledger/17 and antigonid-dynasty /ledger/39; not in the author's list"
+  },
+  {
+   "name": "Boeotian League",
+   "suggested_slug": "boeotian-league",
+   "years": [
+    -245,
+    -146
+   ],
+   "note": "achaean-league /ledger/14 (Megara 223); antigonid-dynasty /ledger/60; not in the author's list"
+  },
+  {
+   "name": "Corcyra (Corfu)",
+   "suggested_slug": "corcyra",
+   "years": [
+    -229,
+    -228
+   ]
+  },
+  {
+   "name": "Epidamnos and Apollonia (Roman-protected Greek towns)",
+   "suggested_slug": "epidamnos",
+   "years": [
+    -229,
+    -228
+   ]
+  },
+  {
+   "name": "Parthini and Atintani",
+   "suggested_slug": "parthini",
+   "years": [
+    -229,
+    -228
+   ]
+  },
+  {
+   "name": "Dalmatae and Daorsi",
+   "suggested_slug": "dalmatae",
+   "years": [
+    -180,
+    -168
+   ]
+  },
+  {
+   "name": "Lycian and Carian communities tributary to Rhodes",
+   "suggested_slug": "lycian-league",
+   "years": [
+    -188,
+    -167
+   ]
+  },
+  {
+   "name": "Stratonicea",
+   "suggested_slug": "stratonicea",
+   "years": [
+    -39,
+    -39
+   ]
+  },
+  {
+   "name": "Chersonesos Taurica",
+   "suggested_slug": "chersonesos",
+   "years": [
+    -271,
+    -110
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-02-b.md",
+ "problems": [
+  "Neighbour dossiers read: aetolian-league, greek-city-states, roman-republic, cimmerian-bosporus, scythia, athenian-coalition, mamertines, antigonid-dynasty, plus kingdom-of-epirus, peloponnesian-league, messene, massalia and syracuse for mirrors. Not written yet, so their mirrors count as the brief's exception: ptolemaic-kingdom, seleucid-empire, kingdom-of-pergamon, kingdom-of-armenia, kingdom-of-bithynia, kingdom-of-pontus, greco-bactrian-kingdom, carthage.",
+  "Double drawing for the orchestrator: greek-colonies and the greek-city-states bridge keyframes K60-K61 (271-226) draw the same aggregate; molossians and kingdom-of-epirus K8 both draw the Molossis 170-168; greek-city-states never subtracts the island of Rhodes (rhodes from 408).",
+  "antigonid-macedonia was not written: it is merged into antigonid-dynasty (eu-02-a), which lists both Names. The slug should be recorded as merged.",
+  "achaean-league was kept from an earlier run (file of 2026-10-18), and its two blocking keyframe faults (K8, K10) predate this batch. The reviewer applied one counterpart fix (/ledger/19) and the file re-validates.",
+  "WebFetch returns a model summary: quoted strings in this review are those the tool returned as quotations. The Achaean League, Illyrian kingdom and Molossians pages have no infobox area. No page failed to load."
+ ]
+}

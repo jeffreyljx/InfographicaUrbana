@@ -1,0 +1,795 @@
+{
+ "batch_id": "eu-10-b",
+ "verdicts": [
+  {
+   "slug": "county-of-flanders",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/5/confidence",
+     "what": "The March 1186 loss of Vermandois is at confidence 3 though the pages disagree on when the land (not the title) moved.",
+     "why": "Philip I page: 'signed a peace treaty with King Philip II and Count Baldwin V on 10 March 1186' 'recognizing the cession of Vermandois to the king'. County of Vermandois page: 'the count of Flanders kept the county of Vermandois until his death, in 1191'; county-of-vermandois /ledger/5 and royal-domain-of-france /ledger/6 date the land move 1191.",
+     "fix": "Confidence 3 -> 2 and a sentence quoting the County of Vermandois page appended to the note.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/5, /keyframe_review/5, /keyframe_review/6",
+     "what": "Ledger and keyframes disagree on Vermandois and Amiens: the ledger loses Amiens in 1185 and Vermandois in March 1186, but the 1169 keyframe (1169-1187) keeps both, and the 1188 keyframe (1188-1190) drops Vermandois although the County of Vermandois page has Flanders keep it to Philip's death in 1191.",
+     "why": "shapes.csv: county-of-flanders_1169 36,834 km2 to 1187, _1188 9,231 km2; about 19,500 km2 of Vermandois is coloured Flemish two years after the ledger's loss and then removed three years before the date in county-of-vermandois (1191 gain from county-of-flanders) and royal-domain-of-france (1191 gain of Péronne). Keyframe 5's note acknowledges the gap but does not correct it.",
+     "fix": "Choose one date and make keyframes follow it. Preferred: move the Vermandois loss to August 1191 (Philip died 1 August 1191; County of Vermandois page; counterpart county-of-vermandois, which then passes Péronne to the crown), give county-of-flanders_1188 a correction that adds {cliopatria: County of Vermandois, year: 1168} minus Amiens for 1188-1190, and add a new keyframe 1185-1187 (the 1169 shape minus the Amiens radius) for the Boves loss. Otherwise keep 1186 and add a new keyframe 1186-1187 without Vermandois, and say in notes why the 1191 pages are not followed.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1382)",
+     "what": "Louis II's 1382 inheritance of Artois and the County of Burgundy is missing from the ledger and the notes, though it is on a page the author opened.",
+     "why": "Louis II page infobox: 'Count of Artois and Burgundy (9 May 1382 - 30 January 1384)'; lead: 'and also of Artois and Burgundy from 1382 until his death'. free-county-of-burgundy /ledger/5 records the 1382 bequest to Louis II as a rename.",
+     "fix": "Add a notes line (personal union; the land stays in the free-county-of-burgundy dossier, as that dossier's 1382 rename does), or, if personal unions are drawn as with Nevers in 1322, a 1382 gain from free-county-of-burgundy with the matching loss there. Source: the Louis II page.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/13",
+     "what is missing": "1326 Rethel gain rests on Cliopatria only (confidence 1); the year Louis I became Count of Rethel is not on the Louis I page.",
+     "page to try": "https://en.wikipedia.org/wiki/County_of_Rethel"
+    },
+    {
+     "where": "/keyframe_review/10, /keyframe_review/12",
+     "what is missing": "The Mons (Hainaut) cells in the 1260-1304 shapes are unexplained. Margaret II was countess of both Flanders and Hainaut until 1278/1280 (personal union since Baldwin VIII, 1191); after 1280 Hainaut went to the Avesnes line, so the cells may be right to 1280 and wrong after.",
+     "page to try": "https://en.wikipedia.org/wiki/Margaret_II,_Countess_of_Flanders"
+    },
+    {
+     "where": "/keyframe_review/5",
+     "what is missing": "Ten Cambrai-Douai-Valenciennes cells in the 1169-1187 shape on no page.",
+     "page to try": "https://en.wikipedia.org/wiki/County_of_Hainaut"
+    },
+    {
+     "where": "/ledger (c. 1045-1059)",
+     "what is missing": "Baldwin V's gain of the imperial lands at the Scheldt (Imperial Flanders): duchy-of-lower-lorraine /ledger/7 records a loss to county-of-flanders 'by 1059' with no mirror here; Baldwin V's war with Henry III (1044-1056) is not in wars.",
+     "page to try": "https://en.wikipedia.org/wiki/Baldwin_V,_Count_of_Flanders"
+    },
+    {
+     "where": "/wars",
+     "what is missing": "Wars not listed: Philip of Alsace's war with Philip II over Vermandois (county-of-vermandois has contest 1183-1186 with county-of-flanders); the 1213-1214 French invasion of Flanders and Bouvines; the Flanders-Hainaut succession war began in 1244, not 1253.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Bouvines"
+    },
+    {
+     "where": "/ledger (1216-1259, 1305-1320)",
+     "what is missing": "No events 1216-1259; the Treaty of Pontoise (1312) and 1320 settlement on Lille, Douai and Orchies not on any page opened (author flagged).",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Athis-sur-Orge"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Philip_I,_Count_of_Flanders",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Philip_I,_Count_of_Flanders",
+     "result": "confirmed (10 March 1186 treaty recognising the cession), but the County of Vermandois page has the land kept to 1191: confidence lowered"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Louis_I,_Count_of_Flanders",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Louis_II,_Count_of_Flanders",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Louis_II,_Count_of_Flanders",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/County_of_Flanders",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 36834.3,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "County of Flanders infobox has no area; the author says so in the keyframe notes."
+   }
+  },
+  {
+   "slug": "county-of-blois",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/notes",
+     "what": "Item (7) attributes Odo II's title of count of Beauvais to the Blois page, which does not name Beauvais.",
+     "why": "Odo II page: 'the count of Blois, Chartres, Châteaudun, Champagne, Beauvais and Tours from 1004'; County of Blois page: Beauvais not on page.",
+     "fix": "Item (7) now reads 'The Odo II page lists Odo II as count of Beauvais as well; the Blois page does not name Beauvais and no other page confirms it.'",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "c. 940 gain of Tours, Chartres and Châteaudun is undated on the page (confidence 1); the County of Blois page has King Hugh 'said to have offered the county to Theobald I' without a year; no west-franks mirror.",
+     "page to try": "https://en.wikipedia.org/wiki/Theobald_I,_Count_of_Blois"
+    },
+    {
+     "where": "/ledger/14",
+     "what is missing": "1294 Châteaudun loss rests on Cliopatria only (confidence 1) and names no counterpart; the Blois-Châtillon counts may have kept Dunois to the 1391/1397 sale.",
+     "page to try": "https://fr.wikipedia.org/wiki/Comté_de_Dunois"
+    },
+    {
+     "where": "/ledger/16",
+     "what is missing": "1401 dissolve is Cliopatria's year (confidence 1); the county went to Louis I of Orléans (1397) and to the royal domain only in 1498 (royal-domain-of-france /ledger/55, from duchy-of-orleans). A merge into duchy-of-orleans in 1397 may fit better than a rename plus a 1401 dissolve.",
+     "page to try": "https://en.wikipedia.org/wiki/Louis_I,_Duke_of_Orléans"
+    },
+    {
+     "where": "/keyframe_review (Sancerre)",
+     "what is missing": "Sancerre, one of Theobald III's counties (Theobald III page), is in no shape.",
+     "page to try": "https://en.wikipedia.org/wiki/County_of_Sancerre"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Odo_II,_Count_of_Blois",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Theobald_III,_Count_of_Blois",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/County_of_Chartres",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/County_of_Blois",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/County_of_Blois",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Crown_lands_of_France",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 38821.4,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "County of Blois infobox has no area (Established c. 500, Disestablished 1660); the author says so."
+   }
+  },
+  {
+   "slug": "county-of-champagne",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1",
+     "what": "county-of-champagne_1003 had verdict ok for 1003-1027 although its own note says it is valid 1003-1021 only, and no Champagne keyframe supersedes it from 1022, so Champagne and the Blois keyframe county-of-blois_1022 both draw the land in 1022-1027.",
+     "why": "Odo II page: count of Troyes and Meaux 'from 1022'; Champagne /ledger/2 loses the county to county-of-blois in 1022; schema: 'A verdict that only changes the years says so in text and gives the shape unchanged.'",
+     "fix": "Verdict ok -> adjust with correction {cliopatria: County of Champagne, year: 1003, text: 'the Cliopatria shape unchanged, valid 1003-1021 only: from 1022 to 1027 the land is drawn in the Blois keyframe county-of-blois_1022'}.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/6/note, /keyframe_review/5/note",
+     "what": "The quotation 'Hugh received the Champagne possessions after Odo died in 1093' is not on the Theobald III page (the fact is).",
+     "why": "Theobald III page: 'He died in 1093, leaving the possessions to his brother Hugh.'",
+     "fix": "Both notes now quote the page: Odo 'died in 1093, leaving the possessions to his brother Hugh'.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "990 start is Cliopatria's (confidence 1); the Champagne page names no count before Odo II and gives 'Preceded by: County of Troyes; County of Meaux'. The Herbertian counts of Troyes and Meaux need a page.",
+     "page to try": "https://en.wikipedia.org/wiki/Robert_of_Vermandois"
+    },
+    {
+     "where": "/ledger/1, /ledger/4",
+     "what is missing": "The Sens block 1003-1055 rests on Cliopatria only (confidence 1); kingdom-of-france and royal-domain-of-france take Sens in 1055 from its own counts, not from Champagne.",
+     "page to try": "https://fr.wikipedia.org/wiki/Comté_de_Sens"
+    },
+    {
+     "where": "/keyframe_review/7-10",
+     "what is missing": "Henry the Liberal's expansion and the later additions are undated on the page.",
+     "page to try": "https://en.wikipedia.org/wiki/Henry_I,_Count_of_Champagne"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Crown_lands_of_France",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Theobald_II,_Count_of_Champagne",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Theobald_III,_Count_of_Blois",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Theobald_III,_Count_of_Blois",
+     "result": "confirmed in substance; quoted words not on page (fixed)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Crown_lands_of_France",
+     "result": "confirmed ('annexation of the County of Sens', 1055; Champagne's holding is on no page, confidence 1)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 27490.2,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "County of Champagne infobox has no area (Established 12th century); the author says so."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "county-of-flanders",
+    "year": 898,
+    "type": "gain",
+    "counterpart": "west-franks"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "west-franks has no 897-899 loss of Artois (only the 898 rename)."
+  },
+  {
+   "event": {
+    "slug": "county-of-flanders",
+    "year": 1013,
+    "type": "gain",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "holy-roman-empire has no 1012-1014 loss of Valenciennes."
+  },
+  {
+   "event": {
+    "slug": "county-of-flanders",
+    "year": 1167,
+    "type": "gain",
+    "counterpart": "county-of-vermandois"
+   },
+   "mirror": {
+    "slug": "county-of-vermandois",
+    "year": 1167,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "county-of-flanders",
+    "year": 1185,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "royal-domain-of-france",
+    "year": 1185,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Mirror is in royal-domain-of-france (July 1185, Amiens); kingdom-of-france has none."
+  },
+  {
+   "event": {
+    "slug": "county-of-flanders",
+    "year": 1186,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "county-of-vermandois",
+    "year": 1191,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Five years apart and a different counterpart: county-of-vermandois /ledger/5 and royal-domain-of-france /ledger/6 have Flanders keep Vermandois to 1191 (County of Vermandois page). Flanders must reconcile (fix listed)."
+  },
+  {
+   "event": {
+    "slug": "county-of-flanders",
+    "year": 1191,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1191,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "kingdom-of-france /ledger/14 names no holder (\"Artois (holder not named by the page)\"); it should name county-of-flanders."
+  },
+  {
+   "event": {
+    "slug": "county-of-flanders",
+    "year": 1264,
+    "type": "gain",
+    "counterpart": "county-of-namur"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "county-of-namur has no dossier; listed in counterparts_needing_dossiers (eu-09)."
+  },
+  {
+   "event": {
+    "slug": "county-of-flanders",
+    "year": 1305,
+    "type": "loss",
+    "counterpart": "county-of-namur"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "county-of-namur has no dossier; listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "county-of-flanders",
+    "year": 1305,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Neither kingdom-of-france nor royal-domain-of-france records the 1305 gain of Lille, Douai and Orchies (or the 1312 transfer)."
+  },
+  {
+   "event": {
+    "slug": "county-of-flanders",
+    "year": 1322,
+    "type": "gain",
+    "counterpart": "county-of-nevers"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "county-of-nevers is owned by an eu-10 part that has not written it yet."
+  },
+  {
+   "event": {
+    "slug": "county-of-flanders",
+    "year": 1326,
+    "type": "gain",
+    "counterpart": "county-of-rethel"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "county-of-rethel has no dossier; listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "county-of-flanders",
+    "year": 1357,
+    "type": "gain",
+    "counterpart": "county-of-brabant"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "county-of-brabant has the 1356 war with Flanders but no 1357 loss of Antwerp and Mechelen."
+  },
+  {
+   "event": {
+    "slug": "county-of-flanders",
+    "year": 1369,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Neither kingdom-of-france nor royal-domain-of-france records the 1369 return of Romance Flanders."
+  },
+  {
+   "event": {
+    "slug": "county-of-flanders",
+    "year": 1384,
+    "type": "merge",
+    "counterpart": "duchy-of-burgundy"
+   },
+   "mirror": {
+    "slug": "burgundian-state",
+    "year": 1384,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "duchy-of-burgundy (eu-10) not written yet; burgundian-state /ledger/1 records the 1384 gain from county-of-flanders, and its /ledger/3 takes Nevers and Rethel from county-of-nevers, while the Flanders 1384 shape holds them. The two slugs should be agreed."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-lower-lorraine",
+    "year": 1059,
+    "type": "loss",
+    "counterpart": "county-of-flanders"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "No Flanders gain c. 1045-1059 of the imperial lands at the Scheldt (Baldwin V); listed under thin."
+  },
+  {
+   "event": {
+    "slug": "county-of-blois",
+    "year": 940,
+    "type": "gain",
+    "counterpart": "west-franks"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "west-franks has no 939-941 loss; confidence 1."
+  },
+  {
+   "event": {
+    "slug": "county-of-blois",
+    "year": 1022,
+    "type": "gain",
+    "counterpart": "county-of-champagne"
+   },
+   "mirror": {
+    "slug": "county-of-champagne",
+    "year": 1022,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "county-of-blois",
+    "year": 1037,
+    "type": "loss",
+    "counterpart": "county-of-champagne"
+   },
+   "mirror": {
+    "slug": "county-of-champagne",
+    "year": 1037,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "county-of-blois",
+    "year": 1044,
+    "type": "loss",
+    "counterpart": "county-of-anjou"
+   },
+   "mirror": {
+    "slug": "county-of-anjou",
+    "year": 1044,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Anjou also has contest_start 1042 (siege of Tours, winter 1042-3); the Blois war 3 starts in 1044."
+  },
+  {
+   "event": {
+    "slug": "county-of-blois",
+    "year": 1063,
+    "type": "gain",
+    "counterpart": "county-of-champagne"
+   },
+   "mirror": {
+    "slug": "county-of-champagne",
+    "year": 1063,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Champagne page infobox gives 1066 for this union."
+  },
+  {
+   "event": {
+    "slug": "county-of-blois",
+    "year": 1089,
+    "type": "loss",
+    "counterpart": "county-of-champagne"
+   },
+   "mirror": {
+    "slug": "county-of-champagne",
+    "year": 1089,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "county-of-blois",
+    "year": 1125,
+    "type": "gain",
+    "counterpart": "county-of-champagne"
+   },
+   "mirror": {
+    "slug": "county-of-champagne",
+    "year": 1125,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "county-of-blois",
+    "year": 1152,
+    "type": "loss",
+    "counterpart": "county-of-champagne"
+   },
+   "mirror": {
+    "slug": "county-of-champagne",
+    "year": 1152,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "county-of-blois",
+    "year": 1286,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "royal-domain-of-france",
+    "year": 1284,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "royal-domain-of-france /ledger/19 and kingdom-of-france /ledger/29 date the Chartres purchase 1284 from county-of-chartres / an unnamed seller; the County of Chartres page has Joan, Countess of Blois, sell it in 1286 and the Crown lands page has both 1284 and 1286 entries. The France dossiers should name county-of-blois."
+  },
+  {
+   "event": {
+    "slug": "county-of-blois",
+    "year": 1294,
+    "type": "loss",
+    "counterpart": "Châteaudun (holder not named by the pages opened)"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No counterpart named; Cliopatria-only, confidence 1 (thin)."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire",
+    "year": 1033,
+    "type": "contest_start",
+    "counterpart": "county-of-blois"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "HRE has contest 1033-1034 with Blois over Burgundy; the Blois war 1 (1032) has no contest or zone."
+  },
+  {
+   "event": {
+    "slug": "royal-domain-of-france",
+    "year": 1498,
+    "type": "gain",
+    "counterpart": "duchy-of-orleans"
+   },
+   "mirror": {
+    "slug": "county-of-blois",
+    "year": 1401,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "royal-domain-of-france takes Blois from duchy-of-orleans in 1498, but duchy-of-orleans has no Blois gain and the Blois dossier ends in 1401 with a rename to Orleans in 1397 and kingdom-of-france as successor."
+  },
+  {
+   "event": {
+    "slug": "county-of-champagne",
+    "year": 1003,
+    "type": "gain",
+    "counterpart": "county-of-sens"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "county-of-sens has no dossier; listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "county-of-champagne",
+    "year": 1055,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1055,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-france /ledger/5 and royal-domain-of-france /ledger/1 take Sens in 1055 from the County of Sens, not from Champagne; Champagne holds the block on Cliopatria only (confidence 1)."
+  },
+  {
+   "event": {
+    "slug": "county-of-champagne",
+    "year": 1284,
+    "type": "merge",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1284,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Also royal-domain-of-france /ledger/18."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Valenciennes",
+   "kind": "place",
+   "used_in": "county-of-flanders"
+  },
+  {
+   "name": "Douai",
+   "kind": "place",
+   "used_in": "county-of-flanders"
+  },
+  {
+   "name": "Mechelen",
+   "kind": "place",
+   "used_in": "county-of-flanders"
+  },
+  {
+   "name": "Rethel",
+   "kind": "place",
+   "used_in": "county-of-flanders"
+  },
+  {
+   "name": "Nivernais",
+   "kind": "region",
+   "used_in": "county-of-flanders"
+  },
+  {
+   "name": "Blois",
+   "kind": "place",
+   "used_in": "county-of-blois"
+  },
+  {
+   "name": "Chartres",
+   "kind": "place",
+   "used_in": "county-of-blois"
+  },
+  {
+   "name": "Châteaudun",
+   "kind": "place",
+   "used_in": "county-of-blois"
+  },
+  {
+   "name": "Provins",
+   "kind": "place",
+   "used_in": "county-of-blois"
+  },
+  {
+   "name": "Provins",
+   "kind": "place",
+   "used_in": "county-of-champagne"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "County of Namur",
+   "suggested_slug": "county-of-namur",
+   "years": [
+    981,
+    1421
+   ]
+  },
+  {
+   "name": "County of Rethel",
+   "suggested_slug": "county-of-rethel",
+   "years": [
+    1326,
+    1384
+   ]
+  },
+  {
+   "name": "County of Hainaut",
+   "suggested_slug": "county-of-hainaut",
+   "years": [
+    1071,
+    1432
+   ]
+  },
+  {
+   "name": "County of Sens",
+   "suggested_slug": "county-of-sens",
+   "years": [
+    1003,
+    1055
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-10-b.md",
+ "problems": [
+  "No page failed to load for the reviewer. None of the three infoboxes gives an area, so no area ratio could be computed.",
+  "Reviewer-applied fixes (4) were re-validated with validate_dossier.py: 0 errors for all three files.",
+  "Mirrors missing in other groups' dossiers (route): kingdom-of-france/royal-domain-of-france for Flanders 1305 and 1369 and the Blois 1286 Chartres sale; holy-roman-empire for Valenciennes 1013; county-of-brabant for Antwerp and Mechelen 1357; west-franks for Artois 898 and Blois c. 940; duchy-of-orleans for Blois 1397."
+ ]
+}

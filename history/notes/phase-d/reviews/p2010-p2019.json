@@ -1,0 +1,159 @@
+{
+ "window": "p2010-p2019",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Kurdistan_Region",
+   "fix": "",
+   "applied": false,
+   "what": "kurdistan-region gains Erbil, Sulaymaniyah and Duhok from Iraq, Jan 2010. Page infobox: 'Federal region established: 15 October 2005'; the Region comprises Erbil, Sulaymaniyah, Duhok and Halabja governorates. Spec 146 cells (about 36,900 km2 against the infobox 46,862 km2, ratio 0.79; Halabja sits inside the Sulaymaniyah cells), all inside the three admin-1 units. In the trial it is redundant with p2000-p2009 events/2 (the same gain in Jan 2006): Iraq holds none of the region, so it only takes 2 nobody cells inside the governorates (191593 at 37.08N 44.50E in Erbil, 196586 at 35.31N 46.12E in Sulaymaniyah). Turkey's 2014 keyframe then claims 191593 and the Region wins that 1-cell conflict, which is right because the cell is in Erbil governorate. Harmless, and stays inside the window."
+  },
+  {
+   "entry": "events/1",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/2017_Iraqi%E2%80%93Kurdish_conflict",
+   "applied": true,
+   "what": "Iraq gains the disputed territories from kurdistan-region, Oct 2017. Page: 'The assault came in the early hours of 16 October 2017'; Khanaqin, Jalawla, Bashiqa and Sinjar taken 17 October; Mosul Dam 18 October; Zummar 26 October; 'On 31 October, Prime Minister Haider al-Abadi announced that Iraq had regained control of all disputed areas'. The region is the 2014 keyframe's five discs minus the three governorates. It is needed because Iraq's own 2017 gains (ledger/12, 13) pair with and suppress the Region's broader losses (ledger/7, 8). Defect: the spec also cut {country: Iran}. Cell 196094 (34.34N 45.47E, by Khanaqin) is in the gazetteer's Iran but was Iraq's at the p2010 anchor. The Region took it from Iraq in June 2014 (kurdistan-region/ledger/3), and with the Iran cut it stayed the Region's to 1 January 2020. That is a Region cell outside the three governorates after the page's 'all disputed areas' line, and before the patch the 2018 snap had dropped it to nobody.",
+   "fix": "Removed {country: Iran} from the subtracted union. The region is now (five discs) minus (three governorates plus Syria): 82 cells, against 77 before. A gain moves only the cells the Region holds, so Iranian-owned cells are untouched. In the re-run trial 24 cells go back to Iraq in 2017 (23 plus 196094), and at the 2020 anchor the Region holds exactly the 146 cells of the three governorates. Added a [Reviewer] sentence to the note."
+  },
+  {
+   "entry": "events/2",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/War_in_Iraq_(2013%E2%80%932017)",
+   "fix": "",
+   "applied": false,
+   "what": "Iraq gains Salah ad-Din and At-Ta'mim from islamic-state, Dec 2017. Page: infobox '30 December 2013 - 9 December 2017'; 'On 9 December 2017, Prime Minister Haider al-Abadi announced victory over the Islamic State'. The page dates the Hawija offensive (late September to 5 October) but not Shirqat or the end of IS control in Saladin, so the declared end of the war is a defensible date. Spec 141 cells. The gain runs before the IS 2017 keyframe snap and moves the 60 IS cells still there (59 in Salah ad-Din, 1 in At-Ta'mim). The snap 'removed 60' disappears, and with events/1 Iraq has no nobody cells at the 2020 anchor (84 holes filled). Caveat, not in this entry: IS keyframes 2015 and 2016 keep Salah ad-Din as IS land through 2016, which is too long; that is listed under problems."
+  },
+  {
+   "entry": "events/3",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Turkish_occupation_of_northern_Syria",
+   "fix": "",
+   "applied": false,
+   "what": "syria occupation_end against Turkey, Sep 2016: a technical close. relation_end tries the key (occupier syria, owner turkey) first, which is the wrong-way relation that republic-of-turkey/ledger/7 and syria/ledger/17 open in Aug 2016 through Turkish cells inside their discs. Verified that the correct relation (occupier Turkey, owner Syria, opened by events/5) is not closed: it is still open at the 2020 anchor, since 2016, with 34 cells. The page backs the direction: infobox 'Syrian territories under military occupation of Turkey'."
+  },
+  {
+   "entry": "events/4",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Turkish_occupation_of_northern_Syria",
+   "fix": "",
+   "applied": false,
+   "what": "syria gains the Jarabulus district from Turkey, Aug 2016. Page: 'Established during the First offensive: 24 August 2016'; 'On 26 August 2016, the Shahba region civilian council condemned the occupation of Jarabulus'. The page says nothing of annexation; it calls the zones Syrian territory under Turkish military occupation. The spec is exactly islamic-state/ledger/26's region (35 km disc at Jarabulus intersected with Syria, minus the Kobani disc): 4 cells. IS's ledger runs before Syria's in the month, so the 4 cells end 2016 as Syria's, not Turkey's direct land."
+  },
+  {
+   "entry": "events/5",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Turkish_occupation_of_northern_Syria",
+   "fix": "",
+   "applied": false,
+   "what": "syria occupation_start by Turkey over the same 4 Jarabulus cells, Aug 2016. Syria now holds them and Turkey none, so occupation_start sets roles to occupier Turkey and owner Syria and opens the relation that is still open at 2020. The page backs it: 'captured an area of 2,225 square kilometres during Operation Euphrates Shield'."
+  },
+  {
+   "entry": "events/6",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Turkish_occupation_of_northern_Syria",
+   "fix": "",
+   "applied": false,
+   "what": "syria gains the al-Bab district from Turkey, Feb 2017. The spec is exactly islamic-state/ledger/29's region (35 km al-Bab disc intersected with Syria, minus the Jarabulus disc): 12 cells, all moved from IS to Syria under occupation. The page gives no date for al-Bab. The month is the IS ledger's, and the event has to share it to redirect that loss, so the patch introduces no new date. Euphrates Shield is drawn as 4+12 = 16 cells (about 4,050 km2) against the page's 2,225 km2; that overreach comes from the IS ledger regions, not this entry (see problems)."
+  },
+  {
+   "entry": "events/7",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Turkish_occupation_of_northern_Syria",
+   "fix": "",
+   "applied": false,
+   "what": "syria occupation_start by Turkey over the al-Bab cells, Feb 2017. The cells merge into the open Turkey-over-Syria relation. Only the 12 cells that came from IS are hatched; no cell Syria already held is touched."
+  },
+  {
+   "entry": "events/8",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Turkish_occupation_of_northern_Syria",
+   "fix": "",
+   "applied": false,
+   "what": "syria occupation_end against Turkey, Feb 2018: a technical close of the wrong-way relation that republic-of-turkey/ledger/8 and syria/ledger/20 reopen in Jan 2018 through Turkish cells in the Afrin disc. Verified that it closes the wrong-way relation and not the correct one: the Jarabulus and al-Bab cells are still occupied at 2020, in one relation since 2016."
+  },
+  {
+   "entry": "events/9",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Turkish_occupation_of_northern_Syria",
+   "fix": "",
+   "applied": false,
+   "what": "syria gains the Afrin district from Turkey, Mar 2018. Page: 'Second offensive: 20 January 2018'; 'After the Turkish-led forces had captured Afrin District' (early 2018). The month is that of autonomous-administration-of-north-and-east-syria/ledger/17, the loss this event redirects. The spec is that ledger entry's 28 km disc intersected with Syria: 9 cells (about 2,280 km2, against the AANES dossier's 'about 2,000 km2'). All 9 move from AANES to Syria under occupation."
+  },
+  {
+   "entry": "events/10",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Turkish_occupation_of_northern_Syria",
+   "fix": "",
+   "applied": false,
+   "what": "syria occupation_start by Turkey over the 9 Afrin cells, Mar 2018. The cells merge into the open relation and are hatched at the end of 2018 and at 2020."
+  },
+  {
+   "entry": "events/11",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Turkish_occupation_of_northern_Syria",
+   "fix": "",
+   "applied": false,
+   "what": "syria occupation_end against Turkey, Dec 2019: a technical close of the wrong-way relation that syria/ledger/22 (Sep 2019) and republic-of-turkey/ledger/9 (Oct 2019) open. Verified at the 2020 anchor: no Turkish-land occupation by Syria is open, and the 27 Turkish cells hatched wrong-way in the baseline are plain Turkey."
+  },
+  {
+   "entry": "events/12",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Turkish_occupation_of_northern_Syria",
+   "fix": "",
+   "applied": false,
+   "what": "syria gains the Tell Abyad - Ras al-Ayn strip from Turkey, Oct 2019. Page: 'Third offensive: 9 October 2019'; captured settlements 'including Ras al-Ayn, Tell Abyad, Suluk, Mabrouka and Manajir'. The spec is exactly autonomous-administration-of-north-and-east-syria/ledger/23's region (two 30 km discs intersected with Syria): 9 cells, all moved from AANES to Syria. The 9 cells come to about 2,280 km2 against the page's 3,412-4,220 km2; that shortfall is inherited from the AANES ledger region."
+  },
+  {
+   "entry": "events/13",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Turkish_occupation_of_northern_Syria",
+   "fix": "",
+   "applied": false,
+   "what": "syria occupation_start by Turkey over the 9 strip cells, Oct 2019. At the 2020 anchor 34 Syrian cells are occupied by Turkey in one relation (4+12+9+9). That is about 8,600 km2 against the page's sum of about 7,600-8,400 km2. In Syria no Turkish direct land is left from this, only 2 border cells that are older."
+  },
+  {
+   "entry": "events/14",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Dissolution_of_the_Netherlands_Antilles",
+   "fix": "",
+   "applied": false,
+   "what": "netherlands-antilles loses its stray cells in Para to Brazil, Sep 2010, before the dissolution of 10 October 2010. Page: the Antilles were 'all six Caribbean islands' ('the Leeward Antilles islands of Aruba, Curacao and Bonaire' and 'the Leeward Islands of Saba, Sint Eustatius and Sint Maarten'), dissolved 10 October 2010. The page names no mainland territory. The spec is all of admin-1 Para (4,294 cells), much wider than the target, but a loss moves only the slug's own cells. Exactly 3 move (338133 at 2.47N 55.98W, 339001 at 1.91N 56.41W, 339554 at 2.55N 55.02W), all inside Para per the gazetteer. Brazil's dossier has no paired gain, so the loss is not skipped. Without it the dissolution would leave them as nobody's land."
+  },
+  {
+   "entry": "events/15",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Dissolution_of_the_Netherlands_Antilles",
+   "fix": "",
+   "applied": false,
+   "what": "netherlands-antilles loses its stray Paramaribo cell to Suriname, Sep 2010 (same page and rationale). The spec is a 40 km Paramaribo disc of 14 cells; the loss moves only the 1 Antilles cell (338750, 5.92N 55.17W, a coastal cell outside the gazetteer's Suriname country set). Suriname's dossier has no paired gain."
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Kurdistan_Region",
+   "fix": "",
+   "applied": false,
+   "what": "kurdistan-region_2014 (2014-2017, wholly in the window), adjusted to the dossier's own correction minus Iran and Syria: 223 cells. Page: 'Kurdish Peshmerga took control of most disputed areas', naming Kirkuk, Khanaqin, Jalawla, Bashiqa, Sinjar and Makhmur. The page says the Region borders Iran and Syria and gives it no land in either. In the current compile (with p2000-p2009 events/2) the 2014 keyframe no longer snaps either way. The override's only visible effect is that the Region's 2014 claim on Syrian cell 202775 (a conflict AANES won anyway) disappears. Consistent with the page and harmless. The keyframe keeps its from and to."
+  }
+ ],
+ "patch_check": "After the events/1 fix: --check-patch 17 entries, 17 ok, 0 rejected. --trial: all 17 applied. Keyframe snaps 5 -> 3 (kurdistan-region_2014, islamic-state_2017 and kurdistan-region_2018 snaps gone; the new russian-federation_2014 snap of 412 cells is not from this patch). At the 2020 anchor: Iraq has no nobody cells (84 -> Iraq); the Kurdistan Region holds exactly its 146 governorate cells; 34 Syrian cells are occupied by Turkey in one relation since 2016, with no Turkish land occupied by Syria; Antilles strays 3 to Brazil and 1 to Suriname.",
+ "problems": [
+  "NEW in this window, not caused by this patch (it shows in a trial with an empty p2010-p2019 file too): the russian-federation_2014 keyframe snap drops 412 Chukotka cells (about 64-72N, around the 180th meridian) to nobody in 2014. p2000-p2009 keyframe_overrides/0 and /1 add {region: Chukotka} (including east of 180) to russian-federation_2000 and _2006, but the dossier's russian-federation_2014 correction is {cliopatria: Russian Federation, year: 2013} without Chukotka, so it snaps (state 64,167 cells, keyframe 63,685). Fix: in p2010-p2019.json add a keyframe_overrides entry for russian-federation_2014 with verdict adjust and correction {union: [{cliopatria: 'Russian Federation', year: 2013}, {region: 'Chukotka'}]}. Keep the dossier's text that Crimea is drawn as occupied Ukrainian land through the ledger, use the source of the p2000-p2009 Chukotka override, and re-run --trial.",
+  "events/0 duplicates p2000-p2009 events/2 (the same three-governorate gain, Jan 2006). It is now a no-op apart from 2 nobody cells inside the governorates; harmless.",
+  "p2020-p2029 events/4 (Iraq gains 84 nobody cells in 2020) becomes a no-op: with events/1 (as fixed) and events/2, Iraq holds those cells from Oct and Dec 2017. Harmless, but the p2020 window may want to know.",
+  "islamic-state keyframes 2015 and 2016 (dossier) still draw Salah ad-Din outside the Samarra and Tikrit discs as IS land through the end of 2016. events/2 returns it only in Dec 2017 because no opened page dates Baiji or Shirqat. A dossier fix needs a page that dates those recaptures (the Saladin offensive and Shirqat pages).",
+  "Size of the Turkish-occupied zones comes from the IS and AANES ledgers, not this patch. Euphrates Shield is drawn as 16 cells (about 4,050 km2; islamic-state/ledger/26 and /29 discs) against the page's 2,225 km2. Peace Spring is 9 cells (about 2,280 km2; AANES/ledger/23) against 3,412-4,220 km2. Turkey's own ledger/7 includes Azaz, which is not hatched.",
+  "The wrong-way relation (Turkey's own land 'occupied by Syria') still exists inside years: Aug-Sep 2016, Jan-Feb 2018 and Sep-Dec 2019. Year-end maps are clean. Dossier fix: intersect the regions of republic-of-turkey/ledger/7, 8, 9 and syria/ledger/17, 20, 22 with {country: Syria}. After that, events/3, 8 and 11 would close nothing (and could close the right relation), so they should then be withdrawn.",
+  "netherlands-antilles: stray cell 338462 (5.51N 57.22W, Corantijn mouth) is still nobody's from Oct 2010. Curacao (3 cells) and Sint Maarten (1) are nobody's from Oct 2010 until their dossiers exist. Aruba's cell is the Netherlands' at the p2010 anchor (p1980-p1989 events/1), so the window agent's Aruba dossier request no longer rests on an ownerless cell.",
+  "The tripoint cell 191621 (37.31N 44.07E) that the window agent saw as United States in the published draft is republic-of-turkey's at the 2020 anchor in the trial; nothing to do here."
+ ],
+ "pages_opened": [
+  "https://en.wikipedia.org/wiki/Kurdistan_Region",
+  "https://en.wikipedia.org/wiki/2017_Iraqi%E2%80%93Kurdish_conflict",
+  "https://en.wikipedia.org/wiki/War_in_Iraq_(2013%E2%80%932017)",
+  "https://en.wikipedia.org/wiki/Turkish_occupation_of_northern_Syria",
+  "https://en.wikipedia.org/wiki/Dissolution_of_the_Netherlands_Antilles"
+ ]
+}

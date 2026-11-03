@@ -1,0 +1,84 @@
+{
+ "batch_id": "fx-02",
+ "checks": [
+  {
+   "item": "F023",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Han-Xiongnu_War",
+   "applied": false,
+   "fix": "",
+   "what": "xiongnu keyframes -110..84 minus Hexi Corridor, Ordos (-91..30), Tarim Basin + Turfan-Hami (-50..14), Turpan 100 km disc (-66); 67 BCE ledger pair (xiongnu ledger/19, han-dynasty ledger/35) narrowed to the Turpan disc. Page quotes verified: 'In 127 BC, General Wei Qing invaded and retook full control of the Ordos region'; 'General Huo Qubing expelled them from the Qilian Mountains in 121 BC'; 'In 67 BC, the Han empire gained absolute control over the Turfan Depression'; 'in 60 BC, the Rizhu King surrendered to Protector General Zheng Ji'. Cells removed: -110 141, -91 355, -66 461, -50/-40/6/14 1,018 each, 30 348, 51-84 142; both 67 BCE events resolve to the same 109 cells. Correct, but they touch only a small share of the finding: about 9,600 of its 10,114 cell-years are the Xinjiang cells of 74 (2,467 cells, 74-76) and 91 (2,201), left open (see problems)."
+  },
+  {
+   "item": "F023 (kept: years -127, -126, -111)",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Han-Xiongnu_War",
+   "applied": true,
+   "fix": "xiongnu keyframe_review xiongnu_-126: Ordos added to the subtracted union; han-dynasty keyframe_review han-dynasty_-127, _-126, _-121: {\"region\": \"Ordos\"} added to the union; texts and notes say why. Each moves exactly 394 cells; both dossiers re-validated with --resolve, 0 errors.",
+   "what": "The fixer's 'right as they are' does not hold: han-dynasty_-127 (Cliopatria 126 shape) dropped 394 of the 884 Ordos cells that the -127 ledger gain had just given the Han, and xiongnu_-126 snapped them back onto the Xiongnu (keyframe_snaps.csv: xiongnu_-126 added 394). They stayed Xiongnu until the Han -111 keyframe took 188 (the -111 conflict: Ningxia, north Shaanxi, south Ordos) and xiongnu_-110 dropped 206. The page says the Han 'retook full control of the Ordos region' in 127 BC."
+  },
+  {
+   "item": "F026",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Han_Sui",
+   "applied": false,
+   "fix": "",
+   "what": "han-dynasty_184 to=186 matches its own text ('holds 184-186'). A gazetteer replay of ledger 84-100 against keyframes 187-196 gives 0 cells added and 0 removed every year, ending on the 1,191 cells of han-dynasty_196. ledger/98 counterpart is now nobody: han-sui.json draws only Gansu, Ningxia and a Baoji disc, and the Han Sui page has nothing on Guanzhong or Yong. The 'minus Liang Province' wrappers on keyframes 188, 190, 191, 193 and 194 are no-ops: the inner minus already took out Gansu and Ningxia, and the cell counts are identical. They are harmless, but the notes overstate the change. The page does have 'Early in 192, the two of them submitted to the Han central government' (see problems)."
+  },
+  {
+   "item": "F036",
+   "verdict": "pass",
+   "page": "",
+   "applied": false,
+   "fix": "",
+   "what": "Mechanical fix, verified. compile_dossiers.keyframes() takes a missing from/to from shapes.csv (han-dynasty_184: 184-196), and do_keyframe unions every live keyframe. That is why 196 had 17,063 cells and 197 had 1,191. With to=186, the 196 keyframe equals the ledger residue (1,191), and han-dynasty_197's correction (890 cells) lies inside it."
+  },
+  {
+   "item": "F064",
+   "verdict": "pass",
+   "page": "",
+   "applied": false,
+   "fix": "",
+   "what": "Same change and same check as F036. The 196 ledger and keyframe now match exactly (1,191 cells)."
+  },
+  {
+   "item": "F044",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Emperor_Guangwu_of_Han",
+   "applied": false,
+   "fix": "",
+   "what": "Page verified: 'He, supported by Xiongnu's Chanyu Yu, controlled the modern central and western Inner Mongolia region'; 'eventually fled to Xiongnu in AD 42'; afterwards only 'the northern commanderies became largely unpopulated', with no Xiongnu takeover. Han keyframes 25-40 each lose 687 cells and now overlap lu-fang's 1,050 cells by 0. lu-fang ledger/1 to nobody is supported. Small leftovers: the year-24 claim (han-dynasty_23 holds 23-24) still meets lu-fang's found, but the size rule gives the right answer. lu-fang ledger/2 (dissolve) still names xiongnu; cosmetic, since no cells are left."
+  },
+  {
+   "item": "F061",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Modu_Chanyu",
+   "applied": false,
+   "fix": "",
+   "what": "Page verified: 'By 208 BCE, the Donghu had been defeated and their remnants split into the Xianbei and Wuhuan tribes'; 'The eastern border stretched as far as the Liao River'. Gazetteer check: ledger/0 plus the new ledger/2 equals the corrected xiongnu_-208 exactly (14,678 cells). A gain from nobody takes only unowned cells (compile_dossiers.py gain branch), so ledger/2 cannot take another state's land. Inserting ledger/2 shifts the later indices. No data/patches file cites them; the fixer's hierarchy.csv evidence handoff (rows 298-299: 5, 19, 26, 29-30 become 6, 20, 27, 30-31) is correct."
+  },
+  {
+   "item": "F108",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Modu_Chanyu",
+   "applied": false,
+   "fix": "",
+   "what": "xiongnu keyframes -208..-126 minus Jilin, Heilongjiang, Outer Manchuria and Liaodong (the gazetteer's 'Liaoning east of the Liao river'). On the Liao River sentence above. After the cut, all seven keyframes have 0 cells in common with buyeo's found region (Harbin and Nong'an discs). buyeo unchanged."
+  },
+  {
+   "item": "F214",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Han-Xiongnu_War",
+   "applied": false,
+   "fix": "",
+   "what": "The 60 BC surrender and the Protectorate are on the page. The note's 'only after Han rule was restored in 25 CE' is an inference: the page reads 'Although Han rule was restored in August 25 AD ... its grip over the Tarim Basin had weakened. The Xiongnu had taken advantage of the situation and gained control over the Western Regions', with no year. Harmless: xiongnu_14 applies only in year 14, and ledger/27 opens the Tarim tie in 23."
+  }
+ ],
+ "problems": [
+  "F023 bulk still open: the Xinjiang cells of 74 (2,467 cells, Han keyframe 74 holds 74-76) and 91 (2,201) are about 9,600 of the 10,114 cell-years. The xiongnu holds them through ledger/27 (23 CE vassal_start 'Tarim oasis states'). The fixer's handoff says the cause is han-dynasty's vassal_start being applied before xiongnu's vassal_end in the same year, and that looks wrong. In compile_dossiers.py, vassal_start (lines 1463-1538) only takes cells held by the suzerain, the vassal dossier or nobody, never the xiongnu's. close_relation (864-900) returns every xiongnu-held cell still under the 23 relation to nobody, whatever the order. So the 74 vassal_end apparently found no cells under that relation: either the relation's cells lost their rel between 23 and 74, or ledger/30 closed a different relation key. Trace this in a compiler run before anyone dates the events a month apart.",
+  "Small residue not fixed: xiongnu keyframes -91, -66, -50, 14 and 30 still hold 4-8 Shanxi cells and 21 Hebei cells north of Datong (40.36N, 113.6-114.3E). These are the 5-6-cell conflict rows of 25-68 in conflict_places.csv.",
+  "The Han Sui page has 'Early in 192, the two of them submitted to the Han central government', and its infobox lists court titles from 192. data/hierarchy.csv row 81 and han-sui.json ledger/3 start the vassal tie in 197. A han-sui owner could move the start to 192.",
+  "han-dynasty keyframes 188, 190, 191, 193 and 194: the fixer's added 'minus Liang Province' is redundant (identical cells), and the notes describe it as a fix. han-dynasty_-126 has no from/to either (text 'holds 126-122'; it runs to -111 by its Cliopatria interval). That is harmless today, but to=-122 would match its text, like _184 and _106.",
+  "Validation after review edits: han-dynasty ok, xiongnu ok, lu-fang ok (python3 -I history/tools/validate_dossier.py <file> --resolve, 0 errors, 0 warnings)."
+ ]
+}

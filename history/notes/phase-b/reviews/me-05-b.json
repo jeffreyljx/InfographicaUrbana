@@ -1,0 +1,899 @@
+{
+ "batch_id": "me-05-b",
+ "verdicts": [
+  {
+   "slug": "ptolemaic-kingdom",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/58/counterpart, /ledger/59/counterpart",
+     "what": "The 30 BC loss and dissolve named roman-empire, which has no dossier and in the roman-republic dossier's model begins only in 27 BC.",
+     "why": "roman-republic.json runs to -27 and its /ledger/214 records the August 30 BC gain of Egypt from ptolemaic-kingdom (Egypt (Roman province) page, c3).",
+     "fix": "Counterpart set to roman-republic in both events (applied; validator clean). The author may also set identity.successors[0].slug to roman-republic.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/11, /ledger/17, /ledger/18",
+     "what": "The 281-280 shape's extra 95 k km2 north of the Aegean (bbox to 42.43 N) is recorded as a Ptolemaic gain from Lysimachus (281) and a loss to nobody (279), but it matches Ptolemy Keraunos's Macedon, which was never part of the Ptolemaic kingdom.",
+     "why": "Ptolemy Keraunos page: he 'was displaced in favour of his younger brother Ptolemy II', 'formally relinquished his claim to the Egyptian throne', was acclaimed at Lysimachia after Seleucus's murder (September 281) and 'seized the throne of Macedon'; killed by the Gauls in early 279. kingdom-of-lysimachus /ledger/23 (-281) gives Macedon, Thessaly and Thrace to 'Ptolemy Keraunos (Macedon and Thrace, 281-279)'. The Ptolemaic page's 'fresh conquests as far north as Thrace' is undated and does not support 95 k km2 of mainland.",
+     "fix": "Mark keyframe ptolemaic-kingdom_-281 'wrong' (or 'adjust') with correction {cliopatria: Ptolemaic Kingdom, year: -283} and a note naming Keraunos; delete /ledger/17 and /ledger/18 (or replace them with a small undated coastal holding if a page supports it).",
+     "applied": false
+    },
+    {
+     "where": "between /ledger/34 and /ledger/35 (c. 204)",
+     "what": "No loss of Lower Nubia to Kush during the Great Theban Revolt: the ledger gains Lower Nubia in 275 and again in 155 with no loss in between.",
+     "why": "Great Theban Revolt page (the author's own source): 'the Kingdom of Kush of Meroe took advantage of the situation to invade Egypt and Lower Nubia from the south' and 'take control of all Ptolemaic territories south of Aswan, including the island of Philae'. kingdom-of-kush /ledger/14 records a -204 gain of Lower Nubia from ptolemaic-kingdom (Kingdom of Kush page, c2).",
+     "fix": "Add {year: -204, type: loss, counterpart: kingdom-of-kush, region: {region: Lower Nubia}, confidence 2, source Great_Theban_Revolt}; the 205 Thebaid keyframe correction should also drop Lower Nubia.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/31/correction and the ledger 58-47 BC",
+     "what": "Cyprus is kept Ptolemaic 'unchanged, from 105 to 35' although Rome annexed it in 58 and Caesar restored it in 47; neither event is in the ledger.",
+     "why": "roman-republic /ledger/173 (-58 gain Cyprus from ptolemaic-kingdom, Roman Cyprus page, c3: 'Cato the Younger was sent to annex the island') and /ledger/183 (-47 loss Cyprus to ptolemaic-kingdom, c3: 'Julius Caesar ... returned control of Cyprus to the Ptolemaic Kingdom'). The Ptolemaic Kingdom page also says Rome 'annexed both Libya and Cyprus' (undated). The author's notes flag it as not on any page opened; the page is https://en.wikipedia.org/wiki/Roman_Cyprus.",
+     "fix": "Add -58 loss Cyprus (roman-republic) and -47 gain Cyprus (roman-republic), both c3 from Roman_Cyprus; add a new keyframe ptolemaic-kingdom_-58 (from -58 to -48) = {minus: [{cliopatria: Ptolemaic Kingdom, year: -110}, {region: Cyprus (island)}]} and narrow the 110 correction text accordingly.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/6/correction and the ledger 308-300",
+     "what": "The 307 keyframe adds Cyrenaica for 307-302 and the ledger has no loss of Cyrenaica after 313, yet the pages have it in revolt until about 300.",
+     "why": "Ptolemy I Soter page: 'Cyrenaica, after a series of rebellions, was finally subjugated in about 300 and placed under his stepson Magas'; Magas of Cyrene page: 'Around 300 BC, Ptolemy dispatched Magas ... to reconquer Cyrene'. cyrenaica /ledger/4 (-305 gain from ptolemaic-kingdom) and /ledger/7 (-300 loss to ptolemaic-kingdom) have no mirror here.",
+     "fix": "Add a loss of Cyrenaica (counterpart cyrenaica, year agreed with the cyrenaica dossier: 305, c1-2) and a gain c. 300 (c2, Magas page 'Around 300 BC ... to reconquer Cyrene'); drop Cyrenaica from the 307 correction (keep the Cliopatria shape minus Cyprus) and start Cyrenaica in the 301 correction from 300.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/0 (and a missing vassal_end)",
+     "what": "The founding is drawn as full rule from 323 with no vassal relation, while the macedonian-empire dossier holds Ptolemy's Egypt as its vassal 323-321 and records a 321 loss of Egypt and Libya to this kingdom.",
+     "why": "macedonian-empire /ledger/43 (-323 vassal_start ptolemaic-kingdom, c3), /ledger/46 (-321 vassal_end), /ledger/49 (-321 loss of 'Egypt and Libya'). The Ptolemaic page itself: 'Ptolemy ruled Egypt from 323 BC, nominally in the name of the joint kings Philip III and Alexander IV'.",
+     "fix": "Add {year: -323, type: vassal_start, counterpart: macedonian-empire, region: the found region, c3, Ptolemaic_Kingdom} and a vassal_end in 321 (Triparadisus, matching macedonian-empire) or another year agreed with group eu-02; say in notes which.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/4, /ledger/7, /ledger/8",
+     "what": "Counterpart antigonid-dynasty for 315-311, but that dossier begins in 306; until its 306 split the macedonian-empire dossier holds Antigonus's Syria.",
+     "why": "antigonid-dynasty identity.start -306; macedonian-empire /ledger/63 (-306 split antigonid-dynasty: 'Greece, Asia Minor, Syria, Phoenicia and northern Mesopotamia'). The author's counterparts_needing_dossiers proposes antigonus-monophthalmus for 306-301 only.",
+     "fix": "Use macedonian-empire as counterpart for 315-311 (and ask eu-02 for the 315 gain of Syria), or extend the proposed antigonus-monophthalmus dossier back to 315 and list it so.",
+     "applied": false
+    },
+    {
+     "where": "between /ledger/35 and /ledger/36 (201)",
+     "what": "No loss for Philip V's 201 seizure of Ptolemaic Samos, Miletus and Carian footholds.",
+     "why": "antigonid-dynasty /ledger/52 (-201 gain from ptolemaic-kingdom: 'Miletus, Samos and footholds in Caria', Philip V of Macedon page, c2).",
+     "fix": "Add a -201 loss (counterpart antigonid-dynasty, c2, citing the Philip V page) or explain in notes why the land was not Ptolemaic.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/57",
+     "what": "The Donations gain is dated 34 only and omits Cilicia Aspera, though the page records an earlier donation at Antioch in 36 and the roman-republic dossier gives Cilicia Aspera to Cleopatra in 36 and takes it back in 30.",
+     "why": "Donations of Alexandria page: 'a similar donation ceremony had taken place two years earlier at Antioch in 36 BC'. roman-republic /ledger/200 (-36 loss Cilicia Aspera to ptolemaic-kingdom, c3, Cilicia (Roman province) page: 'Marc Antony gave Cyprus and Cilicia Aspera to Cleopatra VII') and /ledger/213 (-30 gain Cilicia Aspera, c1). /ledger/211 (-31 gain Cyprus, c3) also has no Ptolemaic loss in 31.",
+     "fix": "Add a -36 gain of Cilicia Aspera (roman-republic, c3, Cilicia_(Roman_province)) and losses of Cyprus (-31) and Cilicia Aspera (-30) to roman-republic, or fold them into the -30 dissolve region and say so; the 34 keyframe should include Cilicia Aspera.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "Cyprus 318 is a confidence-1 bridge 'neither page dates', but the Ptolemy I page dates a protectorate over Cyprus to 318.",
+     "why": "Ptolemy I Soter page: 'His first occupation of Syria was in 318' and 'he established at the same time a protectorate over the petty kings of Cyprus'.",
+     "fix": "Make it type vassal_start (counterpart nobody, region Cyprus (island)), confidence 2, quoting that sentence; the full gain can stay with the Salamis-era rule if a page supports it.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Year of the Cyrenaica conquest (322 bridge, c1)",
+     "page to try": "https://en.wikipedia.org/wiki/Ophellas"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "End of the Corinth/Sicyon garrison (302 bridge, c1); Demetrius took Corinth in 304-303 per macedonian-empire /ledger/65",
+     "page to try": "https://en.wikipedia.org/wiki/Demetrius_I_of_Macedon"
+    },
+    {
+     "where": "/ledger/19",
+     "what is missing": "Lower Nubia 275 (c1); the Kush page gives '275 or 274 BC'",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Kush"
+    },
+    {
+     "where": "/ledger/27",
+     "what is missing": "Cyrenaica's return c. 247 (c1)",
+     "page to try": "https://en.wikipedia.org/wiki/Berenice_II"
+    },
+    {
+     "where": "/ledger/50",
+     "what is missing": "Lower Nubia 155 (c1); the Ptolemaic page says 'Throughout the 160s and 150s BC, Ptolemy VI also reasserted Ptolemaic control over the northern part of Nubia' (Dodecaschoenus): c2 possible",
+     "page to try": "https://en.wikipedia.org/wiki/Dodecaschoenus"
+    },
+    {
+     "where": "/wars/4 (Third Syrian War)",
+     "what is missing": "The loss of the Cyclades at Andros is in the war note but has no ledger event or year",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Andros"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No rulers list",
+     "page to try": "https://en.wikipedia.org/wiki/Ptolemaic_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Ptolemy_I_Soter",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Ptolemy_I_Soter",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Ptolemy_I_Soter",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Ptolemaic_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Ptolemaic_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/32",
+     "page": "https://en.wikipedia.org/wiki/Syrian_Wars",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/34",
+     "page": "https://en.wikipedia.org/wiki/Great_Theban_Revolt",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/37",
+     "page": "https://en.wikipedia.org/wiki/Syrian_Wars",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/44",
+     "page": "https://en.wikipedia.org/wiki/Great_Theban_Revolt",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/48",
+     "page": "https://en.wikipedia.org/wiki/Ptolemy_VIII_Physcon",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/53",
+     "page": "https://en.wikipedia.org/wiki/Ptolemy_VIII_Physcon",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/57",
+     "page": "https://en.wikipedia.org/wiki/Donations_of_Alexandria",
+     "result": "confirmed (but the page also has a donation at Antioch in 36 BC)"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Ptolemaic_Kingdom",
+     "result": "not on page (undated Thrace conquests only; the land is Keraunos's Macedon, Ptolemy_Keraunos page)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Ptolemy_I_Soter",
+     "result": "mis-dated as undated: the page dates a protectorate over Cyprus to 318"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 782800,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The infobox gives no area (founded 305, ended 30 BC); the author says so. Cliopatria -247 shape (247-240) is 782,800 km2. The author's quoted shape areas match shapes.csv."
+   }
+  },
+  {
+   "slug": "laomedon",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (missing vassal_start -323 and vassal_end -318)",
+     "what": "The satrapy is drawn as an independent state; the macedonian-empire dossier holds it as a vassal 323-319 and those events have no mirror here.",
+     "why": "macedonian-empire /ledger/41 (-323 vassal_start laomedon, Partition of Babylon, c3) and /ledger/50 (-319 vassal_end laomedon, c1). Laomedon of Mytilene page: 'obtaining in the division of the provinces, after the king's death in 323 BC, the important government of Syria'; 'This he was still allowed to retain on the second partition at Triparadisus in 321 BC'. Cliopatria's seed lists the row as a member of the (Macedonian Empire) umbrella 323-319.",
+     "fix": "Add {year: -323, type: vassal_start, counterpart: macedonian-empire, region: the found region, c2, Laomedon_of_Mytilene} and {year: -318, type: vassal_end, counterpart: macedonian-empire, c2, Ptolemy_I_Soter}; ask eu-02 to move its vassal_end to 318 or keep 319 (within one year).",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Laomedon_of_Mytilene",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Ptolemy_I_Soter",
+     "result": "confirmed (318; the Laomedon page gives no year for Nicanor's invasion)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Ptolemy_I_Soter",
+     "result": "confirmed"
+    },
+    {
+     "where": "/identity/capitals",
+     "page": "https://en.wikipedia.org/wiki/Laomedon_of_Mytilene",
+     "result": "confirmed: the page names no seat"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 122343,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox on the Laomedon of Mytilene page."
+   }
+  },
+  {
+   "slug": "perdiccas",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0",
+     "what": "Verdict 'ok' on a shape that runs to 319 while the dossier ends in 320.",
+     "why": "Perdiccas page: 'killed him in 320 BC', 'probably in the summer of 320 BC'; research brief: a verdict that changes only the years gives the shape unchanged and says so in text.",
+     "fix": "Verdict set to adjust with correction {cliopatria: Perdiccas, year: -323, text: unchanged, ending 320} (applied; validator clean).",
+     "applied": true
+    },
+    {
+     "where": "/ledger (missing vassal_start -323 and vassal_end -320)",
+     "what": "The regency's Babylonia is drawn as an independent state; the macedonian-empire dossier holds it as a vassal 323-321 and those events have no mirror here.",
+     "why": "macedonian-empire /ledger/42 (-323 vassal_start perdiccas, c2) and /ledger/47 (-321 vassal_end perdiccas: 'Babylonia, reassigned ... to Seleucus', Partition of Triparadisus page, c3). Seed: member of the (Macedonian Empire) umbrella 323-319.",
+     "fix": "Add vassal_start -323 (counterpart macedonian-empire, c2, Partition_of_Babylon) and vassal_end -320 (c3, Perdiccas page), or agree with eu-02 that the regency row is the empire's own seat and have eu-02 drop its two events; record the choice in notes.",
+     "applied": false
+    },
+    {
+     "where": "/identity/successors/0 and /ledger/1/counterpart",
+     "what": "Successor seleucid-empire (from Cliopatria's bbox only) and a dissolve with no counterpart, while the macedonian-empire dossier hands Babylonia to Seleucus as its own satrap in 321 (vassal_start seleucid-empire, /ledger/48) and the Seleucid row starts only in 318.",
+     "why": "macedonian-empire /ledger/47-48 (Partition of Triparadisus page). The author's notes say no page dates the hand-over.",
+     "fix": "Name macedonian-empire (Seleucus as satrap) as the successor of the land and as the dissolve counterpart, or keep seleucid-empire and say the land is the empire's vassal 320-312.",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Perdiccas",
+     "result": "confirmed (regency 323 BC - 320 BC in the infobox; Partition of Babylon not opened)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Perdiccas",
+     "result": "confirmed (320 BC throughout the page)"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Perdiccas",
+     "result": "confirmed ('had chosen to centre the empire at Babylon'); 44.42 E 32.54 N inside the shape bbox"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 117037,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Perdiccas page infobox is a person's; no area."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -323,
+    "type": "found",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": {
+    "slug": "macedonian-empire",
+    "year": -323,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "macedonian-empire holds Ptolemy as vassal 323-321 (/ledger/43, 46) and loses Egypt and Libya to him in 321 (/ledger/49); the Ptolemaic ledger has no vassal events and no 321 event."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -322,
+    "type": "gain",
+    "counterpart": "cyrenaica"
+   },
+   "mirror": {
+    "slug": "cyrenaica",
+    "year": -322,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -318,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Cyprus; counterpart nobody (should be a vassal_start, see fixes)."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -318,
+    "type": "gain",
+    "counterpart": "laomedon"
+   },
+   "mirror": {
+    "slug": "laomedon",
+    "year": -318,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -315,
+    "type": "loss",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "antigonid-dynasty starts in -306; macedonian-empire holds Antigonus's Syria until its 306 split and has no 315 gain."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -308,
+    "type": "occupation_start",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "greek-city-states (eu-01) has no 308 occupation of Corinth/Sicyon/Megara."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -306,
+    "type": "loss",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -306,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -302,
+    "type": "occupation_end",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "macedonian-empire",
+    "year": -304,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "greek-city-states has no mirror; macedonian-empire /ledger/65 has Demetrius taking Corinth from the macedonian-empire in 304-303 while this dossier has Ptolemy holding it to 302."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -301,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -301,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -295,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -294,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "one year apart"
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -281,
+    "type": "gain",
+    "counterpart": "kingdom-of-lysimachus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-lysimachus",
+    "year": -281,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Lysimachus's dossier gives Macedon, Thessaly and Thrace to Ptolemy Keraunos, not to the Ptolemaic kingdom; the Ptolemaic events should go."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -279,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "to be removed with the 281 gain."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -275,
+    "type": "gain",
+    "counterpart": "kingdom-of-kush"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kush",
+    "year": -274,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "one year apart"
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -274,
+    "type": "loss",
+    "counterpart": "cyrenaica"
+   },
+   "mirror": {
+    "slug": "cyrenaica",
+    "year": -276,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "two years apart; Magas page infobox: king 276-250, coronation 'disputed' (283-280 or 276/274). Owners to agree one year."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -271,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "seleucid-empire not written yet (me-05, other part)."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -253,
+    "type": "loss",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "seleucid-empire not written yet."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -247,
+    "type": "gain",
+    "counterpart": "cyrenaica"
+   },
+   "mirror": {
+    "slug": "cyrenaica",
+    "year": -246,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "one year apart"
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -241,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "seleucid-empire not written yet."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -219,
+    "type": "loss",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "seleucid-empire not written yet."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -205,
+    "type": "loss",
+    "counterpart": "ankhwennefer"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ankhwennefer not written yet (me-05); covers Horwennefer 205-199 too."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -199,
+    "type": "gain",
+    "counterpart": "ankhwennefer"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ankhwennefer not written yet."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -198,
+    "type": "loss",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "two events (Coele-Syria; Caria and Cilicia); seleucid-empire not written yet."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -197,
+    "type": "loss",
+    "counterpart": "ankhwennefer"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ankhwennefer not written yet."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -191,
+    "type": "gain",
+    "counterpart": "ankhwennefer"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ankhwennefer not written yet."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -186,
+    "type": "gain",
+    "counterpart": "ankhwennefer"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ankhwennefer not written yet; its Cliopatria row runs to 171, the page ends the revolt 27 August 186."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -170,
+    "type": "occupation_start",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "seleucid-empire not written yet (occupation_end 168 likewise)."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -163,
+    "type": "loss",
+    "counterpart": "cyrenaica"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "cyrenaica dossier has no 163-145 interval (author flagged it and also proposes cyrene-under-ptolemy-viii); owners must pick one counterpart."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -155,
+    "type": "gain",
+    "counterpart": "kingdom-of-kush"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-kush (af-01) has no 160s-150s loss of Lower Nubia."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -145,
+    "type": "gain",
+    "counterpart": "cyrenaica"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as for 163."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -105,
+    "type": "loss",
+    "counterpart": "cyrenaica"
+   },
+   "mirror": {
+    "slug": "cyrenaica",
+    "year": -105,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -34,
+    "type": "gain",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -36,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "two years and different land: Rome gives Cilicia Aspera in 36; this dossier takes Cyrenaica and central Syria in 34, which Rome's ledger never loses."
+  },
+  {
+   "event": {
+    "slug": "ptolemaic-kingdom",
+    "year": -30,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -30,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "after the reviewer's slug fix (was roman-empire)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-kush",
+    "year": -204,
+    "type": "gain",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Ptolemaic loss of Lower Nubia c. 204 (Great Theban Revolt page supports it)."
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -201,
+    "type": "gain",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Ptolemaic loss of Samos, Miletus and Carian footholds in 201."
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -58,
+    "type": "gain",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Cyprus annexed; no Ptolemaic loss."
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -47,
+    "type": "loss",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Cyprus restored; no Ptolemaic gain."
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -31,
+    "type": "gain",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": {
+    "slug": "ptolemaic-kingdom",
+    "year": -30,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Cyprus after Actium; the Ptolemaic dossier ends everything in 30 (one year apart, but no loss event)."
+  },
+  {
+   "event": {
+    "slug": "roman-republic",
+    "year": -30,
+    "type": "gain",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Cilicia Aspera (c1); never gained in the Ptolemaic ledger."
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -321,
+    "type": "loss",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Egypt and Libya; the Ptolemaic dossier holds them from 323/322."
+  },
+  {
+   "event": {
+    "slug": "cyrenaica",
+    "year": -305,
+    "type": "gain",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Cyrenaica's revolt; no Ptolemaic loss."
+  },
+  {
+   "event": {
+    "slug": "cyrenaica",
+    "year": -300,
+    "type": "loss",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Magas's reconquest; no Ptolemaic gain."
+  },
+  {
+   "event": {
+    "slug": "laomedon",
+    "year": -318,
+    "type": "loss",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": {
+    "slug": "ptolemaic-kingdom",
+    "year": -318,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -323,
+    "type": "vassal_start",
+    "counterpart": "laomedon"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no vassal_start in laomedon (vassal_end -319 likewise)."
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -323,
+    "type": "vassal_start",
+    "counterpart": "perdiccas"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no vassal_start in perdiccas (vassal_end -321 likewise)."
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Antigonid kingdom of Antigonus Monophthalmus in Asia",
+   "suggested_slug": "antigonus-monophthalmus",
+   "years": [
+    -306,
+    -301
+   ],
+   "note": "from the author; if it is to carry the 315-311 Syria events it must start in 315"
+  },
+  {
+   "name": "Thebaid of Horwennefer (Haronnophris)",
+   "suggested_slug": "horwennefer",
+   "years": [
+    -205,
+    -199
+   ],
+   "note": "from the author; or fold into ankhwennefer"
+  },
+  {
+   "name": "Kingdom of Cyrene under Ptolemy VIII",
+   "suggested_slug": "cyrene-under-ptolemy-viii",
+   "years": [
+    -163,
+    -145
+   ],
+   "note": "from the author; the ledger uses counterpart cyrenaica instead"
+  },
+  {
+   "name": "Cleopatra II's Alexandria",
+   "suggested_slug": "cleopatra-ii-alexandria",
+   "years": [
+    -132,
+    -127
+   ],
+   "note": "from the author; contest events only, minor"
+  },
+  {
+   "name": "Ptolemy Keraunos's kingdom of Macedon and Thrace",
+   "suggested_slug": "ptolemy-keraunos",
+   "years": [
+    -281,
+    -279
+   ],
+   "note": "string counterpart in kingdom-of-lysimachus /ledger/23; probably the land Cliopatria labels Ptolemaic in 281-280"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-me-05-b.md",
+ "problems": [
+  "No page failed to load. The Ptolemaic Kingdom, Laomedon and Perdiccas pages have no area in their infoboxes, so no area ratio could be computed.",
+  "Cross-group mismatches to route: macedonian-empire (eu-02) models Ptolemy, Laomedon and Perdiccas as its vassals 323-321/319, the batch dossiers do not; kingdom-of-lysimachus (eu-02) gives the 281 land to Ptolemy Keraunos; roman-republic (eu-03) carries Cyprus 58/47/31 and Cilicia Aspera 36/30; kingdom-of-kush (af-01) carries Lower Nubia 274/204 but not 155; greek-city-states (eu-01) lacks the Corinth occupation 308-302; cyrenaica (me-05) lacks 163-145 and disagrees on 276/274 and 305-300.",
+  "Reviewer applied two small fixes: ptolemaic-kingdom /ledger/58-59 counterpart roman-empire -> roman-republic; perdiccas /keyframe_review/0 verdict ok -> adjust (ends 320). Both files re-validated clean and read back."
+ ]
+}

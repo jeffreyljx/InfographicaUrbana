@@ -1,0 +1,222 @@
+{
+ "batch_id": "fx-47",
+ "findings": [
+  {
+   "item": "R018",
+   "verdict": "kept",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Middle_Assyrian_Empire"
+   ],
+   "why": "patch controls it: m1100-m1001 keyframe_overrides/0 already replaces assyria_-1100 with from -1100 to -1056, and the patch entry wins over the dossier, so editing the dossier keyframe changes nothing. The page supports the dates (infobox 'Second period of decline: 1055-935 BC'; Ashur-bel-kala r. 1073-1056 BC)."
+  },
+  {
+   "item": "R021",
+   "verdict": "partly",
+   "dossiers_changed": [
+    "assyria"
+   ],
+   "changes": [
+    "assyria: ledger/21: new loss at -1206 (counterpart nobody): the -1220 shape without Babylonia and without the -1000 heartland shape, so the empire shape does not run on to -1201 before the patched heartland keyframe starts at -1200"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Middle_Assyrian_Empire"
+   ],
+   "why": "The page supports the loss from c. 1206 ('First period of decline: c. 1206-1115 BC'; 'Assyria became restricted mostly to just the Assyrian heartland'). Keyframes assyria_-1200 and assyria_-1150 and the -1150 cancelling loss are controlled by patch m1200-m1101 (keyframe_overrides/3, /4, events/4), so they were left untouched; only the loss at -1206..-1201, which the patch does not cover (its heartland keyframe starts at -1200), was added."
+  },
+  {
+   "item": "R071",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "thirteen-colonies"
+   ],
+   "changes": [
+    "thirteen-colonies: keyframe thirteen-colonies_1673: correction rebuilt: New York is cut only by the Dutch footprint (Cliopatria New Netherland 1662 shape, the land new-netherland_1673 holds), the rest of inland New York stays with the province (minus the Haudenosaunee homeland)",
+    "thirteen-colonies: ledger/10 and ledger/11 (1673 loss, 1674 gain with new-netherland): region narrowed from the whole of New York to the Dutch footprint in New York"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/New_Netherland"
+   ],
+   "why": "The New Netherland page names no Dutch territory beyond the recaptured colony ('They chose Anthony Colve as governor and renamed the city New Orange'; handover 10 November 1674), so the colony loses only new-netherland's own footprint in 1673. Before, the whole state was cut, 158 inland cells (outside the Haudenosaunee 1673 shape) were nobody's."
+  },
+  {
+   "item": "R080",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "thirteen-colonies"
+   ],
+   "changes": [
+    "thirteen-colonies: keyframes 1664, 1673, 1674, 1681, 1732, 1763, 1768: correction wrapped in minus the Haudenosaunee 1702 shape (the homeland, 282 cells, 269 in New York)",
+    "thirteen-colonies: ledger/9 (1664 gain) and ledger/17 (1776 dissolve): same homeland cut"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Iroquois"
+   ],
+   "why": "Iroquois page: 'the Iroquois preserved considerable independence'; 'until 1707, treaties were between the \"Five Nations\" and \"England\"'; homeland 'central and west New York State'; 1784 Treaty of Fort Stanwix: 'the Iroquois ceded much of their historical homeland to the Americans'. The haudenosaunee dossier draws the homeland to 1784, so the colony no longer claims it (the patches cover 1664-1669 and 1700-1709 only). Residual: the rim cells the haudenosaunee dossier hands to british-colonial-empire in 1757, 1763 and 1769 stay outside the colony (about 15 cells nobody's)."
+  },
+  {
+   "item": "R005",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "minyue"
+   ],
+   "changes": [
+    "minyue: ledger/8 (-135 split, counterpart dongyue): region replaced by the kingdom minus itself (names no land); text and note say why"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Minyue"
+   ],
+   "why": "Minyue page: infobox 'Divided by the Han dynasty among the Minyue king and the Dongyue king: 135 BC'; 'As a result, there were two kings coexisting in the country'; Zou Yushan recognised as king of Dongyue; the page names no territory, region, city or boundary for either king. With no Dongyue dossier the split emptied 680 cells; the compiler skips a split whose region holds no land, so the kingdom stays Minyue to 110. The patch keyframe minyue_-135 (m0200-m0101 keyframe_overrides/7) is left as it is."
+  },
+  {
+   "item": "R023",
+   "verdict": "partly",
+   "dossiers_changed": [
+    "babylonia"
+   ],
+   "changes": [
+    "babylonia: keyframe babylonia_-1700: correction now Cliopatria's -1700 shape minus the corrected Sealand land (Dhi-Qar, Basra, First Sealand shape, Uruk, Nippur, Isin) and the Muthanna desert, instead of the 42-50 E x 27-32.3 N rectangle",
+    "babylonia: ledger/11 (-1460 gain from the Sealand): region is the corrected Sealand land instead of the rectangle (includes Nippur's disc)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/First_Sealand_dynasty"
+   ],
+   "why": "First Sealand dynasty page: \"Sealand pottery has been found at Girsu, Uruk, and Lagash but in no site north of that\"; Ilum-ma-ili \"thought to have conquered Nippur late in Samsu-iluna's reign\"; Ulam-Buriash \"conquered the Sealand\" and \"incorporated it into Babylonia\". babylonia_-1600, babylonia_-1500 and babylonia_-1460 are overridden by patches m1600-m1501 and m1500-m1401 (patch-overrides.csv), so they were left as they are; babylonia ledger/7 (-1732 loss, rectangle) is outside the request and the patched keyframe babylonia_-1732 sets the state there."
+  },
+  {
+   "item": "R039",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "saffarid-dynasty"
+   ],
+   "changes": [
+    "saffarid-dynasty: identity.successors: abbasid-caliphate entry removed (the handover has no date field, so it cannot be dated; the 910 return of Fars stays in ledger/24); dossier notes say why"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Saffarid_dynasty"
+   ],
+   "why": "A handover carries no date (schema: slug, land, note), so the undated entry made R2 give the Abbasids every conflict cell from 750 on. Saffarid page infobox: 'Succeeded by: Samanid Empire; Ghaznavid Empire' and 'Preceded by: Tahirid dynasty; Abbasid Caliphate; Zunbil dynasty', i.e. the caliphate is no successor; 'Under Tahir ibn Muhammad ibn Amr (901-908), the dynasty fought the Abbasids for the possession of Fars'. The 910 return of Fars is already the ledger loss ledger/24 (counterpart abbasid-caliphate). The 910 sentence quoted in the removed entry is not on this page (it comes from a page of an earlier agent), so the date 910 stays with ledger/24 as it was. The samanid-empire entry is not touched: both dossiers list each other, so the later-born (Saffarid) wins there."
+  },
+  {
+   "item": "R057",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "tumed"
+   ],
+   "changes": [
+    "tumed: keyframes tumed_1547, 1582, 1600, 1609, 1645-1696 (indexes 0, 2-11): the 200 km disc round Hohhot replaced by the disc intersected with Inner Mongolia",
+    "tumed: ledger/0, 2, 4, 5, 6, wars/2 zone and identity.successors/0 land: same replacement, so the ledger and the keyframes agree"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Altan_Khan_of_the_Tumed"
+   ],
+   "why": "Altan Khan of the Tumed page: \"the Tümed's pastures were north of the border with Shanxi, in present-day Inner Mongolia.\" The disc held 627 cells: 105 in Ming Shanxi, 9 in Shaanxi, 510 in Inner Mongolia, 3 elsewhere; the intersection with Inner Mongolia removes the Ming Shanxi and Shaanxi cells for 1547-1635 (the page is silent on Shaanxi and on 1635, Hohhot's Ming-era name Guihua is from the page's account of the 1571 peace). The 23 Inner Mongolia cells Cliopatria's Ming shape draws at the Great Wall remain a Ming-shape question (not this dossier's)."
+  },
+  {
+   "item": "R086",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "cossack-hetmanate"
+   ],
+   "changes": [
+    "cossack-hetmanate: identity.successors: russian-empire removed (empty list); dossier notes say why",
+    "cossack-hetmanate: ledger (new, before the dissolve): loss at 1764-10, counterpart russian-empire, the left-bank land of the dissolve, carries the handover on the date"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Cossack_Hetmanate"
+   ],
+   "why": "The compiler applies R2 from the successor's start year (1721) and a handover has no date field, so the only way to apply the successor's land from the end is to hand the land over by an event: the loss at 1764-10 ('According to a decree issued on 21 October 1764, the hetman's post was officially liquidated'; 'from 1764 to 1781, the Cossack Hetmanate was incorporated as the Little Russia Governorate'). Rule 7 at the dissolve then finds nothing left. The russian-empire dossier lists only tsardom-of-russia as predecessor, so no second R2 link remains; hierarchy.csv has the Hetmanate as vassal of tsardom-of-russia 1654-1720 and of russian-empire 1721-1764, which draws it inside its overlord (R3). Page: infobox 'After 1654: Protectorate of the Tsardom of Moscow and Russian Empire'."
+  },
+  {
+   "item": "R105",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "mamluk-beys-of-egypt"
+   ],
+   "changes": [
+    "mamluk-beys-of-egypt: identity.end 1798-07 -> 1801-04; identity.successors: ottoman-empire (Upper Egypt) added",
+    "mamluk-beys-of-egypt: new keyframe mamluk-beys-of-egypt_1799 (1799-1801): Upper Egypt",
+    "mamluk-beys-of-egypt: ledger/10 (July 1798 dissolve of Upper Egypt) replaced by a loss of the rest of Egypt to nobody (1798-07) and a dissolve in 1801-04 (counterpart ottoman-empire); certainty extended to 1801"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Murad_Bey",
+    "https://en.wikipedia.org/wiki/Ottoman_Egypt"
+   ],
+   "why": "Murad Bey page: \"Murad fled to Cairo and then Upper Egypt\"; \"mounted a brief guerrilla warfare that staved off the armies of Louis Desaix for a year\"; \"In 1800, Murad made peace with Jean-Baptiste Kleber ... He was responsible for collecting taxes from Upper Egypt on behalf of the French First Republic\"; died 22 April 1801. Ottoman Egypt page: Ottoman authority returned after Anglo-Turkish forces expelled the French in 1801 and Murad was succeeded by Osman Bey al-Bardisi (territory not described, so the dossier ends at Murad's death). The page names only Upper Egypt, so Sinai (Ibrahim fled toward it) and the coast are not drawn after July 1798 and fall to nobody (the ottoman-empire and french dossiers own their claims); the 1800 peace is not coded as a vassal relation (the page says tax collector for the French First Republic; no dossier slug is named)."
+  },
+  {
+   "item": "R123",
+   "verdict": "partly",
+   "dossiers_changed": [
+    "bosnia-eyalet"
+   ],
+   "changes": [
+    "bosnia-eyalet: ledger (new, before the dissolve): loss 1878 (no month), counterpart ottoman-empire, country Bosnia and Herz.",
+    "bosnia-eyalet: ledger dissolve (1878): counterpart austria-hungary -> ottoman-empire; identity.successors: austria-hungary -> ottoman-empire (Bosnia and Herz.); new source entry for the Condominium page"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Condominium_of_Bosnia_and_Herzegovina"
+   ],
+   "why": "Condominium page: \"The Treaty of Berlin caused Bosnia and Herzegovina to nominally remain under sovereignty of the Ottoman Empire\"; \"The occupation of Bosnia and Herzegovina started on 29 July 1878\"; the Bosnia Vilayet \"officially remained part of the Ottoman Empire\". The dissolve now passes the land to the Ottoman Empire, as asked. I did not add the occupation_start requested for this dossier: the compiler reverses the roles of an occupation_start recorded by the owner (Austria-Hungary would occupy the eyalet's land) and the dissolve then releases occupied land as plain land of the occupier, which is the bug; the austria-hungary dossier already records the occupation of Ottoman land (ledger/2 occupation_start 1878-07, ledger/4 occupation_end 1908-10, ledger/5 gain). Events are applied in month order (month 0 for an event without month), so the loss carries no month and comes before the occupation of July 1878. Patch p1870-p1879 events/1, 2, 3 now duplicate this and should be dropped by the orchestrator."
+  },
+  {
+   "item": "R140",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "italian-africa"
+   ],
+   "changes": [
+    "italian-africa: identity.successors/0 (british-africa) land: Eritrea and Italian Somaliland (Somalia without Somaliland) added to Tripolitania and Cyrenaica; two source entries added"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/British_Military_Administration_(Eritrea)",
+    "https://en.wikipedia.org/wiki/Italian_Somaliland"
+   ],
+   "why": "Eritrea page: \"British forces defeated the Italian army in Eritrea in 1941 at the Battle of Keren\"; administration established 25 February 1941 (infobox) and continued until 1950 (text). Italian Somaliland page: \"British forces occupied Italian Somaliland and militarily administered the territory\"; \"came under British military administration until 1950\". The land spec matches the dossier's own ledger/53 and /56 (the 1941 losses to british-africa). The window patch p1940-p1949 events/4-5 already gain both from italian-africa in February 1943, so by the dissolve the cells are British and the new successor land cannot clash with them."
+  }
+ ],
+ "dossiers_changed": [
+  "assyria",
+  "thirteen-colonies",
+  "minyue",
+  "babylonia",
+  "saffarid-dynasty",
+  "tumed",
+  "cossack-hetmanate",
+  "mamluk-beys-of-egypt",
+  "bosnia-eyalet",
+  "italian-africa"
+ ],
+ "validation": {
+  "assyria": "ok",
+  "thirteen-colonies": "ok",
+  "minyue": "ok (2 warnings: dongyue has no dossier; ledger/8 region resolves to no cells, both intended)",
+  "babylonia": "ok",
+  "saffarid-dynasty": "ok",
+  "tumed": "ok (3 pre-existing warnings: khalkha has no dossier)",
+  "cossack-hetmanate": "ok",
+  "mamluk-beys-of-egypt": "ok",
+  "bosnia-eyalet": "ok",
+  "italian-africa": "ok"
+ },
+ "handoffs": [
+  {
+   "dossier": "dongyue",
+   "where": "new dossier (optional)",
+   "what": "A Dongyue dossier for Zou Yushan's kingdom 135-110 BC, saying which part of the Minyue shape he held; minyue ledger/8 (split dongyue, -135) now names no land, so nothing depends on it",
+   "why": "The Minyue page names no territory for either king; a Dongyue dossier needs another page (Emperor Wu of Han, Dong'ou, History of Fujian)",
+   "source": "https://en.wikipedia.org/wiki/Minyue"
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "not_reached": [],
+ "notes_path": "history/polities/_notes/fix-fx-47.md",
+ "problems": [
+  "bosnia-eyalet (R123): patch p1870-p1879 events/1, 2, 3 (bosnia-eyalet loss to ottoman-empire, ottoman-empire gain from austria-hungary, ottoman-empire occupation_start austria-hungary) now duplicate the dossier fix (loss to ottoman-empire with no month, dissolve and successor ottoman-empire, occupation kept in austria-hungary/ledger/2); drop them so the occupation is not opened twice.",
+  "bosnia-eyalet (R123): the requested occupation_start was not added to the bosnia-eyalet dossier on purpose (compile_dossiers.occupation_start reverses roles when the owner records it, and do_end releases occupied cells as plain land of the occupier); the order relies on the compiler's month 0 for an event without month: if the compiler is changed to sort events without month differently, give the loss month 6.",
+  "R018 and R021 (assyria): patch controls assyria_-1100, assyria_-1200 and assyria_-1150; only the new loss at -1206 was added (ledger/21). If the m1200-m1101 and m1100-m1001 patches are ever dropped, the dossier keyframes still need from/to (-1100..-1056; -1200..-1115 heartland, -1114..-1101 empire) and the -1150 gain (ledger/22) a cancelling loss.",
+  "R080 (thirteen-colonies): the homeland cut is the constant Cliopatria Haudenosaunee 1702 shape for 1664-1776; the rim cells the haudenosaunee dossier gives to british-colonial-empire in 1757, 1763 and 1769 stay outside the colony (about 15 cells nobody's if the British Colonial Empire shape does not cover them).",
+  "R071 (thirteen-colonies): about 19 homeland cells in the 1702 shape but outside Cliopatria's Haudenosaunee 1673 shape stay with nobody in 1673 only."
+ ]
+}

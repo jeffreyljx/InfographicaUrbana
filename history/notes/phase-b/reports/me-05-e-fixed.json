@@ -1,0 +1,110 @@
+{
+  "group_id": "me-05-e",
+  "dossiers_written": [
+    {
+      "slug": "kingdom-of-cappadocia",
+      "path": "history/polities/kingdom-of-cappadocia.json",
+      "name": "Kingdom of Cappadocia",
+      "years": [
+        -239,
+        17
+      ],
+      "cliopatria_names": [
+        "Kingdom of Cappadocia"
+      ],
+      "new_state": false,
+      "keyframes_reviewed": 14,
+      "keyframe_verdicts": {
+        "ok": 10,
+        "adjust": 4,
+        "wrong": 0
+      },
+      "events": 20,
+      "low_confidence_events": 7,
+      "wars": 4,
+      "sources": 13,
+      "validates": true,
+      "resolve_warnings": 0
+    },
+    {
+      "slug": "nabataeans",
+      "path": "history/polities/nabataeans.json",
+      "name": "Nabataean Kingdom",
+      "years": [
+        -169,
+        106
+      ],
+      "cliopatria_names": [
+        "Nabataeans"
+      ],
+      "new_state": false,
+      "keyframes_reviewed": 18,
+      "keyframe_verdicts": {
+        "ok": 0,
+        "adjust": 18,
+        "wrong": 0
+      },
+      "events": 15,
+      "low_confidence_events": 4,
+      "wars": 6,
+      "sources": 11,
+      "validates": true,
+      "resolve_warnings": 0
+    }
+  ],
+  "fixes_applied": 10,
+  "events_total": 35,
+  "sources_total": 24,
+  "new_slugs": [],
+  "gazetteer_names_needed": [
+    {
+      "name": "Cilicia Tracheia",
+      "kind": "region",
+      "used_in": "kingdom-of-cappadocia",
+      "hint": "Rough Cilicia, the Taurus coast of Mersin province and west towards Antalya; approximated by Mersin province"
+    },
+    {
+      "name": "Hegra",
+      "kind": "place",
+      "used_in": "nabataeans",
+      "hint": "Mada'in Salih (Hijr) in the Hejaz, c. 26.8 N 37.95 E; Nabataean centre, inside the 110 km Dedan circle used as the Lihyan region"
+    },
+    {
+      "name": "Dedan (AlUla)",
+      "kind": "place",
+      "used_in": "nabataeans",
+      "hint": "c. 26.62 N 37.93 E; the dossier uses lon/lat 37.93, 26.62 with km 110 exactly as the lihyan dossier does; a place entry would replace the coordinates"
+    }
+  ],
+  "pages_failed": [],
+  "gaps": [
+    {
+      "slug": "kingdom-of-cappadocia",
+      "what": "Year of independence (Ariarathes III page: reign 255-220, 'About 250 BC' first king, nothing on independence); the 188 gain (Treaty of Apamea never mentions Cappadocia); the 110 strip to Pontus; the 77 return; the 63 strip to Commagene; Pompey's 66-63 settlement; the grant of Lycaonia and Cilicia has no year (129 is the revolt's end)",
+      "why": "page silent"
+    },
+    {
+      "slug": "nabataeans",
+      "what": "Gilead 144 (Hasmonean page silent); Negev and Sinai coast 126; the year of Jannaeus' capture of Moab and Gilead (96 is a bridge; Hasmonean page has Hyrcanus at Madaba 110); the year Damascus was lost to Rome (Damascus page: Pompey annexed western Syria 64, no year for the occupation); Hegra and Dedan before 24 (Lihyan page also gives c. 65 BC)",
+      "why": "page silent"
+    }
+  ],
+  "counterparts_needing_dossiers": [
+    {
+      "name": "Kingdom of Lesser Armenia (client kingdom under Artaxias III)",
+      "suggested_slug": "kingdom-of-lesser-armenia",
+      "years": [
+        17
+      ],
+      "group": "me-05-x"
+    }
+  ],
+  "notes_path": "history/polities/_notes/me-05-e.md",
+  "problems": [
+    "Fix pass only touched kingdom-of-cappadocia and nabataeans (verdict fail); greco-bactrian-kingdom and ankhwennefer (thin) were not touched. Both validate with --resolve (0 errors, 0 warnings) and were read back from the mount after about twelve seconds.",
+    "Direction convention for vassal events: the schema says vassal_start's counterpart is the vassal (so the suzerain records it); the review asked for the vassal's side and boii, aetolian-league and others record it that way. Cappadocia (95 BC-AD 17) and Nabataea (62 BC-106) now record it on their own side as well as on roman-republic and roman-empire; the renderer or the matrix must not draw the tint twice.",
+    "Mirrors still missing on neighbours: roman-republic (vassal_start nabataeans -62, vassal_end -27; move its Cappadocia vassal_start from -90 to -95); kingdom-of-pontus (contest with Cappadocia from 95, the -110 and -77 strips); roman-empire (no -25 loss of Cilicia Tracheia); seleucid-empire (-66 loss to nabataeans should be 85; -245 Bactrian secession vs -256); qedar (-343 dissolve to nabataeans); judea (me-05-f: its Cliopatria shape holds 35 Negev and 12 Edom cells from -63, overlapping the Nabataean keyframes).",
+    "Disagreement with a literal fix: nabataeans carries Edom and the Negev in every keyframe from -169, not only -91..-66, so that no Edom cells appear at -91 without an event; the -63 loss is narrowed to Damascus but kept at Cliopatria's year (confidence 1) because the Damascus page supports a Roman Damascus without dating it or naming the Nabataeans.",
+    "WebFetch returns a small model's answer, not page text; quotes are those answers. The Aristonicus page is a disambiguation page (Aristonicus_of_Pergamon was used). The page budgets were exceeded by the fix pass because the findings required reopening pages (Cappadocia 9 further pages, Nabataeans 6 new pages)."
+  ]
+}

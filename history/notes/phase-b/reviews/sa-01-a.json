@@ -1,0 +1,669 @@
+{
+ "batch_id": "sa-01-a",
+ "verdicts": [
+  {
+   "slug": "indus-valley-civilization",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2/correction",
+     "applied": false,
+     "what": "K2 (-2800..-2501) is the bare Cliopatria -2700 shape, which leaves out Harappa and Mehrgarh, both added by K1. No ledger loss covers this, so the type site disappears from the culture for 300 years.",
+     "why": "Gazetteer resolve: intersect(Harappa 20 km, Cliopatria IVC -2700) = 0 cells (the shape's bbox stops at 29.60N; Harappa is at 30.63N). Harappa page: 'Kot Dijian (Early Harappan) phase, c. 2800 - 2600 BC', 'Harappan Phase, c. 2600 - 1900 BC'. The dossier's own K1 note says 'Harappa must be in the shape'. Going from K1 to K2 drops about 10,900 km2 at Harappa plus the Mehrgarh disk, with no event.",
+     "fix": "Correction = {union:[{cliopatria:'Indus Valley Civilization',year:-2700},{place:'Harappa',km:60},{place:'Mehrgarh',km:50}]}, with text saying it holds from -2800 to -2501 and keeps the Ravi/Kot Diji site at Harappa."
+    },
+    {
+     "where": "/keyframe_review/3",
+     "applied": false,
+     "what": "K3 (-2500 shape, 40,149 km2) is marked ok, but it does not contain Harappa, which ledger/3's text names ('the Punjab around Harappa'). K3 covers Mohenjo-daro by only 1 cell.",
+     "why": "Gazetteer resolve: intersect(Harappa 20 km, Cliopatria IVC -2500) = 0 cells; intersect(Mohenjo-daro 15 km, IVC -2500) = 1 cell. The shape is a set of small city-core islands. The Harappa page dates the Harappan Phase c. 2600-1900 BC.",
+     "fix": "Change the verdict to adjust, with correction {union:[{cliopatria:'Indus Valley Civilization',year:-2500},{place:'Harappa',km:60},{place:'Mohenjo-daro',km:40}]}. Mehrgarh can stay out, since by the dossier's own quote it ends c. 2500 BCE."
+    },
+    {
+     "where": "/keyframe_review/6/correction",
+     "applied": false,
+     "what": "At -1900 the corrected Late Harappan shape (K6-K10) adds about 43,000 km2 east of the Mature shape: eastern Haryana about 20,000, the eastern Indian Punjab about 11,600 and Delhi 80 km about 18,000 (these overlap). No ledger gain covers it. K4 and K5 are marked ok even though their shape stops at 76.95E, while the page has the height reach 'to western Uttar Pradesh in the east'.",
+     "why": "Gazetteer resolve: minus(K6 correction, Cliopatria IVC -2000) = 171 cells, about 43,246 km2, bbox 69.37-78.02E 26.55-32.36N (only 1 cell lies north of 34.1N). IVC page: 'During its height the civilisation extended from Balochistan in the west to western Uttar Pradesh in the east'. Cemetery H page: 'Punjab, Haryana, Western Uttar Pradesh', c. 1900-1300 BCE.",
+     "fix": "Either (preferred) mark K4 and K5 adjust and add {place:'Delhi',km:80} plus eastern Haryana and Punjab to the Mature shape, so that -1900 is a pure loss; or add a ledger gain at -1900 (counterpart nobody, region = minus(K6 correction, IVC -2000), source the Cemetery H page, confidence 2)."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "The year the full Mature extent was reached. This is the batch's largest land move (40,149 to 755,121 km2) and it sits at confidence 1, on Cliopatria's -2300.",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_Indus_Valley_Civilisation_sites"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "The end year: 1300 BCE (IVC infobox, Cemetery H) against 'between 1900 and 1500 BC' / 'till 1400 BC' (Harappa page).",
+     "page to try": "https://en.wikipedia.org/wiki/Indus_Valley_Civilisation#Late_Harappan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Indus_Valley_Civilisation",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Indus_Valley_Civilisation",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Mohenjo-daro",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Indus_Valley_Civilisation",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Periodisation_of_the_Indus_Valley_Civilisation",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Mohenjo-daro",
+     "result": "confirmed"
+    },
+    {
+     "where": "/keyframe_review/7",
+     "page": "https://en.wikipedia.org/wiki/Cemetery_H_culture",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 755121,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page, only 'a core of 1,500 kilometres' and 'larger than ancient Egypt and Mesopotamia combined', so the check was made by extent. The author's figures (4,998; 14,900; 40,149; 755,121; 252,963; 222,948 km2) match shapes.csv."
+   },
+   "tried": "Read every date and quote in the notes of the c3 renames and all the gains and losses against 5 pages; found no fabrication. Resolved every keyframe correction against the sites it names: Harappa falls outside K2 and K3, and the Late shape spills east with no event. The 'reach to 36.7N' the author flagged is a single 253 km2 cell and is harmless."
+  },
+  {
+   "slug": "janapada-of-anga",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/successors/0/land",
+     "applied": true,
+     "what": "The successor land was Cliopatria's uncorrected -531 shape, which the K0 note says stops 20 km short of Champa. Magadha would have inherited Anga without its capital.",
+     "why": "Anga page: 'Campa became the seat of a Magadhi viceroy'; Bimbisara page: 'prince Kunika (Ajatashatru) was appointed governor at Champa'. The dossier's own dissolve region and K0 correction add Bhagalpur 60 km.",
+     "fix": "Land set to the dissolve region {union:[{cliopatria:'Janapada of Anga',year:-600},{place:'Bhagalpur',km:60}]}, text kept; re-validated OK."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Dates of Dadhivahana's conquest of Magadha and of Magadha's recovery. The contest over all of Magadha -600..-543 rests on an undated sentence (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Haryanka_dynasty"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "The contest closes at Bimbisara's accession (543 BCE), which is an inference: no page says Magadha was freed then.",
+     "page to try": "https://en.wikipedia.org/wiki/Haryanka_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Anga",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Anga",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Bimbisara",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Anga",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 5578,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; the corrected shape resolves to about 14,900 km2."
+   },
+   "tried": "Checked all 4 events, the capital coordinates against the corrected shape, and the dissolve year against the infobox (c. 530 BCE) and the Mahajanapadas page; the Kalinga war correctly has no zone."
+  },
+  {
+   "slug": "janapada-of-asmaka",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/successors/0/land",
+     "applied": true,
+     "what": "The successor land was Cliopatria's -351 Adilabad shape, which the dossier itself moves 130 km to the Nizamabad-Nanded reach of the Godavari.",
+     "why": "Asmaka page: the Assakas 'located on the banks of the Godavari River', 'identified with modern Nizamabad district', and Asmaka 'annexed the small kingdom of Mūlaka located to its west'. The dissolve region is union(Nizamabad 70, Nanded 80).",
+     "fix": "Land set to {union:[{place:'Nizamabad',km:70},{place:'Nanded',km:80}]}, text kept; re-validated OK."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "The date and extent of the Mulaka annexation (confidence 1, placed on Cliopatria's -550). The Mulaka page also failed for the reviewer.",
+     "page to try": "https://en.wikipedia.org/wiki/Paithan"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Who ended Asmaka, and whether in 425 or 345 BCE (confidence 1). The Puranic list of Mahapadma Nanda's conquests may name the Asmakas, which would make nanda-empire the successor.",
+     "page to try": "https://en.wikipedia.org/wiki/Nanda_Empire"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Asmaka",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Asmaka",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Asmaka",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Mahajanapadas",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 5467,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; Nizamabad 70 km resolves to 15,427 km2, matching the author's 'about 15,000'; with Nanded 80 km it is 31,360 km2."
+   },
+   "tried": "Checked all 3 events, the Godavari line in certainty, and the K2 retiming (holds to -346, end -345); retried the Mulaka page (URL_NOT_FOUND)."
+  },
+  {
+   "slug": "janapada-of-avanti",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/successors/0/land",
+     "applied": true,
+     "what": "The successor land was Cliopatria's 5,104 km2 Ujjain core, although its own note says 'The land is the corrected shape (Malwa, Mahishmati, Vatsa)'.",
+     "why": "Avanti page: 'roughly corresponding to the present-day Malwa region', the southern part 'had its centre at Mahishmati', 'the kingdom of Vatsa was already a part of Avanti during the reign of Palaka'. The dissolve region is union(Malwa, Maheshwar 60, Vatsa -451).",
+     "fix": "Land set to {union:[{region:'Malwa'},{place:'Maheshwar',km:60},{cliopatria:'Janapada of Vatsa',year:-451}]}, text kept; re-validated OK."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "When Vatsa passed to Avanti (confidence 1, on Cliopatria's -451 end of Vatsa). Palaka acceded 'on the day of passing away of Mahavira' (Jain tradition), which may date it much earlier. The Shishunaga page also has Shishunaga conquer 'Kosala and Vatsa' on their own.",
+     "page to try": "https://en.wikipedia.org/wiki/Pradyota_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Avanti_(region)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Avanti_(region)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Shishunaga",
+     "result": "confirmed"
+    },
+    {
+     "where": "/wars/2",
+     "page": "https://en.wikipedia.org/wiki/Avanti_(region)",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 5104,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; the gazetteer's Malwa is 154,522 km2, matching the author's 'about 155,000' (30 times the shape). This is acknowledged in K0."
+   },
+   "tried": "Checked all 3 events and the wars against two pages. The Pradyota-Pukkusati war is mirrored in janapada-of-gandhara/wars/1. The -405 end sits within Shishunaga's reign (c. 413-395) and is honestly at confidence 2."
+  },
+  {
+   "slug": "janapada-of-cedi",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "How and when Cedi ended. The only page date is the infobox's 'Disestablished c. 300 BCE'; the -451 end is Cliopatria's, at confidence 1, with no successor, so the land is drawn as nobody's from -450 until a Magadhan shape covers it.",
+     "page to try": "https://en.wikipedia.org/wiki/Nanda_Empire"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Ced%C4%AB_(tribe)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Ced%C4%AB_(tribe)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Mahajanapadas",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 4396,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page. The correction cannot be resolved until the gazetteer has Banda (India) and Rewa (both unknown); the author's 'about 35,000 km2' fits two disks of 90 and 50 km about 142 km apart (about 33,000)."
+   },
+   "tried": "Checked both events, the neighbours in certainty, the two capital sites, and the move from Kausambi (Kausambi at 81.38E 25.34N lies inside Cliopatria's Cedi bbox). Nothing fabricated; the end is a declared gap."
+  },
+  {
+   "slug": "janapada-of-gandhara",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1/region",
+     "applied": true,
+     "what": "The -535 loss to Cyrus used the gazetteer region 'Gandhara', which already contains Taxila 60 km (and Jalalabad 70 km). So the ledger lost the Taxila country in -535, while K1 and the -518 dissolve keep it to -519.",
+     "why": "Gazetteer: Gandhara = union(Peshawar 110, Taxila 60, Jalalabad 70); intersect(Gandhara, Taxila 60) = 10,622 km2. Achaemenid conquest page: 'the Persian army annexed a large region to the west of the Indus River'. Kingdom page: 'The annexation under Cyrus was limited to Gandhāra proper'.",
+     "fix": "Region set to {minus:[{region:'Gandhara'},{place:'Taxila',km:60}]} (38,188 km2, bbox to 72.56E), text kept; re-validated with --resolve OK."
+    },
+    {
+     "where": "/keyframe_review/0/note",
+     "applied": true,
+     "what": "The quoted corrected area 'about 74,000 km2' double-counts Taxila, which lies inside the gazetteer's Gandhara.",
+     "why": "Resolve of union(Gandhara, Taxila 60, Kashmir Valley) = 249 cells, about 62,972 km2.",
+     "fix": "Changed to 'about 63,000 km2' in the K0 note and in notes."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Who held the Kashmir valley after -518. It is left to nobody, since the successor land omits it, and no page says.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Kashmir"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Gandh%C4%81ra_(kingdom)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Achaemenid_conquest_of_the_Indus_Valley",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Achaemenid_conquest_of_the_Indus_Valley",
+     "result": "confirmed"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Mahajanapadas",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 4988,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; the corrected shape is about 63,000 km2, 12.6 times Cliopatria's mislocated shape. The swap with Kamboja's Rawalpindi shape is acknowledged."
+   },
+   "tried": "Checked all 3 events and the 535/518 dates, the 'valley of Kasmira' claim, the Rajapura (modern Rajori) basis for the Kamboja swap, and the war belligerents. The dissolve's Kashmir is consistent, because the successors land leaves it out."
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "indus-valley-civilization",
+    "year": -2800,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": -2800,
+    "type": "-"
+   },
+   "status": "exception",
+   "note": "counterpart nobody (a culture's spread)"
+  },
+  {
+   "event": {
+    "slug": "indus-valley-civilization",
+    "year": -2500,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": -2500,
+    "type": "-"
+   },
+   "status": "exception",
+   "note": "counterpart nobody (a culture's spread)"
+  },
+  {
+   "event": {
+    "slug": "indus-valley-civilization",
+    "year": -2300,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": -2300,
+    "type": "-"
+   },
+   "status": "exception",
+   "note": "counterpart nobody (a culture's spread)"
+  },
+  {
+   "event": {
+    "slug": "indus-valley-civilization",
+    "year": -1900,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": -1900,
+    "type": "-"
+   },
+   "status": "exception",
+   "note": "counterpart nobody (a culture's spread)"
+  },
+  {
+   "event": {
+    "slug": "indus-valley-civilization",
+    "year": -1700,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": -1700,
+    "type": "-"
+   },
+   "status": "exception",
+   "note": "counterpart nobody (a culture's spread)"
+  },
+  {
+   "event": {
+    "slug": "indus-valley-civilization",
+    "year": -1300,
+    "type": "dissolve",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": -1300,
+    "type": "-"
+   },
+   "status": "exception",
+   "note": "counterpart nobody (a culture's spread)"
+  },
+  {
+   "event": {
+    "slug": "janapada-of-anga",
+    "year": -600,
+    "type": "contest_start",
+    "counterpart": "janapada-of-magadha"
+   },
+   "mirror": {
+    "slug": "janapada-of-magadha",
+    "year": -600,
+    "type": "contest_start"
+   },
+   "status": "exception",
+   "note": "janapada-of-magadha (sa-01, another part) is not written yet; it should carry the contest -600..-543, confidence 1"
+  },
+  {
+   "event": {
+    "slug": "janapada-of-anga",
+    "year": -530,
+    "type": "dissolve",
+    "counterpart": "janapada-of-magadha"
+   },
+   "mirror": {
+    "slug": "janapada-of-magadha",
+    "year": -530,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "not written yet (sa-01); gain of Anga incl. Champa (Bhagalpur 60 km) in -530; Cliopatria Haryanka row starts only -500"
+  },
+  {
+   "event": {
+    "slug": "janapada-of-asmaka",
+    "year": -550,
+    "type": "gain",
+    "counterpart": "mulaka"
+   },
+   "mirror": {
+    "slug": "mulaka",
+    "year": -550,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "no dossier; listed in the author's counterparts_needing_dossiers (sa-01-x)"
+  },
+  {
+   "event": {
+    "slug": "janapada-of-asmaka",
+    "year": -345,
+    "type": "dissolve",
+    "counterpart": "magadha-shaishunaga-dynasty"
+   },
+   "mirror": {
+    "slug": "magadha-shaishunaga-dynasty",
+    "year": -345,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "not written yet (sa-01); Nanda Empire is the alternative successor"
+  },
+  {
+   "event": {
+    "slug": "janapada-of-avanti",
+    "year": -450,
+    "type": "gain",
+    "counterpart": "janapada-of-vatsa"
+   },
+   "mirror": {
+    "slug": "janapada-of-vatsa",
+    "year": -451,
+    "type": "dissolve"
+   },
+   "status": "exception",
+   "note": "context dossier not written yet (sa-01); Vatsa should end with Avanti as successor or move the date; Shishunaga page has a separate conquest of Vatsa c. 413-395"
+  },
+  {
+   "event": {
+    "slug": "janapada-of-avanti",
+    "year": -405,
+    "type": "dissolve",
+    "counterpart": "magadha-shaishunaga-dynasty"
+   },
+   "mirror": {
+    "slug": "magadha-shaishunaga-dynasty",
+    "year": -405,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "not written yet (sa-01); Cliopatria Shaishunaga row begins -404 (within a year)"
+  },
+  {
+   "event": {
+    "slug": "janapada-of-cedi",
+    "year": -451,
+    "type": "dissolve",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": -451,
+    "type": "-"
+   },
+   "status": "exception",
+   "note": "no successor named on any page; declared gap"
+  },
+  {
+   "event": {
+    "slug": "janapada-of-gandhara",
+    "year": -535,
+    "type": "loss",
+    "counterpart": "achaemenid-empire"
+   },
+   "mirror": {
+    "slug": "achaemenid-empire",
+    "year": -535,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "achaemenid-empire belongs to me-05, not run yet; gain of the Peshawar valley (Gandhara minus Taxila 60)"
+  },
+  {
+   "event": {
+    "slug": "janapada-of-gandhara",
+    "year": -518,
+    "type": "dissolve",
+    "counterpart": "achaemenid-empire"
+   },
+   "mirror": {
+    "slug": "achaemenid-empire",
+    "year": -518,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "me-05 not run; gain of the Taxila country (Hindush); Kashmir valley not included"
+  },
+  {
+   "event": {
+    "slug": "janapada-of-avanti",
+    "year": -600,
+    "type": "war",
+    "counterpart": "janapada-of-gandhara"
+   },
+   "mirror": {
+    "slug": "janapada-of-gandhara",
+    "year": -600,
+    "type": "war"
+   },
+   "status": "matched",
+   "note": "Pradyota v. Pukkusati: avanti /wars/2 and gandhara /wars/1, both -600..-535, no zones"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Mehrgarh",
+   "kind": "place",
+   "used_in": "indus-valley-civilization"
+  },
+  {
+   "name": "Maheshwar",
+   "kind": "place",
+   "used_in": "janapada-of-avanti"
+  },
+  {
+   "name": "Banda (India)",
+   "kind": "place",
+   "used_in": "janapada-of-cedi"
+  },
+  {
+   "name": "Rewa (India)",
+   "kind": "place",
+   "used_in": "janapada-of-cedi"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Mulaka",
+   "suggested_slug": "mulaka",
+   "years": [
+    -600,
+    -550
+   ]
+  },
+  {
+   "name": "Kalinga (pre-Mauryan)",
+   "suggested_slug": "kalinga-early",
+   "years": [
+    -600,
+    -345
+   ]
+  },
+  {
+   "name": "Sindhu-Sauvira",
+   "suggested_slug": "sindhu-sauvira",
+   "years": [
+    -600,
+    -518
+   ]
+  },
+  {
+   "name": "Cemetery H culture",
+   "suggested_slug": "cemetery-h-culture",
+   "years": [
+    -1900,
+    -1300
+   ],
+   "note": "Caution: indus-valley-civilization already draws the Cemetery H range (Punjab, Haryana, western UP) -1900..-1300 as its Late Harappan 'Punjab Phase'. A separate dossier for the same years would double-draw that land, so either drop it or start it at -1300."
+  },
+  {
+   "name": "Painted Grey Ware culture",
+   "suggested_slug": "painted-grey-ware-culture",
+   "years": [
+    -1200,
+    -600
+   ]
+  },
+  {
+   "name": "Ochre Coloured Pottery culture",
+   "suggested_slug": "ochre-coloured-pottery-culture",
+   "years": []
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-sa-01-a.md",
+ "problems": [
+  "https://en.wikipedia.org/wiki/Mulaka returned URL_NOT_FOUND for the reviewer too.",
+  "No neighbour dossier exists yet (janapada-of-vatsa, janapada-of-kamboja, janapada-of-magadha, magadha-shaishunaga-dynasty, achaemenid-empire), so every territorial mirror is an exception for a group not yet run. The sa-01 parts and me-05 should be checked against cross_checks.",
+  "janapada-of-kamboja (sa-01) should read janapada-of-gandhara/keyframe_review/0. Cliopatria's Gandhara shape sits at Rajouri, which the Mahajanapadas page confirms as Kamboja's capital Rajapura ('modern Rajori'), and its Kamboja shape sits beside Taxila; the rows look swapped.",
+  "Anga, Asmaka and Avanti get the verdict fix (the reviewer applied the fixes) but still carry thin lists of confidence-1 events within their page budget, for a gap-filler.",
+  "Reviewer edits made in place and re-validated: janapada-of-anga, janapada-of-asmaka and janapada-of-avanti /identity/successors/0/land; janapada-of-gandhara /ledger/1/region and the area figures in /keyframe_review/0/note and /notes."
+ ]
+}

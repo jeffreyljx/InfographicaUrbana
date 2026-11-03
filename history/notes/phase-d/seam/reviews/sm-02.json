@@ -1,0 +1,44 @@
+{
+ "window": "sm-02",
+ "checks": [
+  {
+   "entry": "m0800-m0701.json: events/2",
+   "verdict": "pass",
+   "what": "carchemish vassal_start of neo-assyrian-empire at -738 on the dossier's own 60 km circle (42 cells, about 10,600 km2; only Carchemish's 22 cells take the tint, the other 20 are Assyrian/Bit Agusi land since 856 and stay so). Pisiri page verified: 'In 738 BC Pisiri was tributary to the Assyrian king Tiglath-Pileser III'; 'only mentioned in Assyrian sources for the years 738 and 717 BC'; after Sargon II's attack Carchemish 'was turned into an Assyrian province'. Carchemish page: absent from Assyrian sources from Sangara (870-848) to the mid-8th century bar Samsi-Adad V (824-811); conquered by Sargon II in 717. Trial: Carchemish 22 cells direct -800..-739, vassal of Assyria -738..-718, Assyrian -717; the dossier's vassal_end -717 closes it. Note: the Tiglath-Pileser III page puts the Carchemish tribute 'after his victory at Arpad', i.e. after Arpad's capture in 740, so -740 would also be defensible; -738 is the page-dated attestation and is kept.",
+   "page": "https://en.wikipedia.org/wiki/Pisiri",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "m0800-m0701.json: events/3",
+   "verdict": "pass",
+   "what": "sam-al vassal_start of neo-assyrian-empire at -740 on the dossier's 40 km circle (19 cells, about 4,800 km2, all Sam'al's). Zincirli Expedition page verified: 'Tiglath-pileser III installed Panamuwa II on the throne of Sam'al' during the campaign against the Urartu-backed western coalition 'in 743-740 BCE'; Panamuwa II paid annual tribute and 'was killed fighting alongside the Assyrians at Damascus (733/732 BCE)'; Barrakib 'the servant of Tiglath-pileser'. USC page: 'killed in action on campaign in 732'. Sam'al Wikipedia page: independent after Shalmaneser III's death, occupied by Assyria under Sargon II in 717. -740 is the last year of the page's range (conservative). Trial: Sam'al 19 cells direct -800..-741, vassal -740..-718, Assyrian -717. The Zincirli page dates the province 'no later than 713'; the dossier's 717 is the Wikipedia page's and stands.",
+   "page": "https://zincirli.uchicago.edu/settlement-history/",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "m0800-m0701.json: keyframe_overrides/1",
+   "verdict": "fixed",
+   "what": "neo-assyrian-empire_-800 (-800..-751): the dossier's correction (Cliopatria -800 minus Babylonia -900) kept, plus a cut of Carchemish's 22 cells (60 km circle intersected with a polygon north of the Til Barsip strip; exactly the 22 cells Carchemish holds at the -800 anchor, the 18 Assyrian + 2 Bit Agusi cells of the circle stay out of the cut) and Sam'al's whole 40 km circle (19 cells, all Sam'al's at the anchor). Starts in this window; no other patch file overrides this shape_id. Pages: Carchemish (absent from Assyrian sources until the mid-8th century; province only after 717), Sam'al ('became independent after the death of Shalmaneser III'; occupied in 717), Pisiri (province after Sargon II's attack), Zincirli (Panamuwa II installed 743-740). Trial: the -800 snap goes from 186 to 154 cells (-32 = 22 + 10), carchemish/neo-assyrian-empire and neo-assyrian-empire/sam-al R2 conflicts vanish; Carchemish and Sam'al now win their cells against the neo-hittite-states aggregate by the size rule (28 and 19 cell-years); nothing else changes. Fixed: the why said 'the House of Astiruwa (ca 848-790) ruling', but the Pisiri page dates only Astiruwa himself 'possibly between 848 and 790 BC' and has his house rule on to Pisiri; text corrected to 'the House of Astiruwa ruling from Astiruwa (ca 848-790) to Pisiri (Pisiri page)'. Text only; the shape is unchanged.",
+   "page": "https://en.wikipedia.org/wiki/Carchemish",
+   "fix": "why: 'with the House of Astiruwa (ca 848-790) ruling' -> 'with the House of Astiruwa ruling from Astiruwa (ca 848-790) to Pisiri (Pisiri page)'",
+   "applied": true
+  },
+  {
+   "entry": "m0800-m0701.json: keyframe_overrides/2",
+   "verdict": "fixed",
+   "what": "neo-assyrian-empire_-750 (-750..-701): same correction as keyframe_overrides/1 on the -750 shape. Without it the -750 snap would take the two states' land again by R2 (both dossiers name Assyria as successor). Trial: Carchemish 22 and Sam'al 19 cells kept through -750..-718; from -717 the dossiers' own loss events hand them to Assyria (42 and 19 Assyrian cells at -717 and -701), so the cut does not leave a hole after the annexation. Same why-text fix as keyframe_overrides/1 (House of Astiruwa dates).",
+   "page": "https://en.wikipedia.org/wiki/Carchemish",
+   "fix": "why: 'with the House of Astiruwa (ca 848-790) ruling' -> 'with the House of Astiruwa ruling from Astiruwa (ca 848-790) to Pisiri (Pisiri page)'",
+   "applied": true
+  }
+ ],
+ "patch_check": "m0800-m0701: 7 entries, 7 ok in --check-patch after the text fix; trial of m0800-m0701 (own stage, deleted) applied all 7 and 843 entries of other windows, 0 skipped; m1600-m1501 and m1900-m1801 not changed by sm-02 (files last written 2 Nov 20:28 and 20:16), no entries to review there",
+ "problems": [
+  "events/2 year: the Tiglath-Pileser III page has the Carchemish tribute 'after his victory at Arpad' (Arpad captured in 740), the Pisiri page dates it 738; the entry takes 738, so Carchemish is drawn independent in -740 and -739 while Gurgum is already tinted. Defensible either way; left at -738.",
+  "Outside the reviewed entries (seam agent's own note): the Assyrian -800 keyframe still takes Bit Agusi (Arpad) cells by R2 before Arpad's fall in 740 (bit-agusi/neo-assyrian-empire 85 cell-years in the trial); not patched by sm-02.",
+  "The seam agent's dossier request (carchemish, sam-al, neo-hittite-states, bit-agusi successor links dated from the annexation) stands; the two overrides are the patch-level workaround.",
+  "scratch: /tmp/claude-0/work/review-sm-02/ (stage deleted; probe scripts and one PNG remain)."
+ ]
+}

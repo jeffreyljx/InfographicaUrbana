@@ -1,0 +1,45 @@
+{
+ "window": "m1900-m1801",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "eshnunna gain -1828 of the Diyala governorate + a 45 km circle on Tutub/Nerebtum (89 cells, about 22,500 km2; the governorate alone 79 cells). The Ipiq-Adad II page has: 'massively enlarged his state starting around 1828 BC when he took Arrapha to the north. Then, to consolidate the Diyala region, he defeated Sin-abushu, king of Nerebtum ...'; 'In his campaign against Sin-abushu he also annexed Uzarlulu and Tutub.' The 'Then' follows c. 1828, so -1828 is a same-campaign bridge, as the agent says. The region is exactly the part of keyframe eshnunna_-1828 that ledger/5 (Kirkuk) and ledger/6 (Rapiqum) leave out, so it draws no land the keyframe did not already draw; the governorate is the stand-in the dossier itself uses (keyframe -1828, ledger/7). Trial: the eshnunna -1828 snap (50 added, 5 removed) is gone; -1828 changes 50 Diyala cells through events/0; conflicts unchanged. Side effect: dossier ledger/7 (Mahazum, Diyala governorate, -1776) now changes nothing, harmless.",
+   "page": "https://en.wikipedia.org/wiki/Ipiq-Adad_II",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "indus-valley-civilization_-2000: correction identical to the dossier's (3,027 cells), only to = -1901 added (shapes.csv row runs -2000..-1801). The Periodisation page has the Mature phase 'broadly accepted to be 2600-1900 BC' and 'The Localisation Era (1900-1300 BCE)'; table row '1900-1700 BCE | Late Harappan | Harappan 4'. The -1900 keyframe resolves to 1,389 cells and the -1900 loss event to 1,638 = 3,027 - 1,389, so the override makes the dossier's own -1900 loss stick. Trial: the 1,638-cell Indus snap at -1900 is gone. Years -2000..-1901 (window m2000-m1901) are unchanged; no m2000-m1901 patch file exists yet.",
+   "page": "https://en.wikipedia.org/wiki/Periodisation_of_the_Indus_Valley_Civilisation",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "fixed",
+   "what": "lim-dynasty-of-mari_-1830 moved to start -1810. The Yahdun-Lim page (reign 'c. 1820 - c. 1797 BC') says 'Yahdun-Lim started his reign by subduing seven of his rebelling tribal leaders, and rebuilding the walls of Mari and Terqa', so Terqa was Mari's from the accession, c. 1820, not 1810; and the page gives Yaggid-Lim no territory at all, so the agent's 'Tuttul and the Euphrates towns were not Mari's under his father' is not on the page (the 'later' Yaminite 'rebellion' centred at Tuttul implies Tuttul was already his). -1810 was the dossier ledger/1's own 'bridged to mid-reign' date and dropped Terqa for the first decade of the reign. Region check: 4-circle union 111 cells = Mari 58 + 53 (Terqa to Tuttul), matching the snap.",
+   "page": "https://en.wikipedia.org/wiki/Yahdun-Lim",
+   "fix": "Set from -1820 (to -1797 kept), rewrote why with the page's quotes, and added events/1 (gain -1820, the ledger/1 union of Terqa, the Euphrates up river and Tuttul, 53 cells) so the keyframe has its event. --check-patch: 4 ok; trial: Mari snap gone, no new snap at -1820, the 53 cells were nobody's (no conflict), -1830..-1821 is Mari alone (58 cells). Dossier ledger/1 (-1810) now changes no cells but still captions 'c. 1810 BC (bridged to mid-reign)'; the agent's dossier request should read: move ledger/1 to -1820 and start keyframe lim-dynasty-of-mari_-1830 at -1820 (not -1810).",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "Added by this reviewer with the keyframe_overrides/1 fix: lim-dynasty-of-mari gain -1820 of Terqa, the Euphrates up river and Tuttul (same region as dossier ledger/1). Terqa at the accession is on the page ('started his reign by ... rebuilding the walls of Mari and Terqa'; reign c. 1820-1797); Tuttul rests on his title 'king of Mari, Tuttul, and the land of Hana' and the later rebellion there, confidence 1. Trial: applied, 53 cells from nobody at -1820, caption carries the patch.",
+   "page": "https://en.wikipedia.org/wiki/Yahdun-Lim",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch m1900-m1801: 4 entries, 4 ok, 0 rejected (keyframe_overrides/0 noted as -2000..-1901, outside the window); --trial: all 4 applied, keyframe snaps 6 -> 3 (Indus -1900 1,638, Eshnunna -1828 and Mari -1830 gone; Assyria -1808 12, Minoan -1900 11 and Eshnunna -1900 9 remain), conflicts unchanged (3 pairs, 30 cell-years against the published draft), end anchor m1800 1,652 cells change owner.",
+ "problems": [
+  "lim-dynasty-of-mari dossier ledger/1 (-1810, 'bridged to mid-reign') now changes no cells but still emits its -1810 caption; the dossier request should be: move ledger/1 to -1820 with events/1's note and quotes, and give keyframe lim-dynasty-of-mari_-1830 from -1820; then events/1 and keyframe_overrides/1 can be dropped. The window agent's request (start the keyframe at -1810) is superseded.",
+  "cross-window: keyframe_overrides/0 overrides indus-valley-civilization_-2000, which starts in m2000-m1901 (no patch file there yet); if that window overrides the same shape_id its entry wins and must also carry to -1901. The dossier fix (to -1901 on that keyframe) is the lasting cure.",
+  "cross-window: end anchor m1800 changes (Indus 3,027 -> 1,389 cells, Eshnunna +5); the m1800-m1701 reviewer should expect its -1800 Indus snap to vanish after the next compile.",
+  "dossier side effect: with events/0, eshnunna ledger/7 (Mahazum = Diyala governorate, -1776) gains nothing; its caption stays. Not harmful.",
+  "not reviewed: the agent's Yueshi culture dossier request (no patch entry; its page was not opened here)."
+ ]
+}

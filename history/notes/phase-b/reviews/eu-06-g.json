@@ -1,0 +1,258 @@
+{
+ "batch_id": "eu-06-g",
+ "verdicts": [
+  {
+   "slug": "magna-frisia",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1/correction",
+     "what": "The 602 and 617 keyframes (and the 714 keyframe, which reuses the 617 shape) leave out the province of Utrecht, so the capital Dorestad sits outside the drawn kingdom. The ledger's 689 loss and 714 gain of Utrecht (/ledger/1, /ledger/2, /ledger/3) also leave no trace in the keyframes.",
+     "why": "Gazetteer: Magna Frisia 602/617 has 0 of its 80 cells in Utrecht and no cell within 15 km of Dorestad (5.34E 51.97N) or Utrecht (5.12E 52.09N). Frisian Kingdom infobox 'Capital: Dorestad Traiectum (Utrecht)'; 'the Frisian kingship reached its maximum geographic development with its center of power in Dorestad'; 'Dorestad and Utrecht fell into the hands of Pepin'; Radbod page 'Between 690 and 692, Utrecht fell into the hands of Pepin'.",
+     "fix": "Set keyframe 0 (magna-frisia_602) to verdict adjust with correction {\"union\":[{\"cliopatria\":\"Magna Frisia\",\"year\":602},{\"admin1\":\"Utrecht\",\"country\":\"Netherlands\"}]}. Set the corrections of keyframes 1 and 3 to {\"union\":[{\"cliopatria\":\"Magna Frisia\",\"year\":617},{\"admin1\":\"Utrecht\",\"country\":\"Netherlands\"}]}, with text quoting the capital line, and update the cell counts in the notes (87). The 689 and 719 corrections already remove Utrecht. Non-blocking.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/10",
+     "what is missing": "A page dating the end of the free Frisians east of the Lauwers between 772 and 785. The 782 dissolve is a confidence-1 bridge to frisia.",
+     "page to try": "https://en.wikipedia.org/wiki/Saxon_Wars"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "The year of Charles Martel's annexation of Frisia up to the Vlie. The page gives only the context of Redbad's death in 719.",
+     "page to try": "https://en.wikipedia.org/wiki/Charles_Martel"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "When Frankish rule over Westergo began. The 733 rising is 'against Frankish rule', but the dossier keeps the land between the Vlie and the Lauwers Frisian until 734.",
+     "page to try": "https://en.wikipedia.org/wiki/Charles_Martel"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "The 602-649 extent is unverified. The pages disagree on the start (infobox c. 600; lead 'mid-7th century').",
+     "page to try": "https://en.wikipedia.org/wiki/Frisians"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Radbod,_King_of_the_Frisians",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Frisian_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Frisian_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Frisian_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_the_Boarn",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_the_Boarn",
+     "result": "confirmed"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Dorestad",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 21798.5,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Frisian Kingdom infobox gives no area. The Frisia Kingdom row (57-64 thousand km2) is Alamannia's geometry, set wrong/empty and documented."
+   }
+  },
+  {
+   "slug": "carantania",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "Blocking: the ledger has no vassal_start or vassal_end, though bavarians /ledger/6 (vassal_start 743, counterpart carantania) and /ledger/7 (vassal_end 788, counterpart carantania) carry the Bavarian overlordship, and the Frankish overlordship that follows to 828 is also absent.",
+     "why": "Carantania page: 'When about 740 Prince Boruth asked the Bavarian duke Odilo for help', 'Carantania lost its independence'; 'Boruth's successors had to accept the overlordship of Bavaria and the semifeudal Frankish kingdom'; infobox 'Tributary to Franks: 745', 'Integration to Franks: 828'. Reviewer brief check 3 requires the vassal's own mirror; the author's note leaves the tint to the suzerains (earlier precedent: kingdom-of-bulungan, se-03-a, failed for the same gap).",
+     "fix": "Add vassal_start 743, counterpart bavarians, region {\"cliopatria\":\"Carantania\",\"year\":741}, confidence 2, quoting the 'about 740' sentence and the Duchy of Bavaria 'around 743' sentence (add https://en.wikipedia.org/wiki/Duchy_of_Bavaria to sources). Add vassal_end 788, counterpart bavarians, confidence 1. Add vassal_start 788 and vassal_end 828, counterpart kingdom-of-the-franks, region the 749 shape, placed before the 828 dissolve.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/wars/0/zones",
+     "what is missing": "Which eastern parts the Avars 'regained ... between 745 and 795'. The war has no zone and the land is not drawn.",
+     "page to try": "https://en.wikipedia.org/wiki/Pannonian_Avars"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "The date of Ljudevit Posavski's rebellion and of the deposition of the princes, both undated on the page.",
+     "page to try": "https://en.wikipedia.org/wiki/Ljudevit_Posavski"
+    },
+    {
+     "where": "/identity",
+     "what is missing": "There is no ruler list; the page names only Valuk and Boruth.",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_rulers_of_Carinthia"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Carantania",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Carantania",
+     "result": "confirmed"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/Carantania",
+     "result": "confirmed"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "page": "https://en.wikipedia.org/wiki/Carantania",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 45562.2,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area. The shape is larger than the page's regions; kept with soft certainty, as stated."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "magna-frisia",
+    "year": 689,
+    "type": "loss",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-the-franks is owned by eu-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "magna-frisia",
+    "year": 714,
+    "type": "gain",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-07 has not run yet."
+  },
+  {
+   "event": {
+    "slug": "magna-frisia",
+    "year": 719,
+    "type": "loss",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-07 has not run yet."
+  },
+  {
+   "event": {
+    "slug": "magna-frisia",
+    "year": 734,
+    "type": "loss",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eu-07 has not run yet."
+  },
+  {
+   "event": {
+    "slug": "magna-frisia",
+    "year": 782,
+    "type": "dissolve",
+    "counterpart": "frisia"
+   },
+   "mirror": {
+    "slug": "frisia",
+    "year": 783,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "frisia names magna-frisia (768 shape) as its predecessor."
+  },
+  {
+   "event": {
+    "slug": "bavarians",
+    "year": 743,
+    "type": "vassal_start",
+    "counterpart": "carantania"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "carantania has no vassal_start with counterpart bavarians."
+  },
+  {
+   "event": {
+    "slug": "bavarians",
+    "year": 788,
+    "type": "vassal_end",
+    "counterpart": "carantania"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "carantania has no vassal_end with counterpart bavarians."
+  },
+  {
+   "event": {
+    "slug": "carantania",
+    "year": 828,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-the-franks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "The 828 Frankish gain belongs to eu-07, which has not run yet."
+  },
+  {
+   "event": {
+    "slug": "carantania",
+    "year": 661,
+    "type": "found",
+    "counterpart": "samo-s-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "samo-s-empire is owned by eu-15, which has not run yet."
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [],
+ "notes_path": "history/polities/_notes/review-eu-06-g.md",
+ "problems": [
+  "The author's counterparts_needing_dossiers lists kingdom-of-the-franks and samo-s-empire, but both are Cliopatria rows in polities.csv owned by eu-07 and eu-15 (groups not run yet), not new dossiers.",
+  "colours.json still seeds the slug frisia-kingdom, which has no dossier: its Cliopatria row is merged into magna-frisia with every shape wrong/empty (the geometry is Alamannia's, drawn by kingdom-of-alamannia's 496-723 keyframe).",
+  "No pages failed to load. The reviewer edited no dossiers."
+ ]
+}

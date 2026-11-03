@@ -1,0 +1,746 @@
+{
+ "batch_id": "me-10-d",
+ "verdicts": [
+  {
+   "slug": "zand-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/7 and /ledger (after /ledger/18)",
+     "what": "Blocking: the drop from the 1788 shape (899,495 km2, north edge 35.13N) to the 1791 shape (620,798 km2, north edge 32.30N) has no loss event; the only ledger event between them is the 1788/10 gain of Isfahan, which goes the other way.",
+     "why": "Agha Mohammad Khan Qajar page (opened by the author): after 'Jafar Khan was then able to occupy Isfahan on 20 October' (context year 1788, 'He met Jafar Qoli Khan at Isfahan in 1788'), 'Agha Mohammad Khan, learning of this, marched rapidly towards Isfahan, which led Jafar Khan withdraw to Shiraz once again and reached the city on 30 November'. The Zand held Isfahan for about six weeks; KF8's note says only 'Isfahan has gone'.",
+     "fix": "Add {year 1788, month 11, type loss, region Isfahan (and the rest of the 1788 shape north of about 32.3N), counterpart qajar-dynasty, confidence 2, source the Agha Mohammad Khan Qajar page}; mark /keyframe_review/7 so the Isfahan half is not drawn after November 1788 (or say in its note why the shape holds to 1790).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/5 to /keyframe_review/7 (1780 shape to 1788 shape)",
+     "what": "Blocking: the 1780-1787 shape keeps Azerbaijan (East and West Azerbaijan, Ardabil), Zanjan, Qazvin, Mazandaran, Golestan, Kurdistan and Kermanshah; the ledger loses only Gilan (1782), Tehran, Hamadan and Semnan, and Isfahan (1785), so several hundred thousand km2 leave the 1788 shape with no event.",
+     "why": "The same page the author used says Agha Mohammad 'seized Qazvin' and 'then marched to Zanjan, which he also seized' in the 1782 campaign, was 'conquering Mazandaran' from his brothers (c. 1779), and only 'marched into Azerbaijan in the spring of 1791' to subdue its khanates (so Azerbaijan was not Zand after 1779).",
+     "fix": "Add loss events: Qazvin and Zanjan 1782 (cp qajar-dynasty, confidence 2); Mazandaran and Golestan c. 1779-1782 (cp qajar-dynasty, confidence 2, say the page's year is contextual); Azerbaijan and the north-west to the local khans c. 1779 (confidence 1, cp khanates-of-the-caucasus or nobody), or correct the 1780 keyframe (/keyframe_review/5) to drop the north-west from 1780.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/2 and /ledger/2",
+     "what": "Blocking: between the 1752 shape (883,806 km2) and the 1757 shape (1,585,736 km2) the ledger has no event; the gain that explains the jump is dated 1760, so 1757-1759 show land the ledger has not yet gained.",
+     "why": "Zand Iran page: 'By 1760, Karim Khan had defeated all his rivals and controlled all of Iran except Khorasan'; no conquest dated 1757 is on any page opened. KF2's note admits 'the jump of 1757 may be 1-3 years early' but neither the keyframe years nor the event were changed.",
+     "fix": "Either make /keyframe_review/2 a years-change adjust ('holds from 1760'; 1757-1759 keep the 1752 shape) or add a confidence-1 gain at 1757 bridging to the 1760 statement.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/5 and /keyframe_review/6",
+     "what": "Non-blocking: keyframe_review is not in shape order (zand-dynasty_1780 is listed before zand-dynasty_1776).",
+     "why": "data/shapes.csv order: 1763, 1776, 1780, 1788.",
+     "fix": "Swap the two entries.",
+     "applied": false
+    },
+    {
+     "where": "/identity/rulers/1 to /identity/rulers/7",
+     "what": "Non-blocking: rulers after Karim Khan cite no page.",
+     "why": "Zand dynasty page lists the reigns (Lotf Ali Khan '1789 (8 May)' to '1794 (November)').",
+     "fix": "Add source https://en.wikipedia.org/wiki/Zand_dynasty to each.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Any event for the step from the 1748/1751 shape (573,044 km2) to the 1752 shape (883,806 km2), and the conquests of 1751-1760 (Azerbaijan against Azad Khan, Gilan, Mazandaran against Mohammad Hasan Khan Qajar, Kurdistan, Kerman); unverified: page budget",
+     "page to try": "https://en.wikipedia.org/wiki/Azad_Khan_Afghan"
+    },
+    {
+     "where": "/ledger/3 and /ledger/10",
+     "what is missing": "Dates of Zand overlordship of the Caucasian khanates (confidence 1 at both ends)",
+     "page to try": "https://en.wikipedia.org/wiki/Khanates_of_the_Caucasus"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "The Zand seat 1751-1761 (Isfahan?)",
+     "page to try": "https://en.wikipedia.org/wiki/Karim_Khan_Zand"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Agha_Mohammad_Khan_Qajar",
+     "result": "confirmed: 'Agha Mohammad Khan set foot in Shiraz on 21 July 1792'"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Agha_Mohammad_Khan_Qajar",
+     "result": "confirmed (Isfahan occupied 20 October, context 1788) but reversed by 30 November 1788, which the ledger lacks"
+    },
+    {
+     "where": "/ledger/7 and /ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Siege_of_Basra_(1775%E2%80%931776)",
+     "result": "confirmed: surrender 20 April 1776, garrison of 6,000, coins in Karim Khan's name, 'remained occupied until 1779'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Zand_Iran",
+     "result": "confirmed: 'By 1760 ... all of Iran except Khorasan'; Sistan and Baluchestan excluded, Sabzevar kept"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Zand_dynasty",
+     "result": "confirmed: 'Deposition: 1794', Lotf Ali Khan to November 1794; the Agha Mohammad page gives 'The city fell on 24 October' with the year only in its lead"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Agha_Mohammad_Khan_Qajar",
+     "result": "confirmed: Gilan invaded in 1782"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1592599,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Neither the Zand Iran nor the Zand dynasty infobox gives an area (checked); the author says so."
+   }
+  },
+  {
+   "slug": "bahrain",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0",
+     "what": "The 1757-1782 shape was marked ok although the dossier runs 1753-July 1783, so 1753-1756 had no keyframe; a years change is an adjust.",
+     "why": "Bahrain page: 'In 1753, the Huwala clan of Nasr Al-Madhkur invaded Bahrain on behalf of the Iranian Zand leader Karim Khan Zand'; History of Bahrain: 'the invasion of Bahrain was completed on 28 July 1783'.",
+     "fix": "Verdict set to adjust with correction {cliopatria Bahrain 1757, text: years change only, holds 1753 to July 1783}.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/History_of_Bahrain",
+     "result": "confirmed: Al Madhkur occupation dated 1753, 'ruled Bahrain in the name of Persia and paid allegiance to Karim Khan Zand'; Nasr Al-Madhkur page: 1753 'allowing Nasr Al-Madhkur to take the island'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Nasr_Al-Madhkur",
+     "result": "confirmed: 'On 17 May 1783, war broke out between the Zubarah-based Al Bin Ali Bani Utbah clan and the army of Nasr Al-Madhkur'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/History_of_Bahrain",
+     "result": "confirmed: 'the invasion of Bahrain was completed on 28 July 1783'; historians dispute 1782 or 1783"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Bahrain",
+     "result": "confirmed: Al-Madhkur lost Bahrain in 1783 after the 1782 Battle of Zubarah"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 786.8,
+    "infobox_year": null,
+    "cliopatria_km2": 881.5,
+    "ratio": 1.12,
+    "acknowledged": true,
+    "note": "Infobox area is modern (no year); 1820-1845 shapes (72,705 km2) judged wrong and acknowledged."
+   }
+  },
+  {
+   "slug": "kuwait",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/8",
+     "what": "Confidence 3 on a gain whose region the page does not name.",
+     "why": "Saudi Arabian-Kuwaiti neutral zone page gives the 7 July 1965 agreement taking effect 25 July 1966 but 'does not say how the zone was divided' or which part went to Kuwait; the author's note says the same.",
+     "fix": "Confidence lowered to 2 and the note says why.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0 to /keyframe_review/3",
+     "what is missing": "Extent of the Sheikhdom 1752-1912 (the 5,500 km2 core is unverified), the 1805-1819 outline, the Wahhabi attacks of the 1790s-1810s",
+     "page to try": "https://en.wikipedia.org/wiki/Sheikhdom_of_Kuwait"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "The counterpart the Utub took Kuwait from (Bani Khalid) has no dossier; found has no counterpart",
+     "page to try": "https://en.wikipedia.org/wiki/Bani_Khalid_Emirate"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "The 1923 gain region (1961 shape minus the 80 km circle) includes the south-west next to Nejd, which the Uqair line of 1922 settled, not the 1923 Iraq letter; split it between emirate-of-nejd (1922/12) and kingdom-of-iraq (1923/4) if a page supports it (advisory, not blocking)",
+     "page to try": "https://en.wikipedia.org/wiki/Uqair_Protocol_of_1922"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/History_of_Kuwait",
+     "result": "confirmed: 'This selection is usually dated to 1752'; Kuwait page: 'became known as the Sheikdom of Kuwait in 1752'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/History_of_Kuwait",
+     "result": "confirmed: autonomous kaza, 80 km radius, islands named; date 29 July 1913 on the Kuwait infobox"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/History_of_Kuwait",
+     "result": "confirmed: Jahra 10 October 1920"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Saudi_Arabian%E2%80%93Kuwaiti_neutral_zone",
+     "result": "confirmed: Uqair Convention 2 December 1922, zone 5,770 km2, 'share equal rights'"
+    },
+    {
+     "where": "/ledger/7 and /ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Saudi_Arabian%E2%80%93Kuwaiti_neutral_zone",
+     "result": "confirmed date (signed 7 July 1965, took effect 25 July 1966); region of /ledger/8 not on page, confidence lowered"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/History_of_Kuwait",
+     "result": "confirmed: invasion 2 August 1990, annexed 8 August"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/History_of_Kuwait",
+     "result": "confirmed: 19 April [1923] recognition of the outer line, 58 km Gulf access"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 17818,
+    "infobox_year": 2024,
+    "cliopatria_km2": 17394.6,
+    "ratio": 0.98,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "house-of-khalifa",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/rulers/1 to /identity/rulers/11",
+     "what": "Rulers after the first cited no page.",
+     "why": "House of Khalifa page table gives every reign from Ahmed bin Muhammad (1783-18 July 1795) to Isa bin Salman (2 November 1961-16 August 1971), matching the dossier.",
+     "fix": "Source https://en.wikipedia.org/wiki/House_of_Khalifa added to the 11 entries.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/8",
+     "what is missing": "End of the Al Bidda (Qatar) tie and the years of the Qatari-Bahraini War (confidence 1); qatar-dynasty dates the war 1867-1868 and has a 1847-1851 contest (Fuwayrit, Al Khor, Al Bidda) that this ledger lacks",
+     "page to try": "https://en.wikipedia.org/wiki/Qatari%E2%80%93Bahraini_War"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Who held Zubarah after 1799 (the page says only that the family moved; the loss rests on Cliopatria); consider confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Zubarah"
+    },
+    {
+     "where": "/ledger (1802-1811)",
+     "what is missing": "Wahhabi suzerainty over Bahrain (emirate-of-diriyah records a vassal_start in 1802 at confidence 1); History of Bahrain does not cover it",
+     "page to try": "https://en.wikipedia.org/wiki/Emirate_of_Diriyah"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/History_of_Bahrain",
+     "result": "confirmed: 28 July 1783; House of Khalifa page: 'Bahrain fell under the control of Ahmed bin Muhammad bin Khalifa in 1783'"
+    },
+    {
+     "where": "/ledger/3 and /ledger/4",
+     "page": "https://en.wikipedia.org/wiki/History_of_Bahrain",
+     "result": "confirmed: 1800 Salim made governor, Arad Fort besieged; 1802 Wahhabi aid, Omanis abort"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/History_of_Bahrain",
+     "result": "confirmed: Ali bin Khalifa chief of Al Bidda in 1843"
+    },
+    {
+     "where": "/ledger/6 and /ledger/7",
+     "page": "https://en.wikipedia.org/wiki/History_of_Bahrain",
+     "result": "confirmed: May 1851 attack, Mesaimeer 2-4 June 1851, peace 25 July 1851"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Bahrain",
+     "result": "confirmed only as 'moved from Qatar to Bahrain in 1799'; the page does not say Zubarah was given up (confidence 2 is generous)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/History_of_Bahrain",
+     "result": "confirmed: 1797 move, Jaww then Riffa"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 786.8,
+    "infobox_year": null,
+    "cliopatria_km2": 881.5,
+    "ratio": 1.12,
+    "acknowledged": true,
+    "note": "Bahrain infobox (modern); the 1783-1799 shape is 1,576 km2 with the Zubarah coast."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "zand-dynasty",
+    "year": 1751,
+    "type": "found",
+    "counterpart": "afsharid-iran"
+   },
+   "mirror": {
+    "slug": "afsharid-iran",
+    "year": 1748,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "afsharid-iran /ledger/29 (confidence 1) gives everything but Khorasan to zand-dynasty in 1748, three years before the Zand start; Zand's found is Isfahan only."
+  },
+  {
+   "event": {
+    "slug": "zand-dynasty",
+    "year": 1760,
+    "type": "gain",
+    "counterpart": "afsharid-iran"
+   },
+   "mirror": {
+    "slug": "afsharid-iran",
+    "year": 1748,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Twelve years apart; by the Zand Iran page the land 'by 1760' was taken from rival warlords, not from the Afsharids, who kept Khorasan. One side should move."
+  },
+  {
+   "event": {
+    "slug": "zand-dynasty",
+    "year": 1753,
+    "type": "vassal_start",
+    "counterpart": "bahrain"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Schema: vassalage is recorded only by the suzerain; bahrain needs no mirror."
+  },
+  {
+   "event": {
+    "slug": "zand-dynasty",
+    "year": 1760,
+    "type": "vassal_start",
+    "counterpart": "khanates-of-the-caucasus"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Counterpart owned by group eu-19, not written yet."
+  },
+  {
+   "event": {
+    "slug": "zand-dynasty",
+    "year": 1776,
+    "type": "occupation_start",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "ottoman-empire has no event 1774-1780 for the Zand occupation of Basra (20 April 1776-1779); route to its owner."
+  },
+  {
+   "event": {
+    "slug": "zand-dynasty",
+    "year": 1779,
+    "type": "occupation_end",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "As above."
+  },
+  {
+   "event": {
+    "slug": "zand-dynasty",
+    "year": 1782,
+    "type": "loss",
+    "counterpart": "qajar-dynasty"
+   },
+   "mirror": {
+    "slug": "qajar-dynasty",
+    "year": 1789,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "qajar-dynasty starts in 1789 (found, cp zand-dynasty, Mazandaran, Gilan, Tehran, Qazvin...); the Zand losses of 1782-1785 name a counterpart not yet alive. Orchestrator: either start qajar-dynasty in 1779-1782 or accept the found as the mirror."
+  },
+  {
+   "event": {
+    "slug": "zand-dynasty",
+    "year": 1785,
+    "type": "loss",
+    "counterpart": "qajar-dynasty"
+   },
+   "mirror": {
+    "slug": "qajar-dynasty",
+    "year": 1789,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Tehran, Hamadan, Semnan, Isfahan lost 1785; qajar mirror is its 1789 found."
+  },
+  {
+   "event": {
+    "slug": "zand-dynasty",
+    "year": 1788,
+    "type": "gain",
+    "counterpart": "qajar-dynasty"
+   },
+   "mirror": {
+    "slug": "qajar-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "No qajar loss of Isfahan in 1788 (qajar starts 1789); and the Zand re-loss of Nov 1788 is missing on both sides."
+  },
+  {
+   "event": {
+    "slug": "zand-dynasty",
+    "year": 1792,
+    "type": "loss",
+    "counterpart": "qajar-dynasty"
+   },
+   "mirror": {
+    "slug": "qajar-dynasty",
+    "year": 1794,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Zand loses Fars 21 July 1792; qajar-dynasty gains Fars and Kerman only in 1794/10 (contest 1792/7-1794/10). Qajar should gain Fars in 1792."
+  },
+  {
+   "event": {
+    "slug": "zand-dynasty",
+    "year": 1792,
+    "type": "loss",
+    "counterpart": "qajar-dynasty"
+   },
+   "mirror": {
+    "slug": "qajar-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Bushehr's defection (1791-92) has no qajar gain."
+  },
+  {
+   "event": {
+    "slug": "zand-dynasty",
+    "year": 1794,
+    "type": "dissolve",
+    "counterpart": "qajar-dynasty"
+   },
+   "mirror": {
+    "slug": "qajar-dynasty",
+    "year": 1794,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Qajar gain of Fars and Kerman 1794/10."
+  },
+  {
+   "event": {
+    "slug": "bahrain",
+    "year": 1783,
+    "type": "dissolve",
+    "counterpart": "house-of-khalifa"
+   },
+   "mirror": {
+    "slug": "house-of-khalifa",
+    "year": 1783,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Both 28 July 1783."
+  },
+  {
+   "event": {
+    "slug": "bahrain",
+    "year": 1753,
+    "type": "found",
+    "counterpart": ""
+   },
+   "mirror": {
+    "slug": "afsharid-iran",
+    "year": 1747,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "No counterpart named; afsharid-iran lost Bahrain in 1747 to 'Arab rulers of Bahrain' (confidence 1); the Nasr Al-Madhkur page has Mir Naser of Bandar Rig holding it before 1753."
+  },
+  {
+   "event": {
+    "slug": "kuwait",
+    "year": 1913,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1900,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "ottoman-empire /ledger/203 loses Kuwait to kuwait in 1900 (confidence 1, Cliopatria's year) and /ledger/187 gains Kuwait from emirate-of-nejd in 1873, so both dossiers draw Kuwait as their own in 1873-1900; the Ottoman tie (nominal vassal 1871) should be a vassal_start cp kuwait in the Ottoman ledger."
+  },
+  {
+   "event": {
+    "slug": "kuwait",
+    "year": 1923,
+    "type": "gain",
+    "counterpart": "kingdom-of-iraq"
+   },
+   "mirror": {
+    "slug": "kingdom-of-iraq",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "kingdom-of-iraq has no Kuwait event; the 1923 letter recognised a border rather than ceding land, so cp nobody may be better."
+  },
+  {
+   "event": {
+    "slug": "kuwait",
+    "year": 1966,
+    "type": "gain",
+    "counterpart": "kingdom-of-saudi-arabia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-saudi-arabia",
+    "year": 1966,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Each records a gain from the other for the partition of the shared Neutral Zone (25 July 1966); neither records a loss. Agree on one convention (gain from nobody, or contest_end only)."
+  },
+  {
+   "event": {
+    "slug": "kuwait",
+    "year": 1922,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-saudi-arabia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-saudi-arabia",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-saudi-arabia starts 1932/9; in 1922 the counterpart was Nejd. Author flagged it; contest_start and contest_end must share the string."
+  },
+  {
+   "event": {
+    "slug": "kuwait",
+    "year": 1920,
+    "type": "contest_start",
+    "counterpart": "emirate-of-nejd"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "emirate-of-nejd (me-10) not written yet."
+  },
+  {
+   "event": {
+    "slug": "kuwait",
+    "year": 1990,
+    "type": "occupation_start",
+    "counterpart": "iraqi-republic"
+   },
+   "mirror": {
+    "slug": "iraqi-republic",
+    "year": 1990,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "Dates agree (2 August 1990, 28 Feb 1991) but iraqi-republic names state-of-kuwait as counterpart; fix after state-of-kuwait is retired."
+  },
+  {
+   "event": {
+    "slug": "kuwait",
+    "year": 1991,
+    "type": "occupation_end",
+    "counterpart": "iraqi-republic"
+   },
+   "mirror": {
+    "slug": "iraqi-republic",
+    "year": 1991,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "As above."
+  },
+  {
+   "event": {
+    "slug": "house-of-khalifa",
+    "year": 1783,
+    "type": "found",
+    "counterpart": "bahrain"
+   },
+   "mirror": {
+    "slug": "bahrain",
+    "year": 1783,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "28 July 1783."
+  },
+  {
+   "event": {
+    "slug": "house-of-khalifa",
+    "year": 1799,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "qatar-dynasty",
+    "year": 1820,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "qatar-dynasty founds in 1820 on the Qatar peninsula taken from house-of-khalifa (confidence 1); house-of-khalifa gives Zubarah to nobody in 1799."
+  },
+  {
+   "event": {
+    "slug": "house-of-khalifa",
+    "year": 1843,
+    "type": "vassal_start",
+    "counterpart": "qatar-dynasty"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Suzerain-only by schema; but qatar-dynasty records contests with house-of-khalifa 1847/11-1851/7 and 1867-1868 that house-of-khalifa lacks (it has only a 1868 war entry)."
+  },
+  {
+   "event": {
+    "slug": "house-of-khalifa",
+    "year": 1800,
+    "type": "contest_start",
+    "counterpart": "sultanate-of-oman"
+   },
+   "mirror": {
+    "slug": "sultanate-of-oman",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "sultanate-of-oman has no 1799-1802 Bahrain event."
+  },
+  {
+   "event": {
+    "slug": "house-of-khalifa",
+    "year": 1851,
+    "type": "contest_start",
+    "counterpart": "emirate-of-nejd"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "emirate-of-nejd not written yet."
+  },
+  {
+   "event": {
+    "slug": "house-of-khalifa",
+    "year": 1971,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-bahrain"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-bahrain (me-10-l) not written yet; it should start in 1971."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-diriyah",
+    "year": 1802,
+    "type": "vassal_start",
+    "counterpart": "house-of-khalifa"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Suzerain-side record (confidence 1); no mirror needed; house-of-khalifa's 1802 note has Wahhabi aid against Oman, consistent."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Zubarah",
+   "kind": "place",
+   "used_in": "house-of-khalifa"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Emirate of Bani Khalid",
+   "suggested_slug": "emirate-of-bani-khalid",
+   "years": [
+    1670
+   ]
+  },
+  {
+   "name": "Sheikhdom of Bushehr (Al Madhkur)",
+   "suggested_slug": "sheikhdom-of-bushehr",
+   "years": [
+    1751,
+    1792
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-me-10-d.md",
+ "problems": [
+  "Duplicate: history/polities/state-of-kuwait.json (me-10-k) covers 1961-1991 of the same state as kuwait.json (both Cliopatria Names, Q817) and ends with a confidence-1 'dissolve' into kuwait; iraqi-republic's 1990-1991 occupation names state-of-kuwait. Retire state-of-kuwait.json and repoint iraqi-republic to kuwait.",
+  "bahrain is in substance the Bahrain holding of the Al Madhkur Sheikhdom of Bushehr: its capital (Bushehr) lies outside its only shape. Orchestrator to decide whether it stays a separate dossier or becomes sheikhdom-of-bushehr.",
+  "bahrain /keyframe_review/1-3 (shapes of 1820-1845, outside the dossier's 1753-1783 life) are 'wrong' with corrections pointing to the House of Khalifa shape; check the compiler clips them to the life and does not draw a second Bahrain over house-of-khalifa.",
+  "qajar-dynasty starts in 1789 but is the counterpart of Zand losses from 1782; qajar-dynasty gains Fars in 1794 though Shiraz fell on 21 July 1792 (route to the qajar owner).",
+  "ottoman-empire draws Kuwait as Ottoman land 1873-1900 (gain from emirate-of-nejd) while kuwait holds it; the Ottoman tie should be a vassal_start.",
+  "WebFetch returns a model extraction; for the Agha Mohammad Khan page it inferred Kerman's fall as 1792 from context, contradicted by the same page's lead and the Zand dynasty infobox (1794); I relied on the infobox."
+ ]
+}

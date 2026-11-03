@@ -1,0 +1,886 @@
+{
+ "batch_id": "ia-01-f",
+ "verdicts": [
+  {
+   "slug": "uyghur-khaganate",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/3/confidence",
+     "what": "The 751 gain of Turfan from the Tang was confidence 2, but the page gives no year for the handover.",
+     "why": "Uyghur Khaganate page, footnote: the area 'around Turfan came under the control of the Uighurs' after Talas; WebFetch: 'the footnote gives no separate year for Turfan'. The Tang example (L46) keeps Turfan and Beiting to c. 790, when they go to Tibet, and this ledger takes Gaochang from Tibet in 792 with no loss to Tibet in between.",
+     "fix": "Lowered to 1 and the conflict noted in the event's note. The author should drop the 751 gain or make it a vassal/hegemony event, so that the Tang 790 loss to Tibet and the 792 Uyghur gain from Tibet fit together.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/10/confidence",
+     "what": "The 792 gain was confidence 3 for the region Turfan-Hami, but the page names only Gaochang.",
+     "why": "Uyghur Khaganate page: 'In 792, the Uyghurs, led by Qutluq's son Baoyi Qaghan, defeated the Tibetans and Karluks, taking Gaochang.' Hami is not named.",
+     "fix": "Lowered to 2 (brief rule 7).",
+     "applied": true
+    },
+    {
+     "where": "/wars/0/belligerents, /wars/3/belligerents",
+     "what": "Mis-typed slug 'karluks'; the Karluk dossier is 'qarlugs'.",
+     "why": "history/polities/qarlugs.json is the Karluk Yabghu dossier in this batch.",
+     "fix": "Replaced 'karluks' with 'qarlugs' in both wars.",
+     "applied": true
+    },
+    {
+     "where": "/identity/rulers/12, /identity/rulers/13, /wars/5",
+     "what": "Wujie (841-846), Enian (846-848) and the 841-848 Tang-Uyghur war fall outside the state's life (744-840). The validator warns about all three.",
+     "why": "Brief check 2: rulers and wars must fall inside the life. The KF8 note itself says the remnants held no land.",
+     "fix": "Move the two rulers into the keyframe_review/8 note or the notes field, and leave the 841-848 war to the tang-dynasty dossier (ea-04).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/8/region",
+     "what": "The 789 loss of the unlocated 'Futu Valley' takes away the whole of Dzungaria, Beshbalik included.",
+     "why": "Uyghur page: 'The Karluks ... annexed Futu Valley' (789), with no location. This same ledger contests Dzungaria with Tibet in 790, and the Uyghurs beat the Karluks at Beiting in 791. The qarlugs 793 keyframe does not hold Dzungaria, and no qarlugs event loses it.",
+     "fix": "Narrow the region to a small placeholder (a place radius in western Dzungaria/Tarbagatai, confidence 1, page silent on location), the same in qarlugs /ledger/3.",
+     "applied": false
+    },
+    {
+     "where": "/certainty/0/note",
+     "what": "The certainty note does not name the 821/822 Tibet-Uyghur treaty that the sources entry cites.",
+     "why": "The sources[] note for Tibetan_Empire mentions 'the 821/822 treaty'. Brief check 10: certainty notes name the treaty borders.",
+     "fix": "Name the 821/822 treaty in the certainty note (no line is given, so the level stays soft).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/3",
+     "what is missing": "Who or what explains the 757 step into Dzungaria and the northern Tarim (+1,759 cells, unverified: page budget), and the 793 drop of western Dzungaria and the Tianshan (-2,980 cells)",
+     "page to try": "https://en.wikipedia.org/wiki/Beiting_Protectorate"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "A dated Turgesh submission to the Uyghurs (755 is Cliopatria's step; confidence 1). The turgesh dossier carries no matching vassal_start",
+     "page to try": "https://en.wikipedia.org/wiki/Turgesh"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "The end of Uyghur overlordship over the Karluks (766 is a bridge; confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Karluks"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "The location of the Futu (Fu-tu) valley annexed by the Karluks in 789",
+     "page to try": "https://en.wikipedia.org/wiki/Shatuo"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "The end of the Tibet contest (808 is the last dated gain; confidence 1). The 808 'seized Liang Province' is recorded only as a contest end",
+     "page to try": "https://en.wikipedia.org/wiki/Tibetan_Empire"
+    },
+    {
+     "where": "/ledger/0, /ledger/1",
+     "what is missing": "The 744-745 founding rests on the Uyghur page alone; the Second Turkic Khaganate page was not opened",
+     "page to try": "https://en.wikipedia.org/wiki/Second_Turkic_Khaganate"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Uyghur_Khaganate",
+     "result": "confirmed: 'In 745, the Uyghurs killed the last khagan of the Göktürks, Kulun Beg'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Karluk_Yabgu_State",
+     "result": "confirmed: Bilge Yabghu Tun Apa Yigen Chor 'submitted to the Uyghur Khaganate in 746'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Uyghur_Khaganate",
+     "result": "confirmed: 'In 758, the Uyghurs turned their attention to the northern Yenisei Kyrgyz'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Uyghur_Khaganate",
+     "result": "confirmed year (paragraph 'In 789'); no location given"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Uyghur_Khaganate",
+     "result": "confirmed: 'In 790, the Uyghurs and Tang forces were defeated by Tibetan Empire at Tingzhou'"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Uyghur_Khaganate",
+     "result": "confirmed year 792 (Gaochang; 803 again); the region is broader than the page, so confidence was lowered to 2"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Uyghur_Khaganate",
+     "result": "confirmed: infobox 'Disestablished: 840'; 'they sacked Ordu-Baliq, razing it to the ground'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Uyghur_Khaganate",
+     "result": "footnote confirmed, but it gives no year: confidence lowered to 1"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 3100000,
+    "infobox_year": 800,
+    "cliopatria_km2": 3027888,
+    "ratio": 0.98,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "qarlugs",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "The Uyghur overlordship of 746-766 is missing from this ledger, though uyghur-khaganate /ledger/2 and /ledger/6 carry it with counterpart qarlugs.",
+     "why": "Brief check 3: a vassal_start of X must be a vassal_start in X's ledger with this state as counterpart. Karluk Yabgu page: Bilge Yabghu Tun Apa Yigen Chor 'submitted to the Uyghur Khaganate in 746'. The author's notes say this was left to the Uyghur ledger on purpose.",
+     "fix": "Add a vassal_start at 746 (counterpart uyghur-khaganate, region = keyframe_review/0's homeland, confidence 3, source Karluk_Yabgu_State) and a vassal_end at 766 (confidence 1, bridging), mirroring the Uyghur events.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/3/region",
+     "what": "The 789 gain of the unlocated Futu Valley takes all of Dzungaria. No later event loses it, and the 793 keyframe does not hold it.",
+     "why": "Uyghur page: 'annexed Futu Valley' with no location; the Karluks were beaten at Beiting in 791 (Uyghur page).",
+     "fix": "Narrow to a small placeholder region (confidence 1), the same as uyghur-khaganate /ledger/8.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "The 742-765 homeland is a proxy (East Kazakhstan plus Tacheng 200 km); the pages give 'between the Altai and the eastern shore of Lake Balkhash' / 'Kara-Irtysh and the Tarbagatai'",
+     "page to try": "https://en.wikipedia.org/wiki/Karluks"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "The Fergana lands the Karluks lost after Talas ('The Arabs dislodged the Karluks from Fergana', undated) are not drawn",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Talas"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Karluk_Yabgu_State",
+     "result": "confirmed: 'In 742, they were named \"Saɣ Yabghu\" by Basmyl khagan Ashina Shi'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kara-Khanid_Khanate",
+     "result": "confirmed: 'By 766, the Karluks had forced the submission of the Turgesh'; Karluks page: overran the Türgesh in Jetisu, capital to Suyab"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Uyghur_Khaganate",
+     "result": "confirmed year 789; location not on page"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Karluk_Yabgu_State",
+     "result": "confirmed: 'When the Yenisei Kyrgyz destroyed the Uyghur Khaganate in 840, Karluk yabghu declared himself khagan ... forming the Kara-Khanid Khanate'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 407815,
+    "ratio": null,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kara-khanids",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/6/correction",
+     "what": "The correction adds Kashgar (200 km) to the whole 896-959 shape, so Kashgar is drawn from 896, though the ledger gains it in 934 (/ledger/2) and the correction's own text says 'from 934'.",
+     "why": "A correction describes the whole shape for the keyframe's span (research brief, region grammar). The 896 shape has no Kashgar (bbox south edge 41.0 N, Kashgar about 39.5 N). Kara-Khanid page: Satuq Bughra Khan 'converted to Islam in 934 and then captured Kashgar'. About 125,000 km2 are drawn 38 years early, on a 409,000 km2 shape.",
+     "fix": "Drop the Kashgar term from keyframe_review/6 (verdict ok, or adjust with a years-only text) and let /ledger/2 add Kashgar in 934. Alternatively split the keyframe at 934 with from/to. keyframe_review/7 (960) keeps Kashgar, which is right.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger",
+     "what is missing": "The Kara-Khanid invasion of Khorasan (1006) and the defeat near Balkh (1008) against the Ghaznavids: an occupation pair and a war are missing; there are also no Kara-Khanid-Ghaznavid frontier events up to 1045",
+     "page to try": "https://en.wikipedia.org/wiki/Ghaznavids"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "The year Kashgar returned from Khotan (971 is a bridge; confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Tarim_Basin"
+    },
+    {
+     "where": "/ledger/9, /ledger/10",
+     "what is missing": "The year of the split ('the 1040s'; 1045 is Cliopatria's, confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Seljuk_Empire"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Who held Kashgar and the west Tarim 850-933 (the corrections leave them nobody's)",
+     "page to try": "https://en.wikipedia.org/wiki/Tarim_Basin"
+    },
+    {
+     "where": "/identity",
+     "what is missing": "Ruler list and Uzgen/Kashgar capitals",
+     "page to try": "https://en.wikipedia.org/wiki/Kara-Khanid_Khanate"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kara-Khanid_Khanate",
+     "result": "confirmed: infobox 'Established: 840'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kara-Khanid_Khanate",
+     "result": "confirmed: 'converted to Islam in 934 and then captured Kashgar' (also 932 in the dynasty list)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Kara-Khanid_Khanate",
+     "result": "confirmed: 'Between 990 and 992, Hasan took Isfijab, Ferghana, Ilaq, Samarkand, and the Samanid capital Bukhara'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Kara-Khanid_Khanate",
+     "result": "confirmed: 'by 999 Ali's son Nasr had taken Chach, Samarkand, and Bukhara'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Kara-Khanid_Khanate",
+     "result": "confirmed: 'In 1006, Yusuf Qadir Khan of Kashgar conquered the Kingdom of Khotan'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Kara-Khanid_Khanate",
+     "result": "confirmed: 'split into the Eastern and Western Khanates in the 1040s' (1045 rightly confidence 1)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1310698,
+    "ratio": null,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "ganzhou-kingdom",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "The Song suzerainty of 961 is missing; it is dated on the page and the dossier's own notes give it.",
+     "why": "Ganzhou page: 'In 961 the Ganzhou Uyghurs accepted the Song dynasty as suzerains.' Research brief rule 4: tributaries and clients are vassal events in both ledgers. northern-song exists in polities.csv (961-1138).",
+     "fix": "Add a vassal_start at 961 (counterpart northern-song, region = the Cliopatria Ganzhou 926 shape, confidence 3) and a vassal_end at 1036 (confidence 2, at annexation).",
+     "applied": false
+    },
+    {
+     "where": "/wars/0",
+     "what": "The 874 Wenmo war lies outside the state's life (894-1036) and lists ganzhou-kingdom as a belligerent before it existed. The validator warns.",
+     "why": "Ganzhou page: the Wenmo 'drove out the Uyghurs' in 874; the kingdom was 'established' in 894.",
+     "fix": "Move the war to the notes, or to the predecessor's note on identity.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger",
+     "what is missing": "The 911 subordination of the Jinshan Kingdom to Ganzhou ('forced them into an alliance as a lesser partner'): possibly a vassal_start of jinshan-kingdom 911-914",
+     "page to try": "https://en.wikipedia.org/wiki/Guiyi_Circuit"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Whether Liangzhou was held after 1009 (1010 is a bridge; confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Western_Xia"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "The kingdom's extent (Suzhou, Guazhou) against Cliopatria's static 978-cell shape",
+     "page to try": "https://en.wikipedia.org/wiki/Guiyi_Circuit"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Ganzhou_Uyghur_Kingdom",
+     "result": "confirmed: 'In 894 the Uyghurs led by Pangteqin (Huaijian Khagan) established the Ganzhou Uyghur Kingdom in Ganzhou'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Ganzhou_Uyghur_Kingdom",
+     "result": "confirmed: 'In 1009 the Ganzhou Uyghurs captured Liangzhou'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Ganzhou_Uyghur_Kingdom",
+     "result": "confirmed: 'In 1028 the Ganzhou Uyghurs were defeated by the Tanguts'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Ganzhou_Uyghur_Kingdom",
+     "result": "confirmed: 'In 1036 the Ganzhou Uyghur Kingdom was annexed by the Tanguts'; infobox 'Disestablished: 1036'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 233037,
+    "ratio": null,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "qocho-kingdom",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/6",
+     "what": "The 1128 event is typed 'dissolve' (confidence 3) and the life ends in 1128, but the page has the kingdom becoming a vassal in 1128 and lasting to the 14th century.",
+     "why": "Qocho page: 'In 1128, the Kingdom of Qocho became a vassal of the Qara Khitai'. Infobox: 'Independent state (843–1132)', 'Vassal state of the Western Liao (1132–1209)', 'Vassal state of the Mongol Empire (1209–1335)', 'Disestablished: 14th century'; 'By the 1370s, the Kingdom of Qocho ceased to exist.' Research brief rule 4: vassals are a lighter tint, not an end. As written, Cliopatria's own Qocho shape for 1129-1138 belongs to no one.",
+     "fix": "Make /ledger/6 a vassal_start (1128, counterpart kara-khitans, confidence 3; note that the infobox says 1132). Extend identity.end at least to Cliopatria's 1138, and better to the 14th century with new keyframes (the corrected 1126 shape, from/to), a vassal_end/vassal_start in 1209 to mongol-empire and later chagatai-khanate, and the dissolve at the end. Give keyframe_review/5 the whole 1126-1138 span.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/4/correction",
+     "what": "The correction removes Kucha and Aksu from the whole 1040-1125 shape, while /ledger/5 dates the loss to 1096 and the note says 'from 1096'.",
+     "why": "A correction describes the whole shape for its span. Qocho page: 'By 1096, Qocho had lost Aksu, Tumshuk, and Kucha to the Kara-Khanid Khanate.' As written, Kucha is nobody's in 1040-1095: the Kara-Khanid shapes do not overlap the Qocho shape (0 shared cells).",
+     "fix": "Use the 888-style correction for keyframe_review/4 (minus Gansu, plus Hami) and let the 1096 loss remove Kucha and Aksu. keyframe_review/5 (1126) keeps the minus.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what": "The Cliopatria 860 keyframe overlaps the new keyframe 843-865 in 860-865; only its note says the shape holds from 866.",
+     "why": "keyframe_review/0 has from 843, to 865.",
+     "fix": "State in the correction text that the 860 shape applies from 866, keyframe 0 covering 860-865.",
+     "applied": false
+    },
+    {
+     "where": "/wars/2/belligerents",
+     "what": "In the 1096 war the slug 'kara-khanids' (the unified khanate, ended 1045) is used where the counterpart of /ledger/5 is eastern-kara-khanids.",
+     "why": "/ledger/5 counterpart eastern-kara-khanids; kara-khanids.json ends in 1045.",
+     "fix": "Replaced with eastern-kara-khanids.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Who held Aksu before 1096: Cliopatria gives it to Khotan 888-1009, and the Qocho page has Qocho losing it 'by 1096'",
+     "page to try": "https://en.wikipedia.org/wiki/Tarim_Basin"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "The vassal centuries 1128-1370s (Qara Khitai, Mongols 1209, Chagatai)",
+     "page to try": "https://en.wikipedia.org/wiki/Qara_Khitai"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Qocho",
+     "result": "confirmed: 'In 843, a group of Uyghurs migrated southward under the leadership of Pangtele, and occupied' Karasahr and Kucha"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Qocho",
+     "result": "confirmed: 866 captures of Xizhou, Tingzhou, Changbaliq and Luntai from the Guiyi Circuit"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Qocho",
+     "result": "confirmed: 876 'the Kingdom of Qocho seized Yizhou'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Qocho",
+     "result": "confirmed: 904 Zhang Chengfeng seized Yizhou and Xizhou; ended after 911"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Qocho",
+     "result": "confirmed: 'By 1096, Qocho had lost Aksu, Tumshuk, and Kucha'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Qocho",
+     "result": "year confirmed (1128), but the page says vassal, not dissolution: the event is mis-typed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 653223,
+    "ratio": null,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kingdom-of-khotan",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/identity/rulers/0",
+     "what": "Viśvānanda's reign starts in 844, before the state's 851 start.",
+     "why": "Brief check 2: rulers inside the life. Khotan page king list: 'Viśvānanda (Viśa' Nanta) - 844'.",
+     "fix": "Start the entry in 851 and keep 844 in its note, or extend the dossier backwards (see thin).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/start",
+     "what is missing": "The kingdom before 851 (infobox 'established c. 300 BC'; 'Khotan was taken by the Tibetan Empire in 792'; infobox 'Tibet invades and conquers Khotan: 670'): the Tang and Tibetan years need keyframes and occupation/vassal events",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Khotan"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "The extent 851-1006. The page calls Khotan in the 10th century 'the only city-state in the Tarim Basin that was not yet conquered' by Qocho or the Kara-Khanids, yet the shape keeps Aksu (Qocho's before 1096 on the Qocho page) and the Alay cells",
+     "page to try": "https://en.wikipedia.org/wiki/Tarim_Basin"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "The year Kashgar was lost again after 970 (971 is a bridge; confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Tarim_Basin"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Khotan",
+     "result": "confirmed: 'Khotan was taken by the Tibetan Empire in 792' and 'would go on to gain its independence in 851'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Khotan",
+     "result": "confirmed: 'Khotan briefly took Kashgar from the Kara-Khanids in 970'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Khotan",
+     "result": "confirmed: 'In 1006, the Muslim Kara-Khanid ruler Yusuf Kadir (Qadir) Khan of Kashgar conquered Khotan'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Khotan",
+     "result": "confirmed: infobox 'Disestablished: 1006'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 302510,
+    "ratio": null,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "uyghur-khaganate",
+    "year": 745,
+    "type": "gain",
+    "counterpart": "second-turkic-khaganate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier yet; listed in the author's counterparts_needing_dossiers (ia-01-c or ia-01-x)."
+  },
+  {
+   "event": {
+    "slug": "uyghur-khaganate",
+    "year": 746,
+    "type": "vassal_start",
+    "counterpart": "qarlugs"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "qarlugs has no vassal_start 746 / vassal_end 766 with counterpart uyghur-khaganate (same batch; fix listed)."
+  },
+  {
+   "event": {
+    "slug": "uyghur-khaganate",
+    "year": 751,
+    "type": "gain",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "tang-dynasty is ea-04 and not run yet. Disagreement to settle: the Tang example (L46) loses Dzungaria and Turfan-Hami to Tibet c. 790, not to the Uyghurs in 751. The Uyghur event was lowered to confidence 1."
+  },
+  {
+   "event": {
+    "slug": "uyghur-khaganate",
+    "year": 755,
+    "type": "vassal_start",
+    "counterpart": "turgesh"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "turgesh.json (ia-01-e) has no vassal_start with counterpart uyghur-khaganate. The Uyghur side is confidence 1; route to the turgesh author or a gap-filler."
+  },
+  {
+   "event": {
+    "slug": "uyghur-khaganate",
+    "year": 758,
+    "type": "vassal_start",
+    "counterpart": "yenisei-kyrgyz"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "yenisei-kyrgyz.json (ia-01-c) has no 758 vassal_start (counterpart uyghur-khaganate); its 763 loss to nobody is Cliopatria's gap. The Yenisei Kyrgyz page: 'the Kyrgyz came under the rule of the Uyghur Khaganate' (758)."
+  },
+  {
+   "event": {
+    "slug": "uyghur-khaganate",
+    "year": 766,
+    "type": "vassal_end",
+    "counterpart": "turgesh"
+   },
+   "mirror": {
+    "slug": "turgesh",
+    "year": 766,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "turgesh dissolves in 766 (loss to qarlugs) but never opened the vassal relation."
+  },
+  {
+   "event": {
+    "slug": "uyghur-khaganate",
+    "year": 789,
+    "type": "loss",
+    "counterpart": "qarlugs"
+   },
+   "mirror": {
+    "slug": "qarlugs",
+    "year": 789,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Matched in year and region (Dzungaria, both confidence 1); the region is an overreach on both sides."
+  },
+  {
+   "event": {
+    "slug": "uyghur-khaganate",
+    "year": 792,
+    "type": "gain",
+    "counterpart": "tibetan-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "tibetan-empire is ea-04 and not run yet."
+  },
+  {
+   "event": {
+    "slug": "uyghur-khaganate",
+    "year": 840,
+    "type": "vassal_end",
+    "counterpart": "yenisei-kyrgyz"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "yenisei-kyrgyz has no vassal pair; see 758."
+  },
+  {
+   "event": {
+    "slug": "uyghur-khaganate",
+    "year": 840,
+    "type": "loss",
+    "counterpart": "yenisei-kyrgyz"
+   },
+   "mirror": {
+    "slug": "yenisei-kyrgyz",
+    "year": 840,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Kyrgyz L2 840 gain uyghur-khaganate (Orkhon), confidence 3."
+  },
+  {
+   "event": {
+    "slug": "qarlugs",
+    "year": 766,
+    "type": "gain",
+    "counterpart": "turgesh"
+   },
+   "mirror": {
+    "slug": "turgesh",
+    "year": 766,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "turgesh L12 766 loss qarlugs, Semirechye."
+  },
+  {
+   "event": {
+    "slug": "qarlugs",
+    "year": 789,
+    "type": "gain",
+    "counterpart": "uyghur-khaganate"
+   },
+   "mirror": {
+    "slug": "uyghur-khaganate",
+    "year": 789,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kara-khanids",
+    "year": 893,
+    "type": "loss",
+    "counterpart": "samanid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "samanid-empire is me-08 and not run yet."
+  },
+  {
+   "event": {
+    "slug": "kara-khanids",
+    "year": 934,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody (the page does not say who held Kashgar). The Khotan dossier leaves Kashgar out for 851-1006, which is consistent."
+  },
+  {
+   "event": {
+    "slug": "kara-khanids",
+    "year": 970,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-khotan"
+   },
+   "mirror": {
+    "slug": "kingdom-of-khotan",
+    "year": 970,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Pair 970-971 on both sides."
+  },
+  {
+   "event": {
+    "slug": "kara-khanids",
+    "year": 999,
+    "type": "gain",
+    "counterpart": "samanid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-08 not run yet."
+  },
+  {
+   "event": {
+    "slug": "kara-khanids",
+    "year": 1006,
+    "type": "gain",
+    "counterpart": "kingdom-of-khotan"
+   },
+   "mirror": {
+    "slug": "kingdom-of-khotan",
+    "year": 1006,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Khotan 1003 shape against the 1000 shape: the cells are identical."
+  },
+  {
+   "event": {
+    "slug": "kara-khanids",
+    "year": 1045,
+    "type": "split",
+    "counterpart": "eastern-kara-khanids"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eastern-kara-khanids and western-karakhanid-khanate belong to other ia-01 parts that have not run yet."
+  },
+  {
+   "event": {
+    "slug": "qarlugs",
+    "year": 840,
+    "type": "dissolve",
+    "counterpart": "kara-khanids"
+   },
+   "mirror": {
+    "slug": "kara-khanids",
+    "year": 840,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Continuity 840; the reviewer keeps two dossiers (two Wikipedia articles and Wikidata ids), but the colour agent should relate them."
+  },
+  {
+   "event": {
+    "slug": "ganzhou-kingdom",
+    "year": 1036,
+    "type": "loss",
+    "counterpart": "western-xia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "western-xia is ea-05 and not run yet; western-xia should carry a 1036 gain, the 1028-1036 contest, and the end of the northern-song vassalage."
+  },
+  {
+   "event": {
+    "slug": "ganzhou-kingdom",
+    "year": 961,
+    "type": "vassal_start",
+    "counterpart": "northern-song"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Not in either ledger: the page dates it (961); the Ganzhou fix is listed; northern-song (ea) should mirror it."
+  },
+  {
+   "event": {
+    "slug": "qocho-kingdom",
+    "year": 866,
+    "type": "gain",
+    "counterpart": "guiyi-circuit"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "guiyi-circuit has no dossier and is listed in counterparts_needing_dossiers. Consistent with the Tang example: L51 has Zhang take Xizhou in 851."
+  },
+  {
+   "event": {
+    "slug": "qocho-kingdom",
+    "year": 876,
+    "type": "gain",
+    "counterpart": "guiyi-circuit"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "As above."
+  },
+  {
+   "event": {
+    "slug": "qocho-kingdom",
+    "year": 904,
+    "type": "occupation_start",
+    "counterpart": "guiyi-circuit"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "As above; 904-911."
+  },
+  {
+   "event": {
+    "slug": "qocho-kingdom",
+    "year": 1096,
+    "type": "loss",
+    "counterpart": "eastern-kara-khanids"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eastern-kara-khanids not run yet; it should carry a gain of Kucha and Aksu by 1096."
+  },
+  {
+   "event": {
+    "slug": "qocho-kingdom",
+    "year": 1128,
+    "type": "dissolve",
+    "counterpart": "kara-khitans"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "This should be a vassal_start (Qocho page). kara-khitans (ia-01-g, not run) must carry a vassal_start in 1128/1132 naming qocho-kingdom."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Ordu-Baliq (Karabalghasun)",
+   "kind": "place",
+   "used_in": "uyghur-khaganate"
+  },
+  {
+   "name": "Jiuquan (Suzhou)",
+   "kind": "place",
+   "used_in": "ganzhou-kingdom"
+  },
+  {
+   "name": "Guazhou",
+   "kind": "place",
+   "used_in": "ganzhou-kingdom"
+  },
+  {
+   "name": "Changbaliq",
+   "kind": "place",
+   "used_in": "qocho-kingdom"
+  },
+  {
+   "name": "Luntai (Bugur)",
+   "kind": "place",
+   "used_in": "qocho-kingdom"
+  },
+  {
+   "name": "Tumshuk",
+   "kind": "place",
+   "used_in": "qocho-kingdom"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Second Turkic Khaganate",
+   "suggested_slug": "second-turkic-khaganate",
+   "years": [
+    682,
+    745
+   ]
+  },
+  {
+   "name": "Guiyi Circuit",
+   "suggested_slug": "guiyi-circuit",
+   "years": [
+    848,
+    1036
+   ]
+  },
+  {
+   "name": "Jinshan Kingdom",
+   "suggested_slug": "jinshan-kingdom",
+   "years": [
+    910,
+    914
+   ]
+  },
+  {
+   "name": "Xiliangfu",
+   "suggested_slug": "xiliangfu",
+   "years": [
+    906,
+    1030
+   ]
+  },
+  {
+   "name": "Wenmo",
+   "suggested_slug": "wenmo",
+   "years": [
+    874,
+    894
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ia-01-f.md",
+ "problems": [
+  "No page failed to load for the reviewer. The author's report already lists Karluk_Yabghu_State as a 404 (Karluk_Yabgu_State works).",
+  "Neighbour dossiers read: yenisei-kyrgyz, turgesh, turks, kimek-kipchak-confederation (exist). Missing and owned by groups that have not run: samanid-empire, tibetans, abbasid-caliphate, tang-dynasty (the worked example was used for the Tang), tibetan-empire, western-xia, liao-dynasty, eastern-kara-khanids, ghaznavid-empire, lohara-dynasty, seljuk-dynasty, kashmir, kara-khitans, great-seljuk-empire, utpala-dynasty.",
+  "Routing: yenisei-kyrgyz (ia-01-c) needs a 758-840 vassal pair with counterpart uyghur-khaganate; turgesh (ia-01-e) needs a 755-766 vassal relation to uyghur-khaganate, or the Uyghur event should be dropped.",
+  "Qarlugs and Kara-Khanids: the Karluk Yabghu page says the 840 title change 'formed the Kara-Khanid Khanate'. The reviewer keeps two dossiers (two Wikipedia articles, two Wikidata ids, the Kara-Khanid infobox 'Established: 840') but the colour agent should give them related hues.",
+  "Applied reviewer edits: uyghur-khaganate (ledger 3 and 10 confidence, wars 0 and 3 slug) and qocho-kingdom (wars 2 slug); both re-validated with 0 errors and read back."
+ ]
+}

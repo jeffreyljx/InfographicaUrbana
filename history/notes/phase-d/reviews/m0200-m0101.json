@@ -1,0 +1,110 @@
+{
+ "window": "m0200-m0101",
+ "checks": [
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "nanyue_-170 (wide outline with Minyue's land as subject kingdom) gets 'to' -136. Page: Minyue submitted to Nanyue in the stage 183-135 BC; 'The third stage began in 135 BC when King Wang Ying attacked a weakened Nanyue'; 'Minyue once again submitted to the Han dynasty, making itself and Nanyue equals once more'. Spec unchanged from the dossier (2,588 cells). Against a no-patch trial: in -135..-127 the 679 Fujian/east Guangdong cells pass from Nanyue's Han-vassal tint to Minyue, Nanyue keeps its 1,409-cell core; only side effect is 2 Nanyue edge cells (23.9-24.4 N, 111-114.5 E) nobody's -135..-112.",
+   "page": "https://en.wikipedia.org/wiki/Nanyue",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "what": "han-dynasty_-127 plus Hunan and Jiangxi (11,381 cells). Changsha page: the kingdom 'located in present-day Hunan', its kings 'staunch supporters of the Han', re-granted to Liu Fa in 155, abolished only in AD 33; Jiangxi page: Yuzhang Commandery 'established in Jiangxi at the beginning of the Han dynasty', its counties 'covered most of the modern province of Jiangxi' through most of the Han. Trial: the 829 cells (Hunan 331, Jiangxi 498) that fell to nobody at -127 stay Han, as all 884 Hunan and 750 Jiangxi cells were Han before -127. The why's 'imperial commandery after 157' is loose (the page re-creates the kingdom in 155) but Hunan is inside the Han realm either way.",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Changsha",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "what": "han-dynasty_-126 plus Hunan and Jiangxi, same spec and pages as /1. Trial: Hunan (331) and Jiangxi (498) stay Han -126..-112; the 498 Jiangxi cells no longer go to Minyue in -126 (Han wins them by R2 as it did before -127). The Minyue dossier's 'eastern Jiangxi' (History of Fujian) against the Jiangxi page's 'most of the modern province' is a dossier-level question; the patch keeps the pre-127 result.",
+   "page": "https://en.wikipedia.org/wiki/Jiangxi",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/3",
+   "verdict": "pass",
+   "what": "han-dynasty_-121 plus Hunan and Jiangxi (12,351 cells), same pages. Trial: no change beyond keeping Hunan and Jiangxi Han -121..-112.",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Changsha",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/4",
+   "verdict": "fixed",
+   "what": "han-dynasty_-111 plus Jiangxi: supported (Jiangxi page, Yuzhang Commandery). But the override, built on the 110 shape, still dropped 229 Hexi Corridor cells (Gansu, 36-42 N, 93-104 E) at -111, and they stayed nobody's to -101, although the Han-Xiongnu War page has 'the Han had conquered a territory stretching from the Hexi Corridor to Lop Nur' (121), 'By 115 BC, the Han had set up commanderies at Jiuquan and Wuwei', 'In 111 BC, a major Qiang-Xiongnu allied force was repelled from the Hexi Corridor', and no loss before 90.",
+   "page": "https://en.wikipedia.org/wiki/Han-Xiongnu_War",
+   "fix": "Added {\"region\": \"Hexi Corridor\"} to the correction union (as in han-dynasty_-121); 15,044 -> 15,273 cells. Re-trial: the -111 snap removes 0 cells (was 229); Hexi Corridor 842/842 Han -112..-101.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/5",
+   "verdict": "fixed",
+   "what": "han-dynasty_-110 plus the Yelang lands (Guizhou/Guangxi/Hunan, 1,385 cells): supported (Nanyue page: the Yi tribes kept their allegiance 'until Nanyue's demise in 111 BC'; Nanyue divided into seven commanderies). Three gaps left: (1) 96 of the 289 cells of Yelang's own region (its Yunnan side) still fell out of Han at -110 and came back at -109, the very problem the entry names; (2) the 110 shape also dropped 211 Ordos cells at -110 (and the -111 entry 229 Hexi cells), which stayed nobody's to -101 although the Han-Xiongnu War page has 'In 127 BC, General Wei Qing invaded and retook full control of the Ordos region' and no loss before 90; (3) 'from'/'to' -110 cut the keyframe's span (dossier/shapes.csv -110..-92), so the -108 snap stripped 22 Han edge cells (the Datong row at 40.4 N, Hexi edges, Dunhuang) in -108..-101 that the no-patch compile keeps.",
+   "page": "https://en.wikipedia.org/wiki/Nanyue",
+   "fix": "Added the Yelang region (Liupanshui 150 km + Anshun 70 km, as the yelang dossier), {\"region\": \"Hexi Corridor\"} and {\"region\": \"Ordos\"} to the union (15,723 -> 16,259 cells) and removed 'from'/'to' so the keyframe keeps its -110..-92 span. Re-trial against a no-patch trial: Han holds Yelang 289/289, Ordos 884/884 and Hexi 842/842 in -111..-101; the 22-cell loss at -108 is gone; nothing else changes (4 NE edge cells still leave Han, now at -109 instead of -110).",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/6",
+   "verdict": "pass",
+   "what": "indo-scythians_-110 without Margiana and Sistan, 'to' -101 (3,155 -> 2,617 cells; Margiana 294 + Sistan 256). Mithridates II page: 'Sometime between 124 and 115 BC, Mithridates II sent an army led by a general of the House of Suren', 'After Sakastan was incorporated back into the Parthian realm', 'his early coin mints from central Iran and Marw in Margiana', 'Mithridates II also reconquered western Bactria from the Scythians'. The Parthian dossier already gains Sakastan at -115; the IS dossier's -100 (Sakastan page) loses to the page opened. 'to' -101 matches the dossier's own text ('held to -101'). Trial: Margiana and Sistan Parthian from -110; IS keeps Arachosia/Makran (2,368 cells).",
+   "page": "https://en.wikipedia.org/wiki/Mithridates_II_of_Parthia",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/7",
+   "verdict": "pass",
+   "what": "new keyframe minyue_-135 (-135..-127), the dossier's own minyue_-170 shape (1,525 cells). The Nanyue page has Minyue alive after 135 ('Minyue once again submitted to the Han dynasty, making itself and Nanyue equals once more'); the dossier's ledger/8 split to 'dongyue' (no dossier) emptied the kingdom. Trial: Minyue holds its 679 core cells -135..-112 (was Nanyue's -135..-127 and partly nobody's); the dossier request for dongyue/ledger 8 stands.",
+   "page": "https://en.wikipedia.org/wiki/Nanyue",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/8",
+   "verdict": "pass",
+   "what": "parthian-empire_-110 = Cliopatria -91 minus Atropatene plus Sistan whole (10,536 -> 10,670 cells, +134 Sistan cells). Mithridates II page: Sakastan recaptured 'Sometime between 124 and 115 BC' and 'incorporated back into the Parthian realm'. Trial: Sistan 256/256 Parthian from -110 (was 244 Indo-Scythian). The same outline still drops the 289 middle Amu Darya cells the ledger gained at -115 (see problems): pre-existing, not caused by this entry.",
+   "page": "https://en.wikipedia.org/wiki/Mithridates_II_of_Parthia",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "pass",
+   "what": "Parthia over the Indo-Scythians in Margiana (294 cells, 60.5-64.7 E, 35.3-39.5 N), -144..-128. Mithridates I page: 'He first conquered Aria, Margiana and western Bactria from the Greco-Bactrians sometime in 163-155 BC', 'Merv became a stronghold of Parthian dominance in the northeast', the Saka only 'In c. 140 BC'; no eastern loss. Settled 582 cell-years at -144; Margiana Parthian -144..-127 (was Saka). From -126 the Indo-Scythian -126 keyframe takes it again to -111 (see problems).",
+   "page": "https://en.wikipedia.org/wiki/Mithridates_I_of_Parthia",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "rulings/1",
+   "verdict": "pass",
+   "what": "Parthia over the Indo-Scythians for -110 in Margiana, Sistan and the Amu Darya band. Page: Sakastan back 124-115, 'Marw in Margiana' mint, 'Control over the middle Amu Darya including Amul was vital for the Parthians', coins 'in western Bactria and in the middle Amu Darya'. The spec (1,818 cells, the whole river's 120 km band from the Pamirs to the Aral, the same leaf as the Parthian ledger's -115 gain) is wider than 'the middle Amu Darya', but the ruling acts only on the pair's -110 conflict: it settled 248 cells, all at 60.5-65.1 E, 35.3-40.1 N (the middle course), the Margiana/Sistan part being redundant after /6.",
+   "page": "https://en.wikipedia.org/wiki/Mithridates_II_of_Parthia",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch m0200-m0101 after the review edits: 11 entries, 11 ok, 0 rejected; trial of the edited file: 11 applied (rulings/0 582 cell-years, rulings/1 248), 347 other windows' entries applied, 0 skipped; against a no-patch trial the only changes are Minyue's own land -135..-127, Hunan/Jiangxi Han -127..-111, Yelang/Hexi/Ordos Han -111..-101, Margiana Parthian -144..-127, Margiana/Sistan/middle Amu Darya band Parthian -110..-101, and 2 Nanyue edge cells nobody's -135..-112",
+ "problems": [
+  "Reviewer edits to data/patches/m0200-m0101.json: keyframe_overrides/4 gains the Hexi Corridor; keyframe_overrides/5 gains the Yelang region, the Hexi Corridor and the Ordos and loses its 'from'/'to' -110, so han-dynasty_-110 runs -110..-92 as in shapes.csv, into m0100-m0001. Tell that window: from -91 the han-dynasty_-91 keyframe (Cliopatria, verdict ok) is the only active Han shape; if it lacks Ordos (211) or Hexi Corridor (229) cells, its snap will drop them then, so it may need the same two regions.",
+  "Not fixed, pre-existing: parthian-empire_-110 (the -91 outline) drops the 289 middle Amu Darya / western Bactria cells (36.2-39.1 N, 65.0-69.5 E: Balkh, Termez) that the Parthian ledger's -115 gain took from the Yuezhi, and yuezhi_-110 takes them; they stay Yuezhi to -80 at least. The Mithridates II page: 'Parthian coinage and scattered reports imply that Mithridates II ruled Bactra, Kampyrtepa, and Termez'; Parthian coins minted 'in western Bactria and in the middle Amu Darya until the reign of Gotarzes II'. To fix: add the band ({\"intersect\": [{\"river\": \"Amu Darya\", \"km\": 120}, {\"cliopatria\": \"Yuezhi\", \"year\": -110}]} or similar) to keyframe_overrides/8 and add a ruling parthian-empire/yuezhi for [-110, -110] with that region (the Yuezhi win by size otherwise).",
+  "Not fixed, pre-existing: 182 Sistan cells are nobody's -126..-111 (patch or not): the Parthian -126 outline drops Sistan, the Indo-Scythian -126 shape covers only 61 of its 256 cells, and the Parthian ledger's -115 gain (counterpart indo-scythians) takes only those 61. A patch event parthian-empire -115 gain, counterpart nobody, region Sistan (Mithridates II page, 124-115) would close it from -115.",
+  "Margiana after the patch: Parthian -144..-127, Indo-Scythian -126..-111 (indo-scythians_-126 keyframe, Cliopatria), Parthian from -110. The Mithridates II page's 'his early coin mints from central Iran and Marw in Margiana' (reign from 124) argues against Saka Merv after about 124 but gives no year; left as the window agent left it.",
+  "Han: 4 NE edge cells (Beijing, Hebei, Liaoning, Shanghai) leave Han at -109 (at -110 before the review edit) because the Cliopatria 110 shape lacks them; negligible, not fixed.",
+  "Window agent's claim for keyframe_overrides/5 that the 1,697 cells 'come back in -109' was wrong for 312 of them (Ordos 211, Yelang's Yunnan side 96, 5 others); corrected by the reviewer edit above."
+ ],
+ "pages_opened": [
+  "https://en.wikipedia.org/wiki/Nanyue",
+  "https://en.wikipedia.org/wiki/Mithridates_II_of_Parthia",
+  "https://en.wikipedia.org/wiki/Mithridates_I_of_Parthia",
+  "https://en.wikipedia.org/wiki/Kingdom_of_Changsha",
+  "https://en.wikipedia.org/wiki/Jiangxi",
+  "https://en.wikipedia.org/wiki/Han-Xiongnu_War"
+ ]
+}

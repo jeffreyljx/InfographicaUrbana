@@ -1,0 +1,92 @@
+{
+ "batch_id": "fx-19",
+ "findings": [
+  {
+   "item": "F117",
+   "verdict": "kept",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kangju",
+    "https://en.wikipedia.org/wiki/Kushan_Empire"
+   ],
+   "why": "Year 50: the 675 cells are the Bactrian south, which the Kangju page makes Yuezhi-ruled ('acknowledges sovereignty to the Yuezhi people in the South') and the Kushan page has the Kushans dividing Bactria in 128 BC, so Kushan keeping them is right. 51-224: the 168-170 Ferghana/Dayuan cells go to Kangju, matching the Kangju page ('gained control of Dayuan and Sogdiana', independent policy to the 3rd century); the Kushan page never names Ferghana/Dayuan (kushan ledger/2 is Cliopatria's reading) and its vague 'Kyrgyzstan' / Shapur I 'Kash, Sughd, Chachestan' (c. 260) sentences do not override that. The size rule gives the page-supported answer."
+  },
+  {
+   "item": "F136",
+   "verdict": "kept",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Parthian_Empire",
+    "https://en.wikipedia.org/wiki/Kangju"
+   ],
+   "why": "The 95-96 cells at Bukhara/Navoi/Kashkadarya lie in the Kangju page's Amu Darya-Syr Darya interfluve with Sogdiana; the Parthian Empire page never names Bukhara, Sogdiana, Kangju, Transoxiana or the Amu Darya and puts no city or border near the Oxus/Zeravshan. The Parthian outline there is Cliopatria's reading; the size rule already gives Kangju the land."
+  },
+  {
+   "item": "F159",
+   "verdict": "kept",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kuninda_Kingdom",
+    "https://en.wikipedia.org/wiki/Kushan_Empire"
+   ],
+   "why": "Kuninda page: kingdom between the Sutlej and Yamuna 'disappeared around the 3rd century', no mention of the Kushans; Kushan page names no Kuninda or Himalayan foothills. No page has the Kushans ruling the Kunindas and hierarchy.csv has no row, so the size rule (Kuninda keeps its 170 cells) is the page-supported answer."
+  },
+  {
+   "item": "F329",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "parthian-empire",
+    "persis"
+   ],
+   "changes": [
+    "parthian-empire: keyframe_review[6] (parthian-empire_-144): correction now minus [minus [Cliopatria Parthian -144, Atropatene -170], {region: Persis}] with text and note saying why (Persis independent until the -138 vassalage); removes the only parthian/persis conflict (620 cells, -144). The _-164 keyframe holds Parthia and Hyrcania only and was left as is.",
+    "parthian-empire: ledger[15] vassal_start persis year -135 -> -138, source Kings of Persis, confidence 1 -> 2, note quotes 'Wadfradad II (fl. 138 BC) was made a vassal of the Iranian Parthian (Arsacid) Empire'.",
+    "parthian-empire: ledger[65] vassal_end persis year 215 -> 224, source Kings of Persis, note quotes infobox 'Vassal of the Parthian Empire' / 'Incorporated into the Sasanian Empire: AD 224' / Ardashir V last king 211/2-224.",
+    "parthian-empire: ledger[64] loss of Persis to sasanian-empire year 215 -> 224 (a no-op on direct Parthian land, listed in noop_events.csv), note rewritten; sources list gains Kings of Persis; notes gains a REPAIR fx-19 paragraph.",
+    "persis: notes only: UPDATE fx-19 paragraph saying the parthian-empire dossier now agrees (-138, 224) and that sasanian-empire /ledger/0 (215) is still open."
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kings_of_Persis",
+    "https://en.wikipedia.org/wiki/Ardashir_I"
+   ],
+   "why": "Kings of Persis: vassal of the Parthians from 'fl. 138 BC', 'Incorporated into the Sasanian Empire: AD 224', Ardashir V last king 211/2-224. Ardashir I: no year earlier than 224 for Persis leaving Parthian overlordship (Hormozdgan 28 April 224; conquests undated, 'probably in about 220'), so Persis stays a Parthian vassal to 224 and the Sasanian overlap at 215-224 is the sasanian-empire owner's to fix (handoff). Persis dossier itself already held -138 and 224. Month left off ledger[64]/[65] because the validator wants (year, month) order and ledger[66]-[69] carry no month."
+  },
+  {
+   "item": "F250",
+   "verdict": "kept",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kanva_dynasty"
+   ],
+   "why": "The 665 shared cells (-73..-30) go to Kuninda by the size rule. The Kanva page places the Kanvas at Pataliputra, Vidisha, Kaushambi and Panchala coins and never mentions the Himalayan foothills, Himachal, Uttarakhand or the Kunindas; the kanva outline (Cliopatria's Shunga shape) over-reaches on no page but the Kuninda state already holds the land and kuninda-kingdom needs no edit, so no change to the read-only kanva-dynasty is required."
+  }
+ ],
+ "dossiers_changed": [
+  "parthian-empire",
+  "persis"
+ ],
+ "validation": {
+  "parthian-empire": "ok",
+  "persis": "ok"
+ },
+ "handoffs": [
+  {
+   "dossier": "sasanian-empire",
+   "where": "ledger[0] (found, 215, counterpart persis, region Cliopatria Sasanian Empire 215 'Persis around Istakhr') and keyframe sasanian-empire_215",
+   "what": "Do not give the Persis land (about 211-212 cells, Fars) to the Sasanian state before 224: move the found to 224 (28 April, Hormozdgan) or draw Fars as the Persis vassal state until then, and let the 215 keyframe start at 224 for that land.",
+   "why": "The Kings of Persis infobox has 'Vassal of the Parthian Empire' and 'Incorporated into the Sasanian Empire: AD 224', Ardashir V being its last king (211/2-224); the Ardashir I page gives no year before 224 for Persis leaving Parthian overlordship. parthian-empire (ledger/64, /65) and persis (ledger/4, /5) now both say 224; 215 is Cliopatria's year only.",
+   "source": "https://en.wikipedia.org/wiki/Kings_of_Persis"
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "not_reached": [],
+ "notes_path": "history/polities/_notes/fix-fx-19.md",
+ "problems": [
+  "Observation, not fixed: parthian-empire keyframe _-144 has no from/to, so the compiler snaps it in -144 (shape year) though its text says used from -141..-127; the same cause gives the elymais/parthian conflict (261 cells, -144). Fix would be from -141, to -127; left for the Parthian owner because it shifts Babylonia/Susiana by three years.",
+  "Mount quirk: file size/mtime on the network mount lagged about ten seconds after each write; validation was repeated after the lag and passed."
+ ]
+}

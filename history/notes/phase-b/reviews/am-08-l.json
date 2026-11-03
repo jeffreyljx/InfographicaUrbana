@@ -1,0 +1,205 @@
+{
+ "batch_id": "am-08-l",
+ "verdicts": [
+  {
+   "slug": "commonwealth-of-dominica",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Dominica",
+     "result": "confirmed: 'became an associated state of the United Kingdom in 1967'; infobox 'West Indies Associated States: 1 March 1967'"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/West_Indies_Associated_States",
+     "result": "confirmed: table 'Dominica | 1 March 1967 | 3 November 1978'; UK 'retained responsibility for external affairs and defence'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Dominica",
+     "result": "confirmed: 'On 3 November 1978, Dominica was granted independence as a republic'"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "page": "https://en.wikipedia.org/wiki/Dominica",
+     "result": "confirmed: infobox and body 750 km2"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 750,
+    "infobox_year": 2024,
+    "cliopatria_km2": 1262.9,
+    "ratio": 1.68,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "saint-lucia",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Saint_Lucia",
+     "result": "confirmed: 'In 1967, Saint Lucia became one of the six members of the West Indies Associated States, with internal self-government'; infobox 1 March 1967"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Saint_Lucia",
+     "result": "confirmed: 'On 22 February 1979, Saint Lucia became an independent state'"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "page": "https://en.wikipedia.org/wiki/Saint_Lucia",
+     "result": "confirmed: 'Saint Lucia has a total area of 617 km2'"
+    },
+    {
+     "where": "/identity/predecessors/0",
+     "page": "https://en.wikipedia.org/wiki/Saint_Lucia",
+     "result": "confirmed: 'the British took complete control in 1814'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 617,
+    "infobox_year": 2024,
+    "cliopatria_km2": 790.6,
+    "ratio": 1.28,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "belize",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/0/to",
+     "what": "The Guatemalan-claim entry ended in 2008 and its outcome said the referendums 'have not taken place as of March 2019', though the claim is unsettled and both referendums were held.",
+     "why": "Belize page: Guatemala's referendum in April 2018 and 'The referendum was held in May 2019'; dispute page (exists under 'Belizean–Guatemalan territorial dispute'): 'Guatemala recognised Belize's independence in 1991', Special Agreement 'signed on 8 December 2008', referendums 15 April 2018 and 8 May 2019, case pending at the ICJ; guatemala.json /wars/4 runs 1859-2024.",
+     "fix": "to 2024; outcome rewritten from the dispute page (1991 recognition vs History's 1992, 2008 Special Agreement, 2018/2019 referendums, ICJ pending, 12,272 km2 claim, never occupied); source set to the dispute page and the page added to sources; reviewer sentence appended to /wars/0/note and /notes. Re-validated 0 errors 0 warnings.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Belize",
+     "result": "confirmed: 'Belize achieved its independence from the United Kingdom on 21 September 1981'; 1,500 British troops sentence on page"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/History_of_Belize",
+     "result": "confirmed: 'Independence came to Belize on 21 September 1981 after the Belize Act 1981, without reaching an agreement with Guatemala'; 'All British soldiers were withdrawn in 1994'"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/History_of_Belize",
+     "result": "quotes on page (1992 recognition, December 2008 agreement, 'not taken place as of March 2019') but stale; end year 2008 wrong per Belize and dispute pages; fixed"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "page": "https://en.wikipedia.org/wiki/Belize",
+     "result": "confirmed: infobox 22,966 km2, body 22,970 km2"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 22966,
+    "infobox_year": 2024,
+    "cliopatria_km2": 22878.8,
+    "ratio": 1.0,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "belize",
+    "year": 1981,
+    "type": "found",
+    "counterpart": "british-honduras"
+   },
+   "mirror": {
+    "slug": "british-honduras",
+    "year": 1981,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Both 1981-09; british-honduras successors=belize, belize predecessors=british-honduras."
+  },
+  {
+   "event": {
+    "slug": "commonwealth-of-dominica",
+    "year": 1967,
+    "type": "found",
+    "counterpart": "british-colonial-empire"
+   },
+   "mirror": {
+    "slug": "british-colonial-empire",
+    "year": 1967,
+    "type": "vassal_start"
+   },
+   "status": "exception",
+   "note": "british-colonial-empire is owned by eu-11, which has not run; it should release Dominica in 1967 and carry vassal_start/vassal_end with counterpart commonwealth-of-dominica (1967-03..1978-11)."
+  },
+  {
+   "event": {
+    "slug": "saint-lucia",
+    "year": 1967,
+    "type": "found",
+    "counterpart": "british-colonial-empire"
+   },
+   "mirror": {
+    "slug": "british-colonial-empire",
+    "year": 1967,
+    "type": "vassal_start"
+   },
+   "status": "exception",
+   "note": "eu-11 has not run; vassal_start/vassal_end with counterpart saint-lucia (1967-03..1979-02) wanted there."
+  },
+  {
+   "event": {
+    "slug": "belize",
+    "year": 1981,
+    "type": "war",
+    "counterpart": "guatemala"
+   },
+   "mirror": {
+    "slug": "guatemala",
+    "year": 1859,
+    "type": "war"
+   },
+   "status": "matched",
+   "note": "After the reviewer fix belize /wars/0 runs 1981-2024 and guatemala /wars/4 1859-2024; both without zones (no ground held)."
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Colony of Dominica",
+   "suggested_slug": "colony-of-dominica",
+   "years": [
+    1763,
+    1966
+   ]
+  },
+  {
+   "name": "Colony of Saint Lucia",
+   "suggested_slug": "colony-of-saint-lucia",
+   "years": [
+    1814,
+    1966
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-am-08-l.md",
+ "problems": [
+  "republic-of-brazil has no dossier on purpose: its shapes are reviewed ok inside brazilian-republic.json (cliopatria_names list all four Q155 rows); confirmed, nothing missing.",
+  "Convention clash: am-08-k's grenada, saint-vincent and saint-kitts carry vassal_start/vassal_end in their own ledgers with counterpart british-colonial-empire, which by the schema ('counterpart is the vassal itself') reads as Britain being their vassal; am-08-l left the relation to the suzerain's dossier as the schema says. Choose one before eu-11 writes british-colonial-empire.",
+  "The author's failed page was a wrong title: the dispute article is at https://en.wikipedia.org/wiki/Belizean%E2%80%93Guatemalan_territorial_dispute and loads."
+ ]
+}

@@ -1,0 +1,302 @@
+{
+ "batch_id": "sa-05-g",
+ "verdicts": [
+  {
+   "slug": "talpur-dynasty",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/1",
+     "what": "The 1839 loss of Karachi had no month although a page dates it.",
+     "why": "Karachi page: 'The British East India Company captured Karachi on 3 February 1839 after HMS Wellesley opened fire and quickly destroyed Manora Fort'.",
+     "fix": "Added month 2, the quote in the note, and https://en.wikipedia.org/wiki/Karachi to sources[]; re-validated with 0 errors and 0 warnings.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/0",
+     "what": "The found region (all of Sind from 1783) includes Karachi, which was Kalat's until 1795, and no 1795 gain is recorded.",
+     "why": "Karachi page: 'In 1770s, Karachi came under the control of the Khan of Kalat' and 'In 1795, Karachi was annexed by the Talpurs'. khanate-of-kalat /ledger/12 holds Karachi until a 1843 loss to talpur-dynasty (confidence 1), which contradicts both this dossier and the page.",
+     "fix": "Found region: {minus: [Sind, Karachi 30 km disc]}; add a 1795 gain of the Karachi disc from khanate-of-kalat, confidence 2, source https://en.wikipedia.org/wiki/Karachi. Non-blocking (small land); left for the gap-filler.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/6 to /keyframe_review/15",
+     "what": "The correction of each post-1843 Talpur shape is a 70 km Khairpur disc, i.e. a talpur-dynasty shape after the dossier's end that duplicates khairpur-state's land.",
+     "why": "Dossier end 1843-3; khairpur-state draws the same disc from 1843. Corrections' text says 'None for this dossier', but the region spec is still a drawable shape.",
+     "fix": "Advisory: either make the compiler clip keyframes to start..end, or reword the corrections to say the shapes belong to no Talpur state (Gilgit-Baltistan outlines, for kashmir-and-jammu / the Gilgit owners). Non-blocking.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (1795)",
+     "what is missing": "Talpur gain of Karachi from khanate-of-kalat in 1795 (page found by the reviewer).",
+     "page to try": "https://en.wikipedia.org/wiki/Karachi"
+    },
+    {
+     "where": "/ledger (Umerkot)",
+     "what is missing": "Date of the Talpur capture of Umerkot/Amarkot from Jodhpur; the page has 'annexed by Jodhpur State in 1779 from the Kalhora Nawab of Sindh' and 'traded to the British in 1843 by the Maharaja of Jodhpur', Talpur capture undated. The found region gives the Thar frontier to the Talpurs from 1783.",
+     "page to try": "https://en.wikipedia.org/wiki/Tharparkar_District"
+    },
+    {
+     "where": "/ledger (Shikarpur)",
+     "what is missing": "Transfer of Shikarpur and the upper-Sindh frontier from the Durrani/Kandahar to the Talpurs (Shikarpur, Sindh page is silent).",
+     "page to try": "https://en.wikipedia.org/wiki/Shikarpur_District"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "Date of the proclamation annexing Sindh (month 3 is the last battle); Talpur, Miani and British conquest pages are silent.",
+     "page to try": "https://en.wikipedia.org/wiki/Charles_James_Napier"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Talpur_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Talpur_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Miani",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/British_conquest_of_Sindh",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Talpur_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/Talpur_dynasty",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 100000,
+    "infobox_year": 0,
+    "cliopatria_km2": 535464,
+    "ratio": 5.35,
+    "acknowledged": true,
+    "note": "'over 100,000 square kilometers' is in the Talpur page's body text, not the infobox, and has no year (the dossier calls it the infobox). Cliopatria max 535,464 km2 (1822-1835, Sind plus Balochistan) marked wrong; 1820 shape 147,651 km2 (ratio 1.48) marked adjust."
+   }
+  },
+  {
+   "slug": "khairpur-state",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/identity/end, /ledger/1, /ledger/2",
+     "what": "The state is ended at its accession to Pakistan (3 October 1947: loss and dissolve at confidence 3), though its page keeps it as a princely state of Pakistan to 30 September 1955.",
+     "why": "Khairpur page infobox: 'Princely state of Pakistan (1947-1955)', 'Disestablished: 30 September 1955', 'fully amalgamated into West Pakistan in 1955'; the dossier's own note says 'the state formally lasted to 30 September 1955'. Sibling dossiers bahawalpur-state and khanate-of-kalat run to 1955-10 and dissolve into islamic-republic-of-pakistan.",
+     "fix": "end {year 1955, month 9}; delete the 1947 loss (the accession is a vassal relation that islamic-republic-of-pakistan records as vassal_start khairpur-state 1947-10 / vassal_end 1955-9); move the dissolve to 1955-9 with counterpart islamic-republic-of-pakistan quoting the amalgamation; extend /keyframe_review/0/to, /identity/capitals/0/to and /certainty/0/to to 1955; last ruler George Ali Murad to 1954 (infobox '1947-1954'). If the orchestrator rules for Pakistan's current model (gain at accession) instead, this finding lapses but bahawalpur-state and khanate-of-kalat must change.",
+     "applied": false
+    },
+    {
+     "where": "/ledger",
+     "what": "Ali Murad's loss of lands in upper Sindh is unrecorded, so the 1843 disc stands unchanged to the end.",
+     "why": "Talpur page: Ali Murad 'was later accused of plotting against the British, and so was stripped of his lands in upper Sindh' (undated). The Khairpur page does not cover it.",
+     "fix": "Add a loss to british-empire with the year and districts once a page gives them; enlarge the 1843 keyframe accordingly. Non-blocking (thin).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (after 1843)",
+     "what is missing": "Year and extent of Ali Murad's loss of upper-Sindh lands; the 1843 extent of the state.",
+     "page to try": "https://en.wikipedia.org/wiki/Khairpur_District"
+    },
+    {
+     "where": "/identity/start",
+     "what is missing": "Whether the state should start at the 1832 British recognition ('secured recognition as the independent ruler of Khairpur', Talpur page) rather than 1843; a modelling choice disclosed in notes.",
+     "page to try": "https://en.wikipedia.org/wiki/Talpur_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Miani",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Khairpur_(princely_state)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Khairpur_(princely_state)",
+     "result": "mis-dated"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Khairpur_(princely_state)",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 15730,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.98,
+    "acknowledged": true,
+    "note": "No Cliopatria row; the 70 km disc (15,427 km2) against the infobox 15,730 km2 (no year)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "talpur-dynasty",
+    "year": 1783,
+    "type": "found",
+    "counterpart": "kalhora-dynasty"
+   },
+   "mirror": {
+    "slug": "kalhora-dynasty",
+    "year": 1783,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "kalhora-dynasty /ledger/5 and dissolve /ledger/6."
+  },
+  {
+   "event": {
+    "slug": "talpur-dynasty",
+    "year": 1839,
+    "type": "loss",
+    "counterpart": "british-empire"
+   },
+   "mirror": {
+    "slug": "british-empire",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "Neither british-empire nor east-india-company records the gain of Karachi (3 February 1839, Karachi page). Route to the british-empire / east-india-company owners (sa-06)."
+  },
+  {
+   "event": {
+    "slug": "talpur-dynasty",
+    "year": 1795,
+    "type": "gain",
+    "counterpart": "khanate-of-kalat"
+   },
+   "mirror": {
+    "slug": "khanate-of-kalat",
+    "year": 1843,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "The Talpur gain is missing; khanate-of-kalat /ledger/12 has Karachi lost to talpur-dynasty in 1843 (confidence 1, bridging). Karachi page: 'In 1795, Karachi was annexed by the Talpurs'. Both sides should be 1795."
+  },
+  {
+   "event": {
+    "slug": "talpur-dynasty",
+    "year": 1843,
+    "type": "contest_start",
+    "counterpart": "british-empire"
+   },
+   "mirror": {
+    "slug": "british-empire",
+    "year": 1843,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Both 1843-2; contest_end 1843-3 matched too (british-empire /ledger/117-118; east-india-company /ledger/68 and 70)."
+  },
+  {
+   "event": {
+    "slug": "talpur-dynasty",
+    "year": 1843,
+    "type": "loss",
+    "counterpart": "british-empire"
+   },
+   "mirror": {
+    "slug": "british-empire",
+    "year": 1843,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Year matches; land does not: british-empire /ledger/116 and east-india-company /ledger/69 gain the whole Sind province, Khairpur included, while talpur-dynasty loses Sind minus the Khairpur disc and khairpur-state holds it from 1843."
+  },
+  {
+   "event": {
+    "slug": "talpur-dynasty",
+    "year": 1843,
+    "type": "split",
+    "counterpart": "khairpur-state"
+   },
+   "mirror": {
+    "slug": "khairpur-state",
+    "year": 1843,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Both 1843-3, same 70 km disc."
+  },
+  {
+   "event": {
+    "slug": "durrani-empire",
+    "year": 1783,
+    "type": "vassal_start",
+    "counterpart": "talpur-dynasty"
+   },
+   "mirror": {
+    "slug": "talpur-dynasty",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "Overlord-side events (schema: counterpart is the vassal). durrani-empire 1783 vassal_start / 1818 vassal_end, principality-of-kandahar 1818-8 / 1826-8, british-empire 1838 / 1843 all fall inside talpur-dynasty's 1783-1843 life; the Talpur notes mention the tribute and the 1838 residency treaty."
+  },
+  {
+   "event": {
+    "slug": "khairpur-state",
+    "year": 1947,
+    "type": "loss",
+    "counterpart": "islamic-republic-of-pakistan"
+   },
+   "mirror": {
+    "slug": "islamic-republic-of-pakistan",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "Pakistan has no Khairpur event. Model conflict: Pakistan gains bahawalpur-state (1947-10) and khanate-of-kalat (1948-3) at accession, while both dossiers run to 1955-10; khairpur-state's page keeps it to 30 September 1955."
+  },
+  {
+   "event": {
+    "slug": "khairpur-state",
+    "year": 1843,
+    "type": "found",
+    "counterpart": "talpur-dynasty"
+   },
+   "mirror": {
+    "slug": "british-empire",
+    "year": 0,
+    "type": "vassal_start"
+   },
+   "status": "missing",
+   "note": "British suzerainty over Khairpur (infobox 'Princely state under British Raj (1838-1947)') is absent from british-empire (1843-1858); british-raj has only the blanket 'Princely states of India (paramountcy)' 1858-1947."
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [],
+ "notes_path": "history/polities/_notes/review-sa-05-g.md",
+ "problems": [
+  "Project-level: islamic-republic-of-pakistan gains bahawalpur-state (1947-10) and khanate-of-kalat (1948-3) at accession while both dossiers run to October 1955 (double claim 1947-1955); khairpur-state follows Pakistan's model, contrary to its page. One model is needed for the princely states of Pakistan (recommended: Pakistan vassal_start at accession, merge/gain at the 1955 One Unit).",
+  "russian-empire has no dossier yet (eu-17 not run); not a counterpart of either state.",
+  "Shikarpur,_Sindh page silent on Durrani-Talpur transfer; Talpur page has no infobox area (the 100,000 km2 is body text).",
+  "Reviewer edited history/polities/talpur-dynasty.json in place (/ledger/1 month and Karachi source), re-validated clean and read back."
+ ]
+}

@@ -1,0 +1,1574 @@
+{
+ "batch_id": "af-06",
+ "verdicts": [
+  {
+   "slug": "kingdom-of-kongo",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/11",
+     "what": "The 1859 vassalage was typed 'rename' with no counterpart, so it did not mirror portuguese-angola's vassal_start of 1859 (a rename is a dynasty change).",
+     "why": "Kingdom of Kongo page: 'Portugal thus gained nominal authority over Kongo when Pedro gained control of it in 1859'; 'From 1862 to 1914, it functioned intermittently as a vassal state of the Kingdom of Portugal'. portuguese-angola /ledger/14 is vassal_start 1859 with counterpart kingdom-of-kongo.",
+     "fix": "Changed to vassal_start, counterpart portuguese-angola, region Mbanza Kongo 100 km (the same region as the mirror), confidence 2 kept; reviewer tag in the note.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/14",
+     "what": "No vassal_end mirrored portuguese-angola's vassal_end of 1914.",
+     "why": "Kingdom of Kongo page: 'In 1914, following the Portuguese suppression of a Kongo revolt, Portugal abolished the titular monarchy.' portuguese-angola /ledger/19 is vassal_end 1914, counterpart kingdom-of-kongo.",
+     "fix": "Added vassal_end 1914 (counterpart portuguese-angola, Mbanza Kongo 100 km, confidence 3) before the dissolve; the file validates with 0 errors, 0 warnings.",
+     "applied": true
+    },
+    {
+     "where": "/identity/predecessors",
+     "what": "Advisory (non-blocking): the predecessors 'mbata' and 'mpemba-kasi' are slugs with no dossier, no row in polities.csv and no entry in the author's counterparts_needing_dossiers.",
+     "why": "polities.csv has neither slug; the author's report lists only Soyo, the IAC, Chokwe, Viye, Kakongo/Ngoyo, Zanzibar and the Dutch WIC.",
+     "fix": "List both under counterparts_needing_dossiers (done in this review's report) or give them as names in the note.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/6/correction",
+     "what": "Advisory (non-blocking): the 1885-1914 Mbanza Kongo disc (100 km) spills 28 cells (about 7,000 km2) into the Democratic Republic of the Congo, which is congo-free-state land from 1885 (its K0 and K1 contain those cells).",
+     "why": "Gazetteer resolve: kingdom-of-kongo_1885 118 cells, 28 of them inside congo-free-state_1885; the page puts the remaining kingdom in Portuguese Angola after Berlin.",
+     "fix": "Intersect the disc with {country: Angola} in /keyframe_review/6, /ledger/12 and /ledger/13 (the minus terms), /ledger/15 and the vassal events, consistently.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/15",
+     "what": "Advisory (routed to portuguese-angola): the 1914 dissolve names portuguese-angola, but that dossier has no 1914 gain of the São Salvador district and its 1885-1919 shape leaves it out, so the district belongs to nobody 1914-1919.",
+     "why": "portuguese-angola /ledger/19 is only a vassal_end; portuguese-angola_1885 (K3) does not contain the Mbanza Kongo disc (0 cells overlap).",
+     "fix": "portuguese-angola adds a 1914 gain (counterpart kingdom-of-kongo, Mbanza Kongo 100 km within Angola) and includes the district in its 1914-1919 shape.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/4",
+     "what is missing": "Extent of the kingdom during the civil war (Nsundi and Mbata 'splitting off', undated and unlocated) and after 1709 ('fiefdoms recognising the King of Kongo but not truly under his control'); both keyframes are the 1662 shape at confidence 1, and the 1709 'gain' re-adds land the 1670 keyframe never removed.",
+     "page to try": "https://en.wikipedia.org/wiki/Pedro_IV_of_Kongo"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "Afonso I's conquests 'to the south and east' (1509-1540s) have no year or place (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Afonso_I_of_Kongo"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "The 1885 division at Berlin is confidence 1 for both halves; the Kongo-Angola boundary line is not on the pages opened.",
+     "page to try": "https://en.wikipedia.org/wiki/Berlin_Conference"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kongo",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kongo",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kongo",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Soyo",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Kongo_Civil_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Kongo_Civil_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kongo",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kongo",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 129400,
+    "infobox_year": 1623,
+    "cliopatria_km2": 131582,
+    "ratio": 1.02,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kingdom-of-lunda",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/1/region",
+     "what": "Advisory (non-blocking): the 1720s gain is the whole Kasai river widened by 120 km: 1,383 cells (about 350,000 km2), more than the kingdom's 19th-century height, from the Angolan source to the Congo confluence, and 236 cells of it lie inside kuba-kingdom's shape (1625-1884).",
+     "why": "Kingdom of Lunda page: 'pushing the boundary of Lunda past the Kasai River to the west' (a crossing, not the river's length). Gazetteer resolve: Kasai 120 km 1,383 cells; overlap with kuba-kingdom_1625 236 cells.",
+     "fix": "Restrict the region to the crossing west of Musumba, e.g. intersect the Kasai band with the 309 km disc or with Lunda Norte/Lunda Sul, and give the land a trace in a keyframe (the 1709-1855 disc does not change).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/2/correction",
+     "what": "Advisory (non-blocking, routed with yeke-kingdom): the 1856-1887 disc (309 km) overlaps luba-empire_1700 by 297 cells (about 75,000 km2, a third of the Luba shape) and yeke-kingdom_1867 by 443 cells, while /ledger/2 takes the ring from 'nobody'.",
+     "why": "Gazetteer resolve of the three shapes. The page gives the direction of growth: 'extending their kingdom through southwest Katanga into Angola and north-western Zambia'.",
+     "fix": "Shift the extra 150,000 km2 west and south (Lunda Norte, Lunda Sul, Moxico, north-western Zambia) rather than a disc, or subtract luba-empire's region; name the counterpart where land is taken.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/3",
+     "what": "Advisory (non-blocking): the dissolve names 'Chokwe invaders' as counterpart, while congo-free-state /ledger/1 gains the Lunda land in 1887 with counterpart kingdom-of-lunda; neither side records the other, and the Angolan half goes to nobody.",
+     "why": "Kingdom of Lunda page: 'At the start of the colonial era (1884), the Lunda heartland was divided' between Portuguese Angola, Leopold II's Congo Free State and British territory; the infobox ends the state in 1887.",
+     "fix": "Add 1887 losses to congo-free-state (DRC part) and portuguese-angola (Angolan part, then mirrored there), keeping the dissolve; or make the CFS gain counterpart match.",
+     "applied": false
+    },
+    {
+     "where": "/wars/0",
+     "what": "Advisory (non-blocking): the Chokwe war 'from' 1801 is a placeholder; the page says only 'the 19th century' (the note says so).",
+     "why": "Kingdom of Lunda page; Chokwe people page 'By 1900'.",
+     "fix": "Keep as is or narrow when a page dates the Chokwe attacks.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "The doubling to 300,000 km2 has no year (1856 is Cliopatria's shape break, confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Mwata_Yamvo"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "No date for the Chokwe sack of Musumba or the end of the kingdom beyond the infobox's 1887.",
+     "page to try": "https://en.wikipedia.org/wiki/Chokwe_people"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Kazembe's split (c. 1740) and the Lunda tributaries are undated; the Lunda shapes are discs.",
+     "page to try": "https://en.wikipedia.org/wiki/Lunda_people"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Lunda",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Lunda",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Lunda",
+     "result": "not on page"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Lunda",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 300000,
+    "infobox_year": 1856,
+    "cliopatria_km2": 109111,
+    "ratio": 0.36,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kingdom-of-ndongo",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "BLOCKING: the shape swallows two sibling states. The gazetteer region 'Ndongo' is Luanda + Bengo + Cuanza Norte + Malanje provinces, so it contains all of kingdom-of-matamba's shape (Malanje, 305 cells, 1530-1744), all of kingdom-of-kasanje's (118 cells, from 1620) and both of their capital points (16.34 E, 9.54 S), for the whole of 1518-1671.",
+     "why": "Gazetteer regions.jsonl: Ndongo = union of admin1 Luanda, Bengo, Cuanza Norte, Malanje. Resolve: ndongo_1518 527 cells; overlap with matamba_1530 305 (100 percent), with kasanje_1620 118 (100 percent). Matamba page: Matamba lay 'in what is now the Baixa de Cassange region of Malanje Province' and paid tribute to Kongo in 1530; the author's own notes treat Matamba as a separate state until Nzinga's union of 1631.",
+     "fix": "Redraw Ndongo without Matamba and Kasanje: e.g. {minus: [{region: Ndongo}, <the Matamba shape>]} where the Matamba shape is narrowed to the Baixa de Cassange (eastern Malanje), keeping western Malanje (Pungo Andongo, the Kwanza islands) in Ndongo if a page supports it; apply the same region to /ledger/0, /ledger/6-8 and the successor land.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "Part of the blocking redraw: the 1518-1671 shape also contains Luanda (Portuguese from 1575) and the Kwanza corridor lost in 1582 and 1602: 108 cells overlap portuguese-angola_1582.",
+     "why": "/ledger/1 and /ledger/2 are losses to portuguese-angola; the keyframe does not change. Ndongo page: Massangano 1582, Cambambe 1602; History of Angola: the colony founded 1575.",
+     "fix": "Subtract the Luanda disc from 1575 and the Kwanza discs from 1582/1602 (new keyframes 1575, 1582, 1602 or a correction that leaves them out).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/5",
+     "what": "The 1626 installation of a Portuguese client king is typed 'rename', so portuguese-angola's vassal_start of 1626 (and vassal_end of 1671) has no mirror here.",
+     "why": "Ndongo page: Fernão de Sousa installed Hari a Kiluanji (1626), later replaced by Filipe Hari a Ngola; portuguese-angola /ledger/6 vassal_start 1626 and /ledger/11 vassal_end 1671, counterpart kingdom-of-ndongo.",
+     "fix": "Add vassal_start 1626 (counterpart portuguese-angola, the client kingdom's land) and vassal_end 1671, or keep the rename and add the vassal_start beside it.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/certainty/1",
+     "what is missing": "Where the 1599 Ndongo-Portugal border ran.",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Ndongo"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "When Ndongo stopped being a Kongo vassal.",
+     "page to try": "https://en.wikipedia.org/wiki/Ngola_Kiluanji"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Ndongo",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Ndongo",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Ndongo",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Ndongo",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Ndongo",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Ndongo",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Nzinga_of_Ndongo_and_Matamba",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kingdom-of-matamba",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "BLOCKING: the 1530-1744 shape (all of Malanje Province) contains the whole of kingdom-of-kasanje's shape (118 cells, 39 percent of Matamba) through 1744, although this dossier's own /ledger/6 loses that band to Kasanje in September 1683 and Kasanje is founded there in 1620; the 1683 loss leaves no trace in the keyframes.",
+     "why": "Resolve: matamba_1530 305 cells, kasanje_1620 118 cells, overlap 118. Matamba page: the 1683 treaty, 'signed 7 September 1683', made Verónica 'acknowledge the independence of Kasanje'. Kasanje page: 'formed in 1620 ... on the upper Kwango River'.",
+     "fix": "Split the keyframe at 1683 (Malanje minus the Kasanje band from 1683), or subtract the band from 1620 if Kasanje was never Matamba's, and make /ledger/6 agree; give Matamba and Kasanje different capital points (both are the gazetteer's Malanje, 16.34 E 9.54 S).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6",
+     "what": "No vassal_start mirrors portuguese-angola's vassal_start of 7 September 1683.",
+     "why": "Matamba page: Verónica 'accepted nominal vassalage' in the treaty 'signed 7 September 1683'; portuguese-angola /ledger/13 is vassal_start 1683-09, counterpart kingdom-of-matamba.",
+     "fix": "Add vassal_start 1683-09 (counterpart portuguese-angola, the Matamba shape, confidence 2), ending at the dissolve or at a vassal_end.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/7",
+     "what": "The 1744 dissolve to portuguese-angola has no mirror: portuguese-angola records no 1744 gain or vassal_end and its shapes do not reach Matamba until 1920 (apart from the Ndongo-region error), and the page does not end the kingdom in 1744.",
+     "why": "Matamba page: Ana II 'faced a Portuguese invasion in 1744' and 'signed a treaty of vassalage' which 'had little effect on the real sovereignty'; a king was 'crowned ... around 1810'; the state 'was integrated into Portuguese Angola in the late nineteenth century'. Only the lead's '(pre-1550-1744)' supports 1744.",
+     "fix": "Either extend the life to the integration (a gap-filler dates it) with 1744 as a renewed vassalage, or keep 1744 and have portuguese-angola gain the land in 1744 and close its vassal relation; the two dossiers must agree.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Matamba's founding (only a 1530 documentary mention, confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Matamba"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "The year Matamba was integrated into Portuguese Angola.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Angola"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Matamba",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Nzinga_of_Ndongo_and_Matamba",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Matamba",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Matamba",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Matamba",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kingdom-of-kasanje",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/1/region",
+     "what": "Advisory (non-blocking): the 1657 Bembe gain is the whole Kwango river widened by 120 km: 1,042 cells (about 264,000 km2, nine times the state's own shape), from Angola to the Kasai confluence in the DRC, 85 cells of it inside kingdom-of-kongo's shape, with counterpart 'nobody'.",
+     "why": "Kasanje page: 'significant taking of areas in Bembe in 1657' (Bembe unlocated). Resolve: Kwango 120 km 1,042 cells; overlap with kingdom-of-kongo_1662 85 cells.",
+     "fix": "Keep the event at confidence 1 but give it a small region next to the state (e.g. the Kwango band within Malanje and Lunda Norte, or a disc), and a trace in a keyframe if it is drawn.",
+     "applied": false
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what": "Advisory (non-blocking): the capital point is the gazetteer's Malanje, the same point as kingdom-of-matamba's capital.",
+     "why": "Both dossiers use 16.34 E, 9.54 S; the Kasanje page names no capital ('located on the upper Kwango River').",
+     "fix": "Move the stand-in to the Kwango (Cassange in the Baixa de Cassange) once the gazetteer has it.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Where Bembe lay.",
+     "page to try": "https://en.wikipedia.org/wiki/Imbangala"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "The capital of Kasanje.",
+     "page to try": "https://en.wikipedia.org/wiki/Imbangala"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kasanje",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kasanje",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Matamba",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kasanje",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kingdom-of-loango",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/1/region",
+     "what": "Advisory (non-blocking): the 1600 extent includes Cabinda, the land of the separate Vili states Kakongo and Ngoyo, which the page lists among Kongo's titles in 1535.",
+     "why": "Loango page: 'Loango influence extended from Cape St Catherine in the north to almost the mouth of the Congo River' (influence, 17th century) and c. 1600 the king gave 'command over four provinces' (Kaye, Boke, Selage, Kabango).",
+     "fix": "Keep confidence 1 and say in the text that Cabinda is influence, or leave Cabinda out until Kakongo/Ngoyo have dossiers.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Loango's area and its 17th-century provinces.",
+     "page to try": "https://en.wikipedia.org/wiki/Vili_people"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "The treaty that ended Loango (c. 1883) and the fate of the Loango coast before French rule.",
+     "page to try": "https://en.wikipedia.org/wiki/French_Congo"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Loango",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Loango",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Loango",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "luba-empire",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/2/confidence",
+     "what": "The 1889 dissolve to congo-free-state was confidence 3, but the page puts the hand-over 'later', not in 1889, and does not name the region.",
+     "why": "Luba Empire page: 'In 1889 it was split in two by a succession dispute, ending the unified state, and later joined the Congo Free State.'",
+     "fix": "Lowered to 2 with a reviewer tag in the note.",
+     "applied": true
+    },
+    {
+     "where": "/ledger",
+     "what": "Advisory (non-blocking, routed with yeke-kingdom): no loss to Msiri is recorded, although the Luba people page says he 'raided and took over the southeastern Shaba region' (undated) and yeke-kingdom's 1870 gain covers the whole Luba shape.",
+     "why": "Luba people page; resolve: luba-empire_1700 909 cells, all inside yeke-kingdom_1867.",
+     "fix": "Add a loss to yeke-kingdom (confidence 1, south-eastern Katanga) once yeke-kingdom's shape is redrawn; the two must not both hold the Luba heartland 1867-1889.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/1/note",
+     "what": "Advisory (non-blocking): the quote 'By 1870 the empire covered much of what is now the southeast...' is not on the Luba Empire page cited; the nearest sentence is on the Luba people page ('By then ... covered much of what is now the southeastern Democratic Republic of Congo', after Ilunga Kabale's death in 1870).",
+     "why": "Luba Empire and Luba people pages read on 2026-10-19.",
+     "fix": "Cite https://en.wikipedia.org/wiki/Luba_people for that sentence (it is already in sources).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding year: 1585 (Early Congolese history) against 'Around 1500, possibly earlier' (Luba people) and '?' (Luba Empire infobox).",
+     "page to try": "https://en.wikipedia.org/wiki/Kalala_Ilunga"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Any boundary; the 1700 shape is the gazetteer's confidence-1 'Luba (region)'.",
+     "page to try": "https://en.wikipedia.org/wiki/Upemba_National_Park"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Early_Congolese_history",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Luba_Empire",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Luba_Empire",
+     "result": "mis-dated"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kingdom-of-kazembe",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/3",
+     "what": "The 1894 dissolve named congo-free-state and the whole Luapula valley at confidence 3, but the land Kazembe still held in 1894 (the 1867-1894 shape, on the Zambian side) went to Britain; the west bank had been Msiri's since 1867 (/ledger/2).",
+     "why": "Kingdom of Kazembe page: 'After Msiri's death, the Luapula valley was divided in 1894 between Britain' (the eastern shores to the BSAC's North-Eastern Rhodesia) and the Compagnie du Katanga (the western shores); the page presents it as a division, not the end of the kingship. The dossier's own successors give the eastern land to british-africa.",
+     "fix": "Counterpart changed to british-africa, region to the /keyframe_review/1 correction, confidence 3 to 2; reviewer tag in the note.",
+     "applied": true
+    },
+    {
+     "where": "/end",
+     "what": "Advisory (non-blocking): the page's sovereign end could as well be 1899 (British officers burnt the capital, then indirect rule) as 1894.",
+     "why": "Kingdom of Kazembe page: in 1899 'British officers with Sikh and Nyasaland troops' burnt the capital; the chieftainship survived.",
+     "fix": "Keep 1894 or move the end to 1899 with 1894-1899 as a vassal relation; say which in notes.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "The kingdom's extent ('west to the Lualaba', 'east to the Luba-Bemba country') is a Luapula band; no area on the page.",
+     "page to try": "https://en.wikipedia.org/wiki/Mwata_Kazembe"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kazembe",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kazembe",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Msiri",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kazembe",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "yeke-kingdom",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1/correction",
+     "what": "BLOCKING: the 1867-1891 shape (all of Katanga province, 1,628 cells) contains the whole of luba-empire's 1700-1889 shape (909 cells, about 230,000 km2) and the Luba capital Mwibele (26.4 E, 8.63 S), and 443 cells of kingdom-of-lunda's 1856-1887 shape, so three states hold the same land 1867-1887.",
+     "why": "Resolve: yeke_1867 1,628 cells; overlap with luba_1700 909 (100 percent), with lunda_1856 443. Gazetteer: 'Luba (region)' = Katanga intersected with 22.5-28.5 E, 5-10 S. Luba people page: Msiri 'raided and took over the southeastern Shaba region'; Yeke Kingdom page gives Bunkeya as capital and 'about half a million square kilometres' with no year and no place.",
+     "fix": "Redraw as south-eastern Katanga: e.g. {minus: [{admin1: Katanga}, {region: 'Luba (region)'}]} (or Haut-Katanga and Lualaba once the gazetteer has them), and note that the page's half-million km2 then counts tributaries; carry the same region in /ledger/2, /ledger/3 and congo-free-state /ledger/4 and its K0 minus term.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "Part of the blocking redraw: the 1870 gain takes all Katanga from 'nobody' at confidence 1, though the land is Luba's (luba-empire 1700-1889) and partly Lunda's; the page gives no 1870 date.",
+     "why": "Yeke Kingdom page: 'The page gives no years for conquests' (no 1870); luba-empire and kingdom-of-lunda shapes as above.",
+     "fix": "Name luba-empire (and kingdom-of-lunda if kept) as counterparts for the parts taken, with mirrored losses there, and keep confidence 1.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Dates and places of Msiri's conquests (Lunda, Luba, Kazembe tributaries).",
+     "page to try": "https://en.wikipedia.org/wiki/Garanganze"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Where the 'half a million square kilometres' lay.",
+     "page to try": "https://en.wikipedia.org/wiki/Bunkeya"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Yeke_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Msiri",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Yeke_Kingdom",
+     "result": "not on page"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Yeke_Kingdom",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 500000,
+    "infobox_year": 1891,
+    "cliopatria_km2": 0,
+    "ratio": 0.82,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kuba-kingdom",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/2/counterpart",
+     "what": "Advisory (non-blocking): the 1884 dissolve names congo-free-state, which did not exist until 1 July 1885 and has no gain from Kuba; the infobox successor is the International Association of the Congo.",
+     "why": "Kuba Kingdom page: 'Disestablished: 1884', successor International Association of the Congo, 'Europeans first reached the area in 1884'; Congo Free State page: 'Established: 1 July 1885'. Early Congolese history: the federation maintained itself 'even after King Leopold II ... established the Congo Free State in 1885'.",
+     "fix": "Use international-association-of-the-congo (listed as needing a dossier) as counterpart, or move the end to the Free State's occupation once a page dates it; the end year is disputed (author-flagged).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1/region",
+     "what": "Advisory (non-blocking): the early-18th-century gain is the Kasai river widened by 80 km, 903 cells (about 228,000 km2), 2.6 times the kingdom's own shape, along the whole river.",
+     "why": "Kuba Kingdom page: under Kuete M'bogi Kuba 'extended its power further south along the Kasai River'. Resolve: 903 cells against kuba_1625 346.",
+     "fix": "Restrict to the stretch south of the kingdom (intersect with a disc around Nsheng or with Kasai-Occidental) and keep confidence 1.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "Nsheng (Mushenge) coordinates (the Mushenge page failed for the author).",
+     "page to try": "https://en.wikipedia.org/wiki/Mushenge"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "The year the Kuba kingdom lost independence (infobox 1884 against the text).",
+     "page to try": "https://en.wikipedia.org/wiki/Kuba_people"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kuba_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kuba_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kuba_Kingdom",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 100000,
+    "infobox_year": 1884,
+    "cliopatria_km2": 0,
+    "ratio": 0.88,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "zanzibari-domain-of-tippu-tip",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1",
+     "what": "The 24 February 1887 governorship was typed 'rename', so congo-free-state's vassal_start of February 1887 had no mirror.",
+     "why": "Tippu Tip page: Stanley 'proposed that Tippu Tip be made governor of the Stanley Falls District'; 'on February 24, 1887, Tippu Tip accepted.' congo-free-state /ledger/2 vassal_start 1887-02, counterpart this slug.",
+     "fix": "Changed to vassal_start, counterpart congo-free-state, region Maniema, confidence 3 kept; reviewer tag in the note.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/2",
+     "what": "No vassal_end mirrored congo-free-state's vassal_end of March 1892.",
+     "why": "Congo Arab war page: 'In March and April 1892, Tippu Tip's son Sefu bin Hamid began attacking Congo Free State personnel in eastern Congo.' congo-free-state /ledger/5 vassal_end 1892-03.",
+     "fix": "Added vassal_end 1892-03 (counterpart congo-free-state, Maniema, confidence 2); the file validates with 0 errors, 0 warnings.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what": "Advisory (non-blocking): the keyframe and the capital end in 1893 while the life and the dissolve run to January 1894.",
+     "why": "Congo Arab war page: 'Within three days, the remaining forts ... surrendered' (9 January 1894); Kasongo fell 22 April 1893.",
+     "fix": "Run the keyframe to 1894 (the Kasongo and Nyangwe losses are already in the ledger) or end the life in 1893.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "The Sultan of Zanzibar's claim on the domain 1884-1887 ('for himself and for the Sultan of Zanzibar') is recorded in no dossier; the domain's extent beyond Maniema (Stanley Falls, Rumaliza's Ujiji) is undrawn.",
+     "page to try": "https://en.wikipedia.org/wiki/Rumaliza"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Tippu_Tip",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Tippu_Tip",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Congo_Arab_war",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Congo_Arab_war",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Congo_Arab_war",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "congo-free-state",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0",
+     "what": "Advisory (non-blocking): one keyframe covers 1885-1894 while the ledger adds the Lunda heartland (1887), the Luba empire (1889) and Katanga (1891): the 1890 anchor drawn from the keyframe would leave the Lunda and Luba lands to nobody (both states have ended by then).",
+     "why": "/ledger/1, /ledger/3 and /ledger/4 against congo-free-state_1885 (minus Katanga, Maniema, Lunda, Luba); kingdom-of-lunda ends 1887, luba-empire 1889.",
+     "fix": "Add keyframes at 1887, 1889 and 1891 (each minus one fewer term), or confirm that the compiler applies ledger gains between keyframes.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1",
+     "what": "Advisory (non-blocking): the 1887 Lunda gain has no mirror; kingdom-of-lunda's dissolve names 'Chokwe invaders'.",
+     "why": "Kingdom of Lunda page (1884 division, infobox end 1887).",
+     "fix": "Settle with kingdom-of-lunda which counterpart takes the land in 1887.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/0",
+     "what": "Advisory (non-blocking): kingdom-of-kongo's 1885 loss to this state and kuba-kingdom's 1884 dissolve to it have no explicit gain here; the land is inside the founding shape (author's note: 'the Kuba and the Kongo lands are inside it').",
+     "why": "kingdom-of-kongo /ledger/13, kuba-kingdom /ledger/2; overlap of congo-free-state_1885 with kuba_1625 300 cells.",
+     "fix": "Accept as absorbed in the found event, or add gains dated 1885-07 for the matrix.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "When the Luba lands actually 'joined the Congo Free State' (the page says only 'later'; confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Luba_people"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "Lado Enclave extent and the date of effective occupation (Rejaf, 17 February 1897); Central Equatoria is a stand-in, confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Lado_Enclave"
+    },
+    {
+     "where": "/certainty/1",
+     "what is missing": "The 1885-1894 boundary treaties with France, Portugal, Britain and Germany.",
+     "page to try": "https://en.wikipedia.org/wiki/Berlin_Conference"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Congo_Free_State",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Luba_Empire",
+     "result": "mis-dated"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Msiri",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Congo_Free_State",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Congo_Free_State",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2345409,
+    "infobox_year": 1908,
+    "cliopatria_km2": 0,
+    "ratio": 0.91,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "portuguese-angola",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2/correction",
+     "what": "BLOCKING: the 1671-1884 and 1885-1919 shapes include the gazetteer region 'Ndongo', which contains Malanje Province: all of kingdom-of-matamba (305 cells, to 1744) and kingdom-of-kasanje (118 cells, to 1910) are drawn as the colony from 1671, contradicting this keyframe's own note ('Matamba ..., Kasanje and Kongo are separate states, not part of the colony, until their own events') and this dossier's /ledger/18 (Kasanje gained only in 1910).",
+     "why": "Gazetteer: Ndongo = Luanda + Bengo + Cuanza Norte + Malanje. Resolve: portuguese-angola_1671 644 cells, overlap with matamba 305 and kasanje 118; portuguese-angola_1885 overlap with kasanje 118. History of Angola: 'The Kingdom of Ndongo submitted to the Portuguese Crown in 1671' (Ndongo only).",
+     "fix": "Use the corrected Ndongo shape (without Matamba's and Kasanje's land) in /keyframe_review/2 and /3 and in /ledger/6, /ledger/11, /ledger/12.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/3/correction",
+     "what": "Part of the blocking redraw: the 1885-1919 shape leaves out the land of its own 1885 gain from Kongo (/ledger/16: only 34 of 198 cells inside) and of the 1910 Kasanje gain (inside only through the Ndongo-region error), and there is no 1914 gain of the São Salvador district though kingdom-of-kongo dissolves to this state in 1914.",
+     "why": "Resolve of /ledger/16 against portuguese-angola_1885; kingdom-of-kongo /ledger/15 (dissolve 1914, counterpart portuguese-angola); Kongo page: 'The remaining territories of the kingdom were assimilated into the colony of Portuguese Angola'.",
+     "fix": "Add the 1885 Kongo land to the 1885 keyframe, a 1910 keyframe with Kasanje, and a 1914 gain (counterpart kingdom-of-kongo, Mbanza Kongo 100 km within Angola) with a keyframe from 1914.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/13",
+     "what": "The Matamba vassal_start (1683) has no end although kingdom-of-matamba dissolves to this state in 1744; no 1744 event here (validator warning).",
+     "why": "Matamba page: the 1744 invasion and a renewed treaty of vassalage; integration 'in the late nineteenth century'.",
+     "fix": "Agree with kingdom-of-matamba on its end: either a 1744 vassal_end plus gain, or a later integration year with vassal_end then.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/15",
+     "what": "Advisory (non-blocking): Cabinda (1885) is a 'gain' here but a vassal_start (protectorate) in portuguese-empire /ledger/81, and the Dutch years are an occupation by 'Dutch West India Company' here but a loss/gain with dutch-republic in portuguese-empire /ledger/28 and /33; the two Portuguese dossiers also both draw Luanda, Benguela and (from 1891) all of Angola up to 1910.",
+     "why": "portuguese-empire ledger; History of Angola: Cabinda 'ceded to Portugal on the legal basis of the Treaty of Simulambuko Protectorate'.",
+     "fix": "Route to the orchestrator (author-flagged overlap): pick one owner for Angola 1575-1910 and one counterpart spelling for the Dutch; make Cabinda a vassal_start or say why it is a gain.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "Advisory (non-blocking): Benguela at 1601 is a placeholder ('17th century', confidence 1); the page gives no year.",
+     "why": "Portuguese Angola page: 'In the 17th century came the settlement of Benguela even farther to the south.'",
+     "fix": "Keep confidence 1; a gap-filler dates it (Benguela page).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Benguela's founding year.",
+     "page to try": "https://en.wikipedia.org/wiki/Benguela"
+    },
+    {
+     "where": "/ledger/20",
+     "what is missing": "The 1885-1920 conquests (Dembos, Ovimbundu, Cuanhama, Lunda/Chokwe north-east); 1920 is a bridge from 'nobody' at confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Portuguese_colonial_campaigns_in_Angola"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/History_of_Angola",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Nzinga_of_Ndongo_and_Matamba",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/History_of_Angola",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Matamba",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Portuguese_Angola",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/History_of_Angola",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/History_of_Angola",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Portuguese_Angola",
+     "result": "not on page"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1246700,
+    "infobox_year": 1975,
+    "cliopatria_km2": 0,
+    "ratio": 1.0,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kingdom-of-kongo",
+    "year": 1656,
+    "type": "loss",
+    "counterpart": "Soyo"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Soyo has no dossier; listed by the author as county-of-soyo."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-kongo",
+    "year": 1859,
+    "type": "vassal_start",
+    "counterpart": "portuguese-angola"
+   },
+   "mirror": {
+    "slug": "portuguese-angola",
+    "year": 1859,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "Kongo side was a 'rename'; changed to vassal_start by the reviewer."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-kongo",
+    "year": 1885,
+    "type": "loss",
+    "counterpart": "portuguese-angola"
+   },
+   "mirror": {
+    "slug": "portuguese-angola",
+    "year": 1885,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Years and counterparts agree, but portuguese-angola's 1885 keyframe holds only 34 of the 198 cells it gains."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-kongo",
+    "year": 1885,
+    "type": "loss",
+    "counterpart": "congo-free-state"
+   },
+   "mirror": {
+    "slug": "congo-free-state",
+    "year": 1885,
+    "type": "found"
+   },
+   "status": "exception",
+   "note": "No explicit gain; the land lies inside the Free State's founding shape."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-kongo",
+    "year": 1914,
+    "type": "vassal_end",
+    "counterpart": "portuguese-angola"
+   },
+   "mirror": {
+    "slug": "portuguese-angola",
+    "year": 1914,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": "Kongo side added by the reviewer."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-kongo",
+    "year": 1914,
+    "type": "dissolve",
+    "counterpart": "portuguese-angola"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "portuguese-angola has no 1914 gain of the São Salvador district."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lunda",
+    "year": 1887,
+    "type": "dissolve",
+    "counterpart": "Chokwe invaders"
+   },
+   "mirror": {
+    "slug": "congo-free-state",
+    "year": 1887,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "CFS gains from kingdom-of-lunda; Lunda's dissolve names the Chokwe; the Angolan part goes to nobody."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-ndongo",
+    "year": 1582,
+    "type": "loss",
+    "counterpart": "portuguese-angola"
+   },
+   "mirror": {
+    "slug": "portuguese-angola",
+    "year": 1582,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Massangano."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-ndongo",
+    "year": 1602,
+    "type": "loss",
+    "counterpart": "portuguese-angola"
+   },
+   "mirror": {
+    "slug": "portuguese-angola",
+    "year": 1602,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Cambambe."
+  },
+  {
+   "event": {
+    "slug": "portuguese-angola",
+    "year": 1626,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-ndongo"
+   },
+   "mirror": {
+    "slug": "kingdom-of-ndongo",
+    "year": 1626,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "Ndongo records the client kingship as a rename; no vassal_start/vassal_end there."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-ndongo",
+    "year": 1671,
+    "type": "dissolve",
+    "counterpart": "portuguese-angola"
+   },
+   "mirror": {
+    "slug": "portuguese-angola",
+    "year": 1671,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "But both shapes carry Matamba's and Kasanje's land (Ndongo region includes Malanje)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-matamba",
+    "year": 1683,
+    "type": "loss",
+    "counterpart": "kingdom-of-kasanje"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kasanje",
+    "year": 1683,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Treaty of 7 September 1683; Matamba's keyframe does not drop the band."
+  },
+  {
+   "event": {
+    "slug": "portuguese-angola",
+    "year": 1683,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-matamba"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Matamba has no vassal_start."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-matamba",
+    "year": 1744,
+    "type": "dissolve",
+    "counterpart": "portuguese-angola"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "portuguese-angola has no 1744 gain or vassal_end; the page keeps Matamba alive as a vassal."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-kasanje",
+    "year": 1910,
+    "type": "dissolve",
+    "counterpart": "portuguese-angola"
+   },
+   "mirror": {
+    "slug": "portuguese-angola",
+    "year": 1910,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Page: 1910-1911."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-kasanje",
+    "year": 1657,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody, but the 120 km Kwango band covers 85 cells of kingdom-of-kongo."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-loango",
+    "year": 1883,
+    "type": "dissolve",
+    "counterpart": "french-africa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "french-africa (Cliopatria row) has no dossier yet; its group has not run."
+  },
+  {
+   "event": {
+    "slug": "luba-empire",
+    "year": 1889,
+    "type": "dissolve",
+    "counterpart": "congo-free-state"
+   },
+   "mirror": {
+    "slug": "congo-free-state",
+    "year": 1889,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Both at 1889; the page says the Luba 'later joined' the Free State."
+  },
+  {
+   "event": {
+    "slug": "yeke-kingdom",
+    "year": 1870,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "The land is luba-empire's (1700-1889) and partly kingdom-of-lunda's; neither records a loss."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-kazembe",
+    "year": 1867,
+    "type": "loss",
+    "counterpart": "yeke-kingdom"
+   },
+   "mirror": {
+    "slug": "yeke-kingdom",
+    "year": 1867,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Same region (the west bank)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-kazembe",
+    "year": 1894,
+    "type": "dissolve",
+    "counterpart": "british-africa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart changed from congo-free-state by the reviewer; british-africa has no dossier yet (group not run)."
+  },
+  {
+   "event": {
+    "slug": "yeke-kingdom",
+    "year": 1891,
+    "type": "dissolve",
+    "counterpart": "congo-free-state"
+   },
+   "mirror": {
+    "slug": "congo-free-state",
+    "year": 1891,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "December 1891."
+  },
+  {
+   "event": {
+    "slug": "kuba-kingdom",
+    "year": 1884,
+    "type": "dissolve",
+    "counterpart": "congo-free-state"
+   },
+   "mirror": {
+    "slug": "congo-free-state",
+    "year": 1885,
+    "type": "found"
+   },
+   "status": "exception",
+   "note": "No explicit gain; Kuba land is inside the Free State's 1885 shape; the infobox successor is the IAC (no dossier)."
+  },
+  {
+   "event": {
+    "slug": "congo-free-state",
+    "year": 1887,
+    "type": "vassal_start",
+    "counterpart": "zanzibari-domain-of-tippu-tip"
+   },
+   "mirror": {
+    "slug": "zanzibari-domain-of-tippu-tip",
+    "year": 1887,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "Tippu Tip side was a 'rename'; changed by the reviewer."
+  },
+  {
+   "event": {
+    "slug": "congo-free-state",
+    "year": 1892,
+    "type": "vassal_end",
+    "counterpart": "zanzibari-domain-of-tippu-tip"
+   },
+   "mirror": {
+    "slug": "zanzibari-domain-of-tippu-tip",
+    "year": 1892,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": "Tippu Tip side added by the reviewer."
+  },
+  {
+   "event": {
+    "slug": "zanzibari-domain-of-tippu-tip",
+    "year": 1893,
+    "type": "loss",
+    "counterpart": "congo-free-state"
+   },
+   "mirror": {
+    "slug": "congo-free-state",
+    "year": 1893,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Nyangwe, 4 March 1893."
+  },
+  {
+   "event": {
+    "slug": "zanzibari-domain-of-tippu-tip",
+    "year": 1893,
+    "type": "loss",
+    "counterpart": "congo-free-state"
+   },
+   "mirror": {
+    "slug": "congo-free-state",
+    "year": 1893,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Kasongo, 22 April 1893."
+  },
+  {
+   "event": {
+    "slug": "zanzibari-domain-of-tippu-tip",
+    "year": 1894,
+    "type": "dissolve",
+    "counterpart": "congo-free-state"
+   },
+   "mirror": {
+    "slug": "congo-free-state",
+    "year": 1894,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "January 1894."
+  },
+  {
+   "event": {
+    "slug": "congo-free-state",
+    "year": 1894,
+    "type": "gain",
+    "counterpart": "british-colonial-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Lado Enclave lease; british-colonial-empire has no dossier yet."
+  },
+  {
+   "event": {
+    "slug": "congo-free-state",
+    "year": 1908,
+    "type": "dissolve",
+    "counterpart": "belgian-congo"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "belgian-congo (af-08) not written; author asks af-08 to start it in 1908."
+  },
+  {
+   "event": {
+    "slug": "portuguese-angola",
+    "year": 1641,
+    "type": "occupation_start",
+    "counterpart": "Dutch West India Company"
+   },
+   "mirror": {
+    "slug": "portuguese-empire",
+    "year": 1641,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "portuguese-empire records a loss of Luanda and Benguela to dutch-republic; PA an occupation of Luanda by the WIC (no dossier)."
+  },
+  {
+   "event": {
+    "slug": "portuguese-angola",
+    "year": 1648,
+    "type": "occupation_end",
+    "counterpart": "Dutch West India Company"
+   },
+   "mirror": {
+    "slug": "portuguese-empire",
+    "year": 1648,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "As above; August 1648 on both sides."
+  },
+  {
+   "event": {
+    "slug": "portuguese-angola",
+    "year": 1885,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "portuguese-empire",
+    "year": 1885,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "Cabinda: a gain here, a protectorate (vassal_start) in portuguese-empire."
+  },
+  {
+   "event": {
+    "slug": "portuguese-angola",
+    "year": 1890,
+    "type": "gain",
+    "counterpart": "Viye (Ovimbundu kingdom)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Viye has no dossier; listed by the author."
+  },
+  {
+   "event": {
+    "slug": "portuguese-angola",
+    "year": 1975,
+    "type": "dissolve",
+    "counterpart": "people-s-republic-of-angola"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Successor dossier not written yet."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Baixa de Cassange",
+   "kind": "region",
+   "used_in": "kingdom-of-matamba"
+  },
+  {
+   "name": "Mbata",
+   "kind": "region",
+   "used_in": "kingdom-of-kongo"
+  },
+  {
+   "name": "Nsundi",
+   "kind": "region",
+   "used_in": "kingdom-of-kongo"
+  },
+  {
+   "name": "Bembe",
+   "kind": "region",
+   "used_in": "kingdom-of-kasanje"
+  },
+  {
+   "name": "Lado Enclave",
+   "kind": "region",
+   "used_in": "congo-free-state"
+  },
+  {
+   "name": "Haut-Katanga",
+   "kind": "region",
+   "used_in": "yeke-kingdom"
+  },
+  {
+   "name": "Musumba",
+   "kind": "place",
+   "used_in": "kingdom-of-lunda"
+  },
+  {
+   "name": "Bunkeya",
+   "kind": "place",
+   "used_in": "yeke-kingdom"
+  },
+  {
+   "name": "Mwibele",
+   "kind": "place",
+   "used_in": "luba-empire"
+  },
+  {
+   "name": "Mushenge",
+   "kind": "place",
+   "used_in": "kuba-kingdom"
+  },
+  {
+   "name": "Kabasa",
+   "kind": "place",
+   "used_in": "kingdom-of-ndongo"
+  },
+  {
+   "name": "Cassange",
+   "kind": "place",
+   "used_in": "kingdom-of-kasanje"
+  },
+  {
+   "name": "Vivi",
+   "kind": "place",
+   "used_in": "congo-free-state"
+  },
+  {
+   "name": "Nyangwe",
+   "kind": "place",
+   "used_in": "zanzibari-domain-of-tippu-tip"
+  },
+  {
+   "name": "Massangano",
+   "kind": "place",
+   "used_in": "portuguese-angola"
+  },
+  {
+   "name": "Cambambe",
+   "kind": "place",
+   "used_in": "portuguese-angola"
+  },
+  {
+   "name": "Pungo Andongo",
+   "kind": "place",
+   "used_in": "kingdom-of-ndongo"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Mbata (predecessor of Kongo)",
+   "suggested_slug": "mbata",
+   "years": [
+    1300,
+    1390
+   ]
+  },
+  {
+   "name": "Mpemba Kasi (predecessor of Kongo)",
+   "suggested_slug": "mpemba-kasi",
+   "years": [
+    1300,
+    1390
+   ]
+  },
+  {
+   "name": "Soyo",
+   "suggested_slug": "county-of-soyo",
+   "years": [
+    1641,
+    1887
+   ]
+  },
+  {
+   "name": "International Association of the Congo",
+   "suggested_slug": "international-association-of-the-congo",
+   "years": [
+    1879,
+    1885
+   ]
+  },
+  {
+   "name": "Chokwe",
+   "suggested_slug": "chokwe",
+   "years": [
+    1850,
+    1910
+   ]
+  },
+  {
+   "name": "Viye (Bié)",
+   "suggested_slug": "viye",
+   "years": [
+    1750,
+    1890
+   ]
+  },
+  {
+   "name": "Sultanate of Zanzibar",
+   "suggested_slug": "sultanate-of-zanzibar",
+   "years": [
+    1856,
+    1890
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-af-06.md",
+ "problems": [
+  "Reviewer applied small verified fixes in four dossiers (kingdom-of-kongo, zanzibari-domain-of-tippu-tip, luba-empire, kingdom-of-kazembe); all validate with 0 errors, 0 warnings, and each edit carries a '[Reviewer af-06, 2026-10-19: ...]' tag.",
+  "Root cause of three of the four fails: the gazetteer region 'Ndongo' (aliases 'Ndongo and Matamba', 'Angola (kingdom core)') includes Malanje Province, so kingdom-of-ndongo and portuguese-angola swallow kingdom-of-matamba and kingdom-of-kasanje; the gazetteer agent may want to split it (Ndongo without Malanje; a 'Baixa de Cassange' entry).",
+  "yeke-kingdom (all Katanga), luba-empire ('Luba (region)' = Katanga intersected with a box) and kingdom-of-lunda (309 km disc) overlap by 75,000-230,000 km2 in 1856-1887; they need a joint redraw.",
+  "portuguese-angola and portuguese-empire (am-06) both draw Angola 1575-1910 (author-flagged); the orchestrator must pick one owner.",
+  "No page failed to load for the reviewer; the 'Kongolese Civil War' and 'Njinga' URLs that failed for the author were not needed."
+ ]
+}

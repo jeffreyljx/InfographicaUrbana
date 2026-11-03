@@ -1,0 +1,42 @@
+{
+ "batch_id": "fx-19",
+ "checks": [
+  {
+   "item": "F329 (-144 keyframe)",
+   "verdict": "pass",
+   "what": "parthian-empire keyframe_review[6] (_-144) now subtracts {region: Persis}, the same region the persis dossier draws (persis_-150 keyframe, ledger/0-1). The Kings of Persis page has Wadfradad II 'made a vassal of the Iranian Parthian (Arsacid) Empire' (fl. 138 BC) and Strabo's early kings paying tribute to the Seleucids 'until c.140 BC, when the Parthians conquered the region', so Persis was not Parthian in -144..-139. The cut removes the only parthian/persis conflict (conflicts.csv: 620 cells, -144, keyframe:1). Later years are unchanged in effect: from -138 hierarchy.csv (persis under parthian-empire, -138..224) gives the vassal its cells by R3, and the -164 keyframe holds Parthia and Hyrcania only (the -218 shape plus Hecatompylos), as the fixer said. Validates OK.",
+   "page": "https://en.wikipedia.org/wiki/Kings_of_Persis",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F329 (ledger 15, 64, 65)",
+   "verdict": "pass",
+   "what": "ledger/15 vassal_start -135 -> -138 matches 'Wadfradad II (fl. 138 BC) was made a vassal'. ledger/65 vassal_end and ledger/64 loss 215 -> 224 match the Kings of Persis infobox ('Vassal of the Parthian Empire'; 'Incorporated into the Sasanian Empire: AD 224'; '211/2-224: Ardakhshir V (last)'). The page does not mention 215. Small overstatement: the Ardashir I page does give a hedged earlier date, that 'either Papak overthrowing Istakhr's local shah or a break from the Parthians' happened in 205-206, and Ardashir 'probably in about 220' started taking lands. Neither is a firm date for the end of the vassalage, so 224 (Hormozdgan, 'April 28, 224') stands and now agrees with persis ledger/1 and /4 and hierarchy.csv (-138..224). ledger/64 was a no-op at 215 (noop_events.csv row: parthian-empire,64,215,loss,212) and still adds no direct Parthian land at 224. The year/month order is valid: 224 with no month in /64-/69, then 224-04 in /70. The sasanian-empire handoff (found 215 -> 224, or draw Fars as Persis until 224) is supported by the same infobox.",
+   "page": "https://en.wikipedia.org/wiki/Ardashir_I",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F117 (kept)",
+   "verdict": "pass",
+   "what": "The Kangju page supports Kangju holding Ferghana/Dayuan in 51..224: 'Their territory covered the region of the Ferghana Valley and the area between the Amu Darya and Syr Darya rivers'; 'had gained control of Dayuan and Sogdiana' (Hanshu period); 'pursued an independent policy, which they were able to maintain until the 3rd century CE'. The Kushan Empire page never names Ferghana, Dayuan, Tashkent or Kangju. Its only northern lines are undated ('loosely ruled a territory that extended to the Aral Sea through present-day Uzbekistan'; Kyrgyzstan in the list of modern countries) or post-240 (Shapur I's 'Kash, Sughd, and Chachestan'). Imprecision in the fixer's reasoning: the year-50 cells (675) are not all 'the Bactrian south'. Kashkadarya (86) and Jizzakh (72) are Sogdiana and Osh (59) is Ferghana. However, the Kushan page puts the Kushans 'in the area of Bactria and Sogdiana' and has Kash under them by Shapur I's time, and these cells were Yuezhi/Kushan from -36 (kangju/yuezhi conflict, 632 cells to yuezhi). The pages conflict there, so leaving the size-rule result is defensible.",
+   "page": "https://en.wikipedia.org/wiki/Kangju",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F136 (kept)",
+   "verdict": "pass",
+   "what": "Confirmed on the Parthian Empire page: Bukhara, Kangju, Transoxiana, Amu Darya/Oxus, Zeravshan and Samarkand do not occur. Sogdia appears only for Sogdian merchants in the silk trade, and the eastern extent named is Afghanistan, western Pakistan and the Indus. The Kangju page puts Kangju between the Amu Darya and the Syr Darya with Sogdiana under it. So the size rule's award of the 95-96 Bukhara/Navoi/Kashkadarya cells to Kangju is the page-supported answer, and the fixer was right to make no edit.",
+   "page": "https://en.wikipedia.org/wiki/Parthian_Empire",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "Validation: parthian-empire OK (0 errors, 0 warnings, 322 regions resolved); persis OK (0 errors, 0 warnings).",
+  "Still open, not part of this batch's findings: parthian-empire keyframe _-144 has no from/to. Its text says it is used for -141..-127, but the compiler applies it from -144 while the -148 keyframe runs to -142, so the two overlap in -144..-142. This also causes the elymais/parthian conflict (261 cells, -144). Suggested owner fix: set from -141, to -127, checked against the Mithridates I page (Babylonia 141 BC).",
+  "Handoff still open: sasanian-empire ledger/0 found at 215 takes the Persis land nine years before the 224 that the Kings of Persis page gives."
+ ]
+}

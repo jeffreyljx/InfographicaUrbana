@@ -1,0 +1,1609 @@
+{
+ "batch_id": "eu-09-c",
+ "verdicts": [
+  {
+   "slug": "holy-roman-empire-minor-states",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/102, /ledger/103, /keyframe_review/94",
+     "what": "BLOCKING. The 1796 French advance into Swabia and Franconia (60 cells: Baden-Wurttemberg 48, Bavaria 6, Hesse 4) is recorded as a loss to french-directory and a 1797 gain back, and the 1796 keyframe is accepted as drawn, so the map shows southern Germany as French for a year.",
+     "why": "War of the First Coalition page (opened): Jourdan reached Amberg in late August, Moreau reached Bavaria and the edge of Tyrol by September, then 'both armies were forced to retreat back across the Rhine'. The keyframe note itself calls the cells 'the ground the armies of Moreau and Jourdan reached', and wars[6].zones[1] already treats it as a war zone. Master plan: fought-over land is a contest blend, and occupied land becomes the occupier's only if annexed. The author handled the Swedish hold of 1632-1635 this way but not this one.",
+     "fix": "Replace /ledger/102 and /ledger/103 with contest_start 1796 and contest_end 1796 (or 1797), counterpart french-directory, region wars[6].zones[1], confidence 2. Set /keyframe_review/94 to verdict adjust with correction {\"union\":[{\"cliopatria\":\"Holy Roman Empire Minor States\",\"year\":1796},{\"intersect\":[{\"cliopatria\":\"Holy Roman Empire Minor States\",\"year\":1794},{\"cliopatria\":\"French Directory\",\"year\":1796}]}],\"text\":\"the 1796 shape with the ground the French armies crossed, still Imperial\"}.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/93, /ledger/94, /ledger/96, /keyframe_review/85, /keyframe_review/86",
+     "what": "BLOCKING. French-held Hesse, Westphalia and the Rhineland in the Seven Years' War are recorded as losses to kingdom-of-france (1757: 20 cells, conf 1; 1762: 37 cells, conf 2) and a 1763 gain of 122 cells, and the 1757 and 1762 keyframes are accepted as drawn.",
+     "why": "Seven Years' War page as quoted in /ledger/96: Louis XV 'evacuated Prussia's Rhineland territories, ending France's involvement in the war in Germany'. /ledger/94 cites the French capture of Marburg (1760) and Brunswick 'taking Cassel' (1762), which describe an army's hold during the fighting. No cession is on the page. wars[5].zones[0] calls the land 'held by the French'. The kingdom-of-france dossier records these years as occupations (1757 occupation_start, 1762 occupation_end), not gains.",
+     "fix": "Replace with an occupation_start (1757, or the first year the page dates French troops in Hesse/Westphalia) and an occupation_end (1763-02), both with counterpart kingdom-of-france and region wars[5].zones[0]; mark /keyframe_review/85 and /86 adjust as union(this row's shape of the year, intersect(Holy Roman Empire Minor States 1752, Kingdom of France of the year)) so the cells stay Imperial and hatched. Leave the Hanover cells (/ledger/92, /95, /97) at confidence 1 as Cliopatria re-cuts, or treat them the same way if a page supports it.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/57, /ledger/58, /keyframe_review/54",
+     "what": "Same pattern (confidence 2): the Danish hold of the Lower Saxon Circle 1626-1628 (55 cells) is a loss to denmark-norway; 19 cells return in 1629 and the other 36 fall into no shape.",
+     "why": "Thirty Years' War page: Christian IV was elected military commander of the Lower Saxon Circle in May 1625, lost at Lutter in August 1626, and at Lubeck (1629) kept Schleswig and Holstein 'in return for relinquishing Bremen and Verden'. The circle's lands stayed Imperial estates, and wars[3].zones[0] is this same land.",
+     "fix": "Make it contest_start 1626 / contest_end 1629-06 (counterpart denmark-norway, region wars[3].zones[0]) and mark /keyframe_review/54 adjust to keep the 55 cells; say where the 36 cells are in 1629-1631 (in this row, by correction of /keyframe_review/55).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/63, /ledger/68, /ledger/66, /ledger/69",
+     "what": "Same pattern (confidence 1): Mecklenburg drawn Swedish 1642-1648 and 18 Swabian cells drawn French 1645-1648 are recorded as loss and gain, though the dossier's own 1648 notes say Westphalia gives Sweden no Mecklenburg and the Swabian cells simply return.",
+     "why": "Peace of Westphalia page (opened): Sweden received Western Pomerania, Wismar and Bremen-Verden; France the Three Bishoprics and the Decapole. Neither got Mecklenburg or Swabia.",
+     "fix": "Record both as occupation_start/occupation_end pairs (swedish-empire 1642-1648, kingdom-of-france 1645-1648) with adjust verdicts on /keyframe_review/60 and /61, as was done for 1632.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/59/note, /ledger/60/note",
+     "what": "The notes said the Peace of Prague 'hands back' the 424 Swedish-held cells. The page does not say that.",
+     "why": "Thirty Years' War page: Nordlingen 'cost Sweden control of southern Germany' (September 1634), and the Peace of Prague is the leagues disbanding in return for withdrawing the Edict of Restitution; no land is returned by it.",
+     "fix": "Reworded both notes to quote the Nordlingen sentence and to say the page names no land returned at Prague (dates kept: 1632 / 1635-05). Re-validated: 0 errors.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/86",
+     "what": "Liechtenstein dated 1721 (Cliopatria) at confidence 1. The Liechtenstein dossier and page date it 1719.",
+     "why": "Liechtenstein page: 'On 23 January 1719, after the lands had been purchased, Charles VI, Holy Roman Emperor, decreed that Vaduz and Schellenberg' were united. The principality-of-liechtenstein dossier is founded 1719-01 with this state as counterpart.",
+     "fix": "Moved to 1719-01, source https://en.wikipedia.org/wiki/Liechtenstein (added to sources[]), confidence 3, note rewritten; the 1-cell change stays inside the 1713-1720 shape. Re-validated: 0 errors, 0 warnings.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/99",
+     "what": "52 cells to duchy-of-bavaria dated 1780 (Cliopatria, confidence 1), while the duchy-of-bavaria dossier dates the Bavarian-Palatine union to 1777 (gain from electoral-palatinate, confidence 3).",
+     "why": "duchy-of-bavaria ledger: 1777 gain, counterpart electoral-palatinate, confidence 3.",
+     "fix": "Re-date to 1777 and name the Palatinate lands in the note, citing Bavaria's page; keep or adjust /keyframe_review/89 (1775-1777) so that it agrees.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1681)",
+     "what": "Missing event: the French seizure of Strasbourg in 1681. The 6 Strasbourg cells leave the row only in the 1683 keyframe and have no event.",
+     "why": "The kingdom-of-france dossier has a 1681 gain from holy-roman-empire (Strasbourg, confidence 2). /keyframe_review/62 says the 7 Bas-Rhin cells are 'imperial until Cliopatria drops them in 1683'. The Ryswick page: 'France kept Strasbourg'.",
+     "fix": "Add a 1681 loss to kingdom-of-france of Strasbourg, citing the France dossier's page (or https://en.wikipedia.org/wiki/R%C3%A9unions).",
+     "applied": false
+    },
+    {
+     "where": "/identity/capitals",
+     "what": "Prague (1355-1378, 1576-1612) and Vienna (1550-1575) are inside the shapes.csv bbox, but they lie in the Kingdom of Bohemia and Habsburg leaf shapes, not in this residual row, so a capital marker will sit outside the row's polygon.",
+     "why": "From 1272 the row excludes the Bohemian leaf and from 1492 the Habsburg one (author's notes, 'WHAT THE ROW IS').",
+     "fix": "Add a sentence to each capital's note saying the seat lies in the member's leaf shape, so the compiler does not test it against this row.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/rulers",
+     "what is missing": "rulers strip omitted (the HRE page gives reign years for four emperors only)",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_Holy_Roman_Emperors"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "court seat 1260-1354, 1379-1549 and 1613-1662; Vienna 1550-1575 is approximate",
+     "page to try": "https://en.wikipedia.org/wiki/Hofburg"
+    },
+    {
+     "where": "/ledger/2, /ledger/3, /ledger/16",
+     "what is missing": "1272 and 1333 Bohemia cut-outs (111 and more cells) and the 1272 Papal States cut (46 cells): confidence 1, no dating page",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Bohemia"
+    },
+    {
+     "where": "/ledger/26, /ledger/27",
+     "what is missing": "1402 Milan (148 cells) and Savoy (42 cells) leaf cuts; Gian Galeazzo Visconti's ducal title of 1395 should date the Milan cut",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Milan"
+    },
+    {
+     "where": "/ledger/28",
+     "what is missing": "1407 Venice (48 cells): the Venetian Terraferma conquests of 1404-1405",
+     "page to try": "https://en.wikipedia.org/wiki/Republic_of_Venice"
+    },
+    {
+     "where": "/ledger/33, /ledger/34",
+     "what is missing": "1431 Lorraine (75) and Trier (25) leaf cuts",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Lorraine"
+    },
+    {
+     "where": "/ledger/44, /ledger/46, /ledger/48",
+     "what is missing": "1529-1552 Habsburg Low Countries cuts (39, 27, 17 cells)",
+     "page to try": "https://en.wikipedia.org/wiki/Habsburg_Netherlands"
+    },
+    {
+     "where": "/ledger/74, /ledger/75",
+     "what is missing": "1673 Habsburg (30) and France (33) cuts; Franco-Dutch War not opened",
+     "page to try": "https://en.wikipedia.org/wiki/Franco-Dutch_War"
+    },
+    {
+     "where": "/ledger/83",
+     "what is missing": "1709 Hanover cut (93 cells); the electorate-of-hanover dossier has no mirror",
+     "page to try": "https://en.wikipedia.org/wiki/Electorate_of_Hanover"
+    },
+    {
+     "where": "/ledger/88, /ledger/89, /ledger/90, /ledger/91",
+     "what is missing": "1741-1748 Habsburg and French swings (79 cells out, then back); France's dossier calls 1741-1744 an occupation",
+     "page to try": "https://en.wikipedia.org/wiki/War_of_the_Austrian_Succession"
+    },
+    {
+     "where": "/ledger/92, /ledger/95, /ledger/97",
+     "what is missing": "1757-1763 Hanover shape taking 81 cells of Hesse and Westphalia: page silent, and the Hanover dossier has Hanover itself occupied by France instead",
+     "page to try": "https://en.wikipedia.org/wiki/Electorate_of_Hanover"
+    },
+    {
+     "where": "/ledger/100",
+     "what is missing": "1791 Prussian gain of Franconia (31 cells): Ansbach-Bayreuth passing to Prussia",
+     "page to try": "https://en.wikipedia.org/wiki/Principality_of_Ansbach"
+    },
+    {
+     "where": "/ledger/104, /ledger/111",
+     "what is missing": "1797 Cisalpine Republic (29 cells) and 1805 First French Empire (34 cells) cuts",
+     "page to try": "https://en.wikipedia.org/wiki/Peace_of_Pressburg_(1805)"
+    },
+    {
+     "where": "/ledger (1714)",
+     "what is missing": "Rastatt/Baden 1714 returns (France's dossier has a 1713 gain and a 1714 loss with the Empire); not in this ledger",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Rastatt"
+    },
+    {
+     "where": "/ledger (vassal rows)",
+     "what is missing": "Cliopatria relation rows (Bohemia vassal 1314-1452, Teutonic Order 1305-1401, Swiss 1326-1458, Brandenburg 1422-1458) not written for lack of a page",
+     "page to try": "https://en.wikipedia.org/wiki/Imperial_immediacy"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/49",
+     "page": "https://en.wikipedia.org/wiki/Three_Bishoprics",
+     "result": "confirmed (Toul 13 April, Metz entry 18 April, Verdun 12 June 1552; Treaty of Chambord 15 January 1552; prince-bishoprics 'until they were seized')"
+    },
+    {
+     "where": "/ledger/50, /ledger/51",
+     "page": "https://en.wikipedia.org/wiki/Three_Bishoprics",
+     "result": "confirmed (siege 19 October 1552 to 2 January 1553)"
+    },
+    {
+     "where": "/ledger/67",
+     "page": "https://en.wikipedia.org/wiki/Peace_of_Westphalia",
+     "result": "confirmed ('Brandenburg-Prussia received Farther Pomerania, and the Bishoprics of Magdeburg, Halberstadt, Kammin, and Minden'; signed 24 October 1648)"
+    },
+    {
+     "where": "/ledger/101",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_First_Coalition",
+     "result": "confirmed (Fleurus 1794 'gained all of the Austrian Netherlands and the Rhineland for France'; Basel 5 April 1795; Campo Formio October 1797)"
+    },
+    {
+     "where": "/ledger/102, /ledger/103",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_First_Coalition",
+     "result": "confirmed facts, but the page has the armies retreating, so loss/gain is the wrong type (fix 1)"
+    },
+    {
+     "where": "/ledger/105 to /ledger/110",
+     "page": "https://en.wikipedia.org/wiki/German_mediatisation",
+     "result": "confirmed (25 February 1803, Diet 24 March, ratified 27 April; the award tables list every place named, including the Grand Duke of Salzburg and the imperial cities given to Wurttemberg; 'Baden received over seven times as much, Prussia nearly five times')"
+    },
+    {
+     "where": "/ledger/117",
+     "page": "https://en.wikipedia.org/wiki/Holy_Roman_Empire",
+     "result": "confirmed ('On 6 August 1806, Emperor Francis II abdicated and formally dissolved the empire')"
+    },
+    {
+     "where": "/ledger/12, /ledger/13, /ledger/42, /ledger/72",
+     "page": "https://en.wikipedia.org/wiki/Holy_Roman_Empire",
+     "result": "confirmed (Henry VII elected 27 November 1308; Louis IV king 1314; renaming to 'Holy Roman Empire of the German Nation'; Perpetual Diet at Regensburg 1663-1806)"
+    },
+    {
+     "where": "/ledger/59, /ledger/60",
+     "page": "https://en.wikipedia.org/wiki/Thirty_Years%27_War",
+     "result": "dates confirmed (June 1630, September 1631, April 1632, Nordlingen 1634, Prague 1635); the claim that the Peace of Prague returned the land is not on the page (note fixed)"
+    },
+    {
+     "where": "/ledger/79, /keyframe_review/72",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Ryswick",
+     "result": "confirmed (20 September to 30 October 1697; Freiburg, Breisach, Philippsburg and Lorraine returned, Palatinate claims dropped; France kept Strasbourg)"
+    },
+    {
+     "where": "/keyframe_review/18",
+     "page": "https://en.wikipedia.org/wiki/Margraviate_of_Brandenburg",
+     "result": "confirmed (hereditary control 1411; recognised margrave and elector 1415; the electorate-of-brandenburg dossier starts 1415-04, consistent with the correction)"
+    },
+    {
+     "where": "/keyframe_review/43",
+     "page": "https://en.wikipedia.org/wiki/Livonian_War",
+     "result": "confirmed (Order 'dissolved by the second Treaty of Vilnius in 1561'; lands to Lithuania, Sweden and Denmark-Norway). The author's report and notes add that Livonia 'was never Imperial'; that is not on the page and overstates it (Terra Mariana held as an Imperial fief), but the correction for 1564-1571 stands on the 1561 dissolution."
+    },
+    {
+     "where": "/ledger/86",
+     "page": "https://en.wikipedia.org/wiki/Liechtenstein",
+     "result": "mis-dated (1721 for the 23 January 1719 decree), fixed by reviewer"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1100000,
+    "infobox_year": 1150,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The infobox area is for 1150, before this row (1260-1806). The predecessor holy-roman-empire's 1147 shape is 873,727 km2 (ratio 0.79). This row is the Empire's residual (517,661 km2 in 1260 down to 4,248 km2 in 1806); keyframe 0 says so."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1268,
+    "type": "gain",
+    "counterpart": "house-of-hohenstaufen"
+   },
+   "mirror": {
+    "slug": "house-of-hohenstaufen",
+    "year": 1268,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Hohenstaufen dossier dissolves in 1268 and names this state as successor."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1272,
+    "type": "loss",
+    "counterpart": "kingdom-of-bohemia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-15 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1272,
+    "type": "loss",
+    "counterpart": "papal-states"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-13 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1272,
+    "type": "loss",
+    "counterpart": "duchy-of-bavaria"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1272,
+    "type": "loss",
+    "counterpart": "margraviate-of-brandenburg"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Margraviate dossier has only a 1272 gain from duchy-of-greater-poland; no gain from this state."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1272,
+    "type": "gain",
+    "counterpart": "duchy-of-styria"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1279,
+    "type": "loss",
+    "counterpart": "papal-states"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-13 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1294,
+    "type": "gain",
+    "counterpart": "house-of-habsburg"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1294,
+    "type": "gain",
+    "counterpart": "house-of-luxembourg"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1294,
+    "type": "gain",
+    "counterpart": "duchy-of-bavaria"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1326,
+    "type": "gain",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1333,
+    "type": "loss",
+    "counterpart": "free-county-of-burgundy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1333,
+    "type": "loss",
+    "counterpart": "kingdom-of-bohemia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-15 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1344,
+    "type": "loss",
+    "counterpart": "house-of-habsburg"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1344,
+    "type": "loss",
+    "counterpart": "kingdom-of-bohemia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-15 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1352,
+    "type": "loss",
+    "counterpart": "duchy-of-bavaria"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1363,
+    "type": "loss",
+    "counterpart": "electorate-of-saxony"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1375,
+    "type": "loss",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1395,
+    "type": "gain",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1395,
+    "type": "loss",
+    "counterpart": "swiss-confederation"
+   },
+   "mirror": {
+    "slug": "swiss-confederation",
+    "year": 1395,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1395,
+    "type": "loss",
+    "counterpart": "county-of-savoy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-13 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1402,
+    "type": "loss",
+    "counterpart": "duchy-of-milan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-13 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1402,
+    "type": "loss",
+    "counterpart": "county-of-savoy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-13 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1407,
+    "type": "loss",
+    "counterpart": "republic-of-venice"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-13 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1415,
+    "type": "loss",
+    "counterpart": "county-of-brabant"
+   },
+   "mirror": {
+    "slug": "county-of-brabant",
+    "year": 1415,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "This dossier has the row losing cells to Brabant in 1415, while the Brabant dossier records its own 1415 loss to \"unknown (page silent)\". The two disagree on direction and counterpart."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1422,
+    "type": "gain",
+    "counterpart": "county-of-brabant"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1422,
+    "type": "loss",
+    "counterpart": "electorate-of-brandenburg"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1429,
+    "type": "loss",
+    "counterpart": "duchy-of-luxembourg"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1431,
+    "type": "loss",
+    "counterpart": "duchy-of-lorraine"
+   },
+   "mirror": {
+    "slug": "duchy-of-lorraine",
+    "year": 1431,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Lorraine is founded in 1431 with this state as counterpart."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1431,
+    "type": "loss",
+    "counterpart": "electorate-of-trier"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1440,
+    "type": "gain",
+    "counterpart": "electorate-of-brandenburg"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1459,
+    "type": "loss",
+    "counterpart": "kalmar-union"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1459,
+    "type": "loss",
+    "counterpart": "swiss-confederation"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1475,
+    "type": "loss",
+    "counterpart": "duchy-of-burgundy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-10 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1482,
+    "type": "loss",
+    "counterpart": "swiss-confederation"
+   },
+   "mirror": {
+    "slug": "swiss-confederation",
+    "year": 1481,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "one year apart (1481/1482), within tolerance"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1492,
+    "type": "gain",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1502,
+    "type": "loss",
+    "counterpart": "swiss-confederation"
+   },
+   "mirror": {
+    "slug": "swiss-confederation",
+    "year": 1501,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "one year apart (1501/1502)"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1526,
+    "type": "loss",
+    "counterpart": "kingdom-of-spain"
+   },
+   "mirror": {
+    "slug": "kingdom-of-spain",
+    "year": 1526,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Spain names \"Friesland\" as counterpart, not this state."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1529,
+    "type": "loss",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1529,
+    "type": "loss",
+    "counterpart": "swiss-confederation"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1540,
+    "type": "loss",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1540,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1552,
+    "type": "loss",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1552,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1552,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "France agrees on Metz, Toul and Verdun in 1552 but names the predecessor slug holy-roman-empire (which ends 1259); route to eu-10 to change the slug."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1556,
+    "type": "loss",
+    "counterpart": "republic-of-florence"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-13 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1556,
+    "type": "gain",
+    "counterpart": "electorate-of-saxony"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1609,
+    "type": "gain",
+    "counterpart": "dutch-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1619,
+    "type": "loss",
+    "counterpart": "brandenburg-prussia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1626,
+    "type": "loss",
+    "counterpart": "denmark-norway"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1629,
+    "type": "gain",
+    "counterpart": "denmark-norway"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1632,
+    "type": "occupation_start",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1635,
+    "type": "occupation_end",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1636,
+    "type": "loss",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1640,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1640,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "France records a 1640 gain of \"Picardy and Alsace (holder not named by the pages opened)\"; substance agrees, counterpart unnamed."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1642,
+    "type": "loss",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1642,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1645,
+    "type": "loss",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1645,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1648,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "France records its Alsace and Three Bishoprics gains from holy-roman-empire in 1648, while this dossier loses Alsace in 1640/1645 and records a 1648 gain from France; the two ledgers disagree on the year and direction of the Alsace transfer."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1648,
+    "type": "loss",
+    "counterpart": "brandenburg-prussia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1648,
+    "type": "gain",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1648,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1648,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "France gains from holy-roman-empire in 1648 (Westphalia); this dossier records a 1648 gain from France (Cliopatria returns 37 cells). Opposite directions in the same year."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1648,
+    "type": "gain",
+    "counterpart": "kingdom-of-spain"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1662,
+    "type": "gain",
+    "counterpart": "denmark-norway"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1670,
+    "type": "loss",
+    "counterpart": "denmark-norway"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1673,
+    "type": "loss",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1673,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "France has occupation events with dutch-republic and kingdom-of-spain in 1672-1674, none with this state."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1683,
+    "type": "loss",
+    "counterpart": "brandenburg-prussia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1683,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1681,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "France gains Strasbourg from holy-roman-empire in 1681; this dossier has no 1681 loss (the 6 Strasbourg cells leave only in the 1683 keyframe, without an event) and records a 1683 gain from France."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1696,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1688,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "France models the Nine Years War as a contest with holy-roman-empire 1688-1697; this dossier records a 1696 loss."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1697,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1697,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Substance matches (Ryswick return, 1697) but France names the predecessor slug holy-roman-empire."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1702,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1702,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "France records a 1702 loss to and 1703 gain from holy-roman-empire; this dossier records a 1702 loss to France; directions disagree."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1702,
+    "type": "loss",
+    "counterpart": "duchy-of-bavaria"
+   },
+   "mirror": {
+    "slug": "duchy-of-bavaria",
+    "year": 1702,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1706,
+    "type": "gain",
+    "counterpart": "duchy-of-bavaria"
+   },
+   "mirror": {
+    "slug": "duchy-of-bavaria",
+    "year": 1706,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1709,
+    "type": "loss",
+    "counterpart": "electorate-of-hanover"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1713,
+    "type": "loss",
+    "counterpart": "denmark-norway"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1713,
+    "type": "gain",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1719,
+    "type": "loss",
+    "counterpart": "principality-of-liechtenstein"
+   },
+   "mirror": {
+    "slug": "principality-of-liechtenstein",
+    "year": 1719,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "reviewer moved this event from 1721 to 1719 (Liechtenstein page, 23 January 1719) to match the Liechtenstein dossier"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1734,
+    "type": "loss",
+    "counterpart": "kingdom-of-spain"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "counterpart dossier has no mirror"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1741,
+    "type": "loss",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1741,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1741,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "France records an occupation of \"German lands\" 1741-1744; this dossier records a loss and a gain."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1744,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1744,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "see 1741"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1748,
+    "type": "gain",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1757,
+    "type": "loss",
+    "counterpart": "electorate-of-hanover"
+   },
+   "mirror": {
+    "slug": "electorate-of-hanover",
+    "year": 1757,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "Hanover dossier has Hanover itself occupied by France 1757-1758, not a Hanoverian gain of 81 cells of Hesse and Westphalia."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1757,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1757,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "France records an occupation of electorate-of-hanover in 1757, not a gain from this state."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1762,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1762,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "France ends an occupation of \"Hesse\" in 1762; this dossier records a 1762 loss to France. Reviewer fix 2: make this an occupation."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1762,
+    "type": "loss",
+    "counterpart": "electorate-of-hanover"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1763,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1762,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "see 1762"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1763,
+    "type": "gain",
+    "counterpart": "electorate-of-hanover"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1775,
+    "type": "gain",
+    "counterpart": "denmark-norway"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-14 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1780,
+    "type": "loss",
+    "counterpart": "duchy-of-bavaria"
+   },
+   "mirror": {
+    "slug": "duchy-of-bavaria",
+    "year": 1777,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Bavaria dates the union with the Palatinate to 1777 (gain from electoral-palatinate, conf 3); this dossier has 52 cells to Bavaria in 1780 (conf 1, Cliopatria). Three years and a different counterpart."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1791,
+    "type": "loss",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1794,
+    "type": "loss",
+    "counterpart": "french-first-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1796,
+    "type": "loss",
+    "counterpart": "french-directory"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1797,
+    "type": "gain",
+    "counterpart": "french-directory"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1797,
+    "type": "loss",
+    "counterpart": "cisalpine-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1803,
+    "type": "loss",
+    "counterpart": "duchy-of-bavaria"
+   },
+   "mirror": {
+    "slug": "duchy-of-bavaria",
+    "year": 1803,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Bavaria names prince-bishopric-of-wurzburg, -bamberg, -freising, -augsburg and -passau as counterparts; this dossier treats the bishoprics as its own land and lists them under the umbrella slug ecclesiastical-states-of-the-empire. The slugs must be harmonised (eu-09-x)."
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1803,
+    "type": "loss",
+    "counterpart": "electorate-of-wurttemberg"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1803,
+    "type": "loss",
+    "counterpart": "electorate-of-baden"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1803,
+    "type": "loss",
+    "counterpart": "electorate-of-hesse"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1803,
+    "type": "loss",
+    "counterpart": "electorate-of-salzburg"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1803,
+    "type": "loss",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1805,
+    "type": "loss",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1806,
+    "type": "loss",
+    "counterpart": "grand-duchy-of-berg"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1806,
+    "type": "loss",
+    "counterpart": "duchy-of-nassau"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1806,
+    "type": "loss",
+    "counterpart": "grand-duchy-of-hesse"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1806,
+    "type": "loss",
+    "counterpart": "kingdom-of-wurttemberg"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1806,
+    "type": "loss",
+    "counterpart": "grand-duchy-of-baden"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1806,
+    "type": "loss",
+    "counterpart": "duchy-of-mecklenburg"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1806,
+    "type": "loss",
+    "counterpart": "duchy-of-oldenburg"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-20 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1806,
+    "type": "loss",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; group eu-09 not run"
+  },
+  {
+   "event": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1260,
+    "type": "found",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire",
+    "year": 1259,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "holy-roman-empire (eu-08-b) ends 1259 and names this dossier as successor."
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Electoral Palatinate",
+   "suggested_slug": "electoral-palatinate",
+   "years": [
+    1356,
+    1806
+   ],
+   "note": "Bavaria's dossier already names it as counterpart in 1777"
+  },
+  {
+   "name": "Prince-bishoprics of Wurzburg, Bamberg, Freising, Augsburg and Passau",
+   "suggested_slug": "prince-bishopric-of-wurzburg (and -bamberg, -freising, -augsburg, -passau, as in the duchy-of-bavaria dossier)",
+   "years": [
+    1260,
+    1803
+   ],
+   "note": "The author proposes one umbrella slug, ecclesiastical-states-of-the-empire, and Bavaria uses per-bishopric slugs; eu-09-x must pick one"
+  },
+  {
+   "name": "Duchy of Wurttemberg",
+   "suggested_slug": "duchy-of-wurttemberg",
+   "years": [
+    1495,
+    1803
+   ]
+  },
+  {
+   "name": "Landgraviate of Hesse",
+   "suggested_slug": "landgraviate-of-hesse",
+   "years": [
+    1264,
+    1803
+   ]
+  },
+  {
+   "name": "Duchy of Mecklenburg",
+   "suggested_slug": "duchy-of-mecklenburg",
+   "years": [
+    1348,
+    1806
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-09-c.md",
+ "problems": [
+  "kingdom-of-france (eu-10) uses the predecessor slug holy-roman-empire, which ends 1259, for 13 events from 1552 to 1714. They should name holy-roman-empire-minor-states. Route this to eu-10.",
+  "duchy-of-bavaria (eu-09) gives the 1803 Bavarian gains to per-bishopric slugs (prince-bishopric-of-wurzburg and four others) that have no dossier, while this dossier treats them as its own land. eu-09-x must harmonise these slugs.",
+  "Dossier edited by the reviewer, as the orchestrator allows: notes of /ledger/59 and /ledger/60 reworded; /ledger/86 moved to 1719 with the Liechtenstein page added to sources. The file re-validated with 0 errors and 0 warnings and was read back after 10 s.",
+  "The verdict is fail for the two blocking type and shape findings (1796-1797 and 1757-1763), which the reviewer cannot apply. The rest of the dossier is careful: every confidence-3 event checked was on its page with the right year."
+ ]
+}

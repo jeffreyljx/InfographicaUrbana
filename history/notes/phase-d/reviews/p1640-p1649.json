@@ -1,0 +1,94 @@
+{
+ "window": "p1640-p1649",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "what": "tsardom-of-russia loss to nobody, 1643: the 300 km Kolyma disc of ledger/58 minus Cliopatria's 1645 Russian shape. Page (Russian conquest of Siberia): '1643 - ... Mikhail Stadukhin reaches Kolyma'; 'a series of winter outposts (zimovie) and forts (ostrogs) were built at the confluences of major rivers' and portages; 'The actual boundaries of Siberia thus became very vaguely defined and open to interpretation'; '1647 - Ivan Moskvitin founded Okhotsk'; '1778 - The final annexation of Chukotka'. Spec: 2,741 cells (139.7-168.1 E, 59.0-70.9 N). In the trial none of them was Russian at the end of 1642, so it takes away only what ledger/58 adds. Russia keeps 872 disc cells, and the 1645 snap falls from 3,252 to 511 cells removed. Fixed: the note's first sentence, which becomes the 1643 caption, was a 400-character working note. It also put a wrong quote in quotation marks ('a network of winter outposts and forts at river confluences and portages'). I replaced it with a dated caption and the page's own words. The region is unchanged.",
+   "page": "https://en.wikipedia.org/wiki/Russian_conquest_of_Siberia",
+   "fix": "Note rewritten: caption '1643: Russian control on the Kolyma is a chain of winter outposts and forts; the uplands beyond the river, the northern shore of the Sea of Okhotsk and Chukotka (finally annexed in 1778) are not held.', with the quote corrected.",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "fixed",
+   "what": "republic-of-venice loss to ottoman-empire, 1647: Crete without Candia (Iraklio 15 km), Siteia (25 km), Souda (24.15 E, 35.5 N, 8 km), Spinalonga and Gramvousa. It is the same as the skipped ledger/122 except for Souda, which this entry gives by coordinates. Page: Ottomans 'conquer the eastern half of the island, except for the fortress of Siteia' (1647); 'By the beginning of 1648, all of Crete, except Candia and a few strongholds like the island of Gramvousa, was in Ottoman hands'; the 1669 terms keep 'the isolated island fortresses of Spinalonga, Gramvousa and Souda'. Souda Bay page: Venice held 'the strategic islands within Souda Bay until 1715'. The Souda point resolves to one cell (24.09 E, 35.56 N), which also holds Chania's point. Before the patch that cell belonged to nobody; it is now Venetian from 1647. That is acceptable at this grid size but is noted. HARM found in the trial: with the event's two extra Ottoman cells outside Cliopatria's Ottoman 1648 shape, the ottoman-empire_1648 snap passes its 20-cell tolerance. It then released 12 rural Cretan cells to nobody in 1648-1649: 8 that kingdom-of-candia/ledger/7 gives the Ottomans that year, plus 4 Ottoman since 1645-47. Before the patch, 10 of these were Ottoman. The snap also gave the Ottomans 5 cells round Novigrad (15.5-15.8 E, 44.1-44.4 N), which Venice retook in 1647 (ledger/121, quoting the same page: 'Leonardo Foscolo retook Novigrad'). The window agent's report counts the 12 Cretan cells but misses the Novigrad cells, and it left the fix to the orchestrator. Fixed by adding keyframe_overrides/5 (below) and a caption first sentence. The first sentence had been 'Same event as republic-of-venice/ledger/122, which is skipped...'. Final trial: at the end of 1648 and of 1649 Crete is 23 Ottoman cells, 4 Venetian (Siteia, Candia, Gramvousa, Souda), 1 kingdom-of-candia (Candia, contested) and 1 nobody's (23.77 E, 35.42 N, nobody's since the Ottoman 1645 snap, as before). The Ottoman 1648 snap no longer fires.",
+   "page": "https://en.wikipedia.org/wiki/Cretan_War_(1645%E2%80%931669)",
+   "fix": "Note prefixed with the caption '1647: the Ottomans take the Cretan countryside; Venice keeps Candia, Siteia and the island fortresses of Souda, Spinalonga and Gramvousa.' Added keyframe_overrides/5 (ottoman-empire_1648 = Cliopatria 1648 plus Crete minus Iraklio 25 km, the region of kingdom-of-candia/ledger/7).",
+   "applied": true
+  },
+  {
+   "entry": "events/2",
+   "verdict": "fixed",
+   "what": "kutai-kingdom gain from nobody, 1640: Cliopatria's 1648 Kutai outline plus a 30 km disc round 116.72 E, 0.2 S. The coordinates come from the kutai-martadipura dossier, which calls them approximate. This is the same region as the dossier's kutai-kingdom_1635 keyframe (1635-1647), which is skipped because the gazetteer has no 'Muara Kaman'. Page (Kutai): 'Aji Pangeran Sinum Panji Mendapa, who ruled 1635-1650, was able to conquer the kingdom of Kutai Martadipura' and merged the two realms; Martadipura's capital 'is believed to be the current Muara Kaman district'; the sultanate lasts to 1844. Spec: 38 cells. At the 1640 anchor 33 belonged to nobody and 5 were already Kutai's, so no neighbour loses land. Dating it to 1640 rather than 1635 is a stand-in because 1635 lies in the previous window. That is acceptable, and the dossier request covers it. Fixed: the caption was the working note 'Stand-in for the 1635 annexation ... resolve to nothing because the gazetteer lacks Muara Kaman'. It is now a page-backed sentence.",
+   "page": "https://en.wikipedia.org/wiki/Kutai",
+   "fix": "Note prefixed with the caption 'Kutai Kartanegara holds the lower Mahakam and Muara Kaman, capital of Kutai Martadipura, which Aji Pangeran Sinum Panji Mendapa (ruled 1635-1650) conquered, merging the two realms.'",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "li-zicheng_1644 (1644 only): the dossier's union (Cliopatria 1642 Shun plus Beijing 100 km), unchanged, plus admin1 Shaanxi (965 cells). Page (Li Zicheng): 'Li Zicheng fled to Xi'an'; 'in October of that year, Dorgon sent several armies to expel Li Zicheng from his stronghold in Shaanxi'; 'forcing Li Zicheng to abandon his headquarters in Xi'an in February 1645'. Trial: Shaanxi is Li's at the end of 1643 (965 cells) and of 1644 (933 Li, 29 Qing, 3 Southern Ming), and the Qing's at the end of 1645 (965). The 1644 snap (420 removed) and the 419-cell re-add in 1645 are gone. Li's dossier ends in February 1645, so nothing reaches past the window.",
+   "page": "https://en.wikipedia.org/wiki/Li_Zicheng",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "what": "republic-of-venice_1647 (1647-1647). It is identical to the dossier's correction except Souda, which is given as 24.15 E, 35.5 N, 8 km instead of the unresolvable place 'Souda' 15 km. The page supports it: the eastern half fell in 1647 except Siteia, and by early 1648 all Crete was Ottoman except Candia and strongholds such as Gramvousa; Souda is named in the 1669 terms. Trial: in 1647 the snap adds 2 cells (Gramvousa, Souda) and removes 9. The Souda/Chania shared cell is noted under events/1.",
+   "page": "https://en.wikipedia.org/wiki/Cretan_War_(1645%E2%80%931669)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "what": "republic-of-venice_1648 (1648-1650, the dossier's years). It is identical to the dossier's correction except Souda by coordinates, and the page supports it as above. It reaches 1650, in the next window; it keeps the dossier's span and only puts Souda in. Trial: no Venice snap in 1648 (within tolerance). A variant without this entry gave the same Crete result.",
+   "page": "https://en.wikipedia.org/wiki/Cretan_War_(1645%E2%80%931669)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/3",
+   "verdict": "pass",
+   "what": "mughal-empire_1648 (shapes.csv 1648-1652; snaps only in 1648). It is the dossier's correction, unchanged, plus admin1 Kandahar intersected with Cliopatria's 1640 Mughal shape (152 cells). Page (Mughal-Safavid war): 'Since 1638 ... Kandahar was under the Mughal control'; siege 'on 28 December' 1648; 'easily captured it after a brief siege on 22 February 1649'. Trial: the 152 cells are Mughal at the end of 1647 and of 1648 and Safavid at the end of 1649 (ledger 79-80 and safavid ledger/56, February 1649). The 1648 snap falls from 144 to 66 removed. The other 45 Kandahar cells were nobody's before and still are. The keyframe snaps only in its start year, so 1650-1652 are not affected.",
+   "page": "https://en.wikipedia.org/wiki/Mughal%E2%80%93Safavid_war_(1649%E2%80%931653)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/4",
+   "verdict": "pass",
+   "what": "kutai-kingdom_1648: the dossier's correction (Cliopatria 1648 plus Muara Kaman 30 km), with Muara Kaman given by the kutai-martadipura coordinates (116.72 E, 0.2 S) because the gazetteer lacks the name. 38 cells. The page supports Muara Kaman as Martadipura's capital and Kutai's merger of the two realms under the ruler of 1635-1650. Trial: 38 Kutai cells (the 28 Cliopatria cells and the 13-cell disc, 3 of them shared) from 1640 to 1649. The keyframe runs 1648-1726 but snaps only in 1648.",
+   "page": "https://en.wikipedia.org/wiki/Kutai",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "pass",
+   "what": "tibet over xi-dynasty, 1644-1646, with no region and no status. It settled 876 cell-years in 1644-1645, 438 cells each year. Trial: Garze and Aba stay Tibet's (436 of the 602 cells in the 97.5-101.8 E, 28.8-33.9 N part of Sichuan, all of Tibet's 438 Sichuan cells) from 1643 to 1649. Xi still gets the Sichuan basin. Page (Khoshut Khanate): 'In the winter of 1640-1641, Güshi crushed the king of Beri, Donyo Dorje'; 'With the taking of Shigatse in 1642, Güshi had brought all of Tibet under the control of the Gelug school'; 'Güshi's title as king of Ü-Tsang and Kham' (1653). The page never mentions Sichuan or Zhang Xianzhong, so the ruling rests on keeping Tibet's land as it was in 1642 against a Xi keyframe drawn as the whole modern province. That is sound for Kham. Aba (Ngawa) is not named by the page, so its support there is weaker, but nothing gives it to the Xi.",
+   "page": "https://en.wikipedia.org/wiki/Khoshut_Khanate",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/5",
+   "verdict": "fixed",
+   "what": "Added by the reviewer to repair the harm events/1 caused (see events/1). ottoman-empire_1648 = Cliopatria's 1648 Ottoman shape plus Crete minus Iraklio 25 km, which is kingdom-of-candia/ledger/7's own region. Page: 'By the beginning of 1648, all of Crete, except Candia and a few strongholds like the island of Gramvousa, was in Ottoman hands.' The Venice-held stronghold cells inside that region stay Venice's: they are held by the smaller state, and the snap now stays within tolerance. I tested three variants by trial: without keyframe_overrides/2 the 12-cell hole stays; without any Venice entry there is no hole but Venice wrongly keeps 9 rural cells; with this entry there is no hole and no Novigrad gain. Compared with the trial without it, the only snap change is that the Ottoman 1648 snap (added 10, removed 12) disappears. Changes of owner at the end anchor drop from 690 to 676. The keyframe runs 1648-1661 but snaps only in 1648.",
+   "page": "https://en.wikipedia.org/wiki/Cretan_War_(1645%E2%80%931669)",
+   "fix": "New entry appended (no existing entry reordered).",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch p1640-p1649: 10 entries, 10 ok, 0 rejected. --trial: 10 of 10 applied; rulings/0 settled 876 cell-years; keyframe snaps 64 -> 68; end anchor p1650: 676 cells change owner against the published draft (690 before the reviewer's fix).",
+ "problems": [
+  "Cross-window: keyframe_overrides/2 (republic-of-venice_1648) runs 1648-1650; keyframe_overrides/3 (mughal-empire_1648) runs 1648-1652; keyframe_overrides/4 (kutai-kingdom_1648) runs 1648-1726; keyframe_overrides/5 (ottoman-empire_1648, added by the reviewer) runs 1648-1661. Each snaps only in 1648, but the next windows cannot override the same shape_ids, because the first file in window order wins.",
+  "keyframe_overrides/5 holds only because the Ottoman 1648 snap stays within its 20-cell tolerance. If a later dossier edit pushes it over, the Venice-held stronghold cells inside 'Crete minus Candia 25 km' go to whichever state the conflict rules pick (in this trial, Venice, the smaller state). Cliopatria's 1648 Ottoman shape lacks most of rural Crete through 1661, so later windows (p1650-p1669) should check Crete after any Ottoman snap.",
+  "republic-of-venice still names the place 'Souda' in ledger/128 (1669), ledger/149 (1715) and keyframe republic-of-venice_1651 (1651-1668); all of these will be skipped. Gazetteer request: add Souda (island fortress in Souda Bay, Crete). Note that at H3 resolution 5 it shares a cell with Chania's point (24.09 E, 35.56 N).",
+  "The skipped republic-of-venice/ledger/122 still writes its own 1647 caption, so 1647 now has two Venice Crete captions (the dossier's and events/1's).",
+  "Kutai: kutai-kingdom_1300 ('Kutai Lama') and kutai-kingdom_1635, ledger/1 and /5 ('Muara Kaman') resolve to nothing. Gazetteer or dossier request as the window agent says; until then Kutai is empty outside 1640-1649 and the 1842-1844 patch window.",
+  "Not patched, still open (the window agent's report, confirmed in the trial): in 1645 the khoshut-khanate_1645 keyframe takes 583 Sichuan cells (166 of them on the Garze/Aba edge); 891 Sichuan cells belong to nobody from 1646 after the Xi leave; 1,990 former Ming cells go to nobody in 1644; one Cretan cell (23.77 E, 35.42 N) has been nobody's since the Ottoman 1645 snap."
+ ]
+}

@@ -1,0 +1,918 @@
+{
+ "batch_id": "me-06-a",
+ "verdicts": [
+  {
+   "slug": "parthian-empire",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/5/correction",
+     "what": "Atropatene is drawn as direct Parthian land from -148 to 224 with no gain or vassal_start in the ledger (only contest_start -148 and contest_end -147), and it overlaps the existing atropatene dossier, which keeps Atropatene as its own autonomous state -148..225.",
+     "why": "Mithridates I page: 'conquering Media and Atropatene in 148/7 BC'. The atropatene dossier's keyframe atropatene_-148 (-148..225, adjust) reads 'an autonomous state, frequently a vassal of the Parthian Empire'. Gazetteer test: 317 of the 496 Atropatene cells are in every Parthian outline from -126 to 215 (495 at -91, 166 at -77). The Parthian ledger still loses Atropatene to Armenia at -87 (/ledger/30) and contests it with Rome in -36 (/ledger/44), so it treats as its own land something it never gains.",
+     "fix": "Add '-147 vassal_start atropatene' (region {\"region\": \"Atropatene\"}, confidence 2, source Mithridates I page) and a matching vassal_end (at -87 to Armenia with a later restart, and finally 224). Remove Atropatene from the -148 correction and subtract {\"cliopatria\": \"Atropatene\", \"year\": -170} from the Parthian keyframes -148..224 so that it gets the vassal tint. Or, if it stays direct, add a gain and agree with the atropatene author, who would then have to give up the land.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/46",
+     "what": "The 19 loss of Sistan to the indo-parthians has no trace in the keyframes: every Parthian keyframe from 1 to 224 (/keyframe_review/17-32) keeps the Sistan cells, so Sistan is drawn twice from 19 to 224.",
+     "why": "Gazetteer test: 122 of the 256 Sistan cells are in the Parthian outlines of 1, 51 and 165, and 111 in the 224 outline. The indo-parthians dossier founds on {\"region\": \"Sistan\"} at 19, and its keyframes indo-parthians_14, _43 and _51 add Sistan until 226. Keyframes 17-19 are marked ok without a correction.",
+     "fix": "Split keyframe 17 at 19 (new keyframe 19..42) and subtract {\"region\": \"Sistan\"} from that keyframe and from every later Parthian keyframe to 224. Or drop the confidence-1 loss and ask the indo-parthians author (sa-02) to stop drawing Sistan.",
+     "applied": false
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what": "The first capital, Hecatompylos, lies outside the outlines that keyframes 0-2 (-239, -223, -218) accept as ok, so for -238..-159 the capital is drawn outside the state.",
+     "why": "The capital is at 54.35 E, 36.17 N (Damghan's coordinates). The bbox of the -239, -223 and -218 shapes runs 52.71-61.47 E, 36.42-40.87 N, and the gazetteer finds no shape cell within 40 km of the point. The Mithridates I page: 'Hecatompylos had served as the first Parthian capital'.",
+     "fix": "Mark keyframes 0-2 adjust and union Comisene around Hecatompylos (for example {\"place\": \"Hecatompylos\", \"km\": 60}), with a note. The -164 correction, which reuses the -218 outline, then needs the same union.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/12",
+     "what": "The -66 keyframe is marked ok although its own note says 'The Syrian cells in this shape are not supported by the page'. The -63 loss that removes them (/ledger/37, confidence 1) is not Pompey's Syria.",
+     "why": "The cells lost between the -64 and -63 outlines are 253 cells at 38.1-46.8 E, 33.5-38.6 N, which is upper Mesopotamia and not the Levant. The roman-republic dossier takes Syria from the seleucid-empire at -64 (its /ledger/168), not from Parthia.",
+     "fix": "Either mark -66 adjust and say what is held, or rewrite the -63 loss (counterpart and region: Gordyene and Osroene going to Armenia or to Roman clients under Pompey's settlement), keeping confidence 1 until a page dates it.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/23",
+     "what": "The -115 gain from yuezhi is at confidence 2, but the counterpart is the author's guess, and the yuezhi dossier has no mirror event.",
+     "why": "The note itself says 'The page does not name the nomads'. The yuezhi dossier has no event with counterpart parthian-empire.",
+     "fix": "Lower it to confidence 1, or name the counterpart a page gives. Route the mirror to yuezhi (ia-01).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/59",
+     "what": "The 197 loss of northern Mesopotamia was at confidence 3, but the page does not date the acquisition.",
+     "why": "Roman-Parthian Wars page: '195, another Roman invasion of Mesopotamia began', 'sacked Ctesiphon yet again in 197', and 'These wars led to the Roman acquisition of northern Mesopotamia, as far as the areas around Nisibis and Singara' (no year). The roman-empire dossier has the same gain at confidence 2.",
+     "fix": "Confidence 2, with a reviewer note added to the event.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Antiochus III's campaign of -209 and the Seleucid vassalage -209..-188 (/ledger/1-2) are at confidence 1, copied from seleucid-empire.",
+     "page to try": "https://en.wikipedia.org/wiki/Antiochus_III_the_Great"
+    },
+    {
+     "where": "/ledger/14",
+     "what is missing": "Persis becoming a vassal in the 130s BC is at confidence 1: the Mithridates I page gives no year.",
+     "page to try": "https://en.wikipedia.org/wiki/Persis"
+    },
+    {
+     "where": "/ledger/37",
+     "what is missing": "The -63 loss (confidence 1) has no page, and its cells are upper Mesopotamia (see fixes).",
+     "page to try": "https://en.wikipedia.org/wiki/Corduene"
+    },
+    {
+     "where": "/keyframe_review/11",
+     "what is missing": "The -77 step has no event: the -78 to -77 outlines lose 423 cells spread over 38.1-67.2 E and 26.3-38.6 N, so some of the loss is in the east (Cliopatria's Indo-Scythian row grows at -77), not only to Armenia as the note says.",
+     "page to try": "https://en.wikipedia.org/wiki/Indo-Scythians"
+    },
+    {
+     "where": "/ledger/46",
+     "what is missing": "The Indo-Parthian split of 19 is at confidence 1, bridged from the indo-parthians dossier.",
+     "page to try": "https://en.wikipedia.org/wiki/Indo-Parthian_Kingdom"
+    },
+    {
+     "where": "/ledger/64",
+     "what is missing": "The ends of Characene and Elymais in 224 (/ledger/64-65) are at confidence 1: Ardashir's conquests before Hormozdgan are undated.",
+     "page to try": "https://en.wikipedia.org/wiki/Characene"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "There are no Kushan frontier events from 30 to 224 and no event for Hatra.",
+     "page to try": "https://en.wikipedia.org/wiki/Hatra"
+    },
+    {
+     "where": "/keyframe_review/6",
+     "what is missing": "Cliopatria drops Margiana (Merv) from -144 to -92 and adds the Pakistani cells at -91; no page dates either change.",
+     "page to try": "https://en.wikipedia.org/wiki/Margiana"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Mithridates_I_of_Parthia",
+     "result": "confirmed",
+     "note": "'invaded Media and occupied Ecbatana in 148 or 147 BC'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Mithridates_I_of_Parthia",
+     "result": "confirmed",
+     "note": "'In 141 BC, Mithridates I captured Babylonia in Mesopotamia'"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Parthian_Empire",
+     "result": "confirmed",
+     "note": "Antiochus VII killed at the 'Battle of Ecbatana in 129 BC'; the page does not narrate the recovery of Babylonia, which is implied"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Parthian_Empire",
+     "result": "confirmed",
+     "note": "'by 122 BC, Mithridates II forced Hyspaosines out of Babylonia and made the kings of Characene vassals'"
+    },
+    {
+     "where": "/ledger/24",
+     "page": "https://en.wikipedia.org/wiki/Parthian_Empire",
+     "result": "confirmed",
+     "note": "'occupying Dura-Europos in 113 BC'; the Mithridates II page has 114/113"
+    },
+    {
+     "where": "/ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Mithridates_II_of_Parthia",
+     "result": "confirmed",
+     "note": "'by 95 BC, the northern Mesopotamian kingdoms of Adiabene, Gordyene, and Osrhoene had acknowledged his authority' (the same sentence covers /ledger/26-27)"
+    },
+    {
+     "where": "/ledger/40",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Parthian_Wars",
+     "result": "confirmed",
+     "note": "'the Parthians under Pacorus invaded Roman territory in 40 BC'"
+    },
+    {
+     "where": "/ledger/42",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Parthian_Wars",
+     "result": "confirmed",
+     "note": "'They returned in 38 BC, but were decisively defeated by Ventidius and Pacorus was killed'"
+    },
+    {
+     "where": "/ledger/59",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Parthian_Wars",
+     "result": "confirmed",
+     "note": "the region is on the page; the year is inferred from the 197 sack; confidence lowered to 2"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2800000,
+    "infobox_year": 1,
+    "cliopatria_km2": 2702797,
+    "ratio": 1.036,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "himyarite-kingdom",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/3",
+     "what": "The c. 200 gain of Qataban names the counterpart qataban, but that dossier ends in 183, and the hadhramaut dossier takes Qataban's land in 184 and holds it to 300.",
+     "why": "The qataban dossier ends at 183. hadhramaut /ledger/4 is a 184 gain of {\"cliopatria\": \"Qataban\", \"year\": 165} (confidence 1). The Himyar page gives 'Qataban in c. 200 CE' but also says Qataban was later 'conquered by Hadhramaut'. The gain is not drawn in any Himyar keyframe.",
+     "fix": "Agree with me-04 on who holds Qataban 184-300. Either drop the event, or keep it at confidence 1 with counterpart hadhramaut and a region both dossiers draw the same way.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/8",
+     "what": "The 275 gain of Saba (/ledger/6, about 63,000 km2, nearly doubling the state) and the 300 gain of Hadramawt (/ledger/7) are drawn only from the Cliopatria steps of 283 and 306. Keyframes 8 and 9 are marked ok with the lag noted, and the hadhramaut dossier ends at 300, so Hadramawt is nobody's land for 300-305.",
+     "why": "Sabaeans page: 'finally permanently conquered by the Himyarites around 275 CE'. Himyar page: 'Hadramaut c. 300 CE'. The hadhramaut dossier ends at 300.",
+     "fix": "Add a keyframe 275..282 (the 270 shape plus {\"cliopatria\": \"Sabaeans\", \"year\": 270}) and a keyframe 300..305 (the 283 shape plus {\"cliopatria\": \"Hadhramaut\", \"year\": 283}).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger",
+     "what is missing": "Kinda as Himyar's client c. 450-550 (rule 4 tints clients) is not in the ledger. The Kingdom of Kinda page, which is in sources[], calls Himyar Kinda's 'patron' and Hujr its 'dependent', compares the tie to 'the Arab client kingdoms', and confines Himyar's reach to 'the southern parts of the Najd'. The vassal events can be added once me-06-x writes kingdom-of-kinda.",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Kinda"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "The move of the capital to Sanaa (401) is at confidence 1: the page says only 'the fifth century'.",
+     "page to try": "https://en.wikipedia.org/wiki/Sanaa"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "The end of the Aksumite occupation is 230 here and 275 in kingdom-of-axum.",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Aksum"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "Abraha's seizure is 531 here and 525 in kingdom-of-axum.",
+     "page to try": "https://en.wikipedia.org/wiki/Abraha"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Himyarite_Kingdom",
+     "result": "confirmed",
+     "note": "'Until 110 BCE, it was integrated into the Qatabanian kingdom; afterward, it was recognized as an independent kingdom'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Himyarite_Kingdom",
+     "result": "confirmed",
+     "note": "'conquered neighbouring Saba' in c. 25 BCE (for the first time)'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Himyarite_Kingdom",
+     "result": "confirmed",
+     "note": "'Hadramaut c. 300 CE'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Sabaeans",
+     "result": "confirmed",
+     "note": "'finally permanently conquered by the Himyarites around 275 CE'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Sabaeans",
+     "result": "confirmed",
+     "note": "'liberating itself from Himyar by around 100 CE'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Dhu_Nuwas",
+     "result": "confirmed",
+     "note": "'rose to power in 522, probably after he assassinated Dhu Shanatir'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 295961,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Himyar infobox gives no area; the dossier says so (keyframe 10). 295,961 km2 is the unified-Yemen outline of 306..533."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -209,
+    "type": "vassal_start",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -209,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "Parthia is the vassal; both at confidence 1-2."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -188,
+    "type": "vassal_end",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -188,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -158,
+    "type": "gain",
+    "counterpart": "greco-bactrian-kingdom"
+   },
+   "mirror": {
+    "slug": "greco-bactrian-kingdom",
+    "year": -158,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Aria and Margiana. The contest opens -163 here and -170 there."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -163,
+    "type": "contest_start",
+    "counterpart": "greco-bactrian-kingdom"
+   },
+   "mirror": {
+    "slug": "greco-bactrian-kingdom",
+    "year": -170,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "7 years apart; flagged by the author."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -148,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -148,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Media."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -147,
+    "type": "contest_end",
+    "counterpart": "atropatene"
+   },
+   "mirror": {
+    "slug": "atropatene",
+    "year": -147,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "Neither dossier has a vassal_start: Parthia draws Atropatene as direct land -148..224 and the atropatene dossier keeps it autonomous to 225 (317 shared cells). Route to the parthian-empire author and to atropatene's group."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -141,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -141,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Babylonia."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -140,
+    "type": "vassal_start",
+    "counterpart": "elymais"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier yet; listed for me-06-x."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -135,
+    "type": "vassal_start",
+    "counterpart": "persis"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier yet; listed for me-06-x."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -130,
+    "type": "loss",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -130,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -129,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -129,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -127,
+    "type": "loss",
+    "counterpart": "indo-scythians"
+   },
+   "mirror": {
+    "slug": "indo-scythians",
+    "year": -126,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Within one year."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -122,
+    "type": "vassal_start",
+    "counterpart": "characene"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier yet; listed for me-06-x."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -120,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-armenia belongs to eu-19, which has not run yet; the same holds for the -95 gain, the -87 vassal_end and loss, the -66 gain and the 161/163 vassal events."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -115,
+    "type": "gain",
+    "counterpart": "indo-scythians"
+   },
+   "mirror": {
+    "slug": "indo-scythians",
+    "year": -100,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Sakastan: 15 years apart (the Mithridates II page has 124-115); flagged by the author. Route to indo-scythians (sa-02)."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -115,
+    "type": "gain",
+    "counterpart": "yuezhi"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "The yuezhi dossier has no mirror, and the counterpart is the author's guess (the page does not name the nomads)."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -113,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -110,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Dura-Europos and the Euphrates marches: seleucid-empire dates the loss to Cliopatria's -110 step (confidence 1); the Parthian Empire page has 113 and the Mithridates II page 114/113. Route to seleucid-empire (me-05)."
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -164,
+    "type": "loss",
+    "counterpart": "parthian-empire"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "seleucid-empire loses the east to Parthia at -164 (confidence 1, Cliopatria's step); the Parthian dossier rejects that step (its -164 correction keeps the -218 outline to -159). Route to seleucid-empire (me-05)."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -95,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-adiabene"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Owned by another part of me-06 running in parallel; not written yet. The same holds for gordyene and osroene and for their -87 and -66 vassal_end events."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -63,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -64,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "roman-republic takes Syria from seleucid-empire at -64, not from Parthia; the Parthian cells lost at -63 are upper Mesopotamia (38.1-46.8 E)."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -40,
+    "type": "gain",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -40,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Syria."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -40,
+    "type": "vassal_start",
+    "counterpart": "judea"
+   },
+   "mirror": {
+    "slug": "judea",
+    "year": -40,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -38,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -38,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": -37,
+    "type": "vassal_end",
+    "counterpart": "judea"
+   },
+   "mirror": {
+    "slug": "judea",
+    "year": -37,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": 19,
+    "type": "loss",
+    "counterpart": "indo-parthians"
+   },
+   "mirror": {
+    "slug": "indo-parthians",
+    "year": 19,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "The years match, but the Parthian keyframes keep Sistan to 224 (see fixes)."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": 115,
+    "type": "loss",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": 115,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Northern Mesopotamia."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": 116,
+    "type": "occupation_start",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": 115,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "Within one year (the page has 115 or 116 for Ctesiphon); flagged by the author."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": 117,
+    "type": "occupation_end",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": 117,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": 117,
+    "type": "gain",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": 117,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": 165,
+    "type": "loss",
+    "counterpart": "roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "roman-empire has only a 165 contest_end, with no gain of upper Mesopotamia (Edessa, Nisibis). Route to roman-empire (eu-04)."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": 197,
+    "type": "loss",
+    "counterpart": "roman-empire"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": 197,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": 215,
+    "type": "loss",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "sasanian-empire belongs to another part of me-06 and is not written yet; the same holds for the 224 loss and the dissolve."
+  },
+  {
+   "event": {
+    "slug": "parthian-empire",
+    "year": 224,
+    "type": "vassal_end",
+    "counterpart": "characene"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier yet (me-06-x); the same holds for elymais 224 and persis 215."
+  },
+  {
+   "event": {
+    "slug": "himyarite-kingdom",
+    "year": -110,
+    "type": "found",
+    "counterpart": "qataban"
+   },
+   "mirror": {
+    "slug": "qataban",
+    "year": -110,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "himyarite-kingdom",
+    "year": -25,
+    "type": "gain",
+    "counterpart": "sabaeans"
+   },
+   "mirror": {
+    "slug": "sabaeans",
+    "year": -25,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "himyarite-kingdom",
+    "year": 100,
+    "type": "loss",
+    "counterpart": "sabaeans"
+   },
+   "mirror": {
+    "slug": "sabaeans",
+    "year": 100,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "himyarite-kingdom",
+    "year": 200,
+    "type": "gain",
+    "counterpart": "qataban"
+   },
+   "mirror": {
+    "slug": "hadhramaut",
+    "year": 184,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "The qataban dossier ends at 183 and hadhramaut takes Qataban's land at 184, so two dossiers claim it for 200-300. Route to the himyarite-kingdom author and to me-04."
+  },
+  {
+   "event": {
+    "slug": "himyarite-kingdom",
+    "year": 200,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-axum"
+   },
+   "mirror": {
+    "slug": "kingdom-of-axum",
+    "year": 200,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "himyarite-kingdom",
+    "year": 230,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-axum"
+   },
+   "mirror": {
+    "slug": "kingdom-of-axum",
+    "year": 275,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "45 years apart (230 here from the Kingdom of Aksum page, 275 there); flagged by the author."
+  },
+  {
+   "event": {
+    "slug": "himyarite-kingdom",
+    "year": 275,
+    "type": "gain",
+    "counterpart": "sabaeans"
+   },
+   "mirror": {
+    "slug": "sabaeans",
+    "year": 275,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "himyarite-kingdom",
+    "year": 300,
+    "type": "gain",
+    "counterpart": "hadhramaut"
+   },
+   "mirror": {
+    "slug": "hadhramaut",
+    "year": 300,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-axum",
+    "year": 520,
+    "type": "gain",
+    "counterpart": "himyarite-kingdom"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "kingdom-of-axum annexes Yemen in 520 and loses it to Abraha in 525; Himyar has no 520 loss and becomes a vassal only in 525 (the Dhu Nuwas page dates the invasion 525). Flagged by the author. Route to af-01."
+  },
+  {
+   "event": {
+    "slug": "himyarite-kingdom",
+    "year": 525,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-axum"
+   },
+   "mirror": {
+    "slug": "kingdom-of-axum",
+    "year": 525,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "himyarite-kingdom",
+    "year": 570,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-axum"
+   },
+   "mirror": {
+    "slug": "kingdom-of-axum",
+    "year": 570,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "himyarite-kingdom",
+    "year": 570,
+    "type": "vassal_start",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "sasanian-empire is not written yet (another part of me-06); the same holds for the 575 vassal_end, loss and dissolve."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Characene",
+   "kind": "region",
+   "used_in": "parthian-empire"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Characene",
+   "suggested_slug": "characene",
+   "years": [
+    -140,
+    224
+   ]
+  },
+  {
+   "name": "Elymais",
+   "suggested_slug": "elymais",
+   "years": [
+    -141,
+    224
+   ]
+  },
+  {
+   "name": "Persis (frataraka kingdom)",
+   "suggested_slug": "persis",
+   "years": [
+    -135,
+    215
+   ]
+  },
+  {
+   "name": "Kingdom of Kinda",
+   "suggested_slug": "kingdom-of-kinda",
+   "years": [
+    450,
+    550
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-me-06-a.md",
+ "problems": []
+}

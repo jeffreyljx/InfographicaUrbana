@@ -1,0 +1,498 @@
+{
+ "batch_id": "eu-16-g",
+ "verdicts": [
+  {
+   "slug": "principality-of-vladimir-suzdal",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/5/region",
+     "applied": false,
+     "what": "The 1389 merge (confidence 2) hands the whole 1375 shape plus the Vladimir disc (about 113,000 km2 plus the disc) to Moscow, including Rostov, Yaroslavl, Uglich, Bezhetsk and the Vologda country that stayed outside Moscow until 1463-1493.",
+     "why": "Ivan III page: 'Principality of Yaroslavl in 1463, Rostov in 1474, Tver in 1485'; 'Andrey Bolshoy was given Uglich, Bezhetsk ...', 'He died in prison in 1493, and Ivan seized his land'. The dossier contradicts itself: /ledger/6 note says 'the rest remains in the appanage principalities (Yaroslavl, Rostov, Uglich)' and /identity/successors/0 gives Moscow only the 1375 shape minus the 1395 shape plus the disc (about 22,000 km2 of Cliopatria cells plus Vladimir).",
+     "fix": "Set /ledger/5/region to the land of /identity/successors/0 ({minus: [VS 1375, VS 1395]} union the Vladimir 70 km disc). Give the remainder (the 1395 shape: Rostov, Yaroslavl, Uglich, Bezhetsk, Vologda country) a 1389 split/loss event to the proposed principality-of-yaroslavl / principality-of-rostov / principality-of-uglich (or counterpart nobody with a note), so the 1389 land is accounted for without moving it to Moscow 74-104 years early."
+    },
+    {
+     "where": "/ledger (missing vassal_start 1294 / vassal_end 1389, counterpart golden-horde)",
+     "applied": false,
+     "what": "No vassalage events although the page calls the state a vassal and golden-horde/ledger/2 has vassal_start 1294 for this slug.",
+     "why": "Vladimir-Suzdal page: 'Vladimir became a vassal of the Mongol Empire ... with the Grand Prince appointed by the Great Khan'; 'Yaroslav II (r. 1238-1246) and the other princes submitted to Mongol rule'; 'heavy tribute payments'. golden-horde.json /ledger/2: 1294 vassal_start principality-of-vladimir-suzdal (c2); /ledger/30: vassal_end 1480. Research brief standard row 4 requires vassal events for tributaries.",
+     "fix": "Add vassal_start 1294 (counterpart golden-horde, region = the found region, source the Vladimir-Suzdal page, confidence 2, quoting the sentence above) and vassal_end 1389 at the dissolve (counterpart golden-horde). The golden-horde vassal_end 1480 must then be re-aimed to 1389 by ia-02 (see cross_checks)."
+    },
+    {
+     "where": "/keyframe_review/0/correction and /keyframe_review/1-5",
+     "applied": false,
+     "what": "The corrected 1294-1304 shape shares 28 cells (about 7,081 km2: the Klin-Dmitrov edge and the Uglich-Kalyazin edge, bbox 35.87-38.26E 56.30-57.71N) with this batch's Tver correction, and 7 cells (about 1,770 km2, the Uglich edge 37.84-38.26E) in 1305-1389; neither dossier says so.",
+     "why": "Gazetteer: intersect(Tver correction union of Tver 75 km + Kashin 45 km + Zubtsov 45 km discs, Cliopatria 'Principality of Vladimir-Suzdal' 1294) = 28 cells; 1344 and 1375 = 7 cells. The Principality of Tver page lists 'Principality of Klin, around the town of Klin' among Tver's appanages while /ledger/1 note gives Klin to Vladimir-Suzdal until 1305.",
+     "fix": "Reconcile with tver.json (same author): either minus the Tver correction from these keyframes or say in each note which cells are double-claimed and why; state Klin's owner (Tver appanage per the Tver page) in /ledger/1."
+    },
+    {
+     "where": "/keyframe_review/6-10/correction",
+     "applied": false,
+     "what": "Verdict wrong for 1395-1486 but each correction repeats the Cliopatria shape itself, so a renderer that draws corrections would draw this slug after its 1389 end.",
+     "why": "Schema: 'wrong: the shape should not be used for these years; correction gives the shape to use instead, or the years it belongs to.' The corrections give the unchanged shape with text 'not a Vladimir-Suzdal state'.",
+     "fix": "Keep verdict wrong, and make each correction's text say plainly that the shape belongs to no year of this slug (the land is Rostov/Yaroslavl/Uglich appanages for their future dossiers), or give the empty region the schema allows; non-blocking, do with the fixes above."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1-4",
+     "what is missing": "Years of Moscow's acquisitions of Pereslavl-Zalessky/Dmitrov (1305), the Mologa (1333), Galich/Kostroma/Vologda (1344), Yuryev-Polsky (1375) rest on Cliopatria at confidence 1; the pages read name the purchases (Beloozero, Galich, Uglich bought by Ivan I) without years.",
+     "page to try": "https://en.wikipedia.org/wiki/Ivan_I_of_Moscow"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "Galich-Mersky's passage to Moscow (Dmitry Donskoy's 1360s seizure or Ivan I's purchase).",
+     "page to try": "https://en.wikipedia.org/wiki/Dmitry_Donskoy"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No ruler list (grand princes of Vladimir 1294-1389).",
+     "page to try": "https://en.wikipedia.org/wiki/Grand_Prince_of_Vladimir"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Vladimir-Suzdal",
+     "result": "confirmed: 'by 1389, the two thrones were permanently united', infobox 'Disestablished: 1389', footnote 'death on 19 May 1389' (month 5); the land given is wrong, see fixes"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Moscow",
+     "result": "confirmed: 'Yury retained control of Pereyaslavl', 'his sons seized Mozhaysk in 1304'; year honestly Cliopatria's at confidence 1"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Moscow",
+     "result": "confirmed: Ivan I 'credited by his grandson Dmitry Donskoy in his will with purchasing the principalities of Beloozero', Galich and Uglich, undated; confidence 1 honest"
+    },
+    {
+     "where": "/keyframe_review/9",
+     "page": "https://en.wikipedia.org/wiki/Ivan_III_of_Russia",
+     "result": "confirmed: 'Principality of Yaroslavl in 1463, Rostov in 1474'; also 'Andrey Bolshoy was given Uglich, Bezhetsk' (so Uglich is on the page, not only the author's reading)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 215209,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Vladimir-Suzdal infobox has no area (confirmed); keyframe notes say so."
+   }
+  },
+  {
+   "slug": "tver",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0-7/correction",
+     "applied": false,
+     "what": "The corrected shape (union of three discs, 127 cells, about 32,118 km2) lies mostly on land the neighbours draw, and no note says so: in 1294 it overlaps Cliopatria Smolensk by 42 cells (10,622 km2; the Smolensk dossier keeps those cells, its 1294 shape is 'ok' and its later corrections only remove Mozhaysk), Novgorod Republic by 27 cells (6,828 km2, the Torzhok country), Vladimir-Suzdal by 28 cells (7,081 km2); from 1344 it overlaps Cliopatria Moscow by 53 cells (13,404 km2), Smolensk/Lithuania by 32 cells (8,093 km2), Vladimir-Suzdal 7 and Novgorod 4.",
+     "why": "Gazetteer intersections of the correction with each neighbour's Cliopatria shape in 1294/1300, 1350, 1420. The page supports the extent ('from Kashin in the east to Zubtsov in the west', 'Tver Oblast and the eastern part of Smolensk Oblast', infobox 28,450 km2), so the correction is defensible, but the double claims are silent.",
+     "fix": "Non-blocking: add one sentence to /keyframe_review/1 note naming the double-claimed cells (Smolensk/Lithuania round Rzhev-Zubtsov, Novgorod round Torzhok, Moscow from 1344, the Uglich edge of Vladimir-Suzdal) and which side the page supports; reconcile the Vladimir-Suzdal overlap with that dossier (same author). The neighbours' groups get the rest from cross_checks."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (vassal_start/vassal_end with golden-horde)",
+     "what is missing": "Tver's princes held their throne and the Vladimir patent by the khan's yarlyk (page: 'In 1375, Mamai again granted Mikhail II the yarlik'; the 1327 rising was 'anti-Tatar'); no vassal pair 1246-1480 in tver.json or golden-horde.json.",
+     "page to try": "https://en.wikipedia.org/wiki/Tver_Uprising_of_1327"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No ruler list; the page names Yaroslav Yaroslavich (1246/47-1271), Mikhail (from 1285), Dmitry (d. 1326), Aleksandr (d. 1339), Mikhail II, Boris, Mikhail III (1461-1485) without a full list.",
+     "page to try": "https://en.wikipedia.org/wiki/Mikhail_of_Tver"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "1246-1293 extent and the Torzhok (Novgorod) and Rzhev/Zubtsov (Smolensk, Lithuania) frontiers are undated; the 1470s treaties with Moscow undated.",
+     "page to try": "https://en.wikipedia.org/wiki/Rzhev"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Confidence-1 contest_end of 1327 (end of the punitive expedition undated).",
+     "page to try": "https://en.wikipedia.org/wiki/Tver_Uprising_of_1327"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Tver",
+     "result": "confirmed: 'Established: 1246'; 'In 1246, another son of Yaroslav, Yaroslav Yaroslavich, became the first prince of Tver'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Tver",
+     "result": "confirmed: 1375 treaty, 'elder brother', 'besieged Tver for four weeks', 'rightful grand prince of Vladimir' (confidence 3)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Moscow",
+     "result": "confirmed: 'by 1368, the conflict had escalated when the Muscovite army invaded Tver'; 'another invasion in 1370'"
+    },
+    {
+     "where": "/ledger/6-7",
+     "page": "https://en.wikipedia.org/wiki/Tver",
+     "result": "confirmed: 'On 12 September 1485, the forces of Ivan III seized the city, leading to it to be formally annexed by Moscow'; Ivan III page 'Tver in 1485' (confidence 3)"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Tver",
+     "result": "confirmed: infobox 'Total: 28,450 km2' (no year); 'The principality stretched from Kashin in the east to Zubtsov in the west'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 28450,
+    "infobox_year": null,
+    "cliopatria_km2": 7060,
+    "ratio": 0.25,
+    "acknowledged": true,
+    "note": "Infobox undated; author corrected to about 32,000 km2 (three discs) and said so in every keyframe note."
+   }
+  },
+  {
+   "slug": "ryazan",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/1/region, /ledger/2/region, /ledger/3/region, /keyframe_review/1-4/correction, /identity/successors/0/land",
+     "applied": false,
+     "what": "The 'Pronsk' disc is centred at 40.85E 53.95N, about 80 km east of Pronsk (54.117N 39.617E), near Sapozhok; it adds about 4,800 km2 of land that is not Pronsk, 14 cells (about 3,541 km2) of which lie in Cliopatria's Qasim Khanate shape and 5 cells in the Golden Horde's (1483).",
+     "why": "Pronsk, Pronsky District page: 'Coordinates: 54°07'N 39°37'E', on the Pronya. Gazetteer: a 40 km disc at the true site has 16 of its 20 cells inside Cliopatria's Ryazan shape of 1453 (bbox 38.62-40.41E, 53.65-55.66N), so keyframe 1's claim 'Pronsk lies outside it' is false; the author's disc intersects Cliopatria Ryazan 1453 in 0 cells and Qasim Khanate 1483 in 14.",
+     "fix": "Redraw Pronsk at 39.617E 54.117N (gazetteer name Pronsk, hint corrected). Because Cliopatria's 1453 shape already contains Pronsk, decide which reading the page supports: (a) Pronsk was a 'provincial' appanage inside Ryazan's land, so drop the union from the keyframes and make the 1483 event a small internal consolidation or remove it; or (b) subtract a Pronsk disc from ryazan_1453 (1453-1482) and keep the 1483 gain. Rewrite /keyframe_review/1 note, the 1521 loss/dissolve regions and the successor land accordingly, and correct the Pronsk hint in the report's gazetteer_names_needed."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (vassal relation)",
+     "what is missing": "Ryazan's tributary status to the Great Horde 1453-1480 and its status toward Moscow 1456-1517 ('an ally of Moscow'; the Vasili III page) are not recorded; golden-horde.json has a 1453 territorial loss to Ryazan instead.",
+     "page to try": "https://en.wikipedia.org/wiki/Great_Horde"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Extent of Kasimov, Zaraysk and the Oka/steppe frontier 1453-1521 undated.",
+     "page to try": "https://en.wikipedia.org/wiki/Qasim_Khanate"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Ryazan",
+     "result": "confirmed year: 'until Ryazan completely annexed Pronsk in 1483 during the regency of Anna of Ryazan'; region not Pronsk (see fixes)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Ryazan",
+     "result": "confirmed: 'In 1520, Grand Prince Vasili III of Russia captured and imprisoned in Moscow the last Grand Prince of Ryazan Ivan V'; 'in 1521, the Ryazan Principality was merged with Muscovy'; infobox 'Incorporation into Muscovy: 1521' (confidence 3)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Ryazan",
+     "result": "confirmed: 'The principality was finally dissolved and incorporated into the Grand Duchy of Moscow in 1521.'"
+    },
+    {
+     "where": "/identity/rulers",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Ryazan",
+     "result": "confirmed: '1456-1483 Vasily III of Ryazan', '1483-1500 Ivan IV of Ryazan', '1500-1521 Ivan V of Ryazan'"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Ryazan",
+     "result": "page silent on 1453 (Cliopatria's year); confidence 1 is honest"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 17389,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Principality of Ryazan infobox has no area (confirmed); said in keyframe notes."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "principality-of-vladimir-suzdal",
+    "year": 1294,
+    "type": "found",
+    "counterpart": "principality-of-rostov-suzdal"
+   },
+   "mirror": {
+    "slug": "principality-of-rostov-suzdal",
+    "year": 1240,
+    "type": "dissolve"
+   },
+   "status": "exception",
+   "note": "Same state (Q83546) split into two dossiers by both authors; 1241-1293 belongs to no dossier. Orchestrator decision (see problems)."
+  },
+  {
+   "event": {
+    "slug": "principality-of-vladimir-suzdal",
+    "year": 1305,
+    "type": "loss",
+    "counterpart": "grand-principality-of-moscow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "grand-principality-of-moscow not written yet (eu-16 part not run). Same for the 1333, 1344, 1375 losses (all confidence 1, Cliopatria years)."
+  },
+  {
+   "event": {
+    "slug": "principality-of-vladimir-suzdal",
+    "year": 1333,
+    "type": "loss",
+    "counterpart": "grand-principality-of-moscow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Moscow dossier not written yet."
+  },
+  {
+   "event": {
+    "slug": "principality-of-vladimir-suzdal",
+    "year": 1344,
+    "type": "loss",
+    "counterpart": "grand-principality-of-moscow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Moscow dossier not written yet."
+  },
+  {
+   "event": {
+    "slug": "principality-of-vladimir-suzdal",
+    "year": 1375,
+    "type": "loss",
+    "counterpart": "grand-principality-of-moscow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Moscow dossier not written yet."
+  },
+  {
+   "event": {
+    "slug": "principality-of-vladimir-suzdal",
+    "year": 1389,
+    "type": "merge",
+    "counterpart": "grand-principality-of-moscow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Moscow dossier not written yet; the merge's land is wrong (see the dossier's fixes): Moscow should receive only the 1375 shape minus the 1395 shape plus Vladimir, not Rostov/Yaroslavl/Uglich."
+  },
+  {
+   "event": {
+    "slug": "golden-horde",
+    "year": 1294,
+    "type": "vassal_start",
+    "counterpart": "principality-of-vladimir-suzdal"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "principality-of-vladimir-suzdal has no vassal_start; the page says 'Vladimir became a vassal of the Mongol Empire'. Fix on the Vladimir-Suzdal side."
+  },
+  {
+   "event": {
+    "slug": "golden-horde",
+    "year": 1480,
+    "type": "vassal_end",
+    "counterpart": "principality-of-vladimir-suzdal"
+   },
+   "mirror": {
+    "slug": "principality-of-vladimir-suzdal",
+    "year": 1389,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Vladimir-Suzdal ends in 1389; golden-horde (ia-02) must end the vassalage in 1389 and, if it wants the tint to 1480, re-aim it to grand-principality-of-moscow."
+  },
+  {
+   "event": {
+    "slug": "golden-horde",
+    "year": 1453,
+    "type": "loss",
+    "counterpart": "ryazan"
+   },
+   "mirror": {
+    "slug": "ryazan",
+    "year": 1453,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "golden-horde gives 72 cells to Ryazan in 1453 (Cliopatria artefact: Ryazan absent 1241-1452 and drawn inside the Horde). Ryazan's found names principality-of-ryazan. The Ryazan land was a tributary principality, not Horde territory; ia-02 should replace the territorial loss with vassal events (or drop it) and the Ryazan side add the vassal pair."
+  },
+  {
+   "event": {
+    "slug": "golden-horde",
+    "year": 1294,
+    "type": "territory",
+    "counterpart": "principality-of-vladimir-suzdal"
+   },
+   "mirror": {
+    "slug": "principality-of-vladimir-suzdal",
+    "year": 1294,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "The Vladimir 70 km disc that this dossier (and principality-of-rostov-suzdal) adds overlaps Cliopatria's Golden Horde shape by 34 cells (about 8,600 km2) 1294-1400; golden-horde should minus it (the author flags this)."
+  },
+  {
+   "event": {
+    "slug": "tver",
+    "year": 1246,
+    "type": "found",
+    "counterpart": "principality-of-vladimir-suzdal"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Predecessor and counterpart principality-of-vladimir-suzdal starts only in 1294 and principality-of-rostov-suzdal ends 1240; the right state, but no dossier is alive in 1246 because of the two-dossier split."
+  },
+  {
+   "event": {
+    "slug": "tver",
+    "year": 1485,
+    "type": "loss",
+    "counterpart": "grand-principality-of-moscow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Moscow dossier not written yet; Cliopatria's Moscow holds Tver from 1482, three years early (author flagged)."
+  },
+  {
+   "event": {
+    "slug": "tver",
+    "year": 1294,
+    "type": "keyframe overlap",
+    "counterpart": "principality-of-smolensk"
+   },
+   "mirror": {
+    "slug": "principality-of-smolensk",
+    "year": 1294,
+    "type": "keyframe ok"
+   },
+   "status": "mismatch",
+   "note": "Tver's corrected shape and Smolensk's kept shapes share 42 cells (10,622 km2, the Zubtsov-Rzhev country) 1294-1304 and 32 cells to 1404; no event on either side. The Tver page puts part of the principality in eastern Smolensk Oblast."
+  },
+  {
+   "event": {
+    "slug": "tver",
+    "year": 1294,
+    "type": "keyframe overlap",
+    "counterpart": "novgorod-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "27 cells (6,828 km2, Torzhok) shared with Cliopatria Novgorod 1294-1304; novgorod-republic not written yet (eu-16)."
+  },
+  {
+   "event": {
+    "slug": "tver",
+    "year": 1344,
+    "type": "keyframe overlap",
+    "counterpart": "grand-principality-of-moscow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "53 cells (13,404 km2) shared with Cliopatria Moscow from 1344 to 1485; Moscow not written yet."
+  },
+  {
+   "event": {
+    "slug": "ryazan",
+    "year": 1453,
+    "type": "found",
+    "counterpart": "principality-of-ryazan"
+   },
+   "mirror": {
+    "slug": "principality-of-ryazan",
+    "year": 1240,
+    "type": "dissolve"
+   },
+   "status": "exception",
+   "note": "Same state (Q269109) split into two dossiers; 1241-1452 has no dossier."
+  },
+  {
+   "event": {
+    "slug": "ryazan",
+    "year": 1483,
+    "type": "gain",
+    "counterpart": "Principality of Pronsk"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart listed in counterparts_needing_dossiers; region misplaced (see fixes) and overlaps qasim-khanate's Cliopatria shape by 14 cells; qasim-khanate.json has no event for it."
+  },
+  {
+   "event": {
+    "slug": "ryazan",
+    "year": 1521,
+    "type": "loss",
+    "counterpart": "grand-principality-of-moscow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Moscow dossier not written yet; Cliopatria's Moscow already holds Ryazan in 1521 (author flagged)."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Kashin",
+   "kind": "place",
+   "used_in": "tver"
+  },
+  {
+   "name": "Zubtsov",
+   "kind": "place",
+   "used_in": "tver"
+  },
+  {
+   "name": "Pronsk",
+   "kind": "place",
+   "used_in": "ryazan",
+   "note": "54.117N 39.617E per the Pronsk, Pronsky District page; the author's hint 53.95N 40.85E is wrong"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Principality of Yaroslavl",
+   "suggested_slug": "principality-of-yaroslavl",
+   "years": [
+    1218,
+    1463
+   ]
+  },
+  {
+   "name": "Principality of Rostov",
+   "suggested_slug": "principality-of-rostov",
+   "years": [
+    1294,
+    1474
+   ]
+  },
+  {
+   "name": "Principality of Uglich",
+   "suggested_slug": "principality-of-uglich",
+   "years": [
+    1294,
+    1493
+   ]
+  },
+  {
+   "name": "Principality of Pronsk",
+   "suggested_slug": "principality-of-pronsk",
+   "years": [
+    1483
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-16-g.md",
+ "problems": [
+  "Rule conflict for the orchestrator: author brief section 6 says rows sharing a Wikidata id (Q83546 Rostov-Suzdal/Vladimir-Suzdal; Q269109 Principality of Ryazan/Ryazan) get one dossier under the earlier slug, but the earlier slugs belong to other eu-16 parts; both sides kept two dossiers and both flagged it. Result: no dossier covers Vladimir-Suzdal 1241-1293 or Ryazan 1241-1452, and tver's 1246 predecessor link points to a dossier not alive until 1294. Decide whether to merge.",
+  "golden-horde.json (ia-02) needs re-aiming: vassal_end 1480 for principality-of-vladimir-suzdal (state ends 1389), territorial loss 1453 to ryazan, and the Vladimir disc overlap; no Tver vassalage recorded on either side.",
+  "Uglich end year: the Ivan III page gives 'He died in prison in 1493, and Ivan seized his land', so principality-of-uglich runs to 1493, not 1491 as the author's report proposes.",
+  "No page failed to load; Pronsk opened via the set-index page and 'Pronsk,_Pronsky_District,_Ryazan_Oblast'."
+ ]
+}

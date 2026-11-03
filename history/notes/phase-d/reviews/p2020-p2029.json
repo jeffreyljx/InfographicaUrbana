@@ -1,0 +1,71 @@
+{
+ "window": "p2020-p2029",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "what": "russian-federation occupation_start vs ukraine, 2022-12: reopens the occupation of Crimea, Sevastopol and the occupied south after ledger/17 (April 2022) closed the whole relation. Pages: Russian-occupied territories table 'Russia (2014-present)' for Crimea and Sevastopol, 'Russia (2022-present)' for Kherson and Zaporizhzhia; Zaporizhzhia Oblast 'Russia was only in control of about 70% of the province's land area' (30 Sept 2022), 'The northern parts of the oblast, including its capital city, Zaporizhzhia, remained under Ukrainian control'; 2022 Kherson counteroffensive 'Russia announced the withdrawal of its troops from Kherson and the right bank of the Dnieper', 'Russian positions on the left bank'. Date and parties right; the mechanism is right (no later occupation_end between the pair in 2023-2026). Placement was off: the right-bank minus copied ledger/21's circles, which cut 9 left-bank cells (Oleshky, Hola Prystan, the Kinburn side) out of the occupation and left 11 right-bank cells (Beryslav, Vysokopillia country) in it; the 45 km circle round Zaporizhzhia left Russia 94 of 111 cells (85%) against the page's 70%. Old spec 276 cells, new 263.",
+   "page": "https://en.wikipedia.org/wiki/Russian-occupied_territories ; https://en.wikipedia.org/wiki/Zaporizhzhia_Oblast ; https://en.wikipedia.org/wiki/2022_Kherson_counteroffensive",
+   "fix": "Region rewritten: Crimea+Sevastopol (106) plus (Kherson + Zaporizhzhya oblasts) minus [Kherson ∩ a 12-point polygon north-west of the Dnieper and the Kakhovka reservoir, drawn through the gazetteer's own Dnieper cells (26 cells, the right bank)] minus [Zaporizhzhya ∩ north of 47.495 N (32 cells, with the capital; 79 of 111 = 71% left to Russia)]; note extended with a reviewer paragraph. Trial: Kherson 67 occupied / 26 Ukrainian, Zaporizhzhia 74 / 32, Crimea 83 occupied (+23 ownerless coast cells, pre-existing), 224 cells change from plain Ukraine to occupied 2022-2026, nothing else moves.",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "sahrawi-arab-democratic-republic gain from morocco, 2020-01: the Free Zone (gazetteer 'W. Sahara', 331 cells, lat 21.3-27.4, east of the berm plus the southern buffer) and Oued el Dahab (273 cells, west of the berm). Page: 'Approximately 30% of the Western Sahara is controlled by the Polisario Front and the remaining 70% is occupied by Morocco'; 'The Polisario Front claims to run this as the Free Zone on behalf of the SADR'; Mauritania 'abandoned all claims to its portion in August 1979 ... Morocco moved to occupy that sector'. The 331-cell spec is about 31% of the territory, as the page says. Repair dated at the window start (the wrong roles come from 1976-1979 events in earlier windows; said in the note). Trial vs an empty-patch trial: 330 Free Zone cells go from Morocco (contested) to the SADR (contested with Morocco from sahrawi ledger/10, Nov 2020, 'the ceasefire ... broke down' in November 2020), 226 Dakhla cells from Morocco-occupied-by-SADR to SADR; nothing else.",
+   "page": "https://en.wikipedia.org/wiki/Western_Sahara",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/2",
+   "verdict": "pass",
+   "what": "morocco occupation_start vs the SADR, 2020-02, Oued el Dahab (273 cells): with events/1 the SADR holds all 273, so Morocco becomes occupier (merged into the open Laayoune/Smara relation). Page: 'the remaining 70% is occupied by Morocco'; Morocco 'has since asserted administrative control over the whole territory' west of the berm. Trial: Dakhla 273 SADR/occupied by Morocco 2020-2026, Laayoune unit 245 the same, Tarfaya's 20 Moroccan; packet relation 'occupation of SADR land by morocco' 373 -> 646 cells. The stale reversed relation (SADR occupying Moroccan land, since 1976) stays open with 0 cells: harmless.",
+   "page": "https://en.wikipedia.org/wiki/Western_Sahara",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/3",
+   "verdict": "pass",
+   "what": "mexico loss to the USA, 2020-01, Cliopatria USA 2020 ∩ Rio Grande 5 km (96 cells). Page: 'On November 24, 2009, the U.S. ceded 6 islands in the Rio Grande to Mexico', 'the transferred land was small (ranging from one to 646 acres)', 'the continental border then follows the middle of the Rio Grande': six islands are far below one cell, so the 2009 strip is wrong. Since the window agent ran, p2000-p2009 added events/1 (2009-11, the same repair at its source, Natural Earth USA ∩ river), so with all patches this entry now moves only 4 straddling cells (-102.3/29.9, -102.7/29.7, -100.9/29.3, -97.9/26.0) from Mexico to the USA from 2020; without it Mexico's 2024 keyframe drops them to nobody (4 holes 2024-2026), with it they are US. Left as is: harmless, a safety net if p2000-p2009 changes.",
+   "page": "https://en.wikipedia.org/wiki/Mexico%E2%80%93United_States_border",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/4",
+   "verdict": "pass",
+   "what": "republic-of-iraq gain from nobody, 2020-01, inside Cliopatria Iraq 2024 (1,685 cells; the compiler takes only ownerless cells). Page: 'In late January 2015, the Iraqi armed forces recaptured the entire province of Diyala'; Al-Qa'im and Rawah taken 17 November; 'on 9 December the prime minister announced the end of the war' (2017). Now a no-op: p2010-p2019 events/2 (Iraq gains Salah ad-Din and At-Ta'mim from the Islamic State, 2017-12) already returns the 84 cells, so the trial shows Iraq 1,540 + Kurdistan 145, no ownerless cell, 2020-2026, and no cell differs from the empty-patch trial. Harmless safety net.",
+   "page": "https://en.wikipedia.org/wiki/War_in_Iraq_(2013%E2%80%932017)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/5",
+   "verdict": "pass",
+   "what": "republic-of-uzbekistan gain from kyrgyzstan, 2022-11: Uzbek-side cells of the one-cell border band (34 cells) that uzbekistan ledger/4 (same month) handed to Kyrgyzstan. Page: 'The Kyrgyzstan-Uzbekistan border is 1,314 kilometres', 'On November 17, 2022, Kyrgyzstan gained 156 km2 from Uzbekistan': 156 km2 is under one 253 km2 cell, so no cell should move. Trial: the 34 cells stay Uzbek in 2022-2023 (published draft: Kyrgyz).",
+   "page": "https://en.wikipedia.org/wiki/Kyrgyzstan%E2%80%93Uzbekistan_border",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/6",
+   "verdict": "pass",
+   "what": "republic-of-uzbekistan loss to kyrgyzstan, 2024: Kyrgyz-side band cells (36) that ledger/5 (Barak) gave Uzbekistan. Page: 'Until 2024, the Kyrgyz enclave of Barak existed in Uzbekistan' (no area; an enclave far below one cell). Trial: the Uzbek 2024 keyframe snap (35 Kyrgyz cells to nobody) is gone; 35 cells stay Kyrgyz 2024-2026 (published: ownerless); Kyrgyzstan keeps 622 cells as in 2021.",
+   "page": "https://en.wikipedia.org/wiki/Kyrgyzstan%E2%80%93Uzbekistan_border",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "patch_check": "--check-patch p2020-p2029 after the fix: 7 entries, 7 ok, 0 rejected. Trial (private compiler copy, see problems) with all 67 patch files: 7 applied; against an empty-patch trial run on the same inputs, the only differences are the intended ones (W. Sahara 603 cells, Ukraine 224 occupied 2022+, Uzbek band 34 in 2022-2023, Kyrgyz 35 from 2024, 4 Rio Grande cells); snaps 25 -> 24 (Uzbekistan 2024 gone), conflicts mauritania/morocco 12 -> mauritania/SADR 13 (2024 border sliver).",
+ "problems": [
+  "tool: compile_dossiers.py --trial p2020-p2029 still fails (FileNotFoundError on stage/compiled/_draft/p2020-p2029.json): main() passes window_ends filtered to e <= args.until (2026), so the 2029 window end is never in the set and run() skips its on_window_end. One-line fix used in my private copy (/tmp/claude-0/work/review-p2020-p2029/toolcopy): {e for e in window_ends if e <= args.until or (trial is not None and e == trial['to'])}. The real tool is untouched.",
+  "inputs moved under the review: p2000-p2009.json gained Mexico events (events/1 is the same Rio Grande repair at its 2009 source) between my trials, which makes events/3 nearly redundant and explains why a trial-vs-published diff shows Mexico/Puntland/Russia changes not caused by this patch; I compared against an empty-patch trial on identical inputs instead.",
+  "pre-existing, not this patch: 23 ownerless coastal cells in Crimea, 11 in Kherson and 5 in Zaporizhzhia oblasts from at least 2020 to 2026 (grey ring in the render).",
+  "pre-existing: mexico_2024 keyframe adds 14 Texas cells (Cliopatria's Mexico 2024 outline) in both trials; and the 4 straddling Rio Grande cells would fall to nobody in 2024 without events/3.",
+  "events/0 reopens the Russia-Ukraine occupation as a new relation, so the packet labels it 'since 2022' although Crimea is occupied from 2014; cosmetic. The compiler rule that an *_end closes the whole relation (window agent's problem) stands; ledger/18 and /21 now close nothing.",
+  "events/0 holds one shape from December 2022 to 2026; Zaporizhzhia's 70% is the 30 September 2022 figure, so later Russian advances (the Zaporizhzhia page now lists Huliaipole and Vasylivka as occupied) are not drawn; no dated page figure for 2023-2025 was opened.",
+  "Western Sahara before 2020 (roles of Dakhla and the Free Zone, 1976-2019) remains wrong in earlier windows, as the window agent reported; the stale empty relation 'SADR occupies Moroccan land' (since 1976) stays open to the end."
+ ]
+}

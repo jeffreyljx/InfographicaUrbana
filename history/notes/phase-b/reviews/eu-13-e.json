@@ -1,0 +1,1295 @@
+{
+ "batch_id": "eu-13-e",
+ "verdicts": [
+  {
+   "slug": "duchy-of-naples",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/5/counterpart and /ledger/6/counterpart",
+     "what": "The 1135-1139 contest names norman-italy, which no longer existed: the norman-italy dossier ends in December 1130 when Roger II was crowned and hands over to kingdom-of-sicily.",
+     "why": "norman-italy.json ledger L27 '1130/12 dissolve' (successor kingdom-of-sicily); Sergius VII page: Naples rose on 24 April 1135 against Roger and 'Roger II incorporated the Duchy of Naples into his kingdom in 1139'.",
+     "fix": "counterpart 'kingdom-of-sicily' on both events (pairing kept); reviewer note appended.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/2, /keyframe_review/3, /keyframe_review/7",
+     "what is missing": "Cliopatria's 960 cut (1,059 to 770 km2), 980-989 bump (+96 km2) and 1085 trim (-24 km2) are unexplained (unverified: page budget, 5 of 5 pages used).",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Amalfi"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Early extent: Gaeta, Amalfi and Sorrento 'took their independence' in the early 9th century, undated; the 763-839 shape may include them.",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Gaeta"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "Capital Naples at 14.25 E lies about 1 km west of the 1034-1138 shapes' bbox edge (14.263 E); check whether the corrected shape should keep the whole city (union with place Naples, small radius).",
+     "page to try": "https://en.wikipedia.org/wiki/Naples"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Naples",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Pandulf_IV_of_Capua",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/County_of_Aversa",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Sergius_VII_of_Naples",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1058.8,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Duchy of Naples infobox (checked); the author says so in notes."
+   }
+  },
+  {
+   "slug": "principality-of-capua",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/identity/end, /identity/successors, /ledger/9, /ledger/10",
+     "what": "The state is dissolved in 1058 into norman-italy, but its own page and the neighbour dossier continue the principality under its Norman princes, leaving Capua and Aversa with no owner after 1058.",
+     "why": "Principality of Capua page: infobox rulers 'Atenulf I (887-910)' to 'Robert II (1127-1156)', events '1058 Richard of Aversa conquers Capua', '1127 Roger II claims overlordship', end 1139 in the body / 1156 in the infobox; Landulf VIII 'recorded as prince until 12 May 1062' (Norman conquest page). norman-italy.json L6 '1058 loss cp=principality-of-capua: Aversa and Capua ... are the Principality of Capua's'. Rule 2 of the brief: a dynasty that replaces another on the same land stays in the dossier as a rename.",
+     "fix": "Extend the dossier through the Norman principality: 1058 rename (Drengot princes), 1058 gain of Aversa from norman-italy (mirror of its L6), 1058-1062 contest with Landulf VIII if drawn, end at 1139 (Roger II takes the title; or 1156, say which) with successor kingdom-of-sicily; review Cliopatria's 1056-1065 shape for 1058-1065 and add keyframes to the end. If the orchestrator rules Norman Capua into norman-italy instead, norman-italy's L6 must change; either way one of the two must move.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0,1,2,3,4,5,6,8,11,12 (the single-cell shapes) and /identity/capitals/0",
+     "what": "The capital Capua (14.21 E, 41.11 N) lies outside every single-cell Capua shape: the Cliopatria cell's bbox is 13.79-14.11 E, about 8 km west of the city; unflagged.",
+     "why": "shapes.csv: principality-of-capua_840/875/990/1015 bbox '13.7918,41.068,14.112,41.2625'; only the 1028 and 1034 shapes reach east of 14.21 E. Capua sits at about 41.10 N 14.22 E.",
+     "fix": "Correct each single-cell keyframe to union[{cliopatria Capua <year>}, {place: Capua, km: 10-15}] with text saying the city lies east of Cliopatria's cell, or explain why the cell stands.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6/region, /ledger/7, /keyframe_review/10/note",
+     "what": "Gaeta is lost twice: the May 1038 loss gives away Cliopatria's 1034 shape, which carries the Gaeta cells (K9), and L7 loses Gaeta again in June 1040, while K10 says Capua has no land 1038-1046.",
+     "why": "Guaimar IV page: 'In June 1040, he took Gaeta, which had been conquered by Pandulf in 1032', so Gaeta was not part of the 1038 grant. The Salerno dossier's 1038 gain now (reviewer fix) excludes Gaeta.",
+     "fix": "L6 region = minus[{cliopatria Principality of Capua 1034}, {place Gaeta, km 15}] (matching principality-of-salerno L9); keep Gaeta with Capua 1038-1040 in a new keyframe (place Gaeta) ending with L7, or recast L7, and amend K10's note.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (1034)",
+     "what is missing": "Sorrento, 'conquered by Pandulf in 1034' (Guaimar IV page) and taken by Guaimar in July 1039, is not in the ledger; the republic-of-amalfi dossier also puts Amalfi under Capua 1034-1039 (occupation), which this dossier lacks.",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Sorrento"
+    },
+    {
+     "where": "/keyframe_review/3, /keyframe_review/5",
+     "what is missing": "The 900-989 and 1010-1014 keyframes draw Capua separately while Cliopatria's Benevento shapes of those years (+336 km2) contain the Capua cell and the Benevento dossier gains Capua in 899 and 1010; one of the two must give way (orchestrator decision).",
+     "page to try": "https://en.wikipedia.org/wiki/Pandulf_Ironhead"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Capua",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Pandulf_IV_of_Capua",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Pandulf_IV_of_Capua",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Guaimar_IV_of_Salerno",
+     "result": "confirmed (year on the Pandulf page, May on the Guaimar page)"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Capua",
+     "result": "confirmed as a conquest, but the page continues the principality to 1139/1156"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1154.1,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the infobox (checked)."
+   }
+  },
+  {
+   "slug": "principality-of-salerno",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/9/region and /keyframe_review/7/correction",
+     "what": "The May 1038 gain and the 1038-1046 keyframe used Cliopatria's 1034 Capua shape, which carries the Gaeta cells, so Gaeta was drawn as Salerno's for 1038-1046 although the keyframe note says it is not drawn and L12/L13 date the hold June 1040 to October 1041.",
+     "why": "Guaimar IV page: 'In June 1040, he took Gaeta, which had been conquered by Pandulf in 1032'; after October 1041 Guaimar stops appearing in Gaeta's records. Capua K9: 'Cliopatria's 1034 shape adds two cells on the Gaeta coast'.",
+     "fix": "Capua part = minus[{cliopatria Principality of Capua 1034}, {place Gaeta, km 15, country Italy}] in both places; reviewer notes appended.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/5/confidence",
+     "what": "The c. 968 loss to the Byzantines was at confidence 2, but the cited page does not make the land Salerno's.",
+     "why": "Theme of Lucania page: 'established probably c. 968', 'was formed to encompass Lombard-populated areas of the theme of Longobardia'; Salerno is not named; the region is Cliopatria's 970 cut.",
+     "fix": "confidence 1; note appended.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/5",
+     "what is missing": "Who held the Basilicata and Cosenza interior before c. 968 (Salerno or Byzantine Longobardia), and when Cosenza was lost.",
+     "page to try": "https://en.wikipedia.org/wiki/Longobardia"
+    },
+    {
+     "where": "/ledger/17",
+     "what is missing": "End of Guaimar's 1040 hold on Benevento (confidence 1, placed at 1047).",
+     "page to try": "https://en.wikipedia.org/wiki/Pandulf_III_of_Benevento"
+    },
+    {
+     "where": "/ledger (1039)",
+     "what is missing": "Sorrento, taken by Guaimar in July 1039 and given to his brother Guy (Guaimar IV page), is not in the ledger or the 1038-1046 keyframe.",
+     "page to try": "https://en.wikipedia.org/wiki/Guaimar_IV_of_Salerno"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "840-850 extent: the dossier draws 40 km round Salerno, while the Benevento dossier gives Salerno 'mostly the western half of the old duchy' from 840 (its L6); the land between is nobody's.",
+     "page to try": "https://en.wikipedia.org/wiki/Siconulf_of_Salerno"
+    },
+    {
+     "where": "/keyframe_review/5",
+     "what is missing": "978-983: neighbours record Salerno as gained by Benevento (978-981) and occupied by Amalfi (981-983); this dossier draws it as Salerno under foreign princes (rename). Orchestrator to choose one model.",
+     "page to try": "https://en.wikipedia.org/wiki/Pandulf_Ironhead"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Salerno",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Theme_of_Lucania",
+     "result": "not on page as a loss of Salerno (the note said so); confidence lowered to 1"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Guaimar_IV_of_Salerno",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Benevento",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Norman_conquest_of_southern_Italy",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Norman_conquest_of_southern_Italy",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 17791.0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the infobox (checked)."
+   }
+  },
+  {
+   "slug": "emirate-of-sicily",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/wars/1/zones",
+     "what is missing": "The Maniakes war is drawn with no zone and 'no territorial result', but the Emirate page says he 'managed to snatch Messina and Syracuse from Arab rule' for 'a very short time' and that 'the subsequent Muslim counter-offensive reconquered all the cities'; add the zone (Messina, Syracuse) and a contest_start 1038 / contest_end pair with byzantine-empire (end year from the Maniakes page).",
+     "page to try": "https://en.wikipedia.org/wiki/George_Maniakes"
+    },
+    {
+     "where": "/ledger/25",
+     "what is missing": "Interior collapse placed at 1085 at confidence 1; the Norman conquest page does date some of it: 'In 1079 Taormina was besieged', Trapani 'soon surrendered', 'in 1081 Jordan ... conquered Catania'. Agrigento, Castrogiovanni (Enna) and Butera need a page.",
+     "page to try": "https://en.wikipedia.org/wiki/Roger_I_of_Sicily"
+    },
+    {
+     "where": "/keyframe_review/11, /keyframe_review/12",
+     "what is missing": "Cliopatria's 1066 and 1072 shapes stop at 15.21 E and so exclude Taormina (15.29 E), which the Norman conquest page has still besieged in 1079; correct to keep Taormina to 1079.",
+     "page to try": "https://en.wikipedia.org/wiki/Norman_conquest_of_southern_Italy"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Agrigento at confidence 1: the Muslim conquest page places it in the 828 campaign ('one part of the army took Agrigento after Mineo surrendered'), which supports confidence 2.",
+     "page to try": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Sicily"
+    },
+    {
+     "where": "/identity",
+     "what is missing": "The Aghlabid mainland emirates (Bari 847-871, Taranto) and the Ibn Qurhub revolt of 912-917 (the Fatimid dossier has a contest with this state) are not covered.",
+     "page to try": "https://en.wikipedia.org/wiki/Emirate_of_Bari"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Sicily",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Sicily",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/24",
+     "page": "https://en.wikipedia.org/wiki/Emirate_of_Sicily",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/27",
+     "page": "https://en.wikipedia.org/wiki/Norman_conquest_of_southern_Italy",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Sicily",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/23",
+     "page": "https://en.wikipedia.org/wiki/Emirate_of_Sicily",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 22527.6,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the infobox (checked); the 878 shape is close to the island's 25,700 km2."
+   }
+  },
+  {
+   "slug": "giudicato-of-arborea",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1/type and /ledger/2/type",
+     "what": "Mujahid's 1015-1016 landing was recorded as loss and gain, while the page describes a one-year occupation and the Cagliari, Logudoro and Gallura dossiers record the same events as occupation_start/occupation_end with taifa-of-denia.",
+     "why": "Mujahid al-Amiri page: 'He landed with 120 ships and occupied the southern coastal plain'; 'In May 1016 ... Mujahid, facing mutiny among his men, fled by sea'; no annexation described.",
+     "fix": "types occupation_start (1015) and occupation_end (May 1016), counterpart taifa-of-denia kept; reviewer notes appended.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Start 866 at confidence 1 (infobox: 'Established: 11th century'); the same Cliopatria date is used by the Cagliari, Gallura and Logudoro dossiers, so one group decision is needed.",
+     "page to try": "https://en.wikipedia.org/wiki/Judicates"
+    },
+    {
+     "where": "/keyframe_review/5",
+     "what is missing": "Arborea's share of Cagliari in 1258 and of Logudoro after 1259: both neighbours list Arborea as a successor but no gain is in this ledger (pages silent on extent).",
+     "page to try": "https://en.wikipedia.org/wiki/William_of_Capraia"
+    },
+    {
+     "where": "/keyframe_review/6",
+     "what is missing": "Cliopatria's 1326-1343 shape adds 290 km2; no event explains it.",
+     "page to try": "https://en.wikipedia.org/wiki/Hugh_II_of_Arborea"
+    },
+    {
+     "where": "/wars/2",
+     "what is missing": "The war runs from 1353 but the first contest_start is 1368; the crown-of-aragon dossier opens its contest in 1353 (Marianus IV's break, Alghero 1353-1354).",
+     "page to try": "https://en.wikipedia.org/wiki/Marianus_IV_of_Arborea"
+    },
+    {
+     "where": "/keyframe_review/10",
+     "what is missing": "1388-1390 extent after the peace (the pre-1368 core is the researcher's reading).",
+     "page to try": "https://en.wikipedia.org/wiki/Eleanor_of_Arborea"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Judicate_of_Arborea",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Aragonese_conquest_of_Sardinia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Aragonese_conquest_of_Sardinia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Judicate_of_Arborea",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Judicate_of_Arborea",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Aragonese_conquest_of_Sardinia",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 26138.0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the infobox (checked); the 26,138 km2 maximum is the whole-island shape the author marks wrong."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "duchy-of-naples",
+    "year": 763,
+    "type": "found",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Byzantine dossier has no 763 event for Naples (papal suzerainty)."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-naples",
+    "year": 1027,
+    "type": "loss",
+    "counterpart": "principality-of-capua"
+   },
+   "mirror": {
+    "slug": "principality-of-capua",
+    "year": 1027,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "duchy-of-naples",
+    "year": 1029,
+    "type": "gain",
+    "counterpart": "principality-of-capua"
+   },
+   "mirror": {
+    "slug": "principality-of-capua",
+    "year": 1029,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "duchy-of-naples",
+    "year": 1030,
+    "type": "loss",
+    "counterpart": "norman-italy"
+   },
+   "mirror": {
+    "slug": "norman-italy",
+    "year": 1030,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "norman-italy is founded on Aversa from Naples."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-naples",
+    "year": 1135,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-sicily"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sicily",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-sicily (eu-13) not written yet; counterpart changed from norman-italy by the reviewer."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-naples",
+    "year": 1139,
+    "type": "loss",
+    "counterpart": "kingdom-of-sicily"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sicily",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-sicily not written yet."
+  },
+  {
+   "event": {
+    "slug": "principality-of-capua",
+    "year": 861,
+    "type": "found",
+    "counterpart": "principality-of-salerno"
+   },
+   "mirror": {
+    "slug": "principality-of-salerno",
+    "year": 861,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "principality-of-capua",
+    "year": 1032,
+    "type": "gain",
+    "counterpart": "Duchy of Gaeta"
+   },
+   "mirror": {
+    "slug": "duchy-of-gaeta",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "listed under counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "principality-of-capua",
+    "year": 1038,
+    "type": "loss",
+    "counterpart": "principality-of-salerno"
+   },
+   "mirror": {
+    "slug": "principality-of-salerno",
+    "year": 1038,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Same year and parties; land now differs: Salerno (reviewer fix) excludes Gaeta, Capua still gives the whole 1034 shape."
+  },
+  {
+   "event": {
+    "slug": "norman-italy",
+    "year": 1038,
+    "type": "gain",
+    "counterpart": "principality-of-capua"
+   },
+   "mirror": {
+    "slug": "principality-of-capua",
+    "year": 1038,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "norman-italy L1 has Ranulf gaining Capua in 1038 (confidence 2); Capua and Salerno both give Capua to Guaimar IV of Salerno in May 1038. norman-italy should drop or recast it."
+  },
+  {
+   "event": {
+    "slug": "principality-of-capua",
+    "year": 1040,
+    "type": "loss",
+    "counterpart": "principality-of-salerno"
+   },
+   "mirror": {
+    "slug": "principality-of-salerno",
+    "year": 1040,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Capua says it lost Gaeta to Salerno; Salerno says it took Gaeta from the Duchy of Gaeta."
+  },
+  {
+   "event": {
+    "slug": "principality-of-capua",
+    "year": 1047,
+    "type": "gain",
+    "counterpart": "principality-of-salerno"
+   },
+   "mirror": {
+    "slug": "principality-of-salerno",
+    "year": 1047,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "principality-of-capua",
+    "year": 1058,
+    "type": "dissolve",
+    "counterpart": "norman-italy"
+   },
+   "mirror": {
+    "slug": "norman-italy",
+    "year": 1058,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Opposite directions: Capua dissolves into norman-italy, norman-italy L6 hands Aversa and Capua to principality-of-capua. Capua and Aversa have no owner after 1058. See Capua fix 1."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-benevento",
+    "year": 899,
+    "type": "gain",
+    "counterpart": "principality-of-capua"
+   },
+   "mirror": {
+    "slug": "principality-of-capua",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "Benevento gains Capua in 899 (and again 1010, losses 990 and 1015, all confidence 1); Capua draws itself separately 900-989 and 1010-1014 (personal union, not drawn). Double drawing; orchestrator to choose."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-benevento",
+    "year": 1034,
+    "type": "loss",
+    "counterpart": "principality-of-capua"
+   },
+   "mirror": {
+    "slug": "principality-of-capua",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Benevento loses its western edge to Capua in 1034 (confidence 1); Capua explains its 1034 growth by Gaeta (1032) only."
+  },
+  {
+   "event": {
+    "slug": "republic-of-amalfi",
+    "year": 1034,
+    "type": "occupation_start",
+    "counterpart": "principality-of-capua"
+   },
+   "mirror": {
+    "slug": "principality-of-capua",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Amalfi dossier has Amalfi under Capua 1034-1039; Capua has no Amalfi event (its pages are silent)."
+  },
+  {
+   "event": {
+    "slug": "principality-of-salerno",
+    "year": 840,
+    "type": "found",
+    "counterpart": "duchy-of-benevento"
+   },
+   "mirror": {
+    "slug": "duchy-of-benevento",
+    "year": 840,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Benevento loses the western half to Salerno in 840; Salerno takes only 40 km round Salerno until 851. Land between is unowned 840-850."
+  },
+  {
+   "event": {
+    "slug": "principality-of-salerno",
+    "year": 840,
+    "type": "contest_start",
+    "counterpart": "duchy-of-benevento"
+   },
+   "mirror": {
+    "slug": "duchy-of-benevento",
+    "year": 840,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "contest_end 851 matched too."
+  },
+  {
+   "event": {
+    "slug": "principality-of-salerno",
+    "year": 851,
+    "type": "gain",
+    "counterpart": "duchy-of-benevento"
+   },
+   "mirror": {
+    "slug": "duchy-of-benevento",
+    "year": 840,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Year: Salerno 851, Benevento 840."
+  },
+  {
+   "event": {
+    "slug": "principality-of-salerno",
+    "year": 968,
+    "type": "loss",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Byzantine dossier has no c. 968 Lucania gain (now confidence 1 on the Salerno side)."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-benevento",
+    "year": 978,
+    "type": "gain",
+    "counterpart": "principality-of-salerno"
+   },
+   "mirror": {
+    "slug": "principality-of-salerno",
+    "year": 978,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "Benevento annexes Salerno 978-981; Salerno keeps its own keyframe 980-989 with renames. Double drawing 978-981."
+  },
+  {
+   "event": {
+    "slug": "republic-of-amalfi",
+    "year": 981,
+    "type": "occupation_start",
+    "counterpart": "principality-of-salerno"
+   },
+   "mirror": {
+    "slug": "principality-of-salerno",
+    "year": 981,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "Amalfi occupies Salerno 981-983; Salerno records a rename. If occupation stands, Salerno should carry occupation_start/end 981/983 with republic-of-amalfi."
+  },
+  {
+   "event": {
+    "slug": "principality-of-salerno",
+    "year": 1039,
+    "type": "gain",
+    "counterpart": "republic-of-amalfi"
+   },
+   "mirror": {
+    "slug": "republic-of-amalfi",
+    "year": 1039,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "Type: Salerno annexes, Amalfi says occupied (and under Capua 1034-1039, not independent)."
+  },
+  {
+   "event": {
+    "slug": "principality-of-salerno",
+    "year": 1040,
+    "type": "gain",
+    "counterpart": "duchy-of-benevento"
+   },
+   "mirror": {
+    "slug": "duchy-of-benevento",
+    "year": 1040,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "Type: Salerno gain vs Benevento contest; end 1047 at confidence 1 on both sides."
+  },
+  {
+   "event": {
+    "slug": "principality-of-salerno",
+    "year": 1040,
+    "type": "gain",
+    "counterpart": "Duchy of Gaeta"
+   },
+   "mirror": {
+    "slug": "duchy-of-gaeta",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "No dossier; listed. 1041 loss likewise."
+  },
+  {
+   "event": {
+    "slug": "principality-of-salerno",
+    "year": 1043,
+    "type": "vassal_start",
+    "counterpart": "norman-italy"
+   },
+   "mirror": {
+    "slug": "norman-italy",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Vassal events sit on the suzerain only (schema); vassal_end 1047 likewise."
+  },
+  {
+   "event": {
+    "slug": "principality-of-salerno",
+    "year": 1052,
+    "type": "loss",
+    "counterpart": "republic-of-amalfi"
+   },
+   "mirror": {
+    "slug": "republic-of-amalfi",
+    "year": 1073,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "21 years apart: Guaimar IV page makes him Duke of Amalfi 1039-1052; the Amalfi dossier ends the Salerno occupation in 1073 at confidence 1. Amalfi should move to 1052."
+  },
+  {
+   "event": {
+    "slug": "principality-of-salerno",
+    "year": 1077,
+    "type": "loss",
+    "counterpart": "norman-italy"
+   },
+   "mirror": {
+    "slug": "norman-italy",
+    "year": 1077,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Salerno city 1076/12 and citadel 1077/5; norman-italy 1077."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-sicily",
+    "year": 827,
+    "type": "found",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "aghlabid-dynasty",
+    "year": 827,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "The Aghlabid dossier, not the Emirate, holds the 827 war in the Byzantine and Aghlabid ledgers."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-sicily",
+    "year": 831,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 831,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Byzantine loses Palermo to aghlabid-dynasty; the Aghlabid dossier also gains it (and Enna 859, Malta 870, Syracuse 878). Sicily is double-claimed 831-909 by aghlabid-dynasty and emirate-of-sicily; unflagged by the Emirate author. Orchestrator to choose (e.g. Aghlabid vassal_start over the Emirate)."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-sicily",
+    "year": 859,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 859,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Counterpart: Byzantine names aghlabid-dynasty."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-sicily",
+    "year": 870,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 870,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Counterpart: Byzantine names aghlabid-dynasty."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-sicily",
+    "year": 878,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 878,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Counterpart: Byzantine names aghlabid-dynasty."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-sicily",
+    "year": 902,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 902,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Counterpart: Byzantine names aghlabid-dynasty."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-sicily",
+    "year": 843,
+    "type": "gain",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Messina 843, Modica 845, Lentini 846, Ragusa 848, Cefalu 857 and Agrigento 828 have no Byzantine mirror."
+  },
+  {
+   "event": {
+    "slug": "byzantine-empire",
+    "year": 900,
+    "type": "loss",
+    "counterpart": "aghlabid-dynasty"
+   },
+   "mirror": {
+    "slug": "emirate-of-sicily",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "Byzantine loses Catania in 900 (confidence 3); the Muslim conquest page has only an unsuccessful siege of Catania in 900. Byzantine side to check."
+  },
+  {
+   "event": {
+    "slug": "fatimid-caliphate",
+    "year": 909,
+    "type": "gain",
+    "counterpart": "emirate-of-sicily"
+   },
+   "mirror": {
+    "slug": "emirate-of-sicily",
+    "year": 909,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "Fatimid annexes Sicily 909-948; the Emirate draws itself 911-959 as its own state. Double drawing 909-948 (the Emirate author flagged the Cliopatria overlap)."
+  },
+  {
+   "event": {
+    "slug": "fatimid-caliphate",
+    "year": 912,
+    "type": "contest_start",
+    "counterpart": "emirate-of-sicily"
+   },
+   "mirror": {
+    "slug": "emirate-of-sicily",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Fatimid contest 912-917 (Ibn Qurhub) has no Emirate side."
+  },
+  {
+   "event": {
+    "slug": "fatimid-caliphate",
+    "year": 948,
+    "type": "vassal_start",
+    "counterpart": "emirate-of-sicily"
+   },
+   "mirror": {
+    "slug": "emirate-of-sicily",
+    "year": 948,
+    "type": "rename"
+   },
+   "status": "matched",
+   "note": "Suzerain carries it, as the Emirate author asked; vassal_end 1044 (confidence 1) likewise."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-sicily",
+    "year": 965,
+    "type": "contest_end",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "emirate-of-sicily",
+    "year": 1061,
+    "type": "loss",
+    "counterpart": "norman-italy"
+   },
+   "mirror": {
+    "slug": "norman-italy",
+    "year": 1061,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "contest_start 1061/5 matched too."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-sicily",
+    "year": 1071,
+    "type": "loss",
+    "counterpart": "norman-italy"
+   },
+   "mirror": {
+    "slug": "norman-italy",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Catania 1071 (Emirate page) has no norman-italy gain."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-sicily",
+    "year": 1072,
+    "type": "loss",
+    "counterpart": "norman-italy"
+   },
+   "mirror": {
+    "slug": "norman-italy",
+    "year": 1072,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "emirate-of-sicily",
+    "year": 1085,
+    "type": "loss",
+    "counterpart": "norman-italy"
+   },
+   "mirror": {
+    "slug": "norman-italy",
+    "year": 1085,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "both confidence 1"
+  },
+  {
+   "event": {
+    "slug": "emirate-of-sicily",
+    "year": 1086,
+    "type": "loss",
+    "counterpart": "norman-italy"
+   },
+   "mirror": {
+    "slug": "norman-italy",
+    "year": 1091,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Syracuse: Emirate 1086/3 (page: capitulated March 1086); norman-italy takes it only with Noto in 1091/2."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-sicily",
+    "year": 1091,
+    "type": "loss",
+    "counterpart": "norman-italy"
+   },
+   "mirror": {
+    "slug": "norman-italy",
+    "year": 1091,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Malta and Noto; contest_end and dissolve 1091/2 matched."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-arborea",
+    "year": 866,
+    "type": "found",
+    "counterpart": "byzantine-empire"
+   },
+   "mirror": {
+    "slug": "byzantine-empire",
+    "year": 840,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Byzantine loses Sardinia to nobody in 840 (confidence 1); the four judicates are founded from byzantine-empire in 866 (confidence 1)."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-arborea",
+    "year": 1015,
+    "type": "occupation_start",
+    "counterpart": "taifa-of-denia"
+   },
+   "mirror": {
+    "slug": "taifa-of-denia",
+    "year": 1015,
+    "type": "occupation_start"
+   },
+   "status": "missing",
+   "note": "Denia records occupations of Logudoro and Gallura only, not Arborea or Cagliari."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-cagliari",
+    "year": 1258,
+    "type": "dissolve",
+    "counterpart": "republic-of-pisa"
+   },
+   "mirror": {
+    "slug": "giudicato-of-arborea",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Cagliari and Logudoro (1259) name Arborea as a successor; no gain in Arborea (pages silent on extent)."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-arborea",
+    "year": 1323,
+    "type": "contest_start",
+    "counterpart": "republic-of-pisa"
+   },
+   "mirror": {
+    "slug": "republic-of-pisa",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "republic-of-pisa (eu-13) not written yet; contest_end 1326 likewise."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-arborea",
+    "year": 1323,
+    "type": "vassal (Hugh II to James II)",
+    "counterpart": "crown-of-aragon"
+   },
+   "mirror": {
+    "slug": "crown-of-aragon",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Crown of Aragon has no vassal_start 1323 counterpart giudicato-of-arborea (the author asked for it)."
+  },
+  {
+   "event": {
+    "slug": "crown-of-aragon",
+    "year": 1353,
+    "type": "contest_start",
+    "counterpart": "giudicato-of-arborea"
+   },
+   "mirror": {
+    "slug": "giudicato-of-arborea",
+    "year": 1368,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "15 years: Crown opens the contest in 1353, Arborea in 1368; Crown runs it unbroken to 1420, Arborea 1368-1388 and 1391-1410."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-arborea",
+    "year": 1368,
+    "type": "gain",
+    "counterpart": "crown-of-aragon"
+   },
+   "mirror": {
+    "slug": "crown-of-aragon",
+    "year": 1368,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-arborea",
+    "year": 1388,
+    "type": "loss",
+    "counterpart": "crown-of-aragon"
+   },
+   "mirror": {
+    "slug": "crown-of-aragon",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "No Crown gain in 1388."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-arborea",
+    "year": 1391,
+    "type": "gain",
+    "counterpart": "crown-of-aragon"
+   },
+   "mirror": {
+    "slug": "crown-of-aragon",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "No Crown loss in 1391."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-arborea",
+    "year": 1410,
+    "type": "loss",
+    "counterpart": "crown-of-aragon"
+   },
+   "mirror": {
+    "slug": "crown-of-aragon",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "No Crown gain in 1410 (Oristano, the Marquisate of Oristano to Cubell)."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-arborea",
+    "year": 1420,
+    "type": "loss",
+    "counterpart": "crown-of-aragon"
+   },
+   "mirror": {
+    "slug": "crown-of-aragon",
+    "year": 1420,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "dissolve 1420/8 matched by the Crown gain."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Mazara del Vallo",
+   "kind": "place",
+   "used_in": "emirate-of-sicily"
+  },
+  {
+   "name": "Agrigento",
+   "kind": "place",
+   "used_in": "emirate-of-sicily"
+  },
+  {
+   "name": "Lentini",
+   "kind": "place",
+   "used_in": "emirate-of-sicily"
+  },
+  {
+   "name": "Taormina",
+   "kind": "place",
+   "used_in": "emirate-of-sicily"
+  },
+  {
+   "name": "Cefalù",
+   "kind": "place",
+   "used_in": "emirate-of-sicily"
+  },
+  {
+   "name": "Gaeta",
+   "kind": "place",
+   "used_in": "principality-of-capua, principality-of-salerno"
+  },
+  {
+   "name": "Aversa",
+   "kind": "place",
+   "used_in": "duchy-of-naples"
+  },
+  {
+   "name": "Alghero",
+   "kind": "place",
+   "used_in": "giudicato-of-arborea"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Duchy of Gaeta",
+   "suggested_slug": "duchy-of-gaeta",
+   "years": [
+    800,
+    1064
+   ],
+   "note": "author's list and years; counterpart of Capua 1032 and Salerno 1040-1041"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-13-e.md",
+ "problems": [
+  "WebFetch returns a small-model digest; every spot check was read from the digest's quotations, not the raw page.",
+  "Neighbours not written yet (owned by eu-13 parts that have not run or not finished): republic-of-pisa, republic-of-genoa, papal-states, kingdom-of-sicily, duchy-of-gaeta. Their mirrors are exceptions.",
+  "fatimid-caliphate and zirid-dynasty are not in the author's Context list but were read as counterparts of the Emirate.",
+  "Orchestrator decisions needed across groups: (1) Norman Capua 1058-1139: principality-of-capua or norman-italy (both dossiers now disclaim it); (2) Sicily 831-909 double-claimed by aghlabid-dynasty and emirate-of-sicily, 909-948 by fatimid-caliphate and emirate-of-sicily; (3) the Capua-Benevento personal unions (900-981, 1010-1014) drawn by both duchy-of-benevento and principality-of-capua; (4) Salerno 978-983 drawn by Salerno and claimed by Benevento and Amalfi."
+ ]
+}

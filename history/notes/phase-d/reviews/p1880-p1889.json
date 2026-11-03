@@ -1,0 +1,93 @@
+{
+ "window": "p1880-p1889",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/War_of_the_Pacific",
+   "fix": "",
+   "applied": false,
+   "what": "Chile occupation_start over Peru, Nov 1883, Tacna (Peru) + Arica y Parinacota (Chile): 118 cells, about 29,800 km2, 71.1-69.0 W, 19.2-16.9 S (the old provinces of Tacna, Arica and Tarata), no more. Page: 'On 20 October 1883, hostilities between Chile and Peru formally came to an end under the Treaty of Ancon', 'Peru formally cedes the Tarapaca Department to Chile', 'Chile was also to occupy the provinces of Tacna and Arica for 10 years', and in 1929 'Chile kept Arica, and Peru reacquired Tacna'. Verified the problem: published draft has the 111 Peruvian cells occupied 1880-1882, free Peruvian 1883-1884 and Chilean direct (102) from the 1885 keyframe; in my trial they are Peruvian land occupied by Chile 1880-1889. Month 11 is a sequencing device (the occupation was continuous from 1880), harmless at yearly resolution; caption '20 October 1883: the Treaty of Ancon.' The 7 Bolivian-held speckle cells inside the spec are untouched (see problems)."
+  },
+  {
+   "entry": "events/1",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/War_of_the_Pacific",
+   "applied": true,
+   "what": "Chile occupation_start over Peru, Sep 1884, same 118-cell Tacna/Arica spec. Page: 'on 4 August 1884, Lynch and the rest of the Chilean Expeditionary Forces embarked in Callao for Chile'; 'Chile was also to occupy the provinces of Tacna and Arica for 10 years'. Needed: the Aug 1884 Moquegua/Arequipa/Puno occupation_end events close the whole relation again; with it the trial keeps Tacna/Arica occupied through 1889. Error found: the note's first sentence, which the compiler uses as the 1884 map caption, carried compiler mechanics ('the August 1884 occupation_end events close the whole relation again, so this event re-opens it ...').",
+   "fix": "Rewrote only events/1 'note' so its first sentence (the caption) reads: \"Chile keeps Tacna and Arica under occupation after its last expeditionary forces embark at Callao ('On 4 August 1884, Lynch and the rest of the Chilean Expeditionary Forces embarked in Callao for Chile'), as the Treaty of Ancon (20 October 1883) provided: Chile 'was also to occupy the provinces of Tacna and Arica for 10 years'.\" The mechanics follow as a 'Compiler note'; no field other than note changed, no cell effect. --check-patch re-run: 10 ok."
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/War_of_the_Pacific",
+   "fix": "",
+   "applied": false,
+   "what": "republic-of-chile_1880 (1880-1884) = Cliopatria Chile 1880 minus Peru except Tacna and Moquegua: 1,523 of 1,610 cells; the 87 removed lie at 69.1-77.2 W, 11.6-17.2 S (Lima coast, Ica, Arequipa, Puno); the only Peruvian cells kept are Tacna and Moquegua (plus one coastal cell off Lima at 76.8 W 12.4 S outside Peru's polygon). Page: Chilean forces 'occupied Peru's capital Lima in January 1881', 'On 29 October 1883, the Chilean occupation of Lima ended', 'The occupation of Arequipa and Puno at the end of the war saw little military action', only Tarapaca ceded. Trial: the 87 cells are Peruvian 1880-1884 with Lima occupied 1881-1883 and Arequipa/Puno in 1883 (published: Chilean direct, with an inverted 'Chile occupied by Peru' status in 1881-1883); Chile/Peru conflict 456 -> 7 cell-years. Side effects (small): the Chile 1880 and Peru 1885 snaps now fall inside the 20-cell tolerance and are skipped, so 7 Bolivian-held cells inside Tacna/Arica stay Bolivian 1885-1889 (published: Peruvian), 4 Andean border cells (70.6 W 35.9-36.2 S; 72.9 W 39.1 S) stay nobody's until 1883-1885, and 7 cells near Iquique and north of the Loa (69.7-70.1 W, 20.0-21.6 S) stay Peruvian direct 1880-1884 instead of Chilean direct (both wrong for 1880-1883)."
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/French_Congo",
+   "fix": "",
+   "applied": false,
+   "what": "french-africa_1884 (1884 only): the dossier's own correction (Cliopatria 1880 + Tunisia + Guinea) plus the Loango coast: Kouilou, Pointe-Noire, Niari, Gabon's Nyanga = 239 cells, about 60,400 km2, 10.1-13.5 E, 5.0-1.9 S, exactly the kingdom-of-loango successor land for french-africa. French Congo page: 'formally established as the French Congo on 30 November 1882, and was confirmed at the Berlin Conference of 1884-85', infobox predecessor Kingdom of Loango; I also opened Kingdom of Loango: 'Disestablished c. 1883', 'Succeeded by French Congo', territory 'the western part of the Republic of the Congo' and southern Gabon. Cliopatria French Africa 1884/1885/1890 has 0 cells there (1895: 238). Trial: the 239 cells are French Africa (vassal of the Third Republic) 1883-1889 instead of nobody's 1884-1889; snap removal 251 -> 12."
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/French_Congo",
+   "fix": "",
+   "applied": false,
+   "what": "french-africa_1885 (1885-1889; french-africa_1890 starts 1890, so inside the window): Cliopatria 1885 shape plus the same 239-cell Loango coast. Same pages as keyframe_overrides/1; Gabon proper rightly left out ('It formally added Gabon on in 1891'). Trial: Loango coast French 1885-1889 and in the p1890 anchor."
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Mexico%E2%80%93United_States_border",
+   "fix": "",
+   "applied": false,
+   "what": "mexico|united-states-of-america, 1880, US wins inside the US. The 27 conflict cells all lie on the Rio Grande (97.3-107.9 W, 25.9-31.8 N) and the Sonora line (112-114 W, 31.7-32.2 N), inside the US polygon. Page: the 1848 and 1884 treaties 'specified that the middle of the Rio Grande was the border'; 'Five years later, the Gadsden Purchase completed the creation of the current U.S.-Mexico border'; Chamizal (2.4 km2) is far below a cell. Trial: 27 cells US 1880-1889 (published: Mexican); no Mexican cell left inside the US."
+  },
+  {
+   "entry": "rulings/1",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Canada%E2%80%93United_States_border",
+   "fix": "",
+   "applied": false,
+   "what": "british-colonial-empire|united-states-of-america, 1885-1889, US wins inside the US. 29 conflict cells: the 49th parallel (99-115 W), the 45th-parallel line of New York/Vermont/Maine (70.3-73.8 W) and 10 at the inland edge of the Alaska panhandle (130-137.6 W, 55.7-59.7 N), all inside the US. Page: Oregon Treaty 1846, 'arbitration in 1872 established the border between the Gulf Islands and the San Juan Islands', nothing between 1872 and the 1903 Alaska tribunal; drawing the panhandle at its later line is a fair rendering of US possession. Trial: 29 cells US 1885-1889. Side effect: without them british-colonial-empire_1885 moves only 14 cells, inside the 20-cell tolerance, so the whole snap is skipped: 6 Papuan coast/island cells (144.3 E 7.7 S; 149.0-150.8 E 10.2-10.6 S) and 4 cells on the Brunei-Sarawak border (115.4-115.6 E, 4.5-5.0 N; dropped by the Brunei 1885 snap) become nobody's 1885-1889 (published: British vassal land), 1 cell at 117.05 E 6.85 N stays Spanish (published: British), while 3 Negeri Sembilan cells (102.1-102.2 E, 2.9-3.0 N) stay British instead of nobody's. Net positive (32 cells right vs 11 wrong); follow-up under problems."
+  },
+  {
+   "entry": "rulings/2",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Canada%E2%80%93United_States_border",
+   "fix": "",
+   "applied": false,
+   "what": "canada|united-states-of-america, 1880, Canada wins inside Canada: 7 conflict cells (44829, 44834-44835, 44846, 48838, 48841, 89544) go to Canada (vassal of the British colonial empire) instead of the US; page as rulings/1 (borders unchanged 1846/1872 to 1903). 24 US-held cells inside Canada are untouched because they are not in conflict (anchor speckle), not this entry's fault."
+  },
+  {
+   "entry": "rulings/3",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Canada%E2%80%93United_States_border",
+   "fix": "",
+   "applied": false,
+   "what": "canada|united-states-of-america, 1880, US wins inside the US: 25 + 29 conflict cells (Alaska, Vermont, Montana and others) stay with the US; the year-end result was already American (the US keyframe re-took them), so the ruling only makes the outcome explicit (canada_1880 snap: kept by others 0 -> 25). Harmless and correct."
+  },
+  {
+   "entry": "rulings/4",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Treaty_of_Berlin_(1878)",
+   "fix": "",
+   "applied": false,
+   "what": "russian-empire|united-principalities-of-moldavia-and-wallachia, 1880, Russia wins inside Moldova: 12 of 13 conflict cells in Cahul, Cantemir, Taraclia and Comrat (28.1-28.7 E, 45.6-46.4 N); the 13th (cell 117430, 28.11 E 45.77 N) lies in Romania and rightly stays Romanian. Page: 'signed on 13 July 1878', 'Romania was forced to cede southern Bessarabia to the Russian Empire', 'As a compensation, Romania received Dobruja'. Trial: the 17 cells of the four districts are Russian 1880-1889 (published: 12 nobody's 1880-1883)."
+  }
+ ],
+ "patch_check": "--check-patch after my note fix to events/1: 10 entries, 10 ok, 0 rejected. Paired trials (empty patch vs this patch, same other patches): all 10 applied; rulings settled 27, 29, 14, 54, 12 cell-years; Chile/Peru conflict 456 -> 7 cell-years; p1890 anchor: +239 Loango cells to french-africa, 111 Tacna/Arica cells Peruvian occupied by Chile, 56 US cells back to the US, 7 to Canada; side effects 10 British cells -> nobody, 1 British -> Spanish, 7 Peruvian -> Bolivian, 3 nobody -> British.",
+ "problems": [
+  "rulings/1 side effect (verified in paired trials, empty patch vs this patch): british-colonial-empire_1885 falls inside the 20-cell snap tolerance once the 29 US cells are ruled out, so the whole 1885 snap is skipped. 10 cells become nobody's 1885-1889 and in the p1890 anchor (published draft: British vassal land): Papua 455546, 455919, 455991, 455995, 456000, 456003 (144.3 E 7.7 S; Milne Bay coast and islands 149.0-150.8 E 10.2-10.6 S) and 359215, 359218, 359305, 359308 (Brunei-Sarawak border, Lawas area, 115.4-115.6 E 4.5-5.0 N); cell 359180 (117.05 E 6.85 N, northern tip of Borneo) stays Spanish. Fix in p1880-p1889 or p1890-p1899: an event giving the six Papuan cells to british-colonial-empire (or british-new-guinea) from 1884/1885 and the Borneo cells to british-north-borneo/british-colonial-empire, each sourced on its page (British New Guinea; British North Borneo / Madrid Protocol of 1885). I did not add them: no page opened.",
+  "keyframe_overrides/0 side effect: Peru's 1885 snap is now inside tolerance, so 7 Bolivian-held speckle cells inside Tacna/Arica (488337, 488340, 488366, 488915, 488924, 488925, 488928; 69.0-69.5 W, 16.9-18.7 S) stay Bolivian 1885-1889 and in the p1890 anchor (published: Peruvian from 1885; right would be Peruvian land occupied by Chile). They are Bolivian from the p1880 anchor (earlier window). Needs a gain event for republic-of-peru (or a ruling in the window where Bolivia took them) on a page for the Peru-Bolivia line.",
+  "Forward, p1890-p1899: Cliopatria's French Africa shapes have no Loango coast until 1895 (0 cells in 1890, 238 in 1895), so french-africa_1890 (1890-1893) and french-africa_1894 need the same 239-cell union (Kouilou, Pointe Noire, Niari, Nyanga) or the coast falls to nobody again in 1890.",
+  "Forward: the Chile-over-Peru occupation of Tacna and Arica is now open in the p1890 anchor. Since an occupation_end closes the whole pair relation (shown by the October 1883 and August 1884 ends), the Peru dossier's 1925-9 occupation_end for Tarata will free Tacna and Arica in 1925-1929; p1920-p1929 needs a re-opening event like events/1, and p1900-p1929 should check the Chile keyframes of 1905, 1924 and 1926 keep the occupation.",
+  "Not a defect of the patch: 24 US-held speckle cells inside Canada stay American all window (not in conflict, so rulings/2 cannot reach them)."
+ ]
+}

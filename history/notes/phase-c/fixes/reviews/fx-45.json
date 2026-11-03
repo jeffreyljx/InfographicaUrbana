@@ -1,0 +1,114 @@
+{
+ "batch_id": "fx-45",
+ "checks": [
+  {
+   "item": "R014",
+   "verdict": "fail",
+   "what": "kingdom-of-kush ledger 1-11 (the Egyptian gains, losses and contest) deleted. The deletion matches the page ('Shebitku conquered the entire Nile Valley ... around 712 BC'; 'Taharqa was defeated in Egypt in 671 BC'; 'In 669 BC, Taharqa reoccupied Memphis, as well as the Delta'; 'In 656 BC, Psamtik sent a large fleet southwards to Thebes'), and twenty-fifth-dynasty-of-egypt ledger 0-16 carries the same land. But the symptom remains. neo-assyrian-empire ledger 32 (-669 loss of Memphis and the Delta, counterpart kingdom-of-kush) used to pair with the deleted Kush -669 gain. Now it pairs with nothing, so the compiler's loss branch gives Assyria's Delta cells to the living Kush. In sorted slug order it runs before the dynasty's -669 gain, and the cells are event-settled, so twenty-fifth-dynasty-of-egypt_-669 still finds them 'kept by others'. The same happens at -664 (ledger 36, Memphis). Kush still takes the Delta at -669, now through Assyria's event instead of its own.",
+   "page": "https://en.wikipedia.org/wiki/Twenty-fifth_Dynasty_of_Egypt",
+   "fix": "Keep the Kush deletion. Hand off the counterpart change kingdom-of-kush -> twenty-fifth-dynasty-of-egypt for: neo-assyrian-empire ledger 30-39 (-671..-663), assyrian-egypt ledger 1 (-656 gain of Upper Egypt), twenty-third-dynasty-of-egypt ledger 3 (-728 loss) and twenty-second-dynasty-of-egypt ledger 7-8 (-728/-716 contest). The dynasty's ledger already holds the mirror events (gain -669/-664/-728, loss -671/-667/-663/-656), so after the change they pair and Egypt no longer passes through Kush.",
+   "applied": false
+  },
+  {
+   "item": "R016",
+   "verdict": "pass",
+   "what": "Same deletion. Kush now draws Nubia only, and data/hierarchy.csv line 581 makes twenty-fifth-dynasty-of-egypt a constituent of kingdom-of-kush for -754..-656. The page has 'Shebitku conquered the entire Nile Valley, including Upper and Lower Egypt, around 712 BC'. The fixer's notes say the m0800-m0701 events/1 exclave patch is now a no-op. kingdom-of-kush validates (11 events). The patched -700/-675 keyframes (m0700-m0601) are untouched. Other dossiers' counterparts that still name Kush are covered under R014.",
+   "page": "https://en.wikipedia.org/wiki/Twenty-fifth_Dynasty_of_Egypt",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R060",
+   "verdict": "pass",
+   "what": "duchy-of-holstein ledger/3 (1523/6 vassal_start, denmark-norway) and ledger/5 (1814/1 vassal_end) deleted, now 19 events. denmark-norway starts in 1526, so the 1523 start was read with the roles reversed. The page shows no overlordship, only 'Personal union with the Kingdom of Denmark (1474-1544; 1773-1864)' and 'State of the Holy Roman Empire (1474-1806)', and it says 'Members of the Danish House of Oldenburg ruled Holstein ... for its entire existence'. Deleting both events was the request's second option. The kalmar-union (1474-1523) and kingdom-of-denmark-1814-1940 relations remain, and hierarchy.csv line 369 draws Holstein inside holy-roman-empire-minor-states for 1474-1806.",
+   "page": "https://en.wikipedia.org/wiki/Duchy_of_Holstein",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R070",
+   "verdict": "pass",
+   "what": "Same change as R060, verified on the same page.",
+   "page": "https://en.wikipedia.org/wiki/Duchy_of_Holstein",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R003",
+   "verdict": "pass",
+   "what": "Kept: patch-overrides.csv line 89 (m0100-m0001, roman-empire_-14) confirms the patch controls the keyframe. roman-empire ledger/20 is a -12 occupation_start of Germania. The dossier is unchanged (mtime 1 Nov).",
+   "page": "",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R019",
+   "verdict": "pass",
+   "what": "philistia_-1150 already ran -1150..-1137. philistia_-750 is now -750..-712, which matches its own text ('valid for -750..-712'), so it no longer sits beside philistia_-711 (-711..-702) and philistia_-701 (-701..-604), and Gath stays out after -711. Before the change the shapes.csv span ran to -701. Validates.",
+   "page": "",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R037",
+   "verdict": "pass",
+   "what": "western-roman-empire keyframes 426-452 are now wrapped in a union with Castilla-La Mancha, Madrid and Murcia. 455 is cut to 455 only, and the new keyframe 456 (456-457) uses the Cliopatria 455 shape. The compiler applies the correction for both 'adjust' and 'wrong' verdicts (451 and 452 are 'wrong'). Quotes checked on the Suebi page: '411 ... Lusitania and Hispania Carthaginensis'; 441 'the Suevi managed to control Baetica and Carthaginensis', qualified as 'limited to raids'; 446 'the Romans dispatched to the provinces of Baetica and Carthaginensis'; 'in 455 the Sueves plundered lands in Carthaginensis which had been previously returned to Rome'. Quotes checked on the Hispania page: 'recover 90% of the Iberian Peninsula until 439'; 'Rome made attempts to restore control in 446 and 458'; 'Roman rule which had survived in the eastern quadrant was restored over most of Iberia'. The Roman hold over 441-445 is soft against the 441 sentence, but the fixer states that. The visigothic-kingdom 456 gain and keyframe 458 cover the drop in 456.",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_the_Suebi",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R055",
+   "verdict": "fixed",
+   "what": "The extension of khalkha-khanates back to 1547 fills grey Mongolia, as asked. The pages check out: the Northern Yuan page has Gersenji 'ruler of the Khalkha Mongols', undated, and 'the Khalkha and Oirat Mongols no longer obeyed his authority' under Ligdan; the Khalkha page has 'Dayan Khan created the Khalkha Tumen'. But the single floor shape (Mongolia minus Western Mongolia, 4,967 cells) overrode the tumed dossier's sourced lands. Khalkha's 1547 found runs before Tumed's and its cells are event-settled. In 1552 the tumed gains name 'khalkha', not a dossier, so they take only nobody's land, and the size rule (Khalkha about 1.25 M km2 compiled against Tumed's 2.6 M Cliopatria area) gave the rest to the smaller Khalkha. The Khalkha took 233 cells of Tumed's 1547 shape for 1547-1551 and 599 cells (Karakorum and the south Gobi) for 1552-1581. Altan Khan page: 'In 1552 Altan Khan gained control of the remains of Karakorum'. Reviewer fix: new keyframe khalkha-khanates_1547 (1547-1635), and the ledger/0 found region set to the floor minus (Tümed 1547 shape, Tümed 1552 shape, Karakorum 100 km), 4,368 cells. khalkha-khanates_1636 is back to 1636-1688 with the full floor, so it picks the Tumed lands up from nobody in 1636. The Altan Khan page was added to sources, and notes were added to the ledger, the keyframe and the dossier notes. Re-validated with --resolve: OK, 0 errors.",
+   "page": "https://en.wikipedia.org/wiki/Altan_Khan_of_the_Tumed",
+   "fix": "Applied in history/polities/khalkha-khanates.json (see what). Still open, as a handoff: tumed ledger 1-3 name the counterpart 'khalkha'. With 'khalkha-khanates', the 1582 loss gives the 472 Mongolian cells to the Khalkha directly, not to nobody for 1582-1635.",
+   "applied": true
+  },
+  {
+   "item": "R081",
+   "verdict": "pass",
+   "what": "swedish-empire_1709 is kept, correctly: patch-overrides.csv line 306 (p1710-p1719). swedish-empire_1713 is now 1713..1713, which matches its text. shapes.csv ran it to 1717, beside keyframes 1714, 1715 and 1716-1717. Validates.",
+   "page": "",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R102",
+   "verdict": "pass",
+   "what": "qajar-dynasty now starts in 1779/4: a Mazandaran found plus six mirror gains that match the zand-dynasty ledger 17-19, 21, 22 and 27 (same years, regions and counterparts). Quotes checked on the Agha Mohammad Khan page: 'On 1 March 1779 ...'; 'whom he defeated on 2 April, conquering Mazandaran' (no year stated, but it comes next after 1 March 1779); 'seized Qumis, Semnan, Damghan, Shahrud and Bastam'; 'A year later Agha Mohammad Khan invaded Gilan'; 'arrived at Isfahan on 2 May' (1785); 'his men captured Hamadan'; 'On 12 March 1786, Agha Mohammad Khan made Tehran his capital'. Not mirrored: the Zand ledger's 1788/10 Isfahan gain and 1788/11 loss. The 1788 keyframe covers that. Validates.",
+   "page": "https://en.wikipedia.org/wiki/Agha_Mohammad_Khan",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R121",
+   "verdict": "pass",
+   "what": "kingdom-of-prussia now ends 1918/11, with a dissolve to weimar-republic, and keyframe _1866 runs to 1918. Kingdom of Prussia page: 'existed from 1701 to 1918'; 'Free State of Prussia proclaimed: 9 November 1918'; 'Federated state of the German Empire (1871-1918 ...)'. Checked in the compiler: keyframes act only in their from year, and north-german-confederation (which lists Prussia as predecessor) takes Prussia's cells outright at its 1867 found. No dossier event in 1867-1918 has kingdom-of-prussia as counterpart, and no patch refers to Prussia after 1830. So until the hierarchy and NGC/German Empire handoffs land, Prussia lives with no cells and the map stays as before, as the fixer says.",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Prussia",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R138",
+   "verdict": "pass",
+   "what": "The 'Sarra Triangle' specs in anglo-egyptian-sudan_1916 and ledger/10 (1934/7 loss to italian-libya) are now a disc {lon 21.8311, lat 21.6833, km 107}. Ma'tan as-Sarra page: '21.68333°N 21.83111°E'; 'In 1934, Ma'tan as-Sarra was turned over as part of the Sarra Triangle to Fascist Italy'. Sarra Triangle page: 'approximately 30,000 square kilometers', 'signed in Rome on July 20, 1934', no vertices. The disc is a stand-in of the right area. Validates (the uganda-protectorate warnings were there before).",
+   "page": "https://en.wikipedia.org/wiki/Sarra_Triangle",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R151",
+   "verdict": "pass",
+   "what": "Handoff is correct: the request is for three new rebel dossiers, which a fix batch may not create. The DRC dossier is unchanged (mtime 1 Nov), and the handoffs carry the page dates.",
+   "page": "https://en.wikipedia.org/wiki/Second_Congo_War",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "R014 is not settled by the Kush deletion alone: neo-assyrian-empire ledger 32 (-669) and 36 (-664) losses, counterpart kingdom-of-kush, now pair with nothing and hand Assyria's Delta and Memphis cells to Kush, out of the twenty-fifth-dynasty-of-egypt keyframes' reach. The fixer handed off nothing for this. Needed: counterpart kingdom-of-kush -> twenty-fifth-dynasty-of-egypt in neo-assyrian-empire ledger 30-39, assyrian-egypt ledger 1, twenty-third-dynasty-of-egypt ledger 3 and twenty-second-dynasty-of-egypt ledger 7-8.",
+  "Handoff to add (R055): tumed ledger 1-3 counterpart 'khalkha' -> 'khalkha-khanates'. Otherwise 599 cells of central Mongolia (Karakorum and the south Gobi) are nobody's from 1582 to 1635 and khalkha-khanates_1636 picks them up by a snap.",
+  "Validation (python3 -I -B history/tools/validate_dossier.py <file> --resolve) passes for all nine changed dossiers. Warnings that were there before: duchy-of-holstein county-of-holstein-pinneberg slug; kingdom-of-prussia 'Kaulsdorf' place; anglo-egyptian-sudan uganda-protectorate slug x2. khalkha-khanates re-validated after the reviewer edit: 0 errors, 0 warnings."
+ ]
+}

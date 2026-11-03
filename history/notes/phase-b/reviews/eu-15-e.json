@@ -1,0 +1,934 @@
+{
+ "batch_id": "eu-15-e",
+ "verdicts": [
+  {
+   "slug": "duchy-of-silesia",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/13, /ledger/23, /ledger/28, /ledger/31, /keyframe_review/11/correction, /wars/2/zones/0, /wars/5/zones/0",
+     "what": "Kraków drawn with the whole 'Lesser Poland' region",
+     "why": "The gazetteer region 'Lesser Poland' is the union of the Lesser Poland, Świętokrzyskie, Subcarpathian and Lublin voivodeships; every use here means Kraków (region text 'Kraków', 'Kraków and the Seniorate'), so it drew Subcarpathia (Przemyśl, Sanok: Rus' land) and Lublin to the Bug (Chełm) for the High Duke, and in 1232-1240 it also drew Bolesław V's own Duchy of Sandomierz (Treaty of Luchani 1234, Bolesław V page) as Henry the Bearded's.",
+     "fix": "Replaced {\"region\": \"Lesser Poland\"} by {\"admin1\": \"Lesser Poland\", \"country\": \"Poland\"} (the Kraków land), text kept.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/21, /ledger/24",
+     "what": "Lubusz 1241-1242 counterpart was duchy-of-opole",
+     "why": "Duchy of Silesia page: Lubusz 'in 1241 granted it to his second son Mieszko'; Bolesław II 'regained Lubusz upon the death of his brother Mieszko in 1242'. Mieszko is Henry II's son, not the Duke of Opole.",
+     "fix": "Counterpart set to 'Duchy of Lubusz (Mieszko, son of Henry II)'; note extended.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/10",
+     "what is missing": "1218 loss of Lubusz (c1): holder 1218-1229 on no page; the landgraviate-of-thuringia dossier exists and has no Lubusz event",
+     "page to try": "https://en.wikipedia.org/wiki/Louis_IV,_Landgrave_of_Thuringia"
+    },
+    {
+     "where": "/ledger/22",
+     "what is missing": "1241 loss of Greater Poland (c1): who took Poznań, Kalisz, Gniezno after Legnica (Przemysł I and Bolesław the Pious)",
+     "page to try": "https://en.wikipedia.org/wiki/Przemys%C5%82_I_of_Greater_Poland"
+    },
+    {
+     "where": "/ledger/27",
+     "what is missing": "1279 growth to Zielona Góra and Lubusz (c1): the Henry IV page says he obtained Krosno Odrzańskie 'from the Dukes of Głogów in 1273-1274', a dated and sourced part of it",
+     "page to try": "https://en.wikipedia.org/wiki/Henry_IV_Probus"
+    },
+    {
+     "where": "/ledger/29",
+     "what is missing": "1290 loss of Kłodzko is land outside every Silesia shape and never gained; the Henry IV page says Rudolph I granted him Kłodzko as a fief: add the gain (c. 1278) or drop the loss",
+     "page to try": "https://en.wikipedia.org/wiki/K%C5%82odzko_Land"
+    },
+    {
+     "where": "/ledger/14",
+     "what is missing": "1234 gain uses the whole 'Greater Poland' region (with the Lubusz voivodeship) for 'the half of Greater Poland up to the Warta River, from Kalisz and Poznań' (Henry I page); a region south and west of the Warta is wanted (advisory, the 1239 gain completes most of it within the same keyframe span)",
+     "page to try": "https://en.wikipedia.org/wiki/Henry_I_the_Bearded"
+    },
+    {
+     "where": "/ledger/32",
+     "what is missing": "end at 1304 (c1, Cliopatria's year); Wrocław 1305-1335 under Henry VI not drawn (author flagged)",
+     "page to try": "https://en.wikipedia.org/wiki/Henry_VI_the_Good"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Silesia",
+     "result": "confirmed (re-established for the sons in 1163)"
+    },
+    {
+     "where": "/ledger/9, /ledger/13, /ledger/14, /ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Henry_I_the_Bearded",
+     "result": "confirmed (6 May 1210 Lubusz and Gubin held until 1218; 1232 Kraków; summer 1234 half of Greater Poland; 1234 direct control of Opole)"
+    },
+    {
+     "where": "/ledger/17, /ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Henry_II_the_Pious",
+     "result": "confirmed (regent of Sandomierz and Opole-Racibórz 1238-1239; Odonic died 5 June 1239, Henry took the majority of his possessions including Gniezno)"
+    },
+    {
+     "where": "/ledger/26, /ledger/28, /ledger/31",
+     "page": "https://en.wikipedia.org/wiki/Henry_IV_Probus",
+     "result": "confirmed (one-third of the duchy with Środa Śląska and Strzegom; August 1289 Kraków; 23 June 1290 bequests)"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Silesia",
+     "result": "confirmed year, wrong counterpart (fixed)"
+    },
+    {
+     "where": "/ledger/29, /ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Silesia",
+     "result": "confirmed (1290-1291 Kłodzko Land to Bohemia, the Świdnica towns to Jawor)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 121796.3,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the Duchy of Silesia page (confirmed); author's quoted areas match shapes.csv; the 110-120 thousand km2 Seniorate shapes of 1236-1249 are adjusted down to the pages' lands."
+   }
+  },
+  {
+   "slug": "duchy-of-sandomierz",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/4-6, /keyframe_review/8-11, /keyframe_review/14 corrections; /ledger/3, /ledger/5-9, /ledger/11-13, /ledger/16, /ledger/19-22; /wars/0, /wars/3, /wars/7 zones",
+     "what": "Kraków drawn with the whole 'Lesser Poland' region",
+     "why": "The gazetteer region 'Lesser Poland' is the union of the Lesser Poland, Świętokrzyskie, Subcarpathian and Lublin voivodeships; every use here means Kraków (region text 'Kraków', 'Kraków and the Seniorate'), so it drew Subcarpathia (Przemyśl, Sanok: Rus' land) and Lublin to the Bug (Chełm) for the High Duke; the dossier itself loses Przemyśl in 1215 ('Leszek lost the lands of Przemyśl and Lubaczów', Leszek the White page) yet its 1216-1226 corrections drew the Subcarpathian voivodeship, and its corrections reached the Bug beyond the Cliopatria outline (east edge 23.11 E).",
+     "fix": "Replaced by {\"admin1\": \"Lesser Poland\", \"country\": \"Poland\"} in 24 places; war 7 zone ('Kraków and Sandomierz') is now that voivodeship plus the Sandomierz 1285 shape.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/13",
+     "what": "1241-1249 shape verdict ok although the ledger gains Kraków in 1243",
+     "why": "Bolesław V page: '25 May ... the Battle of Suchodoły ... With this victory, Bolesław the Chaste regained the government over Kraków'; the author's own note says Kraków is Bolesław's from 1243.",
+     "fix": "Verdict adjust, correction union of the Sandomierz 1241 shape and the Lesser Poland voivodeship, source the Bolesław V page.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/25",
+     "what": "1304 Wiślica recorded as a gain from kingdom-of-bohemia",
+     "why": "Sandomierz page: 'In 1304, Lokietek returned, capturing Wislica'. The duchy held Wiślica from 1173 (found event, 1173 reintegration) and is Wenceslaus II's after the 1292 rename, so Łokietek's capture is a loss of the duchy, not a gain.",
+     "fix": "Type loss, counterpart 'Władysław I the Elbow-high'; note extended.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/9",
+     "what is missing": "1199 return of Kraków to Mieszko III (c1): page gives only 'a short interruption in 1199'",
+     "page to try": "https://en.wikipedia.org/wiki/Mieszko_III_the_Old"
+    },
+    {
+     "where": "/ledger/16",
+     "what is missing": "1227 holder of Kraków after Leszek's death (c1; Władysław III Spindleshanks)",
+     "page to try": "https://en.wikipedia.org/wiki/W%C5%82adys%C5%82aw_III_Spindleshanks"
+    },
+    {
+     "where": "/ledger/18",
+     "what is missing": "1239 return of the Radom district (c1): the Bolesław V page does not say it came back",
+     "page to try": "https://en.wikipedia.org/wiki/Konrad_I_of_Masovia"
+    },
+    {
+     "where": "/ledger/24",
+     "what is missing": "1294 loss of the eastern Lublin strip (c1)",
+     "page to try": "https://en.wikipedia.org/wiki/Lublin_Land"
+    },
+    {
+     "where": "/ledger/4, /keyframe_review/5-6",
+     "what is missing": "region 'Masovia' (Masovian + Łódź voivodeships) for 'Masovia proper' (Casimir II page) also draws Łęczyca and Sieradz; check who held them 1186-1200 (advisory)",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Masovia"
+    },
+    {
+     "where": "/ledger/26",
+     "what is missing": "end at 1304 (Cliopatria) while the page runs the duchy to 1320 (author flagged)",
+     "page to try": "https://en.wikipedia.org/wiki/W%C5%82adys%C5%82aw_I_the_Elbow-high"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1, /ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Sandomierz",
+     "result": "confirmed (infobox 'Wiślica split off: 1166', 'Wiślica reintegrated: 1173')"
+    },
+    {
+     "where": "/ledger/3, /ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Casimir_II_the_Just",
+     "result": "confirmed (1177 Seniorate at Kraków; 1186 'Casimir could only take possession of Masovia proper')"
+    },
+    {
+     "where": "/ledger/11, /ledger/14, /ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Leszek_the_White",
+     "result": "confirmed (infobox 1206-1210; Spiš treaty gave Przemyśl and Lubaczów, year by context 1214, c2 right; 1215 Hungarians broke the alliance and Leszek lost them)"
+    },
+    {
+     "where": "/ledger/17, /ledger/19, /ledger/20, /ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Boleslaw_V_the_Chaste",
+     "result": "confirmed (1235 Radom lost; 10 July 1241 Konrad in Kraków; 25 May 1243 Suchodoły)"
+    },
+    {
+     "where": "/ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Sandomierz",
+     "result": "confirmed year; direction wrong (fixed)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 142235.5,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the Duchy of Sandomierz page (confirmed). The 113-142 thousand km2 High-Duke shapes are a factor of 4 above the 30 thousand km2 duchy; acknowledged and adjusted to Sandomierz + Kraków (+ Masovia 1186-1200)."
+   }
+  },
+  {
+   "slug": "pomerania",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1 (removed) and /keyframe_review/2, /keyframe_review/3",
+     "what": "1169 loss of the Demmin-Tribsees strip to holy-roman-empire (c1, Cliopatria trim) with the 1169 and 1177 shapes marked ok",
+     "why": "Duchy of Pomerania page: 'In 1128, Demmin, the County of Gützkow and Wolgast were already incorporated into Wartislaw I's realm'; after 1155 the dukes co-ruled 'from their residences Demmin (Casimir) and Stettin (Bogislaw)'; 'Henry again sieged Demmin in 1177'. The holy-roman-empire dossier has no gain there and treats the same cells as Pomeranian land under its 1164-1185 suzerainty (its /ledger/36 and /ledger/37).",
+     "fix": "Loss removed; keyframes 1169 and 1177 now adjust with correction {\"cliopatria\": \"Pomerania\", \"year\": 1139} (the outline with Demmin and Gützkow).",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1 (dissolve, formerly /ledger/2)",
+     "what is missing": "end at 1187 is Cliopatria's row end; the Griffin duchy continues to 1637 (Danish vassal 1185-1227): a duchy-of-pomerania 1188-1637 dossier is needed (author flagged). Within the 1-2 page budget the ledger is thin by design.",
+     "page to try": "https://en.wikipedia.org/wiki/Bogislaw_I,_Duke_of_Pomerania"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Pomerania",
+     "result": "confirmed ('With Bolesław's death in 1138 and the fragmentation of Poland, Polish overlordship ended')"
+    },
+    {
+     "where": "/ledger/2 (now /ledger/1)",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Pomerania",
+     "result": "confirmed (Danish vassal 1185; Bogislaw I died in 1187)"
+    },
+    {
+     "where": "/ledger/1 (old)",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Pomerania",
+     "result": "not on page; contradicted (Demmin stayed Pomeranian): removed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 29328.8,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the Duchy of Pomerania page (confirmed)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1146,
+    "type": "loss",
+    "counterpart": "duchy-of-masovia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1163,
+    "type": "gain",
+    "counterpart": "duchy-of-masovia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1172,
+    "type": "split",
+    "counterpart": "duchy-of-raciborz"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet); 1172-1284 needs the dossier extended"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1172,
+    "type": "split",
+    "counterpart": "duchy-of-opole"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1177,
+    "type": "loss",
+    "counterpart": "duchy-of-g-ogow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet); first Głogów duchy needed"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1190,
+    "type": "gain",
+    "counterpart": "duchy-of-g-ogow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1201,
+    "type": "gain",
+    "counterpart": "duchy-of-opole"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1202,
+    "type": "loss",
+    "counterpart": "duchy-of-opole"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1210,
+    "type": "gain",
+    "counterpart": "Konrad II of Lusatia (Margraviate of Lusatia)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1218,
+    "type": "loss",
+    "counterpart": "landgraviate-of-thuringia"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "landgraviate-of-thuringia.json exists (1131-1264) with no Lubusz event; the author wrongly listed it as needing a dossier. Silesia side is confidence 1."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1230,
+    "type": "gain",
+    "counterpart": "landgraviate-of-thuringia"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as 1218: no 1229/1230 Lubusz loss in the Thuringia ledger (Henry I page: Henry Raspe resigned his rights in 1229 and sold his claim to Archbishop Albert of Magdeburg)."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1231,
+    "type": "vassal_start",
+    "counterpart": "duchy-of-sandomierz"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "schema records vassalage on the suzerain only (counterpart is the vassal); Sandomierz notes acknowledge the regencies."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1238,
+    "type": "vassal_start",
+    "counterpart": "duchy-of-sandomierz"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "as 1231 (Henry II regency 1238-1239)."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1232,
+    "type": "gain",
+    "counterpart": "duchy-of-greater-poland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet); in-batch chain agrees: Sandomierz 1227 loss of Kraków to the same row"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1234,
+    "type": "gain",
+    "counterpart": "duchy-of-greater-poland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1234,
+    "type": "gain",
+    "counterpart": "duchy-of-opole"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1239,
+    "type": "loss",
+    "counterpart": "duchy-of-opole"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1239,
+    "type": "gain",
+    "counterpart": "duchy-of-greater-poland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1241,
+    "type": "loss",
+    "counterpart": "duchy-of-greater-poland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1248,
+    "type": "split",
+    "counterpart": "duchy-of-legnica"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1278,
+    "type": "loss",
+    "counterpart": "duchy-of-legnica"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1279,
+    "type": "gain",
+    "counterpart": "duchy-of-g-ogow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1289,
+    "type": "gain",
+    "counterpart": "grand-duchy-of-krakow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1290,
+    "type": "loss",
+    "counterpart": "kingdom-of-bohemia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1290,
+    "type": "loss",
+    "counterpart": "duchy-of-jawor"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1290,
+    "type": "loss",
+    "counterpart": "duchy-of-greater-poland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1241,
+    "type": "loss",
+    "counterpart": "duchy-of-masovia"
+   },
+   "mirror": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1243,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet); in-batch: Sandomierz 1241 contest_start and 1243 gain against duchy-of-masovia agree."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1241,
+    "type": "loss",
+    "counterpart": "Duchy of Lubusz (Mieszko, son of Henry II)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "internal Silesian appanage with no Cliopatria row; was duchy-of-opole (fixed by reviewer)."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-silesia",
+    "year": 1242,
+    "type": "gain",
+    "counterpart": "Duchy of Lubusz (Mieszko, son of Henry II)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "as 1241."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1166,
+    "type": "loss",
+    "counterpart": "Duchy of Wiślica (Casimir II)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed in counterparts_needing_dossiers (minor)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1173,
+    "type": "gain",
+    "counterpart": "Duchy of Wiślica (Casimir II)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed in counterparts_needing_dossiers (minor)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1177,
+    "type": "gain",
+    "counterpart": "duchy-of-greater-poland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1186,
+    "type": "gain",
+    "counterpart": "duchy-of-masovia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1198,
+    "type": "loss",
+    "counterpart": "duchy-of-greater-poland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1199,
+    "type": "gain",
+    "counterpart": "duchy-of-greater-poland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1199,
+    "type": "loss",
+    "counterpart": "duchy-of-greater-poland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1200,
+    "type": "loss",
+    "counterpart": "duchy-of-masovia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1206,
+    "type": "gain",
+    "counterpart": "duchy-of-greater-poland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1210,
+    "type": "loss",
+    "counterpart": "duchy-of-opole"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1211,
+    "type": "gain",
+    "counterpart": "duchy-of-opole"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1214,
+    "type": "gain",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1215,
+    "type": "loss",
+    "counterpart": "kingdom-of-hungary"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1227,
+    "type": "loss",
+    "counterpart": "duchy-of-greater-poland"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1235,
+    "type": "loss",
+    "counterpart": "duchy-of-masovia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1239,
+    "type": "gain",
+    "counterpart": "duchy-of-masovia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1243,
+    "type": "gain",
+    "counterpart": "duchy-of-masovia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1279,
+    "type": "split",
+    "counterpart": "grand-duchy-of-krakow"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1294,
+    "type": "loss",
+    "counterpart": "galicia-volhynia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart's group has not run (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "duchy-of-sandomierz",
+    "year": 1304,
+    "type": "loss",
+    "counterpart": "Władysław I the Elbow-high"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "was a gain from kingdom-of-bohemia (fixed by reviewer); kingdom-of-poland (successor, Cliopatria from 1305) has not run."
+  },
+  {
+   "event": {
+    "slug": "pomerania",
+    "year": 1169,
+    "type": "loss",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "holy-roman-empire has no 1169 gain and treats the same cells as Pomeranian land under its 1164-1185 suzerainty (/ledger/36-37); the page keeps Demmin Pomeranian. Resolved by the reviewer: loss removed, keyframes 1169/1177 use the 1139 outline."
+  },
+  {
+   "event": {
+    "slug": "pomerania",
+    "year": 1164,
+    "type": "vassal_start",
+    "counterpart": "(holy-roman-empire ledger)"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire",
+    "year": 1164,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "holy-roman-empire /ledger/36 vassal_start 1164 and /ledger/37 vassal_end 1185, counterpart pomerania; the page has Saxony 1164-1181 and the Empire 1181-1185."
+  },
+  {
+   "event": {
+    "slug": "pomerania",
+    "year": 1187,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-denmark (eu-14) has not run; holy-roman-empire /ledger/38 records the 1185 loss of the Baltic coast to Denmark."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Wiślica",
+   "kind": "place",
+   "used_in": "duchy-of-sandomierz"
+  },
+  {
+   "name": "Radom",
+   "kind": "place",
+   "used_in": "duchy-of-sandomierz"
+  },
+  {
+   "name": "Głogów",
+   "kind": "place",
+   "used_in": "duchy-of-silesia"
+  },
+  {
+   "name": "Racibórz",
+   "kind": "place",
+   "used_in": "duchy-of-silesia"
+  },
+  {
+   "name": "Legnica",
+   "kind": "place",
+   "used_in": "duchy-of-silesia"
+  },
+  {
+   "name": "Świdnica",
+   "kind": "place",
+   "used_in": "duchy-of-silesia"
+  },
+  {
+   "name": "Środa Śląska",
+   "kind": "place",
+   "used_in": "duchy-of-silesia"
+  },
+  {
+   "name": "Strzegom",
+   "kind": "place",
+   "used_in": "duchy-of-silesia"
+  },
+  {
+   "name": "Kłodzko",
+   "kind": "place",
+   "used_in": "duchy-of-silesia"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Duchy of Racibórz (Mieszko Tanglefoot, 1172-1284)",
+   "suggested_slug": "duchy-of-raciborz",
+   "years": [
+    1172,
+    1284
+   ],
+   "note": "slug exists for the Cliopatria row 1285-1304 (eu-15)"
+  },
+  {
+   "name": "Duchy of Legnica 1248-1278",
+   "suggested_slug": "duchy-of-legnica",
+   "years": [
+    1248,
+    1278
+   ],
+   "note": "slug exists for 1279-1313 (eu-15)"
+  },
+  {
+   "name": "Duchy of Głogów, first duchy (Konrad Spindleshanks)",
+   "suggested_slug": "duchy-of-g-ogow",
+   "years": [
+    1177,
+    1190
+   ],
+   "note": "slug exists for 1250-1313 (eu-15)"
+  },
+  {
+   "name": "Duchy of Pomerania (Griffin duchy) 1188-1637",
+   "suggested_slug": "duchy-of-pomerania",
+   "years": [
+    1188,
+    1637
+   ]
+  },
+  {
+   "name": "Duchy of Wiślica (Casimir II's appanage)",
+   "suggested_slug": "duchy-of-wislica",
+   "years": [
+    1166,
+    1173
+   ],
+   "note": "minor"
+  },
+  {
+   "name": "Margraviate of Lusatia (Konrad II, Lubusz and Gubin to 1210)",
+   "suggested_slug": "margraviate-of-lusatia",
+   "years": [
+    1136,
+    1210
+   ]
+  },
+  {
+   "name": "Duchy of Lubusz (Mieszko, son of Henry II)",
+   "suggested_slug": "duchy-of-lubusz",
+   "years": [
+    1241,
+    1242
+   ],
+   "note": "one-year Silesian appanage; probably not worth a dossier"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-15-e.md",
+ "problems": [
+  "The author listed landgraviate-of-thuringia under counterparts_needing_dossiers, but history/polities/landgraviate-of-thuringia.json exists (1131-1264) and has no Lubusz event: the Silesia 1218/1230 Lubusz events need a mirror there (route to its group).",
+  "No page failed to load. WebFetch returns a model summary, so quotes are the summary's; the infobox area absence was confirmed on all three pages.",
+  "The reviewer applied the fixes listed with applied: true (orchestrator adjustment) and re-validated: 0 errors, 0 warnings without --resolve; only the gazetteer place names remain under --resolve."
+ ]
+}

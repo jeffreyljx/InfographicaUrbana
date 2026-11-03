@@ -1,0 +1,2072 @@
+{
+ "batch_id": "eu-02-a",
+ "verdicts": [
+  {
+   "slug": "macedonian-empire",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/15/correction",
+     "what": "The 307-302 correction keeps the Iranian plateau, Afghanistan and the Punjab in Macedon's colour.",
+     "why": "shapes.csv macedonian-empire_-307 is 1,526,818 km2 with bbox to 75.52 E; the seed gives centroid 49.42 E 35.79 N and modern countries Turkey, Pakistan, Afghanistan. The correction subtracts only Anatolia, Levant, Mesopotamia and Cyprus, while its own text says 'Cassander's Macedon, Thessaly and his Greek garrisons' and /ledger/40 gives the upper satrapies to Seleucus in 309. The note's 'Macedon plus Antigonus's Asia' misreads the shape.",
+     "fix": "Use {\"intersect\": [{\"cliopatria\": \"Macedonian Empire\", \"year\": -307}, {\"cliopatria\": \"Macedonian Empire\", \"year\": -301}]} (the Balkan part), or add Iran, Afghanistan, Pakistan, Turkmenistan, Uzbekistan and Tajikistan to the minus. Then correct the note.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (after /ledger/40)",
+     "what": "There is no loss of the Indus satrapies, yet keyframes 13-15 keep Pakistan in the shape until 302.",
+     "why": "The /ledger/40 note itself says 'The Punjab had already passed to Chandra[gupta]'. The 315-308 and 307-302 shapes reach 75.5 E.",
+     "fix": "Add a loss of Gandhara and the Punjab to maurya-empire: c. 317 (Eudemus leaves India) or 305-303 (the cession; Seleucus I Nicator page), confidence 2. Subtract the region in the 318 and 315 corrections from that year.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/31 and /keyframe_review/13/correction",
+     "what": "Egypt leaves the empire with no ledger event. /ledger/31 is a vassal_end with no loss, and keyframe 13 removes Nile Valley and Cyrenaica from 318.",
+     "why": "Check 4: a correction must be backed by ledger events. The 312 Seleucid case already does this with a vassal_end plus loss pair.",
+     "fix": "Add a 321 loss to ptolemaic-kingdom, region union(Nile Valley (Egypt), Cyrenaica), source Partition_of_Triparadisus, confidence 2.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (393-379)",
+     "what": "The Chalcidian League's hold on Macedonian land, Pella included, is missing.",
+     "why": "chalcidian-league /ledger/1 is a 393 gain from macedonian-empire (Thessaloniki 25 km), /ledger/3 a 385 gain (Pella 30 km) and /ledger/8 a 379 loss. The Macedonia page says the Macedonians 'forced Olynthos to surrender and dissolve their Chalcidian League in 379 BC' after Olynthos nearly overthrew Amyntas III. Keyframe 5 (404-367) carries no event.",
+     "fix": "Add a loss to chalcidian-league in 393 (Thessaloniki 25 km) and in 385 (Pella 30 km), and a gain in 379, confidence 2, sources Chalcidian_League and Olynthus.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (343-331)",
+     "what": "The Epirote client kingship is missing.",
+     "why": "kingdom-of-epirus /ledger/1 (vassal_start 343) and /ledger/6 (vassal_end 331) name macedonian-empire. The Macedonia page says Philip 'deposed Arybbas in Epirus in favour of his brother-in-law Alexander I'.",
+     "fix": "Add vassal_start -343 and vassal_end -331 with kingdom-of-epirus, region Ioannina 45 km, confidence 2, source Alexander_I_of_Epirus.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/8-10",
+     "what": "The Thracian sequence disagrees with odrysian-kingdom.",
+     "why": "Here: vassal_start 347, vassal_end and gain 342. There: vassal_start 352 and loss 347 (odrysian /ledger/5-6); loss and vassal_start 340 (/ledger/9-10); vassal_end and gain back for Seuthes III in 325 (/ledger/11-12). The 340 and 325 events have no mirror here.",
+     "fix": "Add vassal_start -340 (the interior under a strategos) and vassal_end plus loss -325 (Seuthes III's revolt) with odrysian-kingdom. Agree 352 or 347 for the first submission with eu-01.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (512-479)",
+     "what": "Macedon's Persian vassalage is missing from this ledger.",
+     "why": "The infobox says 'Vassal of Persia: 512/511-493 BC', and the notes of keyframes 1-2 rely on the Achaemenid dossier for it. A vassal relation belongs in both ledgers.",
+     "fix": "Add vassal_start -512 and vassal_end -479 (or -493) with achaemenid-empire, region Macedonian Empire -550, source Macedonia_(ancient_kingdom), confidence 2.",
+     "applied": false
+    },
+    {
+     "where": "/wars",
+     "what": "Agis III's war (331) is missing.",
+     "why": "peloponnesian-league /ledger/51-52 carries a 331 contest with macedonian-empire at Megalopolis (Sparta page).",
+     "fix": "Add the war (-331..-331, zone Megalopolis 15 km) and the contest_start/contest_end pair.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6",
+     "what": "Thessaly is modelled as a vassal 'Thessalian League', while thessalian-league.json dissolves in 353 with macedonian-empire as successor, so the vassal has no living dossier.",
+     "why": "thessalian-league /ledger/1: -353 dissolve into macedonian-empire. Cliopatria's 350 shape already reaches 38.87 N, which takes in Thessaly.",
+     "fix": "Retype as a gain from thessalian-league (Thessaly, -352, confidence 2) so the land has an owner, or ask eu-01 to extend thessalian-league as a vassal to 196. The Antigonid dossier already holds Thessaly as territory.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2, /ledger/37, /keyframe_review/14-16",
+     "what": "Paeonia: the year disagrees (358 here, 356 in kingdom-of-paeonia). After the 315 vassal_end, the 315-292 shapes still take in the Vardar valley that kingdom-of-paeonia draws as independent (all of North Macedonia plus Blagoevgrad).",
+     "why": "kingdom-of-paeonia keyframes -315 to -279 draw the whole of North Macedonia; macedonian-empire_-315 and _-301 reach 42.69 N. Both dossiers use the whole country, which also holds Upper Macedonian Lyncestis and Pelagonia.",
+     "fix": "Subtract the Paeonian region from the 315 and 301 corrections, or narrow it (e.g. the Vardar valley north of Demir Kapija) in both dossiers. Agree one year with the Paeonia owner.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/13/correction and polyperchon /ledger/3",
+     "what": "The Polyperchon side does not match. Keyframe 13 subtracts Cliopatria's Polyperchon row (Upper Macedonia and Epirus), while polyperchon.json redraws that row as a rebel hatch over Ancient Macedon and Thessaly. Polyperchon's 316 loss to macedonian-empire has no gain here.",
+     "why": "Both dossiers are in this batch. The 315 keyframe puts Upper Macedonia back with no event.",
+     "fix": "Drop the Polyperchon subtraction from keyframe 13 (the hatch lies over the Macedonian colour), and add a gain from polyperchon in -316 (Ancient Macedon and Thessaly, Cassander page, confidence 3), or make polyperchon's 316 event a plain end.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (338)",
+     "what": "aetolian-league /ledger/1, the 338 gain of Naupactus from macedonian-empire, has no mirror loss here.",
+     "why": "The Aetolian League page says the league received 'Naupactus from Philip II of Macedon in 338 BC'. Philip had taken it from the Achaeans.",
+     "fix": "Add a 338 gain of Naupactus (lon 21.83, lat 38.39, km 20) from greek-city-states and a 338 loss to aetolian-league, confidence 2.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/13/confidence",
+     "what": "Confidence 3 with regions the page does not name.",
+     "why": "Wars of Alexander the Great names the Granicus (May 334), Sardis, Halicarnassus, Caria (given to Ada) and the road to Phrygia. 'Neither [Lycia nor Pamphylia] appears anywhere on the page', and the Troad, Mysia and Ionia are not named either.",
+     "fix": "Confidence 3 to 2, with a reviewer note.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Foundation c. 675 at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Argead_dynasty"
+    },
+    {
+     "where": "/ledger/19",
+     "what is missing": "330 march through Hyrcania, Aria, Drangiana and Arachosia at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Alexander_the_Great"
+    },
+    {
+     "where": "/ledger/34",
+     "what is missing": "319 end of Laomedon's Syria at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Laomedon_of_Mytilene"
+    },
+    {
+     "where": "/keyframe_review/1-4",
+     "what is missing": "550-405: area 18,962 -> 28,540 -> 23,355 -> 29,436 km2 and the move west to 20.77 E, with no events (Bisaltia, Crestonia, Upper Macedonia)",
+     "page to try": "https://en.wikipedia.org/wiki/Alexander_I_of_Macedon"
+    },
+    {
+     "where": "/keyframe_review/16",
+     "what is missing": "301-292 shape reaching 34.3 E (Cilicia, Pleistarchus?) is unconfirmed",
+     "page to try": "https://en.wikipedia.org/wiki/Pleistarchus"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Wars_of_Alexander_the_Great",
+     "result": "confirmed for May 334, Sardis and Halicarnassus; Lycia, Pamphylia, Troad, Mysia and Ionia are not on the page, so confidence was lowered to 2"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Wars_of_Alexander_the_Great",
+     "result": "confirmed (Tyre, January-July 332)"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Wars_of_Alexander_the_Great",
+     "result": "confirmed (Gaugamela 1 October 331; 'advanced to Babylon and Susa')"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Wars_of_Alexander_the_Great",
+     "result": "confirmed (Cyropolis and the Jaxartes 329; Sogdian Rock 327)"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Wars_of_Alexander_the_Great",
+     "result": "confirmed (Hydaspes May 326, Punjab, Hyphasis mutiny, the Malli at Multan)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 5200000,
+    "infobox_year": -323,
+    "cliopatria_km2": 4700858,
+    "ratio": 0.9,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "athenian-coalition",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/5/counterpart and /ledger/6/counterpart",
+     "what": "The 322 losses named macedonian-empire, which records no gain. Macedon instead takes the Greeks back as vassals of the greek-city-states row.",
+     "why": "greek-city-states /ledger/47 is a September 322 gain from athenian-coalition, and its note asks for this change. macedonian-empire /ledger/30 is a vassal_start of greek-city-states in September 322.",
+     "fix": "Counterpart changed to greek-city-states on both events, with a reviewer note.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/0/correction, /ledger/0/region, /ledger/7/region, /identity/predecessors/0/land, /identity/successors/1/land",
+     "what": "The admin-1 unit Dytiki Ellada (all of Western Greece) drew Achaea and Acarnania as coalition members at confidence 3.",
+     "why": "Lamian War page: the members include 'the Aetolian League', but 'Acarnania backed Macedonia (except Alyzeia)', and Peloponnesian Achaea is not among the listed members.",
+     "fix": "Each Dytiki Ellada was replaced by {\"cliopatria\": \"Aetolian League\", \"year\": -284} (Aetolia proper, the same shape aetolian-league uses for 367-302). Elis stays in through the Pirgos radius of /ledger/3. A reviewer sentence was added to notes.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Lamian_War",
+     "result": "confirmed ('probably in the beginning of September' 323)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Lamian_War",
+     "result": "confirmed (Phokis treaty 27 October)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Lamian_War",
+     "result": "confirmed (Sicyon 23 December; Argos, Acte, Phlius, Elis, Messenia)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Lamian_War",
+     "result": "confirmed (Crannon 6 August 322)"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Lamian_War",
+     "result": "confirmed (Munychia 18 September 322; navy, garrison, possessions outside Attica)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 23257,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "war article, no area; the keyframe note gives the 23 k km2 shape and its four-year overrun"
+   }
+  },
+  {
+   "slug": "kingdom-of-lysimachus",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/4/correction",
+     "what": "The 291-285 correction adds Central Macedonia for the whole span, but Lysimachus took it only in 288/287 (/ledger/14). It also keeps the Cliopatria 291 shape's southern reach, which the note says to trim.",
+     "why": "The keyframe's own text reads 'the 301 shape to 288; from 288/287 add the eastern half of Macedon'. Between 291 and 289 Central Macedonia is Demetrius's (antigonid-dynasty_-291, 127,922 km2 to 24.26 E), so it is drawn twice. The Lysimachus page has 'In 287 BC, Lysimachus and Pyrrhus in turn invaded Macedonia', and the infobox has 'Macedon 288-281'.",
+     "fix": "Set keyframe 4 to 291-289 with keyframe 3's union (Kingdom of Lysimachus -315 plus Mysia, Troad, Lydia, Ionia, Phrygia and Zonguldak 90 km). Add a new keyframe kingdom-of-lysimachus_-288 (-288..-286) with that union plus Kentriki Makedonia.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/5/correction and /keyframe_review/6",
+     "what": "The 285-282 corrections use the Cliopatria 283 shape unchanged, south to 36.2 N (Lycia, Pamphylia, southern Caria). Keyframe 3's note calls that coast Ptolemaic and trims it; keyframe 6 is even marked ok.",
+     "why": "shapes.csv kingdom-of-lysimachus_-283: bbox 19.33-35.59 E, 36.22-45.56 N. The page gives 'Lydia, Ionia, Phrygia and the north coast of Asia Minor'.",
+     "fix": "Use {\"minus\": [{\"cliopatria\": \"Kingdom of Lysimachus\", \"year\": -283}, {\"union\": [{\"region\": \"Lycia\"}, {\"region\": \"Pamphylia\"}]}]} (plus southern Caria if confirmed) for keyframes 5 and 6, and set keyframe 6 to adjust.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/17",
+     "what": "Thessaly in 288-285 has three different owners across the dossiers.",
+     "why": "Here it is a 285 gain from kingdom-of-epirus (Western Macedonia and Thessaly). antigonid-dynasty /ledger/14 loses Thessaly to Lysimachus in 288 (confidence 1, no mirror here). kingdom-of-epirus /ledger/10-11 hold Western Macedonia only. The Lysimachus page does not mention Thessaly.",
+     "fix": "Choose one owner with the Pyrrhus of Epirus page and align all three dossiers. Either add Thessaly to /ledger/14 and drop it from /ledger/17, or have antigonid /ledger/14 and kingdom-of-epirus /ledger/10 name Pyrrhus.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/0, /ledger/5, /ledger/6",
+     "what": "The Seuthes III relation disagrees with odrysian-kingdom.",
+     "why": "Here: contest 323-310 and vassal from 310 (confidence 1). odrysian-kingdom /ledger/13-18: contest 322-321, vassal from 321, contest 313-312. The Seuthes III page dates only the 322 draw ('They fought each other to a draw'), the 313 revolt and 'finally subdued Callatis in 310 BC'. The acknowledgement of Lysimachus is undated ('Ultimately, Seuthes appears to have acknowledged').",
+     "fix": "Agree one model with eu-01. Suggested: contest 322 only, contest 313-310, vassal from 310 at confidence 1. Non-blocking on its own.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/6",
+     "what is missing": "Seuthes III's acknowledgement of Lysimachus, undated on the page (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Odrysian_kingdom"
+    },
+    {
+     "where": "/ledger/21",
+     "what is missing": "End of the Paeonian occupation in 281 (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Ptolemy_Keraunos"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Lysimachus",
+     "result": "confirmed ('Lysimachus's share was Lydia, Ionia, Phrygia and the north coast of Asia Minor', 301)"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Lysimachus",
+     "result": "confirmed (Lysimachia founded 309)"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Lysimachus",
+     "result": "confirmed ('In 306/305 BC ... assumed the royal title')"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Lysimachus",
+     "result": "confirmed (Corupedium 281; infobox February 281)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Seuthes_III",
+     "result": "confirmed ('finally subdued Callatis in 310 BC')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 488990,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the Lysimachus page is a biography with no area; the keyframe notes quote the Cliopatria areas"
+   }
+  },
+  {
+   "slug": "polyperchon",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/4/note",
+     "what": "The quote was cut short and hid that the son was Cassander's appointee.",
+     "why": "Polyperchon page: 'By 314 BC, his son Alexander had been appointed strategos (military governor) of the Peloponnese by Cassander'. The note quoted only up to 'strategos'.",
+     "fix": "Quote completed, with a reviewer tag.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/3 and /ledger/7",
+     "what": "Both losses (316 to macedonian-empire, 303 to antigonid-dynasty) lack mirrors on the other side.",
+     "why": "macedonian-empire has only contest_end 316. antigonid-dynasty has no event naming polyperchon.",
+     "fix": "Nothing to change in this dossier. The mirrors are listed under macedonian-empire and antigonid-dynasty.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4 and /keyframe_review/1",
+     "what is missing": "Peloponnese 315-303 at confidence 1. By 314 Alexander held it for Cassander, and Cratesipolis 'surrendered her fortresses' (Corinth, Sicyon) in 308, to Ptolemy on the usual account. Which cities were Polyperchon's in which years?",
+     "page to try": "https://en.wikipedia.org/wiki/Cratesipolis"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Polyperchon",
+     "result": "confirmed ('In 319 BC, shortly before his death, the aging Antipater appointed Polyperchon as regent')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Polyperchon",
+     "result": "confirmed ('major setback at Megalopolis in 317 BC')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Polyperchon",
+     "result": "confirmed (Olympias 'captured and murdered' in 316)"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Polyperchon",
+     "result": "confirmed ('In 303 BC, Demetrius Poliorcetes launched a campaign in Greece')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 69900,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "biography, no area; the Epirus part of the row was trimmed and said so"
+   }
+  },
+  {
+   "slug": "antigonid-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (211, 210, 208)",
+     "what": "The mirrors of three confirmed Aetolian events are missing.",
+     "why": "aetolian-league /ledger/12: 211 gain of Oeniadae and Nasos. /ledger/13: 210 gain of Anticyra. /ledger/14: 208 loss of Epicnemidian and Opuntian Locris. First Macedonian War page: Laevinus 'handed the Acarnanian town of Oeniadae and the island of Nasos to Aetolia' (211); 'Aetolia took possession of the town' (Anticyra, 210); Philip 'captured Thronium ... Tithronium and Drymaea' and 'took Opus' (208).",
+     "fix": "Add a loss to aetolian-league in -211 (lon 21.25, lat 38.45, km 25) and in -210 (lon 22.63, lat 38.38, km 20), and a gain in -208 (the /ledger/14 region), with the same confidences.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (303)",
+     "what": "polyperchon /ledger/7, the 303 loss of the Peloponnese to antigonid-dynasty, has no gain here.",
+     "why": "Polyperchon page: 'In 303 BC, Demetrius Poliorcetes launched a campaign in Greece' and reversed his gains. Only the 304 gain from macedonian-empire is here.",
+     "fix": "Add a gain from polyperchon in -303, region minus(Peloponnese, Sparta 60 km), confidence 2.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (275)",
+     "what": "achaean-league /ledger/1, the 275 expulsion of the Macedonian garrison of Aegium (confidence 3), has no loss here.",
+     "why": "Aigio page via the achaean-league dossier: 'Around the year 275 BC, the people expelled the Macedonian garrison'.",
+     "fix": "Add a loss to achaean-league in -275 (lon 22.081, lat 38.251, km 15), confidence 2.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (217)",
+     "what": "kingdom-of-dardania /ledger/2, Philip V taking Bylazora in 217 (confidence 3), has no gain here.",
+     "why": "Dardani page via the dardania dossier: 'managed to capture Bylazora from them in 217 BCE'.",
+     "fix": "Add a gain from kingdom-of-dardania in -217, region admin1 Veles (North Macedonia, Natural Earth country 'Macedonia'), confidence 2.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (227)",
+     "what": "kingdom-of-paeonia /ledger/8-9 (227, confidence 3) has no gain here.",
+     "why": "Paeonia (kingdom) page: 'In 227 BC, Antigonus Doson conquered southern Paeonia'.",
+     "fix": "Add a gain from kingdom-of-paeonia in -227, region union(admin1 Gevgelija, Strumitsa), confidence 2.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (198-197)",
+     "what": "Argos is missing: Philip held it in 198 and handed it to Nabis.",
+     "why": "Second Macedonian War page (opened by the author and cited): Philip was 'handing the city of Argos over to Nabis of Sparta' (winter 198/197). peloponnesian-league /ledger/57 gains Argos from antigonid-dynasty.",
+     "fix": "Add a gain of the Argolid from achaean-league in -198 (Argos left the league for Philip) and a loss to peloponnesian-league in -197, confidence 2.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/34",
+     "what": "The 219 gain from aetolian-league is Triphylia (Pirgos 40 km), but aetolian-league /ledger/8 loses Oeniadae and Elaeus in 219: same year, different land, and the Oeniadae gain has no mirror here.",
+     "why": "Social War page: Philip 'conquered several cities, including Elaeus and Oeniadae' (219) and 'fought the Aetolians in Triphylia'. The infobox has 'Triphylia and Phthiotis to Macedon'. aetolian-league never draws Triphylia, and its note calls it Elean. A Pirgos 40 km circle is centred north of the Alpheus, in Elis proper.",
+     "fix": "Add a 219 gain of Oeniadae and Elaeus (lon 21.25, lat 38.45, km 25) from aetolian-league. Recentre Triphylia south of the Alpheus (e.g. Zacharo 25 km) and either name greek-city-states (Elis) as counterpart or have aetolian-league record an Aetolian-held Triphylia.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/49",
+     "what": "The 191 gain from aetolian-league (Demetrias, Larissa, Ioannina 45 km) has no mirror, and most of the land was not Aetolian.",
+     "why": "aetolian-league has no 192 seizure of Demetrias and no 191 loss. Larissa belonged to the Roman-protected Thessalian League, and the Ioannina circle stands for Athamania, a separate kingdom (the note says so).",
+     "fix": "Split by owner: aetolian-league for Demetrias (with a 192 gain and 191 loss added there), 'Thessalian League' for Larissa, Athamania for the Ioannina radius.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The 306-302 keyframe draws Boeotia and Corinth from 306, but /ledger/2 gains them only in 304.",
+     "why": "Demetrius I page, quoted in /ledger/2: 'In 304-303 he seized cities including Corinth'. In 306-305 they are Cassander's (macedonian-empire /ledger/47 loses them in 304).",
+     "fix": "End keyframe 0 at -305 without Boeotia and Corinth, and add a new keyframe antigonid-dynasty_-304 (-304..-302) with them.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/1 and /ledger/11",
+     "what": "Boeotia is drawn as Antigonid in 301-295 (keyframe 1), then gained again in 291 from the 'Boeotian League' with no loss in between. Cyprus leaves between keyframe 1 and keyframe 2 (294) with no event.",
+     "why": "Check 4: every change between keyframes needs an event. The author's gaps list Cyprus 294 as 'not on pages opened'.",
+     "fix": "Drop Boeotia from keyframe 1 or add its loss after Ipsus. Add a 294 loss of Cyprus to ptolemaic-kingdom (Ptolemy I Soter page) or record it as a confidence 1 gap.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/13",
+     "what": "The 288 loss to kingdom-of-epirus includes all of North Macedonia, where kingdom-of-epirus /ledger/10 gains Western Macedonia only.",
+     "why": "kingdom-of-paeonia draws North Macedonia plus Blagoevgrad as independent in 315-286, so Paeonia is drawn twice.",
+     "fix": "Drop {\"country\": \"North Macedonia\"}, or replace it with a Pelagonia/Lyncestis radius (e.g. Bitola 40 km).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/12/region",
+     "what": "The 288 loss to Lysimachus included Western Macedonia, which /ledger/13 gives to Pyrrhus in the same year.",
+     "why": "kingdom-of-lysimachus /ledger/14 gains Kentriki Makedonia. kingdom-of-epirus /ledger/10 gains Dytiki Makedonia. Ancient Macedon is the union of both.",
+     "fix": "Region Ancient Macedon replaced by admin1 Kentriki Makedonia, with a reviewer note (Anatoliki Makedonia kai Thraki stays; Lysimachus's side should add it).",
+     "applied": true
+    },
+    {
+     "where": "/wars/0/from",
+     "what": "The Fourth War of the Diadochi started in -307, before the state's start in -306.",
+     "why": "Check 2: wars must fall inside the life. The earlier part belongs to macedonian-empire's 'Wars of the Diadochi'.",
+     "fix": "from -307 changed to -306.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/14",
+     "what is missing": "Thessaly 288 (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Pyrrhus_of_Epirus"
+    },
+    {
+     "where": "/ledger/15",
+     "what is missing": "Athens revolts 287, undated on the page (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Demetrius_I_of_Macedon"
+    },
+    {
+     "where": "/ledger/23",
+     "what is missing": "Alexander of Corinth's revolt c. 253 (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Alexander_of_Corinth"
+    },
+    {
+     "where": "/ledger/50",
+     "what is missing": "185/184 surrender of the Thessalian and Athamanian towns (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Philip_V_of_Macedon"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "301-295 holdings (Cyprus, Corinth, Boeotia) at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Demetrius_I_of_Macedon"
+    },
+    {
+     "where": "/keyframe_review/12",
+     "what is missing": "The 256-248 shape reaches 19.2 E and is 22,762 km2 larger than 264-257, with no event",
+     "page to try": "https://en.wikipedia.org/wiki/Alexander_II_of_Epirus"
+    },
+    {
+     "where": "/keyframe_review/24",
+     "what is missing": "The 197-171 shape reaches 29.6 E (Aenus, Maronea), not on the pages opened",
+     "page to try": "https://en.wikipedia.org/wiki/Aenus"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Antigonus_II_Gonatas",
+     "result": "confirmed for Lysimachia in 277. Control came later: 'By the end of 276 BC Antigonus had gained control of most of Macedon'; consider 276 or confidence 2"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Antigonus_II_Gonatas",
+     "result": "confirmed ('Pyrrhus now took control of upper Macedonia and Thessaly, while Antigonus held on to the coastal towns'); the year 274 is derived from 'the next year' after 275"
+    },
+    {
+     "where": "/ledger/24",
+     "page": "https://en.wikipedia.org/wiki/Antigonus_II_Gonatas",
+     "result": "confirmed ('regained control of Corinth in the winter of 245/44 BC')"
+    },
+    {
+     "where": "/ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Antigonus_II_Gonatas",
+     "result": "confirmed ('In 243 BC ... he seized the Acrocorinth')"
+    },
+    {
+     "where": "/ledger/34",
+     "page": "https://en.wikipedia.org/wiki/Social_War_(220%E2%80%93217_BC)",
+     "result": "confirmed (infobox 'Triphylia and Phthiotis to Macedon'); the land disagrees with aetolian-league, see the fix"
+    },
+    {
+     "where": "/ledger/45",
+     "page": "https://en.wikipedia.org/wiki/Second_Macedonian_War",
+     "result": "confirmed ('Philip was forced to abandon Orestis and all possessions in Thessaly')"
+    },
+    {
+     "where": "/ledger/38-39",
+     "page": "https://en.wikipedia.org/wiki/First_Macedonian_War",
+     "result": "confirmed (Lissus; Dassaretis, Atintani, Parthini and Dimale, 213-212)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 137606,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Antigonid dynasty infobox has no area (checked); the author says so"
+   }
+  },
+  {
+   "slug": "aetolian-league",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/15/correction",
+     "what": "The 188-146 correction keeps all the central Greek cantons (Central Greece minus Boeotia and Euboea) as Aetolian. Its own text says 'Aetolia proper and Naupactus as a Roman client', and no ledger event removes the cantons.",
+     "why": "The Aetolian League page names no 189 territorial clause; it says only that Aetolia 'was reduced to a Roman client state'. The correction contradicts its text.",
+     "fix": "Make the correction {\"union\": [{\"cliopatria\": \"Aetolian League\", \"year\": -284}, {\"lon\": 21.83, \"lat\": 38.39, \"km\": 20}]} and add a 189 loss of the cantons (confidence 1, or 2 with the Aetolian War or Marcus Fulvius Nobilior page). Alternatively keep the cantons, but then fix the text and source them.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/10-14/correction",
+     "what": "From 210 the corrections add back the whole of 'Central Greece minus Boeotia and Euboea', although /ledger/10 loses Achaia Phthiotis in 217 (its polygon lies partly inside Central Greece) and /ledger/14 loses Epicnemidian and Opuntian Locris in 208. No event regains them.",
+     "why": "Check 4: the corrections must agree with the ledger. The 208 loss is confirmed on the First Macedonian War page.",
+     "fix": "Subtract the /ledger/10 and /ledger/14 regions from the 210-189 corrections (minus [..., union(those two intersects)]), or add sourced regain events (e.g. 196, if a page gives Phocis and Locris back).",
+     "applied": false
+    },
+    {
+     "where": "/ledger (192-191)",
+     "what": "The Aetolian seizure of Demetrias (192) and its loss (191) are missing. antigonid-dynasty /ledger/49 claims a 191 gain from aetolian-league.",
+     "why": "Both dossiers are in this batch. The Aetolian League page dates the war with Rome from 'September 192 BC'.",
+     "fix": "Add a 192 gain of Demetrias (Volos 25 km) and a 191 loss to antigonid-dynasty, or agree with antigonid that its 191 event names other owners.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6",
+     "what": "Ambracia: 233 here, 231 in kingdom-of-epirus /ledger/19 (confidence 1, bridged).",
+     "why": "This dossier quotes 'the Aetolians seized Ambracia around 233 BC' from the Epirus (ancient state) page.",
+     "fix": "Keep 233. The Epirus owner should move its loss to -233. Routed, non-blocking.",
+     "applied": false
+    },
+    {
+     "where": "/wars",
+     "what": "The Social War contest with achaean-league is missing (achaean-league /ledger/16 and /ledger/18).",
+     "why": "The Social War page has the war 'Macedonian and Achaean victory' against the Aetolians.",
+     "fix": "Add achaean-league to the Social War belligerents and a contest pair with it (Pirgos and Tripoli zones). Non-blocking.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Foundation and extent in 367 (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Aetolia"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "Accession of Phocis, Locris, Doris, Malis, Dolopia, Achaia Phthiotis, Ainis and Oetaea as one confidence 1 step in 245",
+     "page to try": "https://en.wikipedia.org/wiki/Phocis"
+    },
+    {
+     "where": "/keyframe_review/15",
+     "what is missing": "Roman client years 188-146 at confidence 1; the 189 clauses (Amphilochia, Cephallenia, Oeniadae, Acarnania)",
+     "page to try": "https://en.wikipedia.org/wiki/Marcus_Fulvius_Nobilior_(consul_189_BC)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Aetolian_League",
+     "result": "confirmed ('Naupactus from Philip II of Macedon in 338 BC')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Aetolian_League",
+     "result": "confirmed ('Around 301 BC, the Aetolians took control of Parnassus')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Aetolian_League",
+     "result": "confirmed ('in 280 BC, they took control of Heraclea in Trachis')"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/First_Macedonian_War",
+     "result": "confirmed (Oeniadae and Nasos handed to Aetolia, 211)"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/First_Macedonian_War",
+     "result": "confirmed (Anticyra, 210)"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Aetolian_League",
+     "result": "confirmed ('reduced to a Roman client state'; infobox 188)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 11781,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no infobox area (checked); the corrections roughly double the Cliopatria shape by adding the cantons, sourced to the peak-membership sentence"
+   }
+  },
+  {
+   "slug": "chremonidean-alliance",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/2 (deleted)",
+     "what": "The 265 'loss' of a 40 km Corinth radius to antigonid-dynasty: the alliance never held Corinth, and the circle reaches western Attica.",
+     "why": "The found region is Attica plus Sparta 60 km. Chremonidean War page: 'in 265 BC Antigonus won a decisive and crushing victory outside Corinth' is a battle, not a transfer. antigonid-dynasty has no mirror.",
+     "fix": "Event deleted. The 267-261 contest pair already covers Areus's defeat. A reviewer note was put on the 261 loss.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/3/counterpart (was /ledger/4)",
+     "what": "The 261 loss of Attica named antigonid-dynasty, which takes Athens as a vassal of greek-city-states, not as territory.",
+     "why": "antigonid-dynasty /ledger/22 and greek-city-states /ledger/59: 261 vassal_start over Attica. The page says Athens 'lost her last pre-Hellenistic vestiges of political independence'.",
+     "fix": "Counterpart changed to greek-city-states.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity",
+     "what is missing": "Members beyond Athens, Sparta and Ptolemy (the decree of Chremonides); the page names only those three",
+     "page to try": "https://en.wikipedia.org/wiki/Chremonides"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Chremonidean_War",
+     "result": "confirmed ('267-261 BC'; 'possibly as early as the autumn of 268 BC')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Chremonidean_War",
+     "result": "confirmed (Athens, Sparta and Ptolemaic Egypt against Macedon)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Chremonidean_War",
+     "result": "confirmed ('starved into surrender in either 262 BC or 261 BC')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Chremonidean_War",
+     "result": "confirmed ('lost her last pre-Hellenistic vestiges of political independence')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 10805,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "war article, no area"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -358,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-paeonia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-paeonia",
+    "year": -356,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "2 years apart: 358 (Philip II page) against 356 (Paeonia page); the author flagged it"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -357,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -357,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Amphipolis and Pydna"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -356,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -356,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Philippi"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -354,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -354,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Methone"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -352,
+    "type": "vassal_start",
+    "counterpart": "Thessalian League"
+   },
+   "mirror": {
+    "slug": "thessalian-league",
+    "year": -353,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "thessalian-league dissolves into macedonian-empire in 353, but Macedon makes the dead league a vassal; turn it into a gain or extend the league"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -348,
+    "type": "gain",
+    "counterpart": "chalcidian-league"
+   },
+   "mirror": {
+    "slug": "chalcidian-league",
+    "year": -348,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "but greek-city-states /ledger/38 also loses the same Polygyros 50 km to macedonian-empire: double counterpart on the eu-01 side"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -347,
+    "type": "vassal_start",
+    "counterpart": "odrysian-kingdom"
+   },
+   "mirror": {
+    "slug": "odrysian-kingdom",
+    "year": -352,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "odrysian has vassal_start 352 and loss 347; Macedon has vassal_start 347 and no gain in 347"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -342,
+    "type": "gain",
+    "counterpart": "odrysian-kingdom"
+   },
+   "mirror": {
+    "slug": "odrysian-kingdom",
+    "year": -342,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "with the vassal_end pair"
+  },
+  {
+   "event": {
+    "slug": "odrysian-kingdom",
+    "year": -340,
+    "type": "loss",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "odrysian /ledger/9-10 (340 loss and vassal_start of the interior) have no mirror in macedonian-empire"
+  },
+  {
+   "event": {
+    "slug": "odrysian-kingdom",
+    "year": -325,
+    "type": "gain",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "odrysian /ledger/11-12 (Seuthes III revolts c. 325) have no mirror in macedonian-empire"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -337,
+    "type": "vassal_start",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -337,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "League of Corinth"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -335,
+    "type": "gain",
+    "counterpart": "Triballi"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed in counterparts_needing_dossiers (eu-01)"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -334,
+    "type": "gain",
+    "counterpart": "achaemenid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "eight gains 334-329; achaemenid-empire is owned by group me-05, which has not run yet"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -326,
+    "type": "gain",
+    "counterpart": "Porus and the Indian kingdoms of the Punjab"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed as paurava-kingdom (sa-01)"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -323,
+    "type": "vassal_end",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -323,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": "Greek revolt"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -323,
+    "type": "contest_start",
+    "counterpart": "athenian-coalition"
+   },
+   "mirror": {
+    "slug": "athenian-coalition",
+    "year": -323,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Lamian War; contest_end 322 also matched"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -323,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-lysimachus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-lysimachus",
+    "year": -323,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "vassal_end 306 also matched"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -323,
+    "type": "vassal_start",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ptolemaic-kingdom, seleucid-empire, laomedon and perdiccas belong to me-05, which has not run yet (events 323-309)"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -322,
+    "type": "vassal_start",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -322,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "September 322"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -317,
+    "type": "contest_start",
+    "counterpart": "polyperchon"
+   },
+   "mirror": {
+    "slug": "polyperchon",
+    "year": -317,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "contest_end 316 also matched"
+  },
+  {
+   "event": {
+    "slug": "polyperchon",
+    "year": -316,
+    "type": "loss",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "both dossiers are in this batch: macedonian-empire needs a 316 gain from polyperchon (Ancient Macedon, Thessaly)"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -315,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-paeonia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-paeonia",
+    "year": -315,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": "but Macedon keeps the Vardar valley in its 315-292 shapes, which Paeonia draws as independent"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -309,
+    "type": "vassal_start",
+    "counterpart": "polyperchon"
+   },
+   "mirror": {
+    "slug": "polyperchon",
+    "year": -309,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "vassal_end 303 also matched"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -307,
+    "type": "vassal_end",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -307,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": "Athens freed by Demetrius"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -307,
+    "type": "loss",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -306,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Attica is inside the antigonid found region of 306"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -306,
+    "type": "split",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -306,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Antigonus king"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -304,
+    "type": "loss",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -304,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Corinth, Boeotia, Euboea"
+  },
+  {
+   "event": {
+    "slug": "macedonian-empire",
+    "year": -294,
+    "type": "dissolve",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -294,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Demetrius takes Macedon"
+  },
+  {
+   "event": {
+    "slug": "chalcidian-league",
+    "year": -393,
+    "type": "gain",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "chalcidian-league /ledger/1, /ledger/2, /ledger/3, /ledger/8 (393, 391, 385, 379) have no mirror in macedonian-empire"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-epirus",
+    "year": -343,
+    "type": "vassal_start",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Epirote client kingship 343-331 (and vassal_end 331) is not in macedonian-empire"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -338,
+    "type": "gain",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Naupactus: macedonian-empire has no 338 event; both are in this batch"
+  },
+  {
+   "event": {
+    "slug": "peloponnesian-league",
+    "year": -331,
+    "type": "contest_start",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Agis III war; macedonian-empire has neither the contest nor the war"
+  },
+  {
+   "event": {
+    "slug": "athens",
+    "year": -322,
+    "type": "dissolve",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -322,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "athens dissolves into macedonian-empire, while Macedon and greek-city-states model Athens as a GCS vassal; route to the athens owner"
+  },
+  {
+   "event": {
+    "slug": "corinth",
+    "year": -338,
+    "type": "dissolve",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -337,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "corinth dissolves into macedonian-empire, which records only the League of Corinth hegemony; route to the corinth owner"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -318,
+    "type": "gain",
+    "counterpart": "macedonian-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "greek-city-states /ledger/48 (confidence 1) has no mirror; the decree of Polyperchon is not territorial in this batch"
+  },
+  {
+   "event": {
+    "slug": "athenian-coalition",
+    "year": -323,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -323,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "October and December 323"
+  },
+  {
+   "event": {
+    "slug": "athenian-coalition",
+    "year": -322,
+    "type": "loss",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -322,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "after the reviewer changed the counterpart from macedonian-empire; GCS /ledger/43 and /ledger/47 still use Dytiki Ellada, where the coalition now uses Aetolia proper"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lysimachus",
+    "year": -323,
+    "type": "contest_start",
+    "counterpart": "odrysian-kingdom"
+   },
+   "mirror": {
+    "slug": "odrysian-kingdom",
+    "year": -322,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "but the ends disagree: 310 here, 321 there"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lysimachus",
+    "year": -310,
+    "type": "vassal_start",
+    "counterpart": "odrysian-kingdom"
+   },
+   "mirror": {
+    "slug": "odrysian-kingdom",
+    "year": -321,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "11 years apart; the Seuthes III page gives no year for the acknowledgement"
+  },
+  {
+   "event": {
+    "slug": "odrysian-kingdom",
+    "year": -313,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-lysimachus"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "odrysian contest 313-312 against Lysimachus; Lysimachus has 313-310 against the name Callatis and the west Pontic cities"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lysimachus",
+    "year": -302,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -302,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Heraclea Pontica coast"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lysimachus",
+    "year": -301,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -301,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Ipsus"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lysimachus",
+    "year": -288,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -288,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "after the reviewer narrowed the antigonid region to Central Macedonia; the antigonid side also gives Anatoliki Makedonia kai Thraki"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -288,
+    "type": "loss",
+    "counterpart": "kingdom-of-lysimachus"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "antigonid /ledger/14 loses Thessaly to Lysimachus (confidence 1); Lysimachus takes Thessaly from Epirus in 285 instead"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lysimachus",
+    "year": -285,
+    "type": "gain",
+    "counterpart": "kingdom-of-epirus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-epirus",
+    "year": -284,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "year matches within 1; land differs: Lysimachus takes Western Macedonia and Thessaly, Epirus loses Western Macedonia only"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lysimachus",
+    "year": -288,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-epirus"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-epirus has no contest 288-285 with Lysimachus"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lysimachus",
+    "year": -285,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-paeonia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-paeonia",
+    "year": -285,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "end 281 against 280: within 1"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lysimachus",
+    "year": -281,
+    "type": "loss",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "me-05 has not run"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lysimachus",
+    "year": -281,
+    "type": "loss",
+    "counterpart": "Ptolemy Keraunos (Macedon and Thrace, 281-279)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed as macedon-281-277 (eu-02-x)"
+  },
+  {
+   "event": {
+    "slug": "polyperchon",
+    "year": -316,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -316,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Peloponnese, confidence 1 on both sides"
+  },
+  {
+   "event": {
+    "slug": "polyperchon",
+    "year": -303,
+    "type": "loss",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "both are in this batch: antigonid-dynasty needs a 303 gain from polyperchon"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -306,
+    "type": "gain",
+    "counterpart": "ptolemaic-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Cyprus; me-05 has not run (also 301 losses and 201 gain)"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -301,
+    "type": "loss",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -301,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Attica"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -294,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -294,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Athens"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -291,
+    "type": "gain",
+    "counterpart": "Boeotian League"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed as boeotian-league (eu-02-x); also 236 vassal_start and 196 vassal_end"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -288,
+    "type": "loss",
+    "counterpart": "kingdom-of-epirus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-epirus",
+    "year": -288,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "year matches; land differs: antigonid adds all of North Macedonia, which kingdom-of-paeonia draws as independent"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -287,
+    "type": "loss",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -287,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Athens revolts (confidence 1 on both sides)"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -277,
+    "type": "gain",
+    "counterpart": "Sosthenes (Macedon, 279-277)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed as macedon-281-277"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -274,
+    "type": "loss",
+    "counterpart": "kingdom-of-epirus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-epirus",
+    "year": -274,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "land: antigonid gives upper Macedonia and Thessaly as the page says; Epirus takes Ancient Macedon including the coast that Antigonus kept"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -272,
+    "type": "gain",
+    "counterpart": "kingdom-of-epirus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-epirus",
+    "year": -272,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "after Pyrrhus died"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -267,
+    "type": "contest_start",
+    "counterpart": "chremonidean-alliance"
+   },
+   "mirror": {
+    "slug": "chremonidean-alliance",
+    "year": -267,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "contest_end 261 also matched"
+  },
+  {
+   "event": {
+    "slug": "chremonidean-alliance",
+    "year": -261,
+    "type": "loss",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "after the reviewer fix; greek-city-states predates the split and has no 267 loss or 261 gain naming chremonidean-alliance; route to eu-01"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -261,
+    "type": "vassal_start",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -261,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "Athens; vassal_end 229 also matched"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -253,
+    "type": "loss",
+    "counterpart": "Alexander of Corinth"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed (eu-02-x); regain 245 also"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -243,
+    "type": "loss",
+    "counterpart": "achaean-league"
+   },
+   "mirror": {
+    "slug": "achaean-league",
+    "year": -243,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Acrocorinth"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -229,
+    "type": "loss",
+    "counterpart": "achaean-league"
+   },
+   "mirror": {
+    "slug": "achaean-league",
+    "year": -229,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Argos and Arcadia"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -224,
+    "type": "gain",
+    "counterpart": "achaean-league"
+   },
+   "mirror": {
+    "slug": "achaean-league",
+    "year": -224,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Acrocorinth to Doson"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -275,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Aegium expels its Macedonian garrison (confidence 3); no loss in antigonid-dynasty"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -197,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -196,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "achaean takes Corinth from antigonid in 197; antigonid gives Corinth to roman-republic in 196, and the Second Macedonian War page has Roman garrisons in Corinth until 194; route to eu-02-b"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -223,
+    "type": "gain",
+    "counterpart": "peloponnesian-league"
+   },
+   "mirror": {
+    "slug": "peloponnesian-league",
+    "year": -222,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "the antigonid contest 224-222 has no mirror there"
+  },
+  {
+   "event": {
+    "slug": "peloponnesian-league",
+    "year": -197,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Argos to Nabis; the Second Macedonian War page confirms it; antigonid needs a 198 gain and 197 loss"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -219,
+    "type": "gain",
+    "counterpart": "aetolian-league"
+   },
+   "mirror": {
+    "slug": "aetolian-league",
+    "year": -219,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "year matches; land differs: antigonid takes Triphylia, aetolian loses Oeniadae and Elaeus"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -217,
+    "type": "gain",
+    "counterpart": "aetolian-league"
+   },
+   "mirror": {
+    "slug": "aetolian-league",
+    "year": -217,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Phthiotis"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -211,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Oeniadae and Nasos (confidence 3); both are in this batch"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -210,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Anticyra (confidence 3)"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -208,
+    "type": "loss",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Locris and Opus (confidence 2)"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -211,
+    "type": "contest_start",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "First and Second Macedonian War contests 211-206 and 199-197 with Aetolia are absent from antigonid, which has them against roman-republic only"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -214,
+    "type": "contest_start",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "roman-republic has no event naming antigonid-dynasty for 214-168; its /ledger/69-70 name the slug antigonid-macedonia, which will not exist (rename to antigonid-dynasty)"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -213,
+    "type": "gain",
+    "counterpart": "illyrian-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "illyrian-kingdom is eu-02-b and not written yet"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -196,
+    "type": "loss",
+    "counterpart": "Thessalian League"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "name; Thessalian League 196-146 is listed as needing a dossier (also 185)"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -196,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -196,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "greek-city-states /ledger/67 (Freedom of the Greeks, confidence 3) gains from antigonid; antigonid names the Thessalian League, roman-republic and nobody"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -191,
+    "type": "gain",
+    "counterpart": "aetolian-league"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "aetolian-league has no 192 gain or 191 loss of Demetrias; Larissa and Athamania are not Aetolian"
+  },
+  {
+   "event": {
+    "slug": "antigonid-dynasty",
+    "year": -170,
+    "type": "vassal_start",
+    "counterpart": "molossians"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "molossians is eu-02-b and not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-dardania",
+    "year": -217,
+    "type": "loss",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Bylazora (confidence 3); no gain in antigonid"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-paeonia",
+    "year": -227,
+    "type": "loss",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "southern Paeonia and the end of the kingdom (confidence 3); no gain in antigonid"
+  },
+  {
+   "event": {
+    "slug": "greek-city-states",
+    "year": -167,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "greek-city-states gains from antigonid-dynasty in 167, after its end in June 168; route to eu-01"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -301,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -301,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Delphi"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -280,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -280,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Heraclea"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -245,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -245,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "central Greek cantons (confidence 1)"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -250,
+    "type": "gain",
+    "counterpart": "Acarnanian League"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed as acarnanian-league (eu-02-x)"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -233,
+    "type": "gain",
+    "counterpart": "kingdom-of-epirus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-epirus",
+    "year": -231,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "2 years apart; the Epirus page gives about 233, and the epirus dossier bridged 231 at confidence 1"
+  },
+  {
+   "event": {
+    "slug": "achaean-league",
+    "year": -220,
+    "type": "contest_start",
+    "counterpart": "aetolian-league"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Social War contest with achaean-league is not in aetolian-league"
+  },
+  {
+   "event": {
+    "slug": "aetolian-league",
+    "year": -192,
+    "type": "contest_start",
+    "counterpart": "roman-republic"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "roman-republic has no event naming aetolian-league (contest 192-189, loss of Ambracia and vassal_start 189)"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Aetolia",
+   "kind": "region",
+   "used_in": "antigonid-dynasty"
+  },
+  {
+   "name": "Acarnania",
+   "kind": "region",
+   "used_in": "aetolian-league"
+  },
+  {
+   "name": "Paeonia",
+   "kind": "region",
+   "used_in": "macedonian-empire"
+  },
+  {
+   "name": "Orestis",
+   "kind": "region",
+   "used_in": "antigonid-dynasty"
+  },
+  {
+   "name": "Triphylia",
+   "kind": "region",
+   "used_in": "antigonid-dynasty"
+  },
+  {
+   "name": "Athamania",
+   "kind": "region",
+   "used_in": "antigonid-dynasty"
+  },
+  {
+   "name": "Upper Macedonia",
+   "kind": "region",
+   "used_in": "antigonid-dynasty"
+  },
+  {
+   "name": "Locris",
+   "kind": "region",
+   "used_in": "aetolian-league"
+  },
+  {
+   "name": "Phocis",
+   "kind": "region",
+   "used_in": "aetolian-league"
+  },
+  {
+   "name": "Dassaretis",
+   "kind": "region",
+   "used_in": "antigonid-dynasty"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Macedon under Ptolemy Keraunos, Meleager, Antipater Etesias and Sosthenes",
+   "suggested_slug": "macedon-281-277",
+   "years": [
+    -281,
+    -277
+   ]
+  },
+  {
+   "name": "Boeotian League (Hellenistic)",
+   "suggested_slug": "boeotian-league",
+   "years": [
+    -291,
+    -196
+   ]
+  },
+  {
+   "name": "Acarnanian League",
+   "suggested_slug": "acarnanian-league",
+   "years": [
+    -250,
+    -31
+   ]
+  },
+  {
+   "name": "Thessalian League after 353 (Macedonian dependency, Roman-protected league 196-146); thessalian-league.json ends in 353",
+   "suggested_slug": "thessalian-league",
+   "years": [
+    -352,
+    -146
+   ]
+  },
+  {
+   "name": "Sparta under Cleomenes III and Nabis",
+   "suggested_slug": "sparta",
+   "years": [
+    -235,
+    -192
+   ]
+  },
+  {
+   "name": "Triballi",
+   "suggested_slug": "triballi",
+   "years": [
+    -335,
+    -335
+   ]
+  },
+  {
+   "name": "Callatis and the west Pontic cities",
+   "suggested_slug": "callatis",
+   "years": [
+    -313,
+    -310
+   ]
+  },
+  {
+   "name": "Porus and the Indian kingdoms of the Punjab",
+   "suggested_slug": "paurava-kingdom",
+   "years": [
+    -326,
+    -326
+   ]
+  },
+  {
+   "name": "Alexander of Corinth's breakaway",
+   "suggested_slug": "alexander-of-corinth",
+   "years": [
+    -253,
+    -245
+   ]
+  },
+  {
+   "name": "Athamania",
+   "suggested_slug": "athamania",
+   "years": [
+    -230,
+    -189
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-02-a.md",
+ "problems": [
+  "No dossier in the batch has a validator error. The warnings left are the intended split warnings (athenian-coalition and chremonidean-alliance), the unpaired Thessalian, Odrysian and Roman vassal relations, and 'Aetolia' unknown to the gazetteer.",
+  "Reviewer fixes applied in place and re-validated (no errors): macedonian-empire /ledger/13 confidence; athenian-coalition /ledger/5-6 counterparts and the five Dytiki Ellada regions; chremonidean-alliance (the 265 event deleted, the 261 counterpart changed); antigonid-dynasty /ledger/12 region and /wars/0 from; polyperchon /ledger/4 quote. Backups are in /tmp/claude-0/work/review-eu-02-a/bak/.",
+  "Identity question for the orchestrator (not scored as a fault): master-plan rule 2 ('a dynasty that replaces a dynasty on the same land without a break stays in the state's dossier as a rename event') would make Demetrius's seizure of Macedon in 294 a rename inside one Macedon dossier. The author kept macedonian-empire (to 294) and antigonid-dynasty (306-168, with Antigonus's Asian kingdom 306-301) as two colours and flagged this in notes. Decide before the colour pass.",
+  "antigonid-dynasty carries both Cliopatria rows, 'Antigonid Dynasty' and 'Antigonid Macedonia'. Group eu-02-b must not write antigonid-macedonia, and roman-republic /ledger/69-70 must rename its counterpart to antigonid-dynasty.",
+  "Wikidata ids not verifiable here (wikidata.org unreachable; the Wikipedia pages fetched carry no Q-id): athenian-coalition Q33745 is the Cliopatria row's Peloponnesian War id and is wrong for the Lamian War league; chremonidean-alliance Q1073686 is unverified.",
+  "kingdom-of-paeonia (another group) draws the whole of North Macedonia plus Blagoevgrad for 479-227. That also covers Upper Macedonian Lyncestis and Pelagonia and overlaps the Macedonian, Lysimachid and Antigonid shapes; the Paeonia owner and this batch's authors should agree a narrower region.",
+  "Cross-group routing: greek-city-states (eu-01) needs the chremonidean split pair, its 348 double loss of the Chalcidice and its 167 gain from a dossier that ended in 168 fixed; odrysian-kingdom (eu-01) needs to agree the Seuthes III years; kingdom-of-epirus needs 233 for Ambracia, the 288-285 contest and the 274 land; achaean-league (eu-02-b) needs to agree Corinth 197/196; roman-republic needs mirrors for the Macedonian wars and the Aetolian war."
+ ]
+}

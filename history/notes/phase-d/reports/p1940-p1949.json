@@ -1,0 +1,435 @@
+{
+ "window": "p1940-p1949",
+ "images": [
+  {
+   "year": 1940,
+   "bbox": "world (jan1)",
+   "seen": "draft start of window: baseline, nothing flagged beyond the regional defects found in later images"
+  },
+  {
+   "year": 1945,
+   "bbox": "world",
+   "seen": "draft end of window: grey nobody blocks over Manchuria/Inner Mongolia and south Korea; Libya/Somalia/Eritrea grey"
+  },
+  {
+   "year": 1942,
+   "bbox": "-12,33,50,72",
+   "seen": "draft: northern France and the Atlantic coast drawn nobody (1,100 cells) instead of Vichy land under German occupation; Denmark nobody; Lviv nobody"
+  },
+  {
+   "year": 1944,
+   "bbox": "70,15,150,56",
+   "seen": "draft: Inner Mongolia and a few China pockets nobody; India/Burma as expected"
+  },
+  {
+   "year": 1945,
+   "bbox": "95,30,135,54",
+   "seen": "draft: Manchuria/Inner Mongolia 1,720 cells nobody, no Soviet occupation drawn; south Korea nobody (1945-48)"
+  },
+  {
+   "year": 1944,
+   "bbox": "-20,-5,60,38",
+   "seen": "draft: Libya (Tripolitania, Cyrenaica), Italian Somaliland and Eritrea grey nobody although under British military administration"
+  },
+  {
+   "year": 1945,
+   "bbox": "-12,33,50,72",
+   "seen": "draft: northern France and Denmark are restored by 1945; nothing new flagged"
+  },
+  {
+   "year": 1943,
+   "bbox": "14,42,60,68",
+   "seen": "draft: about 1,800 Soviet cells (Smolensk, Bryansk, Orel, Kursk, Kharkiv, Poltava, Kyiv) grey at year end although the Red Army held them"
+  },
+  {
+   "year": 1948,
+   "bbox": "60,5,102,38",
+   "seen": "draft: Kashmir/Ladakh/Baluchistan nobody from 1947 and Rewa (Vindhya Pradesh) nobody from 1948, left (pages not opened); Malaya nobody 1948-49 (patched)"
+  },
+  {
+   "year": 1942,
+   "bbox": "-12,33,32,60",
+   "seen": "after patch: northern France is Vichy land with the German occupation hatch; no grey"
+  },
+  {
+   "year": 1942,
+   "bbox": "7,53,15,58",
+   "seen": "after patch: Denmark is nobody with an occupied-by-Germany status, which render_year draws as plain grey (data right, picture unchanged)"
+  },
+  {
+   "year": 1944,
+   "bbox": "8,-2,52,34 (compare-cliopatria)",
+   "seen": "after patch: Libya, Italian Somaliland and Eritrea in British Africa colour as in Cliopatria; Fezzan stays Free French; Ethiopia keeps its border cells"
+  },
+  {
+   "year": 1943,
+   "bbox": "20,44,48,58 (compare-cliopatria)",
+   "seen": "after patch: left-bank Ukraine, Kyiv, Kursk, Orel, Smolensk and Bryansk are Soviet; Pskov, Novgorod, Leningrad Oblast, Crimea and Kuban still grey (pages silent); Cliopatria draws Germany far wider than the compiled front, which the compiled map rightly does not follow; Kaluga and Tula were still grey in this render and were fixed afterwards (stage check: 123 and 108 cells Soviet)"
+  },
+  {
+   "year": 1945,
+   "bbox": "95,30,135,54",
+   "seen": "after patch: Soviet occupation of Manchuria and Inner Mongolia drawn as hatched Republic of China land; north Korea Soviet Civil Administration, south Korea USAMGIK; a Rehe/Chengde patch is still nobody (pages silent)"
+  }
+ ],
+ "issues": [
+  {
+   "what": "Northern France and the Atlantic coast were nobody's land in 1941-42 (1,100 cells): the Third Republic's year-end dissolve gave the occupied zone to nazi-germany, whose nazi-germany_1941 keyframe released it to nobody until the 1943 Vichy keyframe; Vichy's own occupation event moved 9 cells",
+   "years": [
+    1941,
+    1942
+   ],
+   "slugs": [
+    "vichy-france",
+    "french-third-republic",
+    "nazi-germany"
+   ],
+   "decision": "patched",
+   "patch": "events/0, events/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Vichy_France"
+   ]
+  },
+  {
+   "what": "Italian Somaliland and Eritrea fell to nobody in 1942: british-africa/ledger/49 (Ethiopia, January 1942) closes the whole british-africa/italian-africa occupation relation, so the next italian-africa keyframe released both lands",
+   "years": [
+    1942,
+    1943
+   ],
+   "slugs": [
+    "british-africa",
+    "italian-africa"
+   ],
+   "decision": "patched",
+   "patch": "events/2, events/3",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Italian_Somaliland",
+    "https://en.wikipedia.org/wiki/British_Military_Administration_(Eritrea)"
+   ]
+  },
+  {
+   "what": "Tripolitania, Cyrenaica, Italian Somaliland and Eritrea (about 5,900 cells) were nobody's land from 1943/44 to 1949-52: the italian-africa successors land lists Tripolitania and Cyrenaica only, the british-africa keyframes 1943-1946 exclude 'the occupied territories', and no dossier carries the British military administrations. Now British Africa land (colony tint), which is how the later dossiers chain (Emirate of Cyrenaica found from british-africa 1949, Kingdom of Libya 1951, Ethiopia gains Eritrea from british-africa 1952); 59 border cells of the Cliopatria French Africa and Ethiopia shapes are subtracted so no conflict is created",
+   "years": [
+    1943,
+    1949
+   ],
+   "slugs": [
+    "british-africa",
+    "italian-africa",
+    "italian-libya"
+   ],
+   "decision": "patched",
+   "patch": "events/4, events/5, keyframe_overrides/3, keyframe_overrides/4, keyframe_overrides/5, keyframe_overrides/6",
+   "pages": [
+    "https://en.wikipedia.org/wiki/British_Military_Administration_(Libya)",
+    "https://en.wikipedia.org/wiki/Italian_Somaliland",
+    "https://en.wikipedia.org/wiki/British_Military_Administration_(Eritrea)"
+   ]
+  },
+  {
+   "what": "Manchuria and Inner Mongolia: the Soviet occupation of August 1945 never showed (the Soviet events ran before the land was Chinese; the Manchukuo/Mengjiang dissolves apply at year end) and 1,720 cells were nobody's at the end of 1945; the republic-of-china_1946 snap then released 3,700 cells of Inner Mongolia",
+   "years": [
+    1945,
+    1946
+   ],
+   "slugs": [
+    "union-of-soviet-socialist-republics",
+    "republic-of-china",
+    "manchukuo",
+    "mengjiang",
+    "communist-party-of-china"
+   ],
+   "decision": "patched",
+   "patch": "events/6, events/7, events/8, keyframe_overrides/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Soviet%E2%80%93Japanese_War"
+   ]
+  },
+  {
+   "what": "Soviet front at the end of 1943: the union-of-soviet-socialist-republics_1943 snap released 1,800 Soviet cells (left-bank Ukraine, Kyiv, Kursk, Orel, Belgorod, Smolensk, Bryansk, Kharkiv, Poltava; also Kaluga, Tula, west Moscow Oblast and Lipetsk) to nobody; the override keeps them Soviet (741 added, 653 removed at the snap instead of 14 and 1,800)",
+   "years": [
+    1943,
+    1943
+   ],
+   "slugs": [
+    "union-of-soviet-socialist-republics"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Battle_of_the_Dnieper",
+    "https://en.wikipedia.org/wiki/Eastern_Front_(World_War_II)",
+    "https://en.wikipedia.org/wiki/Battle_of_Kursk",
+    "https://en.wikipedia.org/wiki/Smolensk_Operation"
+   ]
+  },
+  {
+   "what": "Still nobody at the end of 1943 after the patch: Pskov (244 cells), Leningrad Oblast (113), Novgorod (71), west Tver Oblast (67), Crimea (82), Krasnodar (105), Rostov (63), Murmansk (68) and right-bank Ukraine/Lviv (Lviv 83 of 89 cells, 1942-43); the pages opened give no dated sentence for them",
+   "years": [
+    1942,
+    1943
+   ],
+   "slugs": [
+    "union-of-soviet-socialist-republics",
+    "russian-soviet-federative-socialist-republic",
+    "ukrainian-soviet-socialist-republic"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Eastern_Front_(World_War_II)",
+    "https://en.wikipedia.org/wiki/Smolensk_Operation"
+   ]
+  },
+  {
+   "what": "Tibet/Chamdo 1949: the People's Republic received 987 Chamdo cells at the end of 1949 (the 1949 keyframe correction is Cliopatria's 1950 outline; R2 makes the PRC Tibet's successor, so a ruling could not undo it); Tibet's army held Chamdo until October 1950. The PRC_1949 correction now subtracts Xizang; 257 cell-years of Kham cells outside Xizang still go to the PRC under R2",
+   "years": [
+    1949,
+    1949
+   ],
+   "slugs": [
+    "people-s-republic-of-china",
+    "tibet"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Annexation_of_Tibet_by_the_People%27s_Republic_of_China"
+   ]
+  },
+  {
+   "what": "South Korea was nobody's land 1945-48: Japan's ledger/77 hands the south to the United States, so the USAMGIK found event moved 1 cell and the US keyframe_1945 released 517 cells",
+   "years": [
+    1945,
+    1948
+   ],
+   "slugs": [
+    "united-states-army-military-government-in-korea",
+    "united-states-of-america",
+    "empire-of-japan"
+   ],
+   "decision": "patched",
+   "patch": "events/11",
+   "pages": [
+    "https://en.wikipedia.org/wiki/United_States_Army_Military_Government_in_Korea"
+   ]
+  },
+  {
+   "what": "Malaya 1948-49 (443 cells) was nobody's land: the Malayan Union dissolves in 1948 and no dossier carries the Federation of Malaya of 1948-57 (federation-of-malaya is the independent state from 1957); kept British",
+   "years": [
+    1948,
+    1949
+   ],
+   "slugs": [
+    "british-colonial-empire",
+    "malayan-union"
+   ],
+   "decision": "patched",
+   "patch": "events/12",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Federation_of_Malaya"
+   ]
+  },
+  {
+   "what": "Denmark 1941-1945 (182 cells) was plain nobody: kingdom-of-denmark-1814-1940 ends in 1940 and the new denmark dossier begins in May 1945. The occupation by nazi-germany is now recorded as data, but render_year draws an occupied nobody cell as plain grey, so the picture is unchanged",
+   "years": [
+    1941,
+    1945
+   ],
+   "slugs": [
+    "nazi-germany",
+    "kingdom-of-denmark-1814-1940",
+    "denmark"
+   ],
+   "decision": "patched",
+   "patch": "events/9, events/10",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Occupation_of_Denmark"
+   ]
+  },
+  {
+   "what": "Inner Mongolia 1947-48 (2,430 cells: Chahar and Suiyuan) and Rehe/Hebei 1946-47 (about 300 cells) are nobody's land after the republic-of-china_1947 snap released them; no dossier carries the communist Inner Mongolian authorities and no page opened dates the 1946-48 holders",
+   "years": [
+    1946,
+    1948
+   ],
+   "slugs": [
+    "republic-of-china",
+    "communist-party-of-china"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Soviet%E2%80%93Japanese_War"
+   ]
+  },
+  {
+   "what": "Kashmir, Ladakh and Baluchistan nobody from 1947; Rewa (Vindhya Pradesh) nobody from 1948: the pages for the partition and the princely states were not opened (page budget spent on larger blocks)",
+   "years": [
+    1947,
+    1949
+   ],
+   "slugs": [
+    "republic-of-india",
+    "islamic-republic-of-pakistan"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Greece has gaps in the compiled map (October 1940 to April 1941 and the end of 1944); the Greek pages were not opened",
+   "years": [
+    1940,
+    1944
+   ],
+   "slugs": [
+    "kingdom-of-greece"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Fezzan: 73 cells of the Fezzan region are nobody from 1944 to 1949 because the french-africa keyframes cut the south-western Libyan block; a dossier choice, not touched",
+   "years": [
+    1944,
+    1949
+   ],
+   "slugs": [
+    "french-africa"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/p1940-p1949.json",
+ "patch_entries": {
+  "events": 13,
+  "keyframe_overrides": 7,
+  "rulings": 0
+ },
+ "patch_check": "all applied: --check-patch p1940-p1949 20 entries, 20 ok, 0 rejected; --trial p1940-p1949 20 applied, 0 skipped, other windows' patch entries 110 applied, 0 skipped",
+ "colour_clashes": [
+  {
+   "a": "anglo-egyptian-sudan",
+   "b": "british-africa",
+   "years": [
+    1940,
+    1949
+   ],
+   "note": "identical #dc7d97 (distance 0.000, 183 shared edges); in the 1944 render Sudan and British Africa merge into one pink block, and the same pink now covers Libya, Somalia and Eritrea"
+  },
+  {
+   "a": "french-africa",
+   "b": "french-west-africa",
+   "years": [
+    1940,
+    1949
+   ],
+   "note": "identical #6d9adc (586 shared edges); told apart only by the thin outline"
+  },
+  {
+   "a": "french-africa",
+   "b": "french-equatorial-africa",
+   "years": [
+    1940,
+    1949
+   ],
+   "note": "identical #6d9adc (414 shared edges)"
+  },
+  {
+   "a": "british-burma",
+   "b": "british-raj",
+   "years": [
+    1940,
+    1947
+   ],
+   "note": "identical #dc7d97 (311 shared edges); same suzerain family, outline only"
+  },
+  {
+   "a": "italian-africa",
+   "b": "italian-libya",
+   "years": [
+    1940,
+    1943
+   ],
+   "note": "identical #009867 (180 shared edges); same family"
+  },
+  {
+   "a": "russian-soviet-federative-socialist-republic",
+   "b": "union-of-soviet-socialist-republics",
+   "years": [
+    1940,
+    1949
+   ],
+   "note": "identical #8d1a1e (1,545 shared edges); also kazakh, ukrainian, byelorussian, uzbek, turkmen and karelo-finnish republics against the union: constituents are drawn at half tint, so only the outline separates them where a republic is drawn direct"
+  },
+  {
+   "a": "british-africa",
+   "b": "tanganyika-territory",
+   "years": [
+    1940,
+    1949
+   ],
+   "note": "identical #dc7d97 (156 shared edges); same suzerain"
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "kingdom-of-denmark-1814-1940",
+   "what": "Continue (or add a successor dossier for) Denmark under German occupation, April 1940 to May 1945, as a state (the king and government stayed) so the land is not nobody's",
+   "why": "The dossier ends in 1940 and the denmark dossier begins in May 1945; the occupation can only be recorded as occupied nobody, which draws grey",
+   "source": "https://en.wikipedia.org/wiki/Occupation_of_Denmark"
+  },
+  {
+   "slug": "italian-africa",
+   "what": "Add Eritrea and Italian Somaliland to the british-africa successor land (identity.successors/0): the text says 'Eritrea and Italian Somaliland occupied by British forces in 1941' but the land lists Tripolitania and Cyrenaica only",
+   "why": "Without it the dissolve hands 2,550 cells to nobody; the patch repairs it with gain events and keyframe overrides",
+   "source": "https://en.wikipedia.org/wiki/British_Military_Administration_(Eritrea)"
+  },
+  {
+   "slug": "british-africa",
+   "what": "Drop 'the occupied territories' from the british-africa_1943 to _1946 corrections once the land is a British military administration, or add dossiers for the BMA of Libya, Eritrea and Italian Somaliland so they draw as occupied zones",
+   "why": "The corrections exclude land that no dossier then holds; four keyframe_overrides compensate",
+   "source": "https://en.wikipedia.org/wiki/British_Military_Administration_(Libya)"
+  },
+  {
+   "slug": "federation-of-malaya",
+   "what": "Add a dossier or ledger events for the Federation of Malaya 1 February 1948 to 31 August 1957 (protected state of the United Kingdom), now covered by a patch event of british-colonial-empire",
+   "why": "The Malayan Union dissolves in 1948 and the 1957 state starts from 1957",
+   "source": "https://en.wikipedia.org/wiki/Federation_of_Malaya"
+  },
+  {
+   "slug": "vindhya-pradesh",
+   "what": "Add a dossier for Vindhya Pradesh / Rewa (nobody from 1948)",
+   "why": "Rewa and the neighbouring Baghelkhand states are nobody's in the compiled map from 1948; the page was not opened in this run",
+   "source": null
+  },
+  {
+   "slug": "kingdom-of-greece",
+   "what": "Fill the Greek gaps (October 1940 to April 1941; end of 1944)",
+   "why": "Greece shows nobody cells in those years; the pages were not opened in this run",
+   "source": null
+  },
+  {
+   "slug": "inner-mongolia",
+   "what": "Add the communist-held Inner Mongolian authorities of 1946-49 (or give the land to communist-party-of-china events) for Chahar, Suiyuan and Rehe",
+   "why": "2,430 Inner Mongolian cells are nobody's in 1947-48 after the republic-of-china_1947 snap; no page opened dates their holders",
+   "source": null
+  }
+ ],
+ "pages_opened": 15,
+ "problems": [
+  "boundary: keyframe_overrides/2 (people-s-republic-of-china_1949) is a year-end 1949 snap and carries Chamdo as Tibet's into p1950; the PRC ledger/6 dates the occupation of Chamdo to October 1950, so p1950-p1959 should see Tibet's land change hands there",
+  "boundary: keyframe_overrides/3-6 make british-africa hold Tripolitania, Cyrenaica, Italian Somaliland and Eritrea until 1952 (no british-africa keyframe exists for 1947-1952); the Emirate of Cyrenaica (1949), Kingdom of Libya (1951) and Ethiopia's federation (1952) take their land from british-africa and work; Italian Somaliland stays British until the british-africa_1953 snap releases it to nobody (the Italian trusteeship of 1 April 1950 has no dossier) and british-africa/ledger/51-53 (occupation_end italian-africa, 1950-52) address a relation that closed in 1943 with the Italian dossier, so they should be checked in p1950",
+  "boundary: keyframe_overrides/1 (republic-of-china_1946) keeps Inner Mongolia Chinese in law for the end of 1946; the republic-of-china_1947 snap releases it to nobody again (2,430 cells nobody in 1947-48)",
+  "unresolved places in the packet: Dolon Nur, Baitag Bogd and Dewangiri do not resolve in the gazetteer; their events moved no land",
+  "render_year.py draws an occupied nobody cell (owner none, status occupied) as plain grey with no hatch, so the occupation of Denmark (events/9-10) is correct in the data but invisible; Libya, Somalia and Eritrea were made visible by drawing them as British land instead",
+  "Option choice: the British military administrations are drawn as British colony land (british-africa, suzerain united-kingdom) because a hatch needs an owner and the Italian dossiers are gone; a reader sees a colony, not an occupied enemy territory",
+  "the Vindhya Pradesh, Greece, Kashmir/Ladakh/Baluchistan and Chinese Civil War pages were not opened: the 15-page budget went to France, the British military administrations, Manchuria, the Soviet front, Tibet, Korea, Denmark and Malaya",
+  "images: 14 renders were made (10 planned); the extra four were after-checks, two with --compare-cliopatria",
+  "hierarchy: none found in this window"
+ ]
+}

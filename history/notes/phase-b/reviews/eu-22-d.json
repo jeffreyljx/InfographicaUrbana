@@ -1,0 +1,481 @@
+{
+ "batch_id": "eu-22-d",
+ "verdicts": [
+  {
+   "slug": "greek-junta",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/0/zones",
+     "what": "The Turkish invasion of Cyprus entry had empty zones although ground changed hands in the war (the north of Cyprus); the brief allows empty zones only where no ground changed hands.",
+     "why": "Turkish invasion of Cyprus page: Turkish forces 'captured 3% of the island' by 22 July and after 14 August held 'approximately 36% of the island'; the turkish-republic-of-northern-cyprus, republic-of-cyprus and republic-of-turkey war entries all carry the Northern Cyprus zone.",
+     "fix": "zones = [{country: Northern Cyprus, text: the north of Cyprus taken by Turkey in July-August 1974, 'approximately 36% of the island'}]; war note reworded to say no Greek border moved.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Greek_junta",
+     "result": "confirmed: 'On 21 April 1967, a group of colonels overthrew a caretaker government'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Greek_junta",
+     "result": "confirmed: 'On 1 June 1973, he abolished the monarchy and declared Greece a republic'; referendum 29 July 1973; counter-coup 25 November 1973"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Greek_junta",
+     "result": "confirmed: 'Ioannidis ruled until it fell on 24 July 1974'; infobox 'Democratization: 24 July 1974'"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/Turkish_invasion_of_Cyprus",
+     "result": "confirmed: 'On 23 July 1974 the Greek military junta collapsed mainly because of the events in Cyprus'; coup 15 July, landing 20 July"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 131957,
+    "infobox_year": null,
+    "cliopatria_km2": 123711,
+    "ratio": 0.94,
+    "acknowledged": true,
+    "note": "infobox gives no year; compared with greek-junta_1973"
+   }
+  },
+  {
+   "slug": "malta",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Malta",
+     "result": "confirmed: 'Malta gained independence as the State of Malta on 21 September 1964.'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Malta",
+     "result": "confirmed: 'Malta declaring itself a republic on 13 December 1974 within the Commonwealth'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Malta",
+     "result": "confirmed: defence agreement 're-negotiated in 1972, expired on 31 March 1979'; 'lands formerly controlled by the British were given to the Maltese government'"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Malta",
+     "result": "confirmed: Valletta; 14.51, 35.90 lies inside the malta_1967 bbox"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 316,
+    "infobox_year": null,
+    "cliopatria_km2": 474.7,
+    "ratio": 1.5,
+    "acknowledged": true,
+    "note": "grid rounding of three small islands, acknowledged in keyframe_review/1"
+   }
+  },
+  {
+   "slug": "portugal",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/sources/0/note and /keyframe_review/0/note",
+     "what": "92,225 km2 was called the infobox 'land area'; the infobox gives it as the total area.",
+     "why": "Portugal page infobox: 'Total: 92,225 km2 (35,608 sq mi) (109th)', 'Water (%): 1.2 (2015)'; no separate land figure.",
+     "fix": "'land area 92,225' -> 'total area 92,225' (both places).",
+     "applied": true
+    },
+    {
+     "where": "/identity (whole dossier) vs polities/estado-novo.json",
+     "what": "(advisory, routed to the orchestrator; non-blocking for this dossier) estado-novo.json (another group) runs 1926-05 to 2024 with a 1974-04 rename and its own 1999-12 Macau loss, so 1976-2024 and the Macau loss are claimed twice; portugal names estado-novo as predecessor but estado-novo has no end or successor.",
+     "why": "estado-novo ledger: L10 1974-4 rename, L19 1999-12 loss to people-s-republic-of-china; identity end 2024, successors []. people-s-republic-of-china L14 gains Macau from 'portugal'. Eu-22 convention (greek-junta / third-hellenic-republic, hungary / hungarian-people-s-republic) splits regimes along the Cliopatria rows.",
+     "fix": "Orchestrator: have the estado-novo owner end that dossier at 1976-04 with successor portugal and drop its 1999 Macau loss (or fold portugal into estado-novo); the author already flagged it.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0/correction, /keyframe_review/1/correction, /keyframe_review/2",
+     "what": "(advisory, non-blocking) Flores and Corvo, the western Azores (about 31.1 W), lie outside every Portugal shape (bbox stops at 28.85 W); the corrections keep the shape unchanged, so the islands stay unpainted.",
+     "why": "shapes.csv portugal_1976 / portugal_2024 bbox west edge -28.8457; the author's own note on keyframe_review/0 records the gap.",
+     "fix": "If the gazetteer can name them, write the corrections as the Cliopatria shape plus Flores and Corvo (union with a place or small disc), or leave as is (about 160 km2).",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Portugal",
+     "result": "confirmed: infobox 'Current constitution: 25 April 1976'; 'In 1974, a military coup overthrew the Estado Novo regime'"
+    },
+    {
+     "where": "/ledger/0/region (Macau)",
+     "page": "https://en.wikipedia.org/wiki/Handover_of_Macau",
+     "result": "confirmed: 'In 1976, both Portugal and the PRC recognised Macau as a \"Chinese territory under Portuguese supervision\"'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Handover_of_Macau",
+     "result": "confirmed: transfer 'officially occurred at midnight on 20 December 1999'; Joint Declaration 13 April 1987"
+    },
+    {
+     "where": "/certainty",
+     "page": "https://en.wikipedia.org/wiki/Portugal",
+     "result": "confirmed: Treaty of Alcanices 1297; Olivenza claimed 'since the 19th century'; Savage Islands waters claimed by Spain"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 92225,
+    "infobox_year": null,
+    "cliopatria_km2": 96467,
+    "ratio": 1.05,
+    "acknowledged": true,
+    "note": "compared with portugal_2024 (no Macau); portugal_1976 96,985"
+   }
+  },
+  {
+   "slug": "third-hellenic-republic",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Third_Hellenic_Republic",
+     "result": "confirmed: infobox 'Established: 24 July 1974'; 'stretches from 1974, with the fall of the Greek military junta'"
+    },
+    {
+     "where": "/ledger/0 (note)",
+     "page": "https://en.wikipedia.org/wiki/Metapolitefsi",
+     "result": "confirmed: 'At 4 a.m. on 24 July 1974, Karamanlis was sworn-in as Prime Minister by Archbishop Seraphim of Athens'; 'Gizikis remained temporarily in power for legal continuity reasons'"
+    },
+    {
+     "where": "/notes (Prespa, Imia)",
+     "page": "https://en.wikipedia.org/wiki/Third_Hellenic_Republic",
+     "result": "confirmed silent: Prespa Agreement undated, no Imia or Aegean, no border change"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 131957,
+    "infobox_year": null,
+    "cliopatria_km2": 121731,
+    "ratio": 0.92,
+    "acknowledged": true,
+    "note": "compared with third-hellenic-republic_2024"
+   }
+  },
+  {
+   "slug": "turkish-republic-of-northern-cyprus",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (new event, 1975-02)",
+     "what": "No vassal_start with counterpart republic-of-turkey, although republic-of-turkey.json (me-10, written 2026-10-25, before this dossier) has ledger/6: 1975-02 vassal_start, counterpart turkish-republic-of-northern-cyprus, region the Cliopatria TRNC 1976 shape; the notes ask Turkey and the colour agent to 'decide' a question that dossier had already decided.",
+     "why": "Brief section 2 rule 3: 'a vassal_start of X is a vassal_start in X's ledger with this state as counterpart'. Turkish invasion of Cyprus page (already a source here): 'On 13 February 1975, Turkey declared the occupied areas of the Republic of Cyprus to be a \"Federated Turkish State\"'; Northern Cyprus page: recognised only by Turkey.",
+     "fix": "Add {year 1975, month 2, type vassal_start, counterpart republic-of-turkey, region {cliopatria: Turkish Republic of Northern Cyprus, year 1976, text: the Turkish Federated State declared by Turkey on 13 February 1975}, source the Turkish invasion of Cyprus page, confidence 2}; no vassal_end (runs to 2026). Update the notes paragraph that says the question is open.",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Northern_Cyprus",
+     "result": "confirmed: 'formation of the first sovereign administrative body of Northern Cyprus in August 1974'; 'northern four-elevenths of the island (about 36%...)'; infobox ATCA 1 October 1974 (flagged by author)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Northern_Cyprus",
+     "result": "confirmed: infobox 'Turkish Federated State of Cyprus: 13 February 1975' (body says only 'In 1975'); invasion page gives 13 February 1975"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Northern_Cyprus",
+     "result": "confirmed: 'The north unilaterally declared its independence on 15 November 1983'"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/Turkish_invasion_of_Cyprus",
+     "result": "confirmed: landing 20 July, ceasefire 22 July, 3%; second phase 14 August, 37% / 'approximately 36%'; August 1974 line became the UN Buffer Zone"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 3355,
+    "infobox_year": null,
+    "cliopatria_km2": 4341,
+    "ratio": 1.29,
+    "acknowledged": true,
+    "note": "shape takes in part of the UN buffer zone; acknowledged in keyframe_review/1"
+   }
+  },
+  {
+   "slug": "republic-of-lithuania",
+   "verdict": "pass",
+   "fixes": [
+    {
+     "where": "/ledger/1, /ledger/2 vs union-of-soviet-socialist-republics /ledger/62, /65, /68",
+     "what": "(advisory, routed to the orchestrator; non-blocking) The USSR dossier (eu-17, written 2026-10-31, before this one) already has contest_start 1990-03 over the whole of Lithuania (conf 3), contest_end 1991-09 and loss 1991-09 to republic-of-lithuania; this dossier contests only the two Vilnius broadcasting sites from 1991-01 and receives the land by its 1990-03 found. The notes wrongly say the USSR should still add a 1990-03 loss and the Vilnius zone.",
+     "why": "USSR ledger 62: '1990, 11 March: Lithuania declares independence ... Moscow did not recognise it' (contest_start, region country Lithuania); 68: '1991, 6 September: Lithuania leaves the Union' (loss). Lithuania page: 'On 20 April 1990, the Soviets imposed an economic blockade'.",
+     "fix": "Pick one model for 1990-03..1991-09. Either this dossier moves ledger/1 to 1990-03 with region {country: Lithuania} (keeping the January Events as the war zone) so both contests agree, and the USSR's 1991-09 loss stands as the end of a contest won by Lithuania; or the USSR owner narrows its contest to the Vilnius sites and moves its loss to 1990-03. Correct the notes either way.",
+     "applied": false
+    },
+    {
+     "where": "/identity/predecessors/1",
+     "what": "(advisory, non-blocking) kingdom-of-lithuania (ended 1940-07) is listed as a land-carrying predecessor, but its dossier names only lithuanian-soviet-socialist-republic as successor; the land reached this state through the Lithuanian SSR.",
+     "why": "kingdom-of-lithuania.json identity: end 1940-07, successors [lithuanian-soviet-socialist-republic]. The continuity is legal (the Act re-establishes powers 'abolished by foreign forces in 1940'), not territorial.",
+     "fix": "Keep the continuity in notes and drop the predecessor, or have the kingdom's owner add republic-of-lithuania as a successor with a note.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "the -168 km2 change of 1992 (Latvian cells dropped) and the Latvia, Belarus and Russia (Kaliningrad) border treaties; within the 1-2 page budget, read as grid effect",
+     "page to try": "https://en.wikipedia.org/wiki/Latvia%E2%80%93Lithuania_border"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Act_of_the_Re-Establishment_of_the_State_of_Lithuania",
+     "result": "confirmed: 'approved at 10:44 pm by 124 members of the council while six abstained'; 'The territory of Lithuania is whole and indivisible'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Act_of_the_Re-Establishment_of_the_State_of_Lithuania",
+     "result": "confirmed: 'on 13 January 1991 Soviet forces stormed the LRT building in Vilnius along with the Vilnius TV Tower'; 14 killed, 700 injured"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Act_of_the_Re-Establishment_of_the_State_of_Lithuania",
+     "result": "confirmed: 'on 6 September 1991 Lithuania's independence was recognized by the State Council of the Soviet Union'; UN 17 September 1991"
+    },
+    {
+     "where": "/sources/0 (note)",
+     "page": "https://en.wikipedia.org/wiki/Lithuania",
+     "result": "confirmed: area 65,300 km2, blockade 20 April 1990, 'On 31 August 1993 the last units of the Russian Army left Lithuania'; no border treaties on the page"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 65300,
+    "infobox_year": null,
+    "cliopatria_km2": 65178,
+    "ratio": 1.0,
+    "acknowledged": true,
+    "note": "compared with republic-of-lithuania_2024"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "greek-junta",
+    "year": 1967,
+    "type": "found",
+    "counterpart": "kingdom-of-greece"
+   },
+   "mirror": {
+    "slug": "kingdom-of-greece",
+    "year": 1967,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "1967-04; kingdom-of-greece successors [greek-junta]"
+  },
+  {
+   "event": {
+    "slug": "third-hellenic-republic",
+    "year": 1974,
+    "type": "found",
+    "counterpart": "greek-junta"
+   },
+   "mirror": {
+    "slug": "greek-junta",
+    "year": 1974,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "both 1974-07; successor/predecessor agree"
+  },
+  {
+   "event": {
+    "slug": "malta",
+    "year": 1964,
+    "type": "found",
+    "counterpart": "united-kingdom"
+   },
+   "mirror": {
+    "slug": "united-kingdom",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "united-kingdom.json (eu-11) includes Malta in its 1801 found region and never loses it; it needs a 1964-09 loss of Malta to malta (route to eu-11)"
+  },
+  {
+   "event": {
+    "slug": "malta",
+    "year": 1979,
+    "type": "gain",
+    "counterpart": "united-kingdom"
+   },
+   "mirror": {
+    "slug": "united-kingdom",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "caption-only gain of the British base lands (31 March 1979) inside Malta's outline; the UK dossier (eu-11) has no Malta event at all; route to eu-11"
+  },
+  {
+   "event": {
+    "slug": "portugal",
+    "year": 1976,
+    "type": "found",
+    "counterpart": "estado-novo"
+   },
+   "mirror": {
+    "slug": "estado-novo",
+    "year": 1974,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "estado-novo runs to 2024 with no end or successor, so 1976-2024 is claimed twice; orchestrator to end estado-novo at 1976-04 (successor portugal) or fold portugal into it; flagged by the author"
+  },
+  {
+   "event": {
+    "slug": "portugal",
+    "year": 1999,
+    "type": "loss",
+    "counterpart": "people-s-republic-of-china"
+   },
+   "mirror": {
+    "slug": "people-s-republic-of-china",
+    "year": 1999,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "1999-12, PRC counterpart 'portugal'; estado-novo ledger/19 duplicates the same loss and should drop it"
+  },
+  {
+   "event": {
+    "slug": "turkish-republic-of-northern-cyprus",
+    "year": 1974,
+    "type": "found",
+    "counterpart": "republic-of-cyprus"
+   },
+   "mirror": {
+    "slug": "republic-of-cyprus",
+    "year": 1974,
+    "type": "occupation_start"
+   },
+   "status": "exception",
+   "note": "Cyprus keeps the north de jure and records a Turkish occupation (counterpart republic-of-turkey, 1974-08, no end); the TRNC draws it as a state from 1974-08. De jure vs de facto, flagged by the author for the colour agent"
+  },
+  {
+   "event": {
+    "slug": "republic-of-turkey",
+    "year": 1975,
+    "type": "vassal_start",
+    "counterpart": "turkish-republic-of-northern-cyprus"
+   },
+   "mirror": {
+    "slug": "turkish-republic-of-northern-cyprus",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "TRNC has no vassal_start with counterpart republic-of-turkey; blocking finding for the TRNC (add 1975-02)"
+  },
+  {
+   "event": {
+    "slug": "turkish-republic-of-northern-cyprus",
+    "year": 1974,
+    "type": "war",
+    "counterpart": "republic-of-turkey"
+   },
+   "mirror": {
+    "slug": "republic-of-turkey",
+    "year": 1974,
+    "type": "war"
+   },
+   "status": "matched",
+   "note": "'Turkish invasion of Cyprus' zone Northern Cyprus in TRNC, Turkey, Cyprus and (after the reviewer's fix) greek-junta"
+  },
+  {
+   "event": {
+    "slug": "republic-of-lithuania",
+    "year": 1990,
+    "type": "found",
+    "counterpart": "lithuanian-soviet-socialist-republic"
+   },
+   "mirror": {
+    "slug": "lithuanian-soviet-socialist-republic",
+    "year": 1990,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "1990-03; LSSR successors [republic-of-lithuania]"
+  },
+  {
+   "event": {
+    "slug": "republic-of-lithuania",
+    "year": 1991,
+    "type": "contest_start",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1990,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "USSR 1990-03 over the whole country (conf 3); Lithuania 1991-01 over the Vilnius LRT/TV-tower sites: disagree on the land, 10 months apart"
+  },
+  {
+   "event": {
+    "slug": "republic-of-lithuania",
+    "year": 1991,
+    "type": "contest_end",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1991,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": "both 1991-09; zones differ (Vilnius sites vs Lithuania) as above"
+  },
+  {
+   "event": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1991,
+    "type": "loss",
+    "counterpart": "republic-of-lithuania"
+   },
+   "mirror": {
+    "slug": "republic-of-lithuania",
+    "year": 1990,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "USSR loses Lithuania 1991-09; Lithuania holds it from its 1990-03 found (via the LSSR), no gain; orchestrator to choose declaration (1990-03) or recognition (1991-09) as the handover"
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [],
+ "notes_path": "history/polities/_notes/review-eu-22-d.md",
+ "problems": [
+  "Reviewer-applied fixes (re-validated with --resolve, 0 errors, 0 warnings): greek-junta /wars/0/zones; portugal 'land area' -> 'total area' in /sources/0/note and /keyframe_review/0/note.",
+  "WebFetch returns a model summary of each page, not raw text; quotes above are what it returned. All 10 pages opened loaded (Greek junta, Turkish invasion of Cyprus, Metapolitefsi, Third Hellenic Republic, Malta, Portugal, Handover of Macau, Northern Cyprus, Lithuania, Act of the Re-Establishment). State of Malta not reopened (Malta page carried every dated claim).",
+  "Duplicate coverage portugal vs estado-novo (another group) needs an orchestrator decision; see cross_checks.",
+  "united-kingdom.json (eu-11) keeps Malta from 1801 to 2024 with no loss; route the 1964 and 1979 Malta events to eu-11."
+ ]
+}

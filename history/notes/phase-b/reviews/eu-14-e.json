@@ -1,0 +1,1062 @@
+{
+ "batch_id": "eu-14-e",
+ "verdicts": [
+  {
+   "slug": "kingdom-of-sweden",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (after /ledger/17) and /keyframe_review/18",
+     "applied": false,
+     "what": "The 1361 loss of Gotland to Valdemar IV is missing, and the new 1360-1374 keyframe keeps Gotland inside Sweden for 1361-1374.",
+     "why": "S5 (Magnus IV of Sweden), the page the dossier already cites: 'He went on to conquer Gotland in 1361.' 'On 27 July 1361, outside the city of Visby, the main city of Gotland, the final battle took place. It ended in a complete victory for Valdemar.' The dossier's own war /wars/3 names Gotland. Gazetteer: Gotland has 15 cells in the Sweden 1344 shape and 0 in the 1375 shape, so the 1344-1374 to 1375 change is partly this event.",
+     "fix": "Add {year 1361, month 7, type loss, region {admin1 Gotland, country Sweden, text 'Gotland and Visby'}, counterpart kingdom-of-denmark, source Magnus_IV_of_Sweden, confidence 3}; end keyframe kingdom-of-sweden_1360 at 1360 and add kingdom-of-sweden_1361 (1361-1374) = the same correction minus {admin1 Gotland, country Sweden}; add Gotland to /wars/3 zones."
+    },
+    {
+     "where": "/ledger/20 and /keyframe_review (1402-1501, 1521-1525)",
+     "applied": false,
+     "what": "Sweden's breaks with the Kalmar Union are not recorded: the ledger has only merge 1397 and a confidence-1 'split' in 1502, so Sweden is drawn by nobody in 1448-1456, 1464-1496, 1501 and from June 1523 to 1525.",
+     "why": "kalmar-union (written, conf 3 from Charles_VIII_of_Sweden, Christian_I_of_Denmark, John,_King_of_Denmark, Christian_II_of_Denmark, Swedish_War_of_Liberation) records loss 1448-6, gain 1457-6, loss 1464-6, gain 1497-10, loss 1501-8, gain 1520-11, contest 1521-1..1523-6 and dissolves 1523-6; its keyframes 1448, 1464-1496 and 1501 cut Sweden out ({cliopatria Kingdom of Sweden 1502}) and its last keyframe ends 1523. The Sweden row has no shape 1402-1501 or 1521-1525. 'split' (part of this state becomes the counterpart) is also the wrong direction for Sweden leaving the union.",
+     "fix": "Replace /ledger/20 with a gain from kalmar-union in 1501-8; add mirror events gain 1448-6, loss 1457-6, gain 1464-6, loss 1497-10, loss 1520-11, contest_start 1521-1, contest_end 1523-6 and gain 1523-6 (all counterpart kalmar-union, citing the pages kalmar-union cites); add new keyframes 1448-1456, 1464-1496 and 1501 (= {cliopatria Kingdom of Sweden, year 1502}, as kalmar-union subtracts) and 1523-1525 (the 1502 or 1526 shape); end the 1502 shape at 1520."
+    },
+    {
+     "where": "/wars/4/zones",
+     "applied": false,
+     "what": "Gustav Vasa's war has empty zones although ground changed hands.",
+     "why": "kalmar-union contests Sweden (region {cliopatria Kingdom of Sweden 1502}) from January 1521 to June 1523; the brief allows empty zones only where no ground changed hands.",
+     "fix": "Set zones to the Swedish realm ({cliopatria Kingdom of Sweden, year 1502}) and write the matching contest_start 1521-1 / contest_end 1523-6."
+    },
+    {
+     "where": "/ledger/28",
+     "applied": false,
+     "what": "A 1905 loss of Norway from a ledger that never gained Norway (the dossier itself calls 1814-1905 a personal union, not territory).",
+     "why": "No gain of Norway anywhere in the ledger; the 1905 shape is Sweden alone (458,353 km2). Non-blocking.",
+     "fix": "Drop the event, or keep it only once 1814-1905 is represented (merge of swedish-empire); kingdom-of-norway (eu-20) must mirror whatever is kept."
+    },
+    {
+     "where": "/notes (1612-1904)",
+     "applied": false,
+     "what": "The life is declared continuous 980-2024 but 1612-1904 has no keyframe and no event; grand-duchy-of-finland's 1809-9 gain from kingdom-of-sweden has no mirror.",
+     "why": "The Sweden infobox (S1) itself lists 'Swedish Empire: 1611-1721' as an era of the same state, which supports the author's no-break decision; the drawing for those years then depends on a separate swedish-empire dossier (not written). Orchestrator decision, flagged by the author; non-blocking for this author.",
+     "fix": "Orchestrator: merge swedish-empire (and the United Kingdoms of Sweden and Norway row) into this dossier, or pause this dossier 1612-1904 with explicit hand-over events; either way the 1617-1809 gains and losses must name kingdom-of-sweden or swedish-empire consistently with grand-duchy-of-finland."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/22 and /keyframe_review/24",
+     "what is missing": "The Swedish occupation of Jamtland, Herjedalen and Trondelag in the Northern Seven Years' War explains the Jamtland in the 1564 shape and the 55 k km2 drop of 1572. The page (opened by the reviewer): 'In 1564 the Swedes marched under Claude Collart and re-occupied Jemtland ... as well as Herjedalen and Trondelag, including the city of Trondheim'; 'These provinces were later regained by Denmark-Norway following the peace process in 1570'; 'peace was finally reached on 13 December 1570 with the Treaty of Stettin'. denmark-norway already records contest 1563..1570-12 with kingdom-of-sweden. Write occupation_start 1564 / occupation_end 1570-12 (counterpart denmark-norway), the war, and end the 1564 shape's Jamtland at 1570.",
+     "page to try": "https://en.wikipedia.org/wiki/Northern_Seven_Years%27_War"
+    },
+    {
+     "where": "/keyframe_review/21",
+     "what is missing": "The +217 k km2 of the 1526 shape (north to 70.02N) is unexplained (unverified: page budget).",
+     "page to try": "https://en.wikipedia.org/wiki/Gustav_I_of_Sweden"
+    },
+    {
+     "where": "/ledger/3, /ledger/5, /ledger/7, /ledger/8",
+     "what is missing": "Finnish and Karelian conquests 1220-1314 at confidence 1 (the pages date the crusades, not the conquests).",
+     "page to try": "https://en.wikipedia.org/wiki/Third_Swedish_Crusade"
+    },
+    {
+     "where": "/ledger/25",
+     "what is missing": "How and when Ingria and Kexholm were taken before 1588 (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Livonian_War"
+    },
+    {
+     "where": "/ledger/0, /ledger/2, /ledger/17, /ledger/20",
+     "what is missing": "Confidence-1 events: the 980 core, the 1003 handover, Blekinge in 1360, the 1502 split.",
+     "page to try": "https://en.wikipedia.org/wiki/Eric_the_Victorious"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No ruler strip although a documented list exists.",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_Swedish_monarchs"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_N%C3%B6teborg",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_N%C3%B6teborg",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Magnus_IV_of_Sweden",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Magnus_IV_of_Sweden",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Magnus_IV_of_Sweden",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Magnus_IV_of_Sweden",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Sweden",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Sweden",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Swedish_Estonia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/24",
+     "page": "https://en.wikipedia.org/wiki/Swedish_Estonia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/26",
+     "page": "https://en.wikipedia.org/wiki/History_of_Sweden",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/27",
+     "page": "https://en.wikipedia.org/wiki/Finland_under_Swedish_rule",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Finland_under_Swedish_rule",
+     "result": "confirmed"
+    },
+    {
+     "where": "/wars/3",
+     "page": "https://en.wikipedia.org/wiki/Magnus_IV_of_Sweden",
+     "result": "confirmed; the page also dates the conquest of Gotland to 1361, which the ledger lacks"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 450295,
+    "infobox_year": 2024,
+    "cliopatria_km2": 458353,
+    "ratio": 1.02,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "north-sea-empire",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "End of the 1031 Scottish submission (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Malcolm_II_of_Scotland"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Cnut_the_Great",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Cnut_the_Great",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Cnut_the_Great",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/North_Sea_Empire",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Cnut_the_Great",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 484573,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The infobox has no area (checked); it gives 1013-1042, the dossier 1018-1035 with denmark-england for 1040-1042, explained in K2 and notes."
+   }
+  },
+  {
+   "slug": "denmark-england",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "Winchester is an unsourced bridging capital.",
+     "page to try": "https://en.wikipedia.org/wiki/Winchester"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Harthacnut",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Harthacnut",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Harthacnut",
+     "result": "confirmed"
+    },
+    {
+     "where": "/identity/rulers/0",
+     "page": "https://en.wikipedia.org/wiki/Harthacnut",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 215699,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Neither page has an area; noted in K0."
+   }
+  },
+  {
+   "slug": "norway-denmark",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction (and /ledger/0/region)",
+     "applied": false,
+     "what": "The new 1042-1045 keyframe draws Denmark as the modern country and so drops Scania, Halland, Blekinge and southern Schleswig.",
+     "why": "Gazetteer: the correction holds 0 cells of Skane, Halland and Blekinge, while both neighbouring Cliopatria shapes (Denmark-England 1040 and Norway-Denmark 1046) hold 56, 26 and 13; {country Denmark} is 50,327 km2 against the 82.6 k km2 Danish part the K1 note itself gives. Nobody draws those provinces 1042-1045 (the Sweden shape stops at 56.25N).",
+     "fix": "Set /keyframe_review/0/correction to {\"cliopatria\": \"Norway-Denmark\", \"year\": 1046, \"text\": \"Magnus's two kingdoms, Norway and Denmark with Scania, as Cliopatria draws them in 1046\"} and use the same spec for /ledger/0/region."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "Nidaros is an unsourced bridging capital.",
+     "page to try": "https://en.wikipedia.org/wiki/Trondheim"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Magnus_the_Good",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Magnus_the_Good",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Magnus_the_Good",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Magnus_the_Good",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 379163,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on either page; noted in K1."
+   }
+  },
+  {
+   "slug": "norse-greenland",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1",
+     "applied": true,
+     "what": "The 1261 submission was a rename, which neither mirrors the suzerain nor marks the tie.",
+     "why": "G1: 'the Greenland colony subordinated itself to the Norwegian crown in 1261'; G2: 'in 1261, they accepted the overlordship of the Norwegian king'. The brief's mirror rule wants a vassal_start in the vassal's ledger with the suzerain as counterpart.",
+     "fix": "Applied by the reviewer: type vassal_start, counterpart old-kingdom-of-norway, region {union [Norse Greenland 1072, Qaqortoq 70 km]}, confidence 3; one sentence added to notes. Re-validated: 0 errors, 1 warning (vassal_start with no end, allowed because the tie lasts to 1408)."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding year (the page gives only 'after 986').",
+     "page to try": "https://en.wikipedia.org/wiki/Erik_the_Red"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "End of the Eastern Settlement (the page gives 1408 as the last record and 'defunct by the late 15th century').",
+     "page to try": "https://en.wikipedia.org/wiki/Hvalsey_Church"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Norse_Greenland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Norse_Greenland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Norse_colonization_of_North_America",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Norse_colonization_of_North_America",
+     "result": "confirmed"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "page": "https://en.wikipedia.org/wiki/Norse_Greenland",
+     "result": "confirmed (gazetteer: 0 cells of the Qaqortoq 70 km disk inside the 1072 shape)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 26128,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on either page."
+   }
+  },
+  {
+   "slug": "livonian-brothers-of-the-sword",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/10/confidence",
+     "applied": true,
+     "what": "Saaremaa drawn as the Order's at confidence 3, but the page credits a joint conquest.",
+     "why": "B2 (Livonian Crusade): 'the Livonian Brothers of the Sword, the town of Riga, and the Bishop of Riga organized a combined attack against Saaremaa'; nothing says the Order held the island.",
+     "fix": "Applied: confidence 2, with a reviewer sentence in the note."
+    },
+    {
+     "where": "/ledger/13/region, /ledger/14/region, /identity/successors/0/land",
+     "applied": true,
+     "what": "The merge, the dissolve and the successor land used Cliopatria's uncorrected 1236/1240 shape (Semigallia in, the Danish north out), against the dossier's own 1230-1237 correction.",
+     "why": "B2: 'the Livonian Order partly subdued the Semigallians in 1254' and resistance went on 'until 1290'; /keyframe_review/8 removes Semigallia and adds the Danish north.",
+     "fix": "Applied: the three specs now copy /keyframe_review/8/correction (texts kept); note sentence added to /ledger/14. Re-validated with --resolve: 0 errors, 0 warnings. teutonic-order's 1237 gain region must be aligned (see cross_checks)."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "1206 Gauja Livs at confidence 1 (who held the land).",
+     "page to try": "https://en.wikipedia.org/wiki/Caupo_of_Turaida"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "1210 Koknese and Jersika at confidence 1 (the Order's third under the 1207 division).",
+     "page to try": "https://en.wikipedia.org/wiki/Terra_Mariana"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Livonian_Brothers_of_the_Sword",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Livonian_Brothers_of_the_Sword",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Livonian_Crusade",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Livonian_Crusade",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Danish_Estonia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Livonian_Crusade",
+     "result": "confirmed year; confidence lowered (joint attack)"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Livonian_Brothers_of_the_Sword",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Livonian_Brothers_of_the_Sword",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 68087,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The infobox has no area field (checked)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 980,
+    "type": "found",
+    "counterpart": "scandinavian-minor-kingdoms"
+   },
+   "mirror": {
+    "slug": "scandinavian-minor-kingdoms",
+    "year": 980,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1000,
+    "type": "gain",
+    "counterpart": "scandinavian-minor-kingdoms"
+   },
+   "mirror": {
+    "slug": "scandinavian-minor-kingdoms",
+    "year": 1000,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1003,
+    "type": "gain",
+    "counterpart": "scandinavian-minor-kingdoms"
+   },
+   "mirror": {
+    "slug": "scandinavian-minor-kingdoms",
+    "year": 1002,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "one year apart, accepted"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1293,
+    "type": "gain",
+    "counterpart": "novgorod-republic"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "novgorod-republic (eu-16) not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1323,
+    "type": "gain",
+    "counterpart": "novgorod-republic"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "novgorod-republic (eu-16) not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1348,
+    "type": "occupation_start",
+    "counterpart": "novgorod-republic"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "novgorod-republic (eu-16) not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1332,
+    "type": "gain",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-denmark (eu-14, another part) not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1360,
+    "type": "loss",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-denmark (eu-14, another part) not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1361,
+    "type": "loss (missing)",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Gotland 1361 (Magnus IV page) absent from the Sweden ledger; kingdom-of-denmark not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1397,
+    "type": "merge",
+    "counterpart": "kalmar-union"
+   },
+   "mirror": {
+    "slug": "kalmar-union",
+    "year": 1397,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kalmar-union",
+    "year": 1448,
+    "type": "loss",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "also 1457-6 gain, 1464-6 loss, 1497-10 gain, 1520-11 gain, 1521-1..1523-6 contest: no Swedish mirror; Sweden undrawn 1448-1456, 1464-1496, 1501, 1523-6..1525"
+  },
+  {
+   "event": {
+    "slug": "kalmar-union",
+    "year": 1501,
+    "type": "loss",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": 1502,
+    "type": "split"
+   },
+   "status": "mismatch",
+   "note": "Sweden has a confidence-1 'split' in 1502 (wrong direction); should be a gain from kalmar-union 1501-8"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1561,
+    "type": "gain",
+    "counterpart": "livonian-conference"
+   },
+   "mirror": {
+    "slug": "livonian-conference",
+    "year": 1561,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1563,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Northern Seven Years' War 1563/64..1570-12 (Jamtland, Herjedalen, Trondelag) not in the Sweden ledger or wars"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1583,
+    "type": "gain",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "tsardom-of-russia (eu-16) not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1588,
+    "type": "gain",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "tsardom-of-russia (eu-16) not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1590,
+    "type": "loss",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "tsardom-of-russia (eu-16) not written yet"
+  },
+  {
+   "event": {
+    "slug": "teutonic-order",
+    "year": 1398,
+    "type": "gain",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "Sweden lost Gotland to Denmark in 1361 (Magnus IV page); teutonic-order's owner should name the holder of 1398 from its own page, not kingdom-of-sweden"
+  },
+  {
+   "event": {
+    "slug": "grand-duchy-of-finland",
+    "year": 1809,
+    "type": "gain",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "deferred by the author to swedish-empire (not written); orchestrator to decide the merge"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sweden",
+    "year": 1905,
+    "type": "loss",
+    "counterpart": "kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-norway (eu-20) not written; the event itself is questionable (no earlier gain)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-england",
+    "year": 1018,
+    "type": "merge",
+    "counterpart": "north-sea-empire"
+   },
+   "mirror": {
+    "slug": "north-sea-empire",
+    "year": 1018,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "north-sea-empire",
+    "year": 1028,
+    "type": "occupation_start",
+    "counterpart": "old-kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1028,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "north-sea-empire",
+    "year": 1035,
+    "type": "occupation_end",
+    "counterpart": "old-kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1035,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "north-sea-empire",
+    "year": 1031,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-alba"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-alba (eu-11) not written yet"
+  },
+  {
+   "event": {
+    "slug": "north-sea-empire",
+    "year": 1035,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": {
+    "slug": "kingdom-of-england",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-england keeps England merged to 1042 with no 1035 event; nobody draws England 1035-11..1040-6. kingdom-of-england should regain England from north-sea-empire in 1035-11 (Harold Harefoot) and merge into denmark-england in 1040-6"
+  },
+  {
+   "event": {
+    "slug": "denmark-england",
+    "year": 1040,
+    "type": "found",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": {
+    "slug": "kingdom-of-england",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "same as above: no 1040 event in kingdom-of-england"
+  },
+  {
+   "event": {
+    "slug": "denmark-england",
+    "year": 1042,
+    "type": "loss",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": {
+    "slug": "kingdom-of-england",
+    "year": 1042,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "denmark-england",
+    "year": 1042,
+    "type": "dissolve",
+    "counterpart": "norway-denmark"
+   },
+   "mirror": {
+    "slug": "norway-denmark",
+    "year": 1042,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "norway-denmark",
+    "year": 1042,
+    "type": "found",
+    "counterpart": "old-kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "old-kingdom-of-norway",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "old-kingdom-of-norway has no 1042 merge or 1047 split and keeps drawing Norway (keyframes _1040, _1046): Norway is drawn twice 1042-1047. Orchestrator: Norway pauses (merge 1042, split 1047-10) as Sweden does for Kalmar, or norway-denmark drops Norway"
+  },
+  {
+   "event": {
+    "slug": "norway-denmark",
+    "year": 1047,
+    "type": "dissolve",
+    "counterpart": "old-kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "old-kingdom-of-norway",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "see the 1042 entry"
+  },
+  {
+   "event": {
+    "slug": "norse-greenland",
+    "year": 1261,
+    "type": "vassal_start",
+    "counterpart": "old-kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1261,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "after the reviewer's fix norse-greenland records the vassal tie; old-kingdom-of-norway records a gain and draws Greenland 1261-1397 (and its 1272 Greenland lacks the Eastern Settlement: 0 cells near Qaqortoq). Norway's event should become vassal_start (counterpart norse-greenland) and its keyframes drop Greenland"
+  },
+  {
+   "event": {
+    "slug": "viking-settlements",
+    "year": 1000,
+    "type": "keyframe Greenland",
+    "counterpart": "norse-greenland"
+   },
+   "mirror": {
+    "slug": "norse-greenland",
+    "year": 986,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "viking-settlements already removes Greenland from its shapes in favour of norse-greenland; the author's open point (b) is settled"
+  },
+  {
+   "event": {
+    "slug": "livonian-brothers-of-the-sword",
+    "year": 1210,
+    "type": "gain",
+    "counterpart": "principality-of-jersika"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "principality-of-jersika (eu-16) not written yet"
+  },
+  {
+   "event": {
+    "slug": "livonian-brothers-of-the-sword",
+    "year": 1224,
+    "type": "gain",
+    "counterpart": "Archbishopric of Riga"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers (archbishopric-of-riga)"
+  },
+  {
+   "event": {
+    "slug": "livonian-brothers-of-the-sword",
+    "year": 1227,
+    "type": "gain",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-denmark not written yet; Stensby 1238 return belongs to teutonic-order"
+  },
+  {
+   "event": {
+    "slug": "livonian-brothers-of-the-sword",
+    "year": 1237,
+    "type": "merge",
+    "counterpart": "teutonic-order"
+   },
+   "mirror": {
+    "slug": "teutonic-order",
+    "year": 1237,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "years agree; land differs: teutonic-order's region is Cliopatria's uncorrected 1237 shape (Semigallia in, the Danish north out); the Livonian merge/dissolve now use the corrected keyframe. Align teutonic-order /ledger/2 region"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Sigtuna",
+   "kind": "place",
+   "used_in": "kingdom-of-sweden"
+  },
+  {
+   "name": "Noteborg / Oreshek / Shlisselburg",
+   "kind": "place",
+   "used_in": "kingdom-of-sweden"
+  },
+  {
+   "name": "Kexholm / Kakisalmi / Priozersk",
+   "kind": "place",
+   "used_in": "kingdom-of-sweden"
+  },
+  {
+   "name": "Brattahlid / Qassiarsuk",
+   "kind": "place",
+   "used_in": "norse-greenland"
+  },
+  {
+   "name": "Gardar / Igaliku",
+   "kind": "place",
+   "used_in": "norse-greenland"
+  },
+  {
+   "name": "Hvalsey",
+   "kind": "place",
+   "used_in": "norse-greenland"
+  },
+  {
+   "name": "Ivittuut",
+   "kind": "place",
+   "used_in": "norse-greenland"
+  },
+  {
+   "name": "Turaida",
+   "kind": "place",
+   "used_in": "livonian-brothers-of-the-sword"
+  },
+  {
+   "name": "Talava",
+   "kind": "region",
+   "used_in": "livonian-brothers-of-the-sword"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Archbishopric of Riga (Bishopric of Riga before 1255)",
+   "suggested_slug": "archbishopric-of-riga",
+   "years": []
+  },
+  {
+   "name": "Bishopric of Osel-Wiek",
+   "suggested_slug": "bishopric-of-osel-wiek",
+   "years": []
+  },
+  {
+   "name": "Danish Estonia (Duchy of Estonia)",
+   "suggested_slug": "danish-estonia",
+   "years": [
+    1219,
+    1346
+   ]
+  },
+  {
+   "name": "Estonians of Sakala and Ugandi (Estonian counties before the crusade)",
+   "suggested_slug": "ancient-estonia",
+   "years": [
+    1208,
+    1227
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-14-e.md",
+ "problems": [
+  "Northern_Seven_Years'_War with a raw apostrophe returned url_not_found; the %27-encoded URL worked.",
+  "Applied by the reviewer and re-validated: norse-greenland /ledger/1 (rename to vassal_start) and notes; livonian-brothers-of-the-sword /ledger/10 confidence, /ledger/13 and /ledger/14 regions, /identity/successors/0/land, /ledger/14 note.",
+  "Orchestrator decisions pending: swedish-empire merge into kingdom-of-sweden (1612-1904 undrawn and unexplained in this ledger); who pauses for the personal-union rows (old-kingdom-of-norway vs norway-denmark 1042-1047; kingdom-of-england 1035-1040); Denmark is undrawn 1036-1039 and 1048-1055 until kingdom-of-denmark is written.",
+  "Treatment of Cnut's Norway differs from Cnut's England across dossiers (Norway occupation 1028-1035, England merge 1018); consistent between the paired dossiers but worth one rule."
+ ]
+}

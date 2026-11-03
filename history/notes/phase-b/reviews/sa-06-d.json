@@ -1,0 +1,1235 @@
+{
+ "batch_id": "sa-06-d",
+ "verdicts": [
+  {
+   "slug": "british-ceylon",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kandy",
+     "result": "confirmed: 'by the 15 of that month, Colombo had fallen and Dutch rule on the island had come to an end' (February 1796); confidence 2 fits the 14/15 February vs 5 March 1796 conflict the note records"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/British_Ceylon",
+     "result": "confirmed: infobox 'Proclamation of the Crown colony: 25 March 1802'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kandy",
+     "result": "confirmed: 'On 31 January 1803, a British force led by General Hay Macdowall marched to Kandy and found it evacuated'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/British_Ceylon",
+     "result": "confirmed: 'In 1815 Kandy was captured in the Second Kandyan War, ending Sri Lankan independence'; infobox 'Signing of Kandyan Convention: 2 March 1815'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/British_Ceylon",
+     "result": "confirmed: infobox 'Independence: 4 February 1948'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 65993,
+    "infobox_year": 1946,
+    "cliopatria_km2": 28908,
+    "ratio": 0.44,
+    "acknowledged": true,
+    "note": "No Cliopatria British Ceylon shape is alive in 1946 (the row ends 1814); 28,908 km2 is the 1796-1814 coastal belt, against which the infobox's whole-island 65,993 km2 is 0.44, acknowledged in /keyframe_review/0. The new 1815-1947 keyframe (country Sri Lanka, about 65,600 km2) matches the infobox (ratio about 0.99)."
+   },
+   "review_notes": "Tried to break: years and months of found/gain/dissolve against both pages (all match); mirrors in dutch-ceylon (1796-02 dissolve to british-ceylon) and kingdom-of-kandy (1815-02 dissolve to british-ceylon) match within a month; certainty 1796-1814 + 1815-1948 is contiguous; the Ceylon/British Ceylon Wikidata split is argued in notes; the new keyframe has from, to and correction. Not a fault: the Uva Rebellion war (1817-1818) has a zone but no contest events (the brief only requires contest events to sit in a war zone); the notes say a sri-lanka dossier exists, which it does not yet (sa-06 parallel part, an allowed exception)."
+  },
+  {
+   "slug": "kashmir-and-jammu",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (missing events)",
+     "blocking": true,
+     "applied": false,
+     "what": "The princely state has no vassal relation to Britain at all, although three dossiers record it as their vassal and the dossier's own pages state it.",
+     "why": "Treaty of Amritsar page, Article 10: 'Maharajah Gulab Singh acknowledges the supremacy of the British Government'; Jammu and Kashmir (princely state) page: 'in a subsidiary alliance with the British East India Company from 1846 to 1858' and British paramountcy 'from 1858 until British withdrawal and the partition of British India in 1947', infobox 'End of British Crown Suzerainty: 15 August 1947'. Mirrors with no counterpart here: british-empire /ledger/68 (1846 vassal_start kashmir-and-jammu) and /ledger/103 (1858-11 vassal_end); east-india-company /ledger/66 and /ledger/98 (same); british-raj /ledger/3 (1858-11 vassal_start kashmir-and-jammu) and /ledger/25 (1947-08 vassal_end), both in this same batch.",
+     "fix": "Add vassal_start british-empire 1846-03 (Treaty of Amritsar, Art. 10, confidence 3), vassal_end british-empire 1858-11, vassal_start british-raj 1858-11 and vassal_end british-raj 1947-08 (princely state page), region {cliopatria: Kashmir and Jammu, year 1846 or 1947} as in the found event and the Raj's events. If the orchestrator rules east-india-company rather than british-empire as the 1846-1858 overlord, use that slug."
+    },
+    {
+     "where": "/end and /ledger/9 (with islamic-republic-of-pakistan /ledger/3, /ledger/4, /ledger/6)",
+     "blocking": false,
+     "applied": false,
+     "what": "The state ends with a dissolve in October 1947, but the pakistan dossier gains Gilgit (1947-11), Azad Kashmir (1947-11) and Baltistan (1948-08) from kashmir-and-jammu after that end, and this ledger has no mirror loss.",
+     "why": "Indo-Pakistani war of 1947-1948 page: accession 'on 26 October 1947'; 'By 1 November, Gilgit-Baltistan had been annexed from the Dogra dynasty'; Mirpur 'captured ... on 25 November 1947'; Skardu surrendered 'On 14 August' 1948. Gains from a state that no longer exists cannot be mirrored.",
+     "fix": "Settle one model with the pakistan dossier: either keep the end at 1947-10 and have pakistan name republic-of-india (the state having acceded) as counterpart of its 1947-11 and 1948-08 gains, or extend this state to the ceasefire of 1 January 1949 with loss events to islamic-republic-of-pakistan in 1947-11 (Gilgit; Azad Kashmir) and 1948-08 (Baltistan) before the dissolve."
+    },
+    {
+     "where": "/ledger/7 (was /ledger/6)",
+     "blocking": true,
+     "applied": true,
+     "what": "occupation_start by british-raj of Gilgit dated 1889 at confidence 3 is mis-dated: in 1889 the page has only a Political Agent; the land passed under the 1935 lease.",
+     "why": "Gilgit Agency page: Gilgit and Astore tehsils 'comprised the Gilgit wazarat of Jammu and Kashmir with its own governor' under dual rule; infobox 'Gilgit Wazarat leased: 26 March 1935'; 'The part of Gilgit wazarat lying to the west of Indus was leased by British in 1935.'",
+     "fix": "Applied by the reviewer: year 1889 -> 1935, month 3, region text 'the Gilgit Leased Area', event moved after the 1891 event to keep the ledger sorted; the mirror in british-raj moved the same way. Validates."
+    },
+    {
+     "where": "/ledger/10",
+     "blocking": false,
+     "applied": true,
+     "what": "vassal_end of hunza-and-nagar dated 1947-11, after the state's own end (1947-10).",
+     "why": "identity.end and the dissolve are 1947-10; the Gilgit-Baltistan page has Hunza accede to Pakistan on 3 November and Nagar on 18 November 1947.",
+     "fix": "Applied by the reviewer: month 11 -> 10 with a note. Validates."
+    },
+    {
+     "where": "/wars/2",
+     "blocking": false,
+     "applied": true,
+     "what": "The Indo-Pakistani War of 1947-1948 ran to 1949, outside the state's life (end 1947).",
+     "why": "Brief check 2: wars inside the life; war page: accession 26 October 1947, ceasefire 1 January 1949.",
+     "fix": "Applied by the reviewer: to 1949 -> 1947 with a note that the war continues in the india and pakistan dossiers."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "Year of the loss of Gilgit to Gohar Aman (confidence 1, dated from the Cliopatria outline); the Gilgit-Baltistan page summary gives 'Gohar Aman of Yasin conquered Gilgit in 1842' and no year for the second conquest.",
+     "page to try": "https://en.wikipedia.org/wiki/Gohar_Aman"
+    },
+    {
+     "where": "/keyframe_review/7",
+     "what is missing": "The 1891-1946 keyframe adds 25,800 km2 in Gilgit-Baltistan against 1884; Hunza and Nagar are explained (1891 vassal_start) but Yasin, Punial, Kuh-Ghizar and Ishkoman have no event (the Dogra conquest of Yasin in the 1860s).",
+     "page to try": "https://en.wikipedia.org/wiki/Yasin_Valley"
+    },
+    {
+     "where": "/keyframe_review/1, /keyframe_review/2, /keyframe_review/4",
+     "what is missing": "1848, 1849 and 1859 cell changes unverified: page budget (allowed).",
+     "page to try": "https://en.wikipedia.org/wiki/Gulab_Singh"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Amritsar_(1846)",
+     "result": "confirmed: 'in early 1847, Gulab Singh ceded Hazara back to the Lahore Darbār', 'in exchange for territory near Jammu'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Amritsar_(1846)",
+     "result": "confirmed at confidence 2: exchange 'for territory near Jammu'; 'Kashmir retained Bhadrawah, Lakhanpur, and Chandgraon'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Gilgit-Baltistan",
+     "result": "confirmed: 'It was not until his death in 1860 that Dogras finally managed to subdue Gilgit.'"
+    },
+    {
+     "where": "/ledger/7 (was /ledger/6)",
+     "page": "https://en.wikipedia.org/wiki/Gilgit_Agency",
+     "result": "mis-dated: the page gives a Political Agent in 1889 but Kashmir's own governor and dual rule until the lease of 26 March 1935; fixed to 1935-03 by the reviewer"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Gilgit_Agency",
+     "result": "confirmed: lease terminated '30 July 1947' (infobox), 1 July in the text, as the note says"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Jammu_and_Kashmir_(princely_state)",
+     "result": "confirmed: 'On 26 October 1947, Hari Singh acceded' (infobox 27 October 1947)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 182006,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The princely state page has no area in the infobox or the text (checked); the dossier says so. The 1947 shape is 182,006 km2; the 1846-1884 outlines (164,500-169,500 km2) carry 17,200 km2 of Himachal Pradesh, corrected."
+   }
+  },
+  {
+   "slug": "british-raj",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (missing events, 1893 and 1895)",
+     "blocking": true,
+     "applied": false,
+     "what": "The Durand Line agreement is not in the ledger, although the Durand Line page is one of the dossier's sources and the emirate-of-afghanistan dossier records two gains from british-raj on it at confidence 3; the omission is not flagged in the notes.",
+     "why": "emirate-of-afghanistan /ledger/18 (1893-11 gain from british-raj: 'Asmar in Kunar Valley as far as Chanak was ceded to Afghanistan', Nuristan and 'parts of Chitral' granted to Afghanistan) and /ledger/19 (1895 gain from british-raj: 'Nasrat and Bashgal, along with other areas, were ceded to Afghanistan'), both citing the Durand Line page. The Raj's certainty notes date the line 12 November 1893, and /keyframe_review/7 (1895) adds 16,400 km2 in Khyber Pakhtunkhwa that only the Chitral vassalage is said to explain.",
+     "fix": "Add loss events to emirate-of-afghanistan 1893-11 and 1895 with the Afghan dossier's regions and the Durand Line page as source; add the British side of the 1893 settlement (Waziristan, Bajaur, Mohmand, Chagai brought inside the British line) as gain events if the page names them, and say in the 1895 verdict which part of the 16,400 km2 is Durand land and which is Chitral."
+    },
+    {
+     "where": "/ledger/15 and /keyframe_review/9-19 corrections",
+     "blocking": true,
+     "applied": false,
+     "what": "The 1914 gain from tibet takes all of Arunachal Pradesh, Tawang included, and the 1939-1946 corrections re-add the 33,400 km2 Cliopatria drops, against the page the event cites.",
+     "why": "McMahon Line page: 'The district remained in Tibetan hands until 1951'; Lightfoot's 1938 visit was brief and Tibet 'regained its authority'; the page places Tawang 'under British jurisdiction' on paper only and does not describe a cession. The tibet dossier has /ledger/35 1914-07 contest_start british-raj (Tawang tract) and /ledger/39 1944 occupation_start by british-raj of the tract south of the Sela Pass only. The Raj's own note: 'Treaty gain on paper, administered land only later.'",
+     "fix": "Take the Tawang tract north of the Sela Pass (about 27.6 N 91.9 E) out of the 1914 gain and out of every Raj correction 1914-1946, or turn the 1914 event into a contest_start with tibet as the tibet dossier has it and add a 1944 occupation_start of the tract south of the Sela Pass; keep the tribal belt the British actually entered. Align type and month with tibet /ledger/35."
+    },
+    {
+     "where": "/ledger (missing event, 1865) and /wars/1/zones",
+     "blocking": false,
+     "applied": false,
+     "what": "No gain of the Bengal Duars from Bhutan in 1865, and the Anglo-Bhutan War has empty zones although ground changed hands (flagged by the author as page silent).",
+     "why": "kingdom-of-bhutan /ledger/17 1865-11 loss to british-raj ('the whole of the tract known as the Eighteen Duars' and 'the Hill territory on the left bank of the Teesta', Duar War page, confidence 3) and /ledger/18 (Dewangiri). Brief check 10: empty zones only where no ground changed hands.",
+     "fix": "Add a 1865-11 gain from kingdom-of-bhutan (Bengal Duars and the Kalimpong hills, Duar War page) and the same region as the war's zone, with contest events 1864-1865."
+    },
+    {
+     "where": "/ledger (missing event, 1860)",
+     "blocking": false,
+     "applied": false,
+     "what": "No loss of the western Terai (Naya Muluk) to Nepal in 1860.",
+     "why": "nepal /ledger/31 1860 gain from british-raj, confidence 2, Nepal page: 'In 1860 some parts of the western Terai region were gifted to Nepal by the British'.",
+     "fix": "Add a 1860 loss to nepal with nepal's region and the Nepal page."
+    },
+    {
+     "where": "/ledger (missing events, 1903-1908 and 1944)",
+     "blocking": false,
+     "applied": false,
+     "what": "The British expedition to Tibet and the occupation of the Chumbi Valley are absent, as is the 1944 occupation of the tract south of the Sela Pass.",
+     "why": "tibet /ledger/25-26 (1903-12 to 1904-09 contest with british-raj, Chumbi Valley and the Gyantse road, confidence 3), /ledger/27 and /ledger/29 (1904-09 to 1908-02 occupation of the Chumbi Valley by british-raj), /ledger/39 (1944 occupation_start by british-raj).",
+     "fix": "Add the war (British expedition to Tibet, 1903-1904) with its zone, occupation_start/occupation_end of the Chumbi Valley 1904-09 / 1908-02, and the 1944 occupation (see the McMahon finding)."
+    },
+    {
+     "where": "/ledger (missing events, Baluchistan and Kalat)",
+     "blocking": false,
+     "applied": false,
+     "what": "No event for British Baluchistan or the Khanate of Kalat, though the Raj page lists 'Baluchistan established as a Chief Commissionership' under Lytton (1876-1880) and the Raj outline holds the whole of Baluchistan.",
+     "why": "khanate-of-kalat /ledger/13 1877 loss to british-raj ('Quetta and Pishin, which became British Baluchistan', confidence 1; its note quotes the Baluchistan Agency page, 'following the 1876 treaty'). The kalat dossier was rewritten at 06:50 today and no longer carries a 1876-1947 vassal_start/vassal_end with british-raj.",
+     "fix": "Add a 1877 gain from khanate-of-kalat (Quetta and Pishin), and a vassal_start khanate-of-kalat (the 1876 treaty) with vassal_end 1947-08 once the kalat dossier settles; source the Baluchistan Agency page."
+    },
+    {
+     "where": "/ledger (missing events, 1891)",
+     "blocking": false,
+     "applied": false,
+     "what": "The Anglo-Manipur War and the British occupation of the Imphal valley in 1891 are absent.",
+     "why": "kingdom-of-manipur /ledger/7-10: 1891-03 contest_start, 1891-04 occupation_start, 1891-04 contest_end, 1891-09 occupation_end, all british-raj, confidence 3.",
+     "fix": "Add the mirror events and the war, or a vassal tint for Manipur if the orchestrator wants the princely states drawn."
+    },
+    {
+     "where": "/ledger/16 (was /ledger/11)",
+     "blocking": true,
+     "applied": true,
+     "what": "occupation_start of Gilgit dated 1889 at confidence 3 is mis-dated: in 1889 the page has only a permanent Political Agent; the British took the land under the 1935 lease.",
+     "why": "Gilgit Agency page: Gilgit and Astore 'comprised the Gilgit wazarat of Jammu and Kashmir with its own governor' (dual rule); infobox 'Gilgit Wazarat leased: 26 March 1935'.",
+     "fix": "Applied by the reviewer: 1889 -> 1935-03, region text 'the Gilgit Leased Area', event re-sorted after 1914; the kashmir-and-jammu mirror moved the same way. Validates."
+    },
+    {
+     "where": "/ledger/5",
+     "blocking": false,
+     "applied": true,
+     "what": "The 1869 Nicobar gain names counterpart nobody, but Denmark sold the islands to Britain and danish-india records the loss.",
+     "why": "Nicobar Islands page: Denmark's presence 'ended formally on 16 October 1868' when it sold its rights to the United Kingdom, which made the islands part of British India in 1869; danish-india /ledger/16 1868-10 loss to british-raj, /ledger/17 1869 dissolve.",
+     "fix": "Applied by the reviewer: counterpart -> danish-india, source -> Nicobar Islands page (added to sources[]). Validates."
+    },
+    {
+     "where": "/ledger/18 and /ledger/21",
+     "blocking": false,
+     "applied": true,
+     "what": "Japanese occupation of the Andaman and Nicobar Islands dated 1943-1945 at confidence 1 from the Cliopatria outline; empire-of-japan has 1942-03 to 1945-08.",
+     "why": "Japanese occupation of the Andaman and Nicobar Islands page: 'Port Blair was occupied on the 23 March 1942'; the islands were surrendered on 15 August 1945.",
+     "fix": "Applied by the reviewer: start 1943 -> 1942-03, end month 8, both confidence 3, source that page (added to sources[]). Validates."
+    },
+    {
+     "where": "/wars/0",
+     "blocking": false,
+     "applied": true,
+     "what": "Indian Rebellion of 1857 starts in 1857, before the Raj's start (1858-08).",
+     "why": "Brief check 2: wars inside the life.",
+     "fix": "Applied by the reviewer: from 1857 -> 1858 with a note that the 1857 phase belongs to british-empire."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/19, /ledger/20",
+     "what is missing": "1944 Japanese offensive into Manipur at confidence 1 ('a reading'; the Raj page is silent).",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Imphal"
+    },
+    {
+     "where": "/keyframe_review/10-14",
+     "what is missing": "1917, 1918, 1927, 1932 and 1938 north-east and Burma-China frontier tweaks unverified: page budget (allowed).",
+     "page to try": "https://en.wikipedia.org/wiki/North-East_Frontier_Tract"
+    },
+    {
+     "where": "/ledger (Aden, Straits Settlements)",
+     "what is missing": "Aden (Raj 1858-1937, on the Raj page) and the Straits Settlements (to 1867) are not written; Cliopatria does not draw them in the Raj row.",
+     "page to try": "https://en.wikipedia.org/wiki/Aden_Province"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No viceroy strip (the Raj page's table stops at 1884).",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_governors-general_of_India"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Sikkim",
+     "result": "confirmed: 'Under the 1861 Treaty of Tumlong, Sikkim became a British protectorate'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/British_Raj",
+     "result": "confirmed year: 'Nicobar Islands annexed and incorporated into India 1869' (viceroy table); counterpart corrected from the Nicobar Islands page"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Gandamak",
+     "result": "confirmed: 'signed on 26 May 1879'; 'Jurisdiction over the Korram and Pishin valleys, the Sibi district, and the Khyber pass were transferred to the British'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/British_rule_in_Burma",
+     "result": "confirmed: 'British troops entered Mandalay on 28 November 1885'; province of British India 1 January 1886"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Sikkim",
+     "result": "confirmed: 'In 1888 the British sent a military expedition to expel Tibetan forces from Sikkim'"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/British_Raj",
+     "result": "confirmed: capital to be moved from Calcutta to Delhi (1911 Durbar); infobox 'New Delhi (1911/1931-1947)'"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/McMahon_Line",
+     "result": "confirmed date (maps and notes exchanged 24-25 March 1914), but the region overreaches: 'The district remained in Tibetan hands until 1951' (blocking finding)"
+    },
+    {
+     "where": "/ledger/16 (was /ledger/11)",
+     "page": "https://en.wikipedia.org/wiki/Gilgit_Agency",
+     "result": "mis-dated (1889 Political Agent, not occupation; lease 26 March 1935); fixed by the reviewer"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/British_rule_in_Burma",
+     "result": "confirmed: 'The British separated Burma Province from British India on 1 April 1937'"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/British_Raj",
+     "result": "not on page, as the author said (confidence 1); re-dated from the Japanese occupation page by the reviewer"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 4993650,
+    "infobox_year": null,
+    "cliopatria_km2": 4902308,
+    "ratio": 0.98,
+    "acknowledged": true,
+    "note": "Infobox area has no year; compared with the 1946 shape as the author did. The corrected 1946 Raj (minus Burma about 677,000, Ceylon about 66,000 and Kashmir 182,000, plus the 33,400 km2 frontier tract) is about 4.0 M km2, ratio about 0.80: within a factor of two either way."
+   }
+  },
+  {
+   "slug": "islamic-republic-of-pakistan",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/identity/predecessors/1/slug, /ledger/5/counterpart",
+     "blocking": false,
+     "applied": true,
+     "what": "Counterpart slug 'kalat' does not exist; the Khanate of Kalat's dossier is khanate-of-kalat.",
+     "why": "history/polities/khanate-of-kalat.json (name 'Khanate of Kalat', 1666-1955); validator warning on /ledger/5; Princely state page: Kalat 'remained independent until it was acceded on 27 March 1948'.",
+     "fix": "Applied by the reviewer: kalat -> khanate-of-kalat (both places). Validates with 0 warnings."
+    },
+    {
+     "where": "/ledger/1/counterpart",
+     "blocking": false,
+     "applied": true,
+     "what": "Counterpart slug 'bahawalpur' does not exist; the state's dossier is bahawalpur-state.",
+     "why": "history/polities/bahawalpur-state.json (name 'Bahawalpur State'); Princely state page: 'Bahawalpur from the Punjab Agency joined Pakistan on 5 October 1947'.",
+     "fix": "Applied by the reviewer: bahawalpur -> bahawalpur-state. Validates."
+    },
+    {
+     "where": "/ledger (missing event, 1958) and /keyframe_review/0-1",
+     "blocking": false,
+     "applied": false,
+     "what": "No 1958 gain of Gwadar from Oman, and the Omani enclave stays inside the 1947 and 1948-1957 land (flagged by the author).",
+     "why": "sultanate-of-oman /ledger/24 1958-09 loss to islamic-republic-of-pakistan ('the Gwadar enclave', confidence 3). The Pakistan page does not mention it (checked).",
+     "fix": "Add a 1958-09 gain from sultanate-of-oman, region {place: Gwadar, km: 20} (in the gazetteer), sourced to the Gwadar page, and subtract the same region in the 1947 correction (the 1948-1962 shape can keep it as a small in-span event, or be marked adjust)."
+    },
+    {
+     "where": "/ledger/3, /ledger/4, /ledger/6",
+     "blocking": false,
+     "applied": false,
+     "what": "Gains from kashmir-and-jammu dated 1947-11 and 1948-08, after that state's own end (1947-10); no mirror loss exists.",
+     "why": "kashmir-and-jammu identity.end 1947-10 and /ledger/9 dissolve; war page: accession to India 26 October 1947.",
+     "fix": "Settle with kashmir-and-jammu (see its finding): either name republic-of-india as counterpart or have kashmir-and-jammu extended to 1949-01 with loss events."
+    },
+    {
+     "where": "/ledger/0 region and /ledger/1",
+     "blocking": false,
+     "applied": false,
+     "what": "Bahawalpur is counted twice: the found region (Cliopatria 1947 minus Kalat) already holds it, then /ledger/1 gains it again in October 1947; the neighbour dossiers now model Bahawalpur and Kalat as states that last to the One Unit merger (dissolve into Pakistan 1955-10) with no 1947-1948 event, while this ledger has gains in 1947-10 and 1948-03 and nothing in 1955.",
+     "why": "bahawalpur-state /ledger/2 and khanate-of-kalat /ledger/15: 1955-10 dissolve into islamic-republic-of-pakistan (both files rewritten at 06:50 today, during this review).",
+     "fix": "Subtract Bahawalpur from the found region as Kalat is subtracted; after the orchestrator settles the model, either keep the accession gains (and the neighbours add 1947/1948 losses) or turn them into vassal_start with 1955-10 gains."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (1947-11)",
+     "what is missing": "Accession of Hunza (3 November 1947) and Nagar (18 November 1947) to Pakistan (Gilgit-Baltistan page); hunza-and-nagar has no dossier yet.",
+     "page to try": "https://en.wikipedia.org/wiki/Gilgit-Baltistan"
+    },
+    {
+     "where": "/ledger (1947-09 to 1947-11)",
+     "what is missing": "Junagadh's accession to Pakistan and its annexation by India (Princely state page names it, no dates).",
+     "page to try": "https://en.wikipedia.org/wiki/Annexation_of_Junagadh"
+    },
+    {
+     "where": "/ledger (1968-1969)",
+     "what is missing": "Rann of Kutch dispute after the 1965 war (a tribunal award to Pakistan is to be checked on the page); /wars/1 says no border moved.",
+     "page to try": "https://en.wikipedia.org/wiki/Rann_of_Kutch"
+    },
+    {
+     "where": "/ledger (1947-1948)",
+     "what is missing": "Accession dates of Khairpur, Swat, Dir, Chitral, Amb, Las Bela, Makran and Kharan (flagged).",
+     "page to try": "https://en.wikipedia.org/wiki/Princely_states_of_Pakistan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Princely_state",
+     "result": "confirmed: 'Bahawalpur from the Punjab Agency joined Pakistan on 5 October 1947'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Indo-Pakistani_war_of_1947%E2%80%931948",
+     "result": "confirmed: 'By 1 November, Gilgit-Baltistan had been annexed from the Dogra dynasty'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Princely_state",
+     "result": "confirmed: 'The state remained independent until it was acceded on 27 March 1948'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Indo-Pakistani_war_of_1947%E2%80%931948",
+     "result": "confirmed at confidence 2: 'On 14 August, Thapa had to surrender Skardu' (1948 from context)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Pakistan",
+     "result": "confirmed: infobox 'Republic: 23 March 1956'"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Sino-Pakistan_Agreement",
+     "result": "confirmed: signed 2 March 1963; 'ceding its claim over 1,050 sq mi (2,730 km2) in Shaksgam'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 881913,
+    "infobox_year": 2024,
+    "cliopatria_km2": 875923,
+    "ratio": 0.99,
+    "acknowledged": true,
+    "note": "Infobox total (current) against the 2006-2024 shapes; quoted correctly in /keyframe_review/4 and /keyframe_review/10."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "british-ceylon",
+    "year": 1796,
+    "type": "found",
+    "counterpart": "dutch-ceylon"
+   },
+   "mirror": {
+    "slug": "dutch-ceylon",
+    "year": 1796,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "both 1796-02"
+  },
+  {
+   "event": {
+    "slug": "british-ceylon",
+    "year": 1815,
+    "type": "gain",
+    "counterpart": "kingdom-of-kandy"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kandy",
+    "year": 1815,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "kandy dissolves 1815-02 to british-ceylon; gain 1815-03"
+  },
+  {
+   "event": {
+    "slug": "kashmir-and-jammu",
+    "year": 1846,
+    "type": "gain",
+    "counterpart": "british-empire"
+   },
+   "mirror": {
+    "slug": "british-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Hazara gained 1846 from british-empire; british-empire has no 1846 loss of Hazara (only the vassal_start of Kashmir, /ledger/68)"
+  },
+  {
+   "event": {
+    "slug": "kashmir-and-jammu",
+    "year": 1847,
+    "type": "loss",
+    "counterpart": "sikh-empire"
+   },
+   "mirror": {
+    "slug": "sikh-empire",
+    "year": 1847,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Hazara, sikh-empire /ledger/27"
+  },
+  {
+   "event": {
+    "slug": "kashmir-and-jammu",
+    "year": 1847,
+    "type": "gain",
+    "counterpart": "sikh-empire"
+   },
+   "mirror": {
+    "slug": "sikh-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "territory near Jammu given in exchange for Hazara; sikh-empire has no 1847 loss"
+  },
+  {
+   "event": {
+    "slug": "kashmir-and-jammu",
+    "year": 1853,
+    "type": "loss",
+    "counterpart": "Yasin (Gohar Aman)"
+   },
+   "mirror": {
+    "slug": "yasin",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier; in the author's counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "kashmir-and-jammu",
+    "year": 1860,
+    "type": "gain",
+    "counterpart": "Yasin (Gohar Aman)"
+   },
+   "mirror": {
+    "slug": "yasin",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier; in the author's counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "british-empire",
+    "year": 1846,
+    "type": "vassal_start",
+    "counterpart": "kashmir-and-jammu"
+   },
+   "mirror": {
+    "slug": "kashmir-and-jammu",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "kashmir-and-jammu has no vassal_start british-empire (blocking finding); east-india-company /ledger/66 records the same relation: british-empire and east-india-company overlap"
+  },
+  {
+   "event": {
+    "slug": "british-empire",
+    "year": 1858,
+    "type": "vassal_end",
+    "counterpart": "kashmir-and-jammu"
+   },
+   "mirror": {
+    "slug": "kashmir-and-jammu",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "same; east-india-company /ledger/98 too"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1858,
+    "type": "vassal_start",
+    "counterpart": "kashmir-and-jammu"
+   },
+   "mirror": {
+    "slug": "kashmir-and-jammu",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "kashmir-and-jammu has no vassal_start british-raj (same batch)"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1947,
+    "type": "vassal_end",
+    "counterpart": "kashmir-and-jammu"
+   },
+   "mirror": {
+    "slug": "kashmir-and-jammu",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "same"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1935,
+    "type": "occupation_start",
+    "counterpart": "kashmir-and-jammu"
+   },
+   "mirror": {
+    "slug": "kashmir-and-jammu",
+    "year": 1935,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "both moved from 1889 to 1935-03 by the reviewer"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1947,
+    "type": "occupation_end",
+    "counterpart": "kashmir-and-jammu"
+   },
+   "mirror": {
+    "slug": "kashmir-and-jammu",
+    "year": 1947,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "1947-07"
+  },
+  {
+   "event": {
+    "slug": "kashmir-and-jammu",
+    "year": 1891,
+    "type": "vassal_start",
+    "counterpart": "hunza-and-nagar"
+   },
+   "mirror": {
+    "slug": "hunza-and-nagar",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier (sa-06-x); british-raj also takes Hunza-Nagar as vassal in 1891: two overlords"
+  },
+  {
+   "event": {
+    "slug": "islamic-republic-of-pakistan",
+    "year": 1947,
+    "type": "gain",
+    "counterpart": "kashmir-and-jammu"
+   },
+   "mirror": {
+    "slug": "kashmir-and-jammu",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "pakistan /ledger/3 and /ledger/4 (1947-11) and /ledger/6 (1948-08) gain from a state that ends 1947-10; kashmir has a dissolve with pakistan as successor, no loss"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1858,
+    "type": "found",
+    "counterpart": "british-empire"
+   },
+   "mirror": {
+    "slug": "british-empire",
+    "year": 1858,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Raj starts 1858-08, british-empire dissolves 1858-11 (within a year); east-india-company /ledger/100 also dissolves 1858-11 to british-raj: duplicate predecessor, for the orchestrator"
+  },
+  {
+   "event": {
+    "slug": "mughal-empire",
+    "year": 1858,
+    "type": "dissolve",
+    "counterpart": "british-raj"
+   },
+   "mirror": {
+    "slug": "british-raj",
+    "year": 1858,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Raj lists mughal-empire as predecessor"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1858,
+    "type": "vassal_start",
+    "counterpart": "hyderabad-state"
+   },
+   "mirror": {
+    "slug": "hyderabad-state",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "hyderabad-state has no event with british-raj (its last British event is the 1853 Berar occupation by british-empire); also /ledger/24 vassal_end 1947-08"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1861,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-sikkim"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sikkim",
+    "year": 1861,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "sikkim 1861-03; vassal_end 1947 matched too"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sikkim",
+    "year": 1861,
+    "type": "loss",
+    "counterpart": "british-raj"
+   },
+   "mirror": {
+    "slug": "british-raj",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "sikkim /ledger/8 gives the Darjeeling hills to british-raj in 1861, but the Kingdom of Sikkim page has 'Darjeeling given to British India: 1835' (before the Raj): sikkim's side should be fixed (year and british-empire)"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1869,
+    "type": "gain",
+    "counterpart": "danish-india"
+   },
+   "mirror": {
+    "slug": "danish-india",
+    "year": 1868,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "after the reviewer's counterpart fix (was nobody); danish-india 1868-10"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1879,
+    "type": "gain",
+    "counterpart": "emirate-of-afghanistan"
+   },
+   "mirror": {
+    "slug": "emirate-of-afghanistan",
+    "year": 1879,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "1879-05"
+  },
+  {
+   "event": {
+    "slug": "emirate-of-afghanistan",
+    "year": 1893,
+    "type": "gain",
+    "counterpart": "british-raj"
+   },
+   "mirror": {
+    "slug": "british-raj",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Durand Line: Asmar etc.; Raj has no 1893 loss (blocking finding)"
+  },
+  {
+   "event": {
+    "slug": "emirate-of-afghanistan",
+    "year": 1895,
+    "type": "gain",
+    "counterpart": "british-raj"
+   },
+   "mirror": {
+    "slug": "british-raj",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Nasrat and Bashgal; Raj has no 1895 loss"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1885,
+    "type": "gain",
+    "counterpart": "burma"
+   },
+   "mirror": {
+    "slug": "burma",
+    "year": 1885,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "1885-11; but british-burma /ledger/9 also gains Upper Burma from burma in 1886-01: Burma overlap flagged by the author"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1937,
+    "type": "loss",
+    "counterpart": "british-burma"
+   },
+   "mirror": {
+    "slug": "british-burma",
+    "year": 1937,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "british-burma has only a 1937 rename, no gain from british-raj; depends on the Burma overlap decision"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bhutan",
+    "year": 1865,
+    "type": "loss",
+    "counterpart": "british-raj"
+   },
+   "mirror": {
+    "slug": "british-raj",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Bengal Duars and Kalimpong hills (1865-11, c3) and Dewangiri; Raj has no gain"
+  },
+  {
+   "event": {
+    "slug": "nepal",
+    "year": 1860,
+    "type": "gain",
+    "counterpart": "british-raj"
+   },
+   "mirror": {
+    "slug": "british-raj",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Naya Muluk; Raj has no 1860 loss"
+  },
+  {
+   "event": {
+    "slug": "tibet",
+    "year": 1904,
+    "type": "occupation_start",
+    "counterpart": "british-raj"
+   },
+   "mirror": {
+    "slug": "british-raj",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Chumbi Valley 1904-09 to 1908-02 (tibet /ledger/27, /ledger/29); also the 1903-1904 contest"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1914,
+    "type": "gain",
+    "counterpart": "tibet"
+   },
+   "mirror": {
+    "slug": "tibet",
+    "year": 1914,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "Raj gain of all Arunachal Pradesh 1914-03 vs tibet contest_start 1914-07 and british-raj occupation south of the Sela Pass from 1944 (tibet /ledger/39), which the Raj lacks"
+  },
+  {
+   "event": {
+    "slug": "khanate-of-kalat",
+    "year": 1877,
+    "type": "loss",
+    "counterpart": "british-raj"
+   },
+   "mirror": {
+    "slug": "british-raj",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Quetta and Pishin (c1); kalat rewritten at 06:50 and no longer carries the 1876-1947 vassalage"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-manipur",
+    "year": 1891,
+    "type": "occupation_start",
+    "counterpart": "british-raj"
+   },
+   "mirror": {
+    "slug": "british-raj",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Imphal valley 1891-04 to 1891-09 (c3); Raj has neither the occupation nor the war"
+  },
+  {
+   "event": {
+    "slug": "gwalior-state",
+    "year": 1861,
+    "type": "gain",
+    "counterpart": "british-raj"
+   },
+   "mirror": {
+    "slug": "british-raj",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "gwalior /ledger/20-22: 1861 gain of Jhansi, 1885 gain of Gwalior fort and Morar, 1885 loss of Jhansi; internal exchanges the Raj does not record"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1942,
+    "type": "occupation_start",
+    "counterpart": "empire-of-japan"
+   },
+   "mirror": {
+    "slug": "empire-of-japan",
+    "year": 1942,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "after the reviewer's fix (was 1943, c1); end 1945-08 matched"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-thailand",
+    "year": 1942,
+    "type": "gain",
+    "counterpart": "british-raj"
+   },
+   "mirror": {
+    "slug": "british-burma",
+    "year": 1943,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Thailand takes the Shan States from british-raj, but Burma had left the Raj in 1937; british-burma /ledger/14-15 has the 1943 loss and 1945 gain: thailand's counterpart should be british-burma"
+  },
+  {
+   "event": {
+    "slug": "chiangmai",
+    "year": 1892,
+    "type": "loss",
+    "counterpart": "british-raj"
+   },
+   "mirror": {
+    "slug": "british-raj",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Trans-Salween Karenni towns; Burma was in British India in 1892, so british-raj or british-burma depending on the Burma overlap decision"
+  },
+  {
+   "event": {
+    "slug": "kengtung",
+    "year": 1895,
+    "type": "dissolve",
+    "counterpart": "british-raj"
+   },
+   "mirror": {
+    "slug": "british-raj",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "same Burma overlap dependency"
+  },
+  {
+   "event": {
+    "slug": "union-of-burma",
+    "year": 1948,
+    "type": "found",
+    "counterpart": "british-raj"
+   },
+   "mirror": {
+    "slug": "british-burma",
+    "year": 1948,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "union-of-burma names british-raj (ended 1947-08); british-burma /ledger/19 dissolves into union-of-burma: union-of-burma's counterpart should be british-burma"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1947,
+    "type": "loss",
+    "counterpart": "islamic-republic-of-pakistan"
+   },
+   "mirror": {
+    "slug": "islamic-republic-of-pakistan",
+    "year": 1947,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "1947-08"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1947,
+    "type": "loss",
+    "counterpart": "republic-of-india"
+   },
+   "mirror": {
+    "slug": "republic-of-india",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "republic-of-india not written yet (sa-06 parallel part)"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1895,
+    "type": "vassal_start",
+    "counterpart": "chitral"
+   },
+   "mirror": {
+    "slug": "chitral",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier; in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "british-raj",
+    "year": 1858,
+    "type": "vassal_start",
+    "counterpart": "Princely states of India (paramountcy)"
+   },
+   "mirror": {
+    "slug": "princely-states-of-india",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "generic union, no dossier; bahawalpur-state (rewritten 06:50) and kingdom-of-manipur no longer carry their 1858-1947 vassalage either"
+  },
+  {
+   "event": {
+    "slug": "islamic-republic-of-pakistan",
+    "year": 1947,
+    "type": "gain",
+    "counterpart": "bahawalpur-state"
+   },
+   "mirror": {
+    "slug": "bahawalpur-state",
+    "year": 1955,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "after the reviewer's slug fix; bahawalpur-state (rewritten 06:50) has no 1947 event and dissolves into Pakistan 1955-10"
+  },
+  {
+   "event": {
+    "slug": "islamic-republic-of-pakistan",
+    "year": 1948,
+    "type": "gain",
+    "counterpart": "khanate-of-kalat"
+   },
+   "mirror": {
+    "slug": "khanate-of-kalat",
+    "year": 1955,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "after the reviewer's slug fix; khanate-of-kalat (rewritten 06:50) has no 1948 event and dissolves into Pakistan 1955-10"
+  },
+  {
+   "event": {
+    "slug": "sultanate-of-oman",
+    "year": 1958,
+    "type": "loss",
+    "counterpart": "islamic-republic-of-pakistan"
+   },
+   "mirror": {
+    "slug": "islamic-republic-of-pakistan",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Gwadar 1958-09 (c3); pakistan has no gain"
+  },
+  {
+   "event": {
+    "slug": "islamic-republic-of-pakistan",
+    "year": 1963,
+    "type": "loss",
+    "counterpart": "people-s-republic-of-china"
+   },
+   "mirror": {
+    "slug": "people-s-republic-of-china",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "PRC not written yet (ea-08)"
+  },
+  {
+   "event": {
+    "slug": "islamic-republic-of-pakistan",
+    "year": 1971,
+    "type": "loss",
+    "counterpart": "people-s-republic-of-bangladesh"
+   },
+   "mirror": {
+    "slug": "people-s-republic-of-bangladesh",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "not written yet (sa-06 parallel part)"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Hunza",
+   "kind": "place",
+   "used_in": "british-raj"
+  },
+  {
+   "name": "Nagar (Gilgit-Baltistan)",
+   "kind": "place",
+   "used_in": "kashmir-and-jammu"
+  },
+  {
+   "name": "Chitral",
+   "kind": "place",
+   "used_in": "british-raj"
+  },
+  {
+   "name": "Kalat (Balochistan)",
+   "kind": "place",
+   "used_in": "islamic-republic-of-pakistan"
+  },
+  {
+   "name": "Hazara",
+   "kind": "region",
+   "used_in": "kashmir-and-jammu"
+  },
+  {
+   "name": "Kurram",
+   "kind": "region",
+   "used_in": "british-raj"
+  },
+  {
+   "name": "Tawang",
+   "kind": "place",
+   "used_in": "british-raj"
+  },
+  {
+   "name": "Kalimpong",
+   "kind": "place",
+   "used_in": "british-raj"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Hunza and Nagar (princely states)",
+   "suggested_slug": "hunza-and-nagar",
+   "years": [
+    1891,
+    1974
+   ]
+  },
+  {
+   "name": "Chitral (princely state)",
+   "suggested_slug": "chitral",
+   "years": [
+    1895,
+    1969
+   ]
+  },
+  {
+   "name": "Yasin (Gohar Aman)",
+   "suggested_slug": "yasin",
+   "years": [
+    1842,
+    1860
+   ]
+  },
+  {
+   "name": "Princely states of India (generic paramountcy union)",
+   "suggested_slug": "princely-states-of-india",
+   "years": [
+    1858,
+    1947
+   ]
+  },
+  {
+   "name": "Aden Province (Raj dependency)",
+   "suggested_slug": "colony-of-aden",
+   "years": [
+    1858,
+    1937
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-sa-06-d.md",
+ "problems": [
+  "khanate-of-kalat, bahawalpur-state and kingdom-of-manipur were rewritten at 06:50 today while this review ran: their 1858/1876-1947 vassal events with british-raj and their 1947/1948 events with pakistan are gone; the cross-checks reflect the files as of 06:55.",
+  "british-empire and east-india-company both cover Company India to 1858-11, both record Kashmir as vassal 1846-1858 and both dissolve into british-raj: duplicate land for the orchestrator (the Raj names british-empire).",
+  "Burma overlap (flagged by the author): british-raj and british-burma both draw Upper Burma 1886-1937; dependent mirrors in chiangmai (1892), kengtung (1895), kingdom-of-thailand (1942/1945, should name british-burma) and union-of-burma (1948 found names british-raj, should be british-burma).",
+  "kashmir-and-jammu end (1947-10) vs pakistan's 1947-11 and 1948-08 gains from it: needs one model across both dossiers (and republic-of-india when written).",
+  "The author's notes say a sri-lanka dossier exists; it does not yet (sa-06 parallel part).",
+  "WebFetch returns a model summary of each page; the quotes above are the summaries' quotations. The British Raj infobox area has no year. The Jammu and Kashmir (princely state) page has no area.",
+  "The gazetteer resolves 'Kalat' to Qalat, Afghanistan (alt_names): the author rightly used coordinates; a Balochistan Kalat entry is needed."
+ ]
+}

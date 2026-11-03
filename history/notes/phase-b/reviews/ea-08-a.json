@@ -1,0 +1,357 @@
+{
+ "batch_id": "ea-08-a",
+ "verdicts": [
+  {
+   "slug": "later-jin-dynasty",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/3/correction/union/0/minus/1, /keyframe_review/6/correction/minus/1, /keyframe_review/7/correction/minus/1, /ledger/21/region, /ledger/24/region, /ledger/25/region, /wars/7/zones/0",
+     "what": "{\"region\": \"Liaoxi\"} resolves to 365 cells (the gazetteer defines it as Liaoning minus the Liaodong polygon), 110 of them north and east of the Liao River (Kaiyuan, Xifeng, Changtu), so the minus-Liaoxi corrections cut Jin land held since 1619 out of the 1626-1628 and 1636-1641 shapes and the 1642 gain handed it over from the Ming a second time.",
+     "why": "gazetteer resolve: Kaiyuan (124.04 E, 42.55 N) and Xifeng fall in Liaoxi, not in Liaodong; Cliopatria's own 1629 and 1632 shapes hold 59 and 85 of these cells; the Nurhaci page has Tieling 'in the summer of 1619' and Kaiyuan occupied in the same campaign. The dossier's own text calls Liaoxi 'the Guangning-Jinzhou-Songshan side of the Liao River'.",
+     "fix": "Each Liaoxi spec replaced by {\"intersect\":[{\"region\":\"Liaoxi\"},{\"polygon\":[[118.5,38.5],[122.6,38.5],[122.6,42.55],[118.5,42.55]]}]} (255 cells: Guangning, Jinzhou, Xingcheng and Suizhong in; Kaiyuan out), text kept; corrected 1636 shape 9,311 cells and 1640 shape 12,015 cells now keep Kaiyuan.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/25",
+     "what": "The 1642 Liaoxi gain is at confidence 1 on the claim that the page gives no result, but the Later Jin page does give it.",
+     "why": "https://en.wikipedia.org/wiki/Later_Jin_(1616–1636): 'Hong Taiji [was able] to resoundingly defeat Ming forces in a series of battles from 1640 to 1642 for the territories of Songshan and Jinzhou'; 'This final victory resulted in the surrender of many of the Ming dynasty's most battle-hardened troops'.",
+     "fix": "Confidence 2 (the page names Songshan and Jinzhou, not all of Liaoxi), note rewritten with the quote; the same correction made in /wars/7/outcome, /keyframe_review/7/note and /keyframe_review/8/note.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/18, /ledger/19",
+     "what": "Confidence 3 on a zone the page does not name (all of North Korea plus Gyeonggi); the note itself calls the zone the researcher's reading.",
+     "why": "https://en.wikipedia.org/wiki/Qing_invasion_of_Joseon: 'On 9 December 1636, Hong Taiji led Manchu, Mongol, and Han Chinese Banners in a three pronged attack on Joseon'; no province list. Brief rule 7.",
+     "fix": "Confidence lowered to 2 with a one-line reason appended to each note.",
+     "applied": true
+    },
+    {
+     "where": "/identity/rulers",
+     "what": "The ruler strip stopped in 1643 with the claim that no opened page names the next ruler.",
+     "why": "https://en.wikipedia.org/wiki/Hong_Taiji infobox: 'Reign: 1636 - 21 September 1643', 'Successor: Shunzhi Emperor'.",
+     "fix": "Added {name: Shunzhi Emperor, from 1643, to 1644, title: Emperor of the Qing, source: Hong_Taiji}; Hong Taiji's note updated.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/16",
+     "what is missing": "How and when Heilongjiang (2,155 cells, about 0.5 M km2, drawn from 1636) came to the Jin: Hurha, Daur and Solon submissions before the 1636-1644 Amur expeditions; date and land are Cliopatria's (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Bombogor"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "The Liaodong peninsula towns of 1621-1622 (confidence 1, date from Cliopatria); the Later Jin page's 'the entire eastern part of Liao[dong]' may date them to 1621.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Shen-Liao"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "End and terms of the 1627 invasion (confidence 1, bridged from the joseon dossier, which has infobox 'January - 3 March 1627').",
+     "page to try": "https://en.wikipedia.org/wiki/Later_Jin_invasion_of_Joseon"
+    },
+    {
+     "where": "/ledger/25",
+     "what is missing": "Whether Ningyuan and the corridor to the Shanhai Pass (Xingcheng, Suizhong) stayed Ming until 1644; the 1642 gain gives all of western Liaoning.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Song-Jin"
+    },
+    {
+     "where": "/ledger/26",
+     "what is missing": "The 1644 dissolve is a Cliopatria row boundary, not an event (confidence 1); the orchestrator should decide whether later-jin-dynasty and qing-dynasty are merged.",
+     "page to try": "https://en.wikipedia.org/wiki/Transition_from_Ming_to_Qing"
+    },
+    {
+     "where": "/keyframe_review/6",
+     "what is missing": "The 1636 Cliopatria shape (kept apart from Korea and Liaoxi) also holds Inner Mongolia west to 100.6 E (Ordos, part of Alxa), 89 cells of Gansu and Ningxia, 336 of northern Hebei and 14 of Mongolia; no opened page puts the Ordos or Alxa under the Jin in 1636 and the Gansu/Ningxia cells may overlap the Ming. Unflagged in the note.",
+     "page to try": "https://en.wikipedia.org/wiki/Ordos_Mongols"
+    },
+    {
+     "where": "/keyframe_review/1, /keyframe_review/2",
+     "what is missing": "Kaiyuan, occupied with Tieling in 1619 per the Nurhaci page (undated sentence), is outside the corrected 1619-1625 shapes (Cliopatria 1622 and the Liaodong polygon both stop south of it).",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Sarhu"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "The eastern Inner Mongolian submissions before 1635 (Khorchin alliance 1624-1626, Kharachin 1628) are left out as associations; a vassal_start pair would show them.",
+     "page to try": "https://en.wikipedia.org/wiki/Khorchin_Mongols"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Nurhaci",
+     "result": "confirmed",
+     "detail": "'surrendered Fushun to the Manchus in 1618 as the result of the Battle of Fushun'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Nurhaci",
+     "result": "confirmed",
+     "detail": "'subduing Tieling in the summer of 1619'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Nurhaci",
+     "result": "confirmed",
+     "detail": "'By May 1621, Nurhaci had conquered the cities of Liaoyang and Shenyang'"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Qing_invasion_of_Joseon",
+     "result": "confirmed",
+     "detail": "infobox 9 December 1636 - 30 January 1637, 'Joseon switches tributary allegiance from the Ming to the Qing'; terms list no cession"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Later_Jin_(1616–1636)",
+     "result": "confirmed",
+     "detail": "'In 1635, the lingering Northern Yuan dynasty under Ejei Khan formally submitted to the Later Jin'; Hong Taiji page 'took over Inner Mongolia ... in three major wars'"
+    },
+    {
+     "where": "/ledger/23",
+     "page": "https://en.wikipedia.org/wiki/Hong_Taiji",
+     "result": "confirmed",
+     "detail": "'In 1640 he completed the conquest of the Evenks, when he defeated and captured their leader Bombogor'; also 'By 1644, the entire region was under his control'"
+    },
+    {
+     "where": "/ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Later_Jin_(1616–1636)",
+     "result": "confirmed, confidence understated",
+     "detail": "page gives the Jin victory 1640-1642 for Songshan and Jinzhou; raised from 1 to 2"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Hong_Taiji",
+     "result": "confirmed",
+     "detail": "'February 1627 his forces crossed the Yalu River which had frozen'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 2516284,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Later Jin infobox has no area (confirmed on the page); the author says so. Cliopatria grows 50,291 (1619) to 1,943,075 (1636) to 2,516,284 km2 (1640), each step carried by ledger gains (1618-1622 Liaodong, 1635 Inner Mongolia, 1636 Heilongjiang, 1640 Outer Manchuria)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1616,
+    "type": "found",
+    "counterpart": "ming-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ming-dynasty (ea-07) not written yet"
+  },
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1618,
+    "type": "gain",
+    "counterpart": "ming-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Fushun; ming-dynasty (ea-07) not written yet: it needs a 1618 loss"
+  },
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1619,
+    "type": "gain",
+    "counterpart": "ming-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Tieling; ea-07 not run: needs a 1619 loss"
+  },
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1619,
+    "type": "gain",
+    "counterpart": "Yehe (Hulun tribe)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in the author's counterparts_needing_dossiers (yehe, ea-08-x)"
+  },
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1621,
+    "type": "gain",
+    "counterpart": "ming-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Liaoyang and Shenyang, May 1621; ea-07 not run: Cliopatria's Ming loses Liaodong only in 1622"
+  },
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1622,
+    "type": "gain",
+    "counterpart": "ming-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Liaodong peninsula; ea-07 not run"
+  },
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1627,
+    "type": "contest_start",
+    "counterpart": "joseon"
+   },
+   "mirror": {
+    "slug": "joseon",
+    "year": 1627,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "month differs: later-jin 2 (Hong Taiji page 'February 1627'), joseon 1 (its page 'On 14 January'); end 1627-3 on both sides"
+  },
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1632,
+    "type": "contest_start",
+    "counterpart": "mongol-khanate"
+   },
+   "mirror": {
+    "slug": "mongol-khanate",
+    "year": 1632,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1635,
+    "type": "gain",
+    "counterpart": "mongol-khanate"
+   },
+   "mirror": {
+    "slug": "mongol-khanate",
+    "year": 1635,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "mongol-khanate loses its Cliopatria 1635 shape (2,675 cells, 1,987 in Inner Mongolia) and dissolves 1635-2; later-jin gains all of Inner Mongolia (5,496 cells), the wider land coming from tribes already allied"
+  },
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1636,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Heilongjiang, counterpart nobody (confidence 1)"
+  },
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1636,
+    "type": "contest_start",
+    "counterpart": "joseon"
+   },
+   "mirror": {
+    "slug": "joseon",
+    "year": 1636,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "both 1636-12; contest_end 1637-1 on both sides; joseon's zone is Seoul and Ganghwa only"
+  },
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1637,
+    "type": "vassal_start",
+    "counterpart": "joseon"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "joseon (jk-02) has no vassal event at all: it should add vassal_start 1637-1 with counterpart later-jin-dynasty (and qing-dynasty from 1645), as its own contest_end note already says"
+  },
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1640,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Outer Manchuria from the Evenk and Daur tribes, counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1642,
+    "type": "gain",
+    "counterpart": "ming-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Liaoxi (west of the Liao after the reviewer fix); ea-07 not run: needs a 1642 loss"
+  },
+  {
+   "event": {
+    "slug": "later-jin-dynasty",
+    "year": 1644,
+    "type": "dissolve",
+    "counterpart": "qing-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "successor qing-dynasty (ea-08-b) not written yet; it should start 1645 from this shape and restart the Joseon tributary tie"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Hetu Ala",
+   "kind": "place",
+   "used_in": "later-jin-dynasty"
+  },
+  {
+   "name": "Jianzhou",
+   "kind": "region",
+   "used_in": "later-jin-dynasty"
+  },
+  {
+   "name": "Chahar",
+   "kind": "region",
+   "used_in": "later-jin-dynasty"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Yehe (Hulun tribe)",
+   "suggested_slug": "yehe",
+   "years": [
+    1619,
+    1619
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ea-08-a.md",
+ "problems": [
+  "Gazetteer: the region 'Liaoxi' is defined as Liaoning minus the Liaodong polygon, so it also takes 110 cells north and east of the Liao River (Kaiyuan, Xifeng, Changtu); it should be limited to the land west of the Liao. Other dossiers using it: donghu, duan-liaoxi, northern-wei, second-turkic-khaganate, xianbei.",
+  "Identity question for the orchestrator (flagged by the author too): Cliopatria's 'Later Jin Dynasty' row runs to 1644 and 'Qing Dynasty' starts 1645, but the state is one (renamed Great Qing in 1636); different Wikidata ids, so the shared-id merge rule does not apply automatically.",
+  "joseon (jk-02) lacks the 1637 vassal_start that mirrors this dossier's; route to jk-02.",
+  "ming-dynasty and li-zicheng (ea-07) and qing-dynasty (ea-08-b) were not written yet; their mirrors count as exceptions.",
+  "Spot checks ran past the 4-event budget (8 events on 4 pages) because the three largest land moves sit on pages already opened."
+ ]
+}

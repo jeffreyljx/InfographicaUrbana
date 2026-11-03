@@ -1,0 +1,63 @@
+{
+ "window": "p1720-p1729",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "tibet gain of Central Tibet from qing-dynasty, 1720 (no month). The page supports it: 'In 1720, the Qing dynasty sent a large force under the leadership of Prince Xun, Yunti'; 'The larger expedition expelled the Dzungars and directly led to the Qing rule of Tibet'; 'After the liberation, the Ganden Phodrang aligned themselves to the Qing authority'. Tibet under Qing rule agrees: 'After 1720, the government was appointed by the Qing', and 'From 1721 to 1727, Tibet was governed by Khangchenne'. Spec {region: Central Tibet} = Xizang admin1, 4,342 cells (78.5-99.0 E, 27.4-36.4 N), which is the same region dzungar-khanate ledger/16 hands to the Qing. Trial: the qing-dynasty_1721 snap (-4,284) is gone and tibet_1721 drops from +4,169 to +16/-40. At the 1730 anchor Tibet holds 4,296 of the cells as a Qing vassal, and Bhutan (4) and the Mughals (7) are untouched. Today the event moves no cells: p1710-p1719 events/0-2 now keep Central Tibet Tibetan under Dzungar occupation, so at the 1720 start anchor Tibet already owns 4,338 cells (occupied) and dzungar ledger/16 finds nothing to give the Qing. It still writes the dated 1720 caption, and it keeps the fix in place if the p1710-p1719 entries change. Harmless.",
+   "page": "https://en.wikipedia.org/wiki/Dzungar_conquest_of_Tibet",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "hotaki-dynasty_1727 (1727-1729, from/to kept from the dossier): the correction is identical, apart from text, to the dossier's own hotaki-dynasty_1722 spec (Cliopatria Hotaki 1721 plus Isfahan 120 km, Shiraz 100 km and Kashan 70 km), 3,817 cells. It replaces Cliopatria's 1727 plateau outline (7,355 cells), which gave the Hotaki Khorasan. The pages back the cut: Ashraf Hotak, 'Tahmasp's forces captured Mashhad in November 1726 and eventually took control of all of northeastern Iran'; Campaigns of Nader Shah, 'The results of the siege had gifted the capital of Khorasan to Tahmasp'. Isfahan stays Afghan through 1729: Ashraf Hotak, 'Ashraf fled Isfahan on 13 November 1729' (the Campaigns page itself gives no date for the liberation). Trial: the hotaki_1727 snap (+3,523) is gone. The 1728 render shows the Hotaki holding the Kandahar-Sistan block with Isfahan, Kashan and Shiraz, and Mashhad Safavid. Residual, not an error of this entry: the pages put Ashraf's 'base in Tehran' in 1729 and call the Hotaks 'de facto rulers of most of Persia' until 1729, so the carried-forward shape is narrow on the plateau (see problems).",
+   "page": "https://en.wikipedia.org/wiki/Ashraf_Hotak",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "what": "safavid-dynasty_1727 = Cliopatria Hotaki 1727 minus the hotaki_1722 shape: 3,539 cells (47.8-61.2 E, 25.4-38.5 N), against 3,975 Safavid cells in 1726. It replaces the 150 km Qazvin circle (73 cells). It is the same construction as the dossier's safavid-dynasty_1729 (H1727 minus H1734), so 1726, 1727-1728 and 1729 now run on without a gap. In practice it covers 1727-1728: shapes.csv spans it 1727-1733, but the dossier's new safavid_1729 keyframe takes over from 1729. Supported for Khorasan (Mashhad to Tahmasp, November 1726: Ashraf Hotak and Campaigns of Nader Shah pages). Trial: the 1727 snap is +87/-27, the Hotaki/Safavid conflict falls from 4,770 to 1,165 cell-years (1722, older), and the Russian/Safavid conflict from 116 to 62. The 1728 render is right in outline. Side effects at the 1730 anchor: 52 Alborz/Gilan cells (49.0-51.6 E, 36.2-37.4 N) stay Russian, in line with Safavid ledger/62 (Gilan and Mazandaran to Russia, 1723). 22 cells of the Zanjan/Qazvin west stay Ottoman. 8 rim cells (48.9-51.6 E, 36.2-37.4 N, ids 198545, 198548, 198550, 198596, 198690, 198742, 198746, 198779) are inside Cliopatria's Safavid 1721 shape but outside the Hotaki 1727 outline, and turn from Safavid (under the Qazvin circle) to nobody from 1727. That is a minor hole (see problems). It is not fixed here because the obvious spec (S1721 within 150 km of Qazvin) would also take back the 22 Ottoman cells.",
+   "page": "https://en.wikipedia.org/wiki/Campaigns_of_Nader_Shah",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "fixed",
+   "what": "qing-dynasty_1727 = Cliopatria Qing 1727 + Kham east of the Dri + admin1 Qinghai. The page supports it: 'The Qing made the region of Amdo into the province of Qinghai in 1724'; 'The area of Kham east of the Dri River (Jinsha River-Upper Yangtze) was annexed to Sichuan in 1726-1727 through a treaty'. Resolved, the Kham piece adds 302 cells beyond Cliopatria's Qing shape: 223 in Sichuan (Garze, 97.6-100.6 E, all nobody in the published compile), 77 in Qinghai (already inside the admin1 piece), and 2 isolated cells in Xizang (97.71 E 28.49 N at Zayu, and 89.69 E 28.20 N on the Bhutan border). The 2 Xizang cells are not Kham east of the Dri, and the first trial drew them as Qing direct specks inside Tibet. Qinghai admin1 adds 338 cells: 79 nobody and 41 Dzungar (western Qaidam, 90.2-91.5 E, 36.6-38.7 N, taken by R2) become Qing, and 218 southern-Qinghai cells stay with Tibet as a Qing vassal (rule 4), so no land is taken from Tibet. After the fix: 41,133 cells = Cliopatria Qing 1727 plus Qinghai (40,910) plus the 223 Sichuan cells. The trial's qing_1727 snap is +44/-2, and the 1728 render shows Garze and Qinghai solid Qing, Tibet in the Qing tint and no specks.",
+   "page": "https://en.wikipedia.org/wiki/Tibet_under_Qing_rule",
+   "fix": "Wrapped the Kham piece (correction.union[1]) in {intersect: [<the Tibet 1682/1939-1938/1734/1721-1727 expression>, {admin1: Sichuan, country: China}]} with new text; appended a review note to why. Resolves to 41,133 cells (was 41,135); --check-patch ok; trial: applied.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/3",
+   "verdict": "pass",
+   "what": "viceroyalty-of-peru_1723 (1723-1738, from/to kept) = the dossier's own 1723 spec (identical apart from text, 12,357 cells) plus admin1 Loreto (1,302 cells, 1,301 of them new), 13,658 cells in all. The page supports it: New Granada suppressed '5 November 1723', re-established '20 August 1739'; the Audiencia of Santa Fe 'was re-incorporated into the Viceroyalty of Peru from 1723 to 1739'; the province list gives 'Maynas: 1717-1723, 1739-1802'. This matches Peru ledger/2 (1723-11 gain of New Granada's land) and the 1739 keyframes, where Peru drops Loreto and New Granada takes it. Trial: the viceroyalty-of-peru_1723 snap (-1,301, kept by none) is gone. At the 1730 anchor all 1,302 Loreto cells are Peru's (vassal tint of the Spanish Empire), against 1,301 nobody before. No conflict with Portugal or anyone else.",
+   "page": "https://en.wikipedia.org/wiki/Viceroyalty_of_New_Granada",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "patch_check": "5 entries, 5 ok, 0 rejected (--check-patch re-run after the review edit to keyframe_overrides/2); trial of the edited file: 5 applied, 666 other windows' entries applied, 0 skipped; conflicts 16,385 -> 12,440 cell-years; snaps 36 -> 32 (hotaki_1727, peru_1723, qing_1721 gone; tibet_1721 +16/-40; qing_1727 +44/-2)",
+ "problems": [
+  "events/0 moves no cells today: p1710-p1719 events/0-2 already keep Central Tibet Tibetan under Dzungar occupation at the 1720 start anchor, so dzungar-khanate ledger/16 finds nothing to give the Qing. The event is harmless, writes the 1720 caption and guards against a change to the p1710-p1719 entries. Keep it unless p1710-p1719 settles otherwise.",
+  "keyframe_overrides/1 leaves 8 Safavid rim cells nobody from 1727 (Alborz/Zanjan/Gilan edge, 48.9-51.6 E, 36.2-37.4 N; ids 198545, 198548, 198550, 198596, 198690, 198742, 198746, 198779). They lie in Cliopatria's Safavid 1721 shape but outside the Hotaki 1727 outline that both safavid_1727 (this patch) and safavid_1729 (dossier) are cut from, and they are still nobody at the 1730 anchor. The published compile had them Safavid through the Qazvin circle. For p1730-p1739 or the Safavid dossier: add them to the 1727/1729 Safavid shapes, keeping out Gilan, Mazandaran and the Ottoman-held Zanjan/Qazvin west (22 cells).",
+  "Persia 1722-1729, a residual in the dossier's hotaki_1722 shape, which keyframe_overrides/0 and /1 carry forward: the Hotak dynasty page calls the Hotaks 'de facto rulers of most of Persia' until 1729, and the Ashraf Hotak page has Nader 'forcing Ashraf to withdraw from his base in Tehran to Isfahan' after Damghan (29 September 1729). Yet the shape gives the Hotaki only Isfahan, Kashan and Shiraz on the plateau. Tehran, Qom, Yazd outside the Kashan circle, Fars outside the Shiraz circle and Lorestan are drawn Safavid 1722-1728, while the only dated Safavid land of 1726-1729 is northeastern Iran (Mashhad, November 1726). A dossier question for hotaki-dynasty and safavid-dynasty, not settled by the pages opened.",
+  "Hamadan (35 cells) is Safavid 1727-1729: the Ottoman 1727 keyframe drops it and the Safavid 1727 snap picks it up, yet Safavid ledger/69-70 has the Ottomans holding it until August 1730, and the Ashraf Hotak page says the October 1727 peace 'allowed the Ottomans to keep the Iranian lands they had occupied'. Not a patch entry. It needs an Ottoman event after the 1727 snap, or an ottoman-empire_1727 override agreed with p1730-p1739.",
+  "keyframe_overrides/2: the admin1 Qinghai piece also takes 41 western-Qaidam cells (90.2-91.5 E, 36.6-38.7 N) from the Dzungar khanate in 1727, by R2. That is plausible under 'Amdo made into the province of Qinghai in 1724', but no page places the Dzungar edge there.",
+  "Cross-boundary: keyframe_overrides/2 (qing_1727, 1727-1733) and /3 (peru_1723, 1723-1738) act in p1730-p1739. /1 (safavid_1727) spans 1727-1733 in shapes.csv but is superseded by the dossier's safavid_1729 from 1729. If p1730-p1739 overrides the same shape ids, this window's file wins and the other is reported."
+ ],
+ "pages_opened": [
+  "https://en.wikipedia.org/wiki/Dzungar_conquest_of_Tibet",
+  "https://en.wikipedia.org/wiki/Tibet_under_Qing_rule",
+  "https://en.wikipedia.org/wiki/Campaigns_of_Nader_Shah",
+  "https://en.wikipedia.org/wiki/Viceroyalty_of_New_Granada",
+  "https://en.wikipedia.org/wiki/Tahmasp_II",
+  "https://en.wikipedia.org/wiki/Ashraf_Hotak",
+  "https://en.wikipedia.org/wiki/Hotak_dynasty"
+ ]
+}

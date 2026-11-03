@@ -1,0 +1,559 @@
+{
+ "batch_id": "af-02-f",
+ "verdicts": [
+  {
+   "slug": "regency-of-algiers",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/4/counterpart, /ledger/5/counterpart, /ledger/6/counterpart, /wars/1/belligerents",
+     "what": "The 1790 siege, the 1792 end of the siege and the 1792 gain of Oran named kingdom-of-spain, but the existing spanish-empire dossier keeps Oran to 1792 (its 1780-1791 keyframes add the Oran cells back) and records the 1792 loss with regency-of-algiers as counterpart, so the pair did not match.",
+     "why": "spanish-empire.json ledger: '1792 loss regency-of-algiers: Spanish troops leave Oran'; keyframes 51-55 '[Repair 2026-10-19: Oran stays Spanish until 1792 ... added back]'. The Oran page confirms the siege by Mohammed el Kebir after the 1790 earthquake and the Spanish evacuation by February.",
+     "fix": "counterpart 'spanish-empire' in all three events; kingdom-of-spain dropped from the war's belligerents. The kingdom-of-spain dossier (eu-12) should leave the Oran cells of its 1778-1795 Cliopatria shapes to spanish-empire.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what": "The 1706 Cliopatria shape (span 1706-1708, verdict ok) overlapped the new 1708-1731 keyframe in 1708, although its own note says it is right only for 1706-1707.",
+     "why": "Oran page: 'Spanish sovereignty lasted until 1708 when the city was conquered by the Algerians'. shapes.csv regency-of-algiers_1706 runs 1706-1708.",
+     "fix": "verdict adjust, from 1706, to 1707, correction {cliopatria: Regency of Algiers, year 1706, text 'unchanged for 1706-1707 ...'}, as the author already did for the 1709 shape.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/wars",
+     "what is missing": "The Algerian-Tunisian wars of 1756 (Algiers takes Tunis and makes the bey tributary) and 1807 are in the beylik-of-tunis dossier's wars with regency-of-algiers as belligerent, but not here; the tributary relation (vassal_start 1756 / vassal_end 1807, counterpart beylik-of-tunis) is on neither side. The Regency page was truncated in 1710 for the author and for the reviewer.",
+     "page to try": "https://en.wikipedia.org/wiki/Beylik_of_Tunis"
+    },
+    {
+     "where": "/ledger (no event)",
+     "what is missing": "Touggourt and Ouargla (Beni Djallab) were the Regency's tributaries 'until 1830' (Regency page) and lie south of every Cliopatria shape (min lat 33.46 N); no vassal_start at 1706 / vassal_end 1830 records them.",
+     "page to try": "https://en.wikipedia.org/wiki/Touggourt"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "found 1706 at confidence 1: the year is Cliopatria's (the page dates the Regency from 1516); the 1516-1705 Regency and the de jure Ottoman suzerainty are for the ottoman-empire dossier (me-10) to settle.",
+     "page to try": "https://en.wikipedia.org/wiki/Regency_of_Algiers"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Oran",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Oran",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4-6",
+     "page": "https://en.wikipedia.org/wiki/Oran",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Regency_of_Algiers",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7-10",
+     "page": "https://en.wikipedia.org/wiki/Invasion_of_Algiers_in_1830",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 211975,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Infobox has no area (only population 1830); the author says so in /keyframe_review/0 and /keyframe_review/3."
+   }
+  },
+  {
+   "slug": "karamanli-dynasty",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/rulers/3",
+     "what": "The ruler list names 'Ali Pasha (Ali Burghul)' as the Karamanli ruler for 1793-1795, while the same batch draws Burghul as the rebel state ali-burghul that took Tripoli from the Karamanli; the map would label the Karamanli remnant with the usurper's name.",
+     "why": "Tripolitanian civil war page: Burghul 'expelled 'Ali ibn Mehmed Karamanli on 30 July 1793', who 'fled to Tunis'; 'On 19 January 1795, Hamet and his brother Yusuf returned to Tripoli ... and took control of the throne'. ali-burghul.json identity rulers: Burghul 1793-1795.",
+     "fix": "Replace the Burghul entry with the Karamanli claimant (Ali I Karamanli to 1795, note 'expelled from Tripoli 30 July 1793, in exile at Tunis until January 1795; Tripoli under Ali Burghul, see ali-burghul'), keeping the list contiguous. Non-blocking.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "1713 gain of the Cyrenaican coast from ottoman-empire at confidence 1: year of the Ottoman recognition of Ahmed and of the eastward expansion ('as far as Fezzan and Cyrenaica before his 1745 death', undated).",
+     "page to try": "https://en.wikipedia.org/wiki/Ahmed_Karamanli"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "1794 loss of the 30-cell south-east Tunisian strip to beylik-of-tunis at confidence 1 (Cliopatria only; the Tunis dossier's mirror is also confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Hammuda_ibn_Ali"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "Derna after the June 1805 treaty (the First Barbary War page is silent).",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Derna_(1805)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Karamanli_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2, /ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Tripolitanian_civil_war",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5-6",
+     "page": "https://en.wikipedia.org/wiki/First_Barbary_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7-8",
+     "page": "https://en.wikipedia.org/wiki/Karamanli_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9-10",
+     "page": "https://en.wikipedia.org/wiki/Fezzan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11-12",
+     "page": "https://en.wikipedia.org/wiki/Ottoman_Tripolitania",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 85534,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Infobox has no area (fields: Country, Founded 1711, Deposition 1832); said in /keyframe_review/0."
+   }
+  },
+  {
+   "slug": "ottoman-tripolitania",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Ottoman_Tripolitania",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Ottoman_Tripolitania",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Ottoman_Tripolitania",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Italo-Turkish_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4-6",
+     "page": "https://en.wikipedia.org/wiki/Italo-Turkish_War",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 881872,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Infobox has no area; said in /keyframe_review/1. The Somaliland stray (bbox of the 1840/1859 shapes reaches 10.06 N, 45.1 E) is real and is cut by the corrections."
+   }
+  },
+  {
+   "slug": "emirate-of-abdelkader",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/3, /keyframe_review/4",
+     "what is missing": "The Emirate shrinks by about 14,500 km2 from the 1837 to the 1840 keyframe and by about 18,800 km2 from 1840 to 1842 (Cliopatria's remainder as French Algeria grows from 15,320 to 29,467 to 48,573 km2), but the ledger has no loss event for either step, only the 1839 contest_start over the whole land; french-algeria (af-08) will need the matching gains.",
+     "page to try": "https://en.wikipedia.org/wiki/Emir_Abdelkader"
+    },
+    {
+     "where": "/ledger/7, /ledger/8",
+     "what is missing": "1846 contest_end and loss of the last ground at confidence 1 (the year is Cliopatria's; the conquest page has the Kabylia campaign 'launched in 1845' and the surrender in December 1847).",
+     "page to try": "https://en.wikipedia.org/wiki/Emir_Abdelkader"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "Mejdana (Setif) and Ziban (Biskra), Emirate provinces on its page, and the fall of Tagdemt, Mascara and Tlemcen (1841-1842) are undated; Clausel's December 1835 attack on Mascara (on the conquest page) is not in the ledger.",
+     "page to try": "https://en.wikipedia.org/wiki/Emir_Abdelkader"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Emirate_of_Abdelkader",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/French_conquest_of_Algeria",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/French_conquest_of_Algeria",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4-5",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Tafna",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Emirate_of_Abdelkader",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "State Cliopatria lacks; infobox has no area; 'approximately two thirds of Algeria' (Treaty of Tafna page) against 498 of 743 remainder cells (67 percent) in /keyframe_review/2."
+   }
+  },
+  {
+   "slug": "ali-burghul",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0-1",
+     "page": "https://en.wikipedia.org/wiki/Tripolitanian_civil_war",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Tripolitanian_civil_war",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4-5",
+     "page": "https://en.wikipedia.org/wiki/Tripolitanian_civil_war",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No Cliopatria row and no infobox area; the 80 km radius is stated as the researcher's reading."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "regency-of-algiers",
+    "year": 1708,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1708,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Oran, both confidence 3."
+  },
+  {
+   "event": {
+    "slug": "regency-of-algiers",
+    "year": 1732,
+    "type": "loss",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1732,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Oran."
+  },
+  {
+   "event": {
+    "slug": "regency-of-algiers",
+    "year": 1792,
+    "type": "gain",
+    "counterpart": "spanish-empire"
+   },
+   "mirror": {
+    "slug": "spanish-empire",
+    "year": 1792,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "After the reviewer's fix (counterpart was kingdom-of-spain)."
+  },
+  {
+   "event": {
+    "slug": "regency-of-algiers",
+    "year": 1830,
+    "type": "loss",
+    "counterpart": "french-algeria"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "french-algeria (af-08) not written yet."
+  },
+  {
+   "event": {
+    "slug": "karamanli-dynasty",
+    "year": 1713,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ottoman-empire (me-10) not written yet; it should drop the Libyan coast after 1712 and the 87 Tripolitanian cells of 1836-1839."
+  },
+  {
+   "event": {
+    "slug": "karamanli-dynasty",
+    "year": 1793,
+    "type": "loss",
+    "counterpart": "ali-burghul"
+   },
+   "mirror": {
+    "slug": "ali-burghul",
+    "year": 1793,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Tripoli, 30 July 1793."
+  },
+  {
+   "event": {
+    "slug": "karamanli-dynasty",
+    "year": 1794,
+    "type": "loss",
+    "counterpart": "beylik-of-tunis"
+   },
+   "mirror": {
+    "slug": "beylik-of-tunis",
+    "year": 1794,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Tunisian strip, both confidence 1."
+  },
+  {
+   "event": {
+    "slug": "karamanli-dynasty",
+    "year": 1795,
+    "type": "gain",
+    "counterpart": "ali-burghul"
+   },
+   "mirror": {
+    "slug": "ali-burghul",
+    "year": 1795,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Tripoli, 19 January 1795."
+  },
+  {
+   "event": {
+    "slug": "karamanli-dynasty",
+    "year": 1807,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Cyrenaican tribes; counterpart nobody."
+  },
+  {
+   "event": {
+    "slug": "karamanli-dynasty",
+    "year": 1807,
+    "type": "vassal_start",
+    "counterpart": "Fezzan (Awlad Muhammad dynasty)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed by the author under counterparts_needing_dossiers (awlad-muhammad-dynasty, af-02-x)."
+  },
+  {
+   "event": {
+    "slug": "karamanli-dynasty",
+    "year": 1811,
+    "type": "gain",
+    "counterpart": "Fezzan (Awlad Muhammad dynasty)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Same; occupier unnamed on the Fezzan page ('1811/1812')."
+  },
+  {
+   "event": {
+    "slug": "karamanli-dynasty",
+    "year": 1835,
+    "type": "loss",
+    "counterpart": "ottoman-tripolitania"
+   },
+   "mirror": {
+    "slug": "ottoman-tripolitania",
+    "year": 1835,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Found + gain on the Ottoman side, May 1835."
+  },
+  {
+   "event": {
+    "slug": "ottoman-tripolitania",
+    "year": 1912,
+    "type": "loss",
+    "counterpart": "italian-africa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "italian-africa not written yet (its group has not run); it should mirror the contest from October 1911 and the gain of October 1912."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-abdelkader",
+    "year": 1834,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Oran province outside French hands; the Regency ended 1830."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-abdelkader",
+    "year": 1837,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Tafna interior; no Titteri dossier."
+  },
+  {
+   "event": {
+    "slug": "emirate-of-abdelkader",
+    "year": 1846,
+    "type": "loss",
+    "counterpart": "french-algeria"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "french-algeria (af-08) not written yet; confidence 1. The 1840 and 1842 shrinkages have no loss events (thin)."
+  },
+  {
+   "event": {
+    "slug": "ali-burghul",
+    "year": 1793,
+    "type": "gain",
+    "counterpart": "karamanli-dynasty"
+   },
+   "mirror": {
+    "slug": "karamanli-dynasty",
+    "year": 1793,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "ali-burghul",
+    "year": 1795,
+    "type": "loss",
+    "counterpart": "karamanli-dynasty"
+   },
+   "mirror": {
+    "slug": "karamanli-dynasty",
+    "year": 1795,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Djerba",
+   "kind": "place",
+   "used_in": "ali-burghul"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Beylik of Constantine (Ahmed Bey)",
+   "suggested_slug": "beylik-of-constantine",
+   "years": [
+    1830,
+    1837
+   ]
+  },
+  {
+   "name": "Fezzan under the Awlad Muhammad dynasty",
+   "suggested_slug": "awlad-muhammad-dynasty",
+   "years": [
+    1550,
+    1812
+   ]
+  },
+  {
+   "name": "Senussi order",
+   "suggested_slug": "senussi-order",
+   "years": [
+    1880,
+    1912
+   ]
+  },
+  {
+   "name": "Beylik of Titteri / Kabylia (post-1830 remainder of Algeria)",
+   "suggested_slug": "beylik-of-titteri",
+   "years": [
+    1830,
+    1837
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-af-02-f.md",
+ "problems": [
+  "https://en.wikipedia.org/wiki/Regency_of_Algiers is truncated by WebFetch in the 1710 sentence for the reviewer too (as the author reported); 1710-1830 could not be checked on it.",
+  "Neighbour dossiers present: beylik-of-tunis, morocco, spanish-empire. Not written yet (groups not run): ottoman-empire, french-algeria, french-africa, british-africa, muhammad-ali-dynasty, khedivate-of-egypt, kingdom-of-spain, italian-africa, beylik-of-constantine.",
+  "Reviewer applied two small fixes to regency-of-algiers.json (counterpart slug for 1790-1792, keyframe 0 years); re-validated with --resolve: 0 errors, 0 warnings."
+ ]
+}

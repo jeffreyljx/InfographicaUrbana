@@ -1,0 +1,560 @@
+{
+ "batch_id": "eu-13-f",
+ "verdicts": [
+  {
+   "slug": "giudicato-of-cagliari",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger (between /ledger/3 and /ledger/4) and /wars/2/zones",
+     "what is missing": "William I's control of Arborea. The Cagliari page says 'He arrested and imprisoned the judge of Arborea, Peter I and ruled Arborea in his name' with no years; it.wikipedia dates the war on Arborea to 1195 and says William had himself recognised as ruler after subduing it. The ledger has no occupation or vassal event for it, and war 'William I of Cagliari's wars' has zones [] although its own outcome says Arborea came under Cagliari. Write occupation_start/occupation_end (or vassal_start/vassal_end) against giudicato-of-arborea with the years from Peter I's page, and give the war a zone.",
+     "page to try": "https://en.wikipedia.org/wiki/Peter_I_of_Arborea"
+    },
+    {
+     "where": "/identity/successors and /ledger/8",
+     "what is missing": "Which third went to whom in 1258. Every successor's land is the whole 1187 shape. it.wikipedia gives the parts: Gallura took the north-east ('l'Ogliastra e il Sarrabus'), Arborea the centre-north ('la parte zona centro-settentrionale'), the Della Gherardesca the west ('la regione occidentale del Sulcis-Iglesiente'), and Pisa held Castel di Castro directly until 1326. Narrow each successor's land to its part.",
+     "page to try": "https://it.wikipedia.org/wiki/Giudicato_di_Cagliari"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "The founding year. 866 is Cliopatria's year at confidence 1. The page says 'The exact date of founding of the Judicate of Cagliari is unknown' and the infobox says Established 1020; History of Sardinia says the judicates appeared 'From the mid-11th century'.",
+     "page to try": "https://it.wikipedia.org/wiki/Giudicato_di_Cagliari"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Judicate_of_Cagliari",
+     "result": "confirmed: 'William spent his reign (1188 – 1214)'; Obert, Margrave of Massa, sent by Pisa; History of Sardinia: 'In 1188, Cagliari was conquered by the House of Massa from the Republic of Pisa.'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Judicate_of_Cagliari",
+     "result": "confirmed: 'in 1258 the history of the giudicato came to a sudden close', 'partitioned in three parts', 'assigned to the Della Gherardesca family, Arborea and Gallura', 'Pisa maintained the control over Castel di Castro'"
+    },
+    {
+     "where": "/ledger/1-2",
+     "page": "https://en.wikipedia.org/wiki/Mujahid_al-Amiri",
+     "result": "confirmed: 1015, 120 ships, 'occupied the southern coastal plain'; the following year 'defeated the army of the judge of Cagliari'; 'In May 1016' (a garbled sentence, as the note says); fled by sea"
+    },
+    {
+     "where": "/ledger/4-5",
+     "page": "https://en.wikipedia.org/wiki/Judicate_of_Gallura",
+     "result": "confirmed: 'In 1206, William I of Cagliari invaded Gallura'; 'in 1207, Elena married the Pisan Lamberto Visconti'; Cagliari page: 'rebuffed by Lamberto Visconti'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": 1020,
+    "cliopatria_km2": 10263,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the Cagliari page; the keyframe notes say so."
+   }
+  },
+  {
+   "slug": "giudicato-of-gallura",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (new event between /ledger/5 and /ledger/6)",
+     "what": "The 1258 gain of a third of the Judicate of Cagliari is missing, although the batch's own Cagliari dossier lists giudicato-of-gallura as a successor and the author's notes say Gallura should carry the gain.",
+     "why": "Judicate of Cagliari page: 'his territory was partitioned in three parts', 'assigned to the Della Gherardesca family, Arborea and Gallura'. it.wikipedia Giudicato di Cagliari: the north-eastern part, 'l'Ogliastra e il Sarrabus', went to the judicate of Gallura. That is several thousand km2 against Gallura's 4,598.",
+     "fix": "Add {year: 1258, type: gain, counterpart: giudicato-of-cagliari, region: intersect of {cliopatria: Giudicato of Cagliari, year: 1187} with the union of admin1 Ogliastra and a place-based Sarrabus (for example Muravera, km 25), text 'la parte nord-orientale, cioè l'Ogliastra e il Sarrabus', confidence 2, source the Cagliari page or it.wikipedia}. Add the page to sources[].",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/4",
+     "what": "The new keyframe giudicato-of-gallura_1210 keeps the 1206 outline to 1287, so Gallura's 1258 growth is not drawn.",
+     "why": "As above: the Ogliastra-Sarrabus third of Cagliari passed to Gallura in 1258.",
+     "fix": "End giudicato-of-gallura_1210 at 1257. Add giudicato-of-gallura_1258 (from 1258, to 1287, verdict adjust) with correction = union of {cliopatria: Giudicato of Gallura, year: 1206} and the 1258 part.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6/region and /identity/successors/0/land",
+     "what": "The 1287 dissolve and Pisa's successor land cover only the 1206 outline.",
+     "why": "Gallura page: 'Pisa annexed Gallura and held it until the Aragonese conquest in 1323 – 1324'; from 1258 Gallura included the Cagliari third.",
+     "fix": "Use the 1258 keyframe's region for the dissolve and for Pisa's successor land.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "The founding year. 866 is Cliopatria's year at confidence 1; the infobox says Established: 11th century.",
+     "page to try": "https://it.wikipedia.org/wiki/Giudicato_di_Gallura"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Judicate_of_Gallura",
+     "result": "confirmed: 'in 1207, Elena married the Pisan Lamberto Visconti'; History of Sardinia: 'a possession of the House of Visconti, another Pisan family, in 1207'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Judicate_of_Gallura",
+     "result": "confirmed: 'ousted and deposed from Gallura in 1287'; 'Pisa annexed Gallura and held it until the Aragonese conquest in 1323 – 1324'; infobox Disestablished 1296; History of Sardinia gives 1288"
+    },
+    {
+     "where": "/ledger/1-2",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_D%C3%A9nia",
+     "result": "confirmed: 1015; 'settled a military camp in the north of the island for one year'; 'reconquered by the fleets of Pisa and Genoa'"
+    },
+    {
+     "where": "/ledger/3 and /wars/2",
+     "page": "https://en.wikipedia.org/wiki/Judicate_of_Gallura",
+     "result": "confirmed: 'In 1206, William I of Cagliari invaded Gallura'; 1211 treaty of Comita III of Torres with Genoa; 'In 1212, Pisa struck back'; treaty forced on '1 December 1217'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 4598,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the Gallura page. After 1258 the drawn area is short by the Cagliari third (see fixes)."
+   }
+  },
+  {
+   "slug": "giudicato-of-logudoro",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/3/note",
+     "what": "The new 1066-1071 keyframe called Cliopatria's missing Logudoro shape a data defect without saying that Cliopatria gives the land to Arborea in those years.",
+     "why": "shapes.csv giudicato-of-arborea_1066 (1066-1071) is 12,248.5 km2 with bbox 8.1546-9.4285 E, 39.5789-41.1328 N, which is Arborea's 3,854.6 km2 plus Logudoro's 8,247.0 km2. The Logudoro page has Barisone I reigning 'from about 1038 to 1073' and combines the two judicates only 'at the start of the 11th century'.",
+     "fix": "Appended a reviewer sentence to the note saying so, and that the Arborea dossier should mark its 1066 shape adjust (minus Logudoro). Validated with 0 errors and 0 warnings.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "The founding year. 866 is Cliopatria's year at confidence 1; the infobox says Established: 11th century and the text gives Barisone I 'from about 1038'.",
+     "page to try": "https://it.wikipedia.org/wiki/Giudicato_di_Torres"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "Years of the moves from Torres to Ardara (bridged at 1099/1100, confidence 1) and to Sassari (not drawn). The page has 'first to Ardara and finally to Sassari' with no years.",
+     "page to try": "https://it.wikipedia.org/wiki/Giudicato_di_Torres"
+    },
+    {
+     "where": "/identity/successors",
+     "what is missing": "Who took which part in 1259. Doria, Malaspina, Spinola (from Genoa), Arborea ('some land') and Sassari each have the whole 1250 shape as their land.",
+     "page to try": "https://it.wikipedia.org/wiki/Giudicato_di_Torres"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Adelasia_of_Torres",
+     "result": "confirmed: 'She died in 1259, without heirs'; 'divided amongst the Doria, Malaspina, and Spinola families, who all held it from Genoa'; Arborea 'succeeded in taking some land'; Logudoro page Disestablished 1259 and Sassari 'an autonomous city-state'"
+    },
+    {
+     "where": "/ledger/1-2",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_D%C3%A9nia",
+     "result": "confirmed: 1015, 'a military camp in the north of the island for one year'"
+    },
+    {
+     "where": "/keyframe_review/3",
+     "page": "https://en.wikipedia.org/wiki/Judicate_of_Logudoro",
+     "result": "confirmed: Barisone I 'from about 1038 to 1073' (infobox 1060–1073); no break in the judicate"
+    },
+    {
+     "where": "/identity/capitals/1",
+     "page": "https://en.wikipedia.org/wiki/Judicate_of_Gallura",
+     "result": "confirmed: 'On 26 June 1132, Comita went to Ardara, the judicial palace of the Giudicato of Logudoro'; Adelasia page: the 1237 oath at Ardara"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 8247,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area on the Logudoro page."
+   }
+  },
+  {
+   "slug": "republic-of-amalfi",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1/note",
+     "what": "A known Cliopatria problem was not flagged: data/README.md lists republic-of-amalfi_960 and _1028 (96.36 km2) under 'Shapes with tiny area', less than one H3 cell at resolution 5.",
+     "why": "data/README.md, section 'Shapes with tiny area' (lines 372-373).",
+     "fix": "Appended a reviewer sentence to the note: the compiler must give the duchy at least the cell holding Amalfi (14.60 E, 40.63 N). Validated with 0 errors and 0 warnings.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/7",
+     "what is missing": "The end of the Salernitan control, bridged at 1073 at confidence 1. The Amalfi page calls it 'a brief period of Salernitan dependency under Guaimar IV', so it ended by his death; the Duchy page gives no end.",
+     "page to try": "https://en.wikipedia.org/wiki/Guaimar_IV_of_Salerno"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Amalfi",
+     "result": "confirmed: 'In 958, Mastalus II was assassinated and Sergius I was elected first duke (or doge)'; infobox first duke Mastalus II 957–958, as the note says"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Amalfi",
+     "result": "confirmed: 'It revolted again in 1130 and was finally subdued in 1131'; Emir John by land, George of Antioch by sea; Amalfi page: 'in 1131, it was reduced by Roger II of Sicily'"
+    },
+    {
+     "where": "/ledger/2-3",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Amalfi",
+     "result": "confirmed: 'From 981 to 983, Amalfi ruled the Principality of Salerno'"
+    },
+    {
+     "where": "/ledger/4,6,8",
+     "page": "https://en.wikipedia.org/wiki/Duchy_of_Amalfi",
+     "result": "confirmed: 'From 1034, Amalfi came under the control of the Principality of Capua and, in 1039, that of Salerno'; 'In 1073, Robert Guiscard conquered the city and took the title dux Amalfitanorum'; 1096 revolt 'put down in 1101' also confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 5.7,
+    "infobox_year": 2026,
+    "cliopatria_km2": 96.4,
+    "ratio": 16.9,
+    "acknowledged": true,
+    "note": "The 5.7 km2 is the modern comune (Amalfi page infobox); the Duchy page gives no area. Acknowledged in /keyframe_review/1."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "giudicato-of-cagliari",
+    "year": 1015,
+    "type": "occupation_start",
+    "counterpart": "taifa-of-denia"
+   },
+   "mirror": {
+    "slug": "taifa-of-denia",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "The Denia dossier (eu-12) has occupations against Gallura and Logudoro only. The Mujahid page puts the 1015 landing on 'the southern coastal plain' and the 1016 battle against 'the army of the judge of Cagliari'. Route to eu-12."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-cagliari",
+    "year": 1016,
+    "type": "occupation_end",
+    "counterpart": "taifa-of-denia"
+   },
+   "mirror": {
+    "slug": "taifa-of-denia",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "As for 1015. Route to eu-12."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-gallura",
+    "year": 1015,
+    "type": "occupation_start",
+    "counterpart": "taifa-of-denia"
+   },
+   "mirror": {
+    "slug": "taifa-of-denia",
+    "year": 1015,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "The years agree; the land does not. Denia /ledger/3 hatches intersect(Sardinia, Gallura 1015), the 193 km2 remnant Cliopatria leaves to Gallura. Gallura hatches Gallura 1018 minus Gallura 1015, the 4,405 km2 cut-out. One side must change; the cut-out matches Denia's own 1015 shape, which Denia's keyframe already removes from its territory."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-gallura",
+    "year": 1016,
+    "type": "occupation_end",
+    "counterpart": "taifa-of-denia"
+   },
+   "mirror": {
+    "slug": "taifa-of-denia",
+    "year": 1016,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "The land differs, as in 1015."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-logudoro",
+    "year": 1015,
+    "type": "occupation_start",
+    "counterpart": "taifa-of-denia"
+   },
+   "mirror": {
+    "slug": "taifa-of-denia",
+    "year": 1015,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "The years agree; the land does not. Denia /ledger/2 hatches intersect(Sardinia, Logudoro 1015), the 3,645 km2 remnant. Logudoro hatches the 4,602 km2 cut-out."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-logudoro",
+    "year": 1016,
+    "type": "occupation_end",
+    "counterpart": "taifa-of-denia"
+   },
+   "mirror": {
+    "slug": "taifa-of-denia",
+    "year": 1016,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "The land differs, as in 1015."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-cagliari",
+    "year": 1206,
+    "type": "contest_start",
+    "counterpart": "giudicato-of-gallura"
+   },
+   "mirror": {
+    "slug": "giudicato-of-gallura",
+    "year": 1206,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "The zone is Gallura 1206 on both sides."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-cagliari",
+    "year": 1207,
+    "type": "contest_end",
+    "counterpart": "giudicato-of-gallura"
+   },
+   "mirror": {
+    "slug": "giudicato-of-gallura",
+    "year": 1207,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-cagliari",
+    "year": 1258,
+    "type": "dissolve",
+    "counterpart": "giudicato-of-gallura"
+   },
+   "mirror": {
+    "slug": "giudicato-of-gallura",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Cagliari's successors include Gallura ('assigned to the Della Gherardesca family, Arborea and Gallura'), but Gallura has no 1258 gain. A fail finding for Gallura."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-cagliari",
+    "year": 1258,
+    "type": "dissolve",
+    "counterpart": "republic-of-pisa"
+   },
+   "mirror": {
+    "slug": "republic-of-pisa",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "republic-of-pisa (eu-13, another part) is not written yet. It needs a 1258 gain of Castel di Castro and, as overlord, the Della Gherardesca part (Sulcis-Iglesiente, it.wikipedia)."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-cagliari",
+    "year": 1258,
+    "type": "dissolve",
+    "counterpart": "giudicato-of-arborea"
+   },
+   "mirror": {
+    "slug": "giudicato-of-arborea",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "giudicato-of-arborea (eu-13) is not written yet. It needs a 1258 gain of the centre-north third of Cagliari."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-cagliari",
+    "year": 1258,
+    "type": "contest_start",
+    "counterpart": "republic-of-pisa"
+   },
+   "mirror": {
+    "slug": "republic-of-pisa",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Pisa is not written yet. The contest_end is also 1258."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-cagliari",
+    "year": 1195,
+    "type": "occupation_start",
+    "counterpart": "giudicato-of-arborea"
+   },
+   "mirror": {
+    "slug": "giudicato-of-arborea",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Missing on both sides: William I 'ruled Arborea in his name' (Cagliari page, undated; it.wikipedia 1195). Listed under thin for Cagliari; Arborea's author should carry the mirror."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-gallura",
+    "year": 1287,
+    "type": "dissolve",
+    "counterpart": "republic-of-pisa"
+   },
+   "mirror": {
+    "slug": "republic-of-pisa",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Pisa is not written yet. It needs a 1287 gain of Gallura, including the 1258 Cagliari part."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-logudoro",
+    "year": 1259,
+    "type": "dissolve",
+    "counterpart": "republic-of-genoa"
+   },
+   "mirror": {
+    "slug": "republic-of-genoa",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Genoa (eu-13) is not written yet; Arborea (some land) is also not written; republic-of-sassari is in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "giudicato-of-logudoro",
+    "year": 1066,
+    "type": "keyframe",
+    "counterpart": "giudicato-of-arborea"
+   },
+   "mirror": {
+    "slug": "giudicato-of-arborea",
+    "year": 1066,
+    "type": "keyframe"
+   },
+   "status": "exception",
+   "note": "Cliopatria's giudicato-of-arborea_1066 (1066-1071, 12,248 km2) contains Logudoro, overlapping Logudoro's new 1066-1071 keyframe. When written, the Arborea dossier should mark the shape adjust (minus Logudoro), or give a page for a union."
+  },
+  {
+   "event": {
+    "slug": "republic-of-amalfi",
+    "year": 981,
+    "type": "occupation_start",
+    "counterpart": "principality-of-salerno"
+   },
+   "mirror": {
+    "slug": "principality-of-salerno",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Salerno (eu-13) is not written yet. The 983 occupation_end is the same case."
+  },
+  {
+   "event": {
+    "slug": "republic-of-amalfi",
+    "year": 1034,
+    "type": "occupation_start",
+    "counterpart": "principality-of-capua"
+   },
+   "mirror": {
+    "slug": "principality-of-capua",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Capua (eu-13) is not written yet. The 1039 end is the same case."
+  },
+  {
+   "event": {
+    "slug": "republic-of-amalfi",
+    "year": 1039,
+    "type": "occupation_start",
+    "counterpart": "principality-of-salerno"
+   },
+   "mirror": {
+    "slug": "principality-of-salerno",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Salerno is not written yet. The end (1073 at confidence 1) is probably 1052, when Guaimar IV died; see thin."
+  },
+  {
+   "event": {
+    "slug": "republic-of-amalfi",
+    "year": 1073,
+    "type": "occupation_start",
+    "counterpart": "norman-italy"
+   },
+   "mirror": {
+    "slug": "norman-italy",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "norman-italy (eu-13) is not written yet. The 1096 end, 1101 start, 1130 end and 1131 dissolve are the same case. The 1131 side may belong to kingdom-of-sicily."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Sarrabus",
+   "kind": "region",
+   "used_in": "giudicato-of-gallura (needed by the 1258 gain fix)"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Republic of Sassari",
+   "suggested_slug": "republic-of-sassari",
+   "years": [
+    1259,
+    null
+   ],
+   "note": "From the author's report: successor of Logudoro in 1259; no page opened gives the end year."
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-13-f.md",
+ "problems": [
+  "Taifa of Denia dossier (eu-12): it has no 1015-1016 occupation against giudicato-of-cagliari, and its Gallura and Logudoro occupations hatch the remnants where these dossiers hatch Cliopatria's cut-outs. Route to eu-12 or a gap-filler.",
+  "The judicates' reduced 1015 Cliopatria shapes run to 1017, but the dossiers' notes and occupation_end events end the Denia occupation in 1016. A Cliopatria keyframe cannot carry from/to, so the compiler should use the ledger's 1016 end and draw the full shape from 1017.",
+  "Founding years of all three judicates are Cliopatria's 866 at confidence 1, and no page supports 866 (Cagliari infobox 1020; Gallura and Logudoro '11th century'; History of Sardinia 'From the mid-11th century'). The author flagged it; a gap-filler decision is needed.",
+  "Modelling note, not a fault: Amalfi's 1073-1131 Norman rule is written as occupation, although the Duchy page says Robert Guiscard 'conquered the city and took the title dux Amalfitanorum'. It is defensible because the duchy revolted with its own doge in 1096 and 1130, but a vassal or loss model is also possible.",
+  "The reviewer brief section 5 says reviewers do not edit dossiers. Under the orchestrator's adjustment, two small note fixes were applied in place (Logudoro /keyframe_review/3/note, Amalfi /keyframe_review/1/note); both re-validate clean.",
+  "One page beyond en.wikipedia was opened, it.wikipedia Giudicato di Cagliari, for the 1258 partition and the 1195 Arborea war. No page failed to load."
+ ]
+}

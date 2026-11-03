@@ -1,0 +1,827 @@
+{
+ "batch_id": "ia-01-b",
+ "verdicts": [
+  {
+   "slug": "xianbei",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/3",
+     "what": "The 91 gain, and every Xianbei keyframe from 91 to 235, draw about 206 k km2 of the Southern Xiongnu's land as Xianbei, while southern-xiongnu.json (same batch) holds that land 48-216 with no event moving it.",
+     "why": "Gazetteer cells: minus(Mongolian Plateau, Xianbei 84) intersect Cliopatria 'Southern Xiongnu' 91 (216 k km2, 103.5-114.8 E, 38.7-42.4 N) = 206 k; the K3-K5 correction (Xianbei 84 + Mongolian Plateau) = 206 k; the 154/161/165 shapes kept ok in K6-K8 = 213 k; the 224 strip used in K9-K11 = 203 k. southern-xiongnu K1-K4 keep the shape 51-215.",
+     "fix": "Subtract {\"cliopatria\":\"Southern Xiongnu\",\"year\":91} from /ledger/3/region and the corrections of /keyframe_review/3-5; mark /keyframe_review/6-8 adjust with the same subtraction; subtract it from /keyframe_review/9-11 until 216 (a later keyframe may add it back with a gain dated 216). If the author instead holds that the Southern Xiongnu sat only inside the commanderies, shrink southern-xiongnu to match. One dossier, not both.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/8",
+     "what": "The 205 split and the 233 merge (/ledger/9) carry the whole remaining state (the 224 strip, 774 k km2) as their region, so the ledger has the Xianbei lose all their land in 205, but /keyframe_review/9-10 keep the same 774 k km2 Xianbei through 207-233. Kuitou's divided domain is also not Kebineng's land, and the matching war has empty zones without saying why.",
+     "why": "/ledger/8/region = /ledger/9/region = the K9-K11 correction {cliopatria Xianbei 224}. Xianbei page: 'Following his death in 205, Kuitou's territory was divided between his brothers, Budugen and Fuluohan'; 'In 218, Kebineng allied with the Wuhuan of Dai and killed Fuluohan'; 'Kebineng killed Budugen soon afterwards'; Kebineng 'rose to power west of Dai Commandery'. Kebineng page: he 'resided near the Great Wall around the areas of Dai and Shanggu commanderies'.",
+     "fix": "Give the split only Kuitou's share: a part of the strip, at confidence 1 if no page names it. Keep Kebineng's Dai-Shanggu land with the state. Mirror it with a merge of Fuluohan's share in 218 and Budugen's by 233. Or drop the split/merge pair, explain it in notes, and either give /wars/2 a zone or say that no ground changed hands.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/4",
+     "what": "The 154 gain of Dzungaria names 'nobody', but xiongnu.json dissolves in 151 with xianbei as a successor; the two sides differ by three years and by counterpart.",
+     "why": "xiongnu /ledger/40: 151 dissolve, successors [xianbei, yueban]; its region (Hami ring, 89 k km2) overlaps only 43 k of this 449 k gain. Battle of Ikh Bayan page footnote: the Dzungarian remnant is 'mentioned in annals until 151'.",
+     "fix": "Either date the gain to 151-152 with counterpart xiongnu (keeping confidence 1 and noting that Cliopatria's shape starts in 154), or say in the note why the land was nobody's from 151 to 154.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/9/note",
+     "what": "The infobox area for 200 (4.5 M km2) against the 0.77 M km2 this correction draws (ratio 0.17) was acknowledged only on the 60-83 and 161 keyframes, not on the keyframe alive in 200.",
+     "why": "Xianbei infobox: '200: 4,500,000 km2'; the correction of xianbei_197 resolves to about 774 k km2.",
+     "fix": "Added a sentence to the note: the infobox figure is set aside because the page's text has the Xianbei 'already split into many different groups' by the Jian'an era (reviewer ia-01-b, 2026-10-18).",
+     "applied": true
+    },
+    {
+     "where": "/wars/2/from",
+     "what": "Kebineng's wars of consolidation started in 224 in the dossier, but the page dates the first blow to 218.",
+     "why": "Xianbei page: 'In 218, Kebineng allied with the Wuhuan of Dai and killed Fuluohan'.",
+     "fix": "from 224 -> 218, with the quote added to the war note (reviewer ia-01-b, 2026-10-18).",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/6",
+     "what is missing": "the year of Tanshihuai's expansion to 5.22 M km2 (161 is Cliopatria's year; the page is undated), and who held the north and the east",
+     "page to try": "https://en.wikipedia.org/wiki/Dingling"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "who took Dzungaria after 151 (confidence 1, bridged from Cliopatria)",
+     "page to try": "https://en.wikipedia.org/wiki/Yueban"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "the extent in 60-83 (unverified; the page is silent)",
+     "page to try": "https://en.wikipedia.org/wiki/Wuhuan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Xianbei",
+     "result": "confirmed: 'In 49, the governor Ji Tong convinced the Xianbei chieftain Pianhe to turn on the Xiongnu'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Xianbei",
+     "result": "confirmed: 'In 91, the Northern Xiongnu were defeated by the Han dynasty and the Xianbei began occupying the Mongolian Plateau'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Xianbei",
+     "result": "confirmed: 'By the Jian'an era (196-220), the Xianbei had already split into many different groups'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Xianbei",
+     "result": "confirmed (year and actors): 'Following his death in 205, Kuitou's territory was divided between his brothers, Budugen and Fuluohan.'; the region is the fault above"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Tanshihuai",
+     "result": "confirmed: 'by 233, they were both killed by a rival chieftain, Kebineng'; the Xianbei page dates Fuluohan's death to 218"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Kebineng",
+     "result": "confirmed: assassinated by Han Long, sent by Wang Xiong, in 235; 'a period of relative peace ... for several decades'"
+    },
+    {
+     "where": "/keyframe_review/4",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Ikh_Bayan",
+     "result": "confirmed: 'The rest of the Xiongnu left in Dzungaria, specifically near Lake Barkol'; footnote 'until 151'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 4500000,
+    "infobox_year": 200,
+    "cliopatria_km2": 5220032.7,
+    "ratio": 0.86,
+    "acknowledged": true,
+    "note": "The ratio is against Cliopatria's xianbei_197. The dossier's own correction draws 0.77 M km2 for 200 (ratio 0.17). That is acknowledged on K1 and K7, and the reviewer added it to K9."
+   }
+  },
+  {
+   "slug": "wusun",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/identity/capitals/0/lat",
+     "what": "Chigu was placed at 77.5 E, 42.4 N, a point inside Lake Issyk-Kul on the grid, although the note says 'a point on the southern shore'.",
+     "why": "The gazetteer's lake Issyk-Kul (bbox 76.42-78.04 E, 42.21-42.68 N) contains the cell at 77.5, 42.4; the cell at 77.5, 42.15 is outside the lake and inside wusun_443.",
+     "fix": "lat 42.4 -> 42.15, with a note (reviewer ia-01-b, 2026-10-18).",
+     "applied": true
+    },
+    {
+     "where": "/identity/successors",
+     "what": "The 450 dissolve has no successors, so the last Wusun land passes to no one.",
+     "why": "Wusun page: 'In the 5th century AD the Wusun were pressured by the Rouran'; 'It is possible that they became subsumed into the later Hephthalites'. Cliopatria's White Huns 451 shape covers all of the last Wusun shape (33 of 33 k km2 on the grid).",
+     "fix": "Add a successor: white-huns, with land {cliopatria: Wusun, year: 443} and a note that the page only says 'possible'. Or name rouran-khaganate if a page supports it.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "the fall from 194 k to 40 k km2 in 91: no page dates it or names the taker (confidence 1, counterpart nobody); the Yueban page's 'Established: 160' does not match 91",
+     "page to try": "https://en.wikipedia.org/wiki/Ban_Chao"
+    },
+    {
+     "where": "/keyframe_review/14",
+     "what is missing": "the 3rd and 4th centuries (165-386), page silent",
+     "page to try": "https://en.wikipedia.org/wiki/Zhetysu"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "the end: the last mention is in 436, while 450 is Cliopatria's year (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Rouran_Khaganate"
+    },
+    {
+     "where": "/notes",
+     "what is missing": "the author used 5 of the 9 pages the budget allows; the Greater and Lesser Kunmi division is undated",
+     "page to try": "https://en.wikipedia.org/wiki/Protectorate_of_the_Western_Regions"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Wusun",
+     "result": "confirmed: 'In 133-132 BC, the Wusun drove the Yuezhi out of the Ili Valley and settled the area' (confidence 3 holds: the page names the Ili Valley and Chigu by Issyk Kul)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Wusun",
+     "result": "confirmed by the same sentence; the original home 'between the Qilian Mountains and Dunhuang (Gansu)' also confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Wusun",
+     "result": "confirmed as noted: 'During the 2nd century AD the Wusun continued their decline in political importance'; the page gives no year (confidence 1 is honest)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Wusun",
+     "result": "confirmed as noted: Rouran pressure, 'may have migrated to the Pamir Mountains', 'last mentioned ... in 436 AD', 'subsumed into the later Hephthalites'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 205696.6,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The Wusun page has no infobox area. The author says so on K2."
+   }
+  },
+  {
+   "slug": "kidarites",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1",
+     "what": "kidarites_387 is marked ok, but the 387 shape adds 194 k km2 in the south over the 358 shape and no event in 387 gains it. The only southern gain is /ledger/3 (Gandhara, 37 k km2), dated 390, so 156 k km2 (Kabul and the Hindu Kush side) is never gained and Gandhara is drawn three years before its gain.",
+     "why": "Gazetteer cells: Kidarites 387 minus Kidarites 358 = 194 k km2 (64.9-73.6 E, 31.9-38.6 N); minus the /ledger/3 region it is 156 k. The K1 note itself says 'the shape already includes Gandhara in 387'. Kidarites page: 'circa 390-410 CE, the Kidarites invaded northwestern India'.",
+     "fix": "Either mark K1 adjust for 387-389 with the southern addition removed (intersect the 387 shape with the 358 shape), or add a 387 gain of the southern addition with its counterpart and a page, and align /ledger/3 with the keyframe that first draws Gandhara.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/6",
+     "what": "In 466 the state falls from the 402 shape (822 k km2 on the grid) to Gandhara (49 k), but the 466 losses (/ledger/7, north, 410 k; /ledger/8, Bactria, 212 k) leave about 198 k km2 with no loss event: Kabulistan, the Zabul side, the Hindu Kush, and the land south of the gazetteer's Bactria.",
+     "why": "Gazetteer cells: Kidarites 402 minus the /ledger/7 region minus Bactria minus Gandhara = 198 k km2 (64.8-73.6 E, 31.9-39.3 N). Kidarites page: 'Although the Kidarites still controlled some places such as Gandhara and Punjab'.",
+     "fix": "Add the missing 466-467 loss (to white-huns, sasanian-empire or alchon-huns, at the confidence a page supports), or widen /keyframe_review/6 and /ledger/9 to the land the Kidarites kept.",
+     "applied": false
+    },
+    {
+     "where": "/identity/rulers/0/from",
+     "what": "Kidara's reign began in 350, before the state's start in 360.",
+     "why": "Rule 2: rulers inside the life. The Kidarites page table gives 'c.350-390'; the dossier's start is 360.",
+     "fix": "350 -> 360, with a note (reviewer ia-01-b, 2026-10-18).",
+     "applied": true
+    },
+    {
+     "where": "/identity/capitals/0/to",
+     "what": "Balkh stayed the capital to 467, but Bactria is lost in 466 (/ledger/8) and the 466-467 keyframe is Gandhara only.",
+     "why": "Kidarites page: Peroz 'finally vanquished Kidarites in 466, and brought Bactria briefly under Sasanian control'.",
+     "fix": "467 -> 465, with a note (reviewer ia-01-b, 2026-10-18).",
+     "applied": true
+    },
+    {
+     "where": "/notes",
+     "what": "The infobox 'Established: 320 CE' (and 'fl. 320: Kidara') was not acknowledged against the start of 360.",
+     "why": "Kidarites infobox; the text has 'In 360-370 CE, a Kidarite kingdom was established'.",
+     "fix": "Added one sentence to notes (reviewer ia-01-b, 2026-10-18).",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "the year the north passed to the Xionites (387 is Cliopatria's; the Xionites page has only 'At the end of the 4th century AD, the Kidarites were pushed into Gandhara')",
+     "page to try": "https://en.wikipedia.org/wiki/Shapur_III"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "how the Xionite land returned in 402 (confidence 1, bridged)",
+     "page to try": "https://en.wikipedia.org/wiki/Bahram_V"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "where the 450 defeat fell",
+     "page to try": "https://en.wikipedia.org/wiki/Yazdegerd_II"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kidarites",
+     "result": "confirmed: 'In 360-370 CE, a Kidarite kingdom was established'; Bactria 'by 360'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kushano-Sasanian_Kingdom",
+     "result": "confirmed: 'This administration continued until 360-370'; 'lost much of their domains to the invading Kidarites'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kidarites",
+     "result": "confirmed: 'circa 390-410 CE, the Kidarites invaded northwestern India'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Hephthalites",
+     "result": "confirmed: 'were militarily important from 450 CE, when they defeated the Kidarites'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Hephthalites",
+     "result": "confirmed: 'Around 466 they probably took Transoxianan lands from the Kidarites with Persian help'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Peroz_I",
+     "result": "confirmed (confidence 3 holds): 'finally vanquished the Kidarites in 466, and brought Tokharistan briefly under Sasanian control'; the Kidarites page says 'Bactria'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Hephthalites",
+     "result": "confirmed: 'by 467, Peroz I, with Hephthalite aid, reportedly managed to capture Balaam'; 'The weakened Kidarites had to take refuge in the area of Gandhara'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 961557.5,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The Kidarites infobox has no area figure, only a map captioned c. 400."
+   }
+  },
+  {
+   "slug": "xionites",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "the three 387 events (/ledger/1-3) rest on Cliopatria's 387 shape alone (confidence 1; the page gives no year)",
+     "page to try": "https://en.wikipedia.org/wiki/Shapur_II"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "the end in 401 is Cliopatria's; the page has the Xionites 'until the mid-5th century AD' and Chionites at Chach into the 6th",
+     "page to try": "https://en.wikipedia.org/wiki/Alchon_Huns"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "the 353-386 extent rests only on the word 'Transoxiana' (thin by design within the 1-2 page budget, 2 of 2 used)",
+     "page to try": "https://en.wikipedia.org/wiki/Shapur_II"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Grumbates",
+     "result": "confirmed: 'Between 353 AD and 358 CE ... the Xionites under Grumbates attacked in the eastern frontiers'. Caveat: the page's 'an ancient nomadic tribe of Transoxiana' follows 'probably of the Kidarites tribe' and may describe the Kidarites; the Xionites page lead ('Transoxiana and Bactria') supports the region anyway"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Xionites",
+     "result": "confirmed as noted: 401 is not on the page (confidence 1 is honest); 'until the mid-5th century AD'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Xionites",
+     "result": "not on page as a dated event; the note says so (confidence 1); 'At the end of the 4th century AD, the Kidarites were pushed into Gandhara' confirmed"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Xionites",
+     "result": "confirmed: 'Some Chionites are known to have ruled in Chach (modern Tashkent)'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 488436.0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The Xionites page has no infobox."
+   }
+  },
+  {
+   "slug": "southern-xiongnu",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/0/confidence",
+     "what": "The 48 found event was at confidence 3, but its region is the Cliopatria 51 shape and the page names no boundary.",
+     "why": "Xiongnu page: 'a confederation of eight Xiongnu tribes in Bi's power base in the south'; the event's own note: 'The page names the base, not a boundary.'",
+     "fix": "3 -> 2, with a note (reviewer ia-01-b, 2026-10-18).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/1/confidence",
+     "what": "The 216 dissolve was at confidence 3, but its region is the 91 shape carried forward and the page names no land.",
+     "why": "Xiongnu page: 'In 216, he detained Huchuquan in the city of Ye and reorganized the last vestiges of the Southern Xiongnu into the Five Divisions'; the event's note: 'The shape is the researcher's reading'.",
+     "fix": "3 -> 2, with a note (reviewer ia-01-b, 2026-10-18).",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/4/note",
+     "what": "The 106-215 keyframe (the 91 shape carried forward) did not say that Cliopatria's Xianbei shapes of 106-196, and the xianbei dossier's keyframes from 91, cover almost all of it.",
+     "why": "Gazetteer cells: 203-213 k of this shape's 216 k km2 overlap Xianbei 106/154/161/165/224 and the xianbei K3-K5 correction.",
+     "fix": "Added an overlap sentence (reviewer ia-01-b, 2026-10-18). The land is to be settled on the xianbei side (see xianbei /ledger/3) or here, but in one dossier only.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/4",
+     "what is missing": "the extent in 106-215: the page names only Meiji in Xihe and 'eight frontier commanderies' (thin by design: 2 of 2 pages)",
+     "page to try": "https://en.wikipedia.org/wiki/Five_Barbarians"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Xiongnu",
+     "result": "confirmed (year and actors): 48 AD, 'eight Xiongnu tribes in Bi's power base in the south ... 40,000 to 50,000 men, seceded from Punu's kingdom'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Xiongnu",
+     "result": "confirmed (year): 'In 216, he detained Huchuquan in the city of Ye and reorganized the last vestiges of the Southern Xiongnu into the Five Divisions'"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Xiongnu",
+     "result": "confirmed: 'ordered to establish his court in Meiji County, Xihe Commandery'; 111.2 E, 39.85 N lies inside the shape's bbox"
+    },
+    {
+     "where": "/keyframe_review/4",
+     "page": "https://en.wikipedia.org/wiki/Xiongnu",
+     "result": "confirmed: 'against the Wuhuan in Hebei in 188'; Huchuquan 'in 195'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 187257.0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The Xiongnu infobox gives no area figure, and it would describe the whole Xiongnu anyway."
+   }
+  },
+  {
+   "slug": "great-yuan",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/note",
+     "what": "The note quoted 'in the southwestern part of the Ferghana valley' as describing Dayuan, but the page says this of Alexandria Eschate.",
+     "why": "Dayuan page: Alexandria Eschate lies 'in the southwestern part of the Ferghana valley'; Dayuan is 'generally accepted as relating to the Ferghana Valley'.",
+     "fix": "Replaced it with the page's 'generally accepted as relating to the Ferghana Valley' (reviewer ia-01-b, 2026-10-18).",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "the end in 50 and everything after 100 BC (confidence 1; the Kangju page's control of Dayuan is undated)",
+     "page to try": "https://en.wikipedia.org/wiki/Fergana_Valley"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Dayuan",
+     "result": "confirmed: 'When the Chinese explorer Zhang Qian described Dayuan around 128 BCE'; capital 'Guishan (Khujand)'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Heavenly_Horses",
+     "result": "confirmed: 'In the autumn of 102 BC, Li set out with an army of 60,000'; forty-day siege"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Heavenly_Horses",
+     "result": "confirmed in substance: Wugua killed, 3,000 horses taken, Meicai enthroned; infobox '104-101 BC', 'Dayuan becomes a puppet-state of Han'; the page gives no year for the peace (101 is an inference, confidence 2 is fair)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kangju",
+     "result": "confirmed as noted: 'By this time it had gained control of Dayuan and Sogdiana' (undated); 'In 101 BCE, the Kangju allied themselves with the Dayuan'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 51348.2,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The Dayuan page has no infobox area."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "xianbei",
+    "year": 91,
+    "type": "gain",
+    "counterpart": "xiongnu"
+   },
+   "mirror": {
+    "slug": "xiongnu",
+    "year": 91,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "The years agree but the land does not. The xianbei gain (minus(Mongolian Plateau, Xianbei 84), 1,929 k km2) and the xiongnu loss (Xiongnu 84 minus Xiongnu 91, 712 k km2) share only 151 k km2. The xiongnu dossier's own 91 correction cuts it to a 125 k Dzungarian remnant, so its loss region should be the central plateau. 526 k of the xianbei gain lies outside Xiongnu 84, including 206 k of Southern Xiongnu land. Route to ia-01-a (xiongnu /ledger/35) and to the xianbei author."
+  },
+  {
+   "event": {
+    "slug": "xianbei",
+    "year": 87,
+    "type": "contest_start",
+    "counterpart": "xiongnu"
+   },
+   "mirror": {
+    "slug": "xiongnu",
+    "year": 87,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Same region and years (87-91) on both sides."
+  },
+  {
+   "event": {
+    "slug": "xianbei",
+    "year": 154,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "xiongnu",
+    "year": 151,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "xiongnu dissolves in 151 with xianbei as a successor; xianbei gains Dzungaria from nobody in 154. The land overlaps by only 43 of 449 k km2."
+  },
+  {
+   "event": {
+    "slug": "xianbei",
+    "year": 91,
+    "type": "gain",
+    "counterpart": "xiongnu"
+   },
+   "mirror": {
+    "slug": "southern-xiongnu",
+    "year": 48,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Both dossiers in this batch claim about 206 k km2 (the Ordos-Hetao frontier) from 91 to 216; there is no loss in southern-xiongnu."
+  },
+  {
+   "event": {
+    "slug": "xianbei",
+    "year": 205,
+    "type": "split",
+    "counterpart": "Budugen and Fuluohan (Xianbei groups)"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "Not a state with a dossier. Its region is still faulty (see the xianbei fixes)."
+  },
+  {
+   "event": {
+    "slug": "wusun",
+    "year": -132,
+    "type": "gain",
+    "counterpart": "yuezhi"
+   },
+   "mirror": {
+    "slug": "yuezhi",
+    "year": -132,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "yuezhi /ledger/6 loses Semirechye to wusun at confidence 3."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -132,
+    "type": "vassal_start",
+    "counterpart": "wusun"
+   },
+   "mirror": {
+    "slug": "wusun",
+    "year": -132,
+    "type": "found"
+   },
+   "status": "exception",
+   "note": "The vassalage is recorded on the suzerain's side (xiongnu /ledger/9 and /ledger/16, -132 to -115); the wusun notes acknowledge it."
+  },
+  {
+   "event": {
+    "slug": "wusun",
+    "year": 91,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "Counterpart nobody, confidence 1."
+  },
+  {
+   "event": {
+    "slug": "kidarites",
+    "year": 360,
+    "type": "gain",
+    "counterpart": "kushano-sasanian-kingdom"
+   },
+   "mirror": {
+    "slug": "kushano-sasanian-kingdom",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "No dossier yet; listed in counterparts_needing_dossiers (sa-02)."
+  },
+  {
+   "event": {
+    "slug": "kidarites",
+    "year": 387,
+    "type": "loss",
+    "counterpart": "xionites"
+   },
+   "mirror": {
+    "slug": "xionites",
+    "year": 387,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "The same 145 k km2 on both sides."
+  },
+  {
+   "event": {
+    "slug": "kidarites",
+    "year": 390,
+    "type": "gain",
+    "counterpart": "Kushan remnants in Gandhara"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "Not a state with a dossier."
+  },
+  {
+   "event": {
+    "slug": "kidarites",
+    "year": 402,
+    "type": "gain",
+    "counterpart": "xionites"
+   },
+   "mirror": {
+    "slug": "xionites",
+    "year": 401,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "xionites dissolves in 401 with kidarites (and white-huns) as successors on the same 410 k km2."
+  },
+  {
+   "event": {
+    "slug": "kidarites",
+    "year": 466,
+    "type": "loss",
+    "counterpart": "white-huns"
+   },
+   "mirror": {
+    "slug": "white-huns",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "white-huns belongs to another part of ia-01 that has not written it yet; the 450-466 contest is the same."
+  },
+  {
+   "event": {
+    "slug": "kidarites",
+    "year": 466,
+    "type": "loss",
+    "counterpart": "sasanian-empire"
+   },
+   "mirror": {
+    "slug": "sasanian-empire",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "me-06 has not run yet."
+  },
+  {
+   "event": {
+    "slug": "southern-xiongnu",
+    "year": 48,
+    "type": "found",
+    "counterpart": ""
+   },
+   "mirror": {
+    "slug": "xiongnu",
+    "year": 48,
+    "type": "split"
+   },
+   "status": "matched",
+   "note": "xiongnu /ledger/27 splits off southern-xiongnu on the Southern Xiongnu 51 shape."
+  },
+  {
+   "event": {
+    "slug": "southern-xiongnu",
+    "year": 216,
+    "type": "dissolve",
+    "counterpart": "cao-cao"
+   },
+   "mirror": {
+    "slug": "cao-cao",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "ea-03 has not run yet."
+  },
+  {
+   "event": {
+    "slug": "great-yuan",
+    "year": -102,
+    "type": "contest_start",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "ea-02 has not run yet. han-dynasty should also carry vassal_start for great-yuan (-101), wusun (-51) and southern-xiongnu (50)."
+  },
+  {
+   "event": {
+    "slug": "great-yuan",
+    "year": -128,
+    "type": "found",
+    "counterpart": ""
+   },
+   "mirror": {
+    "slug": "yuezhi",
+    "year": -126,
+    "type": "keyframe"
+   },
+   "status": "mismatch",
+   "note": "yuezhi /keyframe_review/6 (-126..-111) keeps the whole Ferghana basin (42 k km2 of overlap) while great-yuan holds it from -128; the author flagged it. Route to ia-01-a: remove Ferghana from yuezhi -126..-111."
+  },
+  {
+   "event": {
+    "slug": "great-yuan",
+    "year": 50,
+    "type": "dissolve",
+    "counterpart": "kushan-empire"
+   },
+   "mirror": {
+    "slug": "kushan-empire",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "sa-02 has not run yet; kangju has no dossier and is listed."
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Tuoba Xianbei",
+   "suggested_slug": "tuoba-xianbei",
+   "years": [
+    235,
+    387
+   ]
+  },
+  {
+   "name": "Murong Xianbei",
+   "suggested_slug": "murong-xianbei",
+   "years": [
+    235,
+    0
+   ]
+  },
+  {
+   "name": "Duan Xianbei",
+   "suggested_slug": "duan-xianbei",
+   "years": [
+    235,
+    0
+   ]
+  },
+  {
+   "name": "Yuwen Xianbei",
+   "suggested_slug": "yuwen-xianbei",
+   "years": [
+    235,
+    0
+   ]
+  },
+  {
+   "name": "Donghu",
+   "suggested_slug": "donghu",
+   "years": [
+    -300,
+    -208
+   ]
+  },
+  {
+   "name": "Wuhuan",
+   "suggested_slug": "wuhuan",
+   "years": [
+    -208,
+    235
+   ]
+  },
+  {
+   "name": "Kushano-Sasanian Kingdom",
+   "suggested_slug": "kushano-sasanian-kingdom",
+   "years": [
+    230,
+    365
+   ]
+  },
+  {
+   "name": "Alchon Huns",
+   "suggested_slug": "alchon-huns",
+   "years": [
+    460,
+    0
+   ]
+  },
+  {
+   "name": "Kangju",
+   "suggested_slug": "kangju",
+   "years": [
+    -128,
+    450
+   ]
+  },
+  {
+   "name": "Yueban",
+   "suggested_slug": "yueban",
+   "years": [
+    160,
+    490
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ia-01-b.md",
+ "problems": [
+  "Brief conflict: the reviewer brief says not to edit dossiers, but the orchestrator's adjustment allows small page-verified fixes. Ten were applied in place and each re-validated: xianbei 2, wusun 1, kidarites 3, southern-xiongnu 3, great-yuan 1. Every edit is tagged '(reviewer ia-01-b, 2026-10-18)'.",
+  "Every page opened loaded: Xianbei, Tanshihuai, Kebineng, Battle of Ikh Bayan, Wusun, Yueban, Kidarites, Peroz I, Hephthalites, Kushano-Sasanian Kingdom, Xionites, Grumbates, Xiongnu, Dayuan, War of the Heavenly Horses, Kangju.",
+  "Of the neighbour dossiers, only xiongnu and yuezhi exist (ia-01-a). han-dynasty, protectorate-of-the-western-regions, goguryeo, kushan-empire, sasanian-empire, white-huns, gupta-empire, cao-wei, rouran-khaganate, western-jin, cao-cao and xin-dynasty are not written yet, so their counterparts count as exceptions.",
+  "Two fixes for ia-01-a came out of the cross-checks: xiongnu /ledger/35 (the 91 loss region shares only 151 k km2 with the xianbei gain) and yuezhi /keyframe_review/6 (Ferghana -126..-111).",
+  "The wake note asked for a thread reply; none was sent, because the computed task forbids mcp__hearthbot__ tools."
+ ]
+}

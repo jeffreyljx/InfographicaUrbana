@@ -1,0 +1,1026 @@
+{
+ "batch_id": "se-02-a",
+ "verdicts": [
+  {
+   "slug": "tarumanagara",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/0/to",
+     "what": "The Srivijayan invasion war ran 669-686 while the state ends in 669, so the war lay outside the state's life.",
+     "why": "Tarumanagara page: infobox 'Invasion by Sriwijaya: 669 AD'; text 'very likely ... attacked and defeated by Srivijaya around 686'. The two dates are alternative readings of one event, not a 17-year war.",
+     "fix": "Set to 669 and add a sentence to the note keeping the c. 686 reading.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/3 and /keyframe_review/4/correction",
+     "what": "The 612 and 666 shapes are kept whole, so the Galuh country east of the Citarum is drawn as Tarumanagara's direct land in 612-669. The ledger (/ledger/3 vassal_start 612, /ledger/4 vassal_end 669) makes it a vassal, and galuh-kingdom_612 draws the same land as Galuh's own.",
+     "why": "Grid check in the author's notes: Tarumanagara 612-673 is exactly Cliopatria's Galuh 674 plus Sunda 674. galuh-kingdom.json keyframe 0 holds the Galuh 674 shape from 612, so the land is drawn twice and in two colours.",
+     "fix": "Keyframe 3: verdict adjust, correction {\"minus\": [{\"cliopatria\": \"Tarumanagara\", \"year\": 612}, {\"cliopatria\": \"Galuh Kingdom\", \"year\": 674}], \"text\": \"direct land west of the Citarum; Galuh, east of it, is a vassal 612-669 (ledger) with its own shape\"}. Keyframe 4: the same minus on the 666 shape, for 666-669.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "The 534 widening (17,409 to 33,369 km2) is at confidence 1, on Cliopatria's year. The page dates Suryawarman (535-561) 'establish[ing] a new capital city eastward', which could carry the event at 535 at confidence 2.",
+     "page to try": "https://en.wikipedia.org/wiki/Tarumanagara"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Tarumanagara",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Tarumanagara",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Galuh_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Tarumanagara",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 62498.7,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; the dossier notes say so."
+   }
+  },
+  {
+   "slug": "galuh-kingdom",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/identity/capitals",
+     "what": "Galuh's capital dots run without a break from 612 to 1482 (Karangkamulyan 612-1199, Kawali 1200-1482). Yet the ledger leaves Galuh with no land in 825-895 (/ledger/4) and 1028-1474 (/ledger/6), so a dot is drawn for a landless state. From 1371 it also sits on the same spot as Sunda's Kawali capital.",
+     "why": "/ledger/4 loss 825, /ledger/5 gain 896, /ledger/6 loss 1028 and /ledger/8 gain 1475, all to or from sunda-kingdom; sunda-kingdom /identity/capitals/1 is Kawali 1371-1481.",
+     "fix": "End the capital spans at the losses: Karangkamulyan 612-824 and 896-1027, then Kawali 1475-1482 (Sunda page: Ningrat Kancana ruled Galuh from Kawali 1475-1482). Keep the 13th-century Kawali remark in the note.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1",
+     "what": "Type 'gain' for 669 re-gains land that Galuh has held since its 612 found event and keyframe 0. It is the vassal's side of Tarumanagara's vassal_end.",
+     "why": "/ledger/0 and /ledger/1 have the same region (Galuh Kingdom 674). tarumanagara /ledger/4 is vassal_end 669 with Galuh as counterpart.",
+     "fix": "Optional: say in the note that this is independence from Tarumanagara and that the land itself is unchanged. The mirror is accepted as it stands: the found event names the suzerain.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "825 loss to Sunda: Cliopatria's year at confidence 1. The Galuh page has Galuh 'absorbed and incorporated within the Sunda kingdom around the 10th century', which neither 825 nor 1028 fits.",
+     "page to try": "https://en.wikipedia.org/wiki/Carita_Parahyangan"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "896 separation again (confidence 1, page silent).",
+     "page to try": "https://en.wikipedia.org/wiki/Carita_Parahyangan"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "1028 union with Sunda (confidence 1). The longest move in the dossier (446 years) has no dated page. Sri Jayabhupati's 1030 inscription is the nearest dated anchor.",
+     "page to try": "https://en.wikipedia.org/wiki/Sunda_Kingdom"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "Capital move to Kawali dated only 'by the 13th century' (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Galuh_Kingdom"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Galuh_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Galuh_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Galuh_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Sunda_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Galuh_Kingdom",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 36212.3,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area."
+   }
+  },
+  {
+   "slug": "srivijaya",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/11/confidence",
+     "what": "Confidence 3 on a Palembang occupation_end, but the cited page names neither Palembang nor Srivijaya.",
+     "why": "Pamalayu page: 'the expedition returned to Java on 3 May 1293'. Neither 'Palembang' nor 'Srivijaya' appears on the page (checked).",
+     "fix": "Confidence 2.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/2/confidence",
+     "what": "Confidence 3 for the whole of Jambi province plus Bangka-Belitung. The page names only 'the hinterland of Jambi and the island of Bangka', so the region is the author's reading.",
+     "why": "Kota Kapur inscription page: Coedes, Srivijaya 'had just conquered the hinterland of Jambi and the island of Bangka' (608 Saka, 28 February 686).",
+     "fix": "Confidence 2.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/1/counterpart",
+     "what": "The free-text counterpart 'Kedah (Kadaram), pre-1139' should be the slug the author proposes in counterparts_needing_dossiers.",
+     "why": "Author's report: suggested_slug kedah-kingdom.",
+     "fix": "counterpart 'kedah-kingdom'.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2 and /ledger/3",
+     "what": "Jambi is gained twice: in 686 (region admin1 Jambi, counterpart nobody) and again in 692 (merge, region admin1 Jambi, counterpart melayu-kingdom). The 682 shape (bbox from 101.87E) already holds most of Jambi from 682.",
+     "why": "Srivijaya page: Kedukan Bukit (605 Saka, 683) has Dapunta Hyang lead '20,000 troops ... to Jambi and Palembang'. The Melayu infobox has 'Annexed by Srivijaya: 692'. The Srivijaya page has Melayu integrated 'possibly ... in the 680s'.",
+     "fix": "Add a 682 gain (confidence 2, Srivijaya page, Kedukan Bukit) for the 682 shape's new land, which explains keyframe 2. Narrow /ledger/2 to Bangka, with the Jambi hinterland in text. Make /ledger/3 the merge of the Melayu polity, not a second gain of the same province.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/4 and /ledger/8",
+     "what": "The Isthmus strip (the 718 shape's land north of 7.0N, Ligor/Chaiya) is Tambralinga's land. tambralinga.json has Srivijaya occupying it 775-969 (confidence 2, Tambralinga page); this dossier has it gained in 718 from 'langkasuka' and lost in 1139 (both confidence 1, Cliopatria's years). Langkasuka (Pattani, below 7N) already lies inside the 692 shape.",
+     "why": "tambralinga.json /ledger/1 occupation_start 775 and /ledger/4 occupation_end 969, counterpart srivijaya: 'Formed Srivijaya Empire: 775-969', 'Late Independent: 970-1277'. shapes.csv: srivijaya_692 reaches 7.036N, srivijaya_718 9.865N. The author flagged this and left the choice to the reviewer: prefer the Tambralinga page.",
+     "fix": "Retype /ledger/4 as occupation_start 775, counterpart tambralinga, confidence 2 (or gain 775 if Srivijaya is read as annexing). Move /ledger/8 to 969 (occupation_end or loss, counterpart tambralinga). Mark srivijaya_718 adjust (without the strip before 775) and srivijaya_860 adjust with a new keyframe 970-1138 without it. Kedah stays to 1138.",
+     "applied": false
+    },
+    {
+     "where": "/identity/successors",
+     "what": "The infobox successor, the Melayu Kingdom, is missing.",
+     "why": "Srivijaya infobox: successor 'Melayu Kingdom'. The ledger already has Jambi leaving in 1202.",
+     "fix": "Add melayu-kingdom (Jambi) as a successor, or say in the notes why it is left out.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/9/note",
+     "what": "The note does not record that the Melayu page's infobox gives 'Independence restored: 1028' and its text says Jambi had 'broken away' by the end of the 12th century.",
+     "why": "Melayu Kingdom page infobox and text.",
+     "fix": "Add both to the note. 1202 can stay at confidence 2 on the Srivijaya page's 'early 13th century'.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/3",
+     "what is missing": "The 692 shape adds about 313,000 km2 (the peninsula from Johor to 7N, plus central Sumatra and Riau), but the 692 ledger event's region is Jambi only and the 685 Kedah gain is about 9,500 km2. No event explains the peninsula south of Kedah or central Sumatra.",
+     "page to try": "https://en.wikipedia.org/wiki/Langkasuka"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "718 gain at confidence 1 (see the Tambralinga fix). The Ligor inscription (c. 775) dates the Isthmus.",
+     "page to try": "https://en.wikipedia.org/wiki/Tambralinga"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "1139 Kedah loss at confidence 1 (Cliopatria's year). The Chola page says Kedah 'disappeared from Indian sources' after c. 1120.",
+     "page to try": "https://en.wikipedia.org/wiki/Kedah_Sultanate"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "1139 loss of the strip at confidence 1. The Tambralinga page gives 969/970.",
+     "page to try": "https://en.wikipedia.org/wiki/Tambralinga"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "Dissolve 1293 at confidence 1 (Cliopatria's year). The pages give disintegration after 1025, 'weak remains' in 1275 (Singhasari page) and Majapahit ending 'efforts to revive Srivijaya' in 1377 (Melayu page).",
+     "page to try": "https://en.wikipedia.org/wiki/Melayu_Kingdom"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Srivijaya",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kota_Kapur_inscription",
+     "result": "confirmed (region broader than the page; confidence lowered to 2)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Melayu_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Chola_invasion_of_Srivijaya",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Melayu_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Pamalayu",
+     "result": "confirmed for the date; page does not name Palembang or Srivijaya (confidence lowered to 2)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1200000,
+    "infobox_year": 1200,
+    "cliopatria_km2": 456771.7,
+    "ratio": 0.38,
+    "acknowledged": true,
+    "note": "Acknowledged in keyframe_review/7 (and /4): the infobox follows the maximum maritime extent, and the shape is kept as the core."
+   }
+  },
+  {
+   "slug": "sunda-kingdom",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/11",
+     "what": "The note quotes the Sunda page as 'The Banten conquest began in the 1570s', which is not on the page. The year 1572 is Cliopatria's, yet the event was at confidence 2.",
+     "why": "Sunda Kingdom page, read twice: neither '1570s' nor '1572' occurs. It has 'The kingdom has fallen apart, particularly after 1576 due to constant pressure from Banten' and 'finally collapsed completely in 1579'. The Banten page has Banten comprising 'all of Sunda, except for Cirebon and Sumedang Larang' at Hasanuddin's death (1570).",
+     "fix": "Confidence 1; the note rewritten with the pages' actual sentences.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/13/note",
+     "what": "The same unsupported 'Banten conquest beginning in the 1570s' attributed to the Sunda page.",
+     "why": "As above.",
+     "fix": "Replaced with the page's 'particularly after 1576 due to constant pressure from Banten'.",
+     "applied": true
+    },
+    {
+     "where": "/identity/capitals/1",
+     "what": "Kawali is Sunda's capital until 1481, but in 1475-1481 Sunda alone (Susuk Tunggal) ruled from Pakuan. Kawali (108.37E) lies outside the 1475 Sunda shape (bbox 105.37-107.51E).",
+     "why": "Sunda page rulers table: Susuk Tunggal 1475-1482 ruling Sunda from Pakuan; Ningrat Kancana (Galuh) 1475-1482 from Kawali. shapes.csv sunda-kingdom_1475 bbox.",
+     "fix": "Kawali 1371-1474; Pakuan from 1475. Add a 1475 capital_move, or say in /ledger/7's note that the 1482 move is the united court's.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/11",
+     "what": "The 1519 shape keeps Banten and Sunda Kalapa to 1528, but the ledger loses both in 1527.",
+     "why": "/ledger/9 and /ledger/10 are at 1527; sunda-kingdom_1529 starts in 1529.",
+     "fix": "Mark 1519 adjust for 1519-1526, or start the corrected 1529 shape (keyframe 12) at 1527.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "825 union with Galuh (confidence 1, Cliopatria's year; unverified within the page budget).",
+     "page to try": "https://en.wikipedia.org/wiki/Carita_Parahyangan"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "896 separation (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Carita_Parahyangan"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "1028 union (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Sunda_Kingdom"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "1572 loss of the west, now at confidence 1. Maulana Yusuf's campaign has no year on the pages opened.",
+     "page to try": "https://en.wikipedia.org/wiki/Banten_Sultanate"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Sunda_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Sunda_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Sultanate_of_Cirebon",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Sunda_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Sunda_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Sunda_Kingdom",
+     "result": "not on page (quote); fixed at confidence 1"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 121224.6,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area. The 121,225 km2 shape (732-740) is corrected to Sunda alone."
+   }
+  },
+  {
+   "slug": "mataram-kingdom",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/2/to",
+     "what": "The Wurawari revolt war ran to 1017, past the state's end in 1016.",
+     "why": "Mataram page: the Pucangan inscription dates the revolt 1016-1017; the infobox ends the kingdom in 1016.",
+     "fix": "Set to 1016 and add a sentence to the note keeping the 1016-1017 span.",
+     "applied": true
+    },
+    {
+     "where": "/identity/rulers",
+     "what": "The ruler strip stops at Wawa (924-929), although the state lasts to 1016, and has gaps 746-760, 850-855 and 885-898.",
+     "why": "Mataram infobox: '985 AD-1016 (last)' (Dharmawangsa); the page names Mpu Sindok from c. 929.",
+     "fix": "Add Sindok to Dharmawangsa from the page, or say in the notes that the strip is partial.",
+     "applied": false
+    },
+    {
+     "where": "/notes",
+     "what": "data/README.md lists 'Mataram Kingdom / Mataram Sultanate' among near-duplicate Names, and the dossier does not say they are different states.",
+     "why": "history/data/README.md, 'Duplicate or near-duplicate Names'.",
+     "fix": "Add one sentence to the notes: the Mataram Sultanate (16th-18th c., se-02) is a different state.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "898 East Java gain is at confidence 1 on Balitung's accession (10 May 898, confirmed). The page has him 'incorporat[ing] parts of east Java' without a year.",
+     "page to try": "https://en.wikipedia.org/wiki/Balitung"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "990 Bali vassal_start at confidence 1. The Mataram page has Bali 'probably as vassal'; the year is a bridge.",
+     "page to try": "https://en.wikipedia.org/wiki/Udayana_Warmadewa"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "1016 Bali vassal_end at confidence 1 (page silent).",
+     "page to try": "https://en.wikipedia.org/wiki/Udayana_Warmadewa"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Mataram_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Mataram_Kingdom",
+     "result": "confirmed (accession date; the conquest itself undated, so confidence 1 is right)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Mataram_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Mataram_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Galuh_Kingdom",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 59609.7,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area."
+   }
+  },
+  {
+   "slug": "early-balinese-kingdoms",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "1293 regained independence is at confidence 1, but the Bali Kingdom page (already in sources) says 'After the 1292 rebellion and the fall of Singhasari, Java could not assert its rule over Bali'. It can be cited at confidence 2.",
+     "page to try": "https://en.wikipedia.org/wiki/Bali_Kingdom"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Bali_Kingdom",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Singhasari",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Majapahit",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Majapahit",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Bali_Kingdom",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 7748.1,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area; the island fixes the land."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "tarumanagara",
+    "year": 612,
+    "type": "vassal_start",
+    "counterpart": "galuh-kingdom"
+   },
+   "mirror": {
+    "slug": "galuh-kingdom",
+    "year": 612,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Vassal events live in the suzerain's ledger; Galuh's found names tarumanagara. The shapes overlap 612-669 (see the tarumanagara keyframes fix)."
+  },
+  {
+   "event": {
+    "slug": "tarumanagara",
+    "year": 669,
+    "type": "vassal_end",
+    "counterpart": "galuh-kingdom"
+   },
+   "mirror": {
+    "slug": "galuh-kingdom",
+    "year": 669,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Galuh records independence as a gain of its own land."
+  },
+  {
+   "event": {
+    "slug": "tarumanagara",
+    "year": 669,
+    "type": "dissolve",
+    "counterpart": "sunda-kingdom"
+   },
+   "mirror": {
+    "slug": "sunda-kingdom",
+    "year": 670,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "galuh-kingdom",
+    "year": 723,
+    "type": "loss",
+    "counterpart": "mataram-kingdom"
+   },
+   "mirror": {
+    "slug": "mataram-kingdom",
+    "year": 723,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "galuh-kingdom",
+    "year": 739,
+    "type": "gain",
+    "counterpart": "mataram-kingdom"
+   },
+   "mirror": {
+    "slug": "mataram-kingdom",
+    "year": 739,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "galuh-kingdom",
+    "year": 825,
+    "type": "loss",
+    "counterpart": "sunda-kingdom"
+   },
+   "mirror": {
+    "slug": "sunda-kingdom",
+    "year": 825,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Both at confidence 1 (Cliopatria's year)."
+  },
+  {
+   "event": {
+    "slug": "galuh-kingdom",
+    "year": 896,
+    "type": "gain",
+    "counterpart": "sunda-kingdom"
+   },
+   "mirror": {
+    "slug": "sunda-kingdom",
+    "year": 896,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Both at confidence 1."
+  },
+  {
+   "event": {
+    "slug": "galuh-kingdom",
+    "year": 1028,
+    "type": "loss",
+    "counterpart": "sunda-kingdom"
+   },
+   "mirror": {
+    "slug": "sunda-kingdom",
+    "year": 1028,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Both at confidence 1."
+  },
+  {
+   "event": {
+    "slug": "sunda-kingdom",
+    "year": 1475,
+    "type": "split",
+    "counterpart": "galuh-kingdom"
+   },
+   "mirror": {
+    "slug": "galuh-kingdom",
+    "year": 1475,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "sunda-kingdom",
+    "year": 1482,
+    "type": "gain",
+    "counterpart": "galuh-kingdom"
+   },
+   "mirror": {
+    "slug": "galuh-kingdom",
+    "year": 1482,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "sunda-kingdom",
+    "year": 1482,
+    "type": "loss",
+    "counterpart": "sultanate-of-cirebon"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (se-02 part); Cirebon's infobox says 1479 and its body 2 April 1482."
+  },
+  {
+   "event": {
+    "slug": "sunda-kingdom",
+    "year": 1527,
+    "type": "loss",
+    "counterpart": "sultanate-of-banten"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (se-02 part); Banten's infobox: 'Syarif Hidayatullah conquered Banten: 1526', 'Conquest of the Sunda Kingdom: 1527'."
+  },
+  {
+   "event": {
+    "slug": "sunda-kingdom",
+    "year": 1527,
+    "type": "loss",
+    "counterpart": "demak-sultanate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (se-02 part)"
+  },
+  {
+   "event": {
+    "slug": "sunda-kingdom",
+    "year": 1572,
+    "type": "loss",
+    "counterpart": "sultanate-of-banten"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (se-02 part); year is Cliopatria's (confidence 1)."
+  },
+  {
+   "event": {
+    "slug": "sunda-kingdom",
+    "year": 1579,
+    "type": "loss",
+    "counterpart": "sultanate-of-banten"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (se-02 part)"
+  },
+  {
+   "event": {
+    "slug": "mataram-kingdom",
+    "year": 990,
+    "type": "vassal_start",
+    "counterpart": "early-balinese-kingdoms"
+   },
+   "mirror": {
+    "slug": "early-balinese-kingdoms",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Vassal events live in the suzerain's ledger. Bali's keyframe 2 names Mataram (to 1016) as probable suzerain; the Bali page: 'either Bali had allied with East Java, or Bali was Java's vassal'."
+  },
+  {
+   "event": {
+    "slug": "mataram-kingdom",
+    "year": 1016,
+    "type": "vassal_end",
+    "counterpart": "early-balinese-kingdoms"
+   },
+   "mirror": {
+    "slug": "early-balinese-kingdoms",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "As above."
+  },
+  {
+   "event": {
+    "slug": "mataram-kingdom",
+    "year": 1016,
+    "type": "dissolve",
+    "counterpart": "kahuripan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (se-02 part)"
+  },
+  {
+   "event": {
+    "slug": "srivijaya",
+    "year": 685,
+    "type": "gain",
+    "counterpart": "Kedah (Kadaram), pre-1139"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed as kedah-kingdom in counterparts_needing_dossiers (se-02-x)."
+  },
+  {
+   "event": {
+    "slug": "srivijaya",
+    "year": 686,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody, but the Jambi half of the region is gained again in 692 from melayu-kingdom (see the fix)."
+  },
+  {
+   "event": {
+    "slug": "srivijaya",
+    "year": 692,
+    "type": "merge",
+    "counterpart": "melayu-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "melayu-kingdom needs a dossier (se-02-x)."
+  },
+  {
+   "event": {
+    "slug": "srivijaya",
+    "year": 718,
+    "type": "gain",
+    "counterpart": "langkasuka"
+   },
+   "mirror": {
+    "slug": "tambralinga",
+    "year": 775,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "The 718 delta (7.0-9.9N, Ligor/Chaiya) is Tambralinga's land. tambralinga.json /ledger/1 has Srivijaya occupying it from 775 (confidence 2); Srivijaya has it from 718 (confidence 1), 57 years apart."
+  },
+  {
+   "event": {
+    "slug": "srivijaya",
+    "year": 1139,
+    "type": "loss",
+    "counterpart": "tambralinga"
+   },
+   "mirror": {
+    "slug": "tambralinga",
+    "year": 969,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "tambralinga.json /ledger/4: independence 969/970 (confidence 2) against 1139 here (confidence 1), 170 years apart. Srivijaya should move."
+  },
+  {
+   "event": {
+    "slug": "srivijaya",
+    "year": 1139,
+    "type": "loss",
+    "counterpart": "sultanate-of-kedah"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (se-02 part)"
+  },
+  {
+   "event": {
+    "slug": "srivijaya",
+    "year": 1202,
+    "type": "loss",
+    "counterpart": "melayu-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier yet (se-02-x). The Melayu infobox says 'Independence restored: 1028'."
+  },
+  {
+   "event": {
+    "slug": "srivijaya",
+    "year": 1288,
+    "type": "occupation_start",
+    "counterpart": "singhasari"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (se-02 part)"
+  },
+  {
+   "event": {
+    "slug": "srivijaya",
+    "year": 1293,
+    "type": "occupation_end",
+    "counterpart": "singhasari"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (se-02 part)"
+  },
+  {
+   "event": {
+    "slug": "srivijaya",
+    "year": 1293,
+    "type": "dissolve",
+    "counterpart": "majapahit"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (se-02 part)"
+  },
+  {
+   "event": {
+    "slug": "early-balinese-kingdoms",
+    "year": 1284,
+    "type": "loss",
+    "counterpart": "singhasari"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (se-02 part); the Singhasari page states the 1284 integration of Bali as fact."
+  },
+  {
+   "event": {
+    "slug": "early-balinese-kingdoms",
+    "year": 1293,
+    "type": "gain",
+    "counterpart": "singhasari"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (se-02 part)"
+  },
+  {
+   "event": {
+    "slug": "early-balinese-kingdoms",
+    "year": 1343,
+    "type": "loss",
+    "counterpart": "majapahit"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (se-02 part); Majapahit should carry Bali as a vassal 1343-1478."
+  },
+  {
+   "event": {
+    "slug": "water-chenla",
+    "year": 780,
+    "type": "contest_start",
+    "counterpart": "srivijaya"
+   },
+   "mirror": {
+    "slug": "srivijaya",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Not in Srivijaya, and should not be: the Water Chenla page names 'the Javanese Shailendra dynasty'. water-chenla.json (se-01) should point at sailendra-dynasty (needs a dossier, se-02-x) or mataram-kingdom. The same applies to its 790 contest_end, its 790 dissolve and its successors entry."
+  },
+  {
+   "event": {
+    "slug": "khmer-empire",
+    "year": 803,
+    "type": "gain",
+    "counterpart": "srivijaya"
+   },
+   "mirror": {
+    "slug": "srivijaya",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Confidence 1. The land (Water Chenla) was never in a Srivijaya shape; route to se-01: the counterpart should be the Javanese Sailendra, not srivijaya."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Citarum",
+   "kind": "region",
+   "used_in": "galuh-kingdom"
+  },
+  {
+   "name": "Cimanuk",
+   "kind": "region",
+   "used_in": "sunda-kingdom"
+  },
+  {
+   "name": "Pemali",
+   "kind": "region",
+   "used_in": "sunda-kingdom"
+  },
+  {
+   "name": "Priangan",
+   "kind": "region",
+   "used_in": "sunda-kingdom"
+  },
+  {
+   "name": "Kawali",
+   "kind": "place",
+   "used_in": "galuh-kingdom"
+  },
+  {
+   "name": "Karangkamulyan",
+   "kind": "place",
+   "used_in": "galuh-kingdom"
+  },
+  {
+   "name": "Pakuan",
+   "kind": "place",
+   "used_in": "sunda-kingdom"
+  },
+  {
+   "name": "Sundapura",
+   "kind": "place",
+   "used_in": "tarumanagara"
+  },
+  {
+   "name": "Bedulu",
+   "kind": "place",
+   "used_in": "early-balinese-kingdoms"
+  },
+  {
+   "name": "Sunda Kalapa",
+   "kind": "place",
+   "used_in": "sunda-kingdom"
+  },
+  {
+   "name": "Kedukan Bukit",
+   "kind": "place",
+   "used_in": "srivijaya"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Melayu Kingdom (Jambi, Dharmasraya)",
+   "suggested_slug": "melayu-kingdom",
+   "years": [
+    671,
+    1347
+   ]
+  },
+  {
+   "name": "Kedah (Kadaram) before the Sultanate",
+   "suggested_slug": "kedah-kingdom",
+   "years": [
+    682,
+    1138
+   ]
+  },
+  {
+   "name": "Langkasuka",
+   "suggested_slug": "langkasuka",
+   "years": [
+    null,
+    null
+   ]
+  },
+  {
+   "name": "Kantoli",
+   "suggested_slug": "kantoli",
+   "years": [
+    null,
+    null
+   ]
+  },
+  {
+   "name": "Sumedang Larang",
+   "suggested_slug": "sumedang-larang",
+   "years": [
+    1578,
+    1620
+   ]
+  },
+  {
+   "name": "Sailendra dynasty (Central Java); also the right counterpart for water-chenla 780-790 and khmer-empire 803",
+   "suggested_slug": "sailendra-dynasty",
+   "years": [
+    775,
+    852
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-se-02-a.md",
+ "problems": [
+  "No Context polity in section 6 of the author's brief has a dossier yet (majapahit, kediri-kingdom, sultanate-of-kedah, sultanate-of-cirebon, kingdom-of-janggala, singhasari, sultanate-of-banten, demak-sultanate, sultanate-of-malacca, kahuripan, kingdom-of-pajana): all count as counterparts owned by a group that has not run yet. Cross-checked instead against tambralinga, water-chenla and khmer-empire, which name srivijaya.",
+  "Reviewer edits (orchestrator's small-fix rule), all re-validated with 0 errors and read back: tarumanagara /wars/0/to 686->669; srivijaya /ledger/2 and /ledger/11 confidence 3->2; sunda-kingdom /ledger/11 confidence 2->1 with its quote corrected, and /keyframe_review/13/note quote corrected; mataram-kingdom /wars/2/to 1017->1016.",
+  "WebFetch answers through a summariser. The Sunda '1570s' quote was checked twice with different prompts before it was judged not on the page.",
+  "The Tarumanagara invasion (infobox 669) comes before Srivijaya's founding (c. 671, Srivijaya infobox). The conflict is in the pages; both dates are noted in the dossiers."
+ ]
+}

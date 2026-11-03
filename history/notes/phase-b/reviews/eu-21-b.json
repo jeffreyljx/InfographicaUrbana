@@ -1,0 +1,1826 @@
+{
+ "batch_id": "eu-21-b",
+ "verdicts": [
+  {
+   "slug": "hungarian-republic",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/2, /ledger/5, /ledger/6, /ledger/7 (region) and /wars/0/zones/0",
+     "what": "The Romanian contest and occupation of 1919-1920 are drawn on the wrong land: the region spec lands in Slovakia and Ruthenia, not in Hungary east of the Tisza and around Budapest as the text says.",
+     "why": "The spec {minus:[Hungarian Republic 1919, Hungarian Republic 1920]} resolves to 116 cells (29,195 km2): 53 in Ukraine (Ruthenia), 34 in Slovakia, 9 in Hungary, 0 in Romania; the 1920 shape holds 35 cells within 60 km of Debrecen that the spec leaves out. Hungarian-Romanian War page: 'On the evening of 1 May, the entire east bank of the Tisza River was under the control of the Romanian Army'; 'Romania occupied all of Hungary except for an area around Lake Balaton'; 'In early 1920, Romanian troops departed Hungary'. The 1919 keyframe note says the occupation is to be drawn from the ledger, so the 1920 anchor would hatch Czechoslovak Slovakia and Ruthenia and leave Hungary proper clear.",
+     "fix": "Contest 1919/4-1919/8 ('the entire east bank of the Tisza'): {\"intersect\":[{\"cliopatria\":\"Hungarian Republic\",\"year\":1920},{\"union\":[{\"admin1\":\"Hajdú-Bihar\",\"country\":\"Hungary\"},{\"admin1\":\"Szabolcs-Szatmár-Bereg\",\"country\":\"Hungary\"},{\"admin1\":\"Békés\",\"country\":\"Hungary\"}]}]} (resolves to 58 cells, 14,876 km2; add the parts of Csongrád and Jász-Nagykun-Szolnok east of the river if wanted). Occupation 1919/8-1920 ('all of Hungary except for an area around Lake Balaton'): {\"minus\":[{\"cliopatria\":\"Hungarian Republic\",\"year\":1920},{\"lon\":17.75,\"lat\":46.85,\"km\":60}]}. Use the same specs in the war zone.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/14",
+     "what": "Slovak-Hungarian War start recorded at confidence 1 with no month, the note claiming the page does not date the fighting.",
+     "why": "First Vienna Award page (a source of this dossier): Hungary 'on March 23 launched a larger attack on eastern Slovakia'.",
+     "fix": "month 3, confidence 2, note extended with the quote.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/25",
+     "what": "1945 loss of southern Slovakia and Ruthenia to czechoslovakia (confidence 1) has no mirror: czechoslovakia/ledger/13 books the southern-Slovak strip as a 1945 gain from slovak-republic and czechoslovakia/ledger/15 loses Ruthenia to the USSR in 1945/6.",
+     "why": "Cross-dossier check; the same defect is already listed against czechoslovakia in review eu-21-a.",
+     "fix": "No change needed here once czechoslovakia books the strip from hungarian-republic; keep the 1945 date until a page dates the return (Soviet conquest December 1944-April 1945).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/24, /ledger/25",
+     "what is missing": "Date of the end of German occupation and of the de facto return of southern Slovakia, Ruthenia and Backa (confidence 1); no event or war for the Soviet conquest and occupation of 1944-1945, although the Kingdom page says 'Under Soviet occupation, the fate of the Kingdom of Hungary was already determined'.",
+     "page to try": "https://en.wikipedia.org/wiki/Hungary_in_World_War_II"
+    },
+    {
+     "where": "/ledger/19",
+     "what is missing": "Month of the 1941 annexations (the Kingdom page's infobox gives 'Invasion of Yugoslavia: 11 April 1941').",
+     "page to try": "https://en.wikipedia.org/wiki/Hungarian_occupation_of_Yugoslav_territories"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/First_Vienna_Award",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/First_Vienna_Award",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/First_Vienna_Award",
+     "result": "mis-dated (page gives 23 March 1939; fixed)"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Second_Vienna_Award",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/23",
+     "page": "https://en.wikipedia.org/wiki/Second_Vienna_Award",
+     "result": "confirmed (page adds Soviet administration until 9 March 1945)"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Hungary_(1920%E2%80%931946)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/26",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Hungary_(1920%E2%80%931946)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Hungarian%E2%80%93Romanian_War",
+     "result": "confirmed in date and words; region drawn on the wrong land (see fixes)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 172149,
+    "infobox_year": 1941,
+    "cliopatria_km2": 174011,
+    "ratio": 1.01,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kingdom-of-lithuania",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger (1918-1919)",
+     "what is missing": "The Soviet-Lithuanian War and the Bermontian episode (Bolshevik forces held Vilnius and eastern Lithuania from January 1919): no contest; the 1919 shape shows the whole country.",
+     "page to try": "https://en.wikipedia.org/wiki/Lithuanian_Wars_of_Independence"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "Presidents 1919-1940 (Smetona, Stulginskis, Grinius); only Mindaugas II for 1918.",
+     "page to try": "https://en.wikipedia.org/wiki/President_of_Lithuania"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Vilnius_Region",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Vilnius_Region",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Klaip%C4%97da_Region",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Klaip%C4%97da_Region",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Vilnius_Region",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Interwar_Lithuania",
+     "result": "confirmed (URL redirects to History of Lithuania, as the author says)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 62642,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area: the linked Kingdom of Lithuania page is the 1251-1263 kingdom, Interwar_Lithuania redirects to a general history without area and History_of_Lithuania_(1918-1940) did not resolve. The Cliopatria shapes exclude Vilnius (2 of the cells within 20 km) and the 1924 shape is 62,642 km2; no factor-two question arises."
+   }
+  },
+  {
+   "slug": "kingdom-of-romania",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/0, /ledger/1, /ledger/3",
+     "what": "Three gains duplicate the predecessor dossier's own gains and predate this dossier's start or name a different counterpart: Bessarabia (1918, April by the predecessor), Bukovina (1918/11, before the start 1918-12) and Transylvania (1918/12 from hungarian-republic).",
+     "why": "united-principalities-of-moldavia-and-wallachia/ledger/22 (1918/4 Bessarabia), /27 (1918/11 Bukovina) and /28 (1918/12 Transylvania from austria-hungary) already carry them, and austria-hungary/ledger/35 splits Transylvania and Bukovina to that dossier in 1918/10; hungarian-republic has no 1918-1919 loss of Transylvania. This dossier's found event (/ledger/2, region = the 1919 shape) already holds all three lands.",
+     "fix": "Delete /ledger/0, /1 and /3. Recast /ledger/8 as Trianon's recognition: year 1920, month 6, region {\"region\":\"Transylvania (broad)\"} (it already contains the Romanian Banat: 96 Banat cells inside it), counterpart hungarian-republic, mirroring hungarian-republic/ledger/9. Say in the austria-hungary predecessor note that the land came through the united principalities.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/4, /ledger/5, /ledger/6, /ledger/7 (region) and /wars/0/zones/0",
+     "what": "Same misplaced region as hungarian-republic: the Romanian advance and occupation of 1919-1920 are drawn in Slovakia and Ruthenia.",
+     "why": "The spec {minus:[Hungarian Republic 1919, Hungarian Republic 1920]} resolves to 116 cells (29,195 km2): 53 in Ukraine (Ruthenia), 34 in Slovakia, 9 in Hungary, 0 in Romania; the 1920 shape holds 35 cells within 60 km of Debrecen that the spec leaves out. Hungarian-Romanian War page: 'On the evening of 1 May, the entire east bank of the Tisza River was under the control of the Romanian Army'; 'Romania occupied all of Hungary except for an area around Lake Balaton'; 'In early 1920, Romanian troops departed Hungary'. The 1919 keyframe note says the occupation is to be drawn from the ledger, so the 1920 anchor would hatch Czechoslovak Slovakia and Ruthenia and leave Hungary proper clear.",
+     "fix": "Contest 1919/4-1919/8 ('the entire east bank of the Tisza'): {\"intersect\":[{\"cliopatria\":\"Hungarian Republic\",\"year\":1920},{\"union\":[{\"admin1\":\"Hajdú-Bihar\",\"country\":\"Hungary\"},{\"admin1\":\"Szabolcs-Szatmár-Bereg\",\"country\":\"Hungary\"},{\"admin1\":\"Békés\",\"country\":\"Hungary\"}]}]} (resolves to 58 cells, 14,876 km2; add the parts of Csongrád and Jász-Nagykun-Szolnok east of the river if wanted). Occupation 1919/8-1920 ('all of Hungary except for an area around Lake Balaton'): {\"minus\":[{\"cliopatria\":\"Hungarian Republic\",\"year\":1920},{\"lon\":17.75,\"lat\":46.85,\"km\":60}]}. Use the same specs in the war zone.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/19",
+     "what": "Loss of Bessarabia and Northern Bukovina dated August 1944 at confidence 3; the page describes a gradual loss from early 1944.",
+     "why": "Soviet occupation of Bessarabia and Northern Bukovina page: 'In early 1944, the Soviet Union gradually took over the territory'; 23 August 1944 is the date of the coup only.",
+     "fix": "confidence 2, note extended.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/21",
+     "what": "Northern Transylvania counted Romanian from October 1944 at confidence 3 while the page puts it under Soviet administration until March 1945.",
+     "why": "Second Vienna Award page: 'The Soviet Union kept administrative control until 9 March 1945, when it was reverted to Romania.'",
+     "fix": "Optional: an occupation_start (counterpart union-of-soviet-socialist-republics) 1944/10 and occupation_end 1945/3, or keep the gain and leave the note as is.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/17",
+     "what is missing": "End of the Transnistria Governorate (confidence 1); the Romanian withdrawal from the Dniester-Bug land in spring 1944.",
+     "page to try": "https://en.wikipedia.org/wiki/Transnistria_Governorate"
+    },
+    {
+     "where": "/ledger (1923)",
+     "what is missing": "The 1923 exchange of border settlements with the Kingdom of Serbs, Croats and Slovenes (the Kingdom page names it, no area).",
+     "page to try": "https://en.wikipedia.org/wiki/Banat"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Soviet_occupation_of_Bessarabia_and_Northern_Bukovina",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Soviet_occupation_of_Bessarabia_and_Northern_Bukovina",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Soviet_occupation_of_Bessarabia_and_Northern_Bukovina",
+     "result": "mis-dated (gradual from early 1944; confidence lowered to 2)"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Craiova",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Second_Vienna_Award",
+     "result": "confirmed (with Soviet administration to 9 March 1945)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Romania",
+     "result": "confirmed on the page, but a duplicate of the predecessor's event (see fixes)"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Romania",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 295049,
+    "infobox_year": 1940,
+    "cliopatria_km2": 301073,
+    "ratio": 1.02,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "republic-of-austria",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Start of the Carinthian dispute (confidence 1): Yugoslav troops entered southern Carinthia in late 1918.",
+     "page to try": "https://en.wikipedia.org/wiki/Carinthian_plebiscite"
+    },
+    {
+     "where": "/ledger (1919-1920)",
+     "what is missing": "The page says Saint-Germain also 'ceded German-populated regions in Sudetenland to Czechoslovakia'; not recorded (consistent with a found region that never held them, but Lower Styria, also never held, is recorded as a loss). Small cessions to Czechoslovakia (Valtice, Vitorazsko) are absent.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Saint-Germain-en-Laye_(1919)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/First_Austrian_Republic",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/First_Austrian_Republic",
+     "result": "confirmed ('a portion of the Alpine provinces'; confidence 2 is right)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/First_Austrian_Republic",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/First_Austrian_Republic",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/First_Austrian_Republic",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 85624,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "First Austrian Republic page has no area (checked). Keyframe 2 is marked ok while holding Burgenland a year before /ledger/5; its note says so."
+   }
+  },
+  {
+   "slug": "second-polish-republic",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/25",
+     "what": "Slovak seizure of the southern border areas recorded with no month.",
+     "why": "Second Polish Republic page ties it to the start of the invasion: 'On that day, Germany and Slovakia attacked Poland' (1 September 1939); the Slovak dossier's November date is the formal annexation.",
+     "fix": "month 9, note extended.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/19 (and the 60 km discs of /ledger/11, /12, /20, /21)",
+     "what": "The 1922 annexation of the Vilnius Region is drawn as a 100 km disc around Vilnius, half of which is Lithuanian land.",
+     "why": "The disc resolves to 144 cells (31,432 km2); 73 of them (15,855 km2) lie inside kingdom-of-lithuania's 1924 Cliopatria shape and 2 within 15 km of Kaunas, the Lithuanian capital; only 71 cells lie inside Poland's own 1924 shape. The 60 km disc puts 26 cells (5,655 km2) inside Lithuania.",
+     "fix": "Clip to Polish land: {\"intersect\":[{\"place\":\"Vilnius\",\"km\":100},{\"cliopatria\":\"Second Polish Republic\",\"year\":1924}]} (or the gazetteer's 'Vilnius Region' when it exists); clip the 60 km discs the same way.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/22, /ledger/23",
+     "what": "The 1922 gain of 'eastern Upper Silesia' (confidence 1) is drawn as the whole of Upper Silesia.",
+     "why": "{\"region\":\"Upper Silesia\"} resolves to 117 cells, 28,203 km2 (92 of them in modern Poland, including Opole Silesia, which stayed German); the Polish share was about a third of the plebiscite area. weimar-republic/ledger/12 says 'East Upper Silesia, the part awarded to Poland'.",
+     "fix": "{\"intersect\":[{\"region\":\"Upper Silesia\"},{\"cliopatria\":\"Second Polish Republic\",\"year\":1924}]} (26 cells, 6,235 km2), with a page for the date.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/2/note",
+     "what": "The 1920-1923 shape, marked ok, already holds the 26 East Upper Silesian cells two years before the 1922 partition; the note does not say so.",
+     "why": "Intersect of the 1920 shape with Upper Silesia = 26 cells, the same as the 1924 shape.",
+     "fix": "Say so in the note (or adjust for 1920-1921).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/22, /ledger/23",
+     "what is missing": "Upper Silesia plebiscite (20 March 1921) and partition (transfer June 1922): confidence 1, taken from the German dossier.",
+     "page to try": "https://en.wikipedia.org/wiki/Upper_Silesia_plebiscite"
+    },
+    {
+     "where": "/ledger (1920, 1938)",
+     "what is missing": "The Spa division of Spisz and Orava (28 July 1920) and the Polish annexation of Slovak border villages in autumn 1938 (the Second Polish Republic page: areas 'which Poland had annexed from Czechoslovakia in October 1938'); no gain events.",
+     "page to try": "https://en.wikipedia.org/wiki/Polish%E2%80%93Czechoslovak_border_conflicts"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Month of the Greater Poland uprising (27 December 1918); without it the contest sorts before the found event.",
+     "page to try": "https://en.wikipedia.org/wiki/Greater_Poland_uprising_(1918%E2%80%931919)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Polish%E2%80%93Soviet_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Polish%E2%80%93Soviet_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Polish%E2%80%93Soviet_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/24",
+     "page": "https://en.wikipedia.org/wiki/Zaolzie",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Zaolzie",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Zaolzie",
+     "result": "confirmed (23 January 1919)"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Vilnius_Region",
+     "result": "confirmed (date); region spills into Lithuania (see fixes)"
+    },
+    {
+     "where": "/ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Second_Polish_Republic",
+     "result": "confirmed; month added"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 388634,
+    "infobox_year": null,
+    "cliopatria_km2": 373209,
+    "ratio": 0.96,
+    "acknowledged": true,
+    "note": "Infobox gives 388,634 km2 with no year; the body gives 389,720 km2 after Trans-Olza. Compared with the 1924-1935 shape."
+   }
+  },
+  {
+   "slug": "yugoslavia",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/0",
+     "what": "Gain of Montenegro in November 1918 (confidence 3) before the state existed; the page says Montenegro was absorbed into Serbia.",
+     "why": "Kingdom of Yugoslavia page: 'Established: 1 December 1918' and 'Montenegro having been absorbed into Serbia the previous month'. serbs/ledger/30 (1918/11 gain cp montenegro) and montenegro/ledger/13 (1918/11 merge cp serbs) already carry it.",
+     "fix": "Delete the event (the found event's region holds Montenegro); add serbs, the Kingdom of Serbia dossier that dissolves 1918-12, to predecessors (the 'serbia' dossier was failed in review eu-21-a as a duplicate of serbs).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/19, /ledger/20, /ledger/22",
+     "what": "Land retaken in 1944 (Backa, Montenegro, Serbia) is given to the Kingdom, whose government sat in London, while the counterpart dossiers give it to the Partisans; the 1945/3 merge (/ledger/27) then brings the same land in a second time.",
+     "why": "territory-of-the-military-commander-in-serbia/ledger/5 (1944/10 loss to yugoslav-partisans); yugoslav-partisans/ledger/9-10 (Belgrade 1944/10, Serbia 1944/12) and /7 (Risan and Podgorica); italian-governorate-of-montenegro/ledger/6-7 (German occupation ends, dissolves 1944/12, no Yugoslav counterpart). This dossier's own notes say 'the Partisans hold Montenegro' and 'The Red Army took the city on 20 October' with the Partisans.",
+     "fix": "Drop the three gains and let /ledger/27 (merge with yugoslav-partisans, 1945/3) carry the Partisan-held land, or move them to the Partisans dossier; hungarian-republic/ledger/20 then names yugoslav-partisans.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/25",
+     "what": "1945 gain of Ljubljana Province, Dalmatia and Kotor from kingdom-of-italy (confidence 1), which had lost them in 1943.",
+     "why": "kingdom-of-italy/ledger/38: 1943/9 loss of these lands to nazi-germany; this dossier's own note dates their release to the armistice of 8 September 1943.",
+     "fix": "Counterpart nazi-germany (or independent-state-of-croatia for the Dalmatian part, which the NDH took in September 1943), or let the merge carry it.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/26",
+     "what": "1945 gain of Kosovo from albania (confidence 1) disagrees with albania/ledger/20, a 1944 loss to yugoslav-partisans.",
+     "why": "Cross-dossier check.",
+     "fix": "Agree year and counterpart with albania (1944, the Partisans, carried by the 1945/3 merge).",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger (1919-1920)",
+     "what": "No mirror for Austria's losses: no gain of Lower Styria (republic-of-austria/ledger/3, 1919/9) and no contest over southern Carinthia (republic-of-austria/ledger/1 and /4).",
+     "why": "Same batch; the Kingdom page itself says Carinthia 'opted to remain in Austria'.",
+     "fix": "Add gain 1919/9 cp republic-of-austria {\"place\":\"Maribor\",\"km\":40} (confidence 2), contest_start 1919 and contest_end 1920/10 cp republic-of-austria {\"place\":\"Klagenfurt\",\"km\":35}, source https://en.wikipedia.org/wiki/First_Austrian_Republic (add to sources).",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/15",
+     "what": "The Serbian loss is drawn as the whole modern Republic of Serbia, which overlaps the Backa loss to Hungary (/ledger/7), Srem in the NDH (/ledger/11) and the Pirot occupation (/ledger/14).",
+     "why": "Region spec {\"country\":\"Republic of Serbia\"} includes Vojvodina and Pirot.",
+     "fix": "Use the Territory dossier's found region, or minus the other three regions.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/identity/capitals/1",
+     "what": "London (government in exile) 1941-1944 is a capital outside every shape of the state.",
+     "why": "Rule: capitals lie inside the state's shapes in those years.",
+     "fix": "Drop the London entry (say the exile in notes) or end Belgrade in 1941 with no capital until 1944.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/5",
+     "what is missing": "The 1945 shape holds 21 cells not in the 1936 shape, 18 of them Istria and the Slovene Littoral (lon 13.5-14.1, lat 44.9-46.1, about 4,500 km2), with no ledger event (marked unverified: page budget); the SFRY dossier begins an occupation of the Julian March in 1945/11 against kingdom-of-italy, so an occupation_start 1945/5 belongs here.",
+     "page to try": "https://en.wikipedia.org/wiki/Julian_March"
+    },
+    {
+     "where": "/ledger/24, /ledger/25, /ledger/26",
+     "what is missing": "Dates of the end of German occupation of northern Slovenia and of the return of the Italian-annexed lands and Kosovo (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Yugoslav_Front"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Neuilly-sur-Seine",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Rapallo_(1920)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Trianon",
+     "result": "confirmed in substance; the quoted list is stitched from several sentences, not verbatim"
+    },
+    {
+     "where": "/ledger/27",
+     "page": "https://en.wikipedia.org/wiki/Democratic_Federal_Yugoslavia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Democratic_Federal_Yugoslavia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Yugoslavia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Yugoslavia",
+     "result": "not on page as an event of this state: the page says Montenegro was absorbed into Serbia (see fixes)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 247542,
+    "infobox_year": 1941,
+    "cliopatria_km2": 246055,
+    "ratio": 0.99,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1919,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-romania"
+   },
+   "mirror": {
+    "slug": "kingdom-of-romania",
+    "year": 1919,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "ledger/6 both; both regions misplaced (see fixes)"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1920,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-romania"
+   },
+   "mirror": {
+    "slug": "kingdom-of-romania",
+    "year": 1920,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "ledger/7 both"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1920,
+    "type": "loss",
+    "counterpart": "kingdom-of-romania"
+   },
+   "mirror": {
+    "slug": "kingdom-of-romania",
+    "year": 1920,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "romania/ledger/8 gains only the Banat; it books Transylvania in 1918/12 (/ledger/3), a duplicate of united-principalities/ledger/28; fix in kingdom-of-romania"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1920,
+    "type": "loss",
+    "counterpart": "yugoslavia"
+   },
+   "mirror": {
+    "slug": "yugoslavia",
+    "year": 1920,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "yugoslavia/ledger/3"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1920,
+    "type": "loss",
+    "counterpart": "czechoslovakia"
+   },
+   "mirror": {
+    "slug": "czechoslovakia",
+    "year": 1919,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "czechoslovakia/ledger/2 (1919/4)"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1921,
+    "type": "loss",
+    "counterpart": "republic-of-austria"
+   },
+   "mirror": {
+    "slug": "republic-of-austria",
+    "year": 1921,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "austria/ledger/5"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1938,
+    "type": "gain",
+    "counterpart": "czechoslovakia"
+   },
+   "mirror": {
+    "slug": "czechoslovakia",
+    "year": 1938,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "czechoslovakia/ledger/7"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1939,
+    "type": "gain",
+    "counterpart": "czechoslovakia"
+   },
+   "mirror": {
+    "slug": "czechoslovakia",
+    "year": 1939,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "czechoslovakia/ledger/9"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1939,
+    "type": "gain",
+    "counterpart": "slovak-republic"
+   },
+   "mirror": {
+    "slug": "slovak-republic",
+    "year": 1939,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "slovak-republic/ledger/3"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1940,
+    "type": "gain",
+    "counterpart": "kingdom-of-romania"
+   },
+   "mirror": {
+    "slug": "kingdom-of-romania",
+    "year": 1940,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "romania/ledger/11"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1941,
+    "type": "gain",
+    "counterpart": "yugoslavia"
+   },
+   "mirror": {
+    "slug": "yugoslavia",
+    "year": 1941,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "yugoslavia/ledger/7"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "yugoslavia"
+   },
+   "mirror": {
+    "slug": "yugoslavia",
+    "year": 1944,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "yugoslavia/ledger/19 mirrors it, but the Partisans, not the exiled Kingdom, retook Backa; counterpart should become yugoslav-partisans (whose dossier lacks Backa)"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1944,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1944,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "nazi-germany/ledger/53"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "kingdom-of-romania"
+   },
+   "mirror": {
+    "slug": "kingdom-of-romania",
+    "year": 1944,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "romania/ledger/21"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "nazi-germany/ledger/88 (1945/5)"
+  },
+  {
+   "event": {
+    "slug": "hungarian-republic",
+    "year": 1945,
+    "type": "loss",
+    "counterpart": "czechoslovakia"
+   },
+   "mirror": {
+    "slug": "czechoslovakia",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "czechoslovakia/ledger/13 books the strip from slovak-republic; route to czechoslovakia (already in review eu-21-a)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lithuania",
+    "year": 1920,
+    "type": "gain",
+    "counterpart": "republics-of-the-soviet-union"
+   },
+   "mirror": {
+    "slug": "republics-of-the-soviet-union",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "republics-of-the-soviet-union (eu-17) has no loss of Vilnius to Lithuania in 1920"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lithuania",
+    "year": 1920,
+    "type": "loss",
+    "counterpart": "central-lithuania"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "no dossier; in the author counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lithuania",
+    "year": 1923,
+    "type": "gain",
+    "counterpart": "memel-territory"
+   },
+   "mirror": {
+    "slug": "memel-territory",
+    "year": 1923,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "memel-territory/ledger/5"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lithuania",
+    "year": 1939,
+    "type": "loss",
+    "counterpart": "nazi-germany"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1939,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "nazi-germany/ledger/6"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lithuania",
+    "year": 1939,
+    "type": "gain",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "USSR (eu-17) gains eastern Poland in 1939/9 but has no 1939/10 loss of Vilnius to Lithuania"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lithuania",
+    "year": 1940,
+    "type": "occupation_start",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1940,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "USSR/ledger/17 has a 1940/8 gain only; no occupation_start 1940/6 (route eu-17)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-lithuania",
+    "year": 1940,
+    "type": "occupation_end",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1940,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-romania",
+    "year": 1918,
+    "type": "gain",
+    "counterpart": "Sfatul Țării (National Council of Bessarabia)"
+   },
+   "mirror": {
+    "slug": "united-principalities-of-moldavia-and-wallachia",
+    "year": 1918,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "no dossier for the counterpart, but the predecessor books the same gain (ledger/22, 1918/4); delete here"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-romania",
+    "year": 1918,
+    "type": "gain",
+    "counterpart": "austria-hungary"
+   },
+   "mirror": {
+    "slug": "austria-hungary",
+    "year": 1918,
+    "type": "split"
+   },
+   "status": "mismatch",
+   "note": "austria-hungary/ledger/35 splits Bukovina to united-principalities, which books the gain (ledger/27); delete here"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-romania",
+    "year": 1918,
+    "type": "gain",
+    "counterpart": "hungarian-republic"
+   },
+   "mirror": {
+    "slug": "hungarian-republic",
+    "year": 0,
+    "type": ""
+   },
+   "status": "mismatch",
+   "note": "hungarian-republic has no 1918-1919 loss; united-principalities/ledger/28 books Transylvania from austria-hungary; delete here and date the Trianon recognition 1920/6"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-romania",
+    "year": 1919,
+    "type": "occupation_start",
+    "counterpart": "hungarian-republic"
+   },
+   "mirror": {
+    "slug": "hungarian-republic",
+    "year": 1919,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "ledger/6 both"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-romania",
+    "year": 1920,
+    "type": "occupation_end",
+    "counterpart": "hungarian-republic"
+   },
+   "mirror": {
+    "slug": "hungarian-republic",
+    "year": 1920,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "ledger/7 both"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-romania",
+    "year": 1920,
+    "type": "gain",
+    "counterpart": "hungarian-republic"
+   },
+   "mirror": {
+    "slug": "hungarian-republic",
+    "year": 1920,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "hungarian-republic/ledger/9 (land differs: see above)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-romania",
+    "year": 1940,
+    "type": "loss",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1940,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "USSR/ledger/16"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-romania",
+    "year": 1940,
+    "type": "loss",
+    "counterpart": "hungarian-republic"
+   },
+   "mirror": {
+    "slug": "hungarian-republic",
+    "year": 1940,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "hungarian-republic/ledger/18"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-romania",
+    "year": 1940,
+    "type": "loss",
+    "counterpart": "principality-of-bulgaria"
+   },
+   "mirror": {
+    "slug": "principality-of-bulgaria",
+    "year": 1940,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "principality-of-bulgaria/ledger/31"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-romania",
+    "year": 1941,
+    "type": "gain",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1941,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "USSR/ledger/23"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-romania",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1941,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "USSR/ledger/26 loses Ukraine (with the Dniester-Bug land) to nazi-germany in 1941/9; no Romanian occupation (route eu-17)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-romania",
+    "year": 1944,
+    "type": "occupation_end",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1944,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-romania",
+    "year": 1944,
+    "type": "loss",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1944,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "USSR/ledger/35 (1944/8)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-romania",
+    "year": 1944,
+    "type": "gain",
+    "counterpart": "hungarian-republic"
+   },
+   "mirror": {
+    "slug": "hungarian-republic",
+    "year": 1944,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "hungarian-republic/ledger/23"
+  },
+  {
+   "event": {
+    "slug": "republic-of-austria",
+    "year": 1919,
+    "type": "loss",
+    "counterpart": "kingdom-of-italy"
+   },
+   "mirror": {
+    "slug": "kingdom-of-italy",
+    "year": 1919,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-italy/ledger/15 gains South Tyrol in 1919 from austria-hungary, which split it to Italy in 1918/10 (austria-hungary/ledger/37); Austria's loss is the treaty renunciation; Italy (eu-13) could name republic-of-austria"
+  },
+  {
+   "event": {
+    "slug": "republic-of-austria",
+    "year": 1919,
+    "type": "loss",
+    "counterpart": "yugoslavia"
+   },
+   "mirror": {
+    "slug": "yugoslavia",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "yugoslavia has no gain from Austria (same batch; fix listed under yugoslavia)"
+  },
+  {
+   "event": {
+    "slug": "republic-of-austria",
+    "year": 1921,
+    "type": "gain",
+    "counterpart": "hungarian-republic"
+   },
+   "mirror": {
+    "slug": "hungarian-republic",
+    "year": 1921,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "hungarian-republic/ledger/12"
+  },
+  {
+   "event": {
+    "slug": "republic-of-austria",
+    "year": 1938,
+    "type": "loss",
+    "counterpart": "nazi-germany"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1938,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "nazi-germany/ledger/2"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1919,
+    "type": "gain",
+    "counterpart": "ukrainian-people-s-republic"
+   },
+   "mirror": {
+    "slug": "ukrainian-people-s-republic",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "western Volhynia: ukrainian-people-s-republic/ledger/15 is Eastern Galicia only (route eu-17)"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1919,
+    "type": "gain",
+    "counterpart": "weimar-republic"
+   },
+   "mirror": {
+    "slug": "weimar-republic",
+    "year": 1920,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "weimar-republic/ledger/6 (1920/1, entry into force)"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1919,
+    "type": "gain",
+    "counterpart": "ukrainian-people-s-republic"
+   },
+   "mirror": {
+    "slug": "ukrainian-people-s-republic",
+    "year": 1919,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "ukrainian-people-s-republic/ledger/15"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1920,
+    "type": "vassal_start",
+    "counterpart": "central-lithuania"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "no dossier; in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1920,
+    "type": "occupation_start",
+    "counterpart": "republics-of-the-soviet-union"
+   },
+   "mirror": {
+    "slug": "republics-of-the-soviet-union",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "Kiev, May-June 1920: no mirror in republics-of-the-soviet-union (eu-17)"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1920,
+    "type": "occupation_end",
+    "counterpart": "republics-of-the-soviet-union"
+   },
+   "mirror": {
+    "slug": "republics-of-the-soviet-union",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1920,
+    "type": "loss",
+    "counterpart": "czechoslovakia"
+   },
+   "mirror": {
+    "slug": "czechoslovakia",
+    "year": 1920,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "czechoslovakia/ledger/4"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1921,
+    "type": "gain",
+    "counterpart": "republics-of-the-soviet-union"
+   },
+   "mirror": {
+    "slug": "republics-of-the-soviet-union",
+    "year": 0,
+    "type": ""
+   },
+   "status": "missing",
+   "note": "Riga: republics-of-the-soviet-union has no loss to Poland (its 1920/7 gain from Poland has no Polish loss either; the Polish contest covers it)"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1922,
+    "type": "gain",
+    "counterpart": "central-lithuania"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "no dossier"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1922,
+    "type": "vassal_end",
+    "counterpart": "central-lithuania"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "no dossier"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1922,
+    "type": "gain",
+    "counterpart": "weimar-republic"
+   },
+   "mirror": {
+    "slug": "weimar-republic",
+    "year": 1922,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "weimar-republic/ledger/12"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1938,
+    "type": "gain",
+    "counterpart": "czechoslovakia"
+   },
+   "mirror": {
+    "slug": "czechoslovakia",
+    "year": 1938,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "czechoslovakia/ledger/6 (2 vs 1 October)"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1939,
+    "type": "loss",
+    "counterpart": "slovak-republic"
+   },
+   "mirror": {
+    "slug": "slovak-republic",
+    "year": 1939,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "slovak-republic/ledger/4 (1939/11, formal annexation)"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1939,
+    "type": "loss",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1939,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "USSR/ledger/12"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1939,
+    "type": "loss",
+    "counterpart": "nazi-germany"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1939,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "nazi-germany/ledger/9"
+  },
+  {
+   "event": {
+    "slug": "second-polish-republic",
+    "year": 1939,
+    "type": "loss",
+    "counterpart": "general-government"
+   },
+   "mirror": {
+    "slug": "general-government",
+    "year": 1939,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "general-government/ledger/0"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1918,
+    "type": "gain",
+    "counterpart": "montenegro"
+   },
+   "mirror": {
+    "slug": "montenegro",
+    "year": 1918,
+    "type": "merge"
+   },
+   "status": "mismatch",
+   "note": "montenegro/ledger/13 merges into serbs; serbs/ledger/30 books the gain; delete here"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1919,
+    "type": "gain",
+    "counterpart": "principality-of-bulgaria"
+   },
+   "mirror": {
+    "slug": "principality-of-bulgaria",
+    "year": 1919,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "principality-of-bulgaria/ledger/29"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1920,
+    "type": "gain",
+    "counterpart": "hungarian-republic"
+   },
+   "mirror": {
+    "slug": "hungarian-republic",
+    "year": 1920,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "hungarian-republic/ledger/10"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1920,
+    "type": "loss",
+    "counterpart": "kingdom-of-italy"
+   },
+   "mirror": {
+    "slug": "kingdom-of-italy",
+    "year": 1920,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "kingdom-of-italy/ledger/18"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1941,
+    "type": "loss",
+    "counterpart": "italian-governorate-of-montenegro"
+   },
+   "mirror": {
+    "slug": "italian-governorate-of-montenegro",
+    "year": 1941,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "ledger/0"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1941,
+    "type": "loss",
+    "counterpart": "hungarian-republic"
+   },
+   "mirror": {
+    "slug": "hungarian-republic",
+    "year": 1941,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "hungarian-republic/ledger/19"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1941,
+    "type": "loss",
+    "counterpart": "kingdom-of-italy"
+   },
+   "mirror": {
+    "slug": "kingdom-of-italy",
+    "year": 1941,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "kingdom-of-italy/ledger/25"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1941,
+    "type": "loss",
+    "counterpart": "albania"
+   },
+   "mirror": {
+    "slug": "albania",
+    "year": 1941,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "albania/ledger/17"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1941,
+    "type": "loss",
+    "counterpart": "independent-state-of-croatia"
+   },
+   "mirror": {
+    "slug": "independent-state-of-croatia",
+    "year": 1941,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "ledger/0"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "principality-of-bulgaria"
+   },
+   "mirror": {
+    "slug": "principality-of-bulgaria",
+    "year": 1941,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "principality-of-bulgaria/ledger/33"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1941,
+    "type": "loss",
+    "counterpart": "territory-of-the-military-commander-in-serbia"
+   },
+   "mirror": {
+    "slug": "territory-of-the-military-commander-in-serbia",
+    "year": 1941,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "ledger/0"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "nazi-germany"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1941,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany/ledger/26 is Serbia; this event is northern Slovenia, which the German dossier does not record"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1944,
+    "type": "occupation_end",
+    "counterpart": "principality-of-bulgaria"
+   },
+   "mirror": {
+    "slug": "principality-of-bulgaria",
+    "year": 1944,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "principality-of-bulgaria/ledger/38"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1944,
+    "type": "gain",
+    "counterpart": "hungarian-republic"
+   },
+   "mirror": {
+    "slug": "hungarian-republic",
+    "year": 1944,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "matched by hungarian-republic/ledger/20, but the land went to the Partisans (see yugoslavia fixes)"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1944,
+    "type": "gain",
+    "counterpart": "italian-governorate-of-montenegro"
+   },
+   "mirror": {
+    "slug": "italian-governorate-of-montenegro",
+    "year": 1944,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "governorate dissolves 1944/12 with no counterpart; yugoslav-partisans/ledger/7 takes Podgorica"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1944,
+    "type": "gain",
+    "counterpart": "territory-of-the-military-commander-in-serbia"
+   },
+   "mirror": {
+    "slug": "territory-of-the-military-commander-in-serbia",
+    "year": 1944,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "territory/ledger/5 loses Serbia to yugoslav-partisans"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1945,
+    "type": "gain",
+    "counterpart": "independent-state-of-croatia"
+   },
+   "mirror": {
+    "slug": "independent-state-of-croatia",
+    "year": 1945,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "independent-state-of-croatia/ledger/14 (1945/4)"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1945,
+    "type": "occupation_end",
+    "counterpart": "nazi-germany"
+   },
+   "mirror": {
+    "slug": "nazi-germany",
+    "year": 1945,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "nazi-germany/ledger/67 (1945/1) ends the occupation of Serbia, not of northern Slovenia"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1945,
+    "type": "gain",
+    "counterpart": "kingdom-of-italy"
+   },
+   "mirror": {
+    "slug": "kingdom-of-italy",
+    "year": 1943,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-italy/ledger/38 lost these lands to nazi-germany in 1943/9"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1945,
+    "type": "gain",
+    "counterpart": "albania"
+   },
+   "mirror": {
+    "slug": "albania",
+    "year": 1944,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "albania/ledger/20 loses Kosovo to yugoslav-partisans in 1944"
+  },
+  {
+   "event": {
+    "slug": "yugoslavia",
+    "year": 1945,
+    "type": "merge",
+    "counterpart": "yugoslav-partisans"
+   },
+   "mirror": {
+    "slug": "yugoslav-partisans",
+    "year": 1945,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "yugoslav-partisans/ledger/16 dissolves 1945/3 with counterpart None; it should name yugoslavia"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Cieszyn Silesia",
+   "kind": "region",
+   "used_in": "second-polish-republic"
+  },
+  {
+   "name": "Cieszyn",
+   "kind": "place",
+   "used_in": "second-polish-republic"
+  },
+  {
+   "name": "Orava",
+   "kind": "region",
+   "used_in": "second-polish-republic"
+  },
+  {
+   "name": "Spisz",
+   "kind": "region",
+   "used_in": "second-polish-republic"
+  },
+  {
+   "name": "Tatranska Javorina",
+   "kind": "place",
+   "used_in": "second-polish-republic"
+  },
+  {
+   "name": "Vilnius Region",
+   "kind": "region",
+   "used_in": "second-polish-republic"
+  },
+  {
+   "name": "Vilnius Region",
+   "kind": "region",
+   "used_in": "kingdom-of-lithuania"
+  },
+  {
+   "name": "Klaipeda Region",
+   "kind": "region",
+   "used_in": "kingdom-of-lithuania"
+  },
+  {
+   "name": "Prekmurje",
+   "kind": "region",
+   "used_in": "hungarian-republic"
+  },
+  {
+   "name": "Northern Bukovina",
+   "kind": "region",
+   "used_in": "kingdom-of-romania"
+  },
+  {
+   "name": "Northern Transylvania",
+   "kind": "region",
+   "used_in": "kingdom-of-romania"
+  },
+  {
+   "name": "Transnistria Governorate",
+   "kind": "region",
+   "used_in": "kingdom-of-romania"
+  },
+  {
+   "name": "Lower Styria",
+   "kind": "region",
+   "used_in": "republic-of-austria"
+  },
+  {
+   "name": "East Upper Silesia",
+   "kind": "region",
+   "used_in": "second-polish-republic"
+  },
+  {
+   "name": "Julian March",
+   "kind": "region",
+   "used_in": "yugoslavia"
+  },
+  {
+   "name": "Hungary east of the Tisza",
+   "kind": "region",
+   "used_in": "hungarian-republic"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Republic of Central Lithuania",
+   "suggested_slug": "central-lithuania",
+   "years": [
+    1920,
+    1922
+   ]
+  },
+  {
+   "name": "State of Slovenes, Croats and Serbs",
+   "suggested_slug": "state-of-slovenes-croats-and-serbs",
+   "years": [
+    1918,
+    1918
+   ]
+  },
+  {
+   "name": "Moldavian Democratic Republic",
+   "suggested_slug": "moldavian-democratic-republic",
+   "years": [
+    1917,
+    1918
+   ]
+  },
+  {
+   "name": "West Ukrainian People's Republic",
+   "suggested_slug": "west-ukrainian-people-s-republic",
+   "years": [
+    1918,
+    1919
+   ]
+  },
+  {
+   "name": "Carpatho-Ukraine",
+   "suggested_slug": "carpatho-ukraine",
+   "years": [
+    1939,
+    1939
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-21-b.md",
+ "problems": [
+  "Lithuania has no area figure to compare: Kingdom_of_Lithuania is the 1251-1263 kingdom, Interwar_Lithuania redirects to History of Lithuania without one, and History_of_Lithuania_(1918%E2%80%931940) returned url_not_found. First_Austrian_Republic has no area either.",
+  "Routing for eu-17: republics-of-the-soviet-union lacks the 1920 loss of Vilnius to Lithuania, the Polish occupation of Kiev (May-June 1920) and the Riga loss (1921/3); union-of-soviet-socialist-republics lacks the 1939/10 loss of Vilnius to Lithuania, a 1940/6 occupation of Lithuania and the Romanian occupation of Transnistria 1941-1944; ukrainian-people-s-republic lacks the 1919 loss of western Volhynia to Poland.",
+  "Routing for eu-21 (czechoslovakia): its 1945 gain of southern Slovakia names slovak-republic, so hungarian-republic/ledger/25 has no mirror (already in review eu-21-a). For yugoslav-partisans: its 1945/3 dissolve names no counterpart (should be yugoslavia), and it has no Backa gain in 1944. For nazi-germany (failed in eu-21-c): no record of the occupation of northern Slovenia 1941-1945. For kingdom-of-italy (eu-13): South Tyrol in 1919 is booked from austria-hungary, not republic-of-austria.",
+  "The Romanian 1919-1920 occupation region error is shared: fixing hungarian-republic/ledger/2,5,6,7 needs the same change in kingdom-of-romania/ledger/4-7 and both war zones.",
+  "Fixes applied by the reviewer (all re-validated): hungarian-republic/ledger/14 (month 3, confidence 2), kingdom-of-romania/ledger/19 (confidence 2), second-polish-republic/ledger/25 (month 9)."
+ ]
+}

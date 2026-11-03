@@ -1,0 +1,1038 @@
+{
+ "batch_id": "eu-12-h",
+ "verdicts": [
+  {
+   "slug": "taifa-of-seville",
+   "verdict": "fail",
+   "summary": "All dated events confirmed on their pages (10 checked), but the two Algeciras events draw the wrong land: the Cliopatria 'Taifa of Algeciras' shapes they cite lie mostly or wholly in Málaga province, so Seville gains the Málaga hinterland in 1055, the Almoravids take land near Antequera in 1086, and the 1085 keyframe's correction subtracts a shape it does not touch (Algeciras stays Seville's to 1091). Mechanical to fix.",
+   "fixes": [
+    {
+     "where": "/ledger/7/region",
+     "what": "The region {cliopatria: Taifa of Algeciras, 1040} is about 72 percent Málaga province, not Algeciras: Coín and Vélez-Málaga are inside it, Málaga city 2 km off its coast edge, only 28 percent lies west of 5.25W.",
+     "why": "Point and overlap tests on the Cliopatria geometry (grid feature cache). Seville's own 1056 keyframe (adjust, 'shape unchanged') does not hold that land: Coín is 53 km outside it, Vélez-Málaga 118 km. The Abbad II page names only 'Algeciras (1055)'. Málaga was a separate Hammudid taifa (the author's own counterparts list: taifa-of-malaga 1026-1057).",
+     "fix": "Use {\"place\": \"Algeciras\", \"km\": 30, \"country\": \"Spain\", \"text\": \"Algeciras and its district\"} (or {\"intersect\": [{\"cliopatria\": \"Taifa of Algeciras\", \"year\": 1040}, {\"admin1\": \"Cádiz\", \"country\": \"Spain\"}]}); make the same change in taifa-of-algeciras /ledger/3 so both sides stay matched.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/17/region",
+     "what": "The region {cliopatria: Taifa of Algeciras, 1085} contains no Algeciras: that shape lies wholly in Málaga province (Antequera and Coín inside, Algeciras city 80 km outside, Tarifa 99 km).",
+     "why": "Almoravid page: Algeciras was to 'be surrendered to him so he could use it as a base for his troops'; 'They did so in July 1086 without encountering resistance.' The page names Algeciras, the region draws the Antequera country.",
+     "fix": "Use {\"place\": \"Algeciras\", \"km\": 30, \"country\": \"Spain\", \"text\": \"Algeciras and its district\"} (or {\"intersect\": [{\"cliopatria\": \"Taifa of Algeciras\", \"year\": 1040}, {\"admin1\": \"Cádiz\", \"country\": \"Spain\"}]}).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/6/correction",
+     "what": "The correction {minus: [Seville 1085, Algeciras 1085]} removes nothing: the two Cliopatria shapes do not intersect (intersection area 0), while Algeciras city lies inside the Seville 1085 shape, so Algeciras stays drawn as Seville's from July 1086 to 1091.",
+     "why": "Geometry test on the grid feature cache; same evidence as /ledger/17.",
+     "fix": "{\"minus\": [{\"cliopatria\": \"Taifa of Seville\", \"year\": 1085}, {\"place\": \"Algeciras\", \"km\": 30, \"country\": \"Spain\"}], \"text\": \"the 1085 shape without Algeciras, ceded to the Almoravids in July 1086; it holds 1078-1091\"} (the after-1086 part could also be a new keyframe 1086-1091 with the 1078-1086 years left whole).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/13/note",
+     "what": "Minor, not blocking: the Seville page itself has 'Al-Mu'tamid seized Córdoba in 1071' and 'a brief interlude in 1075–1078'; the note quotes 1070 from the al-Mu'tamid and Toledo pages only.",
+     "why": "Taifa of Seville page, read 2026-10-25.",
+     "fix": "Add the 1071 variant to the note; keep 1070.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/6",
+     "what is missing": "The 1085 shape adds Jaén, Baeza (the upper Guadalquivir) and Lorca besides Murcia (all four inside by point test, none in the 1072 shape); no event explains Jaén and Baeza, which is most of the unexplained +30,000 km2 the author flagged.",
+     "page to try": "https://en.wikipedia.org/wiki/Ibn_Ammar"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "Mértola 1044-45: whom it was taken from (a taifa of Mértola has no page or dossier).",
+     "page to try": "https://en.wikipedia.org/wiki/M%C3%A9rtola"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Seville",
+     "result": "confirmed ('It was established in 1023'; body also 'after its downfall in 1031')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Abbad_II_al-Mu%27tadid",
+     "result": "confirmed ('Algeciras (1055)'); region wrong, see fixes"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Abbad_II_al-Mu%27tadid",
+     "result": "confirmed ('Ronda (1065)')"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Abbad_II_al-Mu%27tadid",
+     "result": "confirmed ('Arcos (1069)'; death 28 February 1069)"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Al-Mu%27tamid_ibn_Abbad",
+     "result": "confirmed ('Córdoba, was taken in 1070, lost in 1075, and regained in 1078'; Seville page has 1071)"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Toledo",
+     "result": "confirmed ('helped Al-Mamun of Toledo in conquering the taifa of Córdoba in 1075')"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Al-Mu%27tamid_ibn_Abbad",
+     "result": "confirmed ('regained in 1078')"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Murcia",
+     "result": "confirmed ('From 1078 until 1091 it was under the forcible control of Seville')"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Almoravid_dynasty",
+     "result": "confirmed (July 1086); region wrong, see fixes"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Almoravid_dynasty",
+     "result": "confirmed ('In September 1091, al-Mu'tamid surrendered Seville')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 92473,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the Taifa of Seville page (checked); the author says so."
+   }
+  },
+  {
+   "slug": "taifa-of-zaragoza",
+   "verdict": "fail",
+   "summary": "Dated events confirmed (6 checked) and the 1015 Pallars-box shape correctly marked wrong, but the 1076 Dénia keyframe and events take Cliopatria's whole Dénia 1066 shape, Balearic Islands included, which the Dénia dossier gives to the Taifa of Majorca in 1076; the 1081 Dénia loss names a counterpart that never regains it; a ~5,200 km2 western loss between the 1046 and 1066 shapes is not mentioned.",
+   "fixes": [
+    {
+     "where": "/keyframe_review/9/correction",
+     "what": "The union with {cliopatria: Taifa of Denia, 1066} paints the Balearic Islands as Zaragoza's 1076-1080: that shape's bbox runs to 4.30E (Majorca, Menorca) and it misses the town of Dénia.",
+     "why": "taifa-of-denia /ledger/9-11: 1076 vassal_end and loss of the 'Balearic Islands' to taifa-of-majorca, and the 1076 loss to Zaragoza drawn as {minus: [{union: [Dénia 1066, Dénia 20 km]}, Balearic Islands]} ('Dénia's peninsular possessions'); Dénia's 1066 keyframe note: the shape 'misses the town of Dénia'.",
+     "fix": "Replace the Dénia part of the union with {\"minus\": [{\"union\": [{\"cliopatria\": \"Taifa of Dénia\", \"year\": 1066}, {\"place\": \"Dénia\", \"km\": 20, \"country\": \"Spain\"}]}, {\"region\": \"Balearic Islands\"}], \"text\": \"Dénia's peninsular possessions\"}.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/4/region",
+     "what": "Same defect as /keyframe_review/9: the 1076 gain takes the Balearic Islands.",
+     "why": "As above; the Lérida page says only that al-Muqtadir 'acquired ... the ṭāʾifa of Denia in 1076'.",
+     "fix": "Use the Dénia dossier's 1076 region (peninsular possessions, Balearics removed).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/8",
+     "what": "The 1081 loss of Dénia names counterpart taifa-of-denia and the Balearic-inclusive shape; Dénia did not become independent in 1081 and its dossier has no 1081 gain.",
+     "why": "Lérida page: al-Mundhir 'was already governing Denia and Tortosa as his father's ḥājib' and the ṭāʾifa 'was divided between his two sons' in late 1081; the Dénia infobox quoted in taifa-of-denia /keyframe_review: 'To Zaragoza/Tortosa/Almoravids: 1076–1081 / 1081–1092'.",
+     "fix": "Counterpart taifa-of-tortosa (al-Mundhir's realm, as /ledger/7) or fold Dénia into the /ledger/7 loss; region as in the /ledger/4 fix.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/7/note",
+     "what": "The note explains the 1066 shape as Zaragoza plus Tortosa only, but the shape also loses about 5,200 km2 against the 1046 shape (west edge from 3.29W to 2.12W; Medinaceli is inside the 1018-1046 shapes and outside from 1066); and it gives Tortosa 1056 as 7,334 km2 where shapes.csv has 6,768.",
+     "why": "shapes.csv bboxes and a difference of the two Cliopatria geometries (1046 minus 1066 about 5,200 km2; 1066 minus 1046 about 7,200 km2, which is Tortosa).",
+     "fix": "Acknowledge the western loss in the note and either add a dated loss (Castile or Toledo) or mark it 'unverified: page budget'; correct the area to 6,768 km2.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (Calahorra)",
+     "what": "No event for Calahorra, which kingdom-of-pamplona /ledger/25 takes from taifa-of-zaragoza in 1045 (conf 2, 'Calahorra was wrested from the Moors') and which caliphate-of-cordoba /ledger/34 hands to Zaragoza in 1018; no Zaragoza shape contains Calahorra.",
+     "why": "Point test: Calahorra (1.965W, 42.305N) is outside every Taifa of Zaragoza shape. Pamplona is not in the author's context list, so this is a routing gap rather than negligence.",
+     "fix": "Either add Calahorra to the 1013-1045 keyframes (adjust) with a 1045 loss to kingdom-of-pamplona, or say in the notes that Calahorra was not Zaragoza's so the Pamplona and Caliphate owners can change their counterparts.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/7",
+     "what is missing": "Who took the western Upper March (Medinaceli country) between 1046 and 1066.",
+     "page to try": "https://en.wikipedia.org/wiki/Ferdinand_I_of_Le%C3%B3n"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "Huesca 1096 rests on the Aragon page's capital move; Monzón (Aragonese from 1089) and Barbastro (1064/1065, 1100) are not dated and stay inside the 1099 shape.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Alcoraz"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "Who held Lleida after the 1078-81 civil war and before the late-1081 division.",
+     "page to try": "https://en.wikipedia.org/wiki/Taifa_of_L%C3%A9rida"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Zaragoza",
+     "result": "confirmed (infobox 'Downfall of Caliphate of Cordoba: 1013'; '1013–1038')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_L%C3%A9rida",
+     "result": "confirmed ('In 1039, it was taken from them, along with Zaragoza, by al-Mustaʿīn')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Tortosa",
+     "result": "confirmed ('To Zaragoza: 1060–1081 or 2/3'; Lérida page 1061)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_L%C3%A9rida",
+     "result": "confirmed ('the ṭāʾifa of Denia in 1076'); region wrong, see fixes"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Aragon",
+     "result": "confirmed as stated (capital 'from Jaca to Huesca (1096)'; no conquest dated; conf 2 is right)"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Almoravid_dynasty",
+     "result": "confirmed ('On 30 May, Ibn al-Hajj entered the city'; Zaragoza page 'May 1110')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 38868,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the Taifa of Zaragoza page (checked)."
+   }
+  },
+  {
+   "slug": "taifa-of-algeciras",
+   "verdict": "fail",
+   "summary": "The first-period events are confirmed, but the Cliopatria 'Taifa of Algeciras' shapes are mostly Málaga: the 1040 shape is ~72 percent Málaga province and was passed as 'right for the taifa'; the 1147 and 1152 shapes, passed as ok, do not contain Algeciras (36 km away) and lie around Coín, Antequera and Vélez-Málaga; the Abd al-Mu'min page has the Almohads capture Algeciras and Tarifa in 1147, so the conf-1 second taifa is contradicted.",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2",
+     "what": "Verdict adjust (years only) keeps a shape that is about 72 percent Málaga province (Coín and Vélez-Málaga inside, Málaga city 2 km off its coast edge; 28 percent lies west of 5.25W).",
+     "why": "Point and overlap tests on the Cliopatria geometry. The page: 'Yahya al-Mu'tali, a cousin, annexed Algeciras to the taifa of Málaga in 1035' and Muhammad ibn al-Qasim 'was proclaimed emir of Algeciras' in 1039, i.e. Algeciras apart from Málaga; the author lists taifa-of-malaga (1026-1057) as a separate counterpart, and caliphate-of-cordoba /ledger/37 gives admin1 Málaga to the Taifa of Málaga in 1026.",
+     "fix": "Correction {\"place\": \"Algeciras\", \"km\": 30, \"country\": \"Spain\", \"text\": \"Algeciras and its district\"} or {\"intersect\": [{\"cliopatria\": \"Taifa of Algeciras\", \"year\": 1040}, {\"admin1\": \"Cádiz\", \"country\": \"Spain\"}]}, text 'Algeciras and the Campo de Gibraltar without the Málaga country'; apply the same restriction to /keyframe_review/0 and /keyframe_review/1 (the 1028 shape minus Morocco is still mostly Málaga province) and to the regions of /ledger/0-3.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/4",
+     "what": "The 1147 shape is passed as ok though it does not contain Algeciras (36 km outside) or Tarifa (55 km); 98 percent of it lies east of 5.25W around Coín, Antequera and Vélez-Málaga.",
+     "why": "Abd al-Mu'min page: 'In 1147 Abd al-Mu'min sent a military force led by another Almoravid defector, Abu Ishaq Barraz, who captured Algeciras and Tarifa before moving west to Niebla, Badajoz, and the Algarve.' almohad-caliphate /ledger/9 (1147 gain of Algeciras and Tarifa from almoravid-dynasty, conf 3) and almoravid-dynasty /ledger/40 agree. almoravid-dynasty /ledger/35 quotes the Taifa page 'Malaga: 1145-1153'.",
+     "fix": "Verdict wrong: the shape is Málaga's (second-period taifa of Málaga) or Almohad, not Algeciras.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/5",
+     "what": "Same as /keyframe_review/4 for the identical 1152 shape (1152-1168).",
+     "why": "As above.",
+     "fix": "Verdict wrong.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/4",
+     "what": "Conf-1 gain of a second taifa in 1147 from the Almoravids is contradicted by the Abd al-Mu'min page (Almohads capture Algeciras in 1147) and by both neighbour dossiers.",
+     "why": "As above.",
+     "fix": "Delete; also delete /ledger/5 (1168 dissolve, page silent), end the dossier at 1055 with a dissolve to taifa-of-seville (or 1058 per the infobox), and move identity.end, the capital's 'to', certainty, rulers and successors (taifa-of-seville, not almohad-caliphate) accordingly.",
+     "applied": false
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what": "Algeciras (5.456W, 36.141N) is given to 1168 but lies outside the 1147-1168 shapes.",
+     "why": "Point test: 36 km outside both shapes.",
+     "fix": "Follows from the /ledger/4 fix: capital to 1055.",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Algeciras",
+     "result": "confirmed ('created in 1013'; lead and infobox 1035-1058, flagged by the author)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Algeciras",
+     "result": "confirmed ('annexed Algeciras to the taifa of Málaga in 1035')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Algeciras",
+     "result": "confirmed ('In 1039 Muhammad ibn al-Qasim ... was proclaimed emir of Algeciras')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Algeciras",
+     "result": "confirmed ('In 1055 al-Mu'tamid ibn Abbad ... appeared under Algeciras' walls'; infobox 1058)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Abd_al-Mu%27min",
+     "result": "not on page: the page has the Almohads capture Algeciras and Tarifa in 1147 (conf 1, page-silent event contradicted)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 6000,
+    "ratio": null,
+    "acknowledged": false,
+    "note": "No infobox area. The 1028 shape's African part is about 1,500 km2 by my split at 35.9N (the note says about 2,700); the unacknowledged problem is the Málaga share, not Africa."
+   }
+  },
+  {
+   "slug": "taifa-of-saltes-and-huelva",
+   "verdict": "thin",
+   "summary": "The first taifa (1012-1051) is confirmed and the 1051 end is right; the second taifa 1147-1151 rests on Cliopatria alone (two conf-1 events, keyframe ok 'unverified: page silent'), while the neighbours give the Huelva country to Niebla's second taifa from 1145 and to Tejada 1146-1150.",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Any page for a second Saltés-and-Huelva taifa in 1147-1151 (the Saltés page says nothing after 1091; the Tejada page does not name Saltés or Huelva city). almoravid-dynasty /ledger/32 gives admin1 Huelva to taifa-of-niebla in 1145; the Abd al-Mu'min page has the Almohads move 'west to Niebla' in 1147. If nothing is found, mark /keyframe_review/4 wrong, drop /ledger/2-3 and end the dossier in 1051 with a dissolve to taifa-of-seville.",
+     "page to try": "https://es.wikipedia.org/wiki/Taifa_de_Huelva"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "Who ended the second taifa and when (conf 1; almohad-caliphate /ledger/14 bridges it to 1152, also conf 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Abd_al-Mu%27min"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Salt%C3%A9s_and_Huelva",
+     "result": "confirmed (infobox 'Established: 1012'; ruler '1012/3–1051/2 or 53')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Salt%C3%A9s_and_Huelva",
+     "result": "confirmed (infobox 'Conquered by Seville: 1051'; 'From 1051 until 1091')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Tejada",
+     "result": "confirmed as stated: page silent on Saltés and Huelva (1146-1150 taifa in the Province of Huelva only)"
+    },
+    {
+     "where": "/identity/predecessors",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Salt%C3%A9s_and_Huelva",
+     "result": "infobox 'Preceded by: Taifa of Badajoz' against the Caliphate (flagged by the author)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 4445,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page (checked)."
+   }
+  },
+  {
+   "slug": "taifa-of-santa-maria-do-algarve",
+   "verdict": "pass",
+   "summary": "Tried: found and end years, the Seville conquest year, the ruler years, the capital inside the shape, overlap with Saltés (1 percent) and the mirror events. Nothing broke; the 1018 found from Badajoz has no mirror in taifa-of-badajoz, which is Badajoz's gap (routed in cross_checks).",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Santa_Maria_do_Algarve",
+     "result": "confirmed (infobox 'Established: 1018'; 'Sa'id: c. 1018–1041/2')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Santa_Maria_do_Algarve",
+     "result": "confirmed ('Conquered by the Taifa of Seville: 1051')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Santa_Maria_do_Algarve",
+     "result": "confirmed ('existed from 1018 to 1051')"
+    },
+    {
+     "where": "/identity/rulers",
+     "page": "https://en.wikipedia.org/wiki/Taifa_of_Santa_Maria_do_Algarve",
+     "result": "confirmed ('Muhammad al-Mu'tasim: 1041/2–1051')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 2252,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page (checked)."
+   }
+  },
+  {
+   "slug": "county-of-pallars-jussa",
+   "verdict": "pass",
+   "summary": "Tried: the 1011 division, the 27 May 1192 donation, the count list, the capital and Tremp inside every shape, the comarca area (1,343 km2 against 1,596-1,620, ratio 1.2). Nothing broke within a 1-2 page budget. identity.wikipedia 'Pallars Jussà' is the comarca, but the schema asks for Cliopatria's field, so it stays.",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/County_of_Pallars_Juss%C3%A0",
+     "result": "confirmed ('In 1011, Sunyer of Pallars died and by his testament his county was divided')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/County_of_Pallars_Juss%C3%A0",
+     "result": "confirmed ('On 27 May 1192, she donated the county to Alfonso and the Crown of Aragon')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/County_of_Pallars_Juss%C3%A0",
+     "result": "confirmed (Dulce de So 1182–1192 last in the count list)"
+    },
+    {
+     "where": "/identity/rulers",
+     "page": "https://en.wikipedia.org/wiki/County_of_Pallars_Juss%C3%A0",
+     "result": "confirmed (Raymond III 1011–1047 to Dulce de So 1182–1192; Arnold and Peter Raymond co-rulers 1098–1112)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1596,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The county page has no area; the author compares the modern comarca (1,343 km2, ratio 1.19), not opened by me."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1023,
+    "type": "found",
+    "counterpart": "caliphate-of-cordoba"
+   },
+   "mirror": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1023,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/35"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1044,
+    "type": "gain",
+    "counterpart": "taifa-of-mertola"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed in the author's counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1051,
+    "type": "gain",
+    "counterpart": "taifa-of-saltes-and-huelva"
+   },
+   "mirror": {
+    "slug": "taifa-of-saltes-and-huelva",
+    "year": 1051,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1051,
+    "type": "gain",
+    "counterpart": "taifa-of-santa-maria-do-algarve"
+   },
+   "mirror": {
+    "slug": "taifa-of-santa-maria-do-algarve",
+    "year": 1051,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1053,
+    "type": "gain",
+    "counterpart": "taifa-of-niebla"
+   },
+   "mirror": {
+    "slug": "taifa-of-niebla",
+    "year": 1053,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1055,
+    "type": "gain",
+    "counterpart": "taifa-of-algeciras"
+   },
+   "mirror": {
+    "slug": "taifa-of-algeciras",
+    "year": 1055,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "years agree; both sides draw the Cliopatria Algeciras 1040 shape, ~72 percent Málaga province; both should use Algeciras only"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1063,
+    "type": "gain",
+    "counterpart": "taifa-of-silves"
+   },
+   "mirror": {
+    "slug": "taifa-of-silves",
+    "year": 1063,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1065,
+    "type": "gain",
+    "counterpart": "taifa-of-ronda"
+   },
+   "mirror": {
+    "slug": "taifa-of-ronda",
+    "year": 1065,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1066,
+    "type": "gain",
+    "counterpart": "taifa-of-carmona"
+   },
+   "mirror": {
+    "slug": "taifa-of-carmona",
+    "year": 1066,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1066,
+    "type": "gain",
+    "counterpart": "taifa-of-moron"
+   },
+   "mirror": {
+    "slug": "taifa-of-moron",
+    "year": 1066,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1069,
+    "type": "gain",
+    "counterpart": "taifa-of-arcos"
+   },
+   "mirror": {
+    "slug": "taifa-of-arcos",
+    "year": 1068,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "within one year; pages disagree (Abbad II 1069, Arcos 1068), flagged by the author"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1070,
+    "type": "gain",
+    "counterpart": "taifa-of-cordoba"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "taifa-of-cordoba exists but starts in 1147; the first Córdoba taifa 1031-1070 is listed in the author's counterparts_needing_dossiers; caliphate-of-cordoba /ledger/39 also dissolves into taifa-of-cordoba in 1031: route to the taifa-of-cordoba owner"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1075,
+    "type": "loss",
+    "counterpart": "taifa-of-toledo"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "taifa-of-toledo not written yet (eu-12 part not run)"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1078,
+    "type": "gain",
+    "counterpart": "taifa-of-toledo"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "taifa-of-toledo not written yet (eu-12 part not run)"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1078,
+    "type": "gain",
+    "counterpart": "taifa-of-murcia"
+   },
+   "mirror": {
+    "slug": "taifa-of-murcia",
+    "year": 1078,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1086,
+    "type": "loss",
+    "counterpart": "almoravid-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "almoravid-dynasty (af-02) has no 1086 gain of Algeciras (the Almoravid page: July 1086); route to af-02; Seville's region must also change to Algeciras"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1091,
+    "type": "loss",
+    "counterpart": "almoravid-dynasty"
+   },
+   "mirror": {
+    "slug": "almoravid-dynasty",
+    "year": 1091,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "/ledger/15 Córdoba"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-seville",
+    "year": 1091,
+    "type": "dissolve",
+    "counterpart": "almoravid-dynasty"
+   },
+   "mirror": {
+    "slug": "almoravid-dynasty",
+    "year": 1091,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "/ledger/17 Seville, September"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1063,
+    "type": "vassal_start",
+    "counterpart": "taifa-of-seville"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Abbad II page: 'In 1063, when Ferdinand I appeared with an army on the outskirts of Seville', al-Mu'tadid had to acknowledge his suzerainty and pay tribute; neither kingdom-of-castile nor kingdom-of-leon records it (the schema puts vassal_start in the overlord's ledger)"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-zaragoza",
+    "year": 1013,
+    "type": "found",
+    "counterpart": "caliphate-of-cordoba"
+   },
+   "mirror": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1018,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "five years apart: Zaragoza page 1013 (infobox), Taifa list 1018; flagged by the author"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-zaragoza",
+    "year": 1040,
+    "type": "loss",
+    "counterpart": "taifa-of-lerida"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed in the author's counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-zaragoza",
+    "year": 1060,
+    "type": "gain",
+    "counterpart": "taifa-of-tortosa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "taifa-of-tortosa not written yet (eu-12 part not run)"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-zaragoza",
+    "year": 1076,
+    "type": "gain",
+    "counterpart": "taifa-of-denia"
+   },
+   "mirror": {
+    "slug": "taifa-of-denia",
+    "year": 1076,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "years agree; land differs: Zaragoza takes the whole Dénia 1066 shape with the Balearic Islands, Dénia gives only its peninsular possessions (Balearics to taifa-of-majorca 1076)"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-zaragoza",
+    "year": 1081,
+    "type": "loss",
+    "counterpart": "taifa-of-tortosa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "taifa-of-tortosa not written yet"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-zaragoza",
+    "year": 1081,
+    "type": "loss",
+    "counterpart": "taifa-of-denia"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "taifa-of-denia has no 1081 gain; Dénia passed to al-Mundhir's Lérida-Tortosa realm ('To Zaragoza/Tortosa/Almoravids: 1076–1081 / 1081–1092'); Zaragoza should name taifa-of-tortosa"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-zaragoza",
+    "year": 1096,
+    "type": "loss",
+    "counterpart": "kingdom-of-aragon"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-aragon not written yet (eu-12 part not run)"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-zaragoza",
+    "year": 1110,
+    "type": "dissolve",
+    "counterpart": "almoravid-dynasty"
+   },
+   "mirror": {
+    "slug": "almoravid-dynasty",
+    "year": 1110,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "/ledger/25"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pamplona",
+    "year": 1015,
+    "type": "gain",
+    "counterpart": "taifa-of-zaragoza"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Sobrarbe around Aínsa; Aínsa is 36 km outside every Zaragoza shape and Zaragoza has no event; probably Pamplona's counterpart to revisit (route to the kingdom-of-pamplona owner)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pamplona",
+    "year": 1045,
+    "type": "gain",
+    "counterpart": "taifa-of-zaragoza"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Calahorra; caliphate-of-cordoba /ledger/34 hands it to Zaragoza in 1018 but no Zaragoza shape or event has it; Zaragoza must add it or the two neighbours change counterpart"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-castile",
+    "year": 1060,
+    "type": "vassal_start",
+    "counterpart": "taifa-of-zaragoza"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "vassal_start lives in the overlord's ledger per the schema (also 1076, 1097); nothing needed in Zaragoza"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-algeciras",
+    "year": 1013,
+    "type": "found",
+    "counterpart": "caliphate-of-cordoba"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "caliphate-of-cordoba has no Algeciras entry (flagged by the author); route to its owner"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-algeciras",
+    "year": 1035,
+    "type": "loss",
+    "counterpart": "taifa-of-malaga"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed in the author's counterparts_needing_dossiers; caliphate-of-cordoba uses the string 'Taifa of Málaga' for the same state, so the two strings must be reconciled when the dossier is written"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-algeciras",
+    "year": 1039,
+    "type": "gain",
+    "counterpart": "taifa-of-malaga"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-algeciras",
+    "year": 1055,
+    "type": "loss",
+    "counterpart": "taifa-of-seville"
+   },
+   "mirror": {
+    "slug": "taifa-of-seville",
+    "year": 1055,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "years agree; land wrong on both sides (see Seville 1055)"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-algeciras",
+    "year": 1147,
+    "type": "gain",
+    "counterpart": "almoravid-dynasty"
+   },
+   "mirror": {
+    "slug": "almoravid-dynasty",
+    "year": 1147,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "almoravid-dynasty /ledger/40 loses Algeciras and Tarifa in 1147 to almohad-caliphate, not to this taifa; almohad-caliphate /ledger/9 (conf 3) agrees; the Abd al-Mu'min page confirms"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-algeciras",
+    "year": 1168,
+    "type": "dissolve",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Almohad event; falls with the 1147 fix"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-saltes-and-huelva",
+    "year": 1012,
+    "type": "found",
+    "counterpart": "caliphate-of-cordoba"
+   },
+   "mirror": {
+    "slug": "caliphate-of-cordoba",
+    "year": 1012,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "/ledger/28"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-saltes-and-huelva",
+    "year": 1051,
+    "type": "loss",
+    "counterpart": "taifa-of-seville"
+   },
+   "mirror": {
+    "slug": "taifa-of-seville",
+    "year": 1051,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "taifa-of-saltes-and-huelva",
+    "year": 1147,
+    "type": "gain",
+    "counterpart": "almoravid-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "no Almoravid loss; almoravid-dynasty /ledger/32 gives admin1 Huelva to taifa-of-niebla in 1145 instead (overlapping land)"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-saltes-and-huelva",
+    "year": 1151,
+    "type": "dissolve",
+    "counterpart": "almohad-caliphate"
+   },
+   "mirror": {
+    "slug": "almohad-caliphate",
+    "year": 1152,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "within one year; both conf 1"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-santa-maria-do-algarve",
+    "year": 1018,
+    "type": "found",
+    "counterpart": "taifa-of-badajoz"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "taifa-of-badajoz has no 1018 loss; the Santa Maria infobox has 'Preceded by: Taifa of Badajoz'; route to the Badajoz owner"
+  },
+  {
+   "event": {
+    "slug": "taifa-of-santa-maria-do-algarve",
+    "year": 1051,
+    "type": "loss",
+    "counterpart": "taifa-of-seville"
+   },
+   "mirror": {
+    "slug": "taifa-of-seville",
+    "year": 1051,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "county-of-pallars-jussa",
+    "year": 1011,
+    "type": "found",
+    "counterpart": "county-of-pallars"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "county-of-pallars not written yet (eu-12 part not run); Cliopatria's Pallars row ends 1014, the division is 1011 (county-of-pallars-sobira also founds in 1011)"
+  },
+  {
+   "event": {
+    "slug": "county-of-pallars-jussa",
+    "year": 1192,
+    "type": "loss",
+    "counterpart": "crown-of-aragon"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "crown-of-aragon not written yet (eu-12 part not run)"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Mértola",
+   "kind": "place",
+   "used_in": "taifa-of-seville"
+  },
+  {
+   "name": "Lleida",
+   "kind": "place",
+   "used_in": "taifa-of-zaragoza"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Taifa of Lérida",
+   "suggested_slug": "taifa-of-lerida",
+   "years": [
+    1039,
+    1110
+   ]
+  },
+  {
+   "name": "Taifa of Málaga (Hammudid, and the second-period taifa 1145-1153 that Cliopatria draws as 'Taifa of Algeciras' 1085 and 1147-1168)",
+   "suggested_slug": "taifa-of-malaga",
+   "years": [
+    1026,
+    1153
+   ]
+  },
+  {
+   "name": "Taifa of Mértola",
+   "suggested_slug": "taifa-of-mertola",
+   "years": [
+    1033,
+    1045
+   ]
+  },
+  {
+   "name": "Taifa of Córdoba, first period (Jahwarid)",
+   "suggested_slug": "taifa-of-cordoba",
+   "years": [
+    1031,
+    1070
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-12-h.md",
+ "problems": [
+  "https://en.wikipedia.org/wiki/Abd_al-Mu'min with a raw apostrophe returned url_not_found; the %27 form opened.",
+  "No infobox of the five taifas gives an area, so area checks used shape geometry (point-in-polygon and overlap tests on the grid feature cache) instead.",
+  "Fixes needed in neighbour dossiers owned by other groups: almoravid-dynasty (af-02) 1086 Algeciras; kingdom-of-castile or kingdom-of-leon 1063 Seville tribute; kingdom-of-pamplona 1015 and 1045 counterparts; taifa-of-badajoz 1018 Santa Maria; caliphate-of-cordoba Algeciras 1013; taifa-of-cordoba first period 1031-1070.",
+  "No dossier edits were applied by the reviewer: every finding needs geometry or ledger restructuring by the author."
+ ]
+}

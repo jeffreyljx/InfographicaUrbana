@@ -1,0 +1,1475 @@
+{
+ "batch_id": "eu-11-g",
+ "verdicts": [
+  {
+   "slug": "kingdom-of-northumbria",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/15 and /keyframe_review/16/correction",
+     "what": "Keyframes 926-935 (verdict ok) and 936-954 (correction = Cliopatria 935 shape) keep the six Cumbrian cells near Carlisle (about 1,517 km2) that /ledger/24 gives to Strathclyde in 900, so the drawn shape contradicts the dossier's own ledger for 926-954; keyframe 14's text says 'from about 900 minus the Cumbrian cells' but no spec ever removes them.",
+     "why": "Gazetteer: intersect(Kingdom of Northumbria 900, admin1 Cumbria) = 6 cells, present in the 926 and 935 shapes. Rheged page: 'large areas west of the Pennines fell without apparent warfare under the control of the Brittonic Kingdom of Strathclyde' (after c. 900). Research brief quality bar: 'keyframe corrections and ledger events agree'.",
+     "fix": "Keyframe 15: verdict adjust, correction {\"minus\":[{\"cliopatria\":\"Kingdom of Northumbria\",\"year\":926},{\"admin1\":\"Cumbria\",\"country\":\"United Kingdom\"}],\"text\":\"Bernicia without the Carlisle cells, Strathclyde's from 900\"}; keyframe 16: the same minus on the 935 shape; keyframe 14 may keep the 870 shape (ledger 900 carries the change) with its text saying so. The Strathclyde dossier must take the same 6 cells (see strathclyde fixes).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/25",
+     "what": "The Eamont submission of 927 is coded as a rename, but the England dossier carries vassal_start kingdom-of-northumbria in 927 (c3) and vassal_end in 954, so the vassal pair has no mirror here and the dossier never records the dependency it describes.",
+     "why": "Bernicia page: 'In 927 Ealdred accepted West Saxon overlordship'; Northumbria infobox: 'Bernicia accepts the rule of King Æthelstan: 927'; kingdom-of-england /ledger/2 (927 vassal_start, c3) and /ledger/14 (954 vassal_end, c3).",
+     "fix": "Change /ledger/25 to type vassal_start, counterpart kingdom-of-england, month 7, region the 926 shape less Cumbria; add a vassal_end with counterpart kingdom-of-england at 954 before the dissolve.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger (missing, year 750)",
+     "what": "Strathclyde /ledger/1 (750 loss of Kyle to kingdom-of-northumbria, c3, confirmed) has no gain here, and no Northumbria shape holds Kyle.",
+     "why": "Óengus I page: 'Kyle was taken from Alt Clut by Eadberht of Northumbria' (750). Gazetteer: intersect(East Ayrshire, Kingdom of Northumbria 750) = 0 cells.",
+     "fix": "Add a 750 gain, counterpart strathclyde, region {\"admin1\":\"East Ayrshire\",\"country\":\"United Kingdom\",\"text\":\"Kyle, central Ayrshire\"}, source the Óengus I page, confidence 3; mark keyframe 11 (750) adjust with the union of the 750 shape and East Ayrshire (and say until when, or 'page silent').",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger (missing, years 829-830)",
+     "what": "kingdom-of-wessex /ledger/18 (829 vassal_start kingdom-of-northumbria, c2) and /ledger/20 (830 vassal_end) have no mirror here.",
+     "why": "Mirror rule (reviewer brief 2.3); the Northumbria page does not mention Dore (checked).",
+     "fix": "Add vassal_start 829 / vassal_end 830 with counterpart kingdom-of-wessex citing the Egbert of Wessex page, or say in notes why the Dore submission is not a vassal tie and ask the Wessex group to drop theirs.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "626 gain of Dunoting is confidence 1 (Northumbria page silent).",
+     "page to try": "https://en.wikipedia.org/wiki/Dunoding"
+    },
+    {
+     "where": "/ledger/14",
+     "what is missing": "647 gain of Rheged is confidence 1; the Rheged page says only 'annexed by Northumbria, some time before AD 730' and dates Oswiu's marriage to Rieinmelth 'probably' 638.",
+     "page to try": "https://en.wikipedia.org/wiki/Rheged"
+    },
+    {
+     "where": "/ledger/21",
+     "what is missing": "705 gain of 2 cells from Mercia, confidence 1, no mirror in the Mercia dossier.",
+     "page to try": "https://en.wikipedia.org/wiki/Mercia"
+    },
+    {
+     "where": "/ledger/22",
+     "what is missing": "750 loss of one Tyne cell to nobody, confidence 1 (raster noise likely).",
+     "page to try": "https://en.wikipedia.org/wiki/Northumbria"
+    },
+    {
+     "where": "/identity (rulers)",
+     "what is missing": "No ruler strip.",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_monarchs_of_Northumbria"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Gododdin",
+     "result": "confirmed: 'In 638, Eidyn, modern Edinburgh, was under siege and fell to the Angles'"
+    },
+    {
+     "where": "/ledger/23",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_York",
+     "result": "confirmed: York captured 866/867; battle 21 March 867"
+    },
+    {
+     "where": "/ledger/17, /ledger/18, /ledger/19, /ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Ecgfrith_of_Northumbria",
+     "result": "confirmed: Two Rivers 671 and 'control of Pictland for the next fourteen years'; 674 'seize the Kingdom of Lindsey'; Trent 679 and Lindsey returned to Mercia; slain 20 May 685"
+    },
+    {
+     "where": "/ledger/15, /ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Oswiu_of_Northumbria",
+     "result": "confirmed: Peada's death 'probably at Easter 656', governors installed; revolt 'probably in late 659, but perhaps in 657'"
+    },
+    {
+     "where": "/ledger/26",
+     "page": "https://en.wikipedia.org/wiki/Northumbria",
+     "result": "confirmed: 'Last Viking king expelled by King Eadred: 954'; Oswulf earl of the whole of Northumbria"
+    },
+    {
+     "where": "/ledger/9 to /ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Bernicia",
+     "result": "confirmed: Hatfield Chase 12 October 633, reunited under Oswald from 634; 'In 927 Ealdred accepted West Saxon overlordship'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 85405,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Northumbria infobox gives no area (checked); the author says so in keyframe 0."
+   }
+  },
+  {
+   "slug": "strathclyde",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2 and /ledger/1/note",
+     "what": "The 750 shape (verdict ok) and every later shape keep Kyle, which /ledger/1 (c3) removes in 750; the note's claim that Kyle 'is not inside Cliopatria's Strathclyde shape (one South Ayrshire cell)' is false.",
+     "why": "Gazetteer: intersect(East Ayrshire, Strathclyde 647) = 6 cells and intersect(East Ayrshire, Strathclyde 750) = 6 cells of East Ayrshire's 7. Óengus I page: 'Kyle was taken from Alt Clut by Eadberht of Northumbria' (750).",
+     "fix": "Keyframe 2: verdict adjust, correction {\"minus\":[{\"cliopatria\":\"Strathclyde\",\"year\":750},{\"admin1\":\"East Ayrshire\",\"country\":\"United Kingdom\"}]}; carry the same minus into the 870-1028 corrections unless a page returns Kyle (then add that gain); correct the sentence in /ledger/1's note and keyframe 2's note.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/3/correction",
+     "what": "The 870 keyframe (span 870-959) adds Cumbria from 870, thirty years before the 900 gain (/ledger/3); the correction's own text says 'before about 900 the Clyde shape alone', which the spec cannot express.",
+     "why": "/ledger/3 dates the Cumbria gain c. 900 (Rheged page, confirmed). Corrections give the shape at the keyframe's first year; mid-span changes ride on ledger events.",
+     "fix": "Correction = the 870 Clyde shape (less Kyle) with text 'Cumbria joins c. 900 (ledger)'; or add a new keyframe 900-959 (from/to/correction) that carries Cumbria.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/3/region and /keyframe_review/4-6/correction",
+     "what": "The Cumbria Strathclyde gains is intersect(Cumbria, Brythons 900) = 20 cells, but Northumbria's /ledger/24 hands Strathclyde the other 6 Carlisle cells (intersect(Northumbria 900, Cumbria)); no Strathclyde shape holds them.",
+     "why": "Gazetteer: admin1 Cumbria = 30 cells; Brythons 900 part = 20; Northumbria 900 part = 6.",
+     "fix": "Use the union of both parts (or the whole admin1 Cumbria, with the Eamont reading in text) in /ledger/3 and the 960, 980 and 1028 corrections.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/4",
+     "what": "The dissolve region is Cliopatria's 1033 shape without the Cumbria that keyframe 6's correction adds, and it names no counterpart; Alba's 1034 gain also omits Cumbria, so Cumbria is nobody's 1034-1091 while norman-england /ledger/4 (1092, c3) takes it from Alba.",
+     "why": "Strathclyde page: 'appears to have been conquered by the Scots' between 1018 and 1054, most likely under Máel Coluim mac Cináeda (d. 1034); Rheged page: Cumbria 'remained under the control of Strathclyde until the early 11th century', after which Strathclyde 'was absorbed into the Scottish kingdom'.",
+     "fix": "Dissolve region = the corrected 1028 shape (with Cumbria); counterpart kingdom-of-alba. The Alba dossier must take Cumbria in 1034 (see kingdom-of-alba thin).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "750 loss of the northern salient to Dál Riata is confidence 1; the Óengus page names no Dál Riata gain (checked); no mirror in dal-riata (which ends 850).",
+     "page to try": "https://en.wikipedia.org/wiki/Dál_Riata"
+    },
+    {
+     "where": "/ledger (missing, 927-937)",
+     "what is missing": "kingdom-of-england /ledger/4 (927 vassal_start strathclyde, c2) and /ledger/8 (937 vassal_end) have no mirror; Æthelstan page: Owain of Strathclyde 'or Morgan ap Owain of Gwent' at Eamont, 12 July 927.",
+     "page to try": "https://en.wikipedia.org/wiki/%C3%86thelstan"
+    },
+    {
+     "where": "/wars/3",
+     "what is missing": "945: Edmund I page 'gave the kingdom to Malcolm I of Scotland in return for a pledge to defend it on land and on sea'; Dyfnwal 'regained his realm soon afterward' (Strathclyde page). A short occupation or vassal tie to Alba may belong in the ledger.",
+     "page to try": "https://en.wikipedia.org/wiki/Edmund_I"
+    },
+    {
+     "where": "/identity (rulers)",
+     "what is missing": "No ruler strip.",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_kings_of_Strathclyde"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Oengus_I_of_the_Picts",
+     "result": "confirmed: Kyle taken by Eadberht in 750 (but see fix: Kyle is inside the shape)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Oengus_I_of_the_Picts",
+     "result": "not on page (confidence 1, said so in the note)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Rheged",
+     "result": "confirmed: c. 900 lands west of the Pennines under Strathclyde; Cumbria Strathclyde's until the early 11th century"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Strathclyde",
+     "result": "confirmed: conquered by the Scots between 1018 and 1054, most likely by 1034; capital Dumbarton then Govan after 870"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 11547,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Infobox has no area (checked)."
+   }
+  },
+  {
+   "slug": "cornwall",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "710 found is confidence 1 (Cliopatria's year; Dumnonia dossier hands over at 710).",
+     "page to try": "https://en.wikipedia.org/wiki/Dumnonia"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "946 dissolve is confidence 1: the Cornwall page has no 10th-century end (last recorded king Dumgarth 875; Edgar's charters 959-975).",
+     "page to try": "https://en.wikipedia.org/wiki/Cornwall"
+    },
+    {
+     "where": "/ledger (missing vassal tie)",
+     "what is missing": "kingdom-of-wessex /ledger/13 (825 vassal_start cornwall, c2) has no mirror; Cornwall page: 815 raid read by some as 'the end of Cornish independence', Gafulforda 825 and Hingston Down 838 'cast doubt' on Wessex control. Add vassal_start kingdom-of-wessex (838 is the better-supported year) with vassal_end at the 946 dissolve, or tell the Wessex group to drop theirs.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Hingston_Down"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Cornish land east of the Tamar before 936 (William of Malmesbury's Exeter story) is not drawn; no capital or rulers.",
+     "page to try": "https://en.wikipedia.org/wiki/Cornwall"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/keyframe_review/1",
+     "page": "https://en.wikipedia.org/wiki/%C3%86thelstan",
+     "result": "confirmed: Cornish expelled from Exeter, boundary at the Tamar; Charles-Edwards 'an improbable story'"
+    },
+    {
+     "where": "/keyframe_review/1",
+     "page": "https://en.wikipedia.org/wiki/Cornwall",
+     "result": "confirmed: boundary 'set by King Æthelstan in 936'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Cornwall",
+     "result": "not on page (confidence 1, honest)"
+    },
+    {
+     "where": "/wars/1",
+     "page": "https://en.wikipedia.org/wiki/Cornwall",
+     "result": "confirmed: Egbert raided 815, Gafulforda 825, Hingston Down 838, Dumgarth drowned 875"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 3562,
+    "infobox_year": null,
+    "cliopatria_km2": 4538.5,
+    "ratio": 1.27,
+    "acknowledged": true,
+    "note": "Infobox area is the modern ceremonial county; author quotes 3,562 and 3,545 km2 and the 1.27 ratio."
+   }
+  },
+  {
+   "slug": "danelaw",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/note",
+     "what": "The note quoted 49,568 km2 as the shape's area; shapes.csv gives 45,806.7 km2 for danelaw_878 (49,588 km2 is the 196-cell count).",
+     "why": "history/data/shapes.csv row danelaw_878: area_km2 45806.7; gazetteer resolves 196 cells.",
+     "fix": "Changed '49,568 km2 (about 49.6 thousand by cell count)' to '45,807 km2 in shapes.csv (about 49.6 thousand by cell count)'; re-validated (0 errors).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what": "York is the capital 878-954 without a break although the dossier has no land 927-938 and 944-946.",
+     "why": "/keyframe_review/8 and /keyframe_review/11 resolve to no cells.",
+     "fix": "Split the capital span into 878-926, 939-943 and 947-954 (non-blocking).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (missing, 940 and 942)",
+     "what is missing": "Olaf Guthfrithson's gain of the Five Boroughs from kingdom-of-england (treaty at Leicester, 940) and Edmund's recovery (942) are not in the ledger or keyframes; the 939-943 keyframe is York only. Edmund I page: 'They arranged a treaty at Leicester which surrendered the Five Boroughs' after Olaf 'invaded north-east Mercia' the year after Æthelstan's death; 'In 942, he recovered the Five Boroughs.' Needs a gain 940 / loss 942 and a new keyframe 940-941 (Derbyshire, Nottinghamshire, Leicestershire, Rutland, Lincolnshire).",
+     "page to try": "https://en.wikipedia.org/wiki/Edmund_I"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "880 gain of 43 Midland cells from Mercia is confidence 1; the Mercia dossier dates the Danish partition of Mercia to 877 (c3), before this state's 878 start.",
+     "page to try": "https://en.wikipedia.org/wiki/Ceolwulf_II_of_Mercia"
+    },
+    {
+     "where": "/keyframe_review/6",
+     "what is missing": "Lincoln's status 918-920s is unresolved (Edward page: 'it is not clear whether Lincoln was an exception').",
+     "page to try": "https://en.wikipedia.org/wiki/Five_Boroughs_of_the_Danelaw"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/4, /ledger/5, /ledger/6, /ledger/7, /ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Edward_the_Elder",
+     "result": "confirmed: Bedford occupied (915), Tempsford and the submissions of Northampton, Cambridge and East Anglia (917), Derby (917), Leicester (918), Stamford and Nottingham (918), Lincoln unclear"
+    },
+    {
+     "where": "/ledger/11, /ledger/12",
+     "page": "https://en.wikipedia.org/wiki/%C3%86thelstan",
+     "result": "confirmed: York conquered 927; 'After Æthelstan's death, the men of York immediately chose ... Olaf Guthfrithson'"
+    },
+    {
+     "where": "/ledger/13, /ledger/14, /ledger/15, /ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_York",
+     "result": "confirmed: 944 expulsion; Eric after 947; Olaf Cuaran 950-952; Stainmore 954"
+    },
+    {
+     "where": "/ledger/0, /ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Danelaw",
+     "result": "confirmed: treaty 'Between 878 and 890', Guthrum settled East Anglia; 'Viking rule ended when Eric Bloodaxe was driven out of Northumbria in 954'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 55257,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Danelaw infobox gives no area (checked)."
+   }
+  },
+  {
+   "slug": "kingdom-of-seisyllwg",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger (missing, 918-920)",
+     "what is missing": "kingdom-of-wessex /ledger/37 (918 vassal_start kingdom-of-seisyllwg, c3) has no mirror; the dossier has the submission only as a zone-less war (/wars/1). Edward the Elder page (918): 'Three Welsh kings, Hywel Dda, Clydog and Idwal Foel, who had previously been subject to Æthelflæd' gave their allegiance to Edward. Add vassal_start 918 counterpart kingdom-of-wessex and vassal_end 920 at the merger.",
+     "page to try": "https://en.wikipedia.org/wiki/Edward_the_Elder"
+    },
+    {
+     "where": "/identity/start",
+     "what is missing": "Life starts at Cliopatria's 878, but Cadell was installed as king of Seisyllwg in 872 (Cadell page infobox 'Reign 872-909'; Seisyllwg page: Gwgon drowned 872) and the kingdom existed from the 7th or 8th century (infobox: name changed from Ceredigion 680); dyfed /ledger/1 (690 loss to kingdom-of-seisyllwg) names this slug 188 years before it starts. Extend the start (new keyframe with the 878 shape) or have the Dyfed group re-target.",
+     "page to try": "https://en.wikipedia.org/wiki/Seisyllwg"
+    },
+    {
+     "where": "/identity (capitals, rulers)",
+     "what is missing": "No capital and no rulers (no page gives a seat).",
+     "page to try": "https://en.wikipedia.org/wiki/Ceredigion"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Cadell_ap_Rhodri",
+     "result": "confirmed: 'Cadell and Hywel together also conquered Dyfed in 904–905'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Cadell_ap_Rhodri",
+     "result": "confirmed: died 909 (Seisyllwg page says 911; recorded in the note)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Seisyllwg",
+     "result": "confirmed: 'In 920 Hywel merged Seisyllwg with the Kingdom of Dyfed to form the new kingdom of Deheubarth'"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Cadell_ap_Rhodri",
+     "result": "confirmed as described: Cadell installed under Rhodri after 872; the 878 year is Cliopatria's, as the note says"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 4512,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Seisyllwg infobox has no area (checked)."
+   }
+  },
+  {
+   "slug": "kingdom-of-alba",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/0 to /keyframe_review/8",
+     "what is missing": "Moray: the Alba page says Moray was excluded 'until the early 13th century' and Alba lay 'only between the Firth of Forth and the River Spey', yet every shape from 900 holds Moray and 67 Highland cells (79 of 173 cells in 900) with verdict ok. Needs a Moray dossier (counterparts_needing_dossiers) and a cut or vassal tint with a year.",
+     "page to try": "https://en.wikipedia.org/wiki/Province_of_Moray"
+    },
+    {
+     "where": "/keyframe_review/3, /keyframe_review/4 and /ledger (missing, 1092)",
+     "what is missing": "Cumbria is in no Alba shape 1034-1091 (1 cell) although Strathclyde's corrections hold it to 1033 and norman-england /ledger/4 (1092, c3) takes Cumberland and Westmorland from Alba. Add Cumbria to the 1034 gain and the 1034/1072 keyframes (adjust) and a 1092 loss to norman-england.",
+     "page to try": "https://en.wikipedia.org/wiki/William_II_of_England"
+    },
+    {
+     "where": "/ledger (missing vassal ties)",
+     "what is missing": "No mirrors for kingdom-of-england /ledger/3 and /ledger/7 (927 vassal_start, 937 vassal_end: Æthelstan page, Constantine II at Eamont 12 July 927; 'In 934, he invaded Scotland and forced Constantine II to submit'), north-sea-empire /ledger/2 and /ledger/4 (1031-1035) and angevin-empire /ledger/15 and /ledger/26 (Falaise 1174, Canterbury 1189).",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Falaise"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "1099 gain from kingdom-of-the-isles is confidence 1, no mirror in the Isles dossier; the 1098 treaty with Magnus Barelegs runs the other way.",
+     "page to try": "https://en.wikipedia.org/wiki/Magnus_Barefoot"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "1266 gain names old-kingdom-of-norway, whose ledger has no loss (only vassal_end kingdom-of-the-isles), while kingdom-of-the-isles /ledger/7 records the loss to Alba; the Isle of Man, settled on Scotland by the same treaty, is in no Alba shape.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Perth"
+    },
+    {
+     "where": "/identity (capitals, rulers)",
+     "what is missing": "No capital (Scone) and no rulers; the Alba page has no infobox.",
+     "page to try": "https://en.wikipedia.org/wiki/Scone,_Perth_and_Kinross"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0, /ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Alba",
+     "result": "confirmed: 'between the deaths of Donald II in 900 and of Alexander III in 1286'; Moray excluded until the early 13th century"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Bernicia",
+     "result": "confirmed: 'In 973, Scots sovereignty over northern Bernicia, now known as Lothian, was acknowledged by Edgar of England'"
+    },
+    {
+     "where": "/ledger/4, /ledger/5, /ledger/6, /ledger/7",
+     "page": "https://en.wikipedia.org/wiki/David_I_of_Scotland",
+     "result": "confirmed: castles occupied by the end of January 1136; first Durham treaty, David kept Carlisle; 9 April 1139 earldom of Northumberland, Carlisle and Cumberland kept"
+    },
+    {
+     "where": "/ledger/10, /ledger/11, /ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Perth",
+     "result": "confirmed: signed 2 July 1266, Largs 1263, Norway recognised Scottish sovereignty over the Hebrides and Man"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Malcolm_IV_of_Scotland",
+     "result": "confirmed: Henry II 'refused to allow Malcolm to keep Cumbria, or William to keep Northumbria'; homage 1157 at Peveril"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Strathclyde",
+     "result": "confirmed: conquered by the Scots, most likely under Máel Coluim mac Cináeda (d. 1034)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 85304,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Kingdom of Alba page has no infobox (checked); no area to compare."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 616,
+    "type": "gain",
+    "counterpart": "kingdom-of-elmet"
+   },
+   "mirror": {
+    "slug": "kingdom-of-elmet",
+    "year": 617,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 626,
+    "type": "gain",
+    "counterpart": "kingdom-of-dunoting"
+   },
+   "mirror": {
+    "slug": "kingdom-of-dunoting",
+    "year": 625,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 627,
+    "type": "gain",
+    "counterpart": "kingdom-of-lindsey"
+   },
+   "mirror": {
+    "slug": "kingdom-of-lindsey",
+    "year": 625,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Lindsey dissolves 625 with no counterpart; Northumbria gains it 627 (shape 626). Route to the Lindsey author: counterpart kingdom-of-northumbria, or explain 625-627."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 627,
+    "type": "gain",
+    "counterpart": "kingdom-of-gwynedd"
+   },
+   "mirror": {
+    "slug": "kingdom-of-gwynedd",
+    "year": 629,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Anglesey: 627 (Edwin page) vs 629 in Gwynedd; reconcile."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 633,
+    "type": "loss",
+    "counterpart": "kingdom-of-gwynedd"
+   },
+   "mirror": {
+    "slug": "kingdom-of-gwynedd",
+    "year": 633,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 633,
+    "type": "loss",
+    "counterpart": "kingdom-of-bernicia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-bernicia",
+    "year": 633,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 633,
+    "type": "loss",
+    "counterpart": "kingdom-of-deira"
+   },
+   "mirror": {
+    "slug": "kingdom-of-deira",
+    "year": 633,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 634,
+    "type": "gain",
+    "counterpart": "kingdom-of-deira"
+   },
+   "mirror": {
+    "slug": "kingdom-of-deira",
+    "year": 634,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 634,
+    "type": "gain",
+    "counterpart": "kingdom-of-bernicia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-bernicia",
+    "year": 634,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 638,
+    "type": "gain",
+    "counterpart": "gododdin"
+   },
+   "mirror": {
+    "slug": "gododdin",
+    "year": 638,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "The Brythons dossier (/ledger/20) also records a 638 loss to Northumbria: double count with gododdin; route to the Brythons author."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 647,
+    "type": "gain",
+    "counterpart": "kingdom-of-rheged"
+   },
+   "mirror": {
+    "slug": "kingdom-of-rheged",
+    "year": 646,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 656,
+    "type": "gain",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-mercia",
+    "year": 656,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 659,
+    "type": "loss",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-mercia",
+    "year": 658,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "One year apart (page: late 659 or 657)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 671,
+    "type": "vassal_start",
+    "counterpart": "picts"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "picts dossier exists but has no events 660-690; route to its author (Ecgfrith page: Two Rivers 671, fourteen years of control)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 674,
+    "type": "gain",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-mercia",
+    "year": 674,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "Mercia records a contest, not a loss; Ecgfrith page: in 674 he could 'seize the Kingdom of Lindsey'. Mercia should record a 674 loss."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 679,
+    "type": "loss",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-mercia",
+    "year": 679,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 685,
+    "type": "vassal_end",
+    "counterpart": "picts"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "See 671."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 705,
+    "type": "gain",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Confidence 1, 2 cells; no Mercia mirror."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 867,
+    "type": "loss",
+    "counterpart": "viking-settlements"
+   },
+   "mirror": {
+    "slug": "viking-settlements",
+    "year": 867,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-northumbria",
+    "year": 900,
+    "type": "loss",
+    "counterpart": "strathclyde"
+   },
+   "mirror": {
+    "slug": "strathclyde",
+    "year": 900,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Year matches, land does not: Northumbria loses 6 Carlisle cells, Strathclyde gains 20 other Cumbrian cells. The Brythons dossier (/ledger/24) also gains from Northumbria in 900."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-england",
+    "year": 927,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-northumbria"
+   },
+   "mirror": {
+    "slug": "kingdom-of-northumbria",
+    "year": 927,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "Northumbria codes Eamont as a rename; needs vassal_start kingdom-of-england."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-england",
+    "year": 954,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-northumbria"
+   },
+   "mirror": {
+    "slug": "kingdom-of-northumbria",
+    "year": 954,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Needs a vassal_end in Northumbria before its dissolve."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 829,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-northumbria"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Wessex /ledger/18-20 (829-830); Northumbria has nothing."
+  },
+  {
+   "event": {
+    "slug": "strathclyde",
+    "year": 750,
+    "type": "loss",
+    "counterpart": "kingdom-of-northumbria"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Kyle, c3, confirmed on the Óengus I page; Northumbria lacks the gain."
+  },
+  {
+   "event": {
+    "slug": "strathclyde",
+    "year": 644,
+    "type": "found",
+    "counterpart": "brythons"
+   },
+   "mirror": {
+    "slug": "brythons",
+    "year": 644,
+    "type": "split"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "strathclyde",
+    "year": 750,
+    "type": "loss",
+    "counterpart": "dal-riata"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Confidence 1; dal-riata (ends 850) has no gain."
+  },
+  {
+   "event": {
+    "slug": "dal-riata",
+    "year": 642,
+    "type": "loss",
+    "counterpart": "strathclyde"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Dál Riata loses to strathclyde in 642, before Strathclyde's 644 start; route to the Dál Riata author (counterpart brythons) or Strathclyde starts earlier."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-england",
+    "year": 927,
+    "type": "vassal_start",
+    "counterpart": "strathclyde"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "England /ledger/4 (c2) and /ledger/8 (937 vassal_end); Strathclyde has no vassal events."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-alba",
+    "year": 1034,
+    "type": "gain",
+    "counterpart": "strathclyde"
+   },
+   "mirror": {
+    "slug": "strathclyde",
+    "year": 1033,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Year fine; land differs: Strathclyde's corrected shape holds Cumbria to 1033, Alba's gain omits it; the Strathclyde dissolve names no counterpart."
+  },
+  {
+   "event": {
+    "slug": "norman-england",
+    "year": 1092,
+    "type": "gain",
+    "counterpart": "kingdom-of-alba"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Alba holds no Cumbria 1034-1091 and has no 1092 loss."
+  },
+  {
+   "event": {
+    "slug": "cornwall",
+    "year": 710,
+    "type": "found",
+    "counterpart": "dumnonia"
+   },
+   "mirror": {
+    "slug": "dumnonia",
+    "year": 710,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 825,
+    "type": "vassal_start",
+    "counterpart": "cornwall"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Cornwall has no vassal tie; Wessex has no vassal_end either."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-england",
+    "year": 947,
+    "type": "gain",
+    "counterpart": "cornwall"
+   },
+   "mirror": {
+    "slug": "cornwall",
+    "year": 946,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 878,
+    "type": "found",
+    "counterpart": "viking-settlements"
+   },
+   "mirror": {
+    "slug": "viking-settlements",
+    "year": 878,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 880,
+    "type": "gain",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-mercia",
+    "year": 877,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Three years apart; Mercia's 877 partition precedes the Danelaw's 878 start."
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 886,
+    "type": "loss",
+    "counterpart": "kingdom-of-wessex"
+   },
+   "mirror": {
+    "slug": "kingdom-of-wessex",
+    "year": 886,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 915,
+    "type": "loss",
+    "counterpart": "kingdom-of-wessex"
+   },
+   "mirror": {
+    "slug": "kingdom-of-wessex",
+    "year": 915,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 915,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-wessex"
+   },
+   "mirror": {
+    "slug": "kingdom-of-wessex",
+    "year": 915,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 917,
+    "type": "loss",
+    "counterpart": "kingdom-of-wessex"
+   },
+   "mirror": {
+    "slug": "kingdom-of-wessex",
+    "year": 917,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 917,
+    "type": "loss",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-mercia",
+    "year": 917,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 918,
+    "type": "loss",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-mercia",
+    "year": 918,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 918,
+    "type": "loss",
+    "counterpart": "kingdom-of-wessex"
+   },
+   "mirror": {
+    "slug": "kingdom-of-wessex",
+    "year": 918,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 918,
+    "type": "contest_end",
+    "counterpart": "kingdom-of-wessex"
+   },
+   "mirror": {
+    "slug": "kingdom-of-wessex",
+    "year": 918,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 927,
+    "type": "loss",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": {
+    "slug": "kingdom-of-england",
+    "year": 927,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "kingdom-of-wessex /ledger/40 also gains from danelaw in 927: double count; route to the Wessex author."
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 939,
+    "type": "gain",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "England has no 939 loss of York (author flagged); Æthelstan page confirms."
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 944,
+    "type": "loss",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "England has no 944 gain (York page: Edmund expelled the Viking leaders, 944)."
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 947,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": {
+    "slug": "kingdom-of-england",
+    "year": 947,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "danelaw",
+    "year": 954,
+    "type": "loss",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": {
+    "slug": "kingdom-of-england",
+    "year": 954,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-seisyllwg",
+    "year": 878,
+    "type": "found",
+    "counterpart": "kingdom-of-gwynedd"
+   },
+   "mirror": {
+    "slug": "kingdom-of-gwynedd",
+    "year": 878,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-seisyllwg",
+    "year": 905,
+    "type": "gain",
+    "counterpart": "dyfed"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Dyfed keeps its land to its 920 dissolve and has no 905 loss; Cadell page: 'Cadell and Hywel together also conquered Dyfed in 904–905'. Route to the Dyfed author."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-seisyllwg",
+    "year": 920,
+    "type": "dissolve",
+    "counterpart": null
+   },
+   "mirror": {
+    "slug": "deheubarth",
+    "year": 920,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 918,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-seisyllwg"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Seisyllwg lacks the vassal pair 918-920."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-england",
+    "year": 927,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-seisyllwg"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Seisyllwg ended 920; Æthelstan page names 'Hywel Dda of Deheubarth'. England /ledger/5 and /ledger/15 should name deheubarth."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-gwynedd",
+    "year": 942,
+    "type": "loss",
+    "counterpart": "kingdom-of-seisyllwg"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "After 920 the counterpart is deheubarth (also gwynedd /ledger/12 950, powys /ledger/7 942 and /ledger/8 960)."
+  },
+  {
+   "event": {
+    "slug": "brythons",
+    "year": 911,
+    "type": "loss",
+    "counterpart": "kingdom-of-seisyllwg"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Confidence 1; Seisyllwg has no gain from brythons; brythons /ledger/27 (960 gain) is after Seisyllwg ends."
+  },
+  {
+   "event": {
+    "slug": "dyfed",
+    "year": 690,
+    "type": "loss",
+    "counterpart": "kingdom-of-seisyllwg"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Before Seisyllwg's 878 start; see the Seisyllwg thin item on its start year."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-alba",
+    "year": 900,
+    "type": "found",
+    "counterpart": "picts"
+   },
+   "mirror": {
+    "slug": "picts",
+    "year": 899,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-alba",
+    "year": 973,
+    "type": "gain",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": {
+    "slug": "kingdom-of-england",
+    "year": 973,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-alba",
+    "year": 1099,
+    "type": "gain",
+    "counterpart": "kingdom-of-the-isles"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Confidence 1."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-alba",
+    "year": 1136,
+    "type": "occupation_start",
+    "counterpart": "norman-england"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Norman England has no occupation pair for Northumberland Jan-Feb 1136."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-alba",
+    "year": 1136,
+    "type": "gain",
+    "counterpart": "norman-england"
+   },
+   "mirror": {
+    "slug": "norman-england",
+    "year": 1136,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-alba",
+    "year": 1139,
+    "type": "gain",
+    "counterpart": "norman-england"
+   },
+   "mirror": {
+    "slug": "norman-england",
+    "year": 1139,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-alba",
+    "year": 1157,
+    "type": "loss",
+    "counterpart": "angevin-empire"
+   },
+   "mirror": {
+    "slug": "angevin-empire",
+    "year": 1157,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-alba",
+    "year": 1234,
+    "type": "gain",
+    "counterpart": "lordship-of-galloway"
+   },
+   "mirror": {
+    "slug": "lordship-of-galloway",
+    "year": 1234,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-alba",
+    "year": 1263,
+    "type": "contest_start",
+    "counterpart": "old-kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1263,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-alba",
+    "year": 1266,
+    "type": "gain",
+    "counterpart": "old-kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "kingdom-of-the-isles",
+    "year": 1266,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Norway has no loss (only vassal_end kingdom-of-the-isles); the Isles dossier records the loss to Alba. Alba should name kingdom-of-the-isles, or Norway add a loss."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-england",
+    "year": 927,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-alba"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Also England /ledger/7 937 vassal_end; Alba has neither."
+  },
+  {
+   "event": {
+    "slug": "north-sea-empire",
+    "year": 1031,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-alba"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Also 1035 vassal_end."
+  },
+  {
+   "event": {
+    "slug": "angevin-empire",
+    "year": 1174,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-alba"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Also 1189 vassal_end (Falaise, Canterbury)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-scotland",
+    "year": 1294,
+    "type": "found",
+    "counterpart": "kingdom-of-alba"
+   },
+   "mirror": {
+    "slug": "kingdom-of-alba",
+    "year": 1293,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Elmet",
+   "kind": "region",
+   "used_in": "kingdom-of-northumbria"
+  },
+  {
+   "name": "Lindsey",
+   "kind": "region",
+   "used_in": "kingdom-of-northumbria"
+  },
+  {
+   "name": "Pictland",
+   "kind": "region",
+   "used_in": "kingdom-of-northumbria"
+  },
+  {
+   "name": "Kyle",
+   "kind": "region",
+   "used_in": "strathclyde"
+  },
+  {
+   "name": "Galloway",
+   "kind": "region",
+   "used_in": "kingdom-of-alba"
+  },
+  {
+   "name": "Cumbria north of the Eamont",
+   "kind": "region",
+   "used_in": "strathclyde"
+  },
+  {
+   "name": "Five Boroughs",
+   "kind": "region",
+   "used_in": "danelaw"
+  },
+  {
+   "name": "Province of Moray",
+   "kind": "region",
+   "used_in": "kingdom-of-alba"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Moray",
+   "suggested_slug": "moray",
+   "years": [
+    900,
+    1230
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-11-g.md",
+ "problems": [
+  "WebFetch returns a small model's summary, not raw page text; quotations above are what it returned as quotations.",
+  "No dossier in the batch has an infobox area to compare except Cornwall (Northumbria, Strathclyde, Danelaw and Seisyllwg infoboxes have no area; the Kingdom of Alba page has no infobox).",
+  "Verdict rule used: findings that require changing what the dossier already says (keyframe corrections or verdicts that contradict its own confirmed ledger, a mis-typed event) are blocking and give fail; findings that only add missing events, mirrors or years within the page budget give thin.",
+  "Reviewer applied one fix: danelaw /keyframe_review/0/note area figure (validated, read back).",
+  "Neighbour-side defects routed through cross_checks: kingdom-of-england (939-944 York interlude; 927/959 Seisyllwg ties should name deheubarth), kingdom-of-wessex (927 duplicate gain of danelaw; 825 Cornwall tie with no end), brythons (638 and 900 duplicates, 911/960 Seisyllwg), dyfed (905), kingdom-of-mercia (674), picts (671-685), kingdom-of-gwynedd and kingdom-of-powys (942-960 should name deheubarth), old-kingdom-of-norway (1266), dal-riata (642)."
+ ]
+}

@@ -1,0 +1,874 @@
+{
+ "batch_id": "ia-01-e",
+ "verdicts": [
+  {
+   "slug": "turks",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/0/counterpart",
+     "what": "The 666 found event takes its land from western-gokturks, a state that ended nine years earlier and whose land went to the Tang.",
+     "why": "western-gokturks.json ends in 657 (/ledger/24 dissolve, counterpart tang-dynasty; successors tang-dynasty and tokhara-yabghus, not turks). The Tang example (/ledger/11) gains Dzungaria and Semirechye from western-gokturks in 657. WTK page: the Tang 'destroyed the khaganate in 657-659'; 'Mishe was killed by Buzhen in 662 and Buzhen was killed in 666' (both were Tang proxy khagans).",
+     "fix": "Set the found counterpart to tang-dynasty. Add tang-dynasty to /identity/predecessors with the Semirechye land. Keep western-gokturks only if its dossier is given turks as a successor.",
+     "applied": false
+    },
+    {
+     "where": "/ledger",
+     "what": "The ledger draws an independent state for 666-698, but its main page calls the Western Turks a Tang vassal; no vassal_start or vassal_end is recorded.",
+     "why": "WTK infobox: 'Vassal of the Tang dynasty (657-742)'. Text: 'Empress Wu Zetian sent Yuanqing and Boeri westward in 685 to succeed their fathers as proxy rulers'. The author's notes ask the Tang dossier for 'suzerainty over the Western Turks 659-679', but the mirror rule needs the vassal_start in this ledger too.",
+     "fix": "Add vassal_start (counterpart tang-dynasty, region Semirechye, source WTK) at 666, and a vassal_end at Duzhi's revolt in 677. Add a second vassal_start at 685 for the proxy rulers Yuanqing and Boeri, ended at 690 or 698. Alternatively, say in notes why the infobox's vassal status does not apply.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/4/region",
+     "what": "The 698 dissolve gives Semirechye and Chach to turgesh, but the turgesh dossier takes only a 150 km Taraz core in 699 and gains Semirechye and Chach from tang-dynasty in 703. In 699-702 the land belongs to nobody, and the two sides disagree on who held it.",
+     "why": "turgesh /ledger/0 (699 found, place Taraz 150 km, counterpart turks), /ledger/1 (703 gain from tang-dynasty of Semirechye, Dzungaria, Chach and Turpan), /keyframe_review/1 (699-702 Taraz only). WTK page: 'From 679 to 719 the old Goektuerk capital of Suyab was one of the Four Garrisons of Anxi'.",
+     "fix": "Make both dossiers agree. Either the turks dissolve hands only the Taraz core to turgesh and adds a loss of the rest of Semirechye and Chach to tang-dynasty, or turgesh /ledger/0 takes the whole Semirechye in 699 and its 703 gain names turks or nobody for that part.",
+     "applied": false
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what": "Suyab is the capital for 666-698, although the page this capital cites makes Suyab a Tang garrison from 679. The capital's own note admits that the page does not say where the post-657 Turks sat.",
+     "why": "WTK page: 'From 679 to 719 the old Goektuerk capital of Suyab was one of the Four Garrisons of Anxi.'",
+     "fix": "End the Suyab capital at 678. For 679-698, give no capital, or name Navekat (summer seat) with a note.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1/counterpart",
+     "what": "The 674 gain of Dzungaria (750 cells) names counterpart nobody, but the Tang held that land from 657 in the Tang example.",
+     "why": "_example-tang-dynasty.json /ledger/11: '657 gain western-gokturks, Dzungaria + Semirechye'. The event is confidence 1 (Cliopatria's year).",
+     "fix": "Change the counterpart to tang-dynasty (the Duolu tribes under the Tang Mengchi/Kunling protectorates), or say in the note why the land was no one's.",
+     "applied": false
+    },
+    {
+     "where": "/identity/wikidata",
+     "what": "wikidata Q2118293 is shared with oghuz-turks, while wikipedia is set to Western Turkic Khaganate; the two links probably name different things.",
+     "why": "data/README.md lists Q2118293 for both 'Oghuz Turks' and 'Turks'. oghuz-turks.json also uses Q2118293. wikidata.org was unreachable, so the item could not be checked.",
+     "fix": "Use the Western Turkic Khaganate's own Wikidata item, or leave the item out and say so in notes.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "The 666 start is Cliopatria's year (confidence 1); the page does not call 666 a founding.",
+     "page to try": "https://en.wikipedia.org/wiki/Ashina_Buzhen"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "The 674 Dzungaria step has no page (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Protectorate_General_to_Pacify_the_West"
+    },
+    {
+     "where": "/wars/1-2",
+     "what is missing": "The 686-689 Tibetan capture of Yuanqing and the 690 Second Turkic invasion have empty zones and no ground named.",
+     "page to try": "https://en.wikipedia.org/wiki/Second_Turkic_Khaganate"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Western_Turkic_Khaganate",
+     "result": "confirmed: 'Mishe was killed by Buzhen in 662 and Buzhen was killed in 666.'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Western_Turkic_Khaganate",
+     "result": "confirmed: 'In 677, Duzhi declared himself Onoq Khagan'; 'He captured Kucha with the help of the Tibetans' (the capture itself is undated, so confidence 2 is right)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Western_Turkic_Khaganate",
+     "result": "confirmed: in 679 the Tang made a surprise attack to recapture the Four Garrisons; 'Duzhi went out with 500 men to meet Pei and they were all captured'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Western_Turkic_Khaganate",
+     "result": "confirmed: attempts to 'install Boeri's son, Ashina Huaidao, as ruler of the Western Turks in 699 and 700' failed; Tuergesh page: 'He established the Turgesh Khaganate in 699'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 3500000,
+    "infobox_year": 630,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The WTK infobox area is for 630, when no turks shape exists (western-gokturks_630 is 3,854,580 km2, ratio 0.91). No page gives an area for 666-698. The turks_666 note says so."
+   }
+  },
+  {
+   "slug": "turgesh",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/identity/rulers/1-8/source",
+     "what": "Eight of the nine rulers cited no page.",
+     "why": "The Tuergesh page's khagan list reads: Wuzhile 699-706, Suoge 706-711, Suluk 716-738, Kut Chor 738-739, Kuel Chor 739-744, El Etmish Kutluk Bilge 744-749, Yibo Kutluk Bilge Juzhi 749-751, Tengri Ermish 753-755, Ata Boyla 750s-766. Every reign in the dossier matches it.",
+     "fix": "Added source https://en.wikipedia.org/wiki/T%C3%BCrgesh to rulers 1-8. The dossier re-validates with 0 errors.",
+     "applied": true
+    },
+    {
+     "where": "/ledger (740-744)",
+     "what": "Kuel Chor's submission to the Tang is missing from this ledger. Only the war /wars/5 mentions it, and that war has no zones.",
+     "why": "Tuergesh page: 'In 740 Kuel-chor submitted to the Tang dynasty.' 'He was then captured and executed by the Tang in 744.' The author's notes ask the Tang dossier to carry this suzerainty with turgesh as counterpart, but the mirror rule needs the vassal_start in this ledger too.",
+     "fix": "Add vassal_start 740 and vassal_end 744 (counterpart tang-dynasty, region Semirechye, source Tuergesh page, confidence 3).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/2-4/correction and /ledger/9",
+     "what": "The 703-735 corrections draw Beshbalik (200 km) and Turpan (150 km) as Turgesh land, but the same page has the Turgesh attacking Tang Ting Prefecture in 735. The 736 'loss of Beshbalik' therefore loses land the page gives to the Tang.",
+     "why": "Tuergesh page: 'In 735 the Turgesh attacked Ting Prefecture (Jimsar County).' The Tang example holds Gaochang/Xi Prefecture (Turfan) from 640 and has no 703 loss. The 703 sentence 'from Chach to Turfan and Beshbaliq' can be read as reaching those towns rather than holding them.",
+     "fix": "Either take place:Beshbalik and place:Turpan out of the 703-735 corrections and drop or re-type /ledger/9, or explain in the keyframe notes why Ting and Xi prefectures are drawn as Turgesh. Settle this with ea-04's tang-dynasty dossier.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (751-755)",
+     "what is missing": "The Tang re-establishes control over the Turgesh: in 751 the Tang 'consolidated Chinese control over the Turgesh' with an army sent to Suyab, and in 753 the Tang 'appointed a Turgesh khan over the tribes'. This needs a vassal_start in 751 or 753 (counterpart tang-dynasty) and an end in 755-756 (An Lushan).",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Talas"
+    },
+    {
+     "where": "/ledger/11 and /keyframe_review/7",
+     "what is missing": "The 745 loss of Chach, Dzungaria and Turfan to the Tang is confidence 1, and Zhetysu is drawn alone for 745-765. No page gives the border.",
+     "page to try": "https://en.wikipedia.org/wiki/Protectorate_General_to_Pacify_the_West"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "The 715 end of the Second Turkic contest is confidence 1 (Qapaghan's death).",
+     "page to try": "https://en.wikipedia.org/wiki/Qapaghan_Qaghan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/T%C3%BCrgesh",
+     "result": "confirmed: 'In 703 he captured Suyab and set up his authority on the territory from Chach to Turfan and Beshbaliq.'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Transoxiana",
+     "result": "confirmed: Suluk 'in 728 took Bukhara' (the Tuergesh page also says 'In 728 Suluk ... took Bukhara')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Transoxiana",
+     "result": "confirmed: 'By 732, two large Arab expeditions to Samarkand managed ... to reestablish Caliphal authority in the area'"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Karluks",
+     "result": "confirmed: 'In 766, after they overran the Tuergesh in Jetisu, the Karluk tribes formed a Khanate under the rule of a Yabghu'; Tuergesh page: 'In 766 the Karluks conquered Zhetysu and ended the Turgesh Khaganate.'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Talas",
+     "result": "confirmed for the year: 'the Tang defeated Suluk at Beshbalik in early 736'. The change of ground is the author's reading, so confidence 2 is right, but see the Ting Prefecture finding."
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Transoxiana",
+     "result": "confirmed: in 719 'the Transoxianian sovereigns sent a petition to the Chinese and their Turgesh overlords'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 4032061,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The Tuergesh infobox has no area. The correction draws about 0.9 M km2 against Cliopatria's 4.03 M km2 (705). The factor of 4.5 is explained in /keyframe_review/0 and /keyframe_review/3: Cliopatria's shape is the Second Turkic Khaganate's Mongolia under a wrong label."
+   }
+  },
+  {
+   "slug": "kimek-kipchak-confederation",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/9-19",
+     "what": "After 1055 the dossier is the Cuman-Kipchak confederation (/ledger/2 rename), but the 1056-1235 shapes stop at 37.8 E and are marked ok. The Cumans page puts the confederation's western end at the Danube.",
+     "why": "Cumans page: the confederation 'stretched from the Danube in the west to Taraz, Kazakhstan in the east'. The author flagged that Cliopatria's 'Halych-Volhynia occupation' row (eu-16) holds the Dnieper-Danube steppe.",
+     "fix": "After eu-16 rules on the Halych-Volhynia occupation row, mark the 1056-1227 keyframes adjust with a union of the Pontic Steppe west of 38 E (gazetteer region 'Pontic Steppe'). If ia-01-g's cuman-kipchak-confederation draws that steppe instead, say so here.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/5",
+     "what is missing": "The 1072 gain of the south Urals, Bashkortostan and the Middle Volga (2,952 cells, +0.79 M km2) from nobody is confidence 1. It is the largest confidence-1 gain in the batch, and the counterpart may be Volga Bulgaria or the Bashkirs.",
+     "page to try": "https://en.wikipedia.org/wiki/Volga_Bulgaria"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "The 1227 loss of 4,901 cells (-1.45 M km2) to the Mongols is confidence 1, and the shape is marked ok, a decade before the pages' 1236-1241.",
+     "page to try": "https://en.wikipedia.org/wiki/Mongol_invasion_of_Volga_Bulgaria"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "The 1220 loss of the Irtysh and Altai to the Mongols is confidence 1; the page is undated ('Jochi ... was given the lands around the Irtysh').",
+     "page to try": "https://en.wikipedia.org/wiki/Jochi"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "The 1147 loss of the middle Syr Darya to the Qara Khitai is confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Qara_Khitai"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "The 1210 loss of the lower Syr Darya to Khwarezm is confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Muhammad_II_of_Khwarazm"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "The 896 gain from the Pechenegs is confidence 1, for a step of about 100 cells with almost no change in area.",
+     "page to try": "https://en.wikipedia.org/wiki/Pechenegs"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "The 1055 rename (Kimek to Kipchak/Cuman) is confidence 1; the Kimek infobox ends in 1035.",
+     "page to try": "https://en.wikipedia.org/wiki/Kipchaks"
+    },
+    {
+     "where": "/identity/capitals/1",
+     "what is missing": "Tamim is a placeholder at 45.2 N 75.0 E, about 150 km south of the southern shore of Lake Balkhash at 75 E. The page says 'the winter capital was Tamim on the southern shore of lake Balkhash'.",
+     "page to try": "https://en.wikipedia.org/wiki/Kimek-Kipchak_confederation"
+    },
+    {
+     "where": "/keyframe_review/3-19",
+     "what is missing": "The Naiman displacement of the Kimaks from the Altai and Upper Irtysh ('11th-12th centuries', undated) has no event.",
+     "page to try": "https://en.wikipedia.org/wiki/Naiman"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kimek-Kipchak_confederation",
+     "result": "confirmed: infobox 880-1035; 'The Kimek state was formed at the end of the 9th and beginning of the 10th century'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kimek-Kipchak_confederation",
+     "result": "confirmed: 'The Rus chronicles under the year 1054 record an appearance near Kyiv of the Oguz people, who were pushed by Kipchaks'; 'After seizing the Oguz lands, the Kipchaks grew considerably stronger'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Cumans",
+     "result": "confirmed for the year: 'The Cumans first encountered the Rus' in 1055, when they advanced towards the Rus' Pereyaslavl principality'. The land is the author's reading, so confidence 2 is right."
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Cumans",
+     "result": "confirmed: 'The final blow came in 1241, when Cuman control over the Pontic steppes ended'; Koeten 'assassinated in Pest on 17 March 1241'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 1431650,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "Neither the Kimek page nor the Cumans page gives an area (checked). The notes say so."
+   }
+  },
+  {
+   "slug": "oghuz-turks",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/wars/1/zones",
+     "what": "The 800-850 war against the Kangar union and the Pechenegs has empty zones, although its outcome says the Oghuz 'take the lower Syr Darya and Aral steppes'. The keyframes draw that land as Oghuz from 750, with no event.",
+     "why": "Oghuz Yabgu State page: 'At the beginning of the 9th century, the Oghuz confederation ... captured the lower course of the Syr Darya river and the Aral steppes'. Oghuz Turks page: 'In the 700s ... a new home and domain for themselves in the area between the Caspian and Aral seas'. The brief allows empty zones only where no ground changed hands.",
+     "fix": "Give the war a zone, for example {\"river\": \"Syr Dar\", \"km\": 150, \"text\": \"the lower course of the Syr Darya river and the Aral steppes\"}. Then either keep the 750-799 keyframes and say so in their note, or mark them adjust without the lower Syr Darya and add a gain from kangar-union in about 800.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0-3",
+     "what is missing": "The two pages disagree on whether the lower Syr Darya and Aral steppes were Oghuz from the 700s or only from the early 800s. A Kangar or Pecheneg page could settle it.",
+     "page to try": "https://en.wikipedia.org/wiki/Kangar_union"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "The 970 Turgay-Emba gain is confidence 1: the page says only '10th century'.",
+     "page to try": "https://en.wikipedia.org/wiki/Oghuz_Turks"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "The 801 move of the capital to Yangikent is confidence 1. The page says only that it followed the destruction of the Kangar union, and Yangikent has no gazetteer coordinates.",
+     "page to try": "https://en.wikipedia.org/wiki/Jankent"
+    },
+    {
+     "where": "/ledger/8-9",
+     "what is missing": "The 1055 end is the infobox year. The page text has the state 'perhaps disappearing' after Shah Malik's flight in 1043 and the Kipchaks and Kimeks ending it 'by the 12th century'. The author flagged this.",
+     "page to try": "https://en.wikipedia.org/wiki/Torks"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Oghuz_Yabgu_State",
+     "result": "confirmed: 'founded by Oghuz Turks in 750'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Oghuz_Yabgu_State",
+     "result": "confirmed: 'Around 985 one of his commanders named Seljuk split off and moved to Jend'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Oghuz_Yabgu_State",
+     "result": "confirmed: 'Shahmalik Yabgu conquered Khorezm from the Ghaznavids' in 1041 (a list gives 'Conquest of Khwarazm in 1042'; the author noted it)"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Oghuz_Yabgu_State",
+     "result": "confirmed: 'The Seljuks drove him out in 1043.'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Oghuz_Turks",
+     "result": "confirmed: 'In the 10th century, the Oghuz inhabited the steppe of the rivers Sari-su, Turgai and Emba north of Lake Balkhash'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 450019,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The Oghuz Yabgu State infobox has no area (checked). The notes say so."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "turks",
+    "year": 666,
+    "type": "found",
+    "counterpart": "western-gokturks"
+   },
+   "mirror": {
+    "slug": "western-gokturks",
+    "year": 657,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "western-gokturks ends in 657 with its land going to tang-dynasty, and lists no turks successor. The Tang gained Semirechye and Dzungaria in 657 (Tang example /ledger/11). The counterpart should be tang-dynasty."
+  },
+  {
+   "event": {
+    "slug": "turks",
+    "year": 674,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 657,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Counterpart nobody, but the Tang example holds Dzungaria from 657; tang-dynasty (ea-04) has no dossier yet."
+  },
+  {
+   "event": {
+    "slug": "turks",
+    "year": 677,
+    "type": "gain",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": null,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "tang-dynasty is owned by ea-04, which has not run. The Tang example records 'Qiuci lost again in 677' (note to /ledger/20) with no event."
+  },
+  {
+   "event": {
+    "slug": "turks",
+    "year": 679,
+    "type": "loss",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": 679,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "The Tang example's 679 gain of the Tarim names tibetan-empire as counterpart, not turks. ea-04 must decide who held Kucha in 677-679 (Duzhi with Tibetan help)."
+  },
+  {
+   "event": {
+    "slug": "turks",
+    "year": 698,
+    "type": "dissolve",
+    "counterpart": "turgesh"
+   },
+   "mirror": {
+    "slug": "turgesh",
+    "year": 699,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "The years match, but the land does not: turks hands over Semirechye and Chach, while turgesh founds on a 150 km Taraz core and gains Semirechye and Chach from tang-dynasty in 703."
+  },
+  {
+   "event": {
+    "slug": "turgesh",
+    "year": 703,
+    "type": "gain",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": null,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "ea-04 has not run. The Tang example has no 703 loss and holds Xi Prefecture (Turfan) from 640; the Tuergesh page has the Turgesh attacking Tang Ting Prefecture in 735."
+  },
+  {
+   "event": {
+    "slug": "turgesh",
+    "year": 711,
+    "type": "contest_start",
+    "counterpart": "second-turkic-khaganate"
+   },
+   "mirror": {
+    "slug": "second-turkic-khaganate",
+    "year": null,
+    "type": "contest_start"
+   },
+   "status": "exception",
+   "note": "No dossier; listed in counterparts_needing_dossiers (no batch owns it)."
+  },
+  {
+   "event": {
+    "slug": "turgesh",
+    "year": 719,
+    "type": "vassal_start",
+    "counterpart": "Transoxianian sovereigns (Sogdian and Ferghana rulers)"
+   },
+   "mirror": {
+    "slug": "",
+    "year": null,
+    "type": "vassal_start"
+   },
+   "status": "exception",
+   "note": "Not a slug: local principalities with no dossier."
+  },
+  {
+   "event": {
+    "slug": "turgesh",
+    "year": 721,
+    "type": "contest_start",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": {
+    "slug": "umayyad-caliphate",
+    "year": null,
+    "type": "contest_start"
+   },
+   "status": "exception",
+   "note": "me-07 has not run."
+  },
+  {
+   "event": {
+    "slug": "turgesh",
+    "year": 728,
+    "type": "gain",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": {
+    "slug": "umayyad-caliphate",
+    "year": null,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "me-07 has not run; the matching 728 Bukhara loss is listed in the author's notes."
+  },
+  {
+   "event": {
+    "slug": "turgesh",
+    "year": 732,
+    "type": "loss",
+    "counterpart": "umayyad-caliphate"
+   },
+   "mirror": {
+    "slug": "umayyad-caliphate",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "me-07 has not run."
+  },
+  {
+   "event": {
+    "slug": "turgesh",
+    "year": 736,
+    "type": "loss",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "ea-04 has not run; the ground is disputed (see the Ting Prefecture finding)."
+  },
+  {
+   "event": {
+    "slug": "turgesh",
+    "year": 740,
+    "type": "vassal_start",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": null,
+    "type": "vassal_start"
+   },
+   "status": "missing",
+   "note": "The Tuergesh page says Kuel-chor submitted to the Tang in 740 and was executed in 744. The event is missing from turgesh's own ledger, and the Tang dossier is not written yet."
+  },
+  {
+   "event": {
+    "slug": "turgesh",
+    "year": 745,
+    "type": "loss",
+    "counterpart": "tang-dynasty"
+   },
+   "mirror": {
+    "slug": "tang-dynasty",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "ea-04 has not run; the event is confidence 1."
+  },
+  {
+   "event": {
+    "slug": "turgesh",
+    "year": 766,
+    "type": "loss",
+    "counterpart": "qarlugs"
+   },
+   "mirror": {
+    "slug": "qarlugs",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "qarlugs (ia-01-f) has no dossier yet, and its Cliopatria row starts in 793; karluk-yabghu-state is listed as needing a dossier."
+  },
+  {
+   "event": {
+    "slug": "kimek-kipchak-confederation",
+    "year": 896,
+    "type": "gain",
+    "counterpart": "pechenegs"
+   },
+   "mirror": {
+    "slug": "pechenegs",
+    "year": null,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "No dossier; listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "kimek-kipchak-confederation",
+    "year": 1056,
+    "type": "gain",
+    "counterpart": "oghuz-turks"
+   },
+   "mirror": {
+    "slug": "oghuz-turks",
+    "year": 1055,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Matches oghuz-turks /ledger/8 (loss and dissolve, 1055); the land is the whole Oghuz 1046 shape on both sides."
+  },
+  {
+   "event": {
+    "slug": "kimek-kipchak-confederation",
+    "year": 1056,
+    "type": "gain",
+    "counterpart": "pechenegs"
+   },
+   "mirror": {
+    "slug": "pechenegs",
+    "year": null,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "No dossier; listed."
+  },
+  {
+   "event": {
+    "slug": "kimek-kipchak-confederation",
+    "year": 1072,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "",
+    "year": null,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "Counterpart nobody, confidence 1. Volga Bulgaria (eu-16) may be the real counterpart."
+  },
+  {
+   "event": {
+    "slug": "kimek-kipchak-confederation",
+    "year": 1147,
+    "type": "loss",
+    "counterpart": "kara-khitans"
+   },
+   "mirror": {
+    "slug": "kara-khitans",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "kara-khitans (another part of ia-01) has no dossier yet."
+  },
+  {
+   "event": {
+    "slug": "kimek-kipchak-confederation",
+    "year": 1210,
+    "type": "loss",
+    "counterpart": "khwarezmid-empire"
+   },
+   "mirror": {
+    "slug": "khwarezmid-empire",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "me-09 has not run."
+  },
+  {
+   "event": {
+    "slug": "kimek-kipchak-confederation",
+    "year": 1220,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "ia-02 has not run."
+  },
+  {
+   "event": {
+    "slug": "kimek-kipchak-confederation",
+    "year": 1227,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "ia-02 has not run; the year is a decade before the pages."
+  },
+  {
+   "event": {
+    "slug": "kimek-kipchak-confederation",
+    "year": 1241,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "ia-02 has not run."
+  },
+  {
+   "event": {
+    "slug": "oghuz-turks",
+    "year": 750,
+    "type": "found",
+    "counterpart": "second-turkic-khaganate"
+   },
+   "mirror": {
+    "slug": "second-turkic-khaganate",
+    "year": null,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "No dossier; listed. western-gokturks /ledger/23 leaves the Kazakh steppe to nobody in 657."
+  },
+  {
+   "event": {
+    "slug": "oghuz-turks",
+    "year": 970,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "",
+    "year": null,
+    "type": ""
+   },
+   "status": "exception",
+   "note": "Counterpart nobody, confidence 1."
+  },
+  {
+   "event": {
+    "slug": "oghuz-turks",
+    "year": 985,
+    "type": "loss",
+    "counterpart": "seljuk-dynasty"
+   },
+   "mirror": {
+    "slug": "seljuk-dynasty",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "me-09 has not run; the Cliopatria Seljuk row starts in 990."
+  },
+  {
+   "event": {
+    "slug": "oghuz-turks",
+    "year": 1041,
+    "type": "gain",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": {
+    "slug": "ghaznavid-empire",
+    "year": null,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "me-08 has not run."
+  },
+  {
+   "event": {
+    "slug": "oghuz-turks",
+    "year": 1043,
+    "type": "loss",
+    "counterpart": "great-seljuk-empire"
+   },
+   "mirror": {
+    "slug": "great-seljuk-empire",
+    "year": null,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "me-09 has not run."
+  },
+  {
+   "event": {
+    "slug": "oghuz-turks",
+    "year": 1055,
+    "type": "loss",
+    "counterpart": "kimek-kipchak-confederation"
+   },
+   "mirror": {
+    "slug": "kimek-kipchak-confederation",
+    "year": 1056,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Matches kimek /ledger/3."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Navekat",
+   "kind": "place",
+   "used_in": "turks"
+  },
+  {
+   "name": "Yangikent",
+   "kind": "place",
+   "used_in": "oghuz-turks"
+  },
+  {
+   "name": "Jend",
+   "kind": "place",
+   "used_in": "oghuz-turks"
+  },
+  {
+   "name": "Imak",
+   "kind": "place",
+   "used_in": "kimek-kipchak-confederation"
+  },
+  {
+   "name": "Tamim",
+   "kind": "place",
+   "used_in": "kimek-kipchak-confederation"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Second Turkic Khaganate",
+   "suggested_slug": "second-turkic-khaganate",
+   "years": [
+    682,
+    744
+   ],
+   "note": "No batch owns it; its land is the Mongolian part of Cliopatria's Tuergesh 692-749."
+  },
+  {
+   "name": "Pecheneg Khanates",
+   "suggested_slug": "pechenegs",
+   "years": [
+    889,
+    1091
+   ]
+  },
+  {
+   "name": "Kangar union",
+   "suggested_slug": "kangar-union",
+   "note": "Predecessor of oghuz-turks; destroyed in the early 9th century."
+  },
+  {
+   "name": "Naiman",
+   "suggested_slug": "naiman",
+   "note": "Before 1206; displaced the Kimaks from the Altai and Upper Irtysh."
+  },
+  {
+   "name": "Karluk Yabghu State",
+   "suggested_slug": "karluk-yabghu-state",
+   "years": [
+    756,
+    940
+   ],
+   "note": "Takes Zhetysu from turgesh in 766; the qarlugs row starts in 793."
+  },
+  {
+   "name": "Torks (Uzes)",
+   "suggested_slug": "torks",
+   "note": "Oghuz on the Rus' frontier, 1054-1065."
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ia-01-e.md",
+ "problems": [
+  "WebFetch returns a model-written extract, not page text. Quotes in this review are the extract's wording.",
+  "wikidata.org is unreachable, so the shared Q2118293 (turks and oghuz-turks) could not be checked; the Wikipedia pages show no Wikidata link.",
+  "Neighbour dossiers present: khazaria and yenisei-kyrgyz. Neither has a territorial event with a batch state, and no batch event names them. western-gokturks (not a Context polity) was also read, for the turks start.",
+  "tang-dynasty is not written (ea-04 has not run). Cross-checks against it use history/polities/_example-tang-dynasty.json and are marked as such.",
+  "The reviewer brief says reviewers do not edit dossiers; this run follows the orchestrator's override for small verified fixes. One fix was applied: ruler sources in turgesh.json."
+ ]
+}

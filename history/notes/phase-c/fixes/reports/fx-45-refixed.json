@@ -1,0 +1,68 @@
+{
+ "batch_id": "fx-45",
+ "findings": [
+  {
+   "item": "R014",
+   "verdict": "partly",
+   "dossiers_changed": [],
+   "changes": [
+    "kingdom-of-kush: ledger: Egyptian events 1-11 stay deleted as reviewed (11 events now); nothing re-added, nothing else changed in this pass",
+    "handoff only for the counterpart change kingdom-of-kush -> twenty-fifth-dynasty-of-egypt in neo-assyrian-empire, assyrian-egypt, twenty-third-dynasty-of-egypt and twenty-second-dynasty-of-egypt (five handoff entries below)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Twenty-fifth_Dynasty_of_Egypt",
+    "https://en.wikipedia.org/wiki/Assyrian_conquest_of_Egypt",
+    "https://en.wikipedia.org/wiki/Piye"
+   ],
+   "why": "Kept the Kush deletion, as the reviewer asked: the Twenty-fifth Dynasty page (re-opened) has 'Shebitku conquered the entire Nile Valley, including Upper and Lower Egypt, around 712 BC', 'Taharqa was defeated in Egypt in 671 BC when Esarhaddon conquered Northern Egypt, captured Memphis', 'In 669 BC, Taharqa reoccupied Memphis, as well as the Delta', 'the Assyrian army sacked Thebes ... in 663 BC', 'In 656 BC, Psamtik sent a large fleet southwards to Thebes', and treats the dynasty as an Egyptian dynasty that originated in Kush (seat at Napata, then Memphis and Tanis); the Assyrian conquest page's infobox lists the Twenty-fifth Dynasty of Egypt, not the Kingdom of Kush, against Assyria. The remaining leak is outside this batch's dossiers (neo-assyrian-empire, assyrian-egypt, twenty-second and twenty-third dynasties), so it is a handoff, not an edit. Read of tools/compile_dossiers.py: a loss pairs with the counterpart's gain only when the counterpart is the same slug, else the loss gives the cells to the counterpart if alive; a dissolve passes the remaining cells to identity.successors. Two leaks the review did not list are on the handoff list for that reason: the successors entries of the twenty-second (successors/2) and twenty-third (successors/0) dynasties name kingdom-of-kush with Egyptian land specs, and assyrian-egypt predecessors/0 names it for the Delta. Until the handoffs land the symptom stays: Kush takes the Delta at -669 and -664 through neo-assyrian-empire ledger 32 and 36. After they land, the dynasty's mirror events pair (assyrian loss -669 with dynasty gain -669, -664 with -664, -667 gain with dynasty loss, -663 gain with dynasty loss, -656 with dynasty loss/15, -728 with dynasty gain/2). R016 (the same deletion, Nubia only) still stands."
+  }
+ ],
+ "dossiers_changed": [],
+ "validation": {
+  "kingdom-of-kush": "ok (python3 -I -B history/tools/validate_dossier.py --resolve: 0 errors, 0 warnings; 11 events, 14 sources, 7 keyframes, 36 regions)"
+ },
+ "handoffs": [
+  {
+   "dossier": "neo-assyrian-empire",
+   "where": "ledger/30 (-671 contest_start), 31 (-671 gain), 32 (-669 loss), 35 (-667 gain), 36 (-664 loss), 38 (-663 gain), 39 (-663 contest_end): field counterpart",
+   "what": "change counterpart 'kingdom-of-kush' to 'twenty-fifth-dynasty-of-egypt' (regions, years and notes unchanged; ledger 33, 34, 37, 40 name babylonia, assyrian-egypt and stay)",
+   "why": "Egypt is the twenty-fifth-dynasty-of-egypt dossier's land, not kingdom-of-kush's: the Kush ledger no longer carries it (fx-45 R014), and the dynasty ledger holds the mirror events (gain -728/-669/-664, loss -671/-667/-663/-656), but the compiler pairs a loss with a gain only when the counterpart slug matches, so a counterpart still named kingdom-of-kush hands Assyria's Delta cells to the living Kush before the dynasty's own gain runs. Without it Kush still takes the Delta at -669 (ledger 32 has no paired gain in Kush) and at -664 (ledger 36), so twenty-fifth-dynasty-of-egypt_-669 still finds the cells 'kept by others'. Pages re-opened: 'In 671, Esarhaddon took and sacked Memphis' / 'In 669 BC, Taharqa reoccupied Memphis, as well as the Delta' / 'Ashurbanipal defeated Taharqa in 667 BCE, who afterwards fled to Thebes' (Assyrian conquest page, whose infobox lists the Twenty-fifth Dynasty of Egypt, not the Kingdom of Kush, as the opposing belligerent); 'Taharqa was defeated in Egypt in 671 BC when Esarhaddon conquered Northern Egypt, captured Memphis' (25th page).",
+   "source": "https://en.wikipedia.org/wiki/Assyrian_conquest_of_Egypt"
+  },
+  {
+   "dossier": "assyrian-egypt",
+   "where": "ledger/1 (-656 gain of Upper Egypt, counterpart) and identity/predecessors/0/slug",
+   "what": "change 'kingdom-of-kush' to 'twenty-fifth-dynasty-of-egypt' in ledger/1 counterpart and in identity.predecessors[0].slug (land 'Memphis and the Delta, which the Kushite pharaohs had held' and its note stay)",
+   "why": "Egypt is the twenty-fifth-dynasty-of-egypt dossier's land, not kingdom-of-kush's: the Kush ledger no longer carries it (fx-45 R014), and the dynasty ledger holds the mirror events (gain -728/-669/-664, loss -671/-667/-663/-656), but the compiler pairs a loss with a gain only when the counterpart slug matches, so a counterpart still named kingdom-of-kush hands Assyria's Delta cells to the living Kush before the dynasty's own gain runs. Ledger/1 pairs with twenty-fifth-dynasty-of-egypt ledger/15 (-656 loss, counterpart assyrian-egypt). The predecessor entry is added by this agent's own check of the compiler (found: cells of a predecessor move outright, cells of another state are a conflict), because the dynasty, not Kush, holds the Delta at -664. Page: 'In 656 BC, Psamtik sent a large fleet southwards to Thebes' (25th page).",
+   "source": "https://en.wikipedia.org/wiki/Twenty-fifth_Dynasty_of_Egypt"
+  },
+  {
+   "dossier": "twenty-third-dynasty-of-egypt",
+   "where": "ledger/3 (-728 loss), ledger/4 (-728 dissolve): counterpart; identity/successors/0/slug",
+   "what": "change 'kingdom-of-kush' to 'twenty-fifth-dynasty-of-egypt' in ledger/3 and ledger/4 counterpart and in identity.successors[0].slug (its land spec, the Upper Egypt shape, stays)",
+   "why": "Egypt is the twenty-fifth-dynasty-of-egypt dossier's land, not kingdom-of-kush's: the Kush ledger no longer carries it (fx-45 R014), and the dynasty ledger holds the mirror events (gain -728/-669/-664, loss -671/-667/-663/-656), but the compiler pairs a loss with a gain only when the counterpart slug matches, so a counterpart still named kingdom-of-kush hands Assyria's Delta cells to the living Kush before the dynasty's own gain runs. Ledger/3 pairs with the dynasty's ledger/2 (-728 gain, counterpart twenty-third-dynasty-of-egypt). The successors entry matters because the compiler gives a dissolved state's remaining cells to identity.successors, not to the event counterpart (added by this agent's own check). Piye page: 'Piye reacted quickly to this crisis in his regnal year 20 by assembling an army to invade Middle and Lower Egypt'; 'visited Thebes in time for the great Opet Festival which proves he effectively controlled Upper Egypt by this time'; the page names Piye 'founder of the Twenty-fifth Dynasty of Egypt'.",
+   "source": "https://en.wikipedia.org/wiki/Piye"
+  },
+  {
+   "dossier": "twenty-second-dynasty-of-egypt",
+   "where": "ledger/7 (-728 contest_start), 8 (-716 contest_end), 9 (-716 dissolve): counterpart; identity/successors/2/slug",
+   "what": "change 'kingdom-of-kush' to 'twenty-fifth-dynasty-of-egypt' in ledger/7, 8, 9 counterpart and in identity.successors[2].slug (its land spec, Lower Egypt minus Matruh, stays)",
+   "why": "Egypt is the twenty-fifth-dynasty-of-egypt dossier's land, not kingdom-of-kush's: the Kush ledger no longer carries it (fx-45 R014), and the dynasty ledger holds the mirror events (gain -728/-669/-664, loss -671/-667/-663/-656), but the compiler pairs a loss with a gain only when the counterpart slug matches, so a counterpart still named kingdom-of-kush hands Assyria's Delta cells to the living Kush before the dynasty's own gain runs. The successors entry is the live leak at -716: the compiler passes the remnant of Osorkon IV (Lower Egypt minus Matruh) to the successor slug, so Kush would get the Delta for -716..-712 and the dynasty's -712 gain from twenty-fourth-dynasty-of-egypt would find it 'kept by others' (added by this agent's own check). Page: 'Shebitku conquered the entire Nile Valley, including Upper and Lower Egypt, around 712 BC' (25th page); Piye 'returned to his homeland in Nubia never to return to Egypt' (Piye page). The 25th page itself gives no 728 or 716, the dated campaigns come from the Piye page; the years in the 22nd and 23rd dossiers stay as they are.",
+   "source": "https://en.wikipedia.org/wiki/Twenty-fifth_Dynasty_of_Egypt"
+  },
+  {
+   "dossier": "ankhwennefer, twenty-sixth-dynasty-of-egypt, neo-assyrian-empire, assyrian-egypt, twenty-second-dynasty-of-egypt, twenty-third-dynasty-of-egypt",
+   "where": "wars/*/belligerents entries 'kingdom-of-kush' (ankhwennefer wars/0/belligerents/2, twenty-sixth wars/2/belligerents/1, neo-assyrian wars/10/belligerents/1, assyrian-egypt wars/0 and wars/1 belligerents/1, twenty-second wars/1/belligerents/0, twenty-third wars/1/belligerents/0)",
+   "what": "optional: name the Kushite side twenty-fifth-dynasty-of-egypt in the war records of the 728-656 wars, as the Assyrian conquest page's infobox does",
+   "why": "War records name belligerents, they move no cells, so this is consistency only and is not needed for the Delta fix.",
+   "source": "https://en.wikipedia.org/wiki/Assyrian_conquest_of_Egypt"
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "not_reached": [],
+ "notes_path": "history/polities/_notes/fix-fx-45.md",
+ "problems": [
+  "The symptom in R014 (Kush taking the Delta at -669 and -664) is not gone until the four handoff dossiers are edited by their owners; this agent may only edit the 11 dossiers of its brief.",
+  "The Twenty-fifth Dynasty page gives no year for Piye's campaign (regnal year 20 only on the Piye page, no BC date), for Ashurbanipal's 667 defeat of Taharqa (that is on the Assyrian conquest page), or for Tantamani's retaking of Memphis; those years in the other dossiers are theirs and were not changed."
+ ]
+}

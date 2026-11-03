@@ -1,0 +1,670 @@
+{
+ "batch_id": "jk-01-c",
+ "verdicts": [
+  {
+   "slug": "warring-states-japan",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2 to /keyframe_review/15 (shapes 1475-1579)",
+     "applied": false,
+     "what": "The keyframes for 1488-1580 are marked ok and still draw Kaga Province as Warring States Japan land. The ledger gives Kaga to the ikki for those years (/ledger/4 loss 1488, /ledger/9 gain 1580), and kaga-ikko-ikki's own keyframe kaga-ikko-ikki_1488 (1488-1580) draws the same cells, so the province is drawn twice for 92 years.",
+     "why": "Rule 4: the 1488 loss outlasts thirteen shapes (1475-1496 through 1579-1581). None of those keyframes is marked adjust, and none of their corrections removes Kaga (K14 removes only the Ashikaga remnant). The Sengoku page confirms that the ikki 'assumed control of the entire province of Kaga' in 1488 and 'remained independent for nearly 100 years'.",
+     "fix": "Mark warring-states-japan_1497, _1507, _1512, _1519, _1526, _1534, _1540, _1547, _1552, _1556 and _1564 adjust, each with the correction {\"minus\":[{\"cliopatria\":\"Warring States Japan\",\"year\":Y},<the Kaga region of /ledger/4>],\"text\":\"... without Kaga Province, held by the Kaga Ikko-ikki 1488-1580\"}. Give the 1572 shape, valid 1572-1578, the same minus Kaga. Its 1572-only correction already removes the Ashikaga remnant; add Kaga to that minus for 1572, and from 1573 the correction is the shape minus Kaga. Split 1475-1496: keep ok for 1475-1487 and add a new keyframe for 1488-1496 minus Kaga. Split 1579-1581: a new keyframe for 1579-1580 minus Kaga, and the shape as drawn for 1581."
+    },
+    {
+     "where": "/keyframe_review/19 and /ledger",
+     "applied": false,
+     "what": "The shape halves from about 325,000 km2 (the 1595 shape minus South Korea) to 165,165 km2 (the 1600 shape), and no event in this ledger removes the eastern half.",
+     "why": "shapes.csv gives warring-states-japan_1588 325,141 km2, _1595 356,126 km2 (31,000 of it in Korea, removed by K18) and _1600 165,165 km2. The only events in 1600 are /ledger/15 (loss of the western half) and /ledger/16 (dissolve). tokugawa-shogunate /ledger/0 founds the Tokugawa in 1600 on the eastern half (region Tokugawa Shogunate 1600, counterpart warring-states-japan), so this dossier should carry the matching loss.",
+     "fix": "Add a 1600 loss to tokugawa-shogunate before /ledger/15. Region: {\"cliopatria\":\"Tokugawa Shogunate\",\"year\":1600,\"text\":\"the Eastern Army's lands, the Tokugawa camp\"}. Source: the Sekigahara page. Confidence 2, because the page gives no map of the two camps. Note: 'the two camps of the Sekigahara campaign; the split is Cliopatria's'."
+    },
+    {
+     "where": "/identity/capitals/0",
+     "applied": false,
+     "what": "The capital Heian-kyo (Kyoto, 135.77 E 35.01 N) for 1467-1572 lies outside this state's own shapes. From 1468 to 1572 Kyoto is the Ashikaga remnant, which the dossier itself excludes (K1 to K14), and the entry cites no page.",
+     "why": "shapes.csv gives ashikaga-shogunate_1468 the bbox 135.7551-136.1295 E, 34.9366-35.3871 N, which contains Kyoto. The capital note says 'The Sengoku page names no capital; continuity is the researcher's reading'.",
+     "fix": "Either end the first Kyoto entry in 1467 and leave 1468-1572 without a capital, saying so in a note (a period of competing daimyo), or cite a page that names a seat inside the 1468-1572 shapes. Keep /ledger/8 (capital_move 1573, to Azuchi) consistent with the result."
+    },
+    {
+     "where": "/wars/2/from",
+     "applied": true,
+     "what": "The Ishiyama Hongan-ji War started in 1569, a year the author counted back. The Sengoku page dates the start to 1570.",
+     "why": "Sengoku period timeline: '1570: Battle of Anegawa and the beginning of the Ishiyama Hongan-ji War' (WebFetch 2026-10-18). The Sengoku page is already in sources[].",
+     "fix": "Applied by the reviewer: from 1570, with a note citing both pages. Re-validated: 0 errors, 0 warnings."
+    },
+    {
+     "where": "/ledger/13/note",
+     "applied": false,
+     "what": "Advisory: the note quotes the Imjin War page ('withdrew to the peninsula's southern coastal regions') for 1593, but on that page the sentence describes the aftermath of the 1597 invasion.",
+     "why": "Imjin War page: 'Japan invaded Korea again in 1597 ... the invading forces were later halted and withdrew to the peninsula's southern coastal regions'. The 1593 date rests on the Azuchi-Momoyama page ('by January 1593'), which was confirmed.",
+     "fix": "Drop the Imjin quote from the 1593 note, or label it as describing 1597-1598."
+    },
+    {
+     "where": "/ledger/7/note",
+     "applied": false,
+     "what": "Advisory: the note cites the Azuchi-Momoyama infobox line 'Oda Nobunaga captures Kyoto: October 18, 1573'. The page does say that, but the date is the page's own error: Nobunaga entered Kyoto in 1568, and the period starts in 1568 on the same page.",
+     "why": "Azuchi-Momoyama page infobox (WebFetch 2026-10-18); the dossier's own note says 'The page dates the period 1568 to 1603'.",
+     "fix": "Do not use that infobox line as support. The 1573 rename rests on 'Nobunaga overthrew Yoshiaki and dissolved the Ashikaga Shogunate in 1573'."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "The 1468 gain, the largest land move in the dossier (the whole archipelago outside Kyoto), is at confidence 1. The year is Cliopatria's, not the page's.",
+     "page to try": "https://en.wikipedia.org/wiki/%C5%8Cnin_War"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "A dated page for the 1552 southern Oshima (Hakodate side) cells, i.e. the Kakizaki/wajin holding before the 1590 march fief.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Hokkaido"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "The year the ikki lost Kaga. 1580 is inferred from the fall of Ishiyama Hongan-ji, and the Kaga Province page gives no year.",
+     "page to try": "https://en.wikipedia.org/wiki/Shibata_Katsuie"
+    },
+    {
+     "where": "/ledger/13-14",
+     "what is missing": "The 1597 second invasion (the advance into Jeolla and Chungcheong in 1597) and the wajo coast actually held 1593-1598. The occupation zone is constant for 1593-1598.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Jiksan"
+    },
+    {
+     "where": "/ledger (none)",
+     "what is missing": "No events for the Iga ikki (Sengoku timeline: 1477 'effective independence of the Iga ikki is noted', 1581 'destruction of the Iga ikki') or the Yamashiro ikki (1485 formation, 1493 'The Ashikaga shogunate destroys the Yamashiro ikki'). Both are land-holding leagues like Kaga and need dossiers. The author's report gives yamashiro-ikki the years [1485, 1485] and says only the formation is on the page; the page also has the 1493 end.",
+     "page to try": "https://en.wikipedia.org/wiki/Tensh%C5%8D_Iga_War"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/%C5%8Cnin_War",
+     "result": "confirmed ('left the area on 17 December 1477'; infobox 1467-1477)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Sengoku_period",
+     "result": "confirmed (timeline 1488: 'The Kaga Rebellion establishes the Kaga ikki'; 'assumed control of the entire province of Kaga')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Azuchi%E2%80%93Momoyama_period",
+     "result": "confirmed (infobox 'Ashikaga shogunate abolished: September 2, 1573'; 'dissolved the Ashikaga Shogunate in 1573')"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Azuchi%E2%80%93Momoyama_period",
+     "result": "confirmed ('forced to withdraw as far as the southern part of the Korean peninsula by January 1593')"
+    },
+    {
+     "where": "/ledger/11 and /ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Imjin_War",
+     "result": "confirmed (infobox '23 May 1592 - 16 December 1598'; Hanseong 10 June; Pyongyang 20 July 1592; Noryang and the Council of Five Elders)"
+    },
+    {
+     "where": "/ledger/15-16",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Sekigahara",
+     "result": "confirmed ('October 21, 1600'; 'Tokugawa clan gains nominal control of all Japan'; 87 daimyo; 6.8 million koku)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 325141.1,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Neither the Sengoku page (no infobox) nor the Azuchi-Momoyama infobox gives an area; the author listed this as a gap. Cliopatria's 320,000-325,000 km2 for Honshu, Shikoku, Kyushu and the Oshima tip is plausible against modern Japan (378,000 km2 including Hokkaido)."
+   }
+  },
+  {
+   "slug": "tokugawa-shogunate",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/identity/rulers/1-14",
+     "applied": true,
+     "what": "14 of the 15 shogun entries cited no page.",
+     "why": "The Tokugawa shogunate page's shogun table gives the same years: Hidetada 1605-1623 through Iemochi 1858-1866, Yoshinobu 1866-1867 (WebFetch 2026-10-18).",
+     "fix": "Applied by the reviewer: the source https://en.wikipedia.org/wiki/Tokugawa_shogunate was added to each entry (it is already in sources[]). Re-validated: 0 errors, 0 warnings."
+    },
+    {
+     "where": "/ledger/3-6 and /ledger/13 against ryukyu-kingdom",
+     "applied": false,
+     "what": "This dossier's counterpart pairs with ryukyu-kingdom disagree. Here, contest 1609/4-5, vassal_start 1609/5 and gain 1611 have ryukyu-kingdom as counterpart; ryukyu-kingdom records the same events against 'satsuma-domain'. The vassalage also ends in 1868/1 here but in 1872/10 there.",
+     "why": "ryukyu-kingdom /ledger/6-9 and /ledger/15 (counterpart satsuma-domain, which has no dossier). The author flagged this in problems[].",
+     "fix": "Orchestrator decision: either rename the counterparts in ryukyu-kingdom to tokugawa-shogunate for 1609-1868 and add a 1868-1872 overlord (empire-of-japan or satsuma-domain), or write satsuma-domain and point this dossier's Ryukyu events at it."
+    },
+    {
+     "where": "/ledger/10 and /wars",
+     "applied": false,
+     "what": "The 1855 contest_start over Sakhalin (against russian-empire) has no war in wars[]. Rule 10 asks every contest_start to match a war's zone.",
+     "why": "Kuril Islands dispute page: under the 1855 treaty Sakhalin 'was not to be partitioned but was to remain under a joint Russo-Japanese condominium'. This is a condominium, not a war, so the contest has nothing to anchor to.",
+     "fix": "Add a wars[] entry 'Sakhalin condominium (Treaty of Shimoda)' for 1855-1868: belligerents tokugawa-shogunate and russian-empire, zone {\"region\":\"Sakhalin\"}, outcome 'undivided joint possession, settled in 1875 by the Treaty of Saint Petersburg', source the Kuril page. Or note in /ledger/10 why the contest has no war."
+    },
+    {
+     "where": "/keyframe_review/3 and /ledger/6",
+     "applied": false,
+     "what": "Advisory: the 1609-1798 keyframe keeps the Amami cells from 1609, but the gain is dated 1611 here and ryukyu-kingdom /ledger/9 loses Amami in 1611, so Amami is drawn twice in 1609-1610.",
+     "why": "Invasion of Ryukyu page: the fleet 'arrived at Amami Oshima on April 7' (1609), and the annexation into Satsuma Domain follows the 1611 surrender documents. The area is small (three cells) and inside one shape's span, so rule 4 tolerates it.",
+     "fix": "Either add a note to K3 that Amami is drawn from the April 1609 occupation, or add a 1609-1610 keyframe minus the Amami circle."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/6",
+     "what is missing": "The year of the Amami annexation into Satsuma (1611, confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Amami_Islands"
+    },
+    {
+     "where": "/ledger/7-8",
+     "what is missing": "Dates of direct shogunate control of East Ezo (1799) and of the return to the Matsumae (1821; the ledger uses Cliopatria's 1822), both at confidence 1. The Hakodate bugyo page says only '1779' and '1802'.",
+     "page to try": "https://en.wikipedia.org/wiki/Ezo"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "The year the shogunate took most of Ezo again (1855 on the usual account; the ledger uses Cliopatria's 1856), at confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Hokkaido"
+    },
+    {
+     "where": "/ledger/12-15 and /keyframe_review/10",
+     "what is missing": "The Boshin War split of 1868 (Toba-Fushimi, the Edo surrender, the Northern Alliance, the Republic of Ezo) is unverified: page budget. /ledger/13 and /ledger/14 are at confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Boshin_War"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Tokugawa_shogunate",
+     "result": "confirmed ('Beginning from Ieyasu's appointment as shogun in 1603')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Invasion_of_Ryukyu",
+     "result": "confirmed (infobox 'March-May 1609'; fleet left March 4; Unten April 25)"
+    },
+    {
+     "where": "/ledger/4-5",
+     "page": "https://en.wikipedia.org/wiki/Invasion_of_Ryukyu",
+     "result": "confirmed (Naha May 1, Shuri inventory May 5, Sho Nei leaves May 17; 'Ryukyu becomes a vassal state')"
+    },
+    {
+     "where": "/ledger/9-10",
+     "page": "https://en.wikipedia.org/wiki/Kuril_Islands_dispute",
+     "result": "confirmed (border between Iturup and Urup; 'The whole island of Iturup belongs to Japan'; Sakhalin 'was not to be partitioned')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Hakodate_bugy%C5%8D",
+     "result": "confirmed as page-silent ('In 1779 ... direct control over Hakodate'; 'The office was created in 1802'); confidence 1 is honest"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Tokugawa_shogunate",
+     "result": "confirmed (infobox 'Meiji Restoration: 3 January 1868'; 'came to an official end in 1868 with the resignation of the 15th Tokugawa shogun')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 328728.1,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Tokugawa shogunate page has no area line (checked 2026-10-18); the author's keyframe notes say so. The 328,728 km2 of 1609-1798 and the 420,530 km2 of 1856 (with all Hokkaido and the southern Kurils) are plausible."
+   }
+  },
+  {
+   "slug": "kaga-ikko-ikki",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/wars/1/from",
+     "applied": true,
+     "what": "The Ishiyama Hongan-ji War started in 1569, a year the author counted back. The Sengoku page dates the start to 1570.",
+     "why": "Sengoku period timeline: '1570: Battle of Anegawa and the beginning of the Ishiyama Hongan-ji War' (WebFetch 2026-10-18). The Sengoku page is already in sources[].",
+     "fix": "Applied by the reviewer: from 1570, with a note citing both pages. Re-validated: 0 errors, 0 warnings."
+    },
+    {
+     "where": "/keyframe_review/0/correction",
+     "applied": false,
+     "what": "Advisory: the stand-in for Kaga Province, a 50 km circle at Kanazawa clipped to Ishikawa, also takes in southern Noto (the Hakui district north of the Kaga-Noto line at about 36.75 N).",
+     "why": "Kaga Province page: 'the south and western portion of Ishikawa Prefecture'. Kanazawa is about 21 km from the Noto border but about 45 km from Kaga's southern edge.",
+     "fix": "No change needed once the gazetteer resolves 'Kaga Province' (requested). Until then, the note could say the circle overreaches into Noto."
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "The end year (1580, confidence 1, inferred from Ishiyama Hongan-ji). The Kaga Province page gives no year for Shibata Katsuie's conquest.",
+     "page to try": "https://en.wikipedia.org/wiki/Shibata_Katsuie"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "The ikki's seat in Kaga (the Kanazawa/Oyama Gobo). The pages opened name none.",
+     "page to try": "https://en.wikipedia.org/wiki/Kanazawa_Castle"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Start 1488 (Sengoku page) against 1486 (Ikko-ikki page). A third page should settle it.",
+     "page to try": "https://en.wikipedia.org/wiki/Togashi_Masachika"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Sengoku_period",
+     "result": "confirmed ('Kaga ikki occurred in 1488'; timeline 1488 'The Kaga Rebellion establishes the Kaga ikki'); the Ikko-ikki page's 1486 also confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kaga_Province",
+     "result": "confirmed as page-silent ('eventually conquered by Oda Nobunaga's general Shibata Katsuie', no year); confidence 1 is honest; Ikko-ikki page: Ishiyama Hongan-ji 'in 1580 after an 11-year siege'"
+    },
+    {
+     "where": "/identity/capitals/0/note",
+     "page": "https://en.wikipedia.org/wiki/Ikk%C5%8D-ikki",
+     "result": "confirmed (infobox 'Capital: Ishiyama Hongan-ji (de facto, 1496-1580)')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "A new state with no Cliopatria row and no infobox area. Kaga Province is roughly half of Ishikawa (4,186 km2); the stand-in region slightly exceeds it (see fixes)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "warring-states-japan",
+    "year": 1467,
+    "type": "contest_start",
+    "counterpart": "ashikaga-shogunate"
+   },
+   "mirror": {
+    "slug": "ashikaga-shogunate",
+    "year": 1467,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Kyoto; ashikaga gives month 5"
+  },
+  {
+   "event": {
+    "slug": "warring-states-japan",
+    "year": 1468,
+    "type": "gain",
+    "counterpart": "ashikaga-shogunate"
+   },
+   "mirror": {
+    "slug": "ashikaga-shogunate",
+    "year": 1468,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "both confidence 1"
+  },
+  {
+   "event": {
+    "slug": "warring-states-japan",
+    "year": 1477,
+    "type": "contest_end",
+    "counterpart": "ashikaga-shogunate"
+   },
+   "mirror": {
+    "slug": "ashikaga-shogunate",
+    "year": 1477,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": "12/1477 both"
+  },
+  {
+   "event": {
+    "slug": "warring-states-japan",
+    "year": 1488,
+    "type": "loss",
+    "counterpart": "kaga-ikko-ikki"
+   },
+   "mirror": {
+    "slug": "kaga-ikko-ikki",
+    "year": 1488,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Same region, but WSJ keyframes 1488-1580 still draw Kaga (see the WSJ fixes)"
+  },
+  {
+   "event": {
+    "slug": "warring-states-japan",
+    "year": 1552,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Ainu land, counterpart nobody; ainu listed under counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "warring-states-japan",
+    "year": 1573,
+    "type": "gain",
+    "counterpart": "ashikaga-shogunate"
+   },
+   "mirror": {
+    "slug": "ashikaga-shogunate",
+    "year": 1573,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "9/1573 both; ashikaga dissolve names warring-states-japan"
+  },
+  {
+   "event": {
+    "slug": "warring-states-japan",
+    "year": 1580,
+    "type": "gain",
+    "counterpart": "kaga-ikko-ikki"
+   },
+   "mirror": {
+    "slug": "kaga-ikko-ikki",
+    "year": 1580,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "both confidence 1"
+  },
+  {
+   "event": {
+    "slug": "warring-states-japan",
+    "year": 1592,
+    "type": "occupation_start",
+    "counterpart": "joseon"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "joseon belongs to jk-02, which has not run (no file)"
+  },
+  {
+   "event": {
+    "slug": "warring-states-japan",
+    "year": 1593,
+    "type": "occupation_end",
+    "counterpart": "joseon"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "jk-02 has not run"
+  },
+  {
+   "event": {
+    "slug": "warring-states-japan",
+    "year": 1593,
+    "type": "occupation_start",
+    "counterpart": "joseon"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "jk-02 has not run"
+  },
+  {
+   "event": {
+    "slug": "warring-states-japan",
+    "year": 1598,
+    "type": "occupation_end",
+    "counterpart": "joseon"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "jk-02 has not run"
+  },
+  {
+   "event": {
+    "slug": "warring-states-japan",
+    "year": 1600,
+    "type": "loss",
+    "counterpart": "tokugawa-shogunate"
+   },
+   "mirror": {
+    "slug": "tokugawa-shogunate",
+    "year": 1600,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "10/1600 both; the western half"
+  },
+  {
+   "event": {
+    "slug": "tokugawa-shogunate",
+    "year": 1600,
+    "type": "found",
+    "counterpart": "warring-states-japan"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "The eastern half (Tokugawa 1600 shape) leaves WSJ with no loss in the WSJ ledger"
+  },
+  {
+   "event": {
+    "slug": "tokugawa-shogunate",
+    "year": 1609,
+    "type": "contest_start",
+    "counterpart": "ryukyu-kingdom"
+   },
+   "mirror": {
+    "slug": "ryukyu-kingdom",
+    "year": 1609,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "ryukyu names satsuma-domain as counterpart and adds Amami to the zone"
+  },
+  {
+   "event": {
+    "slug": "tokugawa-shogunate",
+    "year": 1609,
+    "type": "vassal_start",
+    "counterpart": "ryukyu-kingdom"
+   },
+   "mirror": {
+    "slug": "ryukyu-kingdom",
+    "year": 1609,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "ryukyu's overlord is satsuma-domain (no dossier)"
+  },
+  {
+   "event": {
+    "slug": "tokugawa-shogunate",
+    "year": 1611,
+    "type": "gain",
+    "counterpart": "ryukyu-kingdom"
+   },
+   "mirror": {
+    "slug": "ryukyu-kingdom",
+    "year": 1611,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Amami; ryukyu's counterpart is satsuma-domain"
+  },
+  {
+   "event": {
+    "slug": "tokugawa-shogunate",
+    "year": 1799,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Ainu land; ainu listed"
+  },
+  {
+   "event": {
+    "slug": "tokugawa-shogunate",
+    "year": 1822,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Ainu/Matsumae land; matsumae-domain and ainu listed"
+  },
+  {
+   "event": {
+    "slug": "tokugawa-shogunate",
+    "year": 1855,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "southern Kurils"
+  },
+  {
+   "event": {
+    "slug": "tokugawa-shogunate",
+    "year": 1855,
+    "type": "contest_start",
+    "counterpart": "russian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "russian-empire belongs to eu-17, which has not run (no file)"
+  },
+  {
+   "event": {
+    "slug": "tokugawa-shogunate",
+    "year": 1856,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Hokkaido interior, Ainu land"
+  },
+  {
+   "event": {
+    "slug": "tokugawa-shogunate",
+    "year": 1868,
+    "type": "loss",
+    "counterpart": "empire-of-japan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "empire-of-japan belongs to a jk-01 part that has not written it yet (no file); it should carry the 1868 gain, and the 1869 north-east and Hokkaido have no owner until it does"
+  },
+  {
+   "event": {
+    "slug": "tokugawa-shogunate",
+    "year": 1868,
+    "type": "vassal_end",
+    "counterpart": "ryukyu-kingdom"
+   },
+   "mirror": {
+    "slug": "ryukyu-kingdom",
+    "year": 1872,
+    "type": "vassal_end"
+   },
+   "status": "mismatch",
+   "note": "4 years apart, and ryukyu's counterpart is satsuma-domain; 1868-1872 needs an overlord"
+  },
+  {
+   "event": {
+    "slug": "tokugawa-shogunate",
+    "year": 1868,
+    "type": "dissolve",
+    "counterpart": "empire-of-japan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "empire-of-japan not yet written"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Kaga Province",
+   "kind": "region",
+   "used_in": "warring-states-japan; kaga-ikko-ikki"
+  },
+  {
+   "name": "Amami Islands",
+   "kind": "region",
+   "used_in": "tokugawa-shogunate; ryukyu-kingdom"
+  },
+  {
+   "name": "Eastern Ezo",
+   "kind": "region",
+   "used_in": "tokugawa-shogunate"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Satsuma Domain",
+   "suggested_slug": "satsuma-domain",
+   "years": [
+    1609,
+    1872
+   ]
+  },
+  {
+   "name": "Matsumae Domain",
+   "suggested_slug": "matsumae-domain",
+   "years": [
+    1590,
+    1871
+   ]
+  },
+  {
+   "name": "Ainu of Ezo, Sakhalin and the Kurils",
+   "suggested_slug": "ainu",
+   "years": [
+    1467,
+    1869
+   ]
+  },
+  {
+   "name": "Iga ikki",
+   "suggested_slug": "iga-ikki",
+   "years": [
+    1477,
+    1581
+   ]
+  },
+  {
+   "name": "Yamashiro ikki",
+   "suggested_slug": "yamashiro-ikki",
+   "years": [
+    1485,
+    1493
+   ]
+  },
+  {
+   "name": "Northern Alliance (Ouetsu Reppan Domei)",
+   "suggested_slug": "ouetsu-reppan-domei",
+   "years": [
+    1868,
+    1868
+   ]
+  },
+  {
+   "name": "Republic of Ezo",
+   "suggested_slug": "republic-of-ezo",
+   "years": [
+    1868,
+    1869
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-jk-01-c.md",
+ "problems": [
+  "No page failed for the reviewer. The Imjin War page loaded with its infobox and its 1592 and 1597-1598 sentences.",
+  "ryukyu-kingdom (jk-01-b) and tokugawa-shogunate disagree on who Ryukyu's overlord was, 1609-1872 (satsuma-domain against tokugawa-shogunate, vassal_end 1872 against 1868). The orchestrator must choose one model.",
+  "Wikipedia errors the dossiers quote: the Azuchi-Momoyama infobox 'Oda Nobunaga captures Kyoto: October 18, 1573' (it was 1568); the Tokugawa shogunate infobox 'Shogunate established: 24 March 1600' (its own text and table say 1603); the Hakodate bugyo page 'In 1779' (probably 1799).",
+  "Reviewer-applied edits, each re-validated with 0 errors and 0 warnings and read back: warring-states-japan /wars/2/from 1569 to 1570; kaga-ikko-ikki /wars/1/from 1569 to 1570; tokugawa-shogunate /identity/rulers/1-14 source added."
+ ]
+}

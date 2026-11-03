@@ -1,0 +1,36 @@
+{
+ "window": "m0800-m0701",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "greek-city-states loss to nobody at -720 of region Magna Graecia minus discs at Reggio di Calabria 25 km, Messina 25 km and 15.2E 37.85N 15 km. Gazetteer: Magna Graecia = 295 cells (all of Calabria, Basilicata, Apulia, Campania and the 9 Sicilian provinces); the kept discs = 5 cells; the loss region = 290 cells. The compiler's loss moves only cells the slug holds (held_by(cells, did)), so Sybaris, Syracuse and Croton are untouched. Replay of my trial against the published draft: Magna Graecia owners -720 published GCS 284 / sybaris 8 / syracuse 3, patched GCS 5 / sybaris 8 / syracuse 3; -710 published GCS 279, patched GCS 5 plus croton 5; -721 identical (GCS 3, syracuse 3), so nothing earlier changes. Side effect: the greek-city-states_-709 snap (281 cells) disappears and, because the remaining difference is within the 20-cell tolerance, GCS now keeps the Rhegium, Zancle and Naxos cells -709..-701 (published draft dropped them at -709, including the dossier's own -734 Zancle/Naxos gain); this is better, as all three colonies existed. Page checked: Sybaris 708-707 (Eusebius), 709-708 (Jerome), 721/720 (others); Kroton 709 / 709-708; Taras 706 (Jerome); Rhegium c. 730; Zancle 757/756; Naxos 734/735/741; 'Magna Graecia was the name given by the Romans to the coastal areas of Southern Italy'; settlement 'limited to coastal regions and did not involve demanding tribute or laying claim to the hinterland'. Year, land and status are supported. Sybaris, Croton and Taras have their own dossiers; Catana, Leontini and Megara Hyblaea (728-727) are drawn neither before nor after, which is not caused by the patch.",
+   "page": "https://en.wikipedia.org/wiki/Greek_colonisation",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "kingdom-of-kush loss to nobody at -711 of admin1 Matruh (Egypt) minus Cliopatria Kingdom of Kush -700. Gazetteer: Matruh 524 cells (132,520 km2); minus Cliopatria's Kush -700 = 509 cells; the kept 15 cells (29.2-30.2E, 29.8-30.9N) lie in Cliopatria's -700 Kush shape, which is the dossier's kingdom-of-kush_-700 keyframe, so the -700 snap adds nothing back in Matruh. Region 'Lower Egypt' does include the whole Matruh governorate. The dossier's -711 gain names counterpart 'Twenty-fourth Dynasty of Egypt (Sais)' (not a slug), so it took only unowned land, i.e. the desert. End anchor m0700: published Matruh = kingdom-of-kush 524; patched = kingdom-of-kush 15; Lower Egypt without Matruh (263 cells) = twenty-fifth-dynasty-of-egypt 263 in both, so the Delta is untouched. Page: Shebitku 'conquered the entire Nile Valley, including Upper and Lower Egypt, around 712 BC'; Shabaka 'brought the entire Nile Valley as far as the Delta under the empire of Kush'. The page never mentions the Western Desert, Siwa, Kharga, Dakhla or Marmarica. Year (same as the gain it undoes), land and party are correct.",
+   "page": "https://en.wikipedia.org/wiki/Twenty-fifth_Dynasty_of_Egypt",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "qi_-750 (shapes.csv -750..-551, dossier verdict ok) adjusted to Cliopatria Qi -750 minus the found regions of lai (three discs 45/70/70 km), ji-shandong (118.8E 36.76N 30 km), tan (117.53E 36.71N 35 km) and sui-ningyang (116.7E 35.9N 25 km), copied exactly from those dossiers. Gazetteer: Cliopatria Qi -750 = 553 cells, correction = 416 cells, cut inside the shape = 137 cells (Lai discs 112, which include Ji's 14; Tan 22; Sui 3). Owners at -750 in my trial: qi 429, lai 98, ji-shandong 14, tan 9, sui-ningyang 3 = 553, with no holes. Qi keeps 13 cells of the 35 km Tan disc that Tan does not hold, because the snap is within tolerance (20 cells). Published: qi 553 at -750 (R2 snap +124). Qi's only keyframe check in -750..-551 is at -750, and each small state's own ledger hands its land to qi at the right year (-690, -684, -681, -567), so the reach into later windows only defers the annexations to their dates. Pages: the Spring and Autumn table gives Ji 'Shouguang, Shandong ... 690 BCE: to Qi', Tan 'Zhangqiu ... 684 BCE: to Qi', Sui 'Ningyang County ... 681 BCE: to Qi', Lai 'Changle County, Shandong ... 567 BCE: to Qi'; the Lai page says 'on the tip of the Shandong Peninsula bordering Qi', 'In 567 BC, Lai attacked Qi but was decisively defeated by Duke Ling of Qi', 'Qi more than doubled in size after annexing Lai'.",
+   "page": "https://en.wikipedia.org/wiki/Spring_and_Autumn_period ; https://en.wikipedia.org/wiki/Lai_(state)",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch m0800-m0701: 3 entries, 3 ok, 0 rejected (no reviewer edits). Trial (/tmp/claude-0/work/review-m0800-m0701/stage): all 3 applied; conflicts 94 pairs/2588 cell-years -> 88/2455 (lai/qi, ji-shandong/qi, qi/tan, qi/sui-ningyang, croton/greek-city-states gone); snaps 31 -> 30 (greek-city-states_-709 and qi_-750 gone, wu_-750 new from m0700-m0601's override); end anchor m0700: 723 cells change owner",
+ "problems": [
+  "Window agent's boundary note is wrong about wu_-750 (data/patches/m0700-m0601.json keyframe_overrides/0). My trial shows the new -750 snap removes Wu's 55 cells in Anhui and adds 26 in Jiangsu (Wu at -750: Anhui 55 published -> 0 patched; Jiangsu 55 -> 70). The 'place: Suzhou' disc of the dossier resolves to Suzhou, Anhui, so the removed cells are the misplaced Anhui component, not a Jiangsu one, and the snap is correct.",
+  "Missed by the window agent and not fixed by any patch: wu_-1100 (-1100..-751, correction {Wuxi 60 km, place Suzhou 60 km}) has the same Suzhou-Anhui misplacement, so Wu holds 57 Anhui cells -800..-751 (at -800 Wu 57 in Anhui, next to liu-lu-an and xu) and the reported 'zhou-dynasty/wu 104' size-rule win includes them. The fix is a keyframe_override of wu_-1100 replacing {place: Suzhou} with {lon 120.62, lat 31.30, km 60}, as m0700-m0601 did for wu_-750. That keyframe starts in an earlier window (m1100-m1001), so the orchestrator should assign it (the m0700-m0601 review raised the same point).",
+  "The window agent's dossier_request stands: kingdom-of-kush and twenty-fifth-dynasty-of-egypt draw the Kushite conquest twice. Region specs 'Upper Egypt', 'Lower Egypt' and 'Nile Valley (Egypt)' in the Kush ledger (-754, -727, -711 and later -671..-656) pull in the Western Desert, Red Sea and Sinai governorates. events/1 only removes the -711 Matruh exclave, which the kingdom-of-kush_-700 snap would also have dropped at -700.",
+  "Minor: the Tan disc used in keyframe_overrides/0 (35 km, from the tan dossier) is wider than the 9 cells Tan holds. The extra 13 cells stay with Qi only because the -750 check is within tolerance. If a later edit makes the qi_-750 check snap (more than 20 cells moved), those 13 cells would become unowned holes near Jinan."
+ ]
+}

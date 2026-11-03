@@ -1,0 +1,114 @@
+{
+ "batch_id": "fx-43",
+ "checks": [
+  {
+   "item": "R097",
+   "verdict": "pass",
+   "what": "russian-empire ledger/1 and keyframes 1721-1763 subtract the Hetmanate's left bank, 1721-1732 and 1794 also Courland. Gazetteer: 0 Hetmanate and 0 Courland cells in ledger/1 and in each corrected keyframe. Cliopatria's 1734-1793 shapes hold no Courland cells. cossack-hetmanate dissolves 1764-10 and duchy-of-courland 1795-10, both with russian-empire as successor, and ledger/36 (1795 gain of Courland) remains. Hetmanate page: 'The Hetmanate existed between 1648 and 1764'; 'According to a decree issued on 21 October 1764, the hetman's post was officially liquidated'; Sloboda Ukraine 'never became part of the Hetmanate'. Courland page: 'Vassal state of ... Poland-Lithuania (1569-1795)'; 'On 24 October 1795, it was annexed by the Russian Empire'.",
+   "page": "https://en.wikipedia.org/wiki/Cossack_Hetmanate ; https://en.wikipedia.org/wiki/Duchy_of_Courland_and_Semigallia",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R108",
+   "verdict": "pass",
+   "what": "The Congress Poland gain is dropped. duchy-of-warsaw ledger/12, the patch p1810-p1819 events/3 and the colonies.csv row still give the kingdom its land. Former ledger/58 is now ledger/57: a gain from first-french-empire in 1812, month 12. The patch keyframe russian-empire_1812 also restores the Smolensk-Moscow cells. French invasion page: 'on 14 December 1812, it left Russian territory'; Smolensk was taken in August and Moscow entered on 14 September. Congress Poland page: 'a semi-autonomous Polish state established in 1815 ... in personal union with the Russian Empire'; 'Personal union with the Russian Empire (1815-1831)'; 'an independent army'. Ledger indices after 64 shift by -1. No patch refers to them.",
+   "page": "https://en.wikipedia.org/wiki/French_invasion_of_Russia ; https://en.wikipedia.org/wiki/Congress_Poland",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R126",
+   "verdict": "fixed",
+   "what": "The Chukotka union is right in substance. The ~410 cells Cliopatria leaves out lie mostly east of 180 deg on the Chukchi Peninsula. It also added Wrangel Island, 24 cells with all their centres above 70.3 N, to Russia from 1778, and the Chukotka page says otherwise: 'In 1916, the Russians officially claimed the uninhabited island', which 'was subject to claims by the United States and Canada'. I made three changes. In ledger/26 (the 1778 gain) and the corrections of the 52 keyframes from 1778 to 1915, {region Chukotka} is now Chukotka minus the disc {lon -179.7, lat 71.2, km 90}, which resolves to exactly the 24 Wrangel cells. I inserted a 1916 gain of that disc from nobody (new ledger/136, before the dissolve, which is now ledger/137). The 1916 and 1917 keyframes keep the whole okrug. Re-validated: 0 errors, the same 5 warnings as before.",
+   "page": "https://en.wikipedia.org/wiki/Chukotka_Autonomous_Okrug",
+   "fix": "Wrangel Island (24 cells) removed from the 1778 gain and the 1778-1915 keyframes; a 1916 gain added (ledger/136).",
+   "applied": true
+  },
+  {
+   "item": "R114",
+   "verdict": "fixed",
+   "what": "The pages support the cut: the purchase covered 'Montana, Wyoming, and Colorado east of the Continental Divide', and the Oregon Country was 'west of the Rocky Mountains'. The fixer's 12-point divide, however, ran straight from Rogers Pass (112.4 W, 47.0 N) to 111.4 W, 44.7 N. That put about 98 Montana cells of the Missouri headwaters on the Oregon side: the Big Hole, Beaverhead, Jefferson and Madison valleys around Dillon, Wisdom and Virginia City. Those cells were cut from the US for 1804-1819 and 1840-1845. The patches for 1820-1839 draw the divide correctly, so the dossier and patch years disagreed by about 100 cells. Lemhi Pass page: the pass 'lies on the Montana-Idaho border on the Continental Divide' (44 58 N, 113 26 W) and 'From the time of the Louisiana Purchase in 1803 until the Oregon Treaty in 1846' it 'marked the western border of the United States'. In all 20 places (ledger/24 and the keyframes 1805-1846) I replaced region A with two parts. Montana is now cut west of a new 12-point divide polygon: MacDonald Pass, Homestake and Deer Lodge passes, the Anaconda Range, Chief Joseph Pass, then the Idaho border. The patch p1820-p1839 polygons use the same points. Wyoming and Colorado keep the fixer's polygon. Region A falls from 969 to 871 cells, with nothing added. Dillon is kept American, while Missoula and Jackson (Wyoming) are still cut before 1846. I added a note on ledger/24 and the Lemhi Pass source. Re-validated: 0 errors, the same 7 warnings as before.",
+   "page": "https://en.wikipedia.org/wiki/Louisiana_Purchase ; https://en.wikipedia.org/wiki/Oregon_Country ; https://en.wikipedia.org/wiki/Lemhi_Pass",
+   "fix": "Region A (the land west of the Continental Divide) now follows the divide in south-west Montana, and the Missouri headwaters stay in the purchase.",
+   "applied": true
+  },
+  {
+   "item": "R125",
+   "verdict": "pass",
+   "what": "The union of the country and the Alaska region adds 831 cells to the 1905 shape. By state: Michigan 405, Wisconsin 109, Alaska coast 103, New York 50, Ohio 41, Minnesota 32, and small numbers elsewhere. Every existing minus removes only foreign countries (Cuba, Haiti, occupied countries), so the union re-adds nothing. Keyframes 1890 and 1898 are rightly left to patch p1890-p1899. Michigan page: '38,575 square miles (99,910 km2) of Great Lakes waters'; 'Michigan's western boundaries are almost entirely water boundaries'.",
+   "page": "https://en.wikipedia.org/wiki/Michigan",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R013",
+   "verdict": "pass",
+   "what": "lydia_-550 is now the shape plus Ionia and Aeolis, which adds 32 cells (29 of them were in greek-city-states_-550). Ledger/13, ledger/14 and the successor land carry the coast on to Persia. Croesus page: 'Croesus annexed Ephesus into the Lydian Empire'; he attacked the coastal cities 'until he had subjugated all of mainland Ionia, Aeolis, and Doris'; with the islands 'he instead concluded treaties of friendship'. One minor point predates the fix: the gazetteer's Aeolis polygon takes in about 2 cells of eastern Lesbos (39.15 N 26.44 E and 39.3 N 26.35 E), although its own note says the islands are excluded. The greek-city-states handoff is correct.",
+   "page": "https://en.wikipedia.org/wiki/Croesus",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R035",
+   "verdict": "pass",
+   "what": "san-marino now carries cliopatria_names ['Republic of San Marino'] and wikidata Q238, the same id as republic-of-san-marino. The two reviews it copied have the same correction, the country of San Marino. The compiler allows a shared Cliopatria name (category 'same state'), and the dossier validates. Retiring republic-of-san-marino is correctly a handoff.",
+   "page": "https://en.wikipedia.org/wiki/San_Marino",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R053",
+   "verdict": "pass",
+   "what": "Kept, and the reasoning holds. compile_dossiers.py round 12 (MERGE_NO_CP, lines 129-131 and 1423-1432) applies a merge whose counterpart has no living dossier as a gain from nobody, so ledger/7 (1478) no longer absorbs the duchy's own cells.",
+   "page": "https://en.wikipedia.org/wiki/Duchy_of_Pomerania",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R078",
+   "verdict": "pass",
+   "what": "The split is now ledger/12, year 1710, after the 1707 contest_end, and kolhapur-state's found is also 1710. Kolhapur State page: 'Established: 1710'; 'The states of Satara and Kolhapur came into being in 1707'; 'By 1710, two separate principalities had become an established fact'.",
+   "page": "https://en.wikipedia.org/wiki/Kolhapur_State",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R099",
+   "verdict": "pass",
+   "what": "New ledger/2 is a 1557 gain from habesh-eyalet over the sharifate's own 1201 Hejaz region. This matches the hierarchy.csv row (vassal of ottoman-empire, 1517-1802). Sharifate page: 'A dual system of government existed over Mecca'; 'Ottoman authority was only indirect, as the arrangement left real power with the Emir'. Habesh page: 'coastal Hejaz'; Burckhardt found the Jeddah pashalik 'reduced to perfect insignificance' by the Sharif. Caveat for the habesh-eyalet handoff: the Habesh page also lists a 'Sanjak of Mecca' and a 'Sanjak of Medina' among the eyalet's sanjaks, so the handoff's claim that the interior was not the eyalet's is only partly supported. The 1865 keyframe of habesh-eyalet still takes the Hejaz back, as the fixer says (partly).",
+   "page": "https://en.wikipedia.org/wiki/Sharifate_of_Mecca ; https://en.wikipedia.org/wiki/Habesh_Eyalet",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R117",
+   "verdict": "pass",
+   "what": "Ledger/46 and the 1836 keyframe now use the disc {lon 116.72, lat -0.2, km 30}, the same point as patch p1840-p1849 and the kutai-martadipura capital. The dossier validates with no unresolved place, and 'Muara Kaman' remains only in text. I did not open a page: the change is small.",
+   "page": "https://en.wikipedia.org/wiki/Kutai_Martapura_Kingdom",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R136",
+   "verdict": "pass",
+   "what": "kuomintang now ends in 1928-12. Its dissolve hands the 1929 land to republic-of-china, which agrees with republic-of-china ledger/25 (merge with kuomintang, 1928-12) and removes the ROC-KMT-ROC flip. Nanjing decade page: the government 'disavowed continuity with the defunct Beiyang government ... however the state was still the same - the Republic of China'; 'The Northern Expedition restarted in February 1928 and successfully reunited China by the end of the year'. One wording point: the ~1,211 cells of the new 1928-12 gain (ledger/24) are almost all Inner Mongolia (1,161 Nei Mongol cells, with 1 in Xinjiang), not the Xinjiang and Sichuan cells the finding names. The page does not mention Inner Mongolia. Because the gain is from nobody, the cells simply pass on to republic-of-china, as the 1929 keyframe would have done.",
+   "page": "https://en.wikipedia.org/wiki/Nanjing_decade",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R149",
+   "verdict": "pass",
+   "what": "The 2005-10 gain is dropped. The dissolve (ledger/14) subtracts Erbil, Sulaymaniyah and Duhok, which matches the 2000 keyframe and kurdistan-region's 1992 found. Kurdistan Region page: the constitution 'recognizes the Kurdistan Region as a federal region while preserving its existing authorities established in 1992'; 'the autonomous region was de facto established in 1992'. The page lists Halabja as a fourth governorate, split from Sulaymaniyah; the gazetteer's As-Sulaymaniyah covers it. The remaining warnings (Haj Omran unresolved) are older.",
+   "page": "https://en.wikipedia.org/wiki/Kurdistan_Region",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "Validation after review: russian-empire 0 errors and 5 older warnings; united-states-of-america 0 errors and 7 older warnings; iraqi-republic 0 errors and 3 older warnings (Haj Omran unresolved). lydia, san-marino, maratha-empire, sharifate-of-mecca, dutch-east-indies, kuomintang and duchy-of-pomerania are OK with no warnings.",
+  "russian-empire ledger indices shifted: R108 dropped old ledger/65, and the review inserted a 1916 Wrangel gain at ledger/136, so the dissolve is now ledger/137. No patch refers to Russian ledger indices.",
+  "The gazetteer's Aeolis polygon takes in about 2 cells of eastern Lesbos, although its own note excludes the islands. This is a gazetteer fix, outside this batch."
+ ]
+}

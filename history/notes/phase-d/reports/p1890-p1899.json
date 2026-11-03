@@ -1,0 +1,466 @@
+{
+ "window": "p1890-p1899",
+ "images": [
+  {
+   "year": 1890,
+   "bbox": "world, 1 January",
+   "seen": "Africa: Kenya, Uganda, Sahara and Mozambique interior are nobody (IBEA holds only Mombasa); Greenland nobody; nothing out of region"
+  },
+  {
+   "year": 1890,
+   "bbox": "-20,-36,55,38 (1 Jan)",
+   "seen": "Dhofar and the Ogaden grey, Bosnia grey; German Africa and Congo Free State blocks as expected"
+  },
+  {
+   "year": 1890,
+   "bbox": "-125,24,-66,50",
+   "seen": "wrong: Lakes Michigan, Huron and Superior (779 cells, Michigan 405) are nobody after the 1890 USA keyframe snap"
+  },
+  {
+   "year": 1899,
+   "bbox": "-20,-36,55,38",
+   "seen": "wrong: Burkina Faso (Mossi plateau, Gwiriko) nobody, Ogaden nobody, Egyptian strip behind Djibouti; rest of the scramble plausible (Anglo-Egyptian Sudan, Boer War contests, Lozi occupation, Menabe contest)"
+  },
+  {
+   "year": 1899,
+   "bbox": "-12,28,62,62",
+   "seen": "wrong: Bosnia and Herzegovina grey (nobody) although Austria-Hungary occupied it from 1878; rest of Europe fine; Romania carries the long label 'United Principalities of Moldavia and Wallachia'"
+  },
+  {
+   "year": 1899,
+   "bbox": "60,-12,150,55",
+   "seen": "right: Qing, Korean Empire, Taiwan Japanese, Philippines contested; Sulawesi interior left nobody (about 520 cells)"
+  },
+  {
+   "year": 1899,
+   "bbox": "-95,-56,-30,28",
+   "seen": "right except Cuba: drawn as United States land occupied by the Republic of Cuba (roles reversed, republic born 1902); Acre and Tacna-Arica hatching fine"
+  },
+  {
+   "year": 1899,
+   "bbox": "28,-2,52,18 (before and after)",
+   "seen": "after the patch the Ogaden is Ethiopian to the Somali border and the Egyptian strip is gone"
+  },
+  {
+   "year": 1899,
+   "bbox": "-20,-36,55,38 (stage, after)",
+   "seen": "Burkina Faso French (Mossi and Gwiriko), Ethiopia whole, rest unchanged"
+  },
+  {
+   "year": 1898,
+   "bbox": "-18,4,20,20 (stage, compare Cliopatria)",
+   "seen": "compiled map matches Cliopatria's French West Africa and adds the Mossi and Gwiriko patches the ledgers give France; Cliopatria leaves Burkina grey"
+  },
+  {
+   "year": 1895,
+   "bbox": "30,0,52,18 (stage, compare Cliopatria)",
+   "seen": "compiled Ethiopia now includes the Ogaden (Cliopatria's shape does not), Aussa vassal of Ethiopia, Italian protectorates on the Somali coast"
+  },
+  {
+   "year": 1899,
+   "bbox": "12,41,30,49 (stage)",
+   "seen": "Bosnia drawn as Ottoman land occupied by Austria-Hungary (hatched), as the dossier intends"
+  },
+  {
+   "year": 1899,
+   "bbox": "-93,40,-74,50 (stage)",
+   "seen": "Great Lakes waters inside Michigan and Wisconsin are United States again"
+  }
+ ],
+ "issues": [
+  {
+   "what": "USA keyframe 1890 ('ok', Cliopatria shape without Great Lakes waters) snaps 779 cells (Lake Michigan, Huron, Superior, Alaska) to nobody; the 1898 shape does the same. The dossier's own 1880 shape holds them.",
+   "years": [
+    1890,
+    1899
+   ],
+   "slugs": [
+    "united-states-of-america"
+   ],
+   "decision": "patched (and a dossier request: keyframes 1900 onward have the same gap, Michigan 405 cells nobody in every anchor to p2000)",
+   "patch": "keyframe_overrides/0, keyframe_overrides/5",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Michigan",
+    "https://en.wikipedia.org/wiki/Territorial_evolution_of_the_United_States"
+   ]
+  },
+  {
+   "what": "Bosnia and Herzegovina (180 cells) is nobody from the austria-hungary_1880 keyframe on, so austria-hungary/ledger/2 (occupation of Ottoman Bosnia) draws nothing; 1890-1907 grey",
+   "years": [
+    1890,
+    1899
+   ],
+   "slugs": [
+    "ottoman-empire",
+    "austria-hungary"
+   ],
+   "decision": "patched: Ottoman sovereignty restored in January 1890 and the occupation restarted in February (drawn Ottoman land hatched by Austria-Hungary); root cause is in p1880-p1889",
+   "patch": "events/0, events/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Condominium_of_Bosnia_and_Herzegovina"
+   ]
+  },
+  {
+   "what": "french-africa_1897 and _1898 keyframes omit the Mossi plateau (conquered 1896), Gwiriko (Bobo-Dioulasso 25 Sep 1897) and Bagirmi (protectorate 1897) that the Mossi, Gwiriko and Bagirmi ledgers give to french-africa; the snaps threw 464 + 218 cells to nobody (Burkina Faso 1242 of 1301 cells nobody in 1899)",
+   "years": [
+    1897,
+    1899
+   ],
+   "slugs": [
+    "french-africa",
+    "mossi-kingdoms",
+    "gwiriko",
+    "bagirmi-sultanate"
+   ],
+   "decision": "patched (keyframes widened); french-africa_1900 will drop them again, see problems",
+   "patch": "keyframe_overrides/1, keyframe_overrides/2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/History_of_Burkina_Faso",
+    "https://en.wikipedia.org/wiki/Bobo-Dioulasso",
+    "https://en.wikipedia.org/wiki/Bagirmi_Sultanate"
+   ]
+  },
+  {
+   "what": "ethiopian-empire keyframes 1890, 1895, 1898 are Cliopatria shapes without the conquests the ledger and page date earlier (Arsi, Wollega 1886, Harar and Illubabor 1887, Gurage 1889; Bale, Sidamo, Ogaden, Welayta from 1891; Kambata, Gofa, Wollamo; Borana, Beni Shangul, Gimirra 1898); snaps removed 402, 867 and 278 cells (the Ogaden, 864 cells, went from Ethiopian in 1891 to nobody in 1895)",
+   "years": [
+    1890,
+    1899
+   ],
+   "slugs": [
+    "ethiopian-empire"
+   ],
+   "decision": "patched (three keyframes widened to the ledger regions)",
+   "patch": "keyframe_overrides/3, keyframe_overrides/4, keyframe_overrides/6",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Menelik_II"
+   ]
+  },
+  {
+   "what": "ethiopian-empire/ledger/48 (Massonge and Gimirra, 1898) skipped: 'Massango' does not resolve",
+   "years": [
+    1898,
+    1898
+   ],
+   "slugs": [
+    "ethiopian-empire"
+   ],
+   "decision": "patched with Gimirra only",
+   "patch": "events/2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Menelik_II"
+   ]
+  },
+  {
+   "what": "Khedivate of Egypt keeps a strip of Harar and Afar land (78-125 cells in Ethiopia) after leaving the Somali coast in 1884; the size rule gives it to Egypt wherever Ethiopia's keyframes claim it",
+   "years": [
+    1890,
+    1899
+   ],
+   "slugs": [
+    "khedivate-of-egypt",
+    "ethiopian-empire"
+   ],
+   "decision": "patched (ruling for Ethiopia inside modern Ethiopia, settled 122 cell-years)",
+   "patch": "rulings/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Khedivate_of_Egypt",
+    "https://en.wikipedia.org/wiki/Menelik_II"
+   ]
+  },
+  {
+   "what": "Dhofar (Zufar, 445 cells) is nobody from 1880 to 1897 although the Oman ledger regains it in January 1879; the 1898 keyframe snap adds it back",
+   "years": [
+    1890,
+    1897
+   ],
+   "slugs": [
+    "sultanate-of-oman"
+   ],
+   "decision": "patched (bridge event at the start of the window, confidence 2); root cause in p1880-p1889",
+   "patch": "events/3",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Dhofar"
+   ]
+  },
+  {
+   "what": "Cuba from December 1898: the island is drawn as United States land 'occupied by the Republic of Cuba' (roles reversed; united-states-of-america/ledger/83 names a republic that does not exist until 20 May 1902, and captaincy-general-of-cuba/ledger/14 hands the land to the US although 'Spain relinquished all claim of sovereignty')",
+   "years": [
+    1898,
+    1899
+   ],
+   "slugs": [
+    "united-states-of-america",
+    "captaincy-general-of-cuba",
+    "republic-of-cuba"
+   ],
+   "decision": "dossier request (a three-event patch that closed the reversed occupation, released the land to nobody and reopened the occupation was tried in the trial and rejected: cuban-nationalists_1898 then took half the island and the other half showed plain grey)",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Treaty_of_Paris_(1898)"
+   ]
+  },
+  {
+   "what": "congo-free-state / mahdist-state conflicts (822 cell-years, Congo wins Central Equatoria and Orientale) and the 1895 snap adding the Lado Enclave",
+   "years": [
+    1894,
+    1899
+   ],
+   "slugs": [
+    "congo-free-state",
+    "mahdist-state"
+   ],
+   "decision": "fine as drawn: the dossier dates the 1894 lease of the Lado Enclave and Chaltin's Rejaf of 17 February 1897; the smaller state winning is the leased claim",
+   "pages": []
+  },
+  {
+   "what": "kingdom-of-kasanje / portuguese-empire (367 cell-years) and kingdom-of-kongo / portuguese-empire; Angola interior drawn as portuguese-empire direct while the coast is portuguese-angola (two tints of one green)",
+   "years": [
+    1891,
+    1899
+   ],
+   "slugs": [
+    "portuguese-empire",
+    "portuguese-angola",
+    "kingdom-of-kasanje"
+   ],
+   "decision": "fine as drawn for borders (Anglo-Portuguese treaty frontiers, claimed); the split between portuguese-empire and portuguese-angola is a hierarchy-level oddity left for the orchestrator",
+   "pages": []
+  },
+  {
+   "what": "Portuguese occupation of the western Lozi land from 1895 (474 cells hatched to 1899)",
+   "years": [
+    1895,
+    1899
+   ],
+   "slugs": [
+    "lozi-kingdom",
+    "portuguese-empire"
+   ],
+   "decision": "fine as drawn: dossier cites the Barotseland page ('In 1895, the Portuguese occupied some of the Lozi's western territory')",
+   "pages": []
+  },
+  {
+   "what": "Mahdist State drawn as holder of the Nile valley contest cells at end of 1898 after Omdurman (2 September 1898)",
+   "years": [
+    1898,
+    1899
+   ],
+   "slugs": [
+    "mahdist-state",
+    "british-africa",
+    "anglo-egyptian-sudan"
+   ],
+   "decision": "fine as drawn: Dongola, Abu Hamad and Omdurman go to British Africa by event; the Khalifa kept a remnant until Umm Diwaykarat (November 1899)",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Battle_of_Omdurman"
+   ]
+  },
+  {
+   "what": "emirate-of-jabal-shammar / ottoman-empire conflict 1895 (308 cells; Medina 43, Tabuk 24, Al Jawf 86) and the 1895 snap adding Riyadh and Hasa-side cells",
+   "years": [
+    1895,
+    1899
+   ],
+   "slugs": [
+    "emirate-of-jabal-shammar",
+    "ottoman-empire"
+   ],
+   "decision": "left: the dossier's Tayma/Khaybar/Al Jawf discs rest on its own pages; no page opened here either dates or contradicts them",
+   "pages": []
+  },
+  {
+   "what": "Skipped events: lagos-colony/ledger/1 (Ilaro, about 11 cells) and united-states-of-america/ledger/84 (Wake Island, smaller than a cell)",
+   "years": [
+    1891,
+    1899
+   ],
+   "slugs": [
+    "lagos-colony",
+    "united-states-of-america"
+   ],
+   "decision": "left: pages silent on a gazetteer name for Ilaro; Wake Island moves no land",
+   "pages": []
+  },
+  {
+   "what": "Kenya and Uganda are nobody in 1890-1894 (imperial-british-east-africa-company holds only Mombasa; Buganda is its vassal from 1891); the sphere is not drawn",
+   "years": [
+    1890,
+    1894
+   ],
+   "slugs": [
+    "imperial-british-east-africa-company"
+   ],
+   "decision": "fine as drawn: the dossier models the company as Mombasa and its mainland; british-africa takes the protectorates in 1894-1895",
+   "pages": []
+  },
+  {
+   "what": "Chukotka (411 cells of the Chukchi Autonomous Okrug) is nobody in every year after the 1778 gain is snapped away, so Russia has a grey hole at its north-east tip",
+   "years": [
+    1890,
+    1899
+   ],
+   "slugs": [
+    "russian-empire"
+   ],
+   "decision": "dossier request (every russian-empire keyframe is an unadjusted Cliopatria shape; a window patch would flip in and out at each keyframe)",
+   "pages": []
+  },
+  {
+   "what": "Other unmapped land: Sulawesi interior (about 520 cells) and Greenland (7948 of 8243 cells) are nobody; Sahara and Arabian deserts nobody",
+   "years": [
+    1890,
+    1899
+   ],
+   "slugs": [
+    "dutch-east-indies",
+    "kingdom-of-denmark-1814-1953"
+   ],
+   "decision": "left: pages silent here and the Sahara/Arabia gaps are unclaimed land",
+   "pages": []
+  },
+  {
+   "what": "Tigray (166 cells) goes Ethiopian to Italian (1890) to nobody (1895, italian-africa_1895 snap) to Ethiopian (1898, ethiopian-empire_1898 snap) instead of changing at Adwa (1896) and Addis Ababa (October 1896)",
+   "years": [
+    1890,
+    1898
+   ],
+   "slugs": [
+    "italian-africa",
+    "ethiopian-empire"
+   ],
+   "decision": "left: pages silent in this run (no page opened on the Eritrean frontier)",
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/p1890-p1899.json",
+ "patch_entries": {
+  "events": 4,
+  "keyframe_overrides": 7,
+  "rulings": 1
+ },
+ "patch_check": "all applied (12 entries ok in --check-patch; trial: every entry applied, ruling settled 122 cell-years; end anchor p1900 changes 2861 cells)",
+ "colour_clashes": [
+  {
+   "a": "russian-empire",
+   "b": "russian-turkestan",
+   "years": [
+    1890,
+    1899
+   ],
+   "note": "identical #236436 along 946 shared edges; a constituent should read apart from its realm"
+  },
+  {
+   "a": "french-africa",
+   "b": "french-west-africa",
+   "years": [
+    1895,
+    1899
+   ],
+   "note": "identical #6d9adc, 341 shared edges, two sibling colonies of one republic"
+  },
+  {
+   "a": "british-burma",
+   "b": "british-raj",
+   "years": [
+    1890,
+    1899
+   ],
+   "note": "identical #dc7d97 (332 edges); all British colonies share it, Australian colonies, Natal, Cape, BSAC, Anglo-Egyptian Sudan too"
+  },
+  {
+   "a": "british-africa",
+   "b": "british-south-africa-company",
+   "years": [
+    1890,
+    1899
+   ],
+   "note": "identical #dc7d97, 326 edges; also british-africa with british-cape-colony, colony-of-natal and anglo-egyptian-sudan"
+  },
+  {
+   "a": "portuguese-empire",
+   "b": "portuguese-angola",
+   "years": [
+    1891,
+    1899
+   ],
+   "note": "identical #47a962 (287 edges), with portuguese-mozambique (102): the interior and the coast of Angola read as one"
+  },
+  {
+   "a": "german-africa",
+   "b": "german-east-africa",
+   "years": [
+    1890,
+    1899
+   ],
+   "note": "identical #786f89, 95 edges"
+  },
+  {
+   "a": "austria-hungary",
+   "b": "kingdom-of-galicia-and-lodomeria",
+   "years": [
+    1890,
+    1899
+   ],
+   "note": "identical #be3d70, 130 edges"
+  },
+  {
+   "a": "colony-of-south-australia",
+   "b": "colony-of-western-australia",
+   "years": [
+    1890,
+    1899
+   ],
+   "note": "identical #dc7d97; the whole Australian colony group, the British colonial empire and Newfoundland are indistinguishable"
+  },
+  {
+   "a": "italian-africa",
+   "b": "majeerteen-sultanate / sultanate-of-hobyo",
+   "years": [
+    1890,
+    1899
+   ],
+   "note": "seen in the images: the two Somali protectorates are drawn in Italy's tint and read as one with the colony (vassal tint, by design)"
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "united-states-of-america",
+   "what": "make keyframes 1890 ('ok') and 1900, 1905, 1908, 1911 onward 'adjust' with the full-extent correction used for 1880 (country plus the Alaska region), so the Great Lakes waters inside Michigan and Wisconsin stay American",
+   "why": "405 Michigan cells (and Wisconsin's) are nobody in every anchor from p1900 to p2000; this patch covers only 1890-1899",
+   "source": "https://en.wikipedia.org/wiki/Michigan"
+  },
+  {
+   "slug": "russian-empire",
+   "what": "widen every keyframe from 1782 on with Chukotka (Chukchi Autonomous Okrug, 411 cells), which the 1778 gain adds and the next unadjusted Cliopatria shape drops",
+   "why": "grey hole at Russia's north-east tip through the whole empire",
+   "source": "https://en.wikipedia.org/wiki/Russian_Empire"
+  },
+  {
+   "slug": "captaincy-general-of-cuba",
+   "what": "ledger/14 (December 1898 loss of Cuba) should give the island to nobody (or the occupation should be recorded by the US as occupation of nobody's land); united-states-of-america/ledger/83 then occupies land of the future Republic of Cuba",
+   "why": "the draft draws Cuba as US land occupied by the Republic of Cuba, which is born in 1902; 'Spain relinquished all claim of sovereignty' and 'Cuba was to be occupied by the United States'",
+   "source": "https://en.wikipedia.org/wiki/Treaty_of_Paris_(1898)"
+  },
+  {
+   "slug": "austria-hungary",
+   "what": "the 1880 keyframe says Bosnia is occupation land (ledger) but the keyframe's removal leaves it nobody's, so the ledger occupation has nothing to hatch; either keep Bosnia in the keyframe as occupied land or have the Ottoman dossier hold it",
+   "why": "root cause of the Bosnia grey from 1880 to 1907 (this patch repairs 1890-1899 only); austria-hungary_1900 will snap Bosnia direct at 1900",
+   "source": "https://en.wikipedia.org/wiki/Condominium_of_Bosnia_and_Herzegovina"
+  },
+  {
+   "slug": "french-africa",
+   "what": "keyframes 1900 and 1903 onward need the Mossi plateau, Gwiriko (Burkina Faso) and Chari-Baguirmi, the lands the Mossi, Gwiriko and Bagirmi ledgers give to french-africa",
+   "why": "french-africa_1897 and _1898 are overridden here; french-africa_1900 (Cliopatria 1900 shape) will drop them again",
+   "source": "https://en.wikipedia.org/wiki/Bobo-Dioulasso"
+  }
+ ],
+ "pages_opened": 11,
+ "problems": [
+  "Seam: the Bosnia events (events/0-1), the Dhofar event (events/3), the USA overrides and the Burkina overrides are applied inside 1890-1899 but their cause lies in p1880-p1889 (austria-hungary_1880 and sultanate-of-oman_1880 snaps); if the p1880-p1889 agent patches the same land, the events here merge harmlessly (gain over land already held moves nothing; the occupation merges into the open one).",
+  "Seam: end anchor p1900 changes 2861 owners against the published draft (Bosnia occupied, Burkina French, Ogaden Ethiopian, Dhofar Omani, Great Lakes American). The p1900-p1909 agent should expect snaps at 1900 from austria-hungary_1900 (Bosnia direct), french-africa_1900 (Burkina and Bagirmi dropped) and united-states-of-america_1900 (lakes dropped again).",
+  "Ethiopia override overlaps the Somali coast claims: ethiopian-empire / sultanate-of-hobyo now 170 cell-years (Hobyo wins by size) and dervish-state / ethiopian-empire 44 (Dervish wins); the Ogaden-Hobyo frontier is therefore settled by the size rule in 1895-1899; no page opened gives it.",
+  "Label: the Romania dossier prints as 'United Principalities of Moldavia and Wallachia' from 1881 to 1918 (identity name 'Principality and Kingdom of Romania to 1918'); Serbia, Greece and Montenegro print equally long names; the legend labels could use a short name.",
+  "Cuba: attempted patch rejected (see issues); the current draft keeps the reversed occupation (US land hatched in the Republic of Cuba's colour) for December 1898 to 1902.",
+  "Trial note: events/0 uses month 1 and events/1 month 2 so the Ottoman gain comes before the occupation; the ethiopian-empire_1895/1898/1890 overrides contain the dossier ledger's own regions (Illubabor, Gurage, Hadiya, Wollega, Arsi, Harar, Bale, Sidamo, Ogaden, Welayta, Kambata, Gofa, Wollamo, Borana, Beni Shangul, Gimirra); Hadiya is dated 1879-1884 by the page, 1889 by the ledger (both before 1890).",
+  "hierarchy: no row confirmed wrong; cretan-state of ottoman-empire (1898) and hunza-and-nagar of british-raj (1891) show 0 cells in the packet, which this run did not trace to a page."
+ ]
+}

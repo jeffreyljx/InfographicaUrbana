@@ -1,0 +1,878 @@
+{
+ "batch_id": "eu-11-d",
+ "verdicts": [
+  {
+   "slug": "kingdom-of-wessex",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/1",
+     "what": "Deorham gain (577) at confidence 3 although the page does not name the land drawn.",
+     "why": "Battle_of_Deorham names only Gloucester, Cirencester and Bath; the region is the Cliopatria delta (Bath-Bristol, Wiltshire, east Somerset) and Gloucester-Cirencester are not in it (they go to Hwicce).",
+     "fix": "Confidence lowered to 2 with a note.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/9",
+     "what": "Sussex vassal_end dated 718 (Cliopatria's year, confidence 1) against the kingdom-of-sussex dossier's 715.",
+     "why": "Kingdom_of_Sussex infobox: 'Subject to Wessex: c. 686 - c. 715', 'Client state of Wessex (686-715)'; text: 'Sussex evidently broke away from West Saxon domination some time before 722'.",
+     "fix": "Year set to 715, confidence 2, source Kingdom_of_Sussex added to sources[] and cited.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what": "Keyframes kingdom-of-wessex_577, _587, _628 and _666 are drawn with 7 cells (about 1,770 km2) of Somerset east of the Parrett from 577, and the ledger has no gain for Cenwealh's conquest of Somerset (c. 658) or for western Somerset (by 681-685); a land-moving event is missing and two dossiers disagree on the land.",
+     "why": "Wessex page (opened by the author): 'Cenwealh ... was able to expand West Saxon territory in Somerset at the expense of the Britons'; 'Centwine is known to have fought and won battles against the Britons'. dumnonia /ledger/1: 658 loss to kingdom-of-wessex, confidence 3 (Battle_of_Peonnum: 'annexing eastern and central Somerset'); dumnonia /ledger/2: 685 loss, confidence 2 ('western Somerset up to the Bristol Channel'). Gazetteer: Wessex 577 and 705 shapes contain 7 Somerset cells, Wessex 710 contains 13, Wessex 666/705 share 0 cells with Dumnonia 602. Result: 602-657 both dossiers draw east Somerset; 685-709 neither draws west Somerset.",
+     "fix": "Correct the 577-657 keyframes to {minus: [<Wessex shape>, {admin1: Somerset, country: United Kingdom}]} (Natural Earth Somerset leaves Bath and North East Somerset in Wessex); add gain 658 counterpart dumnonia, region {minus: [{admin1: Somerset}, {cliopatria: Dumnonia, year: 602}]}, source Battle_of_Peonnum (confidence 3) or the Wessex page (2); add gain 685 counterpart dumnonia, region {intersect: [{cliopatria: Dumnonia, year: 602}, {admin1: Somerset}]}, confidence 2, and add those cells to the 685-709 corrections (keyframes _666 split at 685, _686, _692, _705); add the Peonnum war.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/19",
+     "what": "The 830-839 correction (Wessex 840 shape) drops the 16 Essex cells that the 825-829 keyframes draw as West Saxon, and no ledger event explains it.",
+     "why": "Gazetteer: Wessex 830 shape intersect Kingdom of Essex 661 = 16 cells; Wessex 840 shape intersect Essex 661 = 0. Egbert page: 'Wessex retained control of the south-eastern kingdoms, with the possible exception of Essex'; 'In 830, Mercia regained its independence under Wiglaf'.",
+     "fix": "Add loss 830 of {cliopatria: Kingdom of Essex, year: 661} to kingdom-of-mercia (confidence 2, Egbert page), or keep Essex in the 830-839 correction and put the loss in 840 (Cliopatria's year, confidence 1).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/34",
+     "what": "vassal_start counterpart is a placeholder ('Welsh kings Hywel Dda, Clydog and Idwal Foel') covering two states; no vassal_end.",
+     "why": "Hywel_Dda page: Hywel and Clydog 'jointly submitted to Edward the Elder of England in 918' (King of Seisyllwg 909-920); Edward_the_Elder page adds Idwal Foel (Gwynedd). Both slugs exist (kingdom-of-seisyllwg in polities.csv, kingdom-of-gwynedd dossier).",
+     "fix": "Split into vassal_start kingdom-of-seisyllwg (region Kingdom of Seisyllwg 918) and vassal_start kingdom-of-gwynedd (region Kingdom of Gwynedd 918); say in each note that the relation runs to 927 and passes to England.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/22/note",
+     "what": "The note says the Alfred page never describes the Mercian relationship (page silent); it does.",
+     "why": "Alfred_the_Great: after the treaty with Guthrum 'Alfred succeeded to Ceolwulf's kingdom consisting of western Mercia'.",
+     "fix": "Quote that sentence; consider dating the start to the end of Ceolwulf II's rule (c. 879-883) at confidence 2, keeping 884 only if no page gives a year.",
+     "applied": false
+    },
+    {
+     "where": "/identity/rulers",
+     "what": "Ruler list has gaps (534-642, 672-686, 688-689, 726-802, 839-871).",
+     "why": "Reviewer brief 2.9: rulers, where given, are contiguous.",
+     "fix": "Fill the gaps from the Wessex page's list of kings (or List of monarchs of Wessex), or say in notes that the strip is partial.",
+     "applied": false
+    },
+    {
+     "where": "/ledger",
+     "what": "No mirror for kingdom-of-gwent /ledger/3 (926 loss to kingdom-of-wessex, confidence 3: Hereford agreement, border at the Wye, Cantref Coch / Forest of Dean).",
+     "why": "kingdom-of-gwent dossier, Kingdom_of_Gwent page as cited there; Gwent notes that no Cliopatria cell changes.",
+     "fix": "Add gain 926 counterpart kingdom-of-gwent, region {lon: -2.55, lat: 51.8, km: 12, text: 'Forest of Dean east of the Wye'}, or a note that the land is already inside the Wessex 926 shape.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "587 loss of the Bristol-Gloucester cells to Hwicce: Cliopatria's year, page silent (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Hwicce"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "628 upper Thames loss to Mercia: Cliopatria's year (confidence 1); the Battle of Cirencester (628) is the obvious source",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Cirencester"
+    },
+    {
+     "where": "/ledger/10",
+     "what is missing": "806 three-cell Thames loss to Mercia (confidence 1); also the 752 Burford and 779 Bensington border moves (keyframe 13)",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Bensington"
+    },
+    {
+     "where": "/ledger/18",
+     "what is missing": "830 end of the Northumbrian submission (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Northumbria"
+    },
+    {
+     "where": "/ledger/21",
+     "what is missing": "Brycheiniog vassal from 'the 880s' (confidence 1, decade only); the Alfred page dates the southern Welsh commendation 'comparatively early in his reign' after Asser",
+     "page to try": "https://en.wikipedia.org/wiki/Asser"
+    },
+    {
+     "where": "/ledger/22",
+     "what is missing": "English Mercia vassal start 884 (confidence 1; see fix)",
+     "page to try": "https://en.wikipedia.org/wiki/%C3%86thelred,_Lord_of_the_Mercians"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "Winchester as capital for 519-927 is unsourced (Wessex infobox blank; Æthelstan page: no fixed capital)",
+     "page to try": "https://en.wikipedia.org/wiki/Winchester"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Deorham",
+     "result": "confirmed (577; Gloucester, Cirencester, Bath); region not named, confidence lowered to 2"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Ine_of_Wessex",
+     "result": "confirmed ('conquered by Cædwalla in 686')"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Sussex",
+     "result": "mis-dated (718 against the infobox's c. 715; fixed)"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Wessex",
+     "result": "confirmed ('In 825 or 826 ... Ellendun ... seizing control of Surrey, Sussex, Kent and Essex from the Mercians')"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Egbert,_King_of_Wessex",
+     "result": "confirmed (829, Wiglaf exiled, London mint, King of Mercia)"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Egbert,_King_of_Wessex",
+     "result": "confirmed ('In 830, Mercia regained its independence under Wiglaf')"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Alfred_the_Great",
+     "result": "confirmed (Wareham occupied, then Exeter)"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Alfred_the_Great",
+     "result": "note misreports the page (it says Alfred 'succeeded to Ceolwulf's kingdom consisting of western Mercia'); year 884 not on page (confidence 1 as declared)"
+    },
+    {
+     "where": "/ledger/23",
+     "page": "https://en.wikipedia.org/wiki/Alfred_the_Great",
+     "result": "confirmed ('in 886, Alfred reoccupied the city of London')"
+    },
+    {
+     "where": "/ledger/26",
+     "page": "https://en.wikipedia.org/wiki/Edward_the_Elder",
+     "result": "confirmed (911, Mercian lands around London and Oxford)"
+    },
+    {
+     "where": "/ledger/27",
+     "page": "https://en.wikipedia.org/wiki/Edward_the_Elder",
+     "result": "confirmed (Bedford occupied 915)"
+    },
+    {
+     "where": "/ledger/29",
+     "page": "https://en.wikipedia.org/wiki/Edward_the_Elder",
+     "result": "confirmed (917: Northampton, Cambridge and East Anglia submit)"
+    },
+    {
+     "where": "/ledger/31",
+     "page": "https://en.wikipedia.org/wiki/Wessex",
+     "result": "confirmed ('In 918 Æthelflæd died and Edward took over direct control of Mercia')"
+    },
+    {
+     "where": "/ledger/36",
+     "page": "https://en.wikipedia.org/wiki/Wessex",
+     "result": "confirmed (infobox 'Unification of the Angles, Saxons and Danes: 12 July 927')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Wessex infobox has no area field; no comparison possible."
+   }
+  },
+  {
+   "slug": "dal-riata",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/7/region",
+     "what": "The 850 merge and dissolve events drew the whole 644 shape, including the Inner Hebrides the dossier itself loses to the Vikings in 847.",
+     "why": "Keyframe dal-riata_847 (847-849) is {minus: [Dál Riata 644, Viking settlements 840]}; /ledger/6 loses that land in 847.",
+     "fix": "Region of /ledger/7 and /ledger/8 set to {minus: [{cliopatria: Dál Riata, year: 644}, {cliopatria: Viking settlements, year: 840}]}, text kept.",
+     "applied": true
+    },
+    {
+     "where": "/wars/0/belligerents",
+     "what": "Degsastan (603) named kingdom-of-northumbria, which did not yet exist (Cliopatria's Northumbria row starts 612).",
+     "why": "The war's own outcome quotes 'Æthelfrith of Bernicia'; kingdom-of-bernicia is a polities.csv slug (555-633).",
+     "fix": "Belligerent set to kingdom-of-bernicia with a note.",
+     "applied": true
+    },
+    {
+     "where": "/identity/rulers",
+     "what": "Five rulers with large gaps (501-574, 608-629, 642-811, 835-841).",
+     "why": "Reviewer brief 2.9: rulers, where given, are contiguous.",
+     "fix": "Fill from the Dál Riata page's king list or say in notes that the strip is partial (non-blocking).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "612 Skye gain is Cliopatria's year (confidence 1); the page: 'Dál Riata did expand to include Skye', possibly under Áedán's son Gartnait",
+     "page to try": "https://en.wikipedia.org/wiki/Gartnait_mac_%C3%81ed%C3%A1in"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "644 loss of the Antrim land is Cliopatria's year (confidence 1); the Dál Riata page ties a loss of lands to Mag Rath (637), worth checking for the date",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Moira"
+    },
+    {
+     "where": "/keyframe_review/8",
+     "what is missing": "850-899 of Cliopatria's row (Picts/Alba precursor) has no dossier owner",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Alba"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/D%C3%A1l_Riata",
+     "result": "confirmed (infobox Established 498, Preceded by Ulaid)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/D%C3%A1l_Riata",
+     "result": "confirmed undated as declared (confidence 1)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Oengus_I_of_the_Picts",
+     "result": "confirmed (736, Creic and Dunadd taken and burnt)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Oengus_I_of_the_Picts",
+     "result": "confirmed (741 'smiting'; Dál Riata page 'under Pictish overlordship by 741')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/D%C3%A1l_Riata",
+     "result": "confirmed ('may record the conquest of the Inner Hebrides ... by Vikings in 847')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Kenneth_MacAlpin",
+     "result": "confirmed (King of Dál Riada 841-850; conquered the Picts 843-850; lists end around 850)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Dál Riata infobox has no area field."
+   }
+  },
+  {
+   "slug": "kingdom-of-brycheiniog",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/certainty/0/note",
+     "what": "Quoted 'No boundaries are described' as the page's words; the phrase is not on the page (also in /keyframe_review/1/note).",
+     "why": "Brycheiniog page fetched twice: neither 'boundary' nor 'boundaries' appears.",
+     "fix": "Both notes reworded to say the page describes no boundaries, without the quotation.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "1056 absorption into Gruffydd ap Llywelyn's Wales (confidence 1; his page never names Brycheiniog)",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Deheubarth"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "1072 loss of two eastern cells to Norman England (confidence 1); the Bernard page says he 'already held Castell Dinas which had probably been built by the Earl of Hereford before 1075'",
+     "page to try": "https://en.wikipedia.org/wiki/William_FitzOsbern,_1st_Earl_of_Hereford"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "Hywel Dda 'King of Brycheiniog: c. 930 - 950' (Hywel Dda infobox, confirmed) is in no ledger: Brycheiniog needs a loss/gain pair to kingdom-of-seisyllwg/deheubarth, or that dossier a vassal pair",
+     "page to try": "https://en.wikipedia.org/wiki/Hywel_Dda"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Brycheiniog",
+     "result": "confirmed (infobox 'Founded by Brychan Brycheiniog: c.450')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Gruffydd_ap_Llywelyn",
+     "result": "confirmed (died 5 August 1063; realm 'divided again into the traditional kingdoms'; page does not name Brycheiniog, confidence 2 fair)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Bernard_de_Neufmarch%C3%A9",
+     "result": "confirmed (invasion shortly after the 1088 settlement; Glasbury charter autumn 1088)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Rhys_ap_Tewdwr",
+     "result": "confirmed (died April 1093, Brecon; 'slain by the Frenchmen who were inhabiting Brycheiniog')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Brycheiniog",
+     "result": "confirmed ('conquered and pacified by the Normans between 1088 and 1095'; 'Bernard's Lordship of Brecknock')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Brycheiniog infobox has no area field."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 519,
+    "type": "found",
+    "counterpart": "anglo-saxon-england"
+   },
+   "mirror": {
+    "slug": "anglo-saxon-england",
+    "year": 533,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Wessex starts 519 on land the anglo-saxon-england dossier holds to 533 (no split at 519): 15-year overlap, flagged by the author. Route to the anglo-saxon-england owner (split at 519) or move the Wessex start to 534."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 577,
+    "type": "gain",
+    "counterpart": "brythons"
+   },
+   "mirror": {
+    "slug": "brythons",
+    "year": 577,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 587,
+    "type": "loss",
+    "counterpart": "hwicce"
+   },
+   "mirror": {
+    "slug": "hwicce",
+    "year": 587,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "both confidence 1"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 628,
+    "type": "loss",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-mercia not written yet (eu-11 part not run)"
+  },
+  {
+   "event": {
+    "slug": "dumnonia",
+    "year": 658,
+    "type": "loss",
+    "counterpart": "kingdom-of-wessex"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "dumnonia /ledger/1 (confidence 3, Battle_of_Peonnum) has no gain in Wessex; Wessex draws east Somerset from 577. See Wessex fix /keyframe_review/2."
+  },
+  {
+   "event": {
+    "slug": "dumnonia",
+    "year": 685,
+    "type": "loss",
+    "counterpart": "kingdom-of-wessex"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "dumnonia /ledger/2 (confidence 2): western Somerset; Wessex takes it only in 710 with Devon, so 685-709 nobody draws it."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 686,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-sussex"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sussex",
+    "year": 686,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 686,
+    "type": "gain",
+    "counterpart": "wihtgar"
+   },
+   "mirror": {
+    "slug": "wihtgar",
+    "year": 686,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 686,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-kent"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kent",
+    "year": 686,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 688,
+    "type": "occupation_end",
+    "counterpart": "kingdom-of-kent"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kent",
+    "year": 687,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "within one year"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 710,
+    "type": "gain",
+    "counterpart": "dumnonia"
+   },
+   "mirror": {
+    "slug": "dumnonia",
+    "year": 710,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 715,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-sussex"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sussex",
+    "year": 715,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": "Wessex year moved from 718 to 715 by the reviewer (Kingdom_of_Sussex infobox)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 806,
+    "type": "loss",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-mercia not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 825,
+    "type": "vassal_start",
+    "counterpart": "cornwall"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "cornwall not written yet (eu-11 part not run)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 825,
+    "type": "gain",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Surrey and Sussex from Mercia; kingdom-of-mercia not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 825,
+    "type": "gain",
+    "counterpart": "kingdom-of-kent"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kent",
+    "year": 825,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 825,
+    "type": "gain",
+    "counterpart": "kingdom-of-essex"
+   },
+   "mirror": {
+    "slug": "kingdom-of-essex",
+    "year": 825,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Wessex has no later loss of Essex although its 830-839 shape drops it (see fix /keyframe_review/19)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 829,
+    "type": "gain",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-mercia not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 829,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-northumbria"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-northumbria not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 830,
+    "type": "loss",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-mercia not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 876,
+    "type": "contest_start",
+    "counterpart": "viking-settlements"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "viking-settlements (eu-14) not written yet; also 892-896"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 880,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-brycheiniog"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "schema puts vassal events in the suzerain's ledger only; Brycheiniog notes acknowledge it"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 884,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-mercia not written yet; also 911 gain and 918 vassal_end/gain"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 886,
+    "type": "gain",
+    "counterpart": "danelaw"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "danelaw not written yet; also 915, 917, 918 and 927 gains and the 915-918 contest"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wessex",
+    "year": 918,
+    "type": "vassal_start",
+    "counterpart": "Welsh kings Hywel Dda, Clydog and Idwal Foel"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "placeholder counterpart; should be kingdom-of-seisyllwg (not written) and kingdom-of-gwynedd (vassal event belongs in the suzerain's ledger only)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-gwent",
+    "year": 926,
+    "type": "loss",
+    "counterpart": "kingdom-of-wessex"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Gwent /ledger/3 (confidence 3, Forest of Dean east of the Wye) has no gain in Wessex; see Wessex fix."
+  },
+  {
+   "event": {
+    "slug": "dal-riata",
+    "year": 498,
+    "type": "found",
+    "counterpart": "ulaid"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ulaid listed in counterparts_needing_dossiers (eu-11-x)"
+  },
+  {
+   "event": {
+    "slug": "dal-riata",
+    "year": 612,
+    "type": "gain",
+    "counterpart": "picts"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "picts listed in counterparts_needing_dossiers (eu-11-x); also the 736-741 contest and the 850 merge"
+  },
+  {
+   "event": {
+    "slug": "dal-riata",
+    "year": 642,
+    "type": "loss",
+    "counterpart": "strathclyde"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "strathclyde not written yet (eu-11 part not run)"
+  },
+  {
+   "event": {
+    "slug": "dal-riata",
+    "year": 644,
+    "type": "loss",
+    "counterpart": "ulaid"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ulaid listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "dal-riata",
+    "year": 847,
+    "type": "loss",
+    "counterpart": "viking-settlements"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "viking-settlements (eu-14) not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-brycheiniog",
+    "year": 450,
+    "type": "found",
+    "counterpart": "brythons"
+   },
+   "mirror": {
+    "slug": "brythons",
+    "year": 540,
+    "type": "split"
+   },
+   "status": "mismatch",
+   "note": "brythons splits Brycheiniog off in 540 (Cliopatria's year, confidence 1) while Brycheiniog starts c. 450 (infobox): 90-year overlap. Route to the brythons owner (split at 450)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-brycheiniog",
+    "year": 1056,
+    "type": "loss",
+    "counterpart": "kingdom-of-gwynedd"
+   },
+   "mirror": {
+    "slug": "kingdom-of-gwynedd",
+    "year": 1055,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "within one year; both confidence 1"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-brycheiniog",
+    "year": 1063,
+    "type": "gain",
+    "counterpart": "kingdom-of-gwynedd"
+   },
+   "mirror": {
+    "slug": "kingdom-of-gwynedd",
+    "year": 1063,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-brycheiniog",
+    "year": 1072,
+    "type": "loss",
+    "counterpart": "norman-england"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "norman-england not written yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-brycheiniog",
+    "year": 1088,
+    "type": "contest_start",
+    "counterpart": "lordship-of-brecon"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "lordship-of-brecon listed in counterparts_needing_dossiers; also the 1093 contest_end and loss"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-brycheiniog",
+    "year": 930,
+    "type": "loss",
+    "counterpart": "kingdom-of-seisyllwg"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Expected event, not in either ledger: Hywel Dda 'King of Brycheiniog c. 930-950' is in no ledger; kingdom-of-seisyllwg not written yet"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Dunadd",
+   "kind": "place",
+   "used_in": "dal-riata"
+  },
+  {
+   "name": "Talgarth",
+   "kind": "place",
+   "used_in": "kingdom-of-brycheiniog"
+  },
+  {
+   "name": "Brecon",
+   "kind": "place",
+   "used_in": "kingdom-of-brycheiniog"
+  },
+  {
+   "name": "Glasbury",
+   "kind": "place",
+   "used_in": "kingdom-of-brycheiniog"
+  },
+  {
+   "name": "Wareham",
+   "kind": "place",
+   "used_in": "kingdom-of-wessex"
+  },
+  {
+   "name": "Brycheiniog",
+   "kind": "region",
+   "used_in": "kingdom-of-brycheiniog"
+  },
+  {
+   "name": "Forest of Dean",
+   "kind": "region",
+   "used_in": "kingdom-of-gwent"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Picts (Pictland, Kingdom of Fortriu)",
+   "suggested_slug": "picts",
+   "years": [
+    612,
+    850
+   ]
+  },
+  {
+   "name": "Ulaid",
+   "suggested_slug": "ulaid",
+   "years": [
+    498,
+    644
+   ]
+  },
+  {
+   "name": "Lordship of Brecon (Brecknock)",
+   "suggested_slug": "lordship-of-brecon",
+   "years": [
+    1088,
+    1093
+   ]
+  },
+  {
+   "name": "Kingdom of Deheubarth",
+   "suggested_slug": "kingdom-of-deheubarth",
+   "years": [
+    920,
+    1093
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-11-d.md",
+ "problems": [
+  "WebFetch returns a model summary of each page; quotes in this review are as returned, not verified verbatim.",
+  "Reviewer edits (allowed by the orchestrator for small verified fixes) were made in all three dossiers: Wessex /ledger/1 confidence, /ledger/9 year and source; Dál Riata /ledger/7-8 region, /wars/0 belligerent; Brycheiniog two note rewordings. All three re-validate with no errors.",
+  "Cross-dossier overlaps routed to other owners: anglo-saxon-england holds the Wessex core to 533 (Wessex from 519); brythons holds Brycheiniog to 540 (Brycheiniog from c. 450).",
+  "dumnonia and kingdom-of-wessex disagree on Somerset 577-709 (dumnonia follows Battle_of_Peonnum); the Wessex fix is listed, the dumnonia side looks right.",
+  "kingdom-of-sussex records vassal_start/vassal_end with counterpart kingdom-of-wessex in the vassal's own ledger, against the schema's meaning (counterpart is the vassal); for the Sussex owner.",
+  "Cliopatria rows needing owners: Dál Riata 850-899 (Picts/Alba precursor) and Wessex 928-935 (kingdom-of-england should start 927)."
+ ]
+}

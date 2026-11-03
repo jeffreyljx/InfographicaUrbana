@@ -1,0 +1,94 @@
+{
+ "window": "m2600-m2501",
+ "images": [
+  {
+   "year": -2600,
+   "bbox": "world",
+   "seen": "Cliopatria compare (first run): only 3 Cliopatria shapes; compiled map adds the culture dossiers in plausible places; no stray cells, no holes."
+  },
+  {
+   "year": -2501,
+   "bbox": "44,29.5,49,33.5",
+   "seen": "After the patch (stage): First Dynasty of Ur is 17 cells around Ur next to Lagash's 19 cells inside the collective's plain; only the 2 overlap cells stay with the collective; no snaps."
+  },
+  {
+   "year": -2500,
+   "bbox": "44,29.5,49,33.5",
+   "seen": "After the patch, trial of m2500-m2401 (stage2): Mesannepada's hegemony of Ur is drawn whole around Lagash and Umma with no hole at Ur itself; the collective no longer claims Ur's city."
+  }
+ ],
+ "issues": [
+  {
+   "what": "first-dynasty-of-ur owned 0 cells from -2600 to -2501 although its keyframe first-dynasty-of-ur_-2600 draws the city of Ur: R2 treats the older collective sumerian-city-states (-3400, listed as Ur's successor) as a successor winning from its own start year. Repaired after review: events/0 stays (note and region text corrected from '4 cells' to '2 cells' overlap with Lagash's circle; the region resolves to 17 cells, about 4299 km2) and keyframe_overrides/0 is added so that sumerian-city-states_-2500 cuts Ur's 40 km city, which events/0 had made Ur's own; without it R2 handed the 16-17 cells back to the collective from -2500 on and Ur ended -2400 with 1 cell.",
+   "years": [
+    -2600,
+    -2340
+   ],
+   "slugs": [
+    "first-dynasty-of-ur",
+    "sumerian-city-states",
+    "lagash"
+   ],
+   "decision": "patched",
+   "patch": "events/0 + keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/First_Dynasty_of_Ur"
+   ]
+  },
+  {
+   "what": "Two small Kish enclaves (1 and 5 cells) inside the Sumerian city-states near 46.5E, 32.1-32.5N, left over from Kish's 'Akkad' region against the collective's 2700 and 2500 shapes; the pages give no border.",
+   "years": [
+    -2600,
+    -2501
+   ],
+   "slugs": [
+    "kish",
+    "sumerian-city-states"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Packet flags: 0 size-rule conflicts, 0 snaps, 0 skipped or unresolved events; the three years with changes (-2600 Yamnaya end, Dawenkou to Longshan, Tichitt start; -2550 Mari's first city abandoned; -2520 Lagash founded) match the dossiers' ledger notes and the picture.",
+   "years": [
+    -2600,
+    -2501
+   ],
+   "slugs": [
+    "yamnaya-culture",
+    "longshan-culture",
+    "dawenkou-culture",
+    "tichitt-tradition",
+    "mari",
+    "lagash"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/m2600-m2501.json",
+ "patch_entries": {
+  "events": 1,
+  "keyframe_overrides": 1,
+  "rulings": 0
+ },
+ "patch_check": "all applied (--check-patch: 2 entries, 2 ok, 0 rejected; --trial m2600-m2501: events/0 and keyframe_overrides/0 applied, 0 snaps, end anchor m2500: 17 cells change owner to Ur; --trial m2500-m2401 with the patch: no first-dynasty-of-ur / sumerian-city-states conflict, and the m2400 end anchor is identical to a trial of m2500-m2401 without my patch, Ur 19 cells in both)",
+ "colour_clashes": [],
+ "dossier_requests": [
+  {
+   "slug": "first-dynasty-of-ur",
+   "what": "Root cause of the zero-cell bug: its successor list names the older collective sumerian-city-states (-3400), so compile_dossiers.py R2 makes the collective beat Ur's city for Ur's whole life. Either also list first-dynasty-of-ur among sumerian-city-states' successors (when each lists the other, R2 picks the later-born, Ur), or drop the successor entry, since the -2340 handover is already booked by Ur's dissolve and the collective's gain. A compiler alternative: apply R2 only from the predecessor's end year. With either fix events/0 and keyframe_overrides/0 become unnecessary and can be withdrawn.",
+   "why": "The dynasty 'reigned c. 2600 - c. 2340 BC' from Ur and Mesannepada's hegemony is 'r. c. 2500 BC'; the same pattern appears for umma (m2500-m2401 events/0 works around it).",
+   "source": "https://en.wikipedia.org/wiki/First_Dynasty_of_Ur"
+  }
+ ],
+ "pages_opened": 1,
+ "problems": [
+  "CROSS-WINDOW: keyframe_overrides/0 (sumerian-city-states, shape_id sumerian-city-states_-2500) is in m2600-m2501.json but acts from -2500, in window m2500-m2401. m2500-m2401.json does not override that keyframe (its overrides are first-dynasty-of-ur_-2500 and lagash_-2450), so there is no double override and mine is first in window order; the m2500-m2401 agent should be told and must not add a competing override for sumerian-city-states_-2500. It keeps the dossier's own correction (cliopatria -2500 minus Mari 120 km minus Khuzestan) and adds only Ur 40 km to the cut. If the orchestrator does not want it, withdraw events/0 and keyframe_overrides/0 together: events/0 alone harms -2500..-2340.",
+  "events/0 leaves one harmless conflict in the -2600 trial: first-dynasty-of-ur / sumerian-city-states, 21 cell-years in 1 year (R2; the found event's 19 cells plus the keyframe's 2 overlap cells), which the gain of 17 cells settles in the same year; before the patch it was 38 cell-years.",
+  "Ur's 40 km radius is the dossier's own choice (its keyframe note says so), not a sourced figure; its 19-cell circle overlaps lagash's 40 km circle by 2 cells, cut from Ur so that Lagash's -2520 founding keeps its 19 cells.",
+  "compiler: cells a patch hands over before a year are no longer event-settled when the same land is regained by event in that year, so a later keyframe of an R2 'successor' can take them back; this is why the cross-window override is needed (see dossier_requests)."
+ ]
+}

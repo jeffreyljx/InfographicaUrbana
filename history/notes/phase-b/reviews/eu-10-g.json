@@ -1,0 +1,890 @@
+{
+ "batch_id": "eu-10-g",
+ "verdicts": [
+  {
+   "slug": "county-of-foix",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/13",
+     "what": "The 1479 gain of Navarre from kingdom-of-navarre has no mirror: kingdom-of-navarre records a rename in 1479 and keeps Navarre (keyframe kingdom-of-navarre_1463, 1463-1511), so the 33 Navarra cells are drawn by two states 1479/1482-1511; the overlap is not flagged in the notes or report.",
+     "why": "kingdom-of-navarre /ledger/16 (1479 rename), its keyframe 1463-1511 holds Navarre; gazetteer check: Cliopatria County of Foix 1482 shape holds 33 of 33 Navarra cells. Kingdom of Navarre page: Lower Navarre 'survived as an independent kingdom which passed by inheritance'.",
+     "fix": "Treat 1479-1512 as a personal union, not a gain: subtract the Navarra cells from keyframes /keyframe_review/10, 11, 12, 13, 14 and 15 (corrections 'minus' {admin1: Navarra}), drop /ledger/13, and move the Navarre events /ledger/18-23 to notes (kingdom-of-navarre already carries the 1512 loss and Lower Navarre to 1620); or, if the orchestrator decides Foix draws Navarre, kingdom-of-navarre must record the 1479 loss. Say which in notes.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/4/counterpart",
+     "what": "Counterpart was county-of-bearn, a dossier that starts in 1347, so the 1290 gain could not have a mirror.",
+     "why": "county-of-bearn identity.start 1347; Roger-Bernard III page: 'when he died in 1290, Roger-Bernard immediately took possession of his counties (May)'; County of Foix page: 'he inherited Béarn and Nébouzan from his father-in-law in 1290'.",
+     "fix": "counterpart 'Viscounty of Béarn (Gaston VII, father-in-law)'.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/23/region",
+     "what": "The 1530 gain of Lower Navarre used region 'Navarre', which the gazetteer resolves to Spanish Navarra (Upper Navarre, 33 cells), so the event drew Upper Navarre back into Foix.",
+     "why": "Henry II of Navarre page: 'In 1530, after the Treaty of Cambrai ... Charles V evacuated' Lower Navarre, 'allowing Henry to seize it'; regions.jsonl: Navarre = {admin1: Navarra, country: Spain}.",
+     "fix": "region {intersect: [Pyrénées-Atlantiques, disk -1.15/43.22 25 km]} with text 'Lower Navarre ...' (6 cells).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/15/counterpart",
+     "what": "The 1484 Périgord/Limousin gain names county-of-perigord, whose dossier dissolves into county-of-foix in 1481 (c1); the page puts Périgord with the Albret from 1470, so the land came to Foix with the Albret marriage of 1484.",
+     "why": "House of Albret page: 'In 1470, they inherited the County of Périgord and the Viscounty of Limoges'; Jean d'Albret 'became King of Navarre by his marriage with Catherine of Foix ... in 1484'. county-of-perigord /ledger/8: 1481 dissolve to county-of-foix.",
+     "fix": "counterpart 'Lordship of Albret' (merge /ledger/15 into /ledger/16 or keep separate with that counterpart); county-of-perigord's group should move its successor to the Albret (1470). Not blocking on this side.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "found 1236 at confidence 1 (Cliopatria's first shape); the county dates from the mid-11th century (Roger I, d. c.1064); no ruler strip",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_counts_of_Foix"
+    },
+    {
+     "where": "/keyframe_review/8",
+     "what is missing": "1453 shape grows 12,642 -> 16,425 km2 (Bigorre and Haute-Garonne cells), no event",
+     "page to try": "https://en.wikipedia.org/wiki/Gaston_IV,_Count_of_Foix"
+    },
+    {
+     "where": "/keyframe_review/14",
+     "what is missing": "1502 shape loses about 4,000 km2 (Haute-Garonne, Ariège, half of Hautes-Pyrénées), no event; probably the Foix succession dispute with the Narbonne branch",
+     "page to try": "https://en.wikipedia.org/wiki/Gaston_of_Foix,_Duke_of_Nemours"
+    },
+    {
+     "where": "/keyframe_review/3",
+     "what is missing": "Marsan and Gabardan (held by 1364) and Castelbon not dated or drawn",
+     "page to try": "https://en.wikipedia.org/wiki/Gaston_III,_Count_of_Foix"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Roger-Bernard_III,_Count_of_Foix",
+     "result": "confirmed (paréage 8 September 1278)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Roger-Bernard_III,_Count_of_Foix",
+     "result": "confirmed (May 1290); counterpart corrected"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/County_of_Foix",
+     "result": "confirmed (Béarn and Nébouzan from his father-in-law in 1290)"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/County_of_Foix",
+     "result": "confirmed (1447 bought the viscounty of Narbonne)"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/County_of_Foix",
+     "result": "confirmed (1507 exchanged Narbonne with Louis XII for Nemours)"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Navarre",
+     "result": "confirmed (Eleanor reigned 15 days, left the crown to Francis Phoebus)"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/House_of_Albret",
+     "result": "confirmed for 1484 (marriage); page dates the Albret acquisition of Périgord to 1470"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Navarre",
+     "result": "confirmed (18 July 1512 invasion; towns captured by September)"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Henry_II_of_Navarre",
+     "result": "confirmed (Pamplona May 1521, Noain June 1521)"
+    },
+    {
+     "where": "/ledger/23",
+     "page": "https://en.wikipedia.org/wiki/Henry_II_of_Navarre",
+     "result": "confirmed year 1530; region was wrong (fixed)"
+    },
+    {
+     "where": "/ledger/24",
+     "page": "https://en.wikipedia.org/wiki/Henry_II_of_Navarre",
+     "result": "confirmed (died at Hagetmau 24 May 1555; succeeded by Jeanne III and Antoine)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2466,
+    "infobox_year": 1789,
+    "cliopatria_km2": 4585.8,
+    "ratio": 1.86,
+    "acknowledged": true,
+    "note": "No infobox area; body: 'as it existed just before the French Revolution, had a land area of 2,466 km2'. No Cliopatria shape is alive in 1789; compared with the Foix-proper shape of 1236 (keyframe 0 note)."
+   }
+  },
+  {
+   "slug": "county-of-artois",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "dissolve 1332 is Cliopatria's date (c2); the page has Joan III inheriting in 1330 and Artois joining the Duchy of Burgundy in 1384, reverting to Margaret in 1361; the county 1333-1659 is in no written dossier (free-county-of-burgundy 1333-1384 not written yet)",
+     "page to try": "https://en.wikipedia.org/wiki/County_of_Artois"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Robert_I_of_Artois",
+     "result": "confirmed ('on attaining his majority in 1237', will of his father; Count of Artois 1237-1250)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/County_of_Artois",
+     "result": "confirmed (Mahaut's death 1329, Artois to Joan II)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/County_of_Artois",
+     "result": "confirmed (Joan II died 1330, Artois and Franche-Comté to Joan III, married Odo IV 1330)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/County_of_Artois",
+     "result": "not on page (Cliopatria end date, confidence 2, acknowledged in notes)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 4000,
+    "infobox_year": null,
+    "cliopatria_km2": 7566.3,
+    "ratio": 1.89,
+    "acknowledged": true,
+    "note": "No infobox area; body 'around 4,000 square kilometres' (present day). Acknowledged in /keyframe_review/0."
+   }
+  },
+  {
+   "slug": "capetian-house-of-anjou",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1/region",
+     "what": "The 1251 Provence gain used the gazetteer region Provence, which includes Alpes-de-Haute-Provence (26 cells), the Forcalquier land that /ledger/2 gains again in November 1256.",
+     "why": "Charles I of Anjou page: Beatrice of Savoy claimed Forcalquier; in November 1256 'Louis IX persuaded her to return Forcalquier to Charles'.",
+     "fix": "region {minus: [Provence, Alpes-de-Haute-Provence]}.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/4",
+     "what is missing": "what the Angevins held in Piedmont after the Col de Tende defeat (1276); the shape keeps Cuneo/Turin cells to 1374 with no event (Angevin Piedmont was regained in the early 14th century and lost in 1382)",
+     "page to try": "https://en.wikipedia.org/wiki/Cuneo"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "the 42 Drôme/Ardèche cells of the 1260-1271 shape, which the author's own reading of the Provence page assigns to Alphonse of Poitiers's marquisate; kept 'unverified: page budget'",
+     "page to try": "https://en.wikipedia.org/wiki/Marquisate_of_Provence"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "no ruler strip; the Capetian House of Anjou page's ruler table gives Joanna I 20 January 1343 - 12 May 1382",
+     "page to try": "https://en.wikipedia.org/wiki/Capetian_House_of_Anjou"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Capetian_House_of_Anjou",
+     "result": "confirmed ('invested in August 1246 ... as Count of Anjou and Maine')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Charles_I_of_Anjou",
+     "result": "confirmed (Arles first town to surrender, April 1251)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Charles_I_of_Anjou",
+     "result": "confirmed (Forcalquier returned, November 1256)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Charles_I_of_Anjou",
+     "result": "confirmed (Cuneo sought protection July 1259)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Charles_I_of_Anjou",
+     "result": "confirmed (early 1276, Col de Tende)"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Capetian_House_of_Anjou",
+     "result": "confirmed (Joanna I reign ends 12 May 1382; left the county to Louis I of Valois-Anjou)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 59625.8,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Dynasty article and Provence page have no area (confirmed on the dynasty page); nothing to compare."
+   }
+  },
+  {
+   "slug": "dauphine",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/identity/rulers",
+     "what": "The ruler strip had a gap 1307-1318 ('no dauphin listed' in the notes), but the page lists John II.",
+     "why": "Dauphin of Viennois page: John II 'Baron of La Tour du Pin, Dauphin of Viennois, ruled 1307–1318'.",
+     "fix": "insert John II 1307-1318 with that source.",
+     "applied": true
+    },
+    {
+     "where": "/identity/rulers/0/from",
+     "what": "Guigues VII started in 1237, before the dossier's start (1260); rulers must lie inside the life.",
+     "why": "identity.start 1260.",
+     "fix": "from 1260, note 'reigned from 1237'.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/3",
+     "what": "Dissolve in 1351 (c1, Cliopatria date) while kingdom-of-france gains the Dauphiné in 1349 (c3) and kingdom-of-arles loses it to France in 1349: two-year overlap.",
+     "why": "Humbert II page: relinquished 'his lands and titles on 16 July' 1349; Dauphiné page: sold in 1349, autonomy kept 'only until 1457'.",
+     "fix": "Either end the dossier on 16 July 1349 (dissolve at confidence 3 from the Humbert II page, matching kingdom-of-france /ledger/38) or keep the Dauphiné as a distinct polity and ask the kingdom-of-france author to move the gain; the orchestrator should pick one. Not blocking: the author flagged it.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "found 1260 at confidence 1 (Cliopatria start); the Dauphins ruled from the 12th century",
+     "page to try": "https://en.wikipedia.org/wiki/Dauphin_of_Viennois"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "dissolve 1351 at confidence 1; see the fix on the same pointer",
+     "page to try": "https://en.wikipedia.org/wiki/Dauphin%C3%A9"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "whether the Gapençais was held 1269-1349 (John I's titles omit Gap; the Dauphiné page says Humbert's Gapençais title passed to France in 1349); corrections add the whole Hautes-Alpes",
+     "page to try": "https://en.wikipedia.org/wiki/Gap,_Hautes-Alpes"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Faucigny",
+     "result": "confirmed ('Their daughter, Béatrix, inherited the province in 1268'; married Guigues VII)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Humbert_II_of_Viennois",
+     "result": "confirmed (16 July 1349; 'a distinctive feudal polity, not integrated into the French realm' - the author's quote says 'incorporated')"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Dauphin_of_Viennois",
+     "result": "confirmed for the land (Guigues VII 1237-1269, Count of Briançon, Embrun and Gap); the 1260 date is Cliopatria's (c1)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Dauphin%C3%A9",
+     "result": "not on page (page: 1349 sale, 1457 full integration); confidence 1 acknowledged"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 9104.7,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the Dauphiné page (checked); the corrections make the shape about 1.6 times Cliopatria's, acknowledged in notes and report."
+   }
+  },
+  {
+   "slug": "principality-of-orange",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/3/region",
+     "what": "The 1672-1713 contest used the 1260 shape (234 km2), which reaches outside the 1564 shape (140.5 km2) drawn for 1564-1713; same in /ledger/4/region and /wars/0/zones/0.",
+     "why": "shapes.csv: principality-of-orange_1260 234.2 km2, _1564 140.5 km2; Principality of Orange page: the principality was captured in 1672 and again in August 1682.",
+     "fix": "cliopatria year 1564 in all three.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "the 1272 shrink from 234 to 140.5 km2 and Cliopatria's 1571 end are unexplained (one page of the 5-page budget unused)",
+     "page to try": "https://en.wikipedia.org/wiki/Orange,_Vaucluse"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Orange",
+     "result": "confirmed (principality status 1163, Frederick I)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Prince_of_Orange",
+     "result": "confirmed ('Baux, in 1173, and of Chalons, in 1393'); the House of Baux page's 1417 is flagged in notes"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Orange",
+     "result": "confirmed (William the Silent inherited 1544)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Orange",
+     "result": "confirmed (captured 1672 and August 1682; 1702 enfeoffed to Conti)"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Orange",
+     "result": "confirmed (ceded to France, Treaty of Utrecht, 1713); Prince of Orange page names both Frederick I and Frederick William I, as the notes say"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 280,
+    "infobox_year": null,
+    "cliopatria_km2": 140.5,
+    "ratio": 0.5,
+    "acknowledged": true,
+    "note": "Infobox 280 km2 (no year), body 180 km2; Cliopatria 234 km2 (1260-1271) and 140.5 km2 (1272-1571). Ratio 0.50 at the factor-of-two edge, acknowledged in /keyframe_review/2."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1278,
+    "type": "gain",
+    "counterpart": "Bishop of Urgell"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Andorra paréage; co-principality-of-andorra listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1290,
+    "type": "gain",
+    "counterpart": "Viscounty of Béarn (was county-of-bearn)"
+   },
+   "mirror": {
+    "slug": "county-of-bearn",
+    "year": 1347,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "county-of-bearn starts in 1347 and draws Béarn (Pau area) 1347-1555 while Foix holds Béarn from 1290 (Cliopatria 1294 shape): Béarn double-drawn 1347-1555. Flagged by the author; orchestrator must reconcile county-of-foix, county-of-bearn and house-of-bourbon. Counterpart changed by reviewer."
+  },
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1290,
+    "type": "gain",
+    "counterpart": "Nébouzan (father-in-law's lordship)"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "inheritance; no polity dossier expected."
+  },
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1379,
+    "type": "gain",
+    "counterpart": "County of Comminges"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "county-of-comminges listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1379,
+    "type": "gain",
+    "counterpart": "Bigorre (the communities of Bigorre)"
+   },
+   "mirror": {
+    "slug": "county-of-bearn",
+    "year": 1379,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "county-of-bearn /ledger/1 records the same Bigorre gain (and the 1390 loss and 1407 gain): both dossiers draw Bigorre 1379-1390 and from 1407."
+  },
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1390,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "kingdom-of-france has no 1390 gain of Bigorre."
+  },
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1407,
+    "type": "gain",
+    "counterpart": "county-of-armagnac"
+   },
+   "mirror": {
+    "slug": "county-of-armagnac",
+    "year": 1407,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Armagnac /ledger/11 at confidence 1."
+  },
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1447,
+    "type": "gain",
+    "counterpart": "Viscounty of Narbonne"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "viscounty-of-narbonne listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1479,
+    "type": "gain",
+    "counterpart": "kingdom-of-navarre"
+   },
+   "mirror": {
+    "slug": "kingdom-of-navarre",
+    "year": 1479,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "Navarre records a dynastic rename and keeps Navarre 1463-1511: Navarra (33 cells) double-drawn 1479/1482-1511. Unflagged by the author. Orchestrator: decide whether Foix or kingdom-of-navarre draws Navarre during the personal union (kingdom-of-france /ledger/100 gains Lower Navarre from kingdom-of-navarre in 1620)."
+  },
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1484,
+    "type": "gain",
+    "counterpart": "county-of-perigord"
+   },
+   "mirror": {
+    "slug": "county-of-perigord",
+    "year": 1481,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "3 years apart; House of Albret page: Albret inherited Périgord in 1470, joined to Foix by the 1484 marriage. Counterpart should be the Lordship of Albret."
+  },
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1484,
+    "type": "gain",
+    "counterpart": "Lordship of Albret"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "lordship-of-albret listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1507,
+    "type": "loss",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "kingdom-of-france has no 1507 gain of Narbonne."
+  },
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1512,
+    "type": "loss",
+    "counterpart": "crown-of-castile"
+   },
+   "mirror": {
+    "slug": "kingdom-of-navarre",
+    "year": 1512,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "crown-of-castile not written (eu-12); kingdom-of-navarre /ledger/18 records the same 1512 loss of Upper Navarre to Castile: the loss is counted twice."
+  },
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1530,
+    "type": "gain",
+    "counterpart": "kingdom-of-spain"
+   },
+   "mirror": {
+    "slug": "kingdom-of-navarre",
+    "year": 1527,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "kingdom-of-spain not written (eu-12). kingdom-of-navarre regains Lower Navarre from crown-of-castile in 1527 (after a 1525 loss); Foix gains it in 1530 (Henry II page). Both dossiers hold Lower Navarre to 1555."
+  },
+  {
+   "event": {
+    "slug": "county-of-foix",
+    "year": 1555,
+    "type": "dissolve",
+    "counterpart": "house-of-bourbon"
+   },
+   "mirror": {
+    "slug": "house-of-bourbon",
+    "year": 1555,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "house-of-bourbon /ledger/14."
+  },
+  {
+   "event": {
+    "slug": "county-of-artois",
+    "year": 1237,
+    "type": "found",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1237,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "kingdom-of-france /ledger/22."
+  },
+  {
+   "event": {
+    "slug": "county-of-artois",
+    "year": 1332,
+    "type": "dissolve",
+    "counterpart": "free-county-of-burgundy"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "free-county-of-burgundy (Cliopatria row 1333-1384) not written yet."
+  },
+  {
+   "event": {
+    "slug": "capetian-house-of-anjou",
+    "year": 1246,
+    "type": "found",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1250,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "4 years apart: kingdom-of-france /ledger/25 dates the loss of Anjou, Maine (and Touraine) to 1250 at confidence 1 from the shape; the dynasty page gives August 1246. France's side should move."
+  },
+  {
+   "event": {
+    "slug": "capetian-house-of-anjou",
+    "year": 1251,
+    "type": "gain",
+    "counterpart": "County of Provence"
+   },
+   "mirror": {
+    "slug": "kingdom-of-arles",
+    "year": 1246,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "kingdom-of-arles loses Provence in 1246 to county-of-provence (no dossier). The author lists county-of-provence for 1246-1487, which would double-draw Provence with this dossier and house-of-valois-anjou; it should end at 1246 (pre-Angevin county)."
+  },
+  {
+   "event": {
+    "slug": "capetian-house-of-anjou",
+    "year": 1256,
+    "type": "gain",
+    "counterpart": "Dowager countess of Provence"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "a person's claim; no dossier."
+  },
+  {
+   "event": {
+    "slug": "capetian-house-of-anjou",
+    "year": 1257,
+    "type": "gain",
+    "counterpart": "Marseille (the viscounty and commune)"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "commune; no dossier."
+  },
+  {
+   "event": {
+    "slug": "capetian-house-of-anjou",
+    "year": 1259,
+    "type": "gain",
+    "counterpart": "Communes of Piedmont"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "communes; no dossier."
+  },
+  {
+   "event": {
+    "slug": "capetian-house-of-anjou",
+    "year": 1276,
+    "type": "loss",
+    "counterpart": "Ghibelline League"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "league; no dossier."
+  },
+  {
+   "event": {
+    "slug": "capetian-house-of-anjou",
+    "year": 1290,
+    "type": "loss",
+    "counterpart": "county-of-anjou"
+   },
+   "mirror": {
+    "slug": "county-of-anjou",
+    "year": 1290,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "county-of-anjou /ledger/12. But kingdom-of-france /ledger/32 gains Anjou and Maine 'from capetian-house-of-anjou' in 1322: wrong counterpart on France's side (should be county-of-anjou)."
+  },
+  {
+   "event": {
+    "slug": "capetian-house-of-anjou",
+    "year": 1382,
+    "type": "dissolve",
+    "counterpart": "house-of-valois-anjou"
+   },
+   "mirror": {
+    "slug": "house-of-valois-anjou",
+    "year": 1382,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "house-of-valois-anjou /ledger/3."
+  },
+  {
+   "event": {
+    "slug": "dauphine",
+    "year": 1268,
+    "type": "gain",
+    "counterpart": "county-of-savoy"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "county-of-savoy not written (eu-13 not run)."
+  },
+  {
+   "event": {
+    "slug": "dauphine",
+    "year": 1351,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1349,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "2 years apart; kingdom-of-france /ledger/38 (c3) and kingdom-of-arles /ledger/7 use 1349."
+  },
+  {
+   "event": {
+    "slug": "principality-of-orange",
+    "year": 1713,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1713,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "kingdom-of-france /ledger/159."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Nébouzan",
+   "kind": "region",
+   "used_in": "county-of-foix"
+  },
+  {
+   "name": "Faucigny",
+   "kind": "region",
+   "used_in": "dauphine"
+  },
+  {
+   "name": "Lower Navarre",
+   "kind": "region",
+   "used_in": "county-of-foix"
+  },
+  {
+   "name": "Orange (France)",
+   "kind": "place",
+   "used_in": "principality-of-orange"
+  },
+  {
+   "name": "Saint-Jean-Pied-de-Port",
+   "kind": "place",
+   "used_in": "kingdom-of-navarre"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "County of Comminges",
+   "suggested_slug": "county-of-comminges",
+   "years": [
+    1375,
+    1379
+   ]
+  },
+  {
+   "name": "County of Bigorre",
+   "suggested_slug": "county-of-bigorre",
+   "years": [
+    1194,
+    1607
+   ]
+  },
+  {
+   "name": "Viscounty of Narbonne",
+   "suggested_slug": "viscounty-of-narbonne",
+   "years": [
+    1447,
+    1507
+   ]
+  },
+  {
+   "name": "Lordship of Albret",
+   "suggested_slug": "lordship-of-albret",
+   "years": [
+    1358,
+    1550
+   ]
+  },
+  {
+   "name": "County of Provence (pre-Angevin, to 1246; the author's 1246-1487 would overlap capetian-house-of-anjou and house-of-valois-anjou)",
+   "suggested_slug": "county-of-provence",
+   "years": [
+    1112,
+    1246
+   ]
+  },
+  {
+   "name": "Viscounty of Béarn before 1290 (or extend county-of-bearn back)",
+   "suggested_slug": "viscounty-of-bearn",
+   "years": [
+    1000,
+    1290
+   ]
+  },
+  {
+   "name": "Barony of Faucigny",
+   "suggested_slug": "barony-of-faucigny",
+   "years": [
+    1253,
+    1355
+   ]
+  },
+  {
+   "name": "Co-principality of Andorra",
+   "suggested_slug": "co-principality-of-andorra",
+   "years": [
+    1278,
+    1815
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-10-g.md",
+ "problems": [
+  "Navarre is double-drawn: county-of-foix (Cliopatria's Foix-Navarre-Albret composite) holds Upper Navarre 1479/1482-1511 and Lower Navarre 1530-1555 while kingdom-of-navarre (eu-12) holds Navarre 1463-1511 and Lower Navarre 1512-1620; both record the 1512 loss to Castile. The orchestrator must assign Navarre during the Foix-Albret personal union to one dossier.",
+  "Béarn and Bigorre are double-drawn by county-of-foix (from 1290/1294) and county-of-bearn (1347-1555, with the same 1379, 1390 and 1407 Bigorre events); flagged by the author; needs one decision across county-of-foix, county-of-bearn and house-of-bourbon.",
+  "kingdom-of-france (eu-10) lacks mirrors for Foix's 1390 Bigorre loss and 1507 Narbonne loss, dates the Anjou appanage to 1250 (c1) instead of 1246, and names capetian-house-of-anjou instead of county-of-anjou for its 1322 gain of Anjou and Maine.",
+  "kingdom-of-navarre.json was malformed JSON on first read (another agent writing it at about 11:09); re-read later and valid. It uses place 'Saint-Jean-Pied-de-Port', which the gazetteer cannot resolve.",
+  "WebFetch answers through a summariser; spot-check quotes are as the tool returned them."
+ ]
+}

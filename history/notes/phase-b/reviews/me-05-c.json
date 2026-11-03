@@ -1,0 +1,1293 @@
+{
+ "batch_id": "me-05-c",
+ "verdicts": [
+  {
+   "slug": "seleucid-empire",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/31 (was /ledger/29)",
+     "what": "vassal_start atropatene dated 223; the quoted sentence 'In 223 BCE, Antiochus III attacked Atropatene' is not on the page.",
+     "why": "Atropatene page: 'In 223 BCE, Antiochus III came to power in the Seleucid Empire...' (accession), then 'Antiochus attacked Atropatene, resulting in a victory' with no year; infobox map caption 'Atropatene as a vassal of Seleucids in 221 BC'; Antiochus III page puts 'The submission of Lesser Media' after the 221 collapse of Molon's revolt.",
+     "fix": "Year -221, moved after the -221 gain from revolt-of-molon; note rewritten; notes and sources[14] note updated.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/29, /ledger/30, /ledger/63, /ledger/72",
+     "what": "Regions use the gazetteer's 'Media', which includes 273 cells of Atropatene, independent in 222-221 and a Parthian vassal later; the gains of 221 (Molon), 160 (Timarchus) and 130 (Antiochus VII) drew Atropatene as Seleucid land.",
+     "why": "Antiochus III page: 'Lesser Media, which had asserted its independence under Artabazanes'; Mithridates I page lists 'Media and Atropatene' separately; the dossier's own -164 correction subtracts Atropatene. Cells: Media 674, Media and Atropatene -223 overlap 273.",
+     "fix": "Each positive Media node wrapped as {minus: [Media, Atropatene -223 (221-222 events) or -170 (160, 130)]}; resolved: 0 Atropatene cells left.",
+     "applied": true
+    },
+    {
+     "where": "/ledger (new event after /ledger/49)",
+     "what": "BLOCKING: no loss to rhodes at Apamea, although rhodes.json carries 'gain -188 from seleucid-empire' (c3) for Caria and Lycia south of the Maeander.",
+     "why": "rhodes.json gain region (Rhodes -188 minus the island) is 81 cells, 54 of them inside Seleucid -197 minus -188 and covered by no Seleucid 188 loss (overlap with /ledger/48, /ledger/49, /ledger/50 is 0). Antiochus III page: Apamea land went to 'Rhodes or the Attalid ruler Eumenes II'; Roman-Seleucid war page (the dossier's source) names Rhodes for Lycia and Caria.",
+     "fix": "Add {year -188, type loss, counterpart 'rhodes', region {intersect: [{minus: [Seleucid -197, Seleucid -188]}, {minus: [{cliopatria: 'Rhodes', year: -188}, {region: 'Rhodes'}]}]}, source Roman-Seleucid war page, confidence 2 or 3}.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/49",
+     "what": "Note says 'Rhodes receives Lycia and Caria' but the region is the Greek City-States -188 cells (184), none of which are Rhodes' gain; greek-city-states has no mirror gain.",
+     "why": "Cell overlap with rhodes.json -188 gain region: 0. greek-city-states ledger: no event at -192..-186.",
+     "fix": "Rewrite the note as the Greek cities freed or handed to Rome's allies at Apamea (or drop the event if the Cliopatria Greek City-States cells are not freed cities) and list the missing greek-city-states gain for eu-01.",
+     "applied": false
+    },
+    {
+     "where": "/wars/12 (Roman-Seleucid war)",
+     "what": "The war has a zone (Asia Minor west of the Taurus) but no contest_start/contest_end in the ledger, so no fighting zone is drawn for 190-188 (Magnesia).",
+     "why": "Atropatene page: 'in 190 B.C. ... the battle of Magnesia'; schema: the zone is drawn from contest events.",
+     "fix": "Add contest_start -190 and contest_end -188, counterpart roman-republic, region = the war's zone.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1, /ledger/2, /ledger/71, /ledger/74",
+     "what": "Contest zones 'Media' include Atropatene (273 cells), drawing fighting over a state that was not a belligerent.",
+     "why": "Same overlap as the applied region fix.",
+     "fix": "Clip Media with minus Atropatene as in /ledger/30.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/79",
+     "what": "The quote 'at the invitation of one of the factions in the interminable civil wars, he invaded Syria' is not on the cited Tigranes page (year and land are).",
+     "why": "Tigranes the Great page: 'the Syrians decided to choose Tigranes as the protector of their kingdom and offered him the crown of Syria' (83 BC); 'He then conquered Phoenicia and Cilicia, effectively putting an end to the last remnants of the Seleucid Empire'.",
+     "fix": "Quote the Tigranes page's own words, or cite the page the phrase comes from.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/45 note and notes",
+     "what": "Says the Syrian Wars page puts Panium in 200; that page gives no year for Panium.",
+     "why": "Syrian Wars page: 'he delivered a crushing blow to the Ptolemies at the Battle of Panium' (no year); Antiochus III page: 'in 198 BC Antiochus defeated Scopas at the Battle of Panium'.",
+     "fix": "Correct the disagreement note.",
+     "applied": false
+    },
+    {
+     "where": "/identity/capitals/2",
+     "what": "Antioch is the capital to -64, but Tigranes held it 83-69 ('Magadates was appointed as his governor in Antioch').",
+     "why": "Tigranes the Great page.",
+     "fix": "Split the span or note the 83-69 gap.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/25",
+     "what is missing": "Area 1,924,786 km2 for 188-171 vs infobox 800,000 km2 for 175 BC (ratio 2.41), marked 'unverified: page budget'. The outline keeps Aria (198 of 203 cells) although the Mithridates I page has him conquer 'Aria, Margiana and western Bactria from the Greco-Bactrians sometime in 163-155 BC'; Persis (620 cells) and Carmania (691) are unbounded by any page.",
+     "page to try": "https://en.wikipedia.org/wiki/Frataraka"
+    },
+    {
+     "where": "/keyframe_review/28",
+     "what is missing": "Susiana (247 cells) is in the -164 shape and not in the -144 shape; no ledger event takes it (Elymais not mapped).",
+     "page to try": "https://en.wikipedia.org/wiki/Elymais"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "294 Cilicia from Pleistarchus, confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Pleistarchus"
+    },
+    {
+     "where": "/ledger/11-14",
+     "what is missing": "279 losses to Galatia, Bithynia, Pergamon, Pontus, confidence 1 (Cliopatria's year).",
+     "page to try": "https://en.wikipedia.org/wiki/Antiochus_I_Soter"
+    },
+    {
+     "where": "/ledger/26, /ledger/50",
+     "what is missing": "239 and 188 Cappadocia, confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Ariarathes_III_of_Cappadocia"
+    },
+    {
+     "where": "/ledger/28",
+     "what is missing": "225 Attalid gains, confidence 1 (War of the Brothers page failed).",
+     "page to try": "https://en.wikipedia.org/wiki/Attalus_I"
+    },
+    {
+     "where": "/ledger/51",
+     "what is missing": "188 end of Armenian vassalage, confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Artaxias_I"
+    },
+    {
+     "where": "/ledger/61",
+     "what is missing": "164 east (Persis, Carmania, Aria) to Parthia, confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Frataraka"
+    },
+    {
+     "where": "/ledger/62",
+     "what is missing": "161 start of Timarchus's revolt, confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Timarchus"
+    },
+    {
+     "where": "/ledger/75, /ledger/76",
+     "what is missing": "129 Judea vassal_end and 126 Hasmonean gains, confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/John_Hyrcanus"
+    },
+    {
+     "where": "/ledger/77",
+     "what is missing": "110 Euphrates land to Parthia (487 cells), confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Mithridates_II_of_Parthia"
+    },
+    {
+     "where": "/ledger/78",
+     "what is missing": "91 Judea gains, confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Alexander_Jannaeus"
+    },
+    {
+     "where": "/ledger/81",
+     "what is missing": "66 Nabataean gain, confidence 1 (Aretas III held Damascus in the 80s-70s).",
+     "page to try": "https://en.wikipedia.org/wiki/Aretas_III"
+    },
+    {
+     "where": "/keyframe_review/29-31",
+     "what is missing": "Losses of Cilicia, Phoenicia and Coele-Syria in the dynastic wars 129-83 are not mapped (author's gap).",
+     "page to try": "https://en.wikipedia.org/wiki/Seleucid_Dynastic_Wars"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "Ruler strip omitted (page budget).",
+     "page to try": "https://en.wikipedia.org/wiki/Seleucid_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Seleucid_Empire",
+     "result": "confirmed (Ipsus 301; 'Seleucus took control over eastern Anatolia and northern Syria')"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Syrian_Wars",
+     "result": "confirmed ('Ptolemy reconquered these territories by 271 BC ... Caria and into most of Cilicia')"
+    },
+    {
+     "where": "/ledger/46",
+     "page": "https://en.wikipedia.org/wiki/Syrian_Wars",
+     "result": "confirmed ('completed the subjugation of Coele-Syria in 198 BC'; treaty 195)"
+    },
+    {
+     "where": "/ledger/54",
+     "page": "https://en.wikipedia.org/wiki/Syrian_Wars",
+     "result": "confirmed (Pelusium November 170; withdrew late 169; evacuation of Egypt and Cyprus 168)"
+    },
+    {
+     "where": "/ledger/64",
+     "page": "https://en.wikipedia.org/wiki/Mithridates_I_of_Parthia",
+     "result": "confirmed ('conquering Media and Atropatene in 148/7 BC')"
+    },
+    {
+     "where": "/ledger/67",
+     "page": "https://en.wikipedia.org/wiki/Mithridates_I_of_Parthia",
+     "result": "confirmed ('In 141 BC, he conquered Babylonia')"
+    },
+    {
+     "where": "/ledger/65",
+     "page": "https://en.wikipedia.org/wiki/Seleucid_Empire",
+     "result": "confirmed ('By 143 BC ... fully established their independence')"
+    },
+    {
+     "where": "/ledger/73",
+     "page": "https://en.wikipedia.org/wiki/Seleucid_Empire",
+     "result": "confirmed (killed at Ecbatana 129)"
+    },
+    {
+     "where": "/ledger/79",
+     "page": "https://en.wikipedia.org/wiki/Tigranes_the_Great",
+     "result": "confirmed (83, Phoenicia and Cilicia); quoted phrase not on this page"
+    },
+    {
+     "where": "/ledger/31 (was 29)",
+     "page": "https://en.wikipedia.org/wiki/Atropatene",
+     "result": "mis-dated (223 is Antiochus III's accession; infobox map 221) - fixed"
+    },
+    {
+     "where": "/ledger/41",
+     "page": "https://en.wikipedia.org/wiki/Antiochus_III_the_Great",
+     "result": "confirmed (siege of Xerxes of Sophene 212; the page names Sophene, not Armenia: confidence 2 is right)"
+    },
+    {
+     "where": "/ledger/48",
+     "page": "https://en.wikipedia.org/wiki/Antiochus_III_the_Great",
+     "result": "confirmed (Apamea 188, 'all the country north and west of the Taurus Mountains')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 800000,
+    "infobox_year": -175,
+    "cliopatria_km2": 1924785.8,
+    "ratio": 2.41,
+    "acknowledged": true,
+    "note": "/keyframe_review/25 acknowledges the ratio and leaves it 'unverified: page budget'; other infobox years agree (301: 3.9M vs 2.98M; 240: 2.6M vs 2.27M; 100: 100k vs 91.7k)."
+   }
+  },
+  {
+   "slug": "atropatene",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1, /ledger/2, /wars/0, /keyframe_review/4",
+     "what": "Antiochus III's attack and Artabazanes' submission dated 223 on a misquote ('In 223 BCE, Antiochus III attacked Atropatene').",
+     "why": "Atropatene page: 'In 223 BCE, Antiochus III came to power in the Seleucid Empire...'; the attack sentence has no year; infobox map 'Atropatene as a vassal of Seleucids in 221 BC'; Antiochus III page puts the submission after 221.",
+     "fix": "Years -221 in both contest events and the war; notes and keyframe note updated.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (88-85 BC)",
+     "what is missing": "Tigranes of Armenia 'retook Adiabene, Gordyene, and Media Atropatene' between 88 and 85 BC; no event (vassal tint belongs to kingdom-of-armenia, eu-19, but any land loss belongs here).",
+     "page to try": "https://en.wikipedia.org/wiki/Tigranes_the_Great"
+    },
+    {
+     "where": "/ledger (189-160 BC)",
+     "what is missing": "Artaxias I's Armenian conquests on the Atropatene border (Caspiane, Phaunitis) are not checked.",
+     "page to try": "https://en.wikipedia.org/wiki/Artaxias_I"
+    },
+    {
+     "where": "/ledger (36-20 BC)",
+     "what is missing": "Atropatene's alliance with Antony, Artavasdes I and Ariobarzanes II (in Rome c. 30-20 BC) and any land given or taken; the page gives no border move.",
+     "page to try": "https://en.wikipedia.org/wiki/Artavasdes_I_of_Media_Atropatene"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "323-308 overlap with macedonian-empire's shapes (579 of 582 cells) with no loss or vassal tint on the Macedonian side; independence date undated on both pages.",
+     "page to try": "https://en.wikipedia.org/wiki/Atropates"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Atropatene",
+     "result": "confirmed (infobox 'Established: c. 323 BC')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Atropatene",
+     "result": "mis-dated (223 for 221) - fixed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Mithridates_I_of_Parthia",
+     "result": "confirmed ('Media and Atropatene in 148/7 BC')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Atropatene",
+     "result": "confirmed (Atropatid table ends with Artavasdes II r. 4-6; Arsacids from Artabanus)"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Atropatene",
+     "result": "confirmed ('In 226, Atropatene submitted with little resistance to Ardashir I')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 147253.2,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No area on the Atropatene page (checked); the author says so."
+   }
+  },
+  {
+   "slug": "revolt-of-molon",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/0-2, /keyframe_review/0/correction, /identity/predecessors/0/land, /identity/successors/0/land, /wars/0/zones",
+     "what": "'Media' drew the rebel domain over independent Atropatene (273 cells).",
+     "why": "Antiochus III page: 'Lesser Media, which had asserted its independence under Artabazanes'; its submission followed the revolt.",
+     "fix": "Every Media node wrapped as {minus: [Media, Atropatene -223]}; the domain resolves to 1,021 cells, all inside the Seleucid -223 shape; note added to notes.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1, /ledger/2, /identity/end",
+     "what is missing": "The Molon page says he 'made himself master of the city of Seleucia on the Tigris together with the whole of Babylonia and Mesopotamia' and died in 220 BC (Antiochus crossed the Tigris in 220; infobox death '220 BC Mesopotamia'), against the Antiochus III page's 'collapsed' in 221. Add the Babylonian/Mesopotamian gain from seleucid-empire (with the Seleucid mirror loss) and decide the end year (220 per the dedicated page), noting the disagreement.",
+     "page to try": "https://en.wikipedia.org/wiki/Molon"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Antiochus_III_the_Great",
+     "result": "confirmed (Media and Persis revolted, 222)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Antiochus_III_the_Great",
+     "result": "confirmed on the cited page (collapsed 221); the Molon page gives 220"
+    },
+    {
+     "where": "/ledger/0 (region)",
+     "page": "https://en.wikipedia.org/wiki/Molon",
+     "result": "confirmed for Media (revolt 222); page adds Babylonia and Mesopotamia"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No Cliopatria row and no infobox area."
+   }
+  },
+  {
+   "slug": "kingdom-of-achaeus",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/0/correction, /ledger/0, /identity/predecessors/0/land",
+     "what is missing": "Extent: the Achaeus page gives him 'the command of all Asia Minor on the western side of Mount Taurus' and 'the whole of Asia on the western side of the Taurus'; the region is only Lydia, Phrygia, Ionia and Caria (161 of the 694 Seleucid cells west of the Taurus: Lycaonia 130, Pisidia 56, Mysia 46, Pamphylia 39 left out). Widen to Seleucid -218 minus Seleucid -188 (less Cilicia if Antiochus held it) and mirror it in seleucid-empire /ledger/32, /ledger/37, /ledger/38.",
+     "page to try": "https://en.wikipedia.org/wiki/Achaeus_(general)"
+    },
+    {
+     "where": "/ledger/3-5",
+     "what is missing": "Page disagreement not noted: the Achaeus page has the citadel fall in 214 ('After sustaining a siege of two years'; infobox death 214 BC at Sardes) against 213 (Antiochus III page, under Laodice); and he declared himself king 'in Phrygia'.",
+     "page to try": "https://en.wikipedia.org/wiki/Achaeus_(general)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Antiochus_III_the_Great",
+     "result": "confirmed (title of king in Asia Minor, 220 section; Achaeus page: 'proclaimed himself king in 220 BC')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Antiochus_III_the_Great",
+     "result": "confirmed (216 march into western Anatolia)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Antiochus_III_the_Great",
+     "result": "confirmed ('by 214 BC driven him from the field into Sardis')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Antiochus_III_the_Great",
+     "result": "confirmed on the cited page ('held out until 213 BC'); Achaeus page says 214"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No Cliopatria row and no infobox area."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -309,
+    "type": "gain",
+    "counterpart": "macedonian-empire",
+    "where": "/ledger/3"
+   },
+   "mirror": {
+    "slug": "macedonian-empire",
+    "year": -309,
+    "type": "loss",
+    "where": "/ledger/58"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -303,
+    "type": "loss",
+    "counterpart": "maurya-empire",
+    "where": "/ledger/7"
+   },
+   "mirror": {
+    "slug": "maurya-empire",
+    "year": -302,
+    "type": "gain",
+    "where": "/ledger/7"
+   },
+   "status": "matched",
+   "note": "one year apart"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -301,
+    "type": "gain",
+    "counterpart": "antigonid-dynasty",
+    "where": "/ledger/8"
+   },
+   "mirror": {
+    "slug": "antigonid-dynasty",
+    "year": -301,
+    "type": "loss",
+    "where": "/ledger/7"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -294,
+    "type": "gain",
+    "counterpart": "Pleistarchus (Cilicia)",
+    "where": "/ledger/9"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: listed in counterparts_needing_dossiers (pleistarchus-cilicia)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -281,
+    "type": "gain",
+    "counterpart": "kingdom-of-lysimachus",
+    "where": "/ledger/10"
+   },
+   "mirror": {
+    "slug": "kingdom-of-lysimachus",
+    "year": -281,
+    "type": "loss",
+    "where": "/ledger/22"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -279,
+    "type": "loss",
+    "counterpart": "galatia",
+    "where": "/ledger/11"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -279,
+    "type": "loss",
+    "counterpart": "kingdom-of-bithynia",
+    "where": "/ledger/12"
+   },
+   "mirror": {
+    "slug": "kingdom-of-bithynia",
+    "year": -279,
+    "type": "gain",
+    "where": "/ledger/2"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -279,
+    "type": "loss",
+    "counterpart": "kingdom-of-pergamon",
+    "where": "/ledger/13"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -279,
+    "type": "loss",
+    "counterpart": "kingdom-of-pontus",
+    "where": "/ledger/14"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -271,
+    "type": "loss",
+    "counterpart": "ptolemaic-kingdom",
+    "where": "/ledger/17"
+   },
+   "mirror": {
+    "slug": "ptolemaic-kingdom",
+    "year": -271,
+    "type": "gain",
+    "where": "/ledger/29"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -253,
+    "type": "gain",
+    "counterpart": "ptolemaic-kingdom",
+    "where": "/ledger/20"
+   },
+   "mirror": {
+    "slug": "ptolemaic-kingdom",
+    "year": -253,
+    "type": "loss",
+    "where": "/ledger/32"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -245,
+    "type": "loss",
+    "counterpart": "greco-bactrian-kingdom",
+    "where": "/ledger/22"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -241,
+    "type": "loss",
+    "counterpart": "ptolemaic-kingdom",
+    "where": "/ledger/24"
+   },
+   "mirror": {
+    "slug": "ptolemaic-kingdom",
+    "year": -241,
+    "type": "gain",
+    "where": "/ledger/37"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -239,
+    "type": "loss",
+    "counterpart": "kingdom-of-cappadocia",
+    "where": "/ledger/26"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -238,
+    "type": "loss",
+    "counterpart": "parthian-empire",
+    "where": "/ledger/27"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-06 (not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -225,
+    "type": "loss",
+    "counterpart": "kingdom-of-pergamon",
+    "where": "/ledger/28"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -222,
+    "type": "loss",
+    "counterpart": "revolt-of-molon",
+    "where": "/ledger/29"
+   },
+   "mirror": {
+    "slug": "revolt-of-molon",
+    "year": -222,
+    "type": "found",
+    "where": "/ledger/0"
+   },
+   "status": "matched",
+   "note": "found event of the rebel state mirrors the loss"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -221,
+    "type": "gain",
+    "counterpart": "revolt-of-molon",
+    "where": "/ledger/30"
+   },
+   "mirror": {
+    "slug": "revolt-of-molon",
+    "year": -221,
+    "type": "loss",
+    "where": "/ledger/1"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -221,
+    "type": "vassal_start",
+    "counterpart": "atropatene",
+    "where": "/ledger/31"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "schema: the overlord records vassal_start/vassal_end with the vassal as counterpart; no mirror is required in the vassal's ledger; atropatene carries the matching contest_start/contest_end -221"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -220,
+    "type": "loss",
+    "counterpart": "kingdom-of-achaeus",
+    "where": "/ledger/32"
+   },
+   "mirror": {
+    "slug": "kingdom-of-achaeus",
+    "year": -220,
+    "type": "found",
+    "where": "/ledger/0"
+   },
+   "status": "matched",
+   "note": "found event of the rebel state mirrors the loss"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -219,
+    "type": "gain",
+    "counterpart": "ptolemaic-kingdom",
+    "where": "/ledger/34"
+   },
+   "mirror": {
+    "slug": "ptolemaic-kingdom",
+    "year": -219,
+    "type": "loss",
+    "where": "/ledger/39"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -217,
+    "type": "loss",
+    "counterpart": "ptolemaic-kingdom",
+    "where": "/ledger/36"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "ptolemaic-kingdom has only contest_end -217 (Raphia); it needs gain -217 from seleucid-empire for the Phoenician/Coele-Syrian land Antiochus took in 219 (it carries the 219 loss). Route to the ptolemaic-kingdom author (me-05)."
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -214,
+    "type": "gain",
+    "counterpart": "kingdom-of-achaeus",
+    "where": "/ledger/38"
+   },
+   "mirror": {
+    "slug": "kingdom-of-achaeus",
+    "year": -214,
+    "type": "loss",
+    "where": "/ledger/2"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -213,
+    "type": "gain",
+    "counterpart": "kingdom-of-achaeus",
+    "where": "/ledger/40"
+   },
+   "mirror": {
+    "slug": "kingdom-of-achaeus",
+    "year": -213,
+    "type": "loss",
+    "where": "/ledger/4"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -212,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-armenia",
+    "where": "/ledger/41"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "schema: the overlord records vassal_start/vassal_end with the vassal as counterpart; no mirror is required in the vassal's ledger; vassal dossier eu-19 (not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -209,
+    "type": "vassal_start",
+    "counterpart": "parthian-empire",
+    "where": "/ledger/42"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "schema: the overlord records vassal_start/vassal_end with the vassal as counterpart; no mirror is required in the vassal's ledger; vassal dossier me-06 (not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -209,
+    "type": "vassal_start",
+    "counterpart": "greco-bactrian-kingdom",
+    "where": "/ledger/43"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "schema: the overlord records vassal_start/vassal_end with the vassal as counterpart; no mirror is required in the vassal's ledger; vassal dossier me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -198,
+    "type": "gain",
+    "counterpart": "ptolemaic-kingdom",
+    "where": "/ledger/46"
+   },
+   "mirror": {
+    "slug": "ptolemaic-kingdom",
+    "year": -198,
+    "type": "loss",
+    "where": "/ledger/46"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -190,
+    "type": "vassal_end",
+    "counterpart": "atropatene",
+    "where": "/ledger/47"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "schema: the overlord records vassal_start/vassal_end with the vassal as counterpart; no mirror is required in the vassal's ledger; atropatene carries the matching contest_start/contest_end -221"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -188,
+    "type": "loss",
+    "counterpart": "kingdom-of-pergamon",
+    "where": "/ledger/48"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -188,
+    "type": "loss",
+    "counterpart": "greek-city-states",
+    "where": "/ledger/49"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "greek-city-states (eu-01) has no gain at -188. Also the event note describes Rhodes receiving Lycia and Caria, but its land (Greek City-States -188 cells, 184) does not overlap rhodes.json's -188 gain region (81 cells): see the rhodes row."
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -188,
+    "type": "loss",
+    "counterpart": "kingdom-of-cappadocia",
+    "where": "/ledger/50"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -188,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-armenia",
+    "where": "/ledger/51"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "schema: the overlord records vassal_start/vassal_end with the vassal as counterpart; no mirror is required in the vassal's ledger; vassal dossier eu-19 (not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -188,
+    "type": "vassal_end",
+    "counterpart": "parthian-empire",
+    "where": "/ledger/52"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "schema: the overlord records vassal_start/vassal_end with the vassal as counterpart; no mirror is required in the vassal's ledger; vassal dossier me-06 (not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -188,
+    "type": "vassal_end",
+    "counterpart": "greco-bactrian-kingdom",
+    "where": "/ledger/53"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "schema: the overlord records vassal_start/vassal_end with the vassal as counterpart; no mirror is required in the vassal's ledger; vassal dossier me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -170,
+    "type": "occupation_start",
+    "counterpart": "ptolemaic-kingdom",
+    "where": "/ledger/54"
+   },
+   "mirror": {
+    "slug": "ptolemaic-kingdom",
+    "year": -170,
+    "type": "occupation_start",
+    "where": "/ledger/55"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -168,
+    "type": "occupation_start",
+    "counterpart": "ptolemaic-kingdom",
+    "where": "/ledger/56"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "ptolemaic-kingdom has no occupation_start for Cyprus in 168 (\"a Seleucid fleet seized Ptolemaic Cyprus\", Syrian Wars page). Route to me-05 ptolemaic-kingdom."
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -168,
+    "type": "occupation_end",
+    "counterpart": "ptolemaic-kingdom",
+    "where": "/ledger/57"
+   },
+   "mirror": {
+    "slug": "ptolemaic-kingdom",
+    "year": -168,
+    "type": "occupation_end",
+    "where": "/ledger/56"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -168,
+    "type": "occupation_end",
+    "counterpart": "ptolemaic-kingdom",
+    "where": "/ledger/58"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Cyprus occupation_end: ptolemaic-kingdom /ledger/56 is the Egypt occupation_end; no Cyprus pair."
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -164,
+    "type": "loss",
+    "counterpart": "parthian-empire",
+    "where": "/ledger/61"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-06 (not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -161,
+    "type": "loss",
+    "counterpart": "Timarchus (Media and Babylonia)",
+    "where": "/ledger/62"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: listed in counterparts_needing_dossiers (revolt-of-timarchus)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -160,
+    "type": "gain",
+    "counterpart": "Timarchus (Media and Babylonia)",
+    "where": "/ledger/63"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: listed in counterparts_needing_dossiers (revolt-of-timarchus)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -148,
+    "type": "loss",
+    "counterpart": "parthian-empire",
+    "where": "/ledger/64"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-06 (not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -143,
+    "type": "loss",
+    "counterpart": "judea",
+    "where": "/ledger/65"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -141,
+    "type": "loss",
+    "counterpart": "parthian-empire",
+    "where": "/ledger/67"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-06 (not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -134,
+    "type": "vassal_start",
+    "counterpart": "judea",
+    "where": "/ledger/70"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "schema: the overlord records vassal_start/vassal_end with the vassal as counterpart; no mirror is required in the vassal's ledger; vassal dossier me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -130,
+    "type": "gain",
+    "counterpart": "parthian-empire",
+    "where": "/ledger/72"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-06 (not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -129,
+    "type": "loss",
+    "counterpart": "parthian-empire",
+    "where": "/ledger/73"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-06 (not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -129,
+    "type": "vassal_end",
+    "counterpart": "judea",
+    "where": "/ledger/75"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "schema: the overlord records vassal_start/vassal_end with the vassal as counterpart; no mirror is required in the vassal's ledger; vassal dossier me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -126,
+    "type": "loss",
+    "counterpart": "judea",
+    "where": "/ledger/76"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -110,
+    "type": "loss",
+    "counterpart": "parthian-empire",
+    "where": "/ledger/77"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-06 (not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -91,
+    "type": "loss",
+    "counterpart": "judea",
+    "where": "/ledger/78"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -83,
+    "type": "loss",
+    "counterpart": "kingdom-of-armenia",
+    "where": "/ledger/79"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: eu-19 (not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -69,
+    "type": "gain",
+    "counterpart": "kingdom-of-armenia",
+    "where": "/ledger/80"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: eu-19 (not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -66,
+    "type": "loss",
+    "counterpart": "nabataeans",
+    "where": "/ledger/81"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: me-05 (part not yet written)"
+  },
+  {
+   "event": {
+    "slug": "seleucid-empire",
+    "year": -64,
+    "type": "loss",
+    "counterpart": "roman-republic",
+    "where": "/ledger/82"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -64,
+    "type": "gain",
+    "where": "/ledger/168"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "atropatene",
+    "year": 226,
+    "type": "loss",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/6"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart has no dossier: later group (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "revolt-of-molon",
+    "year": -221,
+    "type": "loss",
+    "counterpart": "seleucid-empire",
+    "where": "/ledger/1"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -221,
+    "type": "gain",
+    "where": "/ledger/30"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-achaeus",
+    "year": -214,
+    "type": "loss",
+    "counterpart": "seleucid-empire",
+    "where": "/ledger/2"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -214,
+    "type": "gain",
+    "where": "/ledger/38"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-achaeus",
+    "year": -213,
+    "type": "loss",
+    "counterpart": "seleucid-empire",
+    "where": "/ledger/4"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -213,
+    "type": "gain",
+    "where": "/ledger/40"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "rhodes",
+    "year": -188,
+    "type": "gain",
+    "counterpart": "seleucid-empire",
+    "where": "/ledger (gain -188, c3)"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "rhodes.json (written 2026-10-19 01:18, before this batch) gains Caria and Lycia south of the Maeander from seleucid-empire (81 cells, 54 inside Seleucid -197 minus -188). seleucid-empire has no loss to rhodes; its /ledger/49 loss to greek-city-states covers 184 other cells. Fix in seleucid-empire."
+  },
+  {
+   "event": {
+    "slug": "atropatene",
+    "year": -323,
+    "type": "found",
+    "counterpart": "macedonian-empire",
+    "where": "/ledger/0"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Not a matrix type, but predecessor land disagrees: macedonian-empire (eu-02) draws its -323..-307 shapes over 579 of the 582 Atropatene cells and has no loss (or vassal tint) to atropatene; one of the two must give way for 323-308. Route to eu-02."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Elymais",
+   "kind": "region",
+   "used_in": "seleucid-empire (needed for the Susiana/Elymais fix)"
+  },
+  {
+   "name": "Ganzak",
+   "kind": "place",
+   "used_in": "atropatene"
+  },
+  {
+   "name": "Phraaspa",
+   "kind": "place",
+   "used_in": "atropatene"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Revolt of Timarchus (Media and Babylonia)",
+   "suggested_slug": "revolt-of-timarchus",
+   "years": [
+    -161,
+    -160
+   ]
+  },
+  {
+   "name": "Pleistarchus's Cilicia",
+   "suggested_slug": "pleistarchus-cilicia",
+   "years": [
+    -301,
+    -294
+   ]
+  },
+  {
+   "name": "Kingdom of Antiochus Hierax (Anatolia)",
+   "suggested_slug": "kingdom-of-antiochus-hierax"
+  },
+  {
+   "name": "Persis (Fratarakas)",
+   "suggested_slug": "persis"
+  },
+  {
+   "name": "Elymais",
+   "suggested_slug": "elymais"
+  },
+  {
+   "name": "Characene",
+   "suggested_slug": "characene"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-me-05-c.md",
+ "problems": [
+  "The reviewer brief's rule 3 (a vassal_start mirrored in the vassal's ledger with the overlord as counterpart) conflicts with the schema (the overlord records vassal events, counterpart = the vassal); vassal events were treated as exceptions.",
+  "https://en.wikipedia.org/wiki/Molon_(general) does not exist; the article is at https://en.wikipedia.org/wiki/Molon.",
+  "Pages the author could not load were not retried: Seleucid-Parthian wars, War of the Brothers (Seleucid).",
+  "Reviewer edits applied in place (validated, 0 errors, 0 warnings): seleucid-empire (Atropatene vassal year, Media clipped in 4 events, notes), atropatene (221 for 223), revolt-of-molon (Media clipped). The ledger indices of seleucid-empire events 29-31 changed (old 29 -> 31, old 30 -> 29, old 31 -> 30).",
+  "Cross-batch routing: ptolemaic-kingdom (me-05) lacks gain -217 and the 168 Cyprus occupation; greek-city-states (eu-01) lacks gain -188; macedonian-empire (eu-02) overlaps Atropatene 323-307 without a loss."
+ ]
+}

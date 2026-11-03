@@ -1,0 +1,654 @@
+{
+ "batch_id": "eu-22-a",
+ "verdicts": [
+  {
+   "slug": "french-fourth-republic",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/4/correction",
+     "what": "The 1950-55 correction keeps 9 German cells as French land: the Berlin cell (52.54 N 13.28 E, the French sector), 2 Lindau/Lake Constance cells, 2 Upper Rhine border cells and 4 cells next to the Saarland.",
+     "why": "Gazetteer resolve of {minus:[{intersect:[{cliopatria:French Fourth Republic,year:1950},{country:Germany}]},{admin1:Saarland,country:Germany}]} gives 9 cells, one at 52.54 N 13.28 E; shapes.csv bbox of french-fourth-republic_1950 and _1956 still reaches 13.43 E / 52.59 N. K1-K3 remove all of Germany; K4 removes only the Saarland, though the dossier's own rule treats the Saar as a protectorate and Berlin as occupied land.",
+     "fix": "correction = {union:[{minus:[{cliopatria:French Fourth Republic,year:1950},{country:Germany}]},{lon:7.6,lat:44.08,km:12}]}; update the note ('the German zone is gone' is not true of the Berlin cell).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/5/correction",
+     "what": "The 1956-57 correction has the same 9 German cells and also drops the Tende/La Brigue circle that K2-K4 add, so cell 44.16 N 7.68 E flips back out of France for 1956-57.",
+     "why": "Resolve: the 1956 shape holds only the Tende cell 44.02 N 7.59 E; the circle adds 44.16 N 7.68 E, which K2-K4 include and K5 does not; no ledger event returns Tende to Italy.",
+     "fix": "correction = {union:[{minus:[{cliopatria:French Fourth Republic,year:1956},{country:Germany}]},{lon:7.6,lat:44.08,km:12}]}.",
+     "applied": false
+    },
+    {
+     "where": "/notes",
+     "what": "The notes and author notes say 'Cliopatria draws one Berlin cell for 1945 only'; the Berlin cell is in all six shapes 1945-1957.",
+     "why": "Resolve of {intersect:[{cliopatria:French Fourth Republic,year:Y},{lon:13.3,lat:52.5,km:60}]} gives the cell 52.54 N 13.28 E for Y = 1945, 1946 and 1950.",
+     "fix": "Say the Berlin (French sector) cell is in every shape and is removed by the corrections as occupied land.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6/region",
+     "what": "occupation_end of 23 May 1949 ends the occupation of the Berlin cell too, but the French sector of Berlin stayed under occupation to 1990 (beyond this state's end).",
+     "why": "The region is intersect(cliopatria 1945, Germany), which contains the Berlin cell (52.54 N 13.28 E).",
+     "fix": "Region = minus of that intersect and {place:Berlin,km:15} (or a lon/lat circle), so the Berlin sector stays occupied to the end of the dossier; the successor french-fifth-republic carries it on.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "found at confidence 1: 1945 is Cliopatria's row start; the Provisional Government page can date the government that ruled liberated France (1944).",
+     "page to try": "https://en.wikipedia.org/wiki/Provisional_Government_of_the_French_Republic"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "19 March 1946 departmentalisation of Guadeloupe, Martinique, French Guiana and Reunion; Reunion missing from every shape.",
+     "page to try": "https://en.wikipedia.org/wiki/Overseas_departments_and_regions_of_France"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "French sector of Berlin 1945-1990 as an occupation (no page opened dates it).",
+     "page to try": "https://en.wikipedia.org/wiki/West_Berlin"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Saar_(protectorate)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Saar_(protectorate)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Allied-occupied_Austria",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Allied-occupied_Austria",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/French_Fourth_Republic",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Paris_Peace_Treaties,_1947",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 14200000,
+    "infobox_year": 1946,
+    "cliopatria_km2": 698587,
+    "ratio": 0.049,
+    "acknowledged": true,
+    "note": "infobox includes the colonies, which Cliopatria draws as separate rows; acknowledged in keyframe 0"
+   }
+  },
+  {
+   "slug": "kingdom-of-greece",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "found at confidence 1 (1945 is Cliopatria's row start). The Kingdom page says the government in exile returned to Athens after the German withdrawal of 12 October 1944: a 1944.10 found at confidence 3 with a 1944 keyframe would be page-backed.",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Greece"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "contest zones 1946-49 are four whole northern regions (confidence 2); the year-by-year extent of DSE control could narrow them.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Grammos-Vitsi"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Dodecanese",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Greek_Civil_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Greek_Civil_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Greece",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Greek_Civil_War",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 122017,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the Kingdom of Greece infobox has no area (checked); the author says so in keyframe 0"
+   }
+  },
+  {
+   "slug": "people-s-socialist-republic-of-albania",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/People%27s_Socialist_Republic_of_Albania",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Sazan_Island",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/People%27s_Socialist_Republic_of_Albania",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/People%27s_Socialist_Republic_of_Albania",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 28748,
+    "infobox_year": null,
+    "cliopatria_km2": 27769,
+    "ratio": 0.966,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "republic-of-italy",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/2/region",
+     "what": "The 1947 loss of Istria to Yugoslavia and the 1947 loss of Zone B to the Free Territory both took the Koper and Piran cells (45.45 N 13.54 E, 45.46 N 13.76 E), so two counterparts got the same land.",
+     "why": "Resolve of {intersect:[{region:Istria},{union:[Koper,Piran]}]} = 2 cells; the Free Territory of Trieste page: Zone B was 'a small portion of the north-western part of the Istrian peninsula' (515.5 km2), part of the Free Territory, not ceded to Yugoslavia in 1947.",
+     "fix": "Istria in /ledger/2/region replaced by {minus:[{region:Istria},{union:[{admin1:Koper,country:Slovenia},{admin1:Piran,country:Slovenia}]}]}; note extended. Re-validated: 0 errors.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "Tende/La Brigue stand-in circle: the cell 44.16 N 7.68 E stays in every Italian shape after the 1947 loss, while French keyframes 1947-55 also hold it; a Tende/La Brigue gazetteer entry would settle the one-cell overlap.",
+     "page to try": "https://en.wikipedia.org/wiki/Tende,_Alpes-Maritimes"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Italy",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Free_Territory_of_Trieste",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Free_Territory_of_Trieste",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Paris_Peace_Treaties,_1947",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Sazan_Island",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 301340,
+    "infobox_year": 2026,
+    "cliopatria_km2": 288839,
+    "ratio": 0.959,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "denmark",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/predecessors/0/slug",
+     "what": "Predecessor was 'denmark-norway', a dossier that ends in January 1814; the 1814-1940 Danish state is the dossier kingdom-of-denmark-1814-1940, which ends April 1940 and names 'denmark' as successor.",
+     "why": "history/polities/denmark-norway.json identity end 1814.1, successors [kingdom-of-denmark-1814-1940, kingdom-of-norway]; kingdom-of-denmark-1814-1940.json end 1940.4, successors [nazi-germany, denmark].",
+     "fix": "Slug set to kingdom-of-denmark-1814-1940 (land spec unchanged: Cliopatria Denmark-Norway 1940); note and notes updated. Re-validated: 0 errors.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/0/counterpart",
+     "what": "found counterpart 'denmark-norway' is the 1526-1814 state.",
+     "why": "as above",
+     "fix": "Set to kingdom-of-denmark-1814-1940.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/wars",
+     "what is missing": "Hans Island dispute with Canada (1974-2022/23): canada.json lists it as a war with belligerent 'denmark'; the island (about 1.3 km2) was divided in 2022, below a grid cell, so a war with empty zones (or a tiny gain) would mirror Canada.",
+     "page to try": "https://en.wikipedia.org/wiki/Hans_Island"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "British occupation of the Faroe Islands (1940 to September 1945) overlaps the first months of the dossier.",
+     "page to try": "https://en.wikipedia.org/wiki/British_occupation_of_the_Faroe_Islands"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Denmark",
+     "result": "confirmed"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/History_of_Greenland",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 43094,
+    "infobox_year": 2026,
+    "cliopatria_km2": 53400,
+    "ratio": 1.24,
+    "acknowledged": true,
+    "note": "1945 shape vs Denmark proper; 1946-2024 shape 2,273,196 vs 43,094 + Greenland 2,166,086 + Faroes 1,399 = 2,210,579 (ratio 1.03)"
+   }
+  },
+  {
+   "slug": "republic-of-iceland",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/0/belligerents",
+     "what": "Cod Wars belligerent 'kingdom-of-great-britain' is the 1707-1800 dossier; the United Kingdom of 1958-76 is the dossier united-kingdom (1801-2024). 'West Germany' is free text for the Cliopatria slug federal-republic-of-germany.",
+     "why": "kingdom-of-great-britain.json end 1800.12, successor united-kingdom; united-kingdom.json 1801..2024; polities.csv row federal-republic-of-germany 1950..1990.",
+     "fix": "Belligerents set to [republic-of-iceland, united-kingdom, federal-republic-of-germany]; war note updated. Re-validated: 0 errors.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Iceland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Iceland",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 103125,
+    "infobox_year": 2026,
+    "cliopatria_km2": 112115,
+    "ratio": 1.087,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "french-fourth-republic",
+    "year": 1945,
+    "type": "occupation_start",
+    "counterpart": "allied-occupied-germany"
+   },
+   "mirror": {
+    "slug": "allied-occupied-germany",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet; listed in counterparts_needing_dossiers (eu-22-x)"
+  },
+  {
+   "event": {
+    "slug": "french-fourth-republic",
+    "year": 1945,
+    "type": "occupation_start",
+    "counterpart": "second-republic-of-austria"
+   },
+   "mirror": {
+    "slug": "second-republic-of-austria",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "owned by another eu-22 part that has not run; its Cliopatria row starts 1946, so that dossier must start in 1945 (27 April 1945) to carry the July 1945 occupation_start"
+  },
+  {
+   "event": {
+    "slug": "french-fourth-republic",
+    "year": 1946,
+    "type": "vassal_start",
+    "counterpart": "saar-protectorate"
+   },
+   "mirror": {
+    "slug": "saar-protectorate",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet; listed in counterparts_needing_dossiers (eu-22-x)"
+  },
+  {
+   "event": {
+    "slug": "french-fourth-republic",
+    "year": 1947,
+    "type": "gain",
+    "counterpart": "republic-of-italy"
+   },
+   "mirror": {
+    "slug": "republic-of-italy",
+    "year": 1947,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Tende and La Brigue, both 1947.9, same 12 km circle"
+  },
+  {
+   "event": {
+    "slug": "french-fourth-republic",
+    "year": 1949,
+    "type": "occupation_end",
+    "counterpart": "allied-occupied-germany"
+   },
+   "mirror": {
+    "slug": "allied-occupied-germany",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet; land passes to federal-republic-of-germany (eu-22 part, not run)"
+  },
+  {
+   "event": {
+    "slug": "french-fourth-republic",
+    "year": 1955,
+    "type": "occupation_end",
+    "counterpart": "second-republic-of-austria"
+   },
+   "mirror": {
+    "slug": "second-republic-of-austria",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "owned by another eu-22 part that has not run"
+  },
+  {
+   "event": {
+    "slug": "french-fourth-republic",
+    "year": 1957,
+    "type": "vassal_end",
+    "counterpart": "saar-protectorate"
+   },
+   "mirror": {
+    "slug": "saar-protectorate",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet; the Saar passes to federal-republic-of-germany 1 January 1957 (eu-22 part, not run)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-greece",
+    "year": 1947,
+    "type": "gain",
+    "counterpart": "republic-of-italy"
+   },
+   "mirror": {
+    "slug": "republic-of-italy",
+    "year": 1947,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Dodecanese; Greece 1947 (no month), Italy 1947.9"
+  },
+  {
+   "event": {
+    "slug": "people-s-socialist-republic-of-albania",
+    "year": 1947,
+    "type": "gain",
+    "counterpart": "republic-of-italy"
+   },
+   "mirror": {
+    "slug": "republic-of-italy",
+    "year": 1947,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Sazan Island, same Vlore circle stand-in"
+  },
+  {
+   "event": {
+    "slug": "republic-of-italy",
+    "year": 1947,
+    "type": "loss",
+    "counterpart": "socialist-federal-republic-of-yugoslavia"
+   },
+   "mirror": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "owned by another eu-22 part that has not run; its Cliopatria row draws this land from 1946"
+  },
+  {
+   "event": {
+    "slug": "republic-of-italy",
+    "year": 1947,
+    "type": "loss",
+    "counterpart": "free-territory-of-trieste"
+   },
+   "mirror": {
+    "slug": "free-territory-of-trieste",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet; listed in counterparts_needing_dossiers (eu-22-x)"
+  },
+  {
+   "event": {
+    "slug": "republic-of-italy",
+    "year": 1954,
+    "type": "gain",
+    "counterpart": "free-territory-of-trieste"
+   },
+   "mirror": {
+    "slug": "free-territory-of-trieste",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "no dossier yet; Zone B passes to Yugoslavia the same month (the SFRY dossier should carry it; Cliopatria's SFRY row also wrongly holds the two Trieste cells after 1954)"
+  },
+  {
+   "event": {
+    "slug": "republic-of-iceland",
+    "year": 1963,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Surtsey, new land"
+  },
+  {
+   "event": {
+    "slug": "canada",
+    "year": 1974,
+    "type": "war",
+    "counterpart": "denmark"
+   },
+   "mirror": {
+    "slug": "denmark",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "canada.json lists the Hans Island dispute (1974-2023) with belligerent denmark; denmark.json has no war (listed under thin; land below a grid cell)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-italy",
+    "year": 1946,
+    "type": "dissolve",
+    "counterpart": "republic-of-italy"
+   },
+   "mirror": {
+    "slug": "republic-of-italy",
+    "year": 1946,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "successor/predecessor agree, both 1946.6"
+  },
+  {
+   "event": {
+    "slug": "albania",
+    "year": 1946,
+    "type": "dissolve",
+    "counterpart": "people-s-socialist-republic-of-albania"
+   },
+   "mirror": {
+    "slug": "people-s-socialist-republic-of-albania",
+    "year": 1946,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "both 1946.1"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark-1814-1940",
+    "year": 1940,
+    "type": "dissolve",
+    "counterpart": "denmark"
+   },
+   "mirror": {
+    "slug": "denmark",
+    "year": 1945,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "after reviewer fix of denmark's predecessor slug (was denmark-norway); the gap 1940-45 is the German occupation"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Tende",
+   "kind": "place",
+   "used_in": "french-fourth-republic"
+  },
+  {
+   "name": "La Brigue",
+   "kind": "place",
+   "used_in": "french-fourth-republic"
+  },
+  {
+   "name": "Sazan Island",
+   "kind": "place",
+   "used_in": "people-s-socialist-republic-of-albania"
+  },
+  {
+   "name": "Surtsey",
+   "kind": "place",
+   "used_in": "republic-of-iceland"
+  },
+  {
+   "name": "Vestmannaeyjar",
+   "kind": "region",
+   "used_in": "republic-of-iceland"
+  },
+  {
+   "name": "Pula",
+   "kind": "place",
+   "used_in": "republic-of-italy"
+  },
+  {
+   "name": "Gorizia",
+   "kind": "place",
+   "used_in": "republic-of-italy"
+  },
+  {
+   "name": "Free Territory of Trieste Zone B",
+   "kind": "region",
+   "used_in": "republic-of-italy"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Saar Protectorate",
+   "suggested_slug": "saar-protectorate",
+   "years": [
+    1946,
+    1957
+   ]
+  },
+  {
+   "name": "Allied-occupied Germany",
+   "suggested_slug": "allied-occupied-germany",
+   "years": [
+    1945,
+    1949
+   ]
+  },
+  {
+   "name": "Free Territory of Trieste",
+   "suggested_slug": "free-territory-of-trieste",
+   "years": [
+    1947,
+    1954
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-22-a.md",
+ "problems": [
+  "Reviewer applied small fixes in place to denmark.json (predecessor and found counterpart slug), republic-of-iceland.json (Cod Wars belligerent slugs) and republic-of-italy.json (/ledger/2 region minus Koper and Piran); each re-validated with 0 errors and read back.",
+  "Cliopatria's socialist-federal-republic-of-yugoslavia row holds the two Trieste province cells for 1946..1991; the SFRY dossier author (eu-22) should drop them after October 1954 (flagged by the author, confirmed by resolve).",
+  "second-republic-of-austria (Cliopatria row from 1946) must start in 1945 for the French occupation_start of July 1945 to have its mirror.",
+  "Context dossiers not yet written (counted as groups not run): socialist-federal-republic-of-yugoslavia, second-republic-of-austria, french-fifth-republic, federal-republic-of-germany, german-democratic-republic, greek-junta, third-hellenic-republic, republic-of-albania, union-of-soviet-socialist-republics and others in the brief's context table; predecessors free-french, first-hellenic-republic and kingdom-of-iceland also have no dossier yet."
+ ]
+}

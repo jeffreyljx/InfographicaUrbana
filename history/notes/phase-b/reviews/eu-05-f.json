@@ -1,0 +1,106 @@
+{
+ "batch_id": "eu-05-f",
+ "verdicts": [
+  {
+   "slug": "despotate-of-arta",
+   "verdict": "fail",
+   "fixes": [
+    {"where": "/ledger/3/counterpart, /ledger/4/counterpart, /wars/2/belligerents", "what": "Counterpart domain-of-rhodes is Leo Gabalas's lordship (dossier 1204-1250), not the Knights Hospitaller who took Nafpaktos in 1378.", "why": "Gjin Bua Shpata page: 'the Knights Hospitallers of Juan Fernandez de Heredia' captured 'Nafpaktos, and then Vonitsa in Acarnania (April 1378)'; domain-of-rhodes identity 1204-1250 and its notes say the Knights Hospitaller (1310-1522) need their own dossier.", "fix": "counterpart and belligerent hospitaller-rhodes (new dossier requested).", "applied": true},
+    {"where": "/ledger/5", "what": "Angelokastron loss dated 1407 to house-of-tocco; the page has Pal Shpata cede it to the Ottomans in 1406.", "why": "Muriq Shpata page: Pal 'in 1406 called in Ottoman assistance'; 'Paul ceded Angelokastron to the Ottomans (only for Carlo Tocco to capture it within less than a year)'.", "fix": "year 1406, counterpart ottoman-empire (event inside the 1402 shape span, one circle, keyframes unchanged).", "applied": true},
+    {"where": "/ledger/2", "what": "Counterpart 'unnamed holders of Nafpaktos (page silent)': the holder is named on the Nafpaktos page.", "why": "Nafpaktos page: 'In 1361 the town was captured by the Catalans of the Duchy of Athens'; 'In 1376 or 1377 it fell to John Bua Spata'.", "fix": "counterpart catalan-company, source https://en.wikipedia.org/wiki/Nafpaktos (added to sources[]).", "applied": true},
+    {"where": "/identity/rulers/1-4", "what": "Four rulers had no source.", "why": "Despotate of Arta rulers table: Gjin Bua Shpata 1374-1399, Skurra Bua Shpata 1399-1403, Muriq Shpata 1403-1415, Jakob Bua Shpata 1415-1416.", "fix": "source https://en.wikipedia.org/wiki/Despotate_of_Arta on each.", "applied": true},
+    {"where": "/keyframe_review/1, /ledger/1/region, /identity/predecessors/1/land", "what": "Nafpaktos is drawn as Spata land from 1374 (and, through the sibling, from 1359) although the ledger gains it only in 1376 from the Catalans.", "why": "The 1375 Cliopatria shape applied from 1374, and the 1374 gain region '1375 shape minus the Arta half', contain the 15 km Nafpaktos circle; Nafpaktos page: Serbian in the 1350s, Catalan from 1361, 'In 1376 or 1377 it fell to John Bua Spata'; Gjin Bua Shpata page: 'In 1376 or 1377, Shpata conquered Nafpaktos'.", "fix": "Subtract {lon 21.83, lat 38.39, km 15} from /ledger/1 region and /identity/predecessors/1 land; add a new keyframe despotate-of-arta_1374 (1374-1375) = 1375 shape minus that circle and say in /keyframe_review/1 text that the Cliopatria shape holds from 1376; keep the 1376 gain. Make the same subtraction in despotate-of-angelokastron-and-lepanto so the 1374 merge hands over the same land.", "applied": false}
+   ],
+   "thin": [
+    {"where": "/ledger (1359-1374)", "what is missing": "Serbian suzerainty: Peter Losha infobox 'Despot of Arta Under the Serbian Empire 1359-1374'; Simeon Uros granted the despot titles in 1360. A vassal_start/vassal_end pair with Simeon Uros's state (serbian-empire in the Epirus dossier) may be due.", "page to try": "https://en.wikipedia.org/wiki/Simeon_Uro%C5%A1"},
+    {"where": "/ledger (1399-1400)", "what is missing": "Vonko's seizure of Arta a few days after Skurra took it, ended by Muriq (Muriq Shpata page); no event.", "page to try": "https://en.wikipedia.org/wiki/Gjon_Zenebishi"},
+    {"where": "/ledger (1380s-1416)", "what is missing": "Ottoman vassalage of the Spata rulers not researched (page budget).", "page to try": "https://en.wikipedia.org/wiki/Despotate_of_Epirus"}
+   ],
+   "spot_checks": [
+    {"where": "/ledger/0", "page": "https://en.wikipedia.org/wiki/Despotate_of_Arta", "result": "confirmed (infobox 'Established: April 1359')"},
+    {"where": "/ledger/1", "page": "https://en.wikipedia.org/wiki/Despotate_of_Arta", "result": "confirmed ('After the death of Pjeter Losha in 1374, the Albanian despotates of Arta and Angelocastron were united under the rule of Gjin Bua Shpata')"},
+    {"where": "/ledger/2", "page": "https://en.wikipedia.org/wiki/Gjin_Bua_Shpata", "result": "confirmed (1376 or 1377); counterpart named on the Nafpaktos page, fixed"},
+    {"where": "/ledger/3", "page": "https://en.wikipedia.org/wiki/Gjin_Bua_Shpata", "result": "confirmed (April 1378); counterpart slug wrong, fixed"},
+    {"where": "/ledger/5", "page": "https://en.wikipedia.org/wiki/Muriq_Shpata", "result": "mis-dated (1406 cession to the Ottomans, not 1407 to Tocco), fixed"},
+    {"where": "/ledger/6", "page": "https://en.wikipedia.org/wiki/Muriq_Shpata", "result": "confirmed ('sold to Venice in 1407-08')"},
+    {"where": "/ledger/7", "page": "https://en.wikipedia.org/wiki/Despotate_of_Arta", "result": "confirmed (Disestablished 4 October 1416; 'In 1416, he defeated Jakob Bua Shpata and conquered Arta thus annexing the Despotate')"}
+   ],
+   "area_check": {"infobox_km2": null, "infobox_year": null, "cliopatria_km2": 10868, "ratio": null, "acknowledged": true, "note": "No area in the infobox; extent 'from the Corinth Gulf to Acheron River' (1374-1403) fits the 1375 bbox."}
+  },
+  {
+   "slug": "house-of-tocco",
+   "verdict": "fail",
+   "fixes": [
+    {"where": "/ledger/2/counterpart", "what": "Angelokastron taken from despotate-of-arta; the page has Carlo take it from the Ottomans.", "why": "Muriq Shpata page: 'Paul ceded Angelokastron to the Ottomans (only for Carlo Tocco to capture it within less than a year)'.", "fix": "counterpart ottoman-empire; year 1407 kept.", "applied": true},
+    {"where": "/ledger (1408), /keyframe_review/3/correction, /identity/successors/0/land", "what": "Missing event: the 1408 conquest of Glarentza, mirror of principality-of-achaea /ledger/35.", "why": "principality-of-achaea /ledger/35 (confidence 3): 'Leonardo and Carlo conquered Glarentza in 1408'; /ledger/36: 'Centurione was able to retake Glarentza and expel the Toccos' (1414); Carlo I Tocco page: 'in 1407-1408 his brother Leonardo seized and plundered the fortress of Glarentza'. The end the author called unknown is in the Achaea dossier.", "fix": "Add a 1408 gain of Glarentza (circle about 21.15 E 37.94 N, 10-15 km; place Glarentza/Kyllini) with counterpart principality-of-achaea, source the Carlo I Tocco page; union it into /keyframe_review/3 correction from 1408 and into /identity/successors/0 land so it passes to despotate-of-epirus in February 1411.", "applied": false}
+   ],
+   "thin": [
+    {"where": "/identity/start", "what is missing": "The county palatine 1185-1357 (Margaritus of Brindisi, Orsini, Angevin occupation 1335/36-1357) is not in the dossier (author flagged; rule 2, one colour).", "page to try": "https://en.wikipedia.org/wiki/County_Palatine_of_Cephalonia_and_Zakynthos"},
+    {"where": "/ledger/1/counterpart", "what is missing": "Who held Lefkada (and Vonitsa) before ca. 1362; counterpart is 'previous holders (page silent)'.", "page to try": "https://en.wikipedia.org/wiki/Lefkada"},
+    {"where": "/ledger (1395)", "what is missing": "Corinth and Megara 'seized in 1395' (Carlo I Tocco page) not drawn for want of an end date.", "page to try": "https://en.wikipedia.org/wiki/Theodore_I_Palaiologos"},
+    {"where": "/ledger/0/counterpart, /identity/predecessors/0", "what is missing": "Counterpart kingdom-of-naples is a reading: the County Palatine page has the islands 'occupied by the Anjou' after 1335 under Angevin suzerainty 'as rulers of Achaea', and Robert of Taranto was prince of Achaea, not king of Naples (Cliopatria's Naples shape is Italy only). principality-of-achaea or house-of-anjou-sicily fits better; not blocking.", "page to try": "https://en.wikipedia.org/wiki/Robert_of_Taranto"},
+    {"where": "/keyframe_review/1", "what is missing": "Vonitsa (held by ca. 1362/1373, taken by the Hospitallers April 1378) is not drawn; one circle could be added for 1362-1378.", "page to try": "https://en.wikipedia.org/wiki/Vonitsa"}
+   ],
+   "spot_checks": [
+    {"where": "/ledger/0", "page": "https://en.wikipedia.org/wiki/Leonardo_I_Tocco", "result": "confirmed ('in 1357, Robert named him Count palatine of Cephalonia, Zakynthos and possibly Ithaca as well'; County Palatine page: 'In 1357, Robert of Taranto ceded Cephalonia, Zakynthos and Ithaca')"},
+    {"where": "/ledger/1", "page": "https://en.wikipedia.org/wiki/Leonardo_I_Tocco", "result": "confirmed ('Probably by ca. 1362, and certainly before 1373 ... Lefkada and the port of Vonitsa')"},
+    {"where": "/ledger/2", "page": "https://en.wikipedia.org/wiki/Muriq_Shpata", "result": "confirmed date; wrong counterpart, fixed"},
+    {"where": "/ledger/3", "page": "https://en.wikipedia.org/wiki/Carlo_I_Tocco", "result": "confirmed ('invited as the successor of his uncle Esau de' Buondelmonti in Ioannina ... in February 1411')"}
+   ],
+   "area_check": {"infobox_km2": null, "infobox_year": null, "cliopatria_km2": 2210, "ratio": null, "acknowledged": true, "note": "No area on the County Palatine page; real island land (Cephalonia, Zakynthos, Ithaca, Lefkada) about 1,640 km2, under a factor of two from the grid's 2,210."}
+  },
+  {
+   "slug": "despotate-of-angelokastron-and-lepanto",
+   "verdict": "fail",
+   "fixes": [
+    {"where": "/keyframe_review/0/correction, /ledger/0-2/region, /identity/predecessors/0/land, /identity/successors/0/land, /wars/0/zones/0", "what": "Every region of the dossier includes Nafpaktos, which the pages give to Serbia and then the Catalans until 1376/77.", "why": "Nafpaktos page: 'The town briefly became part of the Serbian Empire during the 1350s'; 'In 1361 the town was captured by the Catalans of the Duchy of Athens'; 'In 1376 or 1377 it fell to John Bua Spata'. Gjin Bua Shpata page: 'In 1376 or 1377, Shpata conquered Nafpaktos' and infobox 'Nafpaktos or Lepanto (1377-78; 1380-?)'. The 'Angelokastron and Lepanto' infobox title is a label, not a dated holding; despotate-of-arta's own ledger gains Nafpaktos in 1376.", "fix": "Subtract {lon 21.83, lat 38.39, km 15} from every region (keyframe, found, merge, dissolve, predecessor and successor land, war zone) and say so in the keyframe note; keep the name. Coordinate with despotate-of-arta /keyframe_review/1 and /ledger/1.", "applied": false}
+   ],
+   "thin": [
+    {"where": "/ledger (1360-1374)", "what is missing": "Serbian recognition: Gjin was 'recognized in early 1360s as a Despot of Aetolia and Acarnania by Simeon Uros'; a vassal pair may be due.", "page to try": "https://en.wikipedia.org/wiki/Simeon_Uro%C5%A1"}
+   ],
+   "spot_checks": [
+    {"where": "/ledger/0", "page": "https://en.wikipedia.org/wiki/Gjin_Bua_Shpata", "result": "confirmed (infobox 'Despot of Angelokastron and Lepanto 1359-1374'; raids 1358; 1360 Simeon Uros)"},
+    {"where": "/ledger/1", "page": "https://en.wikipedia.org/wiki/Despotate_of_Arta", "result": "confirmed (1374 union under Gjin Bua Shpata)"},
+    {"where": "/ledger/2", "page": "https://en.wikipedia.org/wiki/Despotate_of_Arta", "result": "confirmed"},
+    {"where": "/keyframe_review/0", "page": "https://en.wikipedia.org/wiki/Peter_Losha", "result": "confirmed for the Arta/Angelokastron line (footnote: Losha 'Despot of Arta, Rogoi and the region of Amphilochia', Shpata 'Despot of Acheloos and Angelokastron'); not on page for Nafpaktos"}
+   ],
+   "area_check": {"infobox_km2": null, "infobox_year": null, "cliopatria_km2": null, "ratio": null, "acknowledged": true, "note": "No article and no Cliopatria row."}
+  }
+ ],
+ "cross_checks": [
+  {"event": {"slug": "despotate-of-arta", "year": 1359, "type": "found", "counterpart": "despotate-of-epirus"}, "mirror": {"slug": "despotate-of-epirus", "year": 1359, "type": "loss"}, "status": "matched", "note": "Epirus /ledger/47."},
+  {"event": {"slug": "despotate-of-angelokastron-and-lepanto", "year": 1359, "type": "found", "counterpart": "despotate-of-epirus"}, "mirror": {"slug": "despotate-of-epirus", "year": 1359, "type": "loss"}, "status": "mismatch", "note": "Epirus /ledger/47 names only despotate-of-arta for both Albanian halves; route to the Epirus author to name the new sibling or split the region."},
+  {"event": {"slug": "despotate-of-arta", "year": 1374, "type": "gain", "counterpart": "despotate-of-angelokastron-and-lepanto"}, "mirror": {"slug": "despotate-of-angelokastron-and-lepanto", "year": 1374, "type": "merge"}, "status": "matched", "note": "Same year and land (gain against merge); both regions wrongly include Nafpaktos (fixes)."},
+  {"event": {"slug": "despotate-of-arta", "year": 1376, "type": "gain", "counterpart": "catalan-company"}, "mirror": {"slug": "catalan-company", "year": 1376, "type": "loss"}, "status": "missing", "note": "catalan-company has neither the 1361 capture nor the 1376/77 loss of Nafpaktos (Nafpaktos page); route to its author."},
+  {"event": {"slug": "despotate-of-arta", "year": 1378, "type": "loss", "counterpart": "hospitaller-rhodes"}, "mirror": {"slug": "hospitaller-rhodes", "year": 1378, "type": "gain"}, "status": "exception", "note": "No dossier; requested under counterparts_needing_dossiers."},
+  {"event": {"slug": "despotate-of-arta", "year": 1380, "type": "gain", "counterpart": "hospitaller-rhodes"}, "mirror": {"slug": "hospitaller-rhodes", "year": 1380, "type": "loss"}, "status": "exception", "note": "No dossier; requested."},
+  {"event": {"slug": "despotate-of-arta", "year": 1406, "type": "loss", "counterpart": "ottoman-empire"}, "mirror": {"slug": "ottoman-empire", "year": 1406, "type": "gain"}, "status": "exception", "note": "Group me-10 has not run; the Ottomans also lose Angelokastron to house-of-tocco in 1407."},
+  {"event": {"slug": "despotate-of-arta", "year": 1407, "type": "loss", "counterpart": "republic-of-venice"}, "mirror": {"slug": "republic-of-venice", "year": 1407, "type": "gain"}, "status": "exception", "note": "Group eu-13 has not run (Naupactus sold 1407-08)."},
+  {"event": {"slug": "despotate-of-arta", "year": 1416, "type": "loss", "counterpart": "despotate-of-epirus"}, "mirror": {"slug": "despotate-of-epirus", "year": 1416, "type": "gain"}, "status": "matched", "note": "Epirus /ledger/56 (October 1416); its 1415 keyframe still lacks Arta for 1416-1421 (author's flag)."},
+  {"event": {"slug": "house-of-tocco", "year": 1357, "type": "found", "counterpart": "kingdom-of-naples"}, "mirror": {"slug": "kingdom-of-naples", "year": 1357, "type": "loss"}, "status": "exception", "note": "No dossier yet; the counterpart is better principality-of-achaea or house-of-anjou-sicily (thin item)."},
+  {"event": {"slug": "house-of-tocco", "year": 1362, "type": "gain", "counterpart": "previous holders of Lefkada and Vonitsa (page silent)"}, "mirror": {"slug": "", "year": 1362, "type": "loss"}, "status": "missing", "note": "Holder unknown; gap-filler (Lefkada page)."},
+  {"event": {"slug": "house-of-tocco", "year": 1407, "type": "gain", "counterpart": "ottoman-empire"}, "mirror": {"slug": "ottoman-empire", "year": 1407, "type": "loss"}, "status": "exception", "note": "Group me-10 has not run."},
+  {"event": {"slug": "house-of-tocco", "year": 1411, "type": "merge", "counterpart": "despotate-of-epirus"}, "mirror": {"slug": "despotate-of-epirus", "year": 1411, "type": "merge"}, "status": "matched", "note": "Epirus /ledger/55 (February 1411); Epirus keyframes draw the islands only from 1415 (author's flag)."},
+  {"event": {"slug": "principality-of-achaea", "year": 1408, "type": "loss", "counterpart": "house-of-tocco"}, "mirror": {"slug": "house-of-tocco", "year": 1408, "type": "gain"}, "status": "missing", "note": "Glarentza; Tocco must add the gain (fix)."},
+  {"event": {"slug": "principality-of-achaea", "year": 1414, "type": "gain", "counterpart": "house-of-tocco"}, "mirror": {"slug": "despotate-of-epirus", "year": 1414, "type": "loss"}, "status": "mismatch", "note": "house-of-tocco ended February 1411 inside despotate-of-epirus; Achaea's counterpart should be despotate-of-epirus, which needs the 1414 loss of Glarentza."}
+ ],
+ "gazetteer_names_needed": [
+  {"name": "Angelokastron", "kind": "place", "used_in": "despotate-of-arta"},
+  {"name": "Nafpaktos", "kind": "place", "used_in": "despotate-of-arta"},
+  {"name": "Amfilochia", "kind": "place", "used_in": "despotate-of-arta"},
+  {"name": "Vonitsa", "kind": "place", "used_in": "house-of-tocco"},
+  {"name": "Glarentza", "kind": "place", "used_in": "house-of-tocco"},
+  {"name": "Aetolia", "kind": "region", "used_in": "despotate-of-angelokastron-and-lepanto"},
+  {"name": "Acarnania", "kind": "region", "used_in": "despotate-of-angelokastron-and-lepanto"}
+ ],
+ "counterparts_needing_dossiers": [
+  {"name": "Hospitaller Rhodes (Knights Hospitaller)", "suggested_slug": "hospitaller-rhodes", "years": [1310, 1522]},
+  {"name": "County Palatine of Cephalonia and Zakynthos before the Tocco (extend house-of-tocco)", "suggested_slug": "house-of-tocco", "years": [1185, 1357]}
+ ],
+ "notes_path": "history/polities/_notes/review-eu-05-f.md",
+ "problems": [
+  "No page failed. Pages opened: Despotate of Arta, Gjin Bua Shpata, Muriq Shpata, Carlo I Tocco, Leonardo I Tocco, County Palatine of Cephalonia and Zakynthos, Peter Losha, Nafpaktos.",
+  "Reviewer edits applied in despotate-of-arta (ledger 2-5, wars 2, rulers 1-4, sources) and house-of-tocco (ledger 2); both re-validate with 0 errors; despotate-of-arta now carries two expected warnings for hospitaller-rhodes, which has no dossier yet.",
+  "Routed to other authors: despotate-of-epirus (1359 loss should name the new sibling; 1414 Glarentza loss; islands 1411-1414 and Arta 1416-1421 missing from keyframes), catalan-company (Nafpaktos 1361-1376/77), principality-of-achaea (1414 counterpart), byzantine-empire (1352 shape overlaps the Tocco islands)."
+ ]
+}

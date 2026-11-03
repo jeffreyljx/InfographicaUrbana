@@ -1,0 +1,114 @@
+{
+ "batch_id": "fx-44",
+ "checks": [
+  {
+   "item": "R001",
+   "verdict": "pass",
+   "what": "Handoff, no dossier change. Pyrrhic War page backs Rome as hegemon. The fixer read the compiler correctly: vassal_start() (compile_dossiers.py, about line 1600), branch 'recorded by both: the vassal is the party whose shape holds the region' (max share 0.79 >= 0.5, min 0.46 < 0.5, gap 0.33 >= 0.25) makes Rome the vassal, whichever side is processed first. A Rome-only change (counterpart as a name) would leave greek-city-states ledger 58 to fall to the else branch (Greek share 0.46 < 0.5), which again makes the Greeks suzerain. So the handoff to greek-city-states, or to the compiler rule, is the right route.",
+   "page": "https://en.wikipedia.org/wiki/Pyrrhic_War",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R002",
+   "verdict": "pass",
+   "what": "Kept: patch-overrides.csv lines 86-88 list roman-republic_-91, _-87 and _-63 under m0100-m0001, so dossier edits to those keyframes change nothing. 'Patch controls it' holds.",
+   "page": "",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R058",
+   "verdict": "pass",
+   "what": "safavid-dynasty keyframe_review/17 (1600): only the text changed, now saying the ledger events 37-40 add the 1603-1606 gains. keyframe_review/19 (1612): the correction is now the old shape (minus Kandahar and Iraq) united with Armavir, Ararat, Aragatsotn and West Azarbaijan. That adds 73 cells beyond the base, giving 9,837 cells. The page confirms every date: Tabriz 21 October 1603; Yerevan June 1604, then the army 'advanced towards Kars' (the page does not say Kars was taken); Ganja, Baku, Shirvan and Shamakhi June 1606; the Treaty of Nasuh Pasha of 20 November 1612 regained 'Azerbaijan, Georgia, Erivan Province, Daghestan, Shirvan, Karabakh, Lorestan, and Khuzestan' and 'secured the 1555 borders'. The 1612 addition matches ledger 41, which gains West Azarbaijan in 1612-11, and keeps the Yerevan area to 1625. Leftover, not harmful: 35 cells of the ledger-39 Yerevan 100 km disc still fall outside the 1612 shape (Igdir 15, Agri 8, Kars 7, Shirak 3, others 2), so a small 1612 snap remains, but it trims the disc's overreach. The 1609 keyframe was rightly left alone (p1600-p1609 controls it). The keyframe source is still Peace_of_Amasya; the new text's evidence is on the 1603-1618 war page, which the note names.",
+   "page": "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Safavid_War_(1603%E2%80%931618)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R077",
+   "verdict": "pass",
+   "what": "safavid-dynasty ledger/58 (1709-04 loss to hotaki-dynasty) region is now {cliopatria Hotaki Dynasty 1709}. That is the same spec as hotaki-dynasty ledger/0 (found 1709-04) and as the subtrahend of the safavid 1709 keyframe correction, so the loss and the birth agree. Hotak dynasty page: 'That opportunity came in April 1709'; 'ambushed Gurgin Khan on 21 April and killed him'; 'With this, Mirwais was able to extend his control over the entire province of Kandahar' follows 'Another Persian army was sent to Kandahar in 1712 ...'. The 180 other Kandahar cells stay Safavid until 1712-13, as the page supports.",
+   "page": "https://en.wikipedia.org/wiki/Hotak_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R134",
+   "verdict": "pass",
+   "what": "british-colonial-empire new ledger/135: 1921-08 loss of country Iraq to kingdom-of-iraq, placed before occupation_start (136); occupation_end 1932-10 is ledger 140. In compile_dossiers.py, births come first within a month, so Iraq's found runs before this loss. The loss then moves the 1,047 cells of the 1920 shape (keyframe 1920; the 1922 and later keyframes hold 0 Iraqi cells) to Iraq. occupation_start() then finds h_cp >= h_me with h_cp > 0, so Britain is the occupier and Iraq the owner, which is the intended reading. Kingdom of Iraq page: 'It was founded on 23 August 1921 as the Kingdom of Iraq'; 'Iraq remained under de facto British administration until 1932'; 'Iraq was granted official independence on 3 October 1932'. The handoff (kingdom-of-iraq names kingdom-of-great-britain, which ended in 1800, as occupier) is correct and still needed.",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Iraq",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R146",
+   "verdict": "pass",
+   "what": "british-colonial-empire identity.end and the last ledger row (171, dissolve) are now 2001, with counterpart british-overseas-territories. Keyframe 1997 now runs to 2001, and the last certainty span to 2001. In compile_dossiers.py, do_end() accepts a successor with start <= y + 1, and the BOT dossier starts in 2002, so the remaining cells go to it rather than to nobody. A 2000 end would have left 2001 empty. British Overseas Territories page: 'Before 1 January 1983, the territories were officially referred to as the Crown Colonies'; 'At that time, they were renamed British Dependent Territories'; 'In 2002, the British Parliament passed the British Overseas Territories Act 2002 ... which introduced the current name'. So British sovereignty runs unbroken through 2000-2001.",
+   "page": "https://en.wikipedia.org/wiki/British_Overseas_Territories",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R036",
+   "verdict": "fixed",
+   "what": "brythons identity.start is now 410. ledger/0 is a 410 found over Roman Britain intersected with WRE 406 (384 cells), the same spec constantine-iii-usurper ledger/5 loses to nobody in 409. ledger/1 is a 439 gain of the corrected 439 shape minus that land (410 cells). Recomputed: found is a subset of the 439 keyframe, found and gain do not overlap, and their union equals the keyframe (0 cells differ), so nothing snaps. The WRE Cliopatria shapes for 410-435 hold 0 of these cells; anglo-saxon-england starts in 441, and gododdin's Lothian lies outside the region. The page supports the date: the Britons 'expelled Constantine's magistrates in 409 or 410'; 'sent a rescript to British communities in 410 telling them to look to their own defence'. I corrected one small error: the note quoted 'The Romano-British deposed Roman officials around 410'; the page says 'The Romano-Britons deposed Roman officials around 410, and government largely reverted to city level'. I fixed both occurrences in brythons.json and re-validated it: OK, 0 errors.",
+   "page": "https://en.wikipedia.org/wiki/End_of_Roman_rule_in_Britain",
+   "fix": "brythons.json: 'The Romano-British deposed' -> 'The Romano-Britons deposed' in the two quoted notes",
+   "applied": true
+  },
+  {
+   "item": "R054",
+   "verdict": "pass",
+   "what": "duchy-of-wurttemberg ledger/3 (1442) and ledger/5 (1482) are now 'rename' events with no region or counterpart. compile_dossiers.py treats rename as a caption only, so the county keeps its land through 1442-1443, and 1482 is no longer a gain from nobody. The p1400-p1499 1482 gain from nobody re-adds land the state already holds, which does no harm. County of Württemberg page: 'In 1442, the Treaty of Nürtingen was signed between Ulrich V and his brother Ludwig I'; 'Ulrich received the Stuttgart area'; 'Ludwig received the Bad Urach section'; 'Count Eberhard V succeeded in reuniting Württemberg'; 'the county became the Duchy of Württemberg'.",
+   "page": "https://en.wikipedia.org/wiki/County_of_W%C3%BCrttemberg",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R079",
+   "verdict": "pass",
+   "what": "ashanti-empire ledger/0 (found 1701) region is now {cliopatria Ashanti Empire 1702}, 177 cells, the same as the ashanti-empire_1701 keyframe correction (0 cells differ), so the snap releases nothing. Bono's Brong Ahafo stays out until the 1722 gain (ledger 2). Bono State page: 'Asante invaded Bono in 1722–1723'; 'Bono was defeated in 1723, ending its independence'.",
+   "page": "https://en.wikipedia.org/wiki/Bono_State",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R101",
+   "verdict": "pass",
+   "what": "Handoff with no dossier change; the reasoning holds. Sultanate of Darfur page: 'Around 1772 Hashim of the Musabba'at led an insurgency which retook control of Kordofan'; 'Hashim began building a state in central Kordofan'; 'in 1782 the Funj (under Likaylik's son) ousted him'; then 'the elderly Tayrab launched an invasion, causing Hashim to flee eastwards'. The page presents Hashim as Darfur's rival (raids and counter-raids), not its vassal, so giving Kordofan to Darfur from 1772 would contradict it. The gap needs a new dossier for the Musabba'at state.",
+   "page": "https://en.wikipedia.org/wiki/Sultanate_of_Darfur",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R120",
+   "verdict": "pass",
+   "what": "republic-of-new-granada: ledger/0 (found), keyframe_review/0 (1831) and keyframe_review/1 (1834, now adjust) all resolve to the 1834 shape minus country Brazil: 4,608 cells. The 752 cells cut are all in Brazil's Amazonas. The 1853 Cliopatria shape already lacks all but 11 of them, so the 1853 snap shrinks to 27 cells removed and 12 added. The page partly supports the cut (confidence 1): 'was incorporated into the Empire of Brazil in 1824' (the comarca of Rio Negro), 'In 1761, a fort was built on the location' (Sao Gabriel da Cachoeira), and the Vasquez Cobo-Martins treaty finally settled the northern frontier. The page gives no 1830s-1850s extent and mentions no New Granadan claim. Side effect: about 720 of the cells are now grey for 1831-1852 until empire-of-brazil draws them. The fixer's handoff to empire-of-brazil covers this.",
+   "page": "https://en.wikipedia.org/wiki/Amazonas_(Brazilian_state)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R137",
+   "verdict": "pass",
+   "what": "shanxi-clique keyframe_review/3 (1938-1944) is now the whole of Shanxi province. This is consistent with ledger 7/8 (occupation_start 1937-11 and occupation_end 1945-08 by empire-of-japan over Shanxi minus the south-western corner). In do_keyframe(), a snap releases only DIRECT cells; with the whole province in the shape it no longer releases the 296 cells counted in keyframe_snaps.csv. Yan Xishan page: 'He effectively controlled the province of Shanxi from the 1911 Xinhai Revolution to the 1949 Communist victory'; 'As the Japanese invasion pushed Yan's administration into the southwest corner of Shanxi'; Su Tiren was 'the Shanxi Provincial Governor of Wang Jingwei's Collaborationist Government'. The page does not date the Japanese occupation (the 9 November 1937 date is ledger 7's, from another page). Consequence: the puppet governments' claims (provisional-government, reorganized-national-government, and mengjiang over the Datong area) lose to the clique by the size rule for 1938-1944, as 797, 833 and 75 cells already did. This matches the dossier's own occupation model.",
+   "page": "https://en.wikipedia.org/wiki/Yan_Xishan",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R150",
+   "verdict": "pass",
+   "what": "somaliland ledger/3 (2007-10 gain from puntland) region is now the Laascaanood 120 km disc intersected with country Somaliland: 151 cells, down from 215, which drops the Puntland Nugaal and Mudug cells and the Ethiopian ones. Confidence went from 3 to 2. Las Anod page: 'Somaliland forces captured the city in the Battle of Las Anod in 2007, ousting Puntland forces' (no month on this page; the month comes from the existing Somaliland-page quote); the page draws no 2007-2009 frontline, as the note says. Contest rows 1, 2, 4 and 5 are unchanged.",
+   "page": "https://en.wikipedia.org/wiki/Las_Anod",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "Validation (python3 -I -B history/tools/validate_dossier.py <file> --resolve): all eight changed dossiers OK, 0 errors. Warnings that predate this batch: british-colonial-empire ledger/54 'Sydney' and ledger/88 'Perth' ambiguous place; somaliland ledger/4 contest_start ssc-khatumo has no later contest_end.",
+  "Open handoffs, still needed: greek-city-states ledger 58/72/73 (or the compiler's reciprocal vassal_start rule), so Rome is not drawn as the Greek cities' vassal from -272 to -90; kingdom-of-iraq ledger 1/5/6, where the counterpart kingdom-of-great-britain (ended 1800) should be british-colonial-empire or dropped; empire-of-brazil for the upper Rio Negro and Japura (about 720 cells now grey in 1831-1852); a new Musabba'at dossier for Kordofan 1772-1781.",
+  "fix-fx-44.md notes still carry the misquote 'The Romano-British deposed' for R036; the dossier itself is corrected (notes file not edited by the reviewer)."
+ ]
+}

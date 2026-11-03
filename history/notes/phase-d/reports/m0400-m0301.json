@@ -1,0 +1,364 @@
+{
+ "window": "m0400-m0301",
+ "images": [
+  {
+   "year": -400,
+   "bbox": "-10,22,80,52 (jan1)",
+   "seen": "Start map: Achaemenid empire with Gandara/Hindush as tinted colonies, Scythia drawn to the Don-Volga steppe, 28th-dynasty Egypt, Qedar, Lihyan; nothing wrong except a hole in Qin (Hanzhong) noted later."
+  },
+  {
+   "year": -301,
+   "bbox": "world",
+   "seen": "Seleucid/Maurya/Ptolemaic/Lysimachus blocks match the period; Libyan desert shown as a huge hatched Ptolemaic/Cyrenaican block (wrong, fixed); Sarmatians hatched over Scythia."
+  },
+  {
+   "year": -301,
+   "bbox": "20,25,80,50 compare-cliopatria",
+   "seen": "Compiled matches Cliopatria except the Kufra desert hatch (2,495 cells of the 'Cyrenaica' region) and the Sarmatian occupation of Scythia; Ptolemaic Anatolian block is Cliopatria's."
+  },
+  {
+   "year": -323,
+   "bbox": "15,20,85,48 compare-cliopatria",
+   "seen": "Alexander's empire with Ptolemy, Laomedon, Perdiccas, Lysimachus as vassal tints is right; Sogdiana (Navoi) and desert Mesopotamia already dropped to nobody from -323 (fixed)."
+  },
+  {
+   "year": -309,
+   "bbox": "45,20,90,45 compare-cliopatria",
+   "seen": "Seleucid empire to the Indus with Maurya beyond, Atropatene independent; matches Cliopatria; Sogdia/Bactria empty before 309 (fixed by the Macedonian overrides)."
+  },
+  {
+   "year": -315,
+   "bbox": "98,20,125,42 compare-cliopatria",
+   "seen": "Qin with a hexagonal hole at Hanzhong (87 cells nobody, left: pages silent on Chu tenure); Minyue absent until 306 in the compiled map (Cliopatria draws it from 333; dossier founding is 306, fine)."
+  },
+  {
+   "year": -305,
+   "bbox": "22,30,50,42 compare-cliopatria",
+   "seen": "Antigonid kingdom holds Anatolia and Syria; the Ptolemaic block in south-central Anatolia (Konya, Adana, Mersin) is Cliopatria's 307 shape and sits inside Antigonid land; left, pages give only 'parts of Anatolia'; Libya hatch wrong (fixed)."
+  },
+  {
+   "year": -330,
+   "bbox": "-10,34,32,48 compare-cliopatria",
+   "seen": "Italy, Balkans and Iberia are richer than Cliopatria (tribes from dossiers) and look plausible; no speckle or misplaced state."
+  },
+  {
+   "year": -312,
+   "bbox": "12,18,80,46 (stage, after patch)",
+   "seen": "Libya clean (Ptolemaic Egypt plus the thin Pentapolis strip), Macedonian empire solid from Anatolia to Bactria-Sogdia without holes, Seleucid Babylonia as tinted constituent."
+  },
+  {
+   "year": -320,
+   "bbox": "22,42,62,56 (stage, after patch)",
+   "seen": "Scythia holds the steppe east of the Don, drawn contested (hatched) by the Sarmatians as the ledger intends, instead of an empty hole since 350."
+  }
+ ],
+ "issues": [
+  {
+   "what": "Ptolemaic keyframes use region 'Cyrenaica', which the gazetteer resolves to 2,496 cells (631,000 km2, modern definition incl. Kufra), so Ptolemy holds the whole Libyan desert (1,404 Kufra cells) from 322 and the Cyrenaica contests hatch it; replaced by Cliopatria's Cyrenaica shape (103 cells).",
+   "years": [
+    -322,
+    -292
+   ],
+   "slugs": [
+    "ptolemaic-kingdom",
+    "cyrenaica"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0-5",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Cyrenaica",
+    "https://en.wikipedia.org/wiki/Magas_of_Cyrene"
+   ]
+  },
+  {
+   "what": "Scythia lost the 1,560 cells east of the Don at -350 (compiler snaps to the smaller Cliopatria shape at its start year) although the ledger keeps them Scythian and contested from 339 and hands them to the Sarmatians in 313; keyframe now starts in 313.",
+   "years": [
+    -350,
+    -314
+   ],
+   "slugs": [
+    "scythia",
+    "sarmatians"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/6-7",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Sarmatians"
+   ]
+  },
+  {
+   "what": "Macedonian-empire keyframes -331, -323, -321, -318, -315 lack Mesopotamia (-331) and the Sogdian, Bactrian and desert-Mesopotamian land that Cliopatria's shape omits; 2,148 cells (Navoi 363, Al-Anbar 355, Ninawa 118, Sogdia 557, Bactria 226) fell to nobody until the Seleucid keyframe of 309. Added back as the dossier's own ledger and -325 keyframe hold them.",
+   "years": [
+    -331,
+    -309
+   ],
+   "slugs": [
+    "macedonian-empire",
+    "seleucid-empire"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/8-12",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Alexander_the_Great",
+    "https://en.wikipedia.org/wiki/Partition_of_Triparadisus"
+   ]
+  },
+  {
+   "what": "Seleucid keyframe -301 (Cliopatria's 291 outline) strips Sogdia (Navoi 363 cells) and part of Bactria that the dossier's own 309 keyframe gives Seleucus; Sogdia and Bactria added to the 301 keyframe.",
+   "years": [
+    -301,
+    -292
+   ],
+   "slugs": [
+    "seleucid-empire"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/13",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Seleucid_Empire"
+   ]
+  },
+  {
+   "what": "Qin gains of Shu and Ba (316) move only the 587 cells those two states drew; the other 808 cells of the Sichuan basin in Qin's shape appear a year late through the 315 keyframe snap.",
+   "years": [
+    -316,
+    -316
+   ],
+   "slugs": [
+    "qin",
+    "shu",
+    "ba"
+   ],
+   "decision": "patched",
+   "patch": "events/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Qin_(state)"
+   ]
+  },
+  {
+   "what": "Alexander's keyframes (region Punjab) and the ledger give Macedon Haryana and Rajasthan (about 180 cells) in 326-324, beyond the Hyphasis/Beas, which was 'the easternmost extent of Alexander's conquests'; the Nanda realm wins them. Indian Punjab (Nanda 84 cells straddling the Beas) left as drawn.",
+   "years": [
+    -326,
+    -323
+   ],
+   "slugs": [
+    "macedonian-empire",
+    "nanda-empire"
+   ],
+   "decision": "patched",
+   "patch": "rulings/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Alexander_the_Great"
+   ]
+  },
+  {
+   "what": "Hole inside Qin: Hanzhong (87 cells) belongs to nobody from -400 to -313, then Qin gains it in 312 'from Chu'; the Chu shape never held it. Chu's earlier tenure is undated on the pages seen.",
+   "years": [
+    -400,
+    -313
+   ],
+   "slugs": [
+    "chu",
+    "qin"
+   ],
+   "decision": "left: pages silent",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Qin_(state)"
+   ]
+  },
+  {
+   "what": "Minyue keyframe (306-223) draws Fujian plus 502 Jiangxi and 204 Guangdong cells (737 beyond Fujian), extrapolated from Wuzhu's extent of 202; the Minyue page gives only 'in what is now the Fujian province'.",
+   "years": [
+    -306,
+    -223
+   ],
+   "slugs": [
+    "minyue"
+   ],
+   "decision": "left: pages silent",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Minyue"
+   ]
+  },
+  {
+   "what": "Ptolemaic block in south-central Anatolia (Konya, Mersin, Adana, Sanliurfa; 1,116 cell-years of conflict with the Antigonids in -306..-304, Ptolemy wins by size) is Cliopatria's 307/301 shape; the dossier cites only 'parts of Anatolia' for 302.",
+   "years": [
+    -306,
+    -301
+   ],
+   "slugs": [
+    "ptolemaic-kingdom",
+    "antigonid-dynasty"
+   ],
+   "decision": "left: pages silent"
+  },
+  {
+   "what": "Atropatene beats the Seleucid keyframe in Media (1,124 cell-years); Atropates held Lesser Media independently, matches Cliopatria.",
+   "years": [
+    -309,
+    -307
+   ],
+   "slugs": [
+    "atropatene",
+    "seleucid-empire"
+   ],
+   "decision": "fine as drawn"
+  },
+  {
+   "what": "Small conflicts won by the local smaller state (Bruttii, Lucanians, Messapii, Taras, Croton over greek-city-states; Masaesyli over Carthage; Han, Wei, Zhao over Chu and Qin in Henan; Epirus, Aetolians, Dardania, Paeonia over Macedon; Khababash over the Achaemenids): plausible.",
+   "years": [
+    -400,
+    -301
+   ],
+   "slugs": [
+    "greek-city-states",
+    "bruttii",
+    "lucanians",
+    "masaesyli",
+    "carthage"
+   ],
+   "decision": "fine as drawn"
+  },
+  {
+   "what": "Seleucid cession of 303/302: Hilmand (207 cells) and Iranian Baluchestan (485) become nobody at -301, since Maurya's keyframe takes only Pakistani Baluchistan, the Paropamisadae and hedged Arachosia; the Seleucid page names Gedrosia and Arachosia as ceded.",
+   "years": [
+    -301,
+    -301
+   ],
+   "slugs": [
+    "seleucid-empire",
+    "maurya-empire"
+   ],
+   "decision": "left: pages silent"
+  },
+  {
+   "what": "Bessus keyframe -330 strips 3,171 cells (Turkmenistan) for one year; yiqu/zhao 205 cells in -304; skipped events at Sikyon, Phlius and Coronea (1-3 cells each); 82 smaller conflict pairs and 80 smaller snaps not reviewed.",
+   "years": [
+    -347,
+    -304
+   ],
+   "slugs": [
+    "bessus-artaxerxes-v",
+    "yiqu",
+    "zhao",
+    "peloponnesian-league",
+    "thebans"
+   ],
+   "decision": "left: pages silent"
+  }
+ ],
+ "patch_file": "history/data/patches/m0400-m0301.json",
+ "patch_entries": {
+  "events": 1,
+  "keyframe_overrides": 14,
+  "rulings": 1
+ },
+ "patch_check": "all applied (16 of 16 ok in --check-patch; trial: all 16 applied, ruling settled 345 cell-years in 3 years)",
+ "colour_clashes": [
+  {
+   "a": "achaemenid-empire",
+   "b": "gandara",
+   "years": [
+    -400,
+    -331
+   ],
+   "note": "identical #008287, 143 shared edges; drawn as a colony in the suzerain tint with its own outline, so probably acceptable"
+  },
+  {
+   "a": "gandara",
+   "b": "hindush",
+   "years": [
+    -400,
+    -331
+   ],
+   "note": "identical #008287, 25 shared edges, both Achaemenid colonies"
+  },
+  {
+   "a": "achaemenid-empire",
+   "b": "hindush",
+   "years": [
+    -400,
+    -331
+   ],
+   "note": "identical #008287, 2 shared edges (colony)"
+  },
+  {
+   "a": "achaemenid-empire",
+   "b": "yehud-medinata",
+   "years": [
+    -400,
+    -333
+   ],
+   "note": "identical #008287, 24 shared edges (colony)"
+  },
+  {
+   "a": "achaemenid-empire",
+   "b": "qedar",
+   "years": [
+    -400,
+    -344
+   ],
+   "note": "#008287 vs #008e7d, distance 0.045, 72 shared edges; both drawn as independent-looking teal; Qedar is a vassal tint at times"
+  },
+  {
+   "a": "qedar",
+   "b": "yehud-medinata",
+   "years": [
+    -400,
+    -344
+   ],
+   "note": "#008e7d vs #008287, 0.045, 4 shared edges"
+  },
+  {
+   "a": "sarmatians",
+   "b": "yuezhi",
+   "years": [
+    -313,
+    -301
+   ],
+   "note": "#967600 vs #867d00, 0.031; far apart (Pontic/Volga steppe vs Tarim), no shared border in the window, only a global-view similarity"
+  },
+  {
+   "a": "chu",
+   "b": "antigonid-dynasty",
+   "years": [
+    -306,
+    -301
+   ],
+   "note": "identical #46b68c; not neighbours (China vs Anatolia), only a world-view similarity"
+  },
+  {
+   "a": "minyue",
+   "b": "van-lang",
+   "years": [
+    -306,
+    -301
+   ],
+   "note": "#8766bb vs #9760af, 0.033; close but not bordering in this window"
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "gazetteer:Cyrenaica",
+   "what": "Narrow the historical region 'Cyrenaica' (data/gazetteer/regions.jsonl) from the modern definition (2,496 cells, 631,000 km2, includes the Kufra District) to the Pentapolis (about 103 cells, Cliopatria's cyrenaica_-331), or have dossiers use {'cliopatria':'Cyrenaica','year':-331}.",
+   "why": "Page: 'Cyrenaica includes all of the eastern part of Libya between the 16th and 25th meridians east, including the Kufra District' (modern); for antiquity 'In the south, the Pentapolis faded into the Saharan tribal areas'. Every dossier keyframe that unions this region gives the state the Libyan desert; this window's patch fixes only the Ptolemaic keyframes -322 to -295 and I scanned dossiers only to -290.",
+   "source": "https://en.wikipedia.org/wiki/Cyrenaica"
+  },
+  {
+   "slug": "chu",
+   "what": "Add Hanzhong (about 87 cells, place Hanzhong 80 km) to Chu's holdings from a sourced year before 312, or to Qin's keyframes, so the Qin map has no hole from 400 to 313.",
+   "why": "The Qin ledger and Chu ledger both say Qin took Hanzhong from Chu in 312 but neither shape contains it; the pages I opened (Qin) are silent and the Battle of Danyang URL I tried was not found. The King Huai of Chu page cited by both dossiers ('Qin then seized Hanzhong') was not opened by me.",
+   "source": "https://en.wikipedia.org/wiki/King_Huai_of_Chu"
+  }
+ ],
+ "pages_opened": 8,
+ "problems": [
+  "Boundary: keyframe_overrides/4 (ptolemaic-kingdom_-300, years -300..-296) and /5 (ptolemaic-kingdom_-295, years -295..-292) lie wholly in the next window m0300-m0201; keyframe_overrides/13 (seleucid-empire_-301) runs -301..-292. They are needed to keep the Libyan desert and Sogdia from coming back at -300; the m0300-m0201 patch has no entry for them.",
+  "Next window: seleucid-empire_-291 (verdict ok, Cliopatria shape) lacks Sogdia and about 230 Bactrian cells and will snap them away again at -291; m0300-m0201 should override it the same way as keyframe_overrides/13. Other dossiers that use region 'Cyrenaica' after -290 were not scanned.",
+  "keyframe_overrides/6 (scythia_-404) gives from -404, which lies before the window (m0500-m0401); it changes only the end year (-351 to -314), and keyframe snaps happen only at start years, so nothing in that window changes.",
+  "Overlapping keyframes are unioned in the compiler (do_keyframe unions every keyframe active that year), so macedonian-empire_-317 needed no override.",
+  "Side effects seen in the trial: conflict kingdom-of-armenia / macedonian-empire grows from 69 to 214 cell-years (Armenia wins; Mesopotamia region overlaps its shape) and maurya-empire / seleucid-empire from 19 to 84 (Maurya wins; Bactria overlaps its 65 cells); both settle the right way. The 836 east-of-Don cells not handed to the Sarmatians in 313 become nobody then, as before.",
+  "Not checked against pages: hierarchy.csv rows for hindush, gandara, yehud-medinata, hecatomnid-caria and thirty-first-dynasty-of-egypt (no wrong row noticed); Antigonid/Lysimachus split after Ipsus; colonies in Sicily and Italy.",
+  "Page budget: 8 pages opened; a ninth, Battle_of_Danyang, returned url_not_found."
+ ]
+}

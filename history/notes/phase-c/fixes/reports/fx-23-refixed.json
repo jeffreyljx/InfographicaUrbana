@@ -1,0 +1,41 @@
+{
+ "batch_id": "fx-23",
+ "findings": [
+  {
+   "item": "F041 (remaining -326 snap)",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "macedonian-empire"
+   ],
+   "changes": [
+    "macedonian-empire: ledger index 34 (new, after the -329 Bactria/Sogdia gain): gain -329, counterpart bessus-artaxerxes-v, confidence 2, region = (achaemenid-empire ledger 44 split region intersect the -326 keyframe's Cliopatria Macedonian Empire/Ptolemaic Kingdom -326 shapes with Bactria and Sogdia) minus (Bactria, Sogdia, Gandhara, Punjab); resolves to 2,400 cells, all inside the -326 keyframe",
+    "macedonian-empire: keyframe macedonian-empire_-326 note: [fx-23 refix] sentence recording that the 330 split land outside Bactria-Sogdia is now held by the -329 gain"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Alexander_the_Great"
+   ],
+   "why": "Page: 'In 329 BC, Spitamenes ... betrayed Bessus to Ptolemy, one of Alexander's trusted companions, and Bessus was executed'; the campaign 'took Alexander through a number of satrapies in present-day Afghanistan and Central Asia' (Media, Parthia, Aria, Drangiana, Arachosia, Bactria, Scythia; no year; Alexandria Arachosia at Kandahar). In the compiler the 4,707 cells split to bessus-artaxerxes-v in 330 are released to nobody by its -330 keyframe (Bactria and Sogdia only) and its -329 dissolve passes on only Bactria and Sogdia, so about 2,400 cells the -326 keyframe draws as Alexander's (Hilmand, Hirat, Kandahar, Farah, Nimroz, Ghor, Chardzhou, Ahal, K.P., Baluchistan) were snapped in. The new -329 gain, dated at Bessus's fall (bridged, confidence 2), gives them to this state through the compiler's nobody's-land fallback; Gandhara (132 cells) and Punjab (3) are left to the 326 gains. Checked by set arithmetic (the compiler was not run): the gain region equals (-326 keyframe intersect split region) minus Bactria, Sogdia, Gandhara, Punjab; 0 cells outside the keyframe, 0 in Bactria/Sogdia."
+  }
+ ],
+ "dossiers_changed": [
+  "macedonian-empire"
+ ],
+ "validation": {
+  "macedonian-empire": "ok (python3 -I tools/validate_dossier.py --resolve: 0 errors, 0 warnings; 70 events, 26 keyframes)"
+ },
+ "handoffs": [
+  {
+   "dossier": "bessus-artaxerxes-v",
+   "where": "ledger, -329 (optional)",
+   "what": "Add the mirror loss of the land achaemenid-empire ledger 44 split to it, outside Bactria and Sogdia, to macedonian-empire at -329, or widen identity.successors[0].land to its whole land.",
+   "why": "The macedonian-empire gain works without it (the cells are nobody's by then and the gain takes nobody's land when the counterpart holds none), so this only makes the two dossiers agree.",
+   "source": "https://en.wikipedia.org/wiki/Alexander_the_Great"
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "not_reached": [],
+ "notes_path": "history/polities/_notes/fix-fx-23.md",
+ "problems": [
+  "The compiler was not run (not allowed); the removal of the -326 snap is shown by set arithmetic on the gazetteer, not by a compile. The residual -307 snap and the other items in reports/fx-23.json problems are unchanged by this re-fix."
+ ]
+}

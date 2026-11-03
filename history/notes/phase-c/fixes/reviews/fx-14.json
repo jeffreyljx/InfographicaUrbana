@@ -1,0 +1,60 @@
+{
+ "batch_id": "fx-14",
+ "checks": [
+  {
+   "item": "F057",
+   "verdict": "pass",
+   "what": "hotaki-dynasty_1727 now runs 1727-1729 and _1721 runs 1721 only. The compiler (keyframes() and do_keyframe()) draws the union of every keyframe alive in a year, so the old shapes.csv span (1727-1733) brought the Persian outline back at 1730. The diagnosis is right. Recount with the gazetteer: the 1727 shape has 7,355 cells and the 1734 shape 2,114. 1727 minus 1734 is 5,243 cells. The safavid-dynasty 1729-10 paired gain (ledger[65], Safavid 1721 intersect Hotaki 1727) takes 3,884 of them, and the compiler skips a loss when the counterpart has a paired gain. The new 1729-11 loss to nobody is exactly the other 1,359 cells. It does not overlap the Safavid gain or Kalat's 1716 shape. Ending _1721 at 1721 changes nothing, because _1722 is a union containing it. The page backs the year: '[1729] Ashraf Hotak was banished to what is now southern Afghanistan, limiting Hotak rule to a vestige of their once large empire', and 'the southern areas of Afghanistan remained under their control until 1738'. The dossier validates with 0 errors.",
+   "page": "https://en.wikipedia.org/wiki/Hotak_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F094",
+   "verdict": "pass",
+   "what": "The Qajar keyframes of 1794, 1796, 1797, 1800, 1805, 1806, 1811 and 1822 each lose 411 cells. All of them lie in khanate-of-kalat_1784 (1784-1827), and none are orphaned. Overlap with Kalat falls from 415 to 4 cells a year; the 4 are the Pakistani Makran cells, left to Kalat. The new 1828 Qajar gain has the same region as kalat ledger[9] (418 cells), and the Qajar 1828 keyframe holds only 4 cells of Kalat's 1828 shape, so the pair is consistent. Kalat page: Nasir Khan 'conquered cities of Khash, Bampur, Qasr-e Qand and Zahedan in the Iranian Balochistan'; the khanate 'declined in the early 19th century, losing much of its territory to Qajar Iran'. Sistan and Baluchestan province page: after Nader's assassination in 1747 the province 'became part of the Brahui Khanate of Kalat', which ruled it until 1896. The removal for 1794-1822 is supported. The 1828 date is an inherited bridge, marked confidence 1.",
+   "page": "https://en.wikipedia.org/wiki/Khanate_of_Kalat",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F098",
+   "verdict": "pass",
+   "what": "British Raj ledger[0] (found 1858) and the 1858, 1859, 1860 and 1868 keyframes now subtract Kalat's 1843-1876 shape. Each removes 615 cells: 614 in Balochistan and 1 in Sindh. Karachi stays British because it is not in Kalat's 1843 shape. Overlap with the Kalat shape is 0. The other 239 cells removed in 1859-1868 are the Sri Lanka subtraction that was already there. Kalat page: after the Treaty of Kalat (1876) with Sandeman, 'Kalat became a self-governing state in a subsidiary alliance with British India'; it names no British tie in 1858-1876 apart from the 1839 sack. Baluchistan Agency page: 'established in 1877, following the 1876 treaty signed in Mastung'. hierarchy.csv starts the Kalat vassal row in 1877, which matches.",
+   "page": "https://en.wikipedia.org/wiki/Baluchistan_Agency",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F074",
+   "verdict": "pass",
+   "what": "The 'kept' verdict holds. The Hotak dynasty page never mentions Balochistan, Baluchistan, Makran or Quetta; it has only 'crossed the deserts of Sistan and captured Kerman'. The Kalat page says that under Abdullah Khan 'the state expanded from upper Sindh and Kandahar to Persia till the port of Bandar Abbas'. The size rule giving the 661 cells to Kalat is the side the pages support. No data changed; only a notes line was added.",
+   "page": "https://en.wikipedia.org/wiki/Khanate_of_Kalat",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F198",
+   "verdict": "pass",
+   "what": "The skip is right: hierarchy.csv row 5 already tints khanate-of-kalat under afsharid-iran 1738-1744. The handoff is supported by the Nasir Khan page (Nasir_Khan_Noori resolves to 'Nasir Khan I Ahmadzai'): 'Nader Shah confirmed him [Mohabbat Khan] in his position' and Nasir Khan 'was sent as hostage of Afsharids to Isfahan where he remained till 1748'. Neither the word vassal nor tribute is used for Nader. The Kalat page says 'Since 1748, Kalat was a vassal state of Durrani Empire'. No year is given for the end of the Afsharid tie, so leaving the 1744/1747 choice to the orchestrator is right.",
+   "page": "https://en.wikipedia.org/wiki/Nasir_Khan_Noori",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F170",
+   "verdict": "pass",
+   "what": "Only the stale British Raj note was changed. It now says hierarchy.csv draws kingdom-of-manipur as the Raj's vassal 1858-1947, matching hierarchy.csv row 36. No events were added. The Kingdom of Manipur source entry is quoted right: 'It became a protectorate of the British East India Company from 1824, and a princely state of the British Raj in 1891'; 'On 14 August 1947, with the lapse of paramountcy of the British Crown, Manipur regained its political autonomy'.",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Manipur",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "Validation (validate_dossier.py --resolve): hotaki-dynasty 0 errors, 0 warnings; qajar-dynasty 0 errors, 0 warnings; british-raj 0 errors and 6 warnings that were there before (chitral counterpart x2, Dewangiri unknown place x4).",
+  "The Persian Baluchistan handover year is still a bridge: kalat ledger[9] and the new qajar 1828 gain put it at 1828. The Sistan and Baluchestan province page has Kalat ruling the province until 1896; the Kalat page says only 'early 19th century'.",
+  "The British Raj 1858-1876 outline still draws about 700 cells of Baluchistan outside Kalat's shape as British: Kharan, Chagai, Las Bela, Zhob, Sibi and the Marri-Bugti hills. The Baluchistan Agency page gives British organisation only from 1877. No dossier contests them, so no conflict is reported, but they may be drawn too early.",
+  "Pishin is unresolved between khanate-of-kalat (lost 1877) and british-raj (Gandamak 1879). The fixer did not open the Gandamak page.",
+  "hotaki-dynasty: the compiler was not rerun. Gazetteer arithmetic says that after the two 1729-11 losses the ledger matches the 1730 keyframe (Hotaki 1734 shape) apart from the 661 Kalat cells, which the size rule keeps with Kalat. The snaps keyframe_snaps.csv lists for hotaki-dynasty_1727 and _1721 belong to other findings and are untouched."
+ ]
+}

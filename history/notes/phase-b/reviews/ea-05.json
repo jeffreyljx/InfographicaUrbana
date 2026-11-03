@@ -1,0 +1,1976 @@
+{
+ "batch_id": "ea-05",
+ "verdicts": [
+  {
+   "slug": "northern-song",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/3",
+     "what": "K3 (965-969) says Cliopatria's Northern Song 970 shape 'already contains Sichuan, Hubei and Hunan'; it does not contain Hunan, so the Song shape drops Hunan for 965-975 although L1 gained it in 963 and no event loses it.",
+     "why": "Gazetteer resolve: 220 of the 224 thousand grid-km2 of admin1 Hunan lie outside {cliopatria: Northern Song, 970}; all but 4 lie inside {cliopatria: Southern Tang, 975}, a shape the southern-tang dossier marks 'wrong' (keyframes southern-tang_960/970) and excludes Hunan from (it lost Hunan to Wuping in 952-12). So Hunan 965-975 is in nobody's corrected shape; L4 (976) then re-gains it from the Southern Tang shape.",
+     "fix": "K3, K4 and K5: union {admin1: Hunan, country: China} into the corrections (K4 northern-song_970 verdict ok -> adjust, its note's 'with Sichuan, Hubei and Hunan' corrected); /ledger/4 region = the southern-tang dossier's corrected 970 keyframe (or {minus: [ST975, Hunan, Fujian]}).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/6",
+     "what": "K6 (976-977) and L4 take all of Fujian from the raw Cliopatria Southern Tang 975 shape two years early: Fuzhou was Wuyue's and Quanzhou-Zhangzhou Qingyuan Circuit's until 978.",
+     "why": "All 138 thousand grid-km2 of admin1 Fujian lie inside {cliopatria: Southern Tang, 975}; wuyue.json gives Fuzhou (80 km disc) to northern-song in 978 and qingyuan-circuit.json dissolves in 978 with successor northern-song (Quanzhou, Zhangzhou discs); Five Dynasties page: 'Wuyue and Qingyuan Jiedushi gave up their land to Northern Song in 978'. The Song ledger has no event with counterpart qingyuan-circuit.",
+     "fix": "Use the southern-tang dossier's corrected shape for /ledger/4 and K6; add gain 978 cp qingyuan-circuit (Quanzhou and Zhangzhou 60 km discs, Five Dynasties page) and the Fuzhou disc to the 978 Wuyue gain (/ledger/5); K7 = K6 plus both.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/18",
+     "what": "Between K17 (1126-1129) and K18 (1130-1138) the Song loses about 600 thousand km2 (Henan, Shandong, Shaanxi, eastern Gansu, the Huai-north strip of Jiangsu and Anhui, and the Linxia, Lanzhou and Xining discs) with no loss event.",
+     "why": "Ledger has only contest_start 1127-01 (Henan, Shandong, Shaanxi) and the 1139 gain back; no loss 1127-1130. Grid measure: K17 3,008k -> K18 2,231k cells-km2. Jin-Song wars page: 'Da Qi was formed late in 1130'; Zhang Jun 'was defeated by Wuzhu near Xi'an in late 1130'. great-qi is founded on part of it (counterpart great-jin) and great-jin's 1139 keyframes take the rest with no event, so the Huai-north strip, eastern Gansu and the NW discs belong to nobody in 1130-1138.",
+     "fix": "Add loss 1130 (confidence 2, Jin-Song wars page) cp great-jin, region {minus: [<K17 correction>, {cliopatria: Southern Song, year: 1139}]}; great-jin adds the matching gain and the split to great-qi (see great-jin).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/20",
+     "what": "K20 (Southern Song 1139 shape, valid from 1140) drops Henan and Shaanxi, gained in 1139 (/ledger/34), with only a contest_start in 1140; the loss is recorded in October 1142, two years after the keyframe and after the Jin's gain (great-jin /ledger/25, 1140).",
+     "why": "Jin page: 'In 1140, the Jin retook Shaanxi and Henan'. Grid measure: K19 2,556k -> K20 2,231k cells-km2.",
+     "fix": "Add loss 1140 cp great-jin of {union: [Henan, Shaanxi]} (Jin page, confidence 3), keep the 1142 loss for the rest of the Qinling-Huai renunciation (or narrow it), so that great-jin /ledger/25 is matched.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/12",
+     "what": "Ly-Song war: the Song side has contest 1075-1077 only, while ngo-dynasty records an occupation of Qinzhou, Lianzhou and Yongzhou 1075-1082 (cp northern-song) and a loss 1077 / gain 1082 of Quang Nguyen (Cao Bang, Lang Son) to and from the Song.",
+     "why": "ngo-dynasty L12/L16 occupation_start 1075 / occupation_end 1082, L15 loss 1077, L17 gain 1082. Schema: the owner records an occupation 'with the roles reversed'. Ly-Song War page: 'In 1082 ... returned Yong, Qin, and Lian prefectures back to Song authorities', the Song 'relinquished its control of four prefectures and the county ... including ... Quang Nguyen'.",
+     "fix": "Add occupation_start 1075 / occupation_end 1082 cp ngo-dynasty (Qinzhou and Nanning discs), gain 1077 and loss 1082 cp ngo-dynasty ({admin1: Cao Bang} and {admin1: Lang Son}, Vietnam); keep or end the contest at 1077.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/12/note",
+     "what": "The note reads the 1056 step (+34.6 thousand km2) as Quang Nguyen, but the Song 1056 shape lies wholly in China.",
+     "why": "shapes.csv northern-song_1056 modern_countries 'China'; the added cells (bbox 105.6-108.4 E, 21.9-25.5 N) are in Guangxi; the Ly-Song War page puts Quang Nguyen in Cao Bang and has the Song hold it only 1077-1082.",
+     "fix": "Rewrite the note: the 1056 step is a Guangxi border adjustment the pages do not date; Quang Nguyen is handled by the 1077/1082 events above.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger",
+     "what": "Great Chu (great-chu found 1127-04 cp northern-song, dissolve 1127-05 with successor northern-song) has no Song mirror; the Song keyframe K17 keeps Kaifeng throughout.",
+     "why": "great-chu ledger L0/L1 and identity.successors; Zhang Bangchang infobox: reign 20 April 1127 - 23 May 1127.",
+     "fix": "Add loss 1127-04 and gain 1127-05 cp great-chu of {place: Kaifeng, km: 100}, or state in notes that the one-month puppet is drawn inside the contested zone (exception).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/18",
+     "what is missing": "1113 loss of Qingtang (Xining) to Western Xia at confidence 1; the Tsongkha page has the Song there in 1108 and the Jin ceding it to Xia in 1136",
+     "page to try": "https://en.wikipedia.org/wiki/Song%E2%80%93Xia_wars"
+    },
+    {
+     "where": "/ledger/46",
+     "what is missing": "1260 loss of western Sichuan at confidence 1; no page dates it",
+     "page to try": "https://en.wikipedia.org/wiki/Siege_of_Diaoyu_Castle"
+    },
+    {
+     "where": "/keyframe_review/22",
+     "what is missing": "the 1250 step (10 thousand km2 in Sichuan) is unverified",
+     "page to try": "https://en.wikipedia.org/wiki/Mongol_conquest_of_the_Song_dynasty"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "Song gains in Henan in 1234 (the great-jin dossier's /ledger/45 note: the Song got 'parts of Henan'); none in the Song ledger",
+     "page to try": "https://en.wikipedia.org/wiki/Mongol_conquest_of_the_Jin_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Five_Dynasties_and_Ten_Kingdoms_period",
+     "result": "confirmed",
+     "quote": "'The kingdom fell to advancing armies of the Song in 963'; Wuping: 'In 963, the region was annexed by Song dynasty'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Five_Dynasties_and_Ten_Kingdoms_period",
+     "result": "confirmed",
+     "quote": "'... Later Shu in 965, Southern Han in 971, and Southern Tang in 975'"
+    },
+    {
+     "where": "/ledger/43",
+     "page": "https://en.wikipedia.org/wiki/Mongol_conquest_of_the_Song_dynasty",
+     "result": "confirmed",
+     "quote": "Xiangyang 'capitulated in 1236'"
+    },
+    {
+     "where": "/ledger/45",
+     "page": "https://en.wikipedia.org/wiki/Mongol_conquest_of_the_Song_dynasty",
+     "result": "confirmed",
+     "quote": "'The only permanent gain was Chengdu for the Mongols in 1241'"
+    },
+    {
+     "where": "/ledger/52",
+     "page": "https://en.wikipedia.org/wiki/Mongol_conquest_of_the_Song_dynasty",
+     "result": "confirmed",
+     "quote": "'Yangzhou in 1276, Chongqing in 1277 and Hezhou in 1279'"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Sixteen_Prefectures",
+     "result": "confirmed",
+     "quote": "'In 1123, the Jin ceded most of the territories except Yunzhou to the Song' ... 'retook them ... in 1125'"
+    },
+    {
+     "where": "/ledger/37",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Shaoxing",
+     "result": "confirmed",
+     "quote": "'formally ratified on 11 October 1142'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 3100000,
+    "infobox_year": 980,
+    "cliopatria_km2": 2765922,
+    "ratio": 0.89,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "liao-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger",
+     "what": "No vassal pair for the Later Jin (936-942), the Liao's best-known client; the later-jin dossier records it inverted (vassal_start 936-11, vassal_end 942 with counterpart liao-dynasty).",
+     "why": "Schema (ledger.type): vassal events go in the suzerain's dossier with 'counterpart' the vassal itself. Liao page: 'In 938, the puppet emperor of Later Jin transferred the Sixteen Prefectures over to the Khitans'; later-jin L1 note: 'the Later Jin is founded as a Liao client' (28 November 936), L8: 'Summer 942: Shi Chonggui breaks the subordination'.",
+     "fix": "Add vassal_start 936-11 and vassal_end 942 cp later-jin, region {cliopatria: Later Jin, year: 936} (minus the Sixteen Prefectures from 938), sources the Later Jin and Shi Chonggui pages; ask ea-04 to drop its inverted pair.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/9",
+     "what": "947: the Liao records only an occupation of a 100 km Kaifeng disc with counterpart later-jin, while later-jin loses its whole realm to the Liao (947-01) and later-han gains the Central Plain from the Liao (947).",
+     "why": "later-jin L11 947-01 loss cp liao-dynasty ('annihilated the Later Jin and annexed its former territories in 947'); later-han L0 947 gain cp liao-dynasty. An occupation needs an owner, and later-jin dissolves in 947-01.",
+     "fix": "Either: gain 947-01 cp later-jin ({cliopatria: Later Jin, year: 936} minus the Sixteen Prefectures) and loss 947 cp later-han, replacing the occupation pair; or keep the occupation and have ea-04 change later-jin's loss to a dissolve and later-han's gain counterpart. Route to ea-04.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger",
+     "what": "goryeo records a loss of the Sinuiju area to the Liao in 1014 and a gain back in 1031; the Liao has no mirror.",
+     "why": "goryeo L9 1014 loss cp liao-dynasty ({place: Sinuiju, km: 50}), L11 1031 gain cp liao-dynasty.",
+     "fix": "Add gain 1014 / loss 1031 cp goryeo if the pages support them, otherwise route to jk-02 to justify the goryeo pair.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/26",
+     "what": "The 1124 split gives the Kara-Khitans the whole Mongolian Plateau, while kara-khitans.json founds on the Orkhon Valley only, and K11 (1122-1125) keeps the steppe in the Liao shape.",
+     "why": "kara-khitans L0 1124 found region {region: Orkhon Valley}; Liao K11 has no 1124 change.",
+     "fix": "Make /ledger/26 {region: Orkhon Valley} (or agree a wider region with ia-01) and remove it from the Liao shape for 1124-1125.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/20",
+     "what": "contest_start 1114-11 names great-jin, which did not exist until January 1115; jurchen-confederation carries the 1114-11 to 1115-01 contest with the Liao.",
+     "why": "Wanyan Aguda page: 'In January 1115 ... Aguda proclaimed himself emperor'; jurchen-confederation L5/L6.",
+     "fix": "contest_start 1114-11 and contest_end 1115-01 cp jurchen-confederation, then contest_start 1115-01 cp great-jin (paired with /ledger/27).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "922 steppe gain at confidence 1 (199 thousand km2 of Inner Mongolia, undated)",
+     "page to try": "https://en.wikipedia.org/wiki/Emperor_Taizu_of_Liao"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "926 Mongolian steppe gain at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Emperor_Taizu_of_Liao"
+    },
+    {
+     "where": "/ledger/18",
+     "what is missing": "1074 Jurchen vassal_start at confidence 1 ('by the 11th century')",
+     "page to try": "https://en.wikipedia.org/wiki/Jurchen_people"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Liao_dynasty",
+     "result": "confirmed",
+     "quote": "'In 938, the puppet emperor of Later Jin transferred the Sixteen Prefectures over to the Khitans'"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Liao_dynasty",
+     "result": "confirmed",
+     "quote": "treaty signed 'January 1005'; 'finalize the location of their disputed border'"
+    },
+    {
+     "where": "/ledger/26",
+     "page": "https://en.wikipedia.org/wiki/Liao_dynasty",
+     "result": "confirmed",
+     "quote": "'In 1124 the successor state established by Yelü Dashi in the Western Regions'"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Jin_dynasty_(1115%E2%80%931234)",
+     "result": "confirmed",
+     "quote": "'The Jin captured the Supreme Capital in mid-1120'"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Liao_dynasty",
+     "result": "confirmed",
+     "quote": "'In 1066 Emperor Daozong of Liao reintroduced the dynastic name Great Liao'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2600000,
+    "infobox_year": 947,
+    "cliopatria_km2": 1924516,
+    "ratio": 0.74,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "great-jin",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/5",
+     "what": "The Jin never gains the Song lands north of the Qinling-Huai line, yet its vassal Qi is founded on them in 1130 (great-qi: predecessor and counterpart great-jin) and the Jin takes them back from Qi in 1137 (/ledger/21).",
+     "why": "Jin ledger has contest_start 1127-01 and vassal_start 1130 cp great-qi, no gain 1127-1130; K5 (1126-1136) = the 1126 shape plus Hebei and Shanxi only. Jin page: Liu Yu 'defected to the Jin in 1128'; Jin-Song wars page: 'Da Qi was formed late in 1130, and the Jin enthroned Liu as its emperor'.",
+     "fix": "Add gain 1130 cp northern-song, region {minus: [<northern-song K17 correction>, {cliopatria: Southern Song, year: 1139}]} (the same spec as the Song's new 1130 loss), then split 1130 cp great-qi with Qi's K0 region; extend K5 for 1130-1136 by the part not given to Qi (eastern Gansu, Huai-north Jiangsu and Anhui, the Linxia, Lanzhou and Xining discs).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/7",
+     "what": "The 1139 keyframes (K7, K8) add about 145 thousand km2 that the 1137 keyframe lacks, with no event.",
+     "why": "Gazetteer resolve of K7 minus K6: Gansu 80k, Ningxia 38k, Jiangsu 26k, Anhui 25k, Inner Mongolia 12k grid-km2 (grid overstates true area by about a fifth). No 1137-1139 event names these lands.",
+     "fix": "The 1130 gain above explains it; if the author keeps the plain-only reading instead, add a gain naming {admin1: Gansu}, Ningxia and the Huai-north strip.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger",
+     "what": "western-xia /ledger/14 gains the Xining area from the Jin in 1136; the Jin has no loss (and never held it).",
+     "why": "Tsongkha page: 'The area was later conquered by the Jin dynasty ... which ceded the area to the Western Xia in 1136'.",
+     "fix": "After the 1130 gain, add loss 1136 cp western-xia ({place: Xining, km: 100}).",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/14",
+     "what": "great-jin_1227 is marked adjust with 'unchanged shape; use the 1223 and 1231 keyframes instead': the shape is valid in no year, so a compiler may draw its 784 thousand km2 for 1227-1230 over the 1223 keyframe.",
+     "why": "K12 (1223-1230) and K13 (1231-1232) remove Hebei, Shanxi, Shandong and Shaanxi; K14 has no from/to.",
+     "fix": "Verdict wrong, correction = the K12 spec, text 'superseded 1227-1230 by the 1223 keyframe and from 1231 by the 1231 and 1233 keyframes'.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Jin_dynasty_(1115%E2%80%931234)",
+     "result": "confirmed",
+     "quote": "'The Jin captured the Supreme Capital in mid-1120'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Jin_dynasty_(1115%E2%80%931234)",
+     "result": "confirmed",
+     "quote": "'In the winter, Aguda took the Southern Capital' (winter 1122)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Jin_dynasty_(1115%E2%80%931234)",
+     "result": "confirmed",
+     "quote": "'declared himself a vassal of Jin in 1124'"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Jin_dynasty_(1115%E2%80%931234)",
+     "result": "confirmed",
+     "quote": "'in 1126, the king of Goryeo declared himself a Jin vassal (tributary)'"
+    },
+    {
+     "where": "/ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Jin_dynasty_(1115%E2%80%931234)",
+     "result": "confirmed",
+     "quote": "'In 1140, the Jin retook Shaanxi and Henan'"
+    },
+    {
+     "where": "/ledger/41",
+     "page": "https://en.wikipedia.org/wiki/Mongol_conquest_of_the_Jin_dynasty",
+     "result": "confirmed",
+     "quote": "'Zhongdu fell to the Mongols on June 1, 1215'"
+    },
+    {
+     "where": "/ledger/43",
+     "page": "https://en.wikipedia.org/wiki/Mongol_conquest_of_the_Jin_dynasty",
+     "result": "confirmed",
+     "quote": "'In 1231, the Mongols attacked again and finally took Fengxiang'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 3610000,
+    "infobox_year": 1142,
+    "cliopatria_km2": 2117224,
+    "ratio": 0.59,
+    "acknowledged": true,
+    "note": "1186: 4,750,000 against 2,118,396 (ratio 0.45), acknowledged in K5's note (the infobox counts the tribal sphere)"
+   }
+  },
+  {
+   "slug": "western-xia",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/13",
+     "what is missing": "1113 gain of Qingtang at confidence 1; the pages disagree (Song-Xia wars 1113; Tsongkha page: Jin cession 1136); neither gain is drawn",
+     "page to try": "https://en.wikipedia.org/wiki/Tsongkha"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "xiliangfu.json records Western Xia occupations of Liangzhou 1003-1004 and 1015-1016 (cp western-xia); no Xia mirror",
+     "page to try": "https://en.wikipedia.org/wiki/Xiliangfu"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "1032 gain names xiliangfu, which ends in 1016 in xiliangfu.json (dissolve cp ganzhou-kingdom); the Western Xia page has 'In 1032, Yuanhao annexed the Tibetan confederation of Xiliangfu'. Flagged by the author; the two dossiers must agree on who held Liangzhou in 1016-1032",
+     "page to try": "https://en.wikipedia.org/wiki/Xiliangfu"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "capital before 1038 (Yinzhou is an approximate site; page silent); Li Deming's move to Xingzhou is the lead",
+     "page to try": "https://en.wikipedia.org/wiki/Li_Deming"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Western_Xia",
+     "result": "confirmed",
+     "quote": "'In 1032, Yuanhao annexed the Tibetan confederation of Xiliangfu'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Western_Xia",
+     "result": "confirmed",
+     "quote": "'By 1036, he had annexed both the Ganzhou Uyghur Kingdom and the Guiyi Circuit'"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Song%E2%80%93Xia_wars",
+     "result": "confirmed",
+     "quote": "'In October, Li Xian took Lanzhou' (summer 1081 invasion)"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Mongol_conquest_of_Western_Xia",
+     "result": "confirmed",
+     "quote": "'In August 1226 ... his troops approached' Wuwei; 'took Liangzhou'"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Mongol_conquest_of_Western_Xia",
+     "result": "confirmed",
+     "quote": "'In September 1227, Emperor Mozhu surrendered to the Mongols'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1000000,
+    "infobox_year": 1100,
+    "cliopatria_km2": 473560,
+    "ratio": 0.47,
+    "acknowledged": true,
+    "note": "body gives 800,000 at its peak (ratio 0.59); K3 keeps the shape with reasons"
+   }
+  },
+  {
+   "slug": "kingdom-of-dali",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/identity/rulers",
+     "what is missing": "rulers 944-1094 and 1096-1256 (the list pages failed); the Dali Kingdom page's ruler section and the Duan Xingzhi page are the leads",
+     "page to try": "https://en.wikipedia.org/wiki/Duan_Xingzhi"
+    },
+    {
+     "where": "/certainty/0",
+     "what is missing": "no boundary on any page; Cliopatria's shape carried as drawn",
+     "page to try": "https://en.wikipedia.org/wiki/Dali_Kingdom"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "mongol-empire has vassal_start 1253 cp kingdom-of-dali and vassal_end + gain 1260 at confidence 1, after Dali's 1256 end; the two dossiers should agree (route to ia-02)",
+     "page to try": "https://en.wikipedia.org/wiki/Dali_Kingdom"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Dali_Kingdom",
+     "result": "confirmed",
+     "quote": "'Duan Siping seized power in 937, establishing himself at Dali'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Dali_Kingdom",
+     "result": "confirmed",
+     "quote": "1094: Gao Shengtai 'renamed the Dali Kingdom to \"Dazhong Kingdom\"'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Dali_Kingdom",
+     "result": "confirmed",
+     "quote": "1096: Duan Zhengchun 'restored the kingdom's former name'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Dali_Kingdom",
+     "result": "confirmed",
+     "quote": "'In 1256, Duan Xingzhi surrendered and presented to Möngke maps of Yunnan'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 360583,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the infobox gives no area"
+   }
+  },
+  {
+   "slug": "tsongkha",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "the 1032 step adds the Xining disc with only a capital_move; the page has Gusiluo 'enthroned at Kuozhou' in 1008 and 'relocated to Miaochuan' in 1025 (both Hehuang), so the Xining area was held from 1008: add a gain (cp nobody) in 1008 and start the Xining disc then",
+     "page to try": "https://en.wikipedia.org/wiki/Tsongkha"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "capitals 1008-1031 (Kuozhou, Miaochuan) left out because the gazetteer lacks them; capitals need only coordinates",
+     "page to try": "https://en.wikipedia.org/wiki/Gusiluo"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "found 997 at confidence 1; rulers start in 1008",
+     "page to try": "https://en.wikipedia.org/wiki/Gusiluo"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Tsongkha",
+     "result": "confirmed",
+     "quote": "'In 1032 Gusiluo relocated to Qingtang'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Tsongkha",
+     "result": "confirmed",
+     "quote": "'In 1072 ... Wang Shao attacked Mucheng and gained control of Wushengjun (Xizhou) and Hezhou'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Tsongkha",
+     "result": "confirmed",
+     "quote": "1099: Wang Shan defeated Longza and occupied Tsongkha"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Tsongkha",
+     "result": "confirmed",
+     "quote": "'In 1103, the Song dispatched Wang Hou to conquer Tsongkha'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no Cliopatria shape, no infobox area"
+   }
+  },
+  {
+   "slug": "khitan-confederation",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "one keyframe for 628-906; Xianzhi Khagan's subjugation of the Kumo Xi and Shiwei (860?-882?) and the Yaonian expansion are not placed",
+     "page to try": "https://en.wikipedia.org/wiki/Khitan_people"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "the Uyghur overlordship 755-840 belongs in uyghur-khaganate.json, which has no Khitan event; the Tang's Songmo commandery (648) and the 696-714 war have no counterpart events in tang-dynasty.json",
+     "page to try": "https://en.wikipedia.org/wiki/Uyghur_Khaganate"
+    },
+    {
+     "where": "/notes",
+     "what is missing": "the notes call Cliopatria's Liao 911 shape 374 thousand km2; shapes.csv has 265,794 km2 (374 is a grid-cell count)",
+     "page to try": "https://en.wikipedia.org/wiki/Liao_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Khitan_people",
+     "result": "confirmed",
+     "quote": "'The Dahe Confederation submitted to the Tang in both 628 and 648'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Khitan_people",
+     "result": "confirmed",
+     "quote": "'In 696, a famine occurred in Khitan territory ... sparking a rebellion'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Khitan_people",
+     "result": "confirmed",
+     "quote": "'from 700 to 714 before the Tang were able to reassert control over the Khitans'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Khitan_people",
+     "result": "confirmed",
+     "quote": "'The rebellion of Ketuyu ended Dahe supremacy in 730'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no Cliopatria shape, no infobox area"
+   }
+  },
+  {
+   "slug": "jurchen-confederation",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "K1 (1104-1106) adds Hamgyong-namdo with only a contest_start; the Timeline page's 1104 entry ('defeat Im Gan, taking Chongju castle') supports a gain (cp goryeo, whose ledger also has only a contest_start)",
+     "page to try": "https://en.wikipedia.org/wiki/Timeline_of_the_Jurchens"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "the Jurchen tribes and lands before 1074 (748 onward) are not drawn",
+     "page to try": "https://en.wikipedia.org/wiki/Jurchen_people"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Timeline_of_the_Jurchens",
+     "result": "confirmed",
+     "quote": "'1074: Wugunai of the Wanyan clan unites the Jurchens of eastern and northern Manchuria'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Timeline_of_the_Jurchens",
+     "result": "confirmed",
+     "quote": "1104: 'Wanyan clan enters Goryeo territory ... taking Chongju castle'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Timeline_of_the_Jurchens",
+     "result": "confirmed",
+     "quote": "1107: 'Goryeo invasion led by Yun Kwan ... builds Nine Fortresses' (the month is from the Jurchen page, not reopened)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Timeline_of_the_Jurchens",
+     "result": "confirmed",
+     "quote": "1108: 'Goryeo returns the Nine Fortresses region to the Wanyan clan'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no Cliopatria shape, no infobox area"
+   }
+  },
+  {
+   "slug": "great-qi",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/identity/capitals",
+     "what is missing": "first capital Daming (1130-1131) left out because the gazetteer lacks it; Daming (Hebei) also lies outside the Qi shape, which leaves out Hebei",
+     "page to try": "https://en.wikipedia.org/wiki/Jin%E2%80%93Song_wars"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "extent is a reading (no Wikipedia article): the Huai-north strip and eastern Gansu are not in Qi and must go to the Jin in 1130 (see great-jin and northern-song), or be added here",
+     "page to try": "https://en.wikipedia.org/wiki/Yue_Fei"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Jin%E2%80%93Song_wars",
+     "result": "confirmed",
+     "quote": "'Da Qi was formed late in 1130, and the Jin enthroned Liu as its emperor'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Gaozong_of_Song",
+     "result": "confirmed",
+     "quote": "'With Jin support, Da Qi invaded the Song in November 1133'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Emperor_Gaozong_of_Song",
+     "result": "confirmed",
+     "quote": "'In 1134, Yue Fei defeated Li and retook Xiangyang and its surrounding prefectures'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Jin%E2%80%93Song_wars",
+     "result": "confirmed",
+     "quote": "'In late 1137, the Jin reduced Liu Yu's title to that of a prince and abolished the state of Qi'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no article, no Cliopatria shape"
+   }
+  },
+  {
+   "slug": "eastern-xia",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0",
+     "what": "The 1215-1216 capital Dongjing (Liaoyang, 123.18 E 41.28 N, /identity/capitals/0) lies outside the 1215-1216 shape (Jilin, Heilongjiang, Primorye); the capital marker would fall in Eastern Liao's Liaoning.",
+     "why": "Eastern Xia page: Puxian Wannu 'founded the Eastern Xia dynasty in Dongjing' in 1215; Puxian Wannu page: 'In 1217 he moved from Dongjing to the Tumen River basin'. The Eastern Liao page also has Yelu Liuge occupy the Jin eastern capital in 1215 (flagged in the author's notes, but left inconsistent).",
+     "fix": "Add {place: Liaoyang, km: 60} to K0's union for 1215-1216, and record the overlap with eastern-liao (contest_start 1215 / contest_end 1217 over the Liaoyang disc, cp eastern-liao, in both dossiers); or, if the author reads Liaoyang as Eastern Liao's, end the Dongjing capital entry and say why.",
+     "applied": false,
+     "blocking": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "1217 gain of Hamgyong-namdo at confidence 1 (who held it before is not on the page)",
+     "page to try": "https://en.wikipedia.org/wiki/Puxian_Wannu"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "Mongol vassalage (hostage 1216, revolts 1217 and 1222) belongs in mongol-empire.json, which has no eastern-xia event",
+     "page to try": "https://en.wikipedia.org/wiki/Eastern_Xia"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Eastern_Xia",
+     "result": "confirmed",
+     "quote": "Puxian Wannu 'founded the Eastern Xia dynasty in Dongjing' in 1215; 'a short-lived kingdom established in Manchuria'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Puxian_Wannu",
+     "result": "confirmed",
+     "quote": "1217 paragraph: 'He again named his kingdom Eastern Xia or Dongxia'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Puxian_Wannu",
+     "result": "confirmed",
+     "quote": "same 1217 paragraph: 'His domain extended north to Laoyeling Mountains, south to Hamgyŏngnamdo'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Puxian_Wannu",
+     "result": "confirmed",
+     "quote": "'In 1233 Ögedei's son Güyük attacked Eastern Xia ... and captured Puxian Wannu'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no Cliopatria shape, no infobox area"
+   }
+  },
+  {
+   "slug": "eastern-liao",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/rulers",
+     "what": "Rulers stopped at 1238 and left 1220-1226 empty although the page lists all of them; the note said 'The page names no ruler for 1220-1226'.",
+     "why": "Eastern Liao infobox: '1238-1259: Yelü Shouguonu'; '1259-1269: Yelü Gunai'; rulers table: 'Empress Yaoli ... 1220-1226', footnote 'Regent'.",
+     "fix": "Added Empress Yaoli (regent) 1220-1226, Yelu Shouguonu 1238-1259 and Yelu Gunai 1259-1269 with the page as source; corrected Yelu Xuedu's note. Re-validated: 0 errors, 0 warnings.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/identity/capitals",
+     "what": "No capital although the page names one (the author left it out because the gazetteer lacks Kaiyuan; capitals need only coordinates).",
+     "why": "Infobox 'Capital: Zhongjing'; 1214: Liuge 'set his capital at modern Kaiyuan and named it Zhongjing'.",
+     "fix": "Added Zhongjing (modern Kaiyuan, Liaoning), 124.04 E 42.55 N, 1214-1269. Re-validated: 0 errors, 0 warnings.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what": "K0 holds all of Liaoning 1212-1269, including Dongjing (Liaoyang), which eastern-xia uses as its 1215-1216 capital.",
+     "why": "Eastern Liao page: 'In 1215, Yelü Liuge occupied the eastern capital'; the same page and the Eastern Xia page put the Eastern Xia founding at Dongjing in 1215.",
+     "fix": "Settle with eastern-xia (see its fix): a contest over the Liaoyang disc 1215-1217 in both dossiers.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/5",
+     "what is missing": "1216 Later Liao contest at confidence 1 with 'the page gives no land'; the page says Later Liao was 'based in modern Haicheng' (Haicheng is not in the gazetteer)",
+     "page to try": "https://en.wikipedia.org/wiki/Eastern_Liao"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "all of Liaoning for 57 years is a reading; the page gives no territory after 1215",
+     "page to try": "https://en.wikipedia.org/wiki/Eastern_Liao"
+    },
+    {
+     "where": "/ledger",
+     "what is missing": "Mongol vassalage from 1220 ('became a vassalage of the Mongol Empire') belongs in mongol-empire.json, which has no eastern-liao event",
+     "page to try": "https://en.wikipedia.org/wiki/Eastern_Liao"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Eastern_Liao",
+     "result": "confirmed",
+     "quote": "'rebelled against the rule of the Jurchen-led Jin dynasty in 1212'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Eastern_Liao",
+     "result": "confirmed",
+     "quote": "'In 1213, Yelü Liuge proclaimed himself king'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Eastern_Liao",
+     "result": "confirmed",
+     "quote": "1214: 'set his capital at modern Kaiyuan and named it Zhongjing'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Eastern_Liao",
+     "result": "confirmed",
+     "quote": "'In the spring of 1219, the Later Liao ruler Yelü Hanshe committed suicide'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Eastern_Liao",
+     "result": "confirmed",
+     "quote": "'In 1269, the Yuan dynasty abolished the title'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no Cliopatria shape, no infobox area"
+   }
+  },
+  {
+   "slug": "great-chu",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Jin%E2%80%93Song_wars",
+     "result": "confirmed",
+     "quote": "'In 1127, the Jurchens installed a former Song official, Zhang Bangchang'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Da_Chu",
+     "result": "confirmed",
+     "quote": "'abolished scarcely a month after its formation'; Zhang Bangchang infobox 'Reign: 20 April 1127 - 23 May 1127'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no territory on any page; the Jiankang capital conflict is flagged in notes; tried: dates, rulers, predecessor/successor chain (the missing Song mirror is listed under northern-song)"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 963,
+    "type": "gain",
+    "counterpart": "jingnan"
+   },
+   "mirror": {
+    "slug": "jingnan",
+    "year": 963,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Hunan part's counterpart is Wuping; southern-tang.json names it 'wuping-circuit' (no dossier)"
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 965,
+    "type": "gain",
+    "counterpart": "later-shu"
+   },
+   "mirror": {
+    "slug": "later-shu",
+    "year": 965,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 971,
+    "type": "gain",
+    "counterpart": "southern-han"
+   },
+   "mirror": {
+    "slug": "southern-han",
+    "year": 971,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 976,
+    "type": "gain",
+    "counterpart": "southern-tang"
+   },
+   "mirror": {
+    "slug": "southern-tang",
+    "year": 976,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Song gains the raw Cliopatria ST975 shape (with Hunan, all Fujian, Guangxi); southern-tang loses its corrected realm only"
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 978,
+    "type": "gain",
+    "counterpart": "wuyue"
+   },
+   "mirror": {
+    "slug": "wuyue",
+    "year": 978,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "wuyue's successor land includes the Fuzhou disc; the Song's gain region (Wuyue 977 shape) does not"
+  },
+  {
+   "event": {
+    "slug": "qingyuan-circuit",
+    "year": 978,
+    "type": "dissolve",
+    "counterpart": "northern-song"
+   },
+   "mirror": {
+    "slug": "northern-song",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "no Song gain cp qingyuan-circuit (Quanzhou, Zhangzhou)"
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 979,
+    "type": "gain",
+    "counterpart": "northern-han"
+   },
+   "mirror": {
+    "slug": "northern-han",
+    "year": 979,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1072,
+    "type": "gain",
+    "counterpart": "tsongkha"
+   },
+   "mirror": {
+    "slug": "tsongkha",
+    "year": 1072,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1081,
+    "type": "gain",
+    "counterpart": "western-xia"
+   },
+   "mirror": {
+    "slug": "western-xia",
+    "year": 1081,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1103,
+    "type": "gain",
+    "counterpart": "tsongkha"
+   },
+   "mirror": {
+    "slug": "tsongkha",
+    "year": 1103,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1113,
+    "type": "loss",
+    "counterpart": "western-xia"
+   },
+   "mirror": {
+    "slug": "western-xia",
+    "year": 1113,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "both confidence 1, neither drawn"
+  },
+  {
+   "event": {
+    "slug": "ngo-dynasty",
+    "year": 1075,
+    "type": "occupation_start",
+    "counterpart": "northern-song"
+   },
+   "mirror": {
+    "slug": "northern-song",
+    "year": 1075,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "Song should record the occupation (roles reversed) to 1082"
+  },
+  {
+   "event": {
+    "slug": "ngo-dynasty",
+    "year": 1077,
+    "type": "loss",
+    "counterpart": "northern-song"
+   },
+   "mirror": {
+    "slug": "northern-song",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Quang Nguyen (Cao Bang, Lang Son) to the Song"
+  },
+  {
+   "event": {
+    "slug": "ngo-dynasty",
+    "year": 1082,
+    "type": "gain",
+    "counterpart": "northern-song"
+   },
+   "mirror": {
+    "slug": "northern-song",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Quang Nguyen back to Dai Viet; occupation_end 1082 also unmirrored"
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1123,
+    "type": "gain",
+    "counterpart": "great-jin"
+   },
+   "mirror": {
+    "slug": "great-jin",
+    "year": 1123,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1125,
+    "type": "loss",
+    "counterpart": "great-jin"
+   },
+   "mirror": {
+    "slug": "great-jin",
+    "year": 1125,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1126,
+    "type": "loss",
+    "counterpart": "great-jin"
+   },
+   "mirror": {
+    "slug": "great-jin",
+    "year": 1126,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "great-chu",
+    "year": 1127,
+    "type": "found",
+    "counterpart": "northern-song"
+   },
+   "mirror": {
+    "slug": "northern-song",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "one-month puppet on the Kaifeng disc; no Song loss/gain"
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1130,
+    "type": "loss (absent)",
+    "counterpart": "great-jin"
+   },
+   "mirror": {
+    "slug": "great-jin",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "K17->K18 drops ~600k km2 north of the Qinling-Huai line with no loss; Jin has no gain; great-qi founded 1130 cp great-jin"
+  },
+  {
+   "event": {
+    "slug": "great-qi",
+    "year": 1130,
+    "type": "found",
+    "counterpart": "great-jin"
+   },
+   "mirror": {
+    "slug": "great-jin",
+    "year": 1130,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "Jin never held the land it gives Qi; needs a Jin gain from the Song and a split"
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1134,
+    "type": "gain",
+    "counterpart": "great-qi"
+   },
+   "mirror": {
+    "slug": "great-qi",
+    "year": 1134,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "great-jin",
+    "year": 1137,
+    "type": "gain",
+    "counterpart": "great-qi"
+   },
+   "mirror": {
+    "slug": "great-qi",
+    "year": 1137,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1139,
+    "type": "gain",
+    "counterpart": "great-jin"
+   },
+   "mirror": {
+    "slug": "great-jin",
+    "year": 1139,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "great-jin",
+    "year": 1140,
+    "type": "gain",
+    "counterpart": "northern-song"
+   },
+   "mirror": {
+    "slug": "northern-song",
+    "year": 1139,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "the Song has no 1140 loss of Henan and Shaanxi; its 1139 gain is undone only by the 1142 loss"
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1142,
+    "type": "loss",
+    "counterpart": "great-jin"
+   },
+   "mirror": {
+    "slug": "great-jin",
+    "year": 1142,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1236,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Xiangyang; route to ia-02"
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1239,
+    "type": "gain",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Xiangyang retaken; route to ia-02"
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1241,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1241,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1260,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1260,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "both confidence 1"
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1273,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Xiangyang/Fancheng; route to ia-02"
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1276,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1276,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "northern-song",
+    "year": 1277,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1276,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Chongqing; the Mongol 1276 gain is read as covering it"
+  },
+  {
+   "event": {
+    "slug": "liao-dynasty",
+    "year": 926,
+    "type": "gain",
+    "counterpart": "balhae"
+   },
+   "mirror": {
+    "slug": "balhae",
+    "year": 926,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "liao-dynasty",
+    "year": 926,
+    "type": "vassal_start",
+    "counterpart": "dongdan"
+   },
+   "mirror": {
+    "slug": "dongdan",
+    "year": 926,
+    "type": "found"
+   },
+   "status": "exception",
+   "note": "vassal events live in the suzerain's dossier (schema)"
+  },
+  {
+   "event": {
+    "slug": "liao-dynasty",
+    "year": 936,
+    "type": "vassal_end",
+    "counterpart": "dongdan"
+   },
+   "mirror": {
+    "slug": "dongdan",
+    "year": 936,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "later-jin",
+    "year": 936,
+    "type": "vassal_start",
+    "counterpart": "liao-dynasty"
+   },
+   "mirror": {
+    "slug": "liao-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "inverted: the Liao (suzerain) must carry vassal_start 936-11 / vassal_end 942 cp later-jin"
+  },
+  {
+   "event": {
+    "slug": "liao-dynasty",
+    "year": 938,
+    "type": "gain",
+    "counterpart": "later-jin"
+   },
+   "mirror": {
+    "slug": "later-jin",
+    "year": 938,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "liao-dynasty",
+    "year": 947,
+    "type": "occupation_start",
+    "counterpart": "later-jin"
+   },
+   "mirror": {
+    "slug": "later-jin",
+    "year": 947,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "later-jin loses its realm to the Liao; later-han gains it from the Liao (947); the Liao records only a Kaifeng occupation"
+  },
+  {
+   "event": {
+    "slug": "later-han",
+    "year": 947,
+    "type": "gain",
+    "counterpart": "liao-dynasty"
+   },
+   "mirror": {
+    "slug": "liao-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "no Liao loss to later-han"
+  },
+  {
+   "event": {
+    "slug": "goryeo",
+    "year": 1014,
+    "type": "loss",
+    "counterpart": "liao-dynasty"
+   },
+   "mirror": {
+    "slug": "liao-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Sinuiju area; route both ways (jk-02)"
+  },
+  {
+   "event": {
+    "slug": "goryeo",
+    "year": 1031,
+    "type": "gain",
+    "counterpart": "liao-dynasty"
+   },
+   "mirror": {
+    "slug": "liao-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Sinuiju area back to Goryeo"
+  },
+  {
+   "event": {
+    "slug": "liao-dynasty",
+    "year": 1074,
+    "type": "vassal_start",
+    "counterpart": "jurchen-confederation"
+   },
+   "mirror": {
+    "slug": "jurchen-confederation",
+    "year": 1074,
+    "type": "found"
+   },
+   "status": "exception",
+   "note": "vassal in suzerain's dossier"
+  },
+  {
+   "event": {
+    "slug": "liao-dynasty",
+    "year": 1115,
+    "type": "loss",
+    "counterpart": "great-jin"
+   },
+   "mirror": {
+    "slug": "great-jin",
+    "year": 1115,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "liao-dynasty",
+    "year": 1120,
+    "type": "loss",
+    "counterpart": "great-jin"
+   },
+   "mirror": {
+    "slug": "great-jin",
+    "year": 1120,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "liao-dynasty",
+    "year": 1122,
+    "type": "loss",
+    "counterpart": "great-jin"
+   },
+   "mirror": {
+    "slug": "great-jin",
+    "year": 1122,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "three losses, three gains"
+  },
+  {
+   "event": {
+    "slug": "liao-dynasty",
+    "year": 1124,
+    "type": "split",
+    "counterpart": "kara-khitans"
+   },
+   "mirror": {
+    "slug": "kara-khitans",
+    "year": 1124,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Liao splits off the Mongolian Plateau; kara-khitans founds on the Orkhon Valley only"
+  },
+  {
+   "event": {
+    "slug": "great-jin",
+    "year": 1124,
+    "type": "vassal_start",
+    "counterpart": "western-xia"
+   },
+   "mirror": {
+    "slug": "western-xia",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "vassal in suzerain's dossier"
+  },
+  {
+   "event": {
+    "slug": "great-jin",
+    "year": 1126,
+    "type": "vassal_start",
+    "counterpart": "goryeo"
+   },
+   "mirror": {
+    "slug": "goryeo",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "vassal in suzerain's dossier"
+  },
+  {
+   "event": {
+    "slug": "great-jin",
+    "year": 1212,
+    "type": "loss",
+    "counterpart": "eastern-liao"
+   },
+   "mirror": {
+    "slug": "eastern-liao",
+    "year": 1212,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "great-jin",
+    "year": 1215,
+    "type": "loss",
+    "counterpart": "eastern-xia"
+   },
+   "mirror": {
+    "slug": "eastern-xia",
+    "year": 1215,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "great-jin",
+    "year": 1215,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1215,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "great-jin",
+    "year": 1223,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1223,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "great-jin",
+    "year": 1231,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1230,
+    "type": "contest_start"
+   },
+   "status": "missing",
+   "note": "Shaanxi; route to ia-02"
+  },
+  {
+   "event": {
+    "slug": "great-jin",
+    "year": 1233,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1234,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "western-xia",
+    "year": 1032,
+    "type": "gain",
+    "counterpart": "xiliangfu"
+   },
+   "mirror": {
+    "slug": "xiliangfu",
+    "year": 1016,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "xiliangfu ends 1016 (dissolve cp ganzhou-kingdom); 16 years apart; pages disagree (flagged by author)"
+  },
+  {
+   "event": {
+    "slug": "xiliangfu",
+    "year": 1003,
+    "type": "occupation_start",
+    "counterpart": "western-xia"
+   },
+   "mirror": {
+    "slug": "western-xia",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "also 1004 end, 1015 start, 1016 end"
+  },
+  {
+   "event": {
+    "slug": "western-xia",
+    "year": 1036,
+    "type": "gain",
+    "counterpart": "ganzhou-kingdom"
+   },
+   "mirror": {
+    "slug": "ganzhou-kingdom",
+    "year": 1036,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "western-xia",
+    "year": 1036,
+    "type": "gain",
+    "counterpart": "guiyi-circuit"
+   },
+   "mirror": {
+    "slug": "guiyi-circuit",
+    "year": 1036,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "western-xia",
+    "year": 1136,
+    "type": "gain",
+    "counterpart": "great-jin"
+   },
+   "mirror": {
+    "slug": "great-jin",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Jin cession of Xining; the Jin never gains it"
+  },
+  {
+   "event": {
+    "slug": "western-xia",
+    "year": 1226,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1227,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Mongol gain dated 1227"
+  },
+  {
+   "event": {
+    "slug": "mongol-empire",
+    "year": 1253,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-dali"
+   },
+   "mirror": {
+    "slug": "kingdom-of-dali",
+    "year": 1253,
+    "type": "contest_start"
+   },
+   "status": "exception",
+   "note": "vassal in suzerain's dossier; but the Mongol vassal_end/gain of 1260 (confidence 1) follows Dali's 1256 end"
+  },
+  {
+   "event": {
+    "slug": "tsongkha",
+    "year": 1072,
+    "type": "loss",
+    "counterpart": "northern-song"
+   },
+   "mirror": {
+    "slug": "northern-song",
+    "year": 1072,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "tsongkha",
+    "year": 1103,
+    "type": "loss",
+    "counterpart": "northern-song"
+   },
+   "mirror": {
+    "slug": "northern-song",
+    "year": 1103,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "jurchen-confederation",
+    "year": 1107,
+    "type": "loss",
+    "counterpart": "goryeo"
+   },
+   "mirror": {
+    "slug": "goryeo",
+    "year": 1107,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "goryeo names the counterpart 'jurchens'"
+  },
+  {
+   "event": {
+    "slug": "jurchen-confederation",
+    "year": 1108,
+    "type": "gain",
+    "counterpart": "goryeo"
+   },
+   "mirror": {
+    "slug": "goryeo",
+    "year": 1108,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "goryeo names the counterpart 'jurchens'"
+  },
+  {
+   "event": {
+    "slug": "great-qi",
+    "year": 1134,
+    "type": "loss",
+    "counterpart": "northern-song"
+   },
+   "mirror": {
+    "slug": "northern-song",
+    "year": 1134,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "eastern-xia",
+    "year": 1217,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "counterpart nobody, confidence 1"
+  },
+  {
+   "event": {
+    "slug": "khitan-confederation",
+    "year": 755,
+    "type": "vassal (absent)",
+    "counterpart": "uyghur-khaganate"
+   },
+   "mirror": {
+    "slug": "uyghur-khaganate",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "uyghur-khaganate should carry vassal_start 755 / vassal_end 840 cp khitan-confederation (ia group)"
+  },
+  {
+   "event": {
+    "slug": "eastern-liao",
+    "year": 1220,
+    "type": "vassal (absent)",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "mongol-empire should carry the vassal pairs of eastern-liao and eastern-xia (ia-02)"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Sixteen Prefectures",
+   "kind": "region",
+   "used_in": "liao-dynasty"
+  },
+  {
+   "name": "Caizhou (Runan)",
+   "kind": "place",
+   "used_in": "great-jin"
+  },
+  {
+   "name": "Daming",
+   "kind": "place",
+   "used_in": "great-qi"
+  },
+  {
+   "name": "Kaiyuan (Liaoning)",
+   "kind": "place",
+   "used_in": "eastern-liao"
+  },
+  {
+   "name": "Haicheng",
+   "kind": "place",
+   "used_in": "eastern-liao"
+  },
+  {
+   "name": "Kuozhou",
+   "kind": "place",
+   "used_in": "tsongkha"
+  },
+  {
+   "name": "Miaochuan",
+   "kind": "place",
+   "used_in": "tsongkha"
+  },
+  {
+   "name": "Laoyeling Mountains",
+   "kind": "region",
+   "used_in": "eastern-xia"
+  },
+  {
+   "name": "Laoha",
+   "kind": "region",
+   "used_in": "khitan-confederation"
+  },
+  {
+   "name": "Diaoyu Fortress (Hechuan)",
+   "kind": "place",
+   "used_in": "northern-song"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Northern Liao",
+   "suggested_slug": "northern-liao",
+   "years": [
+    1122,
+    1123
+   ]
+  },
+  {
+   "name": "Wuping Circuit (Zhou Xingfeng)",
+   "suggested_slug": "wuping-circuit",
+   "years": [
+    952,
+    963
+   ]
+  },
+  {
+   "name": "Later Liao (Yelu Sibu)",
+   "suggested_slug": "later-liao",
+   "years": [
+    1216,
+    1219
+   ]
+  },
+  {
+   "name": "Mucheng of Hezhou",
+   "suggested_slug": "mucheng-of-hezhou",
+   "years": [
+    1065,
+    1072
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ea-05.md",
+ "problems": [
+  "No page failed for the reviewer; WebFetch's summariser was used for quotes, so a few 'confirmed' quotes are the summariser's excerpt of the sentence.",
+  "Vassal mirrors were judged by the schema rule (vassal events only in the suzerain's dossier, counterpart = the vassal); reviewer-brief check 3's wording (a vassal_start in both ledgers) conflicts with it. later-jin.json (ea-04) uses the inverted convention.",
+  "Keyframe area steps were measured with history/tools/gazetteer.py resolve on H3 cells (about 253 km2 each); cell areas overstate true km2 by roughly a fifth at these latitudes, so the km2 quoted in findings are approximate.",
+  "Most fail findings form one chain: the Song-Jin-Qi transfer of 1130 (northern-song, great-jin) and the Hunan/Fujian unification shapes (northern-song with ea-04's southern-tang, wuyue, qingyuan-circuit); the authors should fix them together with one shared region spec.",
+  "Reviewer edit: history/polities/eastern-liao.json identity.rulers and identity.capitals (re-validated, read back)."
+ ]
+}

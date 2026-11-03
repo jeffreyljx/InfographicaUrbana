@@ -1,0 +1,78 @@
+{
+ "window": "p1840-p1849",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "what": "russian-empire occupation_end, April 1848, counterpart ottoman-empire, region Moldova (130 cells): a technical cancel of russian-empire/ledger/80, whose 'Moldavia' region (336 cells = Romanian Moldavia + Moldova + Chernivtsi) the compiler read as Russian land occupied by the Ottomans (owner held 132 cells, counterpart none: roles reversed). Verified in the compiler: relation_end closes the open ('occupation', ottoman, russia) key whatever the region. Trial against a no-patch baseline: the 132 Russian cells go from 'occupied by ottoman-empire' to direct in 1848-1849 and the false relation leaves the handoff. Page: 'Russia had occupied Moldavia in April'; Bessarabia only as where 'Russia ordered its troops ... to prepare for an intervention over the Prut River'. Defect fixed: the note's first sentence, which becomes the reader caption, was in-house wording ('Cancels the occupation that russian-empire/ledger/80 drew on the wrong land.').",
+   "page": "https://en.wikipedia.org/wiki/Wallachian_Revolution_of_1848",
+   "fix": "Prefixed the note with a reader-facing first sentence: 'April 1848: Bessarabia, where Russia's troops stood, stays plain Russian land while Russia occupies Moldavia.' The old sentence follows as 'Technically, this cancels ...'. The entry's data is unchanged.",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "russian-empire occupation_start, April 1848, counterpart principality-of-moldavia, region Moldavia minus Moldova (206 cells, about 52,000 km2; it also takes in Austrian Bukovina, Chernivtsi and north Suceava, but occupation_start takes only cells the counterpart holds). Trial: the principality's 138 cells become occupied by russian-empire in 1848-1849; the 63 Galicia cells (Bukovina) stay Austrian. Page: 'This occurred after Russia had occupied Moldavia in April, a result of the unsuccessful revolt in that country' (in its July 1848 paragraph). Small point: the caption 'April 1848: Russia occupies Moldavia.' repeats ledger/80's caption for the same year.",
+   "page": "https://en.wikipedia.org/wiki/Wallachian_Revolution_of_1848",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/2",
+   "verdict": "fixed",
+   "what": "russian-empire occupation_end 1851, counterpart principality-of-moldavia: needed, because ledger/82 (counterpart ottoman-empire) cannot close the ('occupation', russia, moldavia) relation that events/1 opens, and principality-of-moldavia/ledger/22 would otherwise merge its 1853 occupation into the 1848 one. Page: 'The Ottoman-Russian occupation prolonged itself until 1851'. But the page does not say this for both principalities: it says it only in its Wallachian account (the same paragraph has Balta Liman award the Wallachian crown) and is silent on Moldavia, as ledger/82 (confidence 1) already says. Month 4 came from ledger/83, which cites a page that was not opened. The year 1851 is outside the window: the trial cannot show the effect. Checked from the compiler code instead.",
+   "page": "https://en.wikipedia.org/wiki/Wallachian_Revolution_of_1848",
+   "fix": "Fixed the note: the 1851 end is read from the page's Wallachian account and carried over to Moldavia by analogy, as ledger/82 does. Removed 'month': 4; the event still takes April, the month of the dossier's last 1851 event (ledger/83), so the effect is the same. Lowered confidence from 2 to 1.",
+   "applied": true
+  },
+  {
+   "entry": "events/3",
+   "verdict": "pass",
+   "what": "kutai-kingdom loss 1844 to dutch-east-indies. Region: Cliopatria Kutai 1844 (28 cells) plus a 30 km disc at 116.72 E, 0.2 S (the kutai-martadipura dossier's Muara Kaman capital point); 38 cells, about 9,600 km2. It stands in for ledger/5 and dutch-east-indies/ledger/46, which are skipped because 'Muara Kaman' is not in the gazetteer. paired_gain finds no resolvable Dutch gain, so the loss hands over the cells itself. Trial: the 38 cells pass from nobody to dutch-east-indies in 1844-1845. Page: 'In 1844, following the repulse of James Erskine Murray's expedition and attempt to settle, the Dutch defeated the sultan Aji Muhammad Salehudin, forced him into exile, and took direct control of Kutai.'",
+   "page": "https://en.wikipedia.org/wiki/Kutai",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "ottoman-empire_1840 (1840-1841) gets Cliopatria's 1842 Ottoman shape, minus the dossier's usual Akhaltsikhe and Akhalkalaki discs. The 1842 shape adds 2,418 cells to the 1840 one and takes none away: Saudi Arabia 1,535 (Medina, Mecca, Tabuk, Asir and Jizan, Bahah, part of Jawf), Syria 407, Jordan 264, Turkey 83, Israel 73, Lebanon 29, Palestine 19, Iraq 7. Trial against the baseline: 1,775 cells go from nobody to ottoman-empire direct at the end of 1840 and 1841, and the 1842 snap of 1,775 cells disappears. With the current dossiers, Muhammad Ali's November 1840 losses (ledger/20, ledger/21) had handed these to the Ottomans, and the 1840 keyframe then dropped them to nobody. Page: Muhammad Ali 'finally accepted the terms of the Convention on 27 November 1840'; 'He renounced his claims over Crete and the Hijaz'; he 'withdrew from Syria, the Hijaz, the Holy Land, Adana and Crete' (no date for the withdrawal). The note's claim that the Hejaz sits in Muhammad Ali's tint is out of date; it is nobody's in the current baseline. Side effect: by R2, 5 cells of Mount Lebanon that the emirate's 1841 keyframe claims stay Ottoman in 1841, so the emirate holds 2 cells instead of 7 (see problems). Gap the entry leaves: 11 of Crete's 27 cells stay unowned (see problems).",
+   "page": "https://en.wikipedia.org/wiki/Oriental_Crisis_of_1840",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "what": "qing-dynasty_1848 (1848-1852) gets Cliopatria's 1847 Qing shape, which is the 1848 shape plus 715 cells (Almaty region 475, East Kazakhstan 237, China 2) and minus 1 cell. Trial against the baseline: the 715 cells stay Qing in 1848-1849 instead of becoming Russian, with a handful of edge cells moving (5 Qing to nobody, 2 Russia to Kokand). Zhetysu page: the area 'formed part of the Qing dynasty' and 'was under the direct rule of the general of Ili'; 'Most of Jetisu was annexed by the Russian Empire from Qing China in 1854'; Verny and Pishpek were founded in 1854. Treaty of Tarbagatai page (also opened): in 1864 Russia gained about 910,000 km2 'at the expense of Chinese Xinjiang' and 'Lake Balkhash went from lying on the border to being entirely surrounded by Russia'. The override reaches into 1850-1852, in the next window (see problems).",
+   "page": "https://en.wikipedia.org/wiki/Zhetysu",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "what": "sultanate-of-kutai-kartanegara_1842 (1842-1845; Kutai ends in 1844): the dossier's own correction, with the Muara Kaman disc given by coordinates (116.72 E, 0.2 S, from the kutai-martadipura dossier) because the gazetteer lacks the place. 38 cells. Trial: Kutai goes from 5 cells to 38 (33 from nobody) in 1842-1843, taking no one else's land. Page: Muara Kaman is the seat of the older Martapura kingdom ('Its capital is believed to be the current Muara Kaman district located in Kutai Kartanegara Regency'), which the dossier has annexed in 1635; the sultanate holds Kutai until the Dutch take it in 1844. Kutai's earlier keyframes still fail on the same place name, so it holds only 5 cells until 1841 (dossier request already made).",
+   "page": "https://en.wikipedia.org/wiki/Kutai",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "pass",
+   "what": "Mexico against the USA, 1846-1847, winner Mexico, status contested, no region. The trial settles 822 cell-years in 1846 (the only year the pair conflict). All 822 cells are in Texas (West Texas and the Panhandle); none are in New Mexico or the Nueces strip. They go from plain Mexican to Mexico contested with the USA at the end of 1846 and of 1847, and the ruling's relation closes before 1848. From 1848 they are US (818) and Mexican (4), as in the baseline. The 1848 and 1849 conflicts (20 and 24 cells) fall outside the ruling's years and are unchanged. Page: 'Texas claimed the Rio Grande as its border ... Mexico maintained that it was the Nueces River and did not recognize Texan independence'; 'Texas formally joined the union on February 19, 1846, prompting the Mexican-American War in April of that year'; under Guadalupe Hidalgo 'Mexico ceded its claims to Texas and the Rio Grande border was accepted by both nations'. Before 1846 the same cells are drawn as Mexico contested with the Republic of Texas, so the ruling continues the existing picture.",
+   "page": "https://en.wikipedia.org/wiki/Texas_annexation",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch after the review fixes: 8 entries, 8 ok, 0 rejected (events/2 noted as outside the window). Trial with the patch (stage /tmp/claude-0/work/review-p1840-p1849/stage) against a trial with an empty patch (stage0): all 8 entries applied, rulings/0 settled 822 cell-years in 1846, and the only cells that change are the ones described in the checks.",
+ "problems": [
+  "Cross-window: events/2 is dated 1851, and keyframe_overrides/1 keeps Zhetysu and the Zaysan edge (715 cells) Qing for 1850-1852 as well (the qing-dynasty_1848 shape runs to 1852). The next Qing keyframe (qing-dynasty_1853, Cliopatria's 1853 shape, which also lacks these cells) will hand them to Russia in 1853, a year before the Zhetysu page's 1854. Window p1850-p1859 should know.",
+  "Crete: 11 of Crete's 27 cells are unowned from the end of 1840 to 1849, because Cliopatria's Ottoman shapes for 1840-1849 do not reach them. Muhammad Ali held all 27 on 1 January 1840, and the Oriental Crisis page has him withdraw from Crete. keyframe_overrides/0, built on the 1842 shape, keeps the gap. Fix: add {\"region\": \"Crete\"} to keyframe_overrides/0's correction and override ottoman-empire_1842, _1848 and _1849 with the same union (otherwise the 1842 snap drops the cells again).",
+  "emirate-of-mount-lebanon (dossier): the emirate loses all its land during 1840 in the baseline and in the patched trial alike, although it lasts until January 1842; its 1841 keyframe recovers 7 cells in the baseline. With keyframe_overrides/0, R2 (Ottoman succession) leaves 5 of those cells to the Ottomans in 1841, so the emirate holds 2 cells. A ruling cannot overturn R2; this belongs to the emirate's dossier (its 1840 loss region with the Beirut 20 km disc, and its 1832-1840 keyframe).",
+  "Kutai: from 1846 the dutch-east-indies_1846 keyframe drops the Muara Kaman disc (10 cells) to nobody, as in the baseline. Kutai's keyframes for 1648, 1727 and 1734 also name 'Muara Kaman', so before 1842 Kutai holds 5 cells and snaps to 38 in 1842. The window agent's dossier request (add 'Muara Kaman' to the gazetteer places) fixes all of these together.",
+  "West Texas, end of 1845: the 822 cells are plain Mexican at the end of 1845, because the contest with the Republic of Texas closes with the Republic and the US claim starts only with the 1846 keyframe; no conflict exists in 1845, so a ruling cannot reach it. This is minor, and only a dossier event (a US contest_start with Mexico in December 1845) would draw it.",
+  "Not from the patch: the Russian occupation of Wallachia (russian-empire/ledger/81, September 1848) is recorded with no cells (relation n=0); Wallachia is drawn as occupied by the Ottoman Empire alone (267 cells). One cell holds one occupier, so this is acceptable."
+ ]
+}

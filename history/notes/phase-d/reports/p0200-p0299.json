@@ -1,0 +1,322 @@
+{
+ "window": "p0200-p0299",
+ "images": [
+  {
+   "year": 200,
+   "bbox": "world",
+   "seen": "Start anchor as Cliopatria draws it: Rome, Parthia, Kushans, Han warlords; nothing out of place."
+  },
+  {
+   "year": 299,
+   "bbox": "world",
+   "seen": "Roman Empire whole (Britain, Gaul, Egypt), Sasanian Empire, Western Jin over China; no Gallic or Palmyrene remnants; looks right."
+  },
+  {
+   "year": 230,
+   "bbox": "40,8,90,48 (compare Cliopatria)",
+   "seen": "Compiled map gives the Sasanians the whole Parthian land from 224 where Cliopatria keeps Parthia to 237 (dossier choice); Kushan split into Western/Eastern Kushans, Kangju and Yueban added; plausible."
+  },
+  {
+   "year": 262,
+   "bbox": "-12,22,50,56",
+   "seen": "WRONG before the patch: Anatolia and Egypt grey (nobody) from 261 to 270 because the Macrianus and Quietus dissolve hands 4,143 cells to nobody and no dossier gives them back to Rome; Caucasian Albania missing from 260."
+  },
+  {
+   "year": 267,
+   "bbox": "70,15,135,55",
+   "seen": "Western Jin, Eastern Wu, Protectorate tint look right; Murong Xianbei drawn as a Wei/Jin vassal over about 2,000 cells of Inner Mongolia and Shanxi, far more than its Daling-basin home ground (fixed by events/4)."
+  },
+  {
+   "year": 275,
+   "bbox": "60,5,100,38",
+   "seen": "Indian successor states plausible; a grey notch of Sistan/Helmand/Kandahar inside the Sasanian and Kushano-Sasanian land (Sistan part fixed by events/5 and the Sasanian overrides)."
+  },
+  {
+   "year": 290,
+   "bbox": "-12,22,62,58 (compare Cliopatria)",
+   "seen": "Europe and the Near East match Cliopatria with the dossiers' corrections (Britannic Empire, Armenia independent, Gothia, Lakhmids); Caucasian Albania missing before the patch; inland Algeria and Morocco grey in both."
+  },
+  {
+   "year": 225,
+   "bbox": "95,18,135,48 (stage)",
+   "seen": "After the patch: Shu Han holds Sichuan, Yunnan and Guizhou in 225; Guangxi stays grey until Wu's 227 gain (dossier ledger); Korea and Liaodong plausible."
+  },
+  {
+   "year": 271,
+   "bbox": "20,20,48,42 (stage)",
+   "seen": "After the patch: Egypt Roman with the Palmyrene Nile strip, Palmyrene Galatia; central Anatolia grey 1 year at 270 only (87 cells after 272)."
+  },
+  {
+   "year": 275,
+   "bbox": "25,34,48,42 (stage, before the 271 Anatolia event)",
+   "seen": "Grey hole of about 480 cells in Cappadocia/Cilicia 272-282, closed by events/3."
+  },
+  {
+   "year": 262,
+   "bbox": "-12,22,50,56 (stage)",
+   "seen": "After the patch: Roman East and Egypt restored, Caucasian Albania drawn as a Sasanian vassal; Gallic Empire still holds Spain to 269 as the Crisis page says."
+  }
+ ],
+ "issues": [
+  {
+   "what": "Macrianus and Quietus dissolve in 261 into nobody's land: Egypt, Anatolia and the Levant (4,143 cells) grey from 261 until the roman-empire_270 keyframe snap (+3,034 cells); the roman_261 keyframe could not take them (Macrianus held them at the snap).",
+   "years": [
+    261,
+    270
+   ],
+   "slugs": [
+    "roman-empire",
+    "macrianus-and-quietus",
+    "palmyrene-empire"
+   ],
+   "decision": "patched",
+   "patch": "events/0 (Anatolia, Syria, Lebanon, Israel, 261), events/1 (Egypt, 262: Aemilianus defeated by Theodotus)",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Crisis_of_the_Third_Century"
+   ]
+  },
+  {
+   "what": "Central Anatolia (Cilicia, Cappadocia, Galatia, 645 cells) falls to nobody at 270 when the Palmyrene keyframe drops the Asia Minor cells that Rome's ledger/96 gave Palmyra in 267, and stays grey to 283 (about 480 cells, 11 years).",
+   "years": [
+    270,
+    282
+   ],
+   "slugs": [
+    "roman-empire",
+    "palmyrene-empire"
+   ],
+   "decision": "patched",
+   "patch": "events/3 (year 271: events act before a year's keyframe snaps, so the cells are gained the year after they are dropped; 270 stays grey, 87 cells remain grey from 272)",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Palmyrene_Empire"
+   ]
+  },
+  {
+   "what": "Shu Han: Cliopatria's shape stops at 100.9 E and lacks Yongchang (west Yunnan); the draft added 1,739 cells at the 224 snap (a year before Zhuge Liang's 225 campaign), then 917 more by ledger/15, so Shu was 1,500 cells too large in 225-237, and the 238 snap cut 1,498 cells (917 Yunnan, 581 west Sichuan) with no event.",
+   "years": [
+    224,
+    263
+   ],
+   "slugs": [
+    "shu-han"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0-2 (_224 now from 225 to 237, _238, _261: Cliopatria shape plus Chongqing gorges, Yunnan and Guizhou; about 4,510 cells for 225-263)",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Shu_Han"
+   ]
+  },
+  {
+   "what": "Caucasian Albania loses all 180 cells at 260 and never regains them: it lists the Sasanian Empire as successor (510) and rule R2 hands every conflict to the Sasanian keyframes through the Sasanian's whole life; the Albania dossier's own 260-286 keyframe (Sasanian vassal) never takes effect.",
+   "years": [
+    260,
+    299
+   ],
+   "slugs": [
+    "caucasian-albania",
+    "sasanian-empire"
+   ],
+   "decision": "patched",
+   "patch": "events/2 (vassal_start in 252: 178 cells Albanian, vassal of the Sasanian Empire to 299; the Roman protectorate of c. 297-300 is not drawn)",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Caucasian_Albania"
+   ]
+  },
+  {
+   "what": "Murong Xianbei inherits the whole dissolved Xianbei land (2,265 cells in Inner Mongolia and Shanxi, a Wei vassal) in 235 through the xianbei dossier's successor placeholder, though its own keyframe is the Daling basin (about 130 cells); the draft then cuts 1,895 cells at the 285 snap.",
+   "years": [
+    235,
+    285
+   ],
+   "slugs": [
+    "murong-xianbei",
+    "xianbei",
+    "yuwen-xianbei"
+   ],
+   "decision": "patched",
+   "patch": "events/4 (year 236: the surplus goes to nobody until Tuoba, Duan and Yuwen have dossiers)",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Xianbei"
+   ]
+  },
+  {
+   "what": "Sistan (133 Afghan cells of Nimroz) is nobody's from 238 to 282 because Cliopatria's Sasanian shapes of 238-282 omit it; the Sakastan page has it a Sasanian province from c. 240.",
+   "years": [
+    238,
+    282
+   ],
+   "slugs": [
+    "sasanian-empire"
+   ],
+   "decision": "patched",
+   "patch": "events/5 (240) and keyframe_overrides/3-7 (sasanian-empire_260, 261, 263, 265, 270 plus the Sistan region); Helmand and Kandahar (about 310 cells) stay grey to 283 because the page gives no 3rd-century date for them",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Sakastan"
+   ]
+  },
+  {
+   "what": "Inland Mauretania (Algeria 604 and Morocco 205 cells of the Roman 259 shape) is nobody's from 261 to 299 because Cliopatria's later Roman shapes drop it; Mauretania Sitifensis is created in 293.",
+   "years": [
+    261,
+    299
+   ],
+   "slugs": [
+    "roman-empire"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Mauretania_Caesariensis"
+   ]
+  },
+  {
+   "what": "Baekje's Wiryeseong core (25 cells) is lost at its founding in -18 to Lelang Commandery (R1, colony wins) and Baekje has no land until 234; the Baekje page says it 'initially belonged to the Mahan confederacy' and says nothing of Lelang's reach to the Han River.",
+   "years": [
+    200,
+    233
+   ],
+   "slugs": [
+    "baekje",
+    "lelang-commandery"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Baekje"
+   ]
+  },
+  {
+   "what": "Size-rule conflicts of 300 cell-years or more (kangju vs western-kushans, sasanian-empire, kushan-empire; kuninda and nagas vs eastern-kushans; yuwen-xianbei vs western-jin; gongsun-liaodong vs xianbei): the smaller state wins, and each result fits the dossiers (small local states inside a large neighbour's Cliopatria shape).",
+   "years": [
+    205,
+    297
+   ],
+   "slugs": [
+    "kangju",
+    "western-kushans",
+    "eastern-kushans",
+    "kuninda-kingdom",
+    "nagas-of-padmavati",
+    "yuwen-xianbei",
+    "gongsun-liaodong"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "cao-cao_215 snap (+3,032 cells) and han-dynasty_211 (+719): the Han court holds 3,032 cells in 211-214 and Cao Cao absorbs exactly those at 215; the keyframes agree with each other, only the Han/Cao split is Cliopatria's.",
+   "years": [
+    211,
+    215
+   ],
+   "slugs": [
+    "cao-cao",
+    "han-dynasty",
+    "han-sui"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Tuyuhun draws 331 cells in 284-286 and the whole 1,116-cell Qinghai shape from 287; the dossier note says that shape is 'drawn from 284 instead of 287' but the keyframe has no from year.",
+   "years": [
+    284,
+    286
+   ],
+   "slugs": [
+    "tuyuhun"
+   ],
+   "decision": "dossier request",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Gallic Empire keyframes: 742 cells (north Britain, Devon, Gaul fringe) drop to nobody in 260 and return in 261; Sasanian keyframe 238 and 283 swap about 440 cells of Sistan/Kandahar; roman_283 and _287 snaps move 500-600 cells each at the edges.",
+   "years": [
+    260,
+    287
+   ],
+   "slugs": [
+    "gallic-empire",
+    "sasanian-empire",
+    "roman-empire"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/p0200-p0299.json",
+ "patch_entries": {
+  "events": 6,
+  "keyframe_overrides": 8,
+  "rulings": 0
+ },
+ "patch_check": "all applied (--check-patch: 14 entries, 14 ok; --trial: 14 applied, 0 skipped; conflicts 34,407 -> 31,297 cell-years, snaps 71 -> 70)",
+ "colour_clashes": [
+  {
+   "a": "western-kushans",
+   "b": "indo-sasanian-empire",
+   "years": [
+    259,
+    260
+   ],
+   "note": "OKLab 0.031 (#24b6a1 vs #46b68c), but they are one land in succession (the Indo-Sasanian takes the Western Kushans' 2,180 cells at 259) and never border each other, so no change is needed."
+  },
+  {
+   "a": "western-jin",
+   "b": "murong-xianbei",
+   "years": [
+    266,
+    299
+   ],
+   "note": "0.119, above 0.08; the Murong are drawn as a Jin vassal tint anyway."
+  },
+  {
+   "a": "roman-empire",
+   "b": "gallic-empire",
+   "years": [
+    260,
+    274
+   ],
+   "note": "0.135 (red against salmon); readable in the images, but the closest of the major neighbours."
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "caucasian-albania",
+   "what": "remove sasanian-empire from successors, or ask the compiler to confine a successor's R2 claim to the successor's founding year: R2 gives every conflict between the Albanian keyframes and the Sasanian keyframes to the Sasanian from 260 to 510",
+   "why": "the successor link (510) wipes the kingdom's land in every window p0300-p0599 as well; my patch only draws the Sasanian vassal relation of 252 (still open at 300 with 178 cells)",
+   "source": "https://en.wikipedia.org/wiki/Caucasian_Albania"
+  },
+  {
+   "slug": "tuyuhun",
+   "what": "keyframe tuyuhun_287 needs from: 284 (its note says it is drawn from 284)",
+   "why": "the full shape appears only in 287; the three years 284-286 hold 331 cells",
+   "source": "https://en.wikipedia.org/wiki/Xianbei"
+  },
+  {
+   "slug": "tuoba-xianbei",
+   "what": "a dossier for the Tuoba (Shengle near Hohhot from 258) and one for duan-liaoxi: the xianbei dossier's successors point to dossiers that do not exist, so the steppe after 235 is nobody's",
+   "why": "the Xianbei page: 'In 258, the Tuoba tribe settled near the frontier and occupied the abandoned city of Shengle'; 'a Xianbei ex-slave of the Wuhuan founded a tribe known as the Duan' (undated)",
+   "source": "https://en.wikipedia.org/wiki/Xianbei"
+  },
+  {
+   "slug": "palmyrene-empire",
+   "what": "reconcile with roman-empire ledger/96: Rome's 267 loss gives Palmyra 'large parts of Asia Minor', the Palmyrene dossier holds only Syria, Phoenice, Palaestina and Osroene until Galatia in 271",
+   "why": "the Palmyrene Empire page dates the Asia Minor campaign to 271 ('In 271, Zabbai started the operations in Asia Minor'); the 730 Anatolian cells Palmyra holds in 267-269 are drawn on the Roman dossier's reading only",
+   "source": "https://en.wikipedia.org/wiki/Palmyrene_Empire"
+  }
+ ],
+ "pages_opened": 8,
+ "problems": [
+  "boundary: the patch changes the p0300 end anchor by 194 cells: Caucasian Albania 178 cells (nobody to Albanian vassal of the Sasanian Empire), 12 cells to western-jin and 4 from yuwen-xianbei to murong-xianbei (Murong land after events/4); the compile's replay closes the seam.",
+  "compiler: events act before a year's keyframe snaps (events/3 had to move from 270 to 271 for that), and a keyframe snap resets a state to the keyframe shape, so a land fix on a state with Cliopatria keyframes needs an override of each keyframe or an event after the last snap (the five Sasanian overrides).",
+  "compiler: rule R2 treats any listed successor as the winner in every conflict through its whole life, not only at the transition (Albania/Sasanian above); other dossiers with distant successors may lose land the same way.",
+  "hierarchy: no row is wrong in this window. Note western-jin ledger/7 (289) names counterpart 'former-yan' (dossier life 337-370), so 563 Liaoning cells are drawn as Jin land with a vassal named 'former-yan' for 289-299; murong-xianbei is meant (the Murong dossier has its own 130-cell vassal_start of 289).",
+  "shu-han: the 225 keyframe still drops 581 west Sichuan cells that ledger/2 gave Shu in 214 (Cliopatria's Shu shape lacks the Garze and Aba plateau); the pages opened do not say whether Shu held them, so it stays as the dossier's 224-263 shape.",
+  "Guangxi (about 640 cells) is nobody's from 200 to 226 and Wu takes it in 227 (ledger/18, Lü Dai); the Shi Xie dossier's land is only Jiaozhi, Jiuzhen, Rinan, Hepu and Nanhai, so the grey reflects the dossiers, not a compiler fault."
+ ]
+}

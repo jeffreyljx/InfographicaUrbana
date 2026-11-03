@@ -1,0 +1,679 @@
+{
+ "batch_id": "eu-22-f",
+ "verdicts": [
+  {
+   "slug": "republic-of-croatia",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/3",
+     "what": "Konavle occupation_start had no month and confidence 1 (it was /ledger/0; the ledger was re-sorted).",
+     "why": "Croatian War of Independence page: 'the Siege of Dubrovnik that started in October' (1991) and 'another 680 square kilometers ... of occupied territory near Dubrovnik'.",
+     "fix": "month 10, confidence 2, note quotes the siege sentence; ledger re-sorted so the event follows the July 1991 loss.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/14",
+     "what": "The January 1998 gain of Eastern Slavonia named republic-of-serbian-krajina as counterpart, but that dossier dissolves on 12 Nov 1995 (Erdut) to nobody.",
+     "why": "Krajina page: UNTAES 'starting on 15 January 1996'; 'In 1998, the UNTAES mission was complete and the territory was formally returned to Croatia'. RSK dossier: 1995-11 dissolve, counterpart nobody.",
+     "fix": "counterpart nobody; note explains UNTAES.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/7",
+     "what": "occupation_end (Oct 1992, Konavle) names socialist-federal-republic-of-yugoslavia, whose dossier ends in 1991; the dossier's own note says the army was by then the rump Yugoslavia's (serbia-montenegro, from April 1992). No mirror in either dossier.",
+     "why": "War page: withdrawal 'between September 30 and October 20, 1992'; SFRY dossier end 1991; serbia-montenegro start 1992-04 with no Konavle event. Changing only Croatia's counterpart makes the validator warn (unpaired occupation_start/occupation_end).",
+     "fix": "Non-blocking: owners of socialist-federal-republic-of-yugoslavia and serbia-montenegro add the occupation mirrors; Croatia then splits the occupation (SFRY 1991-1992, serbia-montenegro 1992) or keeps SFRY with the note.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/certainty/0",
+     "what is missing": "Prevlaka peninsula under UN observers after the 1992 withdrawal (no event; only 'demilitarized and turned over to the UNPROFOR')",
+     "page to try": "https://en.wikipedia.org/wiki/Prevlaka"
+    },
+    {
+     "where": "/ledger/8-/ledger/13",
+     "what is missing": "day-level dates of Operation Flash (1-4 May 1995) and Storm (4-7 Aug 1995); the dossier records months only",
+     "page to try": "https://en.wikipedia.org/wiki/Operation_Storm"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Croatia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Croatian_War_of_Independence",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Serbian_Krajina",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Croatian_War_of_Independence",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Serbian_Krajina",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Croatian_War_of_Independence",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Serbian_Krajina",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Serbian_Krajina",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Croatia",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 56561,
+    "infobox_year": 2024,
+    "cliopatria_km2": 52453.3,
+    "ratio": 0.93,
+    "acknowledged": true,
+    "note": "1992 shape 44,390 km2 includes ~5,800 km2 of Bosnia (corrected); reviewer cell count of corrected 1992-1995 keyframe ~34,400 km2 vs gazetteer Croatia 53,400, leaving ~20,000 km2 outside government control (page: RSK 13,913 early 1992, 17,028 at greatest, Konavle 680)."
+   }
+  },
+  {
+   "slug": "republic-of-moldova",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/3",
+     "what": "The 1992 loss to transnistria took the whole left bank plus Bender, though the Republic never held the left bank (its found region, Cliopatria 1992, already excludes it); the mirror (transnistria 1992-07 gain) is Bender only.",
+     "why": "Moldova page: the east bank 'has been under the de facto control of the breakaway government of Transnistria since 1990'; Transnistria War page: 'parts of the city of Bender, including the center, were retaken by PMR forces'.",
+     "fix": "region narrowed to {admin1: Bender, country: Moldova} with text; note rewritten.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/2/note",
+     "what": "Says the Ukraine land swap is undated on the page; the page dates it.",
+     "why": "Moldova page: 'in 1999 Moldova acquired from Ukraine (in exchange for ceding a stretch of contested road ...) a 0.45 kilometer river frontage to the Danube'.",
+     "fix": "note and notes field give 1999; still too small to draw.",
+     "applied": true
+    },
+    {
+     "where": "/ledger",
+     "what": "No mirror for russian-federation's 1992 occupation_start of Transnistria (counterpart republic-of-moldova) nor for russian-occupied-territories' 1992 found (counterpart republic-of-moldova); the war's belligerent is the string 'Russian 14th Army', not the slug russian-federation.",
+     "why": "russian-federation ledger 1992 occupation_start; Transnistria War page: 'The Russian 14th Army's role in the area was crucial', troops reduced to 'around 1,300 men'. The author flagged the overlap for the owners.",
+     "fix": "Non-blocking: settle the left-bank model across transnistria, russian-federation and russian-occupied-territories first; then mirror here (occupation_start 1992 counterpart russian-federation) or drop the Russian events.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/certainty/0",
+     "what is missing": "Gagauz Republic (declared 1990) and Gagauzia's later autonomy; who held all of Bender",
+     "page to try": "https://en.wikipedia.org/wiki/Gagauzia"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Moldova",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Transnistria_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Transnistria_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Transnistria_War",
+     "result": "confirmed for Bender; left bank was lost in 1990 (region narrowed)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 33843,
+    "infobox_year": 2024,
+    "cliopatria_km2": 27292.9,
+    "ratio": 0.81,
+    "acknowledged": true,
+    "note": "infobox figure includes Transnistria; the shape leaves it and Bender out"
+   }
+  },
+  {
+   "slug": "republic-of-slovenia",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/certainty/0",
+     "what is missing": "Piran Bay border with Croatia (arbitration); no land drawn, optional",
+     "page to try": "https://en.wikipedia.org/wiki/Piran_Bay"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Slovenia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Ten-Day_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Ten-Day_War",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 20272,
+    "infobox_year": 2024,
+    "cliopatria_km2": 19575.3,
+    "ratio": 0.97,
+    "acknowledged": true
+   },
+   "tried": "all three events, the 26 October withdrawal, border crossings, area; nothing broke"
+  },
+  {
+   "slug": "republic-of-estonia",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Estonia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Estonia",
+     "result": "confirmed (date); USSR dossier starts the contest 30 March 1990, explained in note"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Estonia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/wars/0",
+     "page": "https://en.wikipedia.org/wiki/Estonia",
+     "result": "page gives 'the 1988-1990 Singing Revolution'; the entry runs to 1991, the contest's end; acceptable"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 45335,
+    "infobox_year": 2024,
+    "cliopatria_km2": 48568.9,
+    "ratio": 1.07,
+    "acknowledged": true
+   },
+   "tried": "events, area, predecessors; the Q191 one-or-two-dossier question is raised under problems for the orchestrator (republic-of-latvia is one dossier 1918-2024)"
+  },
+  {
+   "slug": "former-yugoslav-republic-of-macedonia",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/1",
+     "what": "1993 'rename' at confidence 3: the page dates UN admission under the provisional reference but does not call it a change of the state's name.",
+     "why": "North Macedonia page: admitted 'as \"the former Yugoslav Republic of Macedonia\"'; 'in the period between 1991 and 2019, the country's name was an ongoing issue'.",
+     "fix": "confidence 2 with a note.",
+     "applied": true
+    },
+    {
+     "where": "/wars/0/outcome",
+     "what": "'No territory changed hands' is not on the page; insurgents fought 'mostly in the north and west of the country'.",
+     "why": "North Macedonia page: 'A conflict took place between the government and ethnic Albanian insurgents, mostly in the north and west of the country, between February and August 2001.'",
+     "fix": "outcome text replaced; zones stay empty pending the insurgency page (thin).",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/wars/0/zones",
+     "what is missing": "zone and contest_start/contest_end for the 2001 insurgency (north and west, Feb-Aug 2001; Ohrid Agreement)",
+     "page to try": "https://en.wikipedia.org/wiki/2001_insurgency_in_Macedonia"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "the land exchanged with Kosovo in the 2009 border demarcation; the 142 km2 step in 2000",
+     "page to try": "https://en.wikipedia.org/wiki/Kosovo–North_Macedonia_relations"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/North_Macedonia",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/North_Macedonia",
+     "result": "confirmed date; confidence lowered (not a rename on the page)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/North_Macedonia",
+     "result": "confirmed (12 February, year from context 2019)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 25436,
+    "infobox_year": 2024,
+    "cliopatria_km2": 25124.7,
+    "ratio": 0.99,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "republic-of-belarus",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Belarus",
+     "result": "confirmed; the page also says 'the country's name was changed to the Republic of Belarus on 25 August 1991'"
+    },
+    {
+     "where": "/certainty/0",
+     "page": "https://en.wikipedia.org/wiki/Belarus",
+     "result": "confirmed: treaties of 1995 and 1996 with Latvia and Lithuania, final Lithuanian documents February 2007, Ukraine treaty ratified 2009"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 207600,
+    "infobox_year": 2024,
+    "cliopatria_km2": 208525.0,
+    "ratio": 1.0,
+    "acknowledged": true
+   },
+   "tried": "found event, rename date against the BSSR dossier (page-based, explained), area, certainty treaties; nothing broke"
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "republic-of-croatia",
+    "year": 1991,
+    "type": "loss",
+    "counterpart": "republic-of-serbian-krajina"
+   },
+   "mirror": {
+    "slug": "republic-of-serbian-krajina",
+    "year": 1990,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Krajina (/ledger/2, July 1991); RSK's found (Dec 1990, counterpart republic-of-croatia) carries the land, 7 months earlier; contest_start July vs August 1991 also within a year"
+  },
+  {
+   "event": {
+    "slug": "republic-of-croatia",
+    "year": 1991,
+    "type": "occupation_start",
+    "counterpart": "socialist-federal-republic-of-yugoslavia"
+   },
+   "mirror": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1991,
+    "type": "contest_start"
+   },
+   "status": "missing",
+   "note": "Konavle Oct 1991; SFRY has only a contest_start (Aug 1991) and contest_end (Nov 1991, conf 1) with Croatia, no occupation_start; route to SFRY owner"
+  },
+  {
+   "event": {
+    "slug": "republic-of-croatia",
+    "year": 1991,
+    "type": "loss",
+    "counterpart": "republic-of-serbian-krajina"
+   },
+   "mirror": {
+    "slug": "republic-of-serbian-krajina",
+    "year": 1991,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Western Slavonia, 19 Dec 1991, both sides"
+  },
+  {
+   "event": {
+    "slug": "republic-of-croatia",
+    "year": 1992,
+    "type": "loss",
+    "counterpart": "republic-of-serbian-krajina"
+   },
+   "mirror": {
+    "slug": "republic-of-serbian-krajina",
+    "year": 1992,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Eastern Slavonia, Baranja, W. Syrmia, 26 Feb 1992, both sides"
+  },
+  {
+   "event": {
+    "slug": "republic-of-croatia",
+    "year": 1992,
+    "type": "occupation_end",
+    "counterpart": "socialist-federal-republic-of-yugoslavia"
+   },
+   "mirror": {
+    "slug": "serbia-montenegro",
+    "year": 1992,
+    "type": "none"
+   },
+   "status": "mismatch",
+   "note": "Konavle withdrawal Sept-Oct 1992; SFRY dossier ends 1991, the army was FRY's (serbia-montenegro from April 1992), which has no occupation_end; route to SFRY and serbia-montenegro owners"
+  },
+  {
+   "event": {
+    "slug": "republic-of-croatia",
+    "year": 1995,
+    "type": "gain",
+    "counterpart": "republic-of-serbian-krajina"
+   },
+   "mirror": {
+    "slug": "republic-of-serbian-krajina",
+    "year": 1995,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Operation Flash, May 1995"
+  },
+  {
+   "event": {
+    "slug": "republic-of-croatia",
+    "year": 1995,
+    "type": "gain",
+    "counterpart": "republic-of-serbian-krajina"
+   },
+   "mirror": {
+    "slug": "republic-of-serbian-krajina",
+    "year": 1995,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Operation Storm, August 1995"
+  },
+  {
+   "event": {
+    "slug": "republic-of-croatia",
+    "year": 1998,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "republic-of-serbian-krajina",
+    "year": 1995,
+    "type": "dissolve"
+   },
+   "status": "exception",
+   "note": "counterpart changed by reviewer from the RSK (ended Nov 1995, dissolve to nobody) to nobody (UNTAES 1996-1998)"
+  },
+  {
+   "event": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1991,
+    "type": "contest_start",
+    "counterpart": "republic-of-croatia"
+   },
+   "mirror": {
+    "slug": "republic-of-croatia",
+    "year": 1991,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "SFRY's Aug 1991 contest names Croatia; Croatia's contest (July 1991) names the RSK, and its SFRY relation is the Konavle occupation only"
+  },
+  {
+   "event": {
+    "slug": "republic-of-moldova",
+    "year": 1992,
+    "type": "loss",
+    "counterpart": "transnistria"
+   },
+   "mirror": {
+    "slug": "transnistria",
+    "year": 1992,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "after the reviewer's fix both sides are Bender, July 1992; contest_start Mar and contest_end Jul 1992 match too"
+  },
+  {
+   "event": {
+    "slug": "russian-federation",
+    "year": 1992,
+    "type": "occupation_start",
+    "counterpart": "republic-of-moldova"
+   },
+   "mirror": {
+    "slug": "republic-of-moldova",
+    "year": 1992,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "Transnistria; Moldova has no occupation event; author flagged the transnistria / russian-occupied-territories overlap; settle the model first"
+  },
+  {
+   "event": {
+    "slug": "russian-occupied-territories",
+    "year": 1992,
+    "type": "found",
+    "counterpart": "republic-of-moldova"
+   },
+   "mirror": {
+    "slug": "republic-of-moldova",
+    "year": 1992,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "umbrella dossier with a found event on Moldovan land; same unsettled model"
+  },
+  {
+   "event": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1990,
+    "type": "contest_start",
+    "counterpart": "republic-of-estonia"
+   },
+   "mirror": {
+    "slug": "republic-of-estonia",
+    "year": 1991,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "30 March 1990 vs 20 Aug 1991 (17 months); republic-of-estonia starts in Aug 1991, so the 1990 counterpart should be estonian-soviet-socialist-republic; explained in the Estonia note; route to USSR owner"
+  },
+  {
+   "event": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1991,
+    "type": "loss",
+    "counterpart": "republic-of-estonia"
+   },
+   "mirror": {
+    "slug": "republic-of-estonia",
+    "year": 1991,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Estonia's found (Aug 1991, from the ESSR) carries the land; contest_end 6 Sept 1991 on both sides"
+  },
+  {
+   "event": {
+    "slug": "republic-of-slovenia",
+    "year": 1991,
+    "type": "found",
+    "counterpart": "socialist-federal-republic-of-yugoslavia"
+   },
+   "mirror": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1991,
+    "type": "successor"
+   },
+   "status": "matched",
+   "note": "SFRY successors list Slovenia; Ten-Day War contest events match on both sides"
+  },
+  {
+   "event": {
+    "slug": "republic-of-croatia",
+    "year": 1991,
+    "type": "found",
+    "counterpart": "socialist-federal-republic-of-yugoslavia"
+   },
+   "mirror": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1991,
+    "type": "successor"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "former-yugoslav-republic-of-macedonia",
+    "year": 1991,
+    "type": "found",
+    "counterpart": "socialist-federal-republic-of-yugoslavia"
+   },
+   "mirror": {
+    "slug": "socialist-federal-republic-of-yugoslavia",
+    "year": 1991,
+    "type": "successor"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "republic-of-moldova",
+    "year": 1991,
+    "type": "found",
+    "counterpart": "moldavian-soviet-socialist-republic"
+   },
+   "mirror": {
+    "slug": "moldavian-soviet-socialist-republic",
+    "year": 1991,
+    "type": "successor"
+   },
+   "status": "matched",
+   "note": "MSSR ends Aug 1991; it dates the rename to 23 May 1991, the Moldova page to 27 Aug (explained)"
+  },
+  {
+   "event": {
+    "slug": "republic-of-belarus",
+    "year": 1991,
+    "type": "found",
+    "counterpart": "byelorussian-soviet-socialist-republic"
+   },
+   "mirror": {
+    "slug": "byelorussian-soviet-socialist-republic",
+    "year": 1991,
+    "type": "successor"
+   },
+   "status": "matched",
+   "note": "rename 19 Sept (BSSR dossier) vs 25 Aug 1991 (Belarus page, confirmed)"
+  },
+  {
+   "event": {
+    "slug": "republic-of-estonia",
+    "year": 1991,
+    "type": "found",
+    "counterpart": "estonian-soviet-socialist-republic"
+   },
+   "mirror": {
+    "slug": "estonian-soviet-socialist-republic",
+    "year": 1991,
+    "type": "successor"
+   },
+   "status": "matched",
+   "note": ""
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Krajina",
+   "kind": "region",
+   "used_in": "republic-of-croatia"
+  },
+  {
+   "name": "Knin",
+   "kind": "place",
+   "used_in": "republic-of-croatia"
+  },
+  {
+   "name": "Konavle",
+   "kind": "region",
+   "used_in": "republic-of-croatia"
+  },
+  {
+   "name": "Western Slavonia",
+   "kind": "region",
+   "used_in": "republic-of-croatia"
+  },
+  {
+   "name": "Eastern Slavonia, Baranja and Western Syrmia",
+   "kind": "region",
+   "used_in": "republic-of-croatia"
+  },
+  {
+   "name": "Pechory (Petseri County)",
+   "kind": "region",
+   "used_in": "republic-of-estonia (notes only; for the estonia dossier)"
+  },
+  {
+   "name": "Ivangorod",
+   "kind": "place",
+   "used_in": "republic-of-estonia (notes only; for the estonia dossier)"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Gagauz Republic",
+   "suggested_slug": "gagauz-republic",
+   "years": [
+    1990,
+    1994
+   ],
+   "note": "author's pages give only the 1990 declaration; end year unverified; group eu-22-x"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-22-f.md",
+ "problems": [
+  "Estonia (Q191): the author keeps two dossiers (estonia 1918-1940, republic-of-estonia 1991-) while calling them 'one state in law'; the brief's rule says one state means one dossier under the earlier slug, and republic-of-latvia is a single dossier 1918-2024 (1940 loss to and 1991 gain from the Latvian SSR). The orchestrator should treat the Baltic states alike: merge republic-of-estonia into estonia, or record them as different states. Not counted against the dossier.",
+  "The author proposes an umbrella dossier union-state (Union State of Russia and Belarus); umbrella is never a dossier of its own, so it is not listed under counterparts_needing_dossiers.",
+  "Konavle occupation 1991-1992: SFRY (ends 1991) and serbia-montenegro (from 1992) carry no occupation mirrors; Croatia's occupation_end still names SFRY (changing it alone makes the validator warn).",
+  "Transnistrian left bank: transnistria (state), russian-federation (occupation_start 1992) and russian-occupied-territories (umbrella with a found event) overlap on Moldovan land; their owners must settle the model before Moldova mirrors it.",
+  "Reviewer edits to dossiers (re-validated, 0 errors, 0 warnings, read back after writing): republic-of-croatia /ledger/3 (was /ledger/0) and /ledger/14 and notes; republic-of-moldova /ledger/3, /keyframe_review/2/note and notes; former-yugoslav-republic-of-macedonia /ledger/1 and /wars/0/outcome.",
+  "No page failed to load; WebFetch returns a model extract, so day-level dates were taken only where quoted."
+ ]
+}

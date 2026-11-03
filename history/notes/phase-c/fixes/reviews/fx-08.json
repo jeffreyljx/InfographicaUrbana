@@ -1,0 +1,68 @@
+{
+ "batch_id": "fx-08",
+ "checks": [
+  {
+   "item": "F003",
+   "verdict": "fixed",
+   "what": "republic-of-china keyframe_review 1-8 and 10-21 (1913-1948, not 1912/1930): resolved through the gazetteer, each keyframe now leaves out exactly Tibet's shape (Cliopatria Tibet 1928 + Tawang tract, 4,711 cells): 1,241-1,244 cells removed per keyframe, Cliopatria-minus-keyframe equals Cliopatria-intersect-Tibet, so no other land moves; overlap with Tibet 0 (1930 keyframe 1 cell, the 1-cell row left in the regenerated conflicts.csv). The occupation events /ledger/4 and /ledger/9 still carry the 1912-1918 Chinese hold on Chamdo (the keyframe release only touches directly owned cells). Page supports the change: 'Since 1912, Tibet had been de facto independent of Chinese control', 'In 1918, Lhasa regained control of Chamdo and western Kham. A truce set the border at the Yangtze River', 'In October 1950, the People's Liberation Army entered the Tibetan area of Chamdo'. Error corrected: the 16 new notes framed the quote as 'for 1919-1949 the government of Tibet controlled all of U-Tsang ... and western Kham'; the page has no '1919' and dates that sentence only 'At that time' (the 13th Dalai Lama's reign). Replaced in all 16 notes by the undated quote plus the page's October 1950 Chamdo sentence; validated (0 errors).",
+   "page": "https://en.wikipedia.org/wiki/Tibet_(1912%E2%80%931951)",
+   "fix": "republic-of-china keyframe_review notes 1-8, 10-21: dropped the unsupported 'for 1919-1949' framing, added the page's 'In October 1950, the People's Liberation Army entered the Tibetan area of Chamdo' as the dated evidence for Chamdo being Tibetan up to 1950.",
+   "applied": true
+  },
+  {
+   "item": "F005",
+   "verdict": "pass",
+   "what": "keyframe republic-of-china_1949 now resolves to 291 cells (Cliopatria 1950 shape 290: Taiwan 155, Hainan 125, 2 Zhoushan, 8 others; plus 1 Dachen cell). The compiler applies a keyframe after that year's ledger events and its yearly snapshot is the state after every event of the year, so a year-end keyframe is right; ledger end-1949 had 293 cells, now within tolerance and the regenerated keyframe_snaps.csv has no republic-of-china 1949 row. Chinese Civil War page confirms 'In December 1949, Chiang proclaimed Taipei as the temporary capital', 'the Communist conquest of Hainan Island in April 1950', 'Zhoushan Island off Zhejiang (May 1950)'; Dachen is not on that page (the dossier's own ledger/99 cites the Dachen Islands page). Side change /ledger/94 (Zhoushan kept out of the October loss) is supported by the page but is a no-op: /ledger/92 (April 1949, Zhejiang admin1) already takes the 5 Zhoushan-circle cells. Harmless; see problems.",
+   "page": "https://en.wikipedia.org/wiki/Chinese_Civil_War",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F114",
+   "verdict": "pass",
+   "what": "empire-of-china /ledger/0 (found) and keyframe empire-of-china_1916 now subtract the same Tibet shape; dossier validates; the regenerated conflicts.csv has no empire-of-china/tibet row. Supported by the Tibet (1912-1951) page: 'Since 1912, Tibet had been de facto independent of Chinese control'. The note correctly says the page names no holder of Chamdo before 1918.",
+   "page": "https://en.wikipedia.org/wiki/Tibet_(1912%E2%80%931951)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F099",
+   "verdict": "pass",
+   "what": "Kept is sound. Disputed cells are 1,021 cells of Sichuan west of the basin (centroid 30.79 N 100.86 E, bbox 97.4-103.0 E), i.e. Kham. The Khoshut Khanate page backs the Khoshut side more than 'uncontradicted': 'In the winter of 1640-1641, Gushi crushed the king of Beri, Donyo Dorje' and 'In 1653, Gushi's title as king of U-Tsang and Kham was formally justified'. Nothing on it gives Wu Sangui Kham; size-rule result stands.",
+   "page": "https://en.wikipedia.org/wiki/Khoshut_Khanate",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F125",
+   "verdict": "pass",
+   "what": "Same Kham-in-Sichuan cells as F099 (1,021 in 1645, 9 in 1644 at 97.4-97.8 E); the Khoshut page's Kham title (1653) and Beri conquest (1640-41) apply equally; the fixer's Xi dynasty quotes ('ruled most of Sichuan province') do not reach Kham. Kept is reasonable; Xi dynasty page not reopened.",
+   "page": "https://en.wikipedia.org/wiki/Khoshut_Khanate",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F167",
+   "verdict": "pass",
+   "what": "data/hierarchy.csv has zhili-clique,republic-of-china,1925,1927,vassal,1 (and 1920-1924 constituent); the finding asks only for mirror vassal events, so the skip follows brief section 1.",
+   "page": "",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F217",
+   "verdict": "pass",
+   "what": "data/hierarchy.csv has tibet,khoshut-khanate,1642,1717,vassal,2, which draws Tibet in Khoshut tint; khoshut-khanate is read-only in this batch; the skip follows brief section 1.",
+   "page": "",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "Validation (python3 -I history/tools/validate_dossier.py --resolve): republic-of-china OK, 0 errors, 2 pre-existing warnings (/ledger/86 and /ledger/87: gazetteer unknown place 'Baitag Bogd'); empire-of-china OK, 0 errors, 0 warnings.",
+  "F003: the fixer's notes file (history/polities/_notes/fix-fx-08.md) and its report still say the Tibet page dates Tibet's control of U-Tsang and western Kham to '1919-1949'; the page has no '1919'. Corrected in the dossier notes only (16 keyframe_review notes); the notes file was left as written.",
+  "F005 side change: republic-of-china /ledger/94 now leaves out the 50 km Zhoushan circle, but /ledger/92 (April 1949, Zhejiang admin1 lost to communist-party-of-china) already takes the 5 Zhoushan-circle cells that are in Zhejiang, so the Republic still loses Zhoushan in April 1949, not May 1950. The 50 km circle also holds mainland Ningbo/Beilun cells (29.73 N 121.81 E, 29.86 N 121.86 E, 29.95 N 121.75 E), so to make it work, subtract a tighter Zhoushan circle (about 25 km at 30.05 N 122.15 E, the cells at 29.90 N 122.45 E, 30.08 N 122.23 E and 30.04 N 122.07 E) from /ledger/92, and use the same circle in /ledger/94 and /ledger/98. The effect is 2-3 cells for one year; not changed in this review.",
+  "F005: the 1949 keyframe's Dachen circle (1 cell) is not backed by the page cited for that keyframe (Chinese Civil War); it is backed by the Dachen Islands page that /ledger/99 and keyframe_review 24/25 cite. Also /ledger/99 says the Dachen circle resolves to no cells, but it now resolves to 1 cell.",
+  "The place and snap CSVs under notes/phase-c were regenerated at 11:32 after the fixer's edits (11:13-11:14), and they already reflect the fixes: no republic-of-china/tibet conflict except 1 cell in 1930, no empire-of-china/tibet conflict, no republic-of-china_1949 snap."
+ ]
+}

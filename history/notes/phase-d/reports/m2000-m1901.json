@@ -1,0 +1,138 @@
+{
+ "window": "m2000-m1901",
+ "images": [
+  {
+   "year": -2000,
+   "bbox": "world, with Cliopatria",
+   "seen": "Quiet start map: 25 states, mostly archaeological cultures (Cliopatria draws only Egypt, Elam, Sumer, Indus); nothing far from its region; Qatna's second blob is the deliberate Palmyra disc."
+  },
+  {
+   "year": -2000,
+   "bbox": "28,22,62,40, with Cliopatria",
+   "seen": "Larsa drawn with 84 cells (city plus Ur and Lagash) and Elam with a bite out of the southern Khuzestan plain; both traced to keyframe handling (patched)."
+  },
+  {
+   "year": -1950,
+   "bbox": "42,28,52,35, from stage after patch",
+   "seen": "Larsa now the city alone inside Isin (Isin holds Ur and Lagash), Elam runs down to the Gulf over all Khuzestan; matches the Larsa page. -1901 rendered but not opened: its only change since -2000 is Lower Nubia going to Egypt in -1944 (ledger caption agrees with the page)."
+  }
+ ],
+ "issues": [
+  {
+   "what": "Larsa drew Ur and Lagash province from -2000: the dossier's sumerian-city-states_-2000 keyframe has no from/to, so the compiler unions it with larsa_-2000 and larsa_-1932 (84 cells instead of about 32), and Isin lost 77 cells in -1983 and 58 in -1932 to it by R2. The dossier's own note says the shape holds from -1923.",
+   "years": [
+    -2000,
+    -1924
+   ],
+   "slugs": [
+    "larsa",
+    "isin"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Larsa"
+   ]
+  },
+  {
+   "what": "elam_-2000 keyframe (Cliopatria -2000 shape) leaves out 44 cells of southern Khuzestan (Abadan to Mahshahr plain and edge cells) that the ledger gives to Elam from -2015; they stayed unowned to the end anchor.",
+   "years": [
+    -2000,
+    -1901
+   ],
+   "slugs": [
+    "elam"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Elam"
+   ]
+  },
+  {
+   "what": "Size-rule conflict longshan-culture / xia-dynasty, 121 cells in Henan and Shanxi, -2000: the smaller state (Xia) wins.",
+   "years": [
+    -2000,
+    -2000
+   ],
+   "slugs": [
+    "xia-dynasty",
+    "longshan-culture"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Size-rule conflict eshnunna / isin, one cell in Diyala (-2000, -1983, -1932): Eshnunna wins.",
+   "years": [
+    -2000,
+    -1932
+   ],
+   "slugs": [
+    "eshnunna",
+    "isin"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Remaining isin / larsa R2 overlap after the patch (49 cell-years in -1983 and -1932): the Ur 70 km and Larsa 50 km discs of the dossiers overlap and Larsa keeps its own district.",
+   "years": [
+    -1983,
+    -1932
+   ],
+   "slugs": [
+    "isin",
+    "larsa"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Hoabinhian ends in -2000 (7063 cells at once) and Qatna, Ochre Coloured Pottery culture appear in -2000: life dates of the dossiers.",
+   "years": [
+    -2000,
+    -2000
+   ],
+   "slugs": [
+    "hoabinhian",
+    "qatna",
+    "ochre-coloured-pottery-culture"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Middle Kingdom Egypt gains Lower Nubia in -1944 (61 cells); the caption matches the page.",
+   "years": [
+    -1944,
+    -1944
+   ],
+   "slugs": [
+    "middle-kingdom-of-egypt"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/m2000-m1901.json",
+ "patch_entries": {
+  "events": 0,
+  "keyframe_overrides": 2,
+  "rulings": 0
+ },
+ "patch_check": "all applied (--check-patch: 2 ok, 0 rejected; trial: both applied; conflicts 259 -> 173 cell-years, larsa snap 73 -> 21 cells added, elam snap removed 47 -> 3)",
+ "colour_clashes": [],
+ "dossier_requests": [],
+ "pages_opened": 2,
+ "problems": [
+  "keyframe_overrides/0 (larsa, sumerian-city-states_-2000) and /1 (elam, elam_-2000) carry the dossiers' own correction text and span years across the m1900-m1801 boundary (the keyframes run to -1801); the years -1900..-1801 behave as before for Larsa (shape held from -1923) and gain southern Khuzestan for Elam.",
+  "m1900-m1801 agent: Cliopatria's Elam shape for -1800 (keyframe elam_-1800, correction minus Iraq) also covers only 221 of 262 Khuzestan cells, so the same 41 cells of the southern Khuzestan plain will drop out at -1800; this window cannot fix it (the keyframe starts in the next window).",
+  "Dossier-level cause for the Larsa defect (not needed once patched): larsa.json keyframe sumerian-city-states_-2000 should carry from -1923; the compiler unions every keyframe alive in a year (do_keyframe), so a keyframe without from/to that the dossier note says starts later is alive from the shape's own first year. Other dossiers with fixer notes saying a Cliopatria shape 'holds from' a later year but no from/to may have the same defect."
+ ]
+}

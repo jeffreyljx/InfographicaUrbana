@@ -1,0 +1,708 @@
+{
+ "batch_id": "eu-14-g",
+ "verdicts": [
+  {
+   "slug": "denmark-norway",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/successors/1",
+     "what": "Successor united-kingdoms-of-sweden-and-norway with the note 'Norway has no shape in 1814' is wrong: Cliopatria's Kingdom of Norway row (1814-2024) has shape kingdom-of-norway_1814 (346,290 km2).",
+     "why": "shapes.csv rows kingdom-of-norway_1814 (1814-1814) and kingdom-of-norway_1905; polities.csv kingdom-of-norway 1814..2024. The Sweden-Norway row starts 1815.",
+     "fix": "Successor slug set to kingdom-of-norway with land {cliopatria: Kingdom of Norway, year: 1814}, note rewritten. The author's report entry counterparts_needing_dossiers 'kingdom-of-norway-1814' should be dropped.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/notes and /keyframe_review/0/note",
+     "what": "Says no Cliopatria shape includes Greenland; Cliopatria has a separate Greenland row (1734-1940, 24 shapes, 10,964 km2 in 1734 to 102,479 km2 in 1788-1804 and 2,219,796 km2 from 1936).",
+     "why": "polities.csv greenland 1734..1940; shapes.csv greenland_1734 ... greenland_1940.",
+     "fix": "Both texts now say Greenland is not in this row's shapes and point to the Greenland row.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/24/region, /ledger/26/region, /keyframe_review/13/note",
+     "what": "The 46 Møre og Romsdal cells Cliopatria removes in 1659 and returns in 1662 were called 'named by no page', but the cited Roskilde page says Trøndelag then included Nordmøre and Romsdal; the 1658 loss and 1660 gain regions left them out.",
+     "why": "Treaty of Roskilde page: 'Trøndelag then included Nordmøre and Romsdal'; 'The Treaty of Copenhagen restored Bornholm to Denmark and Trøndelag to Norway in 1660'. The resolver gives 46 cells for intersect(minus(DN 1645, DN 1659), Møre og Romsdal) and the same 46 for intersect(minus(DN 1662, DN 1659), Møre og Romsdal).",
+     "fix": "Added those intersections to both regions as 'Nordmøre and Romsdal', and corrected the notes of /ledger/24 and the 1659 keyframe.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/identity/rulers/0/from",
+     "what": "Frederick I starts in 1523, before the dossier's start in 1526 (ruler spans must lie inside the life).",
+     "why": "identity.start.year = 1526; the ruler's note already says the state is drawn from 1526.",
+     "fix": "from set to 1526; the note keeps the 13 April 1523 accession.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/2 (denmark-norway_1564, adjust)",
+     "what": "The correction keeps Cliopatria's removal of about 330 Jämtland, Härjedalen and Idre-Särna cells (612,437 to 567,507 km2) for 1564-1569. No ledger event moves that land; there is only the 1563-1570 contest (/ledger/3, /ledger/4). In 1629 (contest kept in the owner's base) and 1713-1720 (occupations removed from the occupier's base) the dossier follows the owner-keeps-the-base convention, and this keyframe does not.",
+     "why": "K2 note quotes the Northern Seven Years' War page: Sweden 're-occupied Jemtland, as well as Herjedalen and Trøndelag' in 1564, 'returned to Denmark-Norway in 1570'. Schema: occupation_start means the occupier holds 'region' belonging to 'counterpart' without annexing it, and the owner records the same event with the roles reversed. Älvsborg (3 Swedish cells, captured 1563, ransomed after Stettin) sits in the Danish base 1564-1571 with no occupation event.",
+     "fix": "Choose one. (a) Make the correction the 1564 shape plus Jämtland/Härjedalen/Idre-Särna, minus the Älvsborg cells, then add occupation_start 1564 / occupation_end 1570-12 (counterpart kingdom-of-sweden) for Jämtland-Härjedalen and an Älvsborg occupation pair (Denmark occupies, 1563 to 1571). (b) Keep the shape and state in the note that the contest blend stands in for the occupation. Not blocking: the contest zone already covers the land in those years.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/14, /ledger/16",
+     "what": "1627-1629 Holstein and Jutland are typed contest_start/contest_end against habsburg-monarchy, while habsburg-monarchy records occupation_start 1627 / occupation_end 1629-6 with counterpart denmark-norway.",
+     "why": "Treaty of Lübeck page: Wallenstein and Tilly 'invaded Danish Holstein in September' 1627 and 'advanced through the Jutland peninsula'; the peace proposal speaks of 'the imperial occupation forces'. habsburg-monarchy /ledger/24 and /ledger/25.",
+     "fix": "Add occupation_start 1627-9 / occupation_end 1629-5 (counterpart habsburg-monarchy) for Jutland and Holstein, keeping or dropping the contest pair, so that both ledgers mirror.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/13, /ledger/15",
+     "what": "The Lower Saxon contest of 1625-1629 has counterpart habsburg-monarchy, but the land is Cliopatria's holy-roman-empire-minor-states, which records the same contest (1626 to 1629-6) with counterpart denmark-norway; habsburg-monarchy has no matching contest.",
+     "why": "holy-roman-empire-minor-states /ledger/57 and /ledger/58.",
+     "fix": "Set the counterpart of /ledger/13 and /ledger/15 to holy-roman-empire-minor-states, or have habsburg-monarchy add the pair.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/37",
+     "what": "Norway is lost in January 1814 to swedish-empire. That follows the Kiel page, but in 1814 Cliopatria draws Norway as kingdom-of-norway and Sweden never held it that year (independence on 17 May, union on 4 November 1814).",
+     "why": "Treaty of Kiel page: the Norwegian provinces 'shall belong in full and sovereign property to the King of Sweden'; Norway then 'declared independence, adopted a constitution, and elected Crown Prince Christian Frederik'. shapes.csv kingdom-of-norway_1814.",
+     "fix": "Keep swedish-empire and add in the note that the land is kingdom-of-norway's in 1814 so that the Swedish group does not draw it, or change the counterpart to kingdom-of-norway. The owning groups (eu-14, eu-17/20) must agree.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "1526 start is Cliopatria's (confidence 1); the page dates the dual monarchy 1537 and Sweden's exit 1523.",
+     "page to try": "https://en.wikipedia.org/wiki/Kalmar_Union"
+    },
+    {
+     "where": "/ledger/5, /ledger/6",
+     "what is missing": "1572 loss of Magnus's Wiek and Pilten is Cliopatria's date (confidence 1). Pilten was sold to Poland later, in 1585.",
+     "page to try": "https://en.wikipedia.org/wiki/Bishopric_of_Courland"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "1595 gain of 24 East Finnmark cells from nobody (confidence 1), no page.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Teusina"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "1619 end of the Älvsborg ransom pledge (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Kn%C3%A4red"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "1622 gain of 5 lower-Elbe cells (confidence 1), no page.",
+     "page to try": "https://en.wikipedia.org/wiki/Christian_IV_of_Denmark"
+    },
+    {
+     "where": "/ledger/29",
+     "what is missing": "1713 year of the occupation of ducal Schleswig (confidence 1). The Holstein-Gottorp page gives no year.",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Schleswig"
+    },
+    {
+     "where": "/ledger/35",
+     "what is missing": "1807 loss of 3 cells to first-french-empire (confidence 1), unexplained. Heligoland, taken by Britain in 1807 and ceded at Kiel ('George III was granted full and unlimited sovereignty' on the Kiel page), is in neither ledger: add a 1814-1 loss to united-kingdom (and the 1807 occupation) if the island has a cell.",
+     "page to try": "https://en.wikipedia.org/wiki/Heligoland"
+    },
+    {
+     "where": "/ledger/36",
+     "what is missing": "1809 loss of 1 Finnmark cell to russian-empire (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Fredrikshamn"
+    },
+    {
+     "where": "/wars, /ledger (1643-1645)",
+     "what is missing": "Torstenson War: Swedish occupation of Jutland and Scania, 1643-1645. The war is in wars[] but only with the Jämtland zone, and no occupation or contest event.",
+     "page to try": "https://en.wikipedia.org/wiki/Torstenson_War"
+    },
+    {
+     "where": "/wars, /ledger (1675-1679)",
+     "what is missing": "Scanian War. The Denmark-Norway page says Denmark-Norway 'invaded Sweden in 1675', with no permanent gains; it needs a war entry and contest events.",
+     "page to try": "https://en.wikipedia.org/wiki/Scanian_War"
+    },
+    {
+     "where": "/ledger (1715-1720)",
+     "what is missing": "Danish occupation of Swedish Pomerania north of the Peene and Rügen. Frederiksborg page: 'Danish-held areas of Swedish Pomerania were returned to Sweden'.",
+     "page to try": "https://en.wikipedia.org/wiki/Swedish_Pomerania"
+    },
+    {
+     "where": "/ledger (1635-1645)",
+     "what is missing": "Bremen-Verden under the Danish prince Frederick as administrator from 1635 until 'expelled by the Swedish occupants in 1645'. Brömsebro: 'transferred from Danish to Swedish control'. Decide whether it is drawn as Danish land or as a vassal.",
+     "page to try": "https://en.wikipedia.org/wiki/Bremen-Verden"
+    },
+    {
+     "where": "/notes (Greenland)",
+     "what is missing": "The relation to the Cliopatria Greenland colony row (1734-1940) is not recorded: Hans Egede's mission of 1721 and colonial rule under the Dano-Norwegian crown.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Greenland"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/17, /ledger/18, /ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Br%C3%B6msebro_(1645)",
+     "result": "confirmed: 'signed on 13 August 1645'; Jämtland, Härjedalen, Idre, Särna, Gotland and Ösel ceded; Halland for 30 years as a guarantee"
+    },
+    {
+     "where": "/ledger/23, /ledger/24, /ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Roskilde",
+     "result": "confirmed: '26 February (OS) or 8 March 1658 (NS)'; 'Blekinge, Bornholm, Bohuslän, Scania and Trøndelag, as well as Halland'; the page also names Nordmøre and Romsdal (region fix applied)"
+    },
+    {
+     "where": "/ledger/26",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Roskilde",
+     "result": "confirmed: 'The Treaty of Copenhagen restored Bornholm to Denmark and Trøndelag to Norway in 1660'"
+    },
+    {
+     "where": "/ledger/28, /ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Bremen-Verden",
+     "result": "confirmed: 'Denmark-Norway occupied plague stricken Bremen-Verden' (1712); 'sold to him Bremen-Verden, which it kept under occupation since 1712' (1715)"
+    },
+    {
+     "where": "/ledger/33 (and /ledger/20)",
+     "page": "https://en.wikipedia.org/wiki/Holstein-Gottorp",
+     "result": "confirmed: Tsarskoye Selo exchange, the Gottorp side 'obtaining in exchange the German countships of Oldenburg and Delmenhorst'; 1658/1660 'recognized the sovereignty of its dukes over the Gottorp portions of the duchy of Schleswig'. No year for the Great Northern War occupation (/ledger/29 is correctly confidence 1)"
+    },
+    {
+     "where": "/ledger/14, /ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_L%C3%BCbeck",
+     "result": "confirmed: 'invaded Danish Holstein in September' 1627; 'concluded by Wallenstein and Christian on 22 May 1629'; 'restored to Christian his pre-war possessions'"
+    },
+    {
+     "where": "/ledger/32",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Frederiksborg",
+     "result": "confirmed: 3 July 1720; 'Denmark also gained full control over Schleswig'"
+    },
+    {
+     "where": "/ledger/37",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Kiel",
+     "result": "confirmed: 14 January 1814; Norway to the King of Sweden; '(Greenland, the Faroe Isles, and Iceland, excepted)'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Denmark%E2%80%93Norway",
+     "result": "confirmed: infobox 'Norwegian riksråd abolished: 1537'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2655567,
+    "infobox_year": 1800,
+    "cliopatria_km2": 526384,
+    "ratio": 5.04,
+    "acknowledged": true,
+    "note": "Infobox includes Greenland 2,166,086 km2; without it 489,481 vs 526,384 (0.93). Acknowledged in the keyframe denmark-norway_1526 note; Greenland is Cliopatria's separate Greenland row (102,479 km2 in 1788-1804)."
+   }
+  },
+  {
+   "slug": "kingdom-of-denmark-1814-1940",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/11",
+     "what": "1920 reunification has no month, and its source (German occupation of Denmark) mentions it only in passing.",
+     "why": "Denmark page: 'On 10 July 1920, Northern Schleswig was recovered by Denmark'.",
+     "fix": "Month 7 added; source changed to https://en.wikipedia.org/wiki/Denmark (added to sources[]); the 1920 keyframe note updated.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/notes",
+     "what": "Says Greenland 'is in no shape'; Cliopatria has a separate Greenland row (1734-1940).",
+     "why": "polities.csv greenland 1734..1940.",
+     "fix": "Text now points to the Greenland row.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/12 and /identity/end, /identity/successors",
+     "what": "The dossier ends with a confidence-3 'dissolve' on 9 April 1940, but the cited page says the state continued: the government 'remained functioning de jure until the end of the war', and 'On 5 May 1945, Denmark was officially free of German control'. The Kingdom of Denmark of 1814-1940 is also the same state as Cliopatria's Denmark row (1945-2024), so the 1940 break is Cliopatria's and not historical.",
+     "why": "German occupation of Denmark page, as quoted. polities.csv denmark 1945..2024 (another group: eu-17 or eu-22 lists it). One state, one dossier (research brief section 6).",
+     "fix": "Orchestrator decision. Preferred: one dossier for the Danish kingdom from 1814 (cliopatria_names Denmark-Norway [1814-1940 shapes] and Denmark), with occupation_start 1940-4 / occupation_end 1945-5 (counterpart nazi-germany) and a new keyframe 1940-1944 equal to the 1936 shape. Minimum: replace the dissolve with an occupation pair, extend end to 1945-5, and make successor 'denmark' the continuation rather than nazi-germany.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/identity/wikidata",
+     "what": "Q350186 is copied from polities.csv's Denmark row, an id data/README.md lists as shared by 'Danish Magnates / Denmark' (the Danish Magnates row's page is Christopher II of Denmark); it is not an id for this kingdom.",
+     "why": "data/README.md line 169; polities.csv danish-magnates and denmark rows.",
+     "fix": "Use Q35 (Denmark) once checked, or omit wikidata. Not applied: wikidata.org is unreachable from here.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/12",
+     "what is missing": "Denmark under German occupation, 9 April 1940 to 5 May 1945 (hatched), and the Faroes under British occupation from 12 April 1940.",
+     "page to try": "https://en.wikipedia.org/wiki/British_occupation_of_the_Faroe_Islands"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "Year of the Lauenburg handover. The Kiel page places it after the Congress of Vienna but gives no date; it may be 1816.",
+     "page to try": "https://en.wikipedia.org/wiki/Duchy_of_Saxe-Lauenburg"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Kiel",
+     "result": "confirmed: Lauenburg 'handed over from Prussia to Denmark, along with an additional payment of 3.5 million thalers' after the Congress of Vienna (no exact date)"
+    },
+    {
+     "where": "/ledger/2, /ledger/3",
+     "page": "https://en.wikipedia.org/wiki/First_Schleswig_War",
+     "result": "confirmed: 'In March 1848 ... rebelled'; 'On 1 April 1851, the Schleswig-Holstein army was disbanded'"
+    },
+    {
+     "where": "/ledger/8, /ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Second_Schleswig_War",
+     "result": "confirmed: Treaty of Vienna 30 October 1864, 'Denmark ceded Schleswig, Holstein and Lauenburg to Prussia and Austria'; 'decreased by 40%'"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Iceland",
+     "result": "confirmed: 'On 1 December 1918, the Act of Union ... recognized Iceland as a fully sovereign state'"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/German_occupation_of_Denmark",
+     "result": "confirmed ('In 1920 the country regained possession of the northern part of Schleswig'); month 10 July 1920 from the Denmark page"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/German_occupation_of_Denmark",
+     "result": "invasion date confirmed (9 April 1940); the page does not support a dissolution of the state (see fixes)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 43094,
+    "infobox_year": 2024,
+    "cliopatria_km2": 53400,
+    "ratio": 0.81,
+    "acknowledged": false,
+    "note": "Denmark page infobox (modern, the 1920 borders) 43,094 km2 plus Faroes 1,399 = 44,493 against shape denmark-norway_1922 (53,400 km2, with the Faroes): 0.83, under a factor of two, so no acknowledgement needed. Second Schleswig War page: the 1864 loss was 40% of land area; Cliopatria 1853 to 1864 without Iceland is about 27-32%."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1559,
+    "type": "gain",
+    "counterpart": "livonian-conference"
+   },
+   "status": "exception",
+   "note": "livonian-conference has no dossier yet"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1572,
+    "type": "loss",
+    "counterpart": "tsardom-of-russia"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-16 has not run it)"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1572,
+    "type": "loss",
+    "counterpart": "polish-lithuanian-commonwealth"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-15 has not run it)"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1595,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1613,
+    "type": "occupation_start",
+    "counterpart": "swedish-empire"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-14 has not run it); pair ends 1619"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1622,
+    "type": "gain",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "status": "missing",
+   "note": "holy-roman-empire-minor-states has no 1622 loss of the 5 lower-Elbe cells to denmark-norway"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1625,
+    "type": "contest_start",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1626,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "Lower Saxon zone: HRE minor states /ledger/57-58 contest with denmark-norway (1626 to 1629-6); denmark-norway uses habsburg-monarchy, which has no such contest"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1627,
+    "type": "contest_start",
+    "counterpart": "habsburg-monarchy"
+   },
+   "mirror": {
+    "slug": "habsburg-monarchy",
+    "year": 1627,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "Jutland/Holstein: habsburg-monarchy /ledger/24-25 records an occupation (1627 to 1629-6); denmark-norway records a contest (1627-9 to 1629-5)"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1645,
+    "type": "loss",
+    "counterpart": "swedish-empire"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-14 has not run it) (Jämtland, Härjedalen, Idre-Särna, Gotland, Ösel, Halland)"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1658,
+    "type": "loss",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1662,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Gottorp Schleswig: denmark-norway 1658 (Roskilde/Copenhagen, page) vs HRE minor states /ledger/72 1662 (confidence 1, Cliopatria date); HRE side should move to 1658. Schleswig was never imperial: a duchy-of-holstein-gottorp dossier is the better counterpart"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1658,
+    "type": "loss",
+    "counterpart": "swedish-empire"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-14 has not run it) (Scania, Blekinge, Bohuslän, Trøndelag with Nordmøre-Romsdal, Bornholm)"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1660,
+    "type": "gain",
+    "counterpart": "swedish-empire"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-14 has not run it) (Trøndelag, Bornholm)"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1667,
+    "type": "gain",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1670,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Oldenburg: denmark-norway 1667 (page: personal union 1667-1773) vs HRE minor states /ledger/74 1670 (confidence 1, Cliopatria date); HRE side should move to 1667"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1712,
+    "type": "occupation_start",
+    "counterpart": "swedish-empire"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-14 has not run it)"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1713,
+    "type": "occupation_start",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1713,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "ducal Schleswig: denmark-norway occupation 1713 then gain 1720-7 (Frederiksborg); HRE minor states /ledger/86 records an outright loss in 1713 and nothing in 1720"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1715,
+    "type": "occupation_end",
+    "counterpart": "swedish-empire"
+   },
+   "mirror": {
+    "slug": "electorate-of-hanover",
+    "year": 1715,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "Bremen-Verden handed from Danish to Hanoverian occupation in 1715; both treat swedish-empire as owner"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1720,
+    "type": "gain",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "status": "missing",
+   "note": "HRE minor states has no 1720 loss of ducal Schleswig (it has the 1713 loss instead)"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1773,
+    "type": "loss",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1775,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Oldenburg: 1773 (Tsarskoye Selo, page) vs HRE minor states /ledger/99 1775 (Cliopatria); HRE side should move to 1773"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1773,
+    "type": "gain",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "status": "missing",
+   "note": "HRE minor states has no 1773/1775 loss of the 5 ducal Holstein cells to denmark-norway"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1807,
+    "type": "loss",
+    "counterpart": "first-french-empire"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-20 has not run it)"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1809,
+    "type": "loss",
+    "counterpart": "russian-empire"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-17 has not run it)"
+  },
+  {
+   "event": {
+    "slug": "denmark-norway",
+    "year": 1814,
+    "type": "loss",
+    "counterpart": "swedish-empire"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-14 has not run it); Cliopatria draws Norway as kingdom-of-norway in 1814 (see fixes)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark-1814-1940",
+    "year": 1815,
+    "type": "gain",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "status": "exception",
+   "note": "kingdom-of-prussia dossier not written yet (eu-09)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark-1814-1940",
+    "year": 1848,
+    "type": "loss",
+    "counterpart": "duchy-of-holstein"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-20 has not run it)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark-1814-1940",
+    "year": 1851,
+    "type": "gain",
+    "counterpart": "duchy-of-holstein"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-20 has not run it)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark-1814-1940",
+    "year": 1864,
+    "type": "loss",
+    "counterpart": "german-confederation"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-20 has not run it); page says Prussia and Austria, german-confederation stands in for Prussia whose row ends 1863"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark-1814-1940",
+    "year": 1864,
+    "type": "loss",
+    "counterpart": "austrian-empire"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-20 has not run it)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark-1814-1940",
+    "year": 1918,
+    "type": "loss",
+    "counterpart": "kingdom-of-iceland"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-21 has not run it)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark-1814-1940",
+    "year": 1920,
+    "type": "gain",
+    "counterpart": "weimar-republic"
+   },
+   "status": "exception",
+   "note": "counterpart dossier not written yet (group eu-21 has not run it)"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Bornholm",
+   "kind": "region",
+   "used_in": "denmark-norway"
+  },
+  {
+   "name": "Bohuslän",
+   "kind": "region",
+   "used_in": "denmark-norway"
+  },
+  {
+   "name": "Idre and Särna",
+   "kind": "region",
+   "used_in": "denmark-norway"
+  },
+  {
+   "name": "Älvsborg",
+   "kind": "place",
+   "used_in": "denmark-norway"
+  },
+  {
+   "name": "Bohus Fortress (Kungälv)",
+   "kind": "place",
+   "used_in": "denmark-norway"
+  },
+  {
+   "name": "Bremen-Verden",
+   "kind": "region",
+   "used_in": "denmark-norway"
+  },
+  {
+   "name": "Pilten (Piltene)",
+   "kind": "place",
+   "used_in": "denmark-norway"
+  },
+  {
+   "name": "East Finnmark (Varanger and Pasvik)",
+   "kind": "region",
+   "used_in": "denmark-norway"
+  },
+  {
+   "name": "Nordmøre and Romsdal",
+   "kind": "region",
+   "used_in": "denmark-norway"
+  },
+  {
+   "name": "Duchy of Lauenburg",
+   "kind": "region",
+   "used_in": "kingdom-of-denmark-1814-1940"
+  },
+  {
+   "name": "North Schleswig (Nordslesvig)",
+   "kind": "region",
+   "used_in": "kingdom-of-denmark-1814-1940"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Duchy of Holstein-Gottorp",
+   "suggested_slug": "duchy-of-holstein-gottorp",
+   "years": [
+    1658,
+    1773
+   ],
+   "note": "sovereign in its Schleswig part 1658-1713; counterpart now carried by holy-roman-empire-minor-states"
+  },
+  {
+   "name": "Kingdom of Livonia (Magnus)",
+   "suggested_slug": "kingdom-of-livonia",
+   "years": [
+    1570,
+    1578
+   ]
+  },
+  {
+   "name": "County of Oldenburg",
+   "suggested_slug": "county-of-oldenburg",
+   "years": [
+    1667,
+    1773
+   ],
+   "note": "author's request; under the Danish crown in those years, so only needed for the years before and after"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-14-g.md",
+ "problems": [
+  "Author's report lists kingdom-of-norway-1814 under counterparts_needing_dossiers: wrong, Cliopatria's Kingdom of Norway row (1814-2024) has an 1814 shape; dropped here and the denmark-norway successor corrected.",
+  "Author says Greenland is in no Cliopatria shape: Cliopatria has a Greenland row (1734-1940, 24 shapes) not on the eu-14-g context list; its dossier (eu-14 or am-07) should record the Danish-Norwegian, then Danish, crown.",
+  "Orchestrator decision needed: kingdom-of-denmark-1814-1940 and Cliopatria's Denmark row (1945-2024, eu-17/eu-22) are one state, and the 1940 'dissolve' is Cliopatria's break; the cited page says the government 'remained functioning de jure until the end of the war'. Merge into one dossier, or at least make 1940-1945 a German occupation.",
+  "holy-roman-empire-minor-states (eu-09) needs 5 mirror corrections for Danish events (1622, 1658, 1667, 1713/1720, 1773 twice), all at confidence 1 on its side; listed in cross_checks.",
+  "Page budget: the author used 16 pages against 9+5; not counted as a fault.",
+  "Reviewer applied 6 small fixes to the two dossiers in place (both re-validate with 0 errors; the only warnings are the 8 and 22 no-verdict warnings for the other half of the split row)."
+ ]
+}

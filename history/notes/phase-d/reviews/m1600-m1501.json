@@ -1,0 +1,36 @@
+{
+ "window": "m1600-m1501",
+ "checks": [
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "fixed",
+   "what": "first-sealand-dynasty_-1600 (-1600..-1501) adjusted from Cliopatria's marsh + 42-50 E x 27-32.3 N rectangle (1,599 cells) to Cliopatria -1600 core + Dhi-Qar + Al-Basrah + Uruk 60 km + Nippur 40 km + Isin 40 km: 184 cells, about 46,500 km2, 44.9-48.4 E, 29.3-32.4 N (4 cells in Kuwait and 2 in Iran, all from Cliopatria's core; none in Saudi Arabia). Page supports it: 'Sealand pottery has been found at Girsu, Uruk, and Lagash but in no site north of that'; Tell Khaiber 'around 20 km from Ur', Tell Sakhariya 'a few miles east of Ur'; Ayadaragalama's offerings include 'Larsa (Inanna of Larsa with Nanay)'; Ilum-ma-ili 'is thought to have conquered Nippur late in Samsu-iluna's reign'. Isin is not on this page; it rests on the Samsu-iluna page (opened: 'Records keep going in Nippur and Isin until Samsu-iluna's 29th year, and then cease there as well') through the -1700 anchor that m1700-m1601 keyframe_overrides/0 and m1800-m1701 events/0 set, and adds only 3 cells beyond the Nippur and Uruk discs. Keyframe equals the 1 January -1600 anchor (179 cells, no snap); trial: Elam / Sealand conflict (122 cell-years) gone, Elam keeps Susiana (332 cells). Error fixed: the correction text quoted \"Nippur 'recognized Ilum-ma-ili as king'\", which is the Samsu-iluna page's sentence, not the source page's.",
+   "page": "https://en.wikipedia.org/wiki/First_Sealand_dynasty",
+   "fix": "correction.text now quotes the source page (\"Ilum-ma-ili 'is thought to have conquered Nippur late in Samsu-iluna's reign'\"); a reviewer note in why gives the Samsu-iluna page and its Nippur and Isin sentences. Region unchanged.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "fixed",
+   "what": "babylonia_-1600 (-1600..-1501): the dossier subtracted the whole rectangle from Cliopatria's Babylonia (237 of 506 cells left); the window agent subtracted only the corrected Sealand land (388 cells, +155). Supported by the Sealand page ('in no site north of that') and consistent with keyframe_overrides/0, no overlap with Elam (Cliopatria's Babylonia and Elam do not meet at -1600; trial lists no new pair). But the render showed a 15-cell Babylonian exclave in Al-Muthanna (45.6-46.44 E, 30.34-30.76 N), south of Sealand-held Ur and Uruk and cut off from Babylonia by them; no page gives Babylonia land beyond the Sealand. The same quote misattribution as /0 sat in the nested Sealand text. The patch's top-level note said 'about 108 cells' handed back; the trial gave 155.",
+   "page": "https://en.wikipedia.org/wiki/First_Sealand_dynasty",
+   "fix": "Subtracted union now also holds {\"admin1\": \"Al-Muthannia\", \"country\": \"Iraq\"} (Babylonia ∩ Muthanna is exactly the 15-cell exclave): 373 cells; nested text quotes the Sealand page; top-level note corrected to 140 cells. Re-trial: Babylonia snap at -1600 is +140, 0 removed; render -1550 shows no exclave.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "what": "minoan-civilization_-1600 (-1600..-1501) from Cliopatria's 16-cell Crete shape (verdict ok) to the region Crete: 27 cells, about 6,800 km2, 23.66-26.12 E, 34.95-35.42 N, the island and nothing more. Page: 'The best known of them are at Knossos, Phaistos, Zakros, and Malia', 'Kydonia (modern Chania), the only palatial site in West Crete'; Neopalatial from 'MM III (c. 1750-1700 BC)', 'a Mycenaean elite clearly ruling Knossos from around 1450 BC', so the window is inside the Neopalatial; the page's caution 'it is unclear whether there was ever a unified Minoan state' is quoted in why. Matches the dossier's own founding (-1900) and dissolve (-1450) regions and m1500-m1401 keyframe_overrides/2. Trial: +11-cell snap at -1600 (patch-tagged), no new conflicts.",
+   "page": "https://en.wikipedia.org/wiki/Minoan_civilization",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "patch_check": "after reviewer fixes: 3 entries, 3 ok, 0 rejected; trial m1600-m1501: all 3 applied, 776 other windows' entries applied, 0 skipped; conflicts 497 -> 375 cell-years (elam / first-sealand-dynasty 122 gone); snaps 2 -> 4 (babylonia_-1600 +140, minoan-civilization_-1600 +11, both patch-tagged; fifteenth-dynasty_-1600 19/19 from m1700-m1601); end anchor m1500: 1,439 cells change owner",
+ "problems": [
+  "m1500-m1401 keyframe_overrides/1 (babylonia_-1500, valid -1500..-1461) subtracts only the corrected Sealand land and so keeps the same 15-cell Babylonian exclave in Al-Muthanna (45.6-46.44 E, 30.34-30.76 N) cut off by the Sealand; add {\"admin1\": \"Al-Muthannia\", \"country\": \"Iraq\"} to its subtracted union, as m1600-m1501 keyframe_overrides/1 now does. Its keyframe_overrides/0 and /2 (Sealand and Minoan -1500) match this window's.",
+  "m1700-m1601: babylonia_-1700 is not overridden and still subtracts the 42-50 E x 27-32.3 N rectangle, so from -1700 to -1601 southern Iraq outside the Sealand (Maysan, Qadisiyyah, western Khuzestan) belongs to nobody and Babylonia snaps +140 cells at -1600. Overriding babylonia_-1700 with Cliopatria -1700 Babylonia minus (the -1700 Sealand union + Al-Muthannia) would remove the snap.",
+  "minoan-civilization holds 16 cells (Cliopatria's shape) in the published anchors m1800, m1700 and m1600 although its -1900 founding region is the whole of Crete (27 cells); with this patch it snaps +11 at -1600. Whoever owns m1900-m1601 should check why the founding region is not drawn whole.",
+  "Nippur and Isin in the Sealand -1700..-1460 rest on Ilum-ma-ili's Nippur conquest (Sealand page) and on records ceasing at Isin (Samsu-iluna page); the Samsu-iluna page also says the southern Sumerian cities were abandoned for centuries until the Kassite period. No page dates a Babylonian return to Nippur before the Kassite conquest of the Sealand; left as drawn for continuity across m1800-m1401."
+ ]
+}

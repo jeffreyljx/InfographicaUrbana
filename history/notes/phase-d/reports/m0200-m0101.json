@@ -1,0 +1,364 @@
+{
+ "window": "m0200-m0101",
+ "images": [
+  {
+   "year": -200,
+   "bbox": "world (jan1, with Cliopatria)",
+   "seen": "start map matches Cliopatria; Roman Republic in Iberia and Italy, Seleucid, Maurya, Xiongnu and Han as expected; no stray cells"
+  },
+  {
+   "year": -126,
+   "bbox": "98,18,130,45 (with Cliopatria)",
+   "seen": "Minyue drawn over Fujian and Jiangxi, Han hole in Hunan/Jiangxi before -126 found by counting cells; Cliopatria draws the same Minyue"
+  },
+  {
+   "year": -120,
+   "bbox": "70,25,135,58 (with Cliopatria)",
+   "seen": "Han-Xiongnu contest hatch over Inner Mongolia, Tarim in the Xiongnu vassal tint, Hexi corridor Han; consistent with the dossiers (Cliopatria has Xiongnu to Manchuria, compiled does not)"
+  },
+  {
+   "year": -135,
+   "bbox": "36,24,78,46 (with Cliopatria)",
+   "seen": "Near East and Central Asia plausible: Parthia holds Media and Babylonia, Indo-Scythian block sits over Margiana (checked, wrong at -144..-128, ruled to Parthia)"
+  },
+  {
+   "year": -146,
+   "bbox": "-12,28,45,48 (with Cliopatria)",
+   "seen": "before the fix Rome, Italy, Iberia and Greece were drawn in a pale Greek-city-states tint (roman-republic vassal of greek-city-states, 4,510 cells); wrong roles; already closed by data/patches/m0300-m0201.json events (-272), verified in my trial"
+  },
+  {
+   "year": -130,
+   "bbox": "98,18,125,40",
+   "seen": "before: Fujian and east Guangdong drawn as Nanyue (Han vassal tint) in -135..-127 and Guizhou/Guangxi clear; after: Fujian grey until the minyue_-135 keyframe is added, then Minyue's own"
+  },
+  {
+   "year": -110,
+   "bbox": "98,18,125,40",
+   "seen": "before: 1,697 cells (Guizhou, Guangxi, Hunan) drop out of Han for this one year; after: Han holds them; a 24-cell pocket on the Hunan-Guizhou edge stays nobody's to -109"
+  },
+  {
+   "year": -146,
+   "bbox": "-12,28,45,48 (stage)",
+   "seen": "Roman Republic in its own red with Numidia as its tinted vassal; Greece is Roman land in both versions"
+  },
+  {
+   "year": -118,
+   "bbox": "55,33,90,48 (stage, with Cliopatria)",
+   "seen": "Kangju, Wusun, Great Yuan inside Yuezhi, Indo-Scythians over Margiana to -110, Tarim in the Xiongnu tint; smaller-state-wins results look right"
+  },
+  {
+   "year": -101,
+   "bbox": "-12,10,135,58 (stage)",
+   "seen": "end map clean: Han contest on the Tarim and Gobi still open (war runs to -89), Roman red, Parthia holds Margiana and Sakastan"
+  }
+ ],
+ "issues": [
+  {
+   "what": "Han keyframes -127, -126, -121 are built from Cliopatria shapes that lack Hunan and Jiangxi, so at -127 the keyframe snapped away the land the ledger gave Han (Huainan's Jiangxi 196, Changsha's Hunan 157): 830 cells nobody's, then Jiangxi to Minyue in -126. Hunan and Jiangxi added to the three keyframes (and Jiangxi to -111); Han already wins Han/Minyue by R2, so no ruling was needed",
+   "years": [
+    -127,
+    -111
+   ],
+   "slugs": [
+    "han-dynasty",
+    "minyue"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/1, keyframe_overrides/2, keyframe_overrides/3, keyframe_overrides/4",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kingdom_of_Changsha",
+    "https://en.wikipedia.org/wiki/Jiangxi"
+   ]
+  },
+  {
+   "what": "han-dynasty_-110 drawn as the Cliopatria shape although its own note says it lacks the Yelang lands taken in 111: 1,697 cells (Guizhou 679, Guangxi 374, Hunan 332) fall out of Han for one year and return in -109. Yelang lands added to the -110 keyframe",
+   "years": [
+    -110,
+    -110
+   ],
+   "slugs": [
+    "han-dynasty"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/5",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Nanyue"
+   ]
+  },
+  {
+   "what": "nanyue_-170 (wide outline holding Minyue's land as subject kingdom, 'holds to 136 BC' in its note) has no 'to', so it ran beside nanyue_-135 to -127 and gave Fujian and east Guangdong (679 cells) to Nanyue in -135..-127 (Han-vassal tint) and a minyue/nanyue conflict in -126. Cut at -136",
+   "years": [
+    -135,
+    -127
+   ],
+   "slugs": [
+    "nanyue",
+    "minyue"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Nanyue"
+   ]
+  },
+  {
+   "what": "after that cut Minyue's ledger event 8 (split, counterpart dongyue, which has no dossier) leaves the whole kingdom, 680 cells, nobody's for -135..-127; new keyframe minyue_-135 repeats the dossier's own -170 shape for those nine years",
+   "years": [
+    -135,
+    -127
+   ],
+   "slugs": [
+    "minyue"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/7",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Nanyue"
+   ]
+  },
+  {
+   "what": "indo-scythians / parthian-empire: the Indo-Scythian 'found' shape of -144 (Oxus country) took Margiana (291 cells, Mary) from Parthia, who held it from 163-155; the Saka are on the page only from c. 140. Ruled to Parthia for -144..-128",
+   "years": [
+    -144,
+    -128
+   ],
+   "slugs": [
+    "indo-scythians",
+    "parthian-empire"
+   ],
+   "decision": "patched",
+   "patch": "rulings/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Mithridates_I_of_Parthia"
+   ]
+  },
+  {
+   "what": "indo-scythians / parthian-empire at -110 (1,134 cells): the Indo-Scythian -110 keyframe held Margiana and Sistan although Mithridates II retook Sakastan between 124 and 115 and struck coins at Marw. Indo-Scythian keyframe loses Margiana and Sistan and gets the 'to' -101 its own note states; Parthian -110 keyframe gets Sistan whole (its -91 outline lacked 133 of the 256 cells); ruling for the Margiana/Sakastan/middle Amu Darya band",
+   "years": [
+    -110,
+    -101
+   ],
+   "slugs": [
+    "indo-scythians",
+    "parthian-empire"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/6, keyframe_overrides/8, rulings/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Mithridates_II_of_Parthia"
+   ]
+  },
+  {
+   "what": "Hirat (Aria, 201 cells), Farah (144) and Badghis (69) stay Indo-Scythian in -110 (size rule); the Mithridates I page has Aria taken 163-155 but neither page dates its recovery after the Saka",
+   "years": [
+    -110,
+    -101
+   ],
+   "slugs": [
+    "indo-scythians",
+    "parthian-empire"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Mithridates_I_of_Parthia",
+    "https://en.wikipedia.org/wiki/Mithridates_II_of_Parthia"
+   ]
+  },
+  {
+   "what": "Indo-Scythian keyframe -126 holds Margiana from -126 to -110 while Parthian pages say Sakastan came back 'between 124 and 115'; the step is bridged at -110, not dated",
+   "years": [
+    -126,
+    -110
+   ],
+   "slugs": [
+    "indo-scythians"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Mithridates_II_of_Parthia"
+   ]
+  },
+  {
+   "what": "roman-republic drawn as a vassal of greek-city-states (4,510 cells, pale Greek tint): the -272 vassal_start is recorded by both dossiers and the compiler took the party whose shape holds the region (Rome's) as the vassal. Closed by the -272 event of data/patches/m0300-m0201.json; my own -200 vassal_end was redundant (trial without it identical) and is not in the patch",
+   "years": [
+    -272,
+    -91
+   ],
+   "slugs": [
+    "roman-republic",
+    "greek-city-states"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Magna_Graecia"
+   ]
+  },
+  {
+   "what": "kingdom-of-sophene ledger/2 skipped: 'Akisene' not in the gazetteer. A patch event with Acilisene alone would change nothing (the 48 cells are Armenia's 24, Sophene's 16, Pontus's 8 and the -188 keyframe, checked after events, excludes them); needs a dossier edit",
+   "years": [
+    -188,
+    -188
+   ],
+   "slugs": [
+    "kingdom-of-sophene"
+   ],
+   "decision": "dossier request",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kingdom_of_Sophene"
+   ]
+  },
+  {
+   "what": "Persian plateau (Kerman, Fars, Yazd; 4,418 cells) goes from Seleucid to nobody at -164 by the Parthian keyframe and stays so to -145 (Persis from -150, Parthia -144); no page opened on it",
+   "years": [
+    -164,
+    -145
+   ],
+   "slugs": [
+    "parthian-empire",
+    "seleucid-empire",
+    "persis"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Han-Xiongnu contest -124..-119 (5,045 cells) and the second one open from -108 (3,851 cells, Tarim and Gobi), Xiongnu land south of the Gobi nobody's after -119; matches the dossiers and the war's dates; not checked against a new page",
+   "years": [
+    -124,
+    -101
+   ],
+   "slugs": [
+    "han-dynasty",
+    "xiongnu"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "size-rule conflicts where the smaller state rightly won: great-yuan/yuezhi, kangju/yuezhi, characene, elymais, kingdom-of-osroene, kingdom-of-gordyene, kuninda-kingdom, nabataeans, thessalian-league, numidia/mauretania (200 cells at -110 fall to 3 once Rome's tint is gone)",
+   "years": [
+    -200,
+    -101
+   ],
+   "slugs": [
+    "great-yuan",
+    "kangju",
+    "yuezhi",
+    "characene",
+    "elymais",
+    "kingdom-of-osroene",
+    "kuninda-kingdom",
+    "nabataeans",
+    "mauretania"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "scan of all dossiers for keyframes that overlap in years (28 pairs starting in the window): only nanyue_-170 (and indo-scythians_-110, fixed above) let an older, larger shape outlive its role; ten others measured (greco-bactrian -144/-130, numidia, mauretania, pontus, parthia, ptolemy) are harmless because the larger claim loses a conflict or is a subset",
+   "years": [
+    -200,
+    -101
+   ],
+   "slugs": [],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "a 24-cell pocket on the Hunan-Guizhou edge (about 108.7E 28.6N) stays nobody's from -111 to -109 until the -91 shape of the -108 keyframe takes it",
+   "years": [
+    -111,
+    -109
+   ],
+   "slugs": [
+    "han-dynasty"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/m0200-m0101.json",
+ "patch_entries": {
+  "events": 0,
+  "keyframe_overrides": 9,
+  "rulings": 2
+ },
+ "patch_check": "all applied",
+ "colour_clashes": [
+  {
+   "a": "lintun-commandery",
+   "b": "zhenfan-commandery",
+   "years": [
+    -108,
+    -101
+   ],
+   "note": "both #d24e3e, 24 shared cell edges; also identical to han-dynasty"
+  },
+  {
+   "a": "han-dynasty",
+   "b": "xuantu-commandery",
+   "years": [
+    -107,
+    -101
+   ],
+   "note": "#d24e3e both, 12 edges; colonies are drawn in the Han tint, so only their thin outlines tell them apart"
+  },
+  {
+   "a": "han-dynasty",
+   "b": "lintun-commandery",
+   "years": [
+    -108,
+    -101
+   ],
+   "note": "#d24e3e both, 6 edges"
+  },
+  {
+   "a": "lintun-commandery",
+   "b": "xuantu-commandery",
+   "years": [
+    -107,
+    -101
+   ],
+   "note": "#d24e3e both, 6 edges"
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "kingdom-of-sophene",
+   "what": "ledger/2 (-188 gain): replace the unresolvable 'Akisene' by Acilisene alone, and add Acilisene (Erzincan plain, 48 cells) to the sophene_-188 keyframe if Zariadres's conquest is to show",
+   "why": "the gazetteer has no 'Akisene'; the page says Zariadres 'conquered Acilisene to the north, the otherwise unknown Akisene to the west' with no year",
+   "source": "https://en.wikipedia.org/wiki/Kingdom_of_Sophene"
+  },
+  {
+   "slug": "minyue",
+   "what": "ledger/8 (-135 split, counterpart dongyue) takes the whole kingdom to a counterpart without a dossier; either give Dongyue a dossier or let the split name no land",
+   "why": "it empties 680 cells for nine years; worked around by the new keyframe minyue_-135 (patch keyframe_overrides/7)",
+   "source": "https://en.wikipedia.org/wiki/Nanyue"
+  },
+  {
+   "slug": "nanyue",
+   "what": "give nanyue_-170 its 'to' of -136 in the dossier (patched here as keyframe_overrides/0)",
+   "why": "the note says it holds to 136 BC; without a 'to' it ran to -127",
+   "source": "https://en.wikipedia.org/wiki/Nanyue"
+  }
+ ],
+ "pages_opened": 7,
+ "problems": [
+  "hierarchy: no wrong row found in this window.",
+  "Cross-window: keyframe_overrides/6 (indo-scythians_-110) sets to -101; indo-scythians_-91 (begins -100) belongs to m0100-m0001, whose agent should know the -110 shape no longer overlaps it from -100. keyframe_overrides/8 (parthian-empire_-110) adds Sistan to a shape that runs to -92 in the next window.",
+  "Compiler: roman-republic/greek-city-states -272 vassal_start recorded by both dossiers gets reversed roles (the party whose shape holds the region becomes the vassal). Rome's whole land was drawn as a vassal of the Greek city-states from -272; the m0300-m0201 and m0100-m0001 patches close it with vassal_end events; a compiler or dossier fix would spare the patches.",
+  "After Rome's false tint is gone, roman-republic_-126 now removes 128 cells (Konya 92, Isparta 26 and others) that survived before only because they were tinted; no page opened, left as the dossier's keyframe has it.",
+  "One WebFetch failed (Yuzhang_Commandery, url_not_found; not counted in pages_opened); Jiangxi page used instead.",
+  "I looked at 12 images, two over the brief's ten (before/after pairs).",
+  "Han/Xiongnu Tarim claims of 74 and 91 CE are outside this window."
+ ]
+}

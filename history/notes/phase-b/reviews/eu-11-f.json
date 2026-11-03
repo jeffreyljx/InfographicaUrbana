@@ -1,0 +1,697 @@
+{
+ "batch_id": "eu-11-f",
+ "verdicts": [
+  {
+   "slug": "kingdom-of-powys",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "found 540 (confidence 1): the page gives no founding year; 540 is Cliopatria's",
+     "page to try": "https://en.wikipedia.org/wiki/Brochwel_Ysgithrog"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "705 eastern cut toward Pengwern (confidence 1): the pages tie it to the dykes or Offa, not 705",
+     "page to try": "https://en.wikipedia.org/wiki/Offa%27s_Dyke"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "960 return from Seisyllwg/Deheubarth (confidence 1); Owain ap Hywel (950-986) is listed as king of Powys, so the 960 date is Cliopatria's",
+     "page to try": "https://en.wikipedia.org/wiki/Hywel_Dda"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "1039 loss to Gwynedd (confidence 1): only the ruler list (Gruffydd ap Llywelyn 1039-1063) supports it",
+     "page to try": "https://en.wikipedia.org/wiki/Gruffydd_ap_Llywelyn"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "ruler list has a gap 617-694 (Manwgan ap Selyf 616 to Gwylog ap Beli 695) and starts 582 for a state founded 540",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Powys"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Madog_ap_Maredudd",
+     "result": "confirmed",
+     "note": "died about 9 February 1160 (infobox c. 10 February); Powys never reunited, split into Fadog and Wenwynwyn"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Powys",
+     "result": "confirmed",
+     "note": "'With the death of Cyngen in 854 Rhodri Mawr became king of Powys'; infobox has 855"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Powys",
+     "result": "confirmed",
+     "note": "942: Hywel Dda 'apparently took Powys from Llywelyn ap Merfyn at the same time'"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Powys",
+     "result": "confirmed",
+     "note": "'By 1086 the Norman Earl Roger de Montgomery ... had built a castle at the Severn ford of Rhydwhiman'"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Cadwgan_ap_Bleddyn",
+     "result": "confirmed",
+     "note": "'Cadwgan was able to reclaim part of Powys and Ceredigion' the year after the 1098 invasion; sole ruler of the non-Norman parts in 1103"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 5787.2,
+    "cliopatria_year": 540,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the infobox gives no area (confirmed on the page); the author says so in the keyframe note"
+   }
+  },
+  {
+   "slug": "kingdom-of-bernicia",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/1",
+     "what": "The 604 event is a merge with kingdom-of-deira (region: Kingdom of Deira 592) but the Deira dossier records 604 as vassal_start (counterpart kingdom-of-bernicia) and keeps its own 592-611 shape; with keyframe kingdom-of-bernicia_555 left ok, the merge adds Deira's 12,958 km2 that no keyframe shows and Deira is drawn twice in 604-611.",
+     "why": "Bernicia page: Aethelfrith 'united Deira with his own kingdom by force around 604', infobox 'Shared crown with Deira: 604', 'Merged with Deira: 654'. kingdom-of-deira /ledger/1 604 vassal_start counterpart kingdom-of-bernicia; /ledger/2 612 vassal_end counterpart kingdom-of-bernicia; /ledger/3 612 merge counterpart kingdom-of-northumbria; Deira keyframe kingdom-of-deira_592 ok for 592-611.",
+     "fix": "Mirror the Deira dossier: replace /ledger/1 with a 604 vassal_start, counterpart 'kingdom-of-deira', region {cliopatria: Kingdom of Deira, year: 592}, confidence 2, same quotes; add a 612 vassal_end with counterpart 'kingdom-of-deira' (confidence 1, Cliopatria's Northumbria start). If the author keeps a 604 merge instead, the Deira dossier must end in 604 and Bernicia's 555 keyframe must be marked adjust with a correction that adds Deira for 604-611; the orchestrator should settle which side changes.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (between /ledger/1 and /ledger/2)",
+     "what": "Missing 612 event: Bernicia's 555 shape ends in 611 and nothing is drawn 612-632 while the state lives to 634, but the ledger has no event that hands the land to Northumbria, so the 633 gain from kingdom-of-northumbria (/ledger/2) has no prior loss or merge.",
+     "why": "Keyframe note kingdom-of-bernicia_633: '612-632 are Cliopatria's Northumbria years (Bernicia under the Deiran Edwin, 616-633)'; ruler list Edwin of Deira 616-633; kingdom-of-deira /ledger/3 carries the matching 612 merge into kingdom-of-northumbria.",
+     "fix": "Add {year: 612, type: merge, counterpart: kingdom-of-northumbria, region: {cliopatria: Kingdom of Bernicia, year: 555, text: ...}, confidence 1, source the Bernicia page, note: Cliopatria starts Northumbria in 612; the page has Aethelfrith hold both crowns from c. 604 and Edwin of Deira rule both 616-633}.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/wars",
+     "what is missing": "Catraeth (c. 600) and the siege of Din Eidyn / Lothian (638) are not covered; no page on them opened (budget 1-2)",
+     "page to try": "https://en.wikipedia.org/wiki/Gododdin"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Bernicia",
+     "result": "confirmed",
+     "note": "Ida 'is said to have obtained the throne and the kingdom about 547'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Bernicia",
+     "result": "confirmed",
+     "note": "'united Deira with his own kingdom by force around 604'; infobox shared crown 604, merged 654 (the type is the problem, not the date)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Bernicia",
+     "result": "confirmed",
+     "note": "'Bernicia was then briefly ruled by Eanfrith, son of Aethelfrith'; list 633-634"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Bernicia",
+     "result": "confirmed",
+     "note": "'Under Oswald son of Aethelfrith, Bernicia was united with Deira to form Northumbria from 634 onward'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 10528.8,
+    "cliopatria_year": 555,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the infobox gives no area (confirmed on the page); the author says so in the keyframe note"
+   }
+  },
+  {
+   "slug": "hwicce",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "587 gain toward Bath (confidence 1): the page says only that West Saxon occupation 'may have ended as early as 584'; 587 is Cliopatria's",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Fethanleag"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Hwicce",
+     "result": "confirmed",
+     "note": "infobox 'Established: 577'; 'the kingdom was established in 577, after the Battle of Deorham'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Hwicce",
+     "result": "confirmed",
+     "note": "the note correctly reports the page as silent on 587 ('may have ended as early as 584'), confidence 1 is honest"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Hwicce",
+     "result": "confirmed",
+     "note": "'After 628, the kingdom became a client or sub-kingdom of Mercia as a result of the Battle of Cirencester'; infobox 'Assimilated into Mercia: 780s'"
+    },
+    {
+     "where": "/wars/1",
+     "page": "https://en.wikipedia.org/wiki/Penda_of_Mercia",
+     "result": "confirmed",
+     "note": "'Penda took over the Severn Valley in 628 following the Battle of Cirencester'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 4839.5,
+    "cliopatria_year": 592,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the infobox gives no area (confirmed on the page); the author says so in the keyframe note"
+   }
+  },
+  {
+   "slug": "kingdom-of-dunoting",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "found 592 (confidence 1): no page dates the kingdom; 592 is Cliopatria's",
+     "page to try": "https://en.wikipedia.org/wiki/Vita_Sancti_Wilfrithi"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "dissolve 625 into Northumbria (confidence 1): Hen Ogledd says only 'absorbed by Anglian Northumbria in the 7th century'",
+     "page to try": "https://en.wikipedia.org/wiki/Craven"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "Dent is a name-place, not a recorded seat, and lies about 4 km west of the shape (bbox lon -2.39); the author says so",
+     "page to try": "https://en.wikipedia.org/wiki/Dent,_Cumbria"
+    },
+    {
+     "where": "/identity/wikidata",
+     "what is missing": "Q2264840 comes with Cliopatria's Wikipedia link Dunoding (the Welsh kingdom); probably the wrong item, kept as given and flagged by the author",
+     "page to try": "https://en.wikipedia.org/wiki/Dunoding"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Hen_Ogledd",
+     "result": "confirmed",
+     "note": "'a minor kingdom or region in North Yorkshire mentioned in the Life of Wilfrid'; 'named for a ruler named Dunaut, perhaps the Dunaut ap Pabo'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Hen_Ogledd",
+     "result": "confirmed",
+     "note": "'The Brittonic region of northwestern England was absorbed by Anglian Northumbria in the 7th century'"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Hen_Ogledd",
+     "result": "confirmed",
+     "note": "'Its name may survive in the modern town of Dent, Cumbria'"
+    },
+    {
+     "where": "/sources",
+     "page": "https://en.wikipedia.org/wiki/Dunoting",
+     "result": "not on page",
+     "note": "url_not_found for the reviewer too; the author's report of the failure is accurate"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1515.3,
+    "cliopatria_year": 592,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no article for this state; the author says the check is impossible"
+   }
+  },
+  {
+   "slug": "kingdom-of-rheged",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/wars/0 (with /identity/start and /ledger/0)",
+     "what": "The war 'Urien of Rheged's siege of Lindisfarne' runs 572-593, twenty years before the dossier's start of 592 (wars must lie inside the life); the 592 start itself (confidence 1, Cliopatria's) is contradicted by the Rheged page, which has Rheged ruled by Urien c. 550-590.",
+     "why": "Rheged page infobox era 'c.500' (Yr Hen Ogledd), body 'Urien Rheged, (c. 550 - 590)'; /wars/0 from 572 to 593; /identity/start 592.",
+     "fix": "Move the start back to c. 550 (Urien; confidence 1 bridging, or c. 500 from the infobox era): change identity.start, the found event /ledger/0, the Carlisle capital's from, the certainty span and the predecessor land year, and add a new keyframe kingdom-of-rheged_550 (from 550, to 591, verdict adjust, correction {cliopatria: Kingdom of Rheged, year: 592} with a note that the extent before 592 is unknown). If the author keeps 592, remove the war from this dossier (it stays in kingdom-of-bernicia /wars/0).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "638 northern growth of 230 km2 (confidence 1): no page reports it",
+     "page to try": "https://en.wikipedia.org/wiki/Rhun_ap_Urien"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "646 annexation by Northumbria (confidence 1): the page says only 'some time before AD 730' and a probable peaceful takeover after Oswiu's marriage c. 638",
+     "page to try": "https://en.wikipedia.org/wiki/Elmet"
+    },
+    {
+     "where": "/identity/successors/1",
+     "what is missing": "Strathclyde is a successor on the infobox but takes no Rheged land in 646-647; its land spec is Strathclyde's own 647 shape",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Strathclyde"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Rheged",
+     "result": "confirmed",
+     "note": "no founding year on the page (infobox era c.500; Urien c. 550-590): the note is accurate, the year is not (see fix)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Rheged",
+     "result": "confirmed",
+     "note": "'Rheged was annexed by Northumbria, some time before AD 730'; marriage of Oswiu and Rieinmelth 'probably in 638', 'may have been a peaceful takeover'; Royth 'possibly the last king of Rheged'"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/Rheged",
+     "result": "confirmed",
+     "note": "'a large part of modern Cumbria as well as areas of Dumfries and Galloway'; Lancashire possible; 'as far south as Rochdale' uncertain"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Rheged",
+     "result": "confirmed",
+     "note": "infobox 'Capital: Carlisle'; coordinates 54.892,-2.933 inside the shape bbox"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 11636.7,
+    "cliopatria_year": 592,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the infobox gives no area (confirmed on the page); the author says so in the keyframe note"
+   }
+  },
+  {
+   "slug": "dumnonia",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/2/note",
+     "what": "The war 'Ine of Wessex against Geraint' (710) had empty zones without saying why, while the ledger moves Devon to Wessex in 710 (/ledger/3).",
+     "why": "Reviewer brief 2.10: empty zones only where no ground changed hands, and said so. Dumnonia page: 'In 710 Geraint was defeated in battle by King Ine of Wessex' (no land named) and 'Athelstan evicted the Britons from Exeter and the rest of Devon' (c. 936).",
+     "fix": "Prepended to the note: 'Zones left empty: the Dumnonia page says only ... names no land ...; the ledger's 710 loss of Devon is Cliopatria's (confidence 1).' Re-validated: 0 errors, 0 warnings.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "found 602 (confidence 1): the page dates the kingdom only 'between the 6th century CE and the 7th century CE'",
+     "page to try": "https://en.wikipedia.org/wiki/Geraint_of_Dumnonia"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "710 loss of Devon to Wessex (confidence 1): Cliopatria's; the page has Devon British until 813-822 / c. 936",
+     "page to try": "https://en.wikipedia.org/wiki/Ine_of_Wessex"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "710 dissolve into Cornwall (confidence 1): the page has no end date ('a gradual process')",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Cornwall"
+    },
+    {
+     "where": "/keyframe_review/0/correction",
+     "what is missing": "infobox location is 'Devon and Cornwall, and parts of Somerset and Dorset'; no keyframe or note mentions Dorset",
+     "page to try": "https://en.wikipedia.org/wiki/Dumnonia"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Peonnum",
+     "result": "confirmed",
+     "note": "'in 658 his army met the Britons' (infobox c. 660); 'advanced west through the Polden Hills to the River Parrett, annexing eastern and central Somerset'; confidence 3 holds"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Peonnum",
+     "result": "confirmed",
+     "note": "'The border remained at the Parrett until 681-685'; 'occupy the rest of Somerset west and north to the Bristol Channel'"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Dumnonia",
+     "result": "confirmed",
+     "note": "'In 710 Geraint was defeated in battle by King Ine of Wessex'; no land named, as the note says (confidence 1 honest)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Dumnonia",
+     "result": "confirmed",
+     "note": "rump state in Cornwall after Egbert 813-822; Donyarth died 875; Athelstan c. 936; infobox capital Tintagel"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 14348.7,
+    "cliopatria_year": 602,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "the infobox gives no area (confirmed on the page); the author says so in the keyframe note"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kingdom-of-powys",
+    "year": 705,
+    "type": "loss",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-powys",
+    "year": 854,
+    "type": "loss",
+    "counterpart": "kingdom-of-gwynedd"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-powys",
+    "year": 878,
+    "type": "gain",
+    "counterpart": "kingdom-of-gwynedd"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet; Seisyllwg/Deheubarth 900-910 overlap to settle"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-powys",
+    "year": 942,
+    "type": "loss",
+    "counterpart": "kingdom-of-seisyllwg"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-powys",
+    "year": 960,
+    "type": "gain",
+    "counterpart": "kingdom-of-seisyllwg"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-powys",
+    "year": 1039,
+    "type": "loss",
+    "counterpart": "kingdom-of-gwynedd"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-powys",
+    "year": 1063,
+    "type": "gain",
+    "counterpart": "kingdom-of-gwynedd"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet; Gwynedd needs a 1063 loss of Powys and its 1066-1084 shape must exclude Powys (author keyframe kingdom-of-powys_1063)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-powys",
+    "year": 1085,
+    "type": "loss",
+    "counterpart": "norman-england"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-powys",
+    "year": 1094,
+    "type": "contest_start",
+    "counterpart": "norman-england"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-powys",
+    "year": 1099,
+    "type": "contest_end",
+    "counterpart": "norman-england"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-powys",
+    "year": 1099,
+    "type": "gain",
+    "counterpart": "norman-england"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-powys",
+    "year": 1160,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-powys-fadog / kingdom-of-powys-wenwynwyn"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet; Cliopatria starts both successors in 1169, so 1161-1168 is empty unless they start in 1160"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bernicia",
+    "year": 604,
+    "type": "merge",
+    "counterpart": "kingdom-of-deira"
+   },
+   "mirror": {
+    "slug": "kingdom-of-deira",
+    "year": 604,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "both sides exist and agree on the year but not the relation: Bernicia absorbs Deira (merge), Deira becomes Bernicia's vassal and keeps its shape to 611"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-deira",
+    "year": 612,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-bernicia"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Bernicia has no 612 event (neither vassal_end nor a merge into Northumbria to match Deira /ledger/3)"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bernicia",
+    "year": 633,
+    "type": "gain",
+    "counterpart": "kingdom-of-northumbria"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet; consistent with kingdom-of-deira /ledger/4 633 gain from Northumbria"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bernicia",
+    "year": 634,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-northumbria"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet; consistent with kingdom-of-deira /ledger/5 634 dissolve"
+  },
+  {
+   "event": {
+    "slug": "hwicce",
+    "year": 587,
+    "type": "gain",
+    "counterpart": "kingdom-of-wessex"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "hwicce",
+    "year": 628,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-mercia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet; Mercia should carry vassal_start/vassal_end with counterpart hwicce for 628..780s"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-dunoting",
+    "year": 625,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-northumbria"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-rheged",
+    "year": 638,
+    "type": "gain",
+    "counterpart": "brythons"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-rheged",
+    "year": 646,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-northumbria"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "dumnonia",
+    "year": 658,
+    "type": "loss",
+    "counterpart": "kingdom-of-wessex"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet; Wessex must not draw eastern Somerset before 658 (new keyframe dumnonia_602b adds all Natural Earth Somerset)"
+  },
+  {
+   "event": {
+    "slug": "dumnonia",
+    "year": 685,
+    "type": "loss",
+    "counterpart": "kingdom-of-wessex"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "dumnonia",
+    "year": 710,
+    "type": "loss",
+    "counterpart": "kingdom-of-wessex"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "dumnonia",
+    "year": 710,
+    "type": "dissolve",
+    "counterpart": "cornwall"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written: owned by an eu-11 part that has not run yet"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Iâl",
+   "kind": "region",
+   "used_in": "kingdom-of-powys"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Dunoding (Welsh kingdom of Eifionydd and Ardudwy)",
+   "suggested_slug": "dunoding",
+   "years": [
+    460,
+    925
+   ],
+   "note": "from the author; not a counterpart of any event, only the wrong Cliopatria link"
+  },
+  {
+   "name": "Kingdom of Elmet",
+   "suggested_slug": "kingdom-of-elmet",
+   "years": [],
+   "note": "from the author; eu-11-x additions"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-11-f.md",
+ "problems": [
+  "https://en.wikipedia.org/wiki/Dunoting returns url_not_found (also for the author).",
+  "WebFetch returns a model summary of the page, not its text; quotes in spot checks are as returned.",
+  "Only one neighbour dossier exists (kingdom-of-deira); every other counterpart (Mercia, Wessex, Gwynedd, Seisyllwg, Northumbria, Norman England, Brythons, Cornwall, Powys Fadog/Wenwynwyn) belongs to eu-11 parts that have not run, so their cross-checks are exceptions.",
+  "Rheged and Dunoting start in 592 and Bernicia/Deira hand-offs in 604-612 are Cliopatria conventions; the Bernicia/Deira pair needs one owner decision (merge vs vassal) before either is final.",
+  "Reviewer applied one small fix in place (dumnonia /wars/2/note) and re-validated it; the review notes file history/polities/_notes/review-eu-11-f.md was written alongside this report."
+ ]
+}

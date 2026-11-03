@@ -1,0 +1,91 @@
+{
+ "window": "m3200-m3101",
+ "images": [
+  {
+   "year": -3200,
+   "bbox": "world, --compare-cliopatria",
+   "seen": "30 culture polygons; Cliopatria has only Sumerian city-states and Elam (21-cell Susa disc); Yamnaya, Cucuteni, Naqada, Maadi, the Asian and American cultures sit where expected; Naqada drew a large block over the Matruh coast and Giza desert (wrong)"
+  },
+  {
+   "year": -3101,
+   "bbox": "20,22,75,55 --compare-cliopatria",
+   "seen": "Yamnaya from the Dniester to the Ural beside Cucuteni-Trypillia is fine; Anau, Indus/Hakra, Sumerian city-states and Elam match Cliopatria; in Egypt Naqada's Matruh/Giza-desert block (about 620 cells) is wrong, Early Dynastic Egypt takes the Delta and valley from -3150"
+  },
+  {
+   "year": -3101,
+   "bbox": "98,18,148,50",
+   "seen": "Yangshao, Dawenkou, Qujialing, Liangzhu, Hongshan, Majiayao, Jeulmun, Jomon, Dapenkeng and Hoabinhian sit in their regions, no speckle or hole; Majiayao has a detached western lobe separated by Yangshao's Wei-valley arm, left as drawn"
+  },
+  {
+   "year": -3101,
+   "bbox": "24,21,36,33 --from stage (after patch)",
+   "seen": "the desert block is gone; Naqada keeps the Faiyum, a few Delta-edge cells and the valley margins beside Early Dynastic Egypt, which holds the Delta and valley strip (banding is the grid's width against a one-cell valley)"
+  }
+ ],
+ "issues": [
+  {
+   "what": "Naqada culture's -3200 gain and keyframe use the gazetteer region 'Lower Egypt', which includes the whole Matruh governorate (524 cells) and the Giza desert (about 100 cells); Naqada held a 620-cell desert block from -3200 to -3101 that no Maadian or Naqada site lies in",
+   "years": [
+    -3200,
+    -3101
+   ],
+   "slugs": [
+    "naqada-culture",
+    "maadi-culture"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Maadi_culture"
+   ]
+  },
+  {
+   "what": "Elam keyframe snap: uruk-period's ledger gives Khuzestan (241 cells) to Elam, Elam's keyframe (Cliopatria) is the 21-cell Susa disc, so the rest of Khuzestan is nobody's from -3200",
+   "years": [
+    -3200,
+    -3101
+   ],
+   "slugs": [
+    "elam",
+    "uruk-period"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Elam"
+   ]
+  },
+  {
+   "what": "Yamnaya +3063 cells at -3200 (West Kazakhstan, Orenburg, Saratov, Samara and the Pontic Steppe) and Naqada +803 / Early Dynastic +319 are the busiest changes",
+   "years": [
+    -3200,
+    -3150
+   ],
+   "slugs": [
+    "yamnaya-culture",
+    "naqada-culture",
+    "early-dynastic-period-of-egypt"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/m3200-m3101.json",
+ "patch_entries": {
+  "events": 0,
+  "keyframe_overrides": 1,
+  "rulings": 0
+ },
+ "patch_check": "all applied",
+ "colour_clashes": [],
+ "dossier_requests": [],
+ "pages_opened": 2,
+ "problems": [
+  "gazetteer: region 'Lower Egypt' (data/gazetteer/regions.jsonl line 534) includes the admin-1 units Matruh (524 cells) and Al Jizah (126 cells, mostly Western Desert); the region has 787 cells where the Delta and Cairo reach are about 180. 19 dossiers use it (maadi-culture, naqada-culture, achaemenid-empire, fatimid-caliphate, kingdom-of-kush, new-kingdom-of-egypt, the 21st-25th, 30th and 31st dynasties, fifteenth-dynasty-of-egypt and others). Fixing the region (drop Matruh, restrict Al Jizah to the Nile) would repair them all; my override then becomes redundant but harmless.",
+  "maadi-culture_-3800 (-3800..-3200) uses the same Lower Egypt spec, so Maadi holds the 803-cell desert block in the earlier windows and at the m3200 start anchor; not patched here (earlier windows' keyframe; fixed by the gazetteer change).",
+  "my keyframe override naqada-culture_-3200 runs -3200..-3000 and so reaches into m3100-m3001; with it the trial changes 625 cells of the m3100 end anchor (Naqada 842 -> 217 cells, the desert becomes nobody's), so the next window starts from a changed anchor.",
+  "after the patch the trial lists a new keyframe snap naqada-culture_-3200 (added 51, removed 10; Delta cells the ledger leaves unowned at the snap); the state follows the corrected keyframe, the snap is the patch's own and needs nothing.",
+  "no hierarchy rows, dossier founding or end dates, or missing states found in this window"
+ ]
+}

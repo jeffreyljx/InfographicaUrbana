@@ -1,0 +1,513 @@
+{
+ "batch_id": "ia-03-h",
+ "verdicts": [
+  {
+   "slug": "taliban",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/4/note",
+     "what": "The rename to the Islamic Emirate is dated September 1996 without mentioning the Emirate infobox's later step.",
+     "why": "Emirate page infobox: 'Name changed to \"Emirate\": 29 October 1997'; Northern Alliance page: 'The Taliban seized Kabul on September 27, 1996, and established the Islamic Emirate of Afghanistan.'",
+     "fix": "Note extended with the 29 October 1997 infobox date; the rename stays at September 1996.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/8/note",
+     "what": "Bamyan gain is put in 1999 on the Taliban page alone; the Emirate page (already a source) points to 1998.",
+     "why": "Emirate page: 'After Battles of Mazar-i-Sharif (1997-98), the Bamyan valley came into Taliban control'; Northern Alliance page: Hezb-e Wahdat 'defeated by the Taliban and their allies in 1998'; Taliban page: 'In 1999, the town of Bamian was taken'.",
+     "fix": "Note extended with the Emirate sentence; the author may move the gain to 1998 (and drop Bamyan from the taliban_1998 minus list), which would also shorten the Bamyan hole.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/4/correction",
+     "what": "The 5 September 2000 gain of Taloqan (/ledger/9, confidence 3) is not drawn in taliban_2000, and with afghanistan_2000's correction (minus Taloqan 50 km) the Taloqan area belongs to nobody in 2000-2001.",
+     "why": "Grid: Cliopatria Taliban 2000 holds 6 of the 18 cells within 40 km of Taloqan; afghanistan_2000 removes all 18 (50 km); Afghanistan minus both outlines = 39 cells in 2000 against 21 in 1999 (the 18 Taloqan cells, about 4,550 km2). Non-blocking: inside one shape's span and small (check 4), but a visible hole.",
+     "fix": "correction = {\"union\": [<present correction>, {\"place\": \"Taloqan\", \"km\": 50, \"country\": \"Afghanistan\"}], \"text\": ...}; checked: the hole closes to the 21 baseline edge cells and no overlap with afghanistan_2000 appears.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/2 and /keyframe_review/3 (with afghanistan /keyframe_review/6)",
+     "what": "The taliban 1998 and 1999 outlines overlap afghanistan_1998 by 322 cells (about 81,400 km2: Jawzjan, Faryab, Sar-e Pol, Samangan, Kunduz, Baghlan, Badghis); the author's notes say the matching afghanistan events exist and do not flag it.",
+     "why": "Emirate page 'By 1998, the Taliban controlled 90% of Afghanistan' (confirmed) supports the taliban side; afghanistan_1998 = Afghanistan 1996 minus Balkh only, its note: 'the pages do not give the rest of the 1998-1999 front, so the other provinces stay'.",
+     "fix": "Route to the afghanistan author (ia-03-g): drop those provinces from afghanistan_1998 with a 1998 loss to taliban; the taliban author adds a line on it to the notes.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/0 and /keyframe_review/0",
+     "what": "The 1994 found of Kandahar has no mirror: afghanistan keeps Kandahar in afghanistan_1992 (1992-1995) as a contest (afghanistan /ledger/8 contest_start 1994, counterpart taliban, Kandahar, Hilmand, Zabul, Uruzgan) and the taliban dossier has no matching contest.",
+     "why": "Overlap of Kandahar (about 49,800 km2) in 1994-1995; afghanistan cites the Islamic State of Afghanistan page: 'late 1994 ... managed to conquer large parts of southern Afghanistan', 'steady gains throughout 1995 and 1996'.",
+     "fix": "Either afghanistan records a 1994 loss of Kandahar to taliban, or the taliban dossier adds the matching contest_start/contest_end (1994 to 1996-09) on the four southern provinces; settle with ia-03-g.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "The growth from Kandahar (1994) to the 1996 outline (south, west, Herat, Jalalabad) rests on a confidence-1 inference from Cliopatria's shape; taliban_1994 (Kandahar alone, 1994-1995) is a floor.",
+     "page to try": "https://en.wikipedia.org/wiki/Islamic_State_of_Afghanistan"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "Dates and places of the northern provinces taken in 1997-1998 (Jawzjan, Faryab, Sar-e Pol, Samangan, Kunduz, Baghlan, Badghis) and the capture of Mazar-i-Sharif itself.",
+     "page to try": "https://en.wikipedia.org/wiki/Battles_of_Mazar-i-Sharif_(1997%E2%80%931998)"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "Bamyan's year (1998 or 1999) and the Hazarajat before it; Bamyan is in neither the taliban nor the afghanistan outline in 1996-1998.",
+     "page to try": "https://en.wikipedia.org/wiki/Afghan_Civil_War_(1996%E2%80%932001)"
+    },
+    {
+     "where": "/keyframe_review/4/correction",
+     "what is missing": "The Taloqan disk (50 km) to add to the 2000-2001 outline (see fixes).",
+     "page to try": "https://en.wikipedia.org/wiki/Northern_Alliance"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Islamic_Emirate_of_Afghanistan_(1996–2001)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Northern_Alliance",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Islamic_Emirate_of_Afghanistan_(1996–2001)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Taliban",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Taliban",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Northern_Alliance",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Islamic_Emirate_of_Afghanistan_(1996–2001)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Islamic_Emirate_of_Afghanistan_(1996–2001)",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 587580,
+    "infobox_year": 2000,
+    "cliopatria_km2": 560314,
+    "ratio": 0.95,
+    "acknowledged": true,
+    "note": "infobox gives no year; its footnote says '90%', the page 'By the end of 2000, the Taliban controlled 90%'"
+   }
+  },
+  {
+   "slug": "republic-of-uzbekistan",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/rulers/1",
+     "what": "Mirziyoyev's ruler entry had no source and its note was not in the page's words.",
+     "why": "Uzbekistan page: 'the Oliy Majlis appointed Prime Minister Shavkat Mirziyoyev as interim president'; 'In the December 2016 presidential election, Mirziyoyev was officially elected with 88.6% of the vote' and 'was sworn in on 14 December'.",
+     "fix": "source = https://en.wikipedia.org/wiki/Uzbekistan; note rewritten with those sentences.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1 and /ledger/3",
+     "what is missing": "Aral Sea shore gains of 2000 and 2006 (one and five grid cells) are confidence-1 bridges dated by Cliopatria; thin by design.",
+     "page to try": "https://en.wikipedia.org/wiki/Karakalpakstan"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "How and when in 2024 the Kyrgyz enclave of Barak ended and whether the land passed to Uzbekistan (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Barak,_Kyrgyzstan (title to confirm)"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "The other half of the 2002 exchange: 'semi-desert lands near the villages of Nysan-1, Nysan-2, and Baimurat in the Kyzylorda Region' (to Uzbekistan by the reading) is in neither ledger; below a grid cell.",
+     "page to try": "https://en.wikipedia.org/wiki/Kazakhstan%E2%80%93Uzbekistan_border"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "What Uzbekistan received in the 2022 deal (the Kempir-Abad / Andijan reservoir is not on the page).",
+     "page to try": "https://en.wikipedia.org/wiki/Andijan_Reservoir (title to confirm)"
+    },
+    {
+     "where": "/wars",
+     "what is missing": "No war listed; the Turkmenistan-Uzbekistan border and the Tajik 2018 deals were not opened (page budget 5 used).",
+     "page to try": "https://en.wikipedia.org/wiki/Turkmenistan%E2%80%93Uzbekistan_border"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Uzbekistan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kazakhstan%E2%80%93Uzbekistan_border",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Kyrgyzstan%E2%80%93Uzbekistan_border",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Kyrgyzstan%E2%80%93Uzbekistan_border",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 448978,
+    "infobox_year": 2024,
+    "cliopatria_km2": 415143,
+    "ratio": 0.92,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "turkmenistan",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/rulers/1",
+     "what": "Gurbanguly Berdimuhamedow started in 2007, leaving the strip empty after Niyazov's death in 2006, and had no source.",
+     "why": "Turkmenistan page: after 'the December 2006 death of Niyazov' he 'was named interim head of government, won a non-democratic special presidential election held in early February 2007'.",
+     "fix": "from = 2006, source = https://en.wikipedia.org/wiki/Turkmenistan, note rewritten.",
+     "applied": true
+    },
+    {
+     "where": "/identity/rulers/2",
+     "what": "Serdar Berdimuhamedov's entry had no source.",
+     "why": "Turkmenistan page: 'On 19 March 2022, Serdar Berdimuhamedov was sworn in as Turkmenistan's new president to succeed his father.'",
+     "fix": "source = https://en.wikipedia.org/wiki/Turkmenistan.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger",
+     "what is missing": "No border exchange or Caspian status after 1991 was looked for beyond the two pages (budget 1-2); the two shapes are identical, so nothing is unexplained.",
+     "page to try": "https://en.wikipedia.org/wiki/Turkmenistan%E2%80%93Uzbekistan_border"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Turkmenistan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/identity/predecessors/0",
+     "page": "https://en.wikipedia.org/wiki/Turkmen_Soviet_Socialist_Republic",
+     "result": "confirmed"
+    },
+    {
+     "where": "/identity/rulers/0",
+     "page": "https://en.wikipedia.org/wiki/Turkmenistan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/identity/rulers/2",
+     "page": "https://en.wikipedia.org/wiki/Turkmenistan",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 491210,
+    "infobox_year": 2024,
+    "cliopatria_km2": 467932,
+    "ratio": 0.95,
+    "acknowledged": true
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "taliban",
+    "year": 1994,
+    "type": "found",
+    "counterpart": "afghanistan"
+   },
+   "mirror": {
+    "slug": "afghanistan",
+    "year": 1994,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "afghanistan keeps Kandahar (contested) in its 1992-1995 outline; taliban holds it from 1994: about 49,800 km2 overlap in 1994-1995 with no taliban contest event."
+  },
+  {
+   "event": {
+    "slug": "taliban",
+    "year": 1996,
+    "type": "gain",
+    "counterpart": "afghanistan"
+   },
+   "mirror": {
+    "slug": "afghanistan",
+    "year": 1996,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "afghanistan /ledger/10 (1996-09) loses Cliopatria's Taliban 1996 shape; taliban's 1996 entry is confidence 1."
+  },
+  {
+   "event": {
+    "slug": "taliban",
+    "year": 1996,
+    "type": "gain",
+    "counterpart": "afghanistan"
+   },
+   "mirror": {
+    "slug": "afghanistan",
+    "year": 1996,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Kabul, 27 September 1996 (taliban /ledger/2, afghanistan /ledger/10)."
+  },
+  {
+   "event": {
+    "slug": "taliban",
+    "year": 1998,
+    "type": "gain",
+    "counterpart": "afghanistan"
+   },
+   "mirror": {
+    "slug": "afghanistan",
+    "year": 1998,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "taliban /ledger/6 gains the north (90%); afghanistan loses only Balkh (/ledger/13) and keeps Jawzjan, Faryab, Sar-e Pol, Samangan, Kunduz, Baghlan, Badghis in afghanistan_1998: 81,400 km2 overlap 1998-1999. Route to ia-03-g."
+  },
+  {
+   "event": {
+    "slug": "taliban",
+    "year": 1998,
+    "type": "gain",
+    "counterpart": "afghanistan"
+   },
+   "mirror": {
+    "slug": "afghanistan",
+    "year": 1998,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Balkh / Mazar-i-Sharif, 8 August 1998 (taliban /ledger/7, afghanistan /ledger/13)."
+  },
+  {
+   "event": {
+    "slug": "taliban",
+    "year": 1999,
+    "type": "gain",
+    "counterpart": "afghanistan"
+   },
+   "mirror": {
+    "slug": "afghanistan",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "Bamyan is in neither outline 1996-1998 (author flagged); afghanistan never holds it, so no loss. Route to ia-03-g."
+  },
+  {
+   "event": {
+    "slug": "taliban",
+    "year": 2000,
+    "type": "gain",
+    "counterpart": "afghanistan"
+   },
+   "mirror": {
+    "slug": "afghanistan",
+    "year": 2000,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Taloqan, 5 September 2000: events match (taliban 40 km, afghanistan 50 km) but taliban_2000 does not contain the land, so 18 cells are nobody's in 2000-2001."
+  },
+  {
+   "event": {
+    "slug": "taliban",
+    "year": 2001,
+    "type": "loss",
+    "counterpart": "afghanistan"
+   },
+   "mirror": {
+    "slug": "afghanistan",
+    "year": 2001,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Kabul, 13 November 2001 (taliban /ledger/10, afghanistan /ledger/16)."
+  },
+  {
+   "event": {
+    "slug": "taliban",
+    "year": 2001,
+    "type": "loss",
+    "counterpart": "afghanistan"
+   },
+   "mirror": {
+    "slug": "afghanistan",
+    "year": 2001,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "December 2001 (taliban /ledger/11, afghanistan /ledger/18); afghanistan's region (Cliopatria Taliban 2000) still includes 17 Pakistani cells, which it should subtract."
+  },
+  {
+   "event": {
+    "slug": "republic-of-uzbekistan",
+    "year": 1991,
+    "type": "found",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1991,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "no USSR dossier yet; listed by the author."
+  },
+  {
+   "event": {
+    "slug": "republic-of-uzbekistan",
+    "year": 2000,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": 2000,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "Aral shore."
+  },
+  {
+   "event": {
+    "slug": "republic-of-uzbekistan",
+    "year": 2002,
+    "type": "loss",
+    "counterpart": "kazakhstan"
+   },
+   "mirror": {
+    "slug": "kazakhstan",
+    "year": 2002,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Bagys, September 2002 (kazakhstan /ledger/3, confidence 1 there, 2 here). The reverse half of the exchange (Nysan-1, Nysan-2, Baimurat) is in neither ledger."
+  },
+  {
+   "event": {
+    "slug": "republic-of-uzbekistan",
+    "year": 2006,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": 2006,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "Aral shore."
+  },
+  {
+   "event": {
+    "slug": "republic-of-uzbekistan",
+    "year": 2022,
+    "type": "loss",
+    "counterpart": "kyrgyzstan"
+   },
+   "mirror": {
+    "slug": "kyrgyzstan",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "kyrgyzstan dossier exists and has no 2022 gain of 156 km2 (author flagged). Route to the kyrgyzstan author."
+  },
+  {
+   "event": {
+    "slug": "republic-of-uzbekistan",
+    "year": 2024,
+    "type": "gain",
+    "counterpart": "kyrgyzstan"
+   },
+   "mirror": {
+    "slug": "kyrgyzstan",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "missing",
+   "note": "Barak enclave end; kyrgyzstan has no 2024 loss. Route to the kyrgyzstan author."
+  },
+  {
+   "event": {
+    "slug": "turkmenistan",
+    "year": 1991,
+    "type": "found",
+    "counterpart": "union-of-soviet-socialist-republics"
+   },
+   "mirror": {
+    "slug": "union-of-soviet-socialist-republics",
+    "year": 1991,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "no USSR dossier yet; listed by the author."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Bagys",
+   "kind": "place",
+   "used_in": "republic-of-uzbekistan"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Union of Soviet Socialist Republics",
+   "suggested_slug": "union-of-soviet-socialist-republics",
+   "years": [
+    1922,
+    1991
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ia-03-h.md",
+ "problems": [
+  "No page failed to load.",
+  "Neighbour dossiers not yet written (exception, groups not run): islamic-republic-of-iran (me-10), islamic-republic-of-pakistan and republic-of-india (sa-06).",
+  "afghanistan (ia-03-g) needs changes from this review: 1998 losses of Jawzjan, Faryab, Sar-e Pol, Samangan, Kunduz, Baghlan, Badghis to taliban; Bamyan in 1996-1998; a 1994 Kandahar loss or matching contest; subtract Pakistan from its December 2001 gain.",
+  "kyrgyzstan needs the 2022 gain of 156 km2 from republic-of-uzbekistan and the 2024 end of the Barak enclave.",
+  "Reviewer applied note and ruler fixes to all three dossiers (validated after, read back unchanged); the taliban verdict is thin, not fail: no fabricated or mis-dated event was found, and the open items are cross-dossier or gap-filler work."
+ ]
+}

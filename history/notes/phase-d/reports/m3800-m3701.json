@@ -1,0 +1,105 @@
+{
+ "window": "m3800-m3701",
+ "images": [
+  {
+   "year": -3800,
+   "bbox": "world, --compare-cliopatria",
+   "seen": "34 archaeological-culture states, no speckles or holes; Cliopatria has 0 shapes alive in this window, so the comparison panel is empty and nothing to contradict; the only oddity is Maadi culture drawn over the Matruh coast and Giza desert (Delta culture spread to 25E)."
+  },
+  {
+   "year": -3701,
+   "bbox": "20,20,60,45, --compare-cliopatria",
+   "seen": "Uruk period (Lower Mesopotamia, Susiana, Sanliurfa/Al Hasakah/Kermanshah discs), Naqada along the Nile, Nabta Playa disc, Anau and Kelteminar at the edge all plausible; Maadi culture again 803 cells wide into the Western Desert. Cliopatria panel empty."
+  },
+  {
+   "year": -3701,
+   "bbox": "22,22,40,34, --from stage (trial with the m3300-m3201 patch already in the folder)",
+   "seen": "Maadi culture is now the Delta, Cairo, Giza Nile reach and the Faiyum (194-cell shape); Naqada and Nabta Playa unchanged; no new problems."
+  }
+ ],
+ "issues": [
+  {
+   "what": "Maadi culture drawn over Matruh (524 cells), the Giza desert/oases (113-126), Alexandria, Ismailia and Port Said because the gazetteer's 'Lower Egypt' includes them: 668 of its 803 cells were empty desert. The Maadi culture page names Maadi, Buto, Tell Ibrahim Awad, Tell el-Rub'a, Tell el-Farkha, Minshat Abu Omar, el-Gerza, Haraga, Abusir el-Melek and says nothing of the Western Desert or Matruh coast; the Lower Egypt page defines the region as 'the fertile Nile Delta between Upper Egypt and the Mediterranean Sea'.",
+   "years": [
+    -3800,
+    -3701
+   ],
+   "slugs": [
+    "maadi-culture"
+   ],
+   "decision": "fine as drawn after the existing patch: data/patches/m3300-m3201.json keyframe_overrides/0 already overrides maadi-culture_-3800 (-3800..-3200) with Lower Egypt minus the desert governorates plus the Giza Nile reach and the Faiyum. My own identical-purpose override passed --check-patch but was skipped in the trial ('first file in window order wins'), so I wrote no patch file.",
+   "patch": "data/patches/m3300-m3201.json: keyframe_overrides/0 (not mine)",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Maadi_culture",
+    "https://en.wikipedia.org/wiki/Lower_Egypt"
+   ]
+  },
+  {
+   "what": "After that override the compiler shows a 668-cell keyframe snap at -3800 for maadi-culture (found event at -3800 still carries the wide Lower Egypt + Fayyum region, the keyframe then removes Matruh 524, Al Jizah 113, Al Isma`iliyah 20, +2). The drawn result is right from the end of -3800; only the ledger is inconsistent with the keyframe.",
+   "years": [
+    -3800,
+    -3800
+   ],
+   "slugs": [
+    "maadi-culture"
+   ],
+   "decision": "dossier request",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Maadi_culture"
+   ]
+  },
+  {
+   "what": "Green Sahara cultures is one 27,856-cell band covering the whole Sahara (-6000..-3550) and Aboriginal Australians the whole continent; Hoabinhian covers mainland Southeast Asia. These are the dossiers' deliberate catch-all culture shapes (certainty notes in the dossiers), with no sourced contrary map, and Cliopatria has nothing here.",
+   "years": [
+    -3800,
+    -3701
+   ],
+   "slugs": [
+    "green-sahara-cultures",
+    "aboriginal-australians",
+    "hoabinhian"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Packet's other changes in -3800: uruk-period/ledger/1 (+221 cells: Kermanshah, Sanliurfa, Al Hasakah settlements) and songze-culture/ledger/0 (172 cells, Jiangsu, taking over the land of majiabang-culture, which ends -3800). Both are explained by dossier events and the successions; render shows nothing speckled.",
+   "years": [
+    -3800,
+    -3800
+   ],
+   "slugs": [
+    "uruk-period",
+    "songze-culture",
+    "majiabang-culture"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": null,
+ "patch_entries": {
+  "events": 0,
+  "keyframe_overrides": 0,
+  "rulings": 0
+ },
+ "patch_check": "no patch written; the one entry I drafted (maadi-culture_-3800 keyframe override, 194 cells) passed --check-patch but the trial skipped it as already overridden by m3300-m3201.json keyframe_overrides/0, whose result I drew with --from stage and found right",
+ "colour_clashes": [],
+ "dossier_requests": [
+  {
+   "slug": "maadi-culture",
+   "what": "Change the `found` (-3800) and `dissolve` (-3200) event regions, and the `successors[naqada-culture].land`, from {Lower Egypt + Fayyum} to the corrected shape of the m3300-m3201 keyframe override (Lower Egypt minus Matruh, Al Jizah, Al Iskandariyah, Al Isma`iliyah, Bur Sa`id, plus the Giza Nile reach within 20 km of the Nile, plus Fayyum), so the ledger and keyframe agree and the 668-cell snap at -3800 disappears; the same wide region would otherwise hand Naqada the Matruh coast at -3200.",
+   "why": "The Maadi culture page names only Delta, Cairo, Giza-Nile and Faiyum-edge sites and never the Western Desert or the Matruh coast.",
+   "source": "https://en.wikipedia.org/wiki/Maadi_culture"
+  }
+ ],
+ "pages_opened": 2,
+ "problems": [
+  "The maadi-culture_-3800 keyframe spans -3800..-3200, so the m3300-m3201 override already governs my window; my identical-intent override was skipped (first file in window order wins), which is why I wrote no patch file. data/patches/m3800-m3701.json does not exist.",
+  "Cliopatria has 0 shapes alive anywhere in -3800..-3701, so --compare-cliopatria gave an empty panel; the review rests on the dossiers and the two Maadi culture / Lower Egypt pages.",
+  "Colours: Maadi culture and Nabta Playa Neolithic (and Kelteminar and Jomon) share a similar maroon/pink, but none of those pairs touches, so no clash is reported."
+ ]
+}

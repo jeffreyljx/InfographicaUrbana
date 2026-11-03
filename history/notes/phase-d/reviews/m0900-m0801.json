@@ -1,0 +1,28 @@
+{
+ "window": "m0900-m0801",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "carchemish vassal_end of neo-assyrian-empire, -848. The page supports it: 'Sangara (870-848 BC), the last member of the dynasty' 'paid tribute to Kings Ashurnasirpal II and Shalmaneser III of Assyria' (Balawat Bands, 'probably at some time before 868 BC'); 'Following this period, Karkamish does not appear in Assyrian sources until the mid-8th century BC', with only a brief mention by Samsi-Adad V (824-811); Astiruwa (ca 848-790) founds the next dynasty. The Shalmaneser III page's 'the Neo-Hittites of Carchemish were compelled to pay tribute' is undated and gives no Syrian tribute after 848, so nothing contradicts the date. The spec {38.02,36.83,60 km} is the dossier's own vassal_start region and resolves to 42 cells (about 10,600 km2), the same land the -870 relation tinted, no more. In the trial it applies at -848 to 37 carchemish cells (direct status), 0 owner changes, conflicts unchanged (20 pairs/187 cell-years before and after), snaps unchanged (6). It closes the unsupported 870-717 bridge.",
+   "page": "https://en.wikipedia.org/wiki/Carchemish",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "sam-al vassal_end of neo-assyrian-empire, -824. Sam'al page: 'Assyrians won over Denyen and Sam'al in 825 BC'; 'Sam'al became independent after the death of Shalmaneser III'; it also notes only a 'friendly relationship' with Assyria under Samsi-Adad V and no tribute or vassalage before Sargon II's 717 occupation. Shalmaneser III page: reign '859 BC to 824 BC'; 'On 1 Nisan 824 BC, Shalmaneser III entered his final 35th regnal year (824/823 BC), during which time he died'. The spec {36.68,37.1,40 km} is the dossier's own vassal_start region and resolves to 19 cells (about 4,800 km2). In the trial it applies at -824 to all 19 sam-al cells (direct status), 0 owner changes, conflicts and snaps unchanged. It closes the 825-717 bridge that its own page contradicts.",
+   "page": "https://en.wikipedia.org/wiki/Sam%27al ; https://en.wikipedia.org/wiki/Shalmaneser_III",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "check-patch: 2 entries, 2 ok, 0 rejected; reviewer trial (-6000..-801): both applied, conflicts 20 pairs/187 cell-years -> same, keyframe snaps 6 -> 6, end anchor m0800: 0 cells change owner, 56 change status (carchemish 37 at -848, sam-al 19 at -824)",
+ "problems": [
+  "cross-window, still open: m0800-m0701's patch (and its existing review) has no carchemish or sam-al entry, so after this patch both stay untinted from -848/-824 to their 717 ends. The Carchemish page has Carchemish back 'in Assyrian sources' in the mid-8th century and the Assyria dossier calls 717 a retaking ('Sargon retakes Carchemish' after Pisiri's 'uprising'), so a vassal_start for carchemish (and for sam-al, if a page gives renewed tribute) should be added to m0800-m0701 from a page that dates it (e.g. the Tiglath-Pileser III page); neither the Carchemish nor the Sam'al page names Tiglath-Pileser III.",
+  "side effect: the dossiers' own -717 vassal_end events for carchemish and sam-al now close nothing open and will be listed in unclosed_ends.csv (harmless; the -717 loss and dissolve still apply). They go away if the 8th-century vassal_start above is added.",
+  "missed in this window (not in the patch): the Sam'al page says Hayyanu 'didn't participate in the Battle of Qarqar in 853 BC, and instead paid tribute to Shalmaneser III', that he 'was forced to pay tribute to Shalmaneser at the city of Dabigu' (undated, in the 859/858 campaign passage), and that 'Ya'udi was one of Assyria's satellite states in the annals of Shalmaneser III', while the dossier's vassal relation starts only in 825. A dated vassal_start at -853 (page: https://en.wikipedia.org/wiki/Sam%27al) would draw that tribute; the page's 'won over ... in 825 BC' then reads as a renewal. Optional, confidence 2.",
+  "neo-hittite-states keeps its 31-cell Assyrian vassal tint from -868 on the Carchemish tribute that now ends at -848 (the window agent's own note); unchanged by this patch, should be reviewed together with the -800 keyframe overlap in m0800-m0701."
+ ]
+}

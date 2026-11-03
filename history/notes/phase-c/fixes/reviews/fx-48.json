@@ -1,0 +1,91 @@
+{
+ "batch_id": "fx-48",
+ "checks": [
+  {
+   "item": "R022",
+   "verdict": "pass",
+   "what": "first-sealand-dynasty identity.predecessors[babylonia].land, successors[babylonia].land, ledger/0 found and ledger/1 dissolve now use the Cliopatria marsh core + Dhi-Qar + Al-Basrah + Uruk 60 km (found/predecessor) and the same + Nippur 40 km + Isin 40 km (dissolve/successor), identical to data/patches/m1800-m1701 keyframe_overrides/0 and m1500-m1401 keyframe_overrides/0; the rectangle is gone from the identity and ledger. The page has 'Sealand pottery has been found at Girsu, Uruk, and Lagash but in no site north of that', 'the province in the far south of Mesopotamia', Ilum-ma-ili 'is thought to have conquered Nippur late in' Samsu-iluna's reign, and Ulam-Buriash 'conquered the Sealand, incorporated it into Babylonia'. The four box keyframes are all in patch-overrides.csv, so leaving them is right. Validates with 0 errors.",
+   "page": "https://en.wikipedia.org/wiki/First_Sealand_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R025",
+   "verdict": "pass",
+   "what": "Same ledger/0 change as R022 (157-cell found land). Nippur and Isin from -1721 are already data/patches/m1800-m1701.json events/0 (gain from babylonia, -1721), so not adding them again is right; the keyframes -1732/-1700/-1600/-1500 are all patch-overridden.",
+   "page": "https://en.wikipedia.org/wiki/First_Sealand_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R024",
+   "verdict": "pass",
+   "what": "hyksos reduced to Sharuhen (40 km disc at 34.47 E, 31.5 N, covering Tell el-Ajjul and the Gaza coast): keyframes -1700 (from -1650 to -1601) and -1600 (-1600 to -1551) corrected to the disc, ledger cut to found -1650 / loss to new-kingdom-of-egypt -1550 / dissolve -1550, predecessors and Avaris capital removed. Pages support it: Fifteenth Dynasty page 'The 15th Dynasty of Egypt was the first Hyksos dynasty, ruling from Avaris' (Established 1650 BC, Disestablished c. 1550 BC); Hyksos page: the Hyksos 'were the kings of the Fifteenth Dynasty of Egypt', 'Most likely Hyksos rule covered the area from Middle Egypt to southern Palestine', Ahmose I 'captured Sharuhen (possibly Tell el-Ajjul), which some scholars argue was a city in Canaan under Hyksos control'. fifteenth-dynasty-of-egypt ledger/0-8 holds the Egyptian land, so nothing is lost. Validates with 0 errors. See R024-mirrors for the counterparts left pointing at hyksos.",
+   "page": "https://en.wikipedia.org/wiki/Hyksos",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R024-mirrors",
+   "verdict": "fail",
+   "what": "The fixer removed hyksos's Avaris found and Memphis/Middle Egypt gain but wrote no handoff for the events in other dossiers that still give Egyptian land to hyksos: fourteenth-dynasty-of-egypt ledger/1 (-1650 loss, Avaris 110 km 'the Nile Delta', counterpart hyksos) and successors[hyksos]; middle-kingdom-of-egypt ledger/12 (-1650 loss, Cliopatria Fifteenth Dynasty -1600 shape, counterpart hyksos), ledger/15 (-1650 dissolve, counterpart hyksos) and successors[hyksos]; abydos-dynasty ledger/1 (-1600 dissolve, Abydos 60 km, counterpart hyksos). With hyksos no longer carrying the matching gain, the compiler applies these losses as transfers to hyksos (loss gives the cells to a living counterpart), so Delta, Middle Egypt and Abydos cells pass to hyksos in -1650/-1600 and are only removed again by its keyframe snaps (to nobody, or by conflict with fifteenth-dynasty-of-egypt's snap): the scattered two-colour cells R024 was meant to end.",
+   "page": "https://en.wikipedia.org/wiki/Hyksos",
+   "fix": "Handoffs (dossiers fx-48 does not own): in fourteenth-dynasty-of-egypt set ledger/1 counterpart hyksos -> fifteenth-dynasty-of-egypt and identity.successors[hyksos].slug -> fifteenth-dynasty-of-egypt; in middle-kingdom-of-egypt set ledger/12 and ledger/15 counterpart hyksos -> fifteenth-dynasty-of-egypt and identity.successors[hyksos].slug -> fifteenth-dynasty-of-egypt; in abydos-dynasty set ledger/1 counterpart hyksos -> fifteenth-dynasty-of-egypt (Hyksos page: the Hyksos 'were the kings of the Fifteenth Dynasty of Egypt'; Fifteenth Dynasty page: 'the first Hyksos dynasty, ruling from Avaris'). Leave new-kingdom-of-egypt ledger/2 and predecessors[hyksos] (Sharuhen) as they are. Validate each with validate_dossier.py --resolve.",
+   "applied": false
+  },
+  {
+   "item": "R040",
+   "verdict": "pass",
+   "what": "rashtrakuta-dynasty_806 now from 806 to 818, matching its own 'Applies 806-818' with _819 carrying 819-824; no overlap left. The six handoff keyframes were checked against their dossiers: kingdom-of-the-franks_800 'valid 800-803' (_804 from 804), _825 'valid 825-826' (_827 from 827), viking-settlements_840 'for 840-846' (_847 from 847), _892 'unchanged for 892-896' (_897 from 897), pandya-dynasty_592 'valid 592-764' (_765 from 765), kingdom-of-brittany_825 'for 825-850 only' (_851 from 851); none is patch-overridden, so the handoffs are right as written. Validates (2 old gujarat-rashtrakutas warnings).",
+   "page": "",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R087",
+   "verdict": "pass",
+   "what": "khoshut-khanate extended to 1724 for Qinghai only: new loss of Kham to nobody 1717-12 (keeps the old dissolve's effect), keyframe khoshut-khanate_1718 (1718-1724, Qinghai (region)), contest 1723-1724 with qing-dynasty, loss to qing-dynasty 1724 (mirrors qing-dynasty ledger/36 gain of admin1 Qinghai from khoshut-khanate, 1724) and dissolve 1724; certainty soft 1718-1724, confidence 1 bridge. Page: 'Lobsang Danjin, a grandson of Güshi Khan, led a rebellion in 1723, when 200,000 Tibetans and Mongols attacked Xining', 'The Qing made the region of Amdo into the province of Qinghai in 1724', and the Qing 'earned the resentment of the Khoshut and also the Tibetans of Kokonor' when they tried to replace the Khoshut as rulers, which supports the Kokonor Khoshuts holding Qinghai to 1723. The page also has, in its 1690s paragraph, 'Kangxi annexed Kokonor, giving it the name it bears today, Qinghai' (c. 1693): that contradicts the dossier's pre-existing Khoshut Qinghai of 1693-1717 as much as the bridge, so the bridge at confidence 1 is acceptable but the note could mention it. Ledger after Dec 1717 equals the 1718 keyframe, so no snap. Validates (3 old empty-region warnings).",
+   "page": "https://en.wikipedia.org/wiki/Tibet_under_Qing_rule",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R127",
+   "verdict": "pass",
+   "what": "captaincy-general-of-cuba ledger/14 and spanish-empire ledger/122 (December 1898 loss of Cuba) now go to nobody. Page: Spain 'relinquished all claims of sovereignty over and title to Cuba' (ceded is used only for Puerto Rico, Guam and the Philippines), 'Cuba was to be occupied by the United States', signed 10 December 1898, in force 11 April 1899. Compiler check: events in a month run by dossier index, so the captaincy's loss frees the cells before united-states-of-america ledger/83 (occupation_start, counterpart republic-of-cuba); occupation_start with neither side holding the cells takes nobody's cells with the US as occupier and republic-of-cuba as owner, which is what the window asked. captaincy ledger/15 dissolve still names united-states-of-america but finds no cells left, harmless. Both validate.",
+   "page": "https://en.wikipedia.org/wiki/Treaty_of_Paris_(1898)",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R062",
+   "verdict": "pass",
+   "what": "kept holds: the Kasanje page mentions Matamba only in 'By the 1650s Kasanje had been making war with many of its neighbours' and 'remained in a constant state of conflict with its neighbours, especially the kingdom of Matamba', with no end date for the 1620 attack and no settlement before 1683; kingdom-of-matamba ledger/5 already closes the contest in 1683.",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kasanje",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R106",
+   "verdict": "pass",
+   "what": "kept holds: p1800-p1809 rulings/0 (1803-1810, Hejaz, emirate-of-diriyah over habesh-eyalet) and p1810-p1819 rulings/3 (1811-1812, same pair and winner) exist in the patch files, so the Hejaz no longer flips on 1 Jan 1811.",
+   "page": "",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "R073/R111/R006/R141",
+   "verdict": "pass",
+   "what": "kept as patch-controlled: spanish-empire_1691 (p1690-p1699), spanish-empire_1812 (p1810-p1819), nanyue_-170 (m0200-m0101) and british-africa_1943-1946 (p1940-p1949) are all in patch-overrides.csv; spanish-empire ledger/35 is the 1692 New Mexico gain.",
+   "page": "",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "R024: the hyksos reduction leaves counterparts pointing at hyksos for Egyptian land in fourteenth-dynasty-of-egypt (ledger/1, successors), middle-kingdom-of-egypt (ledger/12, ledger/15, successors) and abydos-dynasty (ledger/1); not in the fixer's handoffs. See check R024-mirrors for the repoint to fifteenth-dynasty-of-egypt.",
+  "R022 (not the fixer's dossier): babylonia ledger/7 (-1732 loss to first-sealand-dynasty) still uses the 42-50 E x 27-32.3 N polygon; with the Sealand's found now the 157-cell land, the box cells Babylonia holds outside it pass to the Sealand by that loss and are cut again only by the Sealand's -1732 keyframe snap. Suggested handoff: give babylonia ledger/7 the same region as first-sealand-dynasty ledger/0 (Cliopatria First Sealand Dynasty -1700 + Dhi-Qar + Al-Basrah + Uruk 60 km).",
+  "Validation: all six changed dossiers OK with 0 errors (first-sealand-dynasty 0 warnings, hyksos 0, khoshut-khanate 3 old, rashtrakuta-dynasty 2 old, captaincy-general-of-cuba 0, spanish-empire 8 old).",
+  "R087: the Tibet under Qing rule page also has 'Kangxi annexed Kokonor, giving it the name it bears today, Qinghai' in its 1693 paragraph; the khoshut-khanate notes do not mention it."
+ ]
+}

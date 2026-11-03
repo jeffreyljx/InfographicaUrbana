@@ -1,0 +1,1142 @@
+{
+ "batch_id": "me-05-d",
+ "verdicts": [
+  {
+   "slug": "kingdom-of-pontus",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/11",
+     "what": "The partition of Paphlagonia with Nicomedes III is dated -116 (c2) on a quoted line ('c. 116 BC: Mithridates and Nicomedes III of Bithynia invaded and divided Paphlagonia') that is not on the Kingdom of Pontus page; the page the author also opened dates it 108.",
+     "why": "Kingdom of Pontus page (read 2026-10-19): no timeline at all; the partition sentence 'Mithridates and Nicomedes of Bithynia both invaded Paphlagonia and divided it amongst themselves' is undated, and the only '116' is 'In 116 the king of Cappadocia, Ariarathes VI, was murdered'. Mithridates VI of Pontus page: he 'contrived to partition [Paphlagonia] and [Galatia] with King Nicomedes III' and 'It was probably on the occasion of the Paphlagonian invasion of 108 BC that Mithridates adopted the Bithynian era'. 23 k km2 drawn Pontic 8 years early.",
+     "fix": "Move /ledger/11 and /ledger/12 to -108 (after the -110 events, keeping the ledger sorted), cite Mithridates_VI_of_Pontus, drop the invented quote; extend /keyframe_review/8 (core, -120..-117) to -120..-111 and replace /keyframe_review/9 (-116..-111, core+Paphlagonia) so Paphlagonia is not Pontic before -108; /keyframe_review/10 (Cliopatria -110 shape, which already contains Paphlagonia) needs a new keyframe -110..-109 that subtracts the Paphlagonia -127 shape. Do the same in paphlagonia.json (end -108); galatia.json /ledger/5 was moved to -108 by the reviewer.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/9",
+     "what": "The -129 gain of Phrygia named roman-republic as counterpart while the Kingdom of Pergamon dossier records the same transfer as its loss to kingdom-of-pontus.",
+     "why": "Aristonicus of Pergamon page: Aquillius 'dividing the Pergamene kingdom among Rome, Pontus, and Cappadocia'; kingdom-of-pergamon /ledger/15 -129 loss kingdom-of-pontus; the Roman Republic dossier has no Phrygia loss in -129.",
+     "fix": "counterpart set to kingdom-of-pergamon (note extended).",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/11/correction",
+     "what": "The -105..-92 correction adds the whole region 'Crimea' as direct Pontic land, while /ledger/15 makes the Bosporan kingdom (circle 36.5 E 45.3 N, 90 km, the Kerch peninsula) a vassal; the Kerch peninsula is drawn both direct and vassal, and /ledger/41 then gives 'Crimea' to the Bosporus in -63.",
+     "why": "Natural Earth 'Crimea' covers Kerch; the ledger note says only the Tauric Chersonesus was taken directly.",
+     "fix": "Use {\"minus\": [{\"region\": \"Crimea\"}, {\"lon\": 36.5, \"lat\": 45.3, \"km\": 90}]} (the Chersonesus side) in /keyframe_review/11 and the same land in /ledger/14 and /ledger/41.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/21",
+     "what": "Pontus records Bithynia as a gain (-89) and loss (-85); the Kingdom of Bithynia dossier records a Pontic occupation_start at -88 (c3) and occupation_end at -85, quoting the same sentence, and another occupation in -90.",
+     "why": "First Mithridatic War page: 'captured Bythinia without opposition' with no separate year; Kingdom of Pontus page: at Dardanus Mithridates had to 'return Bithynia and Cappadocia to their former kings'. kingdom-of-bithynia /ledger/8-11.",
+     "fix": "Agree with the me-05 Bithynia author: preferably record occupation_start/occupation_end kingdom-of-bithynia (-89 or -88 / -85) in place of the gain/loss, hatched in the -87 keyframe; same question for Cappadocia (/ledger/20, /ledger/27).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/23",
+     "what": "Athens/Attica 88-86 is a contest with roman-republic here, but greek-city-states records a Pontic occupation of Athens (occupation_start kingdom-of-pontus -88, occupation_end -86, c3); Pontus has no occupation event to mirror it.",
+     "why": "greek-city-states /ledger/74-75.",
+     "fix": "Add occupation_start/occupation_end greek-city-states (Athens and Attica, -88/-86) citing First_Mithridatic_War, keeping the contest with Rome.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/39",
+     "what": "Galatia's -63 gain of 'part of eastern Pontus' (galatia /ledger/8, border band) has no matching Pontus loss; /ledger/39 gives Galatia only Lesser Armenia.",
+     "why": "Deiotarus page: he 'increased his territory to include part of eastern Pontus'.",
+     "fix": "Make /ledger/39 region a union of Lesser Armenia and the border band galatia/kingdom-of-pontus -63, or add a second c1 loss.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/16-20, /ledger/13, /ledger/36",
+     "what": "Several notes quote dated 'timeline' lines ('97: Cappadocian revolt crushed...', '91/90 BC: Tigranes invaded...', 'c. 115-106 BC: Inherited Lesser Armenia...', '63 BC: Western half of Pontus...') as page text; the Kingdom of Pontus page has no timeline.",
+     "why": "The page's narrative carries the same facts (Senate decree after the 97 rebellion; Colchis and Lesser Armenia c. 115-106; western half annexed, infobox 63 BC), so the events stand, but the quotes are WebFetch summaries.",
+     "fix": "Mark these as paraphrases, not quotations.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/10",
+     "what is missing": "When Rome took Phrygia back: Pontus says -120 (c1, bridging); the Roman Republic dossier says -116; the Mithridates V page says he kept it until his death c. 120 and is silent after; the Mithridates VI page is silent.",
+     "page to try": "https://en.wikipedia.org/wiki/Phrygia"
+    },
+    {
+     "where": "/ledger/14, /ledger/15",
+     "what is missing": "Dates of the Chersonesus and Bosporan protection (Pontus -105 c1; greek-city-states -110 c2; cimmerian-bosporus -107 c2).",
+     "page to try": "https://en.wikipedia.org/wiki/Diophantus_(general)"
+    },
+    {
+     "where": "/ledger/13, /ledger/47",
+     "what is missing": "Dates of the Colchis conquests by Mithridates VI (c. 115-106) and Polemon I (undated).",
+     "page to try": "https://en.wikipedia.org/wiki/Colchis"
+    },
+    {
+     "where": "/ledger/41, /ledger/42",
+     "what is missing": "What became of the Tauric Chersonesus in 63 and the seat of the client kingdom after 63.",
+     "page to try": "https://en.wikipedia.org/wiki/Bosporan_Kingdom"
+    },
+    {
+     "where": "/ledger/12, /ledger/20, /ledger/29",
+     "what is missing": "Part of Galatia taken in the partition, the 90 reinvasion of Cappadocia, the 72 end of the Bithynian fighting (all c1).",
+     "page to try": "https://en.wikipedia.org/wiki/Third_Mithridatic_War"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/First_Mithridatic_War",
+     "result": "confirmed (Bithynia 'captured ... without opposition'; the page gives no separate year, 89 rests on the war's chronology before 'early 88')"
+    },
+    {
+     "where": "/ledger/36",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Pontus",
+     "result": "confirmed (infobox 63 BC; 'Most of the western half of Pontus and the Greek cities of the coast, including Sinope, were annexed by Rome directly')"
+    },
+    {
+     "where": "/ledger/46",
+     "page": "https://en.wikipedia.org/wiki/Polemon_I_of_Pontus",
+     "result": "confirmed ('in 31 BC, when the agreement was finalised, Antony gave Polemon Lesser Armenia as a reward')"
+    },
+    {
+     "where": "/ledger/48",
+     "page": "https://en.wikipedia.org/wiki/Polemon_II_of_Pontus",
+     "result": "confirmed ('In 62, Nero induced Polemon II to abdicate ... Pontus, including Colchis, became a Roman province')"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Pontus",
+     "result": "mis-dated (partition undated on the page; the quoted 'c. 116 BC' line is not there; Mithridates VI page: 108 BC)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 584683,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Kingdom of Pontus page has no area figure (confirmed); the author says so."
+   }
+  },
+  {
+   "slug": "galatia",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/12",
+     "what": "Amyntas' kingdom was dated -37 with counterpart nobody; the page dates his Galatian kingdom 36-25 BC and the Roman Republic dossier records the matching loss in -36.",
+     "why": "Amyntas of Galatia page: 'King of Galatia and of several adjacent countries between 36 and 25 BC'; roman-republic /ledger/201 -36 loss galatia (eastern Phrygia, Lycaonia, Isauria, Pisidia).",
+     "fix": "year -36, counterpart roman-republic; /keyframe_review/7 now -47..-37; /keyframe_review/8 renamed galatia_-36, from -36.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/5",
+     "what": "The 'part of Galatia' taken by Mithridates VI was dated -116 from an undated sentence; the Mithridates VI page dates the Paphlagonian-Galatian partition 108.",
+     "why": "Mithridates VI of Pontus page: 'contrived to partition [Paphlagonia] and [Galatia] with King Nicomedes III' and 'the Paphlagonian invasion of 108 BC'.",
+     "fix": "year moved to -108 (note extended); the Pontus dossier's /ledger/12 must follow.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/7, /ledger/8",
+     "what is missing": "Where Deiotarus' 'part of eastern Pontus' lay and when the Senate granted Lesser Armenia (page: c. 65-60).",
+     "page to try": "https://en.wikipedia.org/wiki/Pompey's_eastern_settlement"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "Which dominions Caesar took from Deiotarus in 47 and who received them (Lesser Armenia to Ariobarzanes III of Cappadocia?); the counterpart roman-republic has no matching gain.",
+     "page to try": "https://en.wikipedia.org/wiki/Ariobarzanes_III_of_Cappadocia"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "Tetrarchies to kingdom: date of Deiotarus' kingship (c1).",
+     "page to try": "https://en.wikipedia.org/wiki/Galatia_(Roman_province)"
+    },
+    {
+     "where": "/wars/0/zones",
+     "what is missing": "The Battle of the Elephants war has no zone although its outcome is the settlement of northern Phrygia.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_the_Elephants"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Galatian_War",
+     "result": "confirmed ('fought in 189 BC'; Lampsacus terms 'stay confined within their own lands', undated)"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Deiotarus",
+     "result": "confirmed ('deprived of part of his dominions in 47 BC'; land unnamed, c1 is honest)"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Amyntas_of_Galatia",
+     "result": "mis-dated (36, not 37) - fixed by reviewer"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Galatia",
+     "result": "confirmed ('After his death in 25 BC, Galatia was incorporated by Augustus into the Roman Empire')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 85740,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Galatia page has no area (infobox 280-64 BC only)."
+   }
+  },
+  {
+   "slug": "kingdom-of-pergamon",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/7",
+     "what": "A -217 loss of the whole 31 k km2 extension was given confidence 3, but the page names no land lost in 217.",
+     "why": "Attalus I page: 'Achaeus returned from victory in Selge in 217 BC and resumed hostilities with Attalus'; nothing on Attalus losing territory. The Kingdom of Pergamon page has him regain 'control over his territories' only after Achaeus' death, so a loss between 218 and 213 is a bridging reading.",
+     "fix": "confidence lowered to 1 (note extended).",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0-1",
+     "what is missing": "Seleucid overlordship of Philetaerus and Eumenes I (281-261) and the Galatian tribute until Attalus I refused (c. 238-235).",
+     "page to try": "https://en.wikipedia.org/wiki/Philetaerus"
+    },
+    {
+     "where": "/ledger/6-8",
+     "what is missing": "Which cities Attalus took in 218 and held after 213 (Aeolis, Teos, Colophon?); the counterpart for 220-213 is the usurper Achaeus, not the Seleucid throne.",
+     "page to try": "https://en.wikipedia.org/wiki/Achaeus_(general)"
+    },
+    {
+     "where": "/keyframe_review/5",
+     "what is missing": "Lycaonia (124 cells) and Pisidia in the -188 shape: Livy's Apamea list gives Eumenes Lycaonia; the pages opened do not.",
+     "page to try": "https://en.wikipedia.org/wiki/Eumenes_II"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Attalus_I",
+     "result": "not on page as a loss (Achaeus 'resumed hostilities' in 217) - confidence lowered to 1 by reviewer"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Pergamon",
+     "result": "confirmed (Antiochus put Achaeus to death the year after 214; 'Attalus regained control over his territories')"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Pergamon",
+     "result": "confirmed ('gave Mysia, Lydia, Phrygia, and Pamphylia to the kingdom of Pergamon')"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Pergamon",
+     "result": "confirmed (infobox: incorporated into the province of Asia 129 BC)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 143000,
+    "infobox_year": -188,
+    "cliopatria_km2": 176006,
+    "ratio": 1.23,
+    "acknowledged": true,
+    "note": "Figure is in the body text ('143,000 square kilometres' for the expanded kingdom, no year); the author ties it to c. 227 and compares both the -225 shape (0.27, acknowledged) and the -188 shape (1.23)."
+   }
+  },
+  {
+   "slug": "paphlagonia",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/identity/end, /ledger/3, /keyframe_review/2, /certainty/0",
+     "what": "The state ends -116 on a partition date that no opened page gives: the Kingdom of Pontus page leaves the partition undated and the Mithridates VI page dates it 108.",
+     "why": "See kingdom-of-pontus /ledger/11: Kingdom of Pontus page 'Mithridates and Nicomedes of Bithynia both invaded Paphlagonia and divided it amongst themselves' (no year; its only '116' is Ariarathes VI's murder); Mithridates VI page 'the Paphlagonian invasion of 108 BC'.",
+     "fix": "End -108; dissolve at -108 citing Mithridates_VI_of_Pontus; /keyframe_review/2 -126..-108; certainty to -108; wars[1] from -108.",
+     "applied": false
+    },
+    {
+     "where": "/identity/successors/0/note",
+     "what": "The note said the Kingdom of Pontus dossier marks the whole shape as contested; it records an outright gain.",
+     "why": "kingdom-of-pontus /ledger/11 is a gain of the whole Paphlagonia -127 shape, with no contest events.",
+     "fix": "Note rewritten to say so and to flag the Bithynia share.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/capitals",
+     "what is missing": "Capital, founding and princes (Pylaemenes, Morzius) - page silent; native Paphlagonia after the Senate order of 97 and under Pompey.",
+     "page to try": "https://en.wikipedia.org/wiki/Pylaemenes"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Pharnaces_I_of_Pontus",
+     "result": "confirmed (attack 'in the spring of 181 BC')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Pharnaces_I_of_Pontus",
+     "result": "confirmed (peace with 'cession of all his conquests in Galatia and Paphlagonia, with the exception of Sinope', 179)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Pontus",
+     "result": "mis-dated (partition undated on the page; Mithridates VI page gives 108)"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Paphlagonia",
+     "result": "confirmed as undated (Pylaimenes princes, no founding year; c1 honest)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 22923,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Region page, no area."
+   }
+  },
+  {
+   "slug": "kingdom-of-sophene",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/identity/capitals/0/to, /identity/capitals/1/to",
+     "what": "Both capitals ended -96 while the state ends -95.",
+     "why": "identity.end -95 (infobox 'Conquered by Tigranes the Great: 95 BC'); other dossiers end the last capital at the end year.",
+     "fix": "to set to -95.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/7-10",
+     "what is missing": "Who held the -63..113 cells: the page has Pompey install Tigranes the Younger and then cede 'the kingdom' to Ariobarzanes I of Cappadocia after 66 BCE, and 'Around 54 CE, the Romans installed Sohaemus of Emesa as King of Sophene'. The 54 CE client kingdom is a state the page attests; the dossier neither covers it nor lists it as a needed counterpart, and the page opened for it (Sohaemus of Armenia) is the wrong Sohaemus.",
+     "page to try": "https://en.wikipedia.org/wiki/Sohaemus_of_Emesa"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Dates of Zariadres' gains (Acilisene, Akisene); gazetteer lacks both names.",
+     "page to try": "https://en.wikipedia.org/wiki/Zariadres"
+    },
+    {
+     "where": "/identity/predecessors",
+     "what is missing": "The found counterpart is kingdom-of-armenia but the author's report asks for an orontid-armenia dossier; pick one slug.",
+     "page to try": "https://en.wikipedia.org/wiki/Orontid_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Sophene",
+     "result": "confirmed ('Most likely, Sophene emerged as a distinct kingdom' in the mid-3rd century BCE; year is Cliopatria's, c1 honest)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Sophene",
+     "result": "confirmed (after Antiochus III's defeat in 190 Zariadres 'took the royal title')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Sophene",
+     "result": "confirmed (Acilisene and Akisene named, undated; c1 honest)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Sophene",
+     "result": "confirmed (infobox 95 BC; Tigranes 'deposed Arsakes, the king of Sophene')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 23785,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page."
+   }
+  },
+  {
+   "slug": "revolt-of-aristonicus",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Aristonicus_of_Pergamon",
+     "result": "confirmed (claimed the throne after Attalus III's death in 133; revolt start undated, c2 honest; Leucae, Samos, Myndus, Colophon, Thyatira, Apollonis all named)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Aristonicus_of_Pergamon",
+     "result": "confirmed ('quelled by the Roman Republic in 129 BC')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No Cliopatria row; circles round named cities."
+   },
+   "note": "Tried: type (rebel, held cities 133-129), dates, cities, counterpart chain (Pergamon contest -133..-129, Roman Republic -129 gain of Asia). Could not break it. Samos was probably not Pergamene in 133; the predecessor text 'the cities were Pergamene' is loose but harmless."
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -281,
+    "type": "found",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -279,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Seleucid /ledger/14 loses Pontus to it in -279 (c1); Pontus is founded from nobody in -281 (Kingdom page: founded 281). Route to the seleucid-empire author (me-05)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -279,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Amastris (Kingdom page: captured 279). greek-city-states (eu-01) has no loss."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -183,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Sinope 183 (Paphlagonia page; Kingdom page 182). greek-city-states has no loss."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -182,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Coast east and west of Sinope (shape delta). greek-city-states has no loss."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -129,
+    "type": "gain",
+    "counterpart": "kingdom-of-pergamon"
+   },
+   "mirror": {
+    "slug": "kingdom-of-pergamon",
+    "year": -129,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Counterpart corrected by the reviewer from roman-republic."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -120,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -116,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Phrygia back to Rome: Pontus -120 (c1), Roman Republic /ledger/123 -116 (c2). Neither page opened dates it."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -116,
+    "type": "gain",
+    "counterpart": "paphlagonia"
+   },
+   "mirror": {
+    "slug": "paphlagonia",
+    "year": -116,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Both mis-dated: the partition is 108 (Mithridates VI page). Both go back to the author."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -116,
+    "type": "gain",
+    "counterpart": "galatia"
+   },
+   "mirror": {
+    "slug": "galatia",
+    "year": -108,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Galatia moved to -108 by the reviewer; Pontus /ledger/12 must follow."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -105,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -110,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Chersonesus: Pontus -105 (c1) vs greek-city-states /ledger/71 -110 (c2)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -105,
+    "type": "vassal_start",
+    "counterpart": "cimmerian-bosporus"
+   },
+   "mirror": {
+    "slug": "cimmerian-bosporus",
+    "year": -107,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "Bosporus records it at -107 (c2) in the vassal's own ledger with counterpart kingdom-of-pontus, against the schema (overlord records). Route to the cimmerian-bosporus author."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -101,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-cappadocia"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-cappadocia not written yet (me-05 part running in parallel)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -90,
+    "type": "gain",
+    "counterpart": "kingdom-of-cappadocia"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-cappadocia not written yet."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -89,
+    "type": "gain",
+    "counterpart": "kingdom-of-bithynia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-bithynia",
+    "year": -88,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "Type differs (gain vs occupation by Pontus) and year (-89 vs -88); Bithynia also has a -90 Pontic occupation Pontus lacks."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -88,
+    "type": "gain",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -88,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Roman Asia and Phrygia."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -88,
+    "type": "contest_start",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -88,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "greek-city-states records a Pontic occupation of Athens -88..-86; Pontus has only a contest with Rome."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -85,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -85,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Dardanus."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -85,
+    "type": "loss",
+    "counterpart": "kingdom-of-bithynia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-bithynia",
+    "year": -85,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "Same type disagreement as -89."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -85,
+    "type": "loss",
+    "counterpart": "kingdom-of-cappadocia"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-cappadocia not written yet."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -72,
+    "type": "occupation_start",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -72,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "Lucullus; both end -67."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -66,
+    "type": "occupation_start",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Roman Republic has no occupation of Pontus 66-63 (it has a -65 gain instead). Route to eu-03."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -63,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -65,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Western Pontus and Paphlagonia: Pontus -63 (Kingdom infobox 63) vs Roman Republic /ledger/167 -65 (c2)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -63,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Colchis to Rome (c2): no Roman Republic event (a client kingdom: vassal_start in the Roman ledger)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -63,
+    "type": "loss",
+    "counterpart": "galatia"
+   },
+   "mirror": {
+    "slug": "galatia",
+    "year": -63,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Lesser Armenia; Galatia's second -63 gain (eastern Pontus band) has no Pontus loss."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -63,
+    "type": "loss",
+    "counterpart": "cimmerian-bosporus"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Crimea (c1): cimmerian-bosporus has no gain."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pontus",
+    "year": -31,
+    "type": "gain",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Lesser Armenia to Polemon I (Polemon I page, 31 BC): Roman Republic has no loss (nor the -47 gain from Galatia)."
+  },
+  {
+   "event": {
+    "slug": "galatia",
+    "year": -279,
+    "type": "found",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -279,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Seleucid /ledger/11."
+  },
+  {
+   "event": {
+    "slug": "galatia",
+    "year": -63,
+    "type": "gain",
+    "counterpart": "kingdom-of-pontus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-pontus",
+    "year": -63,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Lesser Armenia matched; the eastern-Pontus border band has no Pontus loss."
+  },
+  {
+   "event": {
+    "slug": "galatia",
+    "year": -47,
+    "type": "loss",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Roman Republic has no -47 gain; the recipient is unknown on the page (probably Cappadocia)."
+  },
+  {
+   "event": {
+    "slug": "galatia",
+    "year": -36,
+    "type": "gain",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -36,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "After reviewer fix (was -37, nobody)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pergamon",
+    "year": -282,
+    "type": "found",
+    "counterpart": "kingdom-of-lysimachus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-lysimachus",
+    "year": null,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "Lysimachus' kingdom ends -281; found events need no mirror."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pergamon",
+    "year": -261,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -279,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Pergamon page: Eumenes I beat Antiochus I near Sardis in 261; Seleucid /ledger/13 has the loss at -279 (c1). Seleucid side should move to -261."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pergamon",
+    "year": -227,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -225,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Two years apart (Attalus I page: Sardis spring 228)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pergamon",
+    "year": -223,
+    "type": "loss",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Achaeus' recovery 223-221: no Seleucid gain."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pergamon",
+    "year": -218,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Land then held by the usurper Achaeus (king 220-213), not the Seleucid throne."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pergamon",
+    "year": -213,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "No Seleucid loss."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pergamon",
+    "year": -210,
+    "type": "gain",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Aegina: greek-city-states has no loss (the Aetolians held it in 210)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pergamon",
+    "year": -188,
+    "type": "gain",
+    "counterpart": "seleucid-empire"
+   },
+   "mirror": {
+    "slug": "seleucid-empire",
+    "year": -188,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Apamea."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pergamon",
+    "year": -129,
+    "type": "loss",
+    "counterpart": "kingdom-of-cappadocia"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-cappadocia not written yet."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-pergamon",
+    "year": -129,
+    "type": "dissolve",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -129,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Province of Asia."
+  },
+  {
+   "event": {
+    "slug": "paphlagonia",
+    "year": -116,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-pontus"
+   },
+   "mirror": {
+    "slug": "kingdom-of-bithynia",
+    "year": -127,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "Bithynia occupies coastal Paphlagonia -127..-94 (c1); Paphlagonia has no occupation event and ends at the (mis-dated) partition."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sophene",
+    "year": -256,
+    "type": "found",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-armenia (eu-19) not written yet."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-sophene",
+    "year": -95,
+    "type": "dissolve",
+    "counterpart": "kingdom-of-armenia"
+   },
+   "mirror": {
+    "slug": null,
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "kingdom-of-armenia not written yet; Cliopatria's Armenia holds the cells only from -80."
+  },
+  {
+   "event": {
+    "slug": "revolt-of-aristonicus",
+    "year": -129,
+    "type": "dissolve",
+    "counterpart": "roman-republic"
+   },
+   "mirror": {
+    "slug": "roman-republic",
+    "year": -129,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Covered by the Roman Republic's gain of the province of Asia."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Acilisene",
+   "kind": "region",
+   "used_in": "kingdom-of-sophene"
+  },
+  {
+   "name": "Akisene",
+   "kind": "region",
+   "used_in": "kingdom-of-sophene"
+  },
+  {
+   "name": "Arsamosata",
+   "kind": "place",
+   "used_in": "kingdom-of-sophene"
+  },
+  {
+   "name": "Carcathiocerta",
+   "kind": "place",
+   "used_in": "kingdom-of-sophene"
+  },
+  {
+   "name": "Aegina",
+   "kind": "place",
+   "used_in": "kingdom-of-pergamon"
+  },
+  {
+   "name": "Amastris",
+   "kind": "place",
+   "used_in": "kingdom-of-pontus"
+  },
+  {
+   "name": "Colophon",
+   "kind": "place",
+   "used_in": "revolt-of-aristonicus"
+  },
+  {
+   "name": "Leucae",
+   "kind": "place",
+   "used_in": "revolt-of-aristonicus"
+  },
+  {
+   "name": "Myndus",
+   "kind": "place",
+   "used_in": "revolt-of-aristonicus"
+  },
+  {
+   "name": "Thyatira",
+   "kind": "place",
+   "used_in": "revolt-of-aristonicus"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Client Kingdom of Sophene under Sohaemus of Emesa (Roman-installed, c. 54 CE)",
+   "suggested_slug": "sophene-client-kingdom",
+   "years": [
+    54,
+    105
+   ],
+   "note": "Kingdom of Sophene page; end unknown, Cliopatria's shape runs 43..105. Group me-06 or eu-19."
+  },
+  {
+   "name": "Achaeus' kingdom (Seleucid usurper in Asia Minor)",
+   "suggested_slug": "achaeus",
+   "years": [
+    -220,
+    -213
+   ],
+   "note": "Counterpart of Pergamon's 218 gain and 213 recovery; for me-05-x."
+  },
+  {
+   "name": "Native Paphlagonia after the partition",
+   "suggested_slug": "paphlagonia-native-princes",
+   "years": [
+    -96,
+    -65
+   ],
+   "note": "already in the author's list (me-05-x)"
+  },
+  {
+   "name": "Orontid Armenia",
+   "suggested_slug": "orontid-armenia",
+   "years": [
+    -326,
+    -190
+   ],
+   "note": "already in the author's list (eu-19)"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-me-05-d.md",
+ "problems": [
+  "WebFetch returns a model's answer, not the page text; the 'c. 116' partition line the author quoted was confirmed absent by a second targeted fetch of the Kingdom of Pontus page (it has no timeline).",
+  "Reviewer edits applied and re-validated (0 errors): kingdom-of-pontus /ledger/9 counterpart; galatia /ledger/5 year, /ledger/12 year+counterpart, /keyframe_review/7-8 years and shape_id; kingdom-of-pergamon /ledger/7 confidence; paphlagonia /identity/successors/0/note; kingdom-of-sophene capital end years. Read back after ~10 s: all present.",
+  "Schema vs reviewer brief: the schema puts vassal_start/vassal_end in the overlord's ledger only (counterpart = the vassal); the brief's mirror rule for vassals was not applied. cimmerian-bosporus records its Pontic vassalage in its own ledger, against the schema.",
+  "Routing: roman-republic (eu-03) needs -66..-63 occupation of Pontus, -63 Colchis, -47 Lesser Armenia, -31 Lesser Armenia, and its -65/-116 dates reconciled; seleucid-empire (me-05) -261 Pergamon, -223..-213 Achaeus; greek-city-states (eu-01) Amastris 279, Sinope 183, Aegina 210; kingdom-of-bithynia (me-05) the 89-85 occupation type and the Paphlagonia partition (108)."
+ ]
+}

@@ -1,0 +1,94 @@
+{
+ "window": "m1200-m1101",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Ramesses_VI",
+   "what": "Page: reign 'c.1144-1136 BC'; 'Egypt lost control of its last strongholds in Canaan around the time of Ramesses VI's reign'; 'The loss of all Asiatic territories'. A loss to nobody of Egypt's cells in Lebanon (35-cell spec, only Egypt's cells move). Trial: removes the 7 Egyptian cells still in Lebanon (north Beqaa, 34.15-34.45 N 36.3-36.5 E) at -1136, not ten (3 coastal cells already go at -1150 under the keyframe fixes); from -1136 Egypt holds nothing north of 31.6 N. Nothing else moves.",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Babylonia",
+   "what": "Page: 'Marduk-kabit-ahheshu (1155-1139 BC) to establish the Dynasty IV of Babylon, from Isin' and 'The new king successfully drove out the Elamites'. Completes the dossier's own -1153 gain from Elam; the 535-cell union only moves Elam's cells: trial moves exactly 8 (seven at 32.8-33.1 N 44.1-45.1 E round Babylon, one marsh cell at 30.34 N 46.32 E); afterwards Elam holds no cell west of 46.5 E. No other year changes.",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/2",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Mycenaean_Greece",
+   "what": "Page: 'The palace of Pylos ... was destroyed in c. 1180 BC'; Mycenaean Greece 'c. 1750 - c. 1050 BC'. Year and parties right, but the region (Pylos disc intersected with Cliopatria's -1200 Mycenaean Greece) held only 2 of the disc's 4 cells, so the two coastal cells at Pylos itself (37.06 N 21.67 E) and at 36.77 N 21.87 E, bordered only by Mycenaean Greece, stayed nobody's to the end of the window: the hole the entry names was only half filled.",
+   "fix": "Region replaced by the kingdom-of-pylos dossier's own disc {place: Pylos, km: 25} (4 cells) and a reviewer note appended; --check-patch ok; trial: all 4 cells pass from Pylos to Mycenaean Greece at -1180, nothing else changes.",
+   "applied": true
+  },
+  {
+   "entry": "events/3",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Mycenaean_Greece",
+   "what": "Page: second destruction of Mycenae 'c. 1190 BC or shortly thereafter', site 'reoccupied, but on a smaller scale'; Tiryns 'became the largest local center during the post-palatial period, in Late Helladic IIIC, c. 1200-1050 BC'. Gain at the kingdom-of-mycenae dissolve year (-1150); all 13 disc cells lie inside Cliopatria's -1150 shape and all 13 move; Mycenaean Greece's -1150 shape has no nobody's cell left.",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/4",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Middle_Assyrian_Empire",
+   "what": "Cancels the dossier's -1150 western gain (216-cell region, the same spec): the gain takes only nobody's land and this loss returns it the same year, so Assyria stays at the heartland -1150..-1115; the land returns with the -1114 keyframe. Page: infobox 'First period of decline: c. 1206-1115 BC', 'Second period of expansion: 1114-1056 BC'; Ashur-dan I and Ashur-resh-ishi I campaign only against Babylonia. Trial: identical to the published draft from -1114.",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kush",
+   "what": "Page: 'By 1200 BC, Egyptian involvement in the Dongola Reach was nonexistent.' The compiler takes the union of keyframes alive in a year (compile_dossiers.py docstring), so the 'wrong' -1240 entry (spec = its own shape, shapes.csv -1240..-1151) re-added 188 cells south of 20 N and 48 Syrian cells (32.0-34.3 N, 35.8-36.9 E) at -1200..-1151. Ending it at -1201 removes all 236 (trial); the start anchor m1200 is identical with and without the patch, so -1240..-1201 is unchanged. Cross-window (see problems).",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kush",
+   "what": "Same page sentence. Replaces Nubia-intersect-box by the box alone (28-37 E, 17-20 N); the shape's cells in the box are all Sudanese Nile cells. Removes the detached 9-cell piece at 19.05-19.77 N 33.68-33.98 E (above the Fourth Cataract, beyond the dossier's own southern edge); dossier years -1200..-1137 kept. 2146 cells.",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kush",
+   "what": "Same box fix in the -1150 keyframe; rest of the dossier's correction unchanged (1944 cells). Trial: the 9-cell speck is gone from -1150 to the end of the window. The keyframe has no from/to, so it stays alive -1150..-1001 and the cut also acts in m1100-m1001's years to Egypt's end (-1077); harmless (see problems).",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/3",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Middle_Assyrian_Empire",
+   "what": "Page: infobox 'First period of decline: c. 1206-1115 BC'; after Ashur-nirari III and Enlil-kudurri-usur 'Assyria became restricted mostly to just the Assyrian heartland'; Ninurta-apal-Ekur 'unable to do much about the collapse of the empire'. Heartland = Cliopatria Assyria -1000 (97 cells, 25,473 km2), the dossier's own assyria_-1055 spec. Trial: snap at -1200 removes 1396 cells; Assyria/Isuwa, Assyria/Neo-Hittite and Assyria/Elam conflicts vanish. Caveat in problems: the page still has 'the line of vassal rulers of Hanigalbat' under Enlil-kudurri-usur (c. 1196-1192), undated as to land.",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/4",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Middle_Assyrian_Empire",
+   "what": "Page: 'In his first year as king, Tiglath-Pileser defeated the Mushki'; 'The cities of northern Syria, which had ceased to pay tribute decades prior, were reconquered'; conquests 'to the other side of the Euphrates River' 'from my accession year to my fifth regnal year'; infobox 'Second period of expansion: 1114-1056 BC'. Same Cliopatria -1150 shape (1955 cells), valid -1114..-1101; snap at -1114 adds 1709 cells; draft identical to the published one from -1114 and at the end anchor (no Assyria change there). The page's 'several territories, especially in the west, were likely lost again before his death' lies after this window.",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch m1200-m1101 after the reviewer's fix: 10 entries, 10 ok, 0 rejected (keyframe_overrides/0 noted as outside the window). Trial (review stage): all 10 applied; against a no-patch baseline trial the start anchor m1200 is unchanged and the end anchor m1100 moves 41 cells (Egypt -16, Mycenaean Greece +17 nobody's cells, Elam to Babylonia 8).",
+ "problems": [
+  "cross-window: keyframe_overrides/0 (new-kingdom-of-egypt_-1240, -1240..-1201, spec = its own Cliopatria shape) acts in m1300-m1201's years; it changes nothing there (start anchor m1200 identical with and without the patch), but it now marks with verdict 'adjust' a shape the dossier calls wrong for -1240..-1201 (Amurru and Kadesh held 'for 90 years after the Kadesh page says they stayed Hittite'); m1300-m1201.json has no override of it. The window agent's dossier request (new-kingdom-of-egypt_-1300 and _-1240 corrections) stands.",
+  "cross-window, unreported by the window agent: keyframe_overrides/2 (new-kingdom-of-egypt_-1150, no from/to, alive -1150..-1001) also applies in m1100-m1001's years -1100..-1077; it only removes the same 9-cell speck above the Fourth Cataract there, which is wanted. m1100-m1001.json does not override this shape.",
+  "assyria: the Middle Assyrian Empire page keeps 'the line of vassal rulers of Hanigalbat' (Ili-ipadda, 'grand vizier and vassal king of Hanigalbat') under Enlil-kudurri-usur (king list c. 1196-1192), so Hanigalbat may have stayed under Assyria as a vassal into the 1190s; the patch draws it nobody's from -1200 on the page's 'restricted mostly to just the Assyrian heartland'. The page gives no extent or date for Hanigalbat's loss, so the entry passes; a dossier author may want a Hanigalbat vassal tint for about -1200..-1192.",
+  "assyria: the page dates the decline from c. 1206, so the heartland belongs from -1206 (m1300-m1201's last years); the 1 January -1200 anchor still shows the empire and the -1200 snap removes 1396 cells at once (the window agent reported this too).",
+  "kingdom-of-pylos and kingdom-of-mycenae: their successors notes say the land 'passed to no state' ('eu-01-a's convention for the palace destructions'); events/2 and events/3 override that convention for the land inside Mycenaean Greece's shape (holes in a state that lasts to c. 1050). The Mycenaean Greece page also says Mycenae's second destruction 'c. 1190 BC or shortly thereafter' 'marked the end of Mycenae as a major power', while the kingdom-of-mycenae dossier ends it -1150: a possible dossier request (end c. -1190), outside what a patch can fix.",
+  "events/0 moves 7 cells, not the ten its note names: the three Lebanese coastal cells (Byblos/Tripoli coast) already leave Egypt at -1150 once keyframe_overrides/0 stops the -1240 union; the result (no Egyptian cell north of 31.6 N from -1136) is right."
+ ]
+}

@@ -1,0 +1,1336 @@
+{
+ "batch_id": "eu-05-a",
+ "verdicts": [
+  {
+   "slug": "eastern-roman-empire",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/7..13 counterpart; /wars/4/belligerents",
+     "what": "Counterpart slug 'hunnic-empire' does not exist as a dossier: huns.json merges both Cliopatria rows (cliopatria_names ['Huns','Hunnic Empire'], 106-469) under the earlier slug per the Q45813 rule.",
+     "why": "history/polities/huns.json identity.cliopatria_names; author brief section 6 (shared Wikidata Q45813, one dossier under the earlier slug).",
+     "fix": "Replaced 'hunnic-empire' with 'huns' in the 7 ledger counterparts and the war belligerents (cliopatria region specs naming 'Hunnic Empire' left as they are). Re-validated: 0 errors.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/15/counterpart; /ledger/18/counterpart",
+     "what": "Counterpart written as the name 'Kingdom of Odoacer' although history/polities/kingdom-of-odoacer.json now exists (reviewed pass in eu-04-b).",
+     "why": "history/polities/kingdom-of-odoacer.json (476/9-493/3).",
+     "fix": "Replaced with 'kingdom-of-odoacer'. Re-validated: 0 errors.",
+     "applied": true
+    },
+    {
+     "where": "/identity/rulers/15/to",
+     "what": "Heraclius runs to 641, outside the dossier's life (end 632); rulers must lie inside the life.",
+     "why": "Reviewer brief 2.2; identity.end.year = 632; the ruler note already says the reign continues in byzantine-empire.",
+     "fix": "Set 'to' to 632 (note keeps the full reign dates). Re-validated: 0 errors.",
+     "applied": true
+    },
+    {
+     "where": "/ledger (missing, between /ledger/5 and /ledger/6)",
+     "what": "No mirror of the Hunnic occupation of 408-409 that huns.json records (/ledger/6 occupation_start 408, /ledger/7 occupation_end 409/3, conf 2/3).",
+     "why": "Uldin page: 'In the summer of 408 ... they entered the Balkans and Thrace.' 'The Huns captured Castra Martis in Dacia Ripensis.' Uldin 'was forced to re-cross the Danube by March 23, 409.'",
+     "fix": "Add occupation_start 408 (month 7 or none) and occupation_end 409/3, counterpart 'huns', region {'place': 'Castra Martis'} as a coordinate (Kula, Bulgaria, about 22.52 E 43.89 N, km 40) or the huns dossier's {'region': 'Moesia'} with text 'Castra Martis in Dacia Ripensis', source https://en.wikipedia.org/wiki/Uldin (add to sources), conf 3 for the end and 2 for the start; add a war entry 'Uldin's invasion of Thrace' 408-409.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2/region; /ledger/5/region",
+     "what": "The Visigothic occupation is drawn over Thessaly, Central Greece, Attica, the Peloponnese and Epirus for all of 395-401, although the event's own region text ('... the Peloponnese (395-397), then Epirus (397-401)') and /keyframe_review/2 ('Greece returns but Epirus ...') say Greece was free from 397: the map hatches Greece for four years too many.",
+     "why": "Alaric I page: Stilicho 'pushed Alaric's forces north into Epirus'; in 397 Eutropius 'established Alaric as magister militum per Illyricum'.",
+     "fix": "Add an occupation_end 397, counterpart 'visigoths', region union Thessaly + Central Greece + Attica + Peloponnese (source Alaric_I, conf 2), and narrow /ledger/5 (401 occupation_end) to {'region': 'Epirus'}; keep /ledger/2's text.",
+     "applied": false
+    },
+    {
+     "where": "/wars (missing); /ledger (missing contest pair 467-469)",
+     "what": "Dengizich's war on the Eastern Empire (467-469) is absent, though /ledger/13's note quotes 'In 469, Dengizich was defeated and killed in Thrace' and huns.json carries contest_start 467 / contest_end 469 with eastern-roman-empire over Moesia + Thrace.",
+     "why": "Huns page (in sources) as quoted in /ledger/13; huns.json /ledger/19-20 (source Dengizich).",
+     "fix": "Add a war 'Dengizich's war' 467-469, belligerents eastern-roman-empire and huns, zone Moesia + Thrace, and a contest_start 467 / contest_end 469 pair (counterpart 'huns'), or a war with empty zones and the reason if no ground changed hands.",
+     "applied": false
+    },
+    {
+     "where": "/wars (missing)",
+     "what": "Garmul's war against the Eastern Romans in Africa (570-578), listed in mauro-roman-kingdom.json's wars, has no entry; the dossier's Moorish wars end in 548.",
+     "why": "history/polities/mauro-roman-kingdom.json wars: 'Garmul's war on the Eastern Romans' 570-578.",
+     "fix": "Add the war (Praetorian prefecture of Africa page or the Mauro-Roman Kingdom page), with empty zones and the reason if no ground changed hands; not blocking on its own.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "Date of the Hunnic withdrawal after the 395 raid (401 here, 396 in huns.json; both conf 1); the two dossiers must agree.",
+     "page to try": "https://en.wikipedia.org/wiki/Eutropius_(consul_399)"
+    },
+    {
+     "where": "/ledger/13",
+     "what is missing": "Year and agent of the Crimean (Cherson/Bosporus) gain of 469; huns.json hands Dobruja, not the Crimea, to the empire at 469.",
+     "page to try": "https://en.wikipedia.org/wiki/Bosporan_Kingdom"
+    },
+    {
+     "where": "/ledger/22",
+     "what is missing": "Gepid seizure of the Danube bank in 510 (Cliopatria's year only).",
+     "page to try": "https://en.wikipedia.org/wiki/Gepids"
+    },
+    {
+     "where": "/ledger/45",
+     "what is missing": "Return of the Gepid bank in 555.",
+     "page to try": "https://en.wikipedia.org/wiki/Sirmium"
+    },
+    {
+     "where": "/ledger/46",
+     "what is missing": "Avar cells at the Danube delta in 561 (pages give 558 or 568).",
+     "page to try": "https://en.wikipedia.org/wiki/Pannonian_Avars"
+    },
+    {
+     "where": "/ledger/59",
+     "what is missing": "Recapture of Singidunum: the Avar-Byzantine wars page shows it Roman by 588 (seven-day siege abandoned); could rise to conf 2 with that quote.",
+     "page to try": "https://en.wikipedia.org/wiki/Avar%E2%80%93Byzantine_wars"
+    },
+    {
+     "where": "/ledger/63",
+     "what is missing": "Inland contraction of Spania in 592 (Cliopatria's year).",
+     "page to try": "https://en.wikipedia.org/wiki/Spania"
+    },
+    {
+     "where": "/ledger/71",
+     "what is missing": "Interruption of the Ghassanid client relation 613.",
+     "page to try": "https://en.wikipedia.org/wiki/Ghassanids"
+    },
+    {
+     "where": "/ledger/77",
+     "what is missing": "Lazica's passage to Persia in 617 (Cliopatria's year); /ledger/83 regains it in 626 on a general Caucasus-campaign quote that names neither Colchis nor Iberia.",
+     "page to try": "https://en.wikipedia.org/wiki/Lazica"
+    },
+    {
+     "where": "/ledger/78",
+     "what is missing": "As /ledger/77: the Persian hold on Colchis and western Iberia 617-626.",
+     "page to try": "https://en.wikipedia.org/wiki/Byzantine%E2%80%93Sasanian_War_of_602%E2%80%93628"
+    },
+    {
+     "where": "/ledger/88",
+     "what is missing": "Date Rhodes returned (628 here).",
+     "page to try": "https://en.wikipedia.org/wiki/Rhodes"
+    },
+    {
+     "where": "/ledger/91",
+     "what is missing": "Resumption of the Ghassanid client relation 629.",
+     "page to try": "https://en.wikipedia.org/wiki/Ghassanids"
+    },
+    {
+     "where": "/ledger/93",
+     "what is missing": "632 dissolve is a periodisation hand-over to byzantine-empire (by design; nothing to find).",
+     "page to try": "https://en.wikipedia.org/wiki/Byzantine_Empire"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Attila",
+     "result": "confirmed: 'The Hunnish army sacked Margus and Viminacium, and then took Singidunum (Belgrade) and Sirmium' (441)."
+    },
+    {
+     "where": "/ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Gothic_War_(535%E2%80%93554)",
+     "result": "confirmed: 'In March 536, Mundus overran Dalmatia and captured ... Salona'; 'by late June, the whole of Dalmatia was in Byzantine hands'."
+    },
+    {
+     "where": "/ledger/33",
+     "page": "https://en.wikipedia.org/wiki/Gothic_War_(535%E2%80%93554)",
+     "result": "confirmed: 'In May 540, Belisarius and his army entered Ravenna'."
+    },
+    {
+     "where": "/ledger/47",
+     "page": "https://en.wikipedia.org/wiki/Gothic_War_(535%E2%80%93554)",
+     "result": "confirmed: 'not until 562 that their last strongholds, the cities of Verona and Brixia, were subjugated'."
+    },
+    {
+     "where": "/ledger/36",
+     "page": "https://en.wikipedia.org/wiki/Gothic_War_(535%E2%80%93554)",
+     "result": "confirmed: Naples surrendered on terms in 543."
+    },
+    {
+     "where": "/ledger/53",
+     "page": "https://en.wikipedia.org/wiki/Byzantine%E2%80%93Sasanian_War_of_572%E2%80%93591",
+     "result": "confirmed: Dara captured 'after a four-month siege', 573."
+    },
+    {
+     "where": "/ledger/60",
+     "page": "https://en.wikipedia.org/wiki/Byzantine%E2%80%93Sasanian_War_of_572%E2%80%93591",
+     "result": "confirmed: Martyropolis 'fell to the Persians through the treachery of an officer named Sittas', 589."
+    },
+    {
+     "where": "/ledger/61",
+     "page": "https://en.wikipedia.org/wiki/Byzantine%E2%80%93Sasanian_War_of_572%E2%80%93591",
+     "result": "confirmed: Khosrow II 'returned Dara and Martyropolis'; 'gives the Byzantine Empire most of Persian Armenia and western half of Iberia' (591)."
+    },
+    {
+     "where": "/ledger/51",
+     "page": "https://en.wikipedia.org/wiki/Byzantine%E2%80%93Sasanian_War_of_572%E2%80%93591",
+     "result": "confirmed: Armenian rebellion 'began in 571'; direct hostilities early 572 (war entry says 572; acceptable)."
+    },
+    {
+     "where": "/ledger/56",
+     "page": "https://en.wikipedia.org/wiki/Avar%E2%80%93Byzantine_wars",
+     "result": "confirmed: Sirmium 'fell in c. 581, or possibly 582'."
+    },
+    {
+     "where": "/ledger/58",
+     "page": "https://en.wikipedia.org/wiki/Avar%E2%80%93Byzantine_wars",
+     "result": "confirmed: 'The Avars took the cities of Augustae, Singidunum, and Viminacium in 583'."
+    },
+    {
+     "where": "/ledger/59",
+     "page": "https://en.wikipedia.org/wiki/Avar%E2%80%93Byzantine_wars",
+     "result": "conf 1 event supported indirectly: 'In 588, they abandoned the siege of Singidunum after only seven days', so the city was Roman by 588; no recapture date."
+    },
+    {
+     "where": "/ledger/84",
+     "page": "https://en.wikipedia.org/wiki/Avar%E2%80%93Byzantine_wars",
+     "result": "confirmed: assault from 29 June 626, land assaults of 6-7 August repelled."
+    },
+    {
+     "where": "/ledger/66",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Persian_Wars",
+     "result": "confirmed: 'Dara fell after a nine-month siege' (604)."
+    },
+    {
+     "where": "/ledger/68",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Persian_Wars",
+     "result": "confirmed: 'in 611 they overran Syria and entered Anatolia, occupying Caesarea'."
+    },
+    {
+     "where": "/ledger/69",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Persian_Wars",
+     "result": "confirmed: 'Having expelled the Persians from Anatolia in 612'."
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Persian_Wars",
+     "result": "confirmed: 'Finally in 504, the Romans gained control through the renewed investment of Amida'; the Anastasian War page gives no year."
+    },
+    {
+     "where": "/ledger/80",
+     "page": "https://en.wikipedia.org/wiki/Roman%E2%80%93Persian_Wars",
+     "result": "undated there ('Over the following decade the Persians were able to conquer Palestine, Egypt, Rhodes ...'); the 622/623 date rests on the 602-628 war page, not opened; conf 2 acceptable."
+    },
+    {
+     "where": "/ledger/79",
+     "page": "https://en.wikipedia.org/wiki/Sasanian_conquest_of_Egypt",
+     "result": "confirmed: 'Alexandria was then betrayed to the Persians by a certain Peter in June 619'; 'by 621, the province was securely in Persian hands'."
+    },
+    {
+     "where": "/ledger/90",
+     "page": "https://en.wikipedia.org/wiki/Sasanian_conquest_of_Egypt",
+     "result": "confirmed: 'in the summer of 629 the Persian troops began leaving Egypt'."
+    },
+    {
+     "where": "/ledger/81",
+     "page": "https://en.wikipedia.org/wiki/Spania",
+     "result": "confirmed: 'by 624 the entire province of Spania was in Visigothic hands save the Balearic Islands'."
+    },
+    {
+     "where": "/ledger/52",
+     "page": "https://en.wikipedia.org/wiki/Spania",
+     "result": "confirmed: Medina Sidonia and Cordoba retaken by Leovigild in 572."
+    },
+    {
+     "where": "/ledger/75",
+     "page": "https://en.wikipedia.org/wiki/Spania",
+     "result": "confirmed at conf 2: Sisebut's expeditions 'in 614 and 615', Malaga conquered 'before 619'."
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Alaric_I",
+     "result": "confirmed: in 399 'they nominally transferred Alaric's province to the West'; invasion of Italy late 401 (Halsall) or spring 402 (Kulikowski)."
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2350000,
+    "infobox_year": 457,
+    "cliopatria_km2": 1984480,
+    "ratio": 0.84,
+    "acknowledged": true,
+    "also": "infobox 3,400,000 km2 (565) vs shape 561-566 2,602,791 km2: ratio 0.77; both quoted correctly in /keyframe_review/0 and the notes"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 395,
+    "type": "vassal_start",
+    "counterpart": "lazica",
+    "where": "/ledger/0"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-19, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 395,
+    "type": "occupation_start",
+    "counterpart": "huns",
+    "where": "/ledger/1"
+   },
+   "mirror": {
+    "slug": "huns",
+    "year": 395,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "huns /ledger/4"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 395,
+    "type": "occupation_start",
+    "counterpart": "visigoths",
+    "where": "/ledger/2"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 395,
+    "type": "found",
+    "counterpart": "roman-empire",
+    "where": "/ledger/3"
+   },
+   "mirror": {
+    "slug": "roman-empire",
+    "year": 395,
+    "type": "split"
+   },
+   "status": "matched",
+   "note": "roman-empire /ledger/131 split eastern-roman-empire 395/1"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 401,
+    "type": "occupation_end",
+    "counterpart": "huns",
+    "where": "/ledger/4"
+   },
+   "mirror": {
+    "slug": "huns",
+    "year": 396,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "5 years apart, both conf 1: ERE follows Cliopatria's 402 shape, huns ends in 396; a gap-filler should date the withdrawal and both adopt it"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 401,
+    "type": "occupation_end",
+    "counterpart": "visigoths",
+    "where": "/ledger/5"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 408,
+    "type": "occupation_start",
+    "counterpart": "eastern-roman-empire",
+    "where": "/ledger/6"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "ERE lacks the 408-409 Uldin occupation (fix listed for ERE)"
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 409,
+    "type": "occupation_end",
+    "counterpart": "eastern-roman-empire",
+    "where": "/ledger/7"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "as above"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 437,
+    "type": "gain",
+    "counterpart": "western-roman-empire",
+    "where": "/ledger/6"
+   },
+   "mirror": {
+    "slug": "western-roman-empire",
+    "year": 437,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "WRE /ledger/25 (added after the eu-04-b review)"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 441,
+    "type": "loss",
+    "counterpart": "huns",
+    "where": "/ledger/7"
+   },
+   "mirror": {
+    "slug": "huns",
+    "year": 441,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "huns records only a contest 441-443; the Attila page says the Huns 'took Singidunum (Belgrade) and Sirmium': huns should add the 441 gain"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 441,
+    "type": "contest_start",
+    "counterpart": "huns",
+    "where": "/ledger/8"
+   },
+   "mirror": {
+    "slug": "huns",
+    "year": 441,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "years differ: ERE contest 441-449, huns 441-443 and 447-448"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 447,
+    "type": "loss",
+    "counterpart": "huns",
+    "where": "/ledger/9"
+   },
+   "mirror": {
+    "slug": "huns",
+    "year": 447,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "huns records a contest 447-448 but no gain of the strip south of the Danube"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 449,
+    "type": "contest_end",
+    "counterpart": "huns",
+    "where": "/ledger/10"
+   },
+   "mirror": {
+    "slug": "huns",
+    "year": 448,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "ERE closes in 449, huns in 448 (pages disagree 447/448/449)"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 451,
+    "type": "gain",
+    "counterpart": "huns",
+    "where": "/ledger/11"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "huns has no 451 loss of the Danube strip and cities to the empire"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 455,
+    "type": "gain",
+    "counterpart": "huns",
+    "where": "/ledger/12"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "huns has no 455 loss to the empire (its 455 loss is Pannonia to ostrogoths)"
+  },
+  {
+   "event": {
+    "slug": "huns",
+    "year": 467,
+    "type": "contest_start",
+    "counterpart": "eastern-roman-empire",
+    "where": "/ledger/19"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "ERE has no Dengizich war or contest 467-469 (fix listed for ERE)"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 469,
+    "type": "gain",
+    "counterpart": "huns",
+    "where": "/ledger/13"
+   },
+   "mirror": {
+    "slug": "huns",
+    "year": 469,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "huns dissolves to nobody in 469 and names Dobruja (Ernak's Huns) as the land passing to the empire; ERE gains the Crimea (conf 1): land disagrees"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 473,
+    "type": "vassal_start",
+    "counterpart": "ghassanids",
+    "where": "/ledger/14"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 476,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-odoacer",
+    "where": "/ledger/15"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-odoacer.json has no vassal_start toward eastern-roman-empire (route to its owner, eu-04)"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 483,
+    "type": "vassal_start",
+    "counterpart": "ostrogoths",
+    "where": "/ledger/16"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 488,
+    "type": "vassal_end",
+    "counterpart": "ostrogoths",
+    "where": "/ledger/17"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 493,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-odoacer",
+    "where": "/ledger/18"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kingdom-of-odoacer.json ends 493/3 by dissolve to 'ostrogoths' with no vassal_end; acceptable once its vassal_start is added"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 493,
+    "type": "vassal_start",
+    "counterpart": "ostrogothic-kingdom",
+    "where": "/ledger/19"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ostrogothic-kingdom has no dossier (eu-06 not run); kingdom-of-odoacer hands Italy to 'ostrogoths' in 493 while ERE names 'ostrogothic-kingdom' (Cliopatria row from 500): eu-06 should settle the slug for 493-499"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 502,
+    "type": "occupation_start",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/20"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 504,
+    "type": "occupation_end",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/21"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 510,
+    "type": "loss",
+    "counterpart": "kingdom-of-the-gepids",
+    "where": "/ledger/22"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 533,
+    "type": "gain",
+    "counterpart": "vandal-kingdom",
+    "where": "/ledger/25"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 534,
+    "type": "gain",
+    "counterpart": "vandal-kingdom",
+    "where": "/ledger/27"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 535,
+    "type": "vassal_end",
+    "counterpart": "ostrogothic-kingdom",
+    "where": "/ledger/28"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 535,
+    "type": "gain",
+    "counterpart": "ostrogothic-kingdom",
+    "where": "/ledger/29"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 536,
+    "type": "gain",
+    "counterpart": "ostrogothic-kingdom",
+    "where": "/ledger/30"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 536,
+    "type": "gain",
+    "counterpart": "ostrogothic-kingdom",
+    "where": "/ledger/31"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 540,
+    "type": "gain",
+    "counterpart": "ostrogothic-kingdom",
+    "where": "/ledger/33"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 541,
+    "type": "vassal_end",
+    "counterpart": "lazica",
+    "where": "/ledger/34"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-19, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 543,
+    "type": "loss",
+    "counterpart": "ostrogothic-kingdom",
+    "where": "/ledger/36"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 546,
+    "type": "loss",
+    "counterpart": "ostrogothic-kingdom",
+    "where": "/ledger/38"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 547,
+    "type": "gain",
+    "counterpart": "ostrogothic-kingdom",
+    "where": "/ledger/39"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 550,
+    "type": "loss",
+    "counterpart": "ostrogothic-kingdom",
+    "where": "/ledger/41"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 551,
+    "type": "vassal_start",
+    "counterpart": "lazica",
+    "where": "/ledger/42"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-19, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 552,
+    "type": "gain",
+    "counterpart": "visigothic-kingdom",
+    "where": "/ledger/43"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 552,
+    "type": "gain",
+    "counterpart": "ostrogothic-kingdom",
+    "where": "/ledger/44"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 555,
+    "type": "gain",
+    "counterpart": "kingdom-of-the-gepids",
+    "where": "/ledger/45"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 561,
+    "type": "loss",
+    "counterpart": "avar-khaganate",
+    "where": "/ledger/46"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 562,
+    "type": "gain",
+    "counterpart": "ostrogothic-kingdom",
+    "where": "/ledger/47"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 567,
+    "type": "gain",
+    "counterpart": "kingdom-of-the-gepids",
+    "where": "/ledger/49"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 569,
+    "type": "loss",
+    "counterpart": "lombards",
+    "where": "/ledger/50"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 572,
+    "type": "loss",
+    "counterpart": "visigothic-kingdom",
+    "where": "/ledger/52"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 573,
+    "type": "loss",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/53"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 577,
+    "type": "loss",
+    "counterpart": "duchy-of-benevento",
+    "where": "/ledger/54"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-13, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 577,
+    "type": "loss",
+    "counterpart": "duchy-of-spoleto",
+    "where": "/ledger/55"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-13, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 582,
+    "type": "loss",
+    "counterpart": "avar-khaganate",
+    "where": "/ledger/56"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 583,
+    "type": "loss",
+    "counterpart": "avar-khaganate",
+    "where": "/ledger/58"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 588,
+    "type": "gain",
+    "counterpart": "avar-khaganate",
+    "where": "/ledger/59"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 589,
+    "type": "loss",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/60"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 591,
+    "type": "gain",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/61"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 592,
+    "type": "loss",
+    "counterpart": "visigothic-kingdom",
+    "where": "/ledger/63"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 603,
+    "type": "loss",
+    "counterpart": "kingdom-of-italy",
+    "where": "/ledger/64"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-13 (row to be split; Lombard kingdom slug may change), which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 604,
+    "type": "loss",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/66"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 610,
+    "type": "loss",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/67"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 611,
+    "type": "occupation_start",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/68"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 612,
+    "type": "occupation_end",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/69"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 613,
+    "type": "loss",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/70"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 613,
+    "type": "vassal_end",
+    "counterpart": "ghassanids",
+    "where": "/ledger/71"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 614,
+    "type": "loss",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/72"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 614,
+    "type": "loss",
+    "counterpart": "nobody",
+    "where": "/ledger/73"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 615,
+    "type": "loss",
+    "counterpart": "avar-khaganate",
+    "where": "/ledger/74"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 615,
+    "type": "loss",
+    "counterpart": "visigothic-kingdom",
+    "where": "/ledger/75"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 617,
+    "type": "loss",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/76"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 617,
+    "type": "vassal_end",
+    "counterpart": "lazica",
+    "where": "/ledger/77"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-19, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 617,
+    "type": "loss",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/78"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 619,
+    "type": "loss",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/79"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 623,
+    "type": "occupation_start",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/80"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 624,
+    "type": "loss",
+    "counterpart": "visigothic-kingdom",
+    "where": "/ledger/81"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 626,
+    "type": "vassal_start",
+    "counterpart": "lazica",
+    "where": "/ledger/82"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-19, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 626,
+    "type": "gain",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/83"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 626,
+    "type": "occupation_start",
+    "counterpart": "avar-khaganate",
+    "where": "/ledger/84"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 626,
+    "type": "occupation_end",
+    "counterpart": "avar-khaganate",
+    "where": "/ledger/85"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 627,
+    "type": "gain",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/87"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 628,
+    "type": "occupation_end",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/88"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 629,
+    "type": "gain",
+    "counterpart": "sasanian-empire",
+    "where": "/ledger/90"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 629,
+    "type": "vassal_start",
+    "counterpart": "ghassanids",
+    "where": "/ledger/91"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by me-06, which has not run"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 630,
+    "type": "loss",
+    "counterpart": "nobody",
+    "where": "/ledger/92"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "eastern-roman-empire",
+    "year": 632,
+    "type": "dissolve",
+    "counterpart": "byzantine-empire",
+    "where": "/ledger/93"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier yet; owned by eu-05 sibling part (not written yet), which has not run"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Rhodes",
+   "kind": "place",
+   "used_in": "eastern-roman-empire"
+  },
+  {
+   "name": "Dara",
+   "kind": "place",
+   "used_in": "eastern-roman-empire"
+  },
+  {
+   "name": "Martyropolis",
+   "kind": "place",
+   "used_in": "eastern-roman-empire"
+  },
+  {
+   "name": "Viminacium",
+   "kind": "place",
+   "used_in": "eastern-roman-empire"
+  },
+  {
+   "name": "Castra Martis",
+   "kind": "place",
+   "used_in": "eastern-roman-empire (requested fix for 408-409)"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Moorish kingdoms of Byzacena and the Aures (Antalas, Iaudas), the 534-548 'Mauri' counterpart",
+   "suggested_slug": "kingdom-of-the-aures",
+   "years": [
+    534,
+    548
+   ],
+   "note": "the author's suggested slug mauro-roman-kingdom is now taken by the western (Altava) kingdom, 429-578, which records no 534-548 contest with the empire"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-05-a.md",
+ "problems": [
+  "Author's 'Kingdom of Odoacer' counterpart now has a dossier (kingdom-of-odoacer.json, eu-04-b) that lacks the vassal relation to the East 476-493; route to its owner.",
+  "huns.json (merged Huns + Hunnic Empire) records the 441-451 Danube losses as contests only and lacks the 451/455 returns; route those mismatches to the huns owner.",
+  "Validator keeps two intended warnings (/ledger/82 lazica, /ledger/91 ghassanids vassal_start without end: relations run to 632 and continue under byzantine-empire).",
+  "No page failed to load for the reviewer."
+ ]
+}

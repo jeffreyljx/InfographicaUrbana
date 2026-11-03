@@ -1,0 +1,93 @@
+{
+ "batch_id": "fx-13",
+ "checks": [
+  {
+   "item": "F038",
+   "verdict": "pass",
+   "what": "golden-horde ledger merge with blue-horde moved 1381 to 1380. compile_dossiers.py merge() (lines 1394-1411) was read: if the counterpart is dead and this state already holds the region, it blanks those cells. blue-horde ends in 1380 with its own merge and dissolve to golden-horde, so the old 1381 merge set the Horde's own cells to nobody. The Blue Horde 1375 shape has 6,934 cells, and its admin-1 counts (Volgograd 441, West Kazakhstan 551, Orenburg 341, Bashkortostan 318) exactly match the snap's added places. The page date is supported: Blue Horde page 'He united the Blue Horde with his own White Horde and created the Golden Horde in 1380'; Tokhtamysh page 'reunified the Golden Horde in 1380-1381'. The 1357 loss to jalayirid-sultanate was widened to East+West Azarbaijan; Golden Horde page: 'quickly lost Azerbaijan to the Jalayir king Shaikh Uvais in 1357'. The new 1357 loss to nobody resolves to 517 cells, matching the snap's removed places (Zanjan, Ardebil, Kordestan, Qazvin, Gilan). It has 0 cells in common with the Horde's own 1344 and 1352 outlines, so it removes only what chobanids.json handed over in 1357. Within 1357, chobanids' events sort before golden-horde's (same month, lower dossier id), so the order works. Jani Beg page: winter 1356-1357 attack on 'the region of Azerbaijan', a governor installed at Tabriz who 'declared independence' once the armies left; Mubariz al-Din 'withdrew from the region as he could not hold it'; 'This resulted in the Jalayirids annexing the region'. Quotes in the notes match the pages. Validates OK.",
+   "page": "https://en.wikipedia.org/wiki/Blue_Horde ; https://en.wikipedia.org/wiki/Jani_Beg ; https://en.wikipedia.org/wiki/Golden_Horde ; https://en.wikipedia.org/wiki/Tokhtamysh",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F101",
+   "verdict": "pass",
+   "what": "Kept, and the reasoning holds. The disputed 273 cells (Krasnodar 117, Karachay-Cherkess 50, Kabardin-Balkar 39, Adygey 32, Stavropol 27, North Ossetia 8) have centroid 44.25 N and max latitude 45.24, so they lie in the trans-Kuban foothills. Circassia page: 'Grand Prince of Zichia (Circassia) Verzacht' in 1333, 'In 1395 Circassians fought violent wars against Tamerlane'. It names no vassalage or tribute to the Golden Horde. One undated sentence has Circassians 'retreat to the back of the Kuban River' after Golden Horde attacks, which fits Circassia holding the land south of the Kuban. The fixer's note says no page dates the Kuban line before 1438; that is true, but it misses this undated sentence. No change needed.",
+   "page": "https://en.wikipedia.org/wiki/Circassia",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F152",
+   "verdict": "pass",
+   "what": "jalayirid-sultanate: the found region and keyframes 1340, 1344, 1358, 1363, 1375 and 1386 now subtract Chahar Mahall and Bakhtiari (16 cells in the outline) and Idaj at lon 49.87 / lat 31.83 within 60 km (28 cells). The coordinates are Izeh's. The hazaraspids dossier already draws exactly these specs. Hazaraspids page: the capital Idaj, 'located in present-day northern Khuzestan'; the dynasty ruled 'essentially in Lorestan'; under Pashang (1355-1378) Idaj 'temporarily fell into' Muzaffarid hands. Hasan Buzurg page: 'Despite all loss Hasan Buzurg retained control of Diyar Bakr, Iraq, Khuzestan and Baghdad' (undated), so keeping the rest of Khuzestan with the Jalayirids is defensible. The dossier change is good. The hazaraspids handoff is not (see the next item).",
+   "page": "https://en.wikipedia.org/wiki/Hazaraspids ; https://en.wikipedia.org/wiki/Hasan_Buzurg",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F152 handoff (hazaraspids)",
+   "verdict": "fail",
+   "what": "The handoff asks to narrow hazaraspids' Khuzestan to the Idaj district in keyframes 1274 and 1330 and ledger/1, on the ground that 'no page opened gives the Hazaraspids the Khuzestan plain'. The Hazaraspids page, which the fixer opened, contradicts this. It says Yusuf Shah I 'added Khuzestan' (the regnal list gives r. 1274-1288) and Rukn al-Din Yusuf Shah II (r. 1330-1340) 'annexed the cities of Shushtar, Hoveizeh and Basra'. Shushtar and Hoveizeh are on the Khuzestan plain. So the 1274-1339 Khuzestan claim is supported, and only the 1340-1395 overlap with the Jalayirids is genuinely disputed (Hasan Buzurg page: Khuzestan retained after the 1338 peace, undated).",
+   "page": "https://en.wikipedia.org/wiki/Hazaraspids",
+   "fix": "Do not apply the hazaraspids handoff as written. Keep Khuzestan in hazaraspids_1274 and _1330 and in ledger/1 for 1274-1339. If anything, record the 1340-1395 Khuzestan plain as a contest_start/contest_end pair between hazaraspids and jalayirid-sultanate (Hazaraspids page: Shushtar and Hoveizeh annexed under Yusuf Shah II; Hasan Buzurg page: Khuzestan kept after late 1338), or leave the size rule's result.",
+   "applied": false
+  },
+  {
+   "item": "F307",
+   "verdict": "pass",
+   "what": "Skipped, and correctly: data/hierarchy.csv has 'principality-of-novgorod-seversk,golden-horde,1294,1352,vassal' and a Lithuania constituent row from 1357, so mirror vassal events would only duplicate the tint.",
+   "page": "",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F308",
+   "verdict": "pass",
+   "what": "golden-horde: the found region and keyframes 1294-1352, 1381, 1385 and 1395 now subtract country Georgia. That is 156 cells in the 1294/1305/1314/1326 outlines and 2 Svaneti cells in 1333-1395 (gazetteer counts confirmed). Golden Horde page: the Horde 'bordering the Caucasus Mountains and the territories of the Mongol dynasty known as the Ilkhanate'; Tode Mongke 'might have had an interest in Azerbaijan and Georgia, which were both ruled by the Ilkhans'. Berke's Tiflis entries are campaigns. The cut is supported. One error in the fixer's notes and report (not in the dossier): 'The 1356 Tiflis raid is on no page opened' is wrong. The Jalayirid Sultanate page the fixer opened has 'Jani Beg occupied the Georgian capital of Tiflis in 1356, and issued his own coinage there'. Tiflis is not inside the 1333-1352 outlines, so the cut is unaffected. A 1356-1357 occupation_start/occupation_end of {place: Tbilisi, km: 40} against kingdom-of-georgia could optionally be added from that sentence.",
+   "page": "https://en.wikipedia.org/wiki/Golden_Horde ; https://en.wikipedia.org/wiki/Jalayirid_Sultanate",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F309",
+   "verdict": "pass",
+   "what": "Skipped, and correctly: data/hierarchy.csv has 'principality-of-murom,golden-horde,1294,1385,vassal'. The handoff to extend the row to 1392 was not checked on the Murom page (outside the spot-check budget).",
+   "page": "",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F310",
+   "verdict": "pass",
+   "what": "golden-horde keyframe 1385 now subtracts country Iran. The 1385 outline has 137 Iranian cells (East Azarbaijan 68, Ardebil 66, Gilan 3; gazetteer confirmed). Tokhtamysh page: 'He captured the capital, Tabriz, by storm and ravaged the neighboring area for ten days, before retiring with his plunder'; 'Timur proceeded to conquer Azerbaijan in 1386'. Jalayirid Sultanate page: 'Tabriz was briefly looted by the Golden Horde in 1385'. A raid, not a holding, so the cut is supported. The 1363 and 1375 overlaps are removed by F038's 1357 loss to nobody.",
+   "page": "https://en.wikipedia.org/wiki/Tokhtamysh ; https://en.wikipedia.org/wiki/Jalayirid_Sultanate",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F317",
+   "verdict": "pass",
+   "what": "jalayirid-sultanate: the found region and keyframes 1340-1386 now subtract admin-1 Lorestan, 121 cells in each of the 1344, 1363 and 1375 outlines. khorshidi-dynasty draws all of Lorestan from 1184 to 1597, so the cells pass to it with no gap. Khorshidi page: capital Khorramabad; the only Jalayirid tie is 1383 ('his other daughter married Ahmad bin Uways Jalayir'); 'In 1395-96, Muhammad Sultan, governor of Fars, extended his authority over all of Luristan and Khuzestan'; no overlordship stated. The Jalayirid Sultanate and Hasan Buzurg pages do not mention Luristan. The cut is supported.",
+   "page": "https://en.wikipedia.org/wiki/Khorshidi_dynasty ; https://en.wikipedia.org/wiki/Hasan_Buzurg",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F241 handoff (khwarezmid-empire)",
+   "verdict": "fail",
+   "what": "The handoff asks to subtract the Hazaraspid core (98 cells) 'from 1202 on; from 1274 also Khuzestan and Kohgiluyeh and Buyer Ahmad (287 cells)'. The khwarezmid-empire dossier ends in August 1231, so the 1274 half cannot apply. The 287 cells are the hazaraspids' own 1274 gain, not a Khwarezmid overlap. The Khwarazmian page was not reopened (outside budget).",
+   "page": "",
+   "fix": "If applied at all (optional), subtract only {union: [{admin1: Chahar Mahall and Bakhtiari, country: Iran}, {lon: 49.87, lat: 31.83, km: 60}]} from khwarezmid-empire's found region and keyframes 1202-1227. Drop the 'from 1274' clause.",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "golden-horde.json and jalayirid-sultanate.json validate with --resolve: 0 errors, 0 warnings each.",
+  "The hazaraspids handoff (from F152) rests on a false premise: the Hazaraspids page has Yusuf Shah I 'added Khuzestan' and Yusuf Shah II (r. 1330-1340) 'annexed the cities of Shushtar, Hoveizeh and Basra'. Do not narrow hazaraspids' Khuzestan to Idaj.",
+  "The F241 handoff to khwarezmid-empire includes a 'from 1274' subtraction for a dossier that ends in 1231; only the 98-cell core part is meaningful.",
+  "The fixer's notes and report say the 1356 Tiflis occupation is on no page opened. The Jalayirid Sultanate page has 'Jani Beg occupied the Georgian capital of Tiflis in 1356'. The dossier text itself does not repeat the error.",
+  "The fixer's second problem names the wrong event. The one-year overlap with the jalayirid-sultanate gain of August 1358 is from golden-horde ledger/8 (1357 loss to jalayirid-sultanate, East+West Azarbaijan), not from the 1357 loss to nobody (ledger/9), which excludes both provinces. The Jalayirid 1358 gain will be a no-op, which is harmless.",
+  "The compiler was not run by the fixer or the reviewer. The F038 mechanism was checked by reading merge() and the per-year action order (sort key month, found-first, dossier id, index) and by gazetteer counts."
+ ]
+}

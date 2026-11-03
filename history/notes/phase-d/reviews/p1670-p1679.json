@@ -1,0 +1,109 @@
+{
+ "window": "p1670-p1679",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "what": "Sweden gains from Denmark-Norway, Jan 1670, the Danish-Norwegian cells inside present Sweden. Page: Brömsebro 1645 ceded 'Jemtland, Herjedalen and Idre & Serna'; Roskilde (26 February 1658) ceded 'Båhuslen' and the Scanian lands; Copenhagen 1660 gave back only 'Trøndelag and Bornholm'. The spec 'Sweden minus (Norway ∪ Denmark)' resolves to the same 2,440 cells as Sweden: the minus is a no-op, and the text wrongly said it cut the border cells. A gain takes only the cells the counterpart holds. With the other windows' patches the trial moves 3 cells, not about 50: Jämtland at 63.18N 12.17E and 64.54N 13.83E, Idre at 61.69N 12.22E. The rest were already Swedish. Works only together with keyframe_overrides/5.",
+   "page": "https://en.wikipedia.org/wiki/Denmark%E2%80%93Norway",
+   "fix": "Region written as {country: Sweden} (same 2,440 cells) with an accurate text; a reviewer sentence added to the note giving the 3-cell effect.",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "Awlad Muhammad gain of the Fezzan in 1679 from the Ottoman empire, reversing the dossier's ledger/3 (loss 1679). Fezzan page: 'It was occupied fully from times to time like in 1679-1682, 1690, 1716, 1718 and 1811/1812'. Awlad Muhammad page: in 1682 an Ottoman army under Murad al-Malti killed the sultan, and 'His son, Sultan Muhammad al-Nasir, agreed to pay tribute', so the dynasty went on. The region is the dossier's own Fezzan spec (2,033 cells). Trial: 2,033 cells go from Ottoman direct to Awlad land under Ottoman occupation in 1679.",
+   "page": "https://en.wikipedia.org/wiki/Fezzan",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/2",
+   "verdict": "pass",
+   "what": "Occupation_start 1679 of the Fezzan by the Ottoman empire; same page sentence ('occupied fully ... 1679-1682'). The counterpart follows the dossier's ledger/3. Trial: the packet shows 'occupation of awlad-muhammad-dynasty's land by ottoman-empire, 2033 cells, since 1679, open at the end'.",
+   "page": "https://en.wikipedia.org/wiki/Fezzan",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/3",
+   "verdict": "pass",
+   "what": "Occupation_end 1682, the end of the page's span '1679-1682'. The dossier's ledger/4 (1682 gain) then moves nothing. It is dated outside the window, applied with a note and flagged by the window agent.",
+   "page": "https://en.wikipedia.org/wiki/Fezzan",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "qing-dynasty_1673 limited to 1673-1673. Without from/to it took Cliopatria's span 1673-1676, and its wide shape (Qing minus Yunnan and Guizhou) entered the union at the 1674 snap. That handed Hunan, Sichuan and Guangxi back to the Qing in 1674-1675. Page: 'In December 1673, Wu Sangui ended his connection to the Qing dynasty'; 'Wu's forces captured Hunan and Sichuan provinces'; Sun Yanling 'rose in revolt in Guangxi'; 'In 1680, the provinces of Hunan, Guizhou, Guangxi, and Sichuan were recovered by the Qing'. Trial: 2,755 cells go from Qing to Wu in 1674-1675. The 1676 Wu snap of 2,841 cells is gone. 1673 is unchanged.",
+   "page": "https://en.wikipedia.org/wiki/Revolt_of_the_Three_Feudatories",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "fixed",
+   "what": "wu-sangui-s-zhou_1676 without Fujian. The Revolt page dates no surrender: 'after 1676, the tide turned in favor of the Qing forces ... Geng Jingzhong and Shang Zhixin surrendered in turn'. The Geng Jingzhong page, opened in this review, does: 'in 1674 Geng Jingzhong rebelled against Qing rule'; he 'surrendered in 1676 and pledged his support to putting down the other revolting feudatories'. That matches the dossier's ledger/5. Guangdong in 1676 stays supported: 'In 1676, Shang Zhixin joined the rebellion, consolidating Guangdong under his rule'. Region: the six provinces (Sichuan with Chongqing), as the dossier.",
+   "page": "https://en.wikipedia.org/wiki/Geng_Jingzhong",
+   "fix": "Source changed to the Geng Jingzhong page, which carries the dated sentence; the quote added to why.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "fixed",
+   "what": "qing-dynasty_1676 with Fujian back after Geng's 1676 surrender (Geng Jingzhong page, as above). Defect: with all of Fujian in the Qing shape, R2 (the Qing succeeds Tungning) gave 56 of Tungning's coastal cells to the Qing in 1676. Those are Xiamen, Quanzhou and Zhangzhou, which kingdom-of-tungning_1674 holds to 1676. Kingdom of Tungning page: 'Zheng captured Quanzhou and Zhangzhou in 1674'; Quanzhou 'was lost to the Qing on 12 March 1677'. Corrected trial: Tungning keeps all 186 cells in 1676; it had 130 under the window's version and 102 without the patch.",
+   "page": "https://en.wikipedia.org/wiki/Geng_Jingzhong",
+   "fix": "Added to the minus: Xiamen 40 km, Quanzhou 50 km, Zhangzhou 50 km (the circles of kingdom-of-tungning_1674); source set to the Geng Jingzhong page; Tungning page quoted in why.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/3",
+   "verdict": "fixed",
+   "what": "qing-dynasty_1677 = Cliopatria Qing 1677 ∪ (Southern Ming 1677 row minus Wu's core and Taiwan). Without the patch, the 1677 snap left 1,810 Qing cells nobody's to 1679: Guangdong 691, Fujian 488, Hubei 230, Shaanxi 132, Gansu 112, Jiangxi 102, Zhejiang 23, other 32. These are the provinces the ledger had already returned. Support: 'after 1676, the tide turned'; Wang Fuchen 'surrendered after a three-year-long stalemate'. The Shang Zhixin page has him defect back 'after Shang Kexi's death in late 1676'. Only Hunan, Guizhou, Guangxi and Sichuan are recovered in 1680. Defect: the shape also covered Tungning's Xiamen, Haicheng and Chaozhou. Through R2 the 1678 snap gave those 34 cells to the Qing for 1678-1679. Revolt page: 'Zheng Jing's forces were defeated near Xiamen in 1680'. Tungning page: Haicheng retaken 'in August' 1677, and the mainland war closed 'On 10 April' 1680. Corrected trial: Tungning holds 161 cells in 1677-1679 (window's version 132/102, no patch 136); the Qing still gets the 1,810 cells. Render of 1678 checked.",
+   "page": "https://en.wikipedia.org/wiki/Revolt_of_the_Three_Feudatories",
+   "fix": "Correction wrapped as minus [the window's union, union(Xiamen 40 km, Zhangzhou 50 km, Chaozhou 50 km)] (the circles of kingdom-of-tungning_1677); why extended.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/4",
+   "verdict": "fixed",
+   "what": "qing-dynasty_1678 (1678-1679) has the same construction plus Hunan, and the same Tungning defect. Both shapes are alive in 1678, so both needed the cut. Page: 'In 1678, Wu finally proclaimed himself emperor'; 'In 1680, the provinces of Hunan, Guizhou, Guangxi, and Sichuan were recovered'. Hunan stays mostly Wu's by the size rule; the Qing hold the Hengzhou, Changde and Yuezhou circles (Wu ledger/11). The 1678 render matches this.",
+   "page": "https://en.wikipedia.org/wiki/Revolt_of_the_Three_Feudatories",
+   "fix": "Same Tungning cut as keyframe_overrides/3.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/5",
+   "verdict": "fixed",
+   "what": "denmark-norway_1670 (1670-1708) without present Sweden. Page as events/0. The inner spec 'Sweden minus (Norway ∪ Denmark)' was a no-op written as if it cut border cells. Effect: the 1670 snap no longer reclaims the 3 cells events/0 hands to Sweden. No other Danish-Norwegian keyframe starts before 1709, so only the 1670 snap is touched. The new 23-cell Denmark-Norway/Holstein conflict in 1670 also appears in a trial without this patch, so it is not caused here.",
+   "page": "https://en.wikipedia.org/wiki/Denmark%E2%80%93Norway",
+   "fix": "Inner spec written as {country: Sweden} (same cells) with an accurate text; correction text shortened.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/6",
+   "verdict": "pass",
+   "what": "new-france_1670 plus Acadia: the Nova Scotia and New Brunswick cells of Cliopatria's 1673 shape. This is the same spec as the dossier's ledger/13 (1670 gain from the English), so the 1670 snap no longer throws them away. Acadia page: England controlled the area 'again from 1654 until 1670'; capital 'Castine, Maine (1670–1674)'. Trial: 53 cells go from nobody to New France (French colony tint) in 1670-1672. The 1670 snap's removals fall from 69 to 16; those 16 were already there without the patch.",
+   "page": "https://en.wikipedia.org/wiki/Acadia",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/7",
+   "verdict": "fixed",
+   "what": "spanish-empire_1677 cut to 1677-1679, keeping New Mexico. Page: Pueblo Revolt 'August 10–21, 1680'; the Spaniards then retreated toward El Paso del Norte. In the 1670s there was drought and unrest ('came to a head in 1675'), not a withdrawal. In the current compile New Mexico is viceroyalty-of-new-spain's (p1600-p1609 events/0), whose ledger/3 loses it in 1680. The Spanish 1677 snap does not fire with or without this entry, so it moves no cell now; it is harmless and consistent with the page. Its correction text was a garbled merge that said 'New Mexico removed from 1680 ... the shape is otherwise unchanged'.",
+   "page": "https://en.wikipedia.org/wiki/Pueblo_Revolt",
+   "fix": "Correction text rewritten to describe the spec (Cliopatria 1677 with New Mexico, minus the Maguindanao and Buayan cores); why notes that it currently moves nothing.",
+   "applied": true
+  }
+ ],
+ "patch_check": "python3 -I -B tools/compile_dossiers.py --check-patch p1670-p1679: 12 entries, 12 ok, 0 rejected, before and after the review. Trial of the corrected file (stage /tmp/claude-0/work/rev1670/stage2): 12 applied. Against a trial with an empty patch: Hunan/Sichuan/Guangxi go to Wu in 1674-1675 (2,755 cells). 1,810 cells stay Qing in 1677-1679. Tungning keeps 186 cells in 1676 and 161 in 1677-1679. 53 Acadia cells go to New France in 1670-1672. 3 Swedish cells leave Denmark-Norway. The Fezzan (2,033 cells) is occupied, not annexed, in 1679. Qing/Tungning conflict: 114 cell-years without the patch, 148 with the window version, 30 after the review. Qing snaps of 1676-1678 no longer fire.",
+ "problems": [
+  "Side effect of the Tungning cut: the Qing snaps of 1676, 1677 and 1678 now move 20 cells or fewer and do not fire. So 5 cells on the upper Amur near Albazin (53.5N 122.2-123.8E) stay Qing in 1677-1679; without the patch, tsardom-of-russia_1677 (Cliopatria growth, no dated ledger event) took them. Also 2 cells at 53.6N 124.3-124.7E go to nobody, and 3 coastal cells (21.6N 112.8E, 21.7N 112.8E, 23.7N 117.4E) become Qing instead of nobody. Not patched: no page dates the Russian line.",
+  "Systemic, R2: qing-dynasty is listed as kingdom-of-tungning's successor, so it wins every conflict with Tungning from its own start year (1644), not from the 1683 takeover. Still 28 cells in 1674 (kingdom-of-tungning_1674 against the Qing) and 2 in 1677 go to the Qing. Any Qing keyframe covering Zheng's mainland holds takes them. Fix in the rules or in the dossier: R2 should act only from the successor's taking of the land.",
+  "Boundary: keyframe_overrides/3 (qing-dynasty_1677) keeps its Cliopatria span 1677-1682 and joins the union at the 1680 and 1682 snaps. It is narrower than p1680-p1689's qing-dynasty_1680 override and the dossier's _1682, so it has no effect there. Tungning's ledger/11 (April 1680) hands Xiamen, Haicheng and Chaozhou to the Qing.",
+  "Boundary: keyframe_overrides/5 (denmark-norway_1670) spans 1670-1708 but affects only the 1670 snap. events/3 closes the Fezzan occupation in 1682, so p1680-p1689 sees it open on 1 January 1680. keyframe_overrides/7 leaves no spanish-empire keyframe alive in 1680-1682, which is harmless: New Mexico is New Spain's and its ledger/3 removes it in 1680.",
+  "The window report's figures come from the stale packet of 1 Nov: 'about 50' Danish-Norwegian cells in Sweden (now 3) and '67 New Mexico cells nobody's from 1677' (now none). The entries remain correct."
+ ]
+}

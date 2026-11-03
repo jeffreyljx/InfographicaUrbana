@@ -1,0 +1,61 @@
+{
+ "window": "p1930-p1939",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "Anglo-Egyptian Sudan gains Darfur from british-africa, 1 Jan 1930. The page says 'the British conquered Darfur in 1916' and 'The kingdom was incorporated into the Anglo-Egyptian Condominium in 1917' (no month), so a 1930 start is a window-limited fix. The region, Sudan plus South Sudan, is 9,221 cells (about 2.33 M km2). The gain takes only cells british-africa holds, so exactly 1,086 cells move, as vassal of united-kingdom like the rest of the Sudan. Trial: the Sudan holds 9,190 cells in 1930-33 and 9,221 from 1934; the 1934 snap now adds only the 31 french-africa border cells. No other year changes.",
+   "page": "https://en.wikipedia.org/wiki/Sultanate_of_Darfur",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "fixed",
+   "what": "Manchukuo gains Rehe from the Republic, March 1933. The page supports the date: 'Rehe Province got annexed on the 4 March 1933'; 'from the Chinese warlord Zhang Xueliang'; Chaoyang and Kailu on 25 Feb, Chifeng from 2 Mar, Chengde on 4 Mar. The region resolves to 1,008 cells (about 255,000 km2) at 38.8-47.0N, 115.1-123.6E. That is larger than the whole province (179,982 km2, infobox of the Rehe Province page), part of which is already inside Manchukuo's 1932 shape. About 201 cells in the west are northern Chahar (the land Mengjiang's 1936 founding takes from Manchukuo), and the Battle of Rehe page does not name it. The Mengjiang page supports that strip: 'In a series of actions, starting in 1933, the armies of Manchukuo and Japan occupied Chahar and in 1936 proclaimed itself the independent Mongol Military Government'. The rest is within the project's factor-of-two tolerance. Trial: the cells are the Republic's in 1932 and Manchukuo's (vassal of Japan) in 1933-35. In 1936 Mengjiang takes 201 of them, and in 1937-39 the provisional government takes about 200 by the size rule (a separate problem, listed below). Before the patch, 789-1,008 cells were grey.",
+   "page": "https://en.wikipedia.org/wiki/Battle_of_Rehe",
+   "fix": "Note amended: names the Chahar strip and the oversize against the 179,982 km2 infobox area, and quotes the Mengjiang page (https://en.wikipedia.org/wiki/Mengjiang) for the Chahar occupation from 1933. Region unchanged, because no page gives Rehe's outline.",
+   "applied": true
+  },
+  {
+   "entry": "events/2",
+   "verdict": "fixed",
+   "what": "Added by the reviewer as the companion of keyframe_overrides/1. Ten Labrador cells inside the 1927 line, near the Strait of Belle Isle (51.5-52.1N) and on the Torngat watershed (57.8-59.7N), are Canada's in the 1930 anchor. The override, alone, left them unowned from 1932 to 1948 (canada_1932 snap: removed 908 cells before the override, 918 with it alone, 908 with this event). The event gives the Dominion of Newfoundland the cells Canada holds inside the modern Newfoundland and Labrador admin-1 from 1 Jan 1930. Page: 'On 1 March 1927, the Judicial Committee issued a decision that sided with Newfoundland's interpretation of the border'. Trial: the Dominion holds all 1,383 cells of the province in 1930-39, as vassal of united-kingdom.",
+   "page": "https://en.wikipedia.org/wiki/Labrador_boundary_dispute",
+   "fix": "New entry events/2 (dominion-of-newfoundland gain from canada, 1930-01, admin1 Newfoundland and Labrador, confidence 3).",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "communist-party-of-china_1932 gets from 1932 to 1934, with the dossier's correction kept byte-identical. The page supports it: 'on 10 October 1934 the CCP decided to abandon its Jiangxi Soviet', 'the fall of Ruijin in November 1934', 'March: The Fourth Red Army ... departs from its base on the Sichuan-Shaanxi border', 'in October 1935, Mao's army reached Shaanxi province'. Trial: the 1,330 cells of the 1932 shape are CPC 887 and ROC 443 at the end of 1934 (ledger, unchanged). In 1935 all 1,330 are the Republic's, with no grey hole; before the patch the old shape came back (CPC 887). The CPC/ROC conflict falls from 1,126 to 239 cell-years.",
+   "page": "https://en.wikipedia.org/wiki/Long_March",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "fixed",
+   "what": "canada_1932 (1932-48) changes from ok to adjust: Cliopatria's Canada of 1932 without the Newfoundland and Labrador admin-1, which is the 1927 Privy Council line. The page supports it: the 1 March 1927 decision 'granted it the disputed land'; the Newfoundland Act gives 'the Coast of Labrador as delimited in the report'; nothing on the page describes Canadian administration before 1949. The correction removes 129 cells. 119 stay the Dominion's (the conflict ends), but 10 cells that Canada already held in the 1930 anchor would have become nobody's from 1932 to 1948.",
+   "page": "https://en.wikipedia.org/wiki/Labrador_boundary_dispute",
+   "fix": "Added events/2 to give those 10 cells to dominion-of-newfoundland (see events/2). The override itself is unchanged. It reaches 1940-48 (window p1940-p1949), where it only keeps Labrador with the Dominion until canada_1949.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "what": "republic-of-china_1932 (1932-35). The dossier's spec, the 1932 shape without Tibet, is kept byte-identical, and the Rehe region of events/1 is added. Page: Japan captured Rehe 'from the Chinese warlord Zhang Xueliang' with the offensive launched 23 Feb 1933, so Rehe is Chinese at the end of 1932. In 1931 the same 1,008 cells are ROC 751 and fengtian-clique 257, so the 1932 continuity is right (the Chahar strip was Chinese too). Trial: the 1932 snap removes 21 cells instead of 1,029. Manchukuo keeps the land in 1934-35 against this keyframe (no new ROC/Manchukuo conflict). The ROC 1936 snap no longer adds 902 cells.",
+   "page": "https://en.wikipedia.org/wiki/Battle_of_Rehe",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "6 entries, 6 ok, 0 rejected (after the reviewer's edits: events/1 note amended, events/2 added); trial compile applies all 6",
+ "problems": [
+  "Not a patch entry, and the agent misjudged it. In 1937-39 provisional-government-of-the-republic-of-china takes about 200-263 cells of Rehe around Chengde (38.8-42.5N, 115.4-119.8E) from manchukuo by the size rule: its 1937 founding region (869,976 km2) beats Manchukuo's. The conflict is 219 cell-years before the patch and 265 after. The Battle of Rehe page has Rehe annexed to Manchukuo on 4 March 1933, and nothing gives it to the Beijing government. The window agent called the manchukuo/provisional-government conflict 'right on the pages'; it is not. Fix: a ruling {years [1937,1939], a manchukuo, b provisional-government-of-the-republic-of-china, winner manchukuo, region {place Chengde, km 160} union the events/1 region, source https://en.wikipedia.org/wiki/Battle_of_Rehe}, carried into p1940-p1949 to 1945, or a narrower founding region in the provisional government's dossier.",
+  "About 10 cells of the events/1 region lie south of 40.4N (Tianjin and southern Hebei, below the Great Wall), and they go to Manchukuo in 1933. This is minor noise from Cliopatria's Japanese shape; left as is.",
+  "events/1 and keyframe_overrides/2 act beyond the window: the Rehe land stays Manchukuo's in the end anchor p1940 and so into p1940-p1949 until Manchukuo ends in 1945. events/2 and keyframe_overrides/1 keep the 10 plus 119 Labrador cells with the Dominion through 1948.",
+  "Shared folder: the reviewer edited data/patches/p1930-p1939.json (amended the note of events/1, appended events/2; no entry reordered). Read back after writing; check-patch: 6 ok.",
+  "The trial's comparison also shows changes from other windows' patches since the publish (senussi-order/italian-libya, first-hellenic-republic, lithuania). They are not from this patch."
+ ]
+}

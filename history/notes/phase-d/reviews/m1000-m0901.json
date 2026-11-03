@@ -1,0 +1,61 @@
+{
+ "window": "m1000-m0901",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Judah",
+   "what": "kingdom-of-judah loss to kingdom-of-israel, -930: the Samaria hills that the founding region 'Judea' took and Judah's keyframe then dropped. The page supports the date and the frontier: 'After the death of Solomon circa 930 BCE, the Israelites gathered in Shechem'; 'The northern border of Judah extended east-west from the northwestern shore of the Dead Sea, passing near Jericho to the area of Gezer'; Geba and Mizpah in Benjamin on Asa's 'side of the border'. But the spec resolved to 22 cells (5564 km2, bbox 34.25-35.57 E, 31.27-32.46 N): the gazetteer's Judea includes all of Palestine (the Gaza Strip) and the land south of Hebron, so besides the 6 Samaria cells the loss also handed Israel 5 of Judah's southern cells (Hebron's south, Arad, the western Dead Sea shore), which Israel's -930 keyframe dropped again the same year (a new Israel snap). The end result was right (6 cells round Shechem and Samaria, nobody -> Israel, no other Levant cell changed).",
+   "fix": "Region wrapped in intersect with {region: Samaria} (8 cells, 6 of them Judah's at the time; the other 2 are Philistia's and the loss does not touch them); text and note updated. Re-checked: --check-patch ok; trial: the same 6 cells nobody -> Israel at m0900, the Israel -930 snap is gone, Judah's -930 snap is 5 cells (the dossier's narrow keyframe, see problems).",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Twenty-first_Dynasty_of_Egypt",
+   "what": "new-kingdom-of-egypt_-1000 of twenty-first-dynasty-of-egypt, -1000..-944, cut to Lower Egypt minus Matruh (263 cells, the Delta, Cairo and Giza with its desert) instead of Cliopatria's whole outline (1148 cells). Page: 'The pharaohs of the Twenty-first Dynasty ruled from Tanis, but were mostly active only in Lower Egypt, which they controlled'; 'the High Priests of Amun at Thebes effectively ruled Middle and Upper Egypt in all but name'; 'Disestablished: 943 BC', so -944 is the last year. The page names no Western Desert, Red Sea or Libyan land. Same spec as m1100-m1001 keyframe_overrides/2 (-1077..-1001), so no seam at -1000. Trial: the snap (+272/-47) is gone; -945 render shows the Delta direct and the priests' Nile valley as vassal tint.",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Twenty-second_Dynasty_of_Egypt",
+   "what": "twenty-second-dynasty-of-egypt_-943, -943..-901, now the Delta plus the Nile valley and Fayyum (479 cells) instead of Cliopatria's -900 outline: it matches the ledger (Delta at founding plus the gain of the priests' land at -943), and the snap of +759/-46 is gone. Page quotes are accurate: 'Manetho states that this Egyptianized ancient Libyan dynasty first ruled over Bubastis', 'its rulers almost certainly governed from Tanis, which was their capital'; dynasty 943-716. The page says nothing of the dynasty's land in 943-900. Caveat: its only land statement is about the offshoot Twenty-third Dynasty, undated: 'All of its kings reigned in Middle and Upper Egypt including the Western Desert Oases'; the override (like the -1077 and -1000 ones) leaves the New Valley oases unowned. Not dated to this window, so not a failure; see problems. Held to -901, the dossier's new-kingdom-of-egypt_-900 keyframe redraws the outline at -900 (seam, reported by the window agent).",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Bit_Adini",
+   "what": "carchemish vs bit-adini, -1000..-857, winner bit-adini in the polygon south of 36.83 N. The page supports the placement and the years: 'usually thought to have been in the bend of the Euphrates River, south of Carchemish', 'with its capital at Til Barsip (now Tell Ahmar)', 'between the Balikh and the Euphrates rivers', 'In 856-5 BC, the kingdom was conquered ... during the reign of Shalmaneser III' (dossier dissolve -856). Two errors: (1) the city of Carchemish's own cell (203821, centre 36.77 N) lies inside the polygon, so the ruling gave Carchemish itself to Bit Adini from -1000 to the end of the window; (2) the why's 'north of it the size rule stands' is wrong for -1000..-976: Bit Adini's 70 km disc is the smaller claim against the 90 km Carchemish disc, so the size rule gave Bit Adini the city and the whole district north of it for 25 years (Carchemish a crescent round Bit Adini at -990). Also the years run to -857, into m0900-m0801, which the window agent did not report.",
+   "fix": "Region changed to the polygon minus a 10 km disc round Carchemish (lon 38.02, lat 36.83; exactly cell 203821); companion rulings/2 added. Re-checked: --check-patch 6/6 ok; trial: rulings/0 settles 53 cell-years, Carchemish keeps its city cell at m0900 and its northern district at -990, Til Barsip's cell (203844) is Bit Adini's, the carchemish_-975 snap (+41) is gone.",
+   "applied": true
+  },
+  {
+   "entry": "rulings/1",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kush",
+   "what": "high-priests-of-amun-at-thebes vs kingdom-of-kush, -1000..-944, winner Kush, no region. Page: 'Geographically, Kush referred to the region south of the first cataract in general', 'the first cataract at Elephantine usually being considered the traditional border between the two polities', 'Kush became an independent kingdom centered at Napata'. Kush's -1000 shape starts at 23.8 N, south of the cataract (24.09 N), so every contested cell (42, Aswan governorate 22.1-23.8 N) lies south of it and the missing region does no harm. Trial: 42 cells to Kush at -1000; at -943 the 22nd Dynasty's keyframe claims them and Kush keeps them (R2); at m0900 they are Kush's (published: 22nd Dynasty).",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "rulings/2",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Bit_Adini",
+   "what": "New entry written by the reviewer as part of the rulings/0 fix: carchemish vs bit-adini, -1000..-976, winner carchemish, in Carchemish's 60 km disc north of 36.83 N plus the city's cell (22 cells). Rests on the page's 'south of Carchemish' and 'one of the two chief states of the Aramean-held territories in the Euphrates along with Carchemish'. The outer ring east of the Euphrates (between it and the Balikh) is left to the size rule, so Bit Adini keeps cell 203994 (38.81 E, 36.92 N) as in the published compile.",
+   "fix": "Added; --check-patch ok; trial: settles 42 cell-years at -1000; side effect carchemish/neo-hittite-states 1 -> 14 cell-years at -1000 (Carchemish, the smaller claim, keeps its own northern disc against the Neo-Hittite keyframe; it loses the 60-90 km ring to nobody at -975 by its ledger).",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch m1000-m0901: 6 entries, 6 ok, 0 rejected (after review: events/0 region intersected with Samaria, rulings/0 region carved round Carchemish, rulings/2 added). --trial: all 6 applied; rulings/0 53 cell-years, rulings/1 42, rulings/2 42; keyframe snaps 7 -> 3 (elam_-1000 +17/-277, kingdom-of-judah_-930 -5, babylonia_-1000 +2/-5 from other windows' patches); end anchor m0900 1043 cells change owner vs published (Egypt 757 22nd->nobody, 46 nobody->22nd, 42 22nd->Kush; 20 Carchemish->Bit Adini; 6 nobody->Israel; the rest m1100-m1001 and m0900-m0801 patches).",
+ "problems": [
+  "rulings/0 runs to -857, 44 years into m0900-m0801 (supported: Bit Adini 'conquered ... in 856-5 BC'); the window agent did not report it under problems. No m0900-m0801 entry touches the pair.",
+  "Seam at -900 (window agent's report, confirmed): keyframe_overrides/1 ends at -901 and the dossier's new-kingdom-of-egypt_-900 keyframe redraws Cliopatria's whole Egypt outline from -900 (+757 New Valley/Red Sea/Matruh cells, Giza hole). No patch file overrides new-kingdom-of-egypt_-900 yet; the m0900-m0801 window should cut it to the same Delta + Nile valley + Fayyum spec, or the outline flips back at -900.",
+  "Western Desert oases: under m1100-m1001 keyframe_overrides/2 and this window's two overrides, the New Valley oases (Kharga, Dakhla) are nobody's from -1077 to -901. The Twenty-second Dynasty page credits its undated offshoot, the Twenty-third Dynasty, with 'Middle and Upper Egypt including the Western Desert Oases'; whoever overrides the -900 keyframe should consider keeping the oases (not the whole New Valley) if a page dates them.",
+  "Judah's south (window agent called the pages silent; they are not): Judah's -930 keyframe (Cliopatria's -900 shape, 11 cells, south edge 31.43 N) drops 5 cells (HaDarom 4, Gaza Strip 1) and leaves Hebron's south, Arad and the Negev fringe nobody's for -930..-901, while 204275 (35.54 E, 31.54 N, the western Dead Sea) stays Israel's. Kingdom of Judah page: 'stretching from Jerusalem to Hebron and into the Negev Desert'; 'In the east, Judah's boundaries followed the Arabah to the western shore of the Dead Sea'. A keyframe override of kingdom-of-judah_-930 (the -900 shape plus the south Hebron hills to Arad and Beersheba) would fix it; not written here.",
+  "Minor, pre-existing: the gazetteer's 'Nile Valley (Egypt)' (Egypt minus five governorates) includes Suez governorate, so the High Priests' vassal tint shows a wedge east of the 21st Dynasty's Delta at -1000..-944 (seen in the -945 render)."
+ ]
+}

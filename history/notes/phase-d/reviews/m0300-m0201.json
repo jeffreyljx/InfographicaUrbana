@@ -1,0 +1,143 @@
+{
+ "window": "m0300-m0201",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Roman_expansion_in_Italy",
+   "what": "Supported: the page has Rome 'subjugating and dividing Magna Graecia by pacts and treaties (foedera)', 'a sort of indirect control'. The published draft does draw roman-republic as the vassal of greek-city-states (open_vassals since -272, 1,303 cells by -201); with events/1 the relation is closed in 272 and Rome is drawn in its own red (Magna Graecia becomes direct Roman land; the Greek cities are no longer drawn as Roman vassals at all, which is acceptable). But it broke other years: the false vassal status had protected Rome's ledger land from too-narrow keyframes (rule 4), and once removed the snaps sent Baetica (352 Roman cells + 59) to nobody for 206-204, the year after Ilipa, and 52 Etruscan cells (42.7-44.1 N) to nobody for 225-224. The window agent's report understated this ('only 24 Umbria/Marche cells and 82 cells at -225').",
+   "fix": "Kept as is; added keyframe_overrides/3 (roman-republic_-206 = dossier correction + Baetica; Second Punic War page: 'In 206 BC, at the battle of Ilipa ... This sealed the fate of the Carthaginians in Iberia', 'Scipio permanently ended the Carthaginian presence in Iberia', Gades 'defected to the Romans') and keyframe_overrides/4 (roman-republic_-225 = dossier correction + Tuscany without the Ligurian north-west; Roman expansion in Italy: 'Resistance in Etruria was finally crushed' in 265-264). Trial: Baetica 411 cells Roman 206-204, Tuscany 76 Roman + 10 Ligures in 225-224. Smaller exposures remain (problems).",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Roman_expansion_in_Italy",
+   "what": "Pair of events/0 (needed: the compiler joins the second vassal_start to the first, and Rome's own record would otherwise keep the relation). Same support and same side effect as events/0.",
+   "fix": "Same completion as events/0: keyframe_overrides/3 and /4 added.",
+   "applied": true
+  },
+  {
+   "entry": "events/2",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Masinissa",
+   "what": "Supported: 'Following the capture of Syphax, the King Bokkar, ruler of what is now Morocco with his capital based in Tingis, had become a vassal of Masinissa' (footnotes: 202). The published draft has kingdom-of-numidia as Mauretania's vassal (1,089 cells in 202). The region (Cliopatria Mauretania -212, 194 cells, Morocco) is the dossier's own. Closes the reversed relation in 203; trial: 203 Mauretania direct, no self-vassal.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/3",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Masinissa",
+   "what": "Technical restoration: the vassal_end returns the land drawn under the relation to the (not yet alive) vassal, i.e. to nobody; this gives Mauretania back its own 194-cell keyframe land in 203 (trial: mauretania direct 194 in 203). Region = mauretania_-212 keyframe; no other state's land taken.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/4",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Masinissa",
+   "what": "Supported: footnote 'En 202 avant Jesus-Christ, apres la capture de Syphax, il devint le vassal de Massinissa'; 202 is Numidia's first year; mauretania/ledger/3 (-148) closes it. Trial: Mauretania in Numidia's tint 202-201, Numidia its own colour (Roman-vassal tint from 201 by the dossiers). Side effect (not fixed): 306 cells Numidia held under the old vassal tint in 202 (169 former Masaesyli cells in the Middle Atlas/upper Moulouya, the rest in the interior south of the coast incl. the Aures edge) go to nobody, because kingdom-of-numidia_-202 (Cliopatria -197 minus Tripolitania, west edge 2.96 W) does not hold them; it carries through the m0200 anchor. Much of the Moroccan block lies west of the Moulouya, the border the Numidia dossier quotes, so nobody is defensible there; left to m0200-m0101 (problems).",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "events/5",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Qin%27s_wars_of_unification",
+   "what": "Supported: in 230 'the Qin army led by Neishi Teng' 'conquered the Han capital Zheng'; table '230 BC: Han was conquered by Qin'. Region identical to han/ledger/15 (146 cells; a gain takes only cells Han holds). But it did not fix the problem: the qin_-230 snap stripped the 66 cells again, leaving a grey nobody hole round Xinzheng/Yangzhai inside Qin for 230-226 (render -228 seen), and Chu's 225 shape took 53 of them for 225-224. The agent's 'no Han or Wei enclave 230-209' was true only in that Han was gone.",
+   "fix": "Added keyframe_overrides/5 (qin_-230 = dossier correction + the han/ledger/15 region) and keyframe_overrides/6 (qin_-225 = dossier correction + the same region + the Daliang disc). Trial: the 66 cells are Qin's 230-225, Qin's (27 contested with Chu, the 224 war) in 224, Qin's/Qin dynasty's after; a 3rd trial entry (ruling chu|qin) proved unnecessary (R2 settles it) and was not kept.",
+   "applied": true
+  },
+  {
+   "entry": "events/6",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Qin%27s_wars_of_unification",
+   "what": "Supported: 'Daliang was heavily flooded', 'King Jia of Wei surrendered and Wei came under Qin control' (225). Region identical to wei/ledger/12 (Kaifeng 60 km, 58 cells). Alone it left 33 Wei cells for 225-224 (wei_-225 puts the disc back and Qin's 225 shape holds only 25 of the 58); the agent's claim that it 'keeps Wei's 58 cells out of 225-224' was wrong.",
+   "fix": "Completed by keyframe_overrides/6 (qin_-225 includes the Daliang disc). Trial: all 58 cells Qin's from 225.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Second_Punic_War",
+   "what": "Supported: 'The Carthaginians continued their march through Etruria, then Umbria, to the Adriatic coast', depots 'at Ariminum and Arretium', 'the majority of Rome's allies in central Italy remained loyal' (214 context); no defection of Etruria, Umbria or Picenum. The minus part is exactly the dossier's correction; the addition is 88 cells. But whole-Toscana took the 6 Apuan cells the ligures dossier holds in 216 and, after the 212 snap, left them to nobody from 212 on.",
+   "fix": "Tuscany in the correction now leaves out the Ligurian north-west (polygon 9.6-10.7 E, 43.86-44.6 N, which holds exactly the ligures cells); why annotated. Trial: Ligures keep 6 cells 216-201; Rome 113 direct + 30 vassal-tint cells in Tuscany/Umbria/Marche 216-213.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Chu%E2%80%93Han_Contention",
+   "what": "Supported: 'after conquering the Three Qins in the Guanzhong region' (205), the kings of Sai, Di and Henan 'surrendered to Liu Bang' (205), 'Liu Bang attacked Henei' (April-May 205); the page has no loss of Guanzhong, Henei or Yin in 204. The correction is exactly the union of the dossier's 204 and 205 keyframes (3,713 cells, nothing beyond them). Trial: 199 north-Shaanxi cells Han in 204 instead of nobody, Xiongnu from 203 as published. Error in why: it said Xiao He was put 'in charge of Yueyang'; the page: Liu Bang 'named his son Liu Ying as his heir apparent and put him in charge of Yueyang'.",
+   "fix": "why corrected to Liu Ying with the page's wording; spec unchanged.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Qin%27s_wars_of_unification",
+   "what": "Supported: the year after Chu's fall (222) 'Wang Jian and Meng Wu led Qin forces to attack the Wuyue region (covering present-day Zhejiang and Jiangsu)'; table '222 BC: ... Wuyue was conquered by Qin' (the Kuaiji sentence is tagged citation needed, as the why says). Zhejiang is 484 cells, 82 already in the shape; the Qin dynasty keyframes already add Zhejiang from 218, so this closes a 222-219 gap. Trial: qin_-222 snap removes 6 cells instead of 408.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/3",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Second_Punic_War",
+   "what": "Added by the reviewer to complete events/0 and /1: roman-republic_-206 = dossier correction + Baetica (411 cells, none in Cliopatria's 206 shape, which stops at 2.95 W). Ledger/71 gives Rome Baetica in 206; the page: Ilipa 206, 'permanently ended the Carthaginian presence in Iberia', Gades defected. Trial: Baetica Roman 206-204 (published: Roman in the wrong tint; window agent's patch: nobody).",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/4",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Roman_expansion_in_Italy",
+   "what": "Added by the reviewer to complete events/0 and /1: roman-republic_-225 = dossier correction + Tuscany without the Ligurian north-west (76 cells). Cliopatria's 225-224 shape drops 52 Etruscan cells the 230 and 223 shapes hold; page: 'Resistance in Etruria was finally crushed' (265-264). Trial: 76 Roman, Ligures keep their 10.",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/5",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Qin%27s_wars_of_unification",
+   "what": "Added by the reviewer to complete events/5: qin_-230 = dossier correction + the han/ledger/15 region. Overlaps Wei's Daliang disc by 25 cells; in the trial Wei keeps them until 225 (size rule, 25 cell-years), as it should.",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/6",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Qin%27s_wars_of_unification",
+   "what": "Added by the reviewer to complete events/5 and events/6: qin_-225 = dossier correction + the former Han + the Daliang disc. Trial: no Han, Wei or Chu land left there in 225; 224 contested with Chu only where the dossiers' 224 war zone is.",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Xin_of_Han",
+   "what": "Supported: 'He was made King of Han (韓王) in 205 BC by Liu Bang'; 'granted the lands around Yingchuan as his vassal kingdom, with the capital at Yangzhai' (undated; the page calls him a vassal of the Han Empire from 202). Trial: settles 402 cell-years in 2 years, Hán drawn in the Han kingdom's vassal tint 205-204. Hán is still the same red as Han in 206 and beside the Han dynasty in 202-201 (colour clash already reported).",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "rulings/1",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Qin%27s_wars_of_unification",
+   "what": "Supported (Wei surrendered 225; table '225 BC: Wei was conquered by Qin'). In the window agent's trial it settled 33 cell-years in one year only (223), not 225-224 as its why implies. With keyframe_overrides/6 it now settles nothing (no wei/qin conflict left in 225-219): applied, harmless, redundant.",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "patch_check": "--check-patch m0300-m0201: 16 entries, 16 ok, 0 rejected (the agent's 12, two of them corrected, plus keyframe_overrides/3-6 added by the reviewer). Trial with the final file: all 16 applied; rulings/0 settled 402 cell-years, rulings/1 settled nothing (now redundant); conflicts 196 pairs/21,000 cell-years -> 191/19,344; keyframe snaps 136 -> 142; end anchor m0200: 513 cells change owner, 1,652 change status or suzerain.",
+ "problems": [
+  "Rome exposure left after events/0/1 (not fixed): compared with the published draft, Rome still loses cells to nobody once its land is no longer protected as a 'vassal': Italy 24 cells 256-226 (Tuscany 14-17 north of 43.6 N), 60 in 222-219 (45 Alpine Lombardy), about 130 in 212-207 (Apulia 47, Campania 16-27, Lombardy 26, Tuscany 15, Veneto 7), 75 in 206-204 and 202-201, 116 in 203 (Calabria 48); 44 Albanian cells of the Illyrian protectorate go to nobody 225-219 (28 to the Antigonids 212-201); 71 interior Tarraconensis cells 206-204; 92 Baetica cells in 203 (roman-republic_-203 snap) and 51 Spanish + 18 Tunisian cells 202-201. Most follow the dossier's own keyframes (Cisalpine Gaul lost after 218, Hannibal's south, Bruttium to 203), but Tuscany 15 (212-201), Sicily 8-10 (206-201) and Baetica 92 (203) look wrong; m0200-m0101 (roman-republic_-202 to -198 and later) will see more of the same and should check Rome's keyframes there.",
+  "Numidia exposure after events/2-4 (not fixed): 306 cells Numidia held in the old vassal tint in 202 go to nobody in 202-201 and through the m0200 anchor, because kingdom-of-numidia_-202 (-202..-159, Cliopatria -197 minus Tripolitania, west edge 2.96 W) does not hold them: 169 former Masaesyli cells (Middle Atlas/upper Moulouya block, mostly west of the Moulouya, so nobody is defensible) and interior cells south of the coast incl. the Aures edge. m0200-m0101 should decide whether to widen that keyframe (the Numidia page's 'Saharan regions to the south').",
+  "Cross-window reach: events/0 and /1 change Rome's draw through -90 and leave the dossiers' -90 vassal_ends closing nothing; events/2-4 reach -148 (mauretania/ledger/3 closes the corrected relation). keyframe_overrides/3-6 lie inside the window (roman-republic_-206 is -206..-204, roman-republic_-225 -225..-224, qin_-230 -230..-226, qin_-225 -225..-224).",
+  "Window agent's report inaccuracies: 'no Han or Wei enclave 230-209' and 'keeps Wei's 58 cells out of 225-224' were false for its own patch (66 Han cells nobody 230-226 and Chu 225-224; 33 Wei cells 225-224); the Rome side effect was understated (Baetica 352 cells 206-204 not mentioned); kf/1's why misattributed Yueyang to Xiao He.",
+  "Reviewer edits to data/patches/m0300-m0201.json (read back after 10 s, identical): keyframe_overrides/0 Tuscany spec narrowed and why annotated; keyframe_overrides/1 why corrected; keyframe_overrides/3-6 appended; top-level note extended. No entry reordered or removed.",
+  "Pages opened in this review: Roman expansion in Italy, Masinissa, Qin's wars of unification, Xin of Han, Chu-Han Contention, Second Punic War (6). Renders seen: -228 China and -202 North Africa and -205 Iberia from the trial stage, -202 North Africa published.",
+  "Dossier requests from the window agent stand: greek-city-states ledger 58/72 (reverse mirrors of roman-republic 26/133), mauretania ledger 1/3 to kingdom-of-numidia, kingdom-of-han end vs han-dynasty start, yayoi-period/epi-jomon, qin/ledger/29 region; if the qin ledger and Roman keyframes are fixed in the dossiers, keyframe_overrides/3-6 become redundant but harmless."
+ ]
+}

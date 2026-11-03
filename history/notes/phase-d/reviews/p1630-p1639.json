@@ -1,0 +1,46 @@
+{
+ "window": "p1630-p1639",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "what": "Window agent: safavid-dynasty gain from nobody in 1630 of Cliopatria's 1626 Ottoman shape inside Iraq (297 cells: Nineveh 148, Anbar 54, Erbil 47, Duhok 22, Salah ad-Din 16, Kirkuk 9, Sulaymaniyah 1; 38.8-44.9 E, 33.2-37.3 N), so that Mosul is Safavid for 1630-1638. The hole is real: the Ottoman ledger's 1625 loss (all Iraq outside 100 km of Baghdad) has no Safavid mirror, so these cells were nobody from 1626. But the pages do not give Mosul to Persia after 1624. War page: the Persians 'soon captured most of Iraq, including the cities of Kirkuk and Mosul' after Baghdad fell in 1624, but 'on 4 July 1626, the Ottoman army lifted the siege and withdrew to Mosul'. 'The Persians re-established their control of Iraq', after Hüsrev's 1630 withdrawal, is about central Iraq round Baghdad, and the page names neither Mosul nor Kirkuk there. Mosul page: Mosul was Ottoman 'with a brief break in 1623, when Persia seized the city', and 'Before 1638, the Ottomans considered Mosul still a mere fortress, important ... as an offensive platform for Ottoman campaigns into Iraq'. Cliopatria's 1626 and 1636 Ottoman shapes both hold exactly these 297 cells (the two intersections are identical). So the Safavid gain was contradicted by the pages for 82% of the land (Mosul, Duhok, Erbil, the Jazira). It also overturned the Ottoman 1636 keyframe.",
+   "page": "https://en.wikipedia.org/wiki/Mosul ; https://en.wikipedia.org/wiki/Ottoman%E2%80%93Safavid_War_(1623%E2%80%931639)",
+   "fix": "Rewrote events/0 as an ottoman-empire gain from nobody in 1630 with the same region spec (297 cells, all nobody except 2 at 1 January 1630). The source is now the Mosul page and the note opens with a dated caption that quotes it. The 9 Kirkuk cells follow Cliopatria, because no page dates them. Trial (replayed): all 297 cells are Ottoman from the end of 1630 to the 1640 anchor, with no grey hole. The Ottoman 1636 snap (+296) is gone and no new conflict appears. The image of 1634 (38-52 E, 28-40 N) shows the Ottoman-Safavid border with no grey land in Iraq.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "jesuit-reducciones_1629, the dossier's own shape and text ('for 1629-1631 only') restated with from 1629 and to 1631. In shapes.csv it runs 1629-1639, so the union of overlapping keyframes repainted Guayrá and Itatín (777 cells of Paraná and Mato Grosso do Sul) at the 1632 keyframe. Mbororé page: 'Between 1628 and 1631' the bandeirantes raided Guayrá; 'By the year 1632, 12,000 Guarani had been forcibly moved south, leaving the Guayrá region virtually deserted'; they were 'striking Itatin in 1632'. Trial: the 2,235 Paraná and Mato Grosso do Sul cells carry 777 Jesuit cells in 1630-1631 and none from 1632, and the 777-cell 1632 snap is gone. Shape and region are unchanged; only the span changes. The 1632 (new, 1632-1639) and 1640 keyframes follow without a gap.",
+   "page": "https://en.wikipedia.org/wiki/Battle_of_Mbororé",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "what": "wadai-empire_1636 (Cliopatria's full 280,000 km2 outline), the dossier's shape and text ('applied for 1804-1889') restated with from 1804 and to 1889. In shapes.csv it starts in 1636 and was unioned over the 1635-1803 heartland keyframe (+606 cells, with conflicts against Bagirmi, Bilala and Darfur). Wadai page: 'In 1635, the Maba and other small groups in the region rallied to the Islamic banner of Abd al-Karim'; 'Throughout the 17th century, Wadai was a tributary of the Darfur'; 'After 1804, during the reign of Muhammad Sabun (1804 - c. 1815), the Sultanate of Wadai began to expand its power'; 'In 1805 Wadai conquered Bagirmi'; 'Sabun further extended his rule south to Dar Sila and Dar Runga'. (Joda's earlier southward growth is undated on the page.) Trial: the 1,027 outline cells give Wadai 372 heartland cells from 1635 to 1639 and none of the rest. The 606-cell snap and the Bagirmi, Bilala and Darfur conflicts are gone. From 1804 the snap paints what ledger 1804 (the outline minus the heartland) and the heartland keyframe already give, so the later windows are unharmed.",
+   "page": "https://en.wikipedia.org/wiki/Wadai_Empire",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "fixed",
+   "what": "safavid-dynasty_1636 (1636-1639). Window agent: Cliopatria's 1636 Safavid shape (restoring the 123 Kandahar cells the dossier's 'minus Kandahar' cut out of 1636-1637) united with the same north-western Iraq as events/0. The Kandahar half is supported. The Mughal-Safavid war page has 'Since 1638, when the Kurdish turncoat Ali Mardan Khan handed Kandahar over to Shah Jahan, Kandahar was under the Mughal control', and safavid ledger/50 already removes Kandahar in 1638. The Iraq half is wrong for the reasons under events/0: Mosul was Ottoman before 1638, and Cliopatria's 1636 Ottoman shape holds those 297 cells. The Iraq half also beat the Ottoman 1636 keyframe by the size rule.",
+   "page": "https://en.wikipedia.org/wiki/Mughal%E2%80%93Safavid_war_(1649%E2%80%931653)",
+   "fix": "Removed the Iraq union. The correction is now {cliopatria: Safavid Dynasty, 1636} with a caption text naming Kandahar, and the why notes the withdrawal. Trial: Kandahar's 123 cells are Safavid to the end of 1637 and Mughal from 1638. The Safavid 1636 snap falls from removing 194 cells to removing 71 (only the Yerevan-disc remainder the window agent reported).",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch p1630-p1639 after the reviewer's edits: 4 entries, 4 ok, 0 rejected (keyframe_overrides/1 noted as 1804..1889, outside the window). Trial: all 4 applied, other windows' 570 applied, 0 skipped.",
+ "problems": [
+  "events/0 and keyframe_overrides/2 were rewritten by the reviewer. The window agent gave north-western Iraq (Mosul, Erbil, Duhok, the Jazira; 297 cells) to the Safavids for 1630-1638, but the Mosul page has Persian rule there only as 'a brief break in 1623' and Mosul as an Ottoman base before 1638. The war page has the Ottoman army withdrawing to Mosul on 4 July 1626. The land is now Ottoman from 1630.",
+  "p1620-p1629 (no patch file yet): the same 297 cells are nobody from 1626 to 1629. Cause: ottoman-empire ledger/107 (1625 loss of 'Iraq minus 100 km of Baghdad', text 'Kirkuk, Mosul, Najaf and Karbala') has no Safavid gain to match it, and the Ottoman 1626 keyframe (verdict ok, its note wrongly says 'without Iraq') does not take them back. Dossier request or p1620-p1629 patch: either limit ledger/107 to the land the Safavids actually took, leaving out Cliopatria's Ottoman 1626 shape (Mosul page: Mosul was Persian only in 1623), or add an Ottoman gain of {intersect: [Ottoman Empire 1626, Iraq]} in July 1626 ('withdrew to Mosul').",
+  "Kirkuk: 9 cells of the Kirkuk governorate inside the Ottoman shape follow Cliopatria. The war page says the Persians took Kirkuk in 1624 and gives no recovery date, so those 9 cells are unverified.",
+  "The window agent's compiler finding stands, re-seen in the trial. A keyframe without from/to takes its whole shapes.csv span and is unioned with the next keyframe, so dossier texts such as 'for X-Y only' or 'applied for X-Y' are ignored. Cases outside this window it named and did not patch: principality-of-guria_1612, saadi-sultanate_1629, iberian-union_1636 (1637-1639 Picardy band and Breda), dutch-republic_1636 (Venlo, Roermond 1637-1639). iberian-union_1636 and dutch-republic_1636 fall inside 1637-1639 of this window and remain unpatched; the window agent says they lose by size to France and the Dutch Republic.",
+  "Kandahar admin1 has 74 cells outside Cliopatria's Safavid and Mughal shapes that stay nobody throughout; this predates the patch and is minor.",
+  "keyframe_overrides/1 moves wadai-empire_1636 to start in window p1800-p1809 (1804-1889). p1800-p1809's patch does not touch Wadai, so there is no override clash."
+ ]
+}

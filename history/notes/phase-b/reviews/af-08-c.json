@@ -1,0 +1,985 @@
+{
+ "batch_id": "af-08-c",
+ "verdicts": [
+  {
+   "slug": "german-africa",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (1914-1919; after /ledger/20, /23, /27, /29, /30)",
+     "what": "The dossier keeps the occupied colonies as German land 'hatched in the occupier's colour' until 28 June 1919 (keyframe_review/9-14), but books no owner-side occupation_start/occupation_end for any of them: the only occupation events are German occupations of Kenya, Mozambique and Rhodesia. After each contest_end the land falls back to plain German colour.",
+     "why": "Schema, ledger type: occupation 'the owner records the same event with the roles reversed'. keyframe_review/9 note: 'the contest events and occupation events carry the wartime changes'. Neighbours book the occupier side: french-africa /ledger/60 occupation_start german-africa 1914/8 (Togo), /61 1915 (Neukamerun), /62 1916/2 (French zone of Kamerun); british-africa /31 1915/7 (Namibia), /32 1916 (Tanganyika minus Kigoma); south-africa /1 1915 (Namibia); belgian-congo /2 1916 (Kigoma), /4 1916/5 (Rwanda-Burundi); british-togoland /3 1914/8 (British zone of Togoland). Dates on the pages: Togoland surrendered 26 August 1914 (German Togoland); Khorab 9 July 1915 (GSWA); 'by 17 June, Burundi and Rwanda were occupied' (EAC); Kamerun campaign ended 10 March 1916.",
+     "fix": "Add one occupation_start per occupier at the occupation date and a matching occupation_end at 1919/6 (same counterpart string): french-africa Togo 1914/8; british-togoland the Ghana part of Togoland 1914/8; south-africa Namibia 1915/7 (decide with british-africa which of the two siblings is the occupier: both book it); french-africa the French zone of Kamerun 1916/2-3; british-africa (or british-cameroons once written) Nord-Ouest+Sud-Ouest 1916/2-3; belgian-congo Rwanda+Burundi 1916/5-6 and Kigoma 1916; british-africa Tanganyika minus Kigoma 1916 (progressively; at the latest 1917/11). Neukamerun: either an occupation by french-africa from 1914/1915 ending with the 1916 loss, or keep the 1916 loss and say why french-africa's 1915 occupation and 1919 gain are not mirrored.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/43/region",
+     "what": "The dissolve region is Cliopatria's German Africa 1914 shape ('all four colonies'), which still contains Neukamerun although /ledger/26 gives it to France in 1916.",
+     "why": "Agadir Crisis page: 'During the First World War, in 1916, Neukamerun returned to France.' keyframe_review/14 (1919) already subtracts it.",
+     "fix": "Use the 1919 keyframe's correction (German Africa 1914 minus (German Africa 1911 minus German Africa 1905)) as the dissolve region.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/identity/capitals/2",
+     "what": "Windhuk is a capital from 1884, but the 1884 keyframe is only 100 km round Lüderitz (Windhoek lies about 680 km inland) and the GSWA page does not support 1884.",
+     "why": "GSWA page: infobox 'Capital: Windhuk' with no year; Göring 'established his administration at Otjimbingwe'; the earliest Windhoek date on the page is a school in 1894. Rule 9: capitals inside the state's shapes in those years.",
+     "fix": "Start Windhuk no earlier than its founding as seat (about 1891, from a page such as the Windhoek article) with Otjimbingwe before it, or at least start the span at 1885 and say 'unverified'. Likewise Lomé (named capital only in 1895 on the German Togoland page) and Douala/Jaunde (Kamerun infobox gives only 'Capital: Jaunde', no year): mark the spans as unverified in the capital notes.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/4/region",
+     "what": "The 1885 gain of the whole of Tanganyika from 'nobody' includes the 16 km coastal strip that the event's own note says the Sultan of Zanzibar kept; no later event transfers the coast.",
+     "why": "GEA page: 'The Sultan was forced to accept the German claims on the mainland outside a 16-kilometre (10 mi)-strip along the coast'; the page names only the 1890 Heligoland-Zanzibar Treaty as the settlement.",
+     "fix": "Either say in the note that the coastal strip is drawn German from 1885 for want of a page, or exclude it until 1890 and add a 1890 gain of the coast with counterpart sultanate-of-zanzibar (the pre-1963 sultanate has no dossier yet; the existing sultanate-of-zanzibar.json covers only 1963-1964).",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "Date and extent of the claim to the whole of South West Africa (1885, confidence 1); the GSWA page has only the April 1885 Kolonialgesellschaft, which concerns company rights",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Namibia"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "Inland extension of Togoland in 1890 (confidence 1); German Togoland page: 'Germany gradually extended its control inland', no date",
+     "page to try": "https://en.wikipedia.org/wiki/Togoland_Neutral_Zone"
+    },
+    {
+     "where": "/ledger/6, /ledger/10, /ledger/13",
+     "what is missing": "Kamerun hinterland 1890, 1895, 1905 (confidence 1) and the Nigeria/Chad slivers of the 1905 shape; the Anglo-German (1893) and Franco-German (1894) Cameroon boundary agreements",
+     "page to try": "https://en.wikipedia.org/wiki/Adamawa_Emirate"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "Rwanda under German control, 1898 (confidence 1); kingdom-of-rwanda dissolves 1897 to german-africa",
+     "page to try": "https://en.wikipedia.org/wiki/Ruanda-Urundi"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "Burundi under German control, 1900 (confidence 1) against kingdom-of-burundi's dissolve in 1903; the Treaty of Kiganda (1903) may settle it",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Kiganda"
+    },
+    {
+     "where": "/ledger/25",
+     "what is missing": "British retaking of Taveta, 1916 (confidence 1; the EAC page does not have it)",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Salaita_Hill"
+    },
+    {
+     "where": "/ledger/38",
+     "what is missing": "Portuguese retaking of the Kionga Triangle in 1916 (an occupation 1916-1919 under rule 4)",
+     "page to try": "https://en.wikipedia.org/wiki/Kionga_Triangle"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/German_East_Africa",
+     "result": "confirmed",
+     "note": "infobox 'Established by the DOAG: 27 February 1885'; charter 'signed by Chancellor Otto von Bismarck on 27 February 1885' (but see the coastal-strip fix)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/German_South_West_Africa",
+     "result": "confirmed",
+     "note": "'In July of the same year [1890], as part of the Heligoland-Zanzibar Treaty ... the acquisition of the Caprivi Strip'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/German_East_Africa",
+     "result": "confirmed",
+     "note": "'Germany had virtually forced Portugal to cede the triangle in 1894'"
+    },
+    {
+     "where": "/ledger/26",
+     "page": "https://en.wikipedia.org/wiki/Agadir_Crisis",
+     "result": "confirmed",
+     "note": "'During the First World War, in 1916, Neukamerun returned to France.'"
+    },
+    {
+     "where": "/ledger/33",
+     "page": "https://en.wikipedia.org/wiki/East_African_campaign_(World_War_I)",
+     "result": "confirmed",
+     "note": "'The Germans returned to German East Africa and crossed into Rhodesia in August 1918'; 'On 9 November the German force reached Kasama'"
+    },
+    {
+     "where": "/ledger/34",
+     "page": "https://en.wikipedia.org/wiki/East_African_campaign_(World_War_I)",
+     "result": "confirmed",
+     "note": "'at 11:00 a.m. on 25 November 1918, Lettow-Vorbeck offered his surrender to the British at Abercorn'"
+    },
+    {
+     "where": "/ledger/17, /ledger/20",
+     "page": "https://en.wikipedia.org/wiki/German_Togoland",
+     "result": "confirmed",
+     "note": "invaded 7 August 1914; 'The colony surrendered on 26 August 1914'"
+    },
+    {
+     "where": "/ledger/29",
+     "page": "https://en.wikipedia.org/wiki/East_African_campaign_(World_War_I)",
+     "result": "confirmed",
+     "note": "Force Publique from 18 April 1916; 'by 17 June, Burundi and Rwanda were occupied'"
+    },
+    {
+     "where": "/ledger/43",
+     "page": "https://en.wikipedia.org/wiki/German_East_Africa",
+     "result": "confirmed",
+     "note": "infobox 'Formal disestablishment: 28 June 1919'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2710500,
+    "infobox_year": 1912,
+    "cliopatria_km2": 2671308,
+    "ratio": 0.99,
+    "acknowledged": true,
+    "note": "No single infobox for the aggregate; sum of the colony infoboxes for 1912: GEA 995,000 (opened), GSWA 835,100 (opened), Kamerun 790,000 (opened), Togoland 90,400 (opened). Cliopatria german-africa_1911 (1911-1913). The author's keyframe_review/8 gives the same sum."
+   }
+  },
+  {
+   "slug": "british-gold-coast",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (1850) and /keyframe_review/0",
+     "what": "The Danish Gold Coast's incorporation in 1850 is missing: the 1821-1871 keyframe stays a 30 km circle round Cape Coast and the Danish forts (Christiansborg/Accra, Ada, Keta) never enter the colony before the 1873 Cliopatria shape.",
+     "why": "Gold Coast page infobox (the dossier's own main source): 'Incorporation of the Danish Gold Coast: 1850'; the capital later moves 'to the former Danish castle at Christiansborg in Accra' (1877). danish-gold-coast /ledger/15 dissolves 1850/3 with counterpart british-colonial-empire, which has no dossier (eu-11 has not run), so the forts have no owner in 1850-1872.",
+     "fix": "Add a gain at 1850 (month 3 if the Danish dossier's date holds) with counterpart danish-gold-coast, region = the danish-gold-coast dissolve region, confidence 3, source the Gold Coast page; split keyframe_review/0 at 1850 (1821-1849 Cape Coast; 1850-1871 plus the Danish forts) and carry the forts into the 1872 keyframe's correction. Ask danish-gold-coast's group to change its dissolve counterpart and successor to british-gold-coast.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/wars/2 and /ledger (1900)",
+     "what": "The War of the Golden Stool has a zone (Ashanti) but the ledger has no contest_start/contest_end, so the map draws no fighting; the dossier has no contest events at all.",
+     "why": "War of the Golden Stool page: infobox 'March - September 1900'; Hodgson reached Kumasi 'on 25 March 1900'; 'The war lasted for six months.' Rule 6/10: a war zone is drawn from contest events.",
+     "fix": "Add contest_start 1900/3 and contest_end 1900/9, counterpart 'Asante rebels under Yaa Asantewaa' (the string used in the war's belligerents), region the war's zone (Cliopatria Ashanti Empire 1895), confidence 3, source the War of the Golden Stool page. For the Fourth Anglo-Ashanti War (/wars/1) either add the 1895/12-1896/1 pair or empty its zones and say Kumasi was occupied without fighting.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/3 and /wars/0",
+     "what": "1874: ashanti-empire books a contest with this state (1873 to 1874/2, its /ledger/14-15) and a loss to it of the coast and Assin country south of the Pra (/ledger/16, 1874/2); this dossier has only a rename and a Third Anglo-Ashanti War with empty zones 'no ground changed hands'.",
+     "why": "Gold Coast page: the January 1874 attack 'resulted in the occupation and burning of Kumasi'; 'The Gold Coast Colony, established on 24 July 1874, comprised the coastal areas and extended inland'; 'The subsequent peace treaty required the Asante to renounce any claim to many southern territories.' The /ledger/3 note quotes only 'comprised the coastal areas'.",
+     "fix": "Add the mirror contest pair (1873, 1874/2) and give /wars/0 its zone; add a gain at 1874 (2 or 7) with counterpart ashanti-empire, confidence 2, for the land ashanti-empire cedes (or agree with ashanti-empire's group that the coast was Fante land, counterpart nobody, and say so); make the 1872 and 1873 keyframes agree.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/9, /ledger/10",
+     "what": "The 1901 vassal_end and gain name ashanti-empire as counterpart, but that dossier dissolves in 1896/1 (counterpart british-gold-coast), so the gain is from a state that no longer exists and the vassal relation has no mirror.",
+     "why": "ashanti-empire /ledger/22: dissolve 1896/1, counterpart british-gold-coast. War of the Golden Stool page: 'Ashanti Order in Council 1901 made on 26 September 1901'; Gold Coast page: protectorate from 1896, colony 1901 (infobox) / 1902 (text). The author flagged the disagreement.",
+     "fix": "Route to ashanti-empire's group (af-04): either the Asante state continues to 1901/9 as this colony's protectorate (then vassal_start/vassal_end in both ledgers), or this dossier takes the land as a gain at 1896/1 and draws the protectorate otherwise. Not blocking for this dossier alone.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/7/region",
+     "what": "The 1897 Northern Territories gain is admin1 'Northern' only, which leaves out Upper West and Upper East, where Wa and Dagarti (named in the event's counterpart) lie; they arrive only with the 1899 'nobody' gain.",
+     "why": "Northern Territories page: treaties of 1896 'with the Chiefs of Bona, Dagarti, Wa and Mamprusi at Gambaga'; 'constituted as a district in 1897'.",
+     "fix": "Add Upper West (and Upper East if Mamprusi's lands are meant) to the 1897 region, or say in the note that the far north is left to 1899. Minor.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Extent of the colony 1821-1871 (30 km placeholder) and the Bond of 1844 'informal protectorate' over Fante coastal areas (a vassal_start candidate under rule 4)",
+     "page to try": "https://en.wikipedia.org/wiki/Bond_of_1844"
+    },
+    {
+     "where": "/keyframe_review/2-5",
+     "what is missing": "Growth of the Ghana part from 40 cells (1873) to 59 (1885) and 75 (1890-1897) with no ledger event",
+     "page to try": "https://en.wikipedia.org/wiki/Fante_Confederacy"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "The 1898-1899 frontier agreements with France and Germany (page: 'amicably demarcated'); the 1899 Neutral Zone/Volta Triangle outcome",
+     "page to try": "https://en.wikipedia.org/wiki/Togoland_Neutral_Zone"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Gold_Coast_(British_colony)",
+     "result": "confirmed",
+     "note": "infobox 'Colony established: 1821'; 'Cape Coast (1821-1877)'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Gold_Coast_(British_colony)",
+     "result": "confirmed",
+     "note": "infobox 'Incorporation of the Dutch Gold Coast: 6 April 1872'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Gold_Coast_(British_colony)",
+     "result": "confirmed",
+     "note": "infobox 'Cape Coast (1821-1877) Accra (1877-1957)'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Golden_Stool",
+     "result": "confirmed",
+     "note": "'Ashanti was once again occupied by British troops in January 1896'; protectorate wording is from the Gold Coast page, as the note says"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Northern_Territories_of_the_Gold_Coast",
+     "result": "confirmed",
+     "note": "'These treaties were made in 1896'; 'The Northern Territories were constituted as a district in 1897'"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/War_of_the_Golden_Stool",
+     "result": "confirmed",
+     "note": "'Ashanti Order in Council 1901 made on 26 September 1901'"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Gold_Coast_(British_colony)",
+     "result": "confirmed",
+     "note": "infobox 'Admission of British Togoland: 27 December 1916'"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Gold_Coast_(British_colony)",
+     "result": "confirmed",
+     "note": "infobox 'Incorporation of British Togoland: 11 December 1956' (British Togoland page: 13 December 1956)"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Gold_Coast_(British_colony)",
+     "result": "confirmed",
+     "note": "'Independence as the Dominion of Ghana: 6 March 1957'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 207199,
+    "infobox_year": 1924,
+    "cliopatria_km2": 1194700,
+    "ratio": 5.77,
+    "acknowledged": true,
+    "note": "Cliopatria british-gold-coast_1918 (1918-1941) is a Gold Coast + Nigeria + British Cameroons composite; keyframe notes give the ratio (5.8) and every shape is corrected to the Ghana part (1960 marked wrong)."
+   }
+  },
+  {
+   "slug": "british-togoland",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (1916/12 and 1956/12)",
+     "what": "british-gold-coast books British Togoland as its dependency (vassal_start 1916/12, vassal_end 1956/12, its /ledger/11-12) but this dossier has no mirror vassal events.",
+     "why": "Reviewer brief 2.3: 'a vassal_start of X is a vassal_start in X's ledger with this state as counterpart'. British Togoland page infobox: 'Admission by the Gold Coast: 27 December 1916 - 13 December 1956'; 'British Togoland was administered as part of the adjoining territory of the Gold Coast'.",
+     "fix": "Add vassal_start 1916/12 and vassal_end 1956/12 with counterpart 'british-gold-coast', region the 79-cell zone, confidence 3 and 2, source the British Togoland page.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/0/region, /ledger/3, /ledger/6",
+     "what": "The found event's region, an occupation_start of the same 79 cells in the same month and a 1919 gain of the same cells book the land three ways: found draws it as the state's own land from 1914/8 while the occupation and the gain say it stays German until 1919/6.",
+     "why": "Schema: 'found: the state appears on its core'; the /ledger/0 note says the land 'is drawn as occupied (hatched) over the German state until then'. german-africa books the loss only in 1919/6.",
+     "fix": "Keep the occupation model but say in the found note that the core is occupied land and must render as hatched (orchestrator: confirm the compiler lets occupation_start override a found region), or start the state at the 27 December 1916 partition ('effectively formed in 1916').",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The territory is the Ghana part of Cliopatria's 1914 Togoland (79 cells, about 20,000 km2) while the ghana dossier takes British Togoland as the Volta Region (101 cells) in 1957.",
+     "why": "ghana /ledger/1: gain 1957/3 from british-togoland, region admin1 Volta. German Togoland page: British share 'one-third' (tagged failed verification), i.e. about 30,000 km2 of 90,400. The author flagged it in gaps.",
+     "fix": "Agree one region with the ghana dossier's group (af-08) once a page or map of the 1916/1919 line is found; until then keep the flag.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "The Anglo-French line of 27 December 1916 / the 1919 Milner-Simon line and the zone's area",
+     "page to try": "https://en.wikipedia.org/wiki/Togoland_campaign"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/British_Togoland",
+     "result": "confirmed",
+     "note": "infobox 'Occupation: 27 August 1914'"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/German_Togoland",
+     "result": "confirmed",
+     "note": "'The colony surrendered on 26 August 1914'"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/British_Togoland",
+     "result": "confirmed",
+     "note": "infobox 'Partitioning: 27 December 1916'"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/British_Togoland",
+     "result": "confirmed",
+     "note": "infobox 'League of Nations mandate: 20 July 1922 - 20 April 1946'"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/British_Togoland",
+     "result": "confirmed",
+     "note": "infobox 'U.N. Trust Territory: 13 December 1946 - 6 March 1957'"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/British_Togoland",
+     "result": "confirmed",
+     "note": "'Annexed to Her Majesty's dominions to form part of the Dominion of Ghana: 6 March 1957'"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Gold_Coast_(British_colony)",
+     "result": "confirmed",
+     "note": "'had been linked to the Gold Coast since 1919'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No Cliopatria row and no infobox area on the British Togoland page; the 79-cell region (about 20,000 km2) is about two thirds of the 'one-third' of 90,400 km2 the German Togoland page gives (under 2x; acknowledged in the author's gaps)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1885,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "GEA mainland; counterpart nobody, but the 16 km coast was Zanzibar's (pre-1963 sultanate has no dossier)"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1890,
+    "type": "gain",
+    "counterpart": "british-africa"
+   },
+   "mirror": {
+    "slug": "british-africa",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Caprivi Strip (July 1890): british-africa has no 1890 loss to german-africa"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1894,
+    "type": "gain",
+    "counterpart": "portuguese-mozambique"
+   },
+   "mirror": {
+    "slug": "portuguese-mozambique",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Kionga Triangle: portuguese-mozambique has no 1894 loss (its 1893/3 Cabo Delgado gain covers Kionga); route to its group"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1898,
+    "type": "gain",
+    "counterpart": "kingdom-of-rwanda"
+   },
+   "mirror": {
+    "slug": "kingdom-of-rwanda",
+    "year": 1897,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "both sides low confidence"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1900,
+    "type": "gain",
+    "counterpart": "kingdom-of-burundi"
+   },
+   "mirror": {
+    "slug": "kingdom-of-burundi",
+    "year": 1903,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "3 years apart; german side confidence 1, burundi side confidence 2 (Treaty of Kiganda 1903)"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1911,
+    "type": "gain",
+    "counterpart": "french-africa"
+   },
+   "mirror": {
+    "slug": "french-africa",
+    "year": 1911,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Neukamerun, 4 November 1911"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1911,
+    "type": "loss",
+    "counterpart": "french-africa"
+   },
+   "mirror": {
+    "slug": "french-africa",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "the Chad 'duck's bill' ceded to France: french-africa has no 1911 gain from german-africa"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1914,
+    "type": "occupation_start",
+    "counterpart": "british-africa"
+   },
+   "mirror": {
+    "slug": "british-africa",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Taveta (Kenya) 15 August 1914: british-africa (owner) has no occupation event"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1916,
+    "type": "loss",
+    "counterpart": "french-africa"
+   },
+   "mirror": {
+    "slug": "french-africa",
+    "year": 1919,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Neukamerun: german-africa 1916 (Agadir page), french-africa occupation_start 1915 and gain 1919"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1917,
+    "type": "occupation_start",
+    "counterpart": "portuguese-mozambique"
+   },
+   "mirror": {
+    "slug": "portuguese-mozambique",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Lettow-Vorbeck in northern Mozambique Nov 1917-Aug 1918: no owner-side occupation in portuguese-mozambique"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1918,
+    "type": "occupation_start",
+    "counterpart": "british-africa"
+   },
+   "mirror": {
+    "slug": "british-africa",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "German column in Northern Rhodesia Aug-Nov 1918: no owner-side occupation in british-africa"
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1914,
+    "type": "occupation_start",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Togo occupied from August 1914: no owner-side occupation in german-africa (fix /ledger 1914-1919)"
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1915,
+    "type": "occupation_start",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Neukamerun: no owner-side occupation in german-africa"
+  },
+  {
+   "event": {
+    "slug": "french-africa",
+    "year": 1916,
+    "type": "occupation_start",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "French zone of Kamerun: no owner-side occupation in german-africa"
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1915,
+    "type": "occupation_start",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Namibia: no owner-side occupation in german-africa; south-africa books the same occupation (two siblings occupy one colony)"
+  },
+  {
+   "event": {
+    "slug": "south-africa",
+    "year": 1915,
+    "type": "occupation_start",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Namibia: no owner-side occupation in german-africa"
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1916,
+    "type": "occupation_start",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Tanganyika minus Kigoma: no owner-side occupation in german-africa"
+  },
+  {
+   "event": {
+    "slug": "belgian-congo",
+    "year": 1916,
+    "type": "occupation_start",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Kigoma (1916) and Rwanda-Burundi (1916/5): no owner-side occupation in german-africa"
+  },
+  {
+   "event": {
+    "slug": "british-togoland",
+    "year": 1914,
+    "type": "occupation_start",
+    "counterpart": "german-africa"
+   },
+   "mirror": {
+    "slug": "german-africa",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "British zone of Togoland 1914/8: no owner-side occupation in german-africa (same batch)"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1919,
+    "type": "loss",
+    "counterpart": "south-africa"
+   },
+   "mirror": {
+    "slug": "south-africa",
+    "year": 1920,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Namibia; south-africa 1920 at confidence 1; british-africa also gains Namibia 1919 (sibling double booking)"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1919,
+    "type": "loss",
+    "counterpart": "british-africa"
+   },
+   "mirror": {
+    "slug": "british-africa",
+    "year": 1922,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Tanganyika: 28 June 1919 (Versailles) against the 20 July 1922 mandate; author flagged"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1919,
+    "type": "loss",
+    "counterpart": "belgian-congo"
+   },
+   "mirror": {
+    "slug": "belgian-congo",
+    "year": 1922,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Rwanda-Burundi: 1919/6 against 1922/7; author flagged"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1919,
+    "type": "loss",
+    "counterpart": "portuguese-mozambique"
+   },
+   "mirror": {
+    "slug": "portuguese-mozambique",
+    "year": 1919,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Kionga Triangle 1919/6"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1919,
+    "type": "loss",
+    "counterpart": "british-africa"
+   },
+   "mirror": {
+    "slug": "british-africa",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "British Cameroons (Nord-Ouest, Sud-Ouest): british-africa has no gain; republic-of-cameroon takes the same land from british-gold-coast in 1961; british-cameroons has no dossier"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1919,
+    "type": "loss",
+    "counterpart": "french-africa"
+   },
+   "mirror": {
+    "slug": "french-africa",
+    "year": 1919,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "French Cameroon"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1919,
+    "type": "loss",
+    "counterpart": "british-togoland"
+   },
+   "mirror": {
+    "slug": "british-togoland",
+    "year": 1919,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "same batch"
+  },
+  {
+   "event": {
+    "slug": "german-africa",
+    "year": 1919,
+    "type": "loss",
+    "counterpart": "french-africa"
+   },
+   "mirror": {
+    "slug": "french-africa",
+    "year": 1922,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "French Togo: 1919/6 against 1922/7"
+  },
+  {
+   "event": {
+    "slug": "british-gold-coast",
+    "year": 1850,
+    "type": "gain",
+    "counterpart": "danish-gold-coast"
+   },
+   "mirror": {
+    "slug": "danish-gold-coast",
+    "year": 1850,
+    "type": "dissolve"
+   },
+   "status": "missing",
+   "note": "Gold Coast infobox 'Incorporation of the Danish Gold Coast: 1850'; danish-gold-coast dissolves to british-colonial-empire; no gain in british-gold-coast (fix)"
+  },
+  {
+   "event": {
+    "slug": "british-gold-coast",
+    "year": 1872,
+    "type": "gain",
+    "counterpart": "dutch-gold-coast"
+   },
+   "mirror": {
+    "slug": "dutch-gold-coast",
+    "year": 1872,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "6 April 1872"
+  },
+  {
+   "event": {
+    "slug": "british-gold-coast",
+    "year": 1874,
+    "type": "vassal_start",
+    "counterpart": "lagos-colony"
+   },
+   "mirror": {
+    "slug": "lagos-colony",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Lagos administered by the Gold Coast 1874-1886: lagos-colony has no vassal_start/vassal_end with british-gold-coast (its notes mention it)"
+  },
+  {
+   "event": {
+    "slug": "ashanti-empire",
+    "year": 1874,
+    "type": "loss",
+    "counterpart": "british-gold-coast"
+   },
+   "mirror": {
+    "slug": "british-gold-coast",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "ashanti-empire cedes the coast and Assin south of the Pra 1874/2; british-gold-coast has only a rename (fix)"
+  },
+  {
+   "event": {
+    "slug": "british-gold-coast",
+    "year": 1896,
+    "type": "vassal_start",
+    "counterpart": "ashanti-empire"
+   },
+   "mirror": {
+    "slug": "ashanti-empire",
+    "year": 1896,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "protectorate in the colony, dissolve in the Asante dossier; author flagged"
+  },
+  {
+   "event": {
+    "slug": "british-gold-coast",
+    "year": 1897,
+    "type": "gain",
+    "counterpart": "Mamprusi, Dagarti, Wa and Bona chiefdoms"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed under counterparts_needing_dossiers (af-04)"
+  },
+  {
+   "event": {
+    "slug": "british-gold-coast",
+    "year": 1901,
+    "type": "gain",
+    "counterpart": "ashanti-empire"
+   },
+   "mirror": {
+    "slug": "ashanti-empire",
+    "year": 1896,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "gain from a state dissolved five years earlier"
+  },
+  {
+   "event": {
+    "slug": "british-gold-coast",
+    "year": 1916,
+    "type": "vassal_start",
+    "counterpart": "british-togoland"
+   },
+   "mirror": {
+    "slug": "british-togoland",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "same batch; british-togoland lacks vassal_start/vassal_end british-gold-coast (fix)"
+  },
+  {
+   "event": {
+    "slug": "british-gold-coast",
+    "year": 1957,
+    "type": "dissolve",
+    "counterpart": ""
+   },
+   "mirror": {
+    "slug": "ghana",
+    "year": 1957,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "land differs: ghana excludes admin1 Volta, this dossier the 79 Togoland cells"
+  },
+  {
+   "event": {
+    "slug": "republic-of-cameroon",
+    "year": 1961,
+    "type": "gain",
+    "counterpart": "british-gold-coast"
+   },
+   "mirror": {
+    "slug": "british-gold-coast",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "British Cameroons are not Gold Coast land (Cliopatria composite row); the counterpart should be british-cameroons (no dossier yet)"
+  },
+  {
+   "event": {
+    "slug": "british-togoland",
+    "year": 1957,
+    "type": "loss",
+    "counterpart": "ghana"
+   },
+   "mirror": {
+    "slug": "ghana",
+    "year": 1957,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "land differs: 79 cells against admin1 Volta (101 cells)"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Kionga Triangle",
+   "kind": "region",
+   "used_in": "german-africa (and portuguese-mozambique, which uses it as a region name)"
+  },
+  {
+   "name": "Taveta",
+   "kind": "place",
+   "used_in": "german-africa"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "British Cameroons",
+   "suggested_slug": "british-cameroons",
+   "years": [
+    1916,
+    1961
+   ]
+  },
+  {
+   "name": "Northern Nigeria Protectorate",
+   "suggested_slug": "northern-nigeria-protectorate",
+   "years": [
+    1900,
+    1914
+   ]
+  },
+  {
+   "name": "Colony and Protectorate of Nigeria",
+   "suggested_slug": "colony-and-protectorate-of-nigeria",
+   "years": [
+    1914,
+    1960
+   ]
+  },
+  {
+   "name": "Dagbon / Mamprusi / Wa chiefdoms (northern Gold Coast)",
+   "suggested_slug": "dagbon",
+   "years": [
+    1700,
+    1897
+   ]
+  },
+  {
+   "name": "Sultanate of Zanzibar before 1963 (mainland coast to 1890)",
+   "suggested_slug": "sultanate-of-zanzibar (extend the 1963-1964 dossier back to 1856)",
+   "years": [
+    1856,
+    1963
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-af-08-c.md",
+ "problems": [
+  "WebFetch returns summaries; quotes above are the quotations it returned, not verbatim copies of the pages.",
+  "Did not open the German colonization of Africa page; the german-africa area check uses the four colony infoboxes, all opened.",
+  "No fixes applied by the reviewer: every finding is a missing event or a region/model change, outside the small-fix list; dossiers unchanged.",
+  "Neighbours not yet written (groups not run, exception applies): kingdom-of-spain, kingdom-of-portugal, british-colonial-empire, portuguese-republic, free-french, francoist-spain, french-fifth-republic."
+ ]
+}

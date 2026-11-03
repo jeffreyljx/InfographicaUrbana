@@ -1,0 +1,112 @@
+{
+ "window": "m3100-m3001",
+ "images": [
+  {
+   "year": -3100,
+   "bbox": "world, with Cliopatria",
+   "seen": "32 cultures, no state far outside its region; Cliopatria has only Sumerian city-states and Elam alive, the compiled map adds the dossiers' cultures (Yamnaya, Hoabinhian, Jomon, Yangshao and others); Norte Chico is the one 21-cell dot born this year"
+  },
+  {
+   "year": -3001,
+   "bbox": "-20,5,75,45 (North Africa, Near East), with Cliopatria",
+   "seen": "wrong: Naqada culture held a 600-cell rectangle of the Matruh and Giza desert west of the Delta (the gazetteer region 'Lower Egypt'), and the Early Dynastic state and Naqada alternated as stripes along the Upper Egypt Nile"
+  },
+  {
+   "year": -3100,
+   "bbox": "22,18,52,38 (trial stage, neighbour patch only)",
+   "seen": "desert block gone with the m3200-m3101 override of naqada-culture_-3200, but Naqada still flanks the Early Dynastic state along the Nile as two blue bands, 213 cells"
+  },
+  {
+   "year": -3100,
+   "bbox": "26,20,36,32 (trial stage, with my event)",
+   "seen": "Early Dynastic Egypt holds the Nile valley from the Delta to Aswan; Naqada keeps the Lower Nubia strip south of Aswan; three specks were left before the Fayyum and Giza reach were added to the event (7 cells), none after"
+  }
+ ],
+ "issues": [
+  {
+   "what": "Naqada culture drew a 600-cell Western Desert block (Matruh governorate and the Giza desert, from the gazetteer region 'Lower Egypt') from -3200 to -3000",
+   "years": [
+    -3100,
+    -3001
+   ],
+   "slugs": [
+    "naqada-culture"
+   ],
+   "decision": "fine as drawn after the m3200-m3101 keyframe override naqada-culture_-3200, which runs to -3000 and already cuts Matruh and Giza; confirmed in my trial (m3000 anchor 625 cells change owner); no entry of mine",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Naqada_culture"
+   ]
+  },
+  {
+   "what": "After that override the Early Dynastic state (unified Upper and Lower Egypt from c. 3150 BC) and Naqada still shared the Nile valley, Naqada holding the 40 km band round the narrow Cliopatria strip (213 cells), drawn as stripes for 150 years",
+   "years": [
+    -3100,
+    -3001
+   ],
+   "slugs": [
+    "early-dynastic-period-of-egypt",
+    "naqada-culture"
+   ],
+   "decision": "patched",
+   "patch": "events/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Early_Dynastic_Period_(Egypt)"
+   ]
+  },
+  {
+   "what": "Norte Chico civilization, 21 cells at -3100 (a 60 km disc round Huacho; the page gives 1,800 km2 for three valleys, so the disc overstates a little)",
+   "years": [
+    -3100,
+    -3001
+   ],
+   "slugs": [
+    "norte-chico-civilization"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Naqada keeps the Upper Egypt Nile strip south of Aswan (Lower Nubia, 93 cells at -3000) beside A-Group culture, which is drawn as a Sahara rectangle south of 22N; the pages I opened do not place either state there",
+   "years": [
+    -3100,
+    -3001
+   ],
+   "slugs": [
+    "naqada-culture",
+    "a-group-culture"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Packet flags: 0 conflicts, 0 snaps, 0 skipped events, 0 unresolved regions, 0 relations, 0 close colour pairs; the only dated change is Norte Chico at -3100",
+   "years": [
+    -3100,
+    -3001
+   ],
+   "slugs": [],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/m3100-m3001.json",
+ "patch_entries": {
+  "events": 1,
+  "keyframe_overrides": 0,
+  "rulings": 0
+ },
+ "patch_check": "all applied (check-patch: 1 ok; trial: events/0 applied, 124 cells move from Naqada to the Early Dynastic state at -3100; conflicts 0 -> 0, snaps 0 -> 0)",
+ "colour_clashes": [],
+ "dossier_requests": [],
+ "pages_opened": 2,
+ "problems": [
+  "events/0 is dated -3100 (the first year this window can carry) although the unification is c. 3150 BC, in m3200-m3101; the cleaner fix would be a gain at -3150 there, or a wider early-dynastic-period-of-egypt_-3150 keyframe (it starts outside my window, so I left it). Against the published draft the m3000 end anchor differs by 749 cells (625 from the m3200-m3101 Naqada override, 124 from events/0).",
+  "dependence: events/0 assumes the m3200-m3101 override of naqada-culture_-3200 stays; without it the event still moves the Nile band but the Matruh/Giza desert block stays with Naqada.",
+  "a-group-culture: keyframe a-group-culture_-3500 (-3500..-2900) is a Sahara rectangle south of 22N, as the m3000-m2901 agent also reported; it starts in m3500-m3401, so I did not override it.",
+  "gazetteer: region 'Lower Egypt' includes the Matruh and Al Jizah desert governorates (787 cells, about 180 are the Delta); also reported by the m3200-m3101 agent."
+ ]
+}

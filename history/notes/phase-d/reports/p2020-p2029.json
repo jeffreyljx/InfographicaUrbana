@@ -1,0 +1,289 @@
+{
+ "window": "p2020-p2029",
+ "images": [
+  {
+   "year": 2020,
+   "bbox": "-20,-5,60,40 (with Cliopatria)",
+   "seen": "Africa and the Middle East at the end of 2020: Seleka drawn over eastern CAR, a messy Western Sahara (west drawn as SADR land, Dakhla drawn the wrong way round), Houthis in the north-west; no other gross error."
+  },
+  {
+   "year": 2020,
+   "bbox": "-18,19,-5,30",
+   "seen": "Western Sahara: Laayoune and Smara drawn as SADR land occupied by Morocco (right), Dakhla drawn as Moroccan land occupied by the SADR (reversed), the Free Zone drawn as Moroccan and contested."
+  },
+  {
+   "year": 2024,
+   "bbox": "-20,2,60,38 (with Cliopatria; baseline trial)",
+   "seen": "Sudan with the RSF holding Darfur and contested patches in the centre, Somaliland with a Somali-coloured Las Anod area, STC and Houthis in Yemen: plausible; 2024-keyframe border slivers (Mauritania/Mali, Zambia) too thin to see."
+  },
+  {
+   "year": 2021,
+   "bbox": "35.5,11.5,42,15.5",
+   "seen": "Tigray: whole region drawn as TPLF/Ethiopia contested stripes, three ownerless cells, no Eritrean occupation of the north (3 Eritrean cells drawn as occupied by Ethiopia); left, pages not reopened."
+  },
+  {
+   "year": 2024,
+   "bbox": "22,44,42,53 (with Cliopatria; baseline trial)",
+   "seen": "Crimea and all of Zaporizhzhia and Kherson drawn as plain Ukrainian land since 2022: wrong. The compiler closed the single Russia-Ukraine occupation relation at the first occupation_end of 2022."
+  },
+  {
+   "year": 2024,
+   "bbox": "22,44,42,53 (patched stage)",
+   "seen": "Crimea, left-bank Kherson and about 70 percent of Zaporizhzhia now hatched as occupied by Russia; Ukrainian north of Zaporizhzhia and the Kherson right bank plain."
+  },
+  {
+   "year": 2021,
+   "bbox": "-18,20,-5,30 (patched stage)",
+   "seen": "Western Sahara: the Moroccan-held west is SADR land occupied by Morocco throughout, the Free Zone contested; Morocco proper plain."
+  }
+ ],
+ "issues": [
+  {
+   "what": "Russian occupation of Crimea, Sevastopol and the occupied south (Kherson left bank, Zaporizhzhia) dropped in 2022: the compiler closes the whole Russia-Ukraine occupation relation at the first occupation_end (Kyiv area, April 2022), so about 237 cells (Crimea 83, south 154) were drawn plain Ukrainian 2022-2026 (the dossier's own ukraine_2024 keyframe text says they stay occupied).",
+   "years": [
+    2022,
+    2029
+   ],
+   "slugs": [
+    "russian-federation",
+    "ukraine"
+   ],
+   "decision": "patched",
+   "patch": "events/0",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Russian-occupied_territories",
+    "https://en.wikipedia.org/wiki/Zaporizhzhia_Oblast",
+    "https://en.wikipedia.org/wiki/Russian_annexation_of_Donetsk,_Kherson,_Luhansk_and_Zaporizhzhia_oblasts"
+   ]
+  },
+  {
+   "what": "Western Sahara: the gazetteer's 'W. Sahara' is only the Free Zone (331 cells); the anchor gives Morocco the Free Zone (330 cells) and 226 Dakhla cells with the SADR as occupier of Moroccan-held Dakhla, and 47 Dakhla cells as SADR direct. Laayoune and Smara were already right after the upstream patches (p1970-p1979).",
+   "years": [
+    2020,
+    2029
+   ],
+   "slugs": [
+    "sahrawi-arab-democratic-republic",
+    "morocco"
+   ],
+   "decision": "patched",
+   "patch": "events/1, events/2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Western_Sahara"
+   ]
+  },
+  {
+   "what": "Mexico holds 93 US cells (New Mexico 45, Texas 34, Colorado 14) along the Rio Grande from 2009: mexico /ledger/9 'six islands' resolves to the Rio Grande plus 5 km. The 2024 keyframes undo it (mexico -98, usa +96).",
+   "years": [
+    2020,
+    2023
+   ],
+   "slugs": [
+    "mexico",
+    "united-states-of-america"
+   ],
+   "decision": "patched",
+   "patch": "events/3",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Mexico%E2%80%93United_States_border"
+   ]
+  },
+  {
+   "what": "84 ownerless cells inside Iraq (Salah ad-Din 59, Diyala 18, Ninawa 5+) from 2018-2019 (islamic-state keyframes end without events returning them) until Iraq's 2024 keyframe.",
+   "years": [
+    2020,
+    2023
+   ],
+   "slugs": [
+    "republic-of-iraq",
+    "islamic-state"
+   ],
+   "decision": "patched",
+   "patch": "events/4",
+   "pages": [
+    "https://en.wikipedia.org/wiki/War_in_Iraq_(2013%E2%80%932017)"
+   ]
+  },
+  {
+   "what": "Kyrgyz-Uzbek frontier: uzbekistan /ledger/4 (2022, 156 km2) is read as a one-cell band along the whole 1,314 km border: 34 Uzbek cells drawn Kyrgyz 2022-2023; /ledger/5 (2024, Barak enclave) the same, and the 2024 Uzbek keyframe then threw 35 Kyrgyz cells to nobody (a ring of ownerless cells from 2024 to the end of the data).",
+   "years": [
+    2022,
+    2029
+   ],
+   "slugs": [
+    "republic-of-uzbekistan",
+    "kyrgyzstan"
+   ],
+   "decision": "patched",
+   "patch": "events/5, events/6",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kyrgyzstan%E2%80%93Uzbekistan_border"
+   ]
+  },
+  {
+   "what": "Mali holds all 43 cells of Burkina Faso's Oudalan province 1986-2023 (mali-federation /ledger/6 gives 'the western portion of the Agacher Strip' as the whole province); Burkina's 2024 keyframe takes it back (conflict 43 cell-years). Page not opened (budget); the cause is in p1980-p1989.",
+   "years": [
+    2020,
+    2023
+   ],
+   "slugs": [
+    "mali-federation",
+    "burkina-faso"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Tigray War: 80 Tigray cells are ownerless at the end of 2023 (the TPLF dissolution drops the cells outside its keyframe to nobody; Ethiopia's keyframe takes them in 2024); the Eritrean occupation of the north is 3 Eritrean cells drawn as occupied by Ethiopia (roles reversed); the Weldiya events (ethiopia /ledger/25 and /28, tigray-people-s-liberation-front /ledger/4 and /7) are skipped. The Weldiya events run August to December 2021 and never show in a year-end map.",
+   "years": [
+    2021,
+    2023
+   ],
+   "slugs": [
+    "ethiopia",
+    "tigray-people-s-liberation-front",
+    "state-of-eritrea"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Somaliland loses the Las Anod area (151 cells) to SSC-Khatumo in 2023: no dossier, so it is ownerless until Somalia's 2024 keyframe takes it.",
+   "years": [
+    2023,
+    2023
+   ],
+   "slugs": [
+    "somaliland",
+    "federal-republic-of-somalia"
+   ],
+   "decision": "dossier request",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/SSC-Khatumo"
+   ]
+  },
+  {
+   "what": "Central African Republic: Seleka holds the north and east until 2021, then 884 cells are contested until the end of 2024 and pass to the CAR; a dossier design choice with sources.",
+   "years": [
+    2021,
+    2024
+   ],
+   "slugs": [
+    "central-african-republic",
+    "seleka"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Sudan: RSF holds Darfur from 2023 with contested patches in the centre; the Chad and Libya conflicts are Darfur border cells the RSF wins by size.",
+   "years": [
+    2023,
+    2024
+   ],
+   "slugs": [
+    "rapid-support-forces",
+    "republic-of-sudan"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "2024-keyframe border slivers: Mauritania takes a 49-cell strip of Mali along the border, Zambia 23 cells of Angola and Zimbabwe, Senegal, Guinea, Cote d'Ivoire and Burkina move a few cells each; thin strips between Cliopatria's 2024 outline and the gazetteer, no event behind them.",
+   "years": [
+    2024,
+    2029
+   ],
+   "slugs": [
+    "mauritania",
+    "zambia",
+    "republic-of-senegal",
+    "guinea",
+    "republic-of-cote-d-ivoire",
+    "burkina-faso"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Caucasus 2020: the Armenia-Azerbaijan occupation relation closes whole at the first occupation_end (October 2020) but every district is back by 1 December, so the end of 2020 is right; Artsakh keeps 7 cells until September 2023.",
+   "years": [
+    2020,
+    2023
+   ],
+   "slugs": [
+    "republic-of-armenia",
+    "republic-of-azerbaijan",
+    "republic-of-artsakh"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Packet snaps for South Africa (Transkei, Venda, Ciskei), Belize, Sierra Leone (RUF band) and Denmark disappear once the other windows' patches (p1970-p1979, p1990-p1999) are applied; nothing to do here.",
+   "years": [
+    2020,
+    2024
+   ],
+   "slugs": [
+    "south-africa",
+    "belize",
+    "sierra-leone",
+    "denmark"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/p2020-p2029.json",
+ "patch_entries": {
+  "events": 7,
+  "keyframe_overrides": 0,
+  "rulings": 0
+ },
+ "patch_check": "all applied (--check-patch: 7 ok, 0 rejected; trial: 7 applied; checked with a private copy of the compiler, see problems)",
+ "colour_clashes": [
+  {
+   "a": "british-overseas-territories",
+   "b": "falkland-islands",
+   "years": [
+    2020,
+    2029
+   ],
+   "note": "both #dc7d97 (distance 0.000), 2 shared cell edges; the packet's only pair."
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "ssc-khatumo",
+   "what": "a new dossier for SSC-Khatumo (the Dhulbahante administration of Las Anod, 2023, later the North Eastern State of Somalia)",
+   "why": "somaliland /ledger/4 and /5 hand Las Anod and the Sool, Sanaag and Togdheer lands to a counterpart with no dossier, so 151 cells are ownerless in 2023 and pass to Somalia only through its 2024 keyframe; page cited by the somaliland dossier, not opened by me.",
+   "source": "https://en.wikipedia.org/wiki/SSC-Khatumo"
+  },
+  {
+   "slug": "mali-federation",
+   "what": "/ledger/6 (1986, 'the western portion of the Agacher Strip'): region is the whole Oudalan province (43 cells); the page gives Mali the western part of a strip of about one cell.",
+   "why": "Mali holds Burkina Faso's Oudalan from 1986 to 2023 and the 2024 Burkina keyframe then takes it back; the fix belongs in p1980-p1989 (a loss to Burkina Faso or a smaller region).",
+   "source": "https://en.wikipedia.org/wiki/Agacher_Strip_War"
+  }
+ ],
+ "pages_opened": 8,
+ "problems": [
+  "tool: 'compile_dossiers.py --trial p2020-p2029' fails with FileNotFoundError (the draft is never written): a trial runs to min(window end, LAST_YEAR=2026), so on_window_end(2029) is not in the window_ends set it passes to comp.run, although run() would call it after the loop. I ran a private copy in /tmp with one change (window_ends also holds trial['to']); the real tool is untouched. Every other window ending after 2026 would fail the same way; --check-patch works.",
+  "compiler: relation_end closes the whole relation (key occupation, did, counterpart) whatever the region of the *_end event. Any pair with several partial occupations or contests loses all of them at the first end. Russia-Ukraine fixed by events/0; other windows' pairs with partial ends (Kherson-style) may be affected.",
+  "anchor: the Jan-1 2020 anchor still shows the Free Zone as Moroccan and Dakhla reversed (my events apply during 2020, month 1-2, so only year-end maps change). The root cause is in the 1976-1991 events (the gazetteer's 'W. Sahara' resolves only to the Free Zone, so morocco /ledger/25 and the sahrawi 1976 found reach only the Free Zone): p1980-p1989 or p1990-p1999 should give the Free Zone and Dakhla to the SADR (Morocco occupying Dakhla) from 1991.",
+  "anchor: Mexico's 93 US cells (events/3) come from mexico /ledger/9 of 2009 (p2000-p2009); Iraq's 84 ownerless cells (events/4) from the islamic-state keyframe snaps of 2018-2019 (p2010-p2019); Oudalan from 1986 (p1980-p1989). If those windows patch them, events/3 and events/4 are no-ops (they move only land that Mexico holds in the US shape, and only ownerless cells), and nothing breaks.",
+  "pattern: border_band width 1 is used for sub-cell transfers (uzbekistan /ledger/4 and /5) and moves a whole border strip; other dossiers may do the same (check dossiers that gain or lose 'a border_band' for an area under 1 cell).",
+  "events/3 and events/4 are dated 2020 (inside the window) but repair earlier errors; no entry reaches into another window.",
+  "Mauritania / SADR: with the SADR now holding Dakhla the 2024 keyframe conflict mauritania / sahrawi-arab-democratic-republic is 13 cell-years (SADR wins; it was Morocco's 12 against Mauritania): a one-cell border strip, not touched.",
+  "hierarchy: no wrong row seen (one row active after 2020, kurdistan-region under republic-of-iraq, 2005-2026)."
+ ]
+}

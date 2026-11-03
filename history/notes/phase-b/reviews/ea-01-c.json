@@ -1,0 +1,1133 @@
+{
+ "batch_id": "ea-01-c",
+ "verdicts": [
+  {
+   "slug": "yan",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2, /keyframe_review/3, /keyframe_review/5, /ledger/3",
+     "what": "Cliopatria's yan_-404, yan_-291 and yan_-208 shapes leave out Ji (116.37E, 39.89N), the capital the dossier itself holds -650..-227 and -208..-202, and Xiadu (c. 115.5E), yet yan_-404 and yan_-208 are passed 'ok' and yan_-291 is corrected only for 226-222; /ledger/3 hands this western block (60 cells, about 10,400 km2) to Zhao in 404.",
+     "why": "shapes.csv bbox: yan_-750 starts at 115.8648E (Ji inside), but yan_-404, yan_-291 and yan_-208 all start at 116.7002E, west of which lie Ji and Xiadu. Yan page: 'Yan absorbed the State of Ji ... and moved its capital to Ji'; /ledger/10 quotes Qin's wars page: Qin 'conquered the Yan capital Ji' in 226, so Yan held Ji until 226. /ledger/3 has Cliopatria give the block to Zhao in 404 (zhao_-404 bbox reaches 117.12E, 40.10N); afterwards the bboxes of zhongshan_-366/-301 (to 40.10N) and wei_-291 (to 40.42N) also cover Beijing. The KF1 note checks the capital only against the 750 shape.",
+     "fix": "Mark yan_-404 adjust with correction union({cliopatria: Yan, year: -404}, minus({cliopatria: Yan, year: -405}, {cliopatria: Yan, year: -404})) (that is, the 750 shape), yan_-291 adjust with the same western cells added (keep the 226-222 note), yan_-208 adjust with the same; delete /ledger/3 or cut it to cells the pages let Zhao hold (none named: then delete); add the restored cells to the regions of /ledger/10 (Qin 226) and /ledger/13 (208); say in notes that Cliopatria's Zhao, Zhongshan and Wei rows over Beijing are wrong (for those groups).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/2 vs /ledger/6, /ledger/7",
+     "what": "The c. 300 gains of Liaodong and the Donghu land (about 66,000 km2: 105,154 minus 39,183) have no keyframe until yan_-291, while yan_-404 is passed 'ok' through -292.",
+     "why": "Qin Kai page: 'around 300 BC, he defeated the Donghu and conquered Liaodong Peninsula'; shapes.csv yan_-404 runs -404..-292 at 39,183 km2, yan_-291 starts -291 at 105,154 km2. Rule 4: a large event inside one shape's span needs the keyframe marked adjust.",
+     "fix": "Add a new keyframe yan_-300 (from -300, to -292) with the yan_-291 shape (plus the Ji fix), and say in yan_-404's note that it ends at -301; or date /ledger/6-7 to -291 with the 'around 300' quote in the note.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/1 vs /keyframe_review/0, /keyframe_review/1",
+     "what": "The -650 gain of the State of Ji (place Beijing) adds land the keyframes already give Yan from -1046: yan_-1046 carries the 750 shape back, and it contains Beijing.",
+     "why": "shapes.csv yan_-750 bbox 115.86-121.23E, 38.55-40.94N contains Beijing; Yan page: Yan 'absorbed the State of Ji, a smaller kingdom to the north'.",
+     "fix": "Either cut a Ji (Beijing) circle out of yan_-1046 and the first years of yan_-750 until -651 (a new keyframe split at -650), or say in /ledger/1's note that the Ji gain is an event only and the shapes include Ji from the start.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "Any page for a Yan loss to Zhao in 404 (and which cells); expected none, so the event should go (see fixes).",
+     "page to try": "https://en.wikipedia.org/wiki/Zhao_(state)"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "The year Qi's troops were driven out after 314 (312 is taken from the reign list).",
+     "page to try": "https://en.wikipedia.org/wiki/King_Zhao_of_Yan"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "The extent of the land taken from the Donghu c. 300 and the Yan walls and five commanderies (the Yan page names Shanggu, Yuyang, Youbeiping, Liaoxi and Liaodong, undated: 'At the turn of the 3rd century BC').",
+     "page to try": "https://en.wikipedia.org/wiki/Donghu_people"
+    },
+    {
+     "where": "/ledger/13",
+     "what is missing": "Han Guang's year (209 or 208) and extent.",
+     "page to try": "https://en.wikipedia.org/wiki/Han_Guang"
+    },
+    {
+     "where": "/ledger/14",
+     "what is missing": "Any page for the 5 cells Cliopatria passes to the Xiongnu at 208 (xiongnu.json has no gain from Yan).",
+     "page to try": "https://en.wikipedia.org/wiki/Modu_Chanyu"
+    },
+    {
+     "where": "/ledger/1, /ledger/2",
+     "what is missing": "The year of the absorption of Ji and the move from Liulihe (7th century only).",
+     "page to try": "https://en.wikipedia.org/wiki/Ji_(state)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Yan_(state)",
+     "result": "confirmed",
+     "note": "'in 314 BC Qi invaded and in a little over several months practically conquered the country'; 'a revolt eventually drove them away' (no year)."
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Qin_Kai_(general)",
+     "result": "confirmed",
+     "note": "'After returning to Yan, around 300 BC, he defeated the Donghu and conquered Liaodong Peninsula, wrestling it from Gojoseon.'"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Yan_(state)",
+     "result": "confirmed",
+     "note": "'In 222 BC, Liaodong fell as well, and Yan was overrun by Qin'; infobox 'Conquered by Qin: 222 BC'."
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Zang_Tu",
+     "result": "confirmed",
+     "note": "'Zang Tu attacked Han Guang and killed him at Wuzhong, thereby becoming king of a united Yan kingdom' (right after the 206 division, no own year)."
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Zang_Tu",
+     "result": "confirmed",
+     "note": "Rebelled 202 'in c.August', captured 'in c.October', executed by Liu Bang; succeeded by Lu Wan. end.month 10 matches."
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 105154,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Yan infobox (checked: area absent). The internal area problem is the Ji/Beijing block, first fix."
+   }
+  },
+  {
+   "slug": "song",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/3",
+     "what": "The 20 cells of Cliopatria's old Xu row that Song gains in 450 are given counterpart 'nobody', but by this batch's own chain the land was Wu's from 512 (wu.json /ledger/2 gains the whole Xu shape) and Yue's from 473 (wu.json /ledger/7).",
+     "why": "xu.json /ledger/1 dissolve 512 to wu; wu.json /ledger/2 region = Xu -750 shape; wu.json dissolve 473 to yue.",
+     "fix": "Counterpart 'yue' (confidence 1, note 'Xu's old land, Wu's from 512 and Yue's from 473 by the batch's dossiers; page silent'), or keep 'nobody' and say in the note why not Yue.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2, /ledger/4, /ledger/5, /ledger/6",
+     "what is missing": "Pages for Cliopatria's small moves with Lu (480: 24 cells; 404: 1 cell), Qi (404: 1 cell) and Zheng (366: 3 cells); all confidence 1, page silent.",
+     "page to try": "https://en.wikipedia.org/wiki/Lu_(state)"
+    },
+    {
+     "where": "/ledger/9 and identity.successors",
+     "what is missing": "How Qi, Chu and Wei divided Song in 286 (King Kang page: 'Finally, Song was partitioned by Qi, Chu and Wei', no shares).",
+     "page to try": "https://en.wikipedia.org/wiki/King_Min_of_Qi"
+    },
+    {
+     "where": "/wars/0",
+     "what is missing": "King Kang's conquests ('beating troops from Chu, Wei and Qi and annexing Teng', no years, no land on the Song or King Kang pages); Battle of the Hong River page not opened.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Hong_River"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Cao_(state)",
+     "result": "confirmed",
+     "note": "'the State of Cao was exterminated in 487 BC after the capture of Duke Fei'; 'Duke Jing of Song attacked Cao'. The Spring and Autumn table, in sources, says 'Cao ... 487 BCE: to Song', so the author's 'the page never says conquered by Song' is too cautious; confidence 2 may rise to 3."
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Song_(state)",
+     "result": "confirmed",
+     "note": "'In 328, Dai Yan, a younger brother of Ticheng, took the throne and declared himself to be King Kang of Song'; the King Kang page: 'In 318 BC, Yan declared himself to be King of Song' (conflict flagged by the author)."
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Teng_(state)",
+     "result": "confirmed",
+     "note": "'Finally it was annihilated by King Kang of Song in 297 BC'; infobox 'Conquered by Song: 297 BCE'."
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Song_(state)",
+     "result": "confirmed",
+     "note": "Infobox 'Conquered by Qi: 286 BC'; 'annexed by Qi in 286, with troops from Chu and Wei serving on behalf of Qi'; no partition on the Song page."
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 34727,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Song infobox (checked)."
+   }
+  },
+  {
+   "slug": "wey",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/2 vs /keyframe_review/1, /keyframe_review/2",
+     "what": "The 635 gain of Xing's land at Liaocheng (confidence 3) has no trace in any keyframe: wey_-750 and wey_-550 stay Cliopatria's shape, which lies about 40 km from Liaocheng (author's note), so the gained land is never drawn and never lost.",
+     "why": "Xing page: 'In 635 BCE ... the State of Xing was wiped out by the State of Wey'; 'Duke Huan of Qi relocated Xing southeast to a place known as Yiyi (modern day Liaocheng City, Shandong)'. Rule 4: an event that is not small and lies outside the shapes needs a keyframe marked adjust.",
+     "fix": "Add a new keyframe wey_-635 (-635..-551) = union({cliopatria: Wey, year: -750}, the Liaocheng circle), carry it into wey_-550 (adjust) and close it with a confidence-1 loss at the first Cliopatria change, or keep the shapes and say in /keyframe_review/1's note that the Xing gain is drawn as an event only.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/10 (wey_-241) vs /ledger/10-11",
+     "what": "The new Yewang keyframe adds land no event gives Wey: the ledger loses Puyang to Qin and moves the capital, but has no gain of Yewang.",
+     "why": "Wey page: 'In 241 BCE ... Qin captured Puyang during its attack on Wei'; 'Wey's ruler was relocated to Yewang'.",
+     "fix": "Add a -241 gain, counterpart 'qin', region the Yewang circle (lon 112.93, lat 35.09, km 20), confidence 2, quoting the relocation sentence.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/9",
+     "what is missing": "Who took Wey's land before 320 and when ('by 320 BCE ... Wey controlled only the county of Puyang'); 'wei' is a guess at confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Wei_(state)"
+    },
+    {
+     "where": "/ledger/4, /ledger/5, /ledger/6, /ledger/7",
+     "what is missing": "Pages for Cliopatria's 1-9 cell moves to Jin (550, 450), Wei (404) and Zhao (366); page silent.",
+     "page to try": "https://en.wikipedia.org/wiki/Jin_(Chinese_state)"
+    },
+    {
+     "where": "identity.rulers",
+     "what is missing": "Ruler strip (the table was garbled for the author).",
+     "page to try": "https://en.wikipedia.org/wiki/Wey_(state)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Wey_(state)",
+     "result": "confirmed",
+     "note": "Infobox 'Chuqiu (659-629 BCE)'; 'with the aid of Duke Huan of Qi ... the state was eventually restored, with its capital moved to Chuqiu'."
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Xing_(state)",
+     "result": "confirmed",
+     "note": "'In 635 BCE ... the State of Xing was wiped out by the State of Wey'; Yiyi = 'modern day Liaocheng City'. The Spring and Autumn table gives 632 (author flags it)."
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Wey_(state)",
+     "result": "confirmed",
+     "note": "'In 346 BCE, the duke of Wey degraded his title to marquis'; 'By 320 BCE, the ruler further downgraded to jun (lord), and Wey controlled only the county of Puyang'."
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Wey_(state)",
+     "result": "confirmed",
+     "note": "'In 241 BCE (year 6 of King Zheng of Qin's reign), Qin captured Puyang during its attack on Wei'; 'Wey's ruler was relocated to Yewang'."
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Wey_(state)",
+     "result": "confirmed",
+     "note": "Infobox 'Annexed by Qin: 209 BCE'; Qin Er Shi 'deposed Lord Jiao'; modern revision 'Lord Jiao's reign ended in 221 BCE'."
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 7027,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Wey infobox (checked). The text check (Puyang county only by 320) is acknowledged and acted on in wey_-350/-320."
+   }
+  },
+  {
+   "slug": "wu",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/5, /ledger/6",
+     "what": "Confidence 3 on the 482 and 473 Yue occupation events whose region is Cliopatria's 539-cell southern block, which no page names.",
+     "why": "Wu page: Yue 'launched a surprise attack on Wu in 482 BC and conquered the capital'; Spring and Autumn page: 'Yue captured the Wu capital'; 'besieged and died when the city fell in 473'. Rule 7.",
+     "fix": "Confidence lowered to 2 with a reviewer note on both events (done; the dossier re-validated with 0 errors, 0 warnings).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/2 (wu_-584)",
+     "what": "The shape jumps from the Wuxi-Suzhou core of wu_-750's correction (two 60 km circles, under 23,000 km2) to Cliopatria's 193,280 km2 at -584, and the only event is the gain of Zhoulai (a 40 km circle, /ledger/1): about 170,000 km2 is unexplained.",
+     "why": "shapes.csv wu_-750 193,279.7 km2; /keyframe_review/1 correction union(Wuxi 60 km, Suzhou 60 km); /ledger/1 region place Huainan 40 km. Wu page: 'Wu rose to power in the 6th century BC' (no extent).",
+     "fix": "Add a confidence-1 gain at -584 (counterpart 'nobody', region minus({cliopatria: Wu, year: -750}, the two core circles, the Huainan circle), note 'Cliopatria's extent; the page dates only the rise in the 6th century') or keep the core shape after 584 until a page dates the growth.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/2 vs /keyframe_review/3, /keyframe_review/4",
+     "what": "The 512 conquest of Xu (confidence 3, region = Xu's Cliopatria shape plus the Sihong and Pizhou circles) is not added to Wu's keyframes: wu_-550 is passed 'ok' and tops out at 34.94N, while Xu's shape reaches 35.07N.",
+     "why": "shapes.csv wu_-550 bbox 116.10-122.03E, 29.47-34.94N; xu_-750 bbox 116.65-117.97E, 34.42-35.07N; Xu page: 'Xu was eventually conquered by Wu in 512 BC'.",
+     "fix": "Add a new keyframe wu_-512 (-512..-483) = union({cliopatria: Wu, year: -550}, the /ledger/2 region), and add the same region to wu_-480's correction.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/2, /keyframe_review/3",
+     "what is missing": "Wu's frontier in the 6th and 5th centuries (Huai valley, Zhejiang border with Yue); Cliopatria's Yue row overlaps Wu's core 500-481.",
+     "page to try": "https://en.wikipedia.org/wiki/Goujian"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "The location of Zhoulai (the author's Huainan placing; Fengtai County area).",
+     "page to try": "https://en.wikipedia.org/wiki/Zhoulai"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Founding year (century only) and capital moves (Meili, Gusu).",
+     "page to try": "https://en.wikipedia.org/wiki/Taibo"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Boju",
+     "result": "confirmed",
+     "note": "'in 584 BC defeated Chu for the first time and annexed the Chu city of Zhoulai'."
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Xu_(state)",
+     "result": "confirmed",
+     "note": "'Reduced to its heartland, Xu was eventually conquered by Wu in 512 BC'; infobox 'Conquered by Wu: 512 BC'."
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Boju",
+     "result": "confirmed",
+     "note": "'In 505 BC, the Qin and Chu armies jointly defeated Wu in several battles'; 'King Zhao of Chu then returned to the capital Ying'."
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Wu_(state)",
+     "result": "confirmed",
+     "note": "'launched a surprise attack on Wu in 482 BC and conquered the capital'; the region is not named (confidence lowered, applied)."
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Wu_(state)",
+     "result": "confirmed",
+     "note": "'Yue absorbed the state in 473 BC'; infobox 'Defeated by Yue: 473 BC'."
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 193280,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Wu infobox (checked). The internal jump at 584 is the second fix."
+   }
+  },
+  {
+   "slug": "xu",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger (missing, -530) and /wars",
+     "what": "King Ling of Chu's siege and conquest of Xu's capital is on the Xu page but in neither the ledger nor the wars.",
+     "why": "Xu page: 'King Ling of Chu led another army to besiege and conquer Xu's capital in order to prepare an invasion of Wu' (530 BC); chu.json /ledger/22 quotes the Chu page: 'In winter 529 BC, King Ling set off to attack the State of Xu' before his fall.",
+     "fix": "Add a war (Chu, Xu, 530-529) and occupation_start (counterpart 'chu', region the Sihong circle) at -530 with occupation_end at -529 (King Ling's fall), confidence 2 and 1, or say in notes why it is left out.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (missing, 645-512)",
+     "what is missing": "Xu's losses before 512: 'losing control over the Huai River to Chu', 'Reduced to its heartland', Chu's invasion of 645 and the Battle of Loulin ('Xu was severely weakened'), Zhongli's victory (644-600), Wu's attack of 584; all on the Xu page, undated as land.",
+     "page to try": "https://en.wikipedia.org/wiki/Xu_(state)"
+    },
+    {
+     "where": "/keyframe_review/2, /keyframe_review/3, /keyframe_review/4",
+     "what is missing": "What Cliopatria's Warring States 'Xu' row (116.5-117.4E, 34.9-35.5N, on Teng and Zhu land) stands for; a lead: the state of Xue near Tengzhou, or the other Xu (許, Xuchang) of the Spring and Autumn table ('c. 5th century BCE: to Chu'), which does not fit the place.",
+     "page to try": "https://en.wikipedia.org/wiki/Xue_(state)"
+    },
+    {
+     "where": "identity.capitals",
+     "what is missing": "The Spring and Autumn table places Xu (徐) at Tancheng County, Shandong, against the Xu page's Sihong; the capital and its moves need a page.",
+     "page to try": "https://en.wikipedia.org/wiki/Huaiyi"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Xu_(state)",
+     "result": "confirmed",
+     "note": "'Xu's existence is first reliably reported by the Yi Zhou Shu for 1042 BC'; 'Xu participated in the Rebellion of the Three Guards'."
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Xu_(state)",
+     "result": "confirmed",
+     "note": "'conquered by Wu in 512 BC'; 'Hereby, Xu was extinguished'; Spring and Autumn table 'Xu ... 512 BCE: to Wu'."
+    },
+    {
+     "where": "/wars/1",
+     "page": "https://en.wikipedia.org/wiki/Xu_(state)",
+     "result": "confirmed",
+     "note": "'By 944 BC, Lord Yan of Xu managed to unite thirty-six Dongyi and Huaiyi states'; 850 counter-offensive; 822 campaign."
+    },
+    {
+     "where": "/wars/2",
+     "page": "https://en.wikipedia.org/wiki/Xu_(state)",
+     "result": "confirmed",
+     "note": "'Chu retaliated in 645 BC, and launched an invasion of Xu'."
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 4637,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Xu infobox (checked)."
+   }
+  },
+  {
+   "slug": "teng",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/2",
+     "what": "Yue's occupation of Teng was ended in 297, 36 years after Yue itself fell: the Yue page has Yue partitioned by Chu and Qi in 333, so no Yue hold could last to 297.",
+     "why": "Yue page: 'Yue was partitioned by Chu and Qi in 333 BC'; infobox 'Conquered by Chu: 333 BC'. The event was confidence 1 ('no page opened says when Yue's rule ended').",
+     "fix": "Moved the occupation_end to -333 (confidence 1, source the Yue page, added to sources) with a reviewer note; re-validated with 0 errors, 0 warnings. The 297 dissolve is unchanged.",
+     "applied": true,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1, /ledger/2",
+     "what is missing": "The page contradicts itself (lead and infobox: conquered by Yue in 414, 'during the reign of Goujian' and 'by King Zhugou'; text: annihilated by Song in 297); when Teng recovered from Yue is on no page opened.",
+     "page to try": "https://en.wikipedia.org/wiki/Mencius"
+    },
+    {
+     "where": "notes (vassal of Lu)",
+     "what is missing": "'Teng was a vassal of the Lu state' (undated): lu.json has no vassal_start for Teng.",
+     "page to try": "https://en.wikipedia.org/wiki/Lu_(state)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Teng_(state)",
+     "result": "confirmed",
+     "note": "Infobox 'Established: 1046 BCE'; founder 'Shu Xiu of Cuo'; 'Its territory corresponds to the present-day county-level city of Tengzhou'."
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Teng_(state)",
+     "result": "confirmed",
+     "note": "Infobox 'Conquered by Yue: 414 BCE'; 'It was conquered by King Zhugou of the Yue state'."
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Yue_(state)",
+     "result": "mis-dated",
+     "note": "Confidence-1 end of the Yue occupation in 297 outlives Yue (partitioned 333): moved to -333 (applied)."
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Teng_(state)",
+     "result": "confirmed",
+     "note": "'Finally it was annihilated by King Kang of Song in 297 BC'; infobox 'Conquered by Song: 297 BCE'; Spring and Autumn table 'Teng ... 297 BCE: to Song'."
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 4324,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Teng infobox (checked)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "yan",
+    "year": -650,
+    "type": "gain",
+    "counterpart": "Ji (state)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in the author's counterparts_needing_dossiers (ji-state)."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -404,
+    "type": "loss",
+    "counterpart": "zhao"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "zhao is owned by another ea-01 part not yet written; the event itself should go (Ji/Beijing was Yan's capital to 226, see yan fixes)."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -314,
+    "type": "occupation_start",
+    "counterpart": "qi"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "qi.json has no 314 occupation of Yan (Yan page: 'in 314 BC Qi invaded and ... practically conquered the country'); author flagged it. Route to Qi's group."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -312,
+    "type": "occupation_end",
+    "counterpart": "qi"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Pair of the above; missing in qi.json."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -300,
+    "type": "gain",
+    "counterpart": "gojoseon"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "gojoseon is owned by jk-02-a (not run); its Cliopatria row starts -197, so its dossier must reach back to c. 300 for this loss."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -300,
+    "type": "gain",
+    "counterpart": "Donghu"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers (donghu, ia-01)."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -284,
+    "type": "occupation_start",
+    "counterpart": "qi"
+   },
+   "mirror": {
+    "slug": "qi",
+    "year": -284,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "qi.json /ledger/9 (cp yan)."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -279,
+    "type": "occupation_end",
+    "counterpart": "qi"
+   },
+   "mirror": {
+    "slug": "qi",
+    "year": -279,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "qi.json /ledger/11."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -226,
+    "type": "loss",
+    "counterpart": "qin"
+   },
+   "mirror": {
+    "slug": "qin",
+    "year": -226,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "qin.json /ledger/33. Land: both sides should include Ji once the yan fix is made."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -222,
+    "type": "loss",
+    "counterpart": "qin"
+   },
+   "mirror": {
+    "slug": "qin",
+    "year": -222,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "qin.json /ledger/38."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -208,
+    "type": "gain",
+    "counterpart": "qin-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "qin-dynasty owned by ea-01-e/ea-02-a, not run."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -208,
+    "type": "loss",
+    "counterpart": "xiongnu"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "xiongnu.json (ia-01, written) has no gain from Yan at 208; its -208 gain is from the Donghu. Confidence 1 on both sides; either add the mirror or drop the 5 cells."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -206,
+    "type": "split",
+    "counterpart": "liaodong"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "liaodong owned by ea-02-b, not run; it should end in 206 (Zang Tu page)."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -206,
+    "type": "gain",
+    "counterpart": "liaodong"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "As above."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -202,
+    "type": "dissolve",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Successor han-dynasty not yet written (ea-02)."
+  },
+  {
+   "event": {
+    "slug": "song",
+    "year": -487,
+    "type": "gain",
+    "counterpart": "cao"
+   },
+   "mirror": {
+    "slug": "cao",
+    "year": -487,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "cao.json /ledger/1 dissolve, counterpart song; Spring and Autumn table 'Cao ... 487 BCE: to Song'."
+  },
+  {
+   "event": {
+    "slug": "song",
+    "year": -480,
+    "type": "gain",
+    "counterpart": "lu"
+   },
+   "mirror": {
+    "slug": "lu",
+    "year": -480,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "lu.json /ledger/1."
+  },
+  {
+   "event": {
+    "slug": "song",
+    "year": -450,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody; by the batch's chain (Xu to Wu 512, Wu to Yue 473) it may be yue (song fix)."
+  },
+  {
+   "event": {
+    "slug": "song",
+    "year": -404,
+    "type": "gain",
+    "counterpart": "lu"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "lu.json has no -404 loss to Song (1 cell, confidence 1)."
+  },
+  {
+   "event": {
+    "slug": "song",
+    "year": -404,
+    "type": "loss",
+    "counterpart": "qi"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "qi.json's -404 gains are from lu and jin only (1 cell, confidence 1)."
+  },
+  {
+   "event": {
+    "slug": "song",
+    "year": -366,
+    "type": "gain",
+    "counterpart": "zheng"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "zheng not yet written (another ea-01 part)."
+  },
+  {
+   "event": {
+    "slug": "song",
+    "year": -297,
+    "type": "gain",
+    "counterpart": "teng"
+   },
+   "mirror": {
+    "slug": "teng",
+    "year": -297,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "teng.json /ledger/3, counterpart song."
+  },
+  {
+   "event": {
+    "slug": "song",
+    "year": -286,
+    "type": "dissolve",
+    "counterpart": "qi"
+   },
+   "mirror": {
+    "slug": "qi",
+    "year": -286,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "qi.json /ledger/8."
+  },
+  {
+   "event": {
+    "slug": "song",
+    "year": -286,
+    "type": "dissolve",
+    "counterpart": "chu"
+   },
+   "mirror": {
+    "slug": "chu",
+    "year": -286,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "chu.json /ledger/40."
+  },
+  {
+   "event": {
+    "slug": "song",
+    "year": -286,
+    "type": "dissolve",
+    "counterpart": "wei"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "wei not yet written."
+  },
+  {
+   "event": {
+    "slug": "wey",
+    "year": -635,
+    "type": "gain",
+    "counterpart": "xing"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers (xing)."
+  },
+  {
+   "event": {
+    "slug": "wey",
+    "year": -550,
+    "type": "loss",
+    "counterpart": "jin"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "jin.json has no -550 gain from Wey (1 cell, confidence 1)."
+  },
+  {
+   "event": {
+    "slug": "wey",
+    "year": -450,
+    "type": "loss",
+    "counterpart": "jin"
+   },
+   "mirror": {
+    "slug": "jin",
+    "year": -450,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "jin.json /ledger/7."
+  },
+  {
+   "event": {
+    "slug": "wey",
+    "year": -404,
+    "type": "loss",
+    "counterpart": "wei"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "wei not yet written."
+  },
+  {
+   "event": {
+    "slug": "wey",
+    "year": -366,
+    "type": "loss",
+    "counterpart": "zhao"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "zhao not yet written."
+  },
+  {
+   "event": {
+    "slug": "wey",
+    "year": -320,
+    "type": "loss",
+    "counterpart": "wei"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "wei not yet written; counterpart is the author's guess (confidence 1)."
+  },
+  {
+   "event": {
+    "slug": "wey",
+    "year": -252,
+    "type": "vassal_start",
+    "counterpart": "wei"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Not in wey.json by design (schema: the suzerain records vassal_start with the vassal as counterpart); Wei's dossier, not yet written, needs vassal_start 'wey' 252 (Wey page: 'making Wey a dependency of Wei')."
+  },
+  {
+   "event": {
+    "slug": "wey",
+    "year": -241,
+    "type": "loss",
+    "counterpart": "qin"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "qin.json has no 241 gain of Puyang from Wey and no vassal_start 'wey' (Wey page: 'In 241 BCE ... Qin captured Puyang'; Wey survived 'nominally as a Qin vassal'). Route to Qin's group."
+  },
+  {
+   "event": {
+    "slug": "wey",
+    "year": -209,
+    "type": "dissolve",
+    "counterpart": "qin-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "qin-dynasty not yet written."
+  },
+  {
+   "event": {
+    "slug": "wu",
+    "year": -584,
+    "type": "gain",
+    "counterpart": "chu"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "chu.json has no -584 loss of Zhoulai to Wu (Battle of Boju page: 'annexed the Chu city of Zhoulai')."
+  },
+  {
+   "event": {
+    "slug": "wu",
+    "year": -512,
+    "type": "gain",
+    "counterpart": "xu"
+   },
+   "mirror": {
+    "slug": "xu",
+    "year": -512,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "xu.json /ledger/1, counterpart wu."
+  },
+  {
+   "event": {
+    "slug": "chu",
+    "year": -512,
+    "type": "gain",
+    "counterpart": "xu"
+   },
+   "mirror": {
+    "slug": "xu",
+    "year": -512,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "chu.json /ledger/24 also gains Xu in 512, but xu.json and wu.json give Xu to Wu (Xu page infobox 'Conquered by Wu: 512 BC'; Spring and Autumn table 'Xu ... 512 BCE: to Wu'). The same table lists a second Xu (許, Xuchang) that went 'to Chu' in the 5th century: chu.json may confuse the two. Route to Chu's group."
+  },
+  {
+   "event": {
+    "slug": "wu",
+    "year": -506,
+    "type": "occupation_start",
+    "counterpart": "chu"
+   },
+   "mirror": {
+    "slug": "chu",
+    "year": -506,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "chu.json /ledger/25."
+  },
+  {
+   "event": {
+    "slug": "wu",
+    "year": -505,
+    "type": "occupation_end",
+    "counterpart": "chu"
+   },
+   "mirror": {
+    "slug": "chu",
+    "year": -505,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "chu.json /ledger/26."
+  },
+  {
+   "event": {
+    "slug": "wu",
+    "year": -482,
+    "type": "occupation_start",
+    "counterpart": "yue"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "yue not yet written (another ea-01 part); its first shape should start 482/473."
+  },
+  {
+   "event": {
+    "slug": "wu",
+    "year": -473,
+    "type": "occupation_end",
+    "counterpart": "yue"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "yue not yet written."
+  },
+  {
+   "event": {
+    "slug": "wu",
+    "year": -473,
+    "type": "dissolve",
+    "counterpart": "yue"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "yue not yet written."
+  },
+  {
+   "event": {
+    "slug": "xu",
+    "year": -512,
+    "type": "dissolve",
+    "counterpart": "wu"
+   },
+   "mirror": {
+    "slug": "wu",
+    "year": -512,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "wu.json /ledger/2."
+  },
+  {
+   "event": {
+    "slug": "teng",
+    "year": -414,
+    "type": "occupation_start",
+    "counterpart": "yue"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "yue not yet written."
+  },
+  {
+   "event": {
+    "slug": "teng",
+    "year": -333,
+    "type": "occupation_end",
+    "counterpart": "yue"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "yue not yet written (moved from 297 by the reviewer; Yue partitioned 333)."
+  },
+  {
+   "event": {
+    "slug": "teng",
+    "year": -297,
+    "type": "dissolve",
+    "counterpart": "song"
+   },
+   "mirror": {
+    "slug": "song",
+    "year": -297,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "song.json /ledger/8."
+  },
+  {
+   "event": {
+    "slug": "teng",
+    "year": null,
+    "type": "vassal_start",
+    "counterpart": "lu"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Teng page: 'Teng was a vassal of the Lu state' (undated); lu.json has no vassal_start 'teng'."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Sihong",
+   "kind": "place",
+   "used_in": "xu, wu"
+  },
+  {
+   "name": "Pizhou",
+   "kind": "place",
+   "used_in": "xu, wu"
+  },
+  {
+   "name": "Tengzhou",
+   "kind": "place",
+   "used_in": "teng, song"
+  },
+  {
+   "name": "Yewang",
+   "kind": "place",
+   "used_in": "wey"
+  },
+  {
+   "name": "Zhaoge",
+   "kind": "place",
+   "used_in": "wey"
+  },
+  {
+   "name": "Chuqiu",
+   "kind": "place",
+   "used_in": "wey"
+  },
+  {
+   "name": "Liulihe",
+   "kind": "place",
+   "used_in": "yan"
+  },
+  {
+   "name": "Xiadu",
+   "kind": "place",
+   "used_in": "yan"
+  },
+  {
+   "name": "Zhoulai",
+   "kind": "place",
+   "used_in": "wu"
+  },
+  {
+   "name": "Huai River valley",
+   "kind": "region",
+   "used_in": "xu"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Xing (state)",
+   "suggested_slug": "xing",
+   "years": [
+    -1046,
+    -635
+   ]
+  },
+  {
+   "name": "Ji (state)",
+   "suggested_slug": "ji-state",
+   "years": [
+    -1046,
+    -650
+   ]
+  },
+  {
+   "name": "Donghu",
+   "suggested_slug": "donghu",
+   "years": [
+    -300,
+    -208
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ea-01-c.md",
+ "problems": [
+  "Applied by the reviewer: wu.json /ledger/5 and /ledger/6 confidence 3 to 2; teng.json /ledger/2 moved from -297 to -333 with the Yue (state) page added to sources. Both re-validated (0 errors, 0 warnings) and read back.",
+  "Every Cliopatria Yan shape from 404 to 207 starts at 116.70E, leaving out Beijing (Yan's capital Ji, 116.37E); the block goes to Zhao in 404 (yan.json /ledger/3; zhao_-404 bbox reaches 117.12E, 40.10N), and the bboxes of zhongshan_-366/-301 (115.86-117.12E, 38.55-40.10N) and wei_-291 (to 117.23E, 40.42N) cover it later: check those rows. The zhao, zhongshan and wei dossiers (other ea-01 parts) must cut Beijing out, and yan.json must add it back.",
+  "Missing mirrors in written dossiers: qi.json (Yan 314-312 occupation; Song 404 cell), lu.json (Song 404 cell; vassal Teng), jin.json (Wey 550 cell), qin.json (Wey 241 Puyang and vassal Wey), chu.json (Zhoulai 584 to Wu; its 512 Xu gain conflicts with Wu), xiongnu.json (Yan 208 cells).",
+  "The author's one-year-offset question (Cliopatria -285/-223 against 286/222 BC) is not settled here; it affects every BC event matched to shapes.",
+  "gojoseon (jk-02-a) must start by c. 300 BC to carry the Liaodong loss to Yan; its Cliopatria row starts -197.",
+  "No page failed to load for the reviewer (13 pages opened)."
+ ]
+}

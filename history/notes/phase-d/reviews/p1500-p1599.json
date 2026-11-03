@@ -1,0 +1,111 @@
+{
+ "window": "p1500-p1599",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "duchy-of-holstein vassal_end denmark-norway 1526. The compile read Holstein ledger/3 (1523/6 vassal_start denmark-norway, before Denmark-Norway exists) with Holstein as suzerain. The relation sat on Denmark-Norway's stack, so the realm was born in 1526 in Holstein's vassal tint. The page gives Holstein no overlordship. Infobox: 'State of the Holy Roman Empire (1474-1806)'; 'Personal union with the Kingdom of Denmark (1474-1544; 1773-1864)'. 1526 is a technical date (Denmark-Norway's birth); the page names neither 1523 nor 1526. Trial: 1526 Denmark-Norway direct 2,903 cells (published: 2,901 vassal of Holstein); 1599: 2,942 direct (published: 2,934 vassal); Schleswig keeps its Danish vassal tint. Region Holstein: 51 cells. I tested moving the date to 1523/6 to also remove Holstein's self-vassal tint of 1523-1525. Rejected: close_relation would then give Holstein's 34 cells to nobody, because Denmark-Norway is not alive. 1526 is the right date.",
+   "page": "https://en.wikipedia.org/wiki/Duchy_of_Holstein",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "kingdom-of-imereti loss to ottoman-empire 1545, region Cliopatria Samtskhe-Saatabago 1502 (171 cells, 43,246 km2). Page: Bagrat and Rostom 'decisively defeated, in 1545, at Sokhoista'; 'Samtskhe became vassal of the Ottoman Empire'; territory 'the modern-day Samtskhe-Javakheti region and the historical region of Tao-Klarjeti'. The region is exactly the one the samtskhe dossier's 1535 dissolve hands Imereti, so the event moves only the land Imereti inherited. Trial 1545-1577: those 169 cells go from Imereti to Ottoman. Breakdown: Erzurum 45, Kars 38, Artvin 31, Ardahan 20, Samtskhe-Javakheti 16, Rize 9, Shirak 6. Kars and Shirak are a Cliopatria overreach, but Imereti, the old owner, was surely wrong. From 1579 the result matches the published draft apart from a small Ottoman/Safavid contest strip in 1578-1580. Direct Ottoman land approximates a vassal principality the page keeps to 1625/1628; the window's dossier request covers that.",
+   "page": "https://en.wikipedia.org/wiki/Samtskhe-Saatabago",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/2",
+   "verdict": "pass",
+   "what": "funj-sultanate vassal_start abdallab 1504 over River Nile + Khartoum (530 cells). Page: 'they were defeated by the Funj Sultanate in 1504' and 'ruled over the Butana as vassals until the Egyptian conquest of 1820'; 'viceroys of the north and the most important of these vassals'. Trial 1504-1599: all 321 Abdallab cells are in the Funj vassal tint. Published: 79 vassal, 242 independent. The 196 Funj cells in the region are unaffected. The note's '530 cells ... drawn as an independent state' is the region's size, not the effect: 242 Abdallab cells were independent. The map effect is right.",
+   "page": "https://en.wikipedia.org/wiki/Abdallab",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/3",
+   "verdict": "fixed",
+   "what": "safavid-dynasty gain from aq-qoyunlu 1503/7. As written it covered Kerman alone (admin1 Kerman, 720 cells). Page: 'He conquered Iraq-Ajami, Fars and Kerman in the summer of 1503'; infobox 'Collapse of the Aq Qoyunlu rule in Iran: Summer 1503'. With keyframe_overrides/4 ending the 1502 shape, the first trial left 1,417 cells of the Aq Qoyunlu's Iranian land nobody's for 1503-1506. Largest pieces: Khuzestan 262, Hormozgan 249, Kordestan 119, Markazi 111, Bushehr 99, Kermanshah 94, Ilam 76, Zanjan 74, Qazvin 61, Tehran 53, Qom 44. That made a grey hole in central Iran, the Iraq-Ajami core the page gives to Ismail in 1503. The window agent wrote that 'the dossiers give no earlier owner'. That is wrong: aq-qoyunlu ledger/15 (1503) gives this whole Iranian land to the Safavids. The compile applies that loss only as the Safavid ledger/2 gain (paired_gain), and that gain covers Hamadan, Esfahan and Fars alone. I widened the region to ledger/15's region and set confidence 2, as in ledger/15. The event runs before the Aq Qoyunlu 1503 snap, so it takes only cells the Aq Qoyunlu hold. Second trial, 1503-1506: Safavid 3,621 cells of the 1502 shape, Aq Qoyunlu 1,836 (Iraq, Diyar Bakr, the Jazira), nobody 446, the same as published. 1507 onward: Safavid shape and owners as published except 5 border cells (Kermanshah 3, Ilam 1, West Azarbaijan 1), which are nobody 1507-1599 instead of Aq Qoyunlu in 1507 and Safavid from 1508; the end anchor p1600 is the same as the first trial.",
+   "page": "https://en.wikipedia.org/wiki/Aq_Qoyunlu",
+   "fix": "events/3 region changed from {admin1 Kerman, Iran} to the region of aq-qoyunlu ledger/15: the Cliopatria Aq Qoyunlu 1502 shape minus Iraq, Turkey, Syria, Kuwait, Gilan, Mazandaran, Semnan and Sistan and Baluchestan. Note rewritten with a [Reviewer] tag; confidence 3 -> 2.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "songhai-empire_1564: the correction is identical to the dossier's; only to=1590 is added. The dossier note says the shape 'holds 1564-1590', but the shapes.csv row runs 1564-1594, so the shape overlapped the 1591 Dendi keyframe. Page: 'On 13 March 1591, the armies met'; 'The looting of the three cities marked the end of the Songhai Empire as an effective force'; Songhai relocated to Dendi, 'the only surviving province'. Trial 1591-1594: the old empire outside Dendi (about 2,050 cells) is nobody, as songhai ledger/13 (1591 loss to nobody) and the published 1595 picture have it. Songhai keeps Dendi (47 cells), the Saadians hold Gao, Timbuktu and Djenne. 1595-1599 is unchanged.",
+   "page": "https://en.wikipedia.org/wiki/Battle_of_Tondibi",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "what": "khanate-of-bukhara_1588: the correction is identical to the dossier's (Cliopatria 1588 + Chach + Iranian Khorasan + Hirat); years 1588-1597 as the dossier note states (the shapes.csv row ends 1594). Page: 'In 1588 he seized Khorasan'; 'In 1593-94 Khorezm was finally conquered'; 'Abdullah Khan died in 1598'. Trial: Khorasan + Herat (1,097 cells) stay Bukhara's 1595-1597 instead of nobody. 1598-1599 is as published: Safavid 422, nobody 675; see problems. Side effect: Tashkent is held to 1598 and passes to the Kazakh Khanate in 1598, so 34 cells of Tashkent and 7 of Sirdaryo are Kazakh in 1599 where the published draft has nobody.",
+   "page": "https://en.wikipedia.org/wiki/Abdullah_Khan_II",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/2",
+   "verdict": "pass",
+   "what": "khanate-of-bukhara_1595: years 1598-1599 as the dossier note states, with Margiana (Mary province, 294 cells) added to the dossier's correction. Merv page: 'in 1593, Merv was conquered by Abdullah Khan II of Bukhara'; 'The city was soon captured by Shah Abbas'; 'A Safavid governor, Biktash Khan Ustajlu, was appointed to the governorship in 1600'. This matches Bukhara ledger/14 (1593 gain) and ledger/21 (1600 loss to the Safavids). Trial: Merv is Bukhara's 1593-1599. The published draft had it Safavid from 1595 through the Safavid 1595 keyframe, earlier than the page's 1600 governor. The why misstates the alternative: without the addition Merv falls to nobody at the 1598 snap in the patched compile, not in the published one. The 1 January 1600 anchor changes (294 cells Safavid -> Bukhara). Bukhara ledger/21 then gives them to the Safavids in 1600; no Safavid gain from Bukhara in 1600 pairs with it, so the loss applies.",
+   "page": "https://en.wikipedia.org/wiki/Merv",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/3",
+   "verdict": "pass",
+   "what": "mughal-empire_1540: the correction is identical to the dossier's (Cliopatria 1540 minus Bikaner 140 km); valid 1540 only, as the dossier note states (the shapes.csv row runs 1540-1546). Humayun page: 'at the battle of Kannauj on 17 May 1540. Humayun was soundly defeated'; Kandahar handed over 'On 3 September 1545'; 'By 18 November 1545, Humayun entered Kabul'. Trial 1541-1546: 716 cells of Pakistani Punjab are Sur, not Mughal. Another 335 cells keep their published owner, Mughal, in 1541-1544 (Khyber Pakhtunkhwa 128, Baluchistan 63, Indian Punjab 57, FATA 43, Rajasthan 38). In 1545-1546 they turn nobody (published: Mughal), when the Mughal 1545 Kabul-Kandahar snap drops them, and they go to Sur in 1547 as published. The page is silent on them; this is not a regression.",
+   "page": "https://en.wikipedia.org/wiki/Humayun",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/4",
+   "verdict": "pass",
+   "what": "aq-qoyunlu_1502: the correction is identical to the dossier's; to=1502 as the dossier note states ('Holds for 1502 only ... 1503-1506 is the new keyframe aq-qoyunlu_1503'); the shapes.csv row runs 1502-1506. Page: 'He conquered Iraq-Ajami, Fars and Kerman in the summer of 1503'; infobox 'Collapse of the Aq Qoyunlu rule in Iran: Summer 1503'; 'Diyarbakir in 1507-1508 and Mesopotamia in the autumn of 1508'. Alone, the override dropped 1,417 Iranian cells to nobody for 1503-1506. That is fixed through events/3 (see there). With it, the Aq Qoyunlu hold only Iraq, Diyar Bakr and the Jazira in 1503-1506, as the page and the dossier say. 1502 is unchanged.",
+   "page": "https://en.wikipedia.org/wiki/Aq_Qoyunlu",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/5",
+   "verdict": "pass",
+   "what": "house-of-jagiellon_1502: the correction is identical to the dossier's; to=1502 as the dossier note states (the shapes.csv row runs to 1506). Page: 'a six-year truce was concluded on the Feast of the Annunciation (March 25) in 1503'; Lithuania lost 'approximately 210,000 square kilometres ... or a third of its territory', namely 'Chernigov, Novgorod-Seversk, Starodub, and lands around the upper Oka River'. Trial, 1503-1506, on Cliopatria's 1502 shape minus its 1507 shape: Moscow 673 cells, nobody 372, Lithuania 4. Published: Moscow 596, Lithuania 453. The 372 nobody cells are the steppe east of the Dnieper that the dossier's _1503 note files under nobody. From 1507 Moscow keeps 77 more of the ceded cells than in the published draft, which fits the page.",
+   "page": "https://en.wikipedia.org/wiki/Muscovite%E2%80%93Lithuanian_Wars",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/6",
+   "verdict": "pass",
+   "what": "adal-sultanate_1540: the correction is identical to the dossier's; to=1543 per the correction's own text ('unchanged for 1540-1543; from 1544 the Harar core'), though the dossier note says right for 1540-1542. No keyframe starts in 1543, so 1542 or 1543 gives the same map. Page: 'the wounded Imam was beheaded on 21 February 1543'; 'forced an Adalite retreat from Ethiopia'; 'in October 1544 ... Gelawdewos defeated and killed Abbas'; infobox 'Status quo ante bellum'. Trial 1544-1546: Ethiopia 1,116 cells of the 1540 shape, nobody 567, Adal 379. The published draft has Adal 2,036 until 1547. 1543 is still Adal's highlands at year end, because the February 1543 events do not resolve (see problems).",
+   "page": "https://en.wikipedia.org/wiki/Ethiopian%E2%80%93Adal_War",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/7",
+   "verdict": "pass",
+   "what": "sur-empire_1572: the correction is identical to the dossier's; to=1573 as the dossier note states (sur-empire_1574 from 1574, _1577 from 1577; the shapes.csv row runs to 1578). Page: Akbar 'arrived at the siege ... on 3 August 1574'; 'He entered the capital [Tanda] on 25 September 1574'; 'Decisive battle with Daud took place at Raj Mahal on 10 July 1576'; 'Daud was captured and executed'. The why overstates the effect: 1574-1576 are unchanged in the trial. The only change: in 1577-1578, 381 cells go from Sur to nobody (Jharkhand 265, inland Odisha 91, Meghalaya 10, a few more). In 1579, 246 of them go to the Mughals and 135 stay nobody, as published. Sur keeps only the Orissa vassal block (122 cells), as the dossier's _1577 keyframe intends. This is right after Rajmahal.",
+   "page": "https://en.wikipedia.org/wiki/Mughal_conquest_of_Bengal",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch p1500-p1599 after the reviewer's edit of events/3: 12 entries, 12 ok, 0 rejected. --trial: all 12 applied; end anchor p1600 482 cells change owner (294 of them Merv, from keyframe_overrides/2; the rest come from dossier edits and other windows' patches since the published compile), 3,174 more change status (Denmark-Norway's vassal tint removed, the Abdallab tint).",
+ "problems": [
+  "events/3 was widened by the reviewer (Kerman -> the Iranian land of aq-qoyunlu ledger/15); without it keyframe_overrides/4 leaves 1,417 cells of central and western Iran nobody's for 1503-1506.",
+  "Engine pattern: a dossier loss whose region is wider than the counterpart's paired gain loses the difference ('loss: applied as the counterpart's gain'). Here it hit aq-qoyunlu ledger/15 (fixed by events/3). It also hits khanate-of-bukhara ledger/18: the 1598 loss of all Khorasan pairs with Safavid gains of only a 150 km Mashhad disc and Herat, so 675 cells of Iranian Khorasan are nobody in 1598-1599, in the published draft and the trial alike. Fix: a safavid-dynasty 1598 gain with Bukhara ledger/18's region, on a page that dates it, or an engine change.",
+  "Fatagar does not resolve in the gazetteer. That drops whole events, not a few cells: adal-sultanate ledger/8 with ethiopian-empire ledger/17 (February 1543, the highlands back to Ethiopia), and ledger/9 with ledger/18 (October 1544, Bali, Fatagar, Dawaro, Hadiya). So the highlands (about 1,090 cells) stay Adal's to the end of 1543 although the Imam died on 21 February 1543. The window report calls this 'a few cells'. Fix: a gazetteer entry for Fatagar, or patch events with a resolvable spec.",
+  "Kabul and Kandahar provinces (213 cells) are nobody 1539-1544. The Humayun page calls Kabul 'the capital of the empire of Humayun's brother Kamran' in 1540 and has Askari give up Kandahar only in September 1545. Dossier gap: no state holds Kabul and Kandahar under Kamran and Askari in 1540-1545.",
+  "mughal-empire_1541 (the landless exile) resolves to no cells and never snaps, so the Mughals keep 335 cells (Khyber Pakhtunkhwa, Baluchistan, Indian Punjab, FATA, Rajasthan) through 1541-1544. With keyframe_overrides/3 these cells are nobody in 1545-1546 and Sur from 1547.",
+  "duchy-of-holstein ledger/3 still draws Holstein's 34 cells as a vassal of itself in 1523-1525, in the published draft and the trial. The patch cannot fix that, because closing the relation in 1523 sends the cells to nobody. Dossier fix: drop ledger/3 and ledger/5, or record the relation from Denmark-Norway's side. ledger/5 (1814 vassal_end denmark-norway) now closes nothing and is logged as unclosed. Ledger/6 (1814 vassal_start kingdom-of-denmark-1814-1940) may be read the same inverted way; check p1810-p1819. events/0's effect reaches every window to 1813, as intended.",
+  "Cross-boundary: keyframe_overrides/2 changes the p1600 anchor (Merv 294 cells Bukhara instead of Safavid); khanate-of-bukhara ledger/21 hands Merv to the Safavids in 1600 in p1600-p1609."
+ ]
+}

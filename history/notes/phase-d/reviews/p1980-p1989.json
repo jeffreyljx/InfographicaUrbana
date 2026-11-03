@@ -1,0 +1,52 @@
+{
+ "window": "p1980-p1989",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "what": "mali-federation loses Oudalan back to Burkina Faso, Dec 1986. The page supports the date ('22 December 1986'), the parties and the split ('Mali received the more-densely populated western portion and Burkina Faso the eastern section centered on the Beli'); it gives no area or coordinates. Undoing ledger 6's whole-province gain is right, because Mali's Cliopatria shape is the modern, post-ICJ frontier. But the spec {admin1 Oudalan} resolves to 43 cells, not 42: one cell (335704) lies inside Mali's own Cliopatria shape and was Malian at the 1980 anchor. The patch handed that cell to Burkina Faso, which runs against the ICJ split.",
+   "page": "https://en.wikipedia.org/wiki/Agacher_Strip_War",
+   "fix": "region changed to {minus: [{admin1 Oudalan, country Burkina Faso}, {cliopatria Mali Federation, year 1985}]}, 42 cells. Trial: the 42 cells ledger 6 moved go back to Burkina Faso as direct land, cell 335704 stays Malian after the contest ends, and the 1987 render matches the 1984 pre-war frontier. Note annotated.",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "netherlands gains Aruba from netherlands-antilles, 1986-01. Both pages support it: 'Aruba seceded from the Netherlands Antilles on 1 January 1986', 'In 1986, Aruba became a constituent country within the Kingdom of the Netherlands', area 179 km2. {country Aruba} resolves to 1 cell. In the trial the cell passes from the Antilles (Dutch colony tint) to the Netherlands (direct). Drawing it as plain Dutch land is a stand-in until an Aruba dossier exists, which the window agent asked for.",
+   "page": "https://en.wikipedia.org/wiki/Aruba",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/2",
+   "verdict": "pass",
+   "what": "state-of-israel occupation_start against Lebanon, 1985-06: the South Lebanon security zone. The page has 'In June 1985, the IDF unilaterally withdrew to a security zone in southern Lebanon', 'completing its troop withdrawal to the security zone on 5 June', 'along with its principal Lebanese ally, the South Lebanon Army', and 'until Israel's final withdrawal from Lebanon in 2000'. It gives no width. The spec is lebanon/ledger/6's two-cell frontier band (7 cells, about 1,770 km2), the exact complement of lebanon/ledger/12's end region. relation_end closes an occupation by pair, so israel/ledger/38 and lebanon/ledger/13 (May 2000) will close it. Trial: 7 Lebanese cells occupied by Israel from 1985 to the 1990 anchor; the 1987 render shows the frontier strip.",
+   "page": "https://en.wikipedia.org/wiki/1982_Lebanon_War",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "fixed",
+   "what": "british-colonial-empire_1969 cut from 1969-1995 to 1969-1978. The page supports the exits it relies on (St Lucia 1979, Belize 1981, Brunei 1984 'Independence'), and the trial confirms the 1984 Belize snap (74 cells) is gone. But 'valid for 1969-1978' is wrong on the same page: Fiji 1970, Bahamas 1973, Grenada 1974, Dominica and Solomon Islands 1978. The dossier's own review says 'Valid for 1969 only' and has keyframes 1970/1973/1974/1978 that drop those colonies, so to=1978 still unions the whole 1969 shape into them.",
+   "page": "https://en.wikipedia.org/wiki/Territorial_evolution_of_the_British_Empire",
+   "fix": "to set to 1969; correction text and why changed to match. Trial of p1970-p1979 with each version: the drawn map is identical (same yearly changes, same p1980 anchor). R2 had already given the cells to the new states, so only the conflict bookkeeping falls, from 22111 to 21809 cell-years (Fiji 210 to 0, Bahamas 108 to 20). No effect inside 1979-1989.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "what": "netherlands-antilles_1877 given from 1877, to 1985, with the dossier's own correction unchanged (six islands minus Suriname and Guyana). The page: 'Aruba seceded from the Netherlands Antilles on 1 January 1986', area '980 (before 1986) 800'. No other keyframe is alive in 1877-1985 (_1845 ends 1876), so only 1986 onward changes. The trial removes the 1986 snap (+1 Aruba cell) and nothing else.",
+   "page": "https://en.wikipedia.org/wiki/Netherlands_Antilles",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch after the reviewer's edits: 5 entries, 5 ok, 0 rejected. Trial p1980-p1989: all 5 applied; conflicts 57 pairs/1085 cell-years -> 52/616; keyframe snaps 11 -> 8. Against an empty-patch trial, the p1990 anchor moves 74 Belize cells from the colonial empire (UK vassal) to Belize, 42 Oudalan cells from Mali to Burkina Faso and 1 Aruba cell from the Antilles to the Netherlands, and 7 Lebanese cells become Israeli-occupied; nothing else changes and the p1980 anchor is unchanged.",
+ "problems": [
+  "keyframe_overrides/0 now runs 1969-1969 and affects the p1960-p1969 and p1970-p1979 windows. Neither window's patch overrides this shape. The drawn map of both windows is unchanged (checked by trial for 1970-1979); only R2 conflict cell-years fall. The orchestrator may want those windows told.",
+  "p1990-p1999 events/2 (belize gains Belize from british-colonial-empire, 1990) was written against the 1984 Belize snap this patch removes. With this patch Belize already holds the land, so that event moves nothing. It is harmless but redundant, and the p1990 window may see it reported as moving no land.",
+  "The window agent's claims that Mali's shape holds none of Oudalan and that the province is 42 cells were off by one: the gazetteer gives 43 cells, one inside Mali's Cliopatria shape. This is now fixed in events/0.",
+  "The window agent's unpatched findings were not re-verified here: Namibia and Western Sahara occupation roles read mirrored, Soviet republics holding little of their own land, overlapping open-ended keyframes in other dossiers, and the Aruba and Bophuthatswana dossier requests. They need the orchestrator's dossier-convention or compiler decisions, as the window agent said."
+ ]
+}

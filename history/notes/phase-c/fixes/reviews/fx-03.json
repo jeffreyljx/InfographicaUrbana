@@ -1,0 +1,108 @@
+{
+ "batch_id": "fx-03",
+ "checks": [
+  {
+   "item": "F009",
+   "verdict": "pass",
+   "what": "mongol-empire_1220 rewritten (Cliopatria 1220 minus Jilin, Heilongjiang, Outer Manchuria and Hamgyong, plus the Yenisei Kyrgyz and Xinjiang; 33,618 cells), new mongol-empire_1221 (1221-1226, plus Transoxiana, Khwarazm and Khorasan from the Khwarezmid 1220 shape; 36,224 cells), ledger/14 (1221) narrowed to the same 2,606 cells. Pages support all three: Central Asia page 'By 1218 the Mongols controlled all of Xinjiang and by 1221 all the territories of the former Khwarazmian Empire'; Khwarazmian Empire page 'A Khwarazmian rump state survived in western Iran until 1231'; Eastern Xia page: rebelled 1217, conquered by Guyuk 1233. The 1221 keyframe is exactly the 1220 keyframe plus ledger/14, so no 1221 snap. The 1220 snap is smaller but still about 7,400 cells (Irkutsk, Altay, Qyzylorda, Krasnoyarsk, South Kazakhstan), as the fixer says.",
+   "page": "https://en.wikipedia.org/wiki/Mongol_conquest_of_Central_Asia",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F009",
+   "verdict": "fail",
+   "what": "New ledger/2 (1208 gain from nobody, 4,870 Siberian cells). The Jochi page supports the date and the description: 'in 1207-08 he campaigned against and subjugated the Hoi-yin Irgen ... on the edge of the Siberian taiga between the Angara and Irtysh rivers'. But the event has no effect, for two reasons. (a) 3,423 of its cells lie outside the union of mongol-empire_1206 (1206-1209 in shapes.csv) and mongol-empire_1208, which are both alive in 1208. The compiler's keyframe check releases those cells to nobody in 1208, which is a new 1208 snap. 2,925 cells also lie outside _1210, _1216 and _1218, so they still arrive only with the 1220 snap, and the 1220 snap does not shrink. (b) The extent is too wide. The 1,225 Irkutsk cells beyond the 1208 keyframe (100-110 E, 51.5-59.2 N) lie mostly east of the Angara, whose gazetteer cells run from 105.6E 52.0N (Baikal) through 103.4E 53.0N, 101.7E 56.1N and 102.8E 58.5N to 93.1E 58.1N. About 120 Krasnoyarsk cells lie at 58-59.3 N, on or north of the lower Angara. None of these is 'between the Angara and Irtysh'.",
+   "page": "https://en.wikipedia.org/wiki/Jochi",
+   "fix": "Pick one. (1) Delete mongol-empire ledger/2 and correct the ledger-index notes. (2) Keep the event and make it hold, as follows. (i) Set its region to {\"intersect\": [{\"cliopatria\": \"Mongol Empire\", \"year\": 1220}, {\"union\": [{\"admin1\": \"Kemerovo\", \"country\": \"Russia\"}, {\"admin1\": \"Novosibirsk\", \"country\": \"Russia\"}, {\"admin1\": \"Tomsk\", \"country\": \"Russia\"}, {\"admin1\": \"Altay\", \"country\": \"Russia\"}, {\"admin1\": \"Gorno-Altay\", \"country\": \"Russia\"}, {\"minus\": [{\"admin1\": \"Krasnoyarsk\", \"country\": \"Russia\"}, {\"polygon\": [[88, 58], [106, 58], [106, 62], [88, 62]]}]}]}]}. This drops Irkutsk, which is east of the Angara, and the Krasnoyarsk cells north of 58 N. (ii) Add the same spec as one more union term to the corrections of mongol-empire_1208, _1210, _1216 and _1218, with a bracketed note citing the Jochi page, so the keyframes keep what the ledger gains. Then validate with --resolve.",
+   "applied": false
+  },
+  {
+   "item": "F011",
+   "verdict": "fixed",
+   "what": "The fixer's 1227 keyframe rewrite is page-supported: it drops Eastern Xia land, cuts the Khwarezmid land to Transoxiana, Khwarazm and Khorasan, and adds Hebei, Shanxi and Shandong (the Jin page: 'from 1217 to 1223'). The new gains ledger/22 (1231, western-Iran rump) and ledger/23 (1233, Eastern Xia) are supported too: Khwarazmian Empire page 'rump state survived in western Iran until 1231', 'the Mongols conquered Azerbaijan in the ensuing confusion' after Yassicemen 1230, Jalal al-Din 'murdered in 1231' (the month 8 comes from the khwarezmid-empire mirror, not the page); Eastern Xia page: Guyuk sent to conquer it, Puxian Wannu captured and killed in 1233, kingdom 'established in Manchuria (including Northeast China and Outer Manchuria)'. But two of the fixer's changes broke 1234. (1) Cutting the Khwarezmid piece of mongol-empire_1234 left all 4,677 cells of the 1231 gain outside the 1227 and 1234 keyframe union. The 1234 check would release them to nobody for 1234-1235 and the 1236 shape would take them back: a new snap and a flicker. (2) A gain takes only the cells its counterpart holds (compile_dossiers.py, gain branch), and eastern-xia draws only Jilin, Heilongjiang, Primorye and Hamgyong. So the 4,220 Outer Manchuria cells cut from the 1227 shape (Khabarovsk 2,553, Amur 1,502, Yevrey 165) stayed nobody's in 1233 and came back only in a 1234 snap. After the repair, an approximate re-run of the ledger and keyframes with the gazetteer gives a 1234 difference of about 0 cells, where it was +4,220/-4,678. Left as the fixer says: Sakha, Irkutsk and Chita in the 1227 snap. Also small and left: mongol-empire_1227 lacks Xinjiang, which _1220 and _1221 now carry, so 139 Xinjiang cells outside the Chagatai founding region (Kunlun edge) are released at 1227.",
+   "page": "https://en.wikipedia.org/wiki/Eastern_Xia",
+   "fix": "Two edits. (a) In the mongol-empire_1234 correction, the Khwarezmid term is the whole {\"cliopatria\": \"Khwarezmid Empire\", \"year\": 1227} again (64,542 cells), with the text and a bracketed '[fx-03 review]' note updated. (b) New ledger/24: year 1233, gain, counterpart nobody, region {\"intersect\": [{\"cliopatria\": \"Mongol Empire\", \"year\": 1227}, {\"region\": \"Outer Manchuria\"}]}, source Eastern_Xia, confidence 2, note quoting 'including Northeast China and Outer Manchuria' and the 1233 conquest. Validator: 0 errors, 416 regions resolve.",
+   "applied": true
+  },
+  {
+   "item": "F066",
+   "verdict": "pass",
+   "what": "Kept. The fixer read the snap places correctly: the 1236 shape adds Qinghai, Gansu, Perm, Sverdlovsk, Kirov and Komi. Not page-checked here (budget). The fixer reasoned that the 1231 and 1233 gains shrink the 1236 snap. That was true for western Iran only after this review's 1234 fix (see F011); without it, Kerman, Fars, Yazd and Esfahan came back at 1236.",
+   "page": "https://en.wikipedia.org/wiki/Mongol_conquest_of_Tibet",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F137",
+   "verdict": "pass",
+   "what": "Kept; the reasoning holds. Soomra page: a Soomra king 'had submitted to Iltutmish, the Sultan of Delhi, and was allowed to continue as a vassal' (undated); 'The precise delineations have yet to be discovered, but the Soomras were probably centered in lower Sindh'. No page draws a Delhi-Soomra line, so the size rule's answer (Soomra) stands. The optional mamluk-dynasty handoff is reasonable.",
+   "page": "https://en.wikipedia.org/wiki/Soomra_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F140",
+   "verdict": "pass",
+   "what": "Sind (Pakistan) is subtracted from 10 Mongol keyframes (1250-1290), 174 cells each. The page supports it: 'In 1257 the governor of Sindh offered his entire province to Hulagu Khan'; Sali Noyan 'entered Sind in strength and dismantled the fortifications of Multan' (winter 1257-58); Delhi later recovered 'Multan, Uch, and Lahore'; Shivistan was occupied only in 1298-99. The page never says the Mongols governed any part of Sindh. One nuance: the page does not say the governor's offer was refused, only that no rule followed. The Mongol ledger has no Sind event, so nothing else breaks.",
+   "page": "https://en.wikipedia.org/wiki/Mongol_invasions_of_the_Indian_subcontinent",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F203",
+   "verdict": "pass",
+   "what": "Skip confirmed: data/hierarchy.csv row 219 is duan-governors-of-dali -> mongol-empire, 1260-1290, vassal. Mongol ledger/74-75 (1260 vassal_end and gain) name kingdom-of-dali, which ends in 1256, so they move nothing.",
+   "page": "https://en.wikipedia.org/wiki/Dali_Kingdom",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F272",
+   "verdict": "pass",
+   "what": "The Khalji keyframes 1314, 1316 and 1317 subtract the Sind cells outside the 1294 outline and the 120 km Sivistan disc. Changed lines read. The Alauddin page dates only Multan (November 1296) and Sivistan (1298-99) and is silent on lower Sind. The remaining 92 cells are left to the size rule.",
+   "page": "https://en.wikipedia.org/wiki/Alauddin_Khalji",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F273",
+   "verdict": "pass",
+   "what": "The Kalachuri spec (Bilaspur 120 km plus Chhattisgarh within Raipur 120 km) and the rest of Chhattisgarh outside the Yadava shape are subtracted from keyframes 1313-1317. Changed lines read. The Alauddin page does not mention Chhattisgarh. The Kalachuri page was not reopened (budget).",
+   "page": "https://en.wikipedia.org/wiki/Alauddin_Khalji",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F274",
+   "verdict": "pass",
+   "what": "The Karnat spec (Muzaffarpur 100 km plus a 50 km disc at 85.0E 27.0N) is subtracted from all 12 keyframes and from the found region at ledger/0, so the keyframes and the found region agree. The Alauddin page does not mention Tirhut or Mithila. The Karnat page was not reopened (budget).",
+   "page": "https://en.wikipedia.org/wiki/Alauddin_Khalji",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F275",
+   "verdict": "pass",
+   "what": "Spot-checked. Bundi and Kota (the bundi-state spec) are subtracted from all keyframes and from ledger/0. The west-Rajasthan block beyond the 1311 shape (343 cells) is cut from 1314-1320; because the 1311 shape stays, nothing flickers. Alauddin page: Jaisalmer besieged 1299 and 'remained under the Khalji's for few more years', Ranthambore July 1301, Chittor 1303, Siwana November 1308, Jalore 1311; Bundi is not mentioned. The page does say 'after conquering Siwana, Alauddin had ordered his generals to subjugate other parts of Marwar' (undated, raids). That weakly favours Cliopatria's Marwar cells, but the sentence is not dated or placed enough to keep them. The fixer's correction of the classifier (the 1314 block is Jaisalmer and Marwar, not Bundi) is right.",
+   "page": "https://en.wikipedia.org/wiki/Alauddin_Khalji",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F276",
+   "verdict": "pass",
+   "what": "The Jaipur disc (60 km) is subtracted from all keyframes and from ledger/0. The Alauddin page names no conquest of Amber, Jaipur or Dhundhar. The Jaipur State page was not reopened (budget).",
+   "page": "https://en.wikipedia.org/wiki/Alauddin_Khalji",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "mongol-empire ledger indices shifted again. The review inserted ledger/24 (1233 gain from nobody, Outer Manchuria) after the fixer's ledger/23. Counting from before fx-03: old 2-20 are now 3-21, and old 21 and later are now 25 and later, not 24 and later as the fixer's report and history/polities/_notes/fix-fx-03.md say. 'mongol-empire.json ledger/N' references in data/hierarchy.csv (8 evidence strings) and in other dossiers' notes are off by 1, 3 or 4.",
+  "F009 fail: mongol-empire ledger/2 (1208 Siberian gain) is undone by the 1208 keyframe check. It adds a new 1208 snap of about 3,423 cells, and part of its extent (Irkutsk east of the Angara) is not on the page. See the fix for F009.",
+  "Validation (python3 -I history/tools/validate_dossier.py --resolve): mongol-empire OK (0 errors, 14 warnings, 98 events, 416 regions), khalji-dynasty OK (0 errors, 2 warnings), soomra-dynasty OK, duan-governors-of-dali OK.",
+  "The review did not run the compiler. The snap effects quoted come from an approximate run of the ledger and keyframes on the gazetteer, which ignores other dossiers except where noted. Before the review's edit, mongol-empire_1234 would have released the 4,677 western-Iran cells of the new 1231 gain to nobody for 1234-1235.",
+  "Residual, not fixed: mongol-empire_1227 lacks Xinjiang, while _1220 and _1221 now include it, so 139 Xinjiang cells (Kunlun edge, outside the ulus-of-chagatai founding region) are released at 1227. Adding {\"admin1\": \"Xinjiang\", \"country\": \"China\"} to the 1227 correction would close it ('By 1218 the Mongols controlled all of Xinjiang')."
+ ]
+}

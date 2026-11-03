@@ -1,0 +1,314 @@
+{
+ "batch_id": "fx-45",
+ "findings": [
+  {
+   "item": "R014",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "kingdom-of-kush"
+   ],
+   "changes": [
+    "kingdom-of-kush: ledger 1-11 (-754 gain Upper Egypt, -727 gain Lower Egypt, -711 gain Saite Delta, -671 contest_start and loss, -669 gain, -667 loss, -664 gain, -663 loss and contest_end, -656 loss): deleted (22 events now 11)",
+    "kingdom-of-kush: keyframe kingdom-of-kush_-800 correction.text and note: now say Nubia only, Egypt is the twenty-fifth-dynasty-of-egypt dossier's (spec unchanged)",
+    "kingdom-of-kush: notes: paragraph 'Fix fx-45, Egypt'"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Twenty-fifth_Dynasty_of_Egypt"
+   ],
+   "why": "The twenty-fifth-dynasty-of-egypt dossier carries the same Egyptian land with the same events (keyframes -754/-728/-712/-671/-669/-667/-664/-663, ledger 0-16, end -656); the Kush ledger duplicated it, so Kush took the Delta again at -669. Page: 'In 669 BC, Taharqa reoccupied Memphis, as well as the Delta', 'Taharqa was defeated in Egypt in 671 BC when Esarhaddon conquered Northern Egypt', 'In 656 BC, Psamtik sent a large fleet southwards to Thebes'. Keyframes -700 and -675 are patch-controlled (m0700-m0601) and untouched."
+  },
+  {
+   "item": "R016",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "kingdom-of-kush"
+   ],
+   "changes": [
+    "kingdom-of-kush: same deletion as R014 (the Egyptian gains -754, -727, -711 are gone; Nubia only)"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Twenty-fifth_Dynasty_of_Egypt"
+   ],
+   "why": "Took the 'keep Nubia only' option. data/hierarchy.csv already has twenty-fifth-dynasty-of-egypt as a constituent of kingdom-of-kush for -754..-656 (orchestrator, 2 Nov 2026), so the second option existed; the dynasty dossier dates Elephantine -754, Upper Egypt -728 and the whole valley -712 ('Shebitku conquered the entire Nile Valley, including Upper and Lower Egypt, around 712 BC'). Patch m0800-m0701 events/1 (loss of the Matruh exclave -711) now has nothing to remove: harmless."
+  },
+  {
+   "item": "R060",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "duchy-of-holstein"
+   ],
+   "changes": [
+    "duchy-of-holstein: ledger/3 (1523/6 vassal_start, counterpart denmark-norway) and ledger/5 (1814/1 vassal_end, counterpart denmark-norway) deleted (21 events now 19)",
+    "duchy-of-holstein: notes: paragraph 'Fix fx-45, Denmark-Norway'"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Duchy_of_Holstein"
+   ],
+   "why": "Denmark-Norway is not alive until 1526, so the compile read the 1523 start with Holstein as suzerain and tinted the whole realm as its vassal. The page shows no overlordship either way: infobox 'State of the Holy Roman Empire (1474-1806)', 'Personal union with the Kingdom of Denmark (1474-1544; 1773-1864)', 'Members of the Danish House of Oldenburg ruled Holstein ... for its entire existence'; nothing dated 1526 or 1814. Delete chosen (the request's second option). Patch p1500-p1599 events/0 (vassal_end 1526) now closes nothing: harmless."
+  },
+  {
+   "item": "R070",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "duchy-of-holstein"
+   ],
+   "changes": [
+    "duchy-of-holstein: same deletion as R060"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Duchy_of_Holstein"
+   ],
+   "why": "Same defect and same repair as R060 (ledger/3 and ledger/5 removed; kalmar-union relation before 1523 and kingdom-of-denmark-1814-1940 relation after 1814 unchanged)."
+  },
+  {
+   "item": "R003",
+   "verdict": "kept",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [],
+   "why": "patch controls it: m0100-m0001 keyframe_overrides replaces roman-empire_-14 (patch-overrides.csv line 89), so editing the dossier keyframe changes nothing; ledger/20 (-12 occupation_start of Germania) already carries the occupation. Dossier left as it is."
+  },
+  {
+   "item": "R019",
+   "verdict": "partly",
+   "dossiers_changed": [
+    "philistia"
+   ],
+   "changes": [
+    "philistia: keyframe philistia_-750: added from -750, to -712, note extended (same overlap defect: shapes.csv -750..-701, the -711 keyframe is the 750 shape without Gath, so the union put Gath back for -711..-702)"
+   ],
+   "pages": [],
+   "why": "The requested change on philistia_-1150 ('to': -1137, with from -1150) was already in the dossier (set by the orchestrator on 2 Nov 2026 and validated), so nothing to add there; the identical defect in philistia_-750 was fixed from the dossier's own text ('valid for -750..-712'). No page needed."
+  },
+  {
+   "item": "R037",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "western-roman-empire"
+   ],
+   "changes": [
+    "western-roman-empire: keyframes 426, 429, 433, 435, 437, 439, 441, 443, 451, 452: correction wrapped in a union with Carthaginensis (Castilla-La Mancha + Madrid + Murcia admin-1 units), text and source pages in the correction text",
+    "western-roman-empire: keyframe 455: verdict adjust, from 455 to 455, Cliopatria 455 shape plus Carthaginensis",
+    "western-roman-empire: new keyframe western-roman-empire_456 (456-457, Cliopatria 455 shape, no Carthaginensis)",
+    "western-roman-empire: notes paragraph 'Fix fx-45, Carthaginensis'"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kingdom_of_the_Suebi",
+    "https://en.wikipedia.org/wiki/Hispania"
+   ],
+   "why": "Suebi page: '411 the Alans were allotted the provinces of Lusitania and Hispania Carthaginensis'; '441 the Suevi managed to control Baetica and Carthaginensis' (limited to raids); '446 the Romans dispatched to the provinces of Baetica and Carthaginensis'; '455 the Sueves plundered lands in Carthaginensis which had been previously returned to Rome'. Hispania page: after the Vandals and Alans left in 429 'the Romans recover 90% of the Iberian Peninsula until 439'; 'Rome made attempts to restore control in 446 and 458'. Neither page dates the return to Rome; Carthaginensis is held 426-455 and dropped for 456-457 because of the Visigothic campaigns of 456-458. Baetica and Lusitania are still unowned in these years and were not asked for."
+  },
+  {
+   "item": "R055",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "khalkha-khanates"
+   ],
+   "changes": [
+    "khalkha-khanates: identity.start 1636 -> 1547; capitals[0].from 1547",
+    "khalkha-khanates: keyframe khalkha-khanates_1636 from 1547 (to 1688), text and note",
+    "khalkha-khanates: ledger/0 found year 1547, confidence 1, new note quoting the pages",
+    "khalkha-khanates: predecessors land text, certainty entry 1547-1635, notes paragraph"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Northern_Yuan_dynasty",
+    "https://en.wikipedia.org/wiki/Khalkha"
+   ],
+   "why": "Option 1 of the request (extend khalkha-khanates back to 1547). mongol-khanate ledger 9 already removes northern and central Mongolia in 1547 and nothing drew them until 1636. Pages: Gersenji 'became the ruler of the Khalkha Mongols, the largest of the six tumens' (undated); 'By the reign of Ligdan Khan (r. 1604-1634) ... the Khalkha and Oirat Mongols no longer obeyed his authority'; Khalkha page 'Dayan Khan created the Khalkha Tumen out of Mongols residing in the territory of present-day central Mongolia' (undated). Neither page dates a 16th-century extent: 1547 is Cliopatria's year, floor shape of 1636-1688 carried back at confidence 1."
+  },
+  {
+   "item": "R081",
+   "verdict": "partly",
+   "dossiers_changed": [
+    "swedish-empire"
+   ],
+   "changes": [
+    "swedish-empire: keyframe swedish-empire_1713: added from 1713, to 1713, note extended"
+   ],
+   "pages": [],
+   "why": "swedish-empire_1709 kept: patch controls it (p1710-p1719 keyframe_overrides/0, patch-overrides.csv line 306). swedish-empire_1713 (text 'holds 1713 only') now ends in 1713, so it no longer sits beside the keyframes of 1714, 1715 and 1716-1717. The dossier's own text; no page needed."
+  },
+  {
+   "item": "R102",
+   "verdict": "fixed",
+   "dossiers_changed": [
+    "qajar-dynasty"
+   ],
+   "changes": [
+    "qajar-dynasty: identity.start {1789} -> {1779, month 4}; capital Tehran from 1786",
+    "qajar-dynasty: ledger/0 found now 1779/4 Mazandaran (counterpart zand-dynasty); six mirror gains of the zand-dynasty ledger losses (Semnan 1781, Gilan 1782, Qazvin+Zanjan 1782, Tehran 1785, Hamadan 1785, Isfahan 1785/5)",
+    "qajar-dynasty: keyframe qajar-dynasty_1788 text and note (first Cliopatria shape, 1788-1790); certainty entry 1779-1788; sources: Agha_Mohammad_Khan page; notes paragraph"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Agha_Mohammad_Khan"
+   ],
+   "why": "Page: 'On 1 March 1779 ... Karim Khan had died', Agha Mohammad 'defeated [his brothers] on 2 April, conquering Mazandaran'; Gilan 'since the Qajar invasion of the province in 1782'; 'Agha Mohammad arrived at Isfahan on 2 May' (1785), 'During the summer of 1785 ... Isfahan headquarters', 'his men captured Hamadan'; 'On 12 March 1786, Agha Mohammad Khan made Tehran his capital'; 'saw himself as the king of Iran' 1785-86; 'enthroned as the king of Iran in 1789', 'Thus 1789 is marked as the start of his reign'. The zand-dynasty ledger already hands the land to qajar-dynasty from 1779, so with the state alive from 1779 those losses now give land to a live state. The remaining Zand losses 1785-1788 (Kurdistan/Kermanshah, Bakhtiari, Alborz-Qom-Markazi, Golestan, northern Yazd, Isfahan 1788) arrive through the Zand ledger alone. Compile not run."
+  },
+  {
+   "item": "R121",
+   "verdict": "partly",
+   "dossiers_changed": [
+    "kingdom-of-prussia"
+   ],
+   "changes": [
+    "kingdom-of-prussia: identity.end 1867/7 -> 1918/11; ledger merge and dissolve of 1867/7 deleted, dissolve 1918/11 (counterpart weimar-republic) added",
+    "kingdom-of-prussia: successors entry north-german-confederation replaced by weimar-republic; keyframe kingdom-of-prussia_1866 to 1918; Berlin capital and last certainty entry to 1918; notes paragraph"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kingdom_of_Prussia",
+    "https://en.wikipedia.org/wiki/German_Empire"
+   ],
+   "why": "Kingdom page: 'existed from 1701 to 1918', infobox 'Free State of Prussia proclaimed: 9 November 1918', 'Abdication of Wilhelm II: 28 November 1918'; Empire page: 'The other states retained their own governments', Prussia 'about two-thirds of the Empire's population and territory', 'the Kaiser and all German ruling kings, dukes, and princes abdicated'. The constituent rows and the changes to north-german-confederation and german-empire are not mine (handoffs): R2 makes the Confederation, as Prussia's successor, win every conflict and its found moves a predecessor's cells outright, so until they are applied Prussia is alive 1867-1918 without cells and the map is as before."
+  },
+  {
+   "item": "R138",
+   "verdict": "partly",
+   "dossiers_changed": [
+    "anglo-egyptian-sudan"
+   ],
+   "changes": [
+    "anglo-egyptian-sudan: keyframe anglo-egyptian-sudan_1916 and ledger/10 (1934 loss): {'region': 'Sarra Triangle'} replaced by {lon 21.8311, lat 21.6833, km 107} (119 cells, 30,095 km2); notes paragraph"
+   ],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Sarra_Triangle",
+    "https://en.wikipedia.org/wiki/Ma%27tan_as-Sarra"
+   ],
+   "why": "The Sarra Triangle page gives 'approximately 30,000 square kilometers', 'signed in Rome on July 20, 1934', Kufra District and no coordinates; the oasis page gives 21.68333 N 21.83111 E and 'In 1934, Ma'tan as-Sarra was turned over as part of the Sarra Triangle to Fascist Italy'. The disc is a stand-in of the right area. italian-libya (italian-libya_1932 and its two 1934 events) and italian-africa use the same unresolved name: handoffs."
+  },
+  {
+   "item": "R151",
+   "verdict": "handoff",
+   "dossiers_changed": [],
+   "changes": [],
+   "pages": [
+    "https://en.wikipedia.org/wiki/Second_Congo_War"
+   ],
+   "why": "The request is for three new dossiers (RCD-Goma, MLC, RCD-ML), which this batch may not create; the DRC ledger events 17-18 (contest 1998/8-2003/7, name-only counterpart) stay until the dossiers exist. Page dates are in the handoffs."
+  }
+ ],
+ "dossiers_changed": [
+  "anglo-egyptian-sudan",
+  "duchy-of-holstein",
+  "khalkha-khanates",
+  "kingdom-of-kush",
+  "kingdom-of-prussia",
+  "philistia",
+  "qajar-dynasty",
+  "swedish-empire",
+  "western-roman-empire"
+ ],
+ "validation": {
+  "kingdom-of-kush": "ok",
+  "duchy-of-holstein": "ok (1 pre-existing warning: county-of-holstein-pinneberg)",
+  "philistia": "ok",
+  "western-roman-empire": "ok",
+  "khalkha-khanates": "ok",
+  "swedish-empire": "ok",
+  "qajar-dynasty": "ok",
+  "kingdom-of-prussia": "ok (1 pre-existing warning: Kaulsdorf)",
+  "anglo-egyptian-sudan": "ok (2 pre-existing warnings: uganda-protectorate)"
+ },
+ "handoffs": [
+  {
+   "dossier": "mongol-khanate",
+   "where": "ledger/9 (1547 loss, counterpart 'khalkha')",
+   "what": "change counterpart 'khalkha' to 'khalkha-khanates'",
+   "why": "khalkha-khanates now starts in 1547 (fix R055); 'khalkha' is not a slug, so the loss pairs with nothing",
+   "source": "https://en.wikipedia.org/wiki/Northern_Yuan_dynasty"
+  },
+  {
+   "dossier": "data/hierarchy.csv",
+   "where": "new rows",
+   "what": "kingdom-of-prussia,north-german-confederation,1867,1870,constituent,3 and kingdom-of-prussia,german-empire,1871,1918,constituent,3",
+   "why": "kingdom-of-prussia now lives to November 1918 (fix R121); the Empire 'consisted of 25 states' that 'retained their own governments'",
+   "source": "https://en.wikipedia.org/wiki/German_Empire"
+  },
+  {
+   "dossier": "north-german-confederation",
+   "where": "identity.predecessors and ledger/0 (found, counterpart kingdom-of-prussia)",
+   "what": "remove kingdom-of-prussia from predecessors; make the found (and keyframe north-german-confederation_1867/1868/1870) stop taking Prussia's cells, e.g. subtract Prussia's 1866 territory so Prussia keeps them as a constituent",
+   "why": "R2 (a successor wins every conflict) and found (predecessor cells move outright) would give the Confederation Prussia's whole territory although Prussia is alive to 1918",
+   "source": "https://en.wikipedia.org/wiki/North_German_Confederation"
+  },
+  {
+   "dossier": "german-empire",
+   "where": "ledger/0 (found, counterpart north-german-confederation) and keyframes german-empire_1871/1885",
+   "what": "same as the Confederation: the Empire's own cells should exclude Prussia's, which the constituent row draws",
+   "why": "Prussia stays a kingdom inside the Empire until November 1918 (fix R121)",
+   "source": "https://en.wikipedia.org/wiki/German_Empire"
+  },
+  {
+   "dossier": "free-state-of-prussia (new)",
+   "where": "new dossier, 1918/11 to 1947",
+   "what": "Free State of Prussia, successor of kingdom-of-prussia inside weimar-republic and nazi-germany",
+   "why": "kingdom-of-prussia now ends in November 1918 with weimar-republic as successor; the page says Prussia 'was abolished in 1947'",
+   "source": "https://en.wikipedia.org/wiki/Kingdom_of_Prussia"
+  },
+  {
+   "dossier": "italian-libya",
+   "where": "keyframe italian-libya_1932 and the two 1934 ledger events naming 'Sarra Triangle'",
+   "what": "replace {'region': 'Sarra Triangle'} by {'lon': 21.8311, 'lat': 21.6833, 'km': 107} (or the gazetteer name once it exists)",
+   "why": "the name is not in the gazetteer; the disc matches what anglo-egyptian-sudan now uses (119 cells, 30,095 km2)",
+   "source": "https://en.wikipedia.org/wiki/Sarra_Triangle"
+  },
+  {
+   "dossier": "italian-africa",
+   "where": "every spec naming 'Sarra Triangle'",
+   "what": "same disc as italian-libya",
+   "why": "unresolved name, same as above",
+   "source": "https://en.wikipedia.org/wiki/Sarra_Triangle"
+  },
+  {
+   "dossier": "rcd-goma (new)",
+   "where": "new dossier, 1998/8 to 2003/7",
+   "what": "Rally for Congolese Democracy-Goma: rebel zone in the Kivus and Maniema, Kisangani from 23 August 1998, Kindu 16 October 1998, Pweto taken by the Rwandans 4 December 2000, Moliro captured 2002; its seat Goma (Wamba dia Wamba moved his base from Goma on 5 April 1999 to Kisangani, the RCD-ML line); admin-1 extent to be read from a rebel-territory map, the page gives no outline",
+   "why": "the DRC contest of 1998-2003 has a name-only counterpart and 0 cells",
+   "source": "https://en.wikipedia.org/wiki/Second_Congo_War"
+  },
+  {
+   "dossier": "mlc (new, Movement for the Liberation of the Congo)",
+   "where": "new dossier, 1998/8 to 2003/7",
+   "what": "MLC under Jean-Pierre Bemba: 'took over the Equateur Province from the FAC and its Chadian allies, beginning from mid-November 1998'; north around Gbadolite; power-sharing deal with the government 17 April 2002 (Sun City); ends with the Transitional Government of 18 July 2003",
+   "why": "as above",
+   "source": "https://en.wikipedia.org/wiki/Second_Congo_War"
+  },
+  {
+   "dossier": "rcd-ml (new)",
+   "where": "new dossier, 1999 to 2003",
+   "what": "RCD-Kisangani/ML (Wamba dia Wamba, base moved to Kisangani 5 April 1999), later Ituri and Bunia; 'The UPDF stormed the regional capital Bunia on 6 March 2003', Uganda withdrew from Ituri on 2 June 2003",
+   "why": "as above",
+   "source": "https://en.wikipedia.org/wiki/Second_Congo_War"
+  },
+  {
+   "dossier": "democratic-republic-of-the-congo",
+   "where": "ledger/17-18 (contest 1998/8 and 2003/7)",
+   "what": "once the three rebel dossiers exist, replace the name 'RCD and MLC rebels with Rwanda and Uganda' by their slugs (one contest pair each, with the zones above)",
+   "why": "a counterpart that is only a name holds 0 cells",
+   "source": "https://en.wikipedia.org/wiki/Second_Congo_War"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Sarra Triangle",
+   "kind": "region",
+   "used_in": "anglo-egyptian-sudan (and italian-libya, italian-africa)",
+   "hint": "about 30,000 km2 in the Kufra District of south-eastern Libya; the only coordinates on the pages are the oasis Ma'tan as-Sarra, 21.68333 N 21.83111 E; fix R138 uses a 107 km disc there"
+  },
+  {
+   "name": "Carthaginensis",
+   "kind": "region",
+   "used_in": "western-roman-empire",
+   "hint": "fix R037 uses the union of admin-1 Castilla-La Mancha, Madrid and Murcia (Spain); the gazetteer's Tarraconensis is Hispania minus Baetica and Lusitania, so it includes the Meseta and all of Gallaecia"
+  }
+ ],
+ "not_reached": [],
+ "notes_path": "history/polities/_notes/fix-fx-45.md",
+ "problems": [
+  "Patch entries made redundant by the fixes (harmless, no action needed): p1500-p1599 events/0 (vassal_end 1526 on duchy-of-holstein), m0800-m0701 events/1 (loss of the Matruh exclave -711 on kingdom-of-kush).",
+  "roman-empire_-14 keeps its Germania union in the dossier while patch m0100-m0001 overrides it; if the patch is ever retired the dossier correction must lose the union (R003).",
+  "Not requested, left alone: swedish-empire keyframes 1702, 1653, 1659, 1763 and 1809 have the same missing-'to' overlap as 1713 (they sit beside later keyframes whose text says 'holds ... only').",
+  "kingdom-of-prussia has a pre-existing warning (Kaulsdorf, ledger/62) and anglo-egyptian-sudan two (uganda-protectorate has no dossier); duchy-of-holstein one (county-of-holstein-pinneberg): not touched.",
+  "The compile was not run: whether the qajar-dynasty 1788 keyframe still snaps, whether western-roman-empire's Carthaginensis conflicts with Alans/Vandals/Suebi claims, and the Prussia/NGC interplay are untested.",
+  "western-roman-empire: Baetica and Lusitania south of Gallaecia are still unowned 429-455 (the Hispania page has the Romans recovering 90% of the peninsula 429-439); not part of R037."
+ ]
+}

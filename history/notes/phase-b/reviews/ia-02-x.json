@@ -1,0 +1,1393 @@
+{
+ "batch_id": "ia-02-x",
+ "verdicts": [
+  {
+   "slug": "ogedeid-ulus",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/3",
+     "what": "1277 gain of Almaliq at confidence 3, but neither cited page dates the capture.",
+     "why": "Kaidu-Kublai war page: 'Kublai's son Nomukhan and generals occupied Almaliq in 1266-1276' then 'However, Kaidu captured Almaliq' (no year); Kaidu page: 'was also able to recover control over Almaliq in the east' (no year).",
+     "fix": "Confidence 2 (done; note annotated).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/2, /ledger/3, /ledger/4, /ledger/5, /ledger/6, /ledger/7",
+     "what": "Counterpart yuan-dynasty for events of 1275-1289; the yuan-dynasty row starts in 1294.",
+     "why": "polities.csv yuan-dynasty 1294..1374; the mongol-empire dossier carries Kublai's state to 1293 (/ledger/80 rename 18 Dec 1271, /ledger/93 dissolve 1293 to yuan-dynasty).",
+     "fix": "Counterpart mongol-empire (done; dossier notes annotated).",
+     "applied": true
+    },
+    {
+     "where": "/wars/0/belligerents, /wars/1/belligerents",
+     "what": "Only post-1294 slugs (chagatai-khanate, yuan-dynasty, ilkhanate) for wars that start in 1268 and 1288.",
+     "why": "Same row years as above; ulus-of-chagatai, mongol-empire and ulus-of-hulegu are the polities alive before 1294.",
+     "fix": "Added ulus-of-chagatai and mongol-empire to /wars/0, ulus-of-hulegu to /wars/1 (done).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/8, /ledger/9",
+     "what": "The Altai/western Mongolia contest 1289-1301 crosses the 1293/1294 change of counterpart; L8 still names yuan-dynasty in 1289 so that the pair validates.",
+     "why": "yuan-dynasty row starts 1294; mongol-empire ends 1293.",
+     "fix": "Split it: contest_start mongol-empire 1289, contest_end mongol-empire 1293 (c1, bookkeeping), contest_start yuan-dynasty 1294 (c1), contest_end yuan-dynasty 1301 (as now).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/10",
+     "what": "vassal_end of 1306 names ulus-of-chagatai, which ends in 1293; the client relation is not drawn 1294-1306 and has no mirror anywhere.",
+     "why": "ulus-of-chagatai /identity/end 1293; chagatai-khanate (from 1294) has no vassal event with ogedeid-ulus; Kaidu page: Kaidu 'died shortly afterwards, late in 1301', 'Chapar fell out with Duwa by 1306'.",
+     "fix": "vassal_end ulus-of-chagatai 1293 (c1, bookkeeping) + vassal_start chagatai-khanate 1294 + vassal_end chagatai-khanate (1301 at Kaidu's death or 1306 as now, say which); ask the chagatai-khanate author for the mirror.",
+     "applied": false
+    },
+    {
+     "where": "/identity/start",
+     "what": "Founded 1271, but ulus-of-chagatai gives Semirechye and Bukhara to ogedeid-ulus in 1267 (/ledger/4 there): the land belongs to no ulus in 1267-1270.",
+     "why": "Kaidu page: investiture at Talas 'August/September 1271'; the Baraq-Kaidu meeting 'around 1267' (Wassaf) or 'spring of 1269' (Rashid al-Din). Chagatai Khanate page: 'In 1267, Baraq accepted peace with Kaidu, and relinquished the territory east of Transoxania'.",
+     "fix": "Decide with ulus-of-chagatai: either start this dossier at the 1267/1269 settlement (found event with the Kaidu page's alternative dates) or move the ulus-of-chagatai loss to 1271. Recorded as blocking on ulus-of-chagatai.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "The Tarim Basin and Uighuria split between Kaidu and Duwa after the Yuan withdrawal (author flagged).",
+     "page to try": "https://en.wikipedia.org/wiki/Duwa"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kaidu",
+     "result": "confirmed ('invested as ruler of the previously dispersed Ulus of Ögedei at a kurultai at Talas in August/September 1271')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kaidu–Kublai_war",
+     "result": "year not on page (capture of Almaliq undated); confidence lowered to 2"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Kaidu",
+     "result": "confirmed ('capturing the old capital Karakorum in 1289'; 'When Kublai himself advanced on Kaidu, however, Kaidu retreated')"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Chagatai_Khanate",
+     "result": "confirmed ('forcing him to surrender his territory to Duwa in 1306')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Kaidu",
+     "result": "confirmed at c2 (Beshbaliq 1286 on the Kaidu page, Yuan withdrawal 'From 1288/89' on the war page; note says so)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No Cliopatria row and no infobox area (the article used is the family page House of Ögedei)."
+   }
+  },
+  {
+   "slug": "ulus-of-chagatai",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/3, /ledger/7, /ledger/8",
+     "what": "Counterpart yuan-dynasty for 1266 and 1289 events; the yuan-dynasty row starts in 1294.",
+     "why": "polities.csv yuan-dynasty 1294..1374; mongol-empire dossier /ledger/80 (rename 1271) and /ledger/93 (dissolve 1293).",
+     "fix": "Counterpart mongol-empire (done).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/5, /ledger/6",
+     "what": "Counterpart ilkhanate for Baraq's 1270 invasion; the ilkhanate row starts in 1294.",
+     "why": "polities.csv ilkhanate 1294..1343; ulus-of-hulegu (this batch) covers 1256-1293.",
+     "fix": "Counterpart ulus-of-hulegu (done). The mirror contest is missing in ulus-of-hulegu (see there).",
+     "applied": true
+    },
+    {
+     "where": "/wars/0../wars/4 belligerents",
+     "what": "Belligerents yuan-dynasty, golden-horde and ilkhanate in wars of 1260-1293.",
+     "why": "Those rows start in 1294.",
+     "fix": "Replaced with mongol-empire, ulus-of-jochi, ulus-of-hulegu (done).",
+     "applied": true
+    },
+    {
+     "where": "/ledger (1260-1262)",
+     "what": "No vassal_start 1260 / vassal_end 1262 with counterpart ariq-boke, the mirror of ariq-boke /ledger/2 and /ledger/4.",
+     "why": "Alghu page: 'In 1260 Alghu was appointed as head of the ulus of the Chagatai Khanate by the Great Khan claimant Ariq Böke'; 'In 1262 he rebelled against Ariq Boke'.",
+     "fix": "Add vassal_start 1260 (c2) and vassal_end 1262 (c3), counterpart ariq-boke, region as in ariq-boke /ledger/2, source the Alghu page.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1271-1293)",
+     "what": "No vassal_start 1271 with counterpart ogedeid-ulus, the mirror of ogedeid-ulus /ledger/1 (Kaidu sets up the Chagatai khans), and no end at 1293.",
+     "why": "ogedeid-ulus /ledger/1 cites the Kaidu page ('Kaidu also appointed Negübei as khan of Chagatai') and the Duwa page (1282).",
+     "fix": "Add vassal_start 1271 counterpart ogedeid-ulus (c2) and vassal_end 1293 (c1, bookkeeping hand-over to chagatai-khanate).",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1263-1267), /keyframe_review/0",
+     "what": "ulus-of-jochi /ledger/8 (1263 loss of Otrar and Khwarazm to ulus-of-chagatai) and /ledger/10 (1267 regain) have no mirror here, and no keyframe here contains Otrar or Khwarazm, so the land is drawn by neither ulus in 1263-1266.",
+     "why": "Golden Horde page: 'Alghu declared war on Berke, seizing Otrar and Khorazm' (undated); Alghu page: territories 'formerly under the control of the Blue Horde' after 1261, 'a new battle near Otrar'.",
+     "fix": "Add gain 1263 (c1) from ulus-of-jochi and loss 1267 (c1) to ulus-of-jochi, region union(place Otrar 200 km, place Gurganj 400 km), and a keyframe 1263-1266 that includes them; or drop the pair from ulus-of-jochi. Both dossiers must agree.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/4",
+     "what": "1267 loss to ogedeid-ulus, which exists only from 1271: Semirechye and Bukhara belong to no ulus 1267-1270.",
+     "why": "ogedeid-ulus /identity/start 1271 (Kaidu page: Talas investiture 'August/September 1271'); Kaidu page dates the Baraq-Kaidu meeting 'around 1267' or 'spring of 1269'.",
+     "fix": "Either keep Semirechye and Bukhara in this dossier until 1271 (loss in 1271, note the 1267 peace) or have ogedeid-ulus start at the 1267/1269 settlement; the two dossiers must agree within a year.",
+     "applied": false
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what": "Almaliq is the capital 1227-1293 but lies outside /keyframe_review/1 and /keyframe_review/2 from 1267 (Semirechye and Almaliq went to Kaidu; ogedeid-ulus gains Almaliq in 1277).",
+     "why": "Keyframe corrections 1267-1293 are Transoxiana minus Bukhara (plus the Tarim from 1289).",
+     "fix": "End Almaliq in 1266; name a Transoxiana or Tarim seat for 1267-1293 if a page gives one, else none.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/9",
+     "what is missing": "1293 dissolve at c1 (bookkeeping hand-over to chagatai-khanate).",
+     "page to try": "https://en.wikipedia.org/wiki/Duwa"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Alghu's gains of Samarkand and Bukhara (undated) are not events (author flagged).",
+     "page to try": "https://en.wikipedia.org/wiki/Alghu"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Chagatai_Khanate",
+     "result": "confirmed ('In 1267, Baraq accepted peace with Kaidu, and relinquished the territory east of Transoxania')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Chagatai_Khanate",
+     "result": "confirmed ('defeated Baraq near Herat on 22 July 1270')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Toluid_Civil_War",
+     "result": "confirmed at c2 (Alghu 'lost his headquarters at Almalikh to Ariq Böke', undated; the Chagatai page places it after Alghu's 1263 flight)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Kaidu",
+     "result": "confirmed at c2 (Beshbaliq 1286, Tarim evacuated 'over the following years'; war page 'From 1288/89')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 3400000,
+    "infobox_year": 1310,
+    "cliopatria_km2": 0,
+    "ratio": 1.92,
+    "acknowledged": true,
+    "note": "No Cliopatria row; the author's gazetteer area 1.77 M km2 against the infobox 3.4 M km2 ('1310 or 1350 est.') is acknowledged in /keyframe_review/0/note. Successor row chagatai-khanate_1294 is 2,460,790 km2."
+   }
+  },
+  {
+   "slug": "ariq-boke",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/0/belligerents",
+     "what": "golden-horde and ilkhanate in a 1260-1264 war; both rows start in 1294.",
+     "why": "polities.csv; ulus-of-jochi and ulus-of-hulegu (this batch) cover those years.",
+     "fix": "Replaced with ulus-of-jochi and ulus-of-hulegu (done).",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/1/note",
+     "what": "Says no page names the land Ariq held 1261-1264; the Toluid page does.",
+     "why": "Toluid Civil War page: 'Ariq Böke retreated from Karakorum to a tributary of the Yenisei'; 'The only supply line still open to Ariq Böke was the Yenisei River valley in the northwest.'",
+     "fix": "Quote these in the note and correction text (keyframe can stay; certainty can rise).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/3/note",
+     "what": "Quotes 'By 1261, most of Mongolia was now under the control of Kublai'; the page has no 'By 1261'.",
+     "why": "Toluid page: 'In 1261, Kublai and Ariq Böke engaged in battle at Shimultai...' then 'Meanwhile, most of Mongolia was now under the control of Kublai.'",
+     "fix": "Quote the page as written; the year stays (c2).",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Alghu",
+     "result": "confirmed ('In 1260 Alghu was appointed as head of the ulus of the Chagatai Khanate by the Great Khan claimant Ariq Böke')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Alghu",
+     "result": "confirmed ('In 1262 he rebelled against Ariq Boke')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Ariq_Böke",
+     "result": "confirmed (infobox reign '11 August 1259 – 21 August 1264'; 'Ariq Böke finally submitted to Kublai in 1264')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Toluid_Civil_War",
+     "result": "confirmed at c2 (Shimultai 1261; quote paraphrased, see fixes)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "Rebel claimant; no infobox area, no Cliopatria row."
+   }
+  },
+  {
+   "slug": "ulus-of-jochi",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2/correction",
+     "what": "Khwarezm (and the Urals) enter the shape in 1241 with no ledger event; /keyframe_review/0 and /keyframe_review/1 do not contain Khwarezm.",
+     "why": "Ledger L0-L7 gain only Volga Bulgaria, the North Caucasus and the Pontic steppe; the Golden Horde page mentions Khorazm only when 'Alghu smashed the Golden Horde's lands in Khorazm' (undated) and does not say when it became Jochid.",
+     "fix": "Add a dated gain of northern Khwarazm (Urgench) with a page (e.g. the Jochi page or the Siege of Gurganj page for 1221/1225), or put it in the 1225 found region; otherwise drop Khwarezm from /keyframe_review/2-3 and the 1263/1267 pair.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6",
+     "what": "vassal_start of Rostov-Suzdal dated 1252 at confidence 3: the page's 1252 sentence is a later act, not the start of the vassalage.",
+     "why": "Batu Khan page: 'Alexander was installed as the grand prince of Vladimir by Batu in 1252' and, earlier, 'Yaroslav was well received by Batu, who confirmed him as suzerain over the other Rus' princes'; Golden Horde page: 'All the senior princes of Rus', including Yaroslav II of Vladimir' 'acknowledged Batu's supremacy'; Yaroslav II page: 'In 1243, he was summoned by Batu Khan to his capital Sarai.'",
+     "fix": "Year 1243, confidence 2, cite https://en.wikipedia.org/wiki/Yaroslav_II_of_Vladimir (add to sources). Note that the counterpart row principality-of-rostov-suzdal ends in 1240 and golden-horde uses principality-of-vladimir-suzdal from 1294: agree the slug with eu-16.",
+     "applied": false
+    },
+    {
+     "where": "/identity/rulers",
+     "what": "Not contiguous: gaps 1225-1227, 1255-1257 and 1280-1291.",
+     "why": "Golden Horde page: Jochi 'c. 1225 (first)'; 'After Batu died in 1256, his son Sartaq Khan was appointed', 'The infant Ulaghchi succeeded him'; 'Mengu-Timur was succeeded in 1281 by his brother Töde Möngke'; Talabuga 'succeeded him'; 'replaced with Toqta in 1291'.",
+     "fix": "Add Jochi (1225-1227), Sartaq and Ulaghchi (1255/56-1257), Töde Möngke (1280/81-1287) and Talabuga (1287-1291), citing the Golden Horde page.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/2/note",
+     "what": "Quotes Cliopatria's Golden Horde 1294 shape as 4.5 M km2.",
+     "why": "shapes.csv golden-horde_1294 area_km2 4,933,986.5.",
+     "fix": "Write 4.93 M km2.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/8, /ledger/10",
+     "what is missing": "Otrar and Khwarazm 1263-1267 at c1 (bridging years); must also be mirrored in ulus-of-chagatai.",
+     "page to try": "https://en.wikipedia.org/wiki/Mengu-Timur"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "Bulgaria's vassalage to Nogai dated by Ivaylo's death (1280), the vassalage itself undated.",
+     "page to try": "https://en.wikipedia.org/wiki/Second_Bulgarian_Empire"
+    },
+    {
+     "where": "/ledger/12, /ledger/13, /ledger/14, /ledger/15",
+     "what is missing": "1293 hand-overs at c1 (bookkeeping, acceptable).",
+     "page to try": "https://en.wikipedia.org/wiki/Golden_Horde"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Batu_Khan",
+     "result": "confirmed ('crossed the Volga and invaded Volga Bulgaria in 1236')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Cumania",
+     "result": "confirmed ('the final blow came in 1241, when the Cuman confederacy ceased to exist as a political entity')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Golden_Horde",
+     "result": "confirmed ('Daniel personally visited Batu in 1245 and pledged allegiance to him')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Batu_Khan",
+     "result": "mis-dated (1252 is on the page, but as Alexander's installation; the pages put the princes' acknowledgment of Batu earlier, 1243 on the Yaroslav II page)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 6000000,
+    "infobox_year": 1310,
+    "cliopatria_km2": 4933987,
+    "ratio": 1.22,
+    "acknowledged": true,
+    "note": "Cliopatria golden-horde_1294 (used as /keyframe_review/4); the author quotes it as 4.5 M km2."
+   }
+  },
+  {
+   "slug": "ulus-of-hulegu",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger (1270), /wars",
+     "what": "Baraq's 1270 invasion of Khorasan is missing: no contest pair and no war, although ulus-of-chagatai /ledger/5-6 record it with this dossier as counterpart.",
+     "why": "Ilkhanate page: 'In 1270, Abaqa defeated an invasion by Ghiyas-ud-din Baraq of the Chagatai Khanate.' Chagatai Khanate page: 'defeated Baraq near Herat on 22 July 1270'.",
+     "fix": "Add contest_start 1270 (region Khorasan) and contest_end 1270-07 (Herat 200 km), counterpart ulus-of-chagatai, and the war.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/2/note",
+     "what": "Quotes Cliopatria's Ilkhanate 1294 shape as 3.77 M km2.",
+     "why": "shapes.csv ilkhanate_1294 area_km2 3,941,078.1.",
+     "fix": "Write 3.94 M km2 (ratio to the infobox 3.75 M km2 is 1.05).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/12",
+     "what": "Aleppo's recapture given month 10 at confidence 3; the page says only 'within a month' of 3 September.",
+     "why": "Battle of Ain Jalut page: 'the Mamluks captured Damascus five days later after Ain Jalut, followed by Aleppo within a month'.",
+     "fix": "Drop the month or keep it with a note that September is possible.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Georgia's vassalage to Hulegu (c1); the mongol-empire dossier has it from 1243.",
+     "page to try": "https://en.wikipedia.org/wiki/David_VII_of_Georgia"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "Cilicia's submission (c1; Hethum I, 1247/1254).",
+     "page to try": "https://en.wikipedia.org/wiki/Armenian_Kingdom_of_Cilicia"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "Trebizond's vassalage (c1); Ilkhanate page: Rum and Trebizond 'became vassals of the Mongols' after Köse Dağ; the empire-of-trebizond dossier has no Mongol vassal events.",
+     "page to try": "https://en.wikipedia.org/wiki/Empire_of_Trebizond"
+    },
+    {
+     "where": "/ledger/15../ledger/18",
+     "what is missing": "1293 vassal_end hand-overs at c1 (bookkeeping).",
+     "page to try": "https://en.wikipedia.org/wiki/Ilkhanate"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Sultanate_of_Rum",
+     "result": "confirmed ('In October 1256, Bayju defeated Kaykaus II near Aksaray and all of Anatolia became officially subject to Möngke Khan')"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Hulagu_Khan",
+     "result": "confirmed ('On 10 February Baghdad surrendered. The Mongols swept into the city on 13 February.')"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Hulagu_Khan",
+     "result": "confirmed ('seized Damascus on 1 March 1260')"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Ain_Jalut",
+     "result": "confirmed ('on 3 September 1260'; 'the Mamluks captured Damascus five days later')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Hulagu_Khan",
+     "result": "confirmed ('in early 1256')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 3750000,
+    "infobox_year": 1310,
+    "cliopatria_km2": 3941078,
+    "ratio": 0.95,
+    "acknowledged": true,
+    "note": "Cliopatria ilkhanate_1294 (basis of /keyframe_review/2); author quotes 3.77 M km2."
+   }
+  },
+  {
+   "slug": "amirate-of-qazaghan",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/to",
+     "what": "No keyframe covered 1360 (KF0 ended 1359, KF1 starts 1361), so the state vanished in the year of the Moghul invasion although the ledger loses Transoxiana only in 1361.",
+     "why": "Ledger /ledger/3 contest_start 1360, /ledger/5 loss 1361.",
+     "fix": "to 1360 (done; note annotated).",
+     "applied": true
+    },
+    {
+     "where": "/identity/rulers",
+     "what": "Gap 1360-1363 while /keyframe_review/1 keeps the state alive at Balkh in 1361-1362.",
+     "why": "Chagatai page: Tughlugh 'defeated Amir Husayn in Afghanistan'; Timur page: Husayn and Timur 'became rivals and antagonists'.",
+     "fix": "Extend Amir Husayn back to 1360/1361 or say the state lapsed and drop KF1.",
+     "applied": false
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what": "Qarshi 1346-1370 lies outside /keyframe_review/1 (Balkh only) in 1361-1362.",
+     "why": "KF1 correction admin1 Balkh.",
+     "fix": "End Qarshi in 1360 and resume in 1363, or no capital in 1361-1362.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1, /keyframe_review/2",
+     "what is missing": "Balkh enters in 1361 with no gain event; no page opened says when Husayn held Balkh.",
+     "page to try": "https://en.wikipedia.org/wiki/Qazaghan"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "End of Herat's tribute (c1, 1358).",
+     "page to try": "https://en.wikipedia.org/wiki/Kart_dynasty"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Fergana, Badakhshan, Balkh and Khorasan under Qazaghan (author flagged).",
+     "page to try": "https://en.wikipedia.org/wiki/Qazaghan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Chagatai_Khanate",
+     "result": "confirmed ('In 1346 a tribal chief, Amir Qazaghan, killed Qazan and set up Danishmendji as puppet khan')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Chagatai_Khanate",
+     "result": "confirmed ('Qazaghan made Herat a tributary in 1351')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Chagatai_Khanate",
+     "result": "confirmed ('In 1360, Tughlugh invaded Transoxania and conquered it')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Chagatai_Khanate",
+     "result": "confirmed ('Following Tughlugh's death in 1363, Timur and Amir Husayn took over Transoxiana')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Timur",
+     "result": "confirmed ('Coronation: 9 April 1370, Balkh')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No infobox area and no Cliopatria row (author says so in /keyframe_review/0/note)."
+   }
+  },
+  {
+   "slug": "uzbek-khanate-of-abul-khayr",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "The steppe gain (the largest land move, about 1.9 M km2) is c1 at a bridging year 1440; the page gives only '1420s-1450s'.",
+     "page to try": "https://en.wikipedia.org/wiki/Shaybanids"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "Kerei and Janibek's secession (c1, undated) and the 1457 Oirat defeat (not in the ledger).",
+     "page to try": "https://en.wikipedia.org/wiki/Janibek_Khan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Abu%27l-Khayr_Khan",
+     "result": "confirmed ('Coronation: 1428'; 'After being released in 1428, Abu'l-Khayr began consolidating...' 'around Tyumen and the Tura River')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Abu%27l-Khayr_Khan",
+     "result": "confirmed ('In 1430–1431 ... occupying the regional capital Urganj'; 'retreated in the summer of 1431')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Abu%27l-Khayr_Khan",
+     "result": "confirmed ('Starting in 1446 Abu'l-Khayr and his forces invaded the Syr Darya region'; 'The town of Sighnaq became Abu'l-Khayr's new capital')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Abu%27l-Khayr_Khan",
+     "result": "confirmed ('died in 1468 (though some sources say 1469 or 1470)')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "Infobox has no area (checked); no own Cliopatria row, the land sits in the khanate-of-sibir row (author flagged)."
+   }
+  },
+  {
+   "slug": "turpan-khanate",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/5",
+     "what is missing": "End of the Ming-Turpan fighting over Hami (c1 1528) and who held Hami afterwards.",
+     "page to try": "https://en.wikipedia.org/wiki/Ming–Turpan_conflict"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Turpan_Khanate",
+     "result": "confirmed ('It was founded by Ahmad Alaq in 1487 based in Turpan')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Turpan_Khanate",
+     "result": "confirmed ('Mansur conquered the kingdom and brought the region under his control in 1513')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Mansur_Khan_(Moghul_Khan)",
+     "result": "confirmed ('In 1517, 1524, and 1528 battles broke out')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Turpan_Khanate",
+     "result": "confirmed ('in 1570, the Turpan Khanate was invaded by an army led by Abduraim Sultan' and 'Turpan came under the control of the Yarkand Khanate')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "Infobox has no area (checked). Overlaps Cliopatria moghulistan_1492 (1.08 M km2, bbox reaches 92.7 E) and possibly eastern-chagatai-khanate (1492-1511), see problems."
+   }
+  },
+  {
+   "slug": "kara-del",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/2",
+     "what": "1404 is recorded only as the end of the Ming occupation, but the page and the event's own note describe the start of a Ming protectorate (the Hami Guard), which has no vassal_start; Kara Del is drawn independent 1404-1513.",
+     "why": "Kara Del page: 'In 1404, Gunashiri's successor Engke Temiir accepted the establishment of a Ming guard'; 'From 1406, it was governed by Ming under the Hami Guard'. Mansur page (1513): the prince 'switched his allegiance from the Chinese Ming Emperor to Mansur Khan'. The author's own report asks for 'a vassal/protectorate counterpart of ming-dynasty from 1404'.",
+     "fix": "Keep occupation_end 1404 and add vassal_start 1404 counterpart ming-dynasty (Hami 120 km, c3, Kara Del page) and vassal_end 1513 counterpart ming-dynasty (c3, Mansur page); interrupt it 1446 if the occupation stays.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1430s-1455)",
+     "what": "Oirat suzerainty missing; the four-oirats dossier has vassal_start 'Kara Del (Hami)' 1445 (/ledger/3, c2) and vassal_end 1455 (/ledger/6, c1) with no mirror here.",
+     "why": "Kara Del page: 'During the 1430s, Kara Del submitted to the Oirats'; infobox 'Conquered by Esen of the Northern Yuan' (undated).",
+     "fix": "Add vassal_start counterpart four-oirats (1445 to match, c1, note the page's '1430s') and vassal_end 1455 (c1), or agree another year with the four-oirats dossier.",
+     "applied": false
+    },
+    {
+     "where": "/identity/rulers",
+     "what": "Only Gunashiri 1389-1404; the page names his successor Engke Temür in 1404.",
+     "why": "Kara Del page, as above.",
+     "fix": "Add Engke Temür from 1404 (end year if a page gives it) or say the list is partial.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/4",
+     "what is missing": "End of the 1446 Ming occupation (c1, same-year bridge).",
+     "page to try": "https://en.wikipedia.org/wiki/Kara_Del"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kara_Del",
+     "result": "confirmed ('in 1389 the Buddhist Chagataid prince Gunashiri broke away from the Northern Yuan dynasty'; 'established himself in Qamil (Hami) by 1390')"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kara_Del",
+     "result": "confirmed at c2 ('The next year, the Ming dynasty occupied his territory and forced him to submit')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kara_Del",
+     "result": "confirmed ('In 1446, disturbances broke out in Hami'; Ren Li 'occupied the city and deported 1,230 people')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Kara_Del",
+     "result": "confirmed ('Hami was conquered by Mansur Khan, the ruler of Moghulistan in 1513')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kara_Del",
+     "result": "page says 1404 began a Ming guard (protectorate): wrong event type, see fixes"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No infobox area; a 120 km circle at Hami, acknowledged in /keyframe_review/0."
+   }
+  },
+  {
+   "slug": "sufi-dynasty-of-khwarazm",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (1372), /keyframe_review/0",
+     "what": "The 1372 peace in which Timur received Kath and Khiva is missing; the single keyframe keeps all of Khwarezm Sufi until 1388.",
+     "why": "Sufi dynasty page: 'Husain Sufi's refusal to return southern Khwarezm caused Timur to go to war against him in 1372'; Yusuf Sufi 'concluded a peace with Timur in which Timur received Kath and Khiva'.",
+     "fix": "Add loss 1372 (or 1373) counterpart timurid-empire, region Kath and Khiva (place Khiva ~60 km; Kath is not in the gazetteer: lon/lat 60.98, 41.54 or Beruniy), c3, and split the keyframe at 1373 with a correction for northern Khwarezm (Urgench) only.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/3",
+     "what": "A 'rename' with no new name stands in for a change of suzerain; the golden-horde dossier has vassal_start 'Sufi dynasty of Khwarazm' 1383 (/ledger/15, c3) and vassal_end 1388 (/ledger/17), with no mirror here.",
+     "why": "Tokhtamysh page (1383): Tokhtamysh 'restored the Golden Horde's authority over the semi-autonomous Ṣūfī Dynasty in Khwarazm'.",
+     "fix": "Replace with vassal_start 1383 counterpart golden-horde (region Khwarezm, c3, Tokhtamysh page) and add vassal_end 1388 counterpart golden-horde.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "1379 contest_end records no outcome, although the cited page calls it a subjugation and the Sufi infobox ends the dynasty in 1379.",
+     "why": "Timur page: 'the subjugation of Khwarazm and Urgench in the Siege of Urgench (1379)'; Sufi page infobox 'Dissolution: 1379'; Sufi page: 'a general massacre followed and the city was burned'.",
+     "fix": "Add vassal_start 1379 counterpart timurid-empire (c2) ending 1383 when Tokhtamysh restored Horde authority, or explain in the note why the land is drawn independent 1379-1383.",
+     "applied": false
+    },
+    {
+     "where": "/identity/rulers",
+     "what": "Sulayman 1379-1388; the page's list has Balankhi (1380), Maing (1380), Sulayman (1380-1388).",
+     "why": "Sufi dynasty page ruler list.",
+     "fix": "Follow the page's list or note the difference.",
+     "applied": false
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Sufi_dynasty",
+     "result": "confirmed (1372 war, Husain 'died during the siege'); the same passage records the cession of Kath and Khiva, missing from the ledger"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Timur",
+     "result": "confirmed ('the subjugation of Khwarazm and Urgench in the Siege of Urgench (1379)'); outcome not recorded"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Sufi_dynasty",
+     "result": "confirmed ('Suleiman Sufi allied with the khan of the Golden Horde, Tokhtamysh, and in 1387 revolted')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Tokhtamysh",
+     "result": "confirmed (Timur 'overthrew the Ṣūfī Dynasty of Khwarazm for its collusion with Tokhtamysh and razed to the ground its capital', 1388)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No infobox area; no Cliopatria row."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "ogedeid-ulus",
+    "year": 1271,
+    "type": "vassal_start",
+    "counterpart": "ulus-of-chagatai"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "ulus-of-chagatai (this batch) has no vassal_start 1271 with ogedeid-ulus; fix listed there."
+  },
+  {
+   "event": {
+    "slug": "ogedeid-ulus",
+    "year": 1277,
+    "type": "gain",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Almaliq; counterpart corrected from yuan-dynasty by the reviewer. mongol-empire (ia-02-a) has no 1277 loss of Almaliq (nor the 1266 occupation)."
+  },
+  {
+   "event": {
+    "slug": "ogedeid-ulus",
+    "year": 1289,
+    "type": "gain",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Beshbalik and Turfan-Hami; mongol-empire has no 1286-1289 loss of Uighuria."
+  },
+  {
+   "event": {
+    "slug": "ogedeid-ulus",
+    "year": 1289,
+    "type": "occupation_start",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Karakorum 1289 (Kaidu page); mongol-empire has no occupation event."
+  },
+  {
+   "event": {
+    "slug": "ogedeid-ulus",
+    "year": 1306,
+    "type": "vassal_end",
+    "counterpart": "ulus-of-chagatai"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Counterpart ended in 1293; chagatai-khanate has no vassal event with ogedeid-ulus."
+  },
+  {
+   "event": {
+    "slug": "ogedeid-ulus",
+    "year": 1306,
+    "type": "loss",
+    "counterpart": "chagatai-khanate"
+   },
+   "mirror": {
+    "slug": "chagatai-khanate",
+    "year": 1306,
+    "type": "merge"
+   },
+   "status": "matched",
+   "note": "Land disagrees: chagatai-khanate /ledger/1 merges Dzungaria; ogedeid-ulus hands over Semirechye, Almaliq, Bukhara, Beshbalik and Turfan-Hami."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-chagatai",
+    "year": 1263,
+    "type": "occupation_start",
+    "counterpart": "ariq-boke"
+   },
+   "mirror": {
+    "slug": "ariq-boke",
+    "year": 1263,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "Almaliq; end 1264 matched too."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-chagatai",
+    "year": 1267,
+    "type": "loss",
+    "counterpart": "ogedeid-ulus"
+   },
+   "mirror": {
+    "slug": "ogedeid-ulus",
+    "year": 1271,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "4 years apart: Semirechye and Bukhara belong to no ulus 1267-1270 (blocking fix on ulus-of-chagatai)."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-chagatai",
+    "year": 1289,
+    "type": "gain",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Tarim Basin; counterpart corrected from yuan-dynasty; mongol-empire has no Tarim loss (contest 1266-1289 also absent there)."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-chagatai",
+    "year": 1270,
+    "type": "contest_start",
+    "counterpart": "ulus-of-hulegu"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Baraq's invasion; counterpart corrected from ilkhanate; ulus-of-hulegu lacks the pair (fix listed there)."
+  },
+  {
+   "event": {
+    "slug": "ariq-boke",
+    "year": 1260,
+    "type": "vassal_start",
+    "counterpart": "ulus-of-chagatai"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Alghu appointed by Ariq; end 1262 also missing; blocking fix on ulus-of-chagatai."
+  },
+  {
+   "event": {
+    "slug": "ariq-boke",
+    "year": 1261,
+    "type": "loss",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "mongol-empire records only contest_start/contest_end 1260/1264 with the string 'Ariq Böke' (L73, L77); no gain of Karakorum/Mongolia in 1260-61 and the string should become the slug ariq-boke."
+  },
+  {
+   "event": {
+    "slug": "ariq-boke",
+    "year": 1260,
+    "type": "contest_start",
+    "counterpart": "mongol-empire"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1260,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "mongol-empire uses the string 'Ariq Böke' as counterpart; end 1264 matched."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-jochi",
+    "year": 1236,
+    "type": "gain",
+    "counterpart": "volga-bulgaria"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1236,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "No volga-bulgaria dossier yet; mongol-empire /ledger/25 gains the same land the same year (double gain, overlap flagged by the author)."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-jochi",
+    "year": 1240,
+    "type": "gain",
+    "counterpart": "alania"
+   },
+   "mirror": {
+    "slug": "alania",
+    "year": 1240,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "alania dissolves to mongol-empire (counterpart), which also gains it (/ledger/41): same land gained twice; overlap flagged by the author, orchestrator to decide."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-jochi",
+    "year": 1241,
+    "type": "gain",
+    "counterpart": "cuman-kipchak-confederation"
+   },
+   "mirror": {
+    "slug": "cuman-kipchak-confederation",
+    "year": 1241,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "cuman-kipchak-confederation dissolves to mongol-empire, which also gains it (/ledger/52): same overlap."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-jochi",
+    "year": 1245,
+    "type": "vassal_start",
+    "counterpart": "principality-of-galicia-volhynia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier (eu-16 not run); mongol-empire has vassal_start 1240. The row ends 1240 in polities.csv; golden-horde continues with galicia-volhynia from 1294."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-jochi",
+    "year": 1252,
+    "type": "vassal_start",
+    "counterpart": "principality-of-rostov-suzdal"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier (eu-16 not run); mis-dated (should be 1243); mongol-empire has 1238; row ends 1240, golden-horde continues with principality-of-vladimir-suzdal from 1294."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-jochi",
+    "year": 1263,
+    "type": "loss",
+    "counterpart": "ulus-of-chagatai"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Otrar and Khwarazm; no gain in ulus-of-chagatai (blocking fix there)."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-jochi",
+    "year": 1267,
+    "type": "gain",
+    "counterpart": "ulus-of-chagatai"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Otrar and Khwarazm back; no loss in ulus-of-chagatai."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-jochi",
+    "year": 1280,
+    "type": "vassal_start",
+    "counterpart": "second-bulgarian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier yet (eu group not run)."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-jochi",
+    "year": 1293,
+    "type": "dissolve",
+    "counterpart": "golden-horde"
+   },
+   "mirror": {
+    "slug": "golden-horde",
+    "year": 1294,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "golden-horde found names mongol-empire as counterpart and predecessor; it should name ulus-of-jochi. Vassal hand-overs 1293/1294 match (golden-horde L1-L3)."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-hulegu",
+    "year": 1256,
+    "type": "gain",
+    "counterpart": "nizari-ismaili-state"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers; mongol-empire /ledger/64 also gains it (1257, string 'Nizari Ismaili state')."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-hulegu",
+    "year": 1256,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-georgia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier (eu-19 not run); mongol-empire has vassal_start 1243."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-hulegu",
+    "year": 1256,
+    "type": "vassal_start",
+    "counterpart": "armenian-kingdom-of-cilicia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier (me-09 not run)."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-hulegu",
+    "year": 1256,
+    "type": "vassal_start",
+    "counterpart": "empire-of-trebizond"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "empire-of-trebizond dossier exists and has no Mongol/Ilkhanid vassal events (eu-05)."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-hulegu",
+    "year": 1256,
+    "type": "vassal_start",
+    "counterpart": "sultanate-of-rum"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier (me-09 not run); mongol-empire has vassal_start 1243 and a 1250 gain in Anatolia."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-hulegu",
+    "year": 1258,
+    "type": "gain",
+    "counterpart": "abbasid-caliphate"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1258,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "No abbasid-caliphate dossier (me-08 not run); mongol-empire /ledger/65 gains the same land (overlap flagged)."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-hulegu",
+    "year": 1260,
+    "type": "occupation_start",
+    "counterpart": "ayyubid-sultanate"
+   },
+   "mirror": {
+    "slug": "mongol-empire",
+    "year": 1260,
+    "type": "occupation_start"
+   },
+   "status": "exception",
+   "note": "ayyubid-sultanate listed in counterparts_needing_dossiers (row ends 1249 in polities.csv); mongol-empire /ledger/75-76 duplicates Aleppo and Damascus."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-hulegu",
+    "year": 1262,
+    "type": "contest_start",
+    "counterpart": "ulus-of-jochi"
+   },
+   "mirror": {
+    "slug": "ulus-of-jochi",
+    "year": 1262,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Berke-Hulagu war; ends 1265 matched."
+  },
+  {
+   "event": {
+    "slug": "ulus-of-hulegu",
+    "year": 1293,
+    "type": "dissolve",
+    "counterpart": "ilkhanate"
+   },
+   "mirror": {
+    "slug": "ilkhanate",
+    "year": 1294,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "ilkhanate found names mongol-empire; it should name ulus-of-hulegu."
+  },
+  {
+   "event": {
+    "slug": "amirate-of-qazaghan",
+    "year": 1346,
+    "type": "found",
+    "counterpart": "chagatai-khanate"
+   },
+   "mirror": {
+    "slug": "chagatai-khanate",
+    "year": 1346,
+    "type": "split"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "amirate-of-qazaghan",
+    "year": 1351,
+    "type": "vassal_start",
+    "counterpart": "kartids"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No kartids dossier (me-09 not run)."
+  },
+  {
+   "event": {
+    "slug": "amirate-of-qazaghan",
+    "year": 1361,
+    "type": "loss",
+    "counterpart": "chagatai-khanate"
+   },
+   "mirror": {
+    "slug": "chagatai-khanate",
+    "year": 1361,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Contest 1360-1361 matched too."
+  },
+  {
+   "event": {
+    "slug": "amirate-of-qazaghan",
+    "year": 1363,
+    "type": "gain",
+    "counterpart": "chagatai-khanate"
+   },
+   "mirror": {
+    "slug": "chagatai-khanate",
+    "year": 1363,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "amirate-of-qazaghan",
+    "year": 1370,
+    "type": "dissolve",
+    "counterpart": "timurid-empire"
+   },
+   "mirror": {
+    "slug": "timurid-empire",
+    "year": 1370,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "timurid-empire predecessors list only chagatai-khanate; add amirate-of-qazaghan."
+  },
+  {
+   "event": {
+    "slug": "uzbek-khanate-of-abul-khayr",
+    "year": 1428,
+    "type": "found",
+    "counterpart": "golden-horde"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "golden-horde has no 1428 split for the eastern wing."
+  },
+  {
+   "event": {
+    "slug": "uzbek-khanate-of-abul-khayr",
+    "year": 1430,
+    "type": "occupation_start",
+    "counterpart": "timurid-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Urganj 1430-1431; timurid-empire has no occupation event."
+  },
+  {
+   "event": {
+    "slug": "uzbek-khanate-of-abul-khayr",
+    "year": 1446,
+    "type": "gain",
+    "counterpart": "timurid-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Syr Darya and Sighnaq; timurid-empire has no loss."
+  },
+  {
+   "event": {
+    "slug": "uzbek-khanate-of-abul-khayr",
+    "year": 1468,
+    "type": "loss",
+    "counterpart": "kazakh-khanate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No kazakh-khanate dossier (ia-03 not run)."
+  },
+  {
+   "event": {
+    "slug": "turpan-khanate",
+    "year": 1487,
+    "type": "found",
+    "counterpart": "moghulistan"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "moghulistan has no 1487 split (its /ledger/3 is a 1492 loss to eastern-chagatai-khanate)."
+  },
+  {
+   "event": {
+    "slug": "turpan-khanate",
+    "year": 1513,
+    "type": "gain",
+    "counterpart": "kara-del"
+   },
+   "mirror": {
+    "slug": "kara-del",
+    "year": 1513,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "turpan-khanate",
+    "year": 1570,
+    "type": "dissolve",
+    "counterpart": "eastern-moghulistan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No eastern-moghulistan dossier yet."
+  },
+  {
+   "event": {
+    "slug": "kara-del",
+    "year": 1389,
+    "type": "found",
+    "counterpart": "northern-yuan"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "northern-yuan (starts 1368/9) has no 1389 split or loss at Hami."
+  },
+  {
+   "event": {
+    "slug": "kara-del",
+    "year": 1391,
+    "type": "occupation_start",
+    "counterpart": "ming-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No ming-dynasty dossier (ea group not run); also 1404 and 1446."
+  },
+  {
+   "event": {
+    "slug": "four-oirats",
+    "year": 1445,
+    "type": "vassal_start",
+    "counterpart": "Kara Del (Hami)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kara-del has no Oirat vassal events (blocking fix there); four-oirats should use the slug kara-del."
+  },
+  {
+   "event": {
+    "slug": "golden-horde",
+    "year": 1383,
+    "type": "vassal_start",
+    "counterpart": "Sufi dynasty of Khwarazm"
+   },
+   "mirror": {
+    "slug": "sufi-dynasty-of-khwarazm",
+    "year": 1383,
+    "type": "rename"
+   },
+   "status": "mismatch",
+   "note": "Sufi side has a placeholder rename; needs vassal_start/vassal_end golden-horde 1383/1388 (blocking fix there); golden-horde should use the slug."
+  },
+  {
+   "event": {
+    "slug": "sufi-dynasty-of-khwarazm",
+    "year": 1388,
+    "type": "dissolve",
+    "counterpart": "timurid-empire"
+   },
+   "mirror": {
+    "slug": "timurid-empire",
+    "year": 1402,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "timurid-empire /ledger/11 gains Khwarazm in 1402 (c1); the pages give 1388 (Tokhtamysh page) and 1379/1372 (Timur, Sufi pages)."
+  },
+  {
+   "event": {
+    "slug": "sufi-dynasty-of-khwarazm",
+    "year": 1361,
+    "type": "found",
+    "counterpart": "golden-horde"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "golden-horde has no 1361 loss of Khwarazm."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Qayaliq",
+   "kind": "place",
+   "used_in": "ogedeid-ulus"
+  },
+  {
+   "name": "Sighnaq",
+   "kind": "place",
+   "used_in": "uzbek-khanate-of-abul-khayr"
+  },
+  {
+   "name": "Kath",
+   "kind": "place",
+   "used_in": "sufi-dynasty-of-khwarazm"
+  },
+  {
+   "name": "Moghulistan",
+   "kind": "region",
+   "used_in": "turpan-khanate"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Nizari Ismaili State",
+   "suggested_slug": "nizari-ismaili-state",
+   "years": [
+    1090,
+    1256
+   ]
+  },
+  {
+   "name": "Ayyubid Sultanate (to 1260; polities.csv row ends 1249)",
+   "suggested_slug": "ayyubid-sultanate",
+   "years": [
+    1171,
+    1260
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ia-02-x.md",
+ "problems": [
+  "Reviewer edits applied and re-validated (0 errors, 0 warnings): ogedeid-ulus /ledger/3 confidence 3->2, counterparts of /ledger/2-7 yuan-dynasty->mongol-empire, /wars/0-1 belligerents; ulus-of-chagatai counterparts of /ledger/3,7,8 yuan-dynasty->mongol-empire and /ledger/5,6 ilkhanate->ulus-of-hulegu, /wars/0-4 belligerents; ariq-boke /wars/0 belligerents; amirate-of-qazaghan /keyframe_review/0/to 1359->1360. Each edited dossier's notes carry a '[Reviewer ia-02-x, 2026-10-19]' line.",
+  "Verdict 'fix' (ogedeid-ulus, ariq-boke) means the blocking findings were applied by the reviewer; their remaining applied:false findings are non-blocking and should ride with the next repair of ulus-of-chagatai. Verdict 'thin' dossiers (ulus-of-hulegu, amirate-of-qazaghan, uzbek-khanate-of-abul-khayr) also carry applied:false non-blocking findings.",
+  "The author's report asks yuan-dynasty for mirrored events of 1260-1289 (Almaliq, Beshbalik, Tarim, Ariq Böke): before 1294 those belong in mongol-empire (ia-02-a), which carries Kublai's state to 1293; only the 1294-1306 events go to yuan-dynasty.",
+  "Overlap not settled: mongol-empire (ia-02-a) records as its own the gains that ulus-of-jochi (Volga Bulgaria 1236, Alania 1240, Cumania 1241, Rus' vassals) and ulus-of-hulegu (Nizari 1256/57, Baghdad 1258, Aleppo and Damascus 1260) also record, so the same land is gained twice in the same year; alania and cuman-kipchak-confederation dissolve to mongol-empire. The orchestrator must decide which dossier owns these events (the author flagged it).",
+  "Successor dossiers golden-horde, ilkhanate and chagatai-khanate start in 1294 with counterpart and predecessor mongol-empire; they should name ulus-of-jochi, ulus-of-hulegu and ulus-of-chagatai. timurid-empire should name amirate-of-qazaghan as predecessor and move its Khwarazm gain from 1402 (c1) to 1388 (or 1372 for Kath and Khiva).",
+  "Strings instead of slugs in other groups' dossiers: mongol-empire 'Ariq Böke' (now ariq-boke), golden-horde 'Sufi dynasty of Khwarazm' (now sufi-dynasty-of-khwarazm), four-oirats 'Kara Del (Hami)' (now kara-del), timurid-empire 'Khwarazm (Urgench, Sufi dynasty)'.",
+  "turpan-khanate (1487-1570) may duplicate Cliopatria's eastern-chagatai-khanate row (1492-1511, Wikipedia title Moghulistan, bbox 71-81 E): if that row is Ahmad Alaq's eastern khanate, the two should be one state; the author's notes mention only the moghulistan and eastern-moghulistan rows.",
+  "Counterpart rows that end before the events naming them: principality-of-rostov-suzdal and principality-of-galicia-volhynia (rows end 1240) used by ulus-of-jochi to 1293; ayyubid-sultanate (row ends 1249) used for 1260. eu-16 and me-09 should agree the slugs.",
+  "All pages opened with WebFetch loaded; WebFetch answers through a summarising model, so quoted sentences are as it returned them."
+ ]
+}

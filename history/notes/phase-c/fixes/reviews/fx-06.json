@@ -1,0 +1,124 @@
+{
+ "batch_id": "fx-06",
+ "checks": [
+  {
+   "item": "F012",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Seljuk_Empire ; https://en.wikipedia.org/wiki/Al-Muqtafi",
+   "what": "great-seljuk-empire: Iraq loss to abbasid-caliphate moved 1160 -> 1136 (now ledger[47], region intersect(Cliopatria 1152, Iraq) unchanged); keyframes 1139 (now 1139-1140), 1141, 1147 (1147-1151), 1152 (1152-1156), 1152b, 1157 subtract Iraq. Seljuk Empire page checked: 'Iraq remained under Seljuk control until 1135', 'The Seljuk control of the Abbasids ended in 1135', 'Mas'ud briefly recaptured Baghdad in the Siege of Baghdad (1136)', al-Muqtafi (1136-1160) 'managed to restore a high degree of independence'. Al-Muqtafi page: 'proclaimed caliph on 17 September 1136'; Mas'ud died October 1152, Wasit and al-Hilla seized 'in the months after'. Year, land and counterpart are supported. The explicit from/to on the formerly ok Cliopatria keyframes 1139 and 1152 is right: the compiler unions every keyframe alive in a year, so 1139 (1139-1146) and 1152 (1152-1168) had been putting Transoxiana, Iraq and Khorasan back in 1141-1146 and 1157-1168; 1152 ending in 1156 matches the dossier's own 1157 Khorasan loss. Keyframe arithmetic after the fix: overlap with abbasid-caliphate 0 in 1139, 1141, 1147, 1152, 1157 and 37 in 1160-1177 (Kuwait, Khuzestan edge); with banu-mazyad 0 from 1139. The 1056-1135 tint is hierarchy.csv row 65 (abbasid-caliphate under great-seljuk-empire 1056-1135), so no mirror vassal events are needed. Handoff to abbasid-caliphate (mirror gain 1160 -> 1136) is correct and still open.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F067",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Alp_Arslan ; https://en.wikipedia.org/wiki/Tughril",
+   "what": "Lands beyond the Oxus (Transoxiana region plus Kazakhstan; gazetteer: Qyzylorda 418, Navoi 329, South Kazakhstan 88, Bukhoro 61 = 896 cells of Cliopatria's 1056 shape) are out of keyframes 1056, 1062 and 1064, and come in with a new ledger gain in 1065 (ledger[22]; region intersect(Cliopatria 1066, Transoxiana+Kazakhstan), free-text counterpart, so the compiler takes only unowned cells and leaves Kara-Khanid cells alone). Alp Arslan page checked: 'In 1065, Alp Arslan went on an expedition to the Ustyurt and Mangyshlak regions', then 'the lands from the Caspian Sea to Tashkent came under the rule of the Seljuk Empire'; Tughril page silent on Seljuk rule beyond the Oxus after 1043. The 1055 Baghdad gain (ledger[16]) widened from the 250 km circle to Arab Iraq inside the 1056 shape without Mosul (taken 1057): Tughril page 'Tughril entered Baghdad on the 25th of Ramadan, 447 AH' and 'Tughril had the last Buyid ruler in Arab Iraq, Malik al-Rahim, arrested and thus eliminated the dynasty'. Counterpart buyid-dynasty: the gain takes only Buyid-held or unowned cells. Supported; the rest of the snap is left where pages are silent, as reported.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F067",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Tughril",
+   "what": "New ledger gain 1052 Yazd (ledger[13], admin1 Yazd) had counterpart 'kakuyids'. The Tughril page says the opposite direction: 'Faramarz himself was granted the cities of Yazd and Abarkuh as his iqta'' (the Kakuyid receives the towns), and the kakuyids dossier books its own 1052 gain of Yazd and Abarkuh from great-seljuk-empire. The page does not name an earlier holder. Changed the counterpart to 'previous holder not named on the page' and added a review note. The compiled result does not change (the Kakuyids held no Yazd cell when the Seljuk gain runs, so it took unowned land either way), but the event no longer contradicts the page and the kakuyids mirror. Year (c. 1051-52, confidence 1) and the keyframe 1052/1054 additions are kept. great-seljuk-empire re-validated with --resolve: 0 errors, 0 warnings.",
+   "fix": "ledger[13] counterpart 'kakuyids' -> 'previous holder not named on the page'; note appended",
+   "applied": true
+  },
+  {
+   "item": "F142",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Ghurid_dynasty ; https://en.wikipedia.org/wiki/Ala_al-Din_Husayn",
+   "what": "The fixer cut Bactria (Samangan 43, Takhar 24, Kunduz 23, Baghlan 18, Badakhshan 11, Balkh 11 cells) from ghurid-dynasty keyframes 1152 (1152-1176), 1173 and 1175, saying 'Bactria is out of the Ghurid shape until 1198'. The cut is right for 1152 (Ghurid page: Husayn 'was defeated and captured at Nab'; Sanjar page: 24 June 1152, and Amir Qumach governor of Balkh in 1153). But the Ghurid dynasty page, the fixer's own source, says that after he 'remained a prisoner for two years' Husayn 'managed to conquer Garchistan, Tukharistan, Zamindawar, Bust, Bamiyan and other parts of Khurasan' (he died in 1161); the Ala al-Din Husayn page: 'he managed to conquer Garchistan, Tukharistan, and Bamiyan, which he later divided amongst his brothers'. So removing Tokharistan for 1154-1176 contradicts the page. Corrected: keyframe 1152 now runs 1152-1153 (Bactria cut kept); new keyframe ghurid-dynasty_1154 (1154-1176) = Cliopatria 1152 shape minus Balkh province only (Balkh: Seljuk governor 1153, 'Oghuz Turks of Balkh' c. 1163, Fakhr al-Din's ally 'the Seljuq governor of Herat and Balkh'; Ghurid from 1198 in the ledger); keyframes 1173 and 1175 subtract Balkh province instead of all Bactria; notes amended. The start year 1154 follows 'two years' after Nab; the page does not date the conquest within 1154-1161. Keyframe arithmetic: Ghurid-Seljuk overlap still 0 in 1152-1177 (the Seljuk shapes hold Bactria only in 1152 via keyframe 1152b; ledger 1153 loses it to the Oghuz). ghurid-dynasty re-validated with --resolve: 0 errors, 0 warnings, 13 keyframes.",
+   "fix": "ghurid-dynasty: keyframe 1152 to 1176 -> 1153; inserted keyframe ghurid-dynasty_1154 (1154-1176, minus(Cliopatria Ghurid 1152, admin1 Balkh/Afghanistan)); keyframes 1173 and 1175 minus Bactria -> minus admin1 Balkh; notes REVIEW fx-06 paragraph",
+   "applied": true
+  },
+  {
+   "item": "F142",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Ghurid_dynasty",
+   "what": "Yazd 426, Semnan 173, Hormozgan 163, Golestan 40 and Esfahan 8 cells (810) are out of Ghurid keyframes 1188, 1192, 1198, 1200 and 1201. The page gives the western reach as 'In the west, Ghurid territory extended to Nishapur and Merv', with suzerainty 'as far as the Seljuks of Kerman', and names no Yazd, Isfahan or Gulf-coast holding, so the cut is supported for 1188-1199 and 1201. Borderline for the one-year keyframe 1200: the page also says the Ghurids, capturing Nishapur in 1200, were 'reaching as far as Besṭām' and 'reached as far as Gorgan ... albeit for a short time' (Bistam is in Semnan, Gorgan in Golestan). The fixer's note reads this as a raid and the page's 'territory extended to Nishapur and Merv' supports that, so it was left as is. If a later pass prefers the wider reading, take Semnan and Golestan out of the minus list of keyframe ghurid-dynasty_1200 only.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F155",
+   "verdict": "fixed",
+   "page": "https://en.wikipedia.org/wiki/Malik-Shah_I",
+   "what": "Keyframe great-seljuk-empire_1085 now ends 1086 and subtracts Transoxiana and Tajikistan (1,689 cells of Cliopatria's 1085 shape); new keyframe 1087 (1087-1093) is the old shape. Malik-Shah I page checked: 'In 1087, due to internal unrest in Turkestan, Malik-Shah decided to organize another expedition to Transoxiana', 'He captured many castles belonging to the Kara-Khanids, especially Bukhara, Samarkand...', and 'the entire Turkistan Region ... was brought under Seljuk rule in 1089'. That supports 1087. But the same page has 'Malik-Shah went on a campaign to Transoxiana with his army in 1073' and 'captured Termez', and the finding asked for 'the Oxus (plus Termez from 1073)', while the fixer's cut also removed Termez and said the expedition 'begins only in 1087'. Corrected: the 1085 cut is now Transoxiana minus Termez (40 km, 17 cells), plus Tajikistan; text and note amended. western-karakhanid-khanate already leaves Termez out (its keyframes subtract Termez 40 km), so no new overlap: Seljuk/Western Kara-Khanid keyframe overlap stays 73 cells in 1085-1086 (Chardzhou 69, Afghan border cells 4). 1152b (Bactria south of the Oxus only, valid 1152) and 1141-1146 (1139 ending 1140) checked; overlap 1147 1, 1152 4. Validated: 0 errors, 0 warnings.",
+   "fix": "keyframe great-seljuk-empire_1085: minus element {region Transoxiana} -> {minus: [Transoxiana, Termez 40 km]}; correction text and note amended",
+   "applied": true
+  },
+  {
+   "item": "F298",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Malik-Shah_I",
+   "what": "Kept, and the reasoning holds: hierarchy.csv row 67 (kerman-seljuk-sultanate under great-seljuk-empire 1043-1073, vassal) makes the child win, and conflicts.csv has no Seljuk/Kerman pair. Malik-Shah I page checked: 'In 1074... Sultan Malik-Shah decided to launch an expedition against Kerman', he 'refrained from fighting after the Sultan-Shah begged for forgiveness' and left him 'as governor of Kerman'. So the 1074 vassal_start (now ledger[28]) is a dated event on the page and should not move to 1041.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F299",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Sistan",
+   "what": "Sistan region out of Seljuk keyframes 1157, 1160, 1169 and 1177. Sistan page checked: 'The dynasty then became vassals of the Seljuks in 1048, Ghurids in 1162, and the Khwarezmians in 1212'; no Seljuk conquest is described. Overlap with nasrid-dynasty-of-sistan is 0 from 1157 and 91-92 cells in 1136-1152, covered by hierarchy.csv row 68 (vassal 1048-1157). The 1040-1046 overlap was rightly left to the size rule.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F300",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Saltukids",
+   "what": "Erzurum, Bayburt and Kars provinces subtracted from Seljuk keyframes 1094 to 1192 (3 provinces). Saltukids page checked: the Saltukids ruled 'between 1071 and 1202', founded after Manzikert 'centred on Erzurum'; the beylik 'comprised the entirety of present-day Erzurum and Bayburt provinces' and 'most of Kars'; annexed by the Sultanate of Rum after 1202. The page does not call it a vassal, so leaving the 1072-1092 tint to hierarchy.csv row 69 is right. Overlap with saltukids is 0 in all checked years.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F301",
+   "verdict": "pass",
+   "page": "https://en.wikipedia.org/wiki/Seljuk_Empire",
+   "what": "Follows the F012 Iraq cut: banu-mazyad overlap 0 from 1139 (83 cells in 1136-1138 from the alive keyframe 1126, which is not a keyframe start year). 1056-1135 tint: hierarchy.csv row 66. The handoff (caliph's tie to the Mazyadids 1136-1163, abbasid-caliphate dossier or a hierarchy.csv row) is correct and still open.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F302",
+   "verdict": "pass",
+   "page": "",
+   "what": "Skipped because hierarchy.csv supplies it: row 70, shirvan under great-seljuk-empire 1063-1124, vassal, confidence 2. The finding asks for nothing else.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F240",
+   "verdict": "pass",
+   "page": "",
+   "what": "Skipped because hierarchy.csv supplies it: rows 178 (hazaraspids under ilkhanate 1294-1335) and 275 (under ulus-of-hulegu 1256-1293).",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F318",
+   "verdict": "pass",
+   "page": "",
+   "what": "Skipped because hierarchy.csv supplies it: row 179, khorshidi-dynasty under ilkhanate 1294-1333, which is the span of the finding.",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F331",
+   "verdict": "pass",
+   "page": "",
+   "what": "Skipped because hierarchy.csv supplies it: rows 181 (shirvan under ilkhanate 1294-1333) and 278 (under ulus-of-hulegu 1256-1293).",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "Validation after review: great-seljuk-empire OK (0 errors, 0 warnings; 69 events, 31 keyframes, 503 regions); ghurid-dynasty OK (0 errors, 0 warnings; 48 events, 13 keyframes, 229 regions); both with --resolve.",
+  "Stale ledger indexes in data/hierarchy.csv evidence text after the fixer inserted events into great-seljuk-empire: 'ledger[26] vassal_start for Kerman in 1074' is now ledger[28]; 'ledger[34] vassal_start 1087' is now [36]; 'ledger[49]' (vassal_end 1141, Western Kara-Khanids) is now [52]. This is free text only, but whoever owns hierarchy.csv should update it.",
+  "Open handoffs to abbasid-caliphate (read-only in fx-06): (1) move the mirror gain from great-seljuk-empire 1160 -> 1136 and start the caliph's Iraq state in 1136; (2) the caliph's vassal tie to banu-mazyad 1136-1163 (dossier events or a hierarchy.csv row).",
+  "Outside this batch: the Alp Arslan page has Alp Arslan conquer 'Khuttal and Chaghaniyan, which were under Kara-Khanid rule' in 1059, and the Malik-Shah I page has Termez taken in 1073. The Seljuk shapes for 1059-1084 (Cliopatria 1056/1066/1072) do not draw them, while the western-karakhanid-khanate keyframes 1072-1136 draw Khatlon (81 cells) and Surkhandarya apart from Termez (57 cells). A later pass on western-karakhanid-khanate may want to look at this.",
+  "The compile was not run (not the reviewer's to run), so the overlaps above are keyframe arithmetic with the gazetteer (the yearly union of alive keyframes), like the fixer's. The new ghurid-dynasty_1154 keyframe will show as a snap of about 120 Tokharistan cells in 1154, because no ledger event books Husayn's undated conquest."
+ ]
+}

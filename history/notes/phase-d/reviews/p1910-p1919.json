@@ -1,0 +1,60 @@
+{
+ "window": "p1910-p1919",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "german-empire loss to ukrainian-people-s-republic, May 1918, Kyiv, Kyiv City, Chernihiv, Sumy, Poltava, Kharkiv, Dnipropetrovsk, Zaporizhzhya and Zhytomyr. The page says 'German forces then recaptured much of the Ukrainian territory under the control of the Bolsheviks, including Kyiv itself' (no date). The Ukrainian State was established on 29 April 1918 as a 'Client state of the German Empire'. Its listed units include the Kiev, Chernigov, Kharkov, Poltava, Volhynia and Yekaterinoslav governorates and the Tavriiska okruha. It ended on 14 December 1918, when the UPR dossier's December rename takes over. The spec has 982 cells, about 248,000 km2, which matches the eight oblasts. A loss moves only German-held cells. The Soviet ledger hands the land to german-empire in March (Kyiv 100 km) and April. Trial: german-empire_1918 snap releases 870 -> 214 cells. At the end of 1918 the UPR is continuous apart from a few cells. 1919 is unchanged except Zaporizhzhya oblast (111 cells): it is now South Russia's at the end of 1919, following the Soviet ledger's own October 1919 loss to south-russia, where the published draft had Soviet Ukraine fill it by keyframe. There is no change at the 1930 anchor.",
+   "page": "https://en.wikipedia.org/wiki/Ukrainian_State",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "russian-empire gain, Tuva, April 1914, from republic-of-uryankhay. The page says 'In April 1914 Tannu Uriankhai was formally accepted as a protectorate of Russia' and that its territory 'largely corresponds to the modern-day Tuva Republic'. The spec is admin-1 Tuva: 631 cells, about 159,600 km2. A protectorate drawn as Russian land agrees with the uryankhay dossier, whose successor is russian-empire (Uryankhay Krai), and with the Russian 1915 keyframe. Trial: the 561 Uryankhay cells go to Russia in April and the 70 Russian Tuva cells are no longer released, so Tuva is owned at the end of 1914. russian-empire_1915 now adds 456 cells instead of 1074 and releases 16 instead of 3, about 13 Tuva edge cells outside Cliopatria's 1915 shape. There is no change at the 1930 anchor.",
+   "page": "https://en.wikipedia.org/wiki/Tannu_Uriankhai",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/2",
+   "verdict": "fixed",
+   "what": "Mosul vilayet: Ninawa, Dahuk, Arbil, Kirkuk and Sulaymaniyah, 335 cells, about 84,700 km2. The Mosul vilayet page confirms the sanjaks of Mosul, Shahrizor (Kirkuk) and Sulaymaniyah, 'today part of Iraq'. The Mesopotamian campaign page has: 'British troops marched unopposed into the city on the 14 November 1918', after the 30 October armistice; 'The ownership of Mosul Province ... became an international issue'. Date and land are supported. As written (occupation_start), 1918-1919 were fixed but other years broke: Ottoman-owned Mosul passed outright to kingdom-of-iraq at its founding in August 1921. That turned the roles of british-colonial-empire's occupation_start of the same month. In a trial of p1920-p1929 the BCE 1922 keyframe then released 748 cells of central and southern Iraq (Baghdad, Basra, Diyala, Wasit, Maysan, Dhi Qar, Anbar and others) to nobody until 1932. A plain gain fails too: the BCE 1918 keyframe (1918-1919) follows Cliopatria, which adds Mosul only in 1920, so the 1918 snap would release it. Fixed by making the event a gain, matching the dossier's own gain of 14 November 1918 for the rest of Iraq, and adding keyframe_overrides/1. Trials of both windows: Mosul is British at the end of 1918 and 1919 (307 cells), and the 1920 BCE snap adds 101 cells instead of 399. The 1930 anchor is identical to the published one for Iraq.",
+   "page": "https://en.wikipedia.org/wiki/Mesopotamian_campaign",
+   "fix": "type occupation_start -> gain; note rewritten; added keyframe_overrides/1: british-colonial-empire_1918 adjust, the dossier's correction unchanged plus the five Mosul governorates (adds 309 cells, all inside them, removes none)",
+   "applied": true
+  },
+  {
+   "entry": "events/3",
+   "verdict": "fixed",
+   "what": "portuguese-mozambique gain of the Republic's direct cells inside Mozambique. The page's infobox has 'Territory of the Portuguese Empire (1505-1951)' and '1893-1926: Province of Mozambique', and the colony is described as 'extending from Lourenço Marques in the south to Niassa in the north'. The spec is all of Mozambique (2,675 cells), but a gain takes only the counterpart's cells (252), so the Kionga Triangle (German until 1919) is untouched. Dated January 1911, it left the end of 1910 wrong: the 252 cells were portuguese-empire's on 1 January 1910 and went to the Republic through its 1910 keyframe. The report claims [1910,1919]. Moved to January 1910 with counterpart portuguese-empire. The colony's own 1895-1975 keyframe does not snap in this window, and the Republic's later keyframes lose the cells to the colony by R1. Trial: the 252 cells belong to the colony at the end of 1910 and through 1919, and to the colony instead of estado-novo at the 1930 anchor. The seam at p1910 is unchanged.",
+   "page": "https://en.wikipedia.org/wiki/Portuguese_Mozambique",
+   "fix": "year 1911 -> 1910, month 1, counterpart portuguese-republic -> portuguese-empire; note rewritten",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "republic-of-china_1916 (1916 only): the Empire of China's 1916 shape minus Tibet's land. The dossier's version also subtracted Yunnan, Guizhou and Guangxi. The page says 'Eight days after his death, on 14 July 1916, the National Protection War was ended' and the provinces rescinded their declarations of independence; Yuan Shikai abdicated on 22 March 1916 and died on 6 June. So the three provinces were back in the Republic at the end of 1916. Resolved: the new shape has 35,129 cells against the old 32,136. It adds 2,993 cells, all in the three provinces, and removes none. It differs from the 1917 keyframe only by Guangdong (699 cells, which goes to the Guangzhou government in 1917), with no Outer Mongolia. Trial: the 2,994-cell release of 1916 and the 2,993-cell retake of 1917 both disappear.",
+   "page": "https://en.wikipedia.org/wiki/National_Protection_War",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "rulings/0",
+   "verdict": "pass",
+   "what": "german-africa against ruanda-urundi, 1917-1918, Rwanda and Burundi (182 cells), winner ruanda-urundi. The page says 'Ruanda was occupied over April-May and Urundi in June 1916' and 'It was administered by Belgium under military occupation from 1916 to 1922'. Its 'Royal Commissioner ... February 1917' is tagged 'citation needed'; the list gives Malfeyt from November 1916. Trial: settled 358 cell-years in 2 years. The 1919 German Africa June loss to belgian-congo then finds no German cells, so Rwanda and Burundi stay with ruanda-urundi, a colony of Belgium. That improves the 1920 and 1930 anchors (179 cells belgian-congo -> ruanda-urundi). The next window gains small size-rule conflicts: british-africa/ruanda-urundi 45 cell-years and belgian-congo/ruanda-urundi 165, both won by ruanda-urundi.",
+   "page": "https://en.wikipedia.org/wiki/Ruanda-Urundi",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "7 entries, 7 ok, 0 rejected (after the review's changes; trials of p1910-p1919 and p1920-p1929 with the final file: all applied, ruling settled 358 cell-years)",
+ "problems": [
+  "keyframe_overrides/1 (british-colonial-empire_1918, 1918-1919) was added by the reviewer to carry events/2 as a gain. The rest of the dossier's correction is copied unchanged, so a later edit to that keyframe in the dossier is shadowed by this override until it is removed.",
+  "Next window, pre-existing: in the published compile, kingdom-of-iraq's founding (August 1921) loses its land to british-colonial-empire by R1, and the British occupation event of August 1921 runs with the roles reversed (Iraq drawn as occupier of British-owned land, 1,046 cells at the 1930 anchor). It is fragile: any change that leaves Iraq holding cells at its founding sends about 748 cells of Iraq to nobody from 1922. Worth a dossier fix (kingdom-of-iraq / british-colonial-empire 1921).",
+  "Not patched, still on the map: plain-Ottoman cells in western Iraq (Anbar and Salah ad-Din, about 85 cells) at the end of 1918, released to nobody in 1919.",
+  "Not patched, still on the map: the end of 1919 has South Russia on Kyiv, Poltava, Chernihiv and now also Zaporizhzhya (111 cells, following the Soviet Ukraine ledger's October 1919 loss), as the window report notes."
+ ]
+}

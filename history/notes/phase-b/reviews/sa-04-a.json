@@ -1,0 +1,1665 @@
+{
+ "batch_id": "sa-04-a",
+ "verdicts": [
+  {
+   "slug": "ghurid-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (1206-1215)",
+     "what": "The dossier has no vassal_start / vassal_end for the Ghurid sultans' own status as Khwarazmian vassals from 1206 to 1215. The author leaves it to the khwarezmid-empire dossier only.",
+     "why": "Ghurid dynasty page, coinage table: the 1206-1215 rulers are headed 'As vassals of the Khwarazmian Empire' ('Green shaded row signifies Ghurid vassalage under the Khwarazmian dynasty'). The Khwarazmian Empire page has 'sweeping aside the Ghurids in 1215, whom they vassalized after the assassination of Muhammad Ghuri'. Rule 3 needs the vassal's own vassal_start with the overlord as counterpart, as chola-empire /ledger/36 does for the Pandyas.",
+     "fix": "Add vassal_start 1206 (month 3 or later) and vassal_end 1215, counterpart 'khwarezmid-empire', region = the KF6/KF7 remnant (Ghor, Bamiyan and whatever of Ghazni the Yildiz finding leaves), source Ghurid_dynasty, confidence 3. Keep the note for the khwarezmid-empire side.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/3, /keyframe_review/5; /ledger (1198, c. 1206)",
+     "what": "Balkh is missing. The Ghurids held it from 1198 into 1205-1206, but the ledger has no gain or loss for it, and no keyframe draws it.",
+     "why": "Muhammad of Ghor page: after Andkhud (1204) 'the Ghurids lost the control over most of the Khurasan except Herat and Balkh', and Muhammad's governor of Balkh besieged Tirmidh in 1205. kara-khitans /ledger/14 (1198, vassal_end): 'In 1198, Muhammad of Ghor ... seized Balkh from the vassal of the Qara Khitai' (Qara Khitai page). The KF5 note says Balkh was left out 'because no page dates its acquisition', but the neighbour's page does date it.",
+     "fix": "Add a gain in 1198 (counterpart: the Qara Khitai vassal at Balkh, the same string as kara-khitans /ledger/14), source Qara_Khitai. Add a loss by 1206 to khwarezmid-empire (confidence 1 if no page dates it). Add place=Balkh to the corrections of the 1198-1205 keyframes (a new keyframe 1198-1201 inside ghurid-dynasty_1192, and ghurid-dynasty_1202).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/6, /keyframe_review/7, /ledger/40; report counterparts_needing_dossiers",
+     "what": "Ghazni is in two places. KF6/KF7 keep Ghazni and Kabul Ghurid until 1215 and the dissolve takes Ghazni from the Ghurids, yet the KF6 note says Yildiz 'established himself as the king of Ghazni in 1206', and the report asks for a 'Yildiz of Ghazni' (1206-1216) dossier. That dossier would draw the same land twice.",
+     "why": "Ghurid dynasty page: after Muhammad's assassination in March 1206, 'Tajuddin Elduz became the ruler of Ghazni'. No loss of Ghazni to Yildiz is in the ledger.",
+     "fix": "Choose one reading. (a) Yildiz rules Ghazni for himself: add a 1206 loss of Ghazni and Kabul to 'Yildiz of Ghazni', cut them from KF6/KF7, and move the 1215 dissolve region to Ghor and Firozkoh. (b) Yildiz rules as a Ghurid governor: drop 'Yildiz of Ghazni' from counterparts_needing_dossiers, say so in the notes, and point mamluk-dynasty's Yildiz events at that reading.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what": "Verdict ok for 1152-1176, but the ledger adds Ghazni (1173, 60 km), Herat (1175, 100 km), Multan (1175, 100 km) and Uch (1176, 60 km) outside the 153k km2 shape. That is about 85k km2, more than half the shape again, so it is not small. The note itself says the shape is 'a little small for 1173-1176'.",
+     "why": "shapes.csv: ghurid-dynasty_1152 is 152,992 km2, bbox to 70.45 E; Multan (71.5 E) and Uch (71.07 E) are outside the bbox. Ghazni and Herat are 'outside, tested against the grid' (KF0 note).",
+     "fix": "Add new keyframes 1173-1174 (union of Cliopatria 1152 and Ghazni 60 km) and 1175-1176 (adding Herat, Multan and Uch), or mark KF0 adjust with from/to and the union.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/32/region, /ledger/36/region",
+     "what": "The 1205 gain and the 1206 loss of Bengal draw all of Bangladesh. The sena-dynasty dossier keeps east Bengal until 1230, and mamluk-dynasty draws the same Khalji Bengal as West Bengal, Rajshahi and Rangpur.",
+     "why": "Ghurid dynasty page names only Lakhnauti: 'established an Islamic government in the former Sena capital of Lakhnauti in 1205'. sena-dynasty /ledger/9 loses Nadia in 1204 and the Senas last to 1230 (identity end).",
+     "fix": "Use the mamluk-dynasty region (admin1 West Bengal, Rajshahi, Rangpur) in /ledger/32, in /ledger/36 (with Bihar) and in /wars/7 zones. Not blocking on its own.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/26/region, /ledger/29/region, /wars/6/zones",
+     "what": "The Khorasan region includes all of Turkmenistan: Tashauz (Khwarazm proper), Balkan and the Caspian coast. The page names only Khurasan, Nishapur, Merv and Tus.",
+     "why": "Muhammad of Ghor page: 'The Ghurids, thus, for a short span established their sway over most of the Khurasan', with Nishapur, Merv and Tus.",
+     "fix": "Replace {country: Turkmenistan} with {admin1: Mary, country: Turkmenistan} (Merv) in the ledger regions and the war zone. The keyframe minus-corrections can stay. Not blocking.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/14, /ledger/16, /ledger/17 counterpart",
+     "what": "The counterpart was 'tomara-dynasty', but that dossier ends in 1152, succeeded by chauhan-dynasty. The 1192 vassal of Delhi was a local Tomara ruler under the Chahamanas.",
+     "why": "Qutb ud-Din Aibak page: 'He also took control of Delhi in 1192, where he initially retained the local Tomara ruler as a vassal'; 'In 1193, he deposed the Tomara ruler for treason and took direct control of Delhi.' tomara-dynasty identity end 1152.",
+     "fix": "Done: counterpart = 'Tomara ruler of Delhi (Chahamana vassal)' in all three, with the same string so the pair still matches.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/34/source, /ledger/40/source",
+     "what": "These cited Khwarazmian_Empire for 'captured Herat and Ghor in 1206, and finally Ghazni in 1215', but that page has no such sentence: it never mentions Herat in the text or Ghor at all.",
+     "why": "Read on the Khwarazmian Empire page: only 'sweeping aside the Ghurids in 1215, whom they vassalized ...'. The quoted sentence is on the Ghurid dynasty page: 'The Khwarezmians under Ala al-Din Muhammad captured Herat and Ghor in 1206, and finally Ghazni in 1215, completing the takeover of the western part of the Ghurid empire.'",
+     "fix": "Done: source = https://en.wikipedia.org/wiki/Ghurid_dynasty, which is already in sources[]. Confidence 3 kept, since the event is true and the page is listed.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/26/confidence, /ledger/29/confidence",
+     "what": "Both were confidence 3 with a region (all of Turkmenistan) that the page does not name.",
+     "why": "See the region finding above.",
+     "fix": "Done: confidence 3 to 2.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "The 1152 start is confidence 1. The Ghurid page has 'In 1152, Ala al-Din Husayn refused to pay tribute to the Seljuks' and the sack of Ghazni, which would support confidence 2 and a Seljuk vassalage before 1152.",
+     "page to try": "https://en.wikipedia.org/wiki/Ala_al-Din_Husayn"
+    },
+    {
+     "where": "/keyframe_review/1 (Sistan)",
+     "what is missing": "Cliopatria holds about 900 cells of Sistan from 1177, and no page opened mentions it.",
+     "page to try": "https://en.wikipedia.org/wiki/Sistan"
+    },
+    {
+     "where": "/ledger/27",
+     "what is missing": "The 1200 Bihar gain is confidence 1. sena-dynasty /ledger/8 cites 'He subjugated much of Bihar in 1200'.",
+     "page to try": "https://en.wikipedia.org/wiki/Bakhtiyar_Khalji"
+    },
+    {
+     "where": "/ledger/28, /ledger/33",
+     "what is missing": "The ends of the Anhilwara (1201) and Kalinjar (1205) occupations are confidence 1. The neighbours' pages date them: chaulukya 'back under the Chaulukya rule by 1201 CE'; chandela 'A 1205 inscription ... Kalanjaradhipati'.",
+     "page to try": "https://en.wikipedia.org/wiki/Chaulukya_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/26",
+     "page": "https://en.wikipedia.org/wiki/Muhammad_of_Ghor",
+     "result": "confirmed (1200, after Tekish's death, 'established their sway over most of the Khurasan'; the region is broader than the page, so confidence lowered)"
+    },
+    {
+     "where": "/ledger/31",
+     "page": "https://en.wikipedia.org/wiki/Muhammad_of_Ghor",
+     "result": "confirmed (Andkhud 1204, 'lost the control over most of the Khurasan except Herat and Balkh')"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Muhammad_of_Ghor",
+     "result": "confirmed ('ended the Ghaznavids rule in 1186 CE')"
+    },
+    {
+     "where": "/ledger/34",
+     "page": "https://en.wikipedia.org/wiki/Khwarazmian_Empire",
+     "result": "not on page (the cited page); the sentence and year are confirmed on Ghurid_dynasty, and the source was corrected"
+    },
+    {
+     "where": "/ledger/40",
+     "page": "https://en.wikipedia.org/wiki/Khwarazmian_Empire",
+     "result": "not on page for Ghazni 1215 (the cited page has only 'sweeping aside the Ghurids in 1215'); confirmed on Ghurid_dynasty, and the source was corrected"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Ghurid_dynasty",
+     "result": "confirmed (1173, Ghazni from the Ghuzz Turks)"
+    },
+    {
+     "where": "/ledger/24",
+     "page": "https://en.wikipedia.org/wiki/Muhammad_of_Ghor",
+     "result": "confirmed ('The Gahadavala capital Kanauj was annexed in 1198')"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Qutb_ud-Din_Aibak",
+     "result": "confirmed (Tomara ruler deposed in 1193)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2000000,
+    "infobox_year": 1200,
+    "cliopatria_km2": 2117197.3,
+    "ratio": 1.06,
+    "acknowledged": true,
+    "note": "ghurid-dynasty_1192 (1192-1201); KF3 and KF5 quote the same figures."
+   }
+  },
+  {
+   "slug": "mamluk-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/3; /keyframe_review/1, /keyframe_review/2",
+     "what": "The Bihar gain of 1215 (about 94k km2) leaves no trace in the keyframes. KF1 (1210-1215) and KF2 (1216-1226) do not add Bihar, and the KF2 note says Bihar 'enters the Cliopatria shape only in 1227'.",
+     "why": "shapes.csv: mamluk-dynasty_1210 and _1216 reach only 83.90 E; Bihar runs from 83.3 to 88.3 E, and the 1227 shape reaches 87.79 E. Iltutmish page: 'Iltutmish's forces captured Bihar in the 1210s' (no year).",
+     "fix": "Either add admin1 Bihar to the KF2 correction (and a 1215 keyframe or a KF1 from/to split), or move /ledger/3 to 1227, the Cliopatria year (confidence 1 either way).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/18, /ledger/19; /keyframe_review/5 note",
+     "what": "Bhilsa is drawn as a raid ('raids only and add no land'), but the page says the army occupied it. paramara-dynasty records a Mamluk occupation of Bhilsa from 1233 to 1239.",
+     "why": "Iltutmish page: 'Iltutmish's army occupied Bhilsa, and destroyed a temple ...' (1234-35); for Ujjain the army 'made little effort to annex the Paramara territory'. paramara-dynasty /ledger/14 (1233 occupation_start mamluk-dynasty, Bhilsa) and /ledger/15 (1239 occupation_end).",
+     "fix": "Split the event. Bhilsa becomes occupation_start 1234 (or 1233 to match) and occupation_end 1239 (confidence 1, mirroring paramara /ledger/15), counterpart paramara-dynasty. Ujjain stays a contest.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1244-1247)",
+     "what": "The Odia occupation of Rarh and Gauda (Mamluk Bengal), 1244-1247, is missing. The owner records an occupation with the roles reversed.",
+     "why": "eastern-ganga-kingdom /ledger/13 (1244 occupation_start, counterpart mamluk-dynasty: 'Rarh and Gauda remained occ[upied]') and /ledger/15 (1247 occupation_end), from the Eastern Ganga dynasty page.",
+     "fix": "Add occupation_start 1244 and occupation_end 1247, counterpart 'eastern-ganga-kingdom', region Rarh and Gauda (south-west and north-west West Bengal), source Eastern_Ganga_dynasty (add it to sources). Confidence as on the neighbour.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/26/counterpart, /identity/successors/1",
+     "what": "Bengal of 1287 is handed to 'sultanate-of-bengal', but that state's Cliopatria row runs 1344-1533. Bughra Khan's independent Bengal of 1287 is a different, earlier state.",
+     "why": "Ghiyas ud din Balban page: 'However, Bughra declared independence after Balban's death, which he maintained for 40 years.' polities.csv: sultanate-of-bengal 1344..1533.",
+     "fix": "Counterpart = 'Bughra Khan's Bengal (Balbani rulers of Lakhnauti)' in /ledger/26, and the same in successors (or remove that successor entry). List the state under counterparts_needing_dossiers. I did not apply this, so that ledger and identity stay consistent.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1229-1258)",
+     "what": "The Abbasid investiture is not in the ledger. The Iltutmish page dates it, and abbasid-caliphate /ledger/79 carries a vassal_start mamluk-dynasty from 1210 at confidence 1 ('page silent').",
+     "why": "Iltutmish page: recognition in 1228, and 'the embassy arrived in Delhi with a deed of investiture on 18 February 1229'. The research brief: the '(Allegiance of X to Y)' rows are 'vassalage evidence that still needs a page to confirm the years'.",
+     "fix": "Either add vassal_start 1229-02 and vassal_end 1258-02 (fall of Baghdad), counterpart abbasid-caliphate, source Iltutmish, and tell the abbasid dossier to move 1210 to 1229; or keep the decision and give the page's 1229 date in the notes so the abbasid side can correct its 1210. Not blocking.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/6/counterpart",
+     "what": "The 1216-17 Lahore gain named 'Yildiz of Ghazni', and the note said the page does not name the holder. The page does name him: Qabacha.",
+     "why": "Iltutmish page: 'Yildiz migrated eastwards, displaced Qabacha from Lahore'; after Tarain 'He did not immediately assert his control over the Punjab region, and Qabacha regained control of Lahore'; 'Iltutmish then captured Lahore in the winter of 1216-1217'.",
+     "fix": "Done: counterpart = 'Qabacha of Multan', note corrected.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/25/source",
+     "what": "The source was the Mamluk dynasty page, which names the Battle of Beas River but gives no year. The 9 March 1285 date is on the Balban page.",
+     "why": "Mamluk dynasty (Delhi) page: 'He lost his favourite son Prince Muhammad in the Battle of Beas River against the Mongols' (no year). Balban page: 'he perished in a battle against the Mongols on 9 March 1285'.",
+     "fix": "Done: source = Ghiyas_ud_din_Balban (already in sources[]).",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "Lahore and the Punjab are drawn Mamluk for 1210-1215, but the Iltutmish page has Qabacha holding Lahore before Yildiz 'displaced' him, with no year. Who held Lahore under Aram Shah is undated.",
+     "page to try": "https://en.wikipedia.org/wiki/Aram_Shah"
+    },
+    {
+     "where": "/keyframe_review/6, /keyframe_review/7",
+     "what is missing": "The Malwa, Chittor and Chhattisgarh parts of the 1236 shape and the 48k km2 growth of 1250 rest on no page (5 of 5 pages used).",
+     "page to try": "https://en.wikipedia.org/wiki/Nasiruddin_Mahmud"
+    },
+    {
+     "where": "/ledger/20",
+     "what is missing": "The c. 1241 Mongol sack of Lahore is confidence 1 (dated only to Bahram's reign, 1240-1242).",
+     "page to try": "https://en.wikipedia.org/wiki/Mongol_invasions_of_India"
+    },
+    {
+     "where": "/ledger/24",
+     "what is missing": "The end of the Tughral revolt (1280) is confidence 1; the Balban page gives no year.",
+     "page to try": "https://en.wikipedia.org/wiki/Tughral_Tughan_Khan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Iltutmish",
+     "result": "confirmed (Uch 'on 4 May 1228'; Qabacha drowned 26 May 1228; Multan and Uch under his governors)"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Iltutmish",
+     "result": "confirmed (Lakhnauti captured in 1227 by Nasiruddin)"
+    },
+    {
+     "where": "/ledger/15",
+     "page": "https://en.wikipedia.org/wiki/Iltutmish",
+     "result": "confirmed ('on 12 December 1232')"
+    },
+    {
+     "where": "/ledger/26",
+     "page": "https://en.wikipedia.org/wiki/Ghiyas_ud_din_Balban",
+     "result": "confirmed (Bughra 'declared independence after Balban's death'; Balban died 13 January 1287); counterpart wrong, see fixes"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Iltutmish",
+     "result": "confirmed for the year (winter 1216-1217); wrong counterpart, corrected"
+    },
+    {
+     "where": "/ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Mamluk_dynasty_(Delhi)",
+     "result": "mis-sourced (no year on the cited page); confirmed on the Balban page, and the source was corrected"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Mamluk_dynasty_(Delhi)",
+     "result": "confirmed ('finally incorporated into the Delhi Sultanate in 1227')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1300000,
+    "infobox_year": 1250,
+    "cliopatria_km2": 1337756.5,
+    "ratio": 1.03,
+    "acknowledged": true,
+    "note": "No area on the Mamluk page; the Delhi Sultanate infobox gives 1,300,000 km2 for 1250 (mamluk-dynasty_1250)."
+   }
+  },
+  {
+   "slug": "kathmandu",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/verdict",
+     "what": "The new keyframe kathmandu_1201 (from/to 1201 with a correction) had verdict ok. New keyframes elsewhere in the batch use adjust.",
+     "why": "Schema: a correction is 'Required for adjust and wrong (and for a new keyframe)'; ok means 'the shape is right for its years as drawn'.",
+     "fix": "Done: verdict = adjust.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/3, /keyframe_review/4",
+     "what is missing": "No page explains the single-cell shape changes of 1744 (-26 km2) and 1748 (+79 km2). This is thin by design: 4 shapes, 3 of 5 pages used, and Kingdom_of_Kathmandu failed to load.",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Kathmandu"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "Nuwakot under Kantipur by 1700 is confidence 1 (acquisition undated).",
+     "page to try": "https://en.wikipedia.org/wiki/Nuwakot_Durbar"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "The 1597 union with Patan has no matching loss for the later separation. The Malla page says 'After his death, Kathmandu and Patan were given to different grandsons and again separated' (no year). The whole-valley shape also holds Patan and Bhaktapur for 1482-1768, which the author flags as a grid limit.",
+     "page to try": "https://en.wikipedia.org/wiki/Sivasimha_Malla"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Unification_of_Nepal",
+     "result": "confirmed ('capture the hill fort on September 26, 1744')"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Unification_of_Nepal",
+     "result": "confirmed ('Shah took the city-state of Kathmandu in 1768'; 25 September 1768 is the proclamation of the Kingdom of Nepal, as the note says)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Malla_dynasty_(Nepal)",
+     "result": "confirmed ('seizing Kathmandu in 1484')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Malla_dynasty_(Nepal)",
+     "result": "confirmed ('conquered it in 1597 and united it with Kathmandu')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 899,
+    "infobox_year": null,
+    "cliopatria_km2": 660.8,
+    "ratio": 0.74,
+    "acknowledged": true,
+    "note": "The Kathmandu page is a city page; 899 km2 is the metropolitan area the author quotes (not re-read by the reviewer). The valley is within a factor of two."
+   }
+  },
+  {
+   "slug": "pandya-empire",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger (1220-1245)",
+     "what": "There is no vassal_start / vassal_end for the Hoysala hegemony over the Pandyas, 1220-1245. The dossier's own KF1 note quotes it, and hoysala-kingdom carries it.",
+     "why": "KF1 note, Sundara II page (Sastri): 'from about 1220 to 1245', 'Pandyan inscriptions of the period record tribute paid to the Hoysala king'. hoysala-kingdom /ledger/20 (1220 vassal_start pandya-empire) and /ledger/24 (1245 vassal_end).",
+     "fix": "Add vassal_start 1220 and vassal_end 1245, counterpart 'hoysala-kingdom', region = the Pandya country of those years, source Maravarman_Sundara_Pandyan_II, confidence 2.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/6, /keyframe_review/7; /ledger (Nellore loss)",
+     "what": "KF7 (1290-1311) removes Nellore, but no ledger event loses it. kakatiya-dynasty also tells a different story: the Pandyas took Nellore in 1263, Naga-deva held it under Rudrama 1271-1275, and the Kakatiyas retook it in 1290 from the Telugu Chodas, not from the Pandyas.",
+     "why": "kakatiya-dynasty /ledger/11-12 (1263), /ledger/13 and /ledger/16 (Naga-deva 1271-1275), /ledger/18 (1290 gain from telugu-chodas-of-nellore). The KF7 note says 'loss not dated by any page opened; mirror of the kakatiya-dynasty dossier, 1290', but that mirror has a different counterpart.",
+     "fix": "Add a loss of Nellore with the year and counterpart the kakatiya dossier supports (by 1271 to kakatiya-dynasty or the Telugu Chodas, confidence 1), and end Nellore in KF6 at that year (new keyframe split). Or open the Muttukuru or Telugu Chodas page and settle it.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/14, /ledger/16 counterpart",
+     "what": "The occupation of Sri Lanka (1284-1309) names 'ceylon' as owner of the Dambadeniya outline. That land is kingdom-of-dambadeniya's until 1293, and its /ledger/2-3 record the occupation 1284-1293 against pandya-empire. ceylon opens its own occupation only in 1294 (/ledger/3). Neither mirror matches.",
+     "why": "kingdom-of-dambadeniya /ledger/2 (1284 occupation_start pandya-empire), /ledger/3 (1293 occupation_end); ceylon /ledger/3 (1294 occupation_start), /ledger/4 (1309). Pandya Empire page: 'Sri Lanka remained under Pandya control until c. 1308-1309 CE.'",
+     "fix": "Split into occupation_start/end of kingdom-of-dambadeniya 1284-1293 and of ceylon 1294-1309. If the two Sri Lankan dossiers are merged (see ceylon), use one pair naming the merged slug.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (c. 1317-1323)",
+     "what": "The Kakatiya occupation of Kanchi, which is Pandya land, has no mirror here.",
+     "why": "kakatiya-dynasty /ledger/27 (c. 1317 occupation_start, counterpart pandya-empire, Kanchi) and /ledger/30 (1323 occupation_end).",
+     "fix": "Add occupation_start 1317 and occupation_end 1323, counterpart 'kakatiya-dynasty', region Kanchipuram, confidence as on the neighbour.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/7/verdict",
+     "what": "The new keyframe pandya-empire_1290 (from/to 1290-1311 with a correction) had verdict ok.",
+     "why": "Schema: a correction is required 'for a new keyframe'; the batch's other new keyframes use adjust.",
+     "fix": "Done: verdict = adjust.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/8/confidence",
+     "what": "Confidence 3 for the 1258 northern gain, whose region (Cliopatria's 1250-minus-1241 delta: Chidambaram, Cuddalore, Arcot, Chennai, Kanchipuram) is much wider than the place the page names.",
+     "why": "Jatavarman Sundara Pandyan page: 'Pandyan forces killed the Telugu Choda ruler Vijaya Gandagopala of Nellore Chodas and captured Kanchipuram in 1258'; 'annexed Kanchi, Nellore and Visayavadai' has no year.",
+     "fix": "Done: confidence 3 to 2. The chola-empire mismatch (by 1250) is in cross_checks.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1 to /ledger/7",
+     "what is missing": "The 1216-1241 events (the 1216-1217 war, Tirunelveli and Kerala 1220, Kongu 1236, the Kaveri delta 1241) are confidence 1; only Cliopatria years.",
+     "page to try": "https://en.wikipedia.org/wiki/Maravarman_Sundara_Pandyan"
+    },
+    {
+     "where": "/ledger/22, /ledger/23",
+     "what is missing": "The annexation as Ma'bar (end 1325) is confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Muhammad_bin_Tughluq"
+    },
+    {
+     "where": "/keyframe_review/9",
+     "what is missing": "'he regained control of the South Arcot region by 1314' implies a loss of South Arcot before 1314. It is undated and not drawn.",
+     "page to try": "https://en.wikipedia.org/wiki/Pandya_Empire"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Jatavarman_Sundara_Pandyan",
+     "result": "confirmed (1258, Kanchipuram; region broader than the page, so confidence lowered)"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Pandya_Empire",
+     "result": "confirmed ('By 1312 the Pandya control over south Kerala was also lost')"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Pandya_Empire",
+     "result": "confirmed ('In 1323, the Jaffna kingdom declared its independence')"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Pandya_Empire",
+     "result": "confirmed ('Sri Lanka remained under Pandya control until c. 1308-1309 CE')"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Pandya_Empire",
+     "result": "confirmed (March 1311; 'By late April 1311 ... returned to Delhi')"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Jatavarman_Sundara_Pandyan",
+     "result": "confirmed (Someshwara's 'counteroffensive in 1262' ended in his death)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 220109.9,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The author says the Pandya Empire (Pandya dynasty) page gives no area; not re-checked by the reviewer."
+   }
+  },
+  {
+   "slug": "ceylon",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/identity; /identity/capitals/0, /identity/capitals/1",
+     "what": "One state is written as two dossiers. The author's own notes say the Ceylon and Dambadeniya rows 'tile one realm' (0 cells overlap; Ceylon has a hole at Kurunegala), and the research brief's rule is one dossier per state, with both Cliopatria Names and both rows' shapes. Because of the split, ceylon's capitals Dambadeniya (1236-1270) and Yapahuwa (1271-1283) lie outside ceylon's own shapes, in the hole drawn by the other row. Parakramabahu II, the Magha war, the Pandya invasions and the 1284 occupation are also told twice.",
+     "why": "Capitals at 80.12 E 7.37 N and 80.34 E 7.82 N, inside the kingdom-of-dambadeniya_1236 bbox (79.74-80.56 E, 7.28-7.97 N), which ceylon_1236/_1260 leave as a hole (author's notes). Dambadeniya page: 'The kingdom's rulers reigned from 1220-1345'; capitals Dambadeniya, Yapahuwa, Polonnaruwa, Kurunegala, then 'Capital moved to Gampola: 1345'. The same line continues in ceylon.",
+     "fix": "Merge kingdom-of-dambadeniya into this dossier (or the reverse; the orchestrator picks the slug). Start 1220, list both Cliopatria Names, review both rows' shapes, use the union of both rows for 1236-1293, and keep one set of rulers, wars and occupation events.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/1 to /keyframe_review/2; /ledger (1294)",
+     "what": "The shape grows by 5.2k km2 from 1260 (68.3k) to 1294 (73.5k) as the Dambadeniya hole fills, and no ceylon event explains it. kingdom-of-dambadeniya /ledger/4 dissolves to ceylon in 1293, but ceylon has no gain or merge.",
+     "why": "shapes.csv ceylon_1260 68,313 km2, ceylon_1294 73,532 km2. Rule 4: every change between keyframes needs a ledger event.",
+     "fix": "Add a 1294 merge or gain, counterpart kingdom-of-dambadeniya, region {cliopatria: Kingdom of Dambadeniya, year: 1285}, confidence 1. This is not needed if the dossiers are merged.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/3",
+     "what": "The 1294 occupation_start by pandya-empire has no mirror. pandya-empire opens its occupation in 1284 and names ceylon as owner. See pandya-empire /ledger/14.",
+     "why": "pandya-empire /ledger/14 (1284 occupation_start ceylon) and /ledger/16 (1309).",
+     "fix": "Settle together with pandya-empire (a split at 1293/1294, or one pair after a merge).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/1",
+     "what": "The 1244 gain of Polonnaruwa from jaffna-kingdom is land the 1236 shape already holds. kingdom-of-polonnaruwa ends Magha's rule at Polonnaruwa in 1236 (/ledger/9).",
+     "why": "Parakramabahu II page: 'successfully pushed Kalinga Magha out of Polonnaruwa by 1244' (a bound). kingdom-of-polonnaruwa /ledger/9: 'expelled from Polonnaruwa in 1236'.",
+     "fix": "Move the event to 1236 (confidence 1, both pages in the note), or make it a contest_start 1236 / contest_end 1244 inside the shape. Not blocking.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2, /ledger/5, /ledger/7",
+     "what is missing": "Three border moves rest on Cliopatria years at confidence 1: the northern plains gained 1260 (+27k km2), lost 1314 (-23k) and regained 1352 (+12k).",
+     "page to try": "https://en.wikipedia.org/wiki/Alakeshvara"
+    },
+    {
+     "where": "/ledger/13",
+     "what is missing": "The 1506 end is confidence 1, from the Cliopatria row. The Kotte page keeps the kingdom to 27 May 1597.",
+     "page to try": "https://en.wikipedia.org/wiki/Portuguese_Ceylon"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "There is no capital for 1284-1301.",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Dambadeniya"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kotte",
+     "result": "confirmed ('In 1450, through his conquest of the Jaffna Kingdom ... unifying the entire island')"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kotte",
+     "result": "confirmed (1469; the page adds 'a new kingdom in the central hill country')"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Kotte",
+     "result": "confirmed (1412; the page also says 1415, as the note admits)"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Jaffna_kingdom",
+     "result": "confirmed ('Aryacakravarti dynasty restored: 1467'; Kotte held it 1450-1467)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Parakramabahu_II_of_Dambadeniya",
+     "result": "confirmed ('pushed Kalinga Magha out of Polonnaruwa by 1244')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 62329.0,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The wikipedia field is the modern country (Sri Lanka, about 65,610 km2, ratio about 0.95 with ceylon_1352); no historical infobox area exists."
+   }
+  },
+  {
+   "slug": "kingdom-of-dambadeniya",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/identity",
+     "what": "This is the same state as ceylon, drawn by Cliopatria as a second row. One dossier per state.",
+     "why": "The ceylon finding above; the author's notes: 'one Sinhalese realm drawn as two rows'. The Dambadeniya page runs the same line of kings to 1345, past this dossier's 1293 end.",
+     "fix": "Merge with ceylon. The one merge clears this dossier's fail and ceylon's first two findings.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2, /ledger/3",
+     "what": "The 1284-1293 occupation by pandya-empire has no matching event on the Pandya side, which names ceylon as owner for 1284-1309.",
+     "why": "pandya-empire /ledger/14, /ledger/16.",
+     "fix": "Settle with pandya-empire (see there).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0/verdict",
+     "what": "The new keyframe kingdom-of-dambadeniya_1220 (1220-1235 with a correction) had verdict ok.",
+     "why": "Schema: a correction is required 'for a new keyframe'.",
+     "fix": "Done: verdict = adjust.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1, /keyframe_review/2",
+     "what is missing": "The 5,219 km2 outline is unverified on the pages (2 of 2 pages used, within budget).",
+     "page to try": "https://en.wikipedia.org/wiki/Dambadeniya"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "The 1293 occupation end is confidence 1, from the row boundary. The page has the relic 'recovered in 1288 by Parakramabahu III (1287-1293)'.",
+     "page to try": "https://en.wikipedia.org/wiki/Kingdom_of_Dambadeniya"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Dambadeniya",
+     "result": "confirmed for the 1284 invasion and the Tooth Relic; the page does not call it an occupation, which rests on the Pandya page (confidence 2 is fair)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Dambadeniya",
+     "result": "confirmed (infobox Yapahuwa 1271-1283; text 'transferred the capital to Yapahuwa in 1273')"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Dambadeniya",
+     "result": "confirmed ('Fall of Polonnaruwa: 1220'; Vijayabahu III 1220-1224)"
+    },
+    {
+     "where": "/wars/2",
+     "page": "https://en.wikipedia.org/wiki/Parakramabahu_II_of_Dambadeniya",
+     "result": "confirmed ('sometime between the years 1254 and 1256')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 5219.2,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area in the Dambadeniya infobox (checked)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1173,
+    "type": "gain",
+    "counterpart": "Ghuzz Turks"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Local holders of Ghazni; no dossier, a free string."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1175,
+    "type": "gain",
+    "counterpart": "great-seljuk-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "great-seljuk-empire (me-09) not written yet (its group has not run)."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1175,
+    "type": "gain",
+    "counterpart": "Qarmatians of Multan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "A free string; the qarmatians dossier is the Bahrain state (ends 1077)."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1176,
+    "type": "gain",
+    "counterpart": "Qarmatians of Multan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Uch; as above."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1179,
+    "type": "gain",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "ghaznavid-empire (me-08) not written yet (its group has not run)."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1182,
+    "type": "vassal_start",
+    "counterpart": "soomra-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "soomra-dynasty exists (1026-1351) and has no Ghurid vassalage of 1182-1206 (nor the vassal_end of 1206)."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1186,
+    "type": "gain",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Lahore; ghaznavid-empire not written yet (its group has not run)."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1192,
+    "type": "gain",
+    "counterpart": "chauhan-dynasty"
+   },
+   "mirror": {
+    "slug": "chauhan-dynasty",
+    "year": 1192,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Haryana. chauhan /ledger/11 also gives Delhi to the Ghurids in 1192; ghurid has Delhi under a Tomara vassal 1192-1193 (counterpart now the free string \"Tomara ruler of Delhi (Chahamana vassal)\")."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1192,
+    "type": "vassal_start",
+    "counterpart": "chauhan-dynasty"
+   },
+   "mirror": {
+    "slug": "chauhan-dynasty",
+    "year": 1192,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": "Ajmer under Govindaraja IV."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1192,
+    "type": "vassal_start",
+    "counterpart": "Tomara ruler of Delhi (Chahamana vassal)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Was tomara-dynasty, whose dossier ends in 1152; corrected by the reviewer."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1193,
+    "type": "gain",
+    "counterpart": "Tomara ruler of Delhi (Chahamana vassal)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "As above."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1194,
+    "type": "vassal_end",
+    "counterpart": "chauhan-dynasty"
+   },
+   "mirror": {
+    "slug": "chauhan-dynasty",
+    "year": 1194,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "The Chahamana state ends in 1194 with successors ghurid-dynasty and chahamanas-of-ranastambhapura."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1194,
+    "type": "gain",
+    "counterpart": "Dor Rajputs of Koil"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "A free string, local ruler."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1196,
+    "type": "gain",
+    "counterpart": "Kumarpal of Thankar"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "A free string, local ruler (Bayana and Thankar)."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1197,
+    "type": "occupation_start",
+    "counterpart": "chaulukya-dynasty"
+   },
+   "mirror": {
+    "slug": "chaulukya-dynasty",
+    "year": 1197,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "4 February 1197 on the chaulukya side."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1198,
+    "type": "gain",
+    "counterpart": "gahadavala-dynasty"
+   },
+   "mirror": {
+    "slug": "gahadavala-dynasty",
+    "year": 1194,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "gahadavala-dynasty ends in 1194 (Chandawar) with ghurid-dynasty as successor; ghurid annexes Kannauj only in 1198 (Muhammad of Ghor page), and its 1192-1201 shape stops at 78.4 E, so the Gahadavala country is nobody's in 1194-1197. The author flags it. Route to sa-03: extend gahadavala to 1198 (Harishchandra, 1197 inscription) or ghurid adds a 1194 gain."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1198,
+    "type": "gain",
+    "counterpart": "unnamed ruler of Budaun"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "A free string."
+  },
+  {
+   "event": {
+    "slug": "kara-khitans",
+    "year": 1198,
+    "type": "vassal_end",
+    "counterpart": "Balkh vassal (the page does not name the holder)"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kara-khitans /ledger/14: Muhammad of Ghor seized Balkh in 1198; ghurid-dynasty has no Balkh gain (finding)."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1200,
+    "type": "gain",
+    "counterpart": "khwarezmid-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "khwarezmid-dynasty (me-09) not written yet (its group has not run)."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1200,
+    "type": "gain",
+    "counterpart": "sena-dynasty"
+   },
+   "mirror": {
+    "slug": "sena-dynasty",
+    "year": 1200,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Bihar."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1201,
+    "type": "occupation_end",
+    "counterpart": "chaulukya-dynasty"
+   },
+   "mirror": {
+    "slug": "chaulukya-dynasty",
+    "year": 1201,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1201,
+    "type": "loss",
+    "counterpart": "khwarezmid-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not written yet (its group has not run)."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1203,
+    "type": "occupation_start",
+    "counterpart": "chandela-kingdom"
+   },
+   "mirror": {
+    "slug": "chandela-kingdom",
+    "year": 1203,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "27 April 1203 on the chandela side."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1204,
+    "type": "loss",
+    "counterpart": "khwarezmid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "khwarezmid-empire (me-09) not written yet (its group has not run). Andkhud was fought against the Qara Khitai and Kara-Khanids; kara-khitans has no 1204 event (none needed, the counterpart is Khwarazm)."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1205,
+    "type": "gain",
+    "counterpart": "sena-dynasty"
+   },
+   "mirror": {
+    "slug": "sena-dynasty",
+    "year": 1204,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Within a year (Nadia 1204), but the land disagrees: ghurid takes all of Bangladesh, while sena-dynasty lasts to 1230 in east Bengal (finding)."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1205,
+    "type": "occupation_end",
+    "counterpart": "chandela-kingdom"
+   },
+   "mirror": {
+    "slug": "chandela-kingdom",
+    "year": 1205,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1206,
+    "type": "loss",
+    "counterpart": "khwarezmid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not written yet (its group has not run). The ghurid vassal_start to khwarezmid-empire is missing on this side (finding)."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1206,
+    "type": "loss",
+    "counterpart": "Qabacha of Multan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1206,
+    "type": "loss",
+    "counterpart": "khalji-dynasty-of-bengal"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed; the mamluk-dynasty events of 1215-1227 use the same slug."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1206,
+    "type": "loss",
+    "counterpart": "Bahauddin Tughril of Bayana"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "A free string, not listed; Bayana lies inside the Mamluk 1206-1209 outline too (minor double-assignment)."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1206,
+    "type": "vassal_end",
+    "counterpart": "soomra-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "See 1182."
+  },
+  {
+   "event": {
+    "slug": "ghurid-dynasty",
+    "year": 1206,
+    "type": "loss",
+    "counterpart": "mamluk-dynasty"
+   },
+   "mirror": {
+    "slug": "mamluk-dynasty",
+    "year": 1206,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "June 1206; the mamluk found event carries the same region."
+  },
+  {
+   "event": {
+    "slug": "mamluk-dynasty",
+    "year": 1215,
+    "type": "gain",
+    "counterpart": "khalji-dynasty-of-bengal"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed."
+  },
+  {
+   "event": {
+    "slug": "mamluk-dynasty",
+    "year": 1216,
+    "type": "gain",
+    "counterpart": "Qabacha of Multan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Was \"Yildiz of Ghazni\"; corrected by the reviewer from the Iltutmish page."
+  },
+  {
+   "event": {
+    "slug": "mamluk-dynasty",
+    "year": 1225,
+    "type": "vassal_start",
+    "counterpart": "khalji-dynasty-of-bengal"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed."
+  },
+  {
+   "event": {
+    "slug": "mamluk-dynasty",
+    "year": 1226,
+    "type": "gain",
+    "counterpart": "chahamanas-of-ranastambhapura"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed (sa-03 named the slug as chauhan-dynasty's successor but did not write it)."
+  },
+  {
+   "event": {
+    "slug": "mamluk-dynasty",
+    "year": 1227,
+    "type": "gain",
+    "counterpart": "khalji-dynasty-of-bengal"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed."
+  },
+  {
+   "event": {
+    "slug": "mamluk-dynasty",
+    "year": 1227,
+    "type": "gain",
+    "counterpart": "unnamed ruler of Mandore"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "A free string."
+  },
+  {
+   "event": {
+    "slug": "mamluk-dynasty",
+    "year": 1228,
+    "type": "gain",
+    "counterpart": "Qabacha of Multan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed."
+  },
+  {
+   "event": {
+    "slug": "mamluk-dynasty",
+    "year": 1232,
+    "type": "gain",
+    "counterpart": "rulers of Gwalior"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "A free string."
+  },
+  {
+   "event": {
+    "slug": "paramara-dynasty",
+    "year": 1233,
+    "type": "occupation_start",
+    "counterpart": "mamluk-dynasty"
+   },
+   "mirror": {
+    "slug": "mamluk-dynasty",
+    "year": 1234,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "paramara has a Mamluk occupation of Bhilsa 1233-1239; mamluk has a raid (contest) 1234-1235. The Iltutmish page says the army \"occupied Bhilsa\" (finding on mamluk)."
+  },
+  {
+   "event": {
+    "slug": "eastern-ganga-kingdom",
+    "year": 1244,
+    "type": "occupation_start",
+    "counterpart": "mamluk-dynasty"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Odia occupation of Rarh and Gauda 1244-1247; no mamluk event (finding)."
+  },
+  {
+   "event": {
+    "slug": "abbasid-caliphate",
+    "year": 1210,
+    "type": "vassal_start",
+    "counterpart": "mamluk-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "abbasid has Delhi allegiance 1210-1258 at confidence 1; mamluk has none; the Iltutmish page dates the investiture to 1228-1229. The abbasid side should move to 1229."
+  },
+  {
+   "event": {
+    "slug": "mamluk-dynasty",
+    "year": 1287,
+    "type": "loss",
+    "counterpart": "sultanate-of-bengal"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "sultanate-of-bengal is Cliopatria 1344-1533; Bughra Khan's Bengal of 1287 is a different state with no dossier (finding)."
+  },
+  {
+   "event": {
+    "slug": "kathmandu",
+    "year": 1597,
+    "type": "gain",
+    "counterpart": "kingdom-of-lalitpur"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed (sa-05 or additions)."
+  },
+  {
+   "event": {
+    "slug": "kathmandu",
+    "year": 1700,
+    "type": "gain",
+    "counterpart": "unnamed rulers of Nuwakot"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "A free string."
+  },
+  {
+   "event": {
+    "slug": "kathmandu",
+    "year": 1744,
+    "type": "loss",
+    "counterpart": "gorkha-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "gorkha-kingdom (sa-05) not written yet (its group has not run); it must also hold its 1762 shape back from the valley until 1768."
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1216,
+    "type": "vassal_start",
+    "counterpart": "chola-empire"
+   },
+   "mirror": {
+    "slug": "chola-empire",
+    "year": 1216,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1217,
+    "type": "vassal_end",
+    "counterpart": "chola-empire"
+   },
+   "mirror": {
+    "slug": "chola-empire",
+    "year": 1217,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": "hoysala-kingdom /ledger/17-18 has the 1217 contest."
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1220,
+    "type": "gain",
+    "counterpart": "unnamed rulers of the Pandya south and the Kerala coast"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "A free string."
+  },
+  {
+   "event": {
+    "slug": "hoysala-kingdom",
+    "year": 1220,
+    "type": "vassal_start",
+    "counterpart": "pandya-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Hoysala hegemony 1220-1245; no pandya-empire vassal events (finding)."
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1236,
+    "type": "gain",
+    "counterpart": "unnamed chiefs of Kongu"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "A free string."
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1241,
+    "type": "gain",
+    "counterpart": "chola-empire"
+   },
+   "mirror": {
+    "slug": "chola-empire",
+    "year": 1241,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Both sides at confidence 1."
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1258,
+    "type": "gain",
+    "counterpart": "telugu-chodas-of-nellore"
+   },
+   "mirror": {
+    "slug": "chola-empire",
+    "year": 1250,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "The northern zone (Chidambaram to Kanchipuram): chola-empire /ledger/39 loses it to the Pandyas \"by 1250\", while pandya-empire gains it in 1258 from the Telugu Chodas (no dossier, listed). 8 years apart; the author flags it."
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1258,
+    "type": "gain",
+    "counterpart": "telugu-chodas-of-nellore"
+   },
+   "mirror": {
+    "slug": "kakatiya-dynasty",
+    "year": 1263,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Nellore: kakatiya-dynasty /ledger/12 loses Nellore to the Pandyas in 1263 (Muttukuru); pandya says 1258. 5 years apart; the author flags it."
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1258,
+    "type": "vassal_start",
+    "counterpart": "chola-empire"
+   },
+   "mirror": {
+    "slug": "chola-empire",
+    "year": 1258,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1258,
+    "type": "vassal_start",
+    "counterpart": "jaffna-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "jaffna-kingdom (sa-04, another part) not written yet (its group has not run)."
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1262,
+    "type": "gain",
+    "counterpart": "hoysala-kingdom"
+   },
+   "mirror": {
+    "slug": "hoysala-kingdom",
+    "year": 1263,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Kannanur; within one year."
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1279,
+    "type": "vassal_end",
+    "counterpart": "chola-empire"
+   },
+   "mirror": {
+    "slug": "chola-empire",
+    "year": 1279,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": "chola-empire dissolves in 1279 with pandya-empire as successor."
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1284,
+    "type": "occupation_start",
+    "counterpart": "ceylon"
+   },
+   "mirror": {
+    "slug": "kingdom-of-dambadeniya",
+    "year": 1284,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "The year matches dambadeniya, but pandya names ceylon as owner; ceylon opens its side only in 1294 (finding)."
+  },
+  {
+   "event": {
+    "slug": "kakatiya-dynasty",
+    "year": 1290,
+    "type": "gain",
+    "counterpart": "telugu-chodas-of-nellore"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "pandya-empire KF7 drops Nellore in 1290 as the \"mirror\" of this event, but the kakatiya side takes Nellore from the Telugu Chodas, and pandya has no loss event (finding)."
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1295,
+    "type": "loss",
+    "counterpart": "hoysala-kingdom"
+   },
+   "mirror": {
+    "slug": "hoysala-kingdom",
+    "year": 1295,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1309,
+    "type": "occupation_end",
+    "counterpart": "ceylon"
+   },
+   "mirror": {
+    "slug": "ceylon",
+    "year": 1309,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "The end matches; the start does not (1284 vs 1294)."
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1312,
+    "type": "loss",
+    "counterpart": "rulers of south Kerala (not named by the page)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "A free string."
+  },
+  {
+   "event": {
+    "slug": "kakatiya-dynasty",
+    "year": 1317,
+    "type": "occupation_start",
+    "counterpart": "pandya-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Kakatiya occupation of Kanchi c. 1317-1323; no pandya event (finding)."
+  },
+  {
+   "event": {
+    "slug": "pandya-empire",
+    "year": 1323,
+    "type": "vassal_end",
+    "counterpart": "jaffna-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not written yet (its group has not run)."
+  },
+  {
+   "event": {
+    "slug": "ceylon",
+    "year": 1244,
+    "type": "gain",
+    "counterpart": "jaffna-kingdom"
+   },
+   "mirror": {
+    "slug": "kingdom-of-polonnaruwa",
+    "year": 1236,
+    "type": "dissolve"
+   },
+   "status": "exception",
+   "note": "jaffna-kingdom not written yet (its group has not run); kingdom-of-polonnaruwa ends Magha at Polonnaruwa in 1236 (dissolve to jaffna-kingdom), and its successors list kingdom-of-dambadeniya and jaffna-kingdom but not ceylon (route to sa-03)."
+  },
+  {
+   "event": {
+    "slug": "ceylon",
+    "year": 1260,
+    "type": "gain",
+    "counterpart": "jaffna-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not written yet (its group has not run)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-dambadeniya",
+    "year": 1293,
+    "type": "dissolve",
+    "counterpart": "ceylon"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "ceylon has no gain or merge in 1294 for the 5.2k km2 Dambadeniya row (finding)."
+  },
+  {
+   "event": {
+    "slug": "ceylon",
+    "year": 1294,
+    "type": "occupation_start",
+    "counterpart": "pandya-empire"
+   },
+   "mirror": {
+    "slug": "pandya-empire",
+    "year": 1284,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "10 years apart; see pandya 1284."
+  },
+  {
+   "event": {
+    "slug": "ceylon",
+    "year": 1309,
+    "type": "occupation_end",
+    "counterpart": "pandya-empire"
+   },
+   "mirror": {
+    "slug": "pandya-empire",
+    "year": 1309,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "ceylon",
+    "year": 1314,
+    "type": "loss",
+    "counterpart": "jaffna-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not written yet (its group has not run)."
+  },
+  {
+   "event": {
+    "slug": "ceylon",
+    "year": 1352,
+    "type": "gain",
+    "counterpart": "jaffna-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not written yet (its group has not run)."
+  },
+  {
+   "event": {
+    "slug": "ceylon",
+    "year": 1450,
+    "type": "gain",
+    "counterpart": "jaffna-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not written yet (its group has not run)."
+  },
+  {
+   "event": {
+    "slug": "ceylon",
+    "year": 1467,
+    "type": "loss",
+    "counterpart": "jaffna-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "not written yet (its group has not run)."
+  },
+  {
+   "event": {
+    "slug": "ceylon",
+    "year": 1469,
+    "type": "loss",
+    "counterpart": "Senasammata Vikramabahu (Kandy)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed as kingdom-of-kandy."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-dambadeniya",
+    "year": 1284,
+    "type": "occupation_start",
+    "counterpart": "pandya-empire"
+   },
+   "mirror": {
+    "slug": "pandya-empire",
+    "year": 1284,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "Same year, but pandya names ceylon as owner."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-dambadeniya",
+    "year": 1293,
+    "type": "occupation_end",
+    "counterpart": "pandya-empire"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "pandya ends the occupation in 1309 with counterpart ceylon."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Kalinjar",
+   "kind": "place",
+   "used_in": "ghurid-dynasty, mamluk-dynasty"
+  },
+  {
+   "name": "Nadol",
+   "kind": "place",
+   "used_in": "ghurid-dynasty"
+  },
+  {
+   "name": "Bathinda",
+   "kind": "place",
+   "used_in": "ghurid-dynasty"
+  },
+  {
+   "name": "Anahilapataka",
+   "kind": "place",
+   "used_in": "ghurid-dynasty"
+  },
+  {
+   "name": "Nuwakot",
+   "kind": "place",
+   "used_in": "kathmandu"
+  },
+  {
+   "name": "Kirtipur",
+   "kind": "place",
+   "used_in": "kathmandu"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Qabacha of Multan",
+   "suggested_slug": "qabacha-of-multan",
+   "years": [
+    1206,
+    1228
+   ]
+  },
+  {
+   "name": "Yildiz of Ghazni",
+   "suggested_slug": "yildiz-of-ghazni",
+   "years": [
+    1206,
+    1216
+   ],
+   "note": "Only if ghurid-dynasty takes reading (a) of the Ghazni finding; otherwise drop it."
+  },
+  {
+   "name": "Khalji dynasty of Bengal (Iwaz)",
+   "suggested_slug": "khalji-dynasty-of-bengal",
+   "years": [
+    1204,
+    1227
+   ]
+  },
+  {
+   "name": "Chahamanas of Ranastambhapura",
+   "suggested_slug": "chahamanas-of-ranastambhapura"
+  },
+  {
+   "name": "Telugu Chodas of Nellore",
+   "suggested_slug": "telugu-chodas-of-nellore"
+  },
+  {
+   "name": "Kingdom of Lalitpur (Patan)",
+   "suggested_slug": "kingdom-of-lalitpur",
+   "years": [
+    1482,
+    1768
+   ]
+  },
+  {
+   "name": "Kingdom of Bhaktapur",
+   "suggested_slug": "kingdom-of-bhaktapur",
+   "years": [
+    1482,
+    1769
+   ]
+  },
+  {
+   "name": "Kandyan kingdom (Senkadagala)",
+   "suggested_slug": "kingdom-of-kandy",
+   "years": [
+    1469,
+    1815
+   ]
+  },
+  {
+   "name": "Bughra Khan's Bengal (Balbani rulers of Lakhnauti)",
+   "suggested_slug": "balbani-sultanate-of-bengal",
+   "years": [
+    1287,
+    1327
+   ],
+   "note": "Balban page: Bughra 'declared independence after Balban's death, which he maintained for 40 years'; replaces sultanate-of-bengal as mamluk-dynasty's 1287 counterpart."
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-sa-04-a.md",
+ "problems": [
+  "ceylon and kingdom-of-dambadeniya are one state in two dossiers. The author left the merge to the orchestrator; I fail both on it. One merge (orchestrator picks the slug) clears the structural findings of both and simplifies the pandya-empire occupation fix.",
+  "ghurid-dynasty /ledger/34 and /ledger/40 cited Khwarazmian_Empire for a sentence that is only on Ghurid_dynasty. The event is true and the page is in sources[], so I corrected the source rather than treating it as fabricated.",
+  "Edits applied in place (each tagged '[Reviewer sa-04-a: ...]', the five edited files re-validated with 0 errors and read back): ghurid-dynasty /ledger/14,16,17 counterpart, /ledger/34,40 source, /ledger/26,29 confidence; mamluk-dynasty /ledger/6 counterpart, /ledger/25 source; kathmandu /keyframe_review/0 verdict; pandya-empire /keyframe_review/7 verdict, /ledger/8 confidence; kingdom-of-dambadeniya /keyframe_review/0 verdict. The author's report (keyframe_verdicts, low_confidence_events) is now slightly stale.",
+  "Neighbour dossiers not yet written (counted as groups not yet run): jaffna-kingdom, gorkha-kingdom, great-seljuk-empire, khwarezmid-dynasty, khwarezmid-empire, ghaznavid-empire, hamdanid-emirates, khalji-dynasty, tughlaq-dynasty, sultanate-of-bengal, portuguese-ceylon.",
+  "Routed to other groups: soomra-dynasty lacks the Ghurid vassalage 1182-1206; gahadavala-dynasty ends 1194, against Kannauj 1198 (sa-03); abbasid-caliphate dates the Delhi allegiance to 1210 at confidence 1, while the Iltutmish page has 1228-1229; kingdom-of-polonnaruwa successors omit ceylon (sa-03); gorkha-kingdom must hold the valley back to 1768 (sa-05).",
+  "No page failed to load for me. Pages not re-read: Kathmandu (city), Maravarman_Sundara_Pandyan_II, Rajaraja_Chola_III, Madurai_Sultanate, Kingdom_of_Gampola (budget)."
+ ]
+}

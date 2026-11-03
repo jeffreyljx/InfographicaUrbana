@@ -1,0 +1,246 @@
+{
+ "batch_id": "me-09-i",
+ "verdicts": [
+  {
+   "slug": "tahirid-sultanate",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/9/region",
+     "what": "The dissolve region handed Aden ('`Adan' governorate) to mamluk-sultanate, against the page and the event's own note.",
+     "why": "Tahirid_Sultanate: 'The entire Tahirid realm fell under the Mamluks with the exception of Aden which held out under the Tahirid governor Amir Murjan'; /ledger/8 and identity.successors[0].land already excluded Aden.",
+     "fix": "Removed {admin1: `Adan} from the union and said so in the region text and note.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/3/note",
+     "what": "The note called 'the latter' (who entered San'a in 1461) ambiguous; the page's preceding sentence names al-Mujahid Ali, the Tahirid.",
+     "why": "Tahirid_Sultanate: 'The debacle probably inspired az-Zafir Amir to abdicate his royal prerogatives to another brother, al-Mujahid Ali. The latter was able to enter San'a temporarily in 1461.'",
+     "fix": "Replaced the ambiguity remark with the identification; confidence unchanged (2).",
+     "applied": true
+    },
+    {
+     "where": "/identity/rulers/1",
+     "what": "Rulers 2-4 cited no page.",
+     "why": "The page's ruler list gives Al-Mujahid Ali 1460-1479, Al-Mansur Abd al-Wahhab 1479-1489, Az-Zafir Amir II 1489-1517, as the dossier has them.",
+     "fix": "Added source https://en.wikipedia.org/wiki/Tahirid_Sultanate to /identity/rulers/1, /2 and /3.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/9/counterpart",
+     "what": "Non-blocking cross-dossier mismatch: the realm passes to mamluk-sultanate in 1517-05, but mamluk-sultanate ends 1517-01 (its /ledger/42, dissolve to ottoman-empire) and gains Yemen in 1516 (its /ledger/40, c1) with the oversized Cliopatria Tahirid 1515 shape.",
+     "why": "Tahirid_Sultanate: 'The Mamluk regime in Egypt was overrun by the Ottomans in the same year. The Zabid Mamluks then offered prayers in the name of the Ottoman sultan'.",
+     "fix": "Orchestrator to reconcile with me-09-d: either a page dating the fall of Zabid (likely 1516) gives a Tahirid loss of the Tihama to mamluk-sultanate that year and the 1517-05 remainder goes to ottoman-empire, or mamluk-sultanate passes its Yemen land to ottoman-empire in 1517-01 and this event's counterpart becomes ottoman-empire. mamluk-sultanate /ledger/40 should use this dossier's /ledger/9 region.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/end",
+     "what is missing": "The Tahirid remnant at Aden 1517-1538 is not drawn although the cited page names its rulers to Amir bin Da'ud and dates his hanging by Sulaiman Pasha at Aden 'on 3 August 1538'. Suggested: end 1538-08; /ledger/9 becomes a 1517-05 loss of the realm without Aden; new keyframe tahirid-sultanate_1518 = {place: Aden, km: 25}; capital Aden from 1517; rulers to 1538; dissolve 1538-08 to ottoman-empire.",
+     "page to try": "https://en.wikipedia.org/wiki/Tahirid_Sultanate"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "Date of the Mamluk landing and of the fall of Zabid and the Tihama (contest opened at the 1515 fleet year, c1); needed to reconcile with mamluk-sultanate, which ends 1517-01.",
+     "page to try": "https://en.wikipedia.org/wiki/Zabid"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "End of the 1461-1466 Sana'a contest and who held Sana'a 1466-1504 (c1, closed at the last dated fight).",
+     "page to try": "https://en.wikipedia.org/wiki/Imams_of_Yemen"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "Year the Kathiri took Shihr ('the end of the fifteenth century', 1499 bridged, c1).",
+     "page to try": "https://en.wikipedia.org/wiki/Kathiri"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Tahirid_Sultanate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Tahirid_Sultanate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Tahirid_Sultanate",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Tahirid_Sultanate",
+     "result": "confirmed (year: infobox 1517 and 'overrun by the Ottomans in the same year'); region corrected for Aden"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Tahirid_Sultanate",
+     "result": "confirmed; 'the latter' is al-Mujahid Ali"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 377950,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No area on the page. Corrected shape about 105,000 km2 (1454, 455 cells) to 113,000 km2 (1504-1517, 489 cells), about 0.3 of Cliopatria's 377,950 km2 (identical to the Rasulid rows); acknowledged and resolved (adjust) in every keyframe note."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "tahirid-sultanate",
+    "year": 1454,
+    "type": "found",
+    "counterpart": "rasulid-dynasty"
+   },
+   "mirror": {
+    "slug": "rasulid-dynasty",
+    "year": 1454,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Years agree; land does not: the Rasulid dissolve hands its Cliopatria 1453 shape (377,950 km2) to tahirid-sultanate, which takes about 105,000 km2; Sa'dah, al-Jawf, Ma'rib, Shabwah, Hadramawt interior, al-Mahrah and Najran have no receiver. The Tahirid page supports the smaller realm; route to the Rasulid author."
+  },
+  {
+   "event": {
+    "slug": "tahirid-sultanate",
+    "year": 1454,
+    "type": "gain",
+    "counterpart": "rasulid-dynasty"
+   },
+   "mirror": {
+    "slug": "rasulid-dynasty",
+    "year": 1454,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Aden, 25 km, both sides."
+  },
+  {
+   "event": {
+    "slug": "rasulid-dynasty",
+    "year": 1443,
+    "type": "loss",
+    "counterpart": "tahirid-sultanate"
+   },
+   "mirror": {
+    "slug": "tahirid-sultanate",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "Lahij taken by the Tahir clan before the sultanate begins (1454); explained by the author, but Lahij is ownerless 1443-1453 on the map unless the Rasulid dossier keeps it to 1454."
+  },
+  {
+   "event": {
+    "slug": "tahirid-sultanate",
+    "year": 1457,
+    "type": "gain",
+    "counterpart": "Shihr in Hadramawt (previous holder not named on the page)"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "Free-text counterpart; the page does not name the previous holder."
+  },
+  {
+   "event": {
+    "slug": "tahirid-sultanate",
+    "year": 1461,
+    "type": "contest_start",
+    "counterpart": "imamate-of-yemen"
+   },
+   "mirror": {
+    "slug": "imamate-of-yemen",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "No dossier for the 15th-16th-century Zaydi imams (listed by the author); polities.csv imamate-of-yemen is the 1814-1872 row (slug collision, also used by rasulid-dynasty). Closed 1466 (c1)."
+  },
+  {
+   "event": {
+    "slug": "tahirid-sultanate",
+    "year": 1499,
+    "type": "loss",
+    "counterpart": "kathiri-sultanate"
+   },
+   "mirror": {
+    "slug": "kathiri-sultanate",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "No dossier yet; listed by the author."
+  },
+  {
+   "event": {
+    "slug": "tahirid-sultanate",
+    "year": 1504,
+    "type": "gain",
+    "counterpart": "imamate-of-yemen"
+   },
+   "mirror": {
+    "slug": "imamate-of-yemen",
+    "year": 0,
+    "type": "none"
+   },
+   "status": "exception",
+   "note": "No dossier for the medieval imams yet; listed by the author."
+  },
+  {
+   "event": {
+    "slug": "tahirid-sultanate",
+    "year": 1517,
+    "type": "dissolve",
+    "counterpart": "mamluk-sultanate"
+   },
+   "mirror": {
+    "slug": "mamluk-sultanate",
+    "year": 1516,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Within one year, but mamluk-sultanate ends 1517-01 (dissolve to ottoman-empire) before this 1517-05 transfer, and its gain region is Cliopatria's Tahirid 1515 shape (1,633 cells incl. Aden, Hadramawt, al-Mahrah, Najran) against this dossier's ~470 cells without Aden. mamluk-sultanate has a war 1515-1517 but no contest events against tahirid-sultanate. Route to me-09-d and the orchestrator."
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Zaydi imams of Yemen (15th-16th centuries)",
+   "suggested_slug": "imamate-of-yemen",
+   "years": [
+    1458,
+    1538
+   ],
+   "note": "slug collides with the Cliopatria 1814-1872 row; orchestrator to pick one slug for the medieval imamate (also used by rasulid-dynasty)"
+  },
+  {
+   "name": "Kathiri Sultanate",
+   "suggested_slug": "kathiri-sultanate",
+   "years": [
+    1499,
+    1517
+   ],
+   "note": "years are those this batch needs; the state outlived them"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-me-09-i.md",
+ "problems": [
+  "Selman Reis article opened to date the fall of Zabid: silent (only 'failed to take Yemen and Aden on 17 September 1516').",
+  "polities.csv wikipedia field for tahirid-sultanate points to the Persian Tahirids ('Tahirid dynasty'); should be 'Tahirid Sultanate' (author flagged).",
+  "Cross-group decision needed on the 1516-1517 Yemen transfer (tahirid-sultanate vs mamluk-sultanate, me-09-d) and on the Rasulid 1454 land (rasulid-dynasty keeps Cliopatria's 377,950 km2 outline)."
+ ]
+}

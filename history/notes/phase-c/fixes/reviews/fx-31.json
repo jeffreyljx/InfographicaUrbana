@@ -1,0 +1,108 @@
+{
+ "batch_id": "fx-31",
+ "checks": [
+  {
+   "item": "F283",
+   "verdict": "pass",
+   "what": "Skip holds. hierarchy.csv row 208 (diarra, mali-empire, 1236..1474, vassal) exists, and the finding asks only for a mirror vassal_start in mali-empire.json.",
+   "page": "",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F284",
+   "verdict": "pass",
+   "what": "Skip holds. hierarchy.csv row 266 (diarra, songhai-empire, 1512..1591, vassal) exists, and the finding asks only for a mirror vassal_start.",
+   "page": "",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F286",
+   "verdict": "pass",
+   "what": "Skip holds for the finding's child. hierarchy.csv rows 180 (mihrabanids, ilkhanate, 1294..1335), 181 (shirvan, ilkhanate) and 276-278 (ulus-of-hulegu 1256..1293) exist. The parenthetical kartids has no ilkhanate row for 1294+ (only ulus-of-hulegu and mongol-empire rows); see problems.",
+   "page": "",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F287",
+   "verdict": "pass",
+   "what": "shaybanids_1507, _1510 and _1511 and the 1507 gain now subtract Sistan and South Khorasan (Quhistan); validation is OK. The Mihrabanids page has 'By 1289, all of Quhistan had been conquered by the Mihrabanids', Timurid vassalage 'until the latter's overthrow by the Shaybanids', and then a Safavid vassal under Malik Sultan Mahmud; it names no Uzbek rule of Sistan. The Muhammad Shaybani page names no Sistan, Quhistan, Birjand or Zabol (Herat 1507 is the furthest south). The 1510 loss of 'Iranian Khorasan' now covers some unheld South Khorasan cells, which is harmless.",
+   "page": "https://en.wikipedia.org/wiki/Mihrabanids",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F165",
+   "verdict": "fixed",
+   "what": "Edom/Negev part is right. The gazetteer's Edom is Jordan's Tafilah, Ma'an and Aqaba, so Idumea west of the Arabah stays Judean. The Alexander Jannaeus page has no Edom, Idumea, Negev or Beersheba holding, only Moab and Galaaditis, 'later returned'. The Hauran part was harmful: 'northern Hauran' was Hauran minus the Cliopatria Nabataean -64 shape, a 40 km Bosra disc and Gilead. The -64 shape covers the Lajat (Trachonitis) and the Nuqrah (Batanaea) up to 33.3 N, and the Bosra disc reaches about 32.88 N (Suwayda, Shahba). That left Herod only 15 eastern-desert and Quneitra-edge cells, plus one cell south of the line, and handed the core of the 22 BCE grant to the Nabataeans. The Hauran page: 'the Romans transferred the districts to their Judean client king, Herod the Great in 23 BC'; 'Herod ... establishing permanent colonies and a network of forts in the less vulnerable Batanea district'; the boundary 'just north of the Adraa-Bosra-Salkhad line that had separated the Herodian and Nabatean kingdoms'. Corrected judea_-22, judea_-19 and ledger -22 gain: Hauran minus a polygon that runs about 6 km north of Adraa, Bosra and Salkhad and covers the Hauran south of them, minus Gilead (Irbid). Now 30 of 45 Hauran cells, all north of the line; the line towns and the south stay Nabataean. judea (86 cells) is smaller than nabataeans (657), so the 8 remaining northern-Hauran overlap cells go to Herod. Notes amended; validates OK.",
+   "page": "https://en.wikipedia.org/wiki/Hauran",
+   "fix": "judea.json keyframe_review judea_-22 and judea_-19, ledger 32: the subtraction union [Cliopatria Nabataeans -64/-27/-19, Bosra 40 km, Gilead] is replaced by [polygon [[35.5,32.68],[36.10,32.68],[36.48,32.58],[36.71,32.55],[37.6,32.55],[37.6,31.9],[35.5,31.9]] (the Adraa-Bosra-Salkhad line and south), Gilead]",
+   "applied": true
+  },
+  {
+   "item": "F166",
+   "verdict": "pass",
+   "what": "portuguese-empire_1891 (1891-1894) and _1895 (now 1895-1904) draw Angola minus the 352 km Mongu disc. The new _1905 (1905-1910) restores all of Angola. Mirrors at 1895 occupation_start and at 1905 occupation_end and gain, counterpart lozi-kingdom, match lozi-kingdom L4/L6/L7. Recomputed overlap with lozi-kingdom_1878, _1899 and _1905 is 0 for 1891 and 1895. For 1905 it is 0 against lozi-kingdom_1905 (477 cells against the older Lozi shapes, which are no longer alive). The Barotseland page: 'Lozi influence stretched to the Kwito River in the west'; 'In 1895, the Portuguese occupied some of the Lozi's western territory'; 'In 1905 and 1911 respectively, the kingdom lost territory in the west to Portuguese Angola'. The Portuguese Angola page: the Barotseland-Angola frontier 'was determined by the Anglo-Portuguese Treaty of 1891 and the arbitration award of King Victor Emmanuel III of Italy in 1905'. Validates with 2 pre-existing warnings.",
+   "page": "https://en.wikipedia.org/wiki/Barotseland",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F168",
+   "verdict": "pass",
+   "what": "The Chongqing change moves only 34 cells: the Chongqing cells inside Wu's Cliopatria 238 and 270 shapes (108.85-110.11 E, 30.6-31.35 N: Yunyang, Fengjie, Wushan). Shu's Cliopatria 224, 238 and 261 shapes already hold the other 307 of Chongqing's 341 cells, so the added admin-1 brings exactly these 34. The Battle of Xiaoting page: Liu Bei went 'towards Yufu County, which he renamed Yong'an' and 'reached the safety of Baidicheng'; 'the pursuing Wu forces had already retreated'; Sun Quan heeded advice 'to abandon their pursuit'. Nothing puts Wu west of Zigui, so the change is supported. Kept 209 Hunan reasoning holds. The Liu Bei page has him capture Changsha, Lingling, Guiyang and Wuling, and in 210 Lu Su yields 'all commanderies of Jing Province (except Jiangxia Commandery)' to Liu Bei. The Jing Province page instead gives 'Jiangxia, Guiyang and Changsha to Sun Quan'. The pages conflict, so the liu-biao handoff is justified.",
+   "page": "https://en.wikipedia.org/wiki/Battle_of_Xiaoting",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F176",
+   "verdict": "pass",
+   "what": "The 20 km discs round Metapontum (40.3833 N, 16.8244 E, the page's own coordinates) and Policoro are subtracted from the four keyframes and the Basilicata ledger events; 5 cells. The Metapontum page has it 'endangered ... by the advancing power of the Lucanians' but 'it does not appear to have taken any prominent part in the wars with that people'; Cleonymus 'turned his own arms, as well as those of the Lucanians, against them'; never held by them. Leaving the coarse inland Greek-shape cells to smaller-wins is acceptable.",
+   "page": "https://en.wikipedia.org/wiki/Metapontum",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F177",
+   "verdict": "pass",
+   "what": "kingdom-of-france ledger 41 (1360) is narrowed from Berry plus Auvergne to Auvergne, counterpart duchy-of-berry. This matches Cliopatria's 1363 shape, which drops only the Auvergne cells; the 1360-1415 keyframes keep Berry. It also matches duchy-of-berry L1 (1360 gain of Auvergne) and hierarchy.csv row 193 (constituent 1363..1415). The keyframes are untouched, so there is no double subtraction. Validates OK.",
+   "page": "https://en.wikipedia.org/wiki/Duchy_of_Berry",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F178",
+   "verdict": "pass",
+   "what": "kingdom-of-luang-phrabang_1885 keeps its correction (Cliopatria's 1885 shape) and now runs 1885-1888 instead of shapes.csv's 1885-1889. In 1889 only _1889 is drawn, and its correction removes Lai Chau, Dien Bien, Son La, Lao Cai and Yen Bai. compile_dossiers.keyframes takes from/to over the shapes.csv years (lines 1178-1179). The 7 April 1889 treaty and the 'after 1888' incorporation into Tonkin are already cited in the _1889 note. Harmless and correct.",
+   "page": "https://en.wikipedia.org/wiki/Sip_Song_Chau_Tai",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F179",
+   "verdict": "pass",
+   "what": "county-of-bearn's seven keyframes and L0 are now Bearn proper: Pyrénées-Atlantiques within 50 km of Pau. The Bigorre 1379/1390/1407 events are removed. county-of-foix carries them (L6 1379 gain, L7 1390 loss, L10 1407 gain, all Hautes-Pyrénées; L2 and L5 Nébouzan), so no land is lost. The County of Bigorre page: sold in 1407 to John I, Count of Foix, 'From then on it is a subsidiary title of the counts of Foix'. The Nébouzan page: in 1290 'Nébouzan became one of the fiefs of the House of Foix-Béarn', distinct from Béarn. Minor leftover: the 1555 dissolve region still lists the Cliopatria Béarn polygon and Hautes-Pyrénées. This is harmless because do_end moves only owned cells.",
+   "page": "https://en.wikipedia.org/wiki/County_of_Bigorre",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "item": "F182",
+   "verdict": "pass",
+   "what": "The diagnosis is confirmed. conflicts.csv mahdids/nabhani-dynasty is 1169 only, 346 cells a year, by keyframes on both sides: Cliopatria's 'Mahdids' row is the Oman shape (mahdids_1169, 1169-1235, Oman/UAE) and nabhani-dynasty_1169 is the Yemen shape corrected to Oman. mahdids_1169 (verdict wrong) now carries the mahdids_1164 Yemen state instead of the Oman shape, and the dossier ends in May 1174, so the later years are not drawn. The Mahdids page: 'The cities Ta'izz and Ibb fell in 1164'; the Ayyubids 'took Zabid on 13 May 1174'; Oman is never mentioned.",
+   "page": "https://en.wikipedia.org/wiki/Mahdids",
+   "fix": "",
+   "applied": false
+  }
+ ],
+ "problems": [
+  "judea.json corrected by the reviewer (F165, northern Hauran): re-validated OK (0 errors, 0 warnings).",
+  "All 11 dossiers the fixer changed validate with --resolve. Pre-existing warnings only: portuguese-empire /ledger/81 (Cabinda vassal_start without vassal_end) and /keyframe_review/18 (resolves to no cells); kingdom-of-luang-phrabang /ledger/1 (muang-phuan vassal_start without vassal_end).",
+  "F286 parenthetical: hierarchy.csv has no kartids/ilkhanate row for 1294-1335 (kartids rows: mongol-empire 1244-1255, ulus-of-hulegu 1256-1293); if the Kartid vassalage to the Ilkhanate should be tinted, add a row.",
+  "Handoff to liu-biao (fixer's) stands: the Liu Bei page (Lu Su in 210 yields 'all commanderies of Jing Province (except Jiangxia Commandery)' to Liu Bei) conflicts with the Jing Province page ('Jiangxia, Guiyang and Changsha to Sun Quan').",
+  "county-of-bearn /ledger/5 (1555 dissolve) region still includes the Cliopatria County of Béarn polygon and Hautes-Pyrénées; harmless (only owned cells move at death) but could be narrowed to Bearn proper for consistency."
+ ]
+}

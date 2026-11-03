@@ -1,0 +1,68 @@
+{
+ "window": "m3000-m2901",
+ "images": [
+  {
+   "year": -3000,
+   "bbox": "world, with Cliopatria",
+   "seen": "29 culture polities drawn (Yamnaya on the Pontic-Caspian steppe to the Urals, Longshan/Qujialing/Dawenkou/Hongshan in China, Hoabinhian over mainland SE Asia, Early Dynastic Egypt on the Nile); no holes, no stray speckle outside regions, no jumps; Cliopatria holds only Egypt, Sumer, Elam and one Indus dot, so the cultures are compiler-only and nothing contradicts them"
+  },
+  {
+   "year": -2901,
+   "bbox": "world, with Cliopatria",
+   "seen": "identical to -3000 apart from the events of -3000 (Naqada and Cucuteni-Trypillia gone, Longshan in Yangshao's 1935 cells, Ebla and Ahar-Banas new); still no jumps, holes or stray cells"
+  },
+  {
+   "year": -2901,
+   "bbox": "24,20,56,38",
+   "seen": "Early Dynastic Egypt from Delta to Aswan, Ebla, Sumerian city-states, Elam all plausible; A-Group is drawn as a desert rectangle at 21.0-22.8N, 30.0-33.4E (134 cells) with one detached cell near 33E 22.9N, while the Nile stretch between Aswan and the Egyptian border (22.8-24N) is empty (see issues)"
+  }
+ ],
+ "issues": [
+  {
+   "what": "A-Group culture (134 cells) is the gazetteer polygon 'Lower Nubia' minus the Upper Egypt Nile band and the Cliopatria Early Dynastic -3000 shape, so it falls as a Sahara rectangle south of 22.8N (mostly south of Wadi Halfa) and leaves the Aswan-to-border Nile stretch unclaimed; the culture's Nile valley between the First and Second Cataracts is only partly covered. The cause is the dossier's own cut (written to avoid the Naqada/Early Dynastic Nile band that reaches south of the First Cataract in the gazetteer). The one keyframe a-group-culture_-3500 spans -3500..-2900, starts in the earlier windows (m3500-m3401 first), and a fix would be an override of that whole keyframe (intersect Lower Nubia with the Nile 40 km band, minus the Early Dynastic shape: 85 cells, 21.0-23.9N) that also alters five earlier windows and the Naqada overlap there. The brief says to agree with neighbouring windows before overriding a keyframe that starts outside the window, which I cannot do, so I did not patch. The shape is a small, low-stakes cultural zone; no page was opened.",
+   "years": [
+    -3000,
+    -2901
+   ],
+   "slugs": [
+    "a-group-culture",
+    "naqada-culture",
+    "early-dynastic-period-of-egypt"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Everything else in the window: no size-rule conflicts, no keyframe snaps, no skipped or unresolved events, no vassal/colony/contest relations, no hierarchy rows for any state alive. The single changed year (-3000, 5394 cells) is the hand-over of Yangshao to Longshan (1935 cells), the end of Naqada (842) and of Cucuteni-Trypillia (824, Odessa/Kirovohrad cells gained by Yamnaya), and the starts of Ebla and Ahar-Banas; all ledger-explained.",
+   "years": [
+    -3000,
+    -2901
+   ],
+   "slugs": [
+    "longshan-culture",
+    "naqada-culture",
+    "cucuteni-trypillia-culture",
+    "yamnaya-culture",
+    "ebla",
+    "ahar-banas-culture"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": null,
+ "patch_entries": {
+  "events": 0,
+  "keyframe_overrides": 0,
+  "rulings": 0
+ },
+ "patch_check": "all applied (no patch written)",
+ "colour_clashes": [],
+ "dossier_requests": [],
+ "pages_opened": 0,
+ "problems": [
+  "a-group-culture: keyframe a-group-culture_-3500 (-3500..-2900) is drawn as a Lower Nubia desert rectangle at 21.0-22.8N and misses the Aswan-to-Wadi Halfa Nile (22-24N); a keyframe override with {intersect: [Lower Nubia, river Nile 40 km]} minus the Cliopatria Early Dynastic -3000 shape would give 85 cells at 21.0-23.9N, but the keyframe starts outside this window and belongs to m3500-m3401 first, so I left it for the orchestrator or that window's agent to decide."
+ ]
+}

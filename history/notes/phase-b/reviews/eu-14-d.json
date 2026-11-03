@@ -1,0 +1,930 @@
+{
+ "batch_id": "eu-14-d",
+ "verdicts": [
+  {
+   "slug": "kingdom-of-denmark",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/13/region",
+     "what": "The 1016 gain of 'all of England north of the Thames' was drawn as the whole of England.",
+     "why": "Cnut page: 'all of England north of the Thames was to be the domain of the Danish prince'; the gazetteer has Mercia, Northumbria and East Anglia.",
+     "fix": "Region set to union of Mercia, Northumbria and East Anglia with text 'all of England north of the Thames'.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/35/counterpart, /ledger/37/counterpart, /ledger/38/counterpart",
+     "what": "Counterpart was the free text 'mortgagees of the Danish crown lands', not a dossier, not nobody and not in counterparts_needing_dossiers.",
+     "why": "Valdemar IV page: 'much of the kingdom had been pledged to Holstein nobles'; Vordingborg Castle was 'the main headquarters of the Holsteiners'. county-of-holstein exists.",
+     "fix": "Counterpart set to county-of-holstein, with a reviewer line in each note.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/35, /ledger/37, /ledger/38, /keyframe_review/22",
+     "what": "The gains of 1340, 1344 and 1346 take back land that no event and no keyframe ever removed. The 1332-1340 rule of the Holstein counts is missing, and /ledger/35 gains the whole 1352 shape in 1340.",
+     "why": "History of Denmark: 'For eight years after Christopher's death, Denmark had no king, and was instead controlled by the counts'. Valdemar IV page: only 'the pawned province of Nørrejylland, one-quarter of the territory of Jutland' came back in 1340 (Helvig's dowry); North Friesland came back in 1344, Zealand in 1346, and the recovery was 'finally completed in 1360'. The notes for events 37 and 38 say 'the cells were inside Cliopatria's Danish shape all along'. county-of-holstein has no events for 1320-1350.",
+     "fix": "Choose one of two. (a) Add 1332-8 occupation_start (or loss) events against county-of-holstein for the pledged provinces, adjust keyframe 22 to match, and pair each with occupation_end/gain events: 1340 Nørrejylland, 1344 North Friesland, 1346 Zealand, the rest by 1360. Narrow /ledger/35's region to Nørrejylland. (b) If the pledged provinces stay Danish land, drop the three gains and write the pledges in notes.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (missing, 1227 and 1238)",
+     "what": "The Danish vassal tint on Estonia runs unbroken 1219-1346, but Estonia was lost in 1227 and returned in 1238.",
+     "why": "danish-estonia /ledger/2 has a 1227 loss to livonian-brothers-of-the-sword ('In 1227, the Livonian Brothers of the Sword conquered all Danish territories in northern Estonia') and /ledger/3 has a 1238-6 gain (Treaty of Stensby, 7 June 1238), both at confidence 3. livonian-brothers-of-the-sword /ledger/9 has the 1227 gain with kingdom-of-denmark as counterpart. The author lists this as a gap.",
+     "fix": "Add vassal_end danish-estonia 1227 and vassal_start danish-estonia 1238-6, sourced from https://en.wikipedia.org/wiki/Danish_Estonia.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/12-16",
+     "what": "England stays Danish until 1018, but kingdom-of-england takes it back from Denmark in 1017. The two dossiers disagree on who draws England in 1017.",
+     "why": "kingdom-of-england /ledger/22 has a 1017 gain with counterpart kingdom-of-denmark (Cnut crowned 'in London in 1017'). The Cnut page has Harald II as King of Denmark from 1014 until 'Harald II died in 1018', so Cnut's England was not part of Harald's Denmark.",
+     "fix": "Add a 1017 loss of England to kingdom-of-england and make the 1018 loss to north-sea-empire Denmark only, or agree with eu-11 which side changes.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2, /keyframe_review/3",
+     "what": "The 970 shape draws all 119 Norwegian cells as direct Danish land for 970-994. old-kingdom-of-norway loses only Viken (77 cells), so 42 cells are drawn twice.",
+     "why": "old-kingdom-of-norway /ledger/5: Haakon Sigurdsson ruled 'c. 970-995' Norway 'except Viken'. Harald Bluetooth page (as quoted in the dossier): rule in Norway lasted 'no more than a few years in the 970s'.",
+     "fix": "Correct keyframe 3 to remove Norway outside the Viken counties that old-kingdom-of-norway uses. Carry Lade Norway as a vassal for the overlordship years, or leave it out.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/21",
+     "what": "The 1185 vassal_start names duchy-of-pomerania, whose life starts in 1188. pomerania (1138-1187) instead dissolves into kingdom-of-denmark as direct land.",
+     "why": "duchy-of-pomerania identity starts in 1188 and has no vassal events. pomerania /ledger/1: 1187 dissolve with counterpart kingdom-of-denmark ('Cliopatria folds Pomerania into the Danish realm'). Canute VI page: 'in 1185 forced Bogislaw to acknowledge Canute as his overlord'.",
+     "fix": "Say in the event's note that the vassal is pomerania until 1187 and duchy-of-pomerania from 1188. Route to eu-15: pomerania needs a 1185 vassal_start and a dissolve to duchy-of-pomerania; duchy-of-pomerania needs vassal events for 1188-1227.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/34, /ledger/41",
+     "what": "Halland is in Denmark's 1332 loss and 1360 gain but not in Sweden's matching events.",
+     "why": "kingdom-of-sweden /ledger/11 (1332 gain) and /ledger/16-17 (1360 losses) cover Skåne and Blekinge only.",
+     "fix": "Agree with kingdom-of-sweden on Halland, citing https://en.wikipedia.org/wiki/Magnus_IV_of_Sweden.",
+     "applied": false
+    },
+    {
+     "where": "/wars/11",
+     "what": "The Danish-Hanseatic war has empty zones, but the Treaty of Stralsund gave ground: the Scanian castles went to the Hansa.",
+     "why": "Valdemar IV page: 'Valdemar was forced to sign the Treaty of Stralsund in 1370'. The author lists the Hanseatic hold on Scania as a gap.",
+     "fix": "Add a Scania zone and a 1370-1385 occupation against hanseatic-league once that dossier exists.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "The 960 gain of Scania, Halland and Blekinge has confidence 1 and only Cliopatria's year. The Sweyn Forkbeard page credits Sweyn (from c. 986) with extending 'Danish control east of the strait of Øresund into Skane'.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_Scania"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "The 986 move of the seat to Roskilde has no year on any page (confidence 1). The History of Denmark infobox also lists 'Lejre in Zealand'.",
+     "page to try": "https://en.wikipedia.org/wiki/Roskilde"
+    },
+    {
+     "where": "/ledger/10",
+     "what is missing": "The 1015 end of the Norwegian overlordship (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Olaf_II_of_Norway"
+    },
+    {
+     "where": "/ledger/22",
+     "what is missing": "The 1185 Mecklenburg overlordship (confidence 1, 'the 1180s'). mecklenburg has no vassal events.",
+     "page to try": "https://en.wikipedia.org/wiki/Borwin_I,_Lord_of_Mecklenburg"
+    },
+    {
+     "where": "/ledger/34",
+     "what is missing": "The 1332 loss of Scania to Sweden (confidence 1, year undated within the reign).",
+     "page to try": "https://en.wikipedia.org/wiki/Magnus_IV_of_Sweden"
+    },
+    {
+     "where": "/ledger/36, /ledger/40",
+     "what is missing": "The 1344 split to and 1352 return from danish-magnates (confidence 1, Cliopatria's years).",
+     "page to try": "https://en.wikipedia.org/wiki/Christopher_II_of_Denmark"
+    },
+    {
+     "where": "/ledger (1332 pledges)",
+     "what is missing": "Which provinces went to which Holstein count in 1326-1332, and when each came back.",
+     "page to try": "https://en.wikipedia.org/wiki/Gerhard_III,_Count_of_Holstein-Rendsburg"
+    },
+    {
+     "where": "/ledger (1227, 1238)",
+     "what is missing": "Estonia lost in 1227 and returned by the Treaty of Stensby on 7 June 1238.",
+     "page to try": "https://en.wikipedia.org/wiki/Danish_Estonia"
+    },
+    {
+     "where": "/keyframe_review/15, /keyframe_review/19, /keyframe_review/20",
+     "what is missing": "The 1206-1209 Saaremaa shape and the 1236 and 1250 keyframes are marked 'unverified: page budget'.",
+     "page to try": "https://en.wikipedia.org/wiki/Livonian_Crusade"
+    },
+    {
+     "where": "/wars/11",
+     "what is missing": "The terms of the Treaty of Stralsund (1370): the Scanian castles held by the Hansa for 15 years.",
+     "page to try": "https://en.wikipedia.org/wiki/Treaty_of_Stralsund_(1370)"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "Rulers are missing for 1076-1182, 1241-1319 and 1375-1387, and there is no interregnum entry for 1332-1340.",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_Danish_monarchs"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Valdemar_II_of_Denmark",
+     "result": "confirmed (1203; the lead also says 1207, which the author flagged)"
+    },
+    {
+     "where": "/ledger/26",
+     "page": "https://en.wikipedia.org/wiki/Valdemar_II_of_Denmark",
+     "result": "confirmed (1216 Hamburg)"
+    },
+    {
+     "where": "/ledger/27",
+     "page": "https://en.wikipedia.org/wiki/Valdemar_II_of_Denmark",
+     "result": "confirmed (15 June 1219)"
+    },
+    {
+     "where": "/ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Valdemar_II_of_Denmark",
+     "result": "confirmed (22 July 1227, loss of the north German territories)"
+    },
+    {
+     "where": "/ledger/35",
+     "page": "https://en.wikipedia.org/wiki/Valdemar_IV_of_Denmark",
+     "result": "confirmed date (24 June 1340); region over-broad, see fixes"
+    },
+    {
+     "where": "/ledger/38",
+     "page": "https://en.wikipedia.org/wiki/Valdemar_IV_of_Denmark",
+     "result": "confirmed (1346 Vordingborg, all of Zealand)"
+    },
+    {
+     "where": "/ledger/41",
+     "page": "https://en.wikipedia.org/wiki/Valdemar_IV_of_Denmark",
+     "result": "confirmed (Helsingborg 1360; Halland, Blekinge, Scania undated)"
+    },
+    {
+     "where": "/ledger/42",
+     "page": "https://en.wikipedia.org/wiki/Valdemar_IV_of_Denmark",
+     "result": "confirmed (Gotland 1361)"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Cnut_the_Great",
+     "result": "confirmed ('submitted to Cnut late in 1015')"
+    },
+    {
+     "where": "/ledger/16",
+     "page": "https://en.wikipedia.org/wiki/Cnut_the_Great",
+     "result": "confirmed (Harald II died 1018, Danish accession 1018)"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Cnut_the_Great",
+     "result": "confirmed (12 November 1035, Harthacnut succeeds)"
+    },
+    {
+     "where": "/ledger/33",
+     "page": "https://en.wikipedia.org/wiki/History_of_Denmark",
+     "result": "confirmed ('the Rugian principality stayed with Denmark until 1325')"
+    },
+    {
+     "where": "/ledger/43",
+     "page": "https://en.wikipedia.org/wiki/History_of_Denmark",
+     "result": "confirmed (infobox 'Incorporated into the Kalmar Union: 17 June 1397')"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/Canute_VI_of_Denmark",
+     "result": "confirmed (1185 Bogislaw acknowledges Canute as overlord)"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Sweyn_Forkbeard",
+     "result": "confirmed (overlord 'c. 986 - c. 994 and from c.1000'; Svold '999 or 1000')"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Sweyn_Forkbeard",
+     "result": "confirmed (August 1013)"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Sweyn_II_of_Denmark",
+     "result": "confirmed ('King of Denmark from 1047'; Magnus died 1047)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 42926,
+    "infobox_year": null,
+    "cliopatria_km2": 57037,
+    "ratio": 1.33,
+    "acknowledged": true,
+    "note": "Danish Realm infobox, Denmark proper with no year (modern), against the 936 core shape. No medieval figure exists. The author quotes the same figure and ratio."
+   }
+  },
+  {
+   "slug": "jaemtland",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/capitals/0",
+     "what": "The capital was the label 'Frösön (placeholder: no seat is attested)', sourced to the runestone page.",
+     "why": "The Jämtland page names the site: the farthings' assemblies were 'all parallel with the common assembly on Frösön', and 'Frösön acquired the position as regional centre'.",
+     "fix": "Name set to 'Frösön', source set to the Jämtland page, note rewritten with the quotes.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "The founding year 947 is Cliopatria's (confidence 1); the pages give only 'the first half of the 10th century'.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_J%C3%A4mtland"
+    },
+    {
+     "where": "/ledger (none)",
+     "what is missing": "The saga tribute to Norwegian kings (Håkon Adalsteinsfostre, Øystein Magnusson) has no year on the page and could be a vassal tint.",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_J%C3%A4mtland"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Jamtam%C3%B3t",
+     "result": "confirmed ('Founded in the first half of the 10th century'; 947 honestly at confidence 1)"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/J%C3%A4mtland",
+     "result": "confirmed ('conquered by Norway in 1178')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Jamtam%C3%B3t",
+     "result": "confirmed (Battle of Storsjön 1178, Norwegian control)"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "page": "https://en.wikipedia.org/wiki/J%C3%A4mtland",
+     "result": "confirmed (infobox 34,009 km2)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 34009,
+    "infobox_year": null,
+    "cliopatria_km2": 25820,
+    "ratio": 0.76,
+    "acknowledged": true,
+    "note": "Jämtland infobox, the modern province with no year. Acknowledged in keyframe 0."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 936,
+    "type": "found",
+    "counterpart": "scandinavian-minor-kingdoms"
+   },
+   "mirror": {
+    "slug": "scandinavian-minor-kingdoms",
+    "year": 936,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "kingdom-of-germany 936 loss of Hedeby also matches the predecessor entry."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 960,
+    "type": "gain",
+    "counterpart": "scandinavian-minor-kingdoms"
+   },
+   "mirror": {
+    "slug": "scandinavian-minor-kingdoms",
+    "year": 960,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Both at Cliopatria's year."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 970,
+    "type": "gain",
+    "counterpart": "old-kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "old-kingdom-of-norway",
+    "year": 970,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Disagree on the land: Denmark takes all 119 Norwegian cells of its 970 shape, Norway gives up only Viken (77 cells)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 974,
+    "type": "loss",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "holy-roman-empire (eu-08) has no 974 gain of Hedeby or the Danevirke."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 983,
+    "type": "gain",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "holy-roman-empire has no 983 loss of Hedeby to Denmark."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 995,
+    "type": "loss",
+    "counterpart": "old-kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "old-kingdom-of-norway",
+    "year": 995,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Viken only on Norway's side (see 970)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1000,
+    "type": "vassal_start",
+    "counterpart": "old-kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1000,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Type and land differ: Denmark makes all of Norway a vassal, Norway loses Viken as direct land. The author flagged it."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1015,
+    "type": "vassal_end",
+    "counterpart": "old-kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1015,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Same disagreement as in 1000."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1013,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": {
+    "slug": "kingdom-of-england",
+    "year": 1013,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Contest ends in 1014 on both sides."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1015,
+    "type": "contest_start",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": {
+    "slug": "kingdom-of-england",
+    "year": 1015,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1015,
+    "type": "gain",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": {
+    "slug": "kingdom-of-england",
+    "year": 1016,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Denmark gains Wessex in 1015-12, England records its loss in 1016-10 (within a year)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1016,
+    "type": "gain",
+    "counterpart": "kingdom-of-england"
+   },
+   "mirror": {
+    "slug": "kingdom-of-england",
+    "year": 1016,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-england",
+    "year": 1017,
+    "type": "gain",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "England takes itself back from Denmark in 1017 (Cnut crowned in London). Denmark keeps England until the 1018 loss to north-sea-empire. Harald II was king of Denmark until 1018."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1018,
+    "type": "loss",
+    "counterpart": "north-sea-empire"
+   },
+   "mirror": {
+    "slug": "north-sea-empire",
+    "year": 1018,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1035,
+    "type": "gain",
+    "counterpart": "north-sea-empire"
+   },
+   "mirror": {
+    "slug": "north-sea-empire",
+    "year": 1035,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Both 1035-11."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1040,
+    "type": "loss",
+    "counterpart": "denmark-england"
+   },
+   "mirror": {
+    "slug": "denmark-england",
+    "year": 1040,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "denmark-england's found event names only kingdom-of-england as counterpart, but its region includes Denmark (1040-6)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1047,
+    "type": "gain",
+    "counterpart": "norway-denmark"
+   },
+   "mirror": {
+    "slug": "norway-denmark",
+    "year": 1047,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "norway-denmark has 25 October 1047; Denmark could add month 10."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1168,
+    "type": "vassal_start",
+    "counterpart": "principality-of-rugen"
+   },
+   "mirror": {
+    "slug": "principality-of-rugen",
+    "year": 1168,
+    "type": "vassal_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1185,
+    "type": "vassal_start",
+    "counterpart": "duchy-of-pomerania"
+   },
+   "mirror": {
+    "slug": "pomerania",
+    "year": 1187,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "duchy-of-pomerania starts in 1188 and has no vassal events. pomerania dissolves in 1187 into kingdom-of-denmark as direct land. Route to eu-15."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1185,
+    "type": "vassal_start",
+    "counterpart": "mecklenburg"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "mecklenburg has no Danish vassal events for 1185-1227."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1201,
+    "type": "contest_start",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire",
+    "year": 1201,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "county-of-holstein instead has a 1201 occupation_start against Denmark (it ends in 1227), against Denmark's contest 1201 and gain 1203: a mismatch the author flagged."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1203,
+    "type": "gain",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire",
+    "year": 1203,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1216,
+    "type": "gain",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "holy-roman-empire has no 1216 loss of Hamburg."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1219,
+    "type": "vassal_start",
+    "counterpart": "danish-estonia"
+   },
+   "mirror": {
+    "slug": "danish-estonia",
+    "year": 1219,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "danish-estonia is founded against ancient-estonia and records no vassal tie to Denmark."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1223,
+    "type": "contest_start",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire",
+    "year": 1223,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1227,
+    "type": "loss",
+    "counterpart": "holy-roman-empire"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire",
+    "year": 1227,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "county-of-holstein's 1227 occupation_end also matches."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1227,
+    "type": "vassal_end",
+    "counterpart": "mecklenburg"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1227,
+    "type": "vassal_end",
+    "counterpart": "duchy-of-pomerania"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "duchy-of-pomerania has no vassal events."
+  },
+  {
+   "event": {
+    "slug": "livonian-brothers-of-the-sword",
+    "year": 1227,
+    "type": "gain",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": {
+    "slug": "danish-estonia",
+    "year": 1227,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "The loss is in danish-estonia, which should be the counterpart. Denmark lacks vassal_end 1227 and vassal_start 1238 for danish-estonia."
+  },
+  {
+   "event": {
+    "slug": "danish-estonia",
+    "year": 1238,
+    "type": "gain",
+    "counterpart": "teutonic-order"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Denmark has no 1238 vassal_start for danish-estonia (Treaty of Stensby)."
+  },
+  {
+   "event": {
+    "slug": "duchy-of-schleswig",
+    "year": 1058,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Schleswig is a Danish vassal from 1058 in duchy-of-schleswig (confidence 1), but Denmark draws it as direct land and records no vassal. Decide which way with the owner of duchy-of-schleswig."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1325,
+    "type": "vassal_end",
+    "counterpart": "principality-of-rugen"
+   },
+   "mirror": {
+    "slug": "principality-of-rugen",
+    "year": 1325,
+    "type": "vassal_end"
+   },
+   "status": "matched",
+   "note": "holy-roman-empire-minor-states gains the Rügen cells from kingdom-of-denmark in 1326 (confidence 1). Denmark never drew them, so this is an exception."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1332,
+    "type": "loss",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": 1332,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "The two sides disagree on Halland: Sweden gains Skåne and Blekinge only."
+  },
+  {
+   "event": {
+    "slug": "danish-magnates",
+    "year": 1332,
+    "type": "found",
+    "counterpart": "kingdom-of-denmark"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "danish-magnates draws Estonia from 1332, while Denmark keeps it with danish-estonia to 1346. The author flagged the double drawing."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1340,
+    "type": "gain",
+    "counterpart": "county-of-holstein"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Counterpart corrected by the reviewer. county-of-holstein has no 1326-1346 pledge events, and Denmark has no 1332 loss for these gains."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1344,
+    "type": "split",
+    "counterpart": "danish-magnates"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "danish-magnates has no 1344 event for the southern-Jutland sliver."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1344,
+    "type": "gain",
+    "counterpart": "county-of-holstein"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "North Friesland, as for 1340."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1346,
+    "type": "gain",
+    "counterpart": "county-of-holstein"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Zealand, as for 1340."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1346,
+    "type": "vassal_end",
+    "counterpart": "danish-estonia"
+   },
+   "mirror": {
+    "slug": "danish-estonia",
+    "year": 1346,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "danish-estonia has 1 November 1346; Denmark could add month 11."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1352,
+    "type": "gain",
+    "counterpart": "danish-magnates"
+   },
+   "mirror": {
+    "slug": "danish-magnates",
+    "year": 1351,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "danish-magnates' dissolve has no counterpart; it should name kingdom-of-denmark."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1360,
+    "type": "gain",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": 1360,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Halland is absent on Sweden's side."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1361,
+    "type": "gain",
+    "counterpart": "kingdom-of-sweden"
+   },
+   "mirror": {
+    "slug": "kingdom-of-sweden",
+    "year": 1361,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-denmark",
+    "year": 1397,
+    "type": "dissolve",
+    "counterpart": "kalmar-union"
+   },
+   "mirror": {
+    "slug": "kalmar-union",
+    "year": 1397,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Both 1397-6."
+  },
+  {
+   "event": {
+    "slug": "jaemtland",
+    "year": 1178,
+    "type": "loss",
+    "counterpart": "old-kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1178,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "jaemtland",
+    "year": 1178,
+    "type": "dissolve",
+    "counterpart": "old-kingdom-of-norway"
+   },
+   "mirror": {
+    "slug": "old-kingdom-of-norway",
+    "year": 1178,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Successor entry agrees."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Rügen",
+   "kind": "region",
+   "used_in": "kingdom-of-denmark"
+  },
+  {
+   "name": "North Friesland",
+   "kind": "region",
+   "used_in": "kingdom-of-denmark"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Hanseatic League",
+   "suggested_slug": "hanseatic-league",
+   "years": [
+    1356,
+    1669
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-14-d.md",
+ "problems": [
+  "WebFetch returns a model summary of each page. Quotes are as returned. The History of Denmark page was read to character 100,000 of 102,264.",
+  "Context dossiers not yet written (counts under the brief's exception): novgorod-republic, kievan-rus, duchy-of-opole. None is a counterpart of this batch's events.",
+  "Reviewer applied 3 small fixes in place (kingdom-of-denmark /ledger/13 region; /ledger/35,37,38 counterpart; jaemtland /identity/capitals/0). Both files re-validate with 0 errors; the warning on kingdom-of-denmark keyframe 28 is intended."
+ ]
+}

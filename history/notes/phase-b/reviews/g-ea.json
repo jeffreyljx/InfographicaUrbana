@@ -1,0 +1,612 @@
+{
+ "batch_id": "g-ea",
+ "verdicts": [
+  {
+   "slug": "longshan-culture",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/2/region",
+     "what": "The -2000 loss to nobody named only Guanzhong and the Anyang/Handan discs, while the -2000 keyframe also drops northern and central Shanxi, eastern and southern Henan and the Xuzhou country outside Shandong.",
+     "why": "Longshan culture page: 'large settlements were abandoned in most areas except the central area, which evolved into the Bronze Age Erlitou culture'; keyframe_review/1 vs /2 corrections.",
+     "fix": "Region replaced by {minus: [keyframe_review/1 correction, keyframe_review/2 correction]} with text; note tagged [Reviewer g-ea]. Re-validated OK.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/certainty/0",
+     "what is missing": "No boundary or area for any Longshan variant; all four events confidence 2 (thin by design within the 2-5 page budget).",
+     "page to try": "https://en.wikipedia.org/wiki/Taosi"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Longshan_culture",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Dawenkou_culture",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Longshan_culture",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Erlitou_culture",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No Cliopatria row and no area on the page; certainty note says no border is recorded."
+   }
+  },
+  {
+   "slug": "wuping-circuit",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "Nominal submission to Later Zhou (Southern Tang page: Liu Yan 'submitted to the Later Zhou') and to Song after 960 not drawn as vassalage; the author cites the Ma Chu page's 'de facto independence'. Optional vassal_start later-zhou 952/12 if a page dates it.",
+     "page to try": "https://en.wikipedia.org/wiki/Liu_Yan_(Five_Dynasties)"
+    },
+    {
+     "where": "/wars/1/zones",
+     "what is missing": "The 963 Song campaign's fighting in Hunan (empty zones, page silent).",
+     "page to try": "https://en.wikipedia.org/wiki/Zhou_Baoquan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Ma_Chu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Southern_Tang",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Southern_Tang",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Ma_Chu",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 416000,
+    "ratio": 0.51,
+    "acknowledged": true,
+    "note": "No Wuping article; Ma Chu page gives no area. Keyframe 1 note compares Hunan (c. 212,000 km2) with Cliopatria Southern Chu 947-959 (416,000 km2); the Guangxi prefectures went to Southern Han in 951 (southern-han/ledger/6), so Hunan only is right."
+   }
+  },
+  {
+   "slug": "murong-xianbei",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "Murong land {region: Liaoxi} 235-337 is the same gazetteer region that duan-liaoxi holds from its 307 found to 338, and it overlaps yuwen-xianbei's Chifeng 150 km disc (260-344); no event or note explains the double claim, so the compiler hands the cells to the later claim and the Murong (or the Duan) disappear from 307.",
+     "why": "duan-liaoxi/ledger/0 and keyframes duan-liaoxi_307/_314 use {region: Liaoxi}; gazetteer Liaoxi = Liaoning minus Liaodong (365 cells, bbox 119.0-125.64 E); Former Yan page: the Murong settled around Liaoxi, where they 'feuded with the neighbouring Duan and Yuwen tribes'.",
+     "fix": "Narrow the Murong land in /ledger/0, /ledger/1, /ledger/5, /ledger/7-8, keyframes 0-2 and the successor land to the Daling basin round the seats (e.g. union of Chaoyang 100 km and Jinzhou 80 km) or {minus: [Liaoxi, Chifeng 150 km]}, and say in a keyframe note where the Duan and Yuwen lie. duan-liaoxi's side is routed in cross_checks.",
+     "applied": false
+    },
+    {
+     "where": "/wars/2",
+     "what": "Murong Ren's revolt is given no zone and the note says the page gives 'no ground', but the Former Yan page names it.",
+     "why": "Former Yan page: 'Murong Ren rebelled in eastern Liaodong and split the domain into two'; 'Huang defeated Ren in 336'.",
+     "fix": "Draw the Liaodong land the revolt implies (Former Yan page: after Sima Yi's campaign the Murong 'were allowed to move into northern Liaodong'; bridge the year at confidence 1-2 or date the 319 Liaodong takeover from the Murong Hui/Murong Huang pages), then give the war a zone in eastern Liaodong with a contest_start/contest_end 333-336.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "vassal_end of Cao Wei dated 264 (Cliopatria's last Cao Wei shape) while cao-wei dissolves 266/2.",
+     "why": "cao-wei dossier end 266/2; Murong page dates the 'Jin dynasty (266–420)'.",
+     "fix": "Year set to 266, month 2; note updated and tagged [Reviewer g-ea]. Re-validated OK.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "Year of the Murong break from the Xianbei and settlement in Liaoxi (235 is a bridge, confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Murong_Mohuba"
+    },
+    {
+     "where": "/ledger/1",
+     "what is missing": "Year of submission to Cao Wei (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Murong_Mohuba"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "Year of the Jin-backed revival of Buyeo (286 is buyeo's bridge, confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Buyeo_(state)"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Murong page: Shegui 'fought against the Jin dynasty (266–420), and was pushed back to the upper Liao River region' - not drawn.",
+     "page to try": "https://en.wikipedia.org/wiki/Murong"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "The 294 capital 'near Chaoyang' (Murong page) and Jicheng 337-342 'in modern Jinzhou' (Former Yan page) are very likely the same city (Dajicheng/Jicheng, founded 294); one capital entry with a note on the placement conflict would avoid a false 337 move.",
+     "page to try": "https://en.wikipedia.org/wiki/Murong_Huang"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "Note should say the Jin tie continued under Former Yan (Former Yan page: Huang 'continued to consider himself as a Jin vassal'); the vassal_end only closes this dossier.",
+     "page to try": "https://en.wikipedia.org/wiki/Former_Yan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Murong_Hui",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Murong",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Former_Yan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Buyeo_(state)",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No Murong row in Cliopatria and no area on the Murong or Former Yan pages."
+   }
+  },
+  {
+   "slug": "malayan-union",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Malayan_Union",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Federated_Malay_States",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Unfederated_Malay_States",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Malayan_Union",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Malayan Union infobox has no area; Cliopatria keeps the peninsula in British Colonial Empire."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "longshan-culture",
+    "year": -3000,
+    "type": "found",
+    "counterpart": "yangshao-culture"
+   },
+   "mirror": {
+    "slug": "yangshao-culture",
+    "year": -3000,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "yangshao-culture/ledger/8; identical region."
+  },
+  {
+   "event": {
+    "slug": "longshan-culture",
+    "year": -2600,
+    "type": "gain",
+    "counterpart": "dawenkou-culture"
+   },
+   "mirror": {
+    "slug": "dawenkou-culture",
+    "year": -2600,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "dawenkou-culture/ledger/4; identical region."
+  },
+  {
+   "event": {
+    "slug": "longshan-culture",
+    "year": -2000,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Counterpart nobody."
+  },
+  {
+   "event": {
+    "slug": "longshan-culture",
+    "year": -1900,
+    "type": "dissolve",
+    "counterpart": "erlitou-culture"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "erlitou-culture and yueshi-culture have no dossier; listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "wuping-circuit",
+    "year": 952,
+    "type": "found",
+    "counterpart": "southern-chu"
+   },
+   "mirror": {
+    "slug": "southern-tang",
+    "year": 952,
+    "type": "contest_start"
+   },
+   "status": "exception",
+   "note": "southern-chu dissolved 951/12 to southern-tang, so it has no 952 event; the Changde core overlaps Southern Tang's Hunan Jan-Nov 952 under both contest_start events (southern-tang/ledger/8)."
+  },
+  {
+   "event": {
+    "slug": "wuping-circuit",
+    "year": 952,
+    "type": "contest_start",
+    "counterpart": "southern-tang"
+   },
+   "mirror": {
+    "slug": "southern-tang",
+    "year": 952,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "southern-tang/ledger/8."
+  },
+  {
+   "event": {
+    "slug": "wuping-circuit",
+    "year": 952,
+    "type": "contest_end",
+    "counterpart": "southern-tang"
+   },
+   "mirror": {
+    "slug": "southern-tang",
+    "year": 952,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": "southern-tang/ledger/9, 952/12."
+  },
+  {
+   "event": {
+    "slug": "wuping-circuit",
+    "year": 952,
+    "type": "gain",
+    "counterpart": "southern-tang"
+   },
+   "mirror": {
+    "slug": "southern-tang",
+    "year": 952,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "southern-tang/ledger/10, 952/12, Hunan."
+  },
+  {
+   "event": {
+    "slug": "wuping-circuit",
+    "year": 963,
+    "type": "dissolve",
+    "counterpart": "northern-song"
+   },
+   "mirror": {
+    "slug": "northern-song",
+    "year": 963,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "northern-song/ledger/1 gains Jingzhou 80 km + Hunan with counterpart jingnan; the Hunan part should name wuping-circuit (route to northern-song's owner; flagged by the author)."
+  },
+  {
+   "event": {
+    "slug": "murong-xianbei",
+    "year": 235,
+    "type": "found",
+    "counterpart": "xianbei"
+   },
+   "mirror": {
+    "slug": "xianbei",
+    "year": 235,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "Year matches; xianbei's successor land for murong-xianbei is the placeholder Xianbei 224 shape minus Southern Xiongnu, far larger than the Murong land; cut it (route to xianbei's owner; flagged by the author)."
+  },
+  {
+   "event": {
+    "slug": "murong-xianbei",
+    "year": 235,
+    "type": "vassal_start",
+    "counterpart": "cao-wei"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "cao-wei has no vassal events for the Murong 235-266 (it predates this dossier); route to cao-wei's owner. Confidence 1 on the Murong side."
+  },
+  {
+   "event": {
+    "slug": "murong-xianbei",
+    "year": 266,
+    "type": "vassal_end",
+    "counterpart": "cao-wei"
+   },
+   "mirror": {
+    "slug": "cao-wei",
+    "year": 266,
+    "type": "dissolve"
+   },
+   "status": "exception",
+   "note": "Reviewer moved the year 264 -> 266/2 to meet cao-wei's dissolve; the suzerain's end closes the tie."
+  },
+  {
+   "event": {
+    "slug": "murong-xianbei",
+    "year": 285,
+    "type": "gain",
+    "counterpart": "buyeo"
+   },
+   "mirror": {
+    "slug": "buyeo",
+    "year": 285,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "buyeo/ledger/2, Harbin 120 + Nongan 120."
+  },
+  {
+   "event": {
+    "slug": "murong-xianbei",
+    "year": 286,
+    "type": "loss",
+    "counterpart": "buyeo"
+   },
+   "mirror": {
+    "slug": "buyeo",
+    "year": 286,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "buyeo/ledger/3 (both confidence 1, bridging year)."
+  },
+  {
+   "event": {
+    "slug": "murong-xianbei",
+    "year": 289,
+    "type": "vassal_start",
+    "counterpart": "western-jin"
+   },
+   "mirror": {
+    "slug": "western-jin",
+    "year": 289,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "western-jin/ledger/7 names former-yan (not alive until 337) with region Liaoning; it should name murong-xianbei with the Murong land (route to western-jin's owner)."
+  },
+  {
+   "event": {
+    "slug": "murong-xianbei",
+    "year": 337,
+    "type": "vassal_end",
+    "counterpart": "western-jin"
+   },
+   "mirror": {
+    "slug": "western-jin",
+    "year": 352,
+    "type": "vassal_end"
+   },
+   "status": "mismatch",
+   "note": "western-jin/ledger/28 ends the tie with former-yan in 352; former-yan has no vassal_start in 337. The Jin tie continues under Former Yan (Former Yan page), so former-yan should carry a 337/11 vassal_start of western-jin (route to former-yan's owner)."
+  },
+  {
+   "event": {
+    "slug": "murong-xianbei",
+    "year": 337,
+    "type": "dissolve",
+    "counterpart": "former-yan"
+   },
+   "mirror": {
+    "slug": "former-yan",
+    "year": 337,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "former-yan/ledger/0 (337/11 found) names western-jin as counterpart and lists no murong-xianbei predecessor; it should name murong-xianbei (route to former-yan's owner)."
+  },
+  {
+   "event": {
+    "slug": "murong-xianbei",
+    "year": 235,
+    "type": "found",
+    "counterpart": "xianbei"
+   },
+   "mirror": {
+    "slug": "duan-liaoxi",
+    "year": 307,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Land overlap, not an event pair: duan-liaoxi/ledger/0 (307 found, counterpart western-jin) and keyframes duan-liaoxi_307/_314 claim the same {region: Liaoxi} the Murong hold 235-337. The Duan capital Lingzhi (118.7 E, 40.0 N, Qian'an, Hebei) lies outside the gazetteer Liaoxi (from 119.0 E); duan-liaoxi's land should be the old Liaoxi commandery round Lingzhi (Tangshan/Qinhuangdao). Also yuwen-xianbei's Chifeng 150 km disc (260-344) overlaps the Murong's north-west. Route to duan-liaoxi's owner as well as the Murong author."
+  },
+  {
+   "event": {
+    "slug": "malayan-union",
+    "year": 1946,
+    "type": "found",
+    "counterpart": "british-military-administration-malaya"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "malayan-union",
+    "year": 1946,
+    "type": "gain",
+    "counterpart": "federated-malay-states"
+   },
+   "mirror": {
+    "slug": "federated-malay-states",
+    "year": 1946,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "federated-malay-states/ledger/4, 1946/4, same four states + Kuala Lumpur."
+  },
+  {
+   "event": {
+    "slug": "malayan-union",
+    "year": 1946,
+    "type": "gain",
+    "counterpart": "straits-settlements"
+   },
+   "mirror": {
+    "slug": "straits-settlements",
+    "year": 1946,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "straits-settlements/ledger/16, 1946/4. Its region includes Singapore, Cocos and Christmas Island under counterpart malayan-union, though its successors entry gives the Union only Penang and Malacca; minor, on the straits-settlements side (Colony of Singapore has no dossier)."
+  },
+  {
+   "event": {
+    "slug": "malayan-union",
+    "year": 1946,
+    "type": "gain",
+    "counterpart": "unfederated-malay-states"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "malayan-union",
+    "year": 1948,
+    "type": "dissolve",
+    "counterpart": "federation-of-malaya"
+   },
+   "mirror": {
+    "slug": "federation-of-malaya",
+    "year": 1957,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "federation-of-malaya starts 1957/8 with predecessor british-colonial-empire; the Federation of 1 February 1948 has no live dossier (flagged by the author). Extend federation-of-malaya back to 1948/2 or write a 1948-1957 dossier."
+  }
+ ],
+ "gazetteer_names_needed": [],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Erlitou culture",
+   "suggested_slug": "erlitou-culture",
+   "years": [
+    -1900,
+    -1500
+   ]
+  },
+  {
+   "name": "Yueshi culture",
+   "suggested_slug": "yueshi-culture",
+   "years": [
+    -1900,
+    -1500
+   ]
+  },
+  {
+   "name": "Unfederated Malay States",
+   "suggested_slug": "unfederated-malay-states",
+   "years": [
+    1909,
+    1946
+   ]
+  },
+  {
+   "name": "British Military Administration (Malaya)",
+   "suggested_slug": "british-military-administration-malaya",
+   "years": [
+    1945,
+    1946
+   ]
+  },
+  {
+   "name": "Federation of Malaya (1948-1957)",
+   "suggested_slug": "federation-of-malaya",
+   "years": [
+    1948,
+    1957
+   ]
+  },
+  {
+   "name": "Colony of Singapore",
+   "suggested_slug": "colony-of-singapore",
+   "years": [
+    1946,
+    1963
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-g-ea.md",
+ "problems": [
+  "Reviewer edits applied in place: longshan-culture /ledger/2/region (widened to keyframe 1 minus keyframe 2) and murong-xianbei /ledger/2 (264 -> 266/2); both re-validated with --resolve, 0 errors.",
+  "murong-xianbei land overlap with duan-liaoxi (and yuwen-xianbei) needs work on both sides; duan-liaoxi belongs to an earlier, already-reviewed batch.",
+  "No infobox area on any of the pages opened (Longshan culture, Ma Chu, Murong, Former Yan, Malayan Union), so no area ratio could be computed.",
+  "WebFetch answers are model summaries; quotations above are as returned."
+ ]
+}

@@ -1,0 +1,928 @@
+{
+ "batch_id": "ia-01-a",
+ "verdicts": [
+  {
+   "slug": "xiongnu",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/11",
+     "what": "xiongnu_-66 is marked ok although its note explains part of the drop by the 49 BCE loss to Zhizhi, 17 years after the shape starts; the ledger therefore says the Xiongnu held Khakassia/Tuva/Transbaikal to -49 while the keyframe removes them from -66.",
+     "why": "Gazetteer cells: of the 1.11 M km2 that Xiongnu -91 has and Xiongnu -66 lacks, 0.33 M km2 lie in union(Khakassia, Tuva, Transbaikal), the region of /ledger/19 (-49 loss to zhizhi-xiongnu). No event between -91 and -66 removes that land.",
+     "fix": "Mark xiongnu_-66 adjust with correction {union:[{cliopatria:Xiongnu,year:-66},{intersect:[{cliopatria:Xiongnu,year:-91},{union:[Khakassia,Tuva,Transbaikal]}]}]} for -66..-50 (and the same for the -50 shape to -49), so that /ledger/19 removes it; or date the northern loss to c. -66 with a page.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/5",
+     "what": "The note says the westward extension of the -170 shape is the Tarim (plus Hexi), but most of it is Dzungaria, for which the ledger has no gain event.",
+     "why": "Gazetteer cells: Xiongnu -170 minus Xiongnu -197 = 0.89 M km2; 0.53 M km2 of it lie outside Tarim Basin, Turfan-Hami and Hexi Corridor (0.35 M km2 in Dzungaria). Ledger events c. 178-176 are only /ledger/3 (Tarim, Turfan-Hami as tributary) and /ledger/4 (Hexi).",
+     "fix": "Add a gain of the Dzungarian part (region {intersect:[{minus:[{cliopatria:Xiongnu,year:-170},{cliopatria:Xiongnu,year:-197}]},{region:Dzungaria}]}) c. -178/-176 with its counterpart (the Wusun or nobody; Modu page: 'In 178 BCE, the Xiongnu overran the Yuezhi and Wusun in Gansu and the Tarim Basin'), confidence 1 or 2, and correct the keyframe note.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/3",
+     "what": "Mismatch with yuezhi.json /ledger/2: yuezhi loses the Xinjiang part of its homeland to xiongnu in -178, xiongnu records the same land only as a vassal_start of 'Tarim oasis states' and has no gain from yuezhi.",
+     "why": "Gazetteer cells: intersect(Yuezhi -203, Xinjiang) = 0.57 M km2, of which 0.55 M km2 is Tarim Basin, i.e. the land of xiongnu /ledger/3. The two dossiers (same author) give that land different former owners.",
+     "fix": "Choose one reading and write it on both sides: either yuezhi /ledger/2 counterpart 'Tarim oasis states' (the oases pass from Yuezhi dominance to Xiongnu tributary status) or a xiongnu -178 gain from yuezhi of the same land drawn as vassal tint.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/7",
+     "what": "xiongnu_-144 keeps the westward extension 'as drawn' from -144 although its note says the land is the Ili valley taken only in 132; the 144-132 holding has no ledger event.",
+     "why": "Gazetteer cells: Xiongnu -144 minus Xiongnu -164 = 0.42 M km2, 0.17 M km2 of it in Semirechye; the only event is /ledger/5 (-132 vassal_start wusun). Yuezhi page: 'In 132 BC the Wusun, in alliance with the Xiongnu ... again managed to dislodge' the Yuezhi from the Ili.",
+     "fix": "Correction {minus:[{cliopatria:Xiongnu,year:-144},{region:Semirechye}]} for -144..-133, the Semirechye part then entering as Wusun tributary land with /ledger/5; or give a page for a 144 gain.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/2",
+     "what": "-203 gain of the Ordos from qin-dynasty, a counterpart that no longer exists in 203.",
+     "why": "polities.csv: qin-dynasty -218..-209 (han-dynasty starts -202); Xiongnu page: 'In 210 BC, Meng Tian died, and in 209 BC, Touman's son Modu became the Xiongnu chanyu' ... 'Modu also retook the original homeland of Xiongnu on the Yellow River ... which had previously been taken by the Qin general Meng Tian'. No qin-dynasty loss can mirror a 203 gain.",
+     "fix": "Keep 203 (Cliopatria) with counterpart 'nobody' (the abandoned Qin frontier), confidence 1; or date it c. -209/-207 with counterpart qin-dynasty and mark xiongnu_-208/-206 adjust to include the Ordos.",
+     "applied": false
+    },
+    {
+     "where": "/identity/rulers/0",
+     "what": "Touman (-220..-209) lies outside the life (-209..151).",
+     "why": "Rule 2 (rulers inside the life); the entry's own note says his reign precedes the start year.",
+     "fix": "Drop the entry (mention Touman in notes) or start the state earlier.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/33",
+     "what": "The 119 gain of Yiwu (Hami, 100 km) adds land that the keyframe corrections already give the remnant from 91.",
+     "why": "Gazetteer: {place: Hami, km: 100} lies wholly inside the /keyframe_review/22 and /23 correction (Dzungaria within Xiongnu 91 + {place: Hami, km: 200}); /keyframe_review/20 says Hami was Han again from 91. Xiongnu page: 'captured Yiwu in 119'; 'By 126, they were subjugated by the Han general, Ban Yong'.",
+     "fix": "Exclude {place: Hami, km: 100} from the 91-118 and 127-153 corrections (or from 91 to 118 only), so that /ledger/33 and /ledger/34 carry Yiwu.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "year the Ordos was retaken (confidence 1; Xiongnu page undated)",
+     "page to try": "https://en.wikipedia.org/wiki/Meng_Tian"
+    },
+    {
+     "where": "/ledger/10",
+     "what is missing": "the loss of the grasslands east of 114 E in the -110 shape (confidence 1 for that part)",
+     "page to try": "https://en.wikipedia.org/wiki/Wuhuan"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "year the Wusun broke from the Xiongnu (c. 115, confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Wusun"
+    },
+    {
+     "where": "/ledger/21",
+     "what is missing": "year the Xiongnu regained the Western Regions under the Xin (23, confidence 1); Xiongnu page: 'The Xiongnu took the opportunity to regain control of the western regions, as well as neighboring peoples such as the Wuhuan' (undated)",
+     "page to try": "https://en.wikipedia.org/wiki/Protectorate_of_the_Western_Regions"
+    },
+    {
+     "where": "/ledger/28",
+     "what is missing": "Xianbei takeover of the plateau in 91 (confidence 1, /ledger/28 and /ledger/31)",
+     "page to try": "https://en.wikipedia.org/wiki/Xianbei"
+    },
+    {
+     "where": "/keyframe_review/10",
+     "what is missing": "the +0.27 M km2 of the -91 shape (to 115 E, 38.6 N) has no event (unverified: page budget)",
+     "page to try": "https://en.wikipedia.org/wiki/Li_Guangli"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Modu_Chanyu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Modu_Chanyu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Xiongnu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Han-Xiongnu_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Han-Xiongnu_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Han-Xiongnu_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Han-Xiongnu_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Xiongnu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Xiongnu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/23",
+     "page": "https://en.wikipedia.org/wiki/Han-Xiongnu_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Ikh_Bayan",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/33",
+     "page": "https://en.wikipedia.org/wiki/Xiongnu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/35",
+     "page": "https://en.wikipedia.org/wiki/Xiongnu",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 5619496,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The infobox has no area figure (only the map caption 'Territory of the Xiongnu in the 2nd century BC'); the keyframe notes say so."
+   }
+  },
+  {
+   "slug": "zhizhi-xiongnu",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/1/from",
+     "what": "The civil war began at -57, before the life (-56..-36).",
+     "why": "Rule 2 (wars inside the life); Zhizhi Chanyu page: 'In 56 BCE Hutuwusi, elder brother of Huhanye, revolted, called himself Zhizhi Chanyu'.",
+     "fix": "from -56 (Zhizhi's part in the war); the five-chanyu war from -57 stays in xiongnu.json.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Zhizhi_Chanyu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Zhizhi_Chanyu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Zhizhi_Chanyu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Zhizhi_Chanyu",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": null,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No Cliopatria row and no infobox area; extents are flagged as the researcher's readings."
+   }
+  },
+  {
+   "slug": "yuezhi",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "founding date (404 is Cliopatria's; confidence 1, page silent)",
+     "page to try": "https://en.wikipedia.org/wiki/Tocharians"
+    },
+    {
+     "where": "/keyframe_review/5",
+     "what is missing": "the westward extension of the -144 shape towards Sogdia (to 66.8 E, +0.07 M km2) has no event before the 130 gain",
+     "page to try": "https://en.wikipedia.org/wiki/Dayuan"
+    },
+    {
+     "where": "/keyframe_review/7",
+     "what is missing": "the southern extent to 33.9 N (Hindu Kush) in the -110 shape has no event",
+     "page to try": "https://en.wikipedia.org/wiki/Kushan_Empire"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Modu_Chanyu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Xiongnu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Yuezhi",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Yuezhi",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Yuezhi",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Yuezhi",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 916154,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No infobox area (the infobox gives only 'Western China: (pre-2nd century BC)' etc.); /keyframe_review/0 says so."
+   }
+  },
+  {
+   "slug": "scythia",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/3/region",
+     "what": "The Assyrian vassalage was drawn over the whole state (the Pontic steppe shape plus Sakez); the page limits it to Scythia in West Asia, and the note's quote was not the page's words.",
+     "why": "Scythians page: 'By 672 BC, Bartatua had asked to marry Esarhaddon's eldest daughter'; 'Thus Scythia in West Asia became a vassal and nominal extension of Assyria'.",
+     "fix": "Region {lon 46.27, lat 36.25, km 150} (the Sakez base) with the page's words; note quotes corrected.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/7/region",
+     "what": "The matching vassal_end had the same over-broad region.",
+     "why": "As /ledger/3.",
+     "fix": "Region narrowed to the Sakez base.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/5/counterpart",
+     "what": "Counterpart 'Urartu' is free text although Cliopatria has the row kingdom-of-urartu (-800..-551).",
+     "why": "polities.csv row kingdom-of-urartu, owned by group eu-19 (research-groups.json).",
+     "fix": "counterpart 'kingdom-of-urartu' (also in /wars/0/belligerents); drop Urartu from counterparts_needing_dossiers.",
+     "applied": true
+    },
+    {
+     "where": "/wars/0/from",
+     "what": "War from -680, before the life (-679..-224).",
+     "why": "Rule 2 (wars inside the life).",
+     "fix": "from -679.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/8/note",
+     "what": "Quoted words were a paraphrase, not the page's.",
+     "why": "Scythians page: 'By the c. 590s BC, the ascending Median Empire of Cyaxares annexed Urartu, after having annexed Mannai in 616 BC'; 'This rise of Median power forced the Scythians to leave West Asia and retreat north to the Ciscaucasian Steppe'.",
+     "fix": "Quote replaced with the page's words; year and region unchanged.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/11/note",
+     "what": "Quoted words were a paraphrase, not the page's (also /keyframe_review/3/note).",
+     "why": "Scythians page: 'the Scythian and Odrysian kingdoms mutually established the Istros as their common border around c. 480 BC'.",
+     "fix": "Quote replaced in both notes; year unchanged.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "date of the move to Sakez (confidence 1; /keyframe_review/0 already draws Sakez from -679). Page: 'After this, the centre of Scythian power in West Asia shifted to Sakez near Lake Urmia' (undated)",
+     "page to try": "https://en.wikipedia.org/wiki/Bartatua"
+    },
+    {
+     "where": "/ledger/9",
+     "what is missing": "date of the capital move to Kamianka (confidence 1; infobox 'Kamianka (c. 6th century BC - c. 200 BC)')",
+     "page to try": "https://en.wikipedia.org/wiki/Kamianka-Dniprovska"
+    },
+    {
+     "where": "/ledger/17",
+     "what is missing": "end year (224 is Cliopatria's; confidence 1 for /ledger/16 and /ledger/17); Scythians infobox 'Sarmatian invasion of Scythia: c. 3rd century BC', lead 'conquered by the Sarmatians in the 3rd to 2nd centuries BC'",
+     "page to try": "https://en.wikipedia.org/wiki/Scythian_kingdom_in_Crimea"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Scythians",
+     "result": "confirmed (year); region over-broad, fixed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Scythians",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Scythians",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Scythians",
+     "result": "confirmed (quote inexact, fixed)"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Scythians",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Scythians",
+     "result": "confirmed (quote inexact, fixed)"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Sarmatians",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 1687837,
+    "ratio": null,
+    "acknowledged": false,
+    "note": "The infobox has no area figure, so there is nothing to compare; the -650 to -550 drop (factor 2.6) is explained by /ledger/10."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -208,
+    "type": "gain",
+    "counterpart": "Donghu"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Donghu has no row; listed in counterparts_needing_dossiers (ia-01-x)."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -203,
+    "type": "gain",
+    "counterpart": "qin-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "qin-dynasty row ends -209; no loss can mirror a 203 gain (see xiongnu /ledger/2)."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -178,
+    "type": "vassal_start",
+    "counterpart": "Tarim oasis states"
+   },
+   "mirror": {
+    "slug": "yuezhi",
+    "year": -178,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Same land (Tarim Basin) is a yuezhi loss to xiongnu in yuezhi.json but an oasis-states vassalage in xiongnu.json; align the former owner."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -176,
+    "type": "gain",
+    "counterpart": "yuezhi"
+   },
+   "mirror": {
+    "slug": "yuezhi",
+    "year": -176,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Hexi Corridor on both sides."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -132,
+    "type": "vassal_start",
+    "counterpart": "wusun"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "wusun (ia-01, another part) owner group has not run yet (no dossier in history/polities/); consistent with yuezhi -132 loss to wusun."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -127,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "han-dynasty (ea-02) owner group has not run yet (no dossier in history/polities/)."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -121,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "han-dynasty (ea-02) owner group has not run yet (no dossier in history/polities/)."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -119,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -115,
+    "type": "vassal_end",
+    "counterpart": "wusun"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "wusun owner group has not run yet (no dossier in history/polities/)."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -67,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "han-dynasty owner group has not run yet (no dossier in history/polities/)."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -60,
+    "type": "vassal_end",
+    "counterpart": "Tarim oasis states"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -53,
+    "type": "vassal_start",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "han-dynasty owner group has not run yet (no dossier in history/polities/); vassal_end 10 CE."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -49,
+    "type": "loss",
+    "counterpart": "zhizhi-xiongnu"
+   },
+   "mirror": {
+    "slug": "zhizhi-xiongnu",
+    "year": -49,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Same region; but xiongnu_-66 already drops 0.33 M km2 of it (xiongnu /keyframe_review/11), and 0.07 M km2 of it stays inside the Xiongnu -50 shape."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": -56,
+    "type": "contest_start",
+    "counterpart": "zhizhi-xiongnu"
+   },
+   "mirror": {
+    "slug": "zhizhi-xiongnu",
+    "year": -56,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Rebel founding against the government's contest event (rule for rebels); contest_end -49 matches zhizhi -49 loss."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": 23,
+    "type": "vassal_start",
+    "counterpart": "Tarim oasis states"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "listed; vassal_end 74, restart 77, end 91."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": 48,
+    "type": "split",
+    "counterpart": "southern-xiongnu"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "southern-xiongnu (ia-01, another part) owner group has not run yet (no dossier in history/polities/); it should carry xiongnu as predecessor and the 50 CE Han vassalage."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": 73,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "han-dynasty owner group has not run yet (no dossier in history/polities/)."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": 91,
+    "type": "loss",
+    "counterpart": "xianbei"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "xianbei (ia-01, another part) owner group has not run yet (no dossier in history/polities/); should carry the 91 gain."
+  },
+  {
+   "event": {
+    "slug": "xiongnu",
+    "year": 119,
+    "type": "gain",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "han-dynasty owner group has not run yet (no dossier in history/polities/); loss back 126."
+  },
+  {
+   "event": {
+    "slug": "zhizhi-xiongnu",
+    "year": -44,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody."
+  },
+  {
+   "event": {
+    "slug": "zhizhi-xiongnu",
+    "year": -44,
+    "type": "gain",
+    "counterpart": "Kangju"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Kangju has no row; listed (ia-01-x)."
+  },
+  {
+   "event": {
+    "slug": "yuezhi",
+    "year": -178,
+    "type": "loss",
+    "counterpart": "xiongnu"
+   },
+   "mirror": {
+    "slug": "xiongnu",
+    "year": -178,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "See xiongnu -178 above."
+  },
+  {
+   "event": {
+    "slug": "yuezhi",
+    "year": -165,
+    "type": "gain",
+    "counterpart": "sakas"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "sakas has no row; listed (ia-01-x)."
+  },
+  {
+   "event": {
+    "slug": "yuezhi",
+    "year": -132,
+    "type": "loss",
+    "counterpart": "wusun"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "wusun owner group has not run yet (no dossier in history/polities/)."
+  },
+  {
+   "event": {
+    "slug": "yuezhi",
+    "year": -130,
+    "type": "gain",
+    "counterpart": "greco-bactrian-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "greco-bactrian-kingdom (me-05) owner group has not run yet (no dossier in history/polities/)."
+  },
+  {
+   "event": {
+    "slug": "yuezhi",
+    "year": -126,
+    "type": "gain",
+    "counterpart": "greco-bactrian-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "greco-bactrian-kingdom (me-05) owner group has not run yet (no dossier in history/polities/); its row ends -127."
+  },
+  {
+   "event": {
+    "slug": "scythia",
+    "year": -679,
+    "type": "gain",
+    "counterpart": "Cimmerians"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no row; listed."
+  },
+  {
+   "event": {
+    "slug": "scythia",
+    "year": -672,
+    "type": "gain",
+    "counterpart": "Mannai"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no row; listed."
+  },
+  {
+   "event": {
+    "slug": "scythia",
+    "year": -672,
+    "type": "vassal_start",
+    "counterpart": "neo-assyrian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "neo-assyrian-empire (me-02) owner group has not run yet (no dossier in history/polities/); region now the Sakez base only."
+  },
+  {
+   "event": {
+    "slug": "scythia",
+    "year": -652,
+    "type": "vassal_start",
+    "counterpart": "median-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "median-kingdom (me-05) owner group has not run yet (no dossier in history/polities/); its row starts -615, so me-05 must start the Medes by -652 or this counterpart needs a pre-615 Median polity (author flagged)."
+  },
+  {
+   "event": {
+    "slug": "scythia",
+    "year": -635,
+    "type": "gain",
+    "counterpart": "kingdom-of-urartu"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-urartu (eu-19) owner group has not run yet (no dossier in history/polities/); slug corrected from 'Urartu' by the reviewer."
+  },
+  {
+   "event": {
+    "slug": "scythia",
+    "year": -600,
+    "type": "loss",
+    "counterpart": "median-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "median-kingdom (me-05) owner group has not run yet (no dossier in history/polities/)."
+  },
+  {
+   "event": {
+    "slug": "scythia",
+    "year": -550,
+    "type": "loss",
+    "counterpart": "Sauromatians"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no row; listed."
+  },
+  {
+   "event": {
+    "slug": "scythia",
+    "year": -480,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody; odrysian-kingdom.json (start -480) has no Scythian event and needs none."
+  },
+  {
+   "event": {
+    "slug": "scythia",
+    "year": -313,
+    "type": "loss",
+    "counterpart": "sarmatians"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no row; listed (ia-01-x)."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Barkol (Pulei)",
+   "kind": "place",
+   "used_in": "xiongnu"
+  },
+  {
+   "name": "Yiwu (alias of Hami)",
+   "kind": "place",
+   "used_in": "xiongnu"
+  },
+  {
+   "name": "Sakez (Saqqez)",
+   "kind": "place",
+   "used_in": "scythia"
+  },
+  {
+   "name": "Kamianka (Kamianka-Dniprovska)",
+   "kind": "place",
+   "used_in": "scythia"
+  },
+  {
+   "name": "Urartu (alias of Armenian Highlands)",
+   "kind": "region",
+   "used_in": "scythia"
+  },
+  {
+   "name": "Ili valley (alias of Semirechye)",
+   "kind": "region",
+   "used_in": "yuezhi"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Donghu",
+   "suggested_slug": "donghu",
+   "years": [
+    -300,
+    -208
+   ]
+  },
+  {
+   "name": "Tarim oasis states",
+   "suggested_slug": "tarim-oasis-states",
+   "years": [
+    -178,
+    91
+   ]
+  },
+  {
+   "name": "Yueban",
+   "suggested_slug": "yueban",
+   "years": [
+    91,
+    490
+   ]
+  },
+  {
+   "name": "Kangju",
+   "suggested_slug": "kangju",
+   "years": [
+    -130,
+    300
+   ]
+  },
+  {
+   "name": "Wuhuan",
+   "suggested_slug": "wuhuan",
+   "years": [
+    -208,
+    207
+   ]
+  },
+  {
+   "name": "Sakas",
+   "suggested_slug": "sakas",
+   "years": [
+    -700,
+    -130
+   ]
+  },
+  {
+   "name": "Sarmatians",
+   "suggested_slug": "sarmatians",
+   "years": [
+    -339,
+    375
+   ]
+  },
+  {
+   "name": "Sauromatians",
+   "suggested_slug": "sauromatians",
+   "years": [
+    -550,
+    -300
+   ]
+  },
+  {
+   "name": "Scythian kingdom in Crimea",
+   "suggested_slug": "scythian-kingdom-in-crimea",
+   "years": [
+    -224,
+    275
+   ]
+  },
+  {
+   "name": "Scythia Minor (Dobruja)",
+   "suggested_slug": "scythia-minor",
+   "years": [
+    -224,
+    -90
+   ]
+  },
+  {
+   "name": "Cimmerians",
+   "suggested_slug": "cimmerians",
+   "years": [
+    -1000,
+    -600
+   ]
+  },
+  {
+   "name": "Mannai",
+   "suggested_slug": "mannai",
+   "years": [
+    -850,
+    -616
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ia-01-a.md",
+ "problems": [
+  "The Scythians article's fetched text ends in the late 5th century BCE for the reviewer too; the decline was checked on the Sarmatians page and the Scythians infobox.",
+  "Neighbour dossiers present: only greek-city-states and cimmerian-bosporus (eu-01) from the Context list, plus odrysian-kingdom; none has an event with this batch's states. Every other counterpart (han-dynasty, wusun, xianbei, southern-xiongnu, greco-bactrian-kingdom, kushan-empire, median-kingdom, neo-assyrian-empire, kingdom-of-urartu) is owned by a group that has not run yet.",
+  "Author's counterparts_needing_dossiers listed Urartu as a new state; Cliopatria has kingdom-of-urartu (eu-19), now used as the counterpart.",
+  "Xiongnu end year: the Battle of Ikh Bayan page says 'no chanyu of the Northern Xiongnu was ever heard of again, ending the Xiongnu state' (93); the dossier ends in 151 with the Huyan King (Xiongnu page). Both are on the pages; the author flagged it as the reviewer's call, and 151 is kept.",
+  "Reviewer edits applied in place and re-validated (0 errors): scythia.json (/ledger/3, /ledger/7 regions; /ledger/5 counterpart; /wars/0 from and belligerents; /ledger/8, /ledger/11, /keyframe_review/3 note quotes) and zhizhi-xiongnu.json (/wars/1/from)."
+ ]
+}

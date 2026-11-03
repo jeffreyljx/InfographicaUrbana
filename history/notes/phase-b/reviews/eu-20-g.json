@@ -1,0 +1,869 @@
+{
+ "batch_id": "eu-20-g",
+ "verdicts": [
+  {
+   "slug": "kingdom-of-bavaria",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger/13/region",
+     "what": "The 1816 loss to Austria covered only Salzburg, so the Innviertel/Hausruckviertel land gained in 1809 (/ledger/4) was never returned.",
+     "why": "Treaty of Munich (1816) page: Bavaria ceded 'the parts of the Upper Austrian quarters of Hausruckviertel and Innviertel' with 'the duchy of Salzburg'; the event's own text names them.",
+     "fix": "Region set to minus(union(Salzburg, the /ledger/4 disc 13.3E 48.2N 45 km), Kingdom of Bavaria 1820), keeping the 6 core Bavarian disc cells and the Rupertiwinkel cell; note annotated.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/10/region",
+     "what": "The 1814 loss returned all of Tirol + South Tyrol (gazetteer: Bozen + Trento) + Vorarlberg, though the Trentino and southern Tyrol had gone to Italy and Lienz to Illyria in 1810 (/ledger/8), double-counting them.",
+     "why": "Tyrolean Rebellion page: on 28 February 1810 Bavaria 'had to cede large parts of Southern Tyrol with the Trentino to Italy' and 'the eastern Hochpustertal with Lienz to the Illyrian Provinces'. Cliopatria 1811 Bavaria holds 43 of 53 Tirol cells, 5 of 33 Bozen, 0 of 21 Trento.",
+     "fix": "Region set to intersect(Kingdom of Bavaria 1811, union(Tirol, South Tyrol, Vorarlberg)) = 58 cells; note annotated.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/8/region",
+     "what": "The 1810 loss to Italy used all of 'South Tyrol' (Bozen + Trento, 54 cells), including the Brixen cells Bavaria kept until 1814.",
+     "why": "Tyrolean Rebellion page: 'large parts of Southern Tyrol with the Trentino'; Cliopatria's 1811 Bavarian shape keeps 5 Bozen cells; italian-republic /ledger/6 has 'southern Tyrol up to Bolzano'.",
+     "fix": "Region set to minus(South Tyrol, Kingdom of Bavaria 1811) = 49 cells; note annotated.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (1806/2)",
+     "what is missing": "Gain of Ansbach from kingdom-of-prussia, the mirror of kingdom-of-prussia /ledger/32 (confidence 3, Feb 1806); the cells are already inside the found region, so only the event is missing. Ansbach is not a gazetteer place (disc at about 10.57E 49.30N).",
+     "page to try": "https://en.wikipedia.org/wiki/Principality_of_Ansbach"
+    },
+    {
+     "where": "/ledger (1810/2)",
+     "what is missing": "Loss of the eastern Hochpustertal with Lienz to the Illyrian Provinces on 28 Feb 1810, on the Tyrolean Rebellion page already cited and in the /ledger/8 and /keyframe_review/17 notes; region minus(Tirol, Kingdom of Bavaria 1811).",
+     "page to try": "https://en.wikipedia.org/wiki/Tyrolean_Rebellion"
+    },
+    {
+     "where": "/ledger (1810)",
+     "what is missing": "Losses to Württemberg (Ulm and the Swabian border); the Bavaria page says Bavaria 'from 1810 to 1814 lost territory to Württemberg and Italy'.",
+     "page to try": "https://en.wikipedia.org/wiki/Ulm"
+    },
+    {
+     "where": "/wars",
+     "what is missing": "War of the Fifth Coalition (Austrian invasion of Bavaria, April 1809) and War of the Sixth Coalition (Bavaria changed sides in 1813) are not in wars.",
+     "page to try": "https://en.wikipedia.org/wiki/War_of_the_Fifth_Coalition"
+    },
+    {
+     "where": "/ledger/15",
+     "what is missing": "Confidence 1: the year the Hesse-Darmstadt and Baden bailiwicks (Alzenau, Amorbach, Heubach, Miltenberg, part of Wertheim) actually passed to Bavaria; the Munich treaty only promises them.",
+     "page to try": "https://en.wikipedia.org/wiki/Miltenberg"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Tyrolean_Rebellion",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Tyrolean_Rebellion",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Munich_(1816)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/14",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Munich_(1816)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Grand_Duchy_of_Würzburg",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Austro-Prussian_War",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Peace_of_Pressburg_(1805)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Bavaria",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 75865,
+    "infobox_year": 1910,
+    "cliopatria_km2": 72631.8,
+    "ratio": 0.96,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "kingdom-of-saxony",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "The 1809-1810 shape loses 13 cells around Bautzen and Hoyerswerda; kept as the 1807 shape without any page. Check the 1809 Austrian and Brunswick incursion into Saxony.",
+     "page to try": "https://en.wikipedia.org/wiki/War_of_the_Fifth_Coalition"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "Confidence 1: when the Prussian occupation of 1813 ended (return of the king, 1815).",
+     "page to try": "https://en.wikipedia.org/wiki/Frederick_Augustus_I_of_Saxony"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "Confidence 1: when the Prussian troops of 1866 left Saxony.",
+     "page to try": "https://en.wikipedia.org/wiki/John_of_Saxony"
+    },
+    {
+     "where": "/identity/rulers",
+     "what is missing": "Rulers omitted (the article lists only the first and last king).",
+     "page to try": "https://en.wikipedia.org/wiki/List_of_rulers_of_Saxony"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Saxony",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Saxony",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Saxony",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Austro-Prussian_War",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 18212.0,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "the Saxony infobox gives no area"
+   }
+  },
+  {
+   "slug": "kingdom-of-wurttemberg",
+   "verdict": "thin",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/0",
+     "what is missing": "/ledger/0 (Austrian Swabia, Pressburg) and /ledger/2 (mediatised lands, July 1806) carry the same region from two counterparts; split the 1806 growth.",
+     "page to try": "https://en.wikipedia.org/wiki/Further_Austria"
+    },
+    {
+     "where": "/ledger (1810)",
+     "what is missing": "The 1810 exchanges with Bavaria (Ulm) and Baden; the Bavaria page confirms losses 'to Württemberg' from 1810. The Württemberg page does mention the 1813 treaty at Fulda (confirmation of the acquisitions), contrary to the notes.",
+     "page to try": "https://en.wikipedia.org/wiki/Ulm"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Peace_of_Pressburg_(1805)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Württemberg",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Württemberg",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Kingdom_of_Württemberg",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 19508,
+    "infobox_year": 1813,
+    "cliopatria_km2": 16915.6,
+    "ratio": 0.87,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "principality-of-hohenzollern-sigmaringen",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0, /keyframe_review/1, /keyframe_review/2/correction",
+     "what": "The Cliopatria shape (5 cells) includes the single cell of principality-of-hohenzollern-hechingen, so the two dossiers claim the same land 1806-1849; the keyframes are marked ok and the notes read the area surplus as a grid effect.",
+     "why": "Gazetteer: intersect(Principality of Hohenzollern-Sigmaringen 1811, {lon 8.97, lat 48.35, km 10}) = 1 cell, which is the whole of the Hechingen dossier's keyframe (1576-1849). Province of Hohenzollern infobox: '1939: 1,142 km2' for both principalities together, matching the shape's 1,310 km2: Cliopatria drew both principalities as one.",
+     "fix": "Set /keyframe_review/0 and /1 to adjust and make all three corrections minus({cliopatria: 'Principality of Hohenzollern-Sigmaringen', year: 1806|1811|1849}, {lon: 8.97, lat: 48.35, km: 10}); rewrite the area notes (the shape is both Hohenzollern principalities; Hechingen has its own dossier).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/1",
+     "what is missing": "The 1806-1811 growth of about 90 km2 (the 1806 mediatisation gains such as Achberg and Hohenfels) has no event; thin by design at a 1-2 page budget.",
+     "page to try": "https://en.wikipedia.org/wiki/German_mediatisation"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Hohenzollern-Sigmaringen",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Hohenzollern-Sigmaringen",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Province_of_Hohenzollern",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Province_of_Hohenzollern",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1142,
+    "infobox_year": 1939,
+    "cliopatria_km2": 1309.6,
+    "ratio": 1.15,
+    "acknowledged": true,
+    "note": "the 1,142 km2 is both principalities; the H-S page has no area"
+   }
+  },
+  {
+   "slug": "principality-of-lippe",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Lippe",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Lippe",
+     "result": "confirmed"
+    },
+    {
+     "where": "/identity/rulers",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Lippe",
+     "result": "confirmed"
+    },
+    {
+     "where": "/keyframe_review/6",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Lippe",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 1215,
+    "infobox_year": 1910,
+    "cliopatria_km2": 828.8,
+    "ratio": 0.68,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "principality-of-regensberg",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/ledger/2/note, /keyframe_review/0/correction, /keyframe_review/1/correction, /ledger (1806)",
+     "what": "Frankfurt, Dalberg's from 1806 to 1810, is missing from the ledger, the 1806-1810 keyframes and the 1810 split region; the confidence-3 /ledger/2 note says Frankfurt is a gain 'of the new state, not of this one', which its own source contradicts.",
+     "why": "Grand Duchy of Frankfurt page (the /ledger/2 source): 'Frankfurt lost its status as a free imperial city in 1806 ... The city was granted to ... Dalberg' and, in 1810, 'his remaining territories of Aschaffenburg, Wetzlar, Fulda, Hanau, and Frankfurt were combined'. Gazetteer: intersect(Grand Duchy of Würzburg 1807, {place: Frankfurt, km: 8}) = 0 cells.",
+     "fix": "Add a 1806 gain of Frankfurt (counterpart holy-roman-empire-minor-states or the free city, confidence 2, region {place: Frankfurt, km: 8}); add that cell to /keyframe_review/0 and /1 corrections and to the /ledger/2 region; rewrite the /ledger/2 note (only Hanau and Fulda are new in 1810, per the Regensburg page).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/2/correction, /keyframe_review/3/correction",
+     "what": "Non-blocking: shapes after the state's end (1811-1813) are given another state's shape as the correction; the text says 'this state no longer exists'.",
+     "why": "identity.end is 1810/5; the corrections point at Cliopatria's 'Grand Duchy of Würzburg' 1811/1812 shapes (the Grand Duchy of Frankfurt).",
+     "fix": "Keep verdict wrong; make the text say plainly that nothing is drawn under this slug after May 1810 and that the shape belongs to grand-duchy-of-frankfurt.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity",
+     "what is missing": "Area of the principality and Dalberg's reign years; the Regensburg page says Dalberg 'also acquired the newly created Principality of Aschaffenburg', which supports a separate Aschaffenburg dossier (electorate-of-mainz names it as successor).",
+     "page to try": "https://en.wikipedia.org/wiki/Karl_Theodor_Anton_Maria_von_Dalberg"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Regensburg",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Regensburg",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Grand_Duchy_of_Frankfurt",
+     "result": "date confirmed (16 Feb 1810); the note's claim that Frankfurt was not this state's is contradicted by the page"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Regensburg",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Regensburg",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 6178.6,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "no area on the Regensburg page; the Cliopatria shapes are Würzburg's land (bbox 9.27-10.44E, Regensburg at 12.1E is outside), marked wrong"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1806,
+    "type": "gain",
+    "counterpart": "Free Imperial City of Augsburg"
+   },
+   "mirror": {
+    "slug": "duchy-of-bavaria",
+    "year": 1805,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "No Augsburg dossier (author lists it); but duchy-of-bavaria /ledger/41 already gains Augsburg in Dec 1805: the transfer is recorded twice; keep one."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1806,
+    "type": "gain",
+    "counterpart": "austrian-empire"
+   },
+   "mirror": {
+    "slug": "duchy-of-bavaria",
+    "year": 1805,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Tyrol: austrian-empire not written yet (exception), but duchy-of-bavaria /ledger/40 gains Tyrol from habsburg-monarchy in Dec 1805 and this dossier gains it again on 11 Feb 1806, inside its own found region of 1806/1."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-prussia",
+    "year": 1806,
+    "type": "loss",
+    "counterpart": "kingdom-of-bavaria"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Prussia /ledger/32 (Ansbach, Feb 1806, confidence 3) has no gain in kingdom-of-bavaria; the land is inside Bavaria's found region. Bavaria should add the gain."
+  },
+  {
+   "event": {
+    "slug": "electorate-of-salzburg",
+    "year": 1805,
+    "type": "loss",
+    "counterpart": "kingdom-of-bavaria"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Salzburg /ledger/6 (Eichstätt and Passau parts, Dec 1805) names kingdom-of-bavaria, which starts 1806/1; the counterpart should be duchy-of-bavaria, which has no matching gain."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1809,
+    "type": "gain",
+    "counterpart": "austrian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Innviertel; austrian-empire not written yet (eu-20)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1810,
+    "type": "gain",
+    "counterpart": "austrian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Salzburg; austrian-empire not written yet."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1810,
+    "type": "gain",
+    "counterpart": "first-french-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Bayreuth; first-french-empire not written yet."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1810,
+    "type": "loss",
+    "counterpart": "italian-republic"
+   },
+   "mirror": {
+    "slug": "italian-republic",
+    "year": 1810,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "italian-republic /ledger/6 (10 June 1810, southern Tyrol up to Bolzano); Feb treaty vs June effect."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1810,
+    "type": "gain",
+    "counterpart": "principality-of-regensberg"
+   },
+   "mirror": {
+    "slug": "principality-of-regensberg",
+    "year": 1810,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Regensberg /ledger/3, 22 May 1810."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1814,
+    "type": "loss",
+    "counterpart": "austrian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Tyrol and Vorarlberg; austrian-empire not written yet."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1814,
+    "type": "gain",
+    "counterpart": "grand-duchy-of-wurzburg"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "grand-duchy-of-wurzburg not written yet (eu-20); note the swapped Cliopatria rows."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1814,
+    "type": "gain",
+    "counterpart": "grand-duchy-of-frankfurt"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed under counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1816,
+    "type": "loss",
+    "counterpart": "austrian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Salzburg, Innviertel; austrian-empire not written yet."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1816,
+    "type": "gain",
+    "counterpart": "austrian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Palatinate; austrian-empire not written yet."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1816,
+    "type": "gain",
+    "counterpart": "grand-duchy-of-hesse"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "grand-duchy-of-hesse not written yet; event is confidence 1."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1866,
+    "type": "loss",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1866,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Prussia /ledger/62."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-saxony",
+    "year": 1807,
+    "type": "gain",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1807,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Prussia /ledger/40 (Cottbus)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-saxony",
+    "year": 1813,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Prussia has no occupation of Saxony 1813-1815; route to the Prussia author (eu-09)."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-saxony",
+    "year": 1815,
+    "type": "loss",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1815,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Prussia /ledger/45."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-saxony",
+    "year": 1866,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Prussia has no 1866 occupation of Saxony."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wurttemberg",
+    "year": 1806,
+    "type": "gain",
+    "counterpart": "austrian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Austrian Swabia; austrian-empire not written yet."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wurttemberg",
+    "year": 1806,
+    "type": "gain",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "mirror": {
+    "slug": "holy-roman-empire-minor-states",
+    "year": 1806,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "HRE minor states /ledger/116."
+  },
+  {
+   "event": {
+    "slug": "kingdom-of-wurttemberg",
+    "year": 1866,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Prussia has no 1866 occupation of northern Württemberg."
+  },
+  {
+   "event": {
+    "slug": "principality-of-hohenzollern-sigmaringen",
+    "year": 1849,
+    "type": "occupation_start",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Prussia has no 1849 occupation; hohenzollern-hechingen dates it 6 Aug 1849."
+  },
+  {
+   "event": {
+    "slug": "principality-of-hohenzollern-sigmaringen",
+    "year": 1850,
+    "type": "loss",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": {
+    "slug": "kingdom-of-prussia",
+    "year": 1850,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Prussia /ledger/54."
+  },
+  {
+   "event": {
+    "slug": "principality-of-hohenzollern-sigmaringen",
+    "year": 1806,
+    "type": "keyframe overlap",
+    "counterpart": "principality-of-hohenzollern-hechingen"
+   },
+   "mirror": {
+    "slug": "principality-of-hohenzollern-hechingen",
+    "year": 1576,
+    "type": "keyframe"
+   },
+   "status": "mismatch",
+   "note": "Both dossiers claim the Hechingen cell (8.97E 48.35N) 1806-1849; Sigmaringen should subtract it."
+  },
+  {
+   "event": {
+    "slug": "principality-of-regensberg",
+    "year": 1803,
+    "type": "found",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "HRE minor states has no 1803 loss of the Regensburg territories to principality-of-regensberg."
+  },
+  {
+   "event": {
+    "slug": "electorate-of-mainz",
+    "year": 1803,
+    "type": "dissolve",
+    "counterpart": "principality-of-aschaffenburg"
+   },
+   "mirror": {
+    "slug": "principality-of-regensberg",
+    "year": 1803,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "Mainz gives the Aschaffenburg land to a principality-of-aschaffenburg (no dossier); Regensberg folds it in. The Regensburg page says Dalberg 'also acquired the newly created Principality of Aschaffenburg'."
+  },
+  {
+   "event": {
+    "slug": "principality-of-regensberg",
+    "year": 1810,
+    "type": "split",
+    "counterpart": "grand-duchy-of-frankfurt"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed under counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "principality-of-regensberg",
+    "year": 1810,
+    "type": "loss",
+    "counterpart": "kingdom-of-bavaria"
+   },
+   "mirror": {
+    "slug": "kingdom-of-bavaria",
+    "year": 1810,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Bavaria /ledger/9."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Bayreuth",
+   "kind": "place",
+   "used_in": "kingdom-of-bavaria"
+  },
+  {
+   "name": "Ansbach",
+   "kind": "place",
+   "used_in": "kingdom-of-bavaria"
+  },
+  {
+   "name": "Aschaffenburg",
+   "kind": "place",
+   "used_in": "kingdom-of-bavaria; principality-of-regensberg"
+  },
+  {
+   "name": "Wetzlar",
+   "kind": "place",
+   "used_in": "principality-of-regensberg"
+  },
+  {
+   "name": "Hanau",
+   "kind": "place",
+   "used_in": "principality-of-regensberg"
+  },
+  {
+   "name": "Heilbronn",
+   "kind": "place",
+   "used_in": "kingdom-of-wurttemberg"
+  },
+  {
+   "name": "Sigmaringen",
+   "kind": "place",
+   "used_in": "principality-of-hohenzollern-sigmaringen"
+  },
+  {
+   "name": "Hechingen",
+   "kind": "place",
+   "used_in": "principality-of-hohenzollern-sigmaringen"
+  },
+  {
+   "name": "Detmold",
+   "kind": "place",
+   "used_in": "principality-of-lippe"
+  },
+  {
+   "name": "Berchtesgaden",
+   "kind": "place",
+   "used_in": "kingdom-of-bavaria"
+  },
+  {
+   "name": "Lienz",
+   "kind": "place",
+   "used_in": "kingdom-of-bavaria"
+  },
+  {
+   "name": "Innviertel",
+   "kind": "region",
+   "used_in": "kingdom-of-bavaria"
+  },
+  {
+   "name": "Hausruckviertel",
+   "kind": "region",
+   "used_in": "kingdom-of-bavaria"
+  },
+  {
+   "name": "Lower Lusatia",
+   "kind": "region",
+   "used_in": "kingdom-of-saxony"
+  },
+  {
+   "name": "Upper Lusatia",
+   "kind": "region",
+   "used_in": "kingdom-of-saxony"
+  },
+  {
+   "name": "Principality of Bayreuth",
+   "kind": "region",
+   "used_in": "kingdom-of-bavaria"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Grand Duchy of Frankfurt",
+   "suggested_slug": "grand-duchy-of-frankfurt",
+   "years": [
+    1810,
+    1813
+   ]
+  },
+  {
+   "name": "Principality of Aschaffenburg",
+   "suggested_slug": "principality-of-aschaffenburg",
+   "years": [
+    1803,
+    1810
+   ]
+  },
+  {
+   "name": "Illyrian Provinces",
+   "suggested_slug": "illyrian-provinces",
+   "years": [
+    1809,
+    1813
+   ]
+  },
+  {
+   "name": "Free Imperial City of Augsburg",
+   "suggested_slug": "free-imperial-city-of-augsburg",
+   "years": [
+    1276,
+    1806
+   ]
+  },
+  {
+   "name": "Province of Hohenzollern (Prussian)",
+   "suggested_slug": "province-of-hohenzollern",
+   "years": [
+    1850,
+    1946
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-20-g.md",
+ "problems": [
+  "Cliopatria rows 'Principality of Regensberg' and 'Grand Duchy of Würzburg' carry each other's land (confirmed by bbox: the Regensberg shapes span 9.27-10.44E, 49.18-50.51N, i.e. Würzburg; Regensburg at 12.1E is outside). The eu-20 grand-duchy-of-wurzburg writer must take the 'Principality of Regensberg' polygons; worth adding to data/README.md.",
+  "Reviewer edited kingdom-of-bavaria.json in place (/ledger/8, /ledger/10, /ledger/13 regions and notes); validated with --resolve, 0 errors, read back.",
+  "kingdom-of-prussia (eu-09) lacks the occupations of Saxony 1813-1815 and 1866, of northern Württemberg 1866 and of Hohenzollern-Sigmaringen 1849-1850; holy-roman-empire-minor-states lacks the 1803 Regensburg loss; electorate-of-salzburg /ledger/6 names kingdom-of-bavaria for December 1805; duchy-of-bavaria and kingdom-of-bavaria both record the Tyrol and Augsburg gains (Dec 1805 and 1806).",
+  "No page failed to load. The austrian-empire, grand-duchy-of-wurzburg, first-french-empire, grand-duchy-of-hesse and german-empire counterparts have no dossier yet (eu-20 parts not run)."
+ ]
+}

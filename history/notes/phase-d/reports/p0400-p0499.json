@@ -1,0 +1,352 @@
+{
+ "window": "p0400-p0499",
+ "images": [
+  {
+   "year": 400,
+   "bbox": "world",
+   "seen": "Start looks sane: Western and Eastern Roman Empires, Sasanians, Gupta, Jin and the northern states in place; Oshara tradition (a Colorado block, from Cliopatria) is an archaeological tradition drawn as a state until 460."
+  },
+  {
+   "year": 409,
+   "bbox": "-12,34,30,56 (+Cliopatria)",
+   "seen": "Gaul is Constantine III's, Britain grey (British rebellion of 409), Alans and Maximus in Spain; matches the pages. Gap noted: no state holds Britain 410-438."
+  },
+  {
+   "year": 402,
+   "bbox": "95,20,135,50 (+Cliopatria)",
+   "seen": "Rouran huge but as Cliopatria; Northern Wei, Later Qin, Southern Yan, Cuan clan in order; contested Liaodong hatch is the Later Yan-Goguryeo war. Fine."
+  },
+  {
+   "year": 426,
+   "bbox": "-10,35,4,45 (+Cliopatria)",
+   "seen": "Alans gone after 418 leaves the Meseta and Lusitania unowned (Cliopatria has Alans there); WRE only in the north-east."
+  },
+  {
+   "year": 431,
+   "bbox": "-20,20,20,45",
+   "seen": "WRONG before patch: Vandals drawn over all of Morocco and Western Sahara (3,121 cells). Fixed by keyframe_overrides/2 (a coastal strip of 241 cells)."
+  },
+  {
+   "year": 432,
+   "bbox": "90,28,115,42 (+Cliopatria)",
+   "seen": "WRONG before patch: Tuyuhun a sliver in Gansu where Cliopatria has the whole Qinghai plateau. Fixed by keyframe_overrides/0-1."
+  },
+  {
+   "year": 445,
+   "bbox": "-10,35,4,45 (+Cliopatria)",
+   "seen": "Compiled equals Cliopatria; Meseta (Carthaginensis) still unowned, Suebi across Gallaecia, Lusitania and Baetica. Left, see issues."
+  },
+  {
+   "year": 455,
+   "bbox": "20,5,65,42",
+   "seen": "Near East, Arabia, Nubia, Aksum, Himyar fine; Kinda in the Najd from 450 as the packet says."
+  },
+  {
+   "year": 462,
+   "bbox": "60,22,130,55 (+Cliopatria)",
+   "seen": "Compiled map has three unowned holes inside Northern Wei: the Ordos (433 cells, 439-499), Henan (302 cells, 439-450) and a 109-cell disc at Jining (426-475). All fixed by keyframe_overrides/4-8."
+  },
+  {
+   "year": 489,
+   "bbox": "8,36,30,48 (Ostrogoths highlighted)",
+   "seen": "WRONG before patch: Ostrogoths still drawn in Moesia and Epirus in 489 beside the Italian campaign, in conflict with the Eastern Roman Empire. Fixed by events/0 and keyframe_overrides/9."
+  },
+  {
+   "year": 490,
+   "bbox": "45,18,95,48",
+   "seen": "Jump from 489: White Huns take Baluchistan, Makran and Sistan from Sasanians (3,522 cells); the Hephthalite page does not name these lands. Left, see issues."
+  },
+  {
+   "year": 499,
+   "bbox": "world",
+   "seen": "End state plausible: Rouran, Southern Qi, Northern Wei, White Huns, Alchon, Visigoths, Franks, Ostrogoth contest in Italy."
+  },
+  {
+   "year": 440,
+   "bbox": "90,28,122,44 (stage, after patch)",
+   "seen": "Tuyuhun full Qinghai shape, Ordos, Henan and Jining filled with Northern Wei."
+  },
+  {
+   "year": 431,
+   "bbox": "-12,28,12,42 (stage, after patch)",
+   "seen": "Vandals a thin coastal strip in Mauretania and Numidia, as the ledger intended."
+  }
+ ],
+ "issues": [
+  {
+   "what": "Tuyuhun drawn as the 173-cell delta for 426-438: the tuyuhun_426 correction was the 426 shape minus the 414 shape and was used as the whole keyframe (929 cells dropped at 426, 1,114 re-added at 439). Tuyuhun now keeps the 414 shape for 426-429 and the 426 shape for 430-438.",
+   "years": [
+    426,
+    438
+   ],
+   "slugs": [
+    "tuyuhun",
+    "western-qin"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/0, keyframe_overrides/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Western_Qin"
+   ]
+  },
+  {
+   "what": "Vandals drawn across all of modern Morocco including Western Sahara for 429-434 (the region 'Mauretania' is the modern country): 3,121 cells against the ledger's 241 Roman cells. Cut to the Western Roman Empire's 426 Mauretania and Numidia land, without Hippo Regius.",
+   "years": [
+    429,
+    434
+   ],
+   "slugs": [
+    "vandals",
+    "western-roman-empire",
+    "vandal-kingdom"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/2",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Vandal_Kingdom"
+   ]
+  },
+  {
+   "what": "Ostrogoths kept in Epirus and Moesia through 489 (the ostrogoths_480 keyframe ran to 489 and the 488 vassal_end events remove no land), in conflict with the Eastern Roman Empire (718 cell-years). Theodoric left in autumn 488.",
+   "years": [
+    488,
+    490
+   ],
+   "slugs": [
+    "ostrogoths",
+    "eastern-roman-empire"
+   ],
+   "decision": "patched",
+   "patch": "events/0, keyframe_overrides/9",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Theodoric_the_Great"
+   ]
+  },
+  {
+   "what": "Gaul belonged to nobody at the end of 407: western-roman-empire_407 removes Britain and Gaul but Constantine III's 407 keyframe held Britain only. Constantine's 407 keyframe now holds Britain and Gaul (the page has him cross at Bononia in 407; the end of 407 is not dated, so soft).",
+   "years": [
+    407,
+    407
+   ],
+   "slugs": [
+    "constantine-iii-usurper",
+    "western-roman-empire"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/3",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Constantine_III_(Western_Roman_emperor)"
+   ]
+  },
+  {
+   "what": "Northern Wei lost land it held at its own keyframes: the lands taken from Liu Song in 422-423 (Henan round Luoyang and Xuchang, the Jining disc) from 426, and the Ordos (Tongwancheng, taken 427) from 439. Henan unowned 439-450 (302 cells), Jining disc unowned 426-475 (109 cells), Ordos unowned 439-499 (433 cells). The Liu Song keyframes already cut the same discs, so nobody held them.",
+   "years": [
+    426,
+    499
+   ],
+   "slugs": [
+    "northern-wei",
+    "liu-song-dynasty",
+    "xia"
+   ],
+   "decision": "patched",
+   "patch": "keyframe_overrides/4, 5, 6, 7, 8",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Emperor_Taiwu_of_Northern_Wei",
+    "https://en.wikipedia.org/wiki/Xia_(Sixteen_Kingdoms)"
+   ]
+  },
+  {
+   "what": "Shandong (Qing and Ji Provinces) unowned for 468-475 (214 cells): the 468 gain event draws only a disc round Weifang and the 451 keyframe cuts all of Shandong. Wei annexed those provinces in spring 468.",
+   "years": [
+    468,
+    475
+   ],
+   "slugs": [
+    "northern-wei",
+    "liu-song-dynasty"
+   ],
+   "decision": "patched",
+   "patch": "events/1",
+   "pages": [
+    "https://en.wikipedia.org/wiki/Emperor_Ming_of_Liu_Song"
+   ]
+  },
+  {
+   "what": "White Huns 490 snap (+3,522 cells: Baluchistan 908, Balkan 330, Qyzylorda 278 and more) and Sasanian 490 snap (-2,367, incl. Baluchistan 908 and Hilmand 210): the Hephthalite page names Bactria, the Pamirs, the Turkmen deserts 'possibly Merv' and Herat, but not Nishapur, Sistan, Makran or Baluchistan, and says they 'never went beyond the Hindu-Kush'. The dossiers carry it at confidence 1 and flag it.",
+   "years": [
+    490,
+    512
+   ],
+   "slugs": [
+    "white-huns",
+    "sasanian-empire"
+   ],
+   "decision": "left: pages silent",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Hephthalite_Empire"
+   ]
+  },
+  {
+   "what": "Iberian Meseta (Carthaginensis) unowned about 418-457 (about 550 cells; Cliopatria's Alans end in 418 in the dossier and its Western Roman shapes of 426-455 omit the land). The Suebi page has Carthaginensis 'returned to Rome' by 455 and Tarraconensis Roman, but gives no borders or dates. A fix means adding Carthaginensis to about a dozen western-roman-empire keyframes (426, 429, 433, 435, 437, 439, 441, 443, 451, 452, 455) and was not attempted on pages that give no dates.",
+   "years": [
+    418,
+    457
+   ],
+   "slugs": [
+    "western-roman-empire",
+    "kingdom-of-the-suebi",
+    "alans"
+   ],
+   "decision": "dossier request",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/Kingdom_of_the_Suebi"
+   ]
+  },
+  {
+   "what": "Britain unowned from 409/410 to 438: the Britons expelled Constantine's officials (409 or 410) and Honorius told the cities to look to their own defence (410); the brythons dossier starts only in 439 with Cliopatria's 439 shape.",
+   "years": [
+    410,
+    438
+   ],
+   "slugs": [
+    "brythons"
+   ],
+   "decision": "dossier request",
+   "patch": null,
+   "pages": [
+    "https://en.wikipedia.org/wiki/End_of_Roman_rule_in_Britain"
+   ]
+  },
+  {
+   "what": "Size-rule conflicts of 300 cell-years or more: cuan-clan wins Yunnan against Western Jin, Liu Song and Southern Qi (Cuan held Yunnan); alemanni, traikutaka, buyeo, chouchi, northern-liang and champa win land their larger neighbours' shapes only nominally cover; northern-wei over Later Qin, Western Jin and Rouran reflects the frontier. No change needed; liu-song/northern-wei conflicts shrink with the Henan fix.",
+   "years": [
+    402,
+    497
+   ],
+   "slugs": [
+    "cuan-clan",
+    "alemanni",
+    "traikutaka-dynasty",
+    "buyeo",
+    "northern-wei"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Gupta, Alchon, Vakataka, Traikutaka and Maitraka lines of 470-496 (Punjab to Alchon 470, Rajasthan, Sind and Malwa 490, first Hunnic war 496): the dossiers date each step to a page; the picture matches.",
+   "years": [
+    470,
+    499
+   ],
+   "slugs": [
+    "gupta-empire",
+    "alchon-huns",
+    "vakataka-kingdom"
+   ],
+   "decision": "fine as drawn",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Unowned enclosed holes that come from Cliopatria's gaps and were not examined for want of pages: Karnataka (75.4E 12.9N, 184 cells), Tondaimandalam (79.0E 13.9N, 158 cells), eastern Sichuan (107.9E 30.1N, 341 cells in 405), Ardennes-Moselle (5.8E 49.3N, 288 cells 480-495), Gyeongsang (128.8E 36.3N, 92 cells in 495), Cantabria (117 cells). The North Caucasus gap (423 cells, 405-445) is unclaimed land between the Huns and Caucasia.",
+   "years": [
+    405,
+    495
+   ],
+   "slugs": [
+    "kadamba-empire",
+    "western-ganga-dynasty",
+    "late-pallava-empire",
+    "western-shu",
+    "silla"
+   ],
+   "decision": "left: not examined (page budget)",
+   "patch": null,
+   "pages": []
+  },
+  {
+   "what": "Oshara tradition (an archaeological tradition, not a state) is drawn as a 1,878-cell state in Colorado until 460.",
+   "years": [
+    400,
+    460
+   ],
+   "slugs": [
+    "oshara-tradition"
+   ],
+   "decision": "left: not examined (page budget)",
+   "patch": null,
+   "pages": []
+  }
+ ],
+ "patch_file": "history/data/patches/p0400-p0499.json",
+ "patch_entries": {
+  "events": 2,
+  "keyframe_overrides": 10,
+  "rulings": 0
+ },
+ "patch_check": "all applied (check-patch: 12 entries, 12 ok, 0 rejected; trial: all 12 applied, 0 skipped)",
+ "colour_clashes": [
+  {
+   "a": "tuyuhun",
+   "b": "chouchi",
+   "years": [
+    410,
+    476
+   ],
+   "note": "#6dd3c0 against #65d2d2, OKLab distance 0.027; they lie a few cells apart round Dangchang and Dengzhi in Gansu (not sharing an edge in the sampled years, so the packet lists none)."
+  },
+  {
+   "a": "kingdom-of-the-suebi",
+   "b": "constantine-iii-usurper",
+   "years": [
+    409,
+    411
+   ],
+   "note": "identical hex #736dc3; they touch only through Constantine's 408 Hispanic claim."
+  },
+  {
+   "a": "buyeo",
+   "b": "southern-yan",
+   "years": [
+    402,
+    410
+   ],
+   "note": "identical hex #a46e00 on the two sides of the Bohai; not adjacent."
+  },
+  {
+   "a": "northern-liang",
+   "b": "yueban",
+   "years": [
+    402,
+    439
+   ],
+   "note": "identical hex #ca933e, 3,000 km apart; not adjacent."
+  }
+ ],
+ "dossier_requests": [
+  {
+   "slug": "brythons",
+   "what": "Start the state (or add a sub-Roman Britain dossier) at 409/410, with Roman Britain as WRE 406 held it, instead of 439.",
+   "why": "Britain is unowned for 410-438 although the Romano-Britons governed themselves at city level from 410.",
+   "source": "https://en.wikipedia.org/wiki/End_of_Roman_rule_in_Britain"
+  },
+  {
+   "slug": "western-roman-empire",
+   "what": "Add Carthaginensis (the Iberian Meseta) to the keyframes 426-455 (about a dozen), or hold it by a new keyframe, until the Visigothic campaigns of 456-458.",
+   "why": "The Meseta is unowned for about 40 years; the Suebi page says Carthaginensis had been 'returned to Rome' by 455, with no dates.",
+   "source": "https://en.wikipedia.org/wiki/Kingdom_of_the_Suebi"
+  }
+ ],
+ "pages_opened": 10,
+ "problems": [
+  "northern-wei_476 override runs to 509 (into p0500-p0599) and affects its first ten years; the northern-wei_510 and northern-wei_523 keyframes (p0500-p0599) have the same missing Ordos (433 cells), which the agent of that window should add. After this patch the end anchor p0500 differs from the published one by 1,012 cells, mostly the Ordos.",
+  "The trial shows a new one-year conflict constantine-iii-usurper / western-roman-empire in 407 (2,444 cell-years, R2 settles it for Constantine): intended, the cells move in the same year; the western-roman-empire_407 snap shrinks from 2,486 removed to 192.",
+  "keyframe_overrides/1 adds a new keyframe tuyuhun_430 (430-438); keyframe_overrides/0 shortens tuyuhun_426 to 426-429.",
+  "No hierarchy row found wrong in this window (aulikara-dynasty of gupta-empire 410-489 at confidence 1 and cimmerian-bosporus of huns 372-454 were not checked against pages)."
+ ]
+}

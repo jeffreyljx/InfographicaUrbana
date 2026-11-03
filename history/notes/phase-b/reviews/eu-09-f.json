@@ -1,0 +1,814 @@
+{
+ "batch_id": "eu-09-f",
+ "verdicts": [
+  {
+   "slug": "swiss-confederation",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/27/correction",
+     "what": "The correction for Cliopatria's 1564 shape (valid 1564-1571) keeps the Savoyard lands of the Genevan basin (Haute-Savoie and Ain cells, about 2,300 km2), but /ledger/31 loses them to house-of-savoy in 1564; the keyframe contradicts the ledger for 1564-1571.",
+     "why": "Republic_of_Geneva page: 'only in the Treaty of Lausanne of 1564 did Savoy recover the lands around Geneva, while losing forever the Pays de Vaud to Bern.' The keyframe's own note says Bern holds them 'until the Treaty of Lausanne of 1564', yet the shape keeps them to 1571 (Cliopatria drops them in 1572). Brief 2.4: a correction must agree with the ledger.",
+     "fix": "Add the Genevan-basin intersect used in /ledger/31 ({intersect: [{cliopatria: Swiss Confederation, year: 1540}, {union: [Haute-Savoie, Ain]}]}) to the minus-union of keyframe 27's correction and say in text that Savoy recovered the lands around Geneva by the Treaty of Lausanne of 1564 (or, if the handover is to be dated later, add a new keyframe swiss-confederation_1565 for 1565-1571 without them, as was done for 1353).",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/keyframe_review/6 to /keyframe_review/13 (verdicts)",
+     "what": "Verdict ok on the 1363-1475 shapes, which by the author's own notes already hold Solothurn (from 1363) and Fribourg (from 1459), while /ledger/17 gains Fribourg and Solothurn only in 1481 at confidence 3; the land is shown Swiss 18 to 118 years before the ledger's gain and the 1363 and 1459 increases are unexplained for those cells.",
+     "why": "History_of_Switzerland accession list: '1481 - Fribourg, Solothurn'. Keyframe 6 note: '21 new cells (Bern, Lucerne, Obwalden, Solothurn)'; keyframe 11 note: '... plus Fribourg and more of Bern'. Rule 4 (associations are not territory) is applied to Valais, Graubunden and Geneva but silently not to these two Bernese allies.",
+     "fix": "Mark keyframes 6-13 adjust with corrections {minus: [{cliopatria: Swiss Confederation, year: Y}, {admin1: Solothurn}]} for 1363-1458 and minus Solothurn and Fribourg for 1459-1475 (keep any Bernese bailiwick cells), text quoting the 1481 accession; or explain in each note why those cells are Swiss before 1481 and lower /ledger/17 accordingly.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/38 and /ledger/40",
+     "what": "The dossier keeps the state alive but landless 1798-1815 and places a rename at 19 February 1803 (Act of Mediation) while leaving the 1803-1814 land with helvetic-republic, a state the cited page says was abolished that day; the August 1815 gain 'from helvetic-republic' is from a state that had not existed for twelve years.",
+     "why": "Helvetic_Republic page: 'On 19 February 1803, the Act of Mediation abolished the Helvetic Republic and restored the cantons.' Cliopatria's Helvetic Republic row has Mediation-era shapes helvetic-republic_1803 (1803-1805, 34,675 km2), _1806, _1811 and _1814. The author flagged the seam (notes, problems) but left the decision to eu-20.",
+     "fix": "Add a gain from helvetic-republic dated 1803-02 (source Helvetic_Republic, the sentence above) with region {cliopatria: Helvetic Republic, year: 1803} (minus any Valais, Geneva, Jura or Neuchatel cells, which were not in the Mediation), add new keyframes swiss-confederation_1803/_1806/_1811/_1814 from those shapes, and turn /ledger/40 into the 1814-15 gains of Valais, Neuchatel, Geneva and the Jura from their actual holders; tell eu-20 that helvetic-republic ends 19 February 1803. If the orchestrator instead rules that 1803-1814 stays with helvetic-republic, delete the landless 1803 rename and say so in notes.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/7/counterpart",
+     "what": "Counterpart was holy-roman-empire-minor-states; the Aargau was taken from the Habsburg dukes and house-of-habsburg's dossier already carries the 1415 loss to swiss-confederation.",
+     "why": "Old_Swiss_Confederacy page: 'In both cases, the Swiss profited from weakness in the Habsburg dukes' (Aargau 1415, Thurgau 1460); house-of-habsburg /ledger/13: 1415 loss, counterpart swiss-confederation.",
+     "fix": "Counterpart set to house-of-habsburg and the sentence added to the note (reviewer edit, validated).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/13/counterpart",
+     "what": "Counterpart was holy-roman-empire-minor-states; the Thurgau was taken from the Habsburgs and house-of-habsburg already carries the 1460 loss.",
+     "why": "Old_Swiss_Confederacy page, same sentence; house-of-habsburg /ledger/20: 1460 loss, counterpart swiss-confederation.",
+     "fix": "Counterpart set to house-of-habsburg and the sentence added to the note (reviewer edit, validated). The author's notes still list Aargau 1415 and Thurgau 1460 among the HRE minor states' loss sides; drop them there.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/42/region",
+     "what": "The 1816 gain from kingdom-of-sardinia names the whole canton of Geneva (admin1 Geneve), which hands the Sardinia dossier a loss of the whole canton; only the Savoyard parishes came from Sardinia, and the six French parishes came from France.",
+     "why": "Republic_of_Geneva page: 'Geneva's territory was extended to cover fifteen Savoyard and six French parishes'; the Treaty of Turin (16 March 1816) is the Savoyard cession. The 1815 keyframe already adds the full modern canton, a year early for these parishes.",
+     "fix": "Narrow the region to the Savoyard communes south and east of the city (e.g. a coordinate radius on Carouge, about 46.18 N 6.14 E, 8 km, clipped to Geneve) with text 'fifteen Savoyard parishes'; record the six French parishes (Versoix area) as a gain from bourbon-kingdom-of-france in 1815, or say in the note that they are inside the 1815 Geneva gain.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/43 and /keyframe_review/43",
+     "what": "Neuchatel is left outside the Confederation 1815-1847 although the dossier's own 1815 note quotes 'Valais, Neuchatel, and Geneva also joined Switzerland as new cantons' and Geneva is added on that ground; the treatment of the two new cantons is inconsistent.",
+     "why": "Principality_of_Neuchatel page: 'on 12 September 1814 obtained the Swiss Federal Diet's acceptance of Neuchatel as the twenty-first canton'; History_of_Switzerland: Valais, Neuchatel and Geneva 'joined Switzerland as new cantons'.",
+     "fix": "Either add Neuchatel to the 1815-1847 correction (canton of the Confederation, Prussian prince) and make the 1848 event a rename/caption with no land, or keep it out and say in keyframe 43's note why a member canton is drawn as Prussian; kingdom-of-prussia (eu-09) must mirror whichever is chosen.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/8/region",
+     "what": "The 1416 associate tint covers the whole canton of Valais, but the Sieben Zenden held only the upper Valais until November 1475; the lower Valais was Savoyard 1416-1475.",
+     "why": "The event's own note: 'the whole canton area is the associate from 1475' (Burgundian Wars page, Battle on the Planta); Old_Swiss_Confederacy: the Sieben Zenden 'Became a Zugewandter Ort in 1416'.",
+     "fix": "Region for 1416: Valais minus the lower Valais below the Morge (coordinate radius on Saint-Maurice/Martigny until a gazetteer 'Upper Valais' exists); add a 1475 event extending the tint to the lower Valais (counterpart county-of-savoy).",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/20/counterpart and /ledger/27/counterpart",
+     "what": "Bellinzona (1500) is gained from duchy-of-milan and the Ossola (November 1516) lost to duchy-of-milan, but kingdom-of-france holds the duchy of Milan from 6 October 1499 to 1512 and again from September 1515.",
+     "why": "kingdom-of-france /ledger/76 (1499 gain of Lombardy), /ledger/79 (1512 loss), /ledger/80 (1515 gain); Battle_of_Marignano page: 'Only the Ossola valley was passed back to Milan' after Francis I took Milan.",
+     "fix": "Use kingdom-of-france as counterpart for both (consistent with the dossier's own 1512 gains from France), or explain in the notes why duchy-of-milan is kept; the France dossier (eu-10) then needs the matching loss 1500 and gain 1516.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/6, /ledger/12, /ledger/21 (counterpart)",
+     "what": "Counterparts 'Appenzell', 'Schaffhausen' and 'Basel' are neither slugs nor listed in counterparts_needing_dossiers, so nothing will carry the other side.",
+     "why": "Brief 2.3: a counterpart without a dossier must be listed in counterparts_needing_dossiers; the report lists only three-leagues, sieben-zenden, republic-of-geneva, the Abbey of St. Gall and Neuchatel.",
+     "fix": "Point them to holy-roman-empire-minor-states (Cliopatria's holder of those cells) or list Appenzell, Schaffhausen and the city of Basel under counterparts_needing_dossiers.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/5",
+     "what is missing": "1395 cells near Aarau, Biel/Bienne and the Jura foot, confidence 1 (page silent); likely Sempach-war and Bernese acquisitions of 1386-1394.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Sempach"
+    },
+    {
+     "where": "/ledger/19",
+     "what is missing": "Blenio entering the shape in 1497, confidence 1; the Ticino page names no Blenio conquest.",
+     "page to try": "https://en.wikipedia.org/wiki/Blenio_District"
+    },
+    {
+     "where": "/ledger/23",
+     "what is missing": "Ossola taken by the Swiss in 1512, confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Ossola"
+    },
+    {
+     "where": "/ledger/32 and /identity/capitals/1",
+     "what is missing": "Diet seat 1712-1798 given as Zurich at confidence 1; the Diet is usually placed at Frauenfeld after 1712 (none of the opened pages says so; Old_Swiss_Confederacy says only that Zurich held the chair and Baden was the seat); 1815-1847 has no capital (rotating Vorort Zurich-Bern-Lucerne).",
+     "page to try": "https://en.wikipedia.org/wiki/Frauenfeld"
+    },
+    {
+     "where": "/ledger/35",
+     "what is missing": "End of the Valais association in 1798, confidence 1 (Helvetic_Republic page silent on the Valais).",
+     "page to try": "https://en.wikipedia.org/wiki/Canton_of_Valais"
+    },
+    {
+     "where": "/ledger/24 and /ledger/33",
+     "what is missing": "The Valtellina tint runs 1512-1797 without a break; History_of_Switzerland says the Leagues lost the Valtellina in 1623 and it became their dependency again only after a later treaty, so a vassal_end 1623 (or 1620) and a vassal_start at the recovery are missing.",
+     "page to try": "https://en.wikipedia.org/wiki/Valtellina"
+    },
+    {
+     "where": "/keyframe_review/14, 15, 16, 21, 22, 23",
+     "what is missing": "Undated cell changes of 1482, 1487, 1492, 1519, 1526 and 1529 (Sargans, Rheintal, Werdenberg, Jura, Tyrol/Vorarlberg fringe) kept as drawn: unverified, page budget.",
+     "page to try": "https://en.wikipedia.org/wiki/Canton_of_St._Gallen"
+    },
+    {
+     "where": "/ledger/30",
+     "what is missing": "Chablais, Ternier and Gaillard cells of the 1536-1564 Bernese occupation rest on the author's reading of Cliopatria; the page names only the Pays de Gex.",
+     "page to try": "https://en.wikipedia.org/wiki/Chablais"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/History_of_Switzerland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/History_of_Switzerland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/History_of_Switzerland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/History_of_Switzerland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Baden,_Switzerland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Baden,_Switzerland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Ticino",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Old_Swiss_Confederacy",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/19",
+     "page": "https://en.wikipedia.org/wiki/Ticino",
+     "result": "not on page (confidence 1; the note says page silent)"
+    },
+    {
+     "where": "/ledger/20",
+     "page": "https://en.wikipedia.org/wiki/Ticino",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/21",
+     "page": "https://en.wikipedia.org/wiki/History_of_Switzerland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Ticino",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Marignano",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/26",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Marignano",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/27",
+     "page": "https://en.wikipedia.org/wiki/Battle_of_Marignano",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/28",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Geneva",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/29",
+     "page": "https://en.wikipedia.org/wiki/Old_Swiss_Confederacy",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/31",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Geneva",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/32",
+     "page": "https://en.wikipedia.org/wiki/Tagsatzung",
+     "result": "not on page (confidence 1; the page gives no seat or year)"
+    },
+    {
+     "where": "/ledger/34",
+     "page": "https://en.wikipedia.org/wiki/Helvetic_Republic",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/37",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Geneva",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/38",
+     "page": "https://en.wikipedia.org/wiki/Helvetic_Republic",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/39",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Geneva",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/40",
+     "page": "https://en.wikipedia.org/wiki/History_of_Switzerland",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/42",
+     "page": "https://en.wikipedia.org/wiki/Republic_of_Geneva",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/43",
+     "page": "https://en.wikipedia.org/wiki/Principality_of_Neuch%C3%A2tel",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 41291,
+    "infobox_year": 2024,
+    "cliopatria_km2": 40677,
+    "ratio": 1.015,
+    "acknowledged": true,
+    "note": "Switzerland infobox gives 41,291 km2 with no year; compared with the 1950-2023 and 2024 shapes (40,677 km2); acknowledged in keyframe 59. Old_Swiss_Confederacy infobox has no area."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1332,
+    "type": "gain",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Lucerne: holy-roman-empire-minor-states (eu-09) has no dossier yet; the loss side is owed there."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1351,
+    "type": "gain",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Zurich: holy-roman-empire-minor-states (eu-09) has no dossier yet; the loss side is owed there."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1352,
+    "type": "gain",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Glarus, Zug: holy-roman-empire-minor-states (eu-09) has no dossier yet; the loss side is owed there."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1353,
+    "type": "gain",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Bern: holy-roman-empire-minor-states (eu-09) has no dossier yet; the loss side is owed there."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1395,
+    "type": "gain",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "border cells: holy-roman-empire-minor-states (eu-09) has no dossier yet; the loss side is owed there."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1481,
+    "type": "gain",
+    "counterpart": "holy-roman-empire-minor-states"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Fribourg, Solothurn: holy-roman-empire-minor-states (eu-09) has no dossier yet; the loss side is owed there."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1411,
+    "type": "gain",
+    "counterpart": "Appenzell"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Counterpart is free text and not in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1415,
+    "type": "gain",
+    "counterpart": "house-of-habsburg"
+   },
+   "mirror": {
+    "slug": "house-of-habsburg",
+    "year": 1415,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Counterpart corrected by the reviewer from holy-roman-empire-minor-states; house-of-habsburg /ledger/13."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1416,
+    "type": "vassal_start",
+    "counterpart": "sieben-zenden"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers (eu-09-x)."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1440,
+    "type": "gain",
+    "counterpart": "duchy-of-milan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "duchy-of-milan (eu-13) not written yet."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1454,
+    "type": "gain",
+    "counterpart": "Imperial Abbey of St. Gall"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers as imperial-abbey-of-st-gall."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1454,
+    "type": "gain",
+    "counterpart": "Schaffhausen"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Counterpart is free text and not in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1460,
+    "type": "gain",
+    "counterpart": "house-of-habsburg"
+   },
+   "mirror": {
+    "slug": "house-of-habsburg",
+    "year": 1460,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Counterpart corrected by the reviewer; house-of-habsburg /ledger/20 (confidence 2)."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1476,
+    "type": "gain",
+    "counterpart": "county-of-savoy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "county-of-savoy (eu-13) not written yet; Grandson and Echallens were Chalon (Burgundian) lordships, so duchy-of-burgundy (eu-10) may be the truer counterpart."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1497,
+    "type": "vassal_start",
+    "counterpart": "three-leagues"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers (eu-09-x)."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1497,
+    "type": "gain",
+    "counterpart": "duchy-of-milan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Blenio; duchy-of-milan (eu-13) not written yet."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1500,
+    "type": "gain",
+    "counterpart": "duchy-of-milan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "duchy-of-milan not written yet, but kingdom-of-france holds Milan from 6 October 1499 (its /ledger/76); counterpart should probably be kingdom-of-france."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1501,
+    "type": "gain",
+    "counterpart": "Basel"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Counterpart is free text and not in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1512,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1512,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "France /ledger/79 loses Lombardy to duchy-of-milan in 1512; it has no loss of the Ticino bailiwicks to swiss-confederation (route to eu-10)."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1512,
+    "type": "gain",
+    "counterpart": "kingdom-of-france"
+   },
+   "mirror": {
+    "slug": "kingdom-of-france",
+    "year": 1512,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Ossola: same as above; France has no loss of the Ossola to the Swiss."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1512,
+    "type": "vassal_start",
+    "counterpart": "three-leagues"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Valtellina; three-leagues listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1513,
+    "type": "vassal_start",
+    "counterpart": "duchy-of-milan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "duchy-of-milan (eu-13) not written yet; consistent with France /ledger/79."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1515,
+    "type": "vassal_end",
+    "counterpart": "duchy-of-milan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "duchy-of-milan not written yet; consistent with France /ledger/80 (gain of Milan, September 1515)."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1516,
+    "type": "loss",
+    "counterpart": "duchy-of-milan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "duchy-of-milan not written yet, but Milan is French from September 1515 per kingdom-of-france /ledger/80; counterpart should probably be kingdom-of-france, which then needs a 1516 gain of the Ossola."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1526,
+    "type": "vassal_start",
+    "counterpart": "republic-of-geneva"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers (eu-09-x)."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1536,
+    "type": "gain",
+    "counterpart": "county-of-savoy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Vaud; county-of-savoy (eu-13) not written yet."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1536,
+    "type": "gain",
+    "counterpart": "county-of-savoy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Genevan basin and Pays de Gex; county-of-savoy not written yet."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1564,
+    "type": "loss",
+    "counterpart": "house-of-savoy"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "house-of-savoy (eu-13) not written yet; Cliopatria house-of-savoy row starts 1564."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1797,
+    "type": "vassal_end",
+    "counterpart": "three-leagues"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1798,
+    "type": "loss",
+    "counterpart": "helvetic-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "helvetic-republic (eu-20) not written yet; its Cliopatria row starts 1799 and must start 1798 to own the land."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1798,
+    "type": "vassal_end",
+    "counterpart": "sieben-zenden"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1798,
+    "type": "vassal_end",
+    "counterpart": "three-leagues"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1798,
+    "type": "vassal_end",
+    "counterpart": "republic-of-geneva"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1815,
+    "type": "gain",
+    "counterpart": "republic-of-geneva"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Listed in counterparts_needing_dossiers."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1815,
+    "type": "gain",
+    "counterpart": "helvetic-republic"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "helvetic-republic (eu-20) not written yet; the Helvetic Republic was abolished on 19 February 1803, so the 1803-1814 land should pass to this dossier in 1803 (see fixes)."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1816,
+    "type": "gain",
+    "counterpart": "kingdom-of-sardinia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-sardinia (eu-13) not written yet; region overclaims the whole canton (see fixes)."
+  },
+  {
+   "event": {
+    "slug": "swiss-confederation",
+    "year": 1848,
+    "type": "gain",
+    "counterpart": "kingdom-of-prussia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "kingdom-of-prussia (eu-09) not written yet; Neuchatel was a canton from 1814 (see fixes)."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Grandson",
+   "kind": "place",
+   "used_in": "swiss-confederation"
+  },
+  {
+   "name": "Echallens",
+   "kind": "place",
+   "used_in": "swiss-confederation"
+  },
+  {
+   "name": "Airolo",
+   "kind": "place",
+   "used_in": "swiss-confederation"
+  },
+  {
+   "name": "Leventina",
+   "kind": "region",
+   "used_in": "swiss-confederation"
+  },
+  {
+   "name": "Blenio",
+   "kind": "region",
+   "used_in": "swiss-confederation"
+  },
+  {
+   "name": "Valtellina",
+   "kind": "region",
+   "used_in": "swiss-confederation"
+  },
+  {
+   "name": "Chiavenna",
+   "kind": "region",
+   "used_in": "swiss-confederation"
+  },
+  {
+   "name": "Bormio",
+   "kind": "region",
+   "used_in": "swiss-confederation"
+  },
+  {
+   "name": "Ossola",
+   "kind": "region",
+   "used_in": "swiss-confederation"
+  },
+  {
+   "name": "Toggenburg",
+   "kind": "region",
+   "used_in": "swiss-confederation"
+  },
+  {
+   "name": "Chablais",
+   "kind": "region",
+   "used_in": "swiss-confederation"
+  },
+  {
+   "name": "Pays de Gex",
+   "kind": "region",
+   "used_in": "swiss-confederation"
+  },
+  {
+   "name": "Upper Valais",
+   "kind": "region",
+   "used_in": "swiss-confederation"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Three Leagues (Graubunden)",
+   "suggested_slug": "three-leagues",
+   "years": [
+    1367,
+    1799
+   ]
+  },
+  {
+   "name": "Sieben Zenden (Valais)",
+   "suggested_slug": "sieben-zenden",
+   "years": [
+    1416,
+    1798
+   ]
+  },
+  {
+   "name": "Republic of Geneva",
+   "suggested_slug": "republic-of-geneva",
+   "years": [
+    1536,
+    1815
+   ]
+  },
+  {
+   "name": "Imperial Abbey of St. Gall",
+   "suggested_slug": "imperial-abbey-of-st-gall",
+   "years": [
+    1451,
+    1798
+   ]
+  },
+  {
+   "name": "Principality of Neuchatel",
+   "suggested_slug": "principality-of-neuchatel",
+   "years": [
+    1707,
+    1848
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-09-f.md",
+ "problems": [
+  "Of the 40 context polities in the author's brief only kingdom-of-france, house-of-habsburg and united-states-of-america have dossiers; all other counterparts (holy-roman-empire-minor-states, duchy-of-milan, county-of-savoy, house-of-savoy, kingdom-of-sardinia, kingdom-of-prussia, helvetic-republic) belong to groups that have not run, so their mirrors are exceptions, not mismatches.",
+  "Reviewer applied two counterpart edits to history/polities/swiss-confederation.json (/ledger/7 and /ledger/13 -> house-of-habsburg); the file re-validated (0 errors, the same 9 warnings) and the edit was read back after 10 s.",
+  "Seam for the orchestrator: helvetic-republic (eu-20) must run 12 April 1798 to 19 February 1803 for this dossier's 1798 loss and the proposed 1803 gain to meet; Cliopatria's helvetic-republic_1803/_1806/_1811/_1814 shapes are Mediation-era Swiss Confederation land.",
+  "WebFetch returns model summaries, so quotations were checked by asking for exact sentences; Republic_of_Geneva first returned 'In 1525 they secured an alliance' and only on a second, targeted request the February 1526 ratification sentence the note quotes."
+ ]
+}

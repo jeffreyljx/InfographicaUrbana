@@ -1,0 +1,850 @@
+{
+ "batch_id": "af-08-d",
+ "verdicts": [
+  {
+   "slug": "british-africa",
+   "verdict": "thin",
+   "summary": "Validates (0 errors). Every confidence-3 event I opened (12) says what its note claims. Five events were wrong or undated at confidence 1 and I corrected them on pages I opened: Italian Somaliland's British administration ends 1 April 1950, not 1960; the Libya occupation starts February 1943, not 1944, and leaves out the French Fezzan (2,015 cells); Eritrea ends 15 September 1952; Ethiopia ends 31 January 1942. What remains is thin by design under the 14-page budget: the south-eastern Libya block (1,837 cells, 1905-1929, then 280 cells to 1935) has no event; five confidence-1 events (found, Botswana 1890, Matabeleland 1894, Swaziland 1908, dissolve); and the Ogaden and Haud (British until 1948/1955 according to the ethiopia dossier) are released in 1942. Cross-dossier mismatches are mostly counterpart-slug disagreements, because other dossiers write british-colonial-empire or british-south-africa-company where this one writes british-africa.",
+   "fixes": [
+    {
+     "where": "/ledger/48 (was /ledger/51)",
+     "what": "Italian Somaliland occupation_end dated 1960 at confidence 1; the British administration ended on 1 April 1950, so 637k km2 was hatched British for ten years too long.",
+     "why": "Trust Territory of Somaliland: 'The British continued to administer the area until 1 April 1950' (infobox 'Established: 1 April 1950'); British Somaliland page: in 1960 it 'united with the Trust Territory of Somalia'.",
+     "fix": "year 1950, month 4, confidence 3, source Trust_Territory_of_Somaliland (added to sources[]), ledger re-sorted.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/47",
+     "what": "Libya occupation_start dated 1944 at confidence 1 and drawn over the whole of Libya, Fezzan included, which was French-administered.",
+     "why": "British Military Administration (Libya): 'By February 1943, the last German and Italian soldiers were driven from Libya and the Allied occupation of Libya began' (infobox 13 May 1943); 'while the French controlled Fezzan'. Libya minus Fezzan resolves to 3,424 cells, matching Cliopatria's 3,427.",
+     "fix": "year 1943, month 2, confidence 2 (text and infobox disagree), region {minus: [Libya, region Fezzan]}, source British_Military_Administration_(Libya) (added).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/49 (was /ledger/48)",
+     "what": "Libya occupation_end region was the whole of Libya; it must release the same land the start event took.",
+     "why": "As above: Fezzan was French-administered.",
+     "fix": "region {minus: [Libya, region Fezzan]}; year, month and source unchanged.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/50 (was /ledger/49)",
+     "what": "Eritrea occupation_end was undated at confidence 1.",
+     "why": "Federation of Ethiopia and Eritrea: 'Eritrea formally became a constituent state of the federation of Ethiopia and Eritrea on 15 September 1952'; the BMA was placed over Eritrea 'in April 1941'. The mirror ethiopia /ledger/5 has 1952-09.",
+     "fix": "month 9, confidence 3, source Federation_of_Ethiopia_and_Eritrea (added).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/46",
+     "what": "Ethiopia occupation_end was undated at confidence 1.",
+     "why": "Ogaden War: 'On 31 January 1942, Ethiopia and the United Kingdom signed the second \"Anglo-Ethiopian Agreement\"' 'ending British military occupation in most of Ethiopia except Ogaden'. The mirror ethiopia /ledger/3 has 1942-01.",
+     "fix": "month 1, confidence 2 (the region still releases the Ogaden), source Ogaden_War (added).",
+     "applied": true
+    },
+    {
+     "where": "/ledger/46 and a new event",
+     "what": "The Ogaden and the Haud stayed under British military administration after January 1942, but the dossier releases them with the rest of Ethiopia; the ethiopia dossier has the mirror (/ledger/2 occupation_start 1941, /ledger/4 occupation_end 1948, counterpart british-africa).",
+     "why": "Ogaden War: 'except Ogaden'; 'the British gave the Haud and the Ogaden to Ethiopia' (1948); 'The last remaining British controlled parts of the region were transferred to Ethiopia in 1955.'",
+     "fix": "Make /ledger/46 {minus: [Ethiopia, union(region Ogaden, region Haud)]} (confidence 3 once it does), and add a 1948 occupation_end of the Ogaden and Haud (counterpart italian-africa or ethiopia, as ethiopia /ledger/4), with the 1955 remainder if a page dates it. Not applied: it adds an event.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/36",
+     "what": "Kigoma 1921-03 is a gain from belgian-congo, but belgian-congo /ledger/6 records an occupation_end (counterpart german-africa), not a loss; the rest of Tanganyika stays an occupation until the mandate of 20 July 1922.",
+     "why": "Tanganyika Territory: 'On 22 March 1921 Belgium ceded the Kigoma District to Tanganyika'; 'From 20 July 1922, it was formalised into a League of Nations mandate'.",
+     "fix": "Make /ledger/36 an occupation_start (counterpart german-africa), and widen /ledger/38 and /ledger/39 (1922-07) from 'Tanzania minus Kigoma' to all of Tanzania. Otherwise belgian-congo needs a 1921-03 loss to british-africa.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/11, /ledger/12",
+     "what": "The Nile valley is lost by mahdist-state at Dongola (1896-09), Abu Hamed (1897-08) and Omdurman (1898-09), all with counterpart british-africa, but this dossier gains nothing until the condominium (1899-06). Between contest_end 1898 and June 1899, the conquered valley belongs to neither side.",
+     "why": "mahdist-state /ledger/14-16; Anglo-Egyptian Sudan: 'Kitchener led military campaigns from 1896 to 1898' (no dates for Dongola or Abu Hamed on that page).",
+     "fix": "Add gains of Dongola (1896-09), Abu Hamed (1897-08) and Omdurman/Khartoum (1898-09) from mahdist-state using that dossier's pages, or move the River Nile, Northern and Khartoum gain to 1898-09 at contest_end.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/33",
+     "what": "Darfur gain has no month and no contest events, although the dossier lists the war 'Anglo-Egyptian invasion of Darfur' with a zone; sultanate-of-darfur has a 1916 contest_start, a 1916-11 contest_end and a 1916-11 dissolve with counterpart british-africa.",
+     "why": "sultanate-of-darfur /ledger/11-13 (Ali_Dinar page); Anglo-Egyptian Sudan gives only the year 1916.",
+     "fix": "Add month 11 and a contest_start/contest_end pair over Darfur, once a page dates them (Ali_Dinar).",
+     "applied": false
+    },
+    {
+     "where": "/notes",
+     "what": "The notes do not say that Nigeria, the Gold Coast, British Togoland, British Cameroons and Zanzibar lie outside this Cliopatria row (they are in no british-africa shape: the 1960 shape has no Nigeria, Ghana, Cameroon or Togo cells), so a reader may take 'British Africa' to be the whole empire in Africa.",
+     "why": "Cell composition of british-africa_1920 and british-africa_1960 (gazetteer): no Nigeria, Ghana, Cameroon or Togo cells.",
+     "fix": "One sentence in notes naming the rows that hold them (british-gold-coast, federal-republic-of-nigeria, sultanate-of-zanzibar, and so on).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/5 to /keyframe_review/19",
+     "what is missing": "The 1,837-cell south-eastern Libya block (16.4-25.0 E, 19.7-29.8 N, Kufra and the Libyan Desert), British from 1905 to 1929 with no event; probably the British sphere east of the 1899 Anglo-French line or Egypt's undefined western frontier, ended by the 1925 Italo-Egyptian frontier (Jaghbub) and the Italian occupation of Kufra (1931).",
+     "page to try": "https://en.wikipedia.org/wiki/Egypt%E2%80%93Libya_border"
+    },
+    {
+     "where": "/keyframe_review/20, /keyframe_review/21",
+     "what is missing": "The 280 Libya cells of 1932-1935 (19.5-25.0 E, 19.7-21.9 N) are likely the Sarra Triangle, ceded by Britain to Italy in 1934; no event.",
+     "page to try": "https://en.wikipedia.org/wiki/Sarra_Triangle"
+    },
+    {
+     "where": "/ledger/23",
+     "what is missing": "Swaziland 1908 gain at confidence 1 (source Second Boer War, which is silent); the swaziland dossier has vassal_start 1903 (counterpart british-colonial-empire). Date the British protectorate or High Commission territory (1903/1906) and settle gain against vassal_start with that dossier.",
+     "page to try": "https://en.wikipedia.org/wiki/Eswatini"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "Botswana 1890 gain (the northern Bechuanaland Protectorate) at confidence 1.",
+     "page to try": "https://en.wikipedia.org/wiki/Bechuanaland_Protectorate"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "Matabeleland 1894 at confidence 1, the year taken from the ndebele-kingdom dossier (loss 1894-01 after the First Matabele War, 1893-10 to 1894-01). It needs a month and the contest pair.",
+     "page to try": "https://en.wikipedia.org/wiki/First_Matabele_War"
+    },
+    {
+     "where": "/ledger/0, /ledger/52",
+     "what is missing": "Found and dissolve are Cliopatria bridges at confidence 1 (inherent in a composite row; acceptable).",
+     "page to try": "https://en.wikipedia.org/wiki/British_Empire"
+    },
+    {
+     "where": "/ledger/32",
+     "what is missing": "The 1916 occupation gives all of Tanzania except Kigoma to Britain, although Belgian troops held Tabora (19 September 1916) and by 1917 'occupied one-third of German East Africa' (Belgian Congo page). The Anglo-Belgian occupation line of 1916-1917 is not drawn.",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Tabora"
+    },
+    {
+     "where": "(no event) mirror of republic-of-liberia /ledger/6 and /ledger/8",
+     "what is missing": "Republic of Liberia records the Parrot's Beak as a 1903-06 gain from british-africa and a 1911-01 loss to it (the January 1911 exchange also moved land the other way); this dossier has neither.",
+     "page to try": "https://en.wikipedia.org/wiki/Liberia%E2%80%93Sierra_Leone_border"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Anglo-Egyptian_Sudan",
+     "result": "confirmed ('Established: 19 June 1899'; 'an agreement was reached in 1899 establishing Anglo-Egyptian rule (a condominium)')"
+    },
+    {
+     "where": "/ledger/33",
+     "page": "https://en.wikipedia.org/wiki/Anglo-Egyptian_Sudan",
+     "result": "confirmed ('the British invaded and incorporated Darfur into the Anglo-Egyptian Sudan in 1916')"
+    },
+    {
+     "where": "/ledger/51 (was /ledger/50)",
+     "page": "https://en.wikipedia.org/wiki/Anglo-Egyptian_Sudan",
+     "result": "confirmed ('On 1 January 1956, Egyptian and British sovereignty over Sudan duly ended')"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Anglo-Egyptian_Sudan",
+     "result": "confirmed ('Kitchener led military campaigns from 1896 to 1898')"
+    },
+    {
+     "where": "/ledger/36",
+     "page": "https://en.wikipedia.org/wiki/Tanganyika_Territory",
+     "result": "confirmed ('On 22 March 1921 Belgium ceded the Kigoma District to Tanganyika')"
+    },
+    {
+     "where": "/ledger/39",
+     "page": "https://en.wikipedia.org/wiki/Tanganyika_Territory",
+     "result": "confirmed ('From 20 July 1922, it was formalised into a League of Nations mandate under British rule')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/British_Somaliland",
+     "result": "confirmed ('Not until 1888 could the British establish the British Somaliland Protectorate'; the 1884 infobox status is acknowledged in the note)"
+    },
+    {
+     "where": "/ledger/41, /ledger/45, /ledger/53",
+     "page": "https://en.wikipedia.org/wiki/British_Somaliland",
+     "result": "confirmed (3 August 1940; 8 April 1941, the body's 'March 1941' acknowledged; 26 June 1960)"
+    },
+    {
+     "where": "/ledger/40",
+     "page": "https://en.wikipedia.org/wiki/Union_of_South_Africa",
+     "result": "confirmed ('The Statute of Westminster passed by the British Parliament in December 1931'; infobox 'Sovereign state (1931–1961)')"
+    },
+    {
+     "where": "/ledger/24",
+     "page": "https://en.wikipedia.org/wiki/Union_of_South_Africa",
+     "result": "confirmed ('It came into existence on 31 May 1910 with the unification of the Cape, Natal, Transvaal, and Orange River colonies')"
+    },
+    {
+     "where": "/ledger/48 (was /ledger/51)",
+     "page": "https://en.wikipedia.org/wiki/Trust_Territory_of_Somaliland",
+     "result": "mis-dated (confidence 1): 1 April 1950, not 1960; fixed by the reviewer"
+    },
+    {
+     "where": "/ledger/47",
+     "page": "https://en.wikipedia.org/wiki/British_Military_Administration_(Libya)",
+     "result": "mis-dated (confidence 1): February 1943, not 1944, and Fezzan was French; fixed by the reviewer"
+    },
+    {
+     "where": "/ledger/50 (was /ledger/49)",
+     "page": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea",
+     "result": "confirmed year; month 9 added by the reviewer"
+    },
+    {
+     "where": "/ledger/46",
+     "page": "https://en.wikipedia.org/wiki/Ogaden_War",
+     "result": "confirmed year; month 1 added; region overstated (Ogaden excepted)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 10095566,
+    "infobox_year": 1921,
+    "cliopatria_km2": 10066724,
+    "ratio": 1.0,
+    "acknowledged": true,
+    "note": "No infobox (Scramble for Africa). The text gives 'by 1921, the British had control approximately 33.23% of Africa, or 3,897,920 mi2'; compared with british-africa_1920 (1920-1921). Sub-checks: Anglo-Egyptian Sudan infobox 1951 2,505,800 km2 against 2.31 M km2 on the grid (author's 0.92, keyframe 29); British Somaliland infobox 1904 137,270 km2 against about 799 cells. No factor of two."
+   }
+  },
+  {
+   "slug": "belgian-congo",
+   "verdict": "pass",
+   "summary": "Validates (0 errors, 0 warnings). Years are in order and inside the life (1908-11 to 1962-07); found and dissolve sit at start and end; contest and occupation pairs close. The 1890-1898 shapes are marked wrong in favour of congo-free-state, which has its own keyframes (congo-free-state_1885, _1895) and the mirror dissolve (1908-11). Every event I opened (8 of 14) is confirmed with its year and month. The area matches (ratio 1.01). Ruanda-Urundi is treated as part of the colony from 1922 although the Belgian Congo page says 'These areas did not become part of the Belgian Congo'; the notes argue this from the 1 March 1926 administrative merger and ask for a separate ruanda-urundi dossier, which I accept as a declared judgement. The Kigoma cross-check mismatch is assigned to british-africa. I could not break it.",
+   "fixes": [],
+   "thin": [
+    {
+     "where": "/ledger/2, /keyframe_review/6",
+     "what is missing": "The Belgian occupation zone in German East Africa beyond Kigoma (Tabora taken on 19 September 1916; 'occupied one-third of German East Africa' in 1917, Belgian Congo page) has no occupation events; it is noted in keyframe 6 and the page budget is spent (5 of 5).",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Tabora"
+    },
+    {
+     "where": "/keyframe_review/4",
+     "what is missing": "The 1911-1915 shape carries 163 Republic-of-the-Congo cells (the author counts 133); they are removed on an area comparison alone. A page on the Congo-French Equatorial Africa frontier would confirm it.",
+     "page to try": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo%E2%80%93Republic_of_the_Congo_border"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Belgian_Congo",
+     "result": "confirmed ('on 15 November 1908 the Belgian Congo became a colony of the Belgian Kingdom')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Ruanda-Urundi",
+     "result": "confirmed (infobox 'Belgian occupation: 6 May 1916'; 'Ruanda was occupied over April–May and Urundi in June 1916')"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Ruanda-Urundi",
+     "result": "confirmed ('awarded Ruanda-Urundi to Belgium as a B-Class Mandate on 20 July 1922')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Tanganyika_Territory",
+     "result": "confirmed ('On 22 March 1921 Belgium ceded the Kigoma District to Tanganyika')"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Belgian_Congo",
+     "result": "confirmed (infobox 'Independence declared: 30 June 1960')"
+    },
+    {
+     "where": "/ledger/11, /ledger/12, /ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Ruanda-Urundi",
+     "result": "confirmed ('Ruanda-Urundi became independent on 1 July 1962')"
+    },
+    {
+     "where": "/ledger/9, /identity/capitals",
+     "page": "https://en.wikipedia.org/wiki/Belgian_Congo",
+     "result": "confirmed (infobox 'Boma (1908–1923) Léopoldville (1923–1960)')"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2344000,
+    "infobox_year": 1908,
+    "cliopatria_km2": 2358485,
+    "ratio": 1.01,
+    "acknowledged": true,
+    "note": "No infobox area; the body's 2,344,000 km2 is the Free State's grant, which equals the colony's extent. Compared with belgian-congo_1922 (Congo plus Ruanda-Urundi; the Congo alone is 8,141 cells). Acknowledged in keyframes 3-4."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1885,
+    "type": "found",
+    "counterpart": "british-cape-colony"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "british-cape-colony runs to 1910-05 and has no 1885 loss; the composite row overlaps the Cape (flagged by the author under overlaps)."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1885,
+    "type": "vassal_start",
+    "counterpart": "khedivate-of-egypt"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "khedivate-of-egypt (Cliopatria 1866-1884, groups me-10/af-01) not written; extension to 1914 requested in counterparts_needing_dossiers. The British occupation began in 1882, before this dossier starts."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1888,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1890,
+    "type": "gain",
+    "counterpart": "ndebele-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "ndebele-kingdom has no 1890 loss of Mashonaland; it loses only Matabeleland, in 1894-01, to british-south-africa-company."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1890,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody (northern Bechuanaland)"
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1891,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart nobody (Nyasaland)"
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1894,
+    "type": "gain",
+    "counterpart": "ndebele-kingdom"
+   },
+   "mirror": {
+    "slug": "ndebele-kingdom",
+    "year": 1894,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Year matches (ndebele 1894-01) but the counterpart is british-south-africa-company there, which has no dossier; ndebele also has the 1893-10 to 1894-01 contest, which british-africa lacks."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1894,
+    "type": "gain",
+    "counterpart": "kingdom-of-buganda"
+   },
+   "mirror": {
+    "slug": "kingdom-of-buganda",
+    "year": 1894,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "1894-06 on both sides; buganda names british-colonial-empire as counterpart and successor."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1895,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "lozi-kingdom",
+    "year": 1899,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "lozi-kingdom loses its outer lands in 1899 to british-south-africa-company; british-africa gains Zambia minus Western Province in 1895 from nobody. Four years apart, different counterparts."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1895,
+    "type": "gain",
+    "counterpart": "imperial-british-east-africa-company"
+   },
+   "mirror": {
+    "slug": "imperial-british-east-africa-company",
+    "year": 1895,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "The year matches; the IBEAC dissolve names british-colonial-empire."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1896,
+    "type": "contest_start",
+    "counterpart": "mahdist-state"
+   },
+   "mirror": {
+    "slug": "mahdist-state",
+    "year": 1896,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "mahdist 1896-06; zones differ (Dongola-Berber against River Nile/Northern/Khartoum) but overlap."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1899,
+    "type": "gain",
+    "counterpart": "mahdist-state"
+   },
+   "mirror": {
+    "slug": "mahdist-state",
+    "year": 1898,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "mahdist-state loses Dongola 1896-09, Abu Hamed 1897-08 and Omdurman 1898-09 to british-africa; british-africa gains only at 1899-06. Dongola and Abu Hamed are more than a year apart. mahdist-state dissolves 1899-11 to anglo-egyptian-sudan (no dossier)."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1900,
+    "type": "occupation_start",
+    "counterpart": "free-orange-state"
+   },
+   "mirror": {
+    "slug": "free-orange-state",
+    "year": 1900,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "1900-03 on both sides; free-orange-state names british-colonial-empire."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1900,
+    "type": "occupation_start",
+    "counterpart": "south-african-republic"
+   },
+   "mirror": {
+    "slug": "south-african-republic",
+    "year": 1900,
+    "type": "occupation_start"
+   },
+   "status": "mismatch",
+   "note": "1900-06 on both sides; south-african-republic names british-colonial-empire."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1902,
+    "type": "gain",
+    "counterpart": "free-orange-state"
+   },
+   "mirror": {
+    "slug": "free-orange-state",
+    "year": 1902,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "free-orange-state dissolves 1902-05 with counterpart None, and orange-river-colony (founded 1902-05 from free-orange-state, dissolved 1910-05) holds the same land: double ownership 1902-1910 (overlap flagged by the author)."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1902,
+    "type": "gain",
+    "counterpart": "south-african-republic"
+   },
+   "mirror": {
+    "slug": "south-african-republic",
+    "year": 1902,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "As above, with transvaal-colony (1902-05 to 1910-05)."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1908,
+    "type": "gain",
+    "counterpart": "swaziland"
+   },
+   "mirror": {
+    "slug": "swaziland",
+    "year": 1903,
+    "type": "vassal_start"
+   },
+   "status": "mismatch",
+   "note": "swaziland has a British vassal_start in 1903 (counterpart british-colonial-empire, confidence 2); british-africa has a gain in 1908 at confidence 1. Five years and the event type differ."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1910,
+    "type": "gain",
+    "counterpart": "colony-of-natal"
+   },
+   "mirror": {
+    "slug": "colony-of-natal",
+    "year": 1910,
+    "type": "dissolve"
+   },
+   "status": "mismatch",
+   "note": "1910-05 on both sides; colony-of-natal names no counterpart (successor union-of-south-africa, not written). The Cape, Transvaal and Orange River colonies are not gained in 1910 but are drawn from 1885 and 1902."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1910,
+    "type": "gain",
+    "counterpart": "belgian-congo"
+   },
+   "mirror": {
+    "slug": "belgian-congo",
+    "year": 1910,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Lado Enclave, 1910-06 on both sides."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1911,
+    "type": "gain",
+    "counterpart": "lozi-kingdom"
+   },
+   "mirror": {
+    "slug": "lozi-kingdom",
+    "year": 1911,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "Western Province; lozi names british-africa as counterpart and successor."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1914,
+    "type": "vassal_end",
+    "counterpart": "khedivate-of-egypt"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "khedivate-of-egypt and sultanate-of-egypt (1914-12 to 1922-02) not written; both listed in counterparts_needing_dossiers (me-10)."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1915,
+    "type": "occupation_start",
+    "counterpart": "german-africa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "german-africa is owned by another af-08 part that has not been written yet; this covers the 1914 contest, the 1915 and 1916 occupations, and the 1919 and 1922 gains."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1916,
+    "type": "gain",
+    "counterpart": "sultanate-of-darfur"
+   },
+   "mirror": {
+    "slug": "sultanate-of-darfur",
+    "year": 1916,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "darfur 1916-11 (contest 1916 to 1916-11); british-africa has no month and no contest events."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1921,
+    "type": "gain",
+    "counterpart": "belgian-congo"
+   },
+   "mirror": {
+    "slug": "belgian-congo",
+    "year": 1921,
+    "type": "occupation_end"
+   },
+   "status": "mismatch",
+   "note": "Kigoma: belgian-congo ends an occupation of German land (counterpart german-africa) and has no loss; british-africa records a gain from belgian-congo. Fix on the british-africa side (occupation_start, then the 1922 gain)."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1931,
+    "type": "loss",
+    "counterpart": "south-africa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "south-africa (af-08, other part) not written."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1941,
+    "type": "occupation_start",
+    "counterpart": "italian-africa"
+   },
+   "mirror": {
+    "slug": "ethiopia",
+    "year": 1941,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "Ethiopia: ethiopia /ledger/1-2 name british-africa (as occupier of Ethiopian land; british-africa names italian-africa, the land's previous holder). italian-africa (af-08) not written; that covers 1940-08, the 1941 events, 1943, 1950, 1951 and 1952."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1942,
+    "type": "occupation_end",
+    "counterpart": "italian-africa"
+   },
+   "mirror": {
+    "slug": "ethiopia",
+    "year": 1942,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": "Both 1942-01 after the reviewer's month fix."
+  },
+  {
+   "event": {
+    "slug": "ethiopia",
+    "year": 1948,
+    "type": "occupation_end",
+    "counterpart": "british-africa"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "The Ogaden and Haud release in 1948 has no british-africa event; british-africa releases all of Ethiopia in 1942-01 (unapplied fix)."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1952,
+    "type": "occupation_end",
+    "counterpart": "italian-africa"
+   },
+   "mirror": {
+    "slug": "ethiopia",
+    "year": 1952,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Eritrea, 1952-09 on both sides after the reviewer's fix."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1956,
+    "type": "loss",
+    "counterpart": "republic-of-sudan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "republic-of-sudan (af-08) not written."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1960,
+    "type": "loss",
+    "counterpart": "federal-republic-of-somalia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "federal-republic-of-somalia (af-08) not written."
+  },
+  {
+   "event": {
+    "slug": "british-africa",
+    "year": 1960,
+    "type": "dissolve",
+    "counterpart": "british-east-africa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "british-east-africa (af-08) not written."
+  },
+  {
+   "event": {
+    "slug": "ethiopian-empire",
+    "year": 1907,
+    "type": "gain",
+    "counterpart": "british-africa"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "ethiopian-empire /ledger/50 (confidence 1, Ethiopia–Kenya border page) gains land from british-africa in 1907; british-africa has no 1907 loss."
+  },
+  {
+   "event": {
+    "slug": "republic-of-liberia",
+    "year": 1911,
+    "type": "loss",
+    "counterpart": "british-africa"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "The Parrot's Beak: Liberia gains it from british-africa in 1903-06 (confidence 1) and loses it to british-africa in 1911-01 (confidence 3); british-africa has neither (the Sierra Leone cells are constant, 344)."
+  },
+  {
+   "event": {
+    "slug": "mahdist-state",
+    "year": 1895,
+    "type": "loss",
+    "counterpart": "belgian-congo"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "belgian-congo starts in 1908-11; the 1895 counterpart should be congo-free-state. Route to af-01 (mahdist-state)."
+  },
+  {
+   "event": {
+    "slug": "belgian-congo",
+    "year": 1908,
+    "type": "found",
+    "counterpart": "congo-free-state"
+   },
+   "mirror": {
+    "slug": "congo-free-state",
+    "year": 1908,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": "1908-11 on both sides, same land (DRC plus Central Equatoria)."
+  },
+  {
+   "event": {
+    "slug": "belgian-congo",
+    "year": 1916,
+    "type": "occupation_start",
+    "counterpart": "german-africa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "german-africa (af-08, other part) not written; this covers Kigoma 1916, Ruanda-Urundi 1916-05, the 1921 and 1922 ends, and the 1922 gain."
+  },
+  {
+   "event": {
+    "slug": "belgian-congo",
+    "year": 1960,
+    "type": "split",
+    "counterpart": "democratic-republic-of-the-congo"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "democratic-republic-of-the-congo (af-08) not written."
+  },
+  {
+   "event": {
+    "slug": "belgian-congo",
+    "year": 1962,
+    "type": "loss",
+    "counterpart": "republic-of-rwanda"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "republic-of-rwanda and republic-of-burundi (af-08) not written."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Lado Enclave",
+   "kind": "region",
+   "used_in": "belgian-congo, british-africa"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Sultanate of Egypt (British protectorate)",
+   "suggested_slug": "sultanate-of-egypt",
+   "years": [
+    1914,
+    1922
+   ]
+  },
+  {
+   "name": "Khedivate of Egypt as British client (Cliopatria row ends 1884)",
+   "suggested_slug": "khedivate-of-egypt",
+   "years": [
+    1882,
+    1914
+   ]
+  },
+  {
+   "name": "Anglo-Egyptian Sudan",
+   "suggested_slug": "anglo-egyptian-sudan",
+   "years": [
+    1899,
+    1956
+   ]
+  },
+  {
+   "name": "Union of South Africa",
+   "suggested_slug": "union-of-south-africa",
+   "years": [
+    1910,
+    1961
+   ]
+  },
+  {
+   "name": "Ruanda-Urundi",
+   "suggested_slug": "ruanda-urundi",
+   "years": [
+    1916,
+    1962
+   ]
+  },
+  {
+   "name": "Italian Somaliland under British administration (to 1950) and Italian trusteeship (1950-1960)",
+   "suggested_slug": "italian-somaliland",
+   "years": [
+    1941,
+    1960
+   ]
+  },
+  {
+   "name": "British South Africa Company (named as counterpart by ndebele-kingdom and lozi-kingdom)",
+   "suggested_slug": "british-south-africa-company",
+   "years": [
+    1889,
+    1924
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-af-08-d.md",
+ "problems": [
+  "Reviewer edits applied to history/polities/british-africa.json (re-validated: 0 errors, 2 warnings for sultanate-of-egypt): /ledger/46 Ethiopia month, /ledger/47 Libya 1943-02 without Fezzan, /ledger/48 Somalia 1950-04 (moved from 1960; ledger re-sorted), /ledger/49 Libya end region, /ledger/50 Eritrea 1952-09; 4 sources added (19 now). Pointers after /ledger/47 have shifted: the old /ledger/48-51 are now /ledger/49, 50, 51, 48.",
+  "Counterpart-slug policy needed: free-orange-state, south-african-republic, swaziland, kingdom-of-buganda and imperial-british-east-africa-company name british-colonial-empire, and ndebele-kingdom and lozi-kingdom name british-south-africa-company, for land that british-africa claims. The orchestrator should pick one holder for British African land in 1885-1960.",
+  "Double ownership to resolve when rendering: british-africa against orange-river-colony and transvaal-colony (1902-1910), british-cape-colony (1885-1910), colony-of-natal, basutoland, british-bechuanaland and sierra-leone-colony-and-protectorate (all flagged by the author).",
+  "No page failed to load. Pages opened: Anglo-Egyptian Sudan, Tanganyika Territory, British Somaliland, Union of South Africa, Trust Territory of Somaliland, British Military Administration (Libya), Ogaden War (twice), Federation of Ethiopia and Eritrea, Ruanda-Urundi, Belgian Congo, Scramble for Africa."
+ ]
+}

@@ -1,0 +1,649 @@
+{
+ "batch_id": "ea-02-b",
+ "verdicts": [
+  {
+   "slug": "han-2",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/4",
+     "what": "Confidence 2 and the note said the relocation sentence is undated; the page dates it.",
+     "why": "https://en.wikipedia.org/wiki/Xin_of_Han: 'In 201 BC, Liu Bang realised that the Hán vassal kingdom was in a strategic location' ... 'he relocated the Hán vassal kingdom to Taiyuan Commandery with the capital at Jinyang.'",
+     "fix": "Confidence 3; note says the page dates the move to 201.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/5",
+     "what": "Capital move to Jinyang at confidence 2 although the page dates and names it.",
+     "why": "https://en.wikipedia.org/wiki/Xin_of_Han: same 201 sentences.",
+     "fix": "Confidence 3.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/2/note",
+     "what": "Note said the page does not date the move.",
+     "why": "https://en.wikipedia.org/wiki/Xin_of_Han: 'In 201 BC, Liu Bang realised ...'.",
+     "fix": "Note now quotes the 201 sentence.",
+     "applied": true
+    },
+    {
+     "where": "/wars/0/name",
+     "what": "War named 'Chu–Han Contention' (en dash) while kingdom-of-han and western-chu use 'Chu-Han Contention'.",
+     "why": "kingdom-of-han and western-chu wars[] names.",
+     "fix": "Renamed 'Chu-Han Contention' so the war pairs across dossiers.",
+     "applied": true
+    },
+    {
+     "where": "/ledger (no vassal events)",
+     "what": "Hán is Liu Bang's vassal from 205 to 201 but the ledger has only a rename, so the map draws it as an independent kingdom; kingdom-of-han has no vassal_start for han-2 either, and Cliopatria's Han 203 shape (kingdom-of-han han_-203) covers 88 percent of the Hán outline.",
+     "why": "https://en.wikipedia.org/wiki/Xin_of_Han: 'He was made King of Hán (韓王) in 205 BC by Liu Bang'; 'granted the lands around Yingchuan as his vassal kingdom, with the capital at Yangzhai'; 'the Hán vassal kingdom'. Polygon test: 88 percent of the Hán 206 polygon lies inside Cliopatria's Han 203 polygon.",
+     "fix": "Add vassal_start (205, counterpart kingdom-of-han, region = the Hán outline, text 'made King of Hán in 205 BC by Liu Bang') with vassal_end 203 (kingdom-of-han ends, handover to han-dynasty in note), then vassal_start 202 and vassal_end 201 with counterpart han-dynasty (relocation and defection); say in keyframe_review/1 that Cliopatria's Han 203 shape covers the outline. kingdom-of-han (ea-02-a) and han-dynasty (ea-02-c) need the mirror events.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what": "Verdict ok, but Cliopatria's Hán polygon holds Luoyang, the capital of the Kingdom of Henan.",
+     "why": "https://zh.wikipedia.org/wiki/%E7%94%B3%E9%98%B3: '项羽分韩国为河南国,封申阳为河南王,建都洛阳'. Polygon test: Luoyang (112.47 E 34.68 N) lies inside the Hán polygon and 60 km from the Henan polygon; 89 percent of a 90 km disc around Luoyang is Hán, and that disc is 22 percent of the Hán shape.",
+     "fix": "Make keyframe_review/0 and /1 adjust with a correction of the form {minus: [{cliopatria: Hán, year: -206}, <the Luoyang basin, e.g. place Luoyang km 90>]}, the same area the henan correction adds; coordinate with henan.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "Who took the Yingchuan lands when the kingdom moved to Taiyuan in 201 (confidence 1, researcher's inference).",
+     "page to try": "https://zh.wikipedia.org/wiki/%E9%9F%A9%E7%8E%8B%E4%BF%A1"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Eighteen_Kingdoms",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Xiang_Yu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Xin_of_Han",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Xin_of_Han",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Xin_of_Han",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 86684,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Eighteen Kingdoms page has no infobox area (re-read 2026-10-19); author's 86,684 km2 matches shapes.csv."
+   }
+  },
+  {
+   "slug": "henan",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0",
+     "what": "(blocking) The Cliopatria Henan outline is in the wrong place: it lies on Henei (the land of Yin, around Zhaoge), not on Shen Yang's kingdom around Luoyang, and the note's 'with Luoyang inside' is false; the verdict changes only the years.",
+     "why": "https://zh.wikipedia.org/wiki/%E7%94%B3%E9%98%B3: '项羽分韩国为河南国,封申阳为河南王,建都洛阳'; '其地成为河南郡'. https://en.wikipedia.org/wiki/Shen_Yang_(Eighteen_Kingdoms): 'granted part of the former Hán kingdom's territory'. Polygon test: Luoyang (112.47 E 34.68 N) is 60 km outside the Henan polygon and inside Cliopatria's Hán; only 11 percent of a 90 km disc around Luoyang lies in the Henan shape, while 95 percent of a 90 km disc around Zhaoge (114.2 E 35.6 N) does; 78 percent of the shape lies north of 35.0 N and 75 percent east of 113.5 E. The bbox includes Luoyang, the polygon does not.",
+     "fix": "Verdict wrong (or adjust) with a correction that describes the Luoyang kingdom (Qin Sanchuan, the later Henan Commandery), for example {place: Luoyang, km: 90, text: '建都洛阳 ... 其地成为河南郡'} or the north-west part of Cliopatria's Hán 206 shape; say that the Cliopatria Henan cells (Henei) belong to Yin (yin dossier, ea-02-c, not yet written); give the same corrected region to ledger 0-2, the war zone and the predecessor/successor land.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/0-2/region",
+     "what": "(blocking) All three events use the misplaced Cliopatria Henan outline.",
+     "why": "As above.",
+     "fix": "Use the corrected Luoyang region.",
+     "applied": false
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what": "Capital Luoyang marked unverified with a false claim that it lies inside the Cliopatria shape.",
+     "why": "https://zh.wikipedia.org/wiki/%E7%94%B3%E9%98%B3: '建都洛阳'; polygon test as above.",
+     "fix": "Source set to the zh 申阳 page (added to sources[]); note now quotes it and says Luoyang lies outside the Cliopatria polygon.",
+     "applied": true
+    },
+    {
+     "where": "/wars/0/name",
+     "what": "En dash in 'Chu–Han Contention'.",
+     "why": "kingdom-of-han and western-chu use 'Chu-Han Contention'.",
+     "fix": "Renamed 'Chu-Han Contention'.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Shen_Yang_(Eighteen_Kingdoms)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Shen_Yang_(Eighteen_Kingdoms)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://zh.wikipedia.org/wiki/%E7%94%B3%E9%98%B3",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Shen_Yang_(Eighteen_Kingdoms)",
+     "result": "confirmed"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://zh.wikipedia.org/wiki/%E7%94%B3%E9%98%B3",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 40946,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No page gives an area; the shape's area is moot until its placement is corrected."
+   }
+  },
+  {
+   "slug": "jiaodong",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/wars/0",
+     "what": "Tian Rong's 206 revolt was filed as 'Chu–Han Contention' 206-202, while qi records it as 'Revolt of Tian Rong against the Three Qis' (-206) and jibei as 'Tian Rong's conquest of Jibei and Jiaodong' (-206).",
+     "why": "https://en.wikipedia.org/wiki/Timeline_of_the_Chu%E2%80%93Han_Contention, 206 BC: 'Tian Rong conquers the Kingdom of Jiaodong and kills its king, Tian Fu.' qi and jibei wars[].",
+     "fix": "Renamed to the qi dossier's war, 206 only, belligerents qi, jiaodong, jibei; outcome rewritten from the Timeline entry; zone kept.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Tian_Rong",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Timeline_of_the_Chu%E2%80%93Han_Contention",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Chu%E2%80%93Han_Contention",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Eighteen_Kingdoms",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 51055,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No page gives an area. Capital point (Pingdu) inside the polygon."
+   }
+  },
+  {
+   "slug": "jiujiang",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/identity/capitals/0",
+     "what": "Capital Liu marked unverified for Jiujiang.",
+     "why": "https://zh.wikipedia.org/wiki/%E8%8B%B1%E5%B8%83: '便立英布為九江王，以六為都'.",
+     "fix": "Source set to the zh 英布 page (added to sources[]); note says verified; the point is inside the polygon.",
+     "applied": true
+    },
+    {
+     "where": "/wars/0/name",
+     "what": "En dash in 'Chu–Han Contention'.",
+     "why": "kingdom-of-han and western-chu use 'Chu-Han Contention'.",
+     "fix": "Renamed 'Chu-Han Contention'.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/2",
+     "what is missing": "Year of Long Ju's victory over Ying Bu (confidence 1; 'late 205' plus 'Months later'). Upper bound: the Timeline puts Long Ju's death at the Wei River under 204 BC. zh 英布 is also undated ('战争持续了几个月').",
+     "page to try": "https://zh.wikisource.org/wiki/%E5%8F%B2%E8%A8%98/%E5%8D%B7091"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "Same year for the loss of Jiujiang to Western Chu; western-chu dates its gain 203.",
+     "page to try": "https://zh.wikisource.org/wiki/%E5%8F%B2%E8%A8%98/%E5%8D%B7091"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "Same year for the dissolve.",
+     "page to try": "https://zh.wikisource.org/wiki/%E5%8F%B2%E8%A8%98/%E5%8D%B7091"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Ying_Bu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Long_Ju",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Long_Ju",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Ying_Bu",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 86995,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No page gives an area."
+   }
+  },
+  {
+   "slug": "liaodong",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/identity/capitals/0",
+     "what": "Capital Wuzhong marked unverified; it lies outside the Cliopatria Liaodong polygon and the dossier did not say so.",
+     "why": "https://zh.wikipedia.org/wiki/%E9%9F%93%E5%BB%A3: '以無終(今天津薊縣)為都'; '不肯遷往遼東,同年被臧荼擊殺'. Polygon test: Wuzhong (117.4 E 40.05 N) is inside Cliopatria's Yan 206 shape, about 160 km west of the Liaodong shape (west edge 119.26 E).",
+     "fix": "Source set to the zh 韓廣 page (added to sources[]); capital note and keyframe_review/0 note now say the capital lies outside the outline and why the outline is kept.",
+     "applied": true
+    },
+    {
+     "where": "/wars/0",
+     "what": "Zang Tu's 206 war on Han Guang was filed as 'Chu–Han Contention' 206-202 with western-chu as a belligerent.",
+     "why": "https://en.wikipedia.org/wiki/Timeline_of_the_Chu%E2%80%93Han_Contention, 206 BC: 'Zang Tu, the King of Yan, kills Han Guang, the King of Liaodong'; https://en.wikipedia.org/wiki/Zang_Tu: 'killed him at Wuzhong, thereby becoming king of a united Yan kingdom'.",
+     "fix": "Renamed 'Zang Tu's conquest of Liaodong', 206 only, belligerents yan and liaodong.",
+     "applied": true
+    }
+   ],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Han_Guang",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Timeline_of_the_Chu%E2%80%93Han_Contention",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Zang_Tu",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Han_Guang",
+     "result": "confirmed"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://zh.wikipedia.org/wiki/%E9%9F%93%E5%BB%A3",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 70288,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No page gives an area."
+   }
+  },
+  {
+   "slug": "linjiang",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0",
+     "what": "Verdict ok and note 'the shape follows the table', but the polygon also holds eastern Hubei, which the same table gives to Hengshan (Wu Rui), a kingdom Cliopatria lacks.",
+     "why": "https://en.wikipedia.org/wiki/Eighteen_Kingdoms: 'Linjiang ... western Hubei, northern Hunan'; 'Hengshan | 衡山 | Wu Rui ... | eastern Hubei, Jiangxi'. https://en.wikipedia.org/wiki/Wu_Rui: 'In 206 BC, Wu Rui was bestowed the title King of Hengshan', tenure '206–March 202 BC'. Polygon test: Wuhan (114.30 E) and Huanggang (114.87 E) lie inside the Linjiang polygon; 26 percent of it is east of 113.5 E.",
+     "fix": "Verdict adjust (also keyframe_review/1) with a correction {minus: [{cliopatria: Linjiang, year: -206}, <eastern Hubei, e.g. place Huanggang km 120, text 'eastern Hubei' (Hengshan, Eighteen Kingdoms table)>]}; add Hengshan to counterparts_needing_dossiers (done in this review).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/1/note",
+     "what": "Note named the Western Chu overlap only; Cliopatria's Han 203 shape also covers about 43 percent of the outline.",
+     "why": "Polygon test: Linjiang 206 polygon inside western-chu_-203: 47 percent; inside han_-203 (kingdom-of-han): 43 percent.",
+     "fix": "Sentence added to the note; kingdom-of-han and western-chu (ea-02-a) should take Linjiang out of their 203 shapes.",
+     "applied": true
+    },
+    {
+     "where": "/wars/0/name",
+     "what": "En dash in 'Chu–Han Contention'.",
+     "why": "kingdom-of-han and western-chu use 'Chu-Han Contention'.",
+     "fix": "Renamed 'Chu-Han Contention'.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "Which Han force took Linjiang in 202 and the month (Timeline gives no month; Gong Ao page silent).",
+     "page to try": "https://zh.wikipedia.org/wiki/%E5%85%B1%E5%B0%89"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Gong_Ao",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Timeline_of_the_Chu%E2%80%93Han_Contention",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Timeline_of_the_Chu%E2%80%93Han_Contention",
+     "result": "confirmed"
+    },
+    {
+     "where": "/identity/rulers/0",
+     "page": "https://en.wikipedia.org/wiki/Gong_Ao",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 216393,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No page gives an area; the shape includes Hengshan's eastern Hubei (see fixes)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "han-2",
+    "year": -201,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "han-dynasty is owned by ea-02-c, which has not run."
+  },
+  {
+   "event": {
+    "slug": "han-2",
+    "year": -201,
+    "type": "gain",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "Taiyuan Commandery granted by the Han Empire; han-dynasty (ea-02-c) not written."
+  },
+  {
+   "event": {
+    "slug": "han-2",
+    "year": -205,
+    "type": "vassal_start (missing)",
+    "counterpart": "kingdom-of-han"
+   },
+   "mirror": {
+    "slug": "kingdom-of-han",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Neither side records Hán as Liu Bang's vassal 205-201 (Xin of Han: 'vassal kingdom'); kingdom-of-han's han_-203 shape covers 88 percent of Hán. Route to the han-2 author and ea-02-a."
+  },
+  {
+   "event": {
+    "slug": "han",
+    "year": -207,
+    "type": "dissolve",
+    "counterpart": "han-2"
+   },
+   "mirror": {
+    "slug": "han-2",
+    "year": -206,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Predecessor link agrees: han ends 207, han-2 found 206 with counterpart han."
+  },
+  {
+   "event": {
+    "slug": "henan",
+    "year": -205,
+    "type": "loss",
+    "counterpart": "kingdom-of-han"
+   },
+   "mirror": {
+    "slug": "kingdom-of-han",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "kingdom-of-han (ea-02-a) has gains from yong, sai, zhai, wei, dai and yin in 205 but none from henan. Route to ea-02-a."
+  },
+  {
+   "event": {
+    "slug": "henan",
+    "year": -206,
+    "type": "found",
+    "counterpart": "qin-dynasty"
+   },
+   "mirror": {
+    "slug": "qin-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "mismatch",
+   "note": "henan, jiujiang and linjiang name qin-dynasty as predecessor; qin-dynasty successors list only kingdom-of-han, yong, sai, zhai, western-chu. Route to ea-02-a."
+  },
+  {
+   "event": {
+    "slug": "jiaodong",
+    "year": -206,
+    "type": "loss",
+    "counterpart": "qi"
+   },
+   "mirror": {
+    "slug": "qi",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "qi (ea-01) has no gain from jiaodong (nor from jibei) in 206; its 206 shape does not cover eastern Shandong. Route to ea-01."
+  },
+  {
+   "event": {
+    "slug": "jiaodong",
+    "year": -206,
+    "type": "found",
+    "counterpart": "qi"
+   },
+   "mirror": {
+    "slug": "qi",
+    "year": -206,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "qi records Tian Du's Qi as a 206 gain from qin-dynasty, not a split to jiaodong and jibei (Tian Rong page: 'divided Qi into Qi, Jiaodong, and Jibei'). Route to ea-01."
+  },
+  {
+   "event": {
+    "slug": "jiujiang",
+    "year": -204,
+    "type": "loss",
+    "counterpart": "western-chu"
+   },
+   "mirror": {
+    "slug": "western-chu",
+    "year": -203,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Within one year; both confidence 1. western-chu (ea-02-a) should move its gain to 204 to avoid a grey year (Cliopatria's western-chu_-203 holds 96 percent of Jiujiang)."
+  },
+  {
+   "event": {
+    "slug": "liaodong",
+    "year": -206,
+    "type": "loss",
+    "counterpart": "yan"
+   },
+   "mirror": {
+    "slug": "yan",
+    "year": -206,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "yan L14, confidence 2. Cliopatria's Yan 206 shape lacks the Liaodong Peninsula; compiler must add the cells."
+  },
+  {
+   "event": {
+    "slug": "yan",
+    "year": -206,
+    "type": "split",
+    "counterpart": "liaodong"
+   },
+   "mirror": {
+    "slug": "liaodong",
+    "year": -206,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "yan L13 split; liaodong found with counterpart yan."
+  },
+  {
+   "event": {
+    "slug": "linjiang",
+    "year": -202,
+    "type": "loss",
+    "counterpart": "han-dynasty"
+   },
+   "mirror": {
+    "slug": "han-dynasty",
+    "year": null,
+    "type": null
+   },
+   "status": "exception",
+   "note": "han-dynasty owned by ea-02-c, not run."
+  },
+  {
+   "event": {
+    "slug": "western-chu",
+    "year": -203,
+    "type": "gain",
+    "counterpart": "linjiang"
+   },
+   "mirror": {
+    "slug": "linjiang",
+    "year": -202,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "western-chu claims 47 percent of Linjiang in 203 (confidence 1, Cliopatria only); linjiang stands to 202 and loses to han-dynasty (Timeline, confidence 3). kingdom-of-han's han_-203 also covers 43 percent. Route to ea-02-a: take Linjiang out of both 203 shapes."
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Yangzhai",
+   "kind": "place",
+   "used_in": "han-2"
+  },
+  {
+   "name": "Wuzhong",
+   "kind": "place",
+   "used_in": "liaodong"
+  },
+  {
+   "name": "Jimo (ancient)",
+   "kind": "place",
+   "used_in": "jiaodong"
+  },
+  {
+   "name": "Jiangling",
+   "kind": "place",
+   "used_in": "linjiang"
+  },
+  {
+   "name": "Yingchuan",
+   "kind": "region",
+   "used_in": "han-2"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Kingdom of Huainan (Ying Bu)",
+   "suggested_slug": "huainan",
+   "years": [
+    -203,
+    -196
+   ]
+  },
+  {
+   "name": "Kingdom of Hengshan (Wu Rui; 'eastern Hubei, Jiangxi')",
+   "suggested_slug": "hengshan",
+   "years": [
+    -206,
+    -202
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ea-02-b.md",
+ "problems": [
+  "Validator: 0 errors for all six before and after the reviewer's edits; han-2 keeps nine spurious 'Cliopatria shape han_-404 ... han_-203 has no verdict' warnings because slugify('Hán') == 'han' (validator bug: it should look shapes up by the dossier's cliopatria_names rows, i.e. han-2_-206 only).",
+  "Reviewer edits applied in place and re-validated: han-2 (ledger 4-5 confidence, ledger 4 and keyframe 2 notes, war name), henan (capital source and note, war name, new zh source), jiaodong (war), jiujiang (capital source and note, war name, new zh source), liaodong (capital source and note, keyframe 0 note, war, new zh source), linjiang (keyframe 1 note, war name). Read back after more than 10 s, unchanged.",
+  "Verdict 'fix' means the reviewer applied what it could; items with applied:false in a 'fix' or 'thin' verdict are non-blocking and need a short author pass. henan fails on its misplaced keyframe (blocking).",
+  "Cliopatria's north-China Eighteen Kingdoms outlines are displaced: the Henan polygon sits on Henei around Zhaoge (Yin's seat), the Yin polygon (113.7-115.6 E, 36.2-37.4 N) on southern Hebei, and the Hán polygon holds Luoyang. Tell ea-02-c (yin) and ea-02-a (chang-shan's capital already found outside its shape).",
+  "Cliopatria lacks Hengshan (Wu Rui, 206-202, 'eastern Hubei, Jiangxi'): its eastern Hubei sits in the Linjiang polygon and Nanchang (Yuzhang) in Minyue's 206 shape (ea-01 minyue).",
+  "Neighbour dossiers read (ledger lines 208-195 BC): western-chu, wei, jibei, qi, minyue, xiongnu, yan, han, plus kingdom-of-han and qin-dynasty. Not written when the folder was listed: yong, yin, han-dynasty (ea-02-c), huainan (none).",
+  "Polygon tests used the Cliopatria geojson at /tmp/claude-0/dl/clio/cliopatria_polities_only_v021.geojson with shapely (point-in-polygon, overlap fractions); scripts in /tmp/claude-0/work/review-ea-02-b/.",
+  "zh.wikipedia.org/wiki/韩广 (simplified) returned not found; the traditional title 韓廣 loaded. No other page failed."
+ ]
+}

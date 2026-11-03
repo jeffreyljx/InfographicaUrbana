@@ -1,0 +1,1471 @@
+{
+ "batch_id": "me-10-b",
+ "verdicts": [
+  {
+   "slug": "safavid-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/16, /keyframe_review/17, /keyframe_review/18, /keyframe_review/19 and /ledger (between /ledger/33 and /ledger/39)",
+     "what": "The Mughal capture of Kandahar is missing: the ledger gains Kandahar from the Mughals in 1558 (/ledger/23) and again in 1622 (/ledger/39) with no loss in between, and the 1595-1621 keyframes keep Kandahar although the notes say no page dates its loss.",
+     "why": "The author's own source, Abbas I of Persia, says: 'In 1590, profiting from the confusion in Iran, Humayun's successor Akbar seized Kandahar.' mughal-empire /ledger/58 has the gain on 18 April 1595 at confidence 3 (Akbar page: 'The city capitulated without resistance on 18 April 1595'). Cliopatria's Mughal shapes for 1595-1625 reach west to 64.58-64.77 E, and the Safavid shapes reach east to 66.69 E, so Kandahar is drawn twice.",
+     "fix": "Add a loss of admin1 Kandahar (Afghanistan) to mughal-empire in 1595-04 at confidence 3, with the Akbar page added to sources and the Abbas I page's 1590 recorded in the note. Mark keyframes 16-19 adjust with the correction minus admin1 Kandahar until June 1622. Set /ledger/39 to month 6 (mughal-empire /ledger/67: 'The city fell on 22 June').",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/21, /keyframe_review/22, /keyframe_review/23, /ledger (1638-1653), /wars",
+     "what": "Kandahar's second Mughal period is missing: there is no 1638 loss (Ali Mardan Khan), no 22 February 1649 recapture, no Mughal sieges of 1649-1653 and no war entry, and keyframes 21-23 keep Kandahar through 1638-1648.",
+     "why": "mughal-empire /ledger/73 (1638 gain) and /ledger/79-81 (contest from 1649-02 to 1653-09, loss on 1649-02-22), all at confidence 3 from the page Mughal-Safavid war (1649-1653): 'Since 1638, when the Kurdish turncoat Ali Mardan Khan handed Kandahar over to Shah Jahan'; 'easily captured it after a brief siege on 22 February 1649'. Cliopatria's Mughal shapes for 1640-1647 reach 64.77 E.",
+     "fix": "Add a 1638 loss and a 1649-02 gain of admin1 Kandahar (counterpart mughal-empire), a contest_start in 1649-02 and a contest_end in 1653-09, and the war 'Mughal-Safavid war (1649-1653)' with a Kandahar zone (source https://en.wikipedia.org/wiki/Mughal%E2%80%93Safavid_war_(1649%E2%80%931653)). Subtract Kandahar from keyframes 21 (from 1638), 22 and 23 (1648 only).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/30/correction",
+     "what": "The 1729-1733 correction is the whole Hotaki shape of 1727, which includes the Hotaki shape of 1734 (Kandahar, Sistan and Baluchistan, 552,000 km2). The hotaki-dynasty dossier keeps that land after 1729, so it is drawn twice for 1729-1733.",
+     "why": "hotaki-dynasty /ledger/17 (1729-11 loss) is minus[Hotaki 1727, Hotaki 1734], and its notes keep Hotaki rule 'limited to the south of Afghanistan' after 1729. The dossier's own /ledger/58 gain is intersect[Safavid 1721, Hotaki 1727], which does not reach east of 61.33 E. shapes.csv: Hotaki 1727 has a bbox of 47.7-66.69 E and 1,918,357 km2; Hotaki 1734 has 58.9-66.69 E and 552,476 km2.",
+     "fix": "Change the correction to {\"minus\": [{\"cliopatria\": \"Hotaki Dynasty\", \"year\": 1727}, {\"cliopatria\": \"Hotaki Dynasty\", \"year\": 1734}]}, with text saying Herat stays with the Abdalis until Nader takes it in 1732.",
+     "applied": false
+    },
+    {
+     "where": "/ledger (1606-1612, after /ledger/37) and /keyframe_review/18",
+     "what": "The 1590 loss (/ledger/27) gives up Karabakh, Shirvan, Dagestan, West Azarbaijan, Lorestan and Kurdistan, and the ledger only ever regains East Azarbaijan, Tabriz, Georgia (1603) and Yerevan (1604). Yet Shirvan, Baku and Derbent are lost again in 1723 (/ledger/54) and Transcaucasia in 1724 (/ledger/55). Keyframe 18 (1609, +459,000 km2) is marked ok without the events that explain it.",
+     "why": "Abbas I page: 'By the end of the 1603-1618 Ottoman War, Abbas had regained possession over South Caucasus and Dagestan.' ottoman-empire /ledger/100 (June 1606, confidence 3): 'Abbas I was able to liberate Ganja, Baku, Shirvan, and Shamakhi in Azerbaijan in June 1606'. ottoman-empire /ledger/102: the Treaty of Nasuh Pasha of 20 November 1612, whose infobox lists Daghestan. Both are from the page Ottoman-Safavid War (1603-1618).",
+     "fix": "Add a gain in 1606-06 from ottoman-empire (region Karabakh, region Shirvan, places Ganja and Baku) at confidence 3, and a gain in 1612-11 (Dagestan and the rest of the 1590 cessions) at confidence 2. Cite https://en.wikipedia.org/wiki/Ottoman%E2%80%93Safavid_War_(1603%E2%80%931618) and extend the war /wars/5 to 1618 to match that page.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/64",
+     "what": "Mis-dated at confidence 2: the recovery of Tabriz, East Azarbaijan, Ardebil, Hamadan and Kermanshah is put in 1735, but it took place in 1730 and was kept by Tahmasp II's treaty of 1732. Only the Caucasus came back in 1734-1735.",
+     "why": "Campaigns of Nader Shah, the author's own source: '[Nader] took Tabriz on 12 August' 1730, after Nahavand, Hamadan and Kermanshah. Under Tahmasp's treaty the Ottomans 'would, in exchange, be given back Tabriz, Hamadan and Kermanshah' while he 'accepted Ottoman suzerainty over the Caucasus'. Shamakhi fell 'in August 1734'.",
+     "fix": "Split the event. Add a gain in 1730-08 from ottoman-empire of East Azarbaijan, Ardebil, Tabriz, Hamadan and Kermanshah at confidence 3, sourced to the Campaigns of Nader Shah page. Keep the 1735 gain for Transcaucasia only. Move the KF 30 text accordingly.",
+     "applied": false
+    },
+    {
+     "where": "/ledger/22",
+     "what": "The month (6) for the Peace of Amasya is not on the cited page.",
+     "why": "The Tahmasp I page says only 'The war ended with the Peace of Amasya in 1555' and gives no day or month. The treaty is usually dated 29 May, not June.",
+     "fix": "Removed the month and kept year 1555. Re-validated: 0 errors, 0 warnings.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/3/counterpart",
+     "what": "The counterpart 'Mazandaran, Gorgan and Yazd (local rulers; the page names none)' is not a slug, not 'nobody', and not listed in counterparts_needing_dossiers.",
+     "why": "Rule 3 of the reviewer brief: the exceptions are nobody, or a counterpart listed for a dossier.",
+     "fix": "Use counterpart 'nobody' and keep the local rulers in the note.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/11",
+     "what is missing": "Year and extent of the Ottoman annexation of Eastern Anatolia and Diyarbakir after Chaldiran (confidence 1; ottoman-empire /ledger/59 has 1516 at confidence 2)",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Chaldiran"
+    },
+    {
+     "where": "/ledger/0, /ledger/17, /ledger/18",
+     "what is missing": "Shirvan vassalage (1501) and annexation (1538/1539), both at confidence 1",
+     "page to try": "https://en.wikipedia.org/wiki/Shirvanshah"
+    },
+    {
+     "where": "/ledger/10",
+     "what is missing": "End of the Ottoman occupation of Tabriz in 1514 (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Battle_of_Chaldiran"
+    },
+    {
+     "where": "/ledger/26",
+     "what is missing": "Uzbek conquest of Khorasan other than Herat in 1588/1589 (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Abdullah_Khan_II"
+    },
+    {
+     "where": "/ledger (1578-1588)",
+     "what is missing": "Ottoman conquests during the war of 1578-1590: Georgia and Shirvan from 1578 and Tabriz in 1585 (ottoman-empire /ledger/89 and /ledger/90). The dossier has only the 1590 cession.",
+     "page to try": "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Safavid_War_(1578%E2%80%931590)"
+    },
+    {
+     "where": "/keyframe_review/26 and /ledger (1712-1718)",
+     "what is missing": "The 547,000 km2 drop of 1713 and the 1718 Sistan-Baluchistan change are unexplained (page budget). hotaki-dynasty /ledger/3 (1712, the whole province of Kandahar) and /ledger/4 (1718) are the mirrors. The Abdali seizure of Herat (1716/1717) and Nader's recovery of Herat (1732) are also missing.",
+     "page to try": "https://en.wikipedia.org/wiki/Hotak_dynasty"
+    },
+    {
+     "where": "/ledger (1593-1600)",
+     "what is missing": "Merv: lost to Bukhara in 1593 and regained in 1600 (khanate-of-bukhara /ledger/14 and /ledger/21, Merv page)",
+     "page to try": "https://en.wikipedia.org/wiki/Merv"
+    },
+    {
+     "where": "/ledger (1510-1511)",
+     "what is missing": "Balkh and Khwarezm taken from the Shaybanids in 1510 (shaybanids /ledger/9 and /ledger/13), and Khwarezm lost on the founding of Khiva in 1511 (khanate-of-khiva /ledger/0)",
+     "page to try": "https://en.wikipedia.org/wiki/Khanate_of_Khiva"
+    },
+    {
+     "where": "/ledger (c. 1717)",
+     "what is missing": "Bahrain lost to the Ya'rubids. The Ya'rubids page says the Omanis took Bahrain 'from the Persians' and held it 'for several years', with no date.",
+     "page to try": "https://en.wikipedia.org/wiki/Sultan_bin_Saif_II"
+    },
+    {
+     "where": "/ledger (1545)",
+     "what is missing": "Kandahar given to the Safavid prince by Humayun in 1545 and taken back a month later (Tahmasp I page; mughal-empire /ledger/12). Small and short.",
+     "page to try": "https://en.wikipedia.org/wiki/Humayun"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/27",
+     "page": "https://en.wikipedia.org/wiki/Abbas_I_of_Persia",
+     "result": "confirmed (1590 Treaty of Constantinople; Azerbaijan, Karabagh, Shirvan, Dagestan, parts of Georgia, Lorestan, Kurdistan, Tabriz)"
+    },
+    {
+     "where": "/ledger/34",
+     "page": "https://en.wikipedia.org/wiki/Safavid_Iran",
+     "result": "confirmed ('dislodge the Portuguese from Bahrain (1602)'; also on the Abbas I page)"
+    },
+    {
+     "where": "/ledger/40",
+     "page": "https://en.wikipedia.org/wiki/Safavid_Iran",
+     "result": "confirmed ('in 1622 four of its ships helped Abbas retake Hormuz')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Safavid_Iran",
+     "result": "confirmed ('Herat, as well as other parts of Khorasan, in 1510')"
+    },
+    {
+     "where": "/ledger/23",
+     "page": "https://en.wikipedia.org/wiki/Tahmasp_I",
+     "result": "confirmed (Kandahar 1558)"
+    },
+    {
+     "where": "/ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Tahmasp_I",
+     "result": "mis-dated: the year 1555 is confirmed but month 6 is not on the page (the reviewer removed the month)"
+    },
+    {
+     "where": "/ledger/55",
+     "page": "https://en.wikipedia.org/wiki/Treaty_of_Constantinople_(1724)",
+     "result": "confirmed (12 June 1724; the page's introduction also says 24 June)"
+    },
+    {
+     "where": "/ledger/64",
+     "page": "https://en.wikipedia.org/wiki/Campaigns_of_Nader_Shah",
+     "result": "mis-dated: Tabriz was retaken on 12 August 1730, with Hamadan and Kermanshah in the same campaign; only the Caucasus came back in 1734-1735 (confidence 2)"
+    },
+    {
+     "where": "/ledger/37 and /ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Abbas_I_of_Persia",
+     "result": "confirmed (Yerevan 'finally fell in June 1604'; Mashhad recaptured in April 1598)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 2900000,
+    "infobox_year": 1630,
+    "cliopatria_km2": 2814713,
+    "ratio": 0.97,
+    "acknowledged": true
+   }
+  },
+  {
+   "slug": "yarubid-dynasty",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/wars/2",
+     "what": "The Ya'rubid civil war (1718-1724) has empty zones and no note saying that no ground changed hands.",
+     "why": "Reviewer brief rule 10: zones may be empty only where no ground changed hands, and the dossier must say so.",
+     "fix": "Add a note that this was an internal war between rival imams with no frontier change, or add zones for the fighting.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger (c. 1717)",
+     "what is missing": "Bahrain taken from Safavid Persia. The Ya'rubids page, which the author cites, says the Omanis took Bahrain 'from the Persians' and held it 'for several years', with no date. There is no event, and no mirror in safavid-dynasty.",
+     "page to try": "https://en.wikipedia.org/wiki/Sultan_bin_Saif_II"
+    },
+    {
+     "where": "/ledger/7",
+     "what is missing": "Who took Mombasa in 1728 and whether Oman regained it in 1729 (the Portuguese held it for about a year). There is no regain event.",
+     "page to try": "https://en.wikipedia.org/wiki/Fort_Jesus"
+    },
+    {
+     "where": "/ledger/12",
+     "what is missing": "Year and agent of the passing of the Swahili coast to the Al Bu Said (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Mazrui"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "Seat 1719-1742 (gap between Al-Hazm, which ends in 1718, and Nizwa from 1743)",
+     "page to try": "https://en.wikipedia.org/wiki/Saif_bin_Sultan_II"
+    },
+    {
+     "where": "/identity/predecessors",
+     "what is missing": "Predecessor in Oman before 1624 (Nabhani rulers; Cliopatria's only 'Nabhani Dynasty' row is a Yemeni shape of 1169-1176, so not this one)",
+     "page to try": "https://en.wikipedia.org/wiki/Nabhani_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Ya%27rubids",
+     "result": "confirmed ('threw the Portuguese out of Julfar ... in 1633')"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Ya%27rubids",
+     "result": "confirmed ('In 1643 they took the fort at Sohar')"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Siege_of_Fort_Jesus",
+     "result": "confirmed (siege 13 March 1696 to 13 December 1698; 'the whole coast of Kenya and Tanzania with Zanzibar and Pemba fell to the Omani Arabs')"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Ya%27rubids",
+     "result": "confirmed ('In 1743 Saif was tricked into letting the Persians take the last forts in Muscat')"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Ya%27rubids",
+     "result": "confirmed ('Ahmad bin Said only became undisputed ruler of Oman when Bal'arab bin Himyar died in 1749')"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Siege_of_Fort_Jesus",
+     "result": "confirmed at confidence 2 (the Portuguese were 'expelled from Oman in 1650'; Muscat is not named)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 121481,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "No infobox area on the Ya'rubids page (checked); the author says so"
+   }
+  },
+  {
+   "slug": "qasimids",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/wars/2",
+     "what": "The Qasimid succession crisis (1681-1689) has empty zones and no note saying that no ground changed hands.",
+     "why": "Reviewer brief rule 10.",
+     "fix": "Add a note, or zones if the crisis is tied to the 1683 shrink (see the thin item for /keyframe_review/8).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/10/counterpart, /ledger/12/counterpart",
+     "what": "The counterpart 'Dhofar (local rulers; the page names none)' is neither 'nobody' nor listed in counterparts_needing_dossiers.",
+     "why": "Reviewer brief rule 3: the allowed exceptions.",
+     "fix": "List it in counterparts_needing_dossiers or use 'nobody' with the rulers in the note.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/8",
+     "what is missing": "The 1683 shape (165,848 km2, east edge 45.82 E) is 47,000 km2 smaller than the direct land of 1645-1658 (213,152 km2, east edge 47.06 E). So in 1683 the imamate lost direct land east of 45.8 E (Yafa', al-Bayda, Bayhan), not only the Hadramawt and Dhofar suzerainty, and no ledger event explains it.",
+     "page to try": "https://en.wikipedia.org/wiki/Upper_Yafa"
+    },
+    {
+     "where": "/ledger/0",
+     "what is missing": "Where the revolt of 1597 was fought (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Al-Mansur_al-Qasim"
+    },
+    {
+     "where": "/ledger/11, /ledger/12",
+     "what is missing": "End of the Hadramawt and Dhofar suzerainty, dated 1683 from Cliopatria only (confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Kathiri"
+    },
+    {
+     "where": "/ledger/15",
+     "what is missing": "The 1813 dissolve is a bridge (confidence 1). The Qasimid State page runs to 1849 and the imamate-of-yemen dossier starts in 1814 from qasimids. A merge may be preferable.",
+     "page to try": "https://en.wikipedia.org/wiki/Qasimid_State"
+    },
+    {
+     "where": "/identity/capitals",
+     "what is missing": "Seat 1597-1627 (al-Mansur al-Qasim's base, probably Shahara)",
+     "page to try": "https://en.wikipedia.org/wiki/Al-Mansur_al-Qasim"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Qasimid_State",
+     "result": "confirmed ('By 1608, Imam al-Mansur had regained control over the highlands and signed a ten-year truce')"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Qasimid_State",
+     "result": "confirmed ('expelled the Ottomans from Sana'a in 1628')"
+    },
+    {
+     "where": "/ledger/6",
+     "page": "https://en.wikipedia.org/wiki/Qasimid_State",
+     "result": "confirmed ('He captured Zabid in 1634')"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Al-Mutawakkil_Isma%27il",
+     "result": "confirmed (1654: 'The Yafa tribesmen submitted, as did the Kathiri sultan')"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Al-Mutawakkil_Isma%27il",
+     "result": "confirmed ('A further expedition in 1658 renewed the suzerainty of the imam in an area as far east as Dhofar')"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Al-Mutawakkil_Isma%27il",
+     "result": "confirmed at confidence 2 ('Aden had been conquered by Yemeni forces in 1644')"
+    },
+    {
+     "where": "/ledger/13",
+     "page": "https://en.wikipedia.org/wiki/Qasimid_State",
+     "result": "confirmed at confidence 2 ('In 1728 or 1731' Lahij declared independence; fully independent in 1740)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": 0,
+    "infobox_year": 0,
+    "cliopatria_km2": 360698,
+    "ratio": 0.0,
+    "acknowledged": true,
+    "note": "The Qasimid State infobox has no area (checked); the author says so"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1501,
+    "type": "found",
+    "counterpart": "aq-qoyunlu"
+   },
+   "mirror": {
+    "slug": "aq-qoyunlu",
+    "year": 1501,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Aq Qoyunlu loss in 1501-07; Safavid founding in 1501-12"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1503,
+    "type": "gain",
+    "counterpart": "aq-qoyunlu"
+   },
+   "mirror": {
+    "slug": "aq-qoyunlu",
+    "year": 1503,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1507,
+    "type": "gain",
+    "counterpart": "aq-qoyunlu"
+   },
+   "mirror": {
+    "slug": "aq-qoyunlu",
+    "year": 1507,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Diyarbakir"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1508,
+    "type": "gain",
+    "counterpart": "aq-qoyunlu"
+   },
+   "mirror": {
+    "slug": "aq-qoyunlu",
+    "year": 1508,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Baghdad (the Safavid Iran page says 1509)"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1510,
+    "type": "gain",
+    "counterpart": "shaybanids"
+   },
+   "mirror": {
+    "slug": "shaybanids",
+    "year": 1510,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Khorasan and Herat"
+  },
+  {
+   "event": {
+    "slug": "shaybanids",
+    "year": 1510,
+    "type": "loss",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "Balkh (/ledger/9) and Khwarezm (/ledger/13) are lost to the Safavids; the Safavid ledger has no gain for either"
+  },
+  {
+   "event": {
+    "slug": "khanate-of-khiva",
+    "year": 1511,
+    "type": "found",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Khiva is founded on Khwarezm taken from the Safavids; there is no Safavid loss"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1501,
+    "type": "vassal_start",
+    "counterpart": "shirvan"
+   },
+   "mirror": {
+    "slug": "shirvan",
+    "year": 0,
+    "type": "vassal_start"
+   },
+   "status": "exception",
+   "note": "shirvan is eu-19, not run yet"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1510,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-kartli"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kartli",
+    "year": 0,
+    "type": "vassal_start"
+   },
+   "status": "exception",
+   "note": "eu-19, not run yet"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1510,
+    "type": "vassal_start",
+    "counterpart": "kingdom-of-kakheti"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kakheti",
+    "year": 0,
+    "type": "vassal_start"
+   },
+   "status": "exception",
+   "note": "eu-19, not run yet"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1539,
+    "type": "gain",
+    "counterpart": "shirvan"
+   },
+   "mirror": {
+    "slug": "shirvan",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "eu-19, not run yet"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1516,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1516,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1524,
+    "type": "loss",
+    "counterpart": "khanate-of-bukhara"
+   },
+   "mirror": {
+    "slug": "khanate-of-bukhara",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "Bukhara has only a contest in 1528-1530 and no 1524 gain of Khorasan"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1528,
+    "type": "gain",
+    "counterpart": "khanate-of-bukhara"
+   },
+   "mirror": {
+    "slug": "khanate-of-bukhara",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Bukhara has no 1528 loss"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1534,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1535,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Baghdad"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1555,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1555,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Peace of Amasya"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1558,
+    "type": "gain",
+    "counterpart": "mughal-empire"
+   },
+   "mirror": {
+    "slug": "mughal-empire",
+    "year": 1557,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Kandahar"
+  },
+  {
+   "event": {
+    "slug": "mughal-empire",
+    "year": 1545,
+    "type": "gain",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Kandahar taken from the Persian garrison in October 1545; small and short"
+  },
+  {
+   "event": {
+    "slug": "ottoman-empire",
+    "year": 1578,
+    "type": "gain",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 1590,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "The Ottomans have 1578 (Georgia, Azerbaijan, Shirvan) and 1585 (Tabriz); the Safavid ledger has only the 1590 treaty"
+  },
+  {
+   "event": {
+    "slug": "ottoman-empire",
+    "year": 1585,
+    "type": "gain",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 1590,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Tabriz: 1585 against 1590"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1589,
+    "type": "loss",
+    "counterpart": "khanate-of-bukhara"
+   },
+   "mirror": {
+    "slug": "khanate-of-bukhara",
+    "year": 1588,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Herat and Khorasan"
+  },
+  {
+   "event": {
+    "slug": "khanate-of-bukhara",
+    "year": 1593,
+    "type": "gain",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Merv"
+  },
+  {
+   "event": {
+    "slug": "mughal-empire",
+    "year": 1595,
+    "type": "gain",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Kandahar on 18 April 1595 (confidence 3); the Safavid ledger has no loss, though the Abbas I page dates it to 1590"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1598,
+    "type": "gain",
+    "counterpart": "khanate-of-bukhara"
+   },
+   "mirror": {
+    "slug": "khanate-of-bukhara",
+    "year": 1598,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Mashhad and Herat"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1599,
+    "type": "gain",
+    "counterpart": "khanate-of-bukhara"
+   },
+   "mirror": {
+    "slug": "khanate-of-bukhara",
+    "year": 1598,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Balkh"
+  },
+  {
+   "event": {
+    "slug": "khanate-of-bukhara",
+    "year": 1600,
+    "type": "loss",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "Merv"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1602,
+    "type": "loss",
+    "counterpart": "khanate-of-bukhara"
+   },
+   "mirror": {
+    "slug": "khanate-of-bukhara",
+    "year": 1601,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Balkh"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1602,
+    "type": "gain",
+    "counterpart": "portuguese-empire"
+   },
+   "mirror": {
+    "slug": "portuguese-empire",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Bahrain: the portuguese-empire ledger has no 1602 loss (the Iberian Union, eu-12, not run, may own it)"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1603,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1603,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Tabriz and Georgia"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1604,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1604,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Yerevan"
+  },
+  {
+   "event": {
+    "slug": "ottoman-empire",
+    "year": 1606,
+    "type": "loss",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "Ganja, Baku, Shirvan and Shamakhi (confidence 3); no Safavid gain"
+  },
+  {
+   "event": {
+    "slug": "ottoman-empire",
+    "year": 1612,
+    "type": "loss",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "Treaty of Nasuh Pasha (Daghestan)"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1622,
+    "type": "gain",
+    "counterpart": "mughal-empire"
+   },
+   "mirror": {
+    "slug": "mughal-empire",
+    "year": 1622,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Kandahar (the Safavid side has no month; the Mughal side has 1622-06)"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1622,
+    "type": "gain",
+    "counterpart": "portuguese-empire"
+   },
+   "mirror": {
+    "slug": "portuguese-empire",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Hormuz: portuguese-empire has the 1515 gain but no 1622 loss"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1624,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1624,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Baghdad; the Ottomans also lose Kirkuk, Mosul, Najaf and Karbala in 1625 (/ledger/106), which the Safavid gain region (Baghdad province only) does not cover"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1635,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "Yerevan, August 1635; no Ottoman gain"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1636,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Yerevan, 1636; no Ottoman loss"
+  },
+  {
+   "event": {
+    "slug": "mughal-empire",
+    "year": 1638,
+    "type": "gain",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Kandahar handed over by Ali Mardan Khan (confidence 3)"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1638,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1638,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Baghdad, December 1638"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1639,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1638,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Iraq at Zuhab; the Ottomans record it as the 1638 gain plus the 1639 contest_end"
+  },
+  {
+   "event": {
+    "slug": "mughal-empire",
+    "year": 1649,
+    "type": "loss",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "missing",
+   "note": "Kandahar on 22 February 1649 (confidence 3), with the 1649-1653 contest"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1709,
+    "type": "loss",
+    "counterpart": "hotaki-dynasty"
+   },
+   "mirror": {
+    "slug": "hotaki-dynasty",
+    "year": 1709,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Kandahar, April 1709"
+  },
+  {
+   "event": {
+    "slug": "hotaki-dynasty",
+    "year": 1712,
+    "type": "gain",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "The whole province of Kandahar; Cliopatria shows the Safavid drop in 1713"
+  },
+  {
+   "event": {
+    "slug": "hotaki-dynasty",
+    "year": 1718,
+    "type": "gain",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "missing",
+   "note": "Sistan and Balochistan (confidence 1 on the Hotaki side)"
+  },
+  {
+   "event": {
+    "slug": "hotaki-dynasty",
+    "year": 1721,
+    "type": "gain",
+    "counterpart": "safavid-dynasty"
+   },
+   "mirror": {
+    "slug": "safavid-dynasty",
+    "year": 1722,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Kerman (Hotaki 1721-10) falls within the Safavid 1722 loss region"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1722,
+    "type": "loss",
+    "counterpart": "hotaki-dynasty"
+   },
+   "mirror": {
+    "slug": "hotaki-dynasty",
+    "year": 1722,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Isfahan, October 1722"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1723,
+    "type": "loss",
+    "counterpart": "russian-empire"
+   },
+   "mirror": {
+    "slug": "russian-empire",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "russian-empire is eu-17, not run yet"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1724,
+    "type": "loss",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1727,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Ottoman side 1727 at confidence 1 (Cliopatria year); Safavid side treaty of 12 June 1724"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1724,
+    "type": "vassal_end",
+    "counterpart": "kingdom-of-kartli"
+   },
+   "mirror": {
+    "slug": "kingdom-of-kartli",
+    "year": 0,
+    "type": "vassal_end"
+   },
+   "status": "exception",
+   "note": "eu-19, not run yet"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1729,
+    "type": "gain",
+    "counterpart": "hotaki-dynasty"
+   },
+   "mirror": {
+    "slug": "hotaki-dynasty",
+    "year": 1729,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "October/November 1729; but the Safavid KF 30 correction over-draws the Hotaki 1734 land"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1732,
+    "type": "gain",
+    "counterpart": "russian-empire"
+   },
+   "mirror": {
+    "slug": "russian-empire",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "eu-17, not run yet"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1735,
+    "type": "gain",
+    "counterpart": "russian-empire"
+   },
+   "mirror": {
+    "slug": "russian-empire",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "eu-17, not run yet"
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1735,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1736,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "The Ottomans record the loss in 1736 to afsharid-iran, and their 1730 contest names afsharid-iran, which did not exist until 1736. Both sides miss the 1730 recovery of Tabriz, Hamadan and Kermanshah (Campaigns of Nader Shah)."
+  },
+  {
+   "event": {
+    "slug": "safavid-dynasty",
+    "year": 1736,
+    "type": "dissolve",
+    "counterpart": "afsharid-iran"
+   },
+   "mirror": {
+    "slug": "afsharid-iran",
+    "year": 1736,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Safavid dissolve 1736-03 against Afsharid found 1736-01; flagged by the author"
+  },
+  {
+   "event": {
+    "slug": "yarubid-dynasty",
+    "year": 1633,
+    "type": "gain",
+    "counterpart": "iberian-union"
+   },
+   "mirror": {
+    "slug": "iberian-union",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "iberian-union is eu-12, not run yet"
+  },
+  {
+   "event": {
+    "slug": "yarubid-dynasty",
+    "year": 1643,
+    "type": "gain",
+    "counterpart": "kingdom-of-portugal"
+   },
+   "mirror": {
+    "slug": "kingdom-of-portugal",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "eu-12, not run yet (seed neighbour kingdom-of-portugal 1640-1705)"
+  },
+  {
+   "event": {
+    "slug": "yarubid-dynasty",
+    "year": 1650,
+    "type": "gain",
+    "counterpart": "kingdom-of-portugal"
+   },
+   "mirror": {
+    "slug": "kingdom-of-portugal",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "eu-12, not run yet"
+  },
+  {
+   "event": {
+    "slug": "yarubid-dynasty",
+    "year": 1698,
+    "type": "gain",
+    "counterpart": "kingdom-of-portugal"
+   },
+   "mirror": {
+    "slug": "portuguese-empire",
+    "year": 1698,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "portuguese-empire (am-06) records the loss of Mombasa and Zanzibar to yarubid-dynasty, while the Yarubid side names kingdom-of-portugal, as the seed does. The orchestrator should settle which Portuguese dossier owns the East African and Gulf posts."
+  },
+  {
+   "event": {
+    "slug": "yarubid-dynasty",
+    "year": 1728,
+    "type": "loss",
+    "counterpart": "kingdom-of-portugal"
+   },
+   "mirror": {
+    "slug": "kingdom-of-portugal",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "eu-12, not run yet; portuguese-empire has no 1728 gain of Mombasa either"
+  },
+  {
+   "event": {
+    "slug": "yarubid-dynasty",
+    "year": 1742,
+    "type": "loss",
+    "counterpart": "afsharid-iran"
+   },
+   "mirror": {
+    "slug": "afsharid-iran",
+    "year": 1743,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Batinah (1742) and Muscat (1743) against Afsharid 1743 Muscat and Suhar"
+  },
+  {
+   "event": {
+    "slug": "yarubid-dynasty",
+    "year": 1743,
+    "type": "loss",
+    "counterpart": "afsharid-iran"
+   },
+   "mirror": {
+    "slug": "afsharid-iran",
+    "year": 1743,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "yarubid-dynasty",
+    "year": 1744,
+    "type": "loss",
+    "counterpart": "sultanate-of-oman"
+   },
+   "mirror": {
+    "slug": "sultanate-of-oman",
+    "year": 1744,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "Swahili coast at confidence 1"
+  },
+  {
+   "event": {
+    "slug": "yarubid-dynasty",
+    "year": 1749,
+    "type": "dissolve",
+    "counterpart": "sultanate-of-oman"
+   },
+   "mirror": {
+    "slug": "sultanate-of-oman",
+    "year": 1744,
+    "type": "found"
+   },
+   "status": "exception",
+   "note": "The interior is drawn by both for 1744-1749 on purpose (flagged by the author)"
+  },
+  {
+   "event": {
+    "slug": "qasimids",
+    "year": 1608,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1636,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "The Ottomans put the whole loss of Yemen in 1636 (/ledger/107); the Qasimid side has 1608 highlands, 1628 Sana'a and 1634 Zabid"
+  },
+  {
+   "event": {
+    "slug": "qasimids",
+    "year": 1628,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1636,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Sana'a 1628 (Qasimid State page) against the Ottoman 1636"
+  },
+  {
+   "event": {
+    "slug": "qasimids",
+    "year": 1634,
+    "type": "gain",
+    "counterpart": "ottoman-empire"
+   },
+   "mirror": {
+    "slug": "ottoman-empire",
+    "year": 1636,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Zabid 1634 against the Ottoman 1636"
+  },
+  {
+   "event": {
+    "slug": "qasimids",
+    "year": 1644,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": {
+    "slug": "nobody",
+    "year": 0,
+    "type": "loss"
+   },
+   "status": "exception",
+   "note": "Aden; counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "qasimids",
+    "year": 1654,
+    "type": "vassal_start",
+    "counterpart": "Kathiri sultanate (Hadhramaut)"
+   },
+   "mirror": {
+    "slug": "kathiri-sultanate-of-seiyun",
+    "year": 0,
+    "type": "vassal_start"
+   },
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "qasimids",
+    "year": 1658,
+    "type": "vassal_start",
+    "counterpart": "Dhofar (local rulers)"
+   },
+   "mirror": {
+    "slug": "",
+    "year": 0,
+    "type": "vassal_start"
+   },
+   "status": "exception",
+   "note": "not listed in counterparts_needing_dossiers (see the fix)"
+  },
+  {
+   "event": {
+    "slug": "qasimids",
+    "year": 1731,
+    "type": "loss",
+    "counterpart": "Sultanate of Lahej"
+   },
+   "mirror": {
+    "slug": "sultanate-of-lahej",
+    "year": 0,
+    "type": "gain"
+   },
+   "status": "exception",
+   "note": "listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "qasimids",
+    "year": 1803,
+    "type": "loss",
+    "counterpart": "emirate-of-diriyah"
+   },
+   "mirror": {
+    "slug": "emirate-of-diriyah",
+    "year": 1803,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Tihama (confidence 1 on the Diriyah side)"
+  },
+  {
+   "event": {
+    "slug": "qasimids",
+    "year": 1813,
+    "type": "dissolve",
+    "counterpart": "imamate-of-yemen"
+   },
+   "mirror": {
+    "slug": "imamate-of-yemen",
+    "year": 1814,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": "A bridge at confidence 1"
+  },
+  {
+   "event": {
+    "slug": "portuguese-empire",
+    "year": 1698,
+    "type": "loss",
+    "counterpart": "yarubid-dynasty"
+   },
+   "mirror": {
+    "slug": "yarubid-dynasty",
+    "year": 1698,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "See the Yarubid 1698 entry: counterpart naming"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Julfar",
+   "kind": "place",
+   "used_in": "yarubid-dynasty"
+  },
+  {
+   "name": "Mocha",
+   "kind": "place",
+   "used_in": "qasimids"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Sultanate of Lahej",
+   "suggested_slug": "sultanate-of-lahej",
+   "years": [
+    1728,
+    1839
+   ]
+  },
+  {
+   "name": "Kathiri sultanate of Hadhramaut",
+   "suggested_slug": "kathiri-sultanate-of-seiyun",
+   "years": [
+    1654,
+    1683
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-me-10-b.md",
+ "problems": [
+  "Neighbour dossiers not yet written (counted as groups that have not run): kingdom-of-georgia, kingdom-of-kartli, kingdom-of-kakheti, kingdom-of-imereti, principality-of-guria, samtskhe-saatabago, shirvan (eu-19); kingdom-of-portugal, iberian-union (eu-12); portuguese-colonies (sa-06); russian-empire (eu-17).",
+  "Neighbour dossiers missing mirrors of this batch's sourced events (route to their owners): ottoman-empire (Yerevan 1635/1636; the Qasimid gains of 1608, 1628 and 1634 lumped into 1636; the 1724 partition at 1727; the 1735 recovery named afsharid-iran), portuguese-empire (Bahrain 1602, Hormuz 1622), khanate-of-bukhara (Khorasan 1524 and 1528).",
+  "Two Portuguese dossiers compete for the Gulf and East African posts: portuguese-empire (am-06) uses yarubid-dynasty as counterpart in 1698, while the Yarubid seed and dossier use kingdom-of-portugal (eu-12)."
+ ]
+}

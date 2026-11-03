@@ -1,0 +1,486 @@
+{
+ "batch_id": "eu-01-a",
+ "verdicts": [
+  {
+   "slug": "minoan-civilization",
+   "verdict": "pass",
+   "fixes": [],
+   "thin": [],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Knossos",
+     "result": "confirmed: 'The first palace was built around 1900 BC'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Minoan_civilization",
+     "result": "confirmed: 'with a Mycenaean elite clearly ruling Knossos from around 1450 BC'; Knossos: 'After about 1450 BC, Knossos became an important Mycenaean administrative centre'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 5499,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no infobox area (dates c. 3100-c. 1100 BC and range only); 5,499 km2 vs Crete's ~8,300 km2 real, ratio 0.66"
+   },
+   "tried": "both events on the page with the year; keyframes -1900/-1600/-1500 identical (16 cells); capital inside bbox; type/family; handover to mycenaean-greece at -1450 matched both ways"
+  },
+  {
+   "slug": "mycenaean-greece",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/5/correction (also /keyframe_review/6, /keyframe_review/7, /ledger/7, /ledger/9, /wars/0/outcome)",
+     "what": "Lesbos is removed from the -1240..-1200 shapes and drawn as contested, and the war outcome says Lesbos 'stayed outside Mycenaean possession', contrary to the source.",
+     "why": "Mycenaean Greece page, the sentence the /ledger/7 note quotes: Piyama-Radu 'later invaded the island of Lesbos, which then passed into Ahhiyawan control' (reign of Hattusili III, c. 1267-1237 BC). Wrong shape correction.",
+     "fix": "Keep Lesbos in the -1240..-1200 corrections (subtract only the Troad); split /ledger/7 into contest_start for the Troad only and a gain of Lesbos (Mitilini 40 km, c. -1240, confidence 2, counterpart hittites/Seha River Land or nobody, quoting 'which then passed into Ahhiyawan control'); /ledger/9 ends the Troad contest only; correct the war outcome and K5-K7 texts; include Lesbos in the -1150 loss.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/11/region",
+     "what": "The -1150 loss region (the -1240 additions, 38 cells) does not match the shape change: 15 of its cells remain in the -1150 shape and 3 dropped cells lie outside it.",
+     "why": "gazetteer resolve: minus(Cliopatria -1200, Cliopatria -1150) = 34 cells (22 without Troad/Lesbos); L11 region 38 cells, 15 not dropped.",
+     "fix": "region {\"union\": [{\"minus\": [{\"minus\": [{\"cliopatria\": \"Mycenaean Greece\", \"year\": -1200}, {\"cliopatria\": \"Mycenaean Greece\", \"year\": -1150}]}, {\"region\": \"Troad\"}]}, {\"place\": \"Miletus\", \"km\": 20}]} (Lesbos included per the first finding)",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/8/note",
+     "what": "Says 'the 34 cells of the -1240 additions ... are dropped'; 12 of the 34 dropped cells are the Troad and Lesbos and about 12 of the -1240 additions stay in the -1150 shape.",
+     "why": "gazetteer cell diff of consecutive shapes",
+     "fix": "Reword to the actual drop (Macedonian coast 12, Lemnos, part of the Ionian islands, Miletus, Troad and Lesbos).",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/keyframe_review/2/correction",
+     "what": "{\"region\": \"Crete\"} (27 cells) made Crete grow from 16 to 27 cells at -1450 and shrink back to 16 at -1400 with no event.",
+     "why": "Minoan -1500 shape = Cliopatria Mycenaean -1400 ∩ Crete = the same 16 cells (gazetteer resolve).",
+     "fix": "Replaced by {\"cliopatria\": \"Minoan civilization\", \"year\": -1500}.",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/2/note; /keyframe_review/3/correction/text",
+     "what": "Quote 'Mycenaean Greece's main base in Asia Minor' is not on the page.",
+     "why": "Mycenaean Greece page: 'Miletos (Milawata in Hittite) was the most important base for Mycenaean activity in Asia Minor.'",
+     "fix": "Quote replaced by 'the most important base for Mycenaean activity in Asia Minor'.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/5/note; /ledger/8/note",
+     "what": "Quotes paraphrased, not the page's words (years correct).",
+     "why": "Page: 'in c. 1315 BC, an anti-Hittite rebellion headed by Arzawa, a Hittite vassal state, received support from Ahhiyawa'; 'In c. 1220 BC, the king of Ahhiyawa is again reported to have been involved in an anti-Hittite uprising in western Anatolia.'",
+     "fix": "Quotes replaced by the page's sentences.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/1",
+     "what is missing": "date of the mainland extent (-1500, confidence 1, Cliopatria's date)",
+     "page to try": "https://en.wikipedia.org/wiki/Helladic_chronology"
+    },
+    {
+     "where": "/ledger/4",
+     "what is missing": "date of the Mycenaean settlement of Rhodes and the Dodecanese (-1400, confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Ialysos"
+    },
+    {
+     "where": "/ledger/6",
+     "what is missing": "date of the Mycenaean settlements in Macedonia and Epirus (-1240, confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Mycenaean_Greece"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "date of the abandonment of the outer settlements and Miletus (-1150, confidence 1)",
+     "page to try": "https://en.wikipedia.org/wiki/Miletus"
+    },
+    {
+     "where": "/ledger/8",
+     "what is missing": "Hittite takeover of Milawata (Milawata letter), Mursili II's Millawanda campaign, the Sausgamuwa treaty: the Miletus contest ends at a last mention, not a settlement",
+     "page to try": "https://en.wikipedia.org/wiki/Milawata_letter"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Mycenaean_Greece",
+     "result": "confirmed: 'By c. 1450 BC, the palace of Knossos was ruled by a Mycenaean elite'; 'mainland conquest of Crete c. 1450' (confidence 3)"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Mycenaean_Greece",
+     "result": "confirmed: 'a Mycenaean settlement there already from c. 1450 BC'"
+    },
+    {
+     "where": "/ledger/5",
+     "page": "https://en.wikipedia.org/wiki/Mycenaean_Greece",
+     "result": "confirmed (year and fact; quote reworded by reviewer)"
+    },
+    {
+     "where": "/ledger/7",
+     "page": "https://en.wikipedia.org/wiki/Mycenaean_Greece",
+     "result": "misread: Wilusa confirmed, but Lesbos 'then passed into Ahhiyawan control' (not contested)"
+    },
+    {
+     "where": "/ledger/8",
+     "page": "https://en.wikipedia.org/wiki/Mycenaean_Greece",
+     "result": "confirmed (year and fact; quote reworded by reviewer)"
+    },
+    {
+     "where": "/ledger/10",
+     "page": "https://en.wikipedia.org/wiki/Mycenaean_Greece",
+     "result": "confirmed: 'A second destruction struck Mycenae in c. 1190 BC or shortly thereafter'; Tiryns 'became the largest local center during the post-palatial period'"
+    },
+    {
+     "where": "/wars/1",
+     "page": "https://en.wikipedia.org/wiki/Late_Bronze_Age_collapse",
+     "result": "confirmed: Mycenae 1250 and 1190, Tiryns 1200, Pylos c. 1180, Thebes, 'Up to 90% of small sites in the Peloponnese were abandoned'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 71057,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no infobox area (range only)"
+   }
+  },
+  {
+   "slug": "greek-dark-ages",
+   "verdict": "fix",
+   "fixes": [
+    {
+     "where": "/ledger/3/region",
+     "what": "The dissolve region omitted Ionia although its text says 'and the Anatolian coast' and the -1000/-900 keyframes add Ionia; 71 cells vanished at -800 with no event.",
+     "why": "keyframe_review/1-2 corrections union Ionia; the region was Cliopatria -900 only.",
+     "fix": "region {\"union\": [{\"cliopatria\": \"Greek Dark Ages\", \"year\": -900}, {\"region\": \"Ionia\"}]}",
+     "applied": true
+    },
+    {
+     "where": "/keyframe_review/0/note",
+     "what": "Note called the -1100 shape 'Cliopatria's Mycenaean -1150 shape plus six cells'; it also lacks 40 cells (about 10,000 km2) of that shape.",
+     "why": "gazetteer resolve: minus(Mycenaean -1150, GDA -1100) = 40 cells (Aetolian/Evrytanian/Phthiotid interior and western Thessaly 21.1-22.5 E 38.6-39.6 N, four Cycladic cells, Kythera).",
+     "fix": "Note now states the drop and that no page explains it.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/1/note",
+     "what": "Page dates the Anatolian movement 'perhaps as early as 1000 BC', not 'c. 1000 BC'.",
+     "why": "Greek Dark Ages page: 'early movement from mainland Greece to the Anatolian coast', 'perhaps as early as 1000 BC'.",
+     "fix": "Quote corrected; confidence 2 kept.",
+     "applied": true
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "why Cliopatria's -1100 shape drops 40 cells of the Mycenaean -1150 shape (Aetolia, western Thessaly); a gap-filler may keep the Mycenaean extent (correction union of GDA -1100 and Mycenaean -1150)",
+     "page to try": "https://en.wikipedia.org/wiki/Submycenaean_period"
+    },
+    {
+     "where": "/ledger/2",
+     "what is missing": "Cyprus gain at confidence 1 is against the page ('did not colonize the island'); a page dating Greek kingdoms on Cyprus, and the counterpart (Cypriot kingdoms, not nobody)",
+     "page to try": "https://en.wikipedia.org/wiki/Ancient_history_of_Cyprus"
+    },
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "the two Halicarnassus-peninsula cells of -1100 (unverified: page budget)",
+     "page to try": "https://en.wikipedia.org/wiki/Halicarnassus"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Greek_Dark_Ages",
+     "result": "confirmed: infobox 'c. 1180-800 BC'"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Greek_Dark_Ages",
+     "result": "confirmed: 'early movement from mainland Greece to the Anatolian coast', 'perhaps as early as 1000 BC' (quote corrected)"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Greek_Dark_Ages",
+     "result": "page contradicts the shape ('did not colonize the island'), as the note admits; confidence 1"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Greek_Dark_Ages",
+     "result": "confirmed: 'in the beginning of the Protohistoric Iron Age, c. 800 BC'; 'the first Olympics, in 776 BC'"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 60722,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "no infobox area (range only)"
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "minoan-civilization",
+    "year": -1450,
+    "type": "dissolve",
+    "counterpart": "mycenaean-greece"
+   },
+   "mirror": {
+    "slug": "mycenaean-greece",
+    "year": -1450,
+    "type": "gain"
+   },
+   "status": "matched",
+   "note": "Crete; after the reviewer's fix both sides draw the same 16 cells"
+  },
+  {
+   "event": {
+    "slug": "mycenaean-greece",
+    "year": -1450,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Miletus, counterpart nobody"
+  },
+  {
+   "event": {
+    "slug": "mycenaean-greece",
+    "year": -1500,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "mainland, nobody"
+  },
+  {
+   "event": {
+    "slug": "mycenaean-greece",
+    "year": -1400,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Dodecanese, nobody"
+  },
+  {
+   "event": {
+    "slug": "mycenaean-greece",
+    "year": -1240,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Macedonia and the west, nobody"
+  },
+  {
+   "event": {
+    "slug": "mycenaean-greece",
+    "year": -1150,
+    "type": "loss",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "outer settlements abandoned, nobody"
+  },
+  {
+   "event": {
+    "slug": "mycenaean-greece",
+    "year": -1315,
+    "type": "contest_start",
+    "counterpart": "hittites"
+   },
+   "mirror": {
+    "slug": "hittites",
+    "year": -1315,
+    "type": "contest_start"
+   },
+   "status": "exception",
+   "note": "hittites (me-04) not yet written; must carry contest Miletus coast -1315..-1220"
+  },
+  {
+   "event": {
+    "slug": "mycenaean-greece",
+    "year": -1240,
+    "type": "contest_start",
+    "counterpart": "hittites"
+   },
+   "mirror": {
+    "slug": "hittites",
+    "year": -1240,
+    "type": "contest_start"
+   },
+   "status": "exception",
+   "note": "hittites (me-04) not yet written; Troad -1240..-1220; Lesbos should become a Mycenaean gain c. -1240 (blocking finding), so hittites/Seha River Land would carry the loss"
+  },
+  {
+   "event": {
+    "slug": "mycenaean-greece",
+    "year": -1100,
+    "type": "dissolve",
+    "counterpart": "greek-dark-ages"
+   },
+   "mirror": {
+    "slug": "greek-dark-ages",
+    "year": -1100,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "years match; GDA -1100 shape lacks 40 cells (about 10,000 km2, Aetolia and western Thessaly) of the Mycenaean -1150 shape; now acknowledged in the GDA keyframe note, listed as thin"
+  },
+  {
+   "event": {
+    "slug": "greek-dark-ages",
+    "year": -1000,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Ionia, nobody"
+  },
+  {
+   "event": {
+    "slug": "greek-dark-ages",
+    "year": -1000,
+    "type": "gain",
+    "counterpart": "nobody"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "Cyprus, nobody; the Cypriot kingdoms (alashiya) are in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "greek-dark-ages",
+    "year": -800,
+    "type": "dissolve",
+    "counterpart": "greek-city-states"
+   },
+   "mirror": {
+    "slug": "greek-city-states",
+    "year": -800,
+    "type": "found"
+   },
+   "status": "mismatch",
+   "note": "years match; GDA hands over Ionia (its -1000/-900 corrections, now in the dissolve region) but greek-city-states' -800 and -750 shapes have no Anatolia until Cliopatria's -700; route to the greek-city-states author (eu-01, another part)"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Lesbos",
+   "kind": "region",
+   "used_in": "mycenaean-greece"
+  },
+  {
+   "name": "Lemnos",
+   "kind": "region",
+   "used_in": "mycenaean-greece"
+  },
+  {
+   "name": "Pylos",
+   "kind": "place",
+   "used_in": "mycenaean-greece"
+  },
+  {
+   "name": "Tiryns",
+   "kind": "place",
+   "used_in": "mycenaean-greece"
+  },
+  {
+   "name": "Argolid",
+   "kind": "region",
+   "used_in": "mycenaean-greece"
+  },
+  {
+   "name": "Messenia",
+   "kind": "region",
+   "used_in": "mycenaean-greece"
+  },
+  {
+   "name": "Laconia",
+   "kind": "region",
+   "used_in": "mycenaean-greece"
+  },
+  {
+   "name": "Argos",
+   "kind": "place",
+   "used_in": "greek-dark-ages"
+  },
+  {
+   "name": "Lefkandi",
+   "kind": "place",
+   "used_in": "greek-dark-ages"
+  },
+  {
+   "name": "Aeolis",
+   "kind": "region",
+   "used_in": "greek-dark-ages"
+  },
+  {
+   "name": "Thera",
+   "kind": "place",
+   "used_in": "minoan-civilization"
+  },
+  {
+   "name": "Kythera",
+   "kind": "place",
+   "used_in": "minoan-civilization"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Seha River Land (Lazpa/Lesbos)",
+   "suggested_slug": "seha-river-land",
+   "years": [
+    -1400,
+    -1200
+   ]
+  },
+  {
+   "name": "Arzawa",
+   "suggested_slug": "arzawa",
+   "years": [
+    -1500,
+    -1300
+   ]
+  },
+  {
+   "name": "Wilusa (Troy)",
+   "suggested_slug": "wilusa",
+   "years": [
+    -1300,
+    -1180
+   ]
+  },
+  {
+   "name": "Alashiya and the Cypriot city-kingdoms",
+   "suggested_slug": "alashiya",
+   "years": [
+    -1450,
+    -800
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-eu-01-a.md",
+ "problems": [
+  "The Ahhiyawa page as fetched has no Piyama-Radu, Milawata letter, Sausgamuwa treaty or Mursili II text (confirms the author's report); the Piyama-Radu and Lesbos sentences are on the Mycenaean Greece page.",
+  "hittites (me-04) not yet written: all Hittite contest mirrors are exceptions.",
+  "The gazetteer region 'Ionia' resolves to the whole Izmir province (71 cells, about 18,000 km2, inland to 28.8 E), wider than the coastal strip the GDA page describes; not a dossier fault.",
+  "Reviewer edits applied in place to mycenaean-greece.json and greek-dark-ages.json (re-validated, 0 errors, 0 warnings; read back after 10 s)."
+ ]
+}

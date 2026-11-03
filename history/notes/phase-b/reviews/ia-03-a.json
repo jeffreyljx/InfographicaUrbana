@@ -1,0 +1,719 @@
+{
+ "batch_id": "ia-03-a",
+ "verdicts": [
+  {
+   "slug": "kazakh-khanate",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/2/correction (and /keyframe_review/3-5, /ledger between 1470 and 1496)",
+     "what": "The 1475-1496 corrections keep 729 cells (about 184,000 km2: Qyzylorda 407, South Kazakhstan 264, Zhambyl 36 cells; 61.0-71.2E, 37.6-46.6N, the middle and lower Syr Darya) that Cliopatria moves from its Timurid shape to the Kazakh shape in 1475, but no ledger event gains them, and the 1496 loss to the Shaybanids (680 of these cells) gives away land the ledger never gained.",
+     "why": "Keyframe walk with the gazetteer: corrected 1468 keyframe 4,499 cells, corrected 1475 keyframe 5,220 cells (+729, -8); the only event 1469-1481 is the 1470 Sibir gain, which covers none of the 729. All 729 lie in Cliopatria's 1474 Timurid shape, and 270 of them are also inside the timurid-empire dossier's 1475 correction (Transoxiana), so they are claimed twice 1475-1496. The Kazakh Khanate page only says that in the 1495-1496 division 'the Kazakh rulers retained control over several cities of northern Turkestan' and that the Shaybanids held Otrar, Yasi, Arkuq and Uzgend; it gives no year for a Kazakh hold.",
+     "fix": "Add a gain (year 1475, Cliopatria's, confidence 1 unless a Janibek/Burunduk Khan page dates it) with counterpart timurid-empire or the Uzbek heirs of Abu'l-Khayr (listed under counterparts_needing_dossiers), region {\"intersect\": [{\"minus\": [{\"cliopatria\": \"Kazakh Khanate\", \"year\": 1475}, {\"cliopatria\": \"Kazakh Khanate\", \"year\": 1474}]}, {\"country\": \"Kazakhstan\"}], \"text\": \"several cities of northern Turkestan\"}; or, if no page supports a Kazakh hold before 1496, subtract these cells from the 1475-1492 corrections and shrink the 1496 loss accordingly. Tell the timurid-empire owner (ia-02) about the 270 doubly claimed cells.",
+     "applied": false,
+     "blocking": true
+    },
+    {
+     "where": "/ledger/15/counterpart, /ledger/16/counterpart, /ledger/17/counterpart, /wars/3/belligerents/1",
+     "what": "Counterpart slug small-horde does not and will not exist: the nogai-horde dossier is written as one state for both Cliopatria rows.",
+     "why": "history/polities/nogai-horde.json identity.cliopatria_names = ['Nogai Horde', 'Small Horde'] (shared Wikidata Q631210, merged under the earlier slug as the brief requires).",
+     "fix": "Changed small-horde to nogai-horde in the four places (Cliopatria region names 'Small Horde' left as they are); re-validated with --resolve: valid, no warnings.",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/27/note, /ledger/26/note, /keyframe_review/22/note",
+     "what": "The notes said the Kazakh-Dzungar Wars page has Sayram 'retaken after a local revolt' as if by the Kazakhs; the page has Galdan recapture it.",
+     "why": "Kazakh-Dzungar Wars page: Sayram taken in 1684 after failed sieges in 1681 and 1683; the townspeople revolted and destroyed the Dzungar garrison, after which Galdan returned and recaptured the city; Tauke recaptured Tashkent in 1688. No Kazakh retaking of Sayram is dated.",
+     "fix": "Rewrote the three notes to say this; the 1687 gain stays at confidence 1 as Cliopatria's year (listed under thin).",
+     "applied": true,
+     "blocking": false
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what": "The first capital Sozaq (68.5E, 44.0N, 1465-1468) lies outside the 1465-1467 keyframe, which is Cliopatria's 1468 Chu-Talas core (bbox 70.11-76.61E).",
+     "why": "Point-in-shape check on the H3 grid: Sozaq cell out of the corrected 1465 keyframe (it is within about 35 km of the 1468 keyframe).",
+     "fix": "Add Sozaq to the 1465 keyframe correction (e.g. union with {\"lon\": 68.5, \"lat\": 44.0, \"km\": 50, \"text\": \"Sozaq (c. 1465-1469)\"}) or say in the capital's note why the seat lies outside the drawn core.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/identity/capitals/2 and /ledger/6",
+     "what": "Saraishyq (51.7E, 47.5N), capital 1511-1520, lies outside every Kazakh keyframe 1502-1528, including the 1521 shape, and the nogai-horde dossier has Kasym take Saray-Juk only in 1520.",
+     "why": "Point-in-shape check: Saraishyq cell out of the 1502, 1512-1520 and 1521 keyframes; nogai-horde/ledger/1: 'Kasym successfully captured the Nogai capital Saray-Juk in 1520'. The infobox does say 'Saraishyq (1511-1521)' (confirmed), so the event is not fabricated.",
+     "fix": "Note the conflict at /ledger/6 (infobox 1511 against the 1520 capture) and either start the Saraishyq seat in 1520 or add Saraishyq to the 1520-1528 drawing through the 1521 Nogai gain region; consider confidence 2 for /ledger/6.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/5/region and /keyframe_review/8, /keyframe_review/9, /keyframe_review/10 (correction)",
+     "what": "The whole-admin1 union (South Kazakhstan + Qyzylorda) overshoots Cliopatria's 1521 shape by 131 cells (130 in Qyzylorda), which then drop out in 1521 with no event.",
+     "why": "Keyframe walk: corrected 1519 keyframe minus Cliopatria 1521 shape = 131 cells, 130 of them in Qyzylorda admin1; no loss event in 1521.",
+     "fix": "Intersect the admin1 union with {\"cliopatria\": \"Kazakh Khanate\", \"year\": 1521} in /ledger/5/region and in the three corrections.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger/2 and /keyframe_review/1",
+     "what": "The corrected 1468 keyframe (1468-1474) already shows the steppe that the ledger gains only in 1470, and the khanate-of-sibir dossier loses it in 1468 (two years apart).",
+     "why": "Kazakh Khanate page: 'Around 1470, the Kazakh tribes, led by Janibek and Kerei, settled in what is now Kazakhstan'; khanate-of-sibir/ledger/6 dates the loss 1468 (Abu'l-Khayr's death).",
+     "fix": "Date the gain 1468 with the page's 'around 1470' in the note (agreeing with the keyframe and with Sibir), or keep 1470 and have the Sibir owner move its loss; either way the two dossiers must agree within a year.",
+     "applied": false,
+     "blocking": false
+    },
+    {
+     "where": "/ledger (no vassal events)",
+     "what": "The ledger has no vassal events for the Kazakh jüzes' submission to Russia (Junior 1731, Middle 1740), the Dzungar overlordship (1734-1742) or the Qing (1757); the author left them to the overlords' dossiers.",
+     "why": "Reviewer brief check 3 expects the subordinate's ledger to mirror a vassal_start with the overlord as counterpart; the schema's wording ('this state's vassal', counterpart = the vassal) points the other way. The author's notes item 9 flag the choice.",
+     "fix": "Orchestrator to rule on the convention; if mirrors are required, add vassal_start/vassal_end pairs here (counterparts russian-empire, dzungar-khanate, qing-dynasty) from the Kazakh Khanate, Jüz and Abylai Khan pages already in sources.",
+     "applied": false,
+     "blocking": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/ledger/3",
+     "what is missing": "1487 Sibir steppe (1,326 cells) is Cliopatria's year",
+     "page to try": "https://en.wikipedia.org/wiki/Janibek_Khan"
+    },
+    {
+     "where": "/ledger/5",
+     "what is missing": "year of the Uzbek handover of the Syr Darya lands (bridged to 1510)",
+     "page to try": "https://en.wikipedia.org/wiki/Kasym_Khan"
+    },
+    {
+     "where": "/ledger/10",
+     "what is missing": "Semirechye gain from the Moghuls dated only by Cliopatria (1521)",
+     "page to try": "https://en.wikipedia.org/wiki/Tarikh-i-Rashidi"
+    },
+    {
+     "where": "/ledger/11",
+     "what is missing": "Tashkent and northern Kyzylkum in 1521; Tashkent page has the city Shaybanid in the 16th century",
+     "page to try": "https://en.wikipedia.org/wiki/Tashkent"
+    },
+    {
+     "where": "/ledger/14",
+     "what is missing": "end of the Semirechye struggle (1565 bridged to Abdurashid's death)",
+     "page to try": "https://en.wikipedia.org/wiki/Haqnazar_Khan"
+    },
+    {
+     "where": "/ledger/20",
+     "what is missing": "loss of Tawakkul's Samarkand-Andijan conquests (Cliopatria 1609)",
+     "page to try": "https://en.wikipedia.org/wiki/Esim_Khan"
+    },
+    {
+     "where": "/ledger/27",
+     "what is missing": "Kazakh return of Sayram (Cliopatria 1687; the page has Galdan retake it)",
+     "page to try": "https://en.wikipedia.org/wiki/Tauke_Khan"
+    },
+    {
+     "where": "/ledger/28",
+     "what is missing": "1718 Irtysh strip to the Tsardom: the Russian fort behind it",
+     "page to try": "https://en.wikipedia.org/wiki/Semey"
+    },
+    {
+     "where": "/ledger/29",
+     "what is missing": "1721 northern strip to Russia",
+     "page to try": "https://en.wikipedia.org/wiki/Omsk"
+    },
+    {
+     "where": "/ledger/31",
+     "what is missing": "1738 Orenburg country to Russia",
+     "page to try": "https://en.wikipedia.org/wiki/Orenburg"
+    },
+    {
+     "where": "/ledger/35",
+     "what is missing": "1769 upper Irtysh and Altai edge to Russia",
+     "page to try": "https://en.wikipedia.org/wiki/Ust-Kamenogorsk"
+    },
+    {
+     "where": "/ledger/37",
+     "what is missing": "1791 Aral, lower Syr Darya and Ustyurt to Khiva (725 cells)",
+     "page to try": "https://en.wikipedia.org/wiki/Khanate_of_Khiva"
+    },
+    {
+     "where": "/ledger/38",
+     "what is missing": "1809 Sayram-Shymkent-Turkestan lands to Kokand (259 cells)",
+     "page to try": "https://en.wikipedia.org/wiki/Turkistan_(city)"
+    },
+    {
+     "where": "/ledger/39",
+     "what is missing": "1822 Talas, Taraz and Syr Darya lands to Kokand (396 cells), dated only 'the 1820s'",
+     "page to try": "https://en.wikipedia.org/wiki/Taraz"
+    },
+    {
+     "where": "/ledger/40",
+     "what is missing": "1822 lower Syr Darya strip back from Khiva (47 cells)",
+     "page to try": "https://en.wikipedia.org/wiki/Kyzylorda"
+    },
+    {
+     "where": "/ledger/42",
+     "what is missing": "Junior jüz takeover dated by bridging to 1824",
+     "page to try": "https://en.wikipedia.org/wiki/Lesser_J%C3%BCz"
+    },
+    {
+     "where": "/ledger/46",
+     "what is missing": "end of the Junior jüz occupation tied to 1847",
+     "page to try": "https://en.wikipedia.org/wiki/Bukey_Horde"
+    },
+    {
+     "where": "/keyframe_review/12, /keyframe_review/13",
+     "what is missing": "1529-1571 flat shape although the page has the Kazakhs 'completely uprooted' after 1533-1534 (unverified: page budget)",
+     "page to try": "https://en.wikipedia.org/wiki/Haqnazar_Khan"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Kazakh_Khanate",
+     "result": "confirmed ('Around 1470, the Kazakh tribes, led by Janibek and Kerei, settled in what is now Kazakhstan')"
+    },
+    {
+     "where": "/ledger/1, /ledger/6, /ledger/12 (capital_move, confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Kazakh_Khanate",
+     "result": "confirmed (infobox: Sozaq c. 1465-1469; Syghanaq 1469-1511; Saraishyq 1511-1521; Syghanaq 1521-1599)"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Kazakh_Khanate",
+     "result": "confirmed (division around 1495-1496; Shaybanids hold Otrar, Yasi, Arkuq and Uzgend)"
+    },
+    {
+     "where": "/ledger/9",
+     "page": "https://en.wikipedia.org/wiki/Kazakh_Khanate",
+     "result": "confirmed (end of Kasym's reign: Yaik River basin in the northwest; right bank of the Syr Darya including Tashkent, Turkestan and Sayram)"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Kazakh_Khanate",
+     "result": "confirmed (by 1569 Haqq Nazar's raids; the Manghit nomads east of the Ural absorbed)"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Kazakh_Khanate",
+     "result": "confirmed (1597 revolt of Abd al-Mu'min, Tawakkul takes Tashkent, Turkistan, Andijan and Samarqand, fails at Bukhara)"
+    },
+    {
+     "where": "/ledger/21, /ledger/22",
+     "page": "https://en.wikipedia.org/wiki/Kazakh_Khanate",
+     "result": "confirmed (Yesim captured Tashkent twice, in 1611 and 1613)"
+    },
+    {
+     "where": "/ledger/23 (confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Kazakh%E2%80%93Dzungar_Wars",
+     "result": "confirmed (1643 Battle of Orbulaq in the Orbulaq gorge on the Ili, Jetisu)"
+    },
+    {
+     "where": "/ledger/25",
+     "page": "https://en.wikipedia.org/wiki/Dzungar_Khanate",
+     "result": "confirmed (victories on the Chu and Talas consolidated the border from the Talas to the Ayagöz; eastern Semirechye and the upper Irtysh land dependent in the 1650s; 1658 is in the link title, and the Kazakh-Dzungar Wars page has 1658)"
+    },
+    {
+     "where": "/ledger/26 (confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Kazakh%E2%80%93Dzungar_Wars",
+     "result": "confirmed (Sayram captured in 1684 after failed sieges in 1681 and 1683)"
+    },
+    {
+     "where": "/ledger/27",
+     "page": "https://en.wikipedia.org/wiki/Kazakh%E2%80%93Dzungar_Wars",
+     "result": "not on page as noted: the page has Galdan recapture Sayram after the revolt; note rewritten (confidence 1, not blocking)"
+    },
+    {
+     "where": "/ledger/32",
+     "page": "https://en.wikipedia.org/wiki/Dzungar_Khanate",
+     "result": "confirmed ('The Dzungars controlled Jetisu and Tashkent until 1745')"
+    },
+    {
+     "where": "/ledger/33, /ledger/34 (confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Khanate_of_Kokand",
+     "result": "confirmed (Irdana Biy 'temporarily took control of Tashkent in 1765 before Ablay Khan retook it')"
+    },
+    {
+     "where": "/ledger/43",
+     "page": "https://en.wikipedia.org/wiki/Kenesary_Kasymov",
+     "result": "confirmed (rebellion 1837-1847, 'national liberation character')"
+    },
+    {
+     "where": "/ledger/47 (confidence 3)",
+     "page": "https://en.wikipedia.org/wiki/Kenesary_Kasymov",
+     "result": "confirmed ('the last khan of the Kazakh Khanate'; killed in battle against Kyrgyz manaps in 1847; infobox Disestablished 1847)"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 2652599,
+    "cliopatria_year": 1595,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "The Kazakh Khanate infobox gives no area (read 2026-10-19); the author says so in notes item 1 and in gaps. Cliopatria's 2.40-2.65 M km2 for 1521-1608 is about the size of modern Kazakhstan, which is plausible."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1465,
+    "type": "found",
+    "counterpart": "moghulistan"
+   },
+   "mirror": {
+    "slug": "moghulistan",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "Predecessor land: the 533 cells of the Kazakh 1468 core all lie in Cliopatria's 1467 Moghulistan shape; moghulistan.json has no loss to the Kazakhs and no kazakh-khanate successor. Route to the moghulistan owner (ia-02)."
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1470,
+    "type": "gain",
+    "counterpart": "khanate-of-sibir"
+   },
+   "mirror": {
+    "slug": "khanate-of-sibir",
+    "year": 1468,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "Two years apart (page: around 1470; Sibir: Abu'l-Khayr's death 1468); same land (Cliopatria 1482 minus 1481)."
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1475,
+    "type": "gain (missing)",
+    "counterpart": "timurid-empire"
+   },
+   "mirror": {
+    "slug": "timurid-empire",
+    "year": null,
+    "type": null
+   },
+   "status": "missing",
+   "note": "No event on either side for the 729 Syr Darya cells Cliopatria moves from Timurid to Kazakh in 1475; 270 of them are inside both the kazakh-khanate and timurid-empire 1475 corrections (double claim). See fix 1."
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1487,
+    "type": "gain",
+    "counterpart": "khanate-of-sibir"
+   },
+   "mirror": {
+    "slug": "khanate-of-sibir",
+    "year": 1487,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1496,
+    "type": "loss",
+    "counterpart": "shaybanids"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (shaybanids) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1510,
+    "type": "gain",
+    "counterpart": "shaybanids"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (shaybanids) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1520,
+    "type": "contest_start",
+    "counterpart": "nogai-horde"
+   },
+   "mirror": {
+    "slug": "nogai-horde",
+    "year": 1520,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1521,
+    "type": "contest_end",
+    "counterpart": "nogai-horde"
+   },
+   "mirror": {
+    "slug": "nogai-horde",
+    "year": 1521,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1521,
+    "type": "gain",
+    "counterpart": "nogai-horde"
+   },
+   "mirror": {
+    "slug": "nogai-horde",
+    "year": 1521,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1521,
+    "type": "gain",
+    "counterpart": "western-moghulistan"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (western-moghulistan) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1521,
+    "type": "gain",
+    "counterpart": "khanate-of-bukhara"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (khanate-of-bukhara) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1568,
+    "type": "contest_start",
+    "counterpart": "nogai-horde"
+   },
+   "mirror": {
+    "slug": "nogai-horde",
+    "year": 1568,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": "Counterpart slug corrected from small-horde by the reviewer."
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1569,
+    "type": "contest_end",
+    "counterpart": "nogai-horde"
+   },
+   "mirror": {
+    "slug": "nogai-horde",
+    "year": 1572,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "Three years apart; the Kazakh side is page-backed (Kazakh Khanate page: by 1569 the Manghits east of the Ural absorbed), the nogai side is confidence 1 (Cliopatria step). Route to the nogai-horde owner (ia-02) to move to 1569."
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1569,
+    "type": "gain",
+    "counterpart": "nogai-horde"
+   },
+   "mirror": {
+    "slug": "nogai-horde",
+    "year": 1572,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "As above: 1569 (page) against 1572 (Cliopatria, confidence 1)."
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1597,
+    "type": "gain",
+    "counterpart": "khanate-of-bukhara"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (khanate-of-bukhara) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1609,
+    "type": "loss",
+    "counterpart": "khanate-of-bukhara"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (khanate-of-bukhara) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1658,
+    "type": "loss",
+    "counterpart": "oirat-confederation"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (oirat-confederation) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1684,
+    "type": "loss",
+    "counterpart": "dzungar-khanate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (dzungar-khanate) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1687,
+    "type": "gain",
+    "counterpart": "dzungar-khanate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (dzungar-khanate) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1718,
+    "type": "loss",
+    "counterpart": "tsardom-of-russia"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group eu-16 (tsardom-of-russia) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1721,
+    "type": "loss",
+    "counterpart": "russian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group eu-17 (russian-empire) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1723,
+    "type": "occupation_start",
+    "counterpart": "dzungar-khanate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (dzungar-khanate) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1738,
+    "type": "loss",
+    "counterpart": "russian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group eu-17 (russian-empire) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1745,
+    "type": "occupation_end",
+    "counterpart": "dzungar-khanate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (dzungar-khanate) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1769,
+    "type": "loss",
+    "counterpart": "russian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group eu-17 (russian-empire) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1784,
+    "type": "loss",
+    "counterpart": "Tashkent state (Yunus Khoja)"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "No dossier; listed in the author's counterparts_needing_dossiers (suggested slug tashkent-state-of-yunus-khoja); switch the counterpart string to that slug once it exists."
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1791,
+    "type": "loss",
+    "counterpart": "khanate-of-khiva"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (khanate-of-khiva) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1809,
+    "type": "loss",
+    "counterpart": "khanate-of-kokand"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (khanate-of-kokand) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1822,
+    "type": "loss",
+    "counterpart": "khanate-of-kokand"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (khanate-of-kokand) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1822,
+    "type": "gain",
+    "counterpart": "khanate-of-khiva"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group ia-03 (khanate-of-khiva) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1822,
+    "type": "occupation_start",
+    "counterpart": "russian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group eu-17 (russian-empire) has not run; Middle jüz"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1824,
+    "type": "occupation_start",
+    "counterpart": "russian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group eu-17 (russian-empire) has not run; Junior jüz"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1837,
+    "type": "occupation_end",
+    "counterpart": "russian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group eu-17 (russian-empire) has not run"
+  },
+  {
+   "event": {
+    "slug": "kazakh-khanate",
+    "year": 1847,
+    "type": "occupation_end",
+    "counterpart": "russian-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart dossier not written yet; group eu-17 (russian-empire) has not run"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Sayram",
+   "kind": "place",
+   "used_in": "kazakh-khanate"
+  },
+  {
+   "name": "Sygnak",
+   "kind": "place",
+   "used_in": "kazakh-khanate"
+  },
+  {
+   "name": "Sozak",
+   "kind": "place",
+   "used_in": "kazakh-khanate"
+  },
+  {
+   "name": "Saraishyq",
+   "kind": "place",
+   "used_in": "kazakh-khanate"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Tashkent state of Yunus Khoja",
+   "suggested_slug": "tashkent-state-of-yunus-khoja",
+   "years": [
+    1784,
+    1809
+   ]
+  },
+  {
+   "name": "Uzbek Khanate of Abu'l-Khayr",
+   "suggested_slug": "uzbek-khanate-of-abu-l-khayr",
+   "years": [
+    1428,
+    1468
+   ]
+  },
+  {
+   "name": "Bukey Horde (Inner Horde)",
+   "suggested_slug": "bukey-horde"
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-ia-03-a.md",
+ "problems": [
+  "No page failed for the reviewer (Kazakh Khanate, Kazakh-Dzungar Wars, Khanate of Kokand, Dzungar Khanate, Kenesary Kasymov opened 2026-10-19).",
+  "Neighbour dossiers present and cross-checked: khanate-of-sibir, nogai-horde, mongol-khanate, moghulistan, timurid-empire, golden-horde, kapisa, eastern-chagatai-khanate; all other Context counterparts are not written yet (groups ia-03, eu-16, eu-17, ea-08 have not run).",
+  "Convention question for the orchestrator: whether a vassal's own ledger mirrors the overlord's vassal_start (reviewer brief check 3) or only the overlord records it (schema wording); see fix 8."
+ ]
+}

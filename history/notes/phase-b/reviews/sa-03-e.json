@@ -1,0 +1,1120 @@
+{
+ "batch_id": "sa-03-e",
+ "verdicts": [
+  {
+   "slug": "chola-empire",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/10, /keyframe_review/11, /keyframe_review/12",
+     "what": "The 970, 1000 and 1010 shapes (all 'ok') leave out northern Sri Lanka, which /ledger/11 gains in 993 (confidence 3) and keeps until 1070, so the keyframes contradict the ledger for 993-1017 across three shapes.",
+     "why": "Rajaraja I page: 'In 993, Rajaraja achieved the conquest of Anuradhapura ... resulting in the acquisition of the northern portion of Sri Lanka by the Chola empire.' Gazetteer: Chola 1000 shape intersect Anuradhapura 110 km = 0 cells; the region is 27,819 km2. Sri Lanka first appears in the 1018 shape. KF10's note says the gain is 'added by the ledger', but the brief accepts an untraced event only when it is small and inside one shape's span.",
+     "fix": "Make KF10 a years-only adjust valid 970-992; add a new keyframe chola-empire_993 (993-999) = {\"union\": [{\"cliopatria\": \"Chola Empire\", \"year\": 970}, {\"place\": \"Anuradhapura\", \"km\": 110}]}; set KF11 and KF12 to adjust with the same union on their own Cliopatria years.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/17/correction",
+     "what": "The correction removes Sri Lanka from the whole 1056 shape (1056-1093), but the note says '1056-1069 stand as drawn', and /ledger/27 (confidence 3) keeps the island Chola until 1070.",
+     "why": "A correction stands for the shape's whole span: it cannot say 'from 1070'. Kulottunga I page: 'In 1070, Vijayabahu attacked the Chola forces ... and defeated them'; Rajendra Chola I page: 'The Chola reign over Sri Lanka persisted until 1070.' The same pattern is in KF8 (Tondaimandalam removed from 947, lost 949), which is tolerable because 944-949 is a contest.",
+     "fix": "Make KF17 a years-only adjust valid 1056-1069 (shape unchanged) and add a new keyframe chola-empire_1070 (1070-1093) with {\"minus\": [{\"cliopatria\": \"Chola Empire\", \"year\": 1056}, {\"country\": \"Sri Lanka\"}]}, as was done for chola-empire_915.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/20",
+     "what": "The 1111 shape ('ok') already lacks Gangavadi in 1111, although /ledger/31 loses it in 1116, and it keeps Vengi until 1125, although /ledger/32 loses Vengi c. 1118; the note ('dated events inside these years are added by the ledger') misreads the shape.",
+     "why": "Gazetteer: Chola 1099 minus Chola 1111 = 92,056 km2 (bbox 74.68-78.12E, 11.64-14.92N), exactly the overlap of Chola 1099 with Cliopatria's Hoysala 1111 shape (92,056 km2). Chola 1111 intersect Rajahmundry 130 km = 34,142 km2 (Vengi still drawn). Hoysala page: Talakadu 1116; Chola Empire page: 'Around 1118, the Cholas lost control of Vengi to the Western Chalukya and Gangavadi ... to the Hoysala Empire'; Kulottunga I page: 'a brief occupation of the Vengi territories between 1118 and 1126'.",
+     "fix": "Split KF20: new keyframe 1111-1115 = {\"union\": [{\"cliopatria\": \"Chola Empire\", \"year\": 1111}, {\"intersect\": [{\"cliopatria\": \"Chola Empire\", \"year\": 1099}, {\"cliopatria\": \"Hoysala Kingdom\", \"year\": 1111}]}]}; 1116-1117 the 1111 shape as drawn; 1118-1125 {\"minus\": [{\"cliopatria\": \"Chola Empire\", \"year\": 1111}, <the Vengi union of /ledger/32>]}.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/21",
+     "what": "The 1126 shape ('ok', 1126-1138) lacks Vengi, but /ledger/33 regains it in 1133; the note itself says 'Cliopatria regains it in 1139' and leaves the verdict at ok.",
+     "why": "Kulottunga I page: 'By 1133 Vikrama Chola defeated Someshvara III in the Battle of Godavari.' Chola 1126 intersect Rajahmundry 130 km = 253 km2 (Vengi absent); about 66,000 km2 regained in Cliopatria only from 1139.",
+     "fix": "Make KF21 a years-only adjust valid 1126-1132 and add a new keyframe chola-empire_1133 (1133-1138) = {\"cliopatria\": \"Chola Empire\", \"year\": 1139} (or the 1126 shape plus the Vengi union of /ledger/33).",
+     "applied": false
+    },
+    {
+     "where": "/identity/capitals/1 and /keyframe_review/28",
+     "what": "Gangaikonda Cholapuram (79.449E, 11.206N), the capital to 1279, lies outside every Chola shape from 1241 (the 1241, 1250 and 1260 keyframes); the 1250 remnant (7,865 km2 at 79.0-80.25E, 13.66-14.88N) sits around Nellore, the very country /ledger/37 says the Pandyas marched to by 1250, yet KF28 is 'ok'.",
+     "why": "Gazetteer: Chola 1241 and Chola 1250 shapes intersect 15 km of the capital = 0 cells; Pandya Empire 1250 shape intersect = 3 cells. Later Cholas page: 'The Pandyans marched to Arcot; Tirumalai, Nellore, Visayawadai, Vengi, and Kalingam by 1250.' Pandya Empire page: 'the ancient Chola country was now overrun by the Pandyas'; no page says where Rajendra III ruled after 1246.",
+     "fix": "End the Gangaikonda Cholapuram capital at 1240 (seat page silent from 1241, say so in the note), and set KF28 and KF29 notes to say the remnant's location contradicts /ledger/37 and is unverified (verdict adjust with text, or a gap-filler page on Rajendra III).",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/29 and /ledger (missing event)",
+     "what": "KF29 draws 1260-1279 'as a vassal of the Pandya Empire', but the ledger has no vassal_start for it (nor for the 1216 submission).",
+     "why": "Pandya Empire page: 'Jatavarman Sundara I subdued Rajendra II around 1258-1260 CE and made him pay tribute' (the page's 'Rajendra II' is Rajendra III, as the author notes) and, for 1216, 'The Chola king subsequently made a formal submission to Maravarman Sundara I and acknowledged his overlordship.'",
+     "fix": "Add vassal_start, counterpart pandya-empire, 1258 (confidence 2, Pandya Empire page), closed by the 1279 dissolve; consider a vassal_start/vassal_end pair 1216-1217 (Hoysala restoration in 1217 on the same page).",
+     "applied": false
+    },
+    {
+     "where": "/ledger/20",
+     "what": "The 1019 Pandya gain named {\"region\": \"Tamil Nadu (region)\"} (123,668 km2, the whole state including the Chola core at Thanjavur and Kanchi) and the counterpart pandya-dynasty, whose dossier ends in 915.",
+     "why": "Rajendra Chola I page (opened): 'In 1018 and 1019 CE, Rajendra invaded and conquered the Pandya and Chera Perumal kingdoms.' Gazetteer: Tamil Nadu (region) bbox 76.27-80.24E, 8.17-13.45N. pandya-dynasty ledger ends with dissolve 915; the author's own report flags pandya-kingdom-915-1216 as the counterpart needing a dossier.",
+     "fix": "Applied: region set to {\"cliopatria\": \"Pandya Dynasty\", \"year\": 900, \"text\": \"the Pandya kingdom, Madurai and the south\"} (as /ledger/6) and counterpart to pandya-kingdom-915-1216; the same slug replaces pandya-dynasty among the belligerents of /wars/7 and /wars/11. Re-validated: 0 errors.",
+     "applied": true
+    },
+    {
+     "where": "/ledger/22, /ledger/23",
+     "what": "The Srivijaya contest runs 1023-1024 here but 1025-1026 in the srivijaya dossier, and this dossier's own /wars/9 runs to 1025.",
+     "why": "Rajendra Chola I page gives both 'overseas war expedition commenced in 1023' / 'ended in 1024' and 'In 1025 CE, Rajendra's Chola forces crossed the Indian Ocean and invaded Srivijaya'; srivijaya /ledger/5-6 use the Srivijaya page infobox 'Date: 1025-1026'.",
+     "fix": "Date the contest over Kedah and Palembang 1025-1026 (keep 1023 as the start of the expedition in the war entry), or record in the note why 1023-1024 is preferred so the srivijaya author can align.",
+     "applied": false
+    },
+    {
+     "where": "/identity/rulers",
+     "what": "Gandaraditya (955-957) and Arinjaya (956-957) overlap, and only the first ruler entry carries a source.",
+     "why": "Rulers must be contiguous and cite a page (brief 2.9).",
+     "fix": "Make the reigns contiguous (e.g. Gandaraditya 955-956) and give each entry the Chola Empire page as source.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/7, /keyframe_review/10",
+     "what is missing": "The far south (Tirunelveli, below 9.2N; 19,000 km2) leaves the Chola shape in 936 and 970 and returns in 960 and 1000 with no event either way.",
+     "page to try": "https://en.wikipedia.org/wiki/Parantaka_II"
+    },
+    {
+     "where": "/keyframe_review/15",
+     "what is missing": "The 1034-1039 shape is 131,255 km2 smaller than 1018 (gazetteer: bbox 74.68-82.32E, 12.68-17.3N, the Rattapadi-Vengi belt) and is restored in 1040; no event.",
+     "page to try": "https://en.wikipedia.org/wiki/Rajadhiraja_Chola"
+    },
+    {
+     "where": "/ledger/19 (Kerala)",
+     "what is missing": "Kerala, gained 1018, is never lost: the shape's west edge moves 74.6E to 75.2E (1111), 75.86E (1126), 77.32E (1216); of the 1177-1216 drop, 50,580 km2 lies outside the Pandya 1216 shape that /ledger/35 names, 26,049 km2 of it in Kerala.",
+     "page to try": "https://en.wikipedia.org/wiki/Venad"
+    },
+    {
+     "where": "/ledger/34",
+     "what is missing": "Who took Vengi and the north in 1177 (confidence 1, kakatiya-dynasty guessed).",
+     "page to try": "https://en.wikipedia.org/wiki/Velanati_Chodas"
+    },
+    {
+     "where": "/ledger/36",
+     "what is missing": "The 1241 contraction of the Kaveri country (confidence 1).",
+     "page to try": "https://en.wikipedia.org/wiki/Rajaraja_III"
+    },
+    {
+     "where": "/ledger/10, /ledger/16, /ledger/24, /ledger/26",
+     "what is missing": "Confidence-1 bridges: Tondaimandalam recovery 967, Kalinga 1010, capital move 1025, Vengi 1045.",
+     "page to try": "https://en.wikipedia.org/wiki/Eastern_Chalukyas"
+    },
+    {
+     "where": "/ledger/18",
+     "what is missing": "End of the Chola hold on the Maldives and Lakshadweep (no end, so they stay Chola to 1279).",
+     "page to try": "https://en.wikipedia.org/wiki/History_of_the_Maldives"
+    },
+    {
+     "where": "/keyframe_review/26",
+     "what is missing": "The Hoysala hegemony over the Cholas 1220-1245 is left to the Hoysala dossier; a vassal relation belongs in both ledgers.",
+     "page to try": "https://en.wikipedia.org/wiki/Hoysala_Empire"
+    },
+    {
+     "where": "/keyframe_review/2",
+     "what is missing": "The 886 growth (3,058 to 7,000 km2) has no event (unverified: page budget).",
+     "page to try": "https://en.wikipedia.org/wiki/Aditya_I"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Chola_Empire",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/11",
+     "page": "https://en.wikipedia.org/wiki/Rajaraja_I",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/12",
+     "page": "https://en.wikipedia.org/wiki/Rajaraja_I",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/17",
+     "page": "https://en.wikipedia.org/wiki/Rajendra_Chola_I",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/18",
+     "page": "https://en.wikipedia.org/wiki/Rajendra_Chola_I",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/27",
+     "page": "https://en.wikipedia.org/wiki/Kulottunga_I",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/28",
+     "page": "https://en.wikipedia.org/wiki/Kulottunga_I",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/30",
+     "page": "https://en.wikipedia.org/wiki/Chola_Empire",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/33",
+     "page": "https://en.wikipedia.org/wiki/Kulottunga_I",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/37",
+     "page": "https://en.wikipedia.org/wiki/Later_Cholas",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/38",
+     "page": "https://en.wikipedia.org/wiki/Pandya_Empire",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 522021,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Chola Empire infobox has no area (confirmed on the page); the author says so in KF1."
+   }
+  },
+  {
+   "slug": "sind-habbari-dynasty",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The correction is the province of Sindh only, while its own text says Khuzdar is excluded only 'after the late 9th century', and the author's gap says the page gives no year for Khuzdar; the page does.",
+     "why": "Habbari dynasty page: the state 'controlled the region between the Arabian Sea and Aror, and Khuzdar in central Balochistan'; the Habbaris 'ruled over the area of Turan (modern Khuzdar), until the end of the 9th century', when Mughira bin Ahmad 'established his independence and moved his capital to Kijkanan (modern Kalat)'. Gazetteer: the Balochistan part of Cliopatria's 860 shape is 25,796 km2.",
+     "fix": "Add a new keyframe 861-899 = {\"union\": [{\"admin1\": \"Sind\", \"country\": \"Pakistan\"}, {\"place\": \"Khuzdar\", \"km\": 100, \"text\": \"Turan (modern Khuzdar)\"}]}, make KF0 valid from 900 (or keep KF0 and split), and add a loss of Turan c. 900 (bridge, confidence 2, counterpart nobody or a Turan entry) citing the Habbari page.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/0",
+     "what is missing": "Year of the loss of Turan/Khuzdar (page: 'until the end of the 9th century') and whether the Aror region's subordinate Hindu raja counts as Habbari land (page: Habbaris ruled 'central and southern Sindh south of Aror').",
+     "page to try": "https://en.wikipedia.org/wiki/Khuzdar"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Habbari_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Habbari_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Soomra_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Habbari_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/4",
+     "page": "https://en.wikipedia.org/wiki/Habbari_dynasty",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 229898,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page (its 'greater in area than the modern Pakistani province of Sindh' refers to Umayyad Greater Sindh). The correction (Sind province, 142,130 km2) is 0.62 of Cliopatria's 860 shape; the 106,471 km2 removed is 50,833 in Pakistani Punjab (Uch, Bahawalpur), 29,842 in India (Thar) and 25,796 in Balochistan; acknowledged in KF0's note and supported by the page except for Khuzdar before c. 900."
+   }
+  },
+  {
+   "slug": "soomra-dynasty",
+   "verdict": "thin",
+   "fixes": [
+    {
+     "where": "/ledger (missing events)",
+     "what": "The Ghaznavid tributary status 1026-1030 and the Ghurid subjugation of 1182 are left out of the ledger 'because the types fit the other side'; a vassal relation is carried in the vassal's ledger too (vassal_start with the overlord as counterpart).",
+     "why": "Soomra dynasty infobox: 'Tributary of the Ghaznavids (1026-1030)'; Muhammad of Ghor page (author's source): Debal taken and the Soomras subjugated in 1182; reviewer brief 2.3: 'a vassal_start of X is a vassal_start in X's ledger with this state as counterpart'.",
+     "fix": "Add vassal_start 1026 / vassal_end 1030, counterpart ghaznavid-empire (Soomra page, confidence 3), and vassal_start 1182, counterpart ghurid-dynasty (Muhammad of Ghor page, confidence 2) with its end at the Ghurid collapse (1206 on the same page).",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/keyframe_review/7",
+     "what is missing": "No page for 1202-1351: Soomra extent under Qabacha, Iltutmish ('Shimuddin Chamisar had submitted to Iltutmish ... allowed to continue as a vassal', undated) and the Tughluqs, and the 1344-1351 overlap with Cliopatria's Sind-Samma row.",
+     "page to try": "https://en.wikipedia.org/wiki/Samma_dynasty"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "what is missing": "Mansura is given as the seat for 1026-1351; the page lists 'Mansura (1026)' and Thari without dates and the Mansura page says the city never recovered.",
+     "page to try": "https://en.wikipedia.org/wiki/Thari_(Badin)"
+    },
+    {
+     "where": "/identity",
+     "what is missing": "Whether the Habbari-Soomra change is a new state or a rename (the Soomra table lists Khafif 1010-1026, whom the Habbari page calls the last Habbari ruler): orchestrator's call; the split is documented in both files.",
+     "page to try": "https://en.wikipedia.org/wiki/Soomra_dynasty"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Soomra_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Soomra_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/identity/capitals/0",
+     "page": "https://en.wikipedia.org/wiki/Soomra_dynasty",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 228243,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "No area on the page; the Sind correction (142,130 km2) is 0.62 of Cliopatria's 1028 shape, acknowledged in KF1."
+   }
+  },
+  {
+   "slug": "chandra-dynasty",
+   "verdict": "fail",
+   "fixes": [
+    {
+     "where": "/keyframe_review/1, /keyframe_review/2, /ledger/3/region",
+     "what": "The 947 shape ('ok', 947-1045) and the 1046 shape (years only) leave out Bikrampur, the capital from 930, and the Srihatta-mandala, which /ledger/1 and /ledger/2 gain in 930 and never lose; the dissolve region's text names 'Bikrampur, Sylhet' but its spec (Cliopatria 1046) holds neither.",
+     "why": "Gazetteer: Chandra 947 shape intersect 10 km of Bikrampur (90.47E, 23.54N) = 0 cells; Dhaka 40 km minus the 947 shape = 4,299 km2; Sylhet (region) = 12,139 km2, all outside. Chandra dynasty page: 'the administrative centre of the Chandra kingdom was established in Bikrampur in Vanga'; 'the Srihatta-mandala (greater Sylhet and southern Assam plains)'. The capital sits 86 km outside the drawn state for 120 years.",
+     "fix": "Set KF1 and KF2 to adjust with {\"union\": [{\"cliopatria\": \"Chandra Dynasty\", \"year\": 947 (1046)}, {\"place\": \"Dhaka\", \"km\": 40}, {\"region\": \"Sylhet (region)\"}]} and use the same union (on 1046) as the dissolve region.",
+     "applied": false
+    },
+    {
+     "where": "/keyframe_review/0/correction",
+     "what": "The correction adds Bikrampur for the whole 900-946 span while its note and /ledger/1 date it from c. 930, and it omits the Samatata (Comilla) land the found event names.",
+     "why": "Gazetteer: the found region (Comilla 70 km plus Chattogram 70 km) extends 11,128 km2 beyond the Cliopatria 900 shape (west of 91.3E). A correction stands for the shape's whole span.",
+     "fix": "KF0 = {\"union\": [{\"cliopatria\": \"Chandra Dynasty\", \"year\": 900}, {\"place\": \"Comilla\", \"km\": 70}]} valid 900-929, plus a new keyframe chandra-dynasty_930 (930-946) adding Bikrampur and Sylhet as in the fix above.",
+     "applied": false
+    }
+   ],
+   "thin": [
+    {
+     "where": "/identity/rulers",
+     "what is missing": "No ruler list, though the page's table reads 'Traillokyachandra 900-930, Srichandra 930-975, Kalyanachandra 975-1000, Ladahachandra 1000-1020, Govindachandra 1020-1050'.",
+     "page to try": "https://en.wikipedia.org/wiki/Chandra_dynasty"
+    },
+    {
+     "where": "/wars",
+     "what is missing": "Rajendra Chola's Ganges expedition, which the chola-empire dossier carries (/wars/8, 1019-1022, 'the rulers of Kalinga, Odisha and Bengal'), is absent here; the Chandra king of Vanga then was Govindachandra.",
+     "page to try": "https://en.wikipedia.org/wiki/Rajendra_Chola_I"
+    },
+    {
+     "where": "/ledger/1, /ledger/2",
+     "what is missing": "Who held Vanga and Sylhet before c. 930 (confidence 1, counterparts guessed).",
+     "page to try": "https://en.wikipedia.org/wiki/Samatata"
+    },
+    {
+     "where": "/ledger/3",
+     "what is missing": "The end: Pala annexation (Chandra page) vs the Varmans (Harikela page), 1050 vs Cliopatria 1055.",
+     "page to try": "https://en.wikipedia.org/wiki/Varman_dynasty_(Bengal)"
+    }
+   ],
+   "spot_checks": [
+    {
+     "where": "/ledger/0",
+     "page": "https://en.wikipedia.org/wiki/Chandra_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/1",
+     "page": "https://en.wikipedia.org/wiki/Chandra_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/2",
+     "page": "https://en.wikipedia.org/wiki/Chandra_dynasty",
+     "result": "confirmed"
+    },
+    {
+     "where": "/ledger/3",
+     "page": "https://en.wikipedia.org/wiki/Chandra_dynasty",
+     "result": "confirmed"
+    }
+   ],
+   "area_check": {
+    "infobox_km2": null,
+    "infobox_year": null,
+    "cliopatria_km2": 77250,
+    "ratio": null,
+    "acknowledged": true,
+    "note": "Chandra dynasty infobox has no area (confirmed)."
+   }
+  }
+ ],
+ "cross_checks": [
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 848,
+    "type": "found",
+    "counterpart": "muttaraiyar"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed in counterparts_needing_dossiers"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 850,
+    "type": "gain",
+    "counterpart": "muttaraiyar"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 897,
+    "type": "gain",
+    "counterpart": "late-pallava-empire"
+   },
+   "mirror": {
+    "slug": "late-pallava-empire",
+    "year": 897,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 897,
+    "type": "gain",
+    "counterpart": "pandya-dynasty"
+   },
+   "mirror": {
+    "slug": "pandya-dynasty",
+    "year": 897,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "Kongu"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 910,
+    "type": "occupation_start",
+    "counterpart": "pandya-dynasty"
+   },
+   "mirror": {
+    "slug": "pandya-dynasty",
+    "year": 910,
+    "type": "occupation_start"
+   },
+   "status": "matched",
+   "note": "Madurai"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 915,
+    "type": "occupation_end",
+    "counterpart": "pandya-dynasty"
+   },
+   "mirror": {
+    "slug": "pandya-dynasty",
+    "year": 915,
+    "type": "occupation_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 915,
+    "type": "gain",
+    "counterpart": "pandya-dynasty"
+   },
+   "mirror": {
+    "slug": "pandya-dynasty",
+    "year": 915,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 944,
+    "type": "contest_start",
+    "counterpart": "rashtrakuta-dynasty"
+   },
+   "mirror": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 944,
+    "type": "contest_start"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 949,
+    "type": "contest_end",
+    "counterpart": "rashtrakuta-dynasty"
+   },
+   "mirror": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 949,
+    "type": "contest_end"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 949,
+    "type": "loss",
+    "counterpart": "rashtrakuta-dynasty"
+   },
+   "mirror": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 944,
+    "type": "gain"
+   },
+   "status": "mismatch",
+   "note": "Tondaimandalam: Chola loses it at Takkolam 949, Rashtrakuta gains it 944 ('secured by 944'); both sides hold a 944-949 contest, so one of them should date the transfer to the other's year"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 967,
+    "type": "gain",
+    "counterpart": "rashtrakuta-dynasty"
+   },
+   "mirror": {
+    "slug": "rashtrakuta-dynasty",
+    "year": 967,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": "both confidence 1 bridges"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 993,
+    "type": "gain",
+    "counterpart": "anuradhapura"
+   },
+   "mirror": {
+    "slug": "anuradhapura",
+    "year": 993,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 998,
+    "type": "gain",
+    "counterpart": "western-ganga-dynasty"
+   },
+   "mirror": {
+    "slug": "western-ganga-dynasty",
+    "year": 998,
+    "type": "loss"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1001,
+    "type": "vassal_start",
+    "counterpart": "eastern-chalukyas"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1003,
+    "type": "contest_start",
+    "counterpart": "western-chalukya-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (sa-03)"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1005,
+    "type": "gain",
+    "counterpart": "venad"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1010,
+    "type": "gain",
+    "counterpart": "eastern-ganga-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (sa-03)"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1017,
+    "type": "gain",
+    "counterpart": "anuradhapura"
+   },
+   "mirror": {
+    "slug": "anuradhapura",
+    "year": 1017,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1018,
+    "type": "gain",
+    "counterpart": "chera-perumal-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1019,
+    "type": "gain",
+    "counterpart": "pandya-kingdom-915-1216"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart corrected by the reviewer from pandya-dynasty (ended 915); no dossier, listed"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1023,
+    "type": "contest_start",
+    "counterpart": "srivijaya"
+   },
+   "mirror": {
+    "slug": "srivijaya",
+    "year": 1025,
+    "type": "contest_start"
+   },
+   "status": "mismatch",
+   "note": "two years apart; see chola fix /ledger/22"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1024,
+    "type": "contest_end",
+    "counterpart": "srivijaya"
+   },
+   "mirror": {
+    "slug": "srivijaya",
+    "year": 1026,
+    "type": "contest_end"
+   },
+   "status": "mismatch",
+   "note": "two years apart"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1031,
+    "type": "contest_start",
+    "counterpart": "eastern-chalukyas"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1070,
+    "type": "loss",
+    "counterpart": "kingdom-of-polonnaruwa"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (sa-03)"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1075,
+    "type": "gain",
+    "counterpart": "eastern-chalukyas"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed (with the 1075 vassal_end)"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1116,
+    "type": "loss",
+    "counterpart": "hoysala-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (sa-03); Cliopatria's Hoysala row takes Gangavadi from 1111"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1118,
+    "type": "loss",
+    "counterpart": "western-chalukya-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1133,
+    "type": "gain",
+    "counterpart": "western-chalukya-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1177,
+    "type": "loss",
+    "counterpart": "kakatiya-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet; confidence 1"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1216,
+    "type": "loss",
+    "counterpart": "pandya-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (sa-04)"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1241,
+    "type": "loss",
+    "counterpart": "pandya-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1250,
+    "type": "loss",
+    "counterpart": "pandya-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "chola-empire",
+    "year": 1279,
+    "type": "dissolve",
+    "counterpart": "pandya-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet"
+  },
+  {
+   "event": {
+    "slug": "sind-habbari-dynasty",
+    "year": 861,
+    "type": "found",
+    "counterpart": "abbasid-caliphate"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (me-08)"
+  },
+  {
+   "event": {
+    "slug": "sind-habbari-dynasty",
+    "year": 1025,
+    "type": "contest_start",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "counterpart owned by a group that has not run yet (me-08)"
+  },
+  {
+   "event": {
+    "slug": "sind-habbari-dynasty",
+    "year": 1026,
+    "type": "dissolve",
+    "counterpart": "soomra-dynasty"
+   },
+   "mirror": {
+    "slug": "soomra-dynasty",
+    "year": 1026,
+    "type": "found"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 860,
+    "type": "gain",
+    "counterpart": "sind-habbari-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Pratihara /ledger/21 gains a Sindh strip from the Habbaris in 860 (confidence 1, a Cliopatria overlap); the Habbari dossier starts 861 and holds all Sindh; the Pratihara dossier should drop it or the Habbari correction should exclude the strip"
+  },
+  {
+   "event": {
+    "slug": "gurjara-pratihara-dynasty",
+    "year": 936,
+    "type": "loss",
+    "counterpart": "sind-habbari-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Pratihara /ledger/26 returns the strip in 936; no Habbari gain"
+  },
+  {
+   "event": {
+    "slug": "soomra-dynasty",
+    "year": 1026,
+    "type": "found",
+    "counterpart": "sind-habbari-dynasty"
+   },
+   "mirror": {
+    "slug": "sind-habbari-dynasty",
+    "year": 1026,
+    "type": "dissolve"
+   },
+   "status": "matched",
+   "note": ""
+  },
+  {
+   "event": {
+    "slug": "soomra-dynasty",
+    "year": 1026,
+    "type": "vassal_start (missing)",
+    "counterpart": "ghaznavid-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "Soomra infobox 'Tributary of the Ghaznavids (1026-1030)'; neither ledger carries it (ghaznavid-empire, me-08, not run)"
+  },
+  {
+   "event": {
+    "slug": "soomra-dynasty",
+    "year": 1351,
+    "type": "dissolve",
+    "counterpart": "sind-samma-dynasty"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "sind-samma-dynasty has no dossier yet; Cliopatria's Samma row overlaps 1344-1351"
+  },
+  {
+   "event": {
+    "slug": "chandra-dynasty",
+    "year": 900,
+    "type": "found",
+    "counterpart": "harikela-kingdom"
+   },
+   "mirror": null,
+   "status": "exception",
+   "note": "no dossier; listed"
+  },
+  {
+   "event": {
+    "slug": "chandra-dynasty",
+    "year": 930,
+    "type": "gain",
+    "counterpart": "pala-empire"
+   },
+   "mirror": {
+    "slug": "pala-empire",
+    "year": 947,
+    "type": "loss"
+   },
+   "status": "mismatch",
+   "note": "east Bengal / Vanga: Chandra gains it c. 930 (confidence 1), Pala loses it to the Chandras in 947 (confidence 1); 17 years apart"
+  },
+  {
+   "event": {
+    "slug": "pala-empire",
+    "year": 981,
+    "type": "gain",
+    "counterpart": "chandra-dynasty"
+   },
+   "mirror": null,
+   "status": "mismatch",
+   "note": "Pala /ledger/15 recovers 'eastern Bengal' from the Chandras in 981 (confidence 1); the Chandra dossier keeps Vanga to 1050 and the Chandra page lists Chandra kings to 1050, so the Pala counterpart is doubtful"
+  },
+  {
+   "event": {
+    "slug": "chandra-dynasty",
+    "year": 930,
+    "type": "gain",
+    "counterpart": "kamarupa-kingdom"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "kamarupa-kingdom dossier exists and has no loss of Sylhet; confidence 1 on the Chandra side"
+  },
+  {
+   "event": {
+    "slug": "chandra-dynasty",
+    "year": 1050,
+    "type": "dissolve",
+    "counterpart": "pala-empire"
+   },
+   "mirror": null,
+   "status": "missing",
+   "note": "pala-empire has no 1050 gain of the Chandra land (it has a Varman east Bengal from 1072)"
+  }
+ ],
+ "gazetteer_names_needed": [
+  {
+   "name": "Tondaimandalam",
+   "kind": "region",
+   "used_in": "chola-empire"
+  },
+  {
+   "name": "Kongu Nadu",
+   "kind": "region",
+   "used_in": "chola-empire"
+  },
+  {
+   "name": "Vengi",
+   "kind": "region",
+   "used_in": "chola-empire"
+  },
+  {
+   "name": "Gangavadi",
+   "kind": "region",
+   "used_in": "chola-empire"
+  },
+  {
+   "name": "Nolambavadi",
+   "kind": "region",
+   "used_in": "chola-empire"
+  },
+  {
+   "name": "Rattapadi",
+   "kind": "region",
+   "used_in": "chola-empire"
+  },
+  {
+   "name": "Rohana",
+   "kind": "region",
+   "used_in": "chola-empire"
+  },
+  {
+   "name": "Rajarata",
+   "kind": "region",
+   "used_in": "chola-empire"
+  },
+  {
+   "name": "Kudamalai Nadu",
+   "kind": "region",
+   "used_in": "chola-empire"
+  },
+  {
+   "name": "Kadaram",
+   "kind": "place",
+   "used_in": "chola-empire"
+  },
+  {
+   "name": "Pazhaiyaarai",
+   "kind": "place",
+   "used_in": "chola-empire"
+  },
+  {
+   "name": "Gangaikonda Cholapuram",
+   "kind": "place",
+   "used_in": "chola-empire"
+  },
+  {
+   "name": "Talakadu",
+   "kind": "place",
+   "used_in": "chola-empire"
+  },
+  {
+   "name": "Turan (Khuzdar)",
+   "kind": "region",
+   "used_in": "sind-habbari-dynasty"
+  },
+  {
+   "name": "Mansura",
+   "kind": "place",
+   "used_in": "sind-habbari-dynasty"
+  },
+  {
+   "name": "Aror",
+   "kind": "place",
+   "used_in": "sind-habbari-dynasty"
+  },
+  {
+   "name": "Samatata",
+   "kind": "region",
+   "used_in": "chandra-dynasty"
+  },
+  {
+   "name": "Harikela",
+   "kind": "region",
+   "used_in": "chandra-dynasty"
+  },
+  {
+   "name": "Vanga",
+   "kind": "region",
+   "used_in": "chandra-dynasty"
+  },
+  {
+   "name": "Bikrampur",
+   "kind": "place",
+   "used_in": "chandra-dynasty"
+  }
+ ],
+ "counterparts_needing_dossiers": [
+  {
+   "name": "Muttaraiyar (Thanjavur chieftaincy)",
+   "suggested_slug": "muttaraiyar",
+   "years": [
+    848,
+    850
+   ]
+  },
+  {
+   "name": "Eastern Chalukyas of Vengi (Chola protectorate)",
+   "suggested_slug": "eastern-chalukyas",
+   "years": [
+    1001,
+    1075
+   ]
+  },
+  {
+   "name": "Venad (Kollam)",
+   "suggested_slug": "venad",
+   "years": [
+    1005,
+    1005
+   ]
+  },
+  {
+   "name": "Chera Perumal kingdom (Kerala)",
+   "suggested_slug": "chera-perumal-kingdom",
+   "years": [
+    1018,
+    1018
+   ]
+  },
+  {
+   "name": "Pandya kingdom between the Chola conquest and the Pandya Empire",
+   "suggested_slug": "pandya-kingdom-915-1216",
+   "years": [
+    915,
+    1216
+   ]
+  },
+  {
+   "name": "Harikela kingdom",
+   "suggested_slug": "harikela-kingdom",
+   "years": [
+    900,
+    900
+   ]
+  },
+  {
+   "name": "Varman dynasty of east Bengal",
+   "suggested_slug": "varman-dynasty-of-east-bengal",
+   "years": [
+    1050,
+    1072
+   ]
+  },
+  {
+   "name": "Emirate of Multan",
+   "suggested_slug": "emirate-of-multan",
+   "years": [
+    1005,
+    1175
+   ]
+  }
+ ],
+ "notes_path": "history/polities/_notes/review-sa-03-e.md",
+ "problems": [
+  "No page failed to load. WebFetch extractions contradicted themselves on two pages (Rajendra Chola I: Srivijaya 1023-1024 and 1025; Pandya Empire: 'Rajendra II' for Rajendra III), as the author also noted.",
+  "The Sind-Habbari row is split into sind-habbari-dynasty (861-1026) and the new soomra-dynasty (1026-1351); both list 'Sind-Habbari Dynasty', so each gets 'no verdict' warnings for the other's shapes. The split is documented; whether it is a new state or a rename is the orchestrator's call.",
+  "Reviewer edit: chola-empire /ledger/20 region and counterpart and /wars/7, /wars/11 belligerents (pandya-dynasty to pandya-kingdom-915-1216); file re-validated (0 errors) and read back.",
+  "Most Chola counterparts (hoysala-kingdom, western-chalukya-empire, kakatiya-dynasty, kingdom-of-polonnaruwa, eastern-ganga-kingdom, pandya-empire) belong to groups that have not run; their mirror events must be checked when they are written.",
+  "counterparts_needing_dossiers years are the years these dossiers use the counterpart (from the author's report and the pala-empire dossier), not the counterparts' lives."
+ ]
+}

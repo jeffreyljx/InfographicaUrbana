@@ -1,0 +1,46 @@
+{
+ "window": "m2500-m2401",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "pass",
+   "what": "sumerian-city-states split -2500, counterpart umma, Umma 30 km (11 cells, about 2782 km2, bbox 45.58-46.17 E, 31.45-31.86 N). Page: section 'First dynasty of Umma / Umma I dynasty (c. 2500 - c. 2230 BC)', first row Pabilgagaltuku 'r. c. 2500 BC', 'Governor of Umma', then Ush c. 2455, Enakalle c. 2445, Ur-Lumma c. 2425; 'Best known for its long frontier conflict with Lagash'. Same disk as the dossier's keyframe umma_-2500; mirrors sumerian-city-states/ledger/5 (Lagash split). Trial: events/0 moves 10 cells collective -> umma at -2500 (the 11th came from lagash by the size rule); Umma 11 cells in the m2400 anchor (published 1); the R2 conflict line (10 cell-years at -2500) remains in the report but the split settles the cells. Returned to the collective by sumerian-city-states/ledger/15 at -2340, so no later year is affected.",
+   "page": "https://en.wikipedia.org/wiki/Umma",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "events/1",
+   "verdict": "pass",
+   "what": "lagash gain -2425 month 12 from sumerian-city-states, Lagash 50 km (32 cells, about 8093 km2; 22 after Ur's 40 km and Umma's 30 km disks). Page: 'the Lagash state incorporated the cities of Lagash, Girsu, and Nina'; Enannatum I c. 2425, Entemena c. 2420 ('Entemena increased the power of Lagash during his rule'), Enannatum II, Enentarzi, Lugalanda c. 2400, Urukagina c. 2350 'He was defeated by Lugalzagesi'. So Lagash keeps its core to -2340. The region is the dossier's own keyframe lagash_-2425. Month 12 is an ordering device, not a page date (the page gives no month): it puts the event after sumerian-city-states/ledger/7, whose region 'Sumer minus Umma and Ur' swallows Lagash's core. Trial: the -2425 net change for these cells is lagash -> lagash, so no year shows Lagash empty; Lagash 22 cells in the m2400 anchor (published 3); closed by lagash/ledger/15 dissolve at -2340. A compensating gain, not a historical one; the root cause is a dossier region (see problems).",
+   "page": "https://en.wikipedia.org/wiki/Lagash",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "first-dynasty-of-ur_-2500 (-2500..-2451, kept from the dossier) adjusted to (admin-1 Sumer intersect Cliopatria Sumerian City-States -2500) minus Lagash 40 km and Umma 30 km: 131 cells (about 33130 km2) against 543 for the admin-1 Sumer region. Sumer page: the cities 'are all in the Euphrates-Tigris alluvial plain, south of Baghdad', Eridu 'on the coast of the Persian Gulf'; First Dynasty of Ur page (also opened): 'had extensive influence over the area of Sumer', 'apparently led a union of south Mesopotamian polities', Mesannepada 'r. c. 2500 BC'. Checked: Uruk, Ur, Larsa, Nippur, Adab, Nasiriyah and Amarah fall inside; Samawah, Najaf, Kufa and Basra (desert or then-marsh) outside. Trial: the 379-cell snap is gone. The 379 cells that go to nobody in the m2400 anchor all lie in the admin-1 Sumer region outside Cliopatria's outline; the other 32 changed cells are the Lagash and Umma cores.",
+   "page": "https://en.wikipedia.org/wiki/Sumer",
+   "fix": "",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "pass",
+   "what": "lagash_-2450 (-2450..-2426, kept) adjusted to the same alluvial intersection minus Umma 30 km and Ur 40 km: 131 cells. Sumer page: Eannatum 'annexed practically all of Sumer, including Kish, Uruk, Ur, and Larsa', 'reduced to tribute the city-state of Umma', 'His realm extended to parts of Elam and along the Persian Gulf' (Kish, Elam and Ur are booked by the dossier's own occupation events, which the override leaves alone). Trial and render of -2450: Lagash holds the plain from the Euphrates to the Iranian border (118 cells from Ur), Umma in vassal tint, Ur hatched occupied, Gu-edena contested cell, desert empty.",
+   "page": "https://en.wikipedia.org/wiki/Sumer",
+   "fix": "",
+   "applied": true
+  }
+ ],
+ "patch_check": "--check-patch: 4 entries, 4 ok, 0 rejected (2.3 s). Trial (my own stage): all 4 applied; keyframe snaps 4 -> 2; conflicts 61 -> 48 cell-years; end anchor m2400: 411 cells change owner (379 sumerian-city-states desert cells -> nobody, 22 -> lagash, 7 -> umma, 3 lagash -> umma); no cell of Cliopatria's Sumerian outline lost.",
+ "problems": [
+  "Seam (agent's, confirmed): the patch changes 411 cells of the m2400 anchor, all inside the admin-1 Sumer region: sumerian-city-states 640 -> 232, lagash 3 -> 22, umma 1 -> 11. The m2400-m2301 agent must start from the new anchor.",
+  "Root cause left in the dossiers (dossier request): the ledger regions first-dynasty-of-ur/ledger/1, sumerian-city-states/ledger/6, lagash/ledger/2, lagash/ledger/8 and sumerian-city-states/ledger/7 still read 'Sumer minus ...' on the whole admin-1 block. The overrides work only because those gains move the counterpart's cells. lagash/ledger/8 and sumerian-city-states/ledger/7 also include Lagash's own core, which is why events/1 (month 12) is needed. Fix: use the intersection {\"intersect\":[{\"region\":\"Sumer\"},{\"cliopatria\":\"Sumerian City-States\",\"year\":-2500}]} in all five, and take Lagash 50 km out of lagash/8 and sumerian-city-states/7; then events/1 can be withdrawn.",
+  "Isin (gazetteer place Isin, Al-Qadisiyyah) lies in the admin-1 Sumer region but outside Cliopatria's -2500 outline, so after the patch nobody holds its cell (before, Ur and then Lagash and the collective did). It is a one-cell hole on the plain; left as is.",
+  "The Lagash-Umma Gu-edena contest (lagash/ledger/1) shows 0 cells in the m2400 anchor in both the published compile and the trial: sumerian-city-states/ledger/7 takes the contested cell at -2425, and events/1 gives it back to Lagash as direct. The patch did not cause this; the dossier fix above would cure it.",
+  "Agent's 'left: pages silent' item on Lagash's tribute from Mari: the Lagash page (opened in this review) says Eannatum 'exacted tribute as far as Mari', but that 'many of the realms he conquered were often in revolt'. That supports the existing vassal_start lagash/ledger/4. Nothing to patch.",
+  "Pages opened in this review: Umma, Lagash, Sumer, First Dynasty of Ur (Umma and Lagash fetched twice for quotes)."
+ ]
+}

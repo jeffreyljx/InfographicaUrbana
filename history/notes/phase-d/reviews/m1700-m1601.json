@@ -1,0 +1,36 @@
+{
+ "window": "m1700-m1601",
+ "checks": [
+  {
+   "entry": "events/0",
+   "verdict": "fixed",
+   "what": "fifteenth-dynasty-of-egypt loss to nobody, -1650, of the Giza governorate minus (Cliopatria -1600 shape + Memphis 40 km). Page (Fifteenth Dynasty of Egypt): 'Established: 1650 BC'; Salitis's people 'invaded the country and conquered Lower Egypt', 'led his people into an occupation of the Nile Delta area and settled his capital at Avaris', 'expanded to occupy Memphis'; 'the territory directly ruled ... likely confined to the eastern Delta'; no desert or oasis named. Hyksos page: 'ruled over Lower Egypt and Middle Egypt up to Cusae'. Year, parties and the desert cut are supported (dossier keyframe -1650 = 308 cells vs keyframe -1600 = 202). But the spec as written (108 cells, 27.4-31.92 E) was not only the Western Desert: about 14 cells are the Eastern Desert east of Atfih (text said 'Bahariya side'), and it cut (a) the Nile valley cell at Atfih/Meidum (29.41 N 31.20 E) between Memphis and Middle Egypt, leaving the valley from 29.5 to 29.15 N nobody's, and (b) the Delta-apex cell west of Giza (30.16 N 31.00 E), which became a one-cell hole surrounded by Fifteenth-Dynasty cells (trial owner scan, end of -1650).",
+   "page": "https://en.wikipedia.org/wiki/Fifteenth_Dynasty_of_Egypt",
+   "fix": "Added {\"river\":\"Nile\",\"km\":10} and {\"place\":\"Giza\",\"km\":25,\"country\":\"Egypt\"} to the kept union inside the minus (cut now 106 cells, all desert, 27.4-31.92 E, 27.67-29.79 N); text now 'the desert parts of the Giza governorate (the Western Desert towards Bahariya, and the Eastern Desert east of Atfih)'; reviewer sentence appended to the note. Re-checked: --check-patch ok; trial: Fifteenth Dynasty 202 cells -1650..-1601, one component, no nobody holes (the only enclosed cell, 31.50 N 30.67 E, is the hyksos dossier's, the known duplicate), both cells back.",
+   "applied": true
+  },
+  {
+   "entry": "keyframe_overrides/0",
+   "verdict": "pass",
+   "what": "first-sealand-dynasty_-1700 adjusted from the dossier's Cliopatria marsh + 42-50 E, 27-32.3 N box (1,599 cells: Saudi desert, Kuwait, Gulf, Khuzestan) to Cliopatria -1700 + Dhi-Qar + Al-Basrah + Uruk 60 km + Nippur 40 km + Isin 40 km = 179 cells (about 45,000 km2, 44.9-48.4 E, 29.3-32.4 N). Sealand page: named 'for the province in the far south of Mesopotamia', 'Sealand pottery has been found at Girsu, Uruk, and Lagash but in no site north of that', Tell Khaiber near Ur, Ayadaragalama's offerings at Larsa, Ur, Uruk; Ilum-ma-ili 'is thought to have conquered Nippur late in Samsu-iluna's reign'; a hymn to the gods of Nippur mentions Ayadaragalama; no Kuwait, Arabia or Elamite land named. Samsu-iluna page (reign c. 1749-1712): 'Records keep going in Nippur and Isin until Samsu-iluna's 29th year', 'by the time of Samsu-iluna's death, Nippur recognized Ilum-ma-ili as king'. Same region as m1800-m1701 keyframe_overrides/0 plus its events/0 circles, so the keyframe equals the ledger: trial shows the -1700 Sealand snap (+122) and the Elam/Sealand conflict (122 cell-years) gone; Babylonia/Sealand 4 cell-years at -1700 settled by R2 for the Sealand (Nippur/Isin, consistent with -1721 event). Render -1700: Sealand is the marsh, Dhi-Qar, Basra and Uruk-Nippur-Isin; Elam keeps Khuzestan. Minor: Al-Basrah brings a small desert tail towards the Kuwait border (29.3 N), same as the m1800-m1701 shape; left for continuity. No other window overrides this shape.",
+   "page": "https://en.wikipedia.org/wiki/First_Sealand_dynasty",
+   "fix": "",
+   "applied": false
+  },
+  {
+   "entry": "keyframe_overrides/1",
+   "verdict": "fixed",
+   "what": "fifteenth-dynasty-of-egypt_-1650 adjusted to the dossier's correction minus the same Giza cut as events/0, so the -1650 keyframe does not put the cells back. Supported by the same pages (Fifteenth Dynasty: Lower Egypt, Nile Delta, Avaris, Memphis; Hyksos page: Middle Egypt up to Cusae; no desert named). Carried the same two errors as events/0 (Atfih/Meidum valley cell and the Delta-apex hole west of Giza) and the 'Western Desert' mislabel.",
+   "page": "https://en.wikipedia.org/wiki/Fifteenth_Dynasty_of_Egypt",
+   "fix": "Same change as events/0 inside correction.minus[1]: Nile 10 km and Giza 25 km kept; texts now say 'Giza desert'; reviewer sentence appended to why. Corrected keyframe resolves to 202 cells (was 200), one component, and equals the ledger at -1650 (no snap in trial). --check-patch ok.",
+   "applied": true
+  }
+ ],
+ "patch_check": "after reviewer fix: 3 entries, 3 ok, 0 rejected; trial m1700-m1601: all 3 applied; conflicts 379 -> 261 cell-years (elam/first-sealand-dynasty 122 gone; babylonia/first-sealand-dynasty 4 by R2), snaps 6 -> 5 (first-sealand-dynasty_-1700 gone; babylonia_-1700 removes 106, keeps 4 by others), end anchor m1600: 1,534 cells change owner",
+ "problems": [
+  "next window m1600-m1501: fifteenth-dynasty-of-egypt_-1600 (Cliopatria -1600 + Avaris 100 km, 202 cells) differs from the 202-cell state this patch leaves at 1 Jan -1600 by 19 cells each way: it drops the Memphis 40 km circle, the Atfih/Meidum valley cell (29.41 N 31.20 E) and the Delta-apex cell west of Giza (30.16 N 31.00 E; would again become a hole), and adds the Avaris ring in Sinai/Suez plus 4 Middle Egypt valley cells now held by the duplicate hyksos dossier. A -1600 override should add Memphis 40 km, the Nile 10 km within Egypt north of Cusae and Giza 25 km.",
+  "next window m1600-m1501: first-sealand-dynasty_-1600 and _-1500 still carry the 42-50 E, 27-32.3 N box (as the window agent reported); they need the same override as keyframe_overrides/0 here, or the Sealand jumps from 179 cells back to the box at -1600.",
+  "pre-existing, not from this patch: the Nile valley cell 29.28 N 31.09 E (Beni Suef, north of Al-Wasta) is outside Cliopatria's -1600 Fifteenth Dynasty shape and stays nobody's -1650..-1601, a notch in the Hyksos valley next to the Atfih cell kept here.",
+  "dossier request (window agent's) stands: hyksos and fifteenth-dynasty-of-egypt are one state in two colours; the hyksos dossier holds an enclosed cell (31.50 N 30.67 E) and 4 Middle Egypt valley cells inside the Fifteenth's land at -1650."
+ ]
+}
