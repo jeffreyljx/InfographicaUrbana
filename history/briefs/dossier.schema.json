@@ -1,0 +1,801 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scrapermap.app/history/briefs/dossier.schema.json",
+  "title": "EmpireMap state dossier",
+  "description": "One state's dossier for the EmpireMap historical-borders project (history/master-plan.md, 'Collection method'): identity, a review of its Cliopatria keyframe shapes, a dated ledger of territorial events, its wars, the certainty of its borders per era, and every source opened. Years are integers, negative for BCE, as in Cliopatria; a month is 1..12 where the record supports it. Regions are named with the shared region grammar ($defs/region), never drawn. File name: history/polities/<identity.slug>.json. Validate with tools/validate_dossier.py.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["identity", "keyframe_review", "ledger", "wars", "certainty", "sources"],
+  "properties": {
+    "$schema": {
+      "description": "Optional pointer to this schema, so editors can validate the file; any string.",
+      "type": "string"
+    },
+    "identity": {
+      "description": "Who the state is: names, type, family, life span, neighbours in time (predecessors and successors), capitals and, where a documented list exists, rulers.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "name", "native_names", "alt_names", "type", "family", "cliopatria_names", "wikipedia", "wikidata", "start", "end", "predecessors", "successors", "capitals"],
+      "properties": {
+        "slug": {
+          "description": "The dossier's identifier and file name: tools/slug.py slugify() of the Cliopatria Name, as it stands in data/polities.csv (which adds -2, -3 where two Names collide); for a state Cliopatria lacks, slugify() of the dossier name.",
+          "$ref": "#/$defs/slug"
+        },
+        "name": {
+          "description": "The display name, in English, as the map labels it ('Tang dynasty', 'Kingdom of France').",
+          "type": "string",
+          "minLength": 1
+        },
+        "native_names": {
+          "description": "Names in the state's own languages and scripts, with a romanisation where the script is not Latin ('唐', 'Táng'); empty list when none is recorded.",
+          "type": "array",
+          "items": {
+            "description": "One native name.",
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "alt_names": {
+          "description": "Other English names and spellings a reader might search for ('Tang Empire', 'Great Tang'); the site's search uses them; empty list when none.",
+          "type": "array",
+          "items": {
+            "description": "One alternative name.",
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "type": {
+          "description": "What kind of entity the dossier describes. state: a sovereign polity. dynasty: a state named for its ruling house (the Chinese, Persian and Indian dynasties), drawn exactly like a state; a dynasty that merely succeeds another on the same land without a break is not a new dossier (master plan rule 2). culture: an archaeological culture before 3400 BCE, drawn muted and dotted, never as a state. colony: a dependency ruled from elsewhere, drawn as a vassal tint of the metropole. rebel: a rebel or civil-war state (An Lushan's Yan, the Taiping), drawn hatched in its own colour until it wins or is crushed. umbrella: an association or empire-wide entity that is not territory of its own (Cliopatria's parenthesised names: the Holy Roman Empire after 1648, the Commonwealth), never coloured as territory.",
+          "type": "string",
+          "enum": ["state", "dynasty", "culture", "colony", "rebel", "umbrella"]
+        },
+        "family": {
+          "description": "The civilisation family the colour registry draws the state's hue from: a key of colours.json 'families' (china, rome, caliphate, persia, steppe, india, korea, japan, france, britain, ...). Successors that claim continuity share the family.",
+          "type": "string",
+          "minLength": 1
+        },
+        "cliopatria_names": {
+          "description": "The Cliopatria Name values (verbatim, case and diacritics kept) whose shapes this dossier reviews; empty list for a state Cliopatria lacks; more than one when the researcher merges Cliopatria rows into one state.",
+          "type": "array",
+          "items": {
+            "description": "One Cliopatria Name, verbatim.",
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "wikipedia": {
+          "description": "The English Wikipedia article title of the state ('Tang dynasty'), as Cliopatria's Wikipedia field gives it; null when there is none.",
+          "type": ["string", "null"]
+        },
+        "wikidata": {
+          "description": "The Wikidata id ('Q9683') from Cliopatria; null when there is none. Wikidata itself is unreachable from the agents; the id is kept for the site's links.",
+          "type": ["string", "null"],
+          "pattern": "^Q[0-9]+$"
+        },
+        "start": {
+          "description": "When the state begins: its founding, with the month when the record gives one. The map draws the state from this year (rule 1, birth).",
+          "$ref": "#/$defs/date"
+        },
+        "end": {
+          "description": "When the state ends (dissolution, conquest, partition), with the month when known; for a state alive today, the current year. The map draws the state through this year (rule 7, collapse).",
+          "$ref": "#/$defs/date"
+        },
+        "predecessors": {
+          "description": "The states whose land this state took at its birth, each with the land handed over; empty list for a state that arose on nobody's land.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/handover"
+          }
+        },
+        "successors": {
+          "description": "The states that took this state's land at its end, each with the land handed over; empty list for a state alive today or whose land returned to nobody.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/handover"
+          }
+        },
+        "capitals": {
+          "description": "Every capital in turn, with coordinates and years; the map draws the capital as a dot that moves (rule 10). At least one entry for every state that had a seat of government; empty list only for cultures and stateless entities.",
+          "type": "array",
+          "items": {
+            "description": "One capital for one span of years.",
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "lon", "lat", "from", "to"],
+            "properties": {
+              "name": {
+                "description": "The capital's name as the sources of the period give it, with the modern name in parentheses where it differs ('Chang'an (Xi'an)').",
+                "type": "string",
+                "minLength": 1
+              },
+              "lon": {
+                "description": "Longitude in decimal degrees, WGS84, east positive.",
+                "type": "number",
+                "minimum": -180,
+                "maximum": 180
+              },
+              "lat": {
+                "description": "Latitude in decimal degrees, WGS84, north positive.",
+                "type": "number",
+                "minimum": -90,
+                "maximum": 90
+              },
+              "from": {
+                "description": "First year this city was the capital.",
+                "$ref": "#/$defs/year"
+              },
+              "to": {
+                "description": "Last year this city was the capital (inclusive).",
+                "$ref": "#/$defs/year"
+              },
+              "source": {
+                "description": "URL of the page that gives the capital and its years; optional when the identity's Wikipedia article is the source.",
+                "$ref": "#/$defs/url"
+              },
+              "note": {
+                "description": "Anything the reader should know (a second capital, a court in exile, a renaming).",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "rulers": {
+          "description": "The ruler strip (rule 10): only for states with a documented list (China, Rome, the caliphates, Europe from about 800); omit the key otherwise. Reign years, in order, one entry per reign; an interregnum ruler (Wu Zetian) is listed in place.",
+          "type": "array",
+          "items": {
+            "description": "One reign.",
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "from", "to"],
+            "properties": {
+              "name": {
+                "description": "The ruler as the map labels them: temple, regnal or personal name ('Taizong (Li Shimin)').",
+                "type": "string",
+                "minLength": 1
+              },
+              "from": {
+                "description": "First year of the reign.",
+                "$ref": "#/$defs/year"
+              },
+              "to": {
+                "description": "Last year of the reign (inclusive).",
+                "$ref": "#/$defs/year"
+              },
+              "title": {
+                "description": "The title where it is not the state's usual one (regent, empress regnant, co-emperor).",
+                "type": "string"
+              },
+              "source": {
+                "description": "URL of the page the list was read from; give it on the first entry at least.",
+                "$ref": "#/$defs/url"
+              },
+              "note": {
+                "description": "A disputed date, a deposition, a second reign.",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "keyframe_review": {
+      "description": "One entry per Cliopatria shape of this state (data/shapes.csv rows with this slug, or data/polities/<slug>.json shapes[]), plus one entry per new keyframe for a period Cliopatria lacks. Every verdict cites the page it rests on.",
+      "type": "array",
+      "items": {
+        "description": "The verdict on one keyframe shape.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["shape_id", "verdict", "source"],
+        "properties": {
+          "shape_id": {
+            "description": "The shape's id from data/shapes.csv: slug + '_' + FromYear (+ a letter when two shapes share a FromYear), e.g. 'tang-dynasty_705'. For a new keyframe, the same form with the new FromYear ('tang-dynasty_618'); the validator treats an id absent from shapes.csv as new and then requires 'from' and 'to'.",
+            "type": "string",
+            "pattern": "^(rel-)?[a-z0-9]+(-[a-z0-9]+)*_-?[0-9]+[b-z]?$"
+          },
+          "verdict": {
+            "description": "ok: the shape is right for its years as drawn (within the honest precision of the era). adjust: the shape is broadly right but should be corrected as 'correction' says. wrong: the shape should not be used for these years; 'correction' gives the shape to use instead, or the years it belongs to.",
+            "type": "string",
+            "enum": ["ok", "adjust", "wrong"]
+          },
+          "correction": {
+            "description": "Required for adjust and wrong (and for a new keyframe): the shape as it should be, written as a region spec with 'text' in the source's own words. Describe the whole corrected shape, not the delta: {'minus': [{'cliopatria': Name, 'year': y}, X]} removes X from the Cliopatria shape, {'union': [{'cliopatria': ...}, Y]} adds Y. A verdict that only changes the years says so in 'text' and gives the shape unchanged.",
+            "$ref": "#/$defs/region_text"
+          },
+          "from": {
+            "description": "New keyframes only: the first year the described shape holds.",
+            "$ref": "#/$defs/year"
+          },
+          "to": {
+            "description": "New keyframes only: the last year the described shape holds (inclusive).",
+            "$ref": "#/$defs/year"
+          },
+          "source": {
+            "description": "URL of the page the verdict rests on; a page listed in 'sources'.",
+            "$ref": "#/$defs/url"
+          },
+          "note": {
+            "description": "Why, in one or two sentences: what the page says, how far the area is from the infobox, what the rendering agent should expect.",
+            "type": "string"
+          }
+        },
+        "if": {
+          "properties": {
+            "verdict": {
+              "description": "Selector: an adjust or wrong verdict.",
+              "enum": ["adjust", "wrong"]
+            }
+          }
+        },
+        "then": {
+          "required": ["correction"]
+        }
+      }
+    },
+    "ledger": {
+      "description": "The dated territorial events, in year order (then month). Every border move between two keyframes is explained by at least one event; every event names its region in words, its counterpart, the page it came from and a confidence. The rendering agents apply these year by year; 'note' doubles as the map caption.",
+      "type": "array",
+      "items": {
+        "description": "One dated event.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["year", "type", "source", "confidence"],
+        "properties": {
+          "year": {
+            "description": "The year of the event (negative for BCE). A process spread over years gets one event per dated step, or one event at the decisive date with the span in 'note'.",
+            "$ref": "#/$defs/year"
+          },
+          "month": {
+            "description": "The month (1..12) where the record gives one; omit otherwise. Months are stored so a monthly step can be added later without re-collecting.",
+            "$ref": "#/$defs/month"
+          },
+          "type": {
+            "description": "found: the state appears on its core (rule 1). gain / loss: land taken from or given to 'counterpart' ('nobody' when it was stateless). contest_start / contest_end: fighting over 'region' between this state and 'counterpart' begins (first campaign that takes or holds ground) or ends (treaty, last battle, de facto end); the zone is drawn in the blend (rule 6). vassal_start / vassal_end: 'region' (usually a whole state) becomes or ceases to be this state's vassal, protectorate, tributary or client, drawn in the lighter tint (rule 4); 'counterpart' is the vassal itself in both events (the same string, so the validator can pair them), and a conqueror who ends the relation goes in 'note'. occupation_start / occupation_end: this state occupies 'region' belonging to 'counterpart' without annexing it, hatched (rule 4); the owner records the same event with the roles reversed. capital_move: the seat moves (rule 10; the destination in 'note' and in identity.capitals). rename: the state changes its name or a dynasty changes within the same state (Tang to Zhou to Tang); colour and dossier continue (rule 2). split: part of the state becomes a new state named in 'counterpart'. merge: this state absorbs or is absorbed into 'counterpart'. dissolve: the state ends; its land goes to identity.successors (rule 7).",
+            "type": "string",
+            "enum": ["found", "gain", "loss", "contest_start", "contest_end", "vassal_start", "vassal_end", "occupation_start", "occupation_end", "capital_move", "rename", "split", "merge", "dissolve"]
+          },
+          "region": {
+            "description": "The land the event concerns, as a region spec (the shared grammar) with 'text' giving the source's own words. Required for every type except rename and capital_move.",
+            "$ref": "#/$defs/region_text"
+          },
+          "counterpart": {
+            "description": "The other party: the slug of its dossier when one exists or will exist (data/polities.csv slugs; the slug rule for new states), otherwise its name as the source gives it; 'nobody' for stateless land. Required for gain, loss, contest_*, vassal_*, occupation_* and merge.",
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "description": "URL of the page the event was read from; it must appear in 'sources'. One page per event; put a second page in 'note'.",
+            "$ref": "#/$defs/url"
+          },
+          "confidence": {
+            "description": "3: the page dates the event and names the land in its own words. 2: the year is the page's, the region is the researcher's reading of it (a province named from a city, a span rounded to a year). 1: the researcher's bridging judgment where the page is silent (a date inferred from a Cliopatria shape, a region inferred from a later state of affairs); the reviewer treats 1 as a gap to fill.",
+            "type": "integer",
+            "enum": [1, 2, 3]
+          },
+          "note": {
+            "description": "One sentence a viewer can read as the caption ('618: Li Yuan proclaims the Tang at Chang'an'), then anything else: the page's wording, a disagreement between pages, the span of a drawn-out process.",
+            "type": "string"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "description": "Selector: every type except rename and capital_move.",
+                  "not": {
+                    "enum": ["rename", "capital_move"]
+                  }
+                }
+              }
+            },
+            "then": {
+              "required": ["region"]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "description": "Selector: the types that need a counterpart.",
+                  "enum": ["gain", "loss", "contest_start", "contest_end", "vassal_start", "vassal_end", "occupation_start", "occupation_end", "merge"]
+                }
+              }
+            },
+            "then": {
+              "required": ["counterpart"]
+            }
+          }
+        ]
+      }
+    },
+    "wars": {
+      "description": "The wars that moved or threatened this state's borders: name, years, every belligerent, the zones fought over (which feed the contested-territory rule) and the outcome. A war with no territorial result is still listed (so the reviewer can see it was considered) with empty zones.",
+      "type": "array",
+      "items": {
+        "description": "One war or campaign.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "from", "to", "belligerents", "zones", "outcome", "source"],
+        "properties": {
+          "name": {
+            "description": "The war's usual English name, as the Wikipedia article titles it.",
+            "type": "string",
+            "minLength": 1
+          },
+          "from": {
+            "description": "First year of fighting.",
+            "$ref": "#/$defs/year"
+          },
+          "to": {
+            "description": "Last year of fighting or the treaty year (inclusive).",
+            "$ref": "#/$defs/year"
+          },
+          "belligerents": {
+            "description": "Every party, this state included: dossier slugs where they exist, otherwise names as the source gives them.",
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "description": "One belligerent: a slug or a name.",
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "zones": {
+            "description": "The land fought over and held or changed hands, as region specs ('text' recommended); empty when the war moved no border. The ledger's contest_start / contest_end events reference the same zones.",
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/region"
+            }
+          },
+          "outcome": {
+            "description": "The result in one or two sentences: who won, what changed hands, the treaty.",
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "description": "URL of the page the war was read from; it must appear in 'sources'.",
+            "$ref": "#/$defs/url"
+          },
+          "note": {
+            "description": "Anything else: disagreements between pages, a front that moved year by year (give the years), why a zone is or is not contested.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "certainty": {
+      "description": "How certain the state's borders are, per era, covering the whole life without gaps: sharp (treaty or survey lines) or soft (approximate frontiers: steppe, forest, desert, most of the ancient world). Drives the edge style (rule 9); 'note' names the borders that differ from the era's level.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "description": "One era.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["from", "to", "level"],
+        "properties": {
+          "from": {
+            "description": "First year of the era.",
+            "$ref": "#/$defs/year"
+          },
+          "to": {
+            "description": "Last year of the era (inclusive).",
+            "$ref": "#/$defs/year"
+          },
+          "level": {
+            "description": "sharp: borders fixed by treaty, survey or a dated administrative record. soft: approximate frontiers, drawn soft or dashed.",
+            "type": "string",
+            "enum": ["sharp", "soft"]
+          },
+          "note": {
+            "description": "Which borders are the exception to the era's level, and why ('the Tibetan frontier is sharp after the 783 treaty; the steppe frontier is soft throughout').",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sources": {
+      "description": "Every page opened for this dossier, with its URL and the date it was read. A search snippet is not a source. Every 'source' URL in the dossier must appear here.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "description": "One page opened.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["url", "title", "accessed"],
+        "properties": {
+          "url": {
+            "description": "The page's URL, exactly as opened.",
+            "$ref": "#/$defs/url"
+          },
+          "title": {
+            "description": "The page's title.",
+            "type": "string",
+            "minLength": 1
+          },
+          "accessed": {
+            "description": "The date the page was read, YYYY-MM-DD.",
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "note": {
+            "description": "What the page was used for, or why it was thin (a redirect, a stub, a page that would not load and was replaced).",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "notes": {
+      "description": "Free text for what the researcher could not settle: Cliopatria rows to split or merge, states that need their own dossier (rebels, protectorates), disagreements between pages, pages that would not load. The reviewer and the gap-fillers read it first.",
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "slug": {
+      "description": "A dossier identifier by the shared slug rule (tools/slug.py): lower-case ASCII letters and digits separated by single hyphens, with the prefix 'rel-' for a Cliopatria umbrella or relation entity.",
+      "type": "string",
+      "pattern": "^(rel-)?[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "year": {
+      "description": "An integer year, negative for BCE (−6000 is the project's first year), with no year 0 issue: Cliopatria's convention is followed as it stands.",
+      "type": "integer",
+      "minimum": -6000,
+      "maximum": 2030
+    },
+    "month": {
+      "description": "A month of the year, 1..12.",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "date": {
+      "description": "A year with an optional month.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["year"],
+      "properties": {
+        "year": {
+          "description": "The year.",
+          "$ref": "#/$defs/year"
+        },
+        "month": {
+          "description": "The month, where the record gives one.",
+          "$ref": "#/$defs/month"
+        }
+      }
+    },
+    "url": {
+      "description": "An http(s) URL of a page that was opened.",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://"
+    },
+    "text": {
+      "description": "The source's own words for the region ('the Four Garrisons of Anxi', 'the Hexi Corridor from Liangzhou to Dunhuang'); free text, ignored by the gazetteer, kept for the reviewer and the state page.",
+      "type": "string",
+      "minLength": 1
+    },
+    "handover": {
+      "description": "A predecessor or successor and the land that passed between it and this state.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "land"],
+      "properties": {
+        "slug": {
+          "description": "The other state's dossier slug (an existing slug from data/polities.csv, or the slug rule applied to the name of a state that still needs a dossier).",
+          "$ref": "#/$defs/slug"
+        },
+        "land": {
+          "description": "The land handed over, as a region spec; {'cliopatria': Name, 'year': y} of the other state's first or last shape is the usual form; 'text' recommended.",
+          "$ref": "#/$defs/region"
+        },
+        "note": {
+          "description": "Anything else: a date that differs from the start or end year, a partial handover.",
+          "type": "string"
+        }
+      }
+    },
+    "region_text": {
+      "description": "A region spec that must carry 'text', the source's own words.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/region"
+        },
+        {
+          "type": "object",
+          "required": ["text"]
+        }
+      ]
+    },
+    "region": {
+      "description": "The shared region grammar (gazetteer, dossier schema and briefs): a named region, never drawn coordinates except the 12-point fallback. Exactly one form applies; any form may also carry 'text'. Country and admin-1 spellings follow Natural Earth 10m (data/gazetteer/countries.jsonl and admin1.jsonl names or alt_names); historical regions are the entries of data/gazetteer/regions.jsonl; places are data/gazetteer/places.jsonl. Resolve with tools/gazetteer.py. The river and lake forms are gazetteer extensions of the grammar.",
+      "type": "object",
+      "oneOf": [
+        {
+          "description": "A modern country by its Natural Earth name.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["country"],
+          "properties": {
+            "country": {
+              "description": "Natural Earth 10m admin-0 name (ADMIN or NAME) or a listed alias ('China', 'Czechia', 'United States of America').",
+              "type": "string",
+              "minLength": 1
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        },
+        {
+          "description": "A first-level administrative unit of a modern country (province, state, oblast).",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["admin1", "country"],
+          "properties": {
+            "admin1": {
+              "description": "Natural Earth 10m admin-1 name or alias ('Gansu', 'Xinjiang', 'Bavaria'); a Natural Earth 'region' value (an Italian region) also works.",
+              "type": "string",
+              "minLength": 1
+            },
+            "country": {
+              "description": "The unit's country, by its Natural Earth name.",
+              "type": "string",
+              "minLength": 1
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        },
+        {
+          "description": "A radius around a named place.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["place", "km"],
+          "properties": {
+            "place": {
+              "description": "A populated place from data/gazetteer/places.jsonl, by name or alias ('Kucha', 'Chang'an', 'Samarkand').",
+              "type": "string",
+              "minLength": 1
+            },
+            "km": {
+              "description": "Radius in kilometres.",
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "country": {
+              "description": "The place's modern country, to disambiguate a repeated name (Dali in Shaanxi or in Yunnan).",
+              "type": "string",
+              "minLength": 1
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        },
+        {
+          "description": "A radius around a coordinate; use only when no place name will do.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["lon", "lat", "km"],
+          "properties": {
+            "lon": {
+              "description": "Longitude, decimal degrees, east positive.",
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            },
+            "lat": {
+              "description": "Latitude, decimal degrees, north positive.",
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "km": {
+              "description": "Radius in kilometres.",
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        },
+        {
+          "description": "A polity's Cliopatria shape in a given year (the shape alive in that year).",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["cliopatria", "year"],
+          "properties": {
+            "cliopatria": {
+              "description": "The Cliopatria Name, verbatim ('Tang Dynasty', 'Tibetan Empire').",
+              "type": "string",
+              "minLength": 1
+            },
+            "year": {
+              "description": "A year in which the polity has a shape; that shape is used.",
+              "$ref": "#/$defs/year"
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        },
+        {
+          "description": "A historical region by name.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["region"],
+          "properties": {
+            "region": {
+              "description": "An entry of data/gazetteer/regions.jsonl by name or alias ('Tarim Basin', 'Hexi Corridor', 'Transoxiana', 'Aquitaine'); an unknown name goes to the gazetteer agent, who adds it.",
+              "type": "string",
+              "minLength": 1
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        },
+        {
+          "description": "A fallback polygon of at most 12 points, only when no name will do.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["polygon"],
+          "properties": {
+            "polygon": {
+              "description": "The ring as [lon, lat] pairs, 3 to 12 points, not closed.",
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 12,
+              "items": {
+                "description": "One vertex: [lon, lat].",
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "description": "A coordinate in decimal degrees.",
+                  "type": "number"
+                }
+              }
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        },
+        {
+          "description": "A band along the border between two states in a year, for sources that say only 'the frontier'.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["border_band"],
+          "properties": {
+            "border_band": {
+              "description": "The two states, the year whose border is taken, and the band's width in cells on either side.",
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["a", "b", "year", "width"],
+              "properties": {
+                "a": {
+                  "description": "One state's slug.",
+                  "$ref": "#/$defs/slug"
+                },
+                "b": {
+                  "description": "The other state's slug.",
+                  "$ref": "#/$defs/slug"
+                },
+                "year": {
+                  "description": "The year whose border between a and b is taken.",
+                  "$ref": "#/$defs/year"
+                },
+                "width": {
+                  "description": "Width of the band in H3 cells on each side of the border (1 or 2 is usual).",
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        },
+        {
+          "description": "The union of two or more regions.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["union"],
+          "properties": {
+            "union": {
+              "description": "The regions to join.",
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "$ref": "#/$defs/region"
+              }
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        },
+        {
+          "description": "The first region minus the second.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["minus"],
+          "properties": {
+            "minus": {
+              "description": "Exactly two regions: [A, B] gives A without B.",
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "$ref": "#/$defs/region"
+              }
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        },
+        {
+          "description": "The intersection of two or more regions.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["intersect"],
+          "properties": {
+            "intersect": {
+              "description": "The regions to intersect.",
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "$ref": "#/$defs/region"
+              }
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        },
+        {
+          "description": "Gazetteer extension: the cells a river passes through, widened by a radius.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["river", "km"],
+          "properties": {
+            "river": {
+              "description": "A river from data/gazetteer/rivers.jsonl by name or alias ('Yellow', 'Amu Darya').",
+              "type": "string",
+              "minLength": 1
+            },
+            "km": {
+              "description": "How far from the centreline to include, in kilometres; 0 for the line's own cells.",
+              "type": "number",
+              "minimum": 0
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        },
+        {
+          "description": "Gazetteer extension: the cells of a lake (lakes are land cells in this grid).",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["lake"],
+          "properties": {
+            "lake": {
+              "description": "A lake from data/gazetteer/lakes.jsonl by name or alias.",
+              "type": "string",
+              "minLength": 1
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
