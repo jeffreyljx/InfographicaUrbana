@@ -2,9 +2,15 @@
 
 The world's cities in maps and figures, in four modes: **ScraperMap** (the tower map below, the site's name until 31 Oct 2026), **TransitMap** (`/metro/`, the world's metro lines year by year), **IndustryMap** (`/industry/`, the cities that trade and make the most) and **CartaHistoria** (`/history/`, every state's borders year by year since 6000 BCE). The modes are listed in `src/lib/modes.ts`, with the site's name and address. The logo is drawn in `src/components/Logo.tsx`; `node scripts/brand/make-icons.mjs` redraws the favicon, app icons and link-preview image from it.
 
-## ScraperMap
+## The four modes
 
-Every skyscraper of 150 m or taller in 348 cities — 8,076 towers — pinned to its exact location, assigned to its district, and ranked. Built on the *Skyscrapers by District* dataset.
+**ScraperMap** (`/`) pins every skyscraper of 150 m or taller to its exact spot: 8,076 towers in 348 cities, each assigned to one of 1,023 districts. Tables rank countries, cities and districts by their towers. The map draws each city's skyline extent, and the Skylines page sets them side by side at one scale. A time capsule slider rebuilds any year's skyline, including lost towers such as the original World Trade Center. A toggle shows the built-up footprint of 320 metro areas.
+
+**TransitMap** (`/metro/`) animates how the world's metro systems grew: 947 lines in 230 systems, from London's Metropolitan line in 1863 to October 2026, drawn section by section in their own colours. Every station has a page, and when you zoom in, stations show their halls and lettered exits from OpenStreetMap.
+
+**IndustryMap** (`/industry/`) shows the cities that trade and make the most, with circles to scale and tables ranking 2025 goods trade for 47 cities and manufacturing value added for 38.
+
+**CartaHistoria** (`/history/`) shows every state's borders year by year from 6000 BCE to today: 3,178 states, empires, dynasties and cultures, with contested land marked and a page for each state showing its area over time.
 
 ## Stack
 
