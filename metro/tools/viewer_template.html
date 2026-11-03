@@ -1,0 +1,266 @@
+<title>World Metro Database</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: signage header with coverage counts; system list on the left; map over line table on the right; line card overlays the map */
+:root{
+  --bg:#EEF1F4; --panel:#FFFFFF; --ink:#141A22; --muted:#5A6676; --rule:#D5DCE4; --accent:#0A6C93; --accent-ink:#FFFFFF;
+  --map:#F8FAFB; --grid:#E3E8EE; --warn:#A8590B; --ok:#1F7A4D; --off:#9AA4B1;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1117; --panel:#141A22; --ink:#E5EAF0; --muted:#8F9AA8; --rule:#252E3A; --accent:#4DB0D8; --accent-ink:#071017;
+  --map:#0F151C; --grid:#1B232D; --warn:#E3A24F; --ok:#5CC48C; --off:#5D6774; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1117; --panel:#141A22; --ink:#E5EAF0; --muted:#8F9AA8; --rule:#252E3A; --accent:#4DB0D8; --accent-ink:#071017;
+  --map:#0F151C; --grid:#1B232D; --warn:#E3A24F; --ok:#5CC48C; --off:#5D6774; color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14px;line-height:1.45;padding-inline:16px;padding-block:14px;box-sizing:border-box}
+*{box-sizing:border-box}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 24px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+h1{font-family:var(--display);font-weight:700;font-size:2rem;letter-spacing:.01em;line-height:1;margin:0;text-wrap:balance}
+.sub{color:var(--muted);font-size:.86rem;margin-top:4px;max-width:64ch}
+.counts{display:flex;flex-wrap:wrap;gap:6px 22px}
+.count{display:flex;flex-direction:column}
+.count b{font-family:var(--display);font-size:1.45rem;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.count span{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+main{display:grid;grid-template-columns:minmax(230px,300px) minmax(0,1fr);gap:14px;margin-top:14px;min-height:0}
+@media (max-width:820px){main{grid-template-columns:minmax(0,1fr)}}
+.side{background:var(--panel);border:1px solid var(--rule);display:flex;flex-direction:column;min-height:0;max-height:calc(100vh - 150px)}
+@media (max-width:820px){.side{max-height:300px}}
+.side .tools{display:flex;flex-direction:column;gap:8px;padding:10px;border-bottom:1px solid var(--rule)}
+input[type=search],select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--rule);padding:6px 8px;border-radius:3px}
+input:focus-visible,select:focus-visible,button:focus-visible,.sys:focus-visible,tr:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.syslist{overflow:auto;min-height:0}
+.sys{display:grid;grid-template-columns:1fr auto;gap:0 8px;padding:7px 10px;border-bottom:1px solid var(--rule);cursor:pointer}
+.sys:hover{background:var(--bg)}
+.sys[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.sys[aria-selected="true"] .meta{color:inherit;opacity:.85}
+.sys .nm{font-weight:600;min-width:0;overflow-wrap:anywhere}
+.sys .yr{font-family:var(--mono);font-size:.8rem;font-variant-numeric:tabular-nums}
+.sys .meta{grid-column:1/3;color:var(--muted);font-size:.78rem}
+.pill{display:inline-block;font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;padding:1px 5px;border-radius:2px;border:1px solid currentColor;margin-left:4px;vertical-align:1px}
+.pill.out{color:var(--off)} .pill.check{color:var(--warn)} .pill.partial{color:var(--accent)}
+.sys[aria-selected="true"] .pill{color:inherit}
+.right{display:flex;flex-direction:column;gap:14px;min-width:0}
+.mapwrap{position:relative;background:var(--map);border:1px solid var(--rule);height:min(62vh,560px);min-height:300px;overflow:hidden;touch-action:none}
+canvas{display:block;width:100%;height:100%;cursor:grab}
+canvas:active{cursor:grabbing}
+.mapbar{position:absolute;left:10px;right:10px;bottom:10px;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;background:color-mix(in srgb,var(--panel) 92%,transparent);border:1px solid var(--rule);padding:6px 10px}
+.mapbar label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.mapbar input[type=range]{flex:1 1 160px;accent-color:var(--accent)}
+.year{font-family:var(--display);font-weight:600;font-size:1.5rem;font-variant-numeric:tabular-nums;min-width:3.2ch}
+.zoom{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:4px}
+button{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--rule);padding:4px 9px;border-radius:3px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+.card{position:absolute;top:10px;left:10px;width:min(360px,calc(100% - 70px));max-height:calc(100% - 80px);overflow:auto;background:var(--panel);border:1px solid var(--rule);border-top:6px solid var(--lc,var(--accent));padding:10px 12px 12px;box-shadow:0 6px 20px rgba(0,0,0,.12)}
+.card h2{font-family:var(--display);font-size:1.4rem;font-weight:600;margin:0 0 2px;line-height:1.1;padding-right:22px}
+.card .x{position:absolute;top:6px;right:6px;border:none;background:none;font-size:1.1rem;padding:2px 6px}
+.card dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:3px 10px;margin:8px 0 0;font-size:.82rem}
+.card dt{color:var(--muted);white-space:nowrap}
+.card dd{margin:0;overflow-wrap:anywhere}
+.card h3{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:12px 0 4px}
+.stg{font-size:.8rem;display:grid;grid-template-columns:auto 1fr;gap:2px 8px}
+.stg .d{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--muted)}
+.tablewrap{background:var(--panel);border:1px solid var(--rule);overflow:auto;max-height:420px}
+table{border-collapse:collapse;width:100%;font-size:.82rem}
+th{position:sticky;top:0;background:var(--panel);text-align:left;font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600;padding:7px 8px;border-bottom:1px solid var(--rule);white-space:nowrap}
+td{padding:6px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+td.t{font-family:var(--mono);font-variant-numeric:tabular-nums;min-width:4em;max-width:10em}
+tr{cursor:pointer} tr:hover td{background:var(--bg)} tr.sel td{background:color-mix(in srgb,var(--accent) 14%,transparent)}
+tr.excl td{color:var(--off)}
+.sw{display:inline-block;width:.9em;height:.9em;border-radius:50%;vertical-align:-1px;margin-right:6px;border:1px solid var(--rule)}
+.note{color:var(--muted);font-size:.78rem;padding:8px 10px}
+.hint{position:absolute;top:10px;left:10px;margin-right:52px;font-size:.78rem;color:var(--muted);background:color-mix(in srgb,var(--panel) 85%,transparent);padding:4px 8px;border:1px solid var(--rule)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header>
+  <div>
+    <h1>World Metro Database</h1>
+    <div class="sub" id="sub"></div>
+  </div>
+  <div class="counts" id="counts"></div>
+</header>
+<main>
+  <aside class="side">
+    <div class="tools">
+      <input type="search" id="q" placeholder="Search city, system or line" aria-label="Search systems">
+      <select id="sort" aria-label="Sort systems">
+        <option value="opened">Sort by first opening</option>
+        <option value="km">Sort by mapped length</option>
+        <option value="ridership">Sort by annual ridership</option>
+        <option value="name">Sort by city</option>
+      </select>
+    </div>
+    <div class="syslist" id="syslist" role="listbox" aria-label="Metro systems"></div>
+  </aside>
+  <section class="right">
+    <div class="mapwrap" id="mapwrap">
+      <canvas id="map" aria-label="Map of metro lines"></canvas>
+      <div class="hint" id="hint">Drag to pan, scroll or use + and − to zoom. Pick a system to fly to it.</div>
+      <div class="card" id="card" hidden></div>
+      <div class="zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button id="zworld" aria-label="Show the whole world">⤢</button></div>
+      <div class="mapbar">
+        <label for="yr">Network in</label>
+        <input type="range" id="yr" min="1863" max="2026" step="1" value="2026">
+        <span class="year" id="yrv">2026</span>
+        <button id="play">Play</button>
+      </div>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Line</th><th>Opened</th><th>Length km</th><th>Stations</th><th>Ridership</th><th>Cars</th><th>Car type</th><th>Status</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div class="note" id="tnote"></div>
+    </div>
+  </section>
+</main>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+const D=JSON.parse(document.getElementById('data').textContent);
+const S=D.systems, L=D.lines, ST=D.stations, STG=D.stages;
+// system fields
+const sf={id:0,name:1,city:2,country:3,ruling:4,opened:5,inc:6,exc:7,rid:8,ridy:9,km:10,lon:11,lat:12,kmosm:13};
+// line fields
+const lf={id:0,sys:1,ref:2,name:3,local:4,colour:5,inc:6,test:7,status:8,opened:9,ext:10,closed:11,km:12,kmosm:13,st:14,stosm:15,rid:16,ridd:17,ridy:18,stock:19,car:20,cars:21,power:22,gauge:23,auto:24,tech:25,express:26,operator:27,termini:28,rnote:29,notes:30,geom:31,src:32};
+function dec(str){let i=0,lat=0,lng=0,out=[];while(i<str.length){let b,s=0,r=0;do{b=str.charCodeAt(i++)-63;r|=(b&31)<<s;s+=5}while(b>=32);lat+=(r&1)?~(r>>1):(r>>1);s=0;r=0;do{b=str.charCodeAt(i++)-63;r|=(b&31)<<s;s+=5}while(b>=32);lng+=(r&1)?~(r>>1):(r>>1);out.push([lng/1e5,lat/1e5])}return out}
+const geoms=L.map(l=>(l[lf.geom]||[]).map(dec));
+const yearOf=d=>d?parseInt(String(d).slice(0,4)):null;
+const fmt=(n,dg=0)=>n==null||n===''?'':Number(n).toLocaleString('en-GB',{maximumFractionDigits:dg});
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let selSys=null, selLine=null, YEAR=2026;
+// counts
+(function(){
+  const inc=L.filter(l=>l[lf.inc]);
+  const mapped=inc.filter(l=>geoms[L.indexOf(l)]&&geoms[L.indexOf(l)].length);
+  const km=inc.reduce((a,l)=>a+(+l[lf.km]||0),0);
+  const sysIn=new Set(inc.map(l=>l[lf.sys]));
+  const c=[[sysIn.size,'systems'],[inc.length,'lines'],[Math.round(km),'route km'],[mapped.length,'lines mapped'],[D.n_stations,'stations']];
+  document.getElementById('counts').innerHTML=c.map(([v,t])=>`<div class="count"><b>${fmt(v)}</b><span>${t}</span></div>`).join('');
+  document.getElementById('sub').textContent=`Every metro line that passes the ScraperMap definition (v1.2), with excluded lines kept for reference. Facts from Wikipedia; paths and stations from OpenStreetMap (8 Oct 2026). Built ${D.built}.`;
+})();
+// ---- system list
+const lq=document.getElementById('q'), lsort=document.getElementById('sort'), list=document.getElementById('syslist');
+function renderList(){
+  const q=lq.value.trim().toLowerCase();
+  let idx=S.map((s,i)=>i).filter(i=>{const s=S[i];return !q||(s[sf.name]+' '+s[sf.city]+' '+s[sf.country]).toLowerCase().includes(q)||L.some(l=>l[lf.sys]===i&&(l[lf.name]+' '+l[lf.local]).toLowerCase().includes(q))});
+  const k=lsort.value;
+  idx.sort((a,b)=>{const A=S[a],B=S[b];
+    if(k==='km')return (B[sf.kmosm]||0)-(A[sf.kmosm]||0);
+    if(k==='ridership')return (B[sf.rid]||0)-(A[sf.rid]||0);
+    if(k==='name')return A[sf.city].localeCompare(B[sf.city]);
+    return String(A[sf.opened]||'9999').localeCompare(String(B[sf.opened]||'9999'))});
+  list.innerHTML=idx.map(i=>{const s=S[i];const r=s[sf.ruling];
+    const pill=r==='out'?'<span class="pill out">out</span>':r==='check'?'<span class="pill check">check</span>':r==='partial'?'<span class="pill partial">part</span>':'';
+    return `<div class="sys" role="option" tabindex="0" data-i="${i}" aria-selected="${i===selSys}"><span class="nm">${esc(s[sf.city])} · ${esc(s[sf.name])}${pill}</span><span class="yr">${esc(String(s[sf.opened]||'').slice(0,4))}</span><span class="meta">${esc(s[sf.country])} · ${s[sf.inc]} lines in${s[sf.exc]?`, ${s[sf.exc]} out`:''}${s[sf.rid]?` · ${fmt(s[sf.rid],1)} m riders (${esc(s[sf.ridy])})`:''}</span></div>`}).join('');
+}
+list.addEventListener('click',e=>{const el=e.target.closest('.sys');if(el)pickSystem(+el.dataset.i)});
+list.addEventListener('keydown',e=>{if(e.key==='Enter'){const el=e.target.closest('.sys');if(el)pickSystem(+el.dataset.i)}});
+lq.addEventListener('input',renderList); lsort.addEventListener('change',renderList);
+// ---- map (web mercator on canvas)
+const cv=document.getElementById('map'), ctx=cv.getContext('2d'), wrap=document.getElementById('mapwrap');
+let view={x:0,y:0,z:1}; // world px at zoom z: 256*2^z
+const merc=(lon,lat)=>{const s=Math.sin(lat*Math.PI/180);return[(lon+180)/360,0.5-Math.log((1+s)/(1-s))/(4*Math.PI)]};
+function size(){const r=wrap.getBoundingClientRect();const dpr=window.devicePixelRatio||1;cv.width=r.width*dpr;cv.height=r.height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);draw()}
+function toScreen(lon,lat){const [mx,my]=merc(lon,lat);const W=256*2**view.z;return[mx*W-view.x,my*W-view.y]}
+function fit(b){const r=wrap.getBoundingClientRect();const [x1,y1]=merc(b[0],b[3]),[x2,y2]=merc(b[2],b[1]);
+  const z=Math.max(1,Math.min(15,Math.log2(Math.min(r.width/((x2-x1)*256||1e-9),r.height/((y2-y1)*256||1e-9))*0.85)));
+  const W=256*2**z;view={z,x:(x1+x2)/2*W-r.width/2,y:(y1+y2)/2*W-r.height/2};draw()}
+function world(){fit([-170,-50,175,70])}
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function lineVisible(i){const l=L[i];const o=yearOf(l[lf.opened]),c=yearOf(l[lf.closed]);return (o==null||o<=YEAR)&&(c==null||c>=YEAR)}
+function draw(){
+  const r=wrap.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);
+  ctx.fillStyle=css('--map');ctx.fillRect(0,0,r.width,r.height);
+  // graticule
+  ctx.strokeStyle=css('--grid');ctx.lineWidth=1;
+  const step=view.z<4?30:view.z<7?5:view.z<10?1:0.1;
+  for(let lon=-180;lon<=180;lon+=step){const[a]=toScreen(lon,0);if(a<-5||a>r.width+5)continue;ctx.beginPath();ctx.moveTo(a,0);ctx.lineTo(a,r.height);ctx.stroke()}
+  for(let lat=-80;lat<=80;lat+=step){const[,b]=toScreen(0,lat);if(b<-5||b>r.height+5)continue;ctx.beginPath();ctx.moveTo(0,b);ctx.lineTo(r.width,b);ctx.stroke()}
+  if(view.z<6){ // world: one dot per system, sized by mapped length
+    for(let i=0;i<S.length;i++){const s=S[i];if(s[sf.lon]==null||!s[sf.inc])continue;
+      const vis=L.some((l,j)=>l[lf.sys]===i&&l[lf.inc]&&lineVisible(j));if(!vis)continue;
+      const[x,y]=toScreen(s[sf.lon],s[sf.lat]);const rad=Math.max(2.5,Math.sqrt(s[sf.kmosm]||s[sf.km]||10)*0.45);
+      ctx.beginPath();ctx.arc(x,y,rad,0,7);ctx.fillStyle=i===selSys?css('--warn'):css('--accent');ctx.globalAlpha=.75;ctx.fill();ctx.globalAlpha=1}
+    return}
+  const lw=view.z<9?1.4:view.z<12?2.4:3.6;
+  for(let pass=0;pass<2;pass++)for(let i=0;i<L.length;i++){
+    const l=L[i];if(!geoms[i].length||!lineVisible(i))continue;
+    const isSel=i===selLine; if((pass===1)!==isSel)continue;
+    ctx.strokeStyle=l[lf.inc]?(l[lf.colour]||css('--accent')):css('--off');
+    ctx.globalAlpha=selLine!=null&&!isSel?.35:1;ctx.lineWidth=isSel?lw*2:lw;ctx.lineJoin='round';ctx.lineCap='round';
+    if(!l[lf.inc])ctx.setLineDash([4,4]);else ctx.setLineDash([]);
+    for(const part of geoms[i]){ctx.beginPath();part.forEach((p,k)=>{const[x,y]=toScreen(p[0],p[1]);k?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.stroke()}
+  }
+  ctx.setLineDash([]);ctx.globalAlpha=1;
+  if(view.z>=10){const rad=view.z<12?2.2:3.4;
+    for(const s of ST){const i=s[0];if(!lineVisible(i))continue;const y0=yearOf(s[5]);if(y0&&y0>YEAR)continue;
+      const[x,y]=toScreen(s[3],s[4]);if(x<-5||y<-5||x>r.width+5||y>r.height+5)continue;
+      ctx.beginPath();ctx.arc(x,y,rad,0,7);ctx.fillStyle=css('--panel');ctx.fill();ctx.lineWidth=1.3;ctx.strokeStyle=L[i][lf.colour]||css('--ink');ctx.stroke();
+      if(view.z>=13&&(selLine==null||selLine===i)){ctx.fillStyle=css('--ink');ctx.font='11px '+css('--body');ctx.fillText(s[2]||s[1],x+5,y-4)}}}
+}
+// pan & zoom
+let drag=null;
+cv.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,vx:view.x,vy:view.y,moved:false};cv.setPointerCapture(e.pointerId)});
+cv.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>3)drag.moved=true;view.x=drag.vx-dx;view.y=drag.vy-dy;draw()});
+cv.addEventListener('pointerup',e=>{if(drag&&!drag.moved)clickAt(e);drag=null});
+function zoomAt(f,cx,cy){const nz=Math.max(1,Math.min(16,view.z+f));const k=2**(nz-view.z);view.x=(view.x+cx)*k-cx;view.y=(view.y+cy)*k-cy;view.z=nz;draw()}
+cv.addEventListener('wheel',e=>{e.preventDefault();const r=cv.getBoundingClientRect();zoomAt(e.deltaY<0?0.5:-0.5,e.clientX-r.left,e.clientY-r.top)},{passive:false});
+document.getElementById('zin').onclick=()=>{const r=wrap.getBoundingClientRect();zoomAt(1,r.width/2,r.height/2)};
+document.getElementById('zout').onclick=()=>{const r=wrap.getBoundingClientRect();zoomAt(-1,r.width/2,r.height/2)};
+document.getElementById('zworld').onclick=()=>{selSys=null;selLine=null;card.hidden=true;renderList();renderTable();world()};
+function clickAt(e){const r=cv.getBoundingClientRect();const px=e.clientX-r.left,py=e.clientY-r.top;
+  if(view.z<6){let best=null,bd=14;S.forEach((s,i)=>{if(s[sf.lon]==null||!s[sf.inc])return;const[x,y]=toScreen(s[sf.lon],s[sf.lat]);const d=Math.hypot(x-px,y-py);if(d<bd){bd=d;best=i}});if(best!=null)pickSystem(best);return}
+  let best=null,bd=8;
+  L.forEach((l,i)=>{if(!geoms[i].length||!lineVisible(i))return;for(const part of geoms[i]){for(let k=1;k<part.length;k++){const[a,b]=toScreen(...part[k-1]),[c,d]=toScreen(...part[k]);const dd=segDist(px,py,a,b,c,d);if(dd<bd){bd=dd;best=i}}}});
+  if(best!=null)pickLine(best)}
+function segDist(px,py,ax,ay,bx,by){const dx=bx-ax,dy=by-ay;const t=Math.max(0,Math.min(1,((px-ax)*dx+(py-ay)*dy)/((dx*dx+dy*dy)||1)));return Math.hypot(px-ax-t*dx,py-ay-t*dy)}
+// ---- selection
+const card=document.getElementById('card'), tbody=document.getElementById('tbody'), tnote=document.getElementById('tnote');
+function sysBounds(i){let b=[180,90,-180,-90],any=false;L.forEach((l,j)=>{if(l[lf.sys]!==i)return;for(const part of geoms[j])for(const p of part){any=true;b=[Math.min(b[0],p[0]),Math.min(b[1],p[1]),Math.max(b[2],p[0]),Math.max(b[3],p[1])]}});
+  if(!any&&S[i][sf.lon]!=null){const s=S[i];b=[s[sf.lon]-.3,s[sf.lat]-.2,s[sf.lon]+.3,s[sf.lat]+.2]}return b}
+function pickSystem(i){selSys=i;selLine=null;card.hidden=true;document.getElementById('hint').hidden=true;renderList();renderTable();fit(sysBounds(i));
+  const el=list.querySelector(`[data-i="${i}"]`);if(el)el.scrollIntoView({block:'nearest'})}
+function renderTable(){
+  if(selSys==null){tbody.innerHTML='';tnote.textContent='Pick a system on the left or on the map to list its lines.';return}
+  const rows=L.map((l,i)=>i).filter(i=>L[i][lf.sys]===selSys).sort((a,b)=>(L[b][lf.inc]-L[a][lf.inc])||String(L[a][lf.opened]).localeCompare(String(L[b][lf.opened])));
+  tbody.innerHTML=rows.map(i=>{const l=L[i];
+    const rid=l[lf.rid]!=null&&l[lf.rid]!==''?`${fmt(l[lf.rid],1)} m/yr`:l[lf.ridd]!=null&&l[lf.ridd]!==''?`${fmt(l[lf.ridd])} k/day`:'';
+    const status=!l[lf.inc]?`out (${esc(l[lf.test])})`:l[lf.closed]?`closed ${esc(String(l[lf.closed]).slice(0,4))}`:(geoms[i].length?'mapped':'no path yet');
+    return `<tr data-i="${i}" tabindex="0" class="${l[lf.inc]?'':'excl'} ${i===selLine?'sel':''}"><td><span class="sw" style="background:${esc(l[lf.colour]||'transparent')}"></span>${esc(l[lf.name])}${l[lf.local]?` <span style="color:var(--muted)">${esc(l[lf.local])}</span>`:''}</td><td class="n">${esc(l[lf.opened])}</td><td class="n">${fmt(l[lf.km],1)}</td><td class="n">${fmt(l[lf.st])}</td><td class="n">${rid}</td><td class="t">${esc(l[lf.cars])}</td><td>${esc(l[lf.car])}</td><td>${status}</td></tr>`}).join('');
+  const s=S[selSys];tnote.textContent=`${s[sf.name]}: ${s[sf.inc]} lines in, ${s[sf.exc]} excluded. Ruling: ${s[sf.ruling]}. Click a row for the full record.`}
+tbody.addEventListener('click',e=>{const tr=e.target.closest('tr');if(tr)pickLine(+tr.dataset.i)});
+tbody.addEventListener('keydown',e=>{if(e.key==='Enter'){const tr=e.target.closest('tr');if(tr)pickLine(+tr.dataset.i)}});
+function pickLine(i){const l=L[i];if(selSys!==l[lf.sys]){selSys=l[lf.sys];renderList()}selLine=i;renderTable();
+  const rows=[['System',S[l[lf.sys]][sf.name]],['Termini',l[lf.termini]],['Ruling',l[lf.inc]?'included':`excluded (${l[lf.test]})`+(l[lf.rnote]?`: ${l[lf.rnote]}`:'')],
+    ['Opened',l[lf.opened]],['Latest extension',l[lf.ext]],['Closed',l[lf.closed]],
+    ['Length',l[lf.km]!==''&&l[lf.km]!=null?`${fmt(l[lf.km],2)} km published`+(l[lf.kmosm]?`, ${fmt(l[lf.kmosm],1)} km mapped`:''):(l[lf.kmosm]?`${fmt(l[lf.kmosm],1)} km mapped`:'')],
+    ['Stations',[l[lf.st]!==''&&l[lf.st]!=null?`${l[lf.st]} published`:'',l[lf.stosm]?`${l[lf.stosm]} mapped`:''].filter(Boolean).join(', ')],
+    ['Ridership',l[lf.rid]!==''&&l[lf.rid]!=null?`${fmt(l[lf.rid],1)} million a year (${l[lf.ridy]})`:l[lf.ridd]!==''&&l[lf.ridd]!=null?`${fmt(l[lf.ridd])} thousand a day (${l[lf.ridy]})`:''],
+    ['Rolling stock',l[lf.stock]],['Car type',l[lf.car]],['Cars per train',l[lf.cars]],['Power',l[lf.power]],['Gauge',l[lf.gauge]?`${l[lf.gauge]} mm`:''],
+    ['Automation',l[lf.auto]],['Technology',l[lf.tech]+(l[lf.express]?' · express':'')],['Operator',l[lf.operator]],['Notes',l[lf.notes]],['Line id',l[lf.id]]].filter(r=>r[1]);
+  const st=(STG[i]||[]);
+  card.style.setProperty('--lc',l[lf.colour]||css('--accent'));
+  card.innerHTML=`<button class="x" aria-label="Close">×</button><h2>${esc(l[lf.name])}</h2><div style="color:var(--muted)">${esc(l[lf.local])}</div><dl>${rows.map(r=>`<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>`+
+    (st.length?`<h3>Opening stages</h3><div class="stg">${st.map(s=>`<span class="d">${esc(s[1])}</span><span>${esc(s[0]==='open'?'Opened':s[0]==='extension'?'Extended':s[0][0].toUpperCase()+s[0].slice(1).replace('_',' '))}: ${esc(s[2])}${s[3]?' – '+esc(s[3]):''}${s[4]?` (${fmt(s[4],2)} km)`:''}</span>`).join('')}</div>`:'')+
+    (l[lf.src]?`<h3>Sources</h3><div style="font-size:.78rem;overflow-wrap:anywhere">${l[lf.src].split(' ').map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(decodeURIComponent(u.replace(/^https?:\/\//,'')).slice(0,70))}</a>`).join('<br>')}</div>`:'');
+  card.hidden=false;card.querySelector('.x').onclick=()=>{card.hidden=true;selLine=null;renderTable();draw()};
+  if(geoms[i].length){let b=[180,90,-180,-90];for(const part of geoms[i])for(const p of part)b=[Math.min(b[0],p[0]),Math.min(b[1],p[1]),Math.max(b[2],p[0]),Math.max(b[3],p[1])];fit(b)}else draw()}
+// year slider
+const yr=document.getElementById('yr'),yrv=document.getElementById('yrv'),play=document.getElementById('play');let timer=null;
+yr.addEventListener('input',()=>{YEAR=+yr.value;yrv.textContent=YEAR;draw()});
+play.onclick=()=>{if(timer){clearInterval(timer);timer=null;play.textContent='Play';return}
+  let first=1863;if(selSys!=null){const ys=L.filter(l=>l[lf.sys]===selSys&&l[lf.inc]).map(l=>yearOf(l[lf.opened])).filter(Boolean);if(ys.length)first=Math.min(...ys)}
+  YEAR=first;play.textContent='Pause';timer=setInterval(()=>{YEAR++;yr.value=YEAR;yrv.textContent=YEAR;draw();if(YEAR>=2026){clearInterval(timer);timer=null;play.textContent='Play'}},selSys!=null?220:90)};
+new ResizeObserver(size).observe(wrap);
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+renderList();renderTable();world();
+</script>
