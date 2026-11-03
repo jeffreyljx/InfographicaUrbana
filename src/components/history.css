@@ -1,0 +1,92 @@
+/* CartaHistoria (/history, HistoryApp.tsx): state names over the map, the hover tip, the legend's swatches, the dock's
+   captions and chart, the state panel and the About note. The dock reuses the time capsule's styles (timeCapsule.css). */
+
+/* state names, laid out by historyLabels.ts */
+.h-labels { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1; }
+.h-label { position: absolute; left: 0; top: 0; white-space: pre; text-align: center; line-height: 1.15; font-weight: 600; letter-spacing: .01em;
+  text-shadow: 0 0 2px rgba(255,250,245,.9), 0 0 5px rgba(255,250,245,.7), 0 0 1px rgba(255,250,245,1); will-change: transform; }
+.h-label.caps { text-transform: uppercase; letter-spacing: .12em; font-weight: 600; }
+.h-label.culture { font-style: italic; font-weight: 400; }
+.h-label.realm { font-weight: 400; letter-spacing: .32em; opacity: .5; text-shadow: 0 0 3px rgba(255,250,245,.8); }
+.h-label.sel { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+
+.h-tip { position: absolute; z-index: 18; transform: translate(12px, -130%); pointer-events: none; white-space: nowrap; max-width: 360px; overflow: hidden; text-overflow: ellipsis;
+  background: var(--bg-2); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: 4px 9px; font-size: 12.5px; box-shadow: 0 4px 14px rgba(74,45,33,.18); }
+
+/* legend swatches: the fill rules of historyLayer.ts */
+.h-legend { max-width: calc(50vw - 420px); }
+@media (max-width: 1180px) { .h-legend { display: none; } }
+.h-legend i { width: 14px; height: 10px; border-radius: 2px; box-shadow: inset 0 0 0 1px rgba(43,29,23,.35); }
+.h-legend .hl-state { background: #CB4644; }
+.h-legend .hl-vassal { background: #D28781; }
+.h-legend .hl-member { background: #D06963; }
+.h-legend .hl-occupied { background: repeating-linear-gradient(-45deg, #4F6EB5 0 2px, #E3C26A 2px 5px); }
+.h-legend .hl-contested { background: repeating-linear-gradient(45deg, #6A4C7A 0 1px, #9A6B8C 1px 3px); }
+.h-legend .hl-culture { background: radial-gradient(circle, #8C7A5B 0.9px, transparent 1.2px) 0 0 / 4px 4px, #E3DACB; }
+.h-legend .hl-none { background: #D6D0C9; }
+.h-legend .hl-new { background: #F2E4DC; box-shadow: inset 0 0 0 2px #E2560F; }
+
+/* the dock */
+.h-dock .h-year { width: 118px; font-variant-numeric: lining-nums; white-space: nowrap; }
+.h-dock .h-year small { font-size: 13px; font-weight: 600; letter-spacing: .04em; color: var(--fg-2); }
+.h-dock .h-cap { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.h-dock .h-cap .link, .h-caps .link { margin: 0; font: inherit; font-weight: 600; color: var(--accent-2); display: inline-flex; align-items: center; }
+.h-cap-text { color: var(--fg-2); }
+.h-caps { list-style: none; margin: 4px 0 0 50px; padding: 0; font-size: 12.5px; line-height: 1.45; }
+.h-caps li { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.capsule .cap-speed { position: static; width: 34px; height: 28px; font-size: 12px; font-weight: 700; align-self: flex-start; background: var(--bg-3); color: var(--fg); }
+.capsule .cap-speed:hover { background: var(--line); }
+.h-dock .cap-bars .h-bars-future { fill: var(--line); opacity: .8; }
+.h-dock .cap-bars .h-bars-past { fill: var(--accent); opacity: .72; }
+.h-dock .cap-bars .h-now { fill: #E2560F; }
+.h-dock .cap-ticks span.minor { opacity: .7; }
+.h-dock .cap-ticks span.first { transform: none; }
+.capsule.h-dock { width: min(700px, calc(100vw - 36px)); }
+.capsule.h-dock.with-panel { width: min(700px, calc(100vw - 476px)); }
+.capsule.h-dock.min .h-year { width: auto; }
+.capsule.h-dock.min .h-year small { font-size: 11px; }
+
+/* the panel */
+.hpanel .m-head { height: 46px; }
+.hpanel h1 { text-wrap: balance; }
+.h-ledger { list-style: none; margin: 0; padding: 0; font-size: 13px; line-height: 1.45; }
+.h-ledger li { display: grid; grid-template-columns: 74px 1fr; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.h-ledger li:last-child { border-bottom: 0; }
+.h-ledger li.later { opacity: .6; }
+.h-ledger .h-ly { margin: 0; font-size: 13px; text-align: left; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.h-src { font-size: 11.5px; color: var(--fg-3); white-space: nowrap; }
+.h-links { font-size: 13px; color: var(--fg-2); line-height: 1.5; }
+.h-spark { margin: 14px 0 0; }
+.h-spark svg { display: block; width: 100%; height: 54px; cursor: pointer; background: var(--bg); border-radius: 6px; }
+.h-spark figcaption { display: flex; justify-content: space-between; font-size: 11px; color: var(--fg-3); margin-top: 3px; }
+
+/* About */
+.h-about { position: absolute; top: 110px; left: 18px; z-index: 22; width: min(460px, calc(100vw - 36px)); max-height: calc(100vh - 330px); overflow: auto;
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 14px 18px 10px; font-size: 13.5px; line-height: 1.5; color: var(--fg-2); }
+.h-about h2 { margin: 0 0 8px; font-size: 17px; color: var(--fg); }
+.h-about p { margin: 0 0 10px; }
+.h-about .x { position: absolute; }
+
+/* the state pages (/history/<slug>/) */
+.hpage .h-band { height: 10px; border-radius: 6px; margin: 10px 0 4px; }
+.hpage .h-native { font-size: 17px; color: var(--fg-2); margin: 0 0 4px; }
+.hpage .h-alt { font-size: 13.5px; color: var(--fg-3); }
+.hpage .h-chart { width: 100%; max-width: 900px; height: auto; display: block; background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px; }
+.hpage .h-chart text { font-size: 11px; fill: var(--fg-3); }
+.hpage table.h-led td:first-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.hpage .h-led .src { font-size: 12px; color: var(--fg-3); }
+.hpage .h-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0 28px; }
+.hpage .h-cols ul { padding-left: 18px; margin: 0; line-height: 1.6; font-size: 14px; }
+.hpage .h-sources { font-size: 13px; line-height: 1.6; columns: 2 320px; padding-left: 18px; }
+.hpage .h-note { font-size: 13px; color: var(--fg-3); }
+
+@media (max-width: 720px) {
+  .h-dock .h-year { width: auto; min-width: 64px; }
+  .h-dock .h-year small { font-size: 11px; }
+  .h-caps { display: none; }
+  .h-tip { display: none; }
+  .h-dock .cap-ticks span.wide { display: none; }
+  .history-app .maplibregl-ctrl-bottom-left { display: none; } /* pinch to zoom; the buttons would sit under the credit */
+  .h-about { left: 12px; top: 104px; width: calc(100vw - 24px); max-height: calc(100vh - 300px); }
+  .history-app .topbar .btn span:not(.bm-label) { font-size: 13px; }
+}

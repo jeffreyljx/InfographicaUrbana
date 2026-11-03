@@ -7,8 +7,8 @@ export const SITE_URL = "https://infographicaurbana.vercel.app";
 /** The site's modes, switched from the menu beside the name at the top left (Jeffrey, 18 Oct 2026): ScraperMap,
  *  the tower map with its rankings, skylines and method page in the top bar; TransitMap, the metro history map; and
  *  IndustryMap, the cities that trade and make the most, with its map and two pages of figures in the bar.
- *  CartaHistoria, the historical borders map at /history/, is listed but can't be opened yet (Jeffrey, 1 Nov 2026:
- *  "Under construction...coming this week"); when it ships, drop `soon` and give modeOf its NavKey. */
+ *  CartaHistoria (Jeffrey, 1 Nov 2026) is the historical borders map at /history/: every state's borders year by year
+ *  from 6000 BCE, with a page per state at /history/<slug>/. A mode listed before it opens takes `soon: true`. */
 export type Mode = "scraper" | "transit" | "industry" | "history";
 export interface ModeInfo {
   key: Mode; name: string; href: string; blurb: string;
@@ -20,8 +20,8 @@ export const MODES: ModeInfo[] = [
   { key: "scraper", name: "ScraperMap", href: "/", blurb: "Every skyscraper of 150 m+, with rankings and skylines" },
   { key: "transit", name: "TransitMap", href: "/metro/", blurb: "The world's metro lines, growing year by year" },
   { key: "industry", name: "IndustryMap", href: "/industry/", blurb: "Which cities trade and make the most" },
-  { key: "history", name: "CartaHistoria", href: "/history/", blurb: "Under construction...coming this week", soon: true },
+  { key: "history", name: "CartaHistoria", href: "/history/", blurb: "Every state's borders, year by year, since 6000 BCE" },
 ];
 
 export const modeOf = (active?: NavKey): ModeInfo =>
-  MODES.find(m => m.key === (active === "metro" ? "transit" : active?.startsWith("industry") ? "industry" : "scraper")) as ModeInfo;
+  MODES.find(m => m.key === (active === "metro" ? "transit" : active?.startsWith("industry") ? "industry" : active?.startsWith("history") ? "history" : "scraper")) as ModeInfo;
