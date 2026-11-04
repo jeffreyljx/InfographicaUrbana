@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { fmtKm } from "@/lib/metro";
 import CapsuleMin, { useCapsuleMin } from "./CapsuleMin";
+import BarsKey, { useChartHover, peakOf } from "./BarsKey";
 
 /** Play speed: a year with more new line stays up longer. */
 const delayFor = (km: number) => km <= 0 ? 70 : km < 50 ? 150 : km < 200 ? 220 : 300;
@@ -29,7 +30,7 @@ interface Props {
 
 /**
  * The metro map's year dock, like the tower map's time capsule: the chosen year, a bar chart of the km of metro opened
- * each year with a slider under it (bars up to the chosen year filled), and Play, which walks forward a year at a time.
+ * each year with a slider under it (bars up to the chosen year filled, and a line over them saying what they count), and Play, which walks forward a year at a time.
  * The bar button at its top right collapses it to a short bar (Play, the year and the km), remembered in this browser.
  */
 export default function MetroYears({ first, last, year, onYear, perYear, kmOpen, systemsOpen, newest, onPickLine, scope, playFrom, panelOpen }: Props) {
@@ -72,6 +73,15 @@ export default function MetroYears({ first, last, year, onYear, perYear, kmOpen,
   const pct = (y: number) => `${((y - first) / span) * 100}%`;
   const where = scope ?? (systemsOpen === 1 ? "1 city" : `${systemsOpen.toLocaleString("en-US")} cities`);
 
+  // the bars' key: the bar under the pointer, else the year that opened the most
+  const [at, hoverProps] = useChartHover();
+  const peak = peakOf(perYear);
+  const hy = at === null ? null : first + Math.round(at * span);
+  const hv = hy === null ? 0 : perYear[hy - first] ?? 0;
+  const read = hy !== null
+    ? <><b>{hy}</b>: {hv < -0.05 ? `${fmtKm(-hv)} km closed` : `${fmtKm(Math.max(0, hv))} km`}</>
+    : peak.v > 0 ? <>Peak: {fmtKm(peak.v)} km in {first + peak.i}</> : null;
+
   return (
     <section ref={dock} className={"capsule metro-dock" + (panelOpen ? " with-panel" : "") + (min ? " min" : "")} aria-label="Metro networks by year">
       <div className="cap-head">
@@ -90,9 +100,11 @@ export default function MetroYears({ first, last, year, onYear, perYear, kmOpen,
         <CapsuleMin min={min} onToggle={() => setMin(!min)} what="year dock" />
       </div>
       {!min && <div className="cap-track">
+        <BarsKey what={<>Km of metro opened each year{scope && <> in <span className="place">{scope}</span></>}</>} read={read}
+          title={`Each bar is one year: the length of metro line that opened that year, less any that closed, ${scope ? `in ${scope}` : "in all the world's cities"}. Bars up to the chosen year are filled, and the chosen year's is orange.`} />
         <svg ref={chart} className="cap-bars" viewBox={`0 0 ${span} ${BAR_H}`} preserveAspectRatio="none" height={BAR_H}
           onPointerDown={e => { e.currentTarget.setPointerCapture(e.pointerId); fromPointer(e); }}
-          onPointerMove={e => { if (e.buttons === 1) fromPointer(e); }} aria-hidden="true">
+          onPointerMove={e => { hoverProps.onPointerMove(e); if (e.buttons === 1) fromPointer(e); }} onPointerLeave={hoverProps.onPointerLeave} aria-hidden="true">
           {perYear.map((c, i) => c > 0.05 && (
             <rect key={i} x={i - 0.38} width={0.76} y={BAR_H - Math.max(1.5, (c / max) * BAR_H)} height={Math.max(1.5, (c / max) * BAR_H)}
               className={first + i === year ? "now" : first + i < year ? "past" : "future"} />

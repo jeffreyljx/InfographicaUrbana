@@ -17,6 +17,7 @@ import HistoryYears from "./HistoryYears";
 import HistoryPanel, { type PanelNow } from "./HistoryPanel";
 import HistorySearch from "./HistorySearch";
 import Nav from "./Nav";
+import GuideHint from "./GuideHint";
 
 const DEFAULT_YEAR = 1300;
 function startView(): { center: [number, number]; zoom: number } {
@@ -312,6 +313,7 @@ export default function HistoryApp() {
           ready={ready} onPickState={choose} panelOpen={!!pick} />
       )}
       {st && pick && year !== null && <HistoryPanel st={st} owner={pick} year={year} now={now} onYear={setYear} onPick={choose} onClose={() => setPick(null)} />}
+      <GuideHint mode="history" />
       {!shown && <div className="loading">{failed ? "The map could not be loaded." : "Loading eight thousand years of borders…"}</div>}
     </div>
   );

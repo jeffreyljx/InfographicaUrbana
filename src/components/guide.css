@@ -1,0 +1,60 @@
+/* The modes' guides (Guide.tsx): a narrow column of text with a demo clip, a picture of the year dock, the dock's bars
+   drawn large, and links into the map. */
+.guide { max-width: 760px; }
+.guide p { max-width: none; }
+.guide h2 { margin-top: 40px; }
+.g-head h1 { font-size: 38px; margin-top: 0; }
+.g-kicker { margin: 6px 0 0; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent) !important; }
+.g-head .lead { margin-bottom: 4px; }
+
+.g-demo { margin: 26px 0 8px; }
+.g-video { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--bg-3); }
+.g-video video { display: block; width: 100%; height: auto; cursor: pointer; }
+.g-play { position: absolute; right: 10px; bottom: 10px; width: 32px; height: 32px; border-radius: 50%; border: 0; display: grid; place-items: center; background: rgba(43,29,23,.55); color: #FFF8F3; cursor: pointer; }
+.g-play:hover { background: rgba(43,29,23,.75); }
+.g-play:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; }
+.guide figcaption { margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--fg-3); }
+
+.g-steps { margin: 0; padding-left: 1.4em; color: var(--fg-2); line-height: 1.6; }
+.g-steps li { margin: 0 0 9px; padding-left: 4px; }
+.g-steps li::marker { color: var(--accent); font-weight: 700; }
+.g-steps b { color: var(--fg); }
+
+/* the dock, with numbered pins */
+.g-dock { margin: 18px 0 8px; }
+.g-dock-pic { position: relative; max-width: 660px; }
+.g-dock-pic img { display: block; width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.g-pin { position: absolute; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-2); color: var(--on-accent); font: 700 12px/1 system-ui, sans-serif; box-shadow: 0 0 0 2px var(--bg); }
+.g-parts { margin: 16px 0 0; padding-left: 0; list-style: none; counter-reset: part; columns: 2 300px; column-gap: 28px; color: var(--fg-2); font-size: 14.5px; line-height: 1.5; }
+.g-parts li { counter-increment: part; position: relative; padding-left: 30px; margin-bottom: 8px; break-inside: avoid; }
+.g-parts li::before { content: counter(part); position: absolute; left: 0; top: 1px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-2); color: var(--on-accent); font: 700 11px/1 system-ui, sans-serif; }
+.g-parts b { color: var(--fg); }
+
+/* the bars, large */
+.g-bars { margin: 22px 0 8px; }
+.g-bars-plot { position: relative; height: 150px; margin: 22px 0 0 44px; border-left: 1px solid var(--line); border-bottom: 1px solid var(--fg-3); }
+.g-bars-plot svg { display: block; width: 100%; height: 100%; }
+.g-bars-plot rect { fill: var(--accent); opacity: .78; }
+.g-bars-plot .g-grid { stroke: var(--line); stroke-width: 1; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+.g-bars-y { position: absolute; right: calc(100% + 6px); font-size: 11.5px; color: var(--fg-3); white-space: nowrap; transform: translateY(-50%); }
+.g-bars-y.g-top { top: -3px; left: 6px; right: auto; transform: translateY(-100%); }  /* inside the plot, over its dashed top line */
+.g-bars-y.g-zero { top: 100%; }
+.g-peak { position: absolute; bottom: calc(100% + 4px); transform: translateX(-50%); font-size: 12px; font-weight: 600; color: var(--fg); white-space: nowrap; }
+.g-ticks { position: relative; height: 18px; margin-left: 44px; font-size: 11.5px; color: var(--fg-3); }
+.g-ticks span { position: absolute; top: 3px; transform: translateX(-50%); white-space: nowrap; }
+
+/* links into the map */
+.g-try { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.g-try a { display: flex; flex-direction: column; gap: 3px; height: 100%; box-sizing: border-box; padding: 11px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-2); color: var(--fg); }
+.g-try a:hover { border-color: var(--accent-2); text-decoration: none; }
+.g-try b { color: var(--accent-2); font-weight: 600; }
+.g-try span { font-size: 13px; line-height: 1.45; color: var(--fg-3); }
+.g-more { margin-top: 32px; font-size: 14px; }
+
+@media (max-width: 720px) {
+  .g-head h1 { font-size: 30px; }
+  .g-bars-plot { height: 110px; margin-left: 38px; }
+  .g-ticks { margin-left: 38px; }
+  .g-ticks span.wide { display: none; }
+  .g-pin { width: 18px; height: 18px; margin: -9px 0 0 -9px; font-size: 10.5px; }
+}

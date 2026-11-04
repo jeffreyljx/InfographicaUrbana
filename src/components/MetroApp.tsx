@@ -12,6 +12,7 @@ import MetroYears from "./MetroYears";
 import MetroPanel, { type MetroPick } from "./MetroPanel";
 import MetroSearch from "./MetroSearch";
 import Nav from "./Nav";
+import GuideHint from "./GuideHint";
 
 const WORLD: { center: [number, number]; zoom: number } = { center: [40, 28], zoom: 1.9 };
 /** Keep what was picked clear of the panel (right, or bottom sheet on a phone) and of the year dock. */
@@ -203,6 +204,7 @@ export default function MetroApp() {
           playFrom={scopeSys !== null ? data.systems[scopeSys].first - 1 : undefined} panelOpen={!!pick} />
       )}
       {data && pick && year !== null && <MetroPanel data={data} pick={pick} year={year} onPick={choose} onClose={close} />}
+      <GuideHint mode="transit" />
       {!data && <div className="loading">{failed ? "The metro map could not be loaded." : "Loading the world's metro lines…"}</div>}
     </div>
   );

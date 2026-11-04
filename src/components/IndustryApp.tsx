@@ -4,6 +4,7 @@ import { LngLatBounds, type Map as MLMap } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./industry.css";
 import Nav from "./Nav";
+import GuideHint from "./GuideHint";
 import { setBasemap, type Basemap } from "./towerMap";
 import { createIndustryMap, addIndustryLayers, setIndustryPoints, setIndustrySelected, radiusAt, type IndPoint } from "./industryMap";
 import { money, moneyK, site } from "@/lib/industryFormat";
@@ -214,6 +215,7 @@ export default function IndustryApp({ data }: { data: IndustryMapData }) {
             data={data} onPlace={goPlace} also={data.tradeCountries.find(x => x.key === picked)} onShow={() => setShow("trade")} />}
         </aside>
       )}
+      <GuideHint mode="industry" />
     </div>
   );
 }
