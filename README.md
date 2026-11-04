@@ -56,6 +56,20 @@ States with no colour in `colours.json` get one from a hash of their name and ar
 Vercel: import the repo, framework "Next.js", no settings needed. Set `NEXT_PUBLIC_SITE_URL` to the public URL for correct canonical/OG links.
 Anywhere else: `npm run build` and publish `out/`.
 
-## Credits and licences
+## Licence
+
+The code is licensed under the [Apache License 2.0](LICENSE). [NOTICE](NOTICE) holds the credits that copies must keep. The data files aren't covered by Apache 2.0. Each set of data has its own licence:
+
+| Data | Files | Licence |
+| --- | --- | --- |
+| CartaHistoria borders | `public/history/` | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), built on Cliopatria (CC BY 4.0) |
+| TransitMap lines, stations and station structures | `public/metro/` | [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/), derived from OpenStreetMap |
+| City and district boundary ids | `public/boundaries.json` | ODbL 1.0, OpenStreetMap ids |
+| Metro footprints | `public/metro-footprint.json` | CC BY 4.0, derived from ESA WorldCover 2021 (CC BY 4.0) |
+| Trade, manufacturing and city GDP | `src/lib/industry.json`, `src/data-gdp/gdp.json` | CC BY 4.0, with each figure's source cited in the file |
+| Skyscraper data, and anything built from it | `data/`, `expansion_ids.txt`, `public/skyline-extent.geojson`, `public/tower-icons/`, `src/lib/lostTowers.json` | Not openly licensed. The building data is © CTBUH / The Skyscraper Center and used with citation. |
+| Tower photos | `photos.json` | Each photo keeps its own Wikimedia Commons licence and is credited where it appears. |
+
+## Credits
 
 CartaHistoria's borders start from Cliopatria (Seshat Global History Databank, CC BY 4.0), corrected and dated from Wikipedia. Building data © CTBUH / The Skyscraper Center, used with citation; each tower links to its CTBUH page and no CTBUH images are used. Coordinates partly derived from OpenStreetMap contributors (ODbL). Basemap by OpenFreeMap © OpenMapTiles, data from OpenStreetMap. Photographs from Wikimedia Commons, each credited in place.
