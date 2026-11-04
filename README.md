@@ -29,7 +29,16 @@ It's a snapshot of the project's shared folder, taken on 3 Nov 2026, right after
 - Older copies of the site and of these sheets from the Mac folder. The site's code history is on `main`, and the sheets are identical to the ones in `knowledge/`.
 - The OpenStreetMap planet extracts used to draw the station structures. They're many gigabytes and can be rebuilt from the public planet file with `scripts/metro/osm/` on `main`.
 
-## Sources and licences
+## Licences
+
+- **Code and tools** on this branch (the Python and JavaScript in the `tools/` folders, the patches in `scrapermap/patches/`, and every other script) are under the [Apache License 2.0](LICENSE), like the site's code on `main`.
+- **`history/`** is under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), built on Cliopatria (CC BY 4.0). The one exception is `history/sources/historical-basemaps-index.json`, which is GPL-3 and kept only for cross-checks.
+- **`metro/`** is under the [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/), because it's derived from OpenStreetMap.
+- **`metro-footprint/`** and **`city-trade-manufacturing/`** are under CC BY 4.0.
+- **The building data in `knowledge/`, `from-mac/`, `skyline-extent/`, `skyline-time/` and `scrapermap/` isn't openly licensed.** It is © CTBUH / The Skyscraper Center and used with citation.
+- Notes and screenshots anywhere else are under CC BY 4.0.
+
+## Sources
 
 - **Buildings:** CTBUH / The Skyscraper Center, used with citation. Each tower links to its CTBUH page. Coordinates were partly checked against OpenStreetMap.
 - **Metro lines and stations:** © OpenStreetMap contributors, under the [ODbL](https://opendatacommons.org/licenses/odbl/). Dates and figures come from Wikipedia (CC BY-SA). The metro database is a derived database, so it is shared under the ODbL.
