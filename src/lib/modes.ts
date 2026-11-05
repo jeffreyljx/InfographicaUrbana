@@ -12,16 +12,19 @@ export const SITE_URL = "https://infographicaurbana.vercel.app";
 export type Mode = "scraper" | "transit" | "industry" | "history";
 export interface ModeInfo {
   key: Mode; name: string; href: string; blurb: string;
+  /** the mode's guide: a short page on what the map shows and how to use it (Jeffrey, 4 Nov 2026) */
+  guide: string;
   /** listed in the menu, greyed out and not a link, with the blurb saying when it comes */
   soon?: boolean;
 }
 
 export const MODES: ModeInfo[] = [
-  { key: "scraper", name: "ScraperMap", href: "/", blurb: "Every skyscraper of 150 m+, with rankings and skylines" },
-  { key: "transit", name: "TransitMap", href: "/metro/", blurb: "The world's metro lines, growing year by year" },
-  { key: "industry", name: "IndustryMap", href: "/industry/", blurb: "Which cities trade and make the most" },
-  { key: "history", name: "CartaHistoria", href: "/history/", blurb: "Every state's borders, year by year, since 6000 BCE" },
+  { key: "scraper", name: "ScraperMap", href: "/", guide: "/guide/", blurb: "Every skyscraper of 150 m+, with rankings and skylines" },
+  { key: "transit", name: "TransitMap", href: "/metro/", guide: "/metro/guide/", blurb: "The world's metro lines, growing year by year" },
+  { key: "industry", name: "IndustryMap", href: "/industry/", guide: "/industry/guide/", blurb: "Which cities trade and make the most" },
+  { key: "history", name: "CartaHistoria", href: "/history/", guide: "/history/guide/", blurb: "Every state's borders, year by year, since 6000 BCE" },
 ];
 
 export const modeOf = (active?: NavKey): ModeInfo =>
-  MODES.find(m => m.key === (active === "metro" ? "transit" : active?.startsWith("industry") ? "industry" : active?.startsWith("history") ? "history" : "scraper")) as ModeInfo;
+  MODES.find(m => m.key === (active?.startsWith("metro") ? "transit" : active?.startsWith("industry") ? "industry" : active?.startsWith("history") ? "history" : "scraper")) as ModeInfo;
+export const modeByKey = (key: Mode): ModeInfo => MODES.find(m => m.key === key) as ModeInfo;

@@ -19,6 +19,7 @@ import { capsuleRange, standingIn, lostIn, perYear } from "@/lib/timeCapsule";
 import { lostRows, resolveLost } from "@/lib/lostTowers";
 import Legend from "./Legend";
 import Nav from "./Nav";
+import GuideHint from "./GuideHint";
 import placesJson from "@/data/places.json";
 import type { Places } from "@/lib/types";
 const PLACES = placesJson as unknown as Places;
@@ -360,12 +361,14 @@ export default function MapApp({ initialTower, initialView }: MapAppProps) {
       )}
       {asOf !== null && range && (
         <TimeCapsule first={range.first} last={range.last} year={asOf} onYear={setAsOf} onClose={closeCapsule}
-          perYear={capsuleCounts} shown={filteredRows.length} lost={capsuleLost.map(r => r[1])} tallest={capsuleTallest} onPick={onSearchPick} panelOpen={!!selected} />
+          perYear={capsuleCounts} shown={filteredRows.length} lost={capsuleLost.map(r => r[1])} tallest={capsuleTallest} onPick={onSearchPick} panelOpen={!!selected}
+          scope={filters.city ? (filters.district ? `${filters.district}, ${filters.city}` : filters.city) : null} />
       )}
       {chooser && chooserTowers.length > 0 && (
         <Chooser towers={chooserTowers} at={chooser.at} onPick={id => select(id, false)} onClose={() => setChooser(null)} />
       )}
       {selected && <Panel tower={selected} onClose={close} />}
+      <GuideHint mode="scraper" skip={!!initialTower || !!initialView} />
       {!idx && <div className="loading">Loading {PLACES.totals.towers.toLocaleString("en-US")} towers…</div>}
     </div>
   );

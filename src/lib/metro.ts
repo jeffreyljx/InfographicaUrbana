@@ -1,4 +1,3 @@
-"use client";
 /**
  * The world's metro systems for the /metro page, read from public/metro/metro.json. That file is packed from the
  * project's metro database (metro/db: Wikipedia for the facts and opening stages, OpenStreetMap of 8 Oct 2026 for the
@@ -113,7 +112,7 @@ export function slugify(s: string): string {
     .replace(/[^\p{L}\p{N}]+/gu, "-").replace(/^-+|-+$/g, "") || "station";
 }
 
-type Raw = {
+export type Raw = {
   built: string;
   systems: [string, string, string, string, string, string, number | null, string, number | null, number | null][];
   lines: unknown[][];
@@ -123,7 +122,8 @@ type Raw = {
   bundles?: [string, number[]][];
 };
 
-function decode(raw: Raw): MetroData {
+/** Unpacks metro.json. Plain code with no browser calls, so a server page can use it too (the TransitMap guide's chart). */
+export function decode(raw: Raw): MetroData {
   const s = raw.stations;
   let lon = 0, lat = 0;
   const lines: MetroLine[] = raw.lines.map((r, i) => {

@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { fmtHeight } from "@/lib/format";
 import CapsuleMin, { useCapsuleMin } from "./CapsuleMin";
+import BarsKey, { useChartHover, peakOf } from "./BarsKey";
 
 /** Play speed: how long a year stays up before the next one, longer when more towers were completed in it. */
 const delayFor = (added: number) => added === 0 ? 70 : added < 100 ? 160 : 240;
@@ -23,14 +24,16 @@ interface Props {
   onPick: (id: number) => void;
   /** The tower panel is open on the right: keep clear of it. */
   panelOpen: boolean;
+  /** The city (or "district, city") the filters narrow the map to, named in the bars' key. */
+  scope?: string | null;
 }
 
 /**
  * The time capsule's dock: the chosen year, a bar chart of completions per year with a slider under it
- * (the bars up to the chosen year are filled), and Play, which walks forward one year at a time. The bar button at its
+ * (the bars up to the chosen year are filled, and a line over them says what they count), and Play, which walks forward one year at a time. The bar button at its
  * top right collapses it to a short bar (Play, the year and the count), which stays collapsed until opened again.
  */
-export default function TimeCapsule({ first, last, year, onYear, onClose, perYear, shown, lost, tallest, onPick, panelOpen }: Props) {
+export default function TimeCapsule({ first, last, year, onYear, onClose, perYear, shown, lost, tallest, onPick, panelOpen, scope }: Props) {
   const [playing, setPlaying] = useState(false);
   const [min, setMin] = useCapsuleMin();
   const span = Math.max(1, last - first);
@@ -72,6 +75,13 @@ export default function TimeCapsule({ first, last, year, onYear, onClose, perYea
   for (let y = Math.ceil(first / 20) * 20; y <= last; y += 20) ticks.push(y);
   const pct = (y: number) => `${((y - first) / span) * 100}%`;
 
+  // the bars' key: the bar under the pointer, else the year with the most completions
+  const [at, hoverProps] = useChartHover();
+  const peak = peakOf(perYear);
+  const towers = (n: number) => `${n.toLocaleString("en-US")} ${n === 1 ? "tower" : "towers"}`;
+  const hy = at === null ? null : first + Math.round(at * span);
+  const read = hy !== null ? <><b>{hy}</b>: {towers(perYear[hy - first] ?? 0)}</> : peak.v > 0 ? <>Peak: {towers(peak.v)} in {first + peak.i}</> : null;
+
   return (
     <section ref={dock} className={"capsule" + (panelOpen ? " with-panel" : "") + (min ? " min" : "")} aria-label="Time capsule">
       <div className="cap-head">
@@ -95,9 +105,11 @@ export default function TimeCapsule({ first, last, year, onYear, onClose, perYea
         <button className="x" onClick={onClose} aria-label="Close the time capsule">×</button>
       </div>
       {!min && <div className="cap-track">
+        <BarsKey what={<>Towers completed each year{scope && <> in <span className="place">{scope}</span></>}</>} read={read}
+          title="Each bar is one year: how many of the towers on the map (150 m or taller, after any filters) were completed that year, including the lost ones since demolished. Bars up to the chosen year are filled, and the chosen year's is orange." />
         <svg ref={chart} className="cap-bars" viewBox={`0 0 ${span} ${BAR_H}`} preserveAspectRatio="none" height={BAR_H}
           onPointerDown={e => { e.currentTarget.setPointerCapture(e.pointerId); fromPointer(e); }}
-          onPointerMove={e => { if (e.buttons === 1) fromPointer(e); }} aria-hidden="true">
+          onPointerMove={e => { hoverProps.onPointerMove(e); if (e.buttons === 1) fromPointer(e); }} onPointerLeave={hoverProps.onPointerLeave} aria-hidden="true">
           {perYear.map((c, i) => c > 0 && (
             <rect key={i} x={i - 0.38} width={0.76} y={BAR_H - Math.max(1.5, (c / max) * BAR_H)} height={Math.max(1.5, (c / max) * BAR_H)}
               className={first + i === year ? "now" : first + i < year ? "past" : "future"} />

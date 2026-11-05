@@ -5,7 +5,7 @@ import { MODES, SITE_NAME, modeOf } from "@/lib/modes";
 import { BrandMark, BrandName } from "./Logo";
 
 /** The top left of the bar: the site's mark and name, InfographicaUrbana (to the map), then the current mode's name, with
- *  the modes in a menu below it (a mode not open yet is greyed out and not a link). A mouse opens the menu by hovering
+ *  the modes in a menu below it, each with a link to its guide (a mode not open yet is greyed out and not a link). A mouse opens the menu by hovering
  *  over any of it (a click still follows the link); a first tap on a touch screen opens it, and the small arrow opens and
  *  closes it from the keyboard. Escape, or a click elsewhere, closes it. On narrow screens the name gives way to the
  *  mark (globals.css). */
@@ -55,9 +55,12 @@ export default function BrandMenu({ active }: { active?: NavKey }) {
               {m.soon ? (
                 <span className="soon" aria-disabled="true"><span>{m.name}</span><small>{m.blurb}</small></span>
               ) : (
-                <a href={m.href} aria-current={m.key === mode.key ? "true" : undefined} tabIndex={open ? undefined : -1}>
-                  <span>{m.name}</span><small>{m.blurb}</small>
-                </a>
+                <>
+                  <a href={m.href} aria-current={m.key === mode.key ? "true" : undefined} tabIndex={open ? undefined : -1}>
+                    <span>{m.name}</span><small>{m.blurb}</small>
+                  </a>
+                  <a className="mode-guide" href={m.guide} tabIndex={open ? undefined : -1} aria-label={`${m.name} guide`}>Guide</a>
+                </>
               )}
             </li>
           ))}
