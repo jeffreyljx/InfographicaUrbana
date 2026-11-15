@@ -34,6 +34,8 @@ POCKET_MAX = 12        # a walled-in pocket up to this many cells is filled
 POCKET_REACH = 4       # a pocket lies within this many cells of a state
 POCKET_WALL = 0.5      # at least this share of a pocket's edge must be other states (the rest being sea)
 LIVING = 2020          # a dossier that ends in or after this year describes a state that still exists
+# source codes of apply(detail=True), in self.source: where a cell's owner comes from in that year
+SRC_EMPTY, SRC_BASE, SRC_PATCH, SRC_NEAREST, SRC_LAKE, SRC_GAP, SRC_POCKET, SRC_LATE, SRC_LOCKED = range(9)
 
 
 def runs_to_idx(runs):
@@ -207,6 +209,7 @@ class Finisher:
         lifted = key != 0
         locked = np.zeros(self.N, bool)
         nearest = np.zeros(self.N, bool)
+        wrote = np.zeros(self.N, bool) if detail else None   # cells a correction wrote (for the source codes)
         late, seq = [], None
         for j, (y0, y1, cells, mode, k, over, only, like) in enumerate(self._active(year), 1):
             if not (y0 <= year <= y1):
@@ -229,6 +232,8 @@ class Finisher:
                 continue
             if seq is not None:
                 seq[c] = j
+            if wrote is not None:
+                wrote[c] = True
             if mode == "nearest":
                 key[c] = 0
                 nearest[c] = True
@@ -241,6 +246,7 @@ class Finisher:
         free = ~locked
         if nearest.any():
             self._grow(key, nearest & free, 40)
+        after_near = key != 0
         self._grow(key, self.lake & free, LAKE_PASSES)
         after_lake = key != 0
         # gaps: empty cells in the closing (radius one cell, sea as wall) of the owned land, within two steps of an owner
@@ -271,6 +277,7 @@ class Finisher:
                 pocket = np.zeros(self.N, bool)
                 pocket[ids[good]] = True
                 self._grow(key, pocket, POCKET_MAX)
+        after_pocket = key != 0
         # the "like" corrections that waited: their cells go with the model cell if it is owned now, except
         # where a later correction wrote or the land is marked empty; twice, for a model that follows another
         for _ in range(2 if late else 0):
@@ -284,6 +291,17 @@ class Finisher:
         status = ((key >> 16) & 0xFF).astype(status0.dtype)
         other = (key & 0xFFFF).astype(other0.dtype)
         if detail:
+            # where each cell's owner comes from this year, as SRC_* codes (read by the project's replay tools)
+            src = np.zeros(self.N, np.uint8)
+            src[key != 0] = SRC_LATE
+            src[after_pocket] = SRC_POCKET
+            src[after_gap] = SRC_GAP
+            src[after_lake] = SRC_LAKE
+            src[after_near] = SRC_NEAREST
+            src[wrote & (key != 0) & ~nearest] = SRC_PATCH
+            src[lifted & ~wrote] = SRC_BASE
+            src[locked & (key == 0)] = SRC_LOCKED
+            self.source = src
             n0 = self.N0
             stats = {"coast": int(lifted[n0:].sum()), "patched": int(patched.sum()),
                      "lake": int((after_lake & ~lifted & ~patched).sum()),
