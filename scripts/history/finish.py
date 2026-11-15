@@ -207,13 +207,12 @@ class Finisher:
         lifted = key != 0
         locked = np.zeros(self.N, bool)
         nearest = np.zeros(self.N, bool)
-        for y0, y1, cells, mode, k, over, only, like in self._active(year):
+        late, seq = [], None
+        for j, (y0, y1, cells, mode, k, over, only, like) in enumerate(self._active(year), 1):
             if not (y0 <= year <= y1):
                 continue
             if mode == "like":
                 k = int(key[like])
-                if k == 0:
-                    continue
             if over:
                 c = cells
             elif only:
@@ -221,6 +220,15 @@ class Finisher:
                 c = cells[(k0 == 0) | ((k0 >> 24) == only)]
             else:
                 c = cells[key[cells] == 0]
+            if mode == "like" and k == 0:
+                # the model cell is still empty: it may only be filled by the steps below (a coastal cell in a
+                # closed gap), so this correction waits for them
+                late.append((c, like, j))
+                if seq is None:
+                    seq = np.zeros(self.N, np.int32)
+                continue
+            if seq is not None:
+                seq[c] = j
             if mode == "nearest":
                 key[c] = 0
                 nearest[c] = True
@@ -263,6 +271,15 @@ class Finisher:
                 pocket = np.zeros(self.N, bool)
                 pocket[ids[good]] = True
                 self._grow(key, pocket, POCKET_MAX)
+        # the "like" corrections that waited: their cells go with the model cell if it is owned now, except
+        # where a later correction wrote or the land is marked empty; twice, for a model that follows another
+        for _ in range(2 if late else 0):
+            for c, like, j in late:
+                k = int(key[like])
+                if k:
+                    c = c[(seq[c] <= j) & free[c]]
+                    key[c] = k
+                    seq[c] = j
         owner = (key >> 24).astype(owner0.dtype)
         status = ((key >> 16) & 0xFF).astype(status0.dtype)
         other = (key & 0xFFFF).astype(other0.dtype)
