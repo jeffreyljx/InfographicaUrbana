@@ -74,8 +74,16 @@ const uvec4 WATER = uvec4(65535u, 0u, 0u, 0u);
 const vec3 INK = vec3(0.169, 0.114, 0.090);
 const vec3 NEW = vec3(0.886, 0.337, 0.059);
 
+const uint MIN_LAND = 51u;   // a fifth of a cell, in 255ths
 uvec4 cellState(uint id) { return texelFetch(u_state, ivec2(int(id & 1023u), int(id >> 10u)), 0); }
-uvec4 at(ivec2 p) { uint id = texelFetch(u_ids, p, 0).r; return id == NONE ? WATER : cellState(id); }
+// over satellite imagery there is no sea drawn on top, so a coastal cell that is mostly water is left to the imagery
+bool hidden(uvec4 s) { return u_alpha < 1.0 && s.a < MIN_LAND; }
+uvec4 at(ivec2 p) {
+  uint id = texelFetch(u_ids, p, 0).r;
+  if (id == NONE) return WATER;
+  uvec4 s = cellState(id);
+  return hidden(s) ? WATER : s;
+}
 vec4 pal(uint i, int k) { int n = int(i); return texelFetch(u_pal, ivec2(n & 255, (n >> 8) + k * u_palRows), 0); }
 uint realm(uvec4 s) { uint k = s.g & 7u; return (k == 1u || k == 2u) && s.b != 0u ? s.b : s.r; }   // a vassal or member sits in its suzerain's realm
 
@@ -114,6 +122,7 @@ void main() {
   uint id = texelFetch(u_ids, px, 0).r;
   if (id == NONE) discard;
   uvec4 s = cellState(id);
+  if (hidden(s)) discard;
   uint owner = s.r, st = s.g & 7u, oth = s.b;
   vec2 css = gl_FragCoord.xy / u_dpr;
 
@@ -238,6 +247,8 @@ export class HistoryLayer implements CustomLayerInterface {
   constructor(private geo: Geo, private tl: Timeline) {
     this.N = geo.N;
     this.stateBuf = new Uint16Array(TEX_W * Math.ceil(this.N / TEX_W) * 4);
+    // the fourth channel never changes: the share of the cell that is land, in 255ths
+    for (let i = 0; i < this.N; i++) this.stateBuf[i * 4 + 3] = Math.round(geo.land[i] * 255);
   }
 
   /** The state palette: per state its colour (alpha: 1 culture, 2 rebel), its fill, its vassals' tint and its ink. */
