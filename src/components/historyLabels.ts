@@ -48,7 +48,7 @@ export class HistoryLabels {
   };
 
   /** Recompute where each state's name goes, for the timeline's year. */
-  update(tl: Timeline, area: Uint32Array) {
+  update(tl: Timeline, area: Float32Array) {
     const { owner, status, other } = tl;
     const inter = this.grid.interiors(c => owner[c]);
     const cands: Cand[] = [];

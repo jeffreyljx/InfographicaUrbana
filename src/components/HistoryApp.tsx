@@ -122,7 +122,7 @@ export default function HistoryApp() {
     }).catch(e => console.error(e));
   }, [base, year]);
 
-  const area = useMemo(() => (base && shown ? areasOf(base.tl, base.st.count) : null), [base, shown]);
+  const area = useMemo(() => (base && shown ? areasOf(base.tl, base.st.count, base.grid.geo.land) : null), [base, shown]);
   const totals = useMemo(() => {
     if (!area) return { states: 0, cells: 0 };
     let s = 0, c = 0;
@@ -194,13 +194,14 @@ export default function HistoryApp() {
   const now = useMemo<PanelNow>(() => {
     if (!base || !shown || !pick) return { cells: 0, status: "", party: 0 };
     const { owner, status, other } = base.tl;
+    const land = base.grid.geo.land;
     const byStatus = [0, 0, 0, 0, 0];
     const party = new Map<number, number>();
     let cells = 0, members = 0;
     for (let i = 0; i < owner.length; i++) {
       // a realm of member states holds its members' land too (the area chart counts it the same way)
-      if (owner[i] !== pick) { if (status[i] === ST_CONSTITUENT && other[i] === pick) members++; continue; }
-      cells++; byStatus[status[i]]++;
+      if (owner[i] !== pick) { if (status[i] === ST_CONSTITUENT && other[i] === pick) members += land[i]; continue; }
+      cells += land[i]; byStatus[status[i]] += land[i];
       if (status[i] !== ST_DIRECT && other[i]) party.set(other[i] * 8 + status[i], (party.get(other[i] * 8 + status[i]) ?? 0) + 1);
     }
     let st = 0;

@@ -209,7 +209,8 @@ def planes(a):
 
 # ---------------------------------------------------------------- geometry
 
-def build_geo(grid_path, out_path):
+def build_geo(grid_path, out_path, share=None):
+    """Cell centres, and (CHG2) the share of each cell that is land, as a byte."""
     import h3
     cells = [l.strip() for l in open(grid_path) if l.strip()]
     n = len(cells)
@@ -221,12 +222,25 @@ def build_geo(grid_path, out_path):
         y = (1 - math.log(math.tan(math.pi / 4 + math.radians(lat) / 2)) / math.pi) / 2
         xs[i] = round(x * Q); ys[i] = round(y * Q)
     dx = np.diff(xs, prepend=0).astype(np.int32); dy = np.diff(ys, prepend=0).astype(np.int32)
-    head = b"CHG1" + np.array([n, Q], np.uint32).tobytes()
-    size = write_gz(out_path, head + planes(dx) + planes(dy))
+    if share is None:
+        head = b"CHG1" + np.array([n, Q], np.uint32).tobytes()
+        size = write_gz(out_path, head + planes(dx) + planes(dy))
+    else:
+        head = b"CHG2" + np.array([n, Q], np.uint32).tobytes()
+        w = np.clip(np.round(share * 255), 1, 255).astype(np.uint8)
+        size = write_gz(out_path, head + planes(dx) + planes(dy) + w.tobytes())
     return n, size
 
 
 # ---------------------------------------------------------------- main
+
+_WINDOW = None
+
+
+def _window(wi):
+    """Runs in a forked worker: the window replay that main() set up."""
+    return _WINDOW(wi)
+
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
@@ -234,6 +248,8 @@ def main():
     ap.add_argument("--out", default=str(REPO / "public" / "history"))
     ap.add_argument("--drafts", action="store_true", help="read the Phase C drafts even where a final window exists")
     ap.add_argument("--check", action="store_true", help="replay and report; write nothing")
+    ap.add_argument("--grid2", default=None, help="the full coastal grid (default: data/grid/v2 when it exists; 'none' to skip the finishing pass)")
+    ap.add_argument("--workers", type=int, default=min(4, os.cpu_count() or 1), help="windows replayed at a time")
     args = ap.parse_args()
     H = Path(args.project).resolve()
     OUT = Path(args.out).resolve()
@@ -241,9 +257,17 @@ def main():
 
     # ---- grid and geometry
     grid_path = H / "data" / "grid" / "land_r5.txt"
-    grid_sha = hashlib.sha1(grid_path.read_bytes()).hexdigest()
+    N0 = sum(1 for l in open(grid_path) if l.strip())
+    grid2 = None
+    if args.grid2 != "none":
+        g2 = Path(args.grid2).resolve() if args.grid2 else H / "data" / "grid" / "v2"
+        if (g2 / "land_r5_v2.txt").exists():
+            grid2 = g2
+            grid_path = g2 / "land_r5_v2.txt"
+    grid_sha = hashlib.sha1(grid_path.read_bytes() + (b"" if grid2 is None else (grid2 / "frac.f32").read_bytes())).hexdigest()
     N = sum(1 for l in open(grid_path) if l.strip())
-    log(f"grid: {N:,} cells ({grid_sha[:10]})")
+    share = None if grid2 is None else np.maximum(np.fromfile(grid2 / "frac.f32", np.float32).astype(np.float64), 0.02)
+    log(f"grid: {N:,} cells ({grid_sha[:10]})" + ("" if grid2 is None else f", of which {N - N0:,} coastal cells of the full grid"))
     old_index = {}
     if (OUT / "index.json").exists():
         try:
@@ -254,7 +278,7 @@ def main():
         if old_index.get("grid_sha") == grid_sha and (OUT / "geo.bin").exists():
             log("geo.bin: grid unchanged, kept")
         else:
-            n, size = build_geo(grid_path, OUT / "geo.bin")
+            n, size = build_geo(grid_path, OUT / "geo.bin", share)
             log(f"geo.bin: {n:,} centres, {size / 1e6:.2f} MB")
 
     # ---- colours
@@ -345,9 +369,9 @@ def main():
     years_all = LAST - FIRST + 1
     changed = np.zeros(years_all, np.int64)
     area_series = {}               # pid -> list of [year, cells]
-    last_area = np.zeros(P + 1, np.int64)
+    last_area = np.zeros(P + 1, np.float64)
     first_land = np.full(P + 1, 99999, np.int64); last_land = np.full(P + 1, -99999, np.int64)
-    peak = np.zeros(P + 1, np.int64); peak_year = np.zeros(P + 1, np.int64)
+    peak = np.zeros(P + 1, np.float64); peak_year = np.zeros(P + 1, np.int64)
     seam_issues = []
     win_index = []
     caption_total = 0
@@ -355,8 +379,22 @@ def main():
     if not args.check:
         (OUT / "w").mkdir(parents=True, exist_ok=True)
 
+    fin = None
+    if grid2 is not None:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))   # python3 -I leaves the script's folder off the path
+        from finish import Finisher
+        def span(d):
+            idn = d.get("identity", {})
+            a, b = idn.get("start"), idn.get("end")
+            a = a.get("year") if isinstance(a, dict) else a
+            b = b.get("year") if isinstance(b, dict) else b
+            return (a, b)
+        fin = Finisher(grid2, pid=pid, log=log, life={s_: span(d) for s_, d in dossiers.items()})
+        for msg in fin.skipped[:20]:
+            log("  correction skipped: " + msg)
+
     def state_from_anchor(a):
-        owner = np.zeros(N, np.uint16); status = np.zeros(N, np.uint8); other = np.zeros(N, np.uint16)
+        owner = np.zeros(N0, np.uint16); status = np.zeros(N0, np.uint8); other = np.zeros(N0, np.uint16)
         for s, runs in a["owners"].items():
             owner[runs_to_idx(runs)] = pid[s]
         for kind, grp in (a.get("status") or {}).items():
@@ -377,17 +415,25 @@ def main():
                     other[idx] = party(cl[0]) if cl else 0
         return owner, status, other
 
-    def record_area(year, owner, status, other):
+    def num(v):
+        v = round(float(v), 2)
+        return int(v) if v == int(v) else v
+
+    def area_count(owner, status, other):
         # a realm of member states (constituents: the German Empire, the USSR, the Holy Roman Empire) holds its members' land too
-        cnt = np.bincount(owner, minlength=P + 1)
+        # in cells; on the full grid a coastal cell counts for the share of it that is land
+        cnt = np.bincount(owner, weights=share, minlength=P + 1).astype(np.float64)
         mem = (status == 2) & (other > 0)
         if mem.any():
-            cnt = cnt + np.bincount(other[mem], minlength=P + 1)
+            cnt = cnt + np.bincount(other[mem], weights=None if share is None else share[mem], minlength=P + 1)
+        return np.round(cnt, 2)
+
+    def record_area(year, cnt):
         diff = np.nonzero(cnt != last_area)[0]
         for p_ in diff:
             if p_ == 0:
                 continue
-            area_series.setdefault(int(p_), []).append([year, int(cnt[p_])])
+            area_series.setdefault(int(p_), []).append([year, num(cnt[p_])])
         last_area[:] = cnt
         alive = cnt > 0
         first_land[alive] = np.minimum(first_land[alive], year)
@@ -395,23 +441,29 @@ def main():
         up = cnt > peak
         peak[up] = cnt[up]; peak_year[up] = year
 
-    for wi, (wid, src, w) in enumerate(win_data):
+    # every window is replayed from its own start anchor, so the windows run side by side; the running
+    # totals (areas, changes, seams) are put together afterwards, in order
+    def do_window(wi):
+        wid, src, w = win_data[wi]
         wfrom, wto = int(w["from"]), int(w["to"])
         a0 = anchor(w["start_anchor"])
         owner, status, other = state_from_anchor(a0)
-        start = (owner.copy(), status.copy(), other.copy())
-        if wi == 0:
-            record_area(wfrom - 1, owner, status, other)
+        # f_*: the map as drawn (after the finishing pass, on the full grid); owner/status/other: as compiled
+        f_owner, f_status, f_other = fin.apply(owner, status, other, wfrom - 1) if fin else (owner, status, other)
+        start = (f_owner.copy(), f_status.copy(), f_other.copy())
+        cnt_start = area_count(f_owner, f_status, f_other)
+        cnt_prev = cnt_start
+        areas = []                 # (year, states whose area changed, their new areas)
+        chg = {}
         g_year, g_owner, g_status, g_other, g_runs, r_start, r_len = [], [], [], [], [], [], []
         captions = []
         years = sorted(int(y) for y in w.get("years", {}))
         for y in range(wfrom, min(wto, LAST) + 1):
             yv = w.get("years", {}).get(str(y))
-            if not yv:
-                if FIRST <= y <= LAST and y > wfrom - 1:
-                    pass
+            if not yv and not (fin and y in fin.patch_years):
                 continue
-            before = (owner.copy(), status.copy(), other.copy()) if True else None
+            yv = yv or {}
+            before = (f_owner.copy(), f_status.copy(), f_other.copy())
             groups = {}
             for c in yv.get("changes", []):
                 idx = runs_to_idx(c.get("cells"))
@@ -433,9 +485,14 @@ def main():
                 groups.setdefault((to, code, oth), []).append(idx)
             # one group per (owner, status, other), cells sorted into runs; a later change in the same year wins,
             # so the groups are rebuilt from the final state of the cells this year touched
-            touched = np.unique(np.concatenate([np.concatenate(v) for v in groups.values()])) if groups else np.zeros(0, np.int64)
+            if fin:
+                f_owner, f_status, f_other = fin.apply(owner, status, other, y)
+                touched = np.flatnonzero((before[0] != f_owner) | (before[1] != f_status) | (before[2] != f_other))
+            else:
+                f_owner, f_status, f_other = owner, status, other
+                touched = np.unique(np.concatenate([np.concatenate(v) for v in groups.values()])) if groups else np.zeros(0, np.int64)
             if len(touched):
-                key = (owner[touched].astype(np.int64) << 24) | (status[touched].astype(np.int64) << 16) | other[touched].astype(np.int64)
+                key = (f_owner[touched].astype(np.int64) << 24) | (f_status[touched].astype(np.int64) << 16) | f_other[touched].astype(np.int64)
                 order = np.argsort(key, kind="stable")
                 ks = key[order]; ts = touched[order]
                 cut = np.nonzero(np.diff(ks))[0] + 1
@@ -444,9 +501,9 @@ def main():
                     s_, l_ = idx_to_runs(part_c)
                     g_year.append(y); g_owner.append(k >> 24); g_status.append((k >> 16) & 0xFF); g_other.append(k & 0xFFFF)
                     g_runs.append(len(s_)); r_start.extend(s_.tolist()); r_len.extend(l_.tolist())
-                diffmask = (before[0][touched] != owner[touched]) | (before[1][touched] != status[touched]) | (before[2][touched] != other[touched])
+                diffmask = (before[0][touched] != f_owner[touched]) | (before[1][touched] != f_status[touched]) | (before[2][touched] != f_other[touched])
                 if FIRST <= y <= LAST:
-                    changed[y - FIRST] += int(diffmask.sum())
+                    chg[y] = chg.get(y, 0) + int(diffmask.sum())
             for cap in yv.get("captions", []):
                 # keyframe notes describe how a shape was drawn, not an event: the dock leaves them out
                 if cap.get("type") == "keyframe":
@@ -460,14 +517,19 @@ def main():
                 if cap.get("source"):
                     c_["u"] = cap["source"]
                 captions.append(c_)
-            record_area(y, owner, status, other)
+            cnt = area_count(f_owner, f_status, f_other)
+            d_ = np.nonzero(cnt != cnt_prev)[0]
+            areas.append((y, d_.astype(np.int32), cnt[d_]))
+            cnt_prev = cnt
         # seam check: the window must end at its end anchor
         a1 = anchor(w["end_anchor"])
         e_owner, e_status, e_other = state_from_anchor(a1)
         bad_cells = int(np.count_nonzero((e_owner != owner) | (e_status != status) | (e_other != other)))
-        if bad_cells:
-            seam_issues.append(f"{wid}: {bad_cells:,} cells differ from {w['end_anchor']}")
-        caption_total += len(captions)
+        if fin and not bad_cells and min(wto, LAST) == wto:
+            x_owner, x_status, x_other = fin.apply(e_owner, e_status, e_other, wto)
+            bad_cells = int(np.count_nonzero((x_owner != f_owner) | (x_status != f_status) | (x_other != f_other)))
+        seam = f"{wid}: {bad_cells:,} cells differ from {w['end_anchor']}" if bad_cells else None
+        entry = None
 
         if not args.check:
             arr = {
@@ -490,12 +552,43 @@ def main():
             hj += b" " * ((-len(hj)) % 4)
             blob = b"CHW1" + np.array([len(hj)], np.uint32).tobytes() + hj + body
             size = write_gz(OUT / "w" / f"{wid}.bin", blob)
-            total_bytes += size
-            win_index.append({"id": wid, "from": wfrom, "to": min(wto, LAST), "kb": round(size / 1024),
-                              "src": "final" if src.parent.name == "compiled" else "draft"})
-        if wi % 10 == 0 or wi == len(win_data) - 1:
-            log(f"  {wid}: {len(g_year)} groups, {len(r_start):,} runs, {len(captions)} captions"
+            entry = {"id": wid, "from": wfrom, "to": min(wto, LAST), "kb": round(size / 1024), "bytes": size,
+                     "src": "final" if src.parent.name == "compiled" else "draft"}
+        return {"wid": wid, "wfrom": wfrom, "cnt_start": cnt_start, "areas": areas, "changed": chg, "seam": seam,
+                "captions": len(captions), "entry": entry, "groups": len(g_year), "runs": len(r_start)}
+
+    global _WINDOW
+    _WINDOW = do_window
+    n_win = len(win_data)
+    workers = max(1, min(args.workers, n_win))
+    if workers > 1:
+        import multiprocessing
+        pool = multiprocessing.get_context("fork").Pool(workers)
+        results = pool.imap(_window, range(n_win), chunksize=1)
+    else:
+        pool = None
+        results = (do_window(wi) for wi in range(n_win))
+    for wi, r in enumerate(results):
+        cnt = r["cnt_start"].copy()
+        if wi == 0:
+            record_area(r["wfrom"] - 1, cnt)
+        for y, d_, v_ in r["areas"]:
+            cnt[d_] = v_
+            record_area(y, cnt)
+        for y, n_ in r["changed"].items():
+            changed[y - FIRST] += n_
+        if r["seam"]:
+            seam_issues.append(r["seam"])
+        caption_total += r["captions"]
+        if r["entry"]:
+            total_bytes += r["entry"].pop("bytes")
+            win_index.append(r["entry"])
+        if wi % 10 == 0 or wi == n_win - 1:
+            log(f"  {r['wid']}: {r['groups']} groups, {r['runs']:,} runs, {r['captions']} captions"
                 + (f", {win_index[-1]['kb']} KB" if win_index else ""))
+    if pool is not None:
+        pool.close()
+        pool.join()
     log(f"replay: {caption_total:,} captions; seams: {'clean' if not seam_issues else '; '.join(seam_issues[:8])}")
 
     # ---- the state table
@@ -525,7 +618,7 @@ def main():
         has = first_land[i] < 99999
         cols["first"].append(int(first_land[i]) if has else None)
         cols["last"].append(int(last_land[i]) if has else None)
-        cols["peak"].append(int(peak[i]))
+        cols["peak"].append(num(peak[i]))
         cols["peakYear"].append(int(peak_year[i]) if has else None)
         caps = []
         for c in idn.get("capitals") or []:

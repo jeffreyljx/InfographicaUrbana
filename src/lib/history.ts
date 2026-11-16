@@ -41,6 +41,8 @@ export interface Geo {
   N: number;
   /** cell centres in Web Mercator, 0..1 */
   x: Float32Array; y: Float32Array;
+  /** the share of each cell that is land (1 inland, less on the coast): areas are summed with it */
+  land: Float32Array;
 }
 
 export const TYPE_LABEL: Record<string, string> = { s: "State", d: "Dynasty", c: "Archaeological culture", k: "Colony", r: "Rebel state", u: "Association", n: "Named party" };
@@ -70,10 +72,11 @@ let geoP: Promise<Geo> | null = null;
 export const loadIndex = () => (indexP ??= fetchJson<HistIndex>("/history/index.json"));
 export const loadStates = () => (statesP ??= fetchJson<HistStates>("/history/states.json"));
 
-/** geo.bin: "CHG1", N, Q, then dx and dy as delta-coded i32 split into byte planes. */
+/** geo.bin: "CHG1" or "CHG2", N, Q, then dx and dy as delta-coded i32 split into byte planes; CHG2 adds a byte per cell, the share of it that is land. */
 export const loadGeo = () => (geoP ??= fetchBin("/history/geo.bin").then(buf => {
   const dv = new DataView(buf);
-  if (dv.getUint32(0, true) !== 0x31474843) throw new Error("geo.bin: bad magic");
+  const magic = dv.getUint32(0, true);
+  if (magic !== 0x31474843 && magic !== 0x32474843) throw new Error("geo.bin: bad magic");
   const N = dv.getUint32(4, true), Q = dv.getUint32(8, true);
   const bytes = new Uint8Array(buf, 12);
   const col = (k: number) => {
@@ -87,7 +90,9 @@ export const loadGeo = () => (geoP ??= fetchBin("/history/geo.bin").then(buf => 
     }
     return out;
   };
-  return { N, x: col(0), y: col(1) };
+  const land = new Float32Array(N).fill(1);
+  if (magic === 0x32474843) for (let i = 0; i < N; i++) land[i] = bytes[8 * N + i] / 255;
+  return { N, x: col(0), y: col(1), land };
 }));
 
 const chunks = new Map<string, Promise<Chunk>>();
@@ -194,11 +199,12 @@ function lowerBound(a: Int32Array, v: number) {
   return lo;
 }
 
-/** Cells per owner (index = owner id). */
-export function areas(t: Timeline, P: number): Uint32Array {
-  const a = new Uint32Array(P + 1);
+/** Land per owner in cells (index = owner id); a coastal cell counts for the share of it that is land. */
+export function areas(t: Timeline, P: number, land?: Float32Array): Float32Array {
+  const a = new Float32Array(P + 1);
   const o = t.owner;
-  for (let i = 0; i < o.length; i++) a[o[i]]++;
+  if (land) for (let i = 0; i < o.length; i++) a[o[i]] += land[i];
+  else for (let i = 0; i < o.length; i++) a[o[i]]++;
   return a;
 }
 
